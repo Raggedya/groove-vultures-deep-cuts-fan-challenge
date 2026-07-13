@@ -1,0 +1,256 @@
+[
+  {
+    "id": "GV-DC01", "roundGroup": 1, "category": "Album Deep Cuts", "difficulty": "easy",
+    "question": "Which song is NOT on Groove Vultures' four-track self-titled EP?",
+    "options": ["Hang On", "Flytrap Love", "Thirsty", "Self Destruct"], "correctAnswer": "Flytrap Love",
+    "explanation": "The self-titled EP contains Self Destruct, Hang On, Thirsty and What Happened To Lucy. Flytrap Love arrived later as a standalone single.",
+    "sourceName": "Groove Vultures Bandcamp", "sourceURL": "https://groovevultures.bandcamp.com/album/groove-vultures", "active": true
+  },
+  {
+    "id": "GV-DC02", "roundGroup": 1, "category": "Album Deep Cuts", "difficulty": "medium",
+    "question": "Which unexpected genre did the band say was woven into its debut EP alongside metal, punk and grunge?",
+    "options": ["Ska", "Disco", "Bluegrass", "Synth-pop"], "correctAnswer": "Ska",
+    "explanation": "The band described its self-produced debut as garage rock blended with metal, punk, ska and grunge, reflecting the members' deliberately varied tastes.",
+    "sourceName": "Lelahel Metal interview", "sourceURL": "https://www.lelahelmetal.net/2024/07/interview-groove-vultures.html?m=1", "active": true
+  },
+  {
+    "id": "GV-DC03", "roundGroup": 1, "category": "Album Deep Cuts", "difficulty": "hard",
+    "question": "Who mastered the original four-track Groove Vultures EP?",
+    "options": ["Iridium Audio", "Dreams Alive Mixing & Mastering", "Harry Marsh", "Crimsondawn Audio"], "correctAnswer": "Dreams Alive Mixing & Mastering",
+    "explanation": "Harry Marsh produced and mixed the EP, while its Bandcamp credits name Dreams Alive Mixing & Mastering as the separate mastering studio.",
+    "sourceName": "Groove Vultures Bandcamp", "sourceURL": "https://groovevultures.bandcamp.com/album/groove-vultures", "active": true
+  },
+  {
+    "id": "GV-DC04", "roundGroup": 1, "category": "Song / Recording Deep Cuts", "difficulty": "easy",
+    "question": "Which extra genre tag did triple j Unearthed give Flytrap Love besides rock and punk?",
+    "options": ["Metal", "Funk", "Indie", "Ska"], "correctAnswer": "Funk",
+    "explanation": "On the band's triple j Unearthed profile, Flytrap Love is tagged Rock, Funk and Punk, matching its swaggering rhythmic character.",
+    "sourceName": "triple j Unearthed", "sourceURL": "https://www.abc.net.au/triplejunearthed/artist/groove-vultures/", "active": true
+  },
+  {
+    "id": "GV-DC05", "roundGroup": 1, "category": "Song / Recording Deep Cuts", "difficulty": "medium",
+    "question": "Who supplied the additional vocals credited on Flytrap Love?",
+    "options": ["Scarlett Noorman", "Matt Bunyk-Jones", "Caitlin Gielen-Relph", "Tyler Jameson"], "correctAnswer": "Caitlin Gielen-Relph",
+    "explanation": "The Bandcamp recording credits list Caitlin Gielen-Relph on additional vocals, alongside the band's usual four-member performance lineup.",
+    "sourceName": "Flytrap Love on Bandcamp", "sourceURL": "https://groovevultures.bandcamp.com/track/flytrap-love", "active": true
+  },
+  {
+    "id": "GV-DC06", "roundGroup": 1, "category": "Song / Recording Deep Cuts", "difficulty": "hard",
+    "question": "Which band's rhythmic feel helped Shawn shape the guitar pulse of Flytrap Love?",
+    "options": ["Soundgarden", "Sublime", "Royal Blood", "Black Sabbath"], "correctAnswer": "Sublime",
+    "explanation": "Shawn connected Flytrap Love's funky rhythm and story-led lyric writing to the lasting influence of Sublime, a band he loved growing up.",
+    "sourceName": "Illustrate Magazine interview", "sourceURL": "https://illustratemagazine.com/exclusive-interview-with-groove-vultures/", "active": true
+  },
+  {
+    "id": "GV-DC07", "roundGroup": 1, "category": "Band Member", "difficulty": "easy",
+    "question": "Which Groove Vultures member handles lead vocals and rhythm guitar?",
+    "options": ["Harry", "Tyler", "Shawn", "Matt"], "correctAnswer": "Shawn",
+    "explanation": "The band's interview lineup identifies Shawn on vocals and rhythm guitar, with Tyler on guitar, Matt on bass and Harry on drums.",
+    "sourceName": "Illustrate Magazine interview", "sourceURL": "https://illustratemagazine.com/exclusive-interview-with-groove-vultures/", "active": true
+  },
+  {
+    "id": "GV-DC08", "roundGroup": 1, "category": "Band Member", "difficulty": "medium",
+    "question": "Before Harry found his main instrument, which instrument did he first take up as a teenager?",
+    "options": ["Bass", "Guitar", "Keyboards", "Saxophone"], "correctAnswer": "Guitar",
+    "explanation": "Heavy music sparked Harry's interest around age ten. He began playing guitar as a teenager before later discovering that drums suited him best.",
+    "sourceName": "Illustrate Magazine interview", "sourceURL": "https://illustratemagazine.com/exclusive-interview-with-groove-vultures/", "active": true
+  },
+  {
+    "id": "GV-DC09", "roundGroup": 1, "category": "Touring / Live", "difficulty": "medium",
+    "question": "How intense was the band's first six months of regular gigging?",
+    "options": ["One show every other week", "One show each season", "Two shows every night", "One festival per month"], "correctAnswer": "One show every other week",
+    "explanation": "The band recalled a busy opening six months in which it played roughly every other week before deliberately stepping back to record and write.",
+    "sourceName": "Lelahel Metal interview", "sourceURL": "https://www.lelahelmetal.net/2024/07/interview-groove-vultures.html?m=1", "active": true
+  },
+  {
+    "id": "GV-DC10", "roundGroup": 1, "category": "Touring / Live", "difficulty": "medium",
+    "question": "Which two then-unreleased songs did the band say fans could already hear live on YouTube?",
+    "options": ["Hang On and Thirsty", "Flytrap Love and Message Through Time", "Self Destruct and Lucy", "Flytrap Love and Hang On"], "correctAnswer": "Flytrap Love and Message Through Time",
+    "explanation": "Before their studio releases, the band pointed listeners to live YouTube versions of Flytrap Love and Message Through Time as previews.",
+    "sourceName": "Lelahel Metal interview", "sourceURL": "https://www.lelahelmetal.net/2024/07/interview-groove-vultures.html?m=1", "active": true
+  },
+  {
+    "id": "GV-DC11", "roundGroup": 1, "category": "Behind the Scenes", "difficulty": "medium",
+    "question": "In what order did the four members join as Groove Vultures gradually formed?",
+    "options": ["Shawn, Matt, Tyler, Harry", "Harry, Tyler, Matt, Shawn", "Tyler, Shawn, Harry, Matt", "Matt, Harry, Shawn, Tyler"], "correctAnswer": "Harry, Tyler, Matt, Shawn",
+    "explanation": "Harry first advertised for a guitarist and found Tyler. Matt answered the bass advert, and Shawn later arrived with songs when they sought a singer.",
+    "sourceName": "Lelahel Metal interview", "sourceURL": "https://www.lelahelmetal.net/2024/07/interview-groove-vultures.html?m=1", "active": true
+  },
+  {
+    "id": "GV-DC12", "roundGroup": 1, "category": "Behind the Scenes", "difficulty": "hard",
+    "question": "What practical test did the band name Groove Vultures have to pass before everyone accepted it?",
+    "options": ["It had to rhyme with Melbourne", "It had to be unused, non-cliche and fit the sound", "It had to contain four syllables", "It had to quote a favourite lyric"], "correctAnswer": "It had to be unused, non-cliche and fit the sound",
+    "explanation": "The members wanted a name that sounded cool, was not already taken, avoided cliché, described their sound and earned unanimous agreement.",
+    "sourceName": "Illustrate Magazine interview", "sourceURL": "https://illustratemagazine.com/exclusive-interview-with-groove-vultures/", "active": true
+  },
+
+  {
+    "id": "GV-DC13", "roundGroup": 2, "category": "Album Deep Cuts", "difficulty": "easy",
+    "question": "Which song closes the self-titled Groove Vultures EP?",
+    "options": ["Thirsty", "Hang On", "Lucy", "Self Destruct"], "correctAnswer": "Lucy",
+    "explanation": "Bandcamp lists Lucy as the fourth and closing track, following Self Destruct, Hang On and Thirsty on the band's debut EP.",
+    "sourceName": "Groove Vultures Bandcamp", "sourceURL": "https://groovevultures.bandcamp.com/album/groove-vultures", "active": true
+  },
+  {
+    "id": "GV-DC14", "roundGroup": 2, "category": "Album Deep Cuts", "difficulty": "medium",
+    "question": "Which band member produced and mixed the self-titled EP?",
+    "options": ["Tyler Jameson", "Harry Marsh", "Matt Bunyk-Jones", "Shawn Gielen-Relph"], "correctAnswer": "Harry Marsh",
+    "explanation": "The EP credits identify drummer Harry Marsh as both producer and mix engineer, underlining the band's genuinely self-produced approach.",
+    "sourceName": "Groove Vultures Bandcamp", "sourceURL": "https://groovevultures.bandcamp.com/album/groove-vultures", "active": true
+  },
+  {
+    "id": "GV-DC15", "roundGroup": 2, "category": "Album Deep Cuts", "difficulty": "hard",
+    "question": "What unusual writing rule did Groove Vultures set for its planned full album?",
+    "options": ["Every song had to be under three minutes", "Each member would write two songs", "All lyrics had to be fictional", "Every track needed a guest singer"], "correctAnswer": "Each member would write two songs",
+    "explanation": "To make the album truly representative, the band planned for every member to contribute two songs rather than relying on one principal writer.",
+    "sourceName": "Illustrate Magazine interview", "sourceURL": "https://illustratemagazine.com/exclusive-interview-with-groove-vultures/", "active": true
+  },
+  {
+    "id": "GV-DC16", "roundGroup": 2, "category": "Song / Recording Deep Cuts", "difficulty": "easy",
+    "question": "Who is the imagined recipient of Message Through Time?",
+    "options": ["The band's future audience", "The members' younger selves", "A former manager", "A lost touring friend"], "correctAnswer": "The members' younger selves",
+    "explanation": "Message Through Time expresses the reassuring things the musicians wished they could have told themselves while growing up and finding their way.",
+    "sourceName": "Lelahel Metal interview", "sourceURL": "https://www.lelahelmetal.net/2024/07/interview-groove-vultures.html?m=1", "active": true
+  },
+  {
+    "id": "GV-DC17", "roundGroup": 2, "category": "Song / Recording Deep Cuts", "difficulty": "medium",
+    "question": "Which regular band member added extra vocals to Message Through Time?",
+    "options": ["Matt", "Harry", "Tyler", "Shawn"], "correctAnswer": "Matt",
+    "explanation": "The single's Bandcamp credits specifically add Matt on additional vocals to his normal bass role, with Shawn remaining the lead vocalist.",
+    "sourceName": "Message Through Time on Bandcamp", "sourceURL": "https://groovevultures.bandcamp.com/track/message-through-time", "active": true
+  },
+  {
+    "id": "GV-DC18", "roundGroup": 2, "category": "Song / Recording Deep Cuts", "difficulty": "hard",
+    "question": "Which track was the first song Groove Vultures deliberately wrote toward its debut album?",
+    "options": ["Self Destruct", "What Happened To Lucy", "Flytrap Love", "Message Through Time"], "correctAnswer": "Flytrap Love",
+    "explanation": "The band described Flytrap Love as the first composition consciously intended for its forthcoming debut album rather than the earlier EP cycle.",
+    "sourceName": "Illustrate Magazine interview", "sourceURL": "https://illustratemagazine.com/exclusive-interview-with-groove-vultures/", "active": true
+  },
+  {
+    "id": "GV-DC19", "roundGroup": 2, "category": "Band Member", "difficulty": "easy",
+    "question": "Who is Groove Vultures' drummer?",
+    "options": ["Matt Bunyk-Jones", "Harry Marsh", "Tyler Jameson", "Shawn Gielen-Relph"], "correctAnswer": "Harry Marsh",
+    "explanation": "Harry Marsh is the band's drummer as well as a major writing, arranging, recording and production force behind its music.",
+    "sourceName": "Groove Vultures Bandcamp", "sourceURL": "https://groovevultures.bandcamp.com/album/groove-vultures", "active": true
+  },
+  {
+    "id": "GV-DC20", "roundGroup": 2, "category": "Band Member", "difficulty": "medium",
+    "question": "Which music-video memory did bassist Matt say stayed with him from childhood?",
+    "options": ["Toto's Africa", "Nirvana's Smells Like Teen Spirit", "Queen's I Want to Break Free", "Peter Gabriel's Sledgehammer"], "correctAnswer": "Toto's Africa",
+    "explanation": "Matt recalled his father showing him Music Max around age eight or nine, with Toto's Africa becoming the strongest surviving memory.",
+    "sourceName": "Illustrate Magazine interview", "sourceURL": "https://illustratemagazine.com/exclusive-interview-with-groove-vultures/", "active": true
+  },
+  {
+    "id": "GV-DC21", "roundGroup": 2, "category": "Touring / Live", "difficulty": "medium",
+    "question": "Which part of band life did Shawn call his happy place?",
+    "options": ["Designing cover artwork", "Playing live shows", "Reading reviews", "Mastering recordings"], "correctAnswer": "Playing live shows",
+    "explanation": "Shawn said live shows are his happy place, while also treasuring the rehearsal-room instant when a new song finally comes together.",
+    "sourceName": "Illustrate Magazine interview", "sourceURL": "https://illustratemagazine.com/exclusive-interview-with-groove-vultures/", "active": true
+  },
+  {
+    "id": "GV-DC22", "roundGroup": 2, "category": "Touring / Live", "difficulty": "hard",
+    "question": "What feature of Melbourne's scene did the band say helps original acts develop?",
+    "options": ["Every venue requires cover songs", "Diverse venues allow bands to build sound and stagecraft", "Only metal bands can headline", "Audiences avoid unfamiliar acts"], "correctAnswer": "Diverse venues allow bands to build sound and stagecraft",
+    "explanation": "The band contrasted Melbourne's diverse scene with cover-focused pub circuits, saying varied rooms help unusual acts refine sound, stagecraft and audiences.",
+    "sourceName": "Lelahel Metal interview", "sourceURL": "https://www.lelahelmetal.net/2024/07/interview-groove-vultures.html?m=1", "active": true
+  },
+  {
+    "id": "GV-DC23", "roundGroup": 2, "category": "Behind the Scenes", "difficulty": "medium",
+    "question": "How does Harry usually introduce one of his own new songs to the band?",
+    "options": ["As a complete lyric sheet", "As a mostly complete instrumental demo", "As an a cappella voice note", "As a borrowed cover arrangement"], "correctAnswer": "As a mostly complete instrumental demo",
+    "explanation": "Harry writes on guitar, experiments with drum ideas and prepares a mostly complete instrumental demo before inviting everyone else to shape it.",
+    "sourceName": "Illustrate Magazine interview", "sourceURL": "https://illustratemagazine.com/exclusive-interview-with-groove-vultures/", "active": true
+  },
+  {
+    "id": "GV-DC24", "roundGroup": 2, "category": "Behind the Scenes", "difficulty": "medium",
+    "question": "Where do Shawn's unused lyrics wait until another member brings in the right riff?",
+    "options": ["The songbook graveyard", "The rehearsal vault", "The vulture archive", "The unfinished album folder"], "correctAnswer": "The songbook graveyard",
+    "explanation": "Shawn keeps hundreds of lyrics in what he calls his songbook graveyard, retrieving one when another member's music evokes the matching feeling.",
+    "sourceName": "Illustrate Magazine interview", "sourceURL": "https://illustratemagazine.com/exclusive-interview-with-groove-vultures/", "active": true
+  },
+
+  {
+    "id": "GV-DC25", "roundGroup": 3, "category": "Album Deep Cuts", "difficulty": "easy",
+    "question": "Which track opens the self-titled Groove Vultures EP?",
+    "options": ["Self Destruct", "Thirsty", "Hang On", "What Happened To Lucy"], "correctAnswer": "Self Destruct",
+    "explanation": "The five-minute Self Destruct opens the EP before Hang On, Thirsty and the closing narrative track What Happened To Lucy.",
+    "sourceName": "Groove Vultures Bandcamp", "sourceURL": "https://groovevultures.bandcamp.com/album/groove-vultures", "active": true
+  },
+  {
+    "id": "GV-DC26", "roundGroup": 3, "category": "Album Deep Cuts", "difficulty": "medium",
+    "question": "Who created the artwork credited across the EP and the later singles?",
+    "options": ["Crimsondawn Photography", "Scarlett Noorman", "Caitlin Gielen-Relph", "Dreams Alive"], "correctAnswer": "Scarlett Noorman",
+    "explanation": "Bandcamp credits Scarlett Noorman for the EP artwork and again for both Flytrap Love and Message Through Time's visual presentation.",
+    "sourceName": "Groove Vultures Bandcamp", "sourceURL": "https://groovevultures.bandcamp.com/album/groove-vultures", "active": true
+  },
+  {
+    "id": "GV-DC27", "roundGroup": 3, "category": "Album Deep Cuts", "difficulty": "hard",
+    "question": "Which mastering credit appears on both Flytrap Love and Message Through Time?",
+    "options": ["Iridium Audio", "Dreams Alive Mixing & Mastering", "Harry Marsh", "Music Max Studios"], "correctAnswer": "Iridium Audio",
+    "explanation": "Both later singles were produced and mixed by Harry Marsh, but their Bandcamp credits identify Iridium Audio as the mastering provider.",
+    "sourceName": "Message Through Time on Bandcamp", "sourceURL": "https://groovevultures.bandcamp.com/track/message-through-time", "active": true
+  },
+  {
+    "id": "GV-DC28", "roundGroup": 3, "category": "Song / Recording Deep Cuts", "difficulty": "easy",
+    "question": "What kind of student was Lucy before the fall described in What Happened To Lucy?",
+    "options": ["A straight-A student", "A music-school dropout", "A champion athlete", "A university lecturer"], "correctAnswer": "A straight-A student",
+    "explanation": "A review describes Lucy as a once-bright, straight-A student who loses her way, giving the heavy song its compassionate narrative core.",
+    "sourceName": "Illustrate Magazine review", "sourceURL": "https://illustratemagazine.com/what-happened-to-lucy-by-groove-vultures-review/", "active": true
+  },
+  {
+    "id": "GV-DC29", "roundGroup": 3, "category": "Song / Recording Deep Cuts", "difficulty": "medium",
+    "question": "What relationship story drives Flytrap Love?",
+    "options": ["Long-distance devotion", "A toxic spiral of games and infidelity", "A quiet childhood friendship", "A comic first date"], "correctAnswer": "A toxic spiral of games and infidelity",
+    "explanation": "Flytrap Love follows a destructive relationship marked by manipulation, infidelity and tit-for-tat behaviour until the relationship finally burns out.",
+    "sourceName": "Illustrate Magazine interview", "sourceURL": "https://illustratemagazine.com/exclusive-interview-with-groove-vultures/", "active": true
+  },
+  {
+    "id": "GV-DC30", "roundGroup": 3, "category": "Song / Recording Deep Cuts", "difficulty": "medium",
+    "question": "Which rhythmic flourish did one review hear echoing through the verse of What Happened To Lucy?",
+    "options": ["Bo Diddley beat", "Bonham triplets", "Reggae one-drop", "Disco four-on-the-floor"], "correctAnswer": "Bonham triplets",
+    "explanation": "Sinusoidal Music singled out Bonham-style triplets in the verse, before describing the bridge and the punk explosion that follows it.",
+    "sourceName": "Sinusoidal Music review", "sourceURL": "https://sinusoidalmusic.com/reviews/groove-vultures-bring-some-raging-rock-with-their-single-what-happened-to-lucy/", "active": true
+  },
+  {
+    "id": "GV-DC31", "roundGroup": 3, "category": "Band Member", "difficulty": "easy",
+    "question": "Which member is Groove Vultures' lead guitarist?",
+    "options": ["Shawn Gielen-Relph", "Matt Bunyk-Jones", "Harry Marsh", "Tyler Jameson"], "correctAnswer": "Tyler Jameson",
+    "explanation": "Tyler Jameson plays lead guitar, while Shawn Gielen-Relph handles vocals and rhythm guitar, Matt Bunyk-Jones plays bass and Harry Marsh drums.",
+    "sourceName": "Groove Vultures Bandcamp", "sourceURL": "https://groovevultures.bandcamp.com/album/groove-vultures", "active": true
+  },
+  {
+    "id": "GV-DC32", "roundGroup": 3, "category": "Band Member", "difficulty": "medium",
+    "question": "What did Harry admire about Soundgarden's odd time signatures?",
+    "options": ["They sound natural rather than overcomplicated", "They always use electronic drums", "They eliminate guitar solos", "They make every song faster"], "correctAnswer": "They sound natural rather than overcomplicated",
+    "explanation": "Harry praised Soundgarden for using odd time signatures that still feel intuitive, rather than drawing attention to their technical complexity.",
+    "sourceName": "Illustrate Magazine interview", "sourceURL": "https://illustratemagazine.com/exclusive-interview-with-groove-vultures/", "active": true
+  },
+  {
+    "id": "GV-DC33", "roundGroup": 3, "category": "Touring / Live", "difficulty": "medium",
+    "question": "Why did Groove Vultures deliberately step back from active gigging after its busy opening run?",
+    "options": ["To change the band name", "To record two tracks and write the album", "To recruit a keyboardist", "To relocate overseas"], "correctAnswer": "To record two tracks and write the album",
+    "explanation": "After six busy months of shows, the band took several months away from active gigging to record two singles and develop album material.",
+    "sourceName": "Lelahel Metal interview", "sourceURL": "https://www.lelahelmetal.net/2024/07/interview-groove-vultures.html?m=1", "active": true
+  },
+  {
+    "id": "GV-DC34", "roundGroup": 3, "category": "Touring / Live", "difficulty": "hard",
+    "question": "What live moment did Shawn say instantly creates a new core memory?",
+    "options": ["Selling out merchandise", "The crowd singing the band's words back", "Breaking a guitar string", "Hearing the support band's soundcheck"], "correctAnswer": "The crowd singing the band's words back",
+    "explanation": "For Shawn, hearing an audience sing the band's own words back transforms a performance into an immediate and lasting core memory.",
+    "sourceName": "Illustrate Magazine interview", "sourceURL": "https://illustratemagazine.com/exclusive-interview-with-groove-vultures/", "active": true
+  },
+  {
+    "id": "GV-DC35", "roundGroup": 3, "category": "Behind the Scenes", "difficulty": "medium",
+    "question": "What nearly happened to Shawn's music career before he met the other Groove Vultures?",
+    "options": ["He nearly moved into classical music", "He nearly gave up after struggling to find a band in Melbourne", "He nearly became a full-time producer", "He nearly joined a cover act overseas"], "correctAnswer": "He nearly gave up after struggling to find a band in Melbourne",
+    "explanation": "After moving to Melbourne and trying multiple bands that never gelled, Shawn doubted himself and almost stopped before meeting the others.",
+    "sourceName": "Illustrate Magazine interview", "sourceURL": "https://illustratemagazine.com/exclusive-interview-with-groove-vultures/", "active": true
+  },
+  {
+    "id": "GV-DC36", "roundGroup": 3, "category": "Behind the Scenes", "difficulty": "hard",
+    "question": "What did Harry identify as the hardest musical hurdle before Groove Vultures clicked?",
+    "options": ["Learning studio software", "Finding the right creative people", "Writing short songs", "Choosing a rehearsal suburb"], "correctAnswer": "Finding the right creative people",
+    "explanation": "Harry said finding compatible musicians was the biggest challenge: people with distinct creative visions who still genuinely wanted to build something together.",
+    "sourceName": "Illustrate Magazine interview", "sourceURL": "https://illustratemagazine.com/exclusive-interview-with-groove-vultures/", "active": true
+  }
+]

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#020711">
+  <meta name="description" content="The official Groove Vultures Deep Cuts fan challenge.">
+  <title>Groove Vultures Fan Challenge</title>
+  <link rel="preload" href="assets/ding.mp3" as="audio" type="audio/mpeg">
+  <link rel="preload" href="assets/beep.wav" as="audio" type="audio/wav">
+  <link rel="preload" href="assets/seven-seconds-aggits-master.png" as="image">
+  <link rel="preload" href="assets/aggits-original-cutout-v4.png" as="image">
+  <link rel="stylesheet" href="styles.css?v=20260713-7">
+</head>
+<body>
+  <main id="app" class="app-shell home-active">
+    <div class="ambient" aria-hidden="true"></div>
+    <header class="brand-header" aria-label="Groove Vultures Fan Challenge">
+      <span class="brand-kicker">Fan Challenge</span>
+      <strong class="brand-name">Groove Vultures</strong>
+    </header>
+
+    <section id="homeScreen" class="screen home-screen">
+      <div class="home-branding" aria-label="Groove Vultures Fan Challenge">
+        <p class="home-edition">The Official Fan Challenge</p>
+        <h1 id="homeBandName" class="home-band-name">Groove Vultures</h1>
+        <div class="home-stage" aria-hidden="true"></div>
+        <div class="home-aggits" role="img" aria-label="Aggits"></div>
+      </div>
+      <div class="panel home-panel">
+        <button id="startButton" class="button primary" type="button" disabled>Start the Challenge</button>
+        <button id="muteButtonHome" class="button utility mute-button" type="button" aria-pressed="false">Sound: On</button>
+      </div>
+    </section>
+
+    <section id="quizScreen" class="screen quiz-screen" hidden>
+      <div class="quiz-topline">
+        <p id="progressText" class="progress" aria-live="polite">Question 1 of 12</p>
+        <button id="muteButtonQuiz" class="icon-button mute-button" type="button" aria-label="Mute sound" aria-pressed="false">♪</button>
+      </div>
+      <div class="panel question-panel">
+        <div class="question-heading">
+          <span id="categoryText" class="category">Band History</span>
+          <div id="timerRing" class="timer-ring" role="timer" aria-label="15 seconds remaining">
+            <span id="timerNumber">15</span>
+          </div>
+        </div>
+        <h2 id="questionText" tabindex="-1">Loading question…</h2>
+        <div id="answerList" class="answer-list" role="group" aria-label="Answer choices"></div>
+        <div id="feedback" class="feedback" aria-live="assertive" hidden>
+          <div class="feedback-heading">
+            <span id="deepCutBadge" class="deep-cut-badge">Deep Cut</span>
+            <strong id="feedbackTitle"></strong>
+          </div>
+          <span id="feedbackFact"></span>
+          <a id="feedbackSource" class="feedback-source" target="_blank" rel="noopener noreferrer"></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="resultScreen" class="screen result-screen" hidden>
+      <div class="panel result-panel">
+        <div class="result-artwork" role="img" aria-label="Aggits for the Groove Vultures fan challenge"></div>
+        <p class="eyebrow">YOUR RESULT</p>
+        <h1 id="scoreText" class="score">0 / 12</h1>
+        <p class="rating-label">YOUR FAN RATING</p>
+        <h2 id="classificationText" class="classification">JUST DISCOVERING THE BAND</h2>
+        <p id="resultMessage" class="result-message"></p>
+        <dl class="stats">
+          <div><dt>Correct</dt><dd id="correctStat">0</dd></div>
+          <div><dt>Incorrect</dt><dd id="incorrectStat">0</dd></div>
+          <div><dt>Unanswered</dt><dd id="unansweredStat">0</dd></div>
+          <div><dt>Average</dt><dd id="averageStat">0.0s</dd></div>
+        </dl>
+        <section class="discover" aria-labelledby="discoverTitle">
+          <h2 id="discoverTitle">Discover Groove Vultures</h2>
+          <div id="platformLinks" class="platform-links"></div>
+        </section>
+        <button id="replayButton" class="button primary" type="button">Take the Quiz Again</button>
+        <div class="share-actions">
+          <button id="shareButton" class="button secondary" type="button">Challenge Your Mates</button>
+          <button id="copyButton" class="button utility" type="button">Copy Quiz Link</button>
+        </div>
+        <p id="shareStatus" class="status" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <section id="errorScreen" class="screen error-screen" hidden>
+      <div class="panel"><h1>Challenge unavailable</h1><p id="errorMessage">Please refresh and try again.</p></div>
+    </section>
+  </main>
+  <script src="js/engine.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
