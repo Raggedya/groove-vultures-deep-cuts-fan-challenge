@@ -1,0 +1,13 @@
+{
+  "name": "deep-cuts-publishing-platform",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Permanent publishing platform for Deep Cuts Fan Challenge editions.",
+  "scripts": {
+    "validate": "node scripts/validate-platform.mjs && node scripts/validate-questions.mjs && node scripts/test-engine.mjs && node --check js/app.js && node --check js/engine.js",
+    "build": "node scripts/build-edition.mjs",
+    "register": "node scripts/register-edition.mjs",
+    "delivery": "node scripts/prepare-delivery.mjs",
+    "publish": "node scripts/publish-edition.mjs"
+  }
+}

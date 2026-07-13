@@ -1,2 +1,5 @@
 assets/immigrant-union-original-background.png
 assets/groove-vultures-background.png
+.tools/
+output/*/
+!output/*/.gitkeep

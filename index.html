@@ -4,32 +4,32 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#020711">
-  <meta name="description" content="The official Groove Vultures Deep Cuts fan challenge.">
-  <title>Groove Vultures Fan Challenge</title>
+  <meta id="pageDescription" name="description" content="Deep Cuts official fan challenge.">
+  <title>Deep Cuts Fan Challenge</title>
   <link rel="preload" href="assets/ding.mp3" as="audio" type="audio/mpeg">
   <link rel="preload" href="assets/beep.wav" as="audio" type="audio/wav">
-  <link rel="preload" href="assets/seven-seconds-aggits-master.png" as="image">
   <link rel="preload" href="assets/aggits-original-cutout-v4.png" as="image">
   <link rel="stylesheet" href="styles.css?v=20260713-7">
 </head>
 <body>
   <main id="app" class="app-shell home-active">
     <div class="ambient" aria-hidden="true"></div>
-    <header class="brand-header" aria-label="Groove Vultures Fan Challenge">
+    <header id="brandHeader" class="brand-header" aria-label="Deep Cuts Fan Challenge">
       <span class="brand-kicker">Fan Challenge</span>
-      <strong class="brand-name">Groove Vultures</strong>
+      <strong id="brandHeaderName" class="brand-name">Deep Cuts</strong>
     </header>
 
     <section id="homeScreen" class="screen home-screen">
-      <div class="home-branding" aria-label="Groove Vultures Fan Challenge">
+      <div id="homeBranding" class="home-branding" aria-label="Deep Cuts Fan Challenge">
         <p class="home-edition">The Official Fan Challenge</p>
-        <h1 id="homeBandName" class="home-band-name">Groove Vultures</h1>
+        <h1 id="homeBandName" class="home-band-name">Deep Cuts</h1>
         <div class="home-stage" aria-hidden="true"></div>
         <div class="home-aggits" role="img" aria-label="Aggits"></div>
       </div>
       <div class="panel home-panel">
         <button id="startButton" class="button primary" type="button" disabled>Start the Challenge</button>
         <button id="muteButtonHome" class="button utility mute-button" type="button" aria-pressed="false">Sound: On</button>
+        <small id="coverCopyright" class="cover-copyright">copyright Clearlight Creative</small>
       </div>
     </section>
 
@@ -60,7 +60,7 @@
 
     <section id="resultScreen" class="screen result-screen" hidden>
       <div class="panel result-panel">
-        <div class="result-artwork" role="img" aria-label="Aggits for the Groove Vultures fan challenge"></div>
+        <div id="resultArtwork" class="result-artwork" role="img" aria-label="Aggits for the Deep Cuts fan challenge"></div>
         <p class="eyebrow">YOUR RESULT</p>
         <h1 id="scoreText" class="score">0 / 12</h1>
         <p class="rating-label">YOUR FAN RATING</p>
@@ -73,7 +73,7 @@
           <div><dt>Average</dt><dd id="averageStat">0.0s</dd></div>
         </dl>
         <section class="discover" aria-labelledby="discoverTitle">
-          <h2 id="discoverTitle">Discover Groove Vultures</h2>
+          <h2 id="discoverTitle">Discover the artist</h2>
           <div id="platformLinks" class="platform-links"></div>
         </section>
         <button id="replayButton" class="button primary" type="button">Take the Quiz Again</button>

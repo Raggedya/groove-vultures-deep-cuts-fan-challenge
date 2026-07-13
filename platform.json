@@ -1,0 +1,12 @@
+{
+  "platformName": "Deep Cuts",
+  "defaultEdition": "groove-vultures",
+  "editions": [
+    {
+      "slug": "groove-vultures",
+      "name": "Groove Vultures",
+      "config": "editions/groove-vultures/edition.json",
+      "active": true
+    }
+  ]
+}
