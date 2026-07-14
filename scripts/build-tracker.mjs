@@ -144,13 +144,36 @@ export async function finishBuild(buildId,{root=process.cwd(),now=new Date(),sta
   const record=JSON.parse(await fs.readFile(file,'utf8'));const config=await loadTrackingConfig(root,env);
   const pricing=JSON.parse(await fs.readFile(path.resolve(root,config.pricing_table),'utf8'));
   const measurable=record.usage.models.some(call=>Number.isFinite(call.actual_cost)||pricing.models?.[call.model])||record.usage.service_charges.some(charge=>charge.currency==='USD'&&Number.isFinite(Number(charge.amount)));
-  const exchange=measurable?await resolveExchangeRate(config,fetchImpl):{rate:null,date:null,…4643 tokens truncated…n, deployment or email requirements.
-- Make safe, in-scope assumptions and continue.
-- Ask only when identity is genuinely ambiguous or publication would target the wrong artist.
-- Prefer deterministic repository scripts over retyping transformations.
-- Do not duplicate the engine or edition application.
-- When a repeated step remains, add it to the highest appropriate roadmap item and automate it when practical.
+  const exchange=measurable?await resolveExchangeRate(config,fetchImpl):{rate:null,date:null,source:null};
+  const cost=calculateUsageCost(record,pricing,exchange.rate);
+  const completed=iso(now),seconds=Math.max(0,Math.floor((new Date(completed)-new Date(record.started_at))/1000));
+  Object.assign(record,{completed_at:completed,production_seconds:seconds,production_time_display:formatDuration(seconds),
+    ai_cost_original_currency:cost.original,ai_cost_original_currency_code:pricing.currency||'USD',aud_exchange_rate:cost.aud===null?null:exchange.rate,
+    aud_exchange_rate_date:cost.aud===null?null:exchange.date,aud_exchange_rate_source:cost.aud===null?null:exchange.source,
+    ai_cost_aud:cost.aud,cost_method:cost.method,cost_notes:cost.notes,status,deployment_url:deploymentURL,
+    git_commit:gitCommit,failure_reason:failureReason});
+  if(persist){
+    if(status!=='failed'||config.include_failed_builds)await fs.appendFile(log,JSON.stringify(record)+'\n');
+    await fs.unlink(file);
+  }
+  return record;
+}
 
-## Quality lock
+export async function latestCompletedBuild(slug,{root=process.cwd()}={}){
+  const {log}=await pathsFor(root);const records=await readLog(log);
+  return records.filter(item=>item.quiz_slug===slug&&item.status==='completed').sort((a,b)=>b.completed_at.localeCompare(a.completed_at))[0]||null;
+}
 
-Reject shallow trivia. Every question must make the artist or a serious fan plausibly ask, “How did they know that?” Preserve the exact Aggits character, locked timing/audio behaviour, blue-black design, 36-question model and automatic delivery outputs.
+export function buildSummary(record,{locale='en-AU'}={}){
+  const completed=new Intl.DateTimeFormat(locale,{timeZone:'Australia/Sydney',day:'numeric',month:'long',year:'numeric',hour:'numeric',minute:'2-digit'}).format(new Date(record.completed_at));
+  const cost=record.ai_cost_aud===null?'Unavailable':`A$${Number(record.ai_cost_aud).toFixed(2)}`;
+  const basis=record.cost_method==='unavailable'?record.cost_notes:`${record.cost_method[0].toUpperCase()+record.cost_method.slice(1)} - ${record.cost_notes}`;
+  return `BUILD SUMMARY\n\nBuild cost: ${cost}\nCost basis: ${basis}\nProduction time: ${formatDurationWords(record.production_seconds)}\nCompleted: ${completed}\nBuild ID: ${record.build_id}\nLive quiz: ${record.deployment_url||'Not deployed'}\nGit commit: ${record.git_commit||'Unavailable'}`;
+}
+
+export function completionEmailBody(config,record,{detailedUsage=false}={}){
+  const details=detailedUsage?`\n\nRecorded usage: ${record.usage.ai_calls} AI call(s), ${record.usage.input_tokens} input tokens, ${record.usage.cached_input_tokens} cached input tokens, ${record.usage.output_tokens} output tokens, ${record.usage.reasoning_tokens} reasoning tokens.`:'';
+  return `Your ${config.bandName} Deep Cuts Fan Challenge is live:\n\n${config.publicURL}\n\nThis edition contains 36 source-verified questions delivered as three fresh, non-repeating 12-question games. The Instagram image and branded QR image are attached.\n\n${buildSummary(record)}${details}\n`;
+}
+
+export {DEFAULT_UNAVAILABLE_NOTE};
