@@ -1,55 +1,55 @@
-# Groove Vultures Deep Cuts Fan Challenge
+# Deep Cuts Publishing Platform
 
-A premium, mobile-first fan quiz built from 36 source-verified Groove Vultures questions. Players receive twelve questions per game, with three completely fresh games before the library resets and reshuffles.
+This is the permanent master repository for every Deep Cuts Fan Challenge. Future editions are configuration and researched content inside this platform—not separate software projects or repositories.
 
-## The locked game model
+## Owner workflow
 
-- 36 active Deep Cuts questions, divided into three balanced 12-question groups.
-- Every game contains 3 easy, 6 medium and 3 hard questions.
-- Every game contains 3 Album Deep Cuts, 3 Song / Recording Deep Cuts, 2 Band Member, 2 Touring / Live and 2 Behind the Scenes questions.
-- No question repeats during the first three games. A new shuffled cycle begins only after all 36 have appeared.
-- Each question has four choices and a precise 15-second timer.
-- Seconds 15-4 are silent; a short beep plays once at 3, 2 and 1.
-- The established ding plays only when time reaches zero. Answering early cancels pending audio.
-- The correct answer, short explanation and linked source remain visible for 10 seconds before the next question.
-- The final screen shows the fan rating, statistics, original Aggits artwork and official Groove Vultures discovery links.
+The normal owner instruction is simply:
 
-## Content and sources
+> `Deep Cut [Band or Artist]`
 
-Questions live in `data/questions.json`. Each item includes a unique ID, `roundGroup`, category, difficulty, four options, exact correct answer, 15-40-word explanation, source name, HTTPS source URL and active status.
+Codex then researches, builds, validates, publishes and verifies the edition; generates the square Instagram and branded QR images; and emails the playable link and both images to the owner. The owner should not need PowerShell, GitHub steps, copy/paste or coding knowledge.
 
-Research is drawn from the band's own Bandcamp credits, its triple j Unearthed profile, and published interviews and reviews. Unverified trivia and guessed links are deliberately excluded.
+## Permanent rules
 
-Run the checks with Node.js:
+The project constitution is [DEEP_CUTS_PRODUCTION_MANUAL.md](DEEP_CUTS_PRODUCTION_MANUAL.md). Agent behaviour is defined in [CLAUDE.md](CLAUDE.md), [AGENTS.md](AGENTS.md) and the project-local Deep Cuts Factory skill. Production priorities are ordered by time saved in [ROADMAP.md](ROADMAP.md).
 
-```powershell
-node scripts/validate-questions.mjs
-node scripts/test-engine.mjs
-node --check js/app.js
-```
+The locked product model includes:
 
-## Branding and artwork
+- 36 source-verified Deep Cuts questions;
+- three fresh 12-question games before the bank resets;
+- a fixed difficulty and category mix;
+- 15-second answering time with the established audio sequence;
+- 10-second answer, story and source feedback;
+- premium blue-black presentation and the exact approved Aggits artwork;
+- verified discovery links, fan ratings and automatic social delivery assets.
 
-- `assets/seven-seconds-aggits-master.png` is the approved original Aggits master. Do not redraw, regenerate or replace it.
-- `assets/aggits-original-cutout-v4.png` preserves the exact original Aggits colour pixels with only the surrounding background made transparent.
-- The cover uses one centred Aggits against the calm premium blue-to-black vignette, with no green background, duplicate character or decorative forehead line.
-- Supporting screens use an original code-built blue-black gradient, so no artwork from another band is inherited.
+## Platform structure
 
-## Official links
+- `platform.json` — edition registry and default edition.
+- `editions/<slug>/edition.json` — edition identity, public URL, links, timing and theme.
+- `editions/<slug>/questions.json` — the edition’s 36 source-linked questions.
+- `js/` and `styles.css` — the single shared application engine and interface.
+- `assets/` — shared audio and approved immutable Aggits artwork.
+- `output/<slug>/` — generated delivery images and manifests; these are rebuilt, not committed.
+- `scripts/` — registration, validation, testing, social generation, packaging and publishing automation.
 
-- Spotify: https://open.spotify.com/artist/4mxU5Dnd342CsqAS6viJuj
-- Bandcamp: https://groovevultures.bandcamp.com/
-- YouTube: https://www.youtube.com/@GrooveVultures
-- Instagram: https://www.instagram.com/groovevultures/
+## Automated production commands
 
-## Local preview
-
-Serve the folder through a small local server because the game loads JSON files:
+These commands exist for Codex and continuous integration; the owner is not expected to run them.
 
 ```powershell
-python -m http.server 8000
+npm run validate
+npm run build -- groove-vultures
+npm run publish -- groove-vultures
 ```
 
-Then visit `http://localhost:8000`. No build step is required.
+The publish command runs the full build and prepares the completion delivery package. `--deploy` is reserved for an authenticated, editorially approved production run.
 
-Before publishing, check common phone widths, all three fresh-game cycles, the 3-2-1 audio sequence, timeout ding, early-answer cancellation, result rankings, sharing, source links and the browser console.
+## Current edition
+
+[Play the Groove Vultures Deep Cuts Fan Challenge](https://raggedya.github.io/groove-vultures-deep-cuts-fan-challenge/?edition=groove-vultures)
+
+## Integrity and deployment
+
+The approved Aggits character is protected by a SHA-256 identity check. The build stops if that exact asset changes, if content balance fails, or if the generated QR image does not scan back to the intended edition URL. GitHub Actions repeats the automated checks on every platform change, and GitHub Pages serves every active edition from this single site.
