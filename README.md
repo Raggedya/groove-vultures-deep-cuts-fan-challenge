@@ -53,3 +53,21 @@ The publish command runs the full build and prepares the completion delivery pac
 ## Integrity and deployment
 
 The approved Aggits character is protected by a SHA-256 identity check. The build stops if that exact asset changes, if content balance fails, or if the generated QR image does not scan back to the intended edition URL. GitHub Actions repeats the automated checks on every platform change, and GitHub Pages serves every active edition from this single site.
+
+## Automatic production time and AI cost tracking
+
+Every one-prompt edition starts a build record before research. The record measures complete elapsed production time through live verification and email preparation. Completed and failed runs are saved permanently in `build-records/builds.jsonl`, and a `BUILD SUMMARY` is added automatically to the delivery email.
+
+AI cost is labelled Actual, Calculated, Estimated or Unavailable. Codex currently does not expose reliable per-build billing or token totals to this repository, so an edition without provider usage data truthfully reports `Build cost: Unavailable`. The system never divides a subscription fee or invents token counts.
+
+When a provider exposes usage, the production agent records it with `npm run build:usage`. Token prices come from `config/ai-pricing.json`; direct metered charges can also be recorded. Measurable USD totals are converted to AUD using an environment override or the public rate source in `config/build-tracking.json`. `.env.example` documents every optional override. No email password or API key belongs in these files.
+
+The relevant automation commands are:
+
+```powershell
+npm run build:start -- artist-slug --artist "Artist Name"
+npm run build:usage -- BUILD-ID --file usage.json
+npm run publish -- artist-slug --deploy
+```
+
+The owner is not expected to run these commands; the Deep Cuts Factory performs them as part of the one-prompt workflow.
