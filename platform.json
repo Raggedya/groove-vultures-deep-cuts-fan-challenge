@@ -32,6 +32,12 @@
       "name": "Les Yé-Yé Girls",
       "config": "editions/les-ye-ye-girls/edition.json",
       "active": true
+    },
+    {
+      "slug": "sydney-shae",
+      "name": "Sydney Shae",
+      "config": "editions/sydney-shae/edition.json",
+      "active": true
     }
   ]
 }
