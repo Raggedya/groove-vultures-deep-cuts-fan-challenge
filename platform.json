@@ -19,6 +19,12 @@
       "name": "Lilith Lane",
       "config": "editions/lilith-lane/edition.json",
       "active": true
+    },
+    {
+      "slug": "les-ye-ye-girls",
+      "name": "Les Yé-Yé Girls",
+      "config": "editions/les-ye-ye-girls/edition.json",
+      "active": true
     }
   ]
 }

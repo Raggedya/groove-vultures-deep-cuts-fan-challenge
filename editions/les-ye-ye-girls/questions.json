@@ -1,0 +1,254 @@
+[
+  {
+    "id": "LYY-DC01", "roundGroup": 1, "category": "Album Deep Cuts", "difficulty": "easy",
+    "question": "On the C'est Chic! compilation, who performs the Serge Gainsbourg composition Roller Girl?",
+    "options": ["Anna Karina", "France Gall", "Françoise Hardy", "Sylvie Vartan"], "correctAnswer": "Anna Karina",
+    "explanation": "Anna Karina performs Roller Girl on C'est Chic!, one of three Serge Gainsbourg compositions highlighted in the compilation's detailed track notes.",
+    "sourceName": "JPC - C'est Chic! French Girl Singers", "sourceURL": "https://www.jpc.de/jpcng/poprock/detail/-/art/Various-Artists-CEst-Chic-French-Girl/hnum/7160496", "active": true
+  },
+  {
+    "id": "LYY-DC02", "roundGroup": 1, "category": "Album Deep Cuts", "difficulty": "medium",
+    "question": "Which C'est Chic! track is a French adaptation of The Capitols' US hit We Got A Thing That's In The Groove?",
+    "options": ["Les Filles C'est Fait Pour Faire L'Amour", "Sha La La Song", "Laisser Tomber Les Filles", "Non A Tous Les Garçons"], "correctAnswer": "Les Filles C'est Fait Pour Faire L'Amour",
+    "explanation": "Charlotte Leslie's Les Filles C'est Fait Pour Faire L'Amour reworks The Capitols' American hit, showing how yé-yé transformed imported pop into French style.",
+    "sourceName": "JPC - C'est Chic! French Girl Singers", "sourceURL": "https://www.jpc.de/jpcng/poprock/detail/-/art/Various-Artists-CEst-Chic-French-Girl/hnum/7160496", "active": true
+  },
+  {
+    "id": "LYY-DC03", "roundGroup": 1, "category": "Album Deep Cuts", "difficulty": "hard",
+    "question": "Which Michèle Torr recording completes C'est Chic!'s trio of highlighted Serge Gainsbourg compositions?",
+    "options": ["Non A Tous Les Garçons", "L'école est finie", "Tous les garçons et les filles", "La plus belle pour aller danser"], "correctAnswer": "Non A Tous Les Garçons",
+    "explanation": "The compilation notes single out Michèle Torr's Non A Tous Les Garçons alongside Anna Karina's Roller Girl and France Gall's Laisser Tomber Les Filles.",
+    "sourceName": "JPC - C'est Chic! French Girl Singers", "sourceURL": "https://www.jpc.de/jpcng/poprock/detail/-/art/Various-Artists-CEst-Chic-French-Girl/hnum/7160496", "active": true
+  },
+  {
+    "id": "LYY-DC04", "roundGroup": 1, "category": "Song / Recording Deep Cuts", "difficulty": "easy",
+    "question": "The name yé-yé grew from which English pop exclamation?",
+    "options": ["Yeah yeah", "Be bop", "Sha la la", "Hey hey"], "correctAnswer": "Yeah yeah",
+    "explanation": "The genre name yé-yé came from the English-language exclamation 'yeah yeah,' reshaped into a distinctly French label for the new pop sound.",
+    "sourceName": "Dangerous Minds - Les yé-yés", "sourceURL": "https://dangerousminds.net/comments/les_ye_yes_frances_adorable_early_60s_pop_stars/", "active": true
+  },
+  {
+    "id": "LYY-DC05", "roundGroup": 1, "category": "Song / Recording Deep Cuts", "difficulty": "medium",
+    "question": "Which France Gall hit did Serge Gainsbourg write around a wax doll and a singing doll?",
+    "options": ["Poupée de cire, poupée de son", "Laisse tomber les filles", "L'école est finie", "Zou Bisou Bisou"], "correctAnswer": "Poupée de cire, poupée de son",
+    "explanation": "Gainsbourg wrote Poupée de cire, poupée de son for France Gall, creating one of yé-yé's defining songs from an unusually self-referential pop image.",
+    "sourceName": "Dangerous Minds - Les yé-yés", "sourceURL": "https://dangerousminds.net/comments/les_ye_yes_frances_adorable_early_60s_pop_stars/", "active": true
+  },
+  {
+    "id": "LYY-DC06", "roundGroup": 1, "category": "Song / Recording Deep Cuts", "difficulty": "hard",
+    "question": "Who produced Gillian Hills' original recording of Zou Bisou Bisou?",
+    "options": ["George Martin", "Serge Gainsbourg", "Phil Spector", "Mickie Most"], "correctAnswer": "George Martin",
+    "explanation": "Before Mad Men revived the song, Gillian Hills recorded the original Zou Bisou Bisou with future Beatles producer George Martin behind the console.",
+    "sourceName": "Dangerous Minds - Les yé-yés", "sourceURL": "https://dangerousminds.net/comments/les_ye_yes_frances_adorable_early_60s_pop_stars/", "active": true
+  },
+  {
+    "id": "LYY-DC07", "roundGroup": 1, "category": "Band Member", "difficulty": "easy",
+    "question": "Which songwriter and producer identifies herself as a member of Les Yé-Yé Girls?",
+    "options": ["Lilith Lane", "Angie Hart", "Clare Bowditch", "Sarah Blasko"], "correctAnswer": "Lilith Lane",
+    "explanation": "Lilith Lane's official biography names her as a member of Les Yé-Yé Girls and describes the act as a 1960s French-pop collective.",
+    "sourceName": "Lilith Lane - About", "sourceURL": "https://lilithlane.com/about/", "active": true
+  },
+  {
+    "id": "LYY-DC08", "roundGroup": 1, "category": "Band Member", "difficulty": "medium",
+    "question": "Which Les Yé-Yé Girls member also records electronic pop under the name Bruha Bee?",
+    "options": ["Marlene Samson", "Lilith Lane", "Nami Nelson", "Jess Isgro"], "correctAnswer": "Marlene Samson",
+    "explanation": "Triple j Unearthed identifies Bruha Bee as Marlene Samson's solo project and connects her directly to both The Fix Ups and Les Yé-Yé Girls.",
+    "sourceName": "triple j Unearthed - Bruha Bee", "sourceURL": "https://www.abc.net.au/triplejunearthed/artist/bruha-bee", "active": true
+  },
+  {
+    "id": "LYY-DC09", "roundGroup": 1, "category": "Touring / Live", "difficulty": "medium",
+    "question": "Which Melbourne venue hosted Les Yé-Yé Girls for a Valentine's Day show in 2023?",
+    "options": ["Labour in Vain", "The Tote", "The Forum", "Northcote Theatre"], "correctAnswer": "Labour in Vain",
+    "explanation": "Les Yé-Yé Girls returned to Labour in Vain on Valentine's Day 2023, a fitting setting for their playful and romantic French-pop repertoire.",
+    "sourceName": "Labour in Vain - Gigs", "sourceURL": "https://www.labourinvain.com.au/gigs", "active": true
+  },
+  {
+    "id": "LYY-DC10", "roundGroup": 1, "category": "Touring / Live", "difficulty": "medium",
+    "question": "Who supported Les Yé-Yé Girls at their 2023 Valentine's Day Labour in Vain show?",
+    "options": ["Double Vanity", "Money For Rope", "The Fix Ups", "The Offtopics"], "correctAnswer": "Double Vanity",
+    "explanation": "The Labour in Vain listing paired Les Yé-Yé Girls with Double Vanity, described by the venue as their devilishly dynamic Valentine's Day support.",
+    "sourceName": "Labour in Vain - Gigs", "sourceURL": "https://www.labourinvain.com.au/gigs", "active": true
+  },
+  {
+    "id": "LYY-DC11", "roundGroup": 1, "category": "Behind the Scenes", "difficulty": "medium",
+    "question": "How did Lilith Lane describe the lineup of Les Yé-Yé Girls in a 2019 interview?",
+    "options": ["An all-female group", "A studio-only duo", "A rotating orchestra", "A bilingual punk trio"], "correctAnswer": "An all-female group",
+    "explanation": "While discussing her many projects in 2019, Lilith called Les Yé-Yé Girls a sixties French-pop all-female group and mentioned active gigging.",
+    "sourceName": "Happy Mag - Baxter Avalon interview", "sourceURL": "https://happymag.tv/baxter-avalon-talks-us-through-her-upcoming-album-rocketship-taxi/", "active": true
+  },
+  {
+    "id": "LYY-DC12", "roundGroup": 1, "category": "Behind the Scenes", "difficulty": "hard",
+    "question": "Besides playing gigs, what was Les Yé-Yé Girls doing when Lilith Lane discussed the group in 2019?",
+    "options": ["Writing new tunes", "Recording a live album", "Touring France", "Restoring master tapes"], "correctAnswer": "Writing new tunes",
+    "explanation": "Lilith's 2019 interview revealed that the collective was not simply revisiting old material: Les Yé-Yé Girls were also writing new tunes together.",
+    "sourceName": "Happy Mag - Baxter Avalon interview", "sourceURL": "https://happymag.tv/baxter-avalon-talks-us-through-her-upcoming-album-rocketship-taxi/", "active": true
+  },
+  {
+    "id": "LYY-DC13", "roundGroup": 2, "category": "Album Deep Cuts", "difficulty": "easy",
+    "question": "Which singer released the 1965 album The Yeh-Yeh Girl From Paris!?",
+    "options": ["Françoise Hardy", "France Gall", "Sheila", "Chantal Goya"], "correctAnswer": "Françoise Hardy",
+    "explanation": "Françoise Hardy's The Yeh-Yeh Girl From Paris! helped make her one of the movement's best-known voices beyond France during the mid-1960s.",
+    "sourceName": "Splice Today - Chez Les Ye-Ye", "sourceURL": "https://www.splicetoday.com/music/chez-les-ye-ye", "active": true
+  },
+  {
+    "id": "LYY-DC14", "roundGroup": 2, "category": "Album Deep Cuts", "difficulty": "medium",
+    "question": "What three styles does The Yeh-Yeh Girl From Paris! blend according to the book review?",
+    "options": ["Girl-group pop, swinging jazz and blues", "Disco, reggae and funk", "Folk, country and gospel", "Punk, ska and dub"], "correctAnswer": "Girl-group pop, swinging jazz and blues",
+    "explanation": "The album is described as a tightly crafted mixture of girl-group pop, swinging jazz and blues, capturing the musical breadth beneath yé-yé's surface sparkle.",
+    "sourceName": "Splice Today - Chez Les Ye-Ye", "sourceURL": "https://www.splicetoday.com/music/chez-les-ye-ye", "active": true
+  },
+  {
+    "id": "LYY-DC15", "roundGroup": 2, "category": "Album Deep Cuts", "difficulty": "hard",
+    "question": "Which four singers open Jean-Emmanuel Deluxe's yé-yé book as the Four Aces of Hearts?",
+    "options": ["Hardy, Vartan, Gall and Goya", "Bardot, Birkin, Karina and Nico", "Sheila, Taïeb, Hills and Clark", "March, Faithfull, Springfield and Cordet"], "correctAnswer": "Hardy, Vartan, Gall and Goya",
+    "explanation": "Jean-Emmanuel Deluxe begins with Françoise Hardy, Sylvie Vartan, France Gall and Chantal Goya, naming that foundational quartet the Four Aces of Hearts.",
+    "sourceName": "Splice Today - Chez Les Ye-Ye", "sourceURL": "https://www.splicetoday.com/music/chez-les-ye-ye", "active": true
+  },
+  {
+    "id": "LYY-DC16", "roundGroup": 2, "category": "Song / Recording Deep Cuts", "difficulty": "easy",
+    "question": "April March's Chick Habit adapts which France Gall song?",
+    "options": ["Laisse tomber les filles", "Poupée de cire, poupée de son", "Les Sucettes", "Comment te dire adieu"], "correctAnswer": "Laisse tomber les filles",
+    "explanation": "April March transformed France Gall's Laisse tomber les filles into Chick Habit, carrying a classic Gainsbourg composition into a later pop-culture life.",
+    "sourceName": "ABC Music Show - Yé-yé Girls", "sourceURL": "https://www.abc.net.au/listen/programs/musicshow/the-music-show-international-womens-day/9524390", "active": true
+  },
+  {
+    "id": "LYY-DC17", "roundGroup": 2, "category": "Song / Recording Deep Cuts", "difficulty": "medium",
+    "question": "Which film introduced many later listeners to April March's Chick Habit?",
+    "options": ["Death Proof", "Moonrise Kingdom", "Breathless", "Contempt"], "correctAnswer": "Death Proof",
+    "explanation": "Quentin Tarantino used Chick Habit in Death Proof, helping April March's adaptation of Laisse tomber les filles reach a new international audience.",
+    "sourceName": "JPC - C'est Chic! French Girl Singers", "sourceURL": "https://www.jpc.de/jpcng/poprock/detail/-/art/Various-Artists-CEst-Chic-French-Girl/hnum/7160496", "active": true
+  },
+  {
+    "id": "LYY-DC18", "roundGroup": 2, "category": "Song / Recording Deep Cuts", "difficulty": "hard",
+    "question": "Who are credited as composers of Zou Bisou Bisou in the ABC Music Show notes?",
+    "options": ["Bill Shepherd and Alan Tew", "Serge Gainsbourg and Boris Vian", "Jacques Dutronc and Françoise Hardy", "Michel Legrand and Pierre Barouh"], "correctAnswer": "Bill Shepherd and Alan Tew",
+    "explanation": "The ABC program credits Bill Shepherd and Alan Tew as composers, a detail easily obscured by the song's strong association with French pop.",
+    "sourceName": "ABC Music Show - Yé-yé Girls", "sourceURL": "https://www.abc.net.au/listen/programs/musicshow/the-music-show-international-womens-day/9524390", "active": true
+  },
+  {
+    "id": "LYY-DC19", "roundGroup": 2, "category": "Band Member", "difficulty": "easy",
+    "question": "Which city does triple j Unearthed list as Bruha Bee's home?",
+    "options": ["Melbourne", "Sydney", "Adelaide", "Brisbane"], "correctAnswer": "Melbourne",
+    "explanation": "Bruha Bee, the solo project of Les Yé-Yé Girls member Marlene Samson, is listed by triple j Unearthed as a Melbourne artist.",
+    "sourceName": "triple j Unearthed - Bruha Bee", "sourceURL": "https://www.abc.net.au/triplejunearthed/artist/bruha-bee", "active": true
+  },
+  {
+    "id": "LYY-DC20", "roundGroup": 2, "category": "Band Member", "difficulty": "medium",
+    "question": "Which three genres does Marlene Samson combine in her Bruha Bee project?",
+    "options": ["Pop, electronica and dancehall", "Folk, blues and country", "Metal, industrial and noise", "Jazz, soul and gospel"], "correctAnswer": "Pop, electronica and dancehall",
+    "explanation": "Bruha Bee's profile says Marlene Samson combines her love of pop, electronica and dancehall, revealing another side of the Les Yé-Yé Girls member.",
+    "sourceName": "triple j Unearthed - Bruha Bee", "sourceURL": "https://www.abc.net.au/triplejunearthed/artist/bruha-bee", "active": true
+  },
+  {
+    "id": "LYY-DC21", "roundGroup": 2, "category": "Touring / Live", "difficulty": "medium",
+    "question": "Which Spanish rock-and-roll band did Les Ye-Ye Girls support at The Tote in 2018?",
+    "options": ["Los Chicos", "Hinds", "The Parrots", "Mourn"], "correctAnswer": "Los Chicos",
+    "explanation": "Les Ye-Ye Girls joined Madrid rockers Los Chicos at The Tote during the Spanish band's fifth Australian visit in September 2018.",
+    "sourceName": "Beat Magazine - Los Chicos interview", "sourceURL": "https://beat.com.au/we-chat-with-los-chicos-ahead-of-their-fifth-trip-down-under/", "active": true
+  },
+  {
+    "id": "LYY-DC22", "roundGroup": 2, "category": "Touring / Live", "difficulty": "medium",
+    "question": "Which two other local acts shared the Los Chicos Tote bill with Les Ye-Ye Girls?",
+    "options": ["Money For Rope and James McCann & The New Vindictives", "Double Vanity and The Fix Ups", "The Offtopics and Chicha Ye Ye", "Bouclette and Black Pony Express"], "correctAnswer": "Money For Rope and James McCann & The New Vindictives",
+    "explanation": "The packed Tote bill also featured Money For Rope and James McCann & The New Vindictives, surrounding Les Ye-Ye Girls with Melbourne rock-and-roll company.",
+    "sourceName": "Beat Magazine - Los Chicos interview", "sourceURL": "https://beat.com.au/we-chat-with-los-chicos-ahead-of-their-fifth-trip-down-under/", "active": true
+  },
+  {
+    "id": "LYY-DC23", "roundGroup": 2, "category": "Behind the Scenes", "difficulty": "medium",
+    "question": "Which radio program helped launch the original French yé-yé phenomenon?",
+    "options": ["Salut les copains", "Le Pop Club", "Discorama", "Dim Dam Dom"], "correctAnswer": "Salut les copains",
+    "explanation": "Salut les copains first brought the emerging singers to mass radio audiences, then expanded into a magazine that reinforced the culture around yé-yé.",
+    "sourceName": "Dangerous Minds - Les yé-yés", "sourceURL": "https://dangerousminds.net/comments/les_ye_yes_frances_adorable_early_60s_pop_stars/", "active": true
+  },
+  {
+    "id": "LYY-DC24", "roundGroup": 2, "category": "Behind the Scenes", "difficulty": "hard",
+    "question": "Which essayist mentioned yé-yé in Notes on Camp in 1964?",
+    "options": ["Susan Sontag", "Simone de Beauvoir", "Joan Didion", "Pauline Kael"], "correctAnswer": "Susan Sontag",
+    "explanation": "Susan Sontag cited French yé-yé while considering art forms saturated with camp, placing the pop movement inside a landmark 1964 cultural essay.",
+    "sourceName": "Dangerous Minds - Les yé-yés", "sourceURL": "https://dangerousminds.net/comments/les_ye_yes_frances_adorable_early_60s_pop_stars/", "active": true
+  },
+  {
+    "id": "LYY-DC25", "roundGroup": 3, "category": "Album Deep Cuts", "difficulty": "easy",
+    "question": "Which singer performs Sha La La Song on C'est Chic!?",
+    "options": ["Marie Laforêt", "Louise Cordet", "Ria Bartok", "Charlotte Leslie"], "correctAnswer": "Marie Laforêt",
+    "explanation": "Marie Laforêt's Sha La La Song appears on C'est Chic! as a French adaptation associated with the version popularised by Marianne Faithfull.",
+    "sourceName": "JPC - C'est Chic! French Girl Singers", "sourceURL": "https://www.jpc.de/jpcng/poprock/detail/-/art/Various-Artists-CEst-Chic-French-Girl/hnum/7160496", "active": true
+  },
+  {
+    "id": "LYY-DC26", "roundGroup": 3, "category": "Album Deep Cuts", "difficulty": "medium",
+    "question": "Which Sonny Bono song did Sheila adapt for the C'est Chic! collection?",
+    "options": ["Laugh At Me", "The Beat Goes On", "Bang Bang", "I Got You Babe"], "correctAnswer": "Laugh At Me",
+    "explanation": "Sheila's French recording adapts Sonny Bono's Laugh At Me, illustrating how the yé-yé scene repeatedly recast Anglo-American material for local audiences.",
+    "sourceName": "JPC - C'est Chic! French Girl Singers", "sourceURL": "https://www.jpc.de/jpcng/poprock/detail/-/art/Various-Artists-CEst-Chic-French-Girl/hnum/7160496", "active": true
+  },
+  {
+    "id": "LYY-DC27", "roundGroup": 3, "category": "Album Deep Cuts", "difficulty": "hard",
+    "question": "Whose Around and Around We Go appears among C'est Chic!'s French adaptations?",
+    "options": ["Louise Cordet", "Ria Bartok", "Michèle Torr", "Anna Karina"], "correctAnswer": "Louise Cordet",
+    "explanation": "The compilation's adaptation notes identify British-French singer Louise Cordet with Around and Around We Go, one of its less obvious cross-Channel connections.",
+    "sourceName": "JPC - C'est Chic! French Girl Singers", "sourceURL": "https://www.jpc.de/jpcng/poprock/detail/-/art/Various-Artists-CEst-Chic-French-Girl/hnum/7160496", "active": true
+  },
+  {
+    "id": "LYY-DC28", "roundGroup": 3, "category": "Song / Recording Deep Cuts", "difficulty": "easy",
+    "question": "Who recorded L'école est finie, one of the best-known yé-yé singles?",
+    "options": ["Sheila", "Sylvie Vartan", "France Gall", "Chantal Goya"], "correctAnswer": "Sheila",
+    "explanation": "Sheila recorded L'école est finie, a school-is-over anthem that became one of the enduring signature songs of early French yé-yé.",
+    "sourceName": "Dangerous Minds - Les yé-yés", "sourceURL": "https://dangerousminds.net/comments/les_ye_yes_frances_adorable_early_60s_pop_stars/", "active": true
+  },
+  {
+    "id": "LYY-DC29", "roundGroup": 3, "category": "Song / Recording Deep Cuts", "difficulty": "medium",
+    "question": "Which Gainsbourg song embarrassed France Gall when she later understood its double meaning?",
+    "options": ["Les Sucettes", "Pauvre Lola", "Roller Girl", "Chez Les Yé-Yé"], "correctAnswer": "Les Sucettes",
+    "explanation": "France Gall initially sang Les Sucettes innocently, then felt embarrassed after learning that Serge Gainsbourg had embedded a sexual double meaning in the lyrics.",
+    "sourceName": "Dangerous Minds - Les yé-yés", "sourceURL": "https://dangerousminds.net/comments/les_ye_yes_frances_adorable_early_60s_pop_stars/", "active": true
+  },
+  {
+    "id": "LYY-DC30", "roundGroup": 3, "category": "Song / Recording Deep Cuts", "difficulty": "hard",
+    "question": "Jacqueline Taïeb's 7 heure du matin includes a fantasy about which Beatle?",
+    "options": ["Paul McCartney", "John Lennon", "George Harrison", "Ringo Starr"], "correctAnswer": "Paul McCartney",
+    "explanation": "Jacqueline Taïeb's kinetic 7 heure du matin folds Paul McCartney into its teenage fantasy, a particularly vivid example of British pop's pull on yé-yé.",
+    "sourceName": "Dangerous Minds - Les yé-yés", "sourceURL": "https://dangerousminds.net/comments/les_ye_yes_frances_adorable_early_60s_pop_stars/", "active": true
+  },
+  {
+    "id": "LYY-DC31", "roundGroup": 3, "category": "Band Member", "difficulty": "easy",
+    "question": "In which Victorian region was Les Yé-Yé Girls member Lilith Lane born?",
+    "options": ["Geelong and Wadawurrung country", "Ballarat and Dja Dja Wurrung country", "Bendigo and Taungurung country", "Warrnambool and Gunditjmara country"], "correctAnswer": "Geelong and Wadawurrung country",
+    "explanation": "Lilith Lane's biography places her birth in Geelong on Wadawurrung country before she moved to Melbourne after finishing high school.",
+    "sourceName": "Lilith Lane - About", "sourceURL": "https://lilithlane.com/about/", "active": true
+  },
+  {
+    "id": "LYY-DC32", "roundGroup": 3, "category": "Band Member", "difficulty": "medium",
+    "question": "Which Split Enz and Crowded House musician did Lilith Lane duet with on RocKwiz?",
+    "options": ["Tim Finn", "Neil Finn", "Eddie Rayner", "Noel Crombie"], "correctAnswer": "Tim Finn",
+    "explanation": "Lilith appeared on national television program RocKwiz in a duet with Tim Finn, adding another notable performance chapter to her wide-ranging career.",
+    "sourceName": "Lilith Lane - About", "sourceURL": "https://lilithlane.com/about/", "active": true
+  },
+  {
+    "id": "LYY-DC33", "roundGroup": 3, "category": "Touring / Live", "difficulty": "medium",
+    "question": "What date did Les Yé-Yé Girls play their documented 2023 Valentine's show?",
+    "options": ["14 February", "10 February", "18 February", "25 February"], "correctAnswer": "14 February",
+    "explanation": "The collective's Labour in Vain appearance fell on Valentine's Day itself, Tuesday 14 February 2023, rather than the nearest weekend.",
+    "sourceName": "Labour in Vain - Gigs", "sourceURL": "https://www.labourinvain.com.au/gigs", "active": true
+  },
+  {
+    "id": "LYY-DC34", "roundGroup": 3, "category": "Touring / Live", "difficulty": "medium",
+    "question": "How did Labour in Vain describe Les Yé-Yé Girls in its 2023 event listing?",
+    "options": ["A 60s French pop girl group", "A Parisian garage-rock trio", "A psychedelic cabaret orchestra", "A bilingual synth-pop duo"], "correctAnswer": "A 60s French pop girl group",
+    "explanation": "The venue introduced Les Yé-Yé Girls as a 60s French pop girl group, a concise summary of both their repertoire and performance identity.",
+    "sourceName": "Labour in Vain - Gigs", "sourceURL": "https://www.labourinvain.com.au/gigs", "active": true
+  },
+  {
+    "id": "LYY-DC35", "roundGroup": 3, "category": "Behind the Scenes", "difficulty": "medium",
+    "question": "What made original yé-yé distinct from simply copying British and American pop?",
+    "options": ["It developed its own French style", "It excluded electric instruments", "It used only instrumental recordings", "It avoided radio completely"], "correctAnswer": "It developed its own French style",
+    "explanation": "Although sparked by British and American rock and pop, yé-yé quickly developed a distinctive French character rather than remaining a straightforward imitation.",
+    "sourceName": "ABC Music Show - Yé-yé Girls", "sourceURL": "https://www.abc.net.au/listen/programs/musicshow/the-music-show-international-womens-day/9524390", "active": true
+  },
+  {
+    "id": "LYY-DC36", "roundGroup": 3, "category": "Behind the Scenes", "difficulty": "hard",
+    "question": "Which two later screen phenomena helped trigger renewed international interest in yé-yé?",
+    "options": ["Quentin Tarantino films and Mad Men", "The Beatles films and Top of the Pops", "French New Wave and Eurovision", "MTV and Saturday Night Live"], "correctAnswer": "Quentin Tarantino films and Mad Men",
+    "explanation": "Decades after the original wave, Quentin Tarantino's soundtrack choices and Mad Men's use of Zou Bisou Bisou helped reintroduce yé-yé internationally.",
+    "sourceName": "Dangerous Minds - Les yé-yés", "sourceURL": "https://dangerousminds.net/comments/les_ye_yes_frances_adorable_early_60s_pop_stars/", "active": true
+  }
+]
