@@ -102,7 +102,7 @@
     "options": ["It is a palindrome", "Every word has four letters", "Its initials spell Iggy", "It is an anagram of Ira"],
     "correctAnswer": "It is a palindrome",
     "explanation": "The covers collection's title reads the same forwards and backwards, giving the record a compact visual joke alongside its affectionate reinterpretations.",
-    "sourceName": "Nada Surf Bandcamp music catalog", "sourceURL": "https://nadasurf.bandcamp.com/music", "active": true
+    "sourceName": "Drowned in Sound review", "sourceURL": "https://drownedinsound.com/releases/15332/reviews/4139826", "active": true
   },
   {
     "id": "NS-DC14", "roundGroup": 2, "category": "Album Deep Cuts", "difficulty": "medium",
