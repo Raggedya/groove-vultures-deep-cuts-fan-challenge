@@ -87,16 +87,17 @@ button,a{font:inherit}[hidden]{display:none!important}
 .splash-kicker{margin:0 0 12px;color:var(--accent2);font-size:.65rem;font-weight:850;letter-spacing:.3em;text-transform:uppercase}
 .splash-lockup h1{position:relative;z-index:2;margin:0 auto;color:#fff;font-size:clamp(2.2rem,11vw,5rem);line-height:.92;text-transform:uppercase;text-wrap:balance;text-shadow:0 0 32px rgba(47,128,255,.42)}
 .splash-aggits{height:390px;margin-top:-8px;background:var(--brand-art) center bottom/contain no-repeat;filter:drop-shadow(0 18px 22px rgba(0,0,0,.8))}
-.business-hub-screen{display:grid;gap:12px;padding-bottom:14px}
-.business-hero{text-align:center;overflow:hidden}
-.business-aggits{height:230px;margin:-10px auto 14px;background:var(--brand-art) center 8%/175px auto no-repeat,radial-gradient(ellipse 42% 64% at 50% 48%,rgba(47,128,255,.25),transparent 72%);border-bottom:1px solid rgba(111,166,255,.14)}
-.business-hero h1{margin:.35rem 0 .55rem;font-size:clamp(2rem,9vw,4rem);line-height:.95;text-transform:uppercase;text-wrap:balance}
-.business-promise{margin:.6rem auto;color:#fff;font-size:clamp(1.15rem,5vw,1.55rem);font-weight:800;line-height:1.2;text-wrap:balance}
-.business-description{max-width:500px;margin:.7rem auto 0;color:#aebed2;line-height:1.5}
+.business-edition .brand-kicker{display:none}
+.business-edition .brand-header{height:72px}
+.business-hub-screen{display:grid;gap:10px;padding-bottom:14px}
+.business-hero{padding:14px 20px 17px;text-align:center;overflow:hidden}
+.business-aggits{height:168px;margin:-5px auto 8px;background:var(--brand-art) center 8%/138px auto no-repeat,radial-gradient(ellipse 38% 60% at 50% 48%,rgba(47,128,255,.25),transparent 72%);border-bottom:1px solid rgba(111,166,255,.14)}
+.business-promise{margin:.45rem auto;color:#fff;font-size:clamp(1.15rem,5vw,1.48rem);font-weight:800;line-height:1.18;text-wrap:balance}
+.business-description{max-width:470px;margin:.5rem auto 0;color:#aebed2;font-size:.9rem;line-height:1.4}
 .reveal-sweep::after{content:"";position:absolute;inset:-30% auto -30% -45%;width:28%;transform:skewX(-18deg);background:linear-gradient(90deg,transparent,rgba(157,203,255,.24),transparent);animation:revealSweep .78s ease-out .08s both;pointer-events:none}
-.business-links-panel h2{margin:0 0 12px;text-align:center;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase}
-.business-links{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
-.business-link{min-height:52px;display:grid;place-items:center;padding:8px;border:1px solid #456faa;border-radius:13px;background:linear-gradient(145deg,#102746,#071426);color:#f3f8ff;text-align:center;text-decoration:none;font-size:.72rem;font-weight:850;letter-spacing:.08em;text-transform:uppercase;transition:border-color .18s ease,transform .18s ease,box-shadow .18s ease}
+.business-links-panel{padding:12px}
+.business-links{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.business-link{min-height:58px;display:grid;place-items:center;padding:10px;border:1px solid #5688cb;border-radius:14px;background:linear-gradient(145deg,#122c4f,#071426);color:#f3f8ff;text-align:center;text-decoration:none;font-size:.76rem;font-weight:850;letter-spacing:.085em;text-transform:uppercase;box-shadow:0 8px 24px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.06);transition:border-color .18s ease,transform .18s ease,box-shadow .18s ease}
 .business-link:hover{transform:translateY(-1px);border-color:#8fc2ff;box-shadow:0 0 24px rgba(47,128,255,.22)}
 .business-quiz-button{min-height:62px;font-size:.82rem}
 .business-host{display:block;color:rgba(181,201,228,.52);font-size:.56rem;letter-spacing:.08em;text-align:center}
