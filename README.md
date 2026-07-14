@@ -30,6 +30,7 @@ The locked product model includes:
 - `editions/<slug>/edition.json` — edition identity, public URL, links, timing and theme.
 - `editions/<slug>/questions.json` — the edition’s 36 source-linked questions.
 - `js/` and `styles.css` — the single shared application engine and interface.
+- `js/analytics.js`, `js/reporting.js` and `analytics.html` — shared non-blocking event instrumentation and band-level reporting.
 - `assets/` — shared audio and approved immutable Aggits artwork.
 - `output/<slug>/` — generated delivery images and manifests; these are rebuilt, not committed.
 - `scripts/` — registration, validation, testing, social generation, packaging and publishing automation.
@@ -71,3 +72,9 @@ npm run publish -- artist-slug --deploy
 ```
 
 The owner is not expected to run these commands; the Deep Cuts Factory performs them as part of the one-prompt workflow.
+
+## Analytics
+
+Every edition now records the complete quiz, sharing and outbound-discovery journey with a band identifier, quiz identifier, timestamp, referral source and device category. The built-in report is available at [Deep Cuts Analytics](analytics.html). Until an aggregated analytics service is connected, that view accurately reports events from the current browser only.
+
+Cross-visitor reporting requires a one-time GA4 measurement ID or a first-party collection/reporting endpoint. These account credentials do not exist in the repository and cannot safely be invented. Configuration, event definitions, formulas and privacy safeguards are documented in [ANALYTICS.md](ANALYTICS.md).

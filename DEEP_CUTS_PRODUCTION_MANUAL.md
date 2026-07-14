@@ -182,6 +182,20 @@ Required automated checks:
 - Verify the live URL, not merely the repository files.
 - Never require the owner to create a repository, select a branch, enable Pages or paste repetitive commands for a normal edition.
 
+## 11a. Analytics and fan-action integrity
+
+- Use one shared analytics implementation across every edition.
+- Attach edition, stable quiz, run, timestamp, referring source and device context to every fan-action event.
+- Track quiz views, starts, completions, final scores and completion time without collecting unnecessary personal information.
+- Track share-button intent, selected share methods, successful clipboard writes and browser-confirmed native shares as distinct actions.
+- Never describe a share click as a published share unless the platform genuinely confirms publication.
+- Track Spotify, Bandcamp, Instagram, YouTube, Facebook, TikTok, website, ticket and merchandise clicks as separate destination events.
+- Never describe an outbound click as a stream, follow, purchase or sale.
+- Fire outbound analytics immediately before navigation and never await analytics delivery.
+- Analytics storage, network or provider failure must never interrupt gameplay, results, sharing, copying or outbound navigation.
+- Prevent duplicate listeners, repeated-render events and rapid-tap double counting.
+- Keep a band-level reporting view with transparent formulas and scope labels.
+
 ## 12. Completion and delivery standard
 
 An edition is complete only when:

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#020711">
+  <title>Deep Cuts Analytics</title>
+  <link rel="stylesheet" href="styles.css?v=20260714-analytics-1">
+</head>
+<body class="analytics-page">
+  <main class="analytics-shell">
+    <header class="analytics-heading">
+      <p class="eyebrow">Deep Cuts</p>
+      <h1>Band analytics</h1>
+      <p id="analyticsScope">Loading analytics…</p>
+    </header>
+    <div class="analytics-table-wrap">
+      <table id="analyticsTable">
+        <thead><tr><th>Edition</th><th>Views</th><th>Starts</th><th>Completed</th><th>Completion</th><th>Avg score</th><th>Share actions</th><th>Share rate</th><th>Outbound</th><th>Spotify</th><th>Bandcamp</th><th>Instagram</th><th>YouTube</th><th>Other social</th><th>Website</th><th>Tickets</th><th>Merch</th><th>Outbound CTR</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <p class="analytics-note">Clicks measure intent only. They do not prove a stream, follow, ticket sale, merchandise sale or published share.</p>
+    <button id="exportAnalytics" class="button utility analytics-export" type="button">Export local event data</button>
+  </main>
+  <script src="js/analytics.js"></script>
+  <script src="js/reporting.js"></script>
+  <script src="js/report.js"></script>
+</body>
+</html>

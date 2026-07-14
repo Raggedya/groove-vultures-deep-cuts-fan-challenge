@@ -25,6 +25,7 @@ These instructions apply to every agent working in this repository.
 17. Update `DEEP_CUTS_PRODUCTION_MANUAL.md`, `CLAUDE.md`, `AGENTS.md`, `.agents/skills/deep-cuts-factory/SKILL.md` and `ROADMAP.md` whenever the workflow materially changes.
 18. Make every future edition faster than the previous edition.
 19. At the end of every completed task, ask internally: “What can I automate next?” Implement that improvement when practical.
+20. Preserve analytics integrity: never collect unnecessary personal data, never block gameplay or outbound navigation on analytics, and never describe clicks or attempted shares as confirmed streams, sales, follows or published posts.
 
 The preferred owner prompt is:
 
