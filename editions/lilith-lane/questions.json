@@ -1,0 +1,256 @@
+[
+  {
+    "id": "LL-DC01", "roundGroup": 1, "category": "Album Deep Cuts", "difficulty": "easy",
+    "question": "Where was Lilith Lane's album Trickery recorded?",
+    "options": ["Venus Studios", "Abbey Road Studios", "Sunset Sound", "Electric Lady Studios"], "correctAnswer": "Venus Studios",
+    "explanation": "Lilith recorded Trickery at Venus Studios during 2021 and 2022, capturing a stark solo sound during a period of unusual isolation.",
+    "sourceName": "Lilith Lane Bandcamp - Trickery", "sourceURL": "https://lilithlanemusic.bandcamp.com/", "active": true
+  },
+  {
+    "id": "LL-DC02", "roundGroup": 1, "category": "Album Deep Cuts", "difficulty": "medium",
+    "question": "Why did Lilith keep Trickery's original solo recordings instead of remaking them with a band?",
+    "options": ["They captured the disconnected mood", "The master tapes were lost", "The musicians cancelled", "The label demanded demos"], "correctAnswer": "They captured the disconnected mood",
+    "explanation": "Although she considered re-recording the songs with other musicians, Lilith realised the originals honestly preserved the disconnected mood in which they were made.",
+    "sourceName": "Lilith Lane Bandcamp - Trickery", "sourceURL": "https://lilithlanemusic.bandcamp.com/", "active": true
+  },
+  {
+    "id": "LL-DC03", "roundGroup": 1, "category": "Album Deep Cuts", "difficulty": "hard",
+    "question": "Which two songs appear as bonus 2010 bootlegs on the Trickery CD?",
+    "options": ["Harvest and Winter", "Fishing and Sparks", "Champagne and Wicked", "Crow and Reason"], "correctAnswer": "Harvest and Winter",
+    "explanation": "The compact disc includes solo bootlegs of Harvest and Winter, captured at a 2010 Northcote Social Club show by Greg Bukshteyn.",
+    "sourceName": "Lilith Lane Bandcamp - Trickery", "sourceURL": "https://lilithlanemusic.bandcamp.com/", "active": true
+  },
+  {
+    "id": "LL-DC04", "roundGroup": 1, "category": "Song / Recording Deep Cuts", "difficulty": "easy",
+    "question": "Which Trickery track was originally written by members of Black Pony Express?",
+    "options": ["Rain", "Crow", "Reason", "No More"], "correctAnswer": "Rain",
+    "explanation": "Rain was written by Black Pony Express members Greg Bukshteyn and Justin Cusack; every other Trickery song was written by Lilith.",
+    "sourceName": "Lilith Lane Bandcamp - Trickery", "sourceURL": "https://lilithlanemusic.bandcamp.com/", "active": true
+  },
+  {
+    "id": "LL-DC05", "roundGroup": 1, "category": "Song / Recording Deep Cuts", "difficulty": "medium",
+    "question": "In Love in All Keys, which musical key represents Lilith's first love?",
+    "options": ["C", "D", "A minor", "F sharp"], "correctAnswer": "C",
+    "explanation": "The song maps successive relationships onto musical keys: the first love arrives in C, before the true love eventually encompasses every key.",
+    "sourceName": "Lilith Lane Bandcamp - Love in All Keys", "sourceURL": "https://lilithlanemusic.bandcamp.com/track/love-in-all-keys", "active": true
+  },
+  {
+    "id": "LL-DC06", "roundGroup": 1, "category": "Song / Recording Deep Cuts", "difficulty": "hard",
+    "question": "Which island is contrasted with Makepeace Island in the Trickery song?",
+    "options": ["Sheep Island", "French Island", "Snake Island", "Sunday Island"], "correctAnswer": "Sheep Island",
+    "explanation": "Makepeace Island's lush, heart-shaped refuge is set against the less inviting Sheep Island as the narrator paddles through mangroves and reeds.",
+    "sourceName": "Lilith Lane Bandcamp - Makepeace Island", "sourceURL": "https://lilithlanemusic.bandcamp.com/track/makepeace-island", "active": true
+  },
+  {
+    "id": "LL-DC07", "roundGroup": 1, "category": "Band Member", "difficulty": "easy",
+    "question": "Who performed every song on Trickery?",
+    "options": ["Lilith Lane", "A Madrid backing band", "Les Ye-Ye Girls", "Black Pony Express"], "correctAnswer": "Lilith Lane",
+    "explanation": "Trickery is an intensely personal solo document: Lilith performed the entire album herself, accompanying her voice with piano or acoustic guitar.",
+    "sourceName": "Lilith Lane Bandcamp - Trickery", "sourceURL": "https://lilithlanemusic.bandcamp.com/", "active": true
+  },
+  {
+    "id": "LL-DC08", "roundGroup": 1, "category": "Band Member", "difficulty": "medium",
+    "question": "Which three technical roles did Lilith handle herself on Trickery?",
+    "options": ["Recording, mixing and mastering", "Lighting, filming and editing", "Pressing, printing and shipping", "Booking, publicity and radio"], "correctAnswer": "Recording, mixing and mastering",
+    "explanation": "Beyond writing and performing, Lilith recorded, mixed and mastered Trickery, making the album a complete expression of her studio craft.",
+    "sourceName": "Lilith Lane Bandcamp - Trickery", "sourceURL": "https://lilithlanemusic.bandcamp.com/", "active": true
+  },
+  {
+    "id": "LL-DC09", "roundGroup": 1, "category": "Touring / Live", "difficulty": "medium",
+    "question": "Which Melbourne venue hosted the 2023 Trickery vinyl launch?",
+    "options": ["Merri Creek Tavern", "The Tote", "The Forum", "The Corner Hotel"], "correctAnswer": "Merri Creek Tavern",
+    "explanation": "Lilith launched Trickery on vinyl at Merri Creek Tavern in 2023, with Carnegie Falls joining the bill as special guests.",
+    "sourceName": "Lilith Lane Official Shows", "sourceURL": "https://lilithlane.com/shows/", "active": true
+  },
+  {
+    "id": "LL-DC10", "roundGroup": 1, "category": "Touring / Live", "difficulty": "medium",
+    "question": "Which acclaimed Go-Betweens songwriter did Lilith support at Memo Music Hall in 2023?",
+    "options": ["Robert Forster", "Grant McLennan", "Paul Kelly", "Ed Kuepper"], "correctAnswer": "Robert Forster",
+    "explanation": "Lilith supported Robert Forster at Memo Music Hall in May 2023, one of two documented Victorian support appearances with the songwriter.",
+    "sourceName": "Lilith Lane Official Shows", "sourceURL": "https://lilithlane.com/shows/", "active": true
+  },
+  {
+    "id": "LL-DC11", "roundGroup": 1, "category": "Behind the Scenes", "difficulty": "medium",
+    "question": "Which late Australian musician is remembered in Trickery's King of Loving Arms?",
+    "options": ["Mike Noga", "Rowland S. Howard", "Spencer P. Jones", "Grant McLennan"], "correctAnswer": "Mike Noga",
+    "explanation": "Subtitled Mikey song, King of Loving Arms remembers Mike Noga and recalls seeing him happiest with his sisters after a show.",
+    "sourceName": "Lilith Lane Bandcamp - King of Loving Arms", "sourceURL": "https://lilithlanemusic.bandcamp.com/track/king-of-loving-arms-mikey-song", "active": true
+  },
+  {
+    "id": "LL-DC12", "roundGroup": 1, "category": "Behind the Scenes", "difficulty": "hard",
+    "question": "Which three friends and collaborators does Lilith connect through her recording of Rain?",
+    "options": ["Greg Bukshteyn, Justin Cusack and Mike Noga", "Tim Finn, Robert Forster and Stephen Cummings", "Paco, Jimena and Pedro", "Angie Hart, Laura Jean and Courtney Barnett"], "correctAnswer": "Greg Bukshteyn, Justin Cusack and Mike Noga",
+    "explanation": "Lilith frames Rain as a tribute linking its writers Greg Bukshteyn and Justin Cusack with their mutual musician friend Mike Noga.",
+    "sourceName": "Lilith Lane Bandcamp - Trickery", "sourceURL": "https://lilithlanemusic.bandcamp.com/", "active": true
+  },
+
+  {
+    "id": "LL-DC13", "roundGroup": 2, "category": "Album Deep Cuts", "difficulty": "easy",
+    "question": "In which city was Pilgrim recorded live in the studio?",
+    "options": ["Madrid", "Melbourne", "Austin", "Paris"], "correctAnswer": "Madrid",
+    "explanation": "Pilgrim was recorded live at Sonica in Madrid during October 2012, giving the album the immediacy of a band playing together.",
+    "sourceName": "Lilith Lane Bandcamp - Pilgrim", "sourceURL": "https://lilithlanemusic.bandcamp.com/album/pilgrim", "active": true
+  },
+  {
+    "id": "LL-DC14", "roundGroup": 2, "category": "Album Deep Cuts", "difficulty": "medium",
+    "question": "Where did Mike Mariconda mix and master Pilgrim?",
+    "options": ["Active Sound in Austin", "Venus Studios in Melbourne", "Sonica in Madrid", "Beast Records in Rennes"], "correctAnswer": "Active Sound in Austin",
+    "explanation": "After the Madrid sessions, Mike Mariconda mixed and mastered Pilgrim at Active Sound in Austin, Texas, in December 2012.",
+    "sourceName": "Lilith Lane Bandcamp - Pilgrim", "sourceURL": "https://lilithlanemusic.bandcamp.com/album/pilgrim", "active": true
+  },
+  {
+    "id": "LL-DC15", "roundGroup": 2, "category": "Album Deep Cuts", "difficulty": "hard",
+    "question": "Who created the blue bone-portrait artwork used for Pilgrim's Australian CD edition?",
+    "options": ["Daniel Campbell", "Lilli Hartmann", "Fiona Wood", "Ago Soldati"], "correctAnswer": "Daniel Campbell",
+    "explanation": "Daniel Campbell made the blue bone-portrait cover for the Australian CD, replacing Lilli Hartmann's sketched artwork from the original European edition.",
+    "sourceName": "Lilith Lane Bandcamp - Pilgrim", "sourceURL": "https://lilithlanemusic.bandcamp.com/album/pilgrim", "active": true
+  },
+  {
+    "id": "LL-DC16", "roundGroup": 2, "category": "Song / Recording Deep Cuts", "difficulty": "easy",
+    "question": "Which song opens Pilgrim?",
+    "options": ["Sun Set Fire", "Slow Creeper", "Champagne", "Voodoo Dream"], "correctAnswer": "Sun Set Fire",
+    "explanation": "Sun Set Fire is the opening track on Pilgrim, introducing the guitar-driven and danceable direction Lilith pursued for the album.",
+    "sourceName": "Lilith Lane Bandcamp - Pilgrim", "sourceURL": "https://lilithlanemusic.bandcamp.com/album/pilgrim", "active": true
+  },
+  {
+    "id": "LL-DC17", "roundGroup": 2, "category": "Song / Recording Deep Cuts", "difficulty": "medium",
+    "question": "Which extra instrument did Mike Mariconda play on I Get Wicked?",
+    "options": ["Acoustic guitar", "Hammond organ", "Trumpet", "Pedal steel"], "correctAnswer": "Acoustic guitar",
+    "explanation": "Mariconda added acoustic guitar and extra vocals to I Get Wicked after the main Madrid sessions, broadening the live band's original arrangement.",
+    "sourceName": "Lilith Lane Bandcamp - Pilgrim", "sourceURL": "https://lilithlanemusic.bandcamp.com/album/pilgrim", "active": true
+  },
+  {
+    "id": "LL-DC18", "roundGroup": 2, "category": "Song / Recording Deep Cuts", "difficulty": "hard",
+    "question": "What did Mike Mariconda add to Baby Elephant Print (Gina)?",
+    "options": ["Fuzz bass", "Slide guitar", "Vibraphone", "Drum machine"], "correctAnswer": "Fuzz bass",
+    "explanation": "Mariconda added fuzz bass to Baby Elephant Print (Gina), with the overdub recorded at Figment by engineer Ryan Anderson.",
+    "sourceName": "Lilith Lane Bandcamp - Pilgrim", "sourceURL": "https://lilithlanemusic.bandcamp.com/album/pilgrim", "active": true
+  },
+  {
+    "id": "LL-DC19", "roundGroup": 2, "category": "Band Member", "difficulty": "easy",
+    "question": "What was the name of Lilith's Australian live band around Pilgrim?",
+    "options": ["Many Wives", "The Ukeladies", "Horsestories", "Clinkerfield"], "correctAnswer": "Many Wives",
+    "explanation": "Lilith performed the Pilgrim material in Australia with Many Wives, a setup that freed her from always playing guitar or piano onstage.",
+    "sourceName": "Beat Magazine - 60 Seconds with Lilith Lane", "sourceURL": "https://beat.com.au/60-seconds-with-lilith-lane/", "active": true
+  },
+  {
+    "id": "LL-DC20", "roundGroup": 2, "category": "Band Member", "difficulty": "medium",
+    "question": "Which instrument did Jimena play in Pilgrim's Madrid lineup?",
+    "options": ["Drums and percussion", "Bass", "Lead guitar", "Keyboards"], "correctAnswer": "Drums and percussion",
+    "explanation": "Pilgrim's Spanish lineup paired Jimena on drums and percussion with Paco on bass and Pedro on guitars behind Lilith's lead vocals.",
+    "sourceName": "Lilith Lane Bandcamp - Pilgrim", "sourceURL": "https://lilithlanemusic.bandcamp.com/album/pilgrim", "active": true
+  },
+  {
+    "id": "LL-DC21", "roundGroup": 2, "category": "Touring / Live", "difficulty": "medium",
+    "question": "Which Melbourne venue hosted Many Wives every Wednesday before the French tour?",
+    "options": ["The Old Bar", "The Espy", "The Retreat", "The Workers Club"], "correctAnswer": "The Old Bar",
+    "explanation": "Many Wives built momentum through Wednesday performances at The Old Bar before Lilith headed to France to tour the Pilgrim material.",
+    "sourceName": "Beat Magazine - 60 Seconds with Lilith Lane", "sourceURL": "https://beat.com.au/60-seconds-with-lilith-lane/", "active": true
+  },
+  {
+    "id": "LL-DC22", "roundGroup": 2, "category": "Touring / Live", "difficulty": "medium",
+    "question": "Why was the album title Pilgrim especially fitting?",
+    "options": ["Its songs grew from Lilith's travels", "It was recorded in a church", "It retold a medieval story", "It was named by the record label"], "correctAnswer": "Its songs grew from Lilith's travels",
+    "explanation": "The title reflected Lilith's restless path through Spain, the Pilbara and international touring, turning the record into a musical travel diary.",
+    "sourceName": "Beat Magazine - 60 Seconds with Lilith Lane", "sourceURL": "https://beat.com.au/60-seconds-with-lilith-lane/", "active": true
+  },
+  {
+    "id": "LL-DC23", "roundGroup": 2, "category": "Behind the Scenes", "difficulty": "medium",
+    "question": "Which Australian landscape shaped Pilgrim's textures and stripped-back themes?",
+    "options": ["The Pilbara desert", "The Daintree rainforest", "The Snowy Mountains", "The Great Ocean Road"], "correctAnswer": "The Pilbara desert",
+    "explanation": "Time in the Pilbara desert influenced Pilgrim's sonic textures and simple themes, leaving a wide-open Australian imprint on the Madrid recording.",
+    "sourceName": "Beat Magazine - 60 Seconds with Lilith Lane", "sourceURL": "https://beat.com.au/60-seconds-with-lilith-lane/", "active": true
+  },
+  {
+    "id": "LL-DC24", "roundGroup": 2, "category": "Behind the Scenes", "difficulty": "hard",
+    "question": "What did Lilith admit she mostly did in Spain instead of studying?",
+    "options": ["Watched bands in bars", "Worked in a record shop", "Busked in railway stations", "Recorded radio jingles"], "correctAnswer": "Watched bands in bars",
+    "explanation": "Lilith said her supposed year of study in Spain was largely spent watching bands in bars, an education that ultimately fed directly into Pilgrim.",
+    "sourceName": "Beat Magazine - 60 Seconds with Lilith Lane", "sourceURL": "https://beat.com.au/60-seconds-with-lilith-lane/", "active": true
+  },
+
+  {
+    "id": "LL-DC25", "roundGroup": 3, "category": "Album Deep Cuts", "difficulty": "easy",
+    "question": "Which song closes Lilith Lane's 2008 self-titled debut album?",
+    "options": ["White Girl Dreaming", "Til My Dying Day", "Winter", "Lone Road"], "correctAnswer": "White Girl Dreaming",
+    "explanation": "White Girl Dreaming is the twelfth and final track on Lilith's self-produced debut, following Winter in the album's closing sequence.",
+    "sourceName": "Lilith Lane Bandcamp - Lilith Lane", "sourceURL": "https://lilithlanemusic.bandcamp.com/album/lilith-lane", "active": true
+  },
+  {
+    "id": "LL-DC26", "roundGroup": 3, "category": "Album Deep Cuts", "difficulty": "medium",
+    "question": "Who photographed the original gatefold cover of Lilith's debut album?",
+    "options": ["Fiona Wood", "Daniel Campbell", "Lilli Hartmann", "Gabi Barton"], "correctAnswer": "Fiona Wood",
+    "explanation": "Photographer Fiona Wood created the original gatefold cover image for Lilith's 2008 self-titled album, which Lilith also produced herself.",
+    "sourceName": "Lilith Lane Bandcamp - Lilith Lane", "sourceURL": "https://lilithlanemusic.bandcamp.com/album/lilith-lane", "active": true
+  },
+  {
+    "id": "LL-DC27", "roundGroup": 3, "category": "Album Deep Cuts", "difficulty": "hard",
+    "question": "Which provocatively titled song appears on Lilith's Gold Diamond release?",
+    "options": ["Did You Just Call Me Bonnie", "For You The Non-believer", "Wayward Angel", "Factory Heart"], "correctAnswer": "Did You Just Call Me Bonnie",
+    "explanation": "Did You Just Call Me Bonnie appears on Gold Diamond, the 2010 release positioned between Lilith's self-titled debut and Pilgrim.",
+    "sourceName": "Lilith Lane Bandcamp - Did You Just Call Me Bonnie", "sourceURL": "https://lilithlanemusic.bandcamp.com/track/did-you-just-call-me-bonnie", "active": true
+  },
+  {
+    "id": "LL-DC28", "roundGroup": 3, "category": "Song / Recording Deep Cuts", "difficulty": "easy",
+    "question": "What is the name of Lilith Lane's retro synth-wave pop alter ego?",
+    "options": ["Baxter Avalon", "Bouclette", "Bruhah Bee", "Carnegie Falls"], "correctAnswer": "Baxter Avalon",
+    "explanation": "Baxter Avalon is Lilith's retro synth-wave pop pseudonym, allowing a distinctly electronic identity to sit beside her guitar and piano work.",
+    "sourceName": "Lilith Lane Official About", "sourceURL": "https://lilithlane.com/about/", "active": true
+  },
+  {
+    "id": "LL-DC29", "roundGroup": 3, "category": "Song / Recording Deep Cuts", "difficulty": "medium",
+    "question": "What alternate life does Baxter Avalon's Corio imagine?",
+    "options": ["Lilith staying in northern Geelong", "Lilith moving permanently to Madrid", "Lilith fronting a French pop group", "Lilith becoming a studio engineer in Austin"], "correctAnswer": "Lilith staying in northern Geelong",
+    "explanation": "Corio is autobiographical speculation: Baxter Avalon embodies the version of Lilith who might have emerged had she remained in northern Geelong.",
+    "sourceName": "Lilith Lane Official About", "sourceURL": "https://lilithlane.com/about/", "active": true
+  },
+  {
+    "id": "LL-DC30", "roundGroup": 3, "category": "Song / Recording Deep Cuts", "difficulty": "hard",
+    "question": "In Crow, what danger does the bird's warning suggest is hiding in a warm nook?",
+    "options": ["Something hissing and coiled", "A fox stalking chickens", "A fire beneath the floor", "A stranger at the window"], "correctAnswer": "Something hissing and coiled",
+    "explanation": "Crow casts the bird as a messenger from the other side, warning of a concealed, hissing danger curled inside an otherwise comforting place.",
+    "sourceName": "Lilith Lane Bandcamp - Crow", "sourceURL": "https://lilithlanemusic.bandcamp.com/track/crow", "active": true
+  },
+  {
+    "id": "LL-DC31", "roundGroup": 3, "category": "Band Member", "difficulty": "easy",
+    "question": "Which 1960s French-pop collective has counted Lilith as a member?",
+    "options": ["Les Ye-Ye Girls", "Nouvelle Vague", "The Ukeladies", "Women of Soul"], "correctAnswer": "Les Ye-Ye Girls",
+    "explanation": "Lilith has performed with Les Ye-Ye Girls, a collective devoted to the stylish French pop sound associated with the 1960s ye-ye movement.",
+    "sourceName": "Lilith Lane Official About", "sourceURL": "https://lilithlane.com/about/", "active": true
+  },
+  {
+    "id": "LL-DC32", "roundGroup": 3, "category": "Band Member", "difficulty": "medium",
+    "question": "Which New Zealand songwriter shared a RocKwiz duet with Lilith?",
+    "options": ["Tim Finn", "Neil Finn", "Dave Dobbyn", "Don McGlashan"], "correctAnswer": "Tim Finn",
+    "explanation": "Lilith's television performance history includes a RocKwiz duet with Tim Finn, adding a celebrated Australasian songwriter to her long collaborative record.",
+    "sourceName": "Lilith Lane Official About", "sourceURL": "https://lilithlane.com/about/", "active": true
+  },
+  {
+    "id": "LL-DC33", "roundGroup": 3, "category": "Touring / Live", "difficulty": "medium",
+    "question": "What instrument did Lilith play in the Countdown Spectacular stadium house band?",
+    "options": ["Keyboards", "Drums", "Bass", "Saxophone"], "correctAnswer": "Keyboards",
+    "explanation": "Lilith played keyboards in the Countdown Spectacular house band, taking her musicianship from intimate rooms to large Australian stadium productions.",
+    "sourceName": "Lilith Lane Official About", "sourceURL": "https://lilithlane.com/about/", "active": true
+  },
+  {
+    "id": "LL-DC34", "roundGroup": 3, "category": "Touring / Live", "difficulty": "medium",
+    "question": "Which two groups took Lilith on UK and European tours as a performing member?",
+    "options": ["Black Pony Express and Cliffy Davis Goodtime Band", "The Devastations and Four Hours Sleep", "Les Ye-Ye Girls and The Ukeladies", "Clinkerfield and Horsestories"], "correctAnswer": "Black Pony Express and Cliffy Davis Goodtime Band",
+    "explanation": "Lilith toured the UK and Europe as a member of both Black Pony Express and the Cliffy Davis Goodtime Band, contributing vocals and keys.",
+    "sourceName": "Lilith Lane Official About", "sourceURL": "https://lilithlane.com/about/", "active": true
+  },
+  {
+    "id": "LL-DC35", "roundGroup": 3, "category": "Behind the Scenes", "difficulty": "medium",
+    "question": "What was Lilith's studio role on Courtney Barnett and Kurt Vile's Lotta Sea Lice?",
+    "options": ["Recording assistant", "String arranger", "Mastering engineer", "Album photographer"], "correctAnswer": "Recording assistant",
+    "explanation": "Lilith contributed recording assistance to Lotta Sea Lice, bringing her technical studio experience to Courtney Barnett and Kurt Vile's collaborative album.",
+    "sourceName": "Lilith Lane Official Music Production", "sourceURL": "https://lilithlane.com/music-production/", "active": true
+  },
+  {
+    "id": "LL-DC36", "roundGroup": 3, "category": "Behind the Scenes", "difficulty": "hard",
+    "question": "Which three jobs did Lilith perform for the Women of Soul Studio 5 Live session at PBS?",
+    "options": ["Recording, mixing and mastering", "Writing, arranging and conducting", "Filming, editing and colouring", "Booking, staging and lighting"], "correctAnswer": "Recording, mixing and mastering",
+    "explanation": "For Women of Soul's Studio 5 Live broadcast at PBS, Lilith handled recording, mixing and mastering across the complete production chain.",
+    "sourceName": "Lilith Lane Official Music Production", "sourceURL": "https://lilithlane.com/music-production/", "active": true
+  }
+]
