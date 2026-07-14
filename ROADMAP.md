@@ -58,10 +58,10 @@ This roadmap is ordered only by expected production-time savings. Quality work r
 
 ## 10. Full Deep Cuts Factory
 
-**Status:** Planned  
+**Status:** In progress: automatic per-edition timing, cost classification, failed-build retention and email build summaries are complete; queueing and retry orchestration remain
 **Time saving:** Enables reliable concurrent production, versioned editions, monitoring and recovery without owner intervention.  
 **Completion test:** The platform queues editions, records provenance, detects failures, retries safe stages, monitors live health and delivers a final link and assets automatically.
 
 ## Next automation decision
 
-Implement the highest unfinished item whose dependencies are available. Do not prioritise cosmetic or architectural work ahead of a larger measurable production-time saving.
+Add resumable queue and safe retry orchestration around the existing permanent build records. Do not prioritise cosmetic or architectural work ahead of this larger measurable production-time saving.
