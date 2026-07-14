@@ -1,6 +1,6 @@
 # Deep Cuts Production Manual
 
-Version: 1.0  
+Version: 1.1
 Status: Permanent project constitution  
 Primary KPI: Reduce elapsed production time and owner interaction for every new edition.  
 Secondary KPI: Improve research, product and visual quality without slowing repeat production.
@@ -195,6 +195,20 @@ An edition is complete only when:
 
 The completion email must include the playable link, repository/platform link, edition summary and both PNG attachments.
 
+### Automatic build record and email summary
+
+Every edition begins by creating a unique build record before research starts. The same record remains open through research, source verification, question and image production, testing, correction, GitHub publication, deployment verification and completion-email preparation.
+
+The completion email must always contain a clearly visible `BUILD SUMMARY` with the build cost in Australian dollars when honestly measurable, the Actual/Calculated/Estimated/Unavailable cost basis, full elapsed production time, completion date, build ID, live URL and Git commit.
+
+Completed and failed records are permanently appended to `build-records/builds.jsonl`. A failed build retains elapsed time, available usage and its failure reason. A resumed run must link to the original build ID or deliberately continue the existing record.
+
+Cost reporting includes only measurable AI and metered-service usage attributable to the edition. It never includes owner labour, salary, review time or an arbitrary share of a subscription. Usage may record provider, model, calls, input, cached input, output and reasoning tokens, direct charges, image charges and research charges.
+
+Use actual provider charges when available. Otherwise calculate from recorded usage and current official rates in `config/ai-pricing.json`. Convert measurable USD totals using the configured USD-to-AUD rate or public rate source, and store the rate, date and source. If Codex exposes insufficient per-build data, report `AI build cost: unavailable from current Codex usage data`; never invent precision.
+
+Build-tracking defaults live in `config/build-tracking.json`. Environment overrides are documented in `.env.example`; secrets must never be stored in source code.
+
 ## 13. Change control
 
 Protect these invariants unless the owner explicitly changes the constitution:
@@ -207,6 +221,7 @@ Protect these invariants unless the owner explicitly changes the constitution:
 - blue-black premium visual system;
 - one permanent repository and shared engine;
 - automatic social assets and completion email.
+- automatic complete-build timing, honest AI cost classification and the email build summary.
 
 Before accepting a change, ask internally:
 
