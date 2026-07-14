@@ -12,18 +12,21 @@
     return "";
   }
   function supportsNativeShare(navigatorObject,deviceCategory){return typeof navigatorObject?.share==="function"&&deviceCategory!=="desktop"}
-  async function nativeShare({navigatorObject,tracker,payload,actionId}){
-    tracker.track("share_method_selected",{share_method:"native_device",share_action_id:actionId});
-    tracker.track("native_share_opened",{share_method:"native_device",share_action_id:actionId});
-    try{await navigatorObject.share(payload);tracker.track("native_share_completed",{share_method:"native_device",share_action_id:actionId});return "completed"}
-    catch(error){if(error?.name==="AbortError"){tracker.track("native_share_cancelled",{share_method:"native_device",share_action_id:actionId});return "cancelled"}return "failed"}
+  async function nativeShare({navigatorObject,tracker,payload,actionId,finalScore}){
+    const context={share_method:"native_device",share_action_id:actionId,final_score:finalScore};
+    tracker.track("share_method_selected",context);
+    tracker.track("native_share_opened",context);
+    try{await navigatorObject.share(payload);tracker.track("native_share_completed",context);return "completed"}
+    catch(error){if(error?.name==="AbortError"){tracker.track("native_share_cancelled",context);return "cancelled"}return "failed"}
   }
-  async function copyLink({clipboard,tracker,text,trigger,actionId}){
-    tracker.track("copy_link_clicked",{share_method:"copy_link",share_action_id:actionId,copy_trigger:trigger},{dedupeKey:`copy:${trigger}`,dedupeMs:500});
-    try{await clipboard.writeText(text);tracker.track("copy_link_succeeded",{share_method:"copy_link",share_action_id:actionId,copy_trigger:trigger});return true}catch{return false}
+  async function copyLink({clipboard,tracker,text,trigger,actionId,finalScore}){
+    const context={share_method:"copy_link",share_action_id:actionId,copy_trigger:trigger,final_score:finalScore};
+    tracker.track("copy_link_clicked",context,{dedupeKey:`copy:${trigger}`,dedupeMs:500});
+    try{await clipboard.writeText(text);tracker.track("copy_link_succeeded",context);return true}catch{return false}
   }
-  function trackOutbound(tracker,platform,url){
-    try{return tracker.track(`${platform==="mailingList"?"mailing_list":platform}_clicked`,{destination_platform:platform,destination_url_origin:safeOrigin(url)},{dedupeKey:`outbound:${platform}`,dedupeMs:500})}catch{return null}
+  function trackOutbound(tracker,platform,url,finalScore){
+    try{return tracker.track(`${platform==="mailingList"?"mailing_list":platform}_clicked`,{destination_platform:platform,destination_url_origin:safeOrigin(url),final_score:finalScore},{dedupeKey:`outbound:${platform}`,dedupeMs:500})}catch{return null}
   }
   scope.DeepCutsInteractions={safeOrigin,shareMethodUrl,supportsNativeShare,nativeShare,copyLink,trackOutbound};
 })(typeof window!=="undefined"?window:globalThis);
+
