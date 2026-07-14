@@ -14,6 +14,13 @@
 <body>
   <main id="app" class="app-shell home-active">
     <div class="ambient" aria-hidden="true"></div>
+    <section id="splashScreen" class="screen business-splash" hidden aria-live="polite">
+      <div class="splash-lockup">
+        <p class="splash-kicker">Deep Cuts Presents</p>
+        <h1 id="splashBusinessName">Business Name</h1>
+        <div class="splash-aggits" role="img" aria-label="Aggits"></div>
+      </div>
+    </section>
     <header id="brandHeader" class="brand-header" aria-label="Deep Cuts Fan Challenge">
       <span class="brand-kicker">Fan Challenge</span>
       <strong id="brandHeaderName" class="brand-name">Deep Cuts</strong>
@@ -33,10 +40,26 @@
       </div>
     </section>
 
+    <section id="businessHubScreen" class="screen business-hub-screen" hidden>
+      <div class="panel business-hero reveal-sweep">
+        <div class="business-aggits" role="img" aria-label="Aggits"></div>
+        <p class="eyebrow">Deep Cuts Business</p>
+        <h1 id="businessName">Business Name</h1>
+        <p id="businessPromise" class="business-promise"></p>
+        <p id="businessDescription" class="business-description"></p>
+      </div>
+      <nav class="panel business-links-panel" aria-label="Official business destinations">
+        <h2>Connect with <span id="businessLinksName">the business</span></h2>
+        <div id="businessLinks" class="business-links"></div>
+      </nav>
+      <button id="businessQuizButton" class="button primary business-quiz-button" type="button" disabled>Deep Cuts</button>
+      <small class="business-host">Hosted by Deep Cuts Â· copyright Clearlight Creative</small>
+    </section>
+
     <section id="quizScreen" class="screen quiz-screen" hidden>
       <div class="quiz-topline">
         <p id="progressText" class="progress" aria-live="polite">Question 1 of 12</p>
-        <button id="muteButtonQuiz" class="icon-button mute-button" type="button" aria-label="Mute sound" aria-pressed="false">♪</button>
+        <button id="muteButtonQuiz" class="icon-button mute-button" type="button" aria-label="Mute sound" aria-pressed="false">â™ª</button>
       </div>
       <div class="panel question-panel">
         <div class="question-heading">
@@ -45,7 +68,7 @@
             <span id="timerNumber">15</span>
           </div>
         </div>
-        <h2 id="questionText" tabindex="-1">Loading question…</h2>
+        <h2 id="questionText" tabindex="-1">Loading questionâ€¦</h2>
         <div id="answerList" class="answer-list" role="group" aria-label="Answer choices"></div>
         <div id="feedback" class="feedback" aria-live="assertive" hidden>
           <div class="feedback-heading">
@@ -66,6 +89,12 @@
         <p class="rating-label">YOUR FAN RATING</p>
         <h2 id="classificationText" class="classification">JUST DISCOVERING THE BAND</h2>
         <p id="resultMessage" class="result-message"></p>
+        <section id="rewardPanel" class="reward-panel" hidden aria-labelledby="rewardTitle">
+          <p class="eyebrow">YOUR REWARD</p>
+          <h2 id="rewardTitle"></h2>
+          <p id="rewardInstructions"></p>
+          <p id="rewardCode" class="reward-code" hidden></p>
+        </section>
         <dl class="stats">
           <div><dt>Correct</dt><dd id="correctStat">0</dd></div>
           <div><dt>Incorrect</dt><dd id="incorrectStat">0</dd></div>
@@ -77,6 +106,7 @@
           <div id="platformLinks" class="platform-links"></div>
         </section>
         <button id="replayButton" class="button primary" type="button">Take the Quiz Again</button>
+        <button id="backToBusinessButton" class="button secondary" type="button" hidden>Back to Business Hub</button>
         <div class="share-actions">
           <button id="shareButton" class="button secondary" type="button">Challenge Your Mates</button>
           <button id="copyButton" class="button utility" type="button">Copy Quiz Link</button>
@@ -87,7 +117,7 @@
 
     <dialog id="shareDialog" class="share-dialog" aria-labelledby="shareDialogTitle">
       <div class="share-dialog-card">
-        <div class="share-dialog-heading"><h2 id="shareDialogTitle">Share your result</h2><button id="shareDialogClose" class="share-close" type="button" aria-label="Close share options">×</button></div>
+        <div class="share-dialog-heading"><h2 id="shareDialogTitle">Share your result</h2><button id="shareDialogClose" class="share-close" type="button" aria-label="Close share options">Ã—</button></div>
         <div class="share-methods">
           <button type="button" data-share-method="facebook">Facebook</button>
           <button type="button" data-share-method="x">X / Twitter</button>
@@ -109,3 +139,4 @@
   <script src="js/app.js?v=20260714-analytics-1"></script>
 </body>
 </html>
+

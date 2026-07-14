@@ -44,6 +44,22 @@
       "name": "Nada Surf",
       "config": "editions/nada-surf/edition.json",
       "active": true
+    },
+    {
+      "slug": "business-preview",
+      "name": "Deep Cuts Business Preview",
+      "productType": "business",
+      "config": "editions/business-preview/edition.json",
+      "active": true,
+      "preview": true
+    },
+    {
+      "slug": "access-workwear-safety",
+      "name": "Access Workwear & Safety",
+      "productType": "business",
+      "config": "editions/access-workwear-safety/edition.json",
+      "active": true,
+      "preview": false
     }
   ]
 }

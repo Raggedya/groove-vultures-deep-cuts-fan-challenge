@@ -25,6 +25,10 @@ jobs:
       - run: node scripts/validate-platform.mjs
       - run: node scripts/validate-questions.mjs
       - run: node scripts/test-engine.mjs
+      - run: node scripts/validate-questions.mjs business-preview
+      - run: node scripts/test-engine.mjs business-preview
+      - run: node scripts/validate-questions.mjs access-workwear-safety
+      - run: node scripts/test-engine.mjs access-workwear-safety
       - run: node scripts/test-build-tracking.mjs
       - run: node --check js/app.js
       - run: node --check js/engine.js
@@ -33,3 +37,4 @@ jobs:
       - run: node --check scripts/publish-edition.mjs
       - run: node --check scripts/prepare-delivery.mjs
       - run: python scripts/generate-social-assets.py
+
