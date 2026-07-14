@@ -7,6 +7,12 @@
       "name": "Groove Vultures",
       "config": "editions/groove-vultures/edition.json",
       "active": true
+    },
+    {
+      "slug": "the-drones",
+      "name": "The Drones",
+      "config": "editions/the-drones/edition.json",
+      "active": true
     }
   ]
 }
