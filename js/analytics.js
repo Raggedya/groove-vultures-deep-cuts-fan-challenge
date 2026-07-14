@@ -118,7 +118,7 @@
       if(!/^https:\/\//i.test(endpoint))return;
       try{
         const body=JSON.stringify(event);
-        if(this.navigatorObject?.sendBeacon){this.navigatorObject.sendBeacon(endpoint,new Blob([body],{type:"application/json"}));return}
+        if(this.navigatorObject?.sendBeacon&&this.navigatorObject.sendBeacon(endpoint,new Blob([body],{type:"application/json"})))return;
         this.windowObject?.fetch?.(endpoint,{method:"POST",headers:{"content-type":"application/json"},body,keepalive:true,credentials:"omit"}).catch(()=>{});
       }catch{}
     }
@@ -131,3 +131,4 @@
 
   scope.DeepCutsAnalytics={Tracker,STORAGE_KEY,deviceCategory,referringSource,randomId};
 })(typeof window!=="undefined"?window:globalThis);
+
