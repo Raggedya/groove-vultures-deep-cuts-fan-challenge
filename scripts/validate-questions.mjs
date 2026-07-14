@@ -8,6 +8,27 @@ const config=JSON.parse(await fs.readFile(entry.config,'utf8'));
 const questions=JSON.parse(await fs.readFile(config.questionFile,'utf8'));
 const active=questions.filter(question=>question.active);
 const errors=[];
+
+if(config.productType==='business'){
+  const ids=new Set();
+  if(active.length!==10)errors.push(`Expected exactly 10 active business questions; found ${active.length}.`);
+  if(config.numberOfQuestions!==10)errors.push('Business editions must present exactly 10 questions.');
+  if(config.business?.splashMilliseconds!==3000)errors.push('Business splash must display for exactly 3000 milliseconds.');
+  if(!config.businessName||!config.business?.location||!config.business?.promise)errors.push('Business editions require a name, location and compelling promise.');
+  if(!config.reward?.title||!config.reward?.instructions)errors.push('Business editions require reward title and redemption instructions.');
+  if(/\[date\]|pending business approval/i.test(`${config.reward?.title||''} ${config.reward?.instructions||''}`))errors.push('Business reward wording contains an unresolved approval or date placeholder.');
+  if(!Object.values(config.links||{}).some(Boolean))errors.push('Business editions require at least one verified official destination.');
+  for(const question of active){
+    for(const field of ['id','question','options','correctAnswer','difficulty','category','explanation','sourceName','sourceURL','active'])if(question[field]===undefined||question[field]==='')errors.push(`${question.id||'unknown'} missing ${field}.`);
+    if(ids.has(question.id))errors.push(`Duplicate ID: ${question.id}`);ids.add(question.id);
+    if(!Array.isArray(question.options)||question.options.length!==4||new Set(question.options.map(String)).size!==4)errors.push(`${question.id} must have four unique options.`);
+    if(!question.options?.includes(question.correctAnswer))errors.push(`${question.id} correct answer is not an option.`);
+    if(!/^https:\/\//.test(question.sourceURL||''))errors.push(`${question.id} sourceURL must be an HTTPS URL.`);
+  }
+  if(errors.length){console.error(errors.join('\n'));process.exit(1)}
+  console.log(`${config.businessName}: 10-question Deep Cuts Business validation passed.`);
+  process.exit(0);
+}
 const required=['id','roundGroup','question','options','correctAnswer','difficulty','category','explanation','sourceName','sourceURL','active'];
 const expectedDifficulty={easy:3,medium:6,hard:3};
 const expectedCategories={'Album Deep Cuts':3,'Song / Recording Deep Cuts':3,'Band Member':2,'Touring / Live':2,'Behind the Scenes':2};
@@ -36,7 +57,7 @@ for(const question of active){
   if(!(question.category in expectedCategories))errors.push(`${question.id} has invalid category: ${question.category}.`);
   if(![1,2,3].includes(question.roundGroup))errors.push(`${question.id} has invalid roundGroup.`);
   const words=String(question.explanation).trim().split(/\s+/).filter(Boolean).length;
-  if(words<15||words>40)errors.push(`${question.id} explanation must contain 15–40 words; found ${words}.`);
+  if(words<15||words>40)errors.push(`${question.id} explanation must contain 15â€“40 words; found ${words}.`);
   if(!/^https:\/\//.test(question.sourceURL))errors.push(`${question.id} sourceURL must be an HTTPS URL.`);
 }
 
@@ -52,3 +73,4 @@ for(const group of [1,2,3]){
 
 if(errors.length){console.error(errors.join('\n'));process.exit(1)}
 console.log(`${config.bandName}: 36-question Deep Cuts validation passed across three balanced, non-repeating games.`);
+
