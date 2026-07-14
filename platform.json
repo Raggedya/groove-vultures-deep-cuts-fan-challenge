@@ -13,6 +13,12 @@
       "name": "The Drones",
       "config": "editions/the-drones/edition.json",
       "active": true
+    },
+    {
+      "slug": "lilith-lane",
+      "name": "Lilith Lane",
+      "config": "editions/lilith-lane/edition.json",
+      "active": true
     }
   ]
 }
