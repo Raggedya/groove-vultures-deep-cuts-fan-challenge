@@ -1,6 +1,13 @@
 {
   "platformName": "Deep Cuts",
   "defaultEdition": "groove-vultures",
+  "analytics": {
+    "provider": "local-and-configurable",
+    "measurementId": "",
+    "endpoint": "",
+    "reportingEndpoint": "",
+    "localRetention": 2500
+  },
   "editions": [
     {
       "slug": "groove-vultures",
