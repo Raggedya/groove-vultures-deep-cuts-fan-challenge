@@ -35,6 +35,8 @@
     "bandcamp": "https://lilithlanemusic.bandcamp.com/",
     "youtube": "",
     "instagram": "https://www.instagram.com/lilithlane",
+    "facebook": "",
+    "tiktok": "",
     "website": "https://lilithlane.com/",
     "tickets": "",
     "merchandise": "",
@@ -45,7 +47,7 @@
       "min": 0,
       "max": 3,
       "label": "Curious Listener",
-      "message": "Youâ€™ve opened the archive. There is much more of {band} waiting below."
+      "message": "You’ve opened the archive. There is much more of {band} waiting below."
     },
     {
       "min": 4,
@@ -57,7 +59,7 @@
       "min": 7,
       "max": 9,
       "label": "Deep Cut Disciple",
-      "message": "Interview quotes, studio stories and tour loreâ€”you have clearly been paying attention."
+      "message": "Interview quotes, studio stories and tour lore—you have clearly been paying attention."
     },
     {
       "min": 10,
