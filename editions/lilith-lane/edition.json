@@ -1,0 +1,75 @@
+{
+  "brandName": "Fan Challenge",
+  "bandName": "Lilith Lane",
+  "editionTitle": "Lilith Lane",
+  "quizTitle": "Lilith Lane Deep Cuts",
+  "description": "Thirty-six source-verified deep cuts, served as three fresh twelve-question fan challenges.",
+  "mode": "deepCuts",
+  "slug": "lilith-lane",
+  "publicURL": "https://raggedya.github.io/groove-vultures-deep-cuts-fan-challenge/?edition=lilith-lane",
+  "numberOfQuestions": 12,
+  "questionMix": {
+    "easy": 3,
+    "medium": 6,
+    "hard": 3
+  },
+  "secondsPerQuestion": 15,
+  "feedbackMilliseconds": 10000,
+  "questionFile": "editions/lilith-lane/questions.json",
+  "dingSound": "assets/ding.mp3",
+  "beepSound": "assets/beep.wav",
+  "brandArtwork": "assets/aggits-original-cutout-v4.png",
+  "characterArtwork": "assets/aggits-original-cutout-v4.png",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/lilith-lane/instagram-fan-challenge.png",
+    "qrImage": "output/lilith-lane/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#2f80ff",
+    "accentSecondary": "#8dbdff"
+  },
+  "links": {
+    "spotify": "https://open.spotify.com/artist/2CqvjwYNISOnWygCu40mVP",
+    "bandcamp": "https://lilithlanemusic.bandcamp.com/",
+    "youtube": "",
+    "instagram": "https://www.instagram.com/lilithlane",
+    "website": "https://lilithlane.com/",
+    "tickets": "",
+    "merchandise": "",
+    "mailingList": ""
+  },
+  "classifications": [
+    {
+      "min": 0,
+      "max": 3,
+      "label": "Curious Listener",
+      "message": "Youâ€™ve opened the archive. There is much more of {band} waiting below."
+    },
+    {
+      "min": 4,
+      "max": 6,
+      "label": "Proper Fan",
+      "message": "You know more than the singles. Your {band} credentials are real."
+    },
+    {
+      "min": 7,
+      "max": 9,
+      "label": "Deep Cut Disciple",
+      "message": "Interview quotes, studio stories and tour loreâ€”you have clearly been paying attention."
+    },
+    {
+      "min": 10,
+      "max": 11,
+      "label": "Band Historian",
+      "message": "You know the stories behind the songs. This is serious {band} knowledge."
+    },
+    {
+      "min": 12,
+      "max": 12,
+      "label": "How Did You Know That?!",
+      "message": "A perfect score. Even the band may want to know how you knew all of that."
+    }
+  ]
+}
