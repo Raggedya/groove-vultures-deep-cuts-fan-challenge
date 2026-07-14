@@ -38,6 +38,12 @@
       "name": "Sydney Shae",
       "config": "editions/sydney-shae/edition.json",
       "active": true
+    },
+    {
+      "slug": "nada-surf",
+      "name": "Nada Surf",
+      "config": "editions/nada-surf/edition.json",
+      "active": true
     }
   ]
 }
