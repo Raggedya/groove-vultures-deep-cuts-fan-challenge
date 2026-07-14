@@ -1,0 +1,10 @@
+{
+  "reporting_currency": "AUD",
+  "original_currency": "USD",
+  "email_recipient": "andrewharris501@gmail.com",
+  "detailed_usage_in_email": false,
+  "include_failed_builds": true,
+  "pricing_table": "config/ai-pricing.json",
+  "exchange_rate_url": "https://api.frankfurter.app/latest?from=USD&to=AUD",
+  "exchange_rate_source": "Frankfurter / European Central Bank reference rates"
+}

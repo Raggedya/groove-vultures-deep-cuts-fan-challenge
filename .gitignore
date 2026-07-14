@@ -3,3 +3,5 @@ assets/groove-vultures-background.png
 .tools/
 output/*/
 !output/*/.gitkeep
+build-records/in-progress/*.json
+.env

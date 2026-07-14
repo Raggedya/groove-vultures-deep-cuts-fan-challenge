@@ -25,6 +25,11 @@ jobs:
       - run: node scripts/validate-platform.mjs
       - run: node scripts/validate-questions.mjs
       - run: node scripts/test-engine.mjs
+      - run: node scripts/test-build-tracking.mjs
       - run: node --check js/app.js
       - run: node --check js/engine.js
+      - run: node --check scripts/build-tracker.mjs
+      - run: node --check scripts/track-build.mjs
+      - run: node --check scripts/publish-edition.mjs
+      - run: node --check scripts/prepare-delivery.mjs
       - run: python scripts/generate-social-assets.py

@@ -12,6 +12,8 @@ Treat this repository as the one permanent Deep Cuts publishing platform. Do not
 For any Deep Cuts edition request:
 
 - use the project-local `deep-cuts-factory` skill;
+- start an automatic build record before research and keep it open through email preparation;
+- capture only genuinely available AI usage and classify cost honestly as actual, calculated, estimated or unavailable;
 - research and verify 36 questions to the constitutional standard;
 - place edition data under `editions/<slug>/`;
 - run the automated build and all validation gates;
@@ -19,6 +21,7 @@ For any Deep Cuts edition request:
 - generate the Instagram and branded QR images;
 - verify the live edition;
 - email the link and both images to the owner automatically;
+- use the generated completion-email body so BUILD SUMMARY, elapsed time and cost basis are never omitted;
 - report the playable link as the primary outcome.
 
 Optimise every change for reduced production time and reduced owner interaction. Preserve the exact Aggits master, audio behaviour and locked game model.
