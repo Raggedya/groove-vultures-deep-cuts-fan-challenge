@@ -19,6 +19,8 @@ They are the source of truth. Do not restate or fork their rules inside edition 
 
 Interpret `Deep Cut [Band or Artist]` as authorisation to complete the normal edition workflow inside this permanent repository:
 
+Before step 1, start the automatic build record and retain its build ID. Timing begins before research. Record only AI usage that a provider genuinely exposes; never invent token counts or costs. After live verification, complete the record with elapsed time, cost basis, URL and Git commit. Send the generated completion-email body without removing its BUILD SUMMARY. If production fails, close and retain a failed record with elapsed time and reason.
+
 1. Identify the correct artist and verify official Spotify, YouTube, Bandcamp and Instagram links.
 2. Research primary sources, direct interviews and reputable music archives.
 3. Produce 36 original, source-linked questions meeting the constitutional quality test.
@@ -33,6 +35,8 @@ Interpret `Deep Cut [Band or Artist]` as authorisation to complete the normal ed
 
 ## Efficiency rules
 
+- Treat `build-records/builds.jsonl` as the permanent machine-readable production history.
+- Never delete, silently abandon or overwrite a failed build record.
 - Do not ask the owner to repeat configuration, design, question, deployment or email requirements.
 - Make safe, in-scope assumptions and continue.
 - Ask only when identity is genuinely ambiguous or publication would target the wrong artist.
