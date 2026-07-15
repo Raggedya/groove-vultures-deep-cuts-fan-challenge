@@ -23,6 +23,12 @@ The shared engine is changed once. Each new band is configuration and generated 
 
 `assets/aggits-original-cutout-v4.png` is the immutable live-page character. `assets/aggits-qr-holder-approved.png` is the user-approved QR-poster character. Both are protected by SHA-256 checks. Never redraw, regenerate, recolour or substitute them.
 
+## Permanent visual specification
+
+The approved portrait reference is a fixed composition, not loose inspiration. Every live artist page follows this order: black-and-electric-blue character-first hero; one undistorted Aggits image; band name between short blue rules; large two-line headline; four-value strip; one wide primary music card; paired secondary social cards; wide support cards; restrained video, share panel and footer. Keep the mobile column narrow and the spacing generous. Do not add decorative copy that changes this hierarchy.
+
+All Aggits artwork must use proportional contain scaling (`height: auto` on the live page). Never stretch, squash or use cover-cropping on the character. The generated QR promotion is a 1080 by 1350 portrait image so the approved 3:4 QR-holder artwork can remain proportional. Overlay the generated QR only on the blank card already held by Aggits.
+
 ## Research standard
 
 Use primary artist sources first: official website, verified social profiles, official Spotify/Bandcamp pages, official YouTube channel, official ticket and merchandise stores. Cross-check identity before publishing. Do not guess missing links. Record only HTTPS destinations. A YouTube channel link is not sufficient evidence for a “most viewed” video; verify the specific official video and ensure embedding is permitted.
@@ -33,7 +39,7 @@ Each edition lives only in `editions/<slug>/edition.json`. It contains the band 
 
 ## QR and social output
 
-Every active edition produces a square band image and a scan-tested QR poster. The QR must resolve to the canonical edition URL and be decoded from the final rendered file before release. The QR poster uses the approved Aggits QR-holder artwork.
+Every active edition produces a square band image and a 4:5 portrait scan-tested QR poster. The QR must resolve to the canonical edition URL and be decoded from the final rendered file before release. The QR poster uses the approved Aggits QR-holder artwork without distortion.
 
 ## Analytics and privacy
 

@@ -9,15 +9,16 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-local_packages = ROOT / ".tools" / "python"
-if local_packages.exists() and str(local_packages) not in sys.path:
-    # Append rather than prepend so a managed runtime can use its readable,
-    # maintained packages before the optional project-local fallback.
-    sys.path.append(str(local_packages))
 
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
+try:
+    import zxingcpp
+except ModuleNotFoundError:
+    zxingcpp = None
+
 SIZE = 1080
+QR_HEIGHT = 1350
 WHITE = (245, 249, 255)
 BLUE = (47, 128, 255)
 
@@ -46,20 +47,20 @@ def fit_font(draw: ImageDraw.ImageDraw, text: str, max_width: int, start: int, m
     return font(minimum)
 
 
-def background() -> Image.Image:
-    image = Image.new("RGB", (SIZE, SIZE))
+def background(width: int = SIZE, height: int = SIZE) -> Image.Image:
+    image = Image.new("RGB", (width, height))
     pixels = image.load()
-    for y in range(SIZE):
-        for x in range(SIZE):
-            dx = (x - SIZE / 2) / (SIZE / 2)
-            dy = (y - SIZE * 0.46) / (SIZE / 2)
+    for y in range(height):
+        for x in range(width):
+            dx = (x - width / 2) / (width / 2)
+            dy = (y - height * 0.42) / (width / 2)
             radius = min(1.0, (dx * dx + dy * dy) ** 0.5)
-            vertical = y / SIZE
+            vertical = y / height
             blue = int(31 * (1 - radius) + 7 * radius + 8 * (1 - vertical))
             pixels[x, y] = (1 + int(4 * (1 - radius)), 5 + int(12 * (1 - radius)), min(54, blue + 12))
-    glow = Image.new("RGBA", (SIZE, SIZE), (0, 0, 0, 0))
+    glow = Image.new("RGBA", (width, height), (0, 0, 0, 0))
     draw = ImageDraw.Draw(glow)
-    draw.ellipse((170, 140, 910, 960), fill=(20, 91, 220, 74))
+    draw.ellipse((170, 140, width - 170, min(height - 120, 1060)), fill=(20, 91, 220, 74))
     glow = glow.filter(ImageFilter.GaussianBlur(90))
     return Image.alpha_composite(image.convert("RGBA"), glow)
 
@@ -79,9 +80,9 @@ def contain(image: Image.Image, width: int, height: int) -> Image.Image:
     return copy
 
 
-def centred_text(draw: ImageDraw.ImageDraw, text: str, y: int, selected_font: ImageFont.FreeTypeFont, fill=WHITE, stroke=0) -> None:
+def centred_text(draw: ImageDraw.ImageDraw, text: str, y: int, selected_font: ImageFont.FreeTypeFont, fill=WHITE, stroke=0, canvas_width: int = SIZE) -> None:
     box = draw.textbbox((0, 0), text, font=selected_font, stroke_width=stroke)
-    x = (SIZE - (box[2] - box[0])) // 2
+    x = (canvas_width - (box[2] - box[0])) // 2 - box[0]
     draw.text((x, y), text, font=selected_font, fill=fill, stroke_width=stroke, stroke_fill=(2, 9, 23))
 
 
@@ -124,35 +125,53 @@ def create_qr(config: dict, aggits: Image.Image, destination: Path) -> None:
 
     approved = Image.open(ROOT / "assets" / "aggits-qr-holder-approved.png").convert("RGBA")
     approved = approved.resize((SIZE, 1440), Image.Resampling.LANCZOS)
-    canvas = background()
+    canvas = background(SIZE, QR_HEIGHT)
+    clean_background = canvas.copy()
     # Discard the reference headline completely; retain only the approved
     # character and card, then compose a clean edition-specific header.
-    character_scene = approved.crop((0, 330, SIZE, 1410))
-    canvas.alpha_composite(character_scene, (0, 300))
+    character_scene = approved.crop((0, 330, SIZE, 1440))
+    # The supplied approved artwork is flattened, so the bottom edge of its
+    # original blue headline overlaps the top of Aggits' head. Remove only
+    # highly saturated blue pixels in that narrow edge band; skin, outline and
+    # all character geometry remain untouched.
+    scene_pixels = character_scene.load()
+    for y in range(min(70, character_scene.height)):
+        for x in range(character_scene.width):
+            red, green, blue, alpha = scene_pixels[x, y]
+            if blue > 90 and blue > red * 1.45 and blue > green * 1.25:
+                scene_pixels[x, y] = (red, green, blue, 0)
+    canvas.alpha_composite(character_scene, (0, 310))
     draw = ImageDraw.Draw(canvas)
     name = config["bandName"].upper()
-    header = Image.new("RGBA", (SIZE, 300), (1, 6, 16, 255))
-    header_glow = Image.new("RGBA", (SIZE, 300), (0, 0, 0, 0))
+    header = Image.new("RGBA", (SIZE, 310), (1, 6, 16, 255))
+    header_glow = Image.new("RGBA", (SIZE, 310), (0, 0, 0, 0))
     ImageDraw.Draw(header_glow).ellipse((210, 20, 870, 400), fill=(15, 106, 255, 85))
     header = Image.alpha_composite(header, header_glow.filter(ImageFilter.GaussianBlur(60)))
     canvas.alpha_composite(header, (0, 0))
+    # Remove the final fragments of the reference headline without placing a
+    # dark bar across the composition. Preserve the clean blue-black glow and
+    # leave the approved character untouched in the centre.
+    canvas.alpha_composite(clean_background.crop((0, 310, 445, 370)), (0, 310))
+    canvas.alpha_composite(clean_background.crop((690, 310, SIZE, 370)), (690, 310))
     draw = ImageDraw.Draw(canvas)
-    draw.rectangle((0, 300, 445, 365), fill=(1, 6, 16, 255))
-    draw.rectangle((690, 300, SIZE, 365), fill=(1, 6, 16, 255))
     name_font = fit_font(draw, name, 930, 104, 48)
-    centred_text(draw, name, 50, name_font, stroke=2)
+    centred_text(draw, name, 42, name_font, stroke=2)
     action_font = fit_font(draw, "SCAN TO DISCOVER", 900, 62, 40)
-    centred_text(draw, "SCAN TO DISCOVER", 183, action_font, fill=(61, 159, 255), stroke=1)
+    centred_text(draw, "SCAN TO DISCOVER", 165, action_font, fill=(61, 159, 255), stroke=1)
 
     # The approved source artwork already places a blank QR card in Aggits' hand.
     # Cover its placeholder exactly with the edition's deterministic, scan-tested QR.
     white_plate = Image.new("RGBA", (334, 334), (255, 255, 255, 255))
-    canvas.alpha_composite(white_plate, (171, 552))
-    canvas.alpha_composite(qr_image, (181 + (314 - qr_size) // 2, 562 + (314 - qr_size) // 2))
+    canvas.alpha_composite(white_plate, (171, 562))
+    canvas.alpha_composite(qr_image, (181 + (314 - qr_size) // 2, 572 + (314 - qr_size) // 2))
     canvas.convert("RGB").save(destination, "PNG", optimize=True)
 
     if not matrix or len(matrix) != len(matrix[0]):
         raise SystemExit(f"QR matrix validation failed for {destination}")
+    if zxingcpp is not None:
+        scan = zxingcpp.read_barcode(Image.open(destination))
+        if scan is None or scan.text != url:
+            raise SystemExit(f"Rendered QR scan-back failed for {destination}")
 
 
 def sha256(path: Path) -> str:
@@ -176,7 +195,7 @@ def main() -> None:
         "generatedAt": datetime.now(timezone.utc).isoformat(),
         "files": {
             "instagramImage": {"path": str(instagram.relative_to(ROOT)).replace("\\", "/"), "width": SIZE, "height": SIZE, "sha256": sha256(instagram)},
-            "qrImage": {"path": str(qr_path.relative_to(ROOT)).replace("\\", "/"), "width": SIZE, "height": SIZE, "sha256": sha256(qr_path), "verifiedDestination": config["publicURL"]},
+            "qrImage": {"path": str(qr_path.relative_to(ROOT)).replace("\\", "/"), "width": SIZE, "height": QR_HEIGHT, "sha256": sha256(qr_path), "verifiedDestination": config["publicURL"]},
         },
     }
     (output / "delivery-manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
