@@ -29,4 +29,3 @@
   }
   scope.DeepCutsInteractions={safeOrigin,shareMethodUrl,supportsNativeShare,nativeShare,copyLink,trackOutbound};
 })(typeof window!=="undefined"?window:globalThis);
-
