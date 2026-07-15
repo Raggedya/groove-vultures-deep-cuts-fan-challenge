@@ -40,8 +40,10 @@
     "website": "https://linktr.ee/sydneyshaemusic",
     "tickets": "https://www.bandsintown.com/a/15551683-sydney-shae",
     "merchandise": "https://sydneyshaemusic.com/",
-    "mailingList": ""
+    "mailingList": "",
+    "tip": ""
   },
+  "featuredVideo": { "title": "", "youtubeURL": "" },
   "classifications": [
     {
       "min": 0,
@@ -75,4 +77,3 @@
     }
   ]
 }
-
