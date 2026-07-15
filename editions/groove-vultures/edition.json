@@ -33,8 +33,10 @@
     "website": "",
     "tickets": "",
     "merchandise": "",
-    "mailingList": ""
+    "mailingList": "",
+    "tip": ""
   },
+  "featuredVideo": { "title": "", "youtubeURL": "" },
   "classifications": [
     { "min": 0, "max": 3, "label": "Curious Listener", "message": "You’ve opened the archive. There is much more of {band} waiting below." },
     { "min": 4, "max": 6, "label": "Proper Fan", "message": "You know more than the singles. Your {band} credentials are real." },
