@@ -38,7 +38,7 @@
       this.settings=platformConfig.analytics||{};
       this.editionId=editionEntry.slug||editionConfig.slug||"unknown";
       this.bandName=editionConfig.bandName||editionEntry.name||"Unknown";
-      this.quizIdentifier=editionConfig.analytics?.quizIdentifier||`${this.editionId}:deep-cuts-v1`;
+      this.quizIdentifier=editionConfig.analytics?.pageIdentifier||editionConfig.analytics?.quizIdentifier||`${this.editionId}:discovery-v1`;
       this.storage=storage;
       this.windowObject=windowObject;
       this.documentObject=documentObject;
@@ -131,4 +131,3 @@
 
   scope.DeepCutsAnalytics={Tracker,STORAGE_KEY,deviceCategory,referringSource,randomId};
 })(typeof window!=="undefined"?window:globalThis);
-

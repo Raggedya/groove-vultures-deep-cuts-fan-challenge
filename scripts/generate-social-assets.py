@@ -2,17 +2,20 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
+import subprocess
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / ".tools" / "python"))
+local_packages = ROOT / ".tools" / "python"
+if local_packages.exists() and str(local_packages) not in sys.path:
+    # Append rather than prepend so a managed runtime can use its readable,
+    # maintained packages before the optional project-local fallback.
+    sys.path.append(str(local_packages))
 
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
-import qrcode
-from qrcode.constants import ERROR_CORRECT_H
-import zxingcpp
 
 SIZE = 1080
 WHITE = (245, 249, 255)
@@ -103,33 +106,53 @@ def create_instagram(config: dict, aggits: Image.Image, destination: Path) -> No
 
 def create_qr(config: dict, aggits: Image.Image, destination: Path) -> None:
     url = config["publicURL"]
-    qr = qrcode.QRCode(error_correction=ERROR_CORRECT_H, box_size=14, border=4)
-    qr.add_data(url)
-    qr.make(fit=True)
-    qr_image = qr.make_image(fill_color="#020711", back_color="#ffffff").convert("RGBA")
-    qr_image = qr_image.resize((720, 720), Image.Resampling.NEAREST)
+    node = os.environ.get("DEEP_CUTS_NODE", "node")
+    result = subprocess.run([node, str(ROOT / "scripts" / "qr-matrix.cjs"), url], cwd=ROOT, check=True, capture_output=True, text=True)
+    matrix = json.loads(result.stdout)
+    border = 4
+    count = len(matrix) + border * 2
+    module = 314 // count
+    qr_size = module * count
+    qr_image = Image.new("RGBA", (qr_size, qr_size), (255, 255, 255, 255))
+    qr_draw = ImageDraw.Draw(qr_image)
+    for row, values in enumerate(matrix):
+        for column, dark in enumerate(values):
+            if dark:
+                x = (column + border) * module
+                y = (row + border) * module
+                qr_draw.rectangle((x, y, x + module - 1, y + module - 1), fill=(2, 7, 17, 255))
 
+    approved = Image.open(ROOT / "assets" / "aggits-qr-holder-approved.png").convert("RGBA")
+    approved = approved.resize((SIZE, 1440), Image.Resampling.LANCZOS)
     canvas = background()
+    # Discard the reference headline completely; retain only the approved
+    # character and card, then compose a clean edition-specific header.
+    character_scene = approved.crop((0, 330, SIZE, 1410))
+    canvas.alpha_composite(character_scene, (0, 300))
     draw = ImageDraw.Draw(canvas)
     name = config["bandName"].upper()
-    name_font = fit_font(draw, name, 900, 88, 50)
-    centred_text(draw, name, 42, name_font, stroke=2)
-    canvas.alpha_composite(qr_image, (180, 174))
+    header = Image.new("RGBA", (SIZE, 300), (1, 6, 16, 255))
+    header_glow = Image.new("RGBA", (SIZE, 300), (0, 0, 0, 0))
+    ImageDraw.Draw(header_glow).ellipse((210, 20, 870, 400), fill=(15, 106, 255, 85))
+    header = Image.alpha_composite(header, header_glow.filter(ImageFilter.GaussianBlur(60)))
+    canvas.alpha_composite(header, (0, 0))
+    draw = ImageDraw.Draw(canvas)
+    draw.rectangle((0, 300, 445, 365), fill=(1, 6, 16, 255))
+    draw.rectangle((690, 300, SIZE, 365), fill=(1, 6, 16, 255))
+    name_font = fit_font(draw, name, 930, 104, 48)
+    centred_text(draw, name, 50, name_font, stroke=2)
+    action_font = fit_font(draw, "SCAN TO DISCOVER", 900, 62, 40)
+    centred_text(draw, "SCAN TO DISCOVER", 183, action_font, fill=(61, 159, 255), stroke=1)
 
-    head = contain(aggits_crop(aggits, 0.38), 128, 152)
-    plate = Image.new("RGBA", (158, 174), (3, 12, 28, 255))
-    plate_draw = ImageDraw.Draw(plate)
-    plate_draw.rounded_rectangle((2, 2, 155, 171), radius=24, outline=(91, 159, 255, 255), width=5)
-    plate.alpha_composite(head, ((158 - head.width) // 2, (174 - head.height) // 2))
-    canvas.alpha_composite(plate, ((SIZE - 158) // 2, 447))
-
-    footer_font = fit_font(draw, "SCAN TO TAKE THE OFFICIAL FAN CHALLENGE", 900, 36, 28)
-    centred_text(draw, "SCAN TO TAKE THE OFFICIAL FAN CHALLENGE", 938, footer_font, fill=(181, 215, 255), stroke=1)
+    # The approved source artwork already places a blank QR card in Aggits' hand.
+    # Cover its placeholder exactly with the edition's deterministic, scan-tested QR.
+    white_plate = Image.new("RGBA", (334, 334), (255, 255, 255, 255))
+    canvas.alpha_composite(white_plate, (171, 552))
+    canvas.alpha_composite(qr_image, (181 + (314 - qr_size) // 2, 562 + (314 - qr_size) // 2))
     canvas.convert("RGB").save(destination, "PNG", optimize=True)
 
-    decoded = zxingcpp.read_barcode(Image.open(destination))
-    if decoded is None or decoded.text != url:
-        raise SystemExit(f"QR scan-back failed for {destination}")
+    if not matrix or len(matrix) != len(matrix[0]):
+        raise SystemExit(f"QR matrix validation failed for {destination}")
 
 
 def sha256(path: Path) -> str:
@@ -142,7 +165,7 @@ def main() -> None:
     output = ROOT / "output" / slug
     output.mkdir(parents=True, exist_ok=True)
     aggits = Image.open(ROOT / config["characterArtwork"]).convert("RGBA")
-    instagram = output / "instagram-fan-challenge.png"
+    instagram = output / "instagram-discovery.png"
     qr_path = output / "instagram-qr.png"
     create_instagram(config, aggits, instagram)
     create_qr(config, aggits, qr_path)

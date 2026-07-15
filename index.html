@@ -4,137 +4,64 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#020711">
-  <meta id="pageDescription" name="description" content="Deep Cuts official fan challenge.">
-  <title>Deep Cuts Fan Challenge</title>
-  <link rel="preload" href="assets/ding.mp3" as="audio" type="audio/mpeg">
-  <link rel="preload" href="assets/beep.wav" as="audio" type="audio/wav">
+  <meta id="pageDescription" name="description" content="Official artist links, music, video and ways to support the band.">
+  <title>Deep Cuts Artist Discovery</title>
   <link rel="preload" href="assets/aggits-original-cutout-v4.png" as="image">
-  <link rel="stylesheet" href="styles.css?v=20260713-7">
+  <link rel="stylesheet" href="styles.css?v=20260715-discovery-1">
 </head>
 <body>
-  <main id="app" class="app-shell home-active">
+  <main id="app" class="discovery-shell">
     <div class="ambient" aria-hidden="true"></div>
-    <section id="splashScreen" class="screen business-splash" hidden aria-live="polite">
-      <div class="splash-lockup">
-        <p class="splash-kicker">Deep Cuts Presents</p>
-        <h1 id="splashBusinessName">Business Name</h1>
-        <div class="splash-aggits" role="img" aria-label="Aggits"></div>
-      </div>
-    </section>
-    <header id="brandHeader" class="brand-header" aria-label="Deep Cuts Fan Challenge">
-      <span class="brand-kicker">Fan Challenge</span>
-      <strong id="brandHeaderName" class="brand-name">Deep Cuts</strong>
-    </header>
 
-    <section id="homeScreen" class="screen home-screen">
-      <div id="homeBranding" class="home-branding" aria-label="Deep Cuts Fan Challenge">
-        <p class="home-edition">The Official Fan Challenge</p>
-        <h1 id="homeBandName" class="home-band-name">Deep Cuts</h1>
-        <div class="home-stage" aria-hidden="true"></div>
-        <div class="home-aggits" role="img" aria-label="Aggits"></div>
-      </div>
-      <div class="panel home-panel">
-        <button id="startButton" class="button primary" type="button" disabled>Start the Challenge</button>
-        <button id="muteButtonHome" class="button utility mute-button" type="button" aria-pressed="false">Sound: On</button>
-        <small id="coverCopyright" class="cover-copyright">copyright Clearlight Creative</small>
-      </div>
-    </section>
+    <section id="discoveryPage" class="discovery-page" aria-labelledby="bandName">
+      <header class="hero">
+        <p id="heroKicker" class="hero-kicker">Official artist links</p>
+        <h1 id="bandName" class="band-name">Deep Cuts</h1>
+        <p id="tagline" class="tagline">Listen. Watch. Follow. Support.</p>
+        <div class="hero-glow" aria-hidden="true"></div>
+        <img id="heroArtwork" class="hero-artwork" src="assets/aggits-original-cutout-v4.png" alt="Aggits">
+        <ul id="featureList" class="feature-list" aria-label="Artist page features">
+          <li>Listen</li><li>Watch</li><li>Follow</li><li>Support</li>
+        </ul>
+      </header>
 
-    <section id="businessHubScreen" class="screen business-hub-screen" hidden>
-      <div class="panel business-hero reveal-sweep">
-        <div class="business-aggits" role="img" aria-label="Aggits"></div>
-        <p class="eyebrow">Deep Cuts Business</p>
-        <p id="businessPromise" class="business-promise"></p>
-        <p id="businessDescription" class="business-description"></p>
-      </div>
-      <nav class="panel business-links-panel" aria-label="Official business destinations">
-        <div id="businessLinks" class="business-links"></div>
-      </nav>
-      <button id="businessQuizButton" class="button primary business-quiz-button" type="button" disabled>Deep Cuts</button>
-      <small class="business-host">Hosted by Deep Cuts Â· copyright Clearlight Creative</small>
-    </section>
+      <section class="link-section" aria-labelledby="discoverTitle">
+        <p class="section-kicker">Everything in one place</p>
+        <h2 id="discoverTitle">Discover the artist</h2>
+        <div id="platformLinks" class="platform-links"></div>
+      </section>
 
-    <section id="quizScreen" class="screen quiz-screen" hidden>
-      <div class="quiz-topline">
-        <p id="progressText" class="progress" aria-live="polite">Question 1 of 12</p>
-        <button id="muteButtonQuiz" class="icon-button mute-button" type="button" aria-label="Mute sound" aria-pressed="false">â™ª</button>
-      </div>
-      <div class="panel question-panel">
-        <div class="question-heading">
-          <span id="categoryText" class="category">Band History</span>
-          <div id="timerRing" class="timer-ring" role="timer" aria-label="15 seconds remaining">
-            <span id="timerNumber">15</span>
-          </div>
+      <section id="videoSection" class="video-section" aria-labelledby="videoTitle" hidden>
+        <p class="section-kicker">Featured video</p>
+        <h2 id="videoTitle">Watch the band</h2>
+        <div class="video-frame">
+          <iframe id="featuredVideo" title="Featured artist video" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
-        <h2 id="questionText" tabindex="-1">Loading questionâ€¦</h2>
-        <div id="answerList" class="answer-list" role="group" aria-label="Answer choices"></div>
-        <div id="feedback" class="feedback" aria-live="assertive" hidden>
-          <div class="feedback-heading">
-            <span id="deepCutBadge" class="deep-cut-badge">Deep Cut</span>
-            <strong id="feedbackTitle"></strong>
-          </div>
-          <span id="feedbackFact"></span>
-          <a id="feedbackSource" class="feedback-source" target="_blank" rel="noopener noreferrer"></a>
-        </div>
-      </div>
-    </section>
+        <a id="videoFallback" class="video-fallback" target="_blank" rel="noopener noreferrer">Watch on YouTube <span aria-hidden="true">›</span></a>
+      </section>
 
-    <section id="resultScreen" class="screen result-screen" hidden>
-      <div class="panel result-panel">
-        <div id="resultArtwork" class="result-artwork" role="img" aria-label="Aggits for the Deep Cuts fan challenge"></div>
-        <p class="eyebrow">YOUR RESULT</p>
-        <h1 id="scoreText" class="score">0 / 12</h1>
-        <p class="rating-label">YOUR FAN RATING</p>
-        <h2 id="classificationText" class="classification">JUST DISCOVERING THE BAND</h2>
-        <p id="resultMessage" class="result-message"></p>
-        <section id="rewardPanel" class="reward-panel" hidden aria-labelledby="rewardTitle">
-          <p class="eyebrow">YOUR REWARD</p>
-          <h2 id="rewardTitle"></h2>
-          <p id="rewardInstructions"></p>
-          <p id="rewardCode" class="reward-code" hidden></p>
-        </section>
-        <dl class="stats">
-          <div><dt>Correct</dt><dd id="correctStat">0</dd></div>
-          <div><dt>Incorrect</dt><dd id="incorrectStat">0</dd></div>
-          <div><dt>Unanswered</dt><dd id="unansweredStat">0</dd></div>
-          <div><dt>Average</dt><dd id="averageStat">0.0s</dd></div>
-        </dl>
-        <section class="discover" aria-labelledby="discoverTitle">
-          <h2 id="discoverTitle">Discover the artist</h2>
-          <div id="platformLinks" class="platform-links"></div>
-        </section>
-        <button id="replayButton" class="button primary" type="button">Take the Quiz Again</button>
-        <button id="backToBusinessButton" class="button secondary" type="button" hidden>Back to Business Hub</button>
+      <section class="share-section" aria-labelledby="shareTitle">
+        <h2 id="shareTitle">Share this artist page</h2>
         <div class="share-actions">
-          <button id="shareButton" class="button secondary" type="button">Challenge Your Mates</button>
-          <button id="copyButton" class="button utility" type="button">Copy Quiz Link</button>
+          <button id="shareButton" class="action-button primary" type="button">Share</button>
+          <button id="copyButton" class="action-button secondary" type="button">Copy link</button>
         </div>
         <p id="shareStatus" class="status" aria-live="polite"></p>
-      </div>
+      </section>
+
+      <footer class="page-footer">
+        <span>Powered by Deep Cuts</span>
+        <small id="coverCopyright">copyright Clearlight Creative</small>
+      </footer>
     </section>
 
-    <dialog id="shareDialog" class="share-dialog" aria-labelledby="shareDialogTitle">
-      <div class="share-dialog-card">
-        <div class="share-dialog-heading"><h2 id="shareDialogTitle">Share your result</h2><button id="shareDialogClose" class="share-close" type="button" aria-label="Close share options">Ã—</button></div>
-        <div class="share-methods">
-          <button type="button" data-share-method="facebook">Facebook</button>
-          <button type="button" data-share-method="x">X / Twitter</button>
-          <button type="button" data-share-method="whatsapp">WhatsApp</button>
-          <button type="button" data-share-method="messenger">Messenger</button>
-          <button type="button" data-share-method="email">Email</button>
-          <button type="button" data-share-method="copy_link">Copy link</button>
-        </div>
-      </div>
-    </dialog>
-
-    <section id="errorScreen" class="screen error-screen" hidden>
-      <div class="panel"><h1>Challenge unavailable</h1><p id="errorMessage">Please refresh and try again.</p></div>
+    <section id="errorScreen" class="error-screen" hidden>
+      <h1>Artist page unavailable</h1>
+      <p id="errorMessage">Please refresh and try again.</p>
     </section>
   </main>
-  <script src="js/engine.js?v=20260714-analytics-1"></script>
-  <script src="js/analytics.js?v=20260714-analytics-1"></script>
-  <script src="js/interactions.js?v=20260714-analytics-1"></script>
-  <script src="js/app.js?v=20260714-analytics-1"></script>
+  <script src="js/analytics.js?v=20260715-discovery-1"></script>
+  <script src="js/interactions.js?v=20260715-discovery-1"></script>
+  <script src="js/app.js?v=20260715-discovery-1"></script>
 </body>
 </html>
-

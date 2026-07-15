@@ -40,8 +40,10 @@
     "website": "https://lilithlane.com/",
     "tickets": "",
     "merchandise": "",
-    "mailingList": ""
+    "mailingList": "",
+    "tip": ""
   },
+  "featuredVideo": { "title": "", "youtubeURL": "" },
   "classifications": [
     {
       "min": 0,
