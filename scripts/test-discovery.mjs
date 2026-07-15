@@ -7,6 +7,8 @@ for(const visualClass of ['hero-stage','hero-artwork','band-name','hero-headline
 for(const legacy of ['heroKicker','tagline'])assert.ok(!app.includes(legacy),`Legacy hero content must not return: ${legacy}`);
 assert.match(css,/\.hero-artwork\{[^}]*height:auto/,'Aggits must preserve its native aspect ratio.');
 assert.match(css,/\.platform-links\{[^}]*grid-template-columns:1fr 1fr/,'Reference layout requires paired secondary cards.');
+assert.match(css,/\.platform-link\{[^}]*inset 0 0 0 1px[^}]*0 0 12px/,'Destination cards must retain the approved defined rim and restrained blue halo.');
+assert.match(css,/\.action-button\{[^}]*min-height:44px[^}]*border:1px solid #62b4ff/,'Share controls must retain the more substantial defined-button treatment.');
 assert.ok(app.includes('primary-destination'),'Spotify must render as the wide primary destination.');
 assert.ok(generator.includes('QR_HEIGHT = 1350'),'QR promotion must use a non-distorting 4:5 portrait canvas.');
 assert.ok(generator.includes("approved.resize((SIZE, 1440)"),'Approved QR-holder artwork must preserve its 3:4 aspect ratio.');
