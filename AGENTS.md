@@ -1,27 +1,7 @@
 # Deep Cuts repository instructions
 
-Before acting, read these files completely in this order:
+Read `DEEP_CUTS_PRODUCTION_MANUAL.md`, `CLAUDE.md`, `ROADMAP.md`, then `.agents/skills/deep-cuts-factory/SKILL.md` before acting.
 
-1. `DEEP_CUTS_PRODUCTION_MANUAL.md`
-2. `CLAUDE.md`
-3. `ROADMAP.md`
-4. `.agents/skills/deep-cuts-factory/SKILL.md`
+This is the one permanent Deep Cuts artist-discovery platform. Never create or copy a repository for an edition. A request in the form `Deep Cut [Artist]` authorises the normal factory workflow: start a build record; verify the artist and official links; configure one edition; verify the most-viewed embeddable official YouTube video when possible; add a Tip destination only when officially supplied or published; validate; generate a square image and scan-tested approved Aggits QR poster; deploy; verify; complete the build record; and automatically deliver the URL and assets.
 
-Treat this repository as the one permanent Deep Cuts publishing platform. Do not create a separate repository or duplicate the application for an edition.
-
-For any Deep Cuts edition request:
-
-- use the project-local `deep-cuts-factory` skill;
-- start an automatic build record before research and keep it open through email preparation;
-- capture only genuinely available AI usage and classify cost honestly as actual, calculated, estimated or unavailable;
-- research and verify 36 questions to the constitutional standard;
-- place edition data under `editions/<slug>/`;
-- run the automated build and all validation gates;
-- publish to the existing Deep Cuts site;
-- generate the Instagram and branded QR images;
-- verify the live edition;
-- email the link and both images to the owner automatically;
-- use the generated completion-email body so BUILD SUMMARY, elapsed time and cost basis are never omitted;
-- report the playable link as the primary outcome.
-
-Optimise every change for reduced production time and reduced owner interaction. Preserve the exact Aggits master, audio behaviour and locked game model.
+Never invent destinations. Blank links must remain hidden. Preserve the approved Aggits assets and their integrity checks. Optimise every change for less production time and less owner interaction.
