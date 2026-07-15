@@ -1,5 +1,15 @@
 {
-  "asset": "assets/aggits-original-cutout-v4.png",
-  "sha256": "06290f721c96e01ef50912270d861c7cba6e25016cb2823c61b72936b6a64344",
-  "policy": "Exact approved Aggits pixels. Never redraw, regenerate, recolour or substitute."
+  "policy": "Only exact, user-approved Aggits assets may be used. Never redraw, regenerate, recolour or substitute.",
+  "assets": [
+    {
+      "asset": "assets/aggits-original-cutout-v4.png",
+      "sha256": "06290f721c96e01ef50912270d861c7cba6e25016cb2823c61b72936b6a64344",
+      "use": "Live discovery page and square profile artwork"
+    },
+    {
+      "asset": "assets/aggits-qr-holder-approved.png",
+      "sha256": "65f27b919074a8db3df7935ade66e1322609e050c5fcbf71761e71cf69eecfac",
+      "use": "User-approved QR promotional artwork"
+    }
+  ]
 }
