@@ -40,8 +40,10 @@
     "website": "https://www.nadasurf.com/",
     "tickets": "https://www.nadasurf.com/tour",
     "merchandise": "https://geo.bingomerch.com/nadasurf",
-    "mailingList": "https://www.nadasurf.com/sign-up"
+    "mailingList": "https://www.nadasurf.com/sign-up",
+    "tip": ""
   },
+  "featuredVideo": { "title": "", "youtubeURL": "" },
   "classifications": [
     {
       "min": 0,
