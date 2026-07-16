@@ -1,0 +1,28 @@
+name: Verify Deep Cuts email delivery
+
+on:
+  workflow_dispatch:
+    inputs:
+      edition:
+        description: Edition slug to deliver
+        required: true
+        default: groove-vultures
+
+permissions:
+  contents: read
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Send live scan-tested delivery email
+        run: node scripts/send-delivery.mjs "${{ inputs.edition }}"
+        env:
+          DEEP_CUTS_API_URL: https://deep-cuts.andrewharris501.workers.dev
+          DEEP_CUTS_ADMIN_TOKEN: ${{ secrets.DEEP_CUTS_ADMIN_TOKEN }}
+          DEEP_CUTS_DELIVERY_JOB_ID: verification-${{ github.run_id }}-${{ github.run_attempt }}
+
