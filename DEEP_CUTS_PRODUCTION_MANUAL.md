@@ -1,6 +1,6 @@
 # Deep Cuts Production Manual
 
-Version 3.0 — Permanent Artist Discovery Platform
+Version 3.0 â€” Permanent Artist Discovery Platform
 
 ## Constitution
 
@@ -35,9 +35,11 @@ News & Reviews links to the strongest recent credible accessible interview, feat
 
 ## QR production standard
 
-The QR promotion is a square 1080 × 1080 PNG using the locked QR master composition. The final QR is generated deterministically from `/q/<editionId>`, uses black modules on white, retains a four-module quiet zone, is not skewed or decorated, and is placed only within the card held by Aggits.
+The QR promotion is a square 1080 Ã— 1080 PNG using the locked QR master composition. The final QR is generated deterministically from `/q/<editionId>`, uses black modules on white, retains a four-module quiet zone, is not skewed or decorated, and is placed only within the card held by Aggits.
 
 The final rendered PNG must be decoded automatically and the decoded URL must exactly match the intended QR route. It must also decode after representative social-media resizing. A failed or mismatched scan blocks publication.
+
+The permanent base address is stored once in `platform.json`. Placeholder addresses are forbidden. Deployment regenerates every active edition's artwork against that permanent address before packaging, publishes the scan-tested PNG with the platform, and verifies that each deployed QR PNG is publicly available before any completion email can be sent.
 
 ## Analytics contract
 
@@ -70,8 +72,11 @@ The deployment workflow installs the encrypted administration, Resend API, repor
 
 Completion email goes automatically to `andrewharris501@gmail.com` and contains the verified live URL plus scan-tested QR PNG. A scheduled Friday report contains band-level scans, views, destination clicks, shares, production timing and link health in CSV format.
 
+The delivery service refuses to send if the deployed PNG cannot be retrieved as an image. Resend webhook signatures are verified before delivery confirmation is recorded; only `email.delivered` completes the measured production job.
+
 ## Definition of done
 
 An edition is complete only when identity is verified; configuration validates; all active links resolve to the correct artist; unavailable buttons are disabled; the locked screen passes mobile checks; analytics event names and edition IDs pass tests; the final QR scan-back matches; deployment is live; the live smoke test passes; and the delivery email is confirmed.
 
-After every change ask: “What can I automate next?” Implement the practical answer.
+After every change ask: â€œWhat can I automate next?â€ Implement the practical answer.
+
