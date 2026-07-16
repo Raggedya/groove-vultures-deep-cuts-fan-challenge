@@ -11,8 +11,12 @@ try{
 const platform=JSON.parse(await fs.readFile('platform.json','utf8'));
 if(!platform.defaultEdition)errors.push('platform.json requires defaultEdition.');
 const slugs=new Set();
+const editionIds=new Set();
 for(const edition of platform.editions){
   if(slugs.has(edition.slug))errors.push(`Duplicate edition slug: ${edition.slug}`);slugs.add(edition.slug);
+  if(!/^[A-Za-z0-9_-]{4,40}$/.test(edition.editionId||''))errors.push(`${edition.slug} requires an opaque editionId.`);
+  if(editionIds.has(edition.editionId))errors.push(`Duplicate editionId: ${edition.editionId}`);editionIds.add(edition.editionId);
+  if(edition.canonicalPath!==`/e/${edition.editionId}`)errors.push(`${edition.slug} canonicalPath must use its opaque editionId.`);
   try{
     const config=JSON.parse(await fs.readFile(edition.config,'utf8'));
     if(config.slug!==edition.slug)errors.push(`${edition.config} slug mismatch.`);

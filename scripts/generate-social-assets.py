@@ -18,7 +18,7 @@ except ModuleNotFoundError:
     zxingcpp = None
 
 SIZE = 1080
-QR_HEIGHT = 1350
+QR_HEIGHT = 1080
 WHITE = (245, 249, 255)
 BLUE = (47, 128, 255)
 
@@ -45,6 +45,18 @@ def fit_font(draw: ImageDraw.ImageDraw, text: str, max_width: int, start: int, m
         if draw.textbbox((0, 0), text, font=candidate)[2] <= max_width:
             return candidate
     return font(minimum)
+
+
+def fit_qr_title_font(draw: ImageDraw.ImageDraw, text: str, max_width: int, start: int, minimum: int = 48) -> ImageFont.FreeTypeFont:
+    candidates = [Path("C:/Windows/Fonts/impact.ttf"), Path("/usr/share/fonts/truetype/dejavu/DejaVuSansCondensed-Bold.ttf")]
+    source = next((candidate for candidate in candidates if candidate.exists()), None)
+    if source is None:
+        return fit_font(draw, text, max_width, start, minimum)
+    for size in range(start, minimum - 1, -2):
+        selected = ImageFont.truetype(str(source), size=size)
+        if draw.textbbox((0, 0), text, font=selected)[2] <= max_width:
+            return selected
+    return ImageFont.truetype(str(source), size=minimum)
 
 
 def background(width: int = SIZE, height: int = SIZE) -> Image.Image:
@@ -105,14 +117,20 @@ def create_instagram(config: dict, aggits: Image.Image, destination: Path) -> No
     canvas.convert("RGB").save(destination, "PNG", optimize=True)
 
 
-def create_qr(config: dict, aggits: Image.Image, destination: Path) -> None:
-    url = config["publicURL"]
+def create_qr(config: dict, aggits: Image.Image, destination: Path) -> str:
+    base_url = os.environ.get("DEEP_CUTS_BASE_URL", "https://deep-cuts.example").rstrip("/")
+    edition_id = config.get("editionId") or config.get("analytics", {}).get("editionId")
+    if not edition_id:
+        platform = json.loads((ROOT / "platform.json").read_text(encoding="utf-8"))
+        entry = next(item for item in platform["editions"] if item["slug"] == config["slug"])
+        edition_id = entry["editionId"]
+    url = f"{base_url}/q/{edition_id}"
     node = os.environ.get("DEEP_CUTS_NODE", "node")
     result = subprocess.run([node, str(ROOT / "scripts" / "qr-matrix.cjs"), url], cwd=ROOT, check=True, capture_output=True, text=True)
     matrix = json.loads(result.stdout)
     border = 4
     count = len(matrix) + border * 2
-    module = 314 // count
+    module = 214 // count
     qr_size = module * count
     qr_image = Image.new("RGBA", (qr_size, qr_size), (255, 255, 255, 255))
     qr_draw = ImageDraw.Draw(qr_image)
@@ -123,47 +141,57 @@ def create_qr(config: dict, aggits: Image.Image, destination: Path) -> None:
                 y = (row + border) * module
                 qr_draw.rectangle((x, y, x + module - 1, y + module - 1), fill=(2, 7, 17, 255))
 
-    approved = Image.open(ROOT / "assets" / "aggits-qr-holder-approved.png").convert("RGBA")
-    approved = approved.resize((SIZE, 1440), Image.Resampling.LANCZOS)
-    canvas = background(SIZE, QR_HEIGHT)
-    clean_background = canvas.copy()
-    # Discard the reference headline completely; retain only the approved
-    # character and card, then compose a clean edition-specific header.
-    character_scene = approved.crop((0, 330, SIZE, 1440))
-    # The supplied approved artwork is flattened, so the bottom edge of its
-    # original blue headline overlaps the top of Aggits' head. Remove only
-    # highly saturated blue pixels in that narrow edge band; skin, outline and
-    # all character geometry remain untouched.
-    scene_pixels = character_scene.load()
-    for y in range(min(70, character_scene.height)):
-        for x in range(character_scene.width):
-            red, green, blue, alpha = scene_pixels[x, y]
-            if blue > 90 and blue > red * 1.45 and blue > green * 1.25:
-                scene_pixels[x, y] = (red, green, blue, 0)
-    canvas.alpha_composite(character_scene, (0, 310))
+    master = Image.open(ROOT / "assets" / "aggits-qr-master-final.png").convert("RGBA").resize((SIZE, SIZE), Image.Resampling.LANCZOS)
+
+    # The approved master remains the canvas. Only the artist-title field and
+    # the QR modules are variable. A small protected head/shoulder layer lets
+    # the replacement title remain behind Aggits without reconstructing or
+    # distorting the character, card, body, glow or approved footer.
+    head_mask = Image.new("L", (SIZE, SIZE), 0)
+    protected_draw = ImageDraw.Draw(head_mask)
+    protected_draw.polygon([(520,165),(595,165),(626,205),(642,300),(625,360),(600,400),(510,400),(480,350),(485,225)], fill=255)
+    protected_draw.polygon([(490,345),(625,345),(705,410),(760,525),(405,525),(450,410)], fill=255)
+    source_pixels = master.load()
+    mask_pixels = head_mask.load()
+    for y in range(150, 526):
+        for x in range(390, 770):
+            if not mask_pixels[x, y]:
+                continue
+            red, green, blue, _ = source_pixels[x, y]
+            if blue > 60 and blue > red + 24 and blue > green + 18:
+                mask_pixels[x, y] = 0
+    head_mask = head_mask.filter(ImageFilter.GaussianBlur(0.8))
+    head_layer = Image.new("RGBA", (SIZE, SIZE), (0, 0, 0, 0))
+    head_layer.paste(master, (0, 0), head_mask)
+
+    canvas = master.copy()
+    replacement = background(SIZE, 535)
+    fade_mask = Image.new("L", (SIZE, 535), 255)
+    fade_pixels = fade_mask.load()
+    for y in range(500, 535):
+        alpha = int(255 * (1 - (y - 500) / 35))
+        for x in range(SIZE):
+            fade_pixels[x, y] = alpha
+    canvas.paste(replacement, (0, 0), fade_mask)
     draw = ImageDraw.Draw(canvas)
     name = config["bandName"].upper()
-    header = Image.new("RGBA", (SIZE, 310), (1, 6, 16, 255))
-    header_glow = Image.new("RGBA", (SIZE, 310), (0, 0, 0, 0))
-    ImageDraw.Draw(header_glow).ellipse((210, 20, 870, 400), fill=(15, 106, 255, 85))
-    header = Image.alpha_composite(header, header_glow.filter(ImageFilter.GaussianBlur(60)))
-    canvas.alpha_composite(header, (0, 0))
-    # Remove the final fragments of the reference headline without placing a
-    # dark bar across the composition. Preserve the clean blue-black glow and
-    # leave the approved character untouched in the centre.
-    canvas.alpha_composite(clean_background.crop((0, 310, 445, 370)), (0, 310))
-    canvas.alpha_composite(clean_background.crop((690, 310, SIZE, 370)), (690, 310))
-    draw = ImageDraw.Draw(canvas)
-    name_font = fit_font(draw, name, 930, 104, 48)
-    centred_text(draw, name, 42, name_font, stroke=2)
-    action_font = fit_font(draw, "SCAN TO DISCOVER", 900, 62, 40)
-    centred_text(draw, "SCAN TO DISCOVER", 165, action_font, fill=(61, 159, 255), stroke=1)
+    words = name.split()
+    if len(words) > 1:
+        split = min(range(1, len(words)), key=lambda index: abs(len(" ".join(words[:index])) - len(" ".join(words[index:]))))
+        lines = [" ".join(words[:split]), " ".join(words[split:])]
+    else:
+        lines = [name]
+    title_size = 190 if len(lines) == 1 else 170
+    title_y = 14
+    for line in lines:
+        selected = fit_qr_title_font(draw, line, 950, title_size, 74)
+        centred_text(draw, line, title_y, selected, fill=(5, 91, 218), stroke=1)
+        title_y += selected.size + 5
+    canvas.alpha_composite(head_layer)
 
-    # The approved source artwork already places a blank QR card in Aggits' hand.
-    # Cover its placeholder exactly with the edition's deterministic, scan-tested QR.
-    white_plate = Image.new("RGBA", (334, 334), (255, 255, 255, 255))
-    canvas.alpha_composite(white_plate, (171, 562))
-    canvas.alpha_composite(qr_image, (181 + (314 - qr_size) // 2, 572 + (314 - qr_size) // 2))
+    # Replace the placeholder only inside the approved white card.
+    canvas.alpha_composite(Image.new("RGBA", (239, 253), (255, 255, 255, 255)), (241, 385))
+    canvas.alpha_composite(qr_image, (253 + (214 - qr_size) // 2, 404 + (214 - qr_size) // 2))
     canvas.convert("RGB").save(destination, "PNG", optimize=True)
 
     if not matrix or len(matrix) != len(matrix[0]):
@@ -172,6 +200,11 @@ def create_qr(config: dict, aggits: Image.Image, destination: Path) -> None:
         scan = zxingcpp.read_barcode(Image.open(destination))
         if scan is None or scan.text != url:
             raise SystemExit(f"Rendered QR scan-back failed for {destination}")
+        reduced = Image.open(destination).resize((540, 540), Image.Resampling.LANCZOS)
+        reduced_scan = zxingcpp.read_barcode(reduced)
+        if reduced_scan is None or reduced_scan.text != url:
+            raise SystemExit(f"Reduced-size QR scan-back failed for {destination}")
+    return url
 
 
 def sha256(path: Path) -> str:
@@ -187,15 +220,15 @@ def main() -> None:
     instagram = output / "instagram-discovery.png"
     qr_path = output / "instagram-qr.png"
     create_instagram(config, aggits, instagram)
-    create_qr(config, aggits, qr_path)
+    verified_url = create_qr(config, aggits, qr_path)
     manifest = {
         "slug": slug,
         "bandName": config["bandName"],
-        "publicURL": config["publicURL"],
+        "publicURL": verified_url,
         "generatedAt": datetime.now(timezone.utc).isoformat(),
         "files": {
             "instagramImage": {"path": str(instagram.relative_to(ROOT)).replace("\\", "/"), "width": SIZE, "height": SIZE, "sha256": sha256(instagram)},
-            "qrImage": {"path": str(qr_path.relative_to(ROOT)).replace("\\", "/"), "width": SIZE, "height": QR_HEIGHT, "sha256": sha256(qr_path), "verifiedDestination": config["publicURL"]},
+            "qrImage": {"path": str(qr_path.relative_to(ROOT)).replace("\\", "/"), "width": SIZE, "height": QR_HEIGHT, "sha256": sha256(qr_path), "verifiedDestination": verified_url},
         },
     }
     (output / "delivery-manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")

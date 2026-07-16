@@ -1,12 +1,12 @@
-# Deep Cuts Roadmap — Ordered by Production Time Saved
+# Deep Cuts Roadmap — Ordered Only by Production Time Saved
 
-1. One-prompt artist research, verified link capture and edition registration.
-2. Automatic official-video discovery and embeddability verification.
-3. Automatic QR-holder artwork composition and scan-back testing.
-4. Automatic link health, mobile layout and analytics tests.
-5. Automatic commit and deployment of only the new configuration and outputs.
-6. Automatic email delivery of the live URL and promotional assets.
-7. Self-service band link and Tip-link approval form.
-8. Central hosted analytics reporting across all editions.
-9. One-command publish with no PowerShell or GitHub interaction.
-10. Full Deep Cuts Factory: one prompt to researched, verified, deployed and delivered page.
+1. Complete Cloudflare Worker, D1 and single-platform deployment.
+2. Automate one-name intake and production-stage timing.
+3. Automate verified official-link research with evidence and confidence thresholds.
+4. Automate the locked main-screen configuration and sonic signature.
+5. Automate square QR-master composition and multi-size scan-back certification.
+6. Automate GitHub commit, validation, deployment and live smoke tests.
+7. Automate completion email with live URL and QR PNG.
+8. Automate Friday band-level CSV analytics and link-health reporting.
+9. Add one-instruction Tip and destination updates without QR replacement.
+10. Add self-healing link checks and exception-only owner notification.

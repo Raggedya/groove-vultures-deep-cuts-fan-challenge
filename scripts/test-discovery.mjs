@@ -1,17 +1,25 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
-const html=await fs.readFile('index.html','utf8');const app=await fs.readFile('js/app.js','utf8');const css=await fs.readFile('styles.css','utf8');const generator=await fs.readFile('scripts/generate-social-assets.py','utf8');
-for(const id of ['bandName','platformLinks','videoSection','shareButton','copyButton'])assert.ok(html.includes(`id="${id}"`),`Missing discovery control ${id}`);
-for(const forbidden of ['quizScreen','timerRing','answerList','ding.mp3'])assert.ok(!html.includes(forbidden),`Public page must not load legacy quiz element ${forbidden}`);
-for(const visualClass of ['hero-stage','hero-artwork','band-name','hero-headline','feature-list','platform-links'])assert.ok(html.includes(`class="${visualClass}`),`Missing reference-layout element ${visualClass}`);
-for(const legacy of ['heroKicker','tagline'])assert.ok(!app.includes(legacy),`Legacy hero content must not return: ${legacy}`);
-assert.match(css,/\.hero-artwork\{[^}]*height:auto/,'Aggits must preserve its native aspect ratio.');
-assert.match(css,/\.platform-links\{[^}]*grid-template-columns:1fr 1fr/,'Reference layout requires paired secondary cards.');
-assert.ok(app.includes('primary-destination'),'Spotify must render as the wide primary destination.');
-assert.ok(generator.includes('QR_HEIGHT = 1350'),'QR promotion must use a non-distorting 4:5 portrait canvas.');
-assert.ok(generator.includes("approved.resize((SIZE, 1440)"),'Approved QR-holder artwork must preserve its 3:4 aspect ratio.');
-for(const platform of ['spotify','bandcamp','youtube','instagram','facebook','tiktok','website','tickets','merchandise','mailingList','tip'])assert.ok(app.includes(`["${platform}"`),`Missing ${platform} discovery destination`);
-assert.ok(app.includes('youtube-nocookie.com/embed/'),'Featured video must use privacy-enhanced YouTube embeds.');
+
+const html=await fs.readFile('index.html','utf8');
+const app=await fs.readFile('js/app.js','utf8');
+const css=await fs.readFile('styles.css','utf8');
+for(const id of ['bandName','artistBio','sonicSignature','platformLinks','shareButton'])assert.ok(html.includes(`id="${id}"`),`Missing locked discovery control ${id}`);
+for(const forbidden of ['quizScreen','timerRing','answerList','videoSection','copyButton','Official Music'])assert.ok(!html.includes(forbidden),`Locked artist page must not contain ${forbidden}`);
+for(const visualClass of ['hero-stage','hero-artwork','artist-title-row','artist-bio','sonic-signature','feature-list','platform-links'])assert.ok(html.includes(`class="${visualClass}`),`Missing master-layout element ${visualClass}`);
+assert.match(css,/\.hero-artwork\{[^}]*height:auto/,'Aggits must preserve his native aspect ratio.');
+assert.match(css,/\.platform-links\{[^}]*grid-template-columns:1fr 1fr/,'Master layout requires paired destination cards.');
+assert.match(css,/\.platform-link\.is-disabled/,'Unavailable standard destinations must remain visible and disabled.');
+assert.match(css,/@media\(prefers-reduced-motion:reduce\)/,'Attention animation must respect reduced-motion settings.');
+assert.ok(app.includes('setInterval(run,10000)'),'Waveform and destination attention cycle must repeat every ten seconds.');
+for(const platform of ['buyMusic','spotify','instagram','bandcamp','youtube','facebook','website','merchandise','tip','newsReviews'])assert.ok(app.includes(`key:"${platform}"`),`Missing standard ${platform} destination`);
+assert.ok(app.includes('editionEntry.editionId'),'Public routing must use opaque edition IDs.');
 const platform=JSON.parse(await fs.readFile('platform.json','utf8'));
-for(const edition of platform.editions){const config=JSON.parse(await fs.readFile(edition.config,'utf8'));assert.ok(Object.hasOwn(config.links,'tip'),`${edition.slug} needs optional tip configuration`);assert.ok(config.featuredVideo,`${edition.slug} needs optional featured video configuration`)}
-console.log('Discovery tests passed: reference portrait layout, aspect-safe Aggits artwork, all destinations, optional tip and privacy-enhanced featured video.');
+for(const edition of platform.editions){
+  assert.match(edition.editionId,/^[A-Za-z0-9_-]{4,40}$/);
+  assert.equal(edition.canonicalPath,`/e/${edition.editionId}`);
+  assert.ok(!edition.canonicalPath.toLowerCase().includes(edition.slug),'Public route must not expose the band slug.');
+  const config=JSON.parse(await fs.readFile(edition.config,'utf8'));
+  assert.ok(Object.hasOwn(config.links,'tip'),`${edition.slug} needs optional tip configuration`);
+}
+console.log('Discovery tests passed: locked one-screen design, opaque routes, fixed destinations, attention cycle and disabled states.');

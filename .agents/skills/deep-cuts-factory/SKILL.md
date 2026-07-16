@@ -1,12 +1,12 @@
 ---
 name: deep-cuts-factory
-description: Research, configure, validate, publish and deliver a one-page Deep Cuts artist discovery hub from “Deep Cut [Artist]”.
+description: Research, configure, validate, publish and deliver one permanent Deep Cuts artist-discovery edition from “Deep Cuts [Artist]”.
 ---
 
 # Deep Cuts Factory
 
-Read the Production Manual, CLAUDE.md and ROADMAP.md completely before acting.
+Read `DEEP_CUTS_PRODUCTION_MANUAL.md`, `CLAUDE.md` and `ROADMAP.md` completely before acting.
 
-For `Deep Cut [Artist]`: start the build record; disambiguate only when the wrong artist is a material risk; verify official Spotify, Bandcamp, YouTube, Instagram, Facebook, TikTok, website, ticket, merchandise and mailing-list destinations; verify one specific most-viewed embeddable video from an official YouTube presence when possible; include Tip only when a verified artist-controlled PayPal, Venmo or equivalent URL exists; create configuration under `editions/<slug>/`; run validation and social generation; verify the final QR scans to the canonical URL; deploy through this repository; verify mobile layout and every visible link; complete the build record; and automatically deliver the live URL and both promotional images.
+For `Deep Cuts [Artist]`: start a production job immediately; assign a stable opaque edition ID; verify artist identity and official destinations; preserve evidence and verification dates; leave uncertain destinations disabled; configure one edition; create the unique sonic signature; generate the locked square QR artwork; decode-test the final QR at full and reduced sizes; validate; commit on a branch; deploy through the permanent repository; smoke-test the opaque canonical and QR routes; complete the production record; and automatically deliver the live URL and QR PNG.
 
-Never create a new repository, duplicate the engine, invent a link, redraw Aggits, or ask the owner to perform repetitive engineering work. Empty or uncertain links remain hidden. Use analytics as best-effort only. Every repeated manual step is an automation opportunity.
+Never create another repository, expose a band name in a public URL, invent a link, infer a payment destination, redraw Aggits, bypass QR scan-back, or ask the owner to perform repeatable engineering work. Analytics is best effort and must never interrupt navigation. Every repeated manual step is an automation opportunity.

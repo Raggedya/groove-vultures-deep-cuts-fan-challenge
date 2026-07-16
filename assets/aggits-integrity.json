@@ -9,7 +9,17 @@
     {
       "asset": "assets/aggits-qr-holder-approved.png",
       "sha256": "65f27b919074a8db3df7935ade66e1322609e050c5fcbf71761e71cf69eecfac",
-      "use": "User-approved QR promotional artwork"
+      "use": "Historical approved QR-holder source"
+    },
+    {
+      "asset": "assets/aggits-qr-master-final.png",
+      "sha256": "326e2f3b35f356b8003302aa41667badc5d18b8d767f25723c7aa2089ea6f0bc",
+      "use": "Final square QR promotional master reference"
+    },
+    {
+      "asset": "assets/main-screen-master-reference.png",
+      "sha256": "4cc2383ed5ed27110a5509ecbb3c8d16cf5fefc6352e9dab11e68d4a39150a1e",
+      "use": "Final locked live-screen visual reference"
     }
   ]
 }

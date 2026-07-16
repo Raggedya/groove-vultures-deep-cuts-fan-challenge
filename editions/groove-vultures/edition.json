@@ -3,7 +3,11 @@
   "bandName": "Groove Vultures",
   "editionTitle": "Groove Vultures",
   "quizTitle": "Groove Vultures Deep Cuts",
-  "description": "Thirty-six source-verified deep cuts, served as three fresh twelve-question fan challenges.",
+  "description": "Melbourne garage rock driven by hard rock, metal and funk-infused grooves.",
+  "discovery": {
+    "bio": "Melbourne garage rock driven by hard rock, metal and funk-infused grooves.",
+    "newsLabel": "Latest interview: Lelahel Metal"
+  },
   "mode": "deepCuts",
   "slug": "groove-vultures",
   "publicURL": "https://raggedya.github.io/groove-vultures-deep-cuts-fan-challenge/?edition=groove-vultures",
@@ -24,6 +28,7 @@
   },
   "theme": { "accent": "#2f80ff", "accentSecondary": "#8dbdff" },
   "links": {
+    "buyMusic": "https://groovevultures.bandcamp.com/",
     "spotify": "https://open.spotify.com/artist/4mxU5Dnd342CsqAS6viJuj",
     "bandcamp": "https://groovevultures.bandcamp.com/",
     "youtube": "https://www.youtube.com/@GrooveVultures",
@@ -34,7 +39,8 @@
     "tickets": "",
     "merchandise": "",
     "mailingList": "",
-    "tip": ""
+    "tip": "",
+    "newsReviews": "https://www.lelahelmetal.net/2024/07/interview-groove-vultures.html?m=1"
   },
   "featuredVideo": { "title": "", "youtubeURL": "" },
   "classifications": [

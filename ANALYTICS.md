@@ -1,7 +1,24 @@
-# Deep Cuts Analytics
+# Deep Cuts analytics
 
-The discovery page records a band identifier, page identifier, timestamp, referring source and device category with each event. It separately records page views, share actions, successful native shares when the browser confirms them, copy actions, and Spotify, Bandcamp, Instagram, YouTube, Facebook, TikTok, website, ticket, merchandise, mailing-list and Tip clicks.
+Deep Cuts uses the platform Worker and Cloudflare D1 as its permanent, first-party analytics system. Every event is assigned to an opaque edition identifier. Public URLs never contain the artist name.
 
-Open `analytics.html` to view band-level page views, shares, outbound clicks, platform totals, tip clicks and rates. With no reporting endpoint configured it shows only events stored in that browser. A configured HTTPS reporting endpoint can provide cross-visitor reporting.
+## Recorded actions
 
-Analytics is best-effort. It runs immediately before navigation and failures are ignored. Clicks measure intent only; they do not prove a stream, follow, sale, payment or published share. No passwords, payment details or social login data are collected.
+- verified QR route opened (`qr_scan`)
+- artist discovery page viewed
+- share button and share method selected
+- native share completed, only when the browser confirms it
+- copy-link selected and successfully copied
+- outbound destination clicked, recorded separately for Buy Music, Spotify, Instagram, Bandcamp, YouTube, Facebook, band website, merchandise, Tip the Band and News & Reviews
+
+Every event includes an event ID, edition ID, timestamp, anonymous browser-session ID, referring source and device category. Cloudflare may add country and region codes from the incoming request. Deep Cuts does not store raw IP addresses, precise location, account credentials or payment details.
+
+Analytics is best-effort and never delays or blocks a destination. A click records intent only: it does not prove a stream, follow, purchase, payment or published share.
+
+## Reporting
+
+The protected `/api/reports/weekly.csv` endpoint produces band-level totals. A scheduled Worker sends the same CSV to the configured owner every Friday at 9:00am Australia/Sydney time. The report includes QR scans, page views, outbound totals, every platform total, Tip clicks and share actions.
+
+## Delivery integrity
+
+Completion email acceptance and confirmed delivery are recorded separately. Resend webhook payloads are verified against their signing secret, rejected when stale or altered, and deduplicated by the provider event ID. Production time ends only after a verified `email.delivered` event.
