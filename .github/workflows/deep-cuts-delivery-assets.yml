@@ -1,0 +1,44 @@
+name: Deep Cuts delivery assets
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "platform.json"
+      - "editions/**"
+      - "scripts/**"
+      - "requirements.txt"
+      - ".github/workflows/deep-cuts-delivery-assets.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the permanent platform
+        uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Generate and verify every active edition
+        shell: bash
+        run: |
+          node -e "const p=require('./platform.json'); for(const e of p.editions.filter(e=>e.active)) console.log(e.slug)" |
+          while read slug; do
+            node scripts/build-edition.mjs "$slug"
+          done
+      - name: Upload delivery package
+        uses: actions/upload-artifact@v4
+        with:
+          name: deep-cuts-delivery-assets
+          path: output/**
+          if-no-files-found: error
+          retention-days: 30

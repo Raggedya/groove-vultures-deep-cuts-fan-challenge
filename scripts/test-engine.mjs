@@ -13,6 +13,18 @@ await import(pathToFileURL(path.resolve('js/engine.js')));
 const E=globalThis.DeepCutsEngine;
 assert.ok(E,'DeepCutsEngine must be exposed.');
 assert.equal(config.secondsPerQuestion,15);
+if(config.productType==='business'){
+  assert.equal(config.numberOfQuestions,10);
+  assert.equal(config.business.splashMilliseconds,3000);
+  const businessBank=new E.FreshQuestionBank(questions,config.questionMix,()=>.42);
+  const round=businessBank.nextRound();
+  assert.equal(round.length,10);
+  assert.equal(new Set(round.map(question=>question.id)).size,10);
+  const perfect=E.classificationFor(10,config.classifications,config.businessName);
+  assert.ok(perfect.label,'A perfect business score must resolve to a classification.');
+  console.log(`${config.businessName}: business engine tests passed for ten questions and reward classification.`);
+  process.exit(0);
+}
 assert.equal(config.feedbackMilliseconds,10000);
 
 const bank=new E.FreshQuestionBank(questions,config.questionMix,()=>.42);
@@ -31,3 +43,4 @@ const stats=E.calculateStats([{correct:true,unanswered:false,responseSeconds:2},
 assert.deepEqual({correct:stats.correct,incorrect:stats.incorrect,unanswered:stats.unanswered},{correct:1,incorrect:1,unanswered:1});
 assert.equal(stats.averageResponseTime,3);
 console.log(`${config.bandName}: engine tests passed for three fresh games, cycle reset, rankings and statistics.`);
+

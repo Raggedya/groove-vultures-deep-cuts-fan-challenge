@@ -1,0 +1,56 @@
+{
+  "brandName": "Deep Cuts Business",
+  "businessName": "Your Business",
+  "bandName": "Your Business",
+  "editionTitle": "Business Preview",
+  "quizTitle": "Deep Cuts â€“ Your Business",
+  "description": "A clearly labelled preview of the reusable Deep Cuts Business customer engagement experience.",
+  "productType": "business",
+  "mode": "business",
+  "slug": "business-preview",
+  "publicURL": "https://raggedya.github.io/groove-vultures-deep-cuts-fan-challenge/?edition=business-preview",
+  "numberOfQuestions": 10,
+  "questionMix": { "easy": 3, "medium": 5, "hard": 2 },
+  "secondsPerQuestion": 15,
+  "feedbackMilliseconds": 5000,
+  "questionFile": "editions/business-preview/questions.json",
+  "dingSound": "assets/ding.mp3",
+  "beepSound": "assets/beep.wav",
+  "brandArtwork": "assets/aggits-original-cutout-v4.png",
+  "characterArtwork": "assets/aggits-original-cutout-v4.png",
+  "backgroundArtwork": "",
+  "business": {
+    "location": "Preview only",
+    "promise": "A memorable introduction to what makes your business different.",
+    "shortDescription": "This sample uses placeholder content. A production edition is researched and verified from the business name and location before publication.",
+    "splashMilliseconds": 3000
+  },
+  "reward": {
+    "title": "Preview reward unlocked",
+    "instructions": "In a live edition, take a screenshot and present it according to the business's verified redemption terms.",
+    "code": "SAMPLE ONLY"
+  },
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/business-preview/instagram-business.png",
+    "qrImage": "output/business-preview/instagram-qr.png"
+  },
+  "theme": { "accent": "#2f80ff", "accentSecondary": "#8dbdff" },
+  "links": {
+    "website": "https://example.com/",
+    "instagram": "https://example.com/instagram",
+    "facebook": "https://example.com/facebook",
+    "tiktok": "",
+    "youtube": "",
+    "onlineStore": "https://example.com/store",
+    "booking": "",
+    "menu": "",
+    "contact": "https://example.com/contact"
+  },
+  "classifications": [
+    { "min": 0, "max": 4, "label": "Reward Unlocked", "message": "You discovered more about {band} and completed the experience." },
+    { "min": 5, "max": 7, "label": "Reward Unlocked", "message": "You clearly picked up what makes {band} different." },
+    { "min": 8, "max": 10, "label": "Reward Unlocked", "message": "You know the story behind {band}. Your reward is ready." }
+  ]
+}
+

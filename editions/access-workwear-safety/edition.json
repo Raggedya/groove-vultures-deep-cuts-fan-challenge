@@ -1,0 +1,58 @@
+{
+  "brandName": "Deep Cuts Business",
+  "businessName": "Access Workwear & Safety",
+  "bandName": "Access Workwear & Safety",
+  "editionTitle": "Access Workwear & Safety",
+  "quizTitle": "Deep Cuts â€“ Access Workwear & Safety",
+  "description": "Meet Ringwood East's independent workwear specialists, explore their official channels and learn how they help individuals and teams get the right gear.",
+  "productType": "business",
+  "mode": "business",
+  "slug": "access-workwear-safety",
+  "publicURL": "https://raggedya.github.io/groove-vultures-deep-cuts-fan-challenge/?edition=access-workwear-safety",
+  "numberOfQuestions": 10,
+  "questionMix": { "easy": 3, "medium": 5, "hard": 2 },
+  "secondsPerQuestion": 15,
+  "feedbackMilliseconds": 5000,
+  "questionFile": "editions/access-workwear-safety/questions.json",
+  "dingSound": "assets/ding.mp3",
+  "beepSound": "assets/beep.wav",
+  "brandArtwork": "assets/aggits-original-cutout-v4.png",
+  "characterArtwork": "assets/aggits-original-cutout-v4.png",
+  "backgroundArtwork": "",
+  "business": {
+    "location": "121â€“123 Bedford Road, Ringwood East VIC 3135",
+    "promise": "Iconic workwear brands. Expert advice. Real local service.",
+    "shortDescription": "Independent local specialists in trusted workwear, fitting, team uniforms and branding.",
+    "splashMilliseconds": 3000
+  },
+  "reward": {
+    "title": "10% off one full-price purchase",
+    "instructions": "Take a screenshot and present it in store. Valid until 31 December 2026. Exclusions apply.",
+    "code": "DEEP CUTS REWARD",
+    "pendingApproval": false
+  },
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/access-workwear-safety/instagram-business.png",
+    "qrImage": "output/access-workwear-safety/instagram-qr.png"
+  },
+  "theme": { "accent": "#2f80ff", "accentSecondary": "#8dbdff" },
+  "links": {
+    "website": "https://www.accessworkwear.com.au/",
+    "onlineStore": "https://www.accessworkwear.com.au/collections/all",
+    "instagram": "https://www.instagram.com/accessworkwearsafety/",
+    "facebook": "https://www.facebook.com/accessworkwear",
+    "linkedin": "https://www.linkedin.com/company/access-workwear-safety/",
+    "youtube": "https://www.youtube.com/watch?v=ivMLouCRRnc",
+    "contact": "https://www.accessworkwear.com.au/pages/contact",
+    "tiktok": "",
+    "booking": "",
+    "menu": ""
+  },
+  "classifications": [
+    { "min": 0, "max": 4, "label": "Access Insider", "message": "Youâ€™ve met the local team behind the gear and discovered how {band} can help." },
+    { "min": 5, "max": 7, "label": "Workwear Ready", "message": "You know the services, trusted brands and local expertise behind {band}." },
+    { "min": 8, "max": 10, "label": "Gear Expert", "message": "You know what makes {band} more than just another workwear store." }
+  ]
+}
+

@@ -1,256 +1,650 @@
 [
   {
-    "id": "TD-DC01", "roundGroup": 1, "category": "Album Deep Cuts", "difficulty": "easy",
+    "id": "TD-DC01",
+    "roundGroup": 1,
+    "category": "Album Deep Cuts",
+    "difficulty": "easy",
     "question": "What kind of building became the recording room for Gala Mill?",
-    "options": ["A Tasmanian farm mill", "A Perth cinema", "A Melbourne schoolroom", "A Sydney church"], "correctAnswer": "A Tasmanian farm mill",
+    "options": [
+      "A Tasmanian farm mill",
+      "A Perth cinema",
+      "A Melbourne schoolroom",
+      "A Sydney church"
+    ],
+    "correctAnswer": "A Tasmanian farm mill",
     "explanation": "The band recorded Gala Mill inside an old mill on an isolated 10,000-acre farm on Tasmania’s east coast, far from a conventional studio.",
-    "sourceName": "Bang! Records", "sourceURL": "https://www.bang-records.net/bands/drones-the/", "active": true
+    "sourceName": "Bang! Records",
+    "sourceURL": "https://www.bang-records.net/bands/drones-the/",
+    "active": true
   },
   {
-    "id": "TD-DC02", "roundGroup": 1, "category": "Album Deep Cuts", "difficulty": "medium",
+    "id": "TD-DC02",
+    "roundGroup": 1,
+    "category": "Album Deep Cuts",
+    "difficulty": "medium",
     "question": "Which unplanned performers can be heard in the spaces between Gala Mill tracks?",
-    "options": ["Dogs and birds", "Sheep and tractors", "Frogs and rain", "Horses and wind chimes"], "correctAnswer": "Dogs and birds",
+    "options": [
+      "Dogs and birds",
+      "Sheep and tractors",
+      "Frogs and rain",
+      "Horses and wind chimes"
+    ],
+    "correctAnswer": "Dogs and birds",
     "explanation": "The mill was so open to its rural surroundings that barking dogs and birdsong became audible connective tissue between songs on the finished record.",
-    "sourceName": "Bang! Records", "sourceURL": "https://www.bang-records.net/bands/drones-the/", "active": true
+    "sourceName": "Bang! Records",
+    "sourceURL": "https://www.bang-records.net/bands/drones-the/",
+    "active": true
   },
   {
-    "id": "TD-DC03", "roundGroup": 1, "category": "Album Deep Cuts", "difficulty": "hard",
+    "id": "TD-DC03",
+    "roundGroup": 1,
+    "category": "Album Deep Cuts",
+    "difficulty": "hard",
     "question": "What supernatural story surrounded the mill where Gala Mill was recorded?",
-    "options": ["A crying woman haunted the upper floor", "A phantom train crossed the farm", "A child’s piano played itself", "A miner appeared beside the river"], "correctAnswer": "A crying woman haunted the upper floor",
+    "options": [
+      "A crying woman haunted the upper floor",
+      "A phantom train crossed the farm",
+      "A child’s piano played itself",
+      "A miner appeared beside the river"
+    ],
+    "correctAnswer": "A crying woman haunted the upper floor",
     "explanation": "Fiona Kitschin recalled local stories that the family mill was haunted by a woman whose crying could be heard upstairs at night.",
-    "sourceName": "Bang! Records", "sourceURL": "https://www.bang-records.net/bands/drones-the/", "active": true
+    "sourceName": "Bang! Records",
+    "sourceURL": "https://www.bang-records.net/bands/drones-the/",
+    "active": true
   },
   {
-    "id": "TD-DC04", "roundGroup": 1, "category": "Song / Recording Deep Cuts", "difficulty": "easy",
+    "id": "TD-DC04",
+    "roundGroup": 1,
+    "category": "Song / Recording Deep Cuts",
+    "difficulty": "easy",
     "question": "Who made her lead-vocal debut on Gala Mill’s Work For Me?",
-    "options": ["Fiona Kitschin", "Dan Luscombe", "Amanda Roff", "Laura Jean"], "correctAnswer": "Fiona Kitschin",
+    "options": [
+      "Fiona Kitschin",
+      "Dan Luscombe",
+      "Amanda Roff",
+      "Laura Jean"
+    ],
+    "correctAnswer": "Fiona Kitschin",
     "explanation": "Work For Me marked bassist Fiona Kitschin’s first lead vocal for The Drones—an assignment she said happened because Gareth made her do it.",
-    "sourceName": "Bang! Records", "sourceURL": "https://www.bang-records.net/bands/drones-the/", "active": true
+    "sourceName": "Bang! Records",
+    "sourceURL": "https://www.bang-records.net/bands/drones-the/",
+    "active": true
   },
   {
-    "id": "TD-DC05", "roundGroup": 1, "category": "Song / Recording Deep Cuts", "difficulty": "medium",
+    "id": "TD-DC05",
+    "roundGroup": 1,
+    "category": "Song / Recording Deep Cuts",
+    "difficulty": "medium",
     "question": "Which pioneering gospel guitarist inspired an unusually long Gala Mill song title?",
-    "options": ["Sister Rosetta Tharpe", "Elizabeth Cotten", "Memphis Minnie", "Odetta"], "correctAnswer": "Sister Rosetta Tharpe",
+    "options": [
+      "Sister Rosetta Tharpe",
+      "Elizabeth Cotten",
+      "Memphis Minnie",
+      "Odetta"
+    ],
+    "correctAnswer": "Sister Rosetta Tharpe",
     "explanation": "I Looked Down the Line and I Wondered takes its title from a song by Sister Rosetta Tharpe, the trailblazing 1930s gospel guitarist and singer.",
-    "sourceName": "Bang! Records", "sourceURL": "https://www.bang-records.net/bands/drones-the/", "active": true
+    "sourceName": "Bang! Records",
+    "sourceURL": "https://www.bang-records.net/bands/drones-the/",
+    "active": true
   },
   {
-    "id": "TD-DC06", "roundGroup": 1, "category": "Song / Recording Deep Cuts", "difficulty": "hard",
+    "id": "TD-DC06",
+    "roundGroup": 1,
+    "category": "Song / Recording Deep Cuts",
+    "difficulty": "hard",
     "question": "What grim workaround drives the convict story in Sixteen Straws?",
-    "options": ["Drawing lots to choose a killer", "Hiding aboard a supply ship", "Faking a gold discovery", "Trading names with a dead prisoner"], "correctAnswer": "Drawing lots to choose a killer",
+    "options": [
+      "Drawing lots to choose a killer",
+      "Hiding aboard a supply ship",
+      "Faking a gold discovery",
+      "Trading names with a dead prisoner"
+    ],
+    "correctAnswer": "Drawing lots to choose a killer",
     "explanation": "The song expands a traditional Moreton Bay verse into a convict tale where prisoners draw straws, allowing one man to die without directly committing suicide.",
-    "sourceName": "Bang! Records", "sourceURL": "https://www.bang-records.net/bands/drones-the/", "active": true
+    "sourceName": "Bang! Records",
+    "sourceURL": "https://www.bang-records.net/bands/drones-the/",
+    "active": true
   },
   {
-    "id": "TD-DC07", "roundGroup": 1, "category": "Band Member", "difficulty": "easy",
+    "id": "TD-DC07",
+    "roundGroup": 1,
+    "category": "Band Member",
+    "difficulty": "easy",
     "question": "Which guitarist appears in the core Gala Mill lineup alongside Gareth Liddiard?",
-    "options": ["Rui Pereira", "Dan Kelly", "Rowland S. Howard", "Jim White"], "correctAnswer": "Rui Pereira",
+    "options": [
+      "Rui Pereira",
+      "Dan Kelly",
+      "Rowland S. Howard",
+      "Jim White"
+    ],
+    "correctAnswer": "Rui Pereira",
     "explanation": "Gala Mill’s credited four-piece was Gareth Liddiard, Fiona Kitschin, guitarist Rui Pereira and drummer Michael Noga, before later lineup changes.",
-    "sourceName": "Bang! Records", "sourceURL": "https://www.bang-records.net/bands/drones-the/", "active": true
+    "sourceName": "Bang! Records",
+    "sourceURL": "https://www.bang-records.net/bands/drones-the/",
+    "active": true
   },
   {
-    "id": "TD-DC08", "roundGroup": 1, "category": "Band Member", "difficulty": "medium",
+    "id": "TD-DC08",
+    "roundGroup": 1,
+    "category": "Band Member",
+    "difficulty": "medium",
     "question": "Who played drums on Gala Mill?",
-    "options": ["Michael Noga", "Christian Strybosch", "Jim White", "Danny Heifetz"], "correctAnswer": "Michael Noga",
+    "options": [
+      "Michael Noga",
+      "Christian Strybosch",
+      "Jim White",
+      "Danny Heifetz"
+    ],
+    "correctAnswer": "Michael Noga",
     "explanation": "Michael Noga supplied the album’s drums and percussion, completing the four-member lineup documented with the record’s remote Tasmanian sessions.",
-    "sourceName": "Bang! Records", "sourceURL": "https://www.bang-records.net/bands/drones-the/", "active": true
+    "sourceName": "Bang! Records",
+    "sourceURL": "https://www.bang-records.net/bands/drones-the/",
+    "active": true
   },
   {
-    "id": "TD-DC09", "roundGroup": 1, "category": "Touring / Live", "difficulty": "medium",
+    "id": "TD-DC09",
+    "roundGroup": 1,
+    "category": "Touring / Live",
+    "difficulty": "medium",
     "question": "Where was The Drones’ second official archival live volume recorded?",
-    "options": ["Spanish Club, Melbourne", "The Tote, Melbourne", "The Forum, London", "The Zoo, Brisbane"], "correctAnswer": "Spanish Club, Melbourne",
+    "options": [
+      "Spanish Club, Melbourne",
+      "The Tote, Melbourne",
+      "The Forum, London",
+      "The Zoo, Brisbane"
+    ],
+    "correctAnswer": "Spanish Club, Melbourne",
     "explanation": "The band’s official Bandcamp archive identifies LIVE Vol. 2 as the Spanish Club, Melbourne performance from 4 March 2006.",
-    "sourceName": "The Drones Bandcamp", "sourceURL": "https://thedrones.bandcamp.com/", "active": true
+    "sourceName": "The Drones Bandcamp",
+    "sourceURL": "https://thedrones.bandcamp.com/",
+    "active": true
   },
   {
-    "id": "TD-DC10", "roundGroup": 1, "category": "Touring / Live", "difficulty": "medium",
+    "id": "TD-DC10",
+    "roundGroup": 1,
+    "category": "Touring / Live",
+    "difficulty": "medium",
     "question": "Which Melbourne venue supplied the 2016 show released as LIVE Vol. 5?",
-    "options": ["The Tote", "The Espy", "The Corner", "The Palace"], "correctAnswer": "The Tote",
+    "options": [
+      "The Tote",
+      "The Espy",
+      "The Corner",
+      "The Palace"
+    ],
+    "correctAnswer": "The Tote",
     "explanation": "LIVE Vol. 5 preserves The Drones at The Tote on 29 May 2016, the latest performance in the band’s five-volume Bandcamp archive.",
-    "sourceName": "The Drones Bandcamp", "sourceURL": "https://thedrones.bandcamp.com/", "active": true
+    "sourceName": "The Drones Bandcamp",
+    "sourceURL": "https://thedrones.bandcamp.com/",
+    "active": true
   },
   {
-    "id": "TD-DC11", "roundGroup": 1, "category": "Behind the Scenes", "difficulty": "medium",
+    "id": "TD-DC11",
+    "roundGroup": 1,
+    "category": "Behind the Scenes",
+    "difficulty": "medium",
     "question": "Why did Gareth Liddiard prefer unusual locations to standard recording studios?",
-    "options": ["Studios felt like hospitals for sick bands", "Studios banned live vocals", "Studios could not record piano", "Studios required outside songwriters"], "correctAnswer": "Studios felt like hospitals for sick bands",
+    "options": [
+      "Studios felt like hospitals for sick bands",
+      "Studios banned live vocals",
+      "Studios could not record piano",
+      "Studios required outside songwriters"
+    ],
+    "correctAnswer": "Studios felt like hospitals for sick bands",
     "explanation": "Liddiard compared studios to hospitals for sick bands, preferring characterful rooms whose acoustics and accidents could become part of the music.",
-    "sourceName": "Bang! Records", "sourceURL": "https://www.bang-records.net/bands/drones-the/", "active": true
+    "sourceName": "Bang! Records",
+    "sourceURL": "https://www.bang-records.net/bands/drones-the/",
+    "active": true
   },
   {
-    "id": "TD-DC12", "roundGroup": 1, "category": "Behind the Scenes", "difficulty": "hard",
+    "id": "TD-DC12",
+    "roundGroup": 1,
+    "category": "Behind the Scenes",
+    "difficulty": "hard",
     "question": "How long had Fiona Kitschin’s family owned the Gala Mill property?",
-    "options": ["Since the 1840s", "Since the 1890s", "Since the 1920s", "Since the 1970s"], "correctAnswer": "Since the 1840s",
+    "options": [
+      "Since the 1840s",
+      "Since the 1890s",
+      "Since the 1920s",
+      "Since the 1970s"
+    ],
+    "correctAnswer": "Since the 1840s",
     "explanation": "Kitschin said the property and mill had remained in her family since the 1840s, giving the recording site unusually deep personal history.",
-    "sourceName": "Bang! Records", "sourceURL": "https://www.bang-records.net/bands/drones-the/", "active": true
+    "sourceName": "Bang! Records",
+    "sourceURL": "https://www.bang-records.net/bands/drones-the/",
+    "active": true
   },
-
   {
-    "id": "TD-DC13", "roundGroup": 2, "category": "Album Deep Cuts", "difficulty": "easy",
+    "id": "TD-DC13",
+    "roundGroup": 2,
+    "category": "Album Deep Cuts",
+    "difficulty": "easy",
     "question": "Where did The Drones create Havilah?",
-    "options": ["A house in a forest near Myrtleford", "A warehouse beside Fremantle Harbour", "A church outside Hobart", "A motel in Broken Hill"], "correctAnswer": "A house in a forest near Myrtleford",
+    "options": [
+      "A house in a forest near Myrtleford",
+      "A warehouse beside Fremantle Harbour",
+      "A church outside Hobart",
+      "A motel in Broken Hill"
+    ],
+    "correctAnswer": "A house in a forest near Myrtleford",
     "explanation": "Gareth Liddiard and Fiona Kitschin turned their forest home near Myrtleford, in the foothills of Mount Buffalo, into Havilah’s recording site.",
-    "sourceName": "ABC Rage", "sourceURL": "https://www.abc.net.au/rage/guest/the-drones/9650912", "active": true
+    "sourceName": "ABC Rage",
+    "sourceURL": "https://www.abc.net.au/rage/guest/the-drones/9650912",
+    "active": true
   },
   {
-    "id": "TD-DC14", "roundGroup": 2, "category": "Album Deep Cuts", "difficulty": "medium",
+    "id": "TD-DC14",
+    "roundGroup": 2,
+    "category": "Album Deep Cuts",
+    "difficulty": "medium",
     "question": "What two places give Havilah its title?",
-    "options": ["A biblical land and the recording valley", "A shipwreck and a Perth street", "Two abandoned mining towns", "A river and a Melbourne pub"], "correctAnswer": "A biblical land and the recording valley",
+    "options": [
+      "A biblical land and the recording valley",
+      "A shipwreck and a Perth street",
+      "Two abandoned mining towns",
+      "A river and a Melbourne pub"
+    ],
+    "correctAnswer": "A biblical land and the recording valley",
     "explanation": "Havilah refers both to a biblical land near the Garden of Eden and to the Victorian valley where the album was recorded.",
-    "sourceName": "ABC Rage", "sourceURL": "https://www.abc.net.au/rage/guest/the-drones/9650912", "active": true
+    "sourceName": "ABC Rage",
+    "sourceURL": "https://www.abc.net.au/rage/guest/the-drones/9650912",
+    "active": true
   },
   {
-    "id": "TD-DC15", "roundGroup": 2, "category": "Album Deep Cuts", "difficulty": "hard",
+    "id": "TD-DC15",
+    "roundGroup": 2,
+    "category": "Album Deep Cuts",
+    "difficulty": "hard",
     "question": "How quickly did The Drones record Havilah once Burke Reid arrived with his gear?",
-    "options": ["Two weeks", "Two days", "Six weeks", "Three months"], "correctAnswer": "Two weeks",
+    "options": [
+      "Two weeks",
+      "Two days",
+      "Six weeks",
+      "Three months"
+    ],
+    "correctAnswer": "Two weeks",
     "explanation": "After the band rehearsed the material, producer-engineer Burke Reid brought equipment to the forest house and the album was completed in two intensive weeks.",
-    "sourceName": "ABC Rage", "sourceURL": "https://www.abc.net.au/rage/guest/the-drones/9650912", "active": true
+    "sourceName": "ABC Rage",
+    "sourceURL": "https://www.abc.net.au/rage/guest/the-drones/9650912",
+    "active": true
   },
   {
-    "id": "TD-DC16", "roundGroup": 2, "category": "Song / Recording Deep Cuts", "difficulty": "easy",
+    "id": "TD-DC16",
+    "roundGroup": 2,
+    "category": "Song / Recording Deep Cuts",
+    "difficulty": "easy",
     "question": "What broad target sits behind the I See Seaweed song Grey Leader?",
-    "options": ["Leaders as fools and hypocrites", "A doomed Antarctic expedition", "The decline of commercial radio", "A failed suburban romance"], "correctAnswer": "Leaders as fools and hypocrites",
+    "options": [
+      "Leaders as fools and hypocrites",
+      "A doomed Antarctic expedition",
+      "The decline of commercial radio",
+      "A failed suburban romance"
+    ],
+    "correctAnswer": "Leaders as fools and hypocrites",
     "explanation": "Liddiard described Grey Leader as generally concerning leaders who prove foolish, egomaniacal or hypocritical rather than one narrowly identified politician.",
-    "sourceName": "Beat Magazine", "sourceURL": "https://beat.com.au/the-drones-2/", "active": true
+    "sourceName": "Beat Magazine",
+    "sourceURL": "https://beat.com.au/the-drones-2/",
+    "active": true
   },
   {
-    "id": "TD-DC17", "roundGroup": 2, "category": "Song / Recording Deep Cuts", "difficulty": "medium",
+    "id": "TD-DC17",
+    "roundGroup": 2,
+    "category": "Song / Recording Deep Cuts",
+    "difficulty": "medium",
     "question": "Which pedal helped Dan Luscombe create the strange rhythm sound on Grey Leader?",
-    "options": ["Noise Floor", "Memory Man", "Fuzz Factory", "Space Echo"], "correctAnswer": "Noise Floor",
+    "options": [
+      "Noise Floor",
+      "Memory Man",
+      "Fuzz Factory",
+      "Space Echo"
+    ],
+    "correctAnswer": "Noise Floor",
     "explanation": "Luscombe used a Noise Floor pedal to shape Grey Leader’s unstable pulse, part of the homemade signal-chain experimentation documented during the sessions.",
-    "sourceName": "AudioTechnology", "sourceURL": "https://www.audiotechnology.com/features/the-sound-of-a-car-crash", "active": true
+    "sourceName": "AudioTechnology",
+    "sourceURL": "https://www.audiotechnology.com/features/the-sound-of-a-car-crash",
+    "active": true
   },
   {
-    "id": "TD-DC18", "roundGroup": 2, "category": "Song / Recording Deep Cuts", "difficulty": "hard",
+    "id": "TD-DC18",
+    "roundGroup": 2,
+    "category": "Song / Recording Deep Cuts",
+    "difficulty": "hard",
     "question": "What unusual feature did Gareth add to a custom fuzz used on Grey Leader?",
-    "options": ["Oscillators", "A cassette motor", "A radio tuner", "A spring tank"], "correctAnswer": "Oscillators",
+    "options": [
+      "Oscillators",
+      "A cassette motor",
+      "A radio tuner",
+      "A spring tank"
+    ],
+    "correctAnswer": "Oscillators",
     "explanation": "Liddiard modified a custom 4ms fuzz circuit by adding oscillators, giving Grey Leader another layer of volatile, almost mechanical guitar noise.",
-    "sourceName": "AudioTechnology", "sourceURL": "https://www.audiotechnology.com/features/the-sound-of-a-car-crash", "active": true
+    "sourceName": "AudioTechnology",
+    "sourceURL": "https://www.audiotechnology.com/features/the-sound-of-a-car-crash",
+    "active": true
   },
   {
-    "id": "TD-DC19", "roundGroup": 2, "category": "Band Member", "difficulty": "easy",
+    "id": "TD-DC19",
+    "roundGroup": 2,
+    "category": "Band Member",
+    "difficulty": "easy",
     "question": "Which instrument did Steve Hesketh bring into The Drones’ expanding sound?",
-    "options": ["Piano", "Saxophone", "Violin", "Pedal steel"], "correctAnswer": "Piano",
+    "options": [
+      "Piano",
+      "Saxophone",
+      "Violin",
+      "Pedal steel"
+    ],
+    "correctAnswer": "Piano",
     "explanation": "Hesketh’s piano let the group broaden its arrangements without crowding them, and I See Seaweed became his first studio appearance with the band.",
-    "sourceName": "Beat Magazine", "sourceURL": "https://beat.com.au/the-drones-2/", "active": true
+    "sourceName": "Beat Magazine",
+    "sourceURL": "https://beat.com.au/the-drones-2/",
+    "active": true
   },
   {
-    "id": "TD-DC20", "roundGroup": 2, "category": "Band Member", "difficulty": "medium",
+    "id": "TD-DC20",
+    "roundGroup": 2,
+    "category": "Band Member",
+    "difficulty": "medium",
     "question": "How little direction did Gareth say Dan Luscombe usually needed for a song?",
-    "options": ["Only the key", "A complete guitar score", "A reference playlist", "A written rhythm chart"], "correctAnswer": "Only the key",
+    "options": [
+      "Only the key",
+      "A complete guitar score",
+      "A reference playlist",
+      "A written rhythm chart"
+    ],
+    "correctAnswer": "Only the key",
     "explanation": "Liddiard said he generally only needed to tell Luscombe the key, trusting the guitarist to find an appropriate part without detailed instruction.",
-    "sourceName": "Beat Magazine", "sourceURL": "https://beat.com.au/the-drones-2/", "active": true
+    "sourceName": "Beat Magazine",
+    "sourceURL": "https://beat.com.au/the-drones-2/",
+    "active": true
   },
   {
-    "id": "TD-DC21", "roundGroup": 2, "category": "Touring / Live", "difficulty": "medium",
+    "id": "TD-DC21",
+    "roundGroup": 2,
+    "category": "Touring / Live",
+    "difficulty": "medium",
     "question": "What television-adventure comparison did Gareth use for a long Drones tour?",
-    "options": ["Race Around the World with gigs", "Survivor inside a tour bus", "Getaway without the hotels", "The Amazing Race on no sleep"], "correctAnswer": "Race Around the World with gigs",
+    "options": [
+      "Race Around the World with gigs",
+      "Survivor inside a tour bus",
+      "Getaway without the hotels",
+      "The Amazing Race on no sleep"
+    ],
+    "correctAnswer": "Race Around the World with gigs",
     "explanation": "He described the first stretch of a major tour as Race Around the World with performances added—a blur of travel, logistics and nightly shows.",
-    "sourceName": "Beat Magazine", "sourceURL": "https://beat.com.au/the-drones-2/", "active": true
+    "sourceName": "Beat Magazine",
+    "sourceURL": "https://beat.com.au/the-drones-2/",
+    "active": true
   },
   {
-    "id": "TD-DC22", "roundGroup": 2, "category": "Touring / Live", "difficulty": "medium",
+    "id": "TD-DC22",
+    "roundGroup": 2,
+    "category": "Touring / Live",
+    "difficulty": "medium",
     "question": "What did the band tape over its smashed van windows after the disastrous York show?",
-    "options": ["Cardboard from a dumpster", "Plastic stage banners", "Spare amplifier covers", "Venue curtains"], "correctAnswer": "Cardboard from a dumpster",
+    "options": [
+      "Cardboard from a dumpster",
+      "Plastic stage banners",
+      "Spare amplifier covers",
+      "Venue curtains"
+    ],
+    "correctAnswer": "Cardboard from a dumpster",
     "explanation": "After thieves smashed the van and stole their gear, The Drones taped dumpster cardboard over the windows for the freezing drive to Somerset.",
-    "sourceName": "The Guardian", "sourceURL": "https://www.theguardian.com/music/2022/jan/11/stolen-gear-medieval-cosplay-and-a-disastrous-set-the-drones-gareth-liddiard-on-the-worst-gig-of-his-life", "active": true
+    "sourceName": "The Guardian",
+    "sourceURL": "https://www.theguardian.com/music/2022/jan/11/stolen-gear-medieval-cosplay-and-a-disastrous-set-the-drones-gareth-liddiard-on-the-worst-gig-of-his-life",
+    "active": true
   },
   {
-    "id": "TD-DC23", "roundGroup": 2, "category": "Behind the Scenes", "difficulty": "medium",
+    "id": "TD-DC23",
+    "roundGroup": 2,
+    "category": "Behind the Scenes",
+    "difficulty": "medium",
     "question": "What made the I See Seaweed sessions a first for The Drones?",
-    "options": ["They hired no recording engineer", "They used no guitar amplifiers", "They recorded entirely outdoors", "They wrote every song in one day"], "correctAnswer": "They hired no recording engineer",
+    "options": [
+      "They hired no recording engineer",
+      "They used no guitar amplifiers",
+      "They recorded entirely outdoors",
+      "They wrote every song in one day"
+    ],
+    "correctAnswer": "They hired no recording engineer",
     "explanation": "For the first time the band worked without a hired recording engineer: Liddiard handled most recording duties before Burke Reid mixed the album.",
-    "sourceName": "AudioTechnology", "sourceURL": "https://www.audiotechnology.com/features/the-sound-of-a-car-crash", "active": true
+    "sourceName": "AudioTechnology",
+    "sourceURL": "https://www.audiotechnology.com/features/the-sound-of-a-car-crash",
+    "active": true
   },
   {
-    "id": "TD-DC24", "roundGroup": 2, "category": "Behind the Scenes", "difficulty": "hard",
+    "id": "TD-DC24",
+    "roundGroup": 2,
+    "category": "Behind the Scenes",
+    "difficulty": "hard",
     "question": "Why did Gareth particularly value the Beyerdynamic M160 during recording?",
-    "options": ["Its hypercardioid pattern eased phase alignment", "It could run without a cable", "It doubled as a room speaker", "Its tube created automatic distortion"], "correctAnswer": "Its hypercardioid pattern eased phase alignment",
+    "options": [
+      "Its hypercardioid pattern eased phase alignment",
+      "It could run without a cable",
+      "It doubled as a room speaker",
+      "Its tube created automatic distortion"
+    ],
+    "correctAnswer": "Its hypercardioid pattern eased phase alignment",
     "explanation": "The M160’s tightly controlled hypercardioid pickup helped Liddiard align multiple microphones with fewer phase problems in the band’s lively recording room.",
-    "sourceName": "AudioTechnology", "sourceURL": "https://www.audiotechnology.com/features/the-sound-of-a-car-crash", "active": true
+    "sourceName": "AudioTechnology",
+    "sourceURL": "https://www.audiotechnology.com/features/the-sound-of-a-car-crash",
+    "active": true
   },
-
   {
-    "id": "TD-DC25", "roundGroup": 3, "category": "Album Deep Cuts", "difficulty": "easy",
+    "id": "TD-DC25",
+    "roundGroup": 3,
+    "category": "Album Deep Cuts",
+    "difficulty": "easy",
     "question": "How long did The Drones spend recording Feelin Kinda Free in inner Melbourne?",
-    "options": ["Six months", "Six days", "Three weeks", "Eighteen months"], "correctAnswer": "Six months",
+    "options": [
+      "Six months",
+      "Six days",
+      "Three weeks",
+      "Eighteen months"
+    ],
+    "correctAnswer": "Six months",
     "explanation": "The band spent six months developing Feelin Kinda Free in its inner-Melbourne studio, an unusual luxury after years of fast, location-based sessions.",
-    "sourceName": "ABC Radio National", "sourceURL": "https://www.abc.net.au/radionational/archived/insidesleeve/feeling-kinda-free-an-afternoon-with-gareth-liddiard-the-drones/7291490", "active": true
+    "sourceName": "ABC Radio National",
+    "sourceURL": "https://www.abc.net.au/radionational/archived/insidesleeve/feeling-kinda-free-an-afternoon-with-gareth-liddiard-the-drones/7291490",
+    "active": true
   },
   {
-    "id": "TD-DC26", "roundGroup": 3, "category": "Album Deep Cuts", "difficulty": "medium",
+    "id": "TD-DC26",
+    "roundGroup": 3,
+    "category": "Album Deep Cuts",
+    "difficulty": "medium",
     "question": "What earlier version of The Drones did Feelin Kinda Free consciously revisit?",
-    "options": ["Their weird pre-Melbourne experiments", "Their acoustic high-school duo", "Their covers-only pub set", "Their orchestral side project"], "correctAnswer": "Their weird pre-Melbourne experiments",
+    "options": [
+      "Their weird pre-Melbourne experiments",
+      "Their acoustic high-school duo",
+      "Their covers-only pub set",
+      "Their orchestral side project"
+    ],
+    "correctAnswer": "Their weird pre-Melbourne experiments",
     "explanation": "Liddiard saw the electronic experimentation as a return to the group’s stranger pre-Melbourne beginnings, before the city’s venues pushed them toward rock.",
-    "sourceName": "Music Feeds", "sourceURL": "https://musicfeeds.com.au/features/interview-drones-confrontational-new-album-feelin-kinda-free-taylor-kanye-wrong/", "active": true
+    "sourceName": "Music Feeds",
+    "sourceURL": "https://musicfeeds.com.au/features/interview-drones-confrontational-new-album-feelin-kinda-free-taylor-kanye-wrong/",
+    "active": true
   },
   {
-    "id": "TD-DC27", "roundGroup": 3, "category": "Album Deep Cuts", "difficulty": "hard",
+    "id": "TD-DC27",
+    "roundGroup": 3,
+    "category": "Album Deep Cuts",
+    "difficulty": "hard",
     "question": "What creative challenge did band members set themselves on Feelin Kinda Free?",
-    "options": ["Play what they normally would not", "Record each part in one take", "Avoid all electronic instruments", "Write only ten-minute songs"], "correctAnswer": "Play what they normally would not",
+    "options": [
+      "Play what they normally would not",
+      "Record each part in one take",
+      "Avoid all electronic instruments",
+      "Write only ten-minute songs"
+    ],
+    "correctAnswer": "Play what they normally would not",
     "explanation": "Instead of relying on instinctive familiar parts, each musician considered what they normally would not play and deliberately tried that approach.",
-    "sourceName": "Meadowlake Street", "sourceURL": "https://nicholasmilligan.com/2016/05/16/gareth-liddiard-aliens-rap-and-weirdness/", "active": true
+    "sourceName": "Meadowlake Street",
+    "sourceURL": "https://nicholasmilligan.com/2016/05/16/gareth-liddiard-aliens-rap-and-weirdness/",
+    "active": true
   },
   {
-    "id": "TD-DC28", "roundGroup": 3, "category": "Song / Recording Deep Cuts", "difficulty": "easy",
+    "id": "TD-DC28",
+    "roundGroup": 3,
+    "category": "Song / Recording Deep Cuts",
+    "difficulty": "easy",
     "question": "Which Australian mystery supplied the title and concept for Taman Shud?",
-    "options": ["The Somerton Man case", "The Beaumont children case", "The Pyjama Girl case", "The Great Mull Air Mystery"], "correctAnswer": "The Somerton Man case",
+    "options": [
+      "The Somerton Man case",
+      "The Beaumont children case",
+      "The Pyjama Girl case",
+      "The Great Mull Air Mystery"
+    ],
+    "correctAnswer": "The Somerton Man case",
     "explanation": "Liddiard used the 1948 Somerton Man mystery to challenge Australia’s cultural cringe: an extraordinary local case better known overseas than at home.",
-    "sourceName": "Meadowlake Street", "sourceURL": "https://nicholasmilligan.com/2016/05/16/gareth-liddiard-aliens-rap-and-weirdness/", "active": true
+    "sourceName": "Meadowlake Street",
+    "sourceURL": "https://nicholasmilligan.com/2016/05/16/gareth-liddiard-aliens-rap-and-weirdness/",
+    "active": true
   },
   {
-    "id": "TD-DC29", "roundGroup": 3, "category": "Song / Recording Deep Cuts", "difficulty": "medium",
+    "id": "TD-DC29",
+    "roundGroup": 3,
+    "category": "Song / Recording Deep Cuts",
+    "difficulty": "medium",
     "question": "Whose perspective drives the Feelin Kinda Free song Boredom?",
-    "options": ["An Arabian migrant in Australia", "A politician leaving Canberra", "A sailor returning to Fremantle", "A teenager escaping Melbourne"], "correctAnswer": "An Arabian migrant in Australia",
+    "options": [
+      "An Arabian migrant in Australia",
+      "A politician leaving Canberra",
+      "A sailor returning to Fremantle",
+      "A teenager escaping Melbourne"
+    ],
+    "correctAnswer": "An Arabian migrant in Australia",
     "explanation": "Boredom adopts the perspective of an Arabian person who has migrated to Australia, placing alienation and the country’s self-image inside one voice.",
-    "sourceName": "Beat Magazine", "sourceURL": "https://beat.com.au/the-drones-5/", "active": true
+    "sourceName": "Beat Magazine",
+    "sourceURL": "https://beat.com.au/the-drones-5/",
+    "active": true
   },
   {
-    "id": "TD-DC30", "roundGroup": 3, "category": "Song / Recording Deep Cuts", "difficulty": "hard",
+    "id": "TD-DC30",
+    "roundGroup": 3,
+    "category": "Song / Recording Deep Cuts",
+    "difficulty": "hard",
     "question": "What inspired the desolate radio-static ending of Shut Down SETI?",
-    "options": ["Orson Welles’ The War of the Worlds", "The Apollo 11 broadcast", "A numbers-station recording", "The final scene of Stalker"], "correctAnswer": "Orson Welles’ The War of the Worlds",
+    "options": [
+      "Orson Welles’ The War of the Worlds",
+      "The Apollo 11 broadcast",
+      "A numbers-station recording",
+      "The final scene of Stalker"
+    ],
+    "correctAnswer": "Orson Welles’ The War of the Worlds",
     "explanation": "The ending echoes Orson Welles’ broadcast, imagining a lonely caller repeatedly asking whether Manhattan can hear him after the world has fallen silent.",
-    "sourceName": "Beat Magazine", "sourceURL": "https://beat.com.au/the-drones-5/", "active": true
+    "sourceName": "Beat Magazine",
+    "sourceURL": "https://beat.com.au/the-drones-5/",
+    "active": true
   },
   {
-    "id": "TD-DC31", "roundGroup": 3, "category": "Band Member", "difficulty": "easy",
+    "id": "TD-DC31",
+    "roundGroup": 3,
+    "category": "Band Member",
+    "difficulty": "easy",
     "question": "Who telephoned Christian Strybosch to invite him back into The Drones?",
-    "options": ["Fiona Kitschin", "Gareth Liddiard", "Dan Luscombe", "Steve Hesketh"], "correctAnswer": "Fiona Kitschin",
+    "options": [
+      "Fiona Kitschin",
+      "Gareth Liddiard",
+      "Dan Luscombe",
+      "Steve Hesketh"
+    ],
+    "correctAnswer": "Fiona Kitschin",
     "explanation": "After Michael Noga left, Kitschin called old friend Christian Strybosch. He anticipated the question and eagerly agreed before she had properly asked.",
-    "sourceName": "Meadowlake Street", "sourceURL": "https://nicholasmilligan.com/2016/05/16/gareth-liddiard-aliens-rap-and-weirdness/", "active": true
+    "sourceName": "Meadowlake Street",
+    "sourceURL": "https://nicholasmilligan.com/2016/05/16/gareth-liddiard-aliens-rap-and-weirdness/",
+    "active": true
   },
   {
-    "id": "TD-DC32", "roundGroup": 3, "category": "Band Member", "difficulty": "medium",
+    "id": "TD-DC32",
+    "roundGroup": 3,
+    "category": "Band Member",
+    "difficulty": "medium",
     "question": "What did Christian Strybosch bring to his second rehearsal back that helped redirect the band?",
-    "options": ["An electronic drum kit", "A baritone guitar", "A reel-to-reel machine", "A vintage Mellotron"], "correctAnswer": "An electronic drum kit",
+    "options": [
+      "An electronic drum kit",
+      "A baritone guitar",
+      "A reel-to-reel machine",
+      "A vintage Mellotron"
+    ],
+    "correctAnswer": "An electronic drum kit",
     "explanation": "Strybosch arrived excited about an electronic kit just as Liddiard was considering programmed percussion, unlocking a less conventional rhythmic direction.",
-    "sourceName": "Music Feeds", "sourceURL": "https://musicfeeds.com.au/features/interview-drones-confrontational-new-album-feelin-kinda-free-taylor-kanye-wrong/", "active": true
+    "sourceName": "Music Feeds",
+    "sourceURL": "https://musicfeeds.com.au/features/interview-drones-confrontational-new-album-feelin-kinda-free-taylor-kanye-wrong/",
+    "active": true
   },
   {
-    "id": "TD-DC33", "roundGroup": 3, "category": "Touring / Live", "difficulty": "medium",
+    "id": "TD-DC33",
+    "roundGroup": 3,
+    "category": "Touring / Live",
+    "difficulty": "medium",
     "question": "How did The Drones first return to the stage after nearly a decade away?",
-    "options": ["Two Melbourne shows in 2025", "A Perth festival in 2024", "A Sydney residency in 2023", "A European tour in 2026"], "correctAnswer": "Two Melbourne shows in 2025",
+    "options": [
+      "Two Melbourne shows in 2025",
+      "A Perth festival in 2024",
+      "A Sydney residency in 2023",
+      "A European tour in 2026"
+    ],
+    "correctAnswer": "Two Melbourne shows in 2025",
     "explanation": "The band ended its long dormancy with two quickly sold-out Melbourne performances in 2025 before announcing a broader Australian run for 2026.",
-    "sourceName": "Double J", "sourceURL": "https://www.abc.net.au/listen/doublej/music-reads/music-news/the-drones-australian-tour-2026/106558538", "active": true
+    "sourceName": "Double J",
+    "sourceURL": "https://www.abc.net.au/listen/doublej/music-reads/music-news/the-drones-australian-tour-2026/106558538",
+    "active": true
   },
   {
-    "id": "TD-DC34", "roundGroup": 3, "category": "Touring / Live", "difficulty": "medium",
+    "id": "TD-DC34",
+    "roundGroup": 3,
+    "category": "Touring / Live",
+    "difficulty": "medium",
     "question": "Which band was announced to support The Drones’ 2026 Australian tour?",
-    "options": ["The Mess Hall", "The Dirty Three", "The Peep Tempel", "Cash Savage and the Last Drinks"], "correctAnswer": "The Mess Hall",
+    "options": [
+      "The Mess Hall",
+      "The Dirty Three",
+      "The Peep Tempel",
+      "Cash Savage and the Last Drinks"
+    ],
+    "correctAnswer": "The Mess Hall",
     "explanation": "The Mess Hall were named as support for the seven-show 2026 tour, reconnecting The Drones with longtime peers from Australia’s independent rock scene.",
-    "sourceName": "Double J", "sourceURL": "https://www.abc.net.au/listen/doublej/music-reads/music-news/the-drones-australian-tour-2026/106558538", "active": true
+    "sourceName": "Double J",
+    "sourceURL": "https://www.abc.net.au/listen/doublej/music-reads/music-news/the-drones-australian-tour-2026/106558538",
+    "active": true
   },
   {
-    "id": "TD-DC35", "roundGroup": 3, "category": "Behind the Scenes", "difficulty": "medium",
+    "id": "TD-DC35",
+    "roundGroup": 3,
+    "category": "Behind the Scenes",
+    "difficulty": "medium",
     "question": "How did Fiona Kitschin secretly organise early Drones gigs while on Work for the Dole?",
-    "options": ["Using the team leader’s office phone", "Posting flyers from the library", "Borrowing a council fax machine", "Calling venues from a public phone"], "correctAnswer": "Using the team leader’s office phone",
+    "options": [
+      "Using the team leader’s office phone",
+      "Posting flyers from the library",
+      "Borrowing a council fax machine",
+      "Calling venues from a public phone"
+    ],
+    "correctAnswer": "Using the team leader’s office phone",
     "explanation": "Kitschin used the team leader’s office and phone to book shows, an improvised bit of management that helped the newly arrived band establish itself.",
-    "sourceName": "ABC Radio National", "sourceURL": "https://www.abc.net.au/radionational/archived/insidesleeve/feeling-kinda-free-an-afternoon-with-gareth-liddiard-the-drones/7291490", "active": true
+    "sourceName": "ABC Radio National",
+    "sourceURL": "https://www.abc.net.au/radionational/archived/insidesleeve/feeling-kinda-free-an-afternoon-with-gareth-liddiard-the-drones/7291490",
+    "active": true
   },
   {
-    "id": "TD-DC36", "roundGroup": 3, "category": "Behind the Scenes", "difficulty": "hard",
+    "id": "TD-DC36",
+    "roundGroup": 3,
+    "category": "Behind the Scenes",
+    "difficulty": "hard",
     "question": "Why did Gareth first write The Drones on four-track cassettes in 1997?",
-    "options": ["To separate those recordings from other strange projects", "To imitate a favourite record label", "To enter a radio competition", "To hide the musicians’ real names"], "correctAnswer": "To separate those recordings from other strange projects",
+    "options": [
+      "To separate those recordings from other strange projects",
+      "To imitate a favourite record label",
+      "To enter a radio competition",
+      "To hide the musicians’ real names"
+    ],
+    "correctAnswer": "To separate those recordings from other strange projects",
     "explanation": "The name began as a practical cassette label distinguishing one set of jams from the group’s other odd experiments, only later becoming a serious band identity.",
-    "sourceName": "Music Feeds", "sourceURL": "https://musicfeeds.com.au/features/interview-drones-confrontational-new-album-feelin-kinda-free-taylor-kanye-wrong/", "active": true
+    "sourceName": "Music Feeds",
+    "sourceURL": "https://musicfeeds.com.au/features/interview-drones-confrontational-new-album-feelin-kinda-free-taylor-kanye-wrong/",
+    "active": true
   }
 ]
