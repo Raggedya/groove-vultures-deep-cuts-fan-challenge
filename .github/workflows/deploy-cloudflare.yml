@@ -32,16 +32,30 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
       - name: Deploy permanent Deep Cuts platform
-        run: npx --yes wrangler@4 deploy
+        id: deploy
+        shell: bash
+        run: |
+          set -o pipefail
+          npx --yes wrangler@4 deploy 2>&1 | tee deploy.log
+          platform_url="$(grep -Eo 'https://[^[:space:]]+workers\.dev' deploy.log | tail -1)"
+          test -n "$platform_url"
+          echo "url=$platform_url" >> "$GITHUB_OUTPUT"
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      - name: Install private platform administration key
+        shell: bash
+        run: printf '%s' "$DEEP_CUTS_ADMIN_TOKEN" | npx --yes wrangler@4 secret put ADMIN_TOKEN
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          DEEP_CUTS_ADMIN_TOKEN: ${{ secrets.DEEP_CUTS_ADMIN_TOKEN }}
       - name: Synchronise edition registry
         run: node scripts/sync-editions.mjs
         env:
-          DEEP_CUTS_API_URL: ${{ vars.DEEP_CUTS_BASE_URL }}
+          DEEP_CUTS_API_URL: ${{ vars.DEEP_CUTS_BASE_URL || steps.deploy.outputs.url }}
           DEEP_CUTS_ADMIN_TOKEN: ${{ secrets.DEEP_CUTS_ADMIN_TOKEN }}
       - name: Verify live service
         run: node scripts/smoke-live.mjs
         env:
-          DEEP_CUTS_BASE_URL: ${{ vars.DEEP_CUTS_BASE_URL }}
+          DEEP_CUTS_BASE_URL: ${{ vars.DEEP_CUTS_BASE_URL || steps.deploy.outputs.url }}
