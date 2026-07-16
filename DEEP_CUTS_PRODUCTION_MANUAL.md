@@ -62,6 +62,8 @@ Every build records: submitted, research started, research completed, artwork co
 
 GitHub is the source of truth. All work occurs on a branch and passes automated validation before main. Cloudflare deployment occurs only after validation. Runtime credentials are encrypted secrets and never committed.
 
+Every deployment synchronises and smoke-tests against the exact Cloudflare URL returned by that deployment. The workflow must verify `/api/health` before writing edition data; saved legacy URLs must never override a fresh deployment address.
+
 Completion email goes automatically to `andrewharris501@gmail.com` and contains the verified live URL plus scan-tested QR PNG. A scheduled Friday report contains band-level scans, views, destination clicks, shares, production timing and link health in CSV format.
 
 ## Definition of done
