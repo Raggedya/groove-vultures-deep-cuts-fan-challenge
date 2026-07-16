@@ -10,6 +10,12 @@ try{
 }catch(error){errors.push(`Aggits integrity check failed: ${error.message}`)}
 const platform=JSON.parse(await fs.readFile('platform.json','utf8'));
 if(!platform.defaultEdition)errors.push('platform.json requires defaultEdition.');
+let publicBaseURL;
+try{
+  publicBaseURL=new URL(platform.publicBaseURL);
+  if(publicBaseURL.protocol!=='https:'||publicBaseURL.hostname.endsWith('.example'))errors.push('platform.json publicBaseURL must be the permanent HTTPS Deep Cuts address.');
+  if(publicBaseURL.pathname!=='/'||publicBaseURL.search||publicBaseURL.hash)errors.push('platform.json publicBaseURL must not contain a path, query or fragment.');
+}catch{errors.push('platform.json requires a valid publicBaseURL.');}
 const slugs=new Set();
 const editionIds=new Set();
 for(const edition of platform.editions){
@@ -17,6 +23,7 @@ for(const edition of platform.editions){
   if(!/^[A-Za-z0-9_-]{4,40}$/.test(edition.editionId||''))errors.push(`${edition.slug} requires an opaque editionId.`);
   if(editionIds.has(edition.editionId))errors.push(`Duplicate editionId: ${edition.editionId}`);editionIds.add(edition.editionId);
   if(edition.canonicalPath!==`/e/${edition.editionId}`)errors.push(`${edition.slug} canonicalPath must use its opaque editionId.`);
+  if(publicBaseURL?.href.toLowerCase().includes(edition.slug.toLowerCase()))errors.push('The permanent publicBaseURL must not contain an artist slug.');
   try{
     const config=JSON.parse(await fs.readFile(edition.config,'utf8'));
     if(config.slug!==edition.slug)errors.push(`${edition.config} slug mismatch.`);
@@ -29,3 +36,4 @@ for(const edition of platform.editions){
 if(!slugs.has(platform.defaultEdition))errors.push('defaultEdition is not registered.');
 if(errors.length){console.error(errors.join('\n'));process.exit(1)}
 console.log(`Deep Cuts discovery platform validation passed: ${platform.editions.length} registered edition(s).`);
+
