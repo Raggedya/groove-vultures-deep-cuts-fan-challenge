@@ -1,5 +1,6 @@
 {
   "platformName": "Deep Cuts",
+  "publicBaseURL": "https://deep-cuts.andrewharris501.workers.dev",
   "defaultEdition": "groove-vultures",
   "analytics": {
     "provider": "deep-cuts-cloudflare-d1",
@@ -37,7 +38,7 @@
       "slug": "les-ye-ye-girls",
       "editionId": "dc_h4w8c3",
       "canonicalPath": "/e/dc_h4w8c3",
-      "name": "Les Yé-Yé Girls",
+      "name": "Les YÃ©-YÃ© Girls",
       "config": "editions/les-ye-ye-girls/edition.json",
       "active": true
     },
@@ -59,3 +60,4 @@
     }
   ]
 }
+
