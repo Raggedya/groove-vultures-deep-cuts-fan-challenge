@@ -9,8 +9,15 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+TOOLS_PYTHON = Path(os.environ.get("DEEP_CUTS_PYTHON_TARGET", ROOT / ".tools" / "python")).resolve()
+sys.path.insert(0, str(TOOLS_PYTHON))
 
-from PIL import Image, ImageDraw, ImageFilter, ImageFont
+try:
+    from PIL import Image, ImageDraw, ImageFilter, ImageFont
+except ModuleNotFoundError as error:
+    raise SystemExit(
+        "Deep Cuts image dependencies are unavailable. Run scripts/ensure-python-deps.py with the same Python interpreter first."
+    ) from error
 
 try:
     import zxingcpp

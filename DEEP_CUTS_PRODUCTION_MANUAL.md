@@ -64,6 +64,8 @@ GitHub is the source of truth. All work occurs on a branch and passes automated 
 
 Every deployment synchronises and smoke-tests against the exact Cloudflare URL returned by that deployment. The workflow must verify `/api/health` before writing edition data; saved legacy URLs must never override a fresh deployment address.
 
+GitHub installs delivery artwork dependencies once into the exact Python environment used by the generator and verifies Pillow, QR and scan-back imports before rendering. Local production may use the repository's private Python tools directory, which the generator must add to its import path and verify before rendering any edition.
+
 Completion email goes automatically to `andrewharris501@gmail.com` and contains the verified live URL plus scan-tested QR PNG. A scheduled Friday report contains band-level scans, views, destination clicks, shares, production timing and link health in CSV format.
 
 ## Definition of done
