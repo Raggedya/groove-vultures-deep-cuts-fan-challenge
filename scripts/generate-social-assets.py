@@ -125,10 +125,12 @@ def create_instagram(config: dict, aggits: Image.Image, destination: Path) -> No
 
 
 def create_qr(config: dict, aggits: Image.Image, destination: Path) -> str:
-    base_url = os.environ.get("DEEP_CUTS_BASE_URL", "https://deep-cuts.example").rstrip("/")
+    platform = json.loads((ROOT / "platform.json").read_text(encoding="utf-8"))
+    base_url = os.environ.get("DEEP_CUTS_BASE_URL", platform.get("publicBaseURL", "")).rstrip("/")
+    if not base_url.startswith("https://") or ".example" in base_url:
+        raise ValueError("A permanent HTTPS Deep Cuts publicBaseURL is required before QR artwork can be generated.")
     edition_id = config.get("editionId") or config.get("analytics", {}).get("editionId")
     if not edition_id:
-        platform = json.loads((ROOT / "platform.json").read_text(encoding="utf-8"))
         entry = next(item for item in platform["editions"] if item["slug"] == config["slug"])
         edition_id = entry["editionId"]
     url = f"{base_url}/q/{edition_id}"
@@ -244,3 +246,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
