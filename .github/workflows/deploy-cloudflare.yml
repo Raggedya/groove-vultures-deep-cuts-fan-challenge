@@ -53,9 +53,9 @@ jobs:
       - name: Synchronise edition registry
         run: node scripts/sync-editions.mjs
         env:
-          DEEP_CUTS_API_URL: ${{ vars.DEEP_CUTS_BASE_URL || steps.deploy.outputs.url }}
+          DEEP_CUTS_API_URL: ${{ steps.deploy.outputs.url }}
           DEEP_CUTS_ADMIN_TOKEN: ${{ secrets.DEEP_CUTS_ADMIN_TOKEN }}
       - name: Verify live service
         run: node scripts/smoke-live.mjs
         env:
-          DEEP_CUTS_BASE_URL: ${{ vars.DEEP_CUTS_BASE_URL || steps.deploy.outputs.url }}
+          DEEP_CUTS_BASE_URL: ${{ steps.deploy.outputs.url }}
