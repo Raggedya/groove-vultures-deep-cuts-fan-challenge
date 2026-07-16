@@ -66,6 +66,8 @@ Every deployment synchronises and smoke-tests against the exact Cloudflare URL r
 
 GitHub installs delivery artwork dependencies once into the exact Python environment used by the generator and verifies Pillow, QR and scan-back imports before rendering. Local production may use the repository's private Python tools directory, which the generator must add to its import path and verify before rendering any edition.
 
+The deployment workflow installs the encrypted administration, Resend API, report-recipient and sender values into the Cloudflare Worker on every release. Missing required runtime secrets block deployment before edition synchronisation. The Resend webhook signing secret is installed automatically when configured.
+
 Completion email goes automatically to `andrewharris501@gmail.com` and contains the verified live URL plus scan-tested QR PNG. A scheduled Friday report contains band-level scans, views, destination clicks, shares, production timing and link health in CSV format.
 
 ## Definition of done

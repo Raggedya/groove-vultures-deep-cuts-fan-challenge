@@ -43,13 +43,39 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-      - name: Install private platform administration key
+      - name: Install private platform runtime secrets
         shell: bash
-        run: printf '%s' "$DEEP_CUTS_ADMIN_TOKEN" | npx --yes wrangler@4 secret put ADMIN_TOKEN
+        run: |
+          set -euo pipefail
+          put_required_secret() {
+            local name="$1"
+            local value="$2"
+            if [ -z "$value" ]; then
+              echo "::error::Required Deep Cuts secret $name is not configured."
+              exit 1
+            fi
+            printf '%s' "$value" | npx --yes wrangler@4 secret put "$name"
+          }
+          put_optional_secret() {
+            local name="$1"
+            local value="$2"
+            if [ -n "$value" ]; then
+              printf '%s' "$value" | npx --yes wrangler@4 secret put "$name"
+            fi
+          }
+          put_required_secret ADMIN_TOKEN "$DEEP_CUTS_ADMIN_TOKEN"
+          put_required_secret RESEND_API_KEY "$RESEND_API_KEY"
+          put_required_secret REPORT_RECIPIENT "$REPORT_RECIPIENT"
+          put_required_secret REPORT_FROM_EMAIL "$REPORT_FROM_EMAIL"
+          put_optional_secret RESEND_WEBHOOK_SECRET "$RESEND_WEBHOOK_SECRET"
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           DEEP_CUTS_ADMIN_TOKEN: ${{ secrets.DEEP_CUTS_ADMIN_TOKEN }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          REPORT_RECIPIENT: ${{ secrets.REPORT_RECIPIENT }}
+          REPORT_FROM_EMAIL: ${{ secrets.REPORT_FROM_EMAIL }}
+          RESEND_WEBHOOK_SECRET: ${{ secrets.RESEND_WEBHOOK_SECRET }}
       - name: Synchronise edition registry
         run: node scripts/sync-editions.mjs
         env:
