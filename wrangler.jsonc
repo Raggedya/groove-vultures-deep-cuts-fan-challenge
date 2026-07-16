@@ -13,7 +13,7 @@
     {
       "binding": "DB",
       "database_name": "deep-cuts-production",
-      "database_id": "REPLACE_AFTER_ACCOUNT_CONNECTION",
+      "database_id": "dd494d36-4300-4946-854b-11a16d65bb1a",
       "migrations_dir": "migrations"
     }
   ],
