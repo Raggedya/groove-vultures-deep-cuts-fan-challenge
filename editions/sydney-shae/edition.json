@@ -1,12 +1,12 @@
 {
   "brandName": "Fan Challenge",
-  "bandName": "Lilith Lane",
-  "editionTitle": "Lilith Lane",
-  "quizTitle": "Lilith Lane Deep Cuts",
-  "description": "Thirty-six source-verified deep cuts, served as three fresh twelve-question fan challenges.",
+  "bandName": "Sydney Shae",
+  "editionTitle": "Sydney Shae",
+  "quizTitle": "Sydney Shae Deep Cuts",
+  "description": "Thirty-six source-verified Sydney Shae deep cuts.",
   "mode": "deepCuts",
-  "slug": "lilith-lane",
-  "publicURL": "https://raggedya.github.io/groove-vultures-deep-cuts-fan-challenge/?edition=lilith-lane",
+  "slug": "sydney-shae",
+  "publicURL": "https://raggedya.github.io/groove-vultures-deep-cuts-fan-challenge/?edition=sydney-shae",
   "numberOfQuestions": 12,
   "questionMix": {
     "easy": 3,
@@ -15,7 +15,7 @@
   },
   "secondsPerQuestion": 15,
   "feedbackMilliseconds": 10000,
-  "questionFile": "editions/lilith-lane/questions.json",
+  "questionFile": "editions/sydney-shae/questions.json",
   "dingSound": "assets/ding.mp3",
   "beepSound": "assets/beep.wav",
   "brandArtwork": "assets/aggits-original-cutout-v4.png",
@@ -23,23 +23,23 @@
   "backgroundArtwork": "",
   "social": {
     "copyright": "copyright Clearlight Creative",
-    "instagramImage": "output/lilith-lane/instagram-fan-challenge.png",
-    "qrImage": "output/lilith-lane/instagram-qr.png"
+    "instagramImage": "output/sydney-shae/instagram-fan-challenge.png",
+    "qrImage": "output/sydney-shae/instagram-qr.png"
   },
   "theme": {
     "accent": "#2f80ff",
     "accentSecondary": "#8dbdff"
   },
   "links": {
-    "spotify": "https://open.spotify.com/artist/2CqvjwYNISOnWygCu40mVP",
-    "bandcamp": "https://lilithlanemusic.bandcamp.com/",
-    "youtube": "",
-    "instagram": "https://www.instagram.com/lilithlane",
-    "facebook": "",
-    "tiktok": "",
-    "website": "https://lilithlane.com/",
-    "tickets": "",
-    "merchandise": "",
+    "spotify": "https://open.spotify.com/artist/2YKT0n9b7Fufg336Fx7CzK",
+    "bandcamp": "",
+    "youtube": "https://www.youtube.com/channel/UCEOZeVMSyvBGB8zr6423Pjw",
+    "instagram": "https://www.instagram.com/sydneyshaeofficial/",
+    "facebook": "https://www.facebook.com/sydneyshaemusic/",
+    "tiktok": "https://www.tiktok.com/@sydneyshaeofficial",
+    "website": "https://linktr.ee/sydneyshaemusic",
+    "tickets": "https://www.bandsintown.com/a/15551683-sydney-shae",
+    "merchandise": "https://sydneyshaemusic.com/",
     "mailingList": "",
     "tip": ""
   },

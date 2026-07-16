@@ -1,0 +1,292 @@
+[
+  {
+    "id": "NS-DC01", "roundGroup": 1, "category": "Album Deep Cuts", "difficulty": "easy",
+    "question": "Why did Nada Surf know the songs on High/Low unusually well before recording with Ric Ocasek?",
+    "options": ["They had already recorded the album once", "They rehearsed it on a cruise ship", "They inherited complete demos", "They played it nightly for five years"],
+    "correctAnswer": "They had already recorded the album once",
+    "explanation": "The band had previously made the album with a different drummer for a small Spanish label, so the Ocasek sessions were effectively their second pass.",
+    "sourceName": "Premier Guitar interview", "sourceURL": "https://www.premierguitar.com/nada-surf-caws-and-effect", "active": true
+  },
+  {
+    "id": "NS-DC02", "roundGroup": 1, "category": "Album Deep Cuts", "difficulty": "medium",
+    "question": "What unlikely pile of cash helped fund the Los Angeles sessions for Let Go?",
+    "options": ["One-dollar bills from merch sales", "A poker-night jackpot", "Record-store tip money", "A university arts grant"],
+    "correctAnswer": "One-dollar bills from merch sales",
+    "explanation": "The band told audiences that T-shirt purchases would fund another record, then handed engineer and co-producer Chris Fudurich the accumulated stack of small bills.",
+    "sourceName": "Ticketmaster UK interview", "sourceURL": "https://discover.ticketmaster.co.uk/interview/nada-surf-matthew-caws-let-go-interview-54597/", "active": true
+  },
+  {
+    "id": "NS-DC03", "roundGroup": 1, "category": "Album Deep Cuts", "difficulty": "hard",
+    "question": "Which two Moon Mirror tracks were mixed outside John Goodmanson's main album mix?",
+    "options": ["The One You Want and X Is You", "Second Skin and Losing", "New Propeller and Floater", "Open Seas and Moon Mirror"],
+    "correctAnswer": "The One You Want and X Is You",
+    "explanation": "John Goodmanson mixed most of Moon Mirror, while Chris Shaw mixed The One You Want and Burke Reid handled X Is You.",
+    "sourceName": "Moon Mirror Bandcamp credits", "sourceURL": "https://nadasurf.bandcamp.com/album/moon-mirror", "active": true
+  },
+  {
+    "id": "NS-DC04", "roundGroup": 1, "category": "Song / Recording Deep Cuts", "difficulty": "easy",
+    "question": "Where did Matthew Caws quietly sketch Blizzard of '77 while Daniel Lorca slept?",
+    "options": ["A hotel bathroom in Amsterdam", "A train compartment in France", "A record-store stockroom", "A backstage stairwell in Munich"],
+    "correctAnswer": "A hotel bathroom in Amsterdam",
+    "explanation": "Caws wrote and recorded the idea in about half an hour on a noisy four-track, playing softly in their shared Amsterdam hotel room to avoid waking Lorca.",
+    "sourceName": "KEXP Let Go track interview", "sourceURL": "https://www.kexp.org/read/2018/5/30/nada-surfs-matthew-caws-breaks-down-every-song-let-go/", "active": true
+  },
+  {
+    "id": "NS-DC05", "roundGroup": 1, "category": "Song / Recording Deep Cuts", "difficulty": "medium",
+    "question": "Which three Let Go songs did Chris Walla mix together for only $100?",
+    "options": ["Happy Kid, Blizzard of '77 and Killian's Red", "Inside of Love, Fruit Fly and Paper Boats", "Blonde on Blonde, Hi-Speed Soul and Treading Water", "La Pour Ça, Neither Heaven Nor Space and No Quick Fix"],
+    "correctAnswer": "Happy Kid, Blizzard of '77 and Killian's Red",
+    "explanation": "Between tours and while recovering from flu, the Death Cab for Cutie musician mixed all three for $100 as part of what Caws called the Barsuk family spirit.",
+    "sourceName": "Ticketmaster UK interview", "sourceURL": "https://discover.ticketmaster.co.uk/interview/nada-surf-matthew-caws-let-go-interview-54597/", "active": true
+  },
+  {
+    "id": "NS-DC06", "roundGroup": 1, "category": "Song / Recording Deep Cuts", "difficulty": "medium",
+    "question": "What studio lesson did Ric Ocasek teach Caws by demanding chorus guitar takes again and again?",
+    "options": ["Perfectly aligned layers hit like a wall", "Every chorus needs a key change", "Acoustic guitars should remain unedited", "Feedback works best without compression"],
+    "correctAnswer": "Perfectly aligned layers hit like a wall",
+    "explanation": "Ocasek made Caws repeat second and third guitar layers until their opening transient became invisible, proving how tightly aligned triple-tracking creates extraordinary impact.",
+    "sourceName": "Premier Guitar interview", "sourceURL": "https://www.premierguitar.com/nada-surf-caws-and-effect", "active": true
+  },
+  {
+    "id": "NS-DC07", "roundGroup": 1, "category": "Band Member", "difficulty": "easy",
+    "question": "Which Nada Surf member wrote the French-language Let Go song Là Pour Ça?",
+    "options": ["Daniel Lorca", "Ira Elliot", "Matthew Caws", "Louie Lino"],
+    "correctAnswer": "Daniel Lorca",
+    "explanation": "Lorca normally sings the song and wrote its words in his first language, while Caws helped shape some of the music.",
+    "sourceName": "KEXP Let Go track interview", "sourceURL": "https://www.kexp.org/read/2018/5/30/nada-surfs-matthew-caws-breaks-down-every-song-let-go/", "active": true
+  },
+  {
+    "id": "NS-DC08", "roundGroup": 1, "category": "Band Member", "difficulty": "medium",
+    "question": "Which longtime collaborator joined the core trio on keyboards throughout Moon Mirror?",
+    "options": ["Louie Lino", "Doug Gillard", "Chris Walla", "John Roderick"],
+    "correctAnswer": "Louie Lino",
+    "explanation": "Moon Mirror retained the three-decade Caws-Lorca-Elliot core while bringing longtime friend and keyboard player Louie Lino into the Rockfield recording lineup.",
+    "sourceName": "Moon Mirror Bandcamp credits", "sourceURL": "https://nadasurf.bandcamp.com/album/moon-mirror", "active": true
+  },
+  {
+    "id": "NS-DC09", "roundGroup": 1, "category": "Touring / Live", "difficulty": "hard",
+    "question": "What changed at Nada Surf shows once they toured The Proximity Effect themselves?",
+    "options": ["A small committed fan community made shows fun again", "They performed only seated acoustic sets", "Every show became an album playback", "They stopped playing material from High/Low"],
+    "correctAnswer": "A small committed fan community made shows fun again",
+    "explanation": "Unlike crowds drawn mainly by the Popular video, the self-released album attracted a smaller, deeply engaged audience that convinced the band something meaningful remained.",
+    "sourceName": "Ticketmaster UK interview", "sourceURL": "https://discover.ticketmaster.co.uk/interview/nada-surf-matthew-caws-let-go-interview-54597/", "active": true
+  },
+  {
+    "id": "NS-DC10", "roundGroup": 1, "category": "Touring / Live", "difficulty": "medium",
+    "question": "Which Dublin venue gave Nada Surf a moving welcome after roughly twelve years of releasing records?",
+    "options": ["Whelan's", "Vicar Street", "The Olympia", "The Workman's Club"],
+    "correctAnswer": "Whelan's",
+    "explanation": "Caws remembered arriving in Dublin without knowing what to expect, then finding the audience at Whelan's extraordinarily excited and welcoming.",
+    "sourceName": "Hot Press interview", "sourceURL": "https://www.hotpress.com/music/nada-surfs-matthew-caws-i-still-think-that-the-first-time-you-get-it-right-together-in-the-practice-room-is-the-greatest-high-23060133", "active": true
+  },
+  {
+    "id": "NS-DC11", "roundGroup": 1, "category": "Behind the Scenes", "difficulty": "medium",
+    "question": "Which two albums shared the cassette Caws repeatedly flipped while working in a record store?",
+    "options": ["Hank Williams and The Kinks' Village Green", "Television and The Velvet Underground", "Big Star and Fairport Convention", "Neil Young and The Modern Lovers"],
+    "correctAnswer": "Hank Williams and The Kinks' Village Green",
+    "explanation": "During Nada Surf's low-pressure reset, Caws kept Hank Williams on one cassette side and The Village Green Preservation Society on the other for months.",
+    "sourceName": "Ticketmaster UK interview", "sourceURL": "https://discover.ticketmaster.co.uk/interview/nada-surf-matthew-caws-let-go-interview-54597/", "active": true
+  },
+  {
+    "id": "NS-DC12", "roundGroup": 1, "category": "Behind the Scenes", "difficulty": "hard",
+    "question": "Why did Daniel Lorca originally suggest the band be called simply Nada?",
+    "options": ["He did not want the group to have a name", "It was his grandmother's nickname", "It matched their first rehearsal room", "A Spanish label demanded one word"],
+    "correctAnswer": "He did not want the group to have a name",
+    "explanation": "Lorca proposed the Spanish word for nothing because he resisted having any name; when it was already taken, Caws added Surf to preserve the idea.",
+    "sourceName": "Echoes and Dust interview", "sourceURL": "https://echoesanddust.com/2020/02/interview-nada-surf/", "active": true
+  },
+
+  {
+    "id": "NS-DC13", "roundGroup": 2, "category": "Album Deep Cuts", "difficulty": "easy",
+    "question": "What hidden wordplay makes If I Had a Hi-Fi an especially fitting album title?",
+    "options": ["It is a palindrome", "Every word has four letters", "Its initials spell Iggy", "It is an anagram of Ira"],
+    "correctAnswer": "It is a palindrome",
+    "explanation": "The covers collection's title reads the same forwards and backwards, giving the record a compact visual joke alongside its affectionate reinterpretations.",
+    "sourceName": "Drowned in Sound review", "sourceURL": "https://drownedinsound.com/releases/15332/reviews/4139826", "active": true
+  },
+  {
+    "id": "NS-DC14", "roundGroup": 2, "category": "Album Deep Cuts", "difficulty": "medium",
+    "question": "Which producer helped Nada Surf make The Weight Is a Gift after two years of touring Let Go?",
+    "options": ["Chris Walla", "Ric Ocasek", "Ian Laughton", "Fred Maher"],
+    "correctAnswer": "Chris Walla",
+    "explanation": "Barsuk's release account says the trio returned from two years on the road to work with Death Cab for Cutie's Chris Walla before finishing material in New York.",
+    "sourceName": "Barsuk Records", "sourceURL": "https://www.barsuk.com/shop/bark046", "active": true
+  },
+  {
+    "id": "NS-DC15", "roundGroup": 2, "category": "Album Deep Cuts", "difficulty": "medium",
+    "question": "How quickly did Nada Surf complete the basic tracking for The Stars Are Indifferent to Astronomy?",
+    "options": ["Five days", "Three weeks", "Two months", "One afternoon"],
+    "correctAnswer": "Five days",
+    "explanation": "After finishing rehearsal on Sunday, the band rolled its gear three blocks to Headgear and began tracking Monday, capturing the practiced songs in five days.",
+    "sourceName": "Premier Guitar interview", "sourceURL": "https://www.premierguitar.com/nada-surf-caws-and-effect", "active": true
+  },
+  {
+    "id": "NS-DC16", "roundGroup": 2, "category": "Song / Recording Deep Cuts", "difficulty": "easy",
+    "question": "Who arranged and played the strings heard on Moon Mirror's The One You Want?",
+    "options": ["Phillip Peterson", "John Goodmanson", "Nick Brine", "Greg Calbi"],
+    "correctAnswer": "Phillip Peterson",
+    "explanation": "The Moon Mirror credits single out Phillip Peterson for the string contribution on The One You Want, one of the album's two specially mixed tracks.",
+    "sourceName": "Moon Mirror Bandcamp credits", "sourceURL": "https://nadasurf.bandcamp.com/album/moon-mirror", "active": true
+  },
+  {
+    "id": "NS-DC17", "roundGroup": 2, "category": "Song / Recording Deep Cuts", "difficulty": "medium",
+    "question": "Which Moon Mirror song has an additional deluxe demo specifically credited as Louie Lino's original?",
+    "options": ["Losing", "Open Seas", "Second Skin", "New Propeller"],
+    "correctAnswer": "Losing",
+    "explanation": "The deluxe track list contains both Losing (Original Louie Lino Demo) and a separate Losing demo, preserving two stages of that song's development.",
+    "sourceName": "Moon Mirror Bandcamp credits", "sourceURL": "https://nadasurf.bandcamp.com/album/moon-mirror", "active": true
+  },
+  {
+    "id": "NS-DC18", "roundGroup": 2, "category": "Song / Recording Deep Cuts", "difficulty": "hard",
+    "question": "How was the lush pseudo-12-string texture on When I Was Young actually built?",
+    "options": ["A Gibson J-200 doubled with a Nashville-tuned Guild", "Two mandolins recorded at half speed", "A Rickenbacker through a rotating speaker", "A baritone guitar doubled an octave up"],
+    "correctAnswer": "A Gibson J-200 doubled with a Nashville-tuned Guild",
+    "explanation": "Caws fingerpicked a six-string Gibson J-200 and doubled it with a Guild F-50 in Nashville tuning, avoiding the sloppier feel of fingerpicking a true 12-string.",
+    "sourceName": "Premier Guitar interview", "sourceURL": "https://www.premierguitar.com/nada-surf-caws-and-effect", "active": true
+  },
+  {
+    "id": "NS-DC19", "roundGroup": 2, "category": "Band Member", "difficulty": "easy",
+    "question": "Which former Guided by Voices guitarist added overdubs to The Stars Are Indifferent to Astronomy?",
+    "options": ["Doug Gillard", "Robert Pollard", "Mitch Mitchell", "Tobin Sprout"],
+    "correctAnswer": "Doug Gillard",
+    "explanation": "Caws, Lorca and Elliot tracked the core performances live, then Gillard added carefully designed guitar details rather than joining the basic sessions.",
+    "sourceName": "Premier Guitar interview", "sourceURL": "https://www.premierguitar.com/nada-surf-caws-and-effect", "active": true
+  },
+  {
+    "id": "NS-DC20", "roundGroup": 2, "category": "Band Member", "difficulty": "medium",
+    "question": "Which member's live energy helped Caws realise unfinished studio arrangements had been restraining the band?",
+    "options": ["Ira Elliot", "Daniel Lorca", "Louie Lino", "Doug Gillard"],
+    "correctAnswer": "Ira Elliot",
+    "explanation": "Recording the covers album highlighted Elliot's force as a live drummer, prompting Caws to finish songs before tracking so the band could perform instinctively.",
+    "sourceName": "Premier Guitar interview", "sourceURL": "https://www.premierguitar.com/nada-surf-caws-and-effect", "active": true
+  },
+  {
+    "id": "NS-DC21", "roundGroup": 2, "category": "Touring / Live", "difficulty": "medium",
+    "question": "How did Nada Surf prepare for the If I Had a Hi-Fi release party?",
+    "options": ["By playing three earlier albums in full on three nights", "By busking every cover in one afternoon", "By staging a silent film soundtrack", "By inviting every original songwriter onstage"],
+    "correctAnswer": "By playing three earlier albums in full on three nights",
+    "explanation": "The band performed Let Go, The Weight Is a Gift and Lucky in their entirety on consecutive club nights before presenting the covers record.",
+    "sourceName": "Premier Guitar interview", "sourceURL": "https://www.premierguitar.com/nada-surf-caws-and-effect", "active": true
+  },
+  {
+    "id": "NS-DC22", "roundGroup": 2, "category": "Touring / Live", "difficulty": "hard",
+    "question": "Why did the band record Astronomy only three blocks from its rehearsal room?",
+    "options": ["To preserve the exact momentum of rehearsal", "To meet a label's residency rule", "To share a studio with its support act", "To avoid transporting Ira's vintage cymbals"],
+    "correctAnswer": "To preserve the exact momentum of rehearsal",
+    "explanation": "Avoiding travel, packing and recovery meant the final rehearsal flowed directly into recording, with no need to rediscover tempos, grooves or arrangements.",
+    "sourceName": "Premier Guitar interview", "sourceURL": "https://www.premierguitar.com/nada-surf-caws-and-effect", "active": true
+  },
+  {
+    "id": "NS-DC23", "roundGroup": 2, "category": "Behind the Scenes", "difficulty": "medium",
+    "question": "What physical method forced Caws to finish ten songs before the Astronomy sessions?",
+    "options": ["Ten sheets spread across a kitchen table", "A stopwatch beside his cassette deck", "Ten hotel rooms booked in sequence", "A wall chart maintained by Ira"],
+    "correctAnswer": "Ten sheets spread across a kitchen table",
+    "explanation": "Instead of juggling 25 unfinished fragments, Caws spread ten pieces of paper across a large table and concentrated on completing one coherent album set.",
+    "sourceName": "Premier Guitar interview", "sourceURL": "https://www.premierguitar.com/nada-surf-caws-and-effect", "active": true
+  },
+  {
+    "id": "NS-DC24", "roundGroup": 2, "category": "Behind the Scenes", "difficulty": "hard",
+    "question": "What low-tech device does Caws favour for first song fragments despite owning modern software?",
+    "options": ["A cassette recorder", "A wax-cylinder recorder", "A MiniDisc multitracker", "A reel-to-reel loop"],
+    "correctAnswer": "A cassette recorder",
+    "explanation": "He prefers Panasonic or Radio Shack cassette machines because they are instant, screen-free and impermanent, creating enough psychological freedom to try ideas without self-censorship.",
+    "sourceName": "Premier Guitar interview", "sourceURL": "https://www.premierguitar.com/nada-surf-caws-and-effect", "active": true
+  },
+
+  {
+    "id": "NS-DC25", "roundGroup": 3, "category": "Album Deep Cuts", "difficulty": "easy",
+    "question": "What label milestone did Moon Mirror represent for Nada Surf?",
+    "options": ["Their first album for New West Records", "Their return to Elektra", "Their first self-released record", "Their only album for Heavenly"],
+    "correctAnswer": "Their first album for New West Records",
+    "explanation": "After decades across several label chapters, Moon Mirror became Nada Surf's first New West release while retaining the established three-member core.",
+    "sourceName": "Moon Mirror Bandcamp credits", "sourceURL": "https://nadasurf.bandcamp.com/album/moon-mirror", "active": true
+  },
+  {
+    "id": "NS-DC26", "roundGroup": 3, "category": "Album Deep Cuts", "difficulty": "medium",
+    "question": "What did extra time allow Nada Surf to do with the first batch of songs considered for Moon Mirror?",
+    "options": ["Discard weaker material after living with it", "Translate every lyric into French", "Record each song in two keys", "Release all drafts as singles"],
+    "correctAnswer": "Discard weaker material after living with it",
+    "explanation": "The band wrote extensively in 2020, then found itself tired of the first batch later; distance made the strongest material much easier to identify.",
+    "sourceName": "Hot Press interview", "sourceURL": "https://www.hotpress.com/music/nada-surfs-matthew-caws-i-still-think-that-the-first-time-you-get-it-right-together-in-the-practice-room-is-the-greatest-high-23060133", "active": true
+  },
+  {
+    "id": "NS-DC27", "roundGroup": 3, "category": "Album Deep Cuts", "difficulty": "hard",
+    "question": "What source material did Jennifer Cronin use for the Moon Mirror cover painting?",
+    "options": ["A photograph by Matthew Caws", "A childhood drawing by Daniel Lorca", "A still from a Nada Surf video", "A Polaroid by Ira Elliot"],
+    "correctAnswer": "A photograph by Matthew Caws",
+    "explanation": "The official credits name Cronin as cover painter and specify that her image was based on a photograph taken by Caws.",
+    "sourceName": "Moon Mirror Bandcamp credits", "sourceURL": "https://nadasurf.bandcamp.com/album/moon-mirror", "active": true
+  },
+  {
+    "id": "NS-DC28", "roundGroup": 3, "category": "Song / Recording Deep Cuts", "difficulty": "easy",
+    "question": "Which expansive track closes Moon Mirror?",
+    "options": ["Floater", "Second Skin", "Open Seas", "Give Me the Sun"],
+    "correctAnswer": "Floater",
+    "explanation": "The five-minute Floater occupies the album's final position, resolving Moon Mirror with a spacious, hopeful meditation on forgiveness and tolerance.",
+    "sourceName": "Moon Mirror Bandcamp credits", "sourceURL": "https://nadasurf.bandcamp.com/album/moon-mirror", "active": true
+  },
+  {
+    "id": "NS-DC29", "roundGroup": 3, "category": "Song / Recording Deep Cuts", "difficulty": "medium",
+    "question": "What idea drew Caws to the phrase Moon Mirror?",
+    "options": ["The moon as one object everyone can see", "A telescope owned by his father", "A studio mirror shaped like a crescent", "A line translated from a French poem"],
+    "correctAnswer": "The moon as one object everyone can see",
+    "explanation": "Unlike trees, clouds or people, Caws saw the moon as a shared object that invites similar private questions, creating a sense of communal searching.",
+    "sourceName": "Hot Press interview", "sourceURL": "https://www.hotpress.com/music/nada-surfs-matthew-caws-i-still-think-that-the-first-time-you-get-it-right-together-in-the-practice-room-is-the-greatest-high-23060133", "active": true
+  },
+  {
+    "id": "NS-DC30", "roundGroup": 3, "category": "Song / Recording Deep Cuts", "difficulty": "hard",
+    "question": "Which Moon Mirror track was mixed by Burke Reid rather than John Goodmanson or Chris Shaw?",
+    "options": ["X Is You", "The One You Want", "Intel and Dreams", "Give Me the Sun"],
+    "correctAnswer": "X Is You",
+    "explanation": "The detailed credits divide two exceptions from Goodmanson's album mix: Shaw handled The One You Want, while Reid mixed X Is You.",
+    "sourceName": "Moon Mirror Bandcamp credits", "sourceURL": "https://nadasurf.bandcamp.com/album/moon-mirror", "active": true
+  },
+  {
+    "id": "NS-DC31", "roundGroup": 3, "category": "Band Member", "difficulty": "easy",
+    "question": "Which future Oasis star did Matthew Caws interview for Guitar World before Morning Glory appeared?",
+    "options": ["Noel Gallagher", "Liam Gallagher", "Paul Arthurs", "Paul McGuigan"],
+    "correctAnswer": "Noel Gallagher",
+    "explanation": "Before the album's release, Caws met Noel for tea in a hotel lobby and discovered a relaxed person whose combative press persona emerged when the recorder switched on.",
+    "sourceName": "Hot Press interview", "sourceURL": "https://www.hotpress.com/music/nada-surfs-matthew-caws-i-still-think-that-the-first-time-you-get-it-right-together-in-the-practice-room-is-the-greatest-high-23060133", "active": true
+  },
+  {
+    "id": "NS-DC32", "roundGroup": 3, "category": "Band Member", "difficulty": "medium",
+    "question": "What family background made Caws feel pressure to choose a conventional path after the Elektra period?",
+    "options": ["Both parents were college professors", "His family ran a touring agency", "His siblings were label executives", "Both parents were classical musicians"],
+    "correctAnswer": "Both parents were college professors",
+    "explanation": "Caws felt the expectations attached to his parents' investment in his education, yet chose record-store work, cheap living and home recording while the band rebuilt.",
+    "sourceName": "Ticketmaster UK interview", "sourceURL": "https://discover.ticketmaster.co.uk/interview/nada-surf-matthew-caws-let-go-interview-54597/", "active": true
+  },
+  {
+    "id": "NS-DC33", "roundGroup": 3, "category": "Touring / Live", "difficulty": "medium",
+    "question": "What did Rockfield Studios' famous history give the band during Moon Mirror rather than intimidation?",
+    "options": ["Excitement and extra bravery", "A strict rule against overdubs", "Pressure to imitate Queen", "A reason to record at night"],
+    "correctAnswer": "Excitement and extra bravery",
+    "explanation": "Caws said the legendary surroundings mostly psyched the band up, encouraging them to be braver and care more instead of freezing under the studio's history.",
+    "sourceName": "Hot Press interview", "sourceURL": "https://www.hotpress.com/music/nada-surfs-matthew-caws-i-still-think-that-the-first-time-you-get-it-right-together-in-the-practice-room-is-the-greatest-high-23060133", "active": true
+  },
+  {
+    "id": "NS-DC34", "roundGroup": 3, "category": "Touring / Live", "difficulty": "hard",
+    "question": "What sound made a springtime day after Nada Surf's Galway show especially memorable to Caws?",
+    "options": ["Siblings singing together in the streets", "Church bells answering a soundcheck", "Buskers covering Inside of Love", "Rain hitting the venue's metal roof"],
+    "correctAnswer": "Siblings singing together in the streets",
+    "explanation": "On the first warm day after winter, Caws heard many siblings singing and was moved by the matching vocal tone only relatives seem able to produce.",
+    "sourceName": "Hot Press interview", "sourceURL": "https://www.hotpress.com/music/nada-surfs-matthew-caws-i-still-think-that-the-first-time-you-get-it-right-together-in-the-practice-room-is-the-greatest-high-23060133", "active": true
+  },
+  {
+    "id": "NS-DC35", "roundGroup": 3, "category": "Behind the Scenes", "difficulty": "medium",
+    "question": "What feeling does Nada Surf try to preserve whenever it tracks a new record?",
+    "options": ["The first successful run-through at practice", "The silence immediately before a show", "The mood of the final mastering session", "The uncertainty of an unfinished lyric"],
+    "correctAnswer": "The first successful run-through at practice",
+    "explanation": "Caws calls the first moment a band gets a song right together the greatest high, and recording aims to retain that initial collective excitement.",
+    "sourceName": "Hot Press interview", "sourceURL": "https://www.hotpress.com/music/nada-surfs-matthew-caws-i-still-think-that-the-first-time-you-get-it-right-together-in-the-practice-room-is-the-greatest-high-23060133", "active": true
+  },
+  {
+    "id": "NS-DC36", "roundGroup": 3, "category": "Behind the Scenes", "difficulty": "medium",
+    "question": "What did Rockfield owner Kingsley Ward bring to the Moon Mirror sessions?",
+    "options": ["Visits filled with stories from the studio's history", "A collection of vintage Nada Surf demos", "Daily songwriting assignments", "A ban on looking through the tape archive"],
+    "correctAnswer": "Visits filled with stories from the studio's history",
+    "explanation": "Ward would stop by and tell stories, while the tape library let Caws wonder about unfamiliar song titles left behind by artists he admired.",
+    "sourceName": "Hot Press interview", "sourceURL": "https://www.hotpress.com/music/nada-surfs-matthew-caws-i-still-think-that-the-first-time-you-get-it-right-together-in-the-practice-room-is-the-greatest-high-23060133", "active": true
+  }
+]

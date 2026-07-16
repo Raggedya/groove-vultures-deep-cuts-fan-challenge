@@ -1,12 +1,12 @@
 {
   "brandName": "Fan Challenge",
-  "bandName": "Lilith Lane",
-  "editionTitle": "Lilith Lane",
-  "quizTitle": "Lilith Lane Deep Cuts",
-  "description": "Thirty-six source-verified deep cuts, served as three fresh twelve-question fan challenges.",
+  "bandName": "Nada Surf",
+  "editionTitle": "Nada Surf",
+  "quizTitle": "Nada Surf Deep Cuts",
+  "description": "Thirty-six source-verified Nada Surf deep cuts.",
   "mode": "deepCuts",
-  "slug": "lilith-lane",
-  "publicURL": "https://raggedya.github.io/groove-vultures-deep-cuts-fan-challenge/?edition=lilith-lane",
+  "slug": "nada-surf",
+  "publicURL": "https://raggedya.github.io/groove-vultures-deep-cuts-fan-challenge/?edition=nada-surf",
   "numberOfQuestions": 12,
   "questionMix": {
     "easy": 3,
@@ -15,7 +15,7 @@
   },
   "secondsPerQuestion": 15,
   "feedbackMilliseconds": 10000,
-  "questionFile": "editions/lilith-lane/questions.json",
+  "questionFile": "editions/nada-surf/questions.json",
   "dingSound": "assets/ding.mp3",
   "beepSound": "assets/beep.wav",
   "brandArtwork": "assets/aggits-original-cutout-v4.png",
@@ -23,24 +23,24 @@
   "backgroundArtwork": "",
   "social": {
     "copyright": "copyright Clearlight Creative",
-    "instagramImage": "output/lilith-lane/instagram-fan-challenge.png",
-    "qrImage": "output/lilith-lane/instagram-qr.png"
+    "instagramImage": "output/nada-surf/instagram-fan-challenge.png",
+    "qrImage": "output/nada-surf/instagram-qr.png"
   },
   "theme": {
     "accent": "#2f80ff",
     "accentSecondary": "#8dbdff"
   },
   "links": {
-    "spotify": "https://open.spotify.com/artist/2CqvjwYNISOnWygCu40mVP",
-    "bandcamp": "https://lilithlanemusic.bandcamp.com/",
-    "youtube": "",
-    "instagram": "https://www.instagram.com/lilithlane",
-    "facebook": "",
+    "spotify": "https://open.spotify.com/artist/11zHPjHnZN0ACA50rSnTcy",
+    "bandcamp": "https://nadasurf.bandcamp.com/",
+    "youtube": "https://www.youtube.com/nadasurf",
+    "instagram": "https://www.instagram.com/nadasurf_official/",
+    "facebook": "https://www.facebook.com/NadaSurf",
     "tiktok": "",
-    "website": "https://lilithlane.com/",
-    "tickets": "",
-    "merchandise": "",
-    "mailingList": "",
+    "website": "https://www.nadasurf.com/",
+    "tickets": "https://www.nadasurf.com/tour",
+    "merchandise": "https://geo.bingomerch.com/nadasurf",
+    "mailingList": "https://www.nadasurf.com/sign-up",
     "tip": ""
   },
   "featuredVideo": { "title": "", "youtubeURL": "" },

@@ -2,35 +2,59 @@
   "platformName": "Deep Cuts",
   "defaultEdition": "groove-vultures",
   "analytics": {
-    "provider": "local-and-configurable",
+    "provider": "deep-cuts-cloudflare-d1",
     "measurementId": "",
-    "endpoint": "",
-    "reportingEndpoint": "",
+    "endpoint": "/api/events",
+    "reportingEndpoint": "/api/reports/weekly.csv",
     "localRetention": 2500
   },
   "editions": [
     {
       "slug": "groove-vultures",
+      "editionId": "dc_7k4p2q",
+      "canonicalPath": "/e/dc_7k4p2q",
       "name": "Groove Vultures",
       "config": "editions/groove-vultures/edition.json",
       "active": true
     },
     {
       "slug": "the-drones",
+      "editionId": "dc_m9r3x8",
+      "canonicalPath": "/e/dc_m9r3x8",
       "name": "The Drones",
       "config": "editions/the-drones/edition.json",
       "active": true
     },
     {
       "slug": "lilith-lane",
+      "editionId": "dc_b6t2n5",
+      "canonicalPath": "/e/dc_b6t2n5",
       "name": "Lilith Lane",
       "config": "editions/lilith-lane/edition.json",
       "active": true
     },
     {
       "slug": "les-ye-ye-girls",
+      "editionId": "dc_h4w8c3",
+      "canonicalPath": "/e/dc_h4w8c3",
       "name": "Les Yé-Yé Girls",
       "config": "editions/les-ye-ye-girls/edition.json",
+      "active": true
+    },
+    {
+      "slug": "sydney-shae",
+      "editionId": "dc_q2f7j9",
+      "canonicalPath": "/e/dc_q2f7j9",
+      "name": "Sydney Shae",
+      "config": "editions/sydney-shae/edition.json",
+      "active": true
+    },
+    {
+      "slug": "nada-surf",
+      "editionId": "dc_v5d8s2",
+      "canonicalPath": "/e/dc_v5d8s2",
+      "name": "Nada Surf",
+      "config": "editions/nada-surf/edition.json",
       "active": true
     }
   ]

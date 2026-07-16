@@ -5,3 +5,9 @@ output/*/
 !output/*/.gitkeep
 build-records/in-progress/*.json
 .env
+node_modules/
+dist/
+.chrome-*/
+.edge-*/
+button-approval-preview*.png
+button-approval-preview*.svg

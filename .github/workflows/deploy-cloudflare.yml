@@ -1,0 +1,47 @@
+name: Deploy Deep Cuts
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deep-cuts-production
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    uses: ./.github/workflows/deep-cuts-ci.yml
+
+  deploy:
+    needs: validate
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm run build
+      - name: Apply analytics database migrations
+        run: npx --yes wrangler@4 d1 migrations apply deep-cuts-production --remote
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      - name: Deploy permanent Deep Cuts platform
+        run: npx --yes wrangler@4 deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      - name: Synchronise edition registry
+        run: node scripts/sync-editions.mjs
+        env:
+          DEEP_CUTS_API_URL: ${{ vars.DEEP_CUTS_BASE_URL }}
+          DEEP_CUTS_ADMIN_TOKEN: ${{ secrets.DEEP_CUTS_ADMIN_TOKEN }}
+      - name: Verify live service
+        run: node scripts/smoke-live.mjs
+        env:
+          DEEP_CUTS_BASE_URL: ${{ vars.DEEP_CUTS_BASE_URL }}

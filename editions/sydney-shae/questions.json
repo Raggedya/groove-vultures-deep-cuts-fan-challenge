@@ -1,0 +1,256 @@
+[
+  {
+    "id": "SS-DC01", "roundGroup": 1, "category": "Album Deep Cuts", "difficulty": "easy",
+    "question": "Which release did Sydney Shae describe as her debut EP?",
+    "options": ["Gold", "Gone", "Blue Moon", "End of the Night"], "correctAnswer": "Gold",
+    "explanation": "Gold became Sydney's debut EP and a career milestone, placing her independent work on major editorial playlists while introducing her modern country storytelling.",
+    "sourceName": "NashvilleVoyager - Sydney Shae's Story", "sourceURL": "https://nashvillevoyager.com/?p=160260&post_type=interview", "active": true
+  },
+  {
+    "id": "SS-DC02", "roundGroup": 1, "category": "Album Deep Cuts", "difficulty": "medium",
+    "question": "What idea did Sydney call the heartbeat of the Gold title track?",
+    "options": ["Finding something rare unexpectedly", "Escaping a fading hometown", "Winning after public failure", "Choosing freedom over romance"], "correctAnswer": "Finding something rare unexpectedly",
+    "explanation": "Sydney says Gold is about discovering something rare and beautiful when it is least expected, an idea she connects directly to her own artistic journey.",
+    "sourceName": "NashvilleVoyager - Sydney Shae's Story", "sourceURL": "https://nashvillevoyager.com/?p=160260&post_type=interview", "active": true
+  },
+  {
+    "id": "SS-DC03", "roundGroup": 1, "category": "Album Deep Cuts", "difficulty": "hard",
+    "question": "Which song closes the five-track Gold EP?",
+    "options": ["Gold", "Lasso", "Stubborn Stallion", "Growing Pain"], "correctAnswer": "Gold",
+    "explanation": "The EP saves its title statement for last: Gold follows Stubborn Stallion, Growing Pain, Make 'Em Like That and Lasso in the five-song sequence.",
+    "sourceName": "Spotify - Gold", "sourceURL": "https://open.spotify.com/track/1srmiztEBH5FOvESf3c4oS", "active": true
+  },
+  {
+    "id": "SS-DC04", "roundGroup": 1, "category": "Song / Recording Deep Cuts", "difficulty": "easy",
+    "question": "Which vintage car drives the story in Make 'Em Like That?",
+    "options": ["1972 Pontiac LeMans", "1969 Ford Mustang", "1970 Chevrolet Chevelle", "1973 Dodge Charger"], "correctAnswer": "1972 Pontiac LeMans",
+    "explanation": "A 1972 Pontiac LeMans carries the song's portrait of old-fashioned love, linking dependable romance with a machine from another era.",
+    "sourceName": "Shazam - Make 'Em Like That", "sourceURL": "https://www.shazam.com/song/1735453661/make-em-like-that", "active": true
+  },
+  {
+    "id": "SS-DC05", "roundGroup": 1, "category": "Song / Recording Deep Cuts", "difficulty": "medium",
+    "question": "What colour is the Pontiac in Make 'Em Like That?",
+    "options": ["Monarch yellow", "Midnight blue", "Candy-apple red", "British racing green"], "correctAnswer": "Monarch yellow",
+    "explanation": "The precise shade is monarch yellow, a cinematic detail that makes the Pontiac feel like a remembered family photograph rather than a generic classic car.",
+    "sourceName": "Shazam - Make 'Em Like That", "sourceURL": "https://www.shazam.com/song/1735453661/make-em-like-that", "active": true
+  },
+  {
+    "id": "SS-DC06", "roundGroup": 1, "category": "Song / Recording Deep Cuts", "difficulty": "hard",
+    "question": "Who shares the Make 'Em Like That writing credit with Sydney?",
+    "options": ["Sophia Joelle and Ragan Makenzie", "Taylor Bialy and Andy Ellison", "Aden Gray and John Willis", "Shania Twain and Kacey Musgraves"], "correctAnswer": "Sophia Joelle and Ragan Makenzie",
+    "explanation": "Sydney wrote Make 'Em Like That with Sophia Joelle and Ragan Makenzie, turning its nostalgic car imagery into a three-writer country story.",
+    "sourceName": "Shazam - Make 'Em Like That", "sourceURL": "https://www.shazam.com/song/1735453661/make-em-like-that", "active": true
+  },
+  {
+    "id": "SS-DC07", "roundGroup": 1, "category": "Band Member", "difficulty": "easy",
+    "question": "Who played guitar on Make 'Em Like That?",
+    "options": ["Andy Ellison", "Aden Gray", "John Willis", "Taylor Bialy"], "correctAnswer": "Andy Ellison",
+    "explanation": "Andy Ellison supplied the guitar part behind Sydney's vocal, helping the recording marry its classic-car nostalgia with a contemporary country arrangement.",
+    "sourceName": "Shazam - Make 'Em Like That", "sourceURL": "https://www.shazam.com/song/1735453661/make-em-like-that", "active": true
+  },
+  {
+    "id": "SS-DC08", "roundGroup": 1, "category": "Band Member", "difficulty": "medium",
+    "question": "Which producer shaped Make 'Em Like That?",
+    "options": ["Taylor Bialy", "John Willis", "Ragan Makenzie", "Aden Gray"], "correctAnswer": "Taylor Bialy",
+    "explanation": "Taylor Bialy produced Make 'Em Like That, part of the creative partnership behind Sydney's transition into her Gold-era country sound.",
+    "sourceName": "Shazam - Make 'Em Like That", "sourceURL": "https://www.shazam.com/song/1735453661/make-em-like-that", "active": true
+  },
+  {
+    "id": "SS-DC09", "roundGroup": 1, "category": "Touring / Live", "difficulty": "medium",
+    "question": "Which Nashville landmark invited Sydney to perform in a career-defining email?",
+    "options": ["Country Music Hall of Fame", "Grand Ole Opry", "Ryman Auditorium", "Bluebird Cafe"], "correctAnswer": "Country Music Hall of Fame",
+    "explanation": "Sydney remembers crying when the Country Music Hall of Fame emailed an invitation to perform; she says she had never accepted anything faster.",
+    "sourceName": "Apple Music - Sydney Shae", "sourceURL": "https://music.apple.com/us/artist/sydney-shae/1471259128", "active": true
+  },
+  {
+    "id": "SS-DC10", "roundGroup": 1, "category": "Touring / Live", "difficulty": "medium",
+    "question": "Which Opryland property was among Sydney's early Nashville performance locations?",
+    "options": ["Gaylord Opryland", "The Hermitage Hotel", "Union Station", "Belle Meade Mansion"], "correctAnswer": "Gaylord Opryland",
+    "explanation": "By 2020 Sydney had already performed at Gaylord Opryland, alongside appearances at The Row and other rooms around downtown Nashville.",
+    "sourceName": "The Chris & Sandy Show - Sydney Shae", "sourceURL": "https://www.chrissandyshow.com/artists/sydney-shae/", "active": true
+  },
+  {
+    "id": "SS-DC11", "roundGroup": 1, "category": "Behind the Scenes", "difficulty": "medium",
+    "question": "Which Coldplay song first made Sydney ask to learn piano?",
+    "options": ["Clocks", "Yellow", "The Scientist", "Fix You"], "correctAnswer": "Clocks",
+    "explanation": "Hearing Clocks in her mother's Volkswagen Beetle made young Sydney ask what instrument she heard; the answer, piano, launched her musical education.",
+    "sourceName": "Apple Music - Sydney Shae", "sourceURL": "https://music.apple.com/us/artist/sydney-shae/1471259128", "active": true
+  },
+  {
+    "id": "SS-DC12", "roundGroup": 1, "category": "Behind the Scenes", "difficulty": "hard",
+    "question": "Which artist inspired Sydney to switch from piano toward guitar and songwriting?",
+    "options": ["Taylor Swift", "Shania Twain", "Kacey Musgraves", "Abby Anderson"], "correctAnswer": "Taylor Swift",
+    "explanation": "After Coldplay prompted piano lessons, Taylor Swift's guitar playing and self-written songs inspired Sydney to change instruments and begin writing for herself.",
+    "sourceName": "MusicOTFuture - Interview with Sydney Shae", "sourceURL": "https://musicotfuture.com/2020/05/22/from-a-small-town-in-florida-called-deland-to-making-her-a-dreams-come-true-studying-at-belmont-university-in-nashville-i-chatted-with-sydney-shae-all-about-her-acoustic-pop-sound-and-more-read/", "active": true
+  },
+
+  {
+    "id": "SS-DC13", "roundGroup": 2, "category": "Album Deep Cuts", "difficulty": "easy",
+    "question": "How many songs appear on Sydney's Gone EP?",
+    "options": ["Five", "Four", "Six", "Eight"], "correctAnswer": "Five",
+    "explanation": "Gone is a five-song EP, a compact sixteen-minute follow-up that expanded Sydney's catalogue one year after the Gold project.",
+    "sourceName": "Apple Music - Gone EP", "sourceURL": "https://music.apple.com/us/album/gone-ep/1843168084", "active": true
+  },
+  {
+    "id": "SS-DC14", "roundGroup": 2, "category": "Album Deep Cuts", "difficulty": "medium",
+    "question": "What place does Gone hold in Sydney's EP catalogue?",
+    "options": ["Her second EP", "Her debut EP", "Her first live EP", "Her covers EP"], "correctAnswer": "Her second EP",
+    "explanation": "Sydney's official profile identifies Gone as her sophomore EP, following Gold while continuing her independent development as a Nashville country artist.",
+    "sourceName": "Spotify - Sydney Shae", "sourceURL": "https://open.spotify.com/artist/2YKT0n9b7Fufg336Fx7CzK", "active": true
+  },
+  {
+    "id": "SS-DC15", "roundGroup": 2, "category": "Album Deep Cuts", "difficulty": "hard",
+    "question": "On what date was the Gone EP released?",
+    "options": ["November 7, 2025", "April 4, 2025", "December 27, 2024", "October 18, 2024"], "correctAnswer": "November 7, 2025",
+    "explanation": "Gone arrived on November 7, 2025, placing five newer songs into a sixteen-minute release issued under Sydney's own artist name.",
+    "sourceName": "Apple Music - Gone EP", "sourceURL": "https://music.apple.com/us/album/gone-ep/1843168084", "active": true
+  },
+  {
+    "id": "SS-DC16", "roundGroup": 2, "category": "Song / Recording Deep Cuts", "difficulty": "easy",
+    "question": "Which Nebraska town appears inside Why God Made Nebraska?",
+    "options": ["Mullen", "Lincoln", "Omaha", "Kearney"], "correctAnswer": "Mullen",
+    "explanation": "The narrator finds freedom standing in a field near Mullen, grounding the song's wide-open emotional release in a specific Sandhills community.",
+    "sourceName": "Shazam - Why God Made Nebraska", "sourceURL": "https://www.shazam.com/song/1843168089/why-god-made-nebraska", "active": true
+  },
+  {
+    "id": "SS-DC17", "roundGroup": 2, "category": "Song / Recording Deep Cuts", "difficulty": "medium",
+    "question": "Which river does the song's group travel down in Why God Made Nebraska?",
+    "options": ["Dismal River", "Platte River", "Niobrara River", "Republican River"], "correctAnswer": "Dismal River",
+    "explanation": "A night spent tanking down the Dismal River becomes part of the song's unexpected freedom, friendship and emotional homecoming in Nebraska.",
+    "sourceName": "Shazam - Why God Made Nebraska", "sourceURL": "https://www.shazam.com/song/1843168089/why-god-made-nebraska", "active": true
+  },
+  {
+    "id": "SS-DC18", "roundGroup": 2, "category": "Song / Recording Deep Cuts", "difficulty": "hard",
+    "question": "Who played acoustic guitar on Why God Made Nebraska?",
+    "options": ["John Willis", "Andy Ellison", "Aden Gray", "Taylor Bialy"], "correctAnswer": "John Willis",
+    "explanation": "Session musician John Willis supplied acoustic guitar, supporting Sydney's lead vocal while Taylor Bialy handled production for the Gone recording.",
+    "sourceName": "Shazam - Why God Made Nebraska", "sourceURL": "https://www.shazam.com/song/1843168089/why-god-made-nebraska", "active": true
+  },
+  {
+    "id": "SS-DC19", "roundGroup": 2, "category": "Band Member", "difficulty": "easy",
+    "question": "Who holds the sole songwriting credit on Why God Made Nebraska?",
+    "options": ["Sydney Shae", "Taylor Bialy", "John Willis", "Sophia Joelle"], "correctAnswer": "Sydney Shae",
+    "explanation": "Sydney is the song's sole credited writer, making its Mullen fields and Dismal River memories a particularly direct piece of her storytelling.",
+    "sourceName": "Shazam - Why God Made Nebraska", "sourceURL": "https://www.shazam.com/song/1843168089/why-god-made-nebraska", "active": true
+  },
+  {
+    "id": "SS-DC20", "roundGroup": 2, "category": "Band Member", "difficulty": "medium",
+    "question": "What degree did Sydney complete at Belmont University in 2023?",
+    "options": ["Music Business", "Audio Engineering", "Songwriting", "Operatic Performance"], "correctAnswer": "Music Business",
+    "explanation": "Sydney completed a music business degree at Belmont in 2023, pairing her artist development with formal knowledge of the industry she was entering.",
+    "sourceName": "NashvilleVoyager - Sydney Shae's Story", "sourceURL": "https://nashvillevoyager.com/?p=160260&post_type=interview", "active": true
+  },
+  {
+    "id": "SS-DC21", "roundGroup": 2, "category": "Touring / Live", "difficulty": "medium",
+    "question": "Who shared Sydney's 2026 writers' round at The Essex Arms?",
+    "options": ["Regan Stewart", "Sophia Joelle", "Abby Anderson", "Ragan Makenzie"], "correctAnswer": "Regan Stewart",
+    "explanation": "Regan Stewart joined Sydney for an intimate Essex writers' round built around stripped-back performances and the stories behind their songs.",
+    "sourceName": "Ents24 - Essex Arms Writers' Round", "sourceURL": "https://www.ents24.com/brentwood-events/the-essex-arms/regan-stewart/7454050", "active": true
+  },
+  {
+    "id": "SS-DC22", "roundGroup": 2, "category": "Touring / Live", "difficulty": "medium",
+    "question": "Which Nashville arena hosted Sydney in March 2026?",
+    "options": ["Bridgestone Arena", "Nissan Stadium", "Municipal Auditorium", "Ascend Amphitheater"], "correctAnswer": "Bridgestone Arena",
+    "explanation": "Sydney's March 2026 calendar included Bridgestone Arena, a major hometown stage before a run of intimate writers' rooms across England.",
+    "sourceName": "Shazam - Sydney Shae at Bridgestone Arena", "sourceURL": "https://www.shazam.com/event/cb6bc4a0-3ff0-4b79-8639-cf7946f9c061", "active": true
+  },
+  {
+    "id": "SS-DC23", "roundGroup": 2, "category": "Behind the Scenes", "difficulty": "medium",
+    "question": "What disrupted Sydney's expected networking experience soon after moving to Nashville?",
+    "options": ["The COVID-19 shutdown", "A damaged recording studio", "A cancelled record contract", "A prolonged vocal injury"], "correctAnswer": "The COVID-19 shutdown",
+    "explanation": "Sydney arrived for Belmont's industry connections in 2019, only for COVID-19 to erase most in-person networking opportunities during her college years.",
+    "sourceName": "NashvilleVoyager - Sydney Shae's Story", "sourceURL": "https://nashvillevoyager.com/?p=160260&post_type=interview", "active": true
+  },
+  {
+    "id": "SS-DC24", "roundGroup": 2, "category": "Behind the Scenes", "difficulty": "hard",
+    "question": "Which three organisations gave Sydney internships during her disrupted college years?",
+    "options": ["Valory Music, Rhonda and Co. and CreatiVets", "Sony Nashville, BMI and MusiCares", "Opry Entertainment, ASCAP and ACM", "Warner Music, CMT and CMA"], "correctAnswer": "Valory Music, Rhonda and Co. and CreatiVets",
+    "explanation": "Despite the shutdown, Sydney secured placements with Big Machine's Valory Music, Rhonda and Co. Management and veteran-focused nonprofit CreatiVets.",
+    "sourceName": "NashvilleVoyager - Sydney Shae's Story", "sourceURL": "https://nashvillevoyager.com/?p=160260&post_type=interview", "active": true
+  },
+
+  {
+    "id": "SS-DC25", "roundGroup": 3, "category": "Album Deep Cuts", "difficulty": "easy",
+    "question": "Which Sydney Shae single predates Blue Moon and the two EPs?",
+    "options": ["Already Tried", "Growing Pain", "Sunstorm", "Take My Boots Off"], "correctAnswer": "Already Tried",
+    "explanation": "Already Tried appeared in 2019, making it an early marker in Sydney's catalogue before Blue Moon, Gold and Gone documented later stages.",
+    "sourceName": "Apple Music - Sydney Shae", "sourceURL": "https://music.apple.com/us/artist/sydney-shae/1471259128", "active": true
+  },
+  {
+    "id": "SS-DC26", "roundGroup": 3, "category": "Album Deep Cuts", "difficulty": "medium",
+    "question": "Which 2022 single sits between Sydney's early releases and the Gold era?",
+    "options": ["Blue Moon", "Lasso", "Sunstorm", "I miss Daytona"], "correctAnswer": "Blue Moon",
+    "explanation": "Blue Moon arrived in 2022, bridging Sydney's earlier acoustic-pop period and the concentrated run of country material that became Gold.",
+    "sourceName": "Apple Music - Sydney Shae", "sourceURL": "https://music.apple.com/us/artist/sydney-shae/1471259128", "active": true
+  },
+  {
+    "id": "SS-DC27", "roundGroup": 3, "category": "Album Deep Cuts", "difficulty": "hard",
+    "question": "Which two editorial playlists featured Gold?",
+    "options": ["All New Country and New in Country", "Hot Country and Country Risers", "Fresh Finds and New Boots", "Wild Country and Country Roads"], "correctAnswer": "All New Country and New in Country",
+    "explanation": "Gold reached Spotify's All New Country and Apple Music's New in Country, a notable independent breakthrough Sydney paired with passing 100,000 streams.",
+    "sourceName": "NashvilleVoyager - Sydney Shae's Story", "sourceURL": "https://nashvillevoyager.com/?p=160260&post_type=interview", "active": true
+  },
+  {
+    "id": "SS-DC28", "roundGroup": 3, "category": "Song / Recording Deep Cuts", "difficulty": "easy",
+    "question": "Which emotional tension did Sydney say drives Lasso?",
+    "options": ["The push-and-pull of love", "Homesickness after touring", "Family pressure to settle down", "Fear of performing alone"], "correctAnswer": "The push-and-pull of love",
+    "explanation": "Sydney describes Lasso as a push-and-pull love song, matching lyrics where surrender, retreat and uncertainty keep circling one another.",
+    "sourceName": "NashvilleVoyager - Sydney Shae's Story", "sourceURL": "https://nashvillevoyager.com/?p=160260&post_type=interview", "active": true
+  },
+  {
+    "id": "SS-DC29", "roundGroup": 3, "category": "Song / Recording Deep Cuts", "difficulty": "medium",
+    "question": "What astrological image makes the room ignite in Lasso?",
+    "options": ["Two fire signs", "A blue moon", "A stubborn stallion", "A falling star"], "correctAnswer": "Two fire signs",
+    "explanation": "The song pictures two fire signs lighting up a room, compressing its attraction, danger and emotional volatility into one sharp image.",
+    "sourceName": "Shazam - Lasso", "sourceURL": "https://www.shazam.com/song/1754288039/lasso", "active": true
+  },
+  {
+    "id": "SS-DC30", "roundGroup": 3, "category": "Song / Recording Deep Cuts", "difficulty": "hard",
+    "question": "Who played guitar on the recording of Lasso?",
+    "options": ["Aden Gray", "Andy Ellison", "John Willis", "Taylor Bialy"], "correctAnswer": "Aden Gray",
+    "explanation": "Aden Gray played guitar on Lasso, while Sydney held the sole songwriting credit and Taylor Bialy returned as producer.",
+    "sourceName": "Shazam - Lasso", "sourceURL": "https://www.shazam.com/song/1754288039/lasso", "active": true
+  },
+  {
+    "id": "SS-DC31", "roundGroup": 3, "category": "Band Member", "difficulty": "easy",
+    "question": "Who wrote Stubborn Stallion?",
+    "options": ["Sydney Shae", "Taylor Bialy", "Andy Ellison", "Ragan Makenzie"], "correctAnswer": "Sydney Shae",
+    "explanation": "Sydney holds the song's sole writing credit, making its horse metaphor and portrait of an emotionally unreachable partner entirely her construction.",
+    "sourceName": "Shazam - Stubborn Stallion", "sourceURL": "https://www.shazam.com/song/1784327197/stubborn-stallion", "active": true
+  },
+  {
+    "id": "SS-DC32", "roundGroup": 3, "category": "Band Member", "difficulty": "medium",
+    "question": "Which instrument did Andy Ellison play on Stubborn Stallion?",
+    "options": ["Steel guitar", "Mandolin", "Banjo", "Dobro"], "correctAnswer": "Steel guitar",
+    "explanation": "Andy Ellison contributed steel guitar, giving the song's wounded horse imagery a distinctly country voice around Sydney's performance.",
+    "sourceName": "Shazam - Stubborn Stallion", "sourceURL": "https://www.shazam.com/song/1784327197/stubborn-stallion", "active": true
+  },
+  {
+    "id": "SS-DC33", "roundGroup": 3, "category": "Touring / Live", "difficulty": "medium",
+    "question": "Which Nashville venue joined Gaylord Opryland on Sydney's early performance résumé?",
+    "options": ["The Row", "Exit/In", "The Basement East", "3rd and Lindsley"], "correctAnswer": "The Row",
+    "explanation": "The Row was among Sydney's early Nashville stages, part of the practical performance education she built while attending Belmont University.",
+    "sourceName": "The Chris & Sandy Show - Sydney Shae", "sourceURL": "https://www.chrissandyshow.com/artists/sydney-shae/", "active": true
+  },
+  {
+    "id": "SS-DC34", "roundGroup": 3, "category": "Touring / Live", "difficulty": "medium",
+    "question": "What kind of format did Sydney and Regan Stewart bring to England in 2026?",
+    "options": ["An intimate writers' round", "A full-band arena support", "A bluegrass festival set", "A musical theatre showcase"], "correctAnswer": "An intimate writers' round",
+    "explanation": "Their Essex appearance centred on an intimate writers' round, combining acoustic performances with the stories behind each artist's songs.",
+    "sourceName": "Ents24 - Essex Arms Writers' Round", "sourceURL": "https://www.ents24.com/brentwood-events/the-essex-arms/regan-stewart/7454050", "active": true
+  },
+  {
+    "id": "SS-DC35", "roundGroup": 3, "category": "Behind the Scenes", "difficulty": "medium",
+    "question": "Which animals did Sydney show through 4-H and FFA?",
+    "options": ["Chickens, goats and sheep", "Horses, cattle and pigs", "Rabbits, ducks and calves", "Goats, llamas and turkeys"], "correctAnswer": "Chickens, goats and sheep",
+    "explanation": "Sydney's country upbringing was literal: she showed chickens, goats and sheep through 4-H and FFA before carrying that work ethic into music.",
+    "sourceName": "NashvilleVoyager - Sydney Shae's Story", "sourceURL": "https://nashvillevoyager.com/?p=160260&post_type=interview", "active": true
+  },
+  {
+    "id": "SS-DC36", "roundGroup": 3, "category": "Behind the Scenes", "difficulty": "hard",
+    "question": "Which nearly free course of study did Sydney decline to chase Nashville?",
+    "options": ["Operatic vocal performance", "Classical piano performance", "Musical theatre direction", "Audio engineering"], "correctAnswer": "Operatic vocal performance",
+    "explanation": "Sydney declined a near-free place studying operatic vocal performance in Florida, choosing Nashville artist life over the safer academic route.",
+    "sourceName": "NashvilleVoyager - Sydney Shae's Story", "sourceURL": "https://nashvillevoyager.com/?p=160260&post_type=interview", "active": true
+  }
+]

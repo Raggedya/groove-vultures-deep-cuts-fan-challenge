@@ -1,11 +1,13 @@
 {
-  "name": "deep-cuts-publishing-platform",
+  "name": "deep-cuts-platform",
+  "type": "module",
   "private": true,
-  "version": "1.0.0",
-  "description": "Permanent publishing platform for Deep Cuts Fan Challenge editions.",
+  "version": "3.0.0",
+  "description": "Permanent Deep Cuts artist discovery, analytics and publishing platform.",
   "scripts": {
-    "validate": "node scripts/validate-platform.mjs && node scripts/validate-questions.mjs && node scripts/test-engine.mjs && node scripts/test-build-tracking.mjs && node scripts/test-analytics.mjs && node --check js/app.js && node --check js/engine.js && node --check js/analytics.js && node --check js/interactions.js && node --check js/reporting.js && node --check js/report.js && node --check scripts/build-tracker.mjs && node --check scripts/track-build.mjs && node --check scripts/publish-edition.mjs && node --check scripts/prepare-delivery.mjs",
-    "build": "node scripts/build-edition.mjs",
+    "validate": "node scripts/validate-platform.mjs && node scripts/test-discovery.mjs && node scripts/test-analytics.mjs && node scripts/test-build-tracking.mjs && node scripts/test-worker.mjs && node --check js/app.js && node --check js/analytics.js && node --check js/interactions.js && node --check js/reporting.js && node --check js/report.js && node --check worker/index.js",
+    "build": "node scripts/build-cloudflare.mjs",
+    "build:edition": "node scripts/build-edition.mjs",
     "register": "node scripts/register-edition.mjs",
     "delivery": "node scripts/prepare-delivery.mjs",
     "publish": "node scripts/publish-edition.mjs",
@@ -14,6 +16,14 @@
     "build:complete": "node scripts/track-build.mjs complete",
     "build:fail": "node scripts/track-build.mjs fail",
     "test:tracking": "node scripts/test-build-tracking.mjs",
-    "test:analytics": "node scripts/test-analytics.mjs"
+    "test:analytics": "node scripts/test-analytics.mjs",
+    "test:worker": "node scripts/test-worker.mjs",
+    "cloudflare:dev": "wrangler dev",
+    "cloudflare:deploy": "wrangler deploy",
+    "cloudflare:migrate": "wrangler d1 migrations apply deep-cuts-production --remote",
+    "cloudflare:sync": "node scripts/sync-editions.mjs"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
   }
 }

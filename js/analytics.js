@@ -36,9 +36,9 @@
   class Tracker{
     constructor({platformConfig={},editionEntry={},editionConfig={},storage=scope.localStorage,windowObject=scope,documentObject=scope.document,navigatorObject=scope.navigator,locationObject=scope.location,now=()=>new Date()}={}){
       this.settings=platformConfig.analytics||{};
-      this.editionId=editionEntry.slug||editionConfig.slug||"unknown";
+      this.editionId=editionEntry.editionId||editionEntry.slug||editionConfig.slug||"unknown";
       this.bandName=editionConfig.bandName||editionEntry.name||"Unknown";
-      this.quizIdentifier=editionConfig.analytics?.quizIdentifier||`${this.editionId}:deep-cuts-v1`;
+      this.quizIdentifier=editionConfig.analytics?.pageIdentifier||editionConfig.analytics?.quizIdentifier||`${this.editionId}:discovery-v1`;
       this.storage=storage;
       this.windowObject=windowObject;
       this.documentObject=documentObject;
@@ -46,12 +46,24 @@
       this.locationObject=locationObject;
       this.now=now;
       this.runId="";
+      this.sessionId=this.getSessionId();
       this.recent=new Map();
       this.once=new Set();
       this.retention=Math.max(100,Number(this.settings.localRetention||DEFAULT_RETENTION));
       this.referrer=referringSource(locationObject,documentObject);
       this.device=deviceCategory(navigatorObject);
       this.configureGoogleAnalytics();
+    }
+
+    getSessionId(){
+      try{
+        const key="deepCutsSessionV1";
+        const existing=this.windowObject?.sessionStorage?.getItem(key);
+        if(existing)return existing;
+        const value=randomId();
+        this.windowObject?.sessionStorage?.setItem(key,value);
+        return value;
+      }catch{return randomId()}
     }
 
     configureGoogleAnalytics(){
@@ -92,6 +104,7 @@
           band_name:this.bandName,
           quiz_identifier:this.quizIdentifier,
           quiz_run_id:this.runId||undefined,
+          session_id:this.sessionId,
           referring_source:this.referrer,
           device_category:this.device
         };
@@ -115,7 +128,7 @@
       try{this.windowObject?.dispatchEvent?.(new CustomEvent("fan-challenge-analytics",{detail:event}))}catch{}
       try{this.windowObject?.gtag?.("event",event.event_name,{...event,transport_type:"beacon"})}catch{}
       const endpoint=String(this.settings.endpoint||"").trim();
-      if(!/^https:\/\//i.test(endpoint))return;
+      if(!endpoint||(!/^https:\/\//i.test(endpoint)&&!endpoint.startsWith("/")))return;
       try{
         const body=JSON.stringify(event);
         if(this.navigatorObject?.sendBeacon&&this.navigatorObject.sendBeacon(endpoint,new Blob([body],{type:"application/json"})))return;

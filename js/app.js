@@ -1,50 +1,136 @@
 "use strict";
-const $=id=>document.getElementById(id);
-const els={app:$('app'),home:$('homeScreen'),quiz:$('quizScreen'),result:$('resultScreen'),error:$('errorScreen'),errorMessage:$('errorMessage'),start:$('startButton'),progress:$('progressText'),category:$('categoryText'),timer:$('timerNumber'),timerRing:$('timerRing'),question:$('questionText'),answers:$('answerList'),feedback:$('feedback'),feedbackTitle:$('feedbackTitle'),feedbackFact:$('feedbackFact'),feedbackSource:$('feedbackSource'),deepCutBadge:$('deepCutBadge'),score:$('scoreText'),classification:$('classificationText'),resultMessage:$('resultMessage'),correct:$('correctStat'),incorrect:$('incorrectStat'),unanswered:$('unansweredStat'),average:$('averageStat'),discoverTitle:$('discoverTitle'),platformLinks:$('platformLinks'),replay:$('replayButton'),share:$('shareButton'),copy:$('copyButton'),shareStatus:$('shareStatus'),shareDialog:$('shareDialog'),shareDialogClose:$('shareDialogClose'),homeBandName:$('homeBandName'),brandHeader:$('brandHeader'),brandHeaderName:$('brandHeaderName'),homeBranding:$('homeBranding'),resultArtwork:$('resultArtwork'),pageDescription:$('pageDescription'),coverCopyright:$('coverCopyright')};
-const VERSION='20260714-analytics-v1';
-let platform,editionEntry,config,questionBank=[],freshQuestionBank=null,questions=[],index=0,answers=[],locked=false,timerInterval=null,timerDeadline=0,advanceTimeout=null,muted=readMutePreference(),beepedSeconds=new Set(),runStartedAt=0,runCompleted=false;
-let ding=null,beep=null,activeSound=null,audioContext=null,activeBufferSource=null;
-const audioBuffers=new Map();
-const audioCueLog=[];
-let analytics={track(){return null},setRun(){return ''},clearRun(){}};
 
+const VERSION="20260716-master-1";
+const $=id=>document.getElementById(id);
+const els={page:$("discoveryPage"),error:$("errorScreen"),errorMessage:$("errorMessage"),bandName:$("bandName"),bio:$("artistBio"),artwork:$("heroArtwork"),waveform:$("sonicSignature"),links:$("platformLinks"),share:$("shareButton"),status:$("shareStatus"),description:$("pageDescription"),copyright:$("coverCopyright")};
+
+const LINK_DEFINITIONS=[
+  {key:"buyMusic",label:"Buy Music",subLabel:"Purchase music directly",wide:true,fallback:"bandcamp"},
+  {key:"spotify",label:"Listen on Spotify",subLabel:"Open the artist on Spotify",wide:true},
+  {key:"instagram",label:"Instagram",subLabel:"Latest updates"},
+  {key:"bandcamp",label:"Bandcamp",subLabel:"Listen directly"},
+  {key:"youtube",label:"YouTube",subLabel:"Official videos"},
+  {key:"facebook",label:"Facebook",subLabel:"Follow the artist"},
+  {key:"website",label:"Band Website",subLabel:"Official website"},
+  {key:"merchandise",label:"Buy Merch",subLabel:"Official merchandise"},
+  {key:"tip",label:"Tip the Band",subLabel:"Support the artist directly",wide:true},
+  {key:"newsReviews",label:"News & Reviews",subLabel:"Latest verified coverage",wide:true}
+];
+
+let platform,editionEntry,config;
+let analytics={device:"desktop",track(){return null}};
+let attentionTimer=0;
 init();
-async function init(){try{platform=await fetchJson(`platform.json?v=${VERSION}`);const requested=new URLSearchParams(location.search).get('edition')||platform.defaultEdition;editionEntry=platform.editions.find(edition=>edition.slug===requested&&edition.active);if(!editionEntry)throw new Error(`Unknown edition: ${requested}`);config=await fetchJson(`${editionEntry.config}?v=${VERSION}`);questionBank=await fetchJson(`${config.questionFile}?v=${VERSION}`);validateRuntimeContent();freshQuestionBank=new DeepCutsEngine.FreshQuestionBank(questionBank,config.questionMix);analytics=new DeepCutsAnalytics.Tracker({platformConfig:platform,editionEntry,editionConfig:config});applyConfig();createAudio();syncMuteControls();analytics.track('quiz_page_viewed',{page_location:location.origin+location.pathname},{onceKey:`page:${editionEntry.slug}`});els.start.disabled=false}catch(error){console.error(error);showError('The challenge content could not be loaded. Please refresh and try again.')}}
-async function fetchJson(url){const response=await fetch(url,{cache:'no-store'});if(!response.ok)throw new Error(`${url} returned ${response.status}`);return response.json()}
-function validateRuntimeContent(){const active=questionBank.filter(q=>q.active);if(active.length<config.numberOfQuestions)throw new Error('Not enough active questions');for(const q of active){const deepCutsFieldsValid=config.mode!=='deepCuts'||(q.explanation&&q.sourceName&&q.sourceURL);if(!q.id||!q.question||!Array.isArray(q.options)||q.options.length!==4||!q.options.includes(q.correctAnswer)||!deepCutsFieldsValid)throw new Error(`Invalid question ${q.id||'unknown'}`)}}
-function applyConfig(){const accessibleName=`${config.bandName} Fan Challenge`;document.title=`${config.brandName} – ${config.editionTitle}`;els.homeBandName.textContent=config.bandName;els.brandHeaderName.textContent=config.bandName;els.brandHeader.setAttribute('aria-label',accessibleName);els.homeBranding.setAttribute('aria-label',accessibleName);els.resultArtwork.setAttribute('aria-label',`Aggits for the ${config.bandName} fan challenge`);els.pageDescription.content=config.description;els.coverCopyright.textContent=config.social?.copyright||'copyright Clearlight Creative';els.discoverTitle.textContent=`Discover ${config.bandName}`;els.deepCutBadge.hidden=config.mode!=='deepCuts';document.documentElement.style.setProperty('--accent',config.theme.accent);document.documentElement.style.setProperty('--accent2',config.theme.accentSecondary);document.documentElement.style.setProperty('--brand-art',`url("${config.brandArtwork}")`);buildPlatformLinks()}
-function createAudio(){ding=new Audio(`${config.dingSound}?v=${VERSION}`);beep=config.beepSound?new Audio(`${config.beepSound}?v=${VERSION}`):null;for(const sound of[ding,beep].filter(Boolean)){sound.preload='auto';sound.playsInline=true;sound.addEventListener('ended',()=>{if(activeSound===sound)activeSound=null});sound.load()}prepareWebAudio()}
-async function prepareWebAudio(){const AudioContextClass=window.AudioContext||window.webkitAudioContext;if(!AudioContextClass)return;try{audioContext=new AudioContextClass();for(const[cue,url]of[['ding',config.dingSound],['beep',config.beepSound]].filter(([,url])=>url)){const response=await fetch(`${url}?v=${VERSION}`);if(!response.ok)continue;audioBuffers.set(cue,await audioContext.decodeAudioData(await response.arrayBuffer()))}}catch{audioContext=null;audioBuffers.clear()}}
-function stopSound(sound){if(!sound)return;try{sound.pause();sound.currentTime=0}catch{}}
-function stopBufferSource(){if(!activeBufferSource)return;try{activeBufferSource.stop()}catch{}activeBufferSource=null}
-function unlockAudio(){if(muted)return;if(audioContext?.state==='suspended')audioContext.resume().catch(()=>{});for(const sound of[ding,beep]){if(!sound)continue;const previousVolume=sound.volume;sound.muted=false;sound.volume=.001;sound.currentTime=0;try{const attempt=sound.play();if(attempt&&attempt.then)attempt.then(()=>{sound.pause();sound.currentTime=0;sound.volume=previousVolume}).catch(()=>{sound.volume=previousVolume})}catch{sound.volume=previousVolume}}}
-function playSound(sound,cue){if(!sound||muted)return;stopBufferSource();stopSound(ding);stopSound(beep);activeSound=null;audioCueLog.push({cue,question:index+1,remaining:Number(els.timer.textContent)});document.documentElement.dataset.audioCues=JSON.stringify(audioCueLog);analytics.track('audio_cue',{cue,question:index+1});if(audioContext?.state==='running'&&audioBuffers.has(cue)){const source=audioContext.createBufferSource();source.buffer=audioBuffers.get(cue);source.connect(audioContext.destination);source.addEventListener('ended',()=>{if(activeBufferSource===source)activeBufferSource=null});activeBufferSource=source;source.start();return}activeSound=sound;try{sound.muted=false;sound.volume=1;sound.play()?.catch(()=>{})}catch{}}
-function playBeep(){playSound(beep,'beep')}
-function playDing(){playSound(ding,'ding')}
-function startChallenge(){unlockAudio();startRun('initial')}
-function startRun(startType='replay'){clearTimers();questions=freshQuestionBank.nextRound();index=0;answers=[];runStartedAt=Date.now();runCompleted=false;analytics.setRun();analytics.track('quiz_started',{start_type:startType,question_count:questions.length},{dedupeKey:'start',dedupeMs:1000});audioCueLog.length=0;document.documentElement.dataset.audioCues='[]';showScreen(els.quiz);renderQuestion()}
-function renderQuestion(){clearTimers();locked=false;beepedSeconds=new Set();els.feedback.hidden=true;els.feedbackSource.hidden=true;els.answers.innerHTML='';const q=questions[index];els.progress.textContent=`Question ${index+1} of ${questions.length}`;els.category.textContent=q.category;els.question.textContent=q.question;els.timer.textContent=String(config.secondsPerQuestion);els.timerRing.classList.remove('urgent');els.timerRing.setAttribute('aria-label',`${config.secondsPerQuestion} seconds remaining`);q.options.forEach((option,optionIndex)=>{const button=document.createElement('button');button.type='button';button.className='answer-button';button.textContent=`${String.fromCharCode(65+optionIndex)}. ${option}`;button.dataset.answer=option;button.addEventListener('click',()=>selectAnswer(option,button));els.answers.append(button)});els.question.focus({preventScroll:true});timerDeadline=performance.now()+config.secondsPerQuestion*1000;timerInterval=setInterval(updateTimer,50)}
-function updateTimer(){if(locked)return;const remainingMs=timerDeadline-performance.now();const remaining=Math.max(0,Math.ceil(remainingMs/1000));els.timer.textContent=String(remaining);els.timerRing.setAttribute('aria-label',`${remaining} seconds remaining`);els.timerRing.classList.toggle('urgent',remaining<=3&&remaining>0);if(config.mode==='deepCuts'&&[3,2,1].includes(remaining)&&!beepedSeconds.has(remaining)){beepedSeconds.add(remaining);playBeep()}if(remainingMs<=0)completeAnswer(null,true)}
-function selectAnswer(answer,button){if(locked)return;button.classList.add(answer===questions[index].correctAnswer?'correct':'incorrect');completeAnswer(answer,false)}
-function completeAnswer(selected,unanswered){if(locked)return;locked=true;clearInterval(timerInterval);timerInterval=null;stopBufferSource();stopSound(beep);activeSound=null;const q=questions[index];const correct=!unanswered&&selected===q.correctAnswer;const responseSeconds=unanswered?config.secondsPerQuestion:Math.min(config.secondsPerQuestion,Math.max(0,(config.secondsPerQuestion*1000-(timerDeadline-performance.now()))/1000));answers.push({id:q.id,selected,correct,unanswered,responseSeconds});for(const button of els.answers.children){button.disabled=true;if(button.dataset.answer===q.correctAnswer)button.classList.add('correct')}
-  els.timer.textContent=unanswered?'0':els.timer.textContent;els.timerRing.classList.remove('urgent');els.feedbackTitle.textContent=unanswered?`TIME’S UP — ${q.correctAnswer}`:correct?`CORRECT — ${q.correctAnswer}`:`CORRECT ANSWER — ${q.correctAnswer}`;els.feedbackFact.textContent=q.explanation||q.source||'';if(q.sourceURL){els.feedbackSource.textContent=`Source: ${q.sourceName}`;els.feedbackSource.href=q.sourceURL;els.feedbackSource.hidden=false}else els.feedbackSource.hidden=true;els.feedback.hidden=false;if(config.mode==='deepCuts'){if(unanswered)playDing()}else if(correct)playDing();analytics.track('question_answered',{questionId:q.id,correct,unanswered,responseSeconds});advanceTimeout=setTimeout(()=>{index+=1;if(index>=questions.length)showResults();else renderQuestion()},config.feedbackMilliseconds)}
-function showResults(){clearTimers();const stats=DeepCutsEngine.calculateStats(answers,questions.length);const result=DeepCutsEngine.classificationFor(stats.correct,config.classifications,config.bandName);els.score.textContent=`${stats.correct} / ${questions.length}`;els.classification.textContent=result.label;els.resultMessage.textContent=result.message;els.correct.textContent=stats.correct;els.incorrect.textContent=stats.incorrect;els.unanswered.textContent=stats.unanswered;els.average.textContent=`${stats.averageResponseTime.toFixed(1)}s`;els.result.dataset.score=String(stats.correct);els.result.dataset.classification=result.label;showScreen(els.result);if(!runCompleted){runCompleted=true;analytics.track('quiz_completed',{final_score:stats.correct,maximum_score:questions.length,completion_time_seconds:Math.max(0,(Date.now()-runStartedAt)/1000),classification:result.label},{onceKey:`completed:${analytics.runId}`})}}
-function showScreen(screen){[els.home,els.quiz,els.result,els.error].forEach(item=>item.hidden=item!==screen);els.app.classList.toggle('home-active',screen===els.home);window.scrollTo({top:0,behavior:'auto'})}
-function showError(message){clearTimers();els.errorMessage.textContent=message;showScreen(els.error)}
-function clearTimers(){if(timerInterval){clearInterval(timerInterval);timerInterval=null}if(advanceTimeout){clearTimeout(advanceTimeout);advanceTimeout=null}stopBufferSource();stopSound(beep);stopSound(ding);activeSound=null}
-function buildPlatformLinks(){const definitions=[['spotify','Open Spotify','spotify'],['bandcamp','Visit Bandcamp','bandcamp'],['youtube','Watch YouTube','youtube'],['instagram','Open Instagram','instagram'],['facebook','Open Facebook','facebook'],['tiktok','Open TikTok','tiktok'],['website','Visit Website','website'],['tickets','Buy Tickets','tickets'],['merchandise','Buy Merch','merchandise'],['mailingList','Join Mailing List','mailing-list']];els.platformLinks.innerHTML='';definitions.forEach(([key,label,className])=>{const url=config.links[key];if(!url)return;const link=document.createElement('a');link.href=url;link.target='_blank';link.rel='noopener noreferrer';link.className=`platform-link ${className}`;link.textContent=label;link.setAttribute('aria-label',`${label} for ${config.bandName} (opens in a new tab)`);link.addEventListener('click',()=>DeepCutsInteractions.trackOutbound(analytics,key,url,Number(els.result.dataset.score)));els.platformLinks.append(link)})}
-function resultShareText(){const challengeName=config.mode==='deepCuts'?'Deep Cuts Challenge':'Fan Challenge';return `I scored ${els.result.dataset.score}/${questions.length} in the ${config.bandName} ${challengeName} and earned ${els.result.dataset.classification} status. Can you beat me?`}
-async function shareResult(){const finalScore=Number(els.result.dataset.score);analytics.track('share_button_clicked',{final_score:finalScore},{dedupeKey:'main-share',dedupeMs:500});const payload=sharePayload();if(DeepCutsInteractions.supportsNativeShare(navigator,analytics.device)){const status=await DeepCutsInteractions.nativeShare({navigatorObject:navigator,tracker:analytics,payload,actionId:DeepCutsAnalytics.randomId(),finalScore});if(status!=='failed')return}openShareDialog()}
-function sharePayload(){return{title:`${config.brandName} – ${config.editionTitle}`,text:resultShareText(),url:config.publicURL||location.href}}
-function openShareDialog(){if(typeof els.shareDialog.showModal==='function')els.shareDialog.showModal();else els.shareDialog.setAttribute('open','')}
-function closeShareDialog(){if(typeof els.shareDialog.close==='function')els.shareDialog.close();else els.shareDialog.removeAttribute('open')}
-function shareVia(method){const payload=sharePayload();const actionId=DeepCutsAnalytics.randomId();const finalScore=Number(els.result.dataset.score);analytics.track('share_method_selected',{share_method:method,share_action_id:actionId,final_score:finalScore},{dedupeKey:`share:${method}`,dedupeMs:500});if(method==='copy_link'){copyQuizLink('share_dialog',actionId);closeShareDialog();return}const url=DeepCutsInteractions.shareMethodUrl(method,payload);closeShareDialog();if(url)window.open(url,'_blank','noopener,noreferrer')}
-async function copyQuizLink(trigger='direct_button',actionId=DeepCutsAnalytics.randomId()){const finalScore=Number(els.result.dataset.score);if(trigger==='direct_button')analytics.track('share_method_selected',{share_method:'copy_link',share_action_id:actionId,final_score:finalScore},{dedupeKey:'share:copy_link',dedupeMs:500});const copied=await DeepCutsInteractions.copyLink({clipboard:navigator.clipboard,tracker:analytics,text:config.publicURL||location.href,trigger,actionId,finalScore});els.shareStatus.textContent=copied?'Quiz link copied.':'Copy was blocked. Please copy the address from your browser.'}
-function readMutePreference(){try{return localStorage.getItem('fanChallengeMuted')==='true'}catch{return false}}
-function setMuted(value){muted=value;if(muted){stopBufferSource();stopSound(beep);stopSound(ding);activeSound=null}try{localStorage.setItem('fanChallengeMuted',String(value))}catch{}syncMuteControls();analytics.track('sound_changed',{muted})}
-function syncMuteControls(){document.querySelectorAll('.mute-button').forEach(button=>{button.setAttribute('aria-pressed',String(muted));button.setAttribute('aria-label',muted?'Turn sound on':'Mute sound');button.textContent=button.id==='muteButtonHome'?`Sound: ${muted?'Off':'On'}`:(muted?'×':'♪')})}
-function toggleMute(){setMuted(!muted)}
-document.addEventListener('visibilitychange',()=>{if(document.hidden&&timerInterval&&!locked){clearTimers();els.timer.textContent=String(config.secondsPerQuestion);els.timerRing.classList.remove('urgent')}else if(!document.hidden&&!els.quiz.hidden&&!locked)renderQuestion()});
-window.addEventListener('beforeunload',clearTimers);
-els.start.addEventListener('click',startChallenge);els.replay.addEventListener('click',()=>{unlockAudio();startRun('replay')});els.share.addEventListener('click',shareResult);els.copy.addEventListener('click',()=>copyQuizLink());els.shareDialogClose.addEventListener('click',closeShareDialog);els.shareDialog.addEventListener('click',event=>{if(event.target===els.shareDialog)closeShareDialog()});document.querySelectorAll('[data-share-method]').forEach(button=>button.addEventListener('click',()=>shareVia(button.dataset.shareMethod)));document.querySelectorAll('.mute-button').forEach(button=>button.addEventListener('click',toggleMute));
-window.__bandChallengeTest={startRun,renderQuestion,completeAnswer,showResults,updateTimer,getState:()=>({index,locked,answerCount:answers.length,timerValue:els.timer.textContent,screen:els.home.hidden?(els.quiz.hidden?'result':'quiz'):'home',questions:questions.map(q=>q.id),audioCueLog:[...audioCueLog],beepedSeconds:[...beepedSeconds],activeSound:activeSound===beep?'beep':activeSound===ding?'ding':null})};
+
+async function init(){
+  try{
+    platform=await fetchJson(`/platform.json?v=${VERSION}`);
+    const pathId=location.pathname.match(/^\/e\/([A-Za-z0-9_-]+)/)?.[1];
+    const legacy=new URLSearchParams(location.search).get("edition");
+    const requested=pathId||legacy||platform.defaultEdition;
+    editionEntry=platform.editions.find(item=>(item.editionId===requested||item.slug===requested)&&item.active);
+    if(!editionEntry)throw new Error(`Unknown edition: ${requested}`);
+    config=await fetchJson(`/${editionEntry.config}?v=${VERSION}`);
+    analytics=new DeepCutsAnalytics.Tracker({platformConfig:platform,editionEntry,editionConfig:config});
+    applyConfig();
+    analytics.track("discovery_page_viewed",{page_location:location.origin+location.pathname,page_identifier:pageIdentifier()},{onceKey:`page:${editionEntry.editionId||editionEntry.slug}`});
+  }catch(error){console.error(error);showError("This artist page could not be loaded. Please refresh and try again.")}
+}
+
+async function fetchJson(url){const response=await fetch(url,{cache:"no-store"});if(!response.ok)throw new Error(`${url} returned ${response.status}`);return response.json()}
+
+function applyConfig(){
+  const name=config.bandName||editionEntry.name;
+  document.title=`${name} | Deep Cuts`;
+  const bio=config.discovery?.bio||config.description||`Discover ${name}.`;
+  els.description.content=`Official music, social and support links for ${name}.`;
+  els.bandName.textContent=name;
+  els.bio.textContent=bio;
+  els.artwork.src=`/${config.characterArtwork||"assets/aggits-original-cutout-v4.png"}`;
+  els.artwork.alt=`Aggits presenting ${name}`;
+  els.copyright.textContent=config.social?.copyright||"copyright Clearlight Creative";
+  document.documentElement.style.setProperty("--accent",config.theme?.accent||"#2f80ff");
+  buildWaveform(name);
+  buildLinks();
+  startAttentionCycle();
+}
+
+function buildWaveform(name){
+  els.waveform.innerHTML="";
+  let seed=[...name].reduce((value,char)=>((value*33)^char.charCodeAt(0))>>>0,2166136261);
+  for(let index=0;index<47;index+=1){
+    seed=(seed*1664525+1013904223)>>>0;
+    const distance=Math.abs(index-23)/23;
+    const envelope=Math.max(.2,1-Math.pow(distance,1.55));
+    const height=Math.round(7+envelope*(12+(seed%28)));
+    const bar=document.createElement("span");
+    bar.style.setProperty("--bar-height",`${height}px`);
+    els.waveform.append(bar);
+  }
+}
+
+function linkValue(definition){
+  if(definition.key==="buyMusic")return validHttps(config.links?.buyMusic)||validHttps(config.links?.[definition.fallback]);
+  return validHttps(config.links?.[definition.key]);
+}
+
+function buildLinks(){
+  els.links.innerHTML="";
+  for(const definition of LINK_DEFINITIONS){
+    const url=linkValue(definition);
+    const element=document.createElement(url?"a":"div");
+    element.className=`platform-link${definition.wide?" wide":""}${url?" is-active":" is-disabled"}`;
+    element.dataset.destination=definition.key;
+    element.innerHTML=`<span class="link-copy"><strong>${definition.label}</strong><small>${url?activeSubtitle(definition):"Not currently available"}</small></span>${url?'<span class="link-arrow" aria-hidden="true">&gt;</span>':""}`;
+    if(url){
+      element.href=url;element.target="_blank";element.rel="noopener noreferrer";
+      element.setAttribute("aria-label",`${definition.label} for ${config.bandName} (opens in a new tab)`);
+      element.addEventListener("click",()=>DeepCutsInteractions.trackOutbound(analytics,analyticsDestination(definition.key),url),{passive:true});
+    }else{
+      element.setAttribute("aria-disabled","true");
+    }
+    els.links.append(element);
+  }
+}
+
+function activeSubtitle(definition){
+  if(definition.key==="newsReviews")return config.discovery?.newsLabel||definition.subLabel;
+  if(definition.key==="buyMusic"&&config.links?.bandcamp&&!config.links?.buyMusic)return "Purchase music via Bandcamp";
+  return definition.subLabel;
+}
+
+function analyticsDestination(key){return({buyMusic:"buy_music",newsReviews:"news_reviews",merchandise:"merchandise"})[key]||key}
+
+function startAttentionCycle(){
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+  const run=()=>{
+    if(document.hidden)return;
+    els.waveform.classList.remove("pulse");void els.waveform.offsetWidth;els.waveform.classList.add("pulse");
+    [...els.links.querySelectorAll(".is-active")].forEach((link,index)=>setTimeout(()=>{link.classList.add("attention");setTimeout(()=>link.classList.remove("attention"),650)},650+index*120));
+  };
+  setTimeout(run,450);
+  attentionTimer=window.setInterval(run,10000);
+  document.addEventListener("visibilitychange",()=>{if(!document.hidden)run()},{passive:true});
+}
+
+function validHttps(value){try{const url=new URL(String(value||""));return url.protocol==="https:"?url.href:""}catch{return""}}
+function pageIdentifier(){return config.analytics?.pageIdentifier||`${editionEntry.editionId}:discovery-v1`}
+function canonicalURL(){return new URL(editionEntry.canonicalPath||`/e/${editionEntry.editionId}`,location.origin).href}
+function sharePayload(){return{title:`${config.bandName} | Deep Cuts`,text:`Discover ${config.bandName}: official music, video, socials and ways to support the artist.`,url:canonicalURL()}}
+
+async function sharePage(){
+  analytics.track("share_button_clicked",{page_identifier:pageIdentifier()},{dedupeKey:"main-share",dedupeMs:500});
+  const payload=sharePayload();
+  if(DeepCutsInteractions.supportsNativeShare(navigator,analytics.device)){
+    const result=await DeepCutsInteractions.nativeShare({navigatorObject:navigator,tracker:analytics,payload,actionId:DeepCutsAnalytics.randomId()});
+    if(result!=="failed")return;
+  }
+  const actionId=DeepCutsAnalytics.randomId();
+  analytics.track("copy_link_clicked",{share_method:"copy_link",share_action_id:actionId},{dedupeKey:"share-copy",dedupeMs:500});
+  const copied=await DeepCutsInteractions.copyLink({clipboard:navigator.clipboard,tracker:analytics,text:canonicalURL(),trigger:"share_fallback",actionId});
+  els.status.textContent=copied?"Artist page link copied.":"Copy was blocked. Please copy the address from your browser.";
+}
+
+function showError(message){els.page.hidden=true;els.errorMessage.textContent=message;els.error.hidden=false}
+els.share.addEventListener("click",sharePage);
+window.__deepCutsDiscoveryTest={validHttps,getConfig:()=>config,getRenderedLinks:()=>[...els.links.children].map(link=>({destination:link.dataset.destination,disabled:link.classList.contains("is-disabled")}))};
