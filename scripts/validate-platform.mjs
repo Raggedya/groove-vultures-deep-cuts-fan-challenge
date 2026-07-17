@@ -28,6 +28,13 @@ for(const edition of platform.editions){
     const config=JSON.parse(await fs.readFile(edition.config,'utf8'));
     if(config.slug!==edition.slug)errors.push(`${edition.config} slug mismatch.`);
     if(!config.bandName||!/^https:\/\//.test(config.publicURL||''))errors.push(`${edition.config} requires bandName and an HTTPS publicURL.`);
+    if(config.production){
+      if(!config.production.jobId||!Number.isFinite(new Date(config.production.submittedAt).getTime()))errors.push(`${edition.config} requires factory job identity and submission time.`);
+      const researchPath=edition.config.replace(/edition\.json$/,'research.json');
+      const research=JSON.parse(await fs.readFile(researchPath,'utf8'));
+      if(research.editionId!==edition.editionId||!Array.isArray(research.sources)||research.sources.length<2)errors.push(`${researchPath} requires matching edition identity and at least two sources.`);
+      for(const[key,value]of Object.entries(config.links||{}))if(value&&!research.sources.some(source=>source.destination===key&&source.identityVerified===true&&normalized(source.url)===normalized(value)))errors.push(`${researchPath} lacks matching verified evidence for links.${key}.`);
+    }
     await fs.access(config.characterArtwork);
     for(const[key,value]of Object.entries(config.links||{}))if(value&&!/^https:\/\//.test(value))errors.push(`${edition.config} links.${key} must be blank or HTTPS.`);
     if(config.featuredVideo?.youtubeURL&&!/^https:\/\/(?:www\.)?(?:youtube\.com|youtu\.be)\//i.test(config.featuredVideo.youtubeURL))errors.push(`${edition.config} featuredVideo.youtubeURL must be a verified YouTube URL.`);
@@ -36,4 +43,6 @@ for(const edition of platform.editions){
 if(!slugs.has(platform.defaultEdition))errors.push('defaultEdition is not registered.');
 if(errors.length){console.error(errors.join('\n'));process.exit(1)}
 console.log(`Deep Cuts discovery platform validation passed: ${platform.editions.length} registered edition(s).`);
+
+function normalized(value){try{const url=new URL(String(value));url.hash='';return url.href.replace(/\/$/,'')}catch{return''}}
 
