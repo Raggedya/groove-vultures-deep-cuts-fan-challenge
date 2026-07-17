@@ -15,6 +15,7 @@ assert.ok(deploy.indexOf('Generate scan-tested delivery artwork')<deploy.indexOf
 assert.match(deploy,/Verify deployed QR artwork/,'Deployment must verify every public QR PNG.');
 assert.match(delivery,/\/output\/\$\{encodeURIComponent\(slug\)\}\/instagram-qr\.png/,'Email must attach the public scan-tested QR PNG.');
 assert.match(delivery,/\/api\/delivery/,'Email delivery must use the permanent authenticated delivery API.');
+assert.match(delivery,/waitForDelivery\(jobId\)/,'Publishing must wait for confirmed email delivery.');
 assert.match(emailWorkflow,/DEEP_CUTS_ADMIN_TOKEN: \$\{\{ secrets\.DEEP_CUTS_ADMIN_TOKEN \}\}/,'The email verification workflow must keep the admin token encrypted.');
 console.log('Permanent QR and delivery workflow checks passed.');
 
