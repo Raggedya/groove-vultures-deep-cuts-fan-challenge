@@ -57,7 +57,14 @@
       "name": "Nada Surf",
       "config": "editions/nada-surf/edition.json",
       "active": true
+    },
+    {
+      "slug": "super-american-eagle",
+      "editionId": "dc_5705f37451",
+      "canonicalPath": "/e/dc_5705f37451",
+      "name": "Super American Eagle",
+      "config": "editions/super-american-eagle/edition.json",
+      "active": true
     }
   ]
 }
-
