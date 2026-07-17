@@ -8,7 +8,7 @@ Deep Cuts is one permanent, mobile-first artist discovery and support platform. 
 
 The primary production KPI is elapsed time from artist-name submission to confirmed delivery email. The secondary KPI is verified content quality. Every change must reduce production time, reduce owner interaction or improve integrity without weakening either.
 
-The standard owner instruction is `Deep Cuts [Artist]`. It authorizes the factory to research, configure, validate, create a branch and pull request, enable auto-merge after green checks, deploy, verify and send the completion email without intermediate owner interaction. Only ambiguous artist identity, unavailable credentials or a destination requiring explicit authority may stop the factory.
+The standard owner instruction is `Deep Cuts [Artist]`. It authorizes the factory to research, configure, validate, create a branch and pull request, merge through the authorised GitHub connector only after green checks, deploy, verify and send the completion email without intermediate owner interaction. Repository auto-merge may be used when available but is not required. Only ambiguous artist identity, unavailable credentials or a destination requiring explicit authority may stop the factory.
 
 ## Locked visual model
 
