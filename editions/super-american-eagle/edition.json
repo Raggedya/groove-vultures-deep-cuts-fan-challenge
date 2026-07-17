@@ -1,0 +1,50 @@
+{
+  "brandName": "Deep Cuts",
+  "bandName": "Super American Eagle",
+  "editionTitle": "Super American Eagle",
+  "description": "Melbourne power trio channelling heavy rock through noise, psych, pop and sludgy, fuzz-filtered grooves.",
+  "discovery": {
+    "bio": "Melbourne power trio channelling heavy rock through noise, psych, pop and sludgy, fuzz-filtered grooves.",
+    "newsLabel": "Live review: Blurred Culture"
+  },
+  "mode": "discovery",
+  "slug": "super-american-eagle",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_5705f37451",
+  "characterArtwork": "assets/aggits-original-cutout-v4.png",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/super-american-eagle/instagram-discovery.png",
+    "qrImage": "output/super-american-eagle/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#2f80ff",
+    "accentSecondary": "#8dbdff"
+  },
+  "links": {
+    "buyMusic": "https://superamericaneagle.bandcamp.com/music",
+    "spotify": "https://open.spotify.com/artist/6bX0fNqWX1vIennpe0uOXB",
+    "instagram": "",
+    "bandcamp": "https://superamericaneagle.bandcamp.com/music",
+    "youtube": "https://www.youtube.com/@superamericaneagle5526",
+    "facebook": "",
+    "website": "",
+    "merchandise": "https://sound-merch.com.au/collections/super-american-eagle/products/super-american-eagle-black-logo-t-shirt?variant=42920601026732",
+    "tip": "",
+    "newsReviews": "https://blurredculture.com/the-legendary-troubadour-hosts-jets-triumphant-u-s-return-after-14-years/"
+  },
+  "featuredVideo": {
+    "title": "Super American Eagle - Anxiety Nightie",
+    "youtubeURL": "https://youtu.be/e5x-eP303og"
+  },
+  "analytics": {
+    "editionId": "dc_5705f37451",
+    "pageIdentifier": "dc_5705f37451:discovery-v1"
+  },
+  "production": {
+    "jobId": "dcjob_aff88b43-6ed8-4ee0-a5d2-26d91c9eaecd",
+    "submittedAt": "2026-07-17T09:19:38.456Z",
+    "researchCompletedAt": "2026-07-17T09:28:22.778Z",
+    "editionCreatedAt": "2026-07-17T09:28:22.778Z"
+  }
+}

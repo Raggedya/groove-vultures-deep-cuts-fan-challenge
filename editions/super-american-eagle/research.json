@@ -1,0 +1,81 @@
+{
+  "bandName": "Super American Eagle",
+  "slug": "super-american-eagle",
+  "editionId": "dc_5705f37451",
+  "verifiedAt": "2026-07-17T09:28:22.778Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://linktr.ee/superamericaneagleband",
+      "sourceType": "official artist-controlled link hub",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-17T09:28:00.000Z",
+      "evidence": "The artist-branded Linktree identifies Super American Eagle and links the same Bandcamp catalogue, YouTube channel, merchandise and current official video."
+    },
+    {
+      "destination": "buyMusic",
+      "url": "https://superamericaneagle.bandcamp.com/music",
+      "sourceType": "official artist Bandcamp profile",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-17T09:28:00.000Z",
+      "evidence": "The artist's official Linktree points to this Bandcamp profile; it identifies Super American Eagle as a Melbourne artist and carries the verified catalogue."
+    },
+    {
+      "destination": "bandcamp",
+      "url": "https://superamericaneagle.bandcamp.com/music",
+      "sourceType": "official artist Bandcamp profile",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-17T09:28:00.000Z",
+      "evidence": "The artist's official Linktree points to this Bandcamp profile; the profile contains the self-titled album and current Super American Eagle releases."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/6bX0fNqWX1vIennpe0uOXB",
+      "sourceType": "official Spotify artist profile",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-17T09:28:00.000Z",
+      "evidence": "Spotify identifies the Melbourne trio, its members and the same verified catalogue including Yes, Anxiety Nightie, Gone and the self-titled album."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/@superamericaneagle5526",
+      "sourceType": "official artist YouTube channel",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-17T09:28:00.000Z",
+      "evidence": "The artist's official Linktree links directly to this Super American Eagle YouTube channel."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://sound-merch.com.au/collections/super-american-eagle/products/super-american-eagle-black-logo-t-shirt?variant=42920601026732",
+      "sourceType": "artist-authorized merchandise store",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-17T09:28:00.000Z",
+      "evidence": "The artist's official Linktree labels this Sound Merch product as Super American Eagle Tees."
+    },
+    {
+      "destination": "newsReviews",
+      "url": "https://blurredculture.com/the-legendary-troubadour-hosts-jets-triumphant-u-s-return-after-14-years/",
+      "sourceType": "independent live review",
+      "identityVerified": true,
+      "credibleEditorial": true,
+      "verifiedAt": "2026-07-17T09:28:00.000Z",
+      "evidence": "Blurred Culture's published Troubadour review identifies the same Australian trio and reviews Super American Eagle's opening performance for Jet."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://youtu.be/e5x-eP303og",
+      "sourceType": "official artist-selected video",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-17T09:28:00.000Z",
+      "evidence": "The artist's official Linktree currently promotes this video as 'Anxiety Nightie Video Clip'."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.cheersquad.com.au/releases/super-american-eagle-anxiety-nightie/",
+      "sourceType": "official record label biography",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-17T09:28:00.000Z",
+      "evidence": "Cheersquad's current artist release identifies Brent DeBoer, Bob Harrow and Dave Mudie and describes the band's heavy psych-sludge sound."
+    }
+  ]
+}
