@@ -8,6 +8,7 @@ const skill=await fs.readFile('.agents/skills/deep-cuts-factory/SKILL.md','utf8'
 const skillUI=await fs.readFile('.agents/skills/deep-cuts-factory/agents/openai.yaml','utf8');
 assert.match(skill,/^---\r?\nname: deep-cuts-factory\r?\ndescription: .+\r?\n---/,'Factory skill requires valid name and description frontmatter.');
 assert.match(skillUI,/default_prompt: "[^"]*\$deep-cuts-factory[^"]*"/,'Factory UI prompt must invoke the skill explicitly.');
+assert.match(skill,/otherwise merge through the authorised GitHub connector only after the head SHA and green checks are re-confirmed/,'The zero-interaction merge fallback must remain explicit.');
 
 const root=await fs.mkdtemp(path.join(os.tmpdir(),'deep-cuts-factory-'));
 const platform={platformName:'Deep Cuts',publicBaseURL:'https://deep-cuts.example.workers.dev',defaultEdition:'',editions:[]};
