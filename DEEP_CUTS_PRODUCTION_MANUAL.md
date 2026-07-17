@@ -8,6 +8,8 @@ Deep Cuts is one permanent, mobile-first artist discovery and support platform. 
 
 The primary production KPI is elapsed time from artist-name submission to confirmed delivery email. The secondary KPI is verified content quality. Every change must reduce production time, reduce owner interaction or improve integrity without weakening either.
 
+The standard owner instruction is `Deep Cuts [Artist]`. It authorizes the factory to research, configure, validate, create a branch and pull request, enable auto-merge after green checks, deploy, verify and send the completion email without intermediate owner interaction. Only ambiguous artist identity, unavailable credentials or a destination requiring explicit authority may stop the factory.
+
 ## Locked visual model
 
 The user-approved screen in `assets/main-screen-master-reference.png` is the immutable visual reference. The live implementation must preserve its blue-black composition, original Aggits character, artist title, concise biography, unique sonic signature, fixed destination structure, small Share control and restrained footer.
@@ -73,6 +75,8 @@ The deployment workflow installs the encrypted administration, Resend API, repor
 Completion email goes automatically to `andrewharris501@gmail.com` and contains the verified live URL plus scan-tested QR PNG. A scheduled Friday report contains band-level scans, views, destination clicks, shares, production timing and link health in CSV format.
 
 The delivery service refuses to send if the deployed PNG cannot be retrieved as an image. Resend webhook signatures are verified before delivery confirmation is recorded; only `email.delivered` completes the measured production job.
+
+New active edition IDs are detected automatically on the main-branch deployment. Only those new editions receive completion emails; ordinary engine changes and destination updates do not resend them. The deployment remains in progress until the signed Resend webhook confirms delivery.
 
 ## Definition of done
 
