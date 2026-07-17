@@ -73,6 +73,14 @@
       "name": "Immigrant Union",
       "config": "editions/immigrant-union/edition.json",
       "active": true
+    },
+    {
+      "slug": "the-living-end",
+      "editionId": "dc_845b7956b6",
+      "canonicalPath": "/e/dc_845b7956b6",
+      "name": "The Living End",
+      "config": "editions/the-living-end/edition.json",
+      "active": true
     }
   ]
 }
