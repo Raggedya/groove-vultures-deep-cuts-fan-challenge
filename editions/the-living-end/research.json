@@ -1,0 +1,137 @@
+{
+  "bandName": "The Living End",
+  "slug": "the-living-end",
+  "editionId": "dc_845b7956b6",
+  "verifiedAt": "2026-07-17T12:03:35.487Z",
+  "confidence": {
+    "score": 98,
+    "level": "green",
+    "publishable": true,
+    "threshold": 98,
+    "components": {
+      "identity": 20,
+      "officialServices": 23,
+      "biography": 10,
+      "discography": 15,
+      "socialPresence": 8,
+      "approvedImage": 7,
+      "metadataConsistency": 15
+    },
+    "missing": [
+      "complete official-service verification"
+    ]
+  },
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://www.thelivingend.com.au/",
+      "sourceType": "official artist-controlled website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-17T11:56:00.000Z",
+      "evidence": "The Living End's official website links the same verified Spotify, Apple Music, Instagram, Facebook, YouTube and merchandise destinations used in this edition."
+    },
+    {
+      "destination": "website",
+      "url": "https://www.thelivingend.com.au/",
+      "sourceType": "official artist-controlled website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-17T11:56:00.000Z",
+      "evidence": "This is the band's official website and current tour, music, video, merchandise and mailing-list hub."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/3ExT45ORJ8pT516HRZbr7G",
+      "sourceType": "official Spotify artist profile linked by the artist website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-17T11:56:00.000Z",
+      "evidence": "The official artist website links directly to this Spotify profile, whose band identity and current catalogue match The Living End."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/thelivingendaus",
+      "sourceType": "official artist Instagram profile linked by the artist website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-17T11:56:00.000Z",
+      "evidence": "The official artist website links directly to thelivingendaus on Instagram."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/thelivingend",
+      "sourceType": "official artist Facebook profile linked by the artist website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-17T11:56:00.000Z",
+      "evidence": "The official artist website links directly to The Living End's Facebook page."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/channel/UCH70R0R6udvDuFKs88fBuPg",
+      "sourceType": "official artist YouTube channel linked by the artist website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-17T11:56:00.000Z",
+      "evidence": "The official artist website links directly to this YouTube channel, and its identity matches The Living End."
+    },
+    {
+      "destination": "buyMusic",
+      "url": "https://music.apple.com/us/artist/the-living-end/152957",
+      "sourceType": "official Apple Music artist profile linked by the artist website",
+      "identityVerified": true,
+      "discographyVerified": true,
+      "biographyVerified": true,
+      "verifiedAt": "2026-07-17T11:56:00.000Z",
+      "evidence": "The official website links this Apple Music profile; it identifies the Melbourne band, formation year and catalogue through the 2025 album I Only Trust Rock n Roll."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://sound-merch.com.au/collections/the-living-end-complete-collection",
+      "sourceType": "official artist-authorized merchandise store",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-17T11:56:00.000Z",
+      "evidence": "The official artist website's Merch navigation links directly to this dedicated The Living End collection at Sound Merch."
+    },
+    {
+      "destination": "newsReviews",
+      "url": "https://au.rollingstone.com/music/music-features/the-living-end-interview-i-only-trust-rock-n-roll-album-84217/",
+      "sourceType": "credible independent music interview",
+      "identityVerified": true,
+      "credibleEditorial": true,
+      "verifiedAt": "2026-07-17T11:56:00.000Z",
+      "evidence": "Rolling Stone Australia published this September 2025 Chris Cheney interview about The Living End's I Only Trust Rock n Roll album."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=nW_u1A8Xiec",
+      "sourceType": "official label-confirmed artist video",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-17T11:56:00.000Z",
+      "evidence": "BMG's official announcement embeds this exact YouTube URL and identifies it as The Living End - I Only Trust Rock n Roll (Official Music Video)."
+    },
+    {
+      "destination": "biography",
+      "url": "https://music.apple.com/us/artist/the-living-end/152957",
+      "sourceType": "official Apple Music artist biography",
+      "identityVerified": true,
+      "biographyVerified": true,
+      "verifiedAt": "2026-07-17T11:56:00.000Z",
+      "evidence": "Apple Music identifies The Living End as a Melbourne rockabilly-influenced Australian punk power trio formed in 1994."
+    },
+    {
+      "destination": "discography",
+      "url": "https://music.apple.com/us/artist/the-living-end/152957",
+      "sourceType": "official Apple Music artist discography",
+      "identityVerified": true,
+      "discographyVerified": true,
+      "verifiedAt": "2026-07-17T11:56:00.000Z",
+      "evidence": "Apple Music lists the band's verified albums and songs, including the 2025 album I Only Trust Rock n Roll and earlier releases through the 1998 debut."
+    },
+    {
+      "destination": "artistImage",
+      "url": "https://commons.wikimedia.org/wiki/File:The_living_end_leipzig.jpg",
+      "sourceType": "rights-approved Creative Commons artist photograph",
+      "identityVerified": true,
+      "imageVerified": true,
+      "rightsApproved": true,
+      "verifiedAt": "2026-07-17T11:56:00.000Z",
+      "evidence": "Wikimedia Commons identifies the photographed band as The Living End and licenses the image under Creative Commons Attribution-ShareAlike 1.0."
+    }
+  ]
+}

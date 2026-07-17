@@ -1,0 +1,68 @@
+{
+  "brandName": "Deep Cuts",
+  "bandName": "The Living End",
+  "editionTitle": "The Living End",
+  "description": "Melbourne rock trio fusing punk urgency, rockabilly swagger and anthemic, guitar-driven hooks.",
+  "discovery": {
+    "bio": "Melbourne rock trio fusing punk urgency, rockabilly swagger and anthemic, guitar-driven hooks.",
+    "newsLabel": "Interview: Rolling Stone Australia"
+  },
+  "mode": "discovery",
+  "slug": "the-living-end",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_845b7956b6",
+  "characterArtwork": "assets/aggits-original-cutout-v4.png",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/the-living-end/instagram-discovery.png",
+    "qrImage": "output/the-living-end/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#2f80ff",
+    "accentSecondary": "#8dbdff"
+  },
+  "links": {
+    "buyMusic": "https://music.apple.com/us/artist/the-living-end/152957",
+    "spotify": "https://open.spotify.com/artist/3ExT45ORJ8pT516HRZbr7G",
+    "instagram": "https://www.instagram.com/thelivingendaus",
+    "bandcamp": "",
+    "youtube": "https://www.youtube.com/channel/UCH70R0R6udvDuFKs88fBuPg",
+    "facebook": "https://www.facebook.com/thelivingend",
+    "website": "https://www.thelivingend.com.au/",
+    "merchandise": "https://sound-merch.com.au/collections/the-living-end-complete-collection",
+    "tip": "",
+    "newsReviews": "https://au.rollingstone.com/music/music-features/the-living-end-interview-i-only-trust-rock-n-roll-album-84217/"
+  },
+  "featuredVideo": {
+    "title": "The Living End - I Only Trust Rock n Roll",
+    "youtubeURL": "https://www.youtube.com/watch?v=nW_u1A8Xiec"
+  },
+  "analytics": {
+    "editionId": "dc_845b7956b6",
+    "pageIdentifier": "dc_845b7956b6:discovery-v1"
+  },
+  "production": {
+    "jobId": "dcjob_cd5730d3-8f4d-4ac3-82c0-34c942a38863",
+    "submittedAt": "2026-07-17T11:48:19.928Z",
+    "researchCompletedAt": "2026-07-17T12:03:35.487Z",
+    "editionCreatedAt": "2026-07-17T12:03:35.487Z",
+    "confidence": {
+      "score": 98,
+      "level": "green",
+      "publishable": true,
+      "threshold": 98,
+      "components": {
+        "identity": 20,
+        "officialServices": 23,
+        "biography": 10,
+        "discography": 15,
+        "socialPresence": 8,
+        "approvedImage": 7,
+        "metadataConsistency": 15
+      },
+      "missing": [
+        "complete official-service verification"
+      ]
+    }
+  }
+}
