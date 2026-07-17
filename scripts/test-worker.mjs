@@ -7,7 +7,7 @@ const source=fs.readFileSync('worker/index.js','utf8');
 const schema=fs.readFileSync('migrations/0001_deep_cuts.sql','utf8');
 const config=JSON.parse(fs.readFileSync('wrangler.jsonc','utf8'));
 
-for(const route of ['/q/','/api/events','/api/editions','/api/builds','/api/delivery','/api/webhooks/resend','/api/reports/weekly.csv'])assert.ok(source.includes(route),`Worker route missing: ${route}`);
+for(const route of ['/q/','/api/events','/api/editions','/api/builds','/api/builds/','/api/delivery','/api/webhooks/resend','/api/reports/weekly.csv'])assert.ok(source.includes(route),`Worker route missing: ${route}`);
 for(const table of ['editions','analytics_events','production_jobs','delivery_events'])assert.match(schema,new RegExp(`CREATE TABLE IF NOT EXISTS ${table}`));
 for(const event of ['qr_scan','outbound_clicked','share_button_clicked'])assert.ok(source.includes(`"${event}"`),`Worker event missing: ${event}`);
 assert.equal(config.name,'deep-cuts');
@@ -27,3 +27,4 @@ const validHeaders=new Headers({'svix-id':webhookId,'svix-timestamp':webhookTime
 assert.equal(await __test.verifySvixWebhook(payload,validHeaders,webhookSecret),true,'Valid Resend webhook signature should pass');
 assert.equal(await __test.verifySvixWebhook(`${payload} `,validHeaders,webhookSecret),false,'Tampered Resend webhook payload should fail');
 console.log('Deep Cuts Worker contract tests passed.');
+

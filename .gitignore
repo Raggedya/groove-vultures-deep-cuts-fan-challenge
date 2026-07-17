@@ -4,6 +4,7 @@ assets/groove-vultures-background.png
 output/*/
 !output/*/.gitkeep
 build-records/in-progress/*.json
+.deep-cuts/
 .env
 node_modules/
 dist/
@@ -13,3 +14,4 @@ __pycache__/
 .edge-*/
 button-approval-preview*.png
 button-approval-preview*.svg
+

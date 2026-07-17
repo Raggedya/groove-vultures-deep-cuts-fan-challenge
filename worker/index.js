@@ -21,6 +21,7 @@ export default {
       if(url.pathname==="/api/events"&&request.method==="POST")return handleEvent(request,env);
       if(url.pathname==="/api/editions"&&request.method==="POST")return handleEdition(request,env);
       if(url.pathname==="/api/builds"&&request.method==="POST")return handleBuild(request,env);
+      if(url.pathname.startsWith("/api/builds/")&&request.method==="GET")return handleBuildStatus(request,env,url);
       if(url.pathname==="/api/delivery"&&request.method==="POST")return handleDelivery(request,env);
       if(url.pathname==="/api/webhooks/resend"&&request.method==="POST")return handleResendWebhook(request,env);
       if(url.pathname==="/api/reports/weekly.csv"&&request.method==="GET")return handleReport(request,env);
@@ -118,6 +119,14 @@ async function completeJob(env,jobId,completedAt){
   const row=await env.DB.prepare("SELECT submitted_at FROM production_jobs WHERE job_id=?1").bind(jobId).first();
   const duration=Math.max(0,new Date(completedAt).getTime()-new Date(row?.submitted_at||completedAt).getTime());
   await env.DB.prepare("UPDATE production_jobs SET status='completed',completed_at=?1,total_duration_ms=?2,updated_at=?1 WHERE job_id=?3").bind(completedAt,duration,jobId).run();
+}
+
+async function handleBuildStatus(request,env,url){
+  if(!authorized(request,env))return json({ok:false,error:"Unauthorized"},401);
+  const jobId=cleanText(decodeURIComponent(url.pathname.slice('/api/builds/'.length)),100);
+  if(!jobId)return json({ok:false,error:"Invalid production job"},400);
+  const row=await env.DB.prepare("SELECT job_id,edition_id,band_name,status,submitted_at,email_accepted_at,email_delivered_at,completed_at,total_duration_ms,failure_stage,failure_message FROM production_jobs WHERE job_id=?1").bind(jobId).first();
+  return row?json({ok:true,...row}):json({ok:false,error:"Production job not found"},404);
 }
 
 async function handleDelivery(request,env){
@@ -256,3 +265,4 @@ function csvResponse(rows,filename){return new Response(toCsv(rows),{headers:{"c
 function base64(text){const bytes=new TextEncoder().encode(text);let binary="";for(const byte of bytes)binary+=String.fromCharCode(byte);return btoa(binary)}
 
 export const __test={verifySvixWebhook};
+

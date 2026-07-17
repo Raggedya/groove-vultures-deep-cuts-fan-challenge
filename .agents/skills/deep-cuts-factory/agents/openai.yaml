@@ -1,4 +1,5 @@
 interface:
   display_name: "Deep Cuts Factory"
-  short_description: "Publish a researched Deep Cuts fan edition"
-  default_prompt: "Use $deep-cuts-factory to create and publish a Deep Cuts Fan Challenge for this band."
+  short_description: "One-prompt artist discovery publishing"
+  default_prompt: "Use $deep-cuts-factory to research, publish and deliver Deep Cuts for this artist without requiring further interaction."
+
