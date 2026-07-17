@@ -22,6 +22,13 @@ jobs:
     environment: production
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Detect newly published editions
+        id: new_editions
+        run: node scripts/detect-new-editions.mjs
+        env:
+          GITHUB_EVENT_BEFORE: ${{ github.event.before }}
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -101,4 +108,14 @@ jobs:
         run: node scripts/verify-deployed-qr.mjs
         env:
           DEEP_CUTS_BASE_URL: ${{ steps.deploy.outputs.url }}
+      - name: Deliver newly published editions
+        if: steps.new_editions.outputs.slugs != ''
+        shell: bash
+        run: |
+          for slug in ${{ steps.new_editions.outputs.slugs }}; do
+            node scripts/send-delivery.mjs "$slug"
+          done
+        env:
+          DEEP_CUTS_API_URL: ${{ steps.deploy.outputs.url }}
+          DEEP_CUTS_ADMIN_TOKEN: ${{ secrets.DEEP_CUTS_ADMIN_TOKEN }}
 
