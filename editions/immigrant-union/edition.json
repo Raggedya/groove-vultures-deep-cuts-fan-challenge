@@ -1,0 +1,50 @@
+{
+  "brandName": "Deep Cuts",
+  "bandName": "Immigrant Union",
+  "editionTitle": "Immigrant Union",
+  "description": "Melbourne psychedelic folk-country blending hazy harmonies, widescreen Americana and an Australian-American rock lineage.",
+  "discovery": {
+    "bio": "Melbourne psychedelic folk-country blending hazy harmonies, widescreen Americana and an Australian-American rock lineage.",
+    "newsLabel": "Interview: Andrew McMillen"
+  },
+  "mode": "discovery",
+  "slug": "immigrant-union",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_c8a41f7e2b",
+  "characterArtwork": "assets/aggits-original-cutout-v4.png",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/immigrant-union/instagram-discovery.png",
+    "qrImage": "output/immigrant-union/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#2f80ff",
+    "accentSecondary": "#8dbdff"
+  },
+  "links": {
+    "buyMusic": "https://immigrantunionmusic.bandcamp.com/",
+    "spotify": "https://open.spotify.com/artist/2IlmAr3B2x6SpUXNN3XdCL",
+    "instagram": "",
+    "bandcamp": "https://immigrantunionmusic.bandcamp.com/",
+    "youtube": "https://www.youtube.com/ImmigrantUnion",
+    "facebook": "https://www.facebook.com/ImmigrantUnion",
+    "website": "",
+    "merchandise": "https://cheersquadrecordstapes.bandcamp.com/album/judas",
+    "tip": "",
+    "newsReviews": "https://andrewmcmillen.com/2011/02/08/messnoise-interview-brent-deboer-of-immigrant-union-february-2011/"
+  },
+  "featuredVideo": {
+    "title": "Immigrant Union - I Can't Return",
+    "youtubeURL": "https://www.youtube.com/watch?v=A2IMTB9B4XM"
+  },
+  "analytics": {
+    "editionId": "dc_c8a41f7e2b",
+    "pageIdentifier": "dc_c8a41f7e2b:discovery-v1"
+  },
+  "production": {
+    "jobId": "dcjob_30724d7a-6c6e-4e4d-bdd2-b50622ae308f",
+    "submittedAt": "2026-07-17T11:04:27.441Z",
+    "researchCompletedAt": "2026-07-17T11:16:21.224Z",
+    "editionCreatedAt": "2026-07-17T11:16:21.224Z"
+  }
+}

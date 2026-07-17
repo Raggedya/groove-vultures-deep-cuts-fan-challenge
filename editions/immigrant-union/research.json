@@ -1,0 +1,106 @@
+{
+  "bandName": "Immigrant Union",
+  "slug": "immigrant-union",
+  "editionId": "dc_c8a41f7e2b",
+  "verifiedAt": "2026-07-17T11:16:21.224Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://immigrantunionmusic.bandcamp.com/",
+      "sourceType": "official artist Bandcamp profile",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-17T11:16:21.224Z",
+      "evidence": "The artist-controlled profile identifies Immigrant Union as a Melbourne psychedelic folk/country band featuring Brent DeBoer and carries the band's verified catalogue."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/2IlmAr3B2x6SpUXNN3XdCL",
+      "sourceType": "official Spotify artist profile",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-17T11:16:21.224Z",
+      "evidence": "Spotify carries the matching Immigrant Union catalogue, including Immigrant Union, Anyway and Judas-era releases."
+    },
+    {
+      "destination": "buyMusic",
+      "url": "https://immigrantunionmusic.bandcamp.com/",
+      "sourceType": "official artist Bandcamp profile",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-17T11:16:21.224Z",
+      "evidence": "The artist's own Bandcamp sells and streams the self-titled album, Anyway and The Winter EP."
+    },
+    {
+      "destination": "bandcamp",
+      "url": "https://immigrantunionmusic.bandcamp.com/",
+      "sourceType": "official artist Bandcamp profile",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-17T11:16:21.224Z",
+      "evidence": "Artist-controlled Bandcamp profile with matching Melbourne identity and discography."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/ImmigrantUnion",
+      "sourceType": "official artist YouTube channel",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-17T11:16:21.224Z",
+      "evidence": "The approved Immigrant Union artist profile on Sungenre links directly to this band YouTube channel."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/ImmigrantUnion",
+      "sourceType": "official artist Facebook page",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-17T11:16:21.224Z",
+      "evidence": "The band-approved Sungenre profile and published band interviews both link this Immigrant Union Facebook page."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://cheersquadrecordstapes.bandcamp.com/album/judas",
+      "sourceType": "official label release store",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-17T11:16:21.224Z",
+      "evidence": "Cheersquad Records & Tapes' official Judas release page points to its Bandcamp listing for digital, CD and vinyl formats."
+    },
+    {
+      "destination": "newsReviews",
+      "url": "https://andrewmcmillen.com/2011/02/08/messnoise-interview-brent-deboer-of-immigrant-union-february-2011/",
+      "sourceType": "published music interview",
+      "identityVerified": true,
+      "credibleEditorial": true,
+      "verifiedAt": "2026-07-17T11:16:21.224Z",
+      "evidence": "Published Mess+Noise interview with Brent DeBoer documents the band's Melbourne formation and early creative identity."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=A2IMTB9B4XM",
+      "sourceType": "official band music video",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-17T11:16:21.224Z",
+      "evidence": "I Can't Return is a documented Immigrant Union release and links to the band's established YouTube presence."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.cheersquad.com.au/releases/judas/",
+      "sourceType": "official record label biography",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-17T11:16:21.224Z",
+      "evidence": "Cheersquad identifies the same band, its Australian-American psychedelic/folk/country sound, release history and touring context."
+    },
+    {
+      "destination": "discography",
+      "url": "https://music.apple.com/us/artist/immigrant-union/497549172",
+      "sourceType": "official music service discography",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-17T11:16:21.224Z",
+      "evidence": "Apple Music independently matches the albums Immigrant Union, Anyway and Judas plus the later singles."
+    },
+    {
+      "destination": "characterArtwork",
+      "url": "assets/aggits-original-cutout-v4.png",
+      "sourceType": "approved first-party Deep Cuts asset",
+      "identityVerified": true,
+      "rightsApproved": true,
+      "verifiedAt": "2026-07-17T11:16:21.224Z",
+      "evidence": "The locked original Aggits character asset is reused without alteration; no third-party band image is reproduced."
+    }
+  ]
+}

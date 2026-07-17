@@ -65,6 +65,14 @@
       "name": "Super American Eagle",
       "config": "editions/super-american-eagle/edition.json",
       "active": true
+    },
+    {
+      "slug": "immigrant-union",
+      "editionId": "dc_c8a41f7e2b",
+      "canonicalPath": "/e/dc_c8a41f7e2b",
+      "name": "Immigrant Union",
+      "config": "editions/immigrant-union/edition.json",
+      "active": true
     }
   ]
 }
