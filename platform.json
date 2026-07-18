@@ -97,6 +97,38 @@
       "name": "Upchuck",
       "config": "editions/upchuck/edition.json",
       "active": true
+    },
+    {
+      "slug": "civic",
+      "editionId": "dc_ed35dff0c9",
+      "canonicalPath": "/e/dc_ed35dff0c9",
+      "name": "CIVIC",
+      "config": "editions/civic/edition.json",
+      "active": true
+    },
+    {
+      "slug": "sweeping-promises",
+      "editionId": "dc_b68ec88730",
+      "canonicalPath": "/e/dc_b68ec88730",
+      "name": "Sweeping Promises",
+      "config": "editions/sweeping-promises/edition.json",
+      "active": true
+    },
+    {
+      "slug": "dummy",
+      "editionId": "dc_fa611340b5",
+      "canonicalPath": "/e/dc_fa611340b5",
+      "name": "Dummy",
+      "config": "editions/dummy/edition.json",
+      "active": true
+    },
+    {
+      "slug": "daiistar",
+      "editionId": "dc_dafd3e067a",
+      "canonicalPath": "/e/dc_dafd3e067a",
+      "name": "DAIISTAR",
+      "config": "editions/daiistar/edition.json",
+      "active": true
     }
   ]
 }

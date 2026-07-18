@@ -1,0 +1,89 @@
+{
+  "bandName": "CIVIC",
+  "slug": "civic",
+  "editionId": "dc_ed35dff0c9",
+  "verifiedAt": "2026-07-18T09:01:00.050Z",
+  "sources": [
+    {
+      "destination": "buyMusic",
+      "url": "https://civicivic.bandcamp.com/music",
+      "sourceType": "official destination verified by unattended batch",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T08:58:23.375Z",
+      "evidence": "buyMusic resolved directly and the destination metadata or an official artist-controlled cross-link matched CIVIC; HTTP 200."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/7ATw5ZiG6dfYFUUVpCsyFe?si=G7hYQKJQSwKn3Mo4lBZhJw",
+      "sourceType": "official destination verified by unattended batch",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T08:58:27.396Z",
+      "evidence": "spotify resolved directly and the destination metadata or an official artist-controlled cross-link matched CIVIC; HTTP 200."
+    },
+    {
+      "destination": "bandcamp",
+      "url": "https://civicivic.bandcamp.com/album/chrome-dipped",
+      "sourceType": "official destination verified by unattended batch",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T08:58:22.925Z",
+      "evidence": "bandcamp resolved directly and the destination metadata or an official artist-controlled cross-link matched CIVIC; HTTP 200."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/@civicaus",
+      "sourceType": "official destination verified by unattended batch",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T08:58:27.815Z",
+      "evidence": "youtube resolved directly and the destination metadata or an official artist-controlled cross-link matched CIVIC; HTTP 200."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fcivic_aus%2F&is_from_rle",
+      "sourceType": "official destination verified by unattended batch",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T08:58:27.992Z",
+      "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched CIVIC; HTTP 429."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/civicbandaus/",
+      "sourceType": "official destination verified by unattended batch",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T08:58:30.255Z",
+      "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched CIVIC; HTTP 200."
+    },
+    {
+      "destination": "website",
+      "url": "https://www.civicivic.com/",
+      "sourceType": "official destination verified by unattended batch",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T08:58:21.919Z",
+      "evidence": "website resolved directly and the destination metadata or an official artist-controlled cross-link matched CIVIC; HTTP 200."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://civicivic.bandcamp.com/merch",
+      "sourceType": "official destination verified by unattended batch",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T08:58:23.853Z",
+      "evidence": "merchandise resolved directly and the destination metadata or an official artist-controlled cross-link matched CIVIC; HTTP 200."
+    },
+    {
+      "destination": "newsReviews",
+      "url": "https://goodcalllive.com/album-review-civic-chrome-dipped/",
+      "sourceType": "credible music editorial",
+      "identityVerified": true,
+      "credibleEditorial": true,
+      "verifiedAt": "2026-07-18T08:58:26.523Z",
+      "evidence": "newsReviews resolved directly and the destination metadata or an official artist-controlled cross-link matched CIVIC; HTTP 200."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=XBgZ6_yGllQ",
+      "sourceType": "official destination verified by unattended batch",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T08:58:31.046Z",
+      "evidence": "featuredVideo resolved directly and the destination metadata or an official artist-controlled cross-link matched CIVIC; HTTP 200."
+    }
+  ]
+}

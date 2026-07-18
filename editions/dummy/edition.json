@@ -1,0 +1,51 @@
+{
+  "brandName": "Deep Cuts",
+  "bandName": "Dummy",
+  "editionTitle": "Dummy",
+  "description": "Los Angeles, USA Experimental pop / shoegaze artist Dummy.",
+  "discovery": {
+    "bio": "Los Angeles, USA Experimental pop / shoegaze artist Dummy.",
+    "newsLabel": "Latest verified interview or review"
+  },
+  "mode": "discovery",
+  "slug": "dummy",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_fa611340b5",
+  "characterArtwork": "assets/aggits-original-cutout-v4.png",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/dummy/instagram-discovery.png",
+    "qrImage": "output/dummy/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#2f80ff",
+    "accentSecondary": "#8dbdff"
+  },
+  "links": {
+    "buyMusic": "https://notdummy.bandcamp.com/album/free-energy-physical-only",
+    "spotify": "https://open.spotify.com/artist/51ymXnZGhf6Z4OcNXPviZC?si=SUQA49MSQp6w6lAEtOquOw",
+    "instagram": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fnotdummy%2F&is_from_rle",
+    "bandcamp": "https://notdummy.bandcamp.com/album/free-energy-physical-only",
+    "youtube": "https://www.youtube.com/channel/UCI5F3G5CTqHhBU9LjI3Chvg",
+    "facebook": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Fnotdummyband%2F",
+    "website": "https://notdummy.com/",
+    "merchandise": "https://notdummy.bandcamp.com/merch",
+    "newsReviews": "https://pitchfork.com/reviews/albums/dummy-mandatory-enjoyment/"
+  },
+  "featuredVideo": {
+    "title": "Dummy — featured official video",
+    "youtubeURL": "https://www.youtube.com/watch?v=jbLOvXEEO0o",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-07-18T08:59:59.517Z"
+  },
+  "analytics": {
+    "editionId": "dc_fa611340b5",
+    "pageIdentifier": "dc_fa611340b5:discovery-v1"
+  },
+  "production": {
+    "jobId": "dcjob_aab1aaab-833b-43c3-9e21-4e00a0ba1f21",
+    "submittedAt": "2026-07-18T09:01:00.266Z",
+    "researchCompletedAt": "2026-07-18T09:01:00.309Z",
+    "editionCreatedAt": "2026-07-18T09:01:00.309Z"
+  }
+}

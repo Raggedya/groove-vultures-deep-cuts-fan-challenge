@@ -1,0 +1,51 @@
+{
+  "brandName": "Deep Cuts",
+  "bandName": "Sweeping Promises",
+  "editionTitle": "Sweeping Promises",
+  "description": "Boston / Austin, USA Post-punk artist Sweeping Promises.",
+  "discovery": {
+    "bio": "Boston / Austin, USA Post-punk artist Sweeping Promises.",
+    "newsLabel": "Latest verified interview or review"
+  },
+  "mode": "discovery",
+  "slug": "sweeping-promises",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_b68ec88730",
+  "characterArtwork": "assets/aggits-original-cutout-v4.png",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/sweeping-promises/instagram-discovery.png",
+    "qrImage": "output/sweeping-promises/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#2f80ff",
+    "accentSecondary": "#8dbdff"
+  },
+  "links": {
+    "buyMusic": "https://sweepingpromises.bandcamp.com/album/you-say-i-romanticize",
+    "spotify": "https://open.spotify.com/artist/5k9qBHdkzsibPmFJp1XIAt?si=CVW_US_cSQmrUfOhTMO0Ew",
+    "instagram": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fsweepingpromises%2F&is_from_rle",
+    "bandcamp": "https://sweepingpromises.bandcamp.com/album/you-say-i-romanticize",
+    "youtube": "https://www.youtube.com/channel/UCUFVPwwg7ean3oUTIISdbhg",
+    "facebook": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Fsweepingpromises%2F",
+    "website": "https://www.sweepingpromises.com/",
+    "merchandise": "https://sweepingpromises.bandcamp.com/merch",
+    "newsReviews": "https://pitchfork.com/reviews/albums/sweeping-promises-good-living-is-coming-for-you/"
+  },
+  "featuredVideo": {
+    "title": "Sweeping Promises — featured official video",
+    "youtubeURL": "https://www.youtube.com/watch?v=Yxchq7Ux7-g",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-07-18T08:59:51.154Z"
+  },
+  "analytics": {
+    "editionId": "dc_b68ec88730",
+    "pageIdentifier": "dc_b68ec88730:discovery-v1"
+  },
+  "production": {
+    "jobId": "dcjob_bf14fa3d-7863-444c-b8e5-a854992df2e6",
+    "submittedAt": "2026-07-18T09:01:00.178Z",
+    "researchCompletedAt": "2026-07-18T09:01:00.220Z",
+    "editionCreatedAt": "2026-07-18T09:01:00.220Z"
+  }
+}

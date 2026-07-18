@@ -1,0 +1,89 @@
+{
+  "bandName": "DAIISTAR",
+  "slug": "daiistar",
+  "editionId": "dc_dafd3e067a",
+  "verifiedAt": "2026-07-18T09:01:00.399Z",
+  "sources": [
+    {
+      "destination": "buyMusic",
+      "url": "https://daiistar.bandcamp.com/album/fuzz-cub-session",
+      "sourceType": "official destination verified by unattended batch",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T09:00:07.359Z",
+      "evidence": "buyMusic resolved directly and the destination metadata or an official artist-controlled cross-link matched DAIISTAR; HTTP 200."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/6To6Fv1xkHuZxSncHEyJu8?si=uLkO-VAjRDSTtdXcEEhRzA",
+      "sourceType": "official destination verified by unattended batch",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T09:00:08.713Z",
+      "evidence": "spotify resolved directly and the destination metadata or an official artist-controlled cross-link matched DAIISTAR; HTTP 200."
+    },
+    {
+      "destination": "bandcamp",
+      "url": "https://daiistar.bandcamp.com/album/fuzz-cub-session",
+      "sourceType": "official destination verified by unattended batch",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T09:00:07.359Z",
+      "evidence": "bandcamp resolved directly and the destination metadata or an official artist-controlled cross-link matched DAIISTAR; HTTP 200."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/channel/UCCWscpgq9DIj06Kd0oe62dg",
+      "sourceType": "official destination verified by unattended batch",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T09:00:09.012Z",
+      "evidence": "youtube resolved directly and the destination metadata or an official artist-controlled cross-link matched DAIISTAR; HTTP 200."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fdaiistar%2F&is_from_rle",
+      "sourceType": "official destination verified by unattended batch",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T09:00:09.335Z",
+      "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched DAIISTAR; HTTP 429."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Fdaiistar%2F",
+      "sourceType": "official destination verified by unattended batch",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T09:00:10.461Z",
+      "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched DAIISTAR; HTTP 200."
+    },
+    {
+      "destination": "website",
+      "url": "https://www.daiistar.com/",
+      "sourceType": "official destination verified by unattended batch",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T09:00:06.539Z",
+      "evidence": "website resolved directly and the destination metadata or an official artist-controlled cross-link matched DAIISTAR; HTTP 200."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://daiistar.bandcamp.com/merch",
+      "sourceType": "official destination verified by unattended batch",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T09:00:07.721Z",
+      "evidence": "merchandise resolved directly and the destination metadata or an official artist-controlled cross-link matched DAIISTAR; HTTP 200."
+    },
+    {
+      "destination": "newsReviews",
+      "url": "https://www.clashmusic.com/reviews/daiistar-good-time/",
+      "sourceType": "credible music editorial",
+      "identityVerified": true,
+      "credibleEditorial": true,
+      "verifiedAt": "2026-07-18T09:00:07.912Z",
+      "evidence": "newsReviews resolved directly and the destination metadata or an official artist-controlled cross-link matched DAIISTAR; HTTP 403."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=J_y3v7I6Xpg",
+      "sourceType": "official destination verified by unattended batch",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T09:00:11.080Z",
+      "evidence": "featuredVideo resolved directly and the destination metadata or an official artist-controlled cross-link matched DAIISTAR; HTTP 200."
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "bandName": "Sweeping Promises",
+  "slug": "sweeping-promises",
+  "editionId": "dc_b68ec88730",
+  "verifiedAt": "2026-07-18T09:01:00.220Z",
+  "sources": [
+    {
+      "destination": "buyMusic",
+      "url": "https://sweepingpromises.bandcamp.com/album/you-say-i-romanticize",
+      "sourceType": "official destination verified by unattended batch",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T08:59:46.414Z",
+      "evidence": "buyMusic resolved directly and the destination metadata or an official artist-controlled cross-link matched Sweeping Promises; HTTP 200."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/5k9qBHdkzsibPmFJp1XIAt?si=CVW_US_cSQmrUfOhTMO0Ew",
+      "sourceType": "official destination verified by unattended batch",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T08:59:48.324Z",
+      "evidence": "spotify resolved directly and the destination metadata or an official artist-controlled cross-link matched Sweeping Promises; HTTP 200."
+    },
+    {
+      "destination": "bandcamp",
+      "url": "https://sweepingpromises.bandcamp.com/album/you-say-i-romanticize",
+      "sourceType": "official destination verified by unattended batch",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T08:59:46.414Z",
+      "evidence": "bandcamp resolved directly and the destination metadata or an official artist-controlled cross-link matched Sweeping Promises; HTTP 200."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/channel/UCUFVPwwg7ean3oUTIISdbhg",
+      "sourceType": "official destination verified by unattended batch",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T08:59:48.783Z",
+      "evidence": "youtube resolved directly and the destination metadata or an official artist-controlled cross-link matched Sweeping Promises; HTTP 200."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fsweepingpromises%2F&is_from_rle",
+      "sourceType": "official destination verified by unattended batch",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T08:59:49.081Z",
+      "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched Sweeping Promises; HTTP 429."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Fsweepingpromises%2F",
+      "sourceType": "official destination verified by unattended batch",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T08:59:50.139Z",
+      "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched Sweeping Promises; HTTP 200."
+    },
+    {
+      "destination": "website",
+      "url": "https://www.sweepingpromises.com/",
+      "sourceType": "official destination verified by unattended batch",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T08:59:45.731Z",
+      "evidence": "website resolved directly and the destination metadata or an official artist-controlled cross-link matched Sweeping Promises; HTTP 200."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://sweepingpromises.bandcamp.com/merch",
+      "sourceType": "official destination verified by unattended batch",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T08:59:46.763Z",
+      "evidence": "merchandise resolved directly and the destination metadata or an official artist-controlled cross-link matched Sweeping Promises; HTTP 200."
+    },
+    {
+      "destination": "newsReviews",
+      "url": "https://pitchfork.com/reviews/albums/sweeping-promises-good-living-is-coming-for-you/",
+      "sourceType": "credible music editorial",
+      "identityVerified": true,
+      "credibleEditorial": true,
+      "verifiedAt": "2026-07-18T08:59:47.255Z",
+      "evidence": "newsReviews resolved directly and the destination metadata or an official artist-controlled cross-link matched Sweeping Promises; HTTP 200."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=Yxchq7Ux7-g",
+      "sourceType": "official destination verified by unattended batch",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T08:59:51.154Z",
+      "evidence": "featuredVideo resolved directly and the destination metadata or an official artist-controlled cross-link matched Sweeping Promises; HTTP 200."
+    }
+  ]
+}
