@@ -1,0 +1,51 @@
+{
+  "brandName": "Deep Cuts",
+  "bandName": "DAIISTAR",
+  "editionTitle": "DAIISTAR",
+  "description": "Austin, USA Shoegaze / psych rock artist DAIISTAR.",
+  "discovery": {
+    "bio": "Austin, USA Shoegaze / psych rock artist DAIISTAR.",
+    "newsLabel": "Latest verified interview or review"
+  },
+  "mode": "discovery",
+  "slug": "daiistar",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_dafd3e067a",
+  "characterArtwork": "assets/aggits-original-cutout-v4.png",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/daiistar/instagram-discovery.png",
+    "qrImage": "output/daiistar/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#2f80ff",
+    "accentSecondary": "#8dbdff"
+  },
+  "links": {
+    "buyMusic": "https://daiistar.bandcamp.com/album/fuzz-cub-session",
+    "spotify": "https://open.spotify.com/artist/6To6Fv1xkHuZxSncHEyJu8?si=uLkO-VAjRDSTtdXcEEhRzA",
+    "instagram": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fdaiistar%2F&is_from_rle",
+    "bandcamp": "https://daiistar.bandcamp.com/album/fuzz-cub-session",
+    "youtube": "https://www.youtube.com/channel/UCCWscpgq9DIj06Kd0oe62dg",
+    "facebook": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Fdaiistar%2F",
+    "website": "https://www.daiistar.com/",
+    "merchandise": "https://daiistar.bandcamp.com/merch",
+    "newsReviews": "https://www.clashmusic.com/reviews/daiistar-good-time/"
+  },
+  "featuredVideo": {
+    "title": "DAIISTAR — featured official video",
+    "youtubeURL": "https://www.youtube.com/watch?v=J_y3v7I6Xpg",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-07-18T09:00:11.080Z"
+  },
+  "analytics": {
+    "editionId": "dc_dafd3e067a",
+    "pageIdentifier": "dc_dafd3e067a:discovery-v1"
+  },
+  "production": {
+    "jobId": "dcjob_12309397-36b2-4b38-8cab-95a7de65e217",
+    "submittedAt": "2026-07-18T09:01:00.354Z",
+    "researchCompletedAt": "2026-07-18T09:01:00.399Z",
+    "editionCreatedAt": "2026-07-18T09:01:00.399Z"
+  }
+}
