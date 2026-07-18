@@ -30,16 +30,16 @@ const research=JSON.parse(await fs.readFile(path.join(root,'editions','test-arti
 assert.equal(created.jobId,job.jobId);assert.match(created.editionId,/^dc_[a-f0-9]{10}$/);
 assert.equal(updated.editions[0].canonicalPath,`/e/${created.editionId}`);
 assert.ok(!config.publicURL.includes('test-artist'));assert.equal(config.production.submittedAt,job.submittedAt);
-assert.equal(research.sources.length,2);assert.equal(config.links.facebook,'');assert.equal(config.links.tip,'');
+assert.equal(research.sources.length,2);assert.equal(config.links.facebook,'');assert.ok(!Object.hasOwn(config.links,'tip'));
 
-execFileSync(process.execPath,[start,'Tip Guess'],{encoding:'utf8',env});
-const invalid={...input,bandName:'Tip Guess',links:{tip:'https://paypal.me/guess'},sources:[
-  {destination:'tip',url:'https://paypal.me/guess',sourceType:'official artist profile',identityVerified:true,verifiedAt,evidence:'Unconfirmed payment profile.'},
-  {destination:'spotify',url:'https://open.spotify.com/artist/guess',sourceType:'official artist profile',identityVerified:true,verifiedAt,evidence:'Identity match.'}
+execFileSync(process.execPath,[start,'Video Missing'],{encoding:'utf8',env});
+const invalid={...input,bandName:'Video Missing',links:{youtube:'https://www.youtube.com/@videomissing'},sources:[
+  {destination:'youtube',url:'https://www.youtube.com/@videomissing',sourceType:'official artist channel',identityVerified:true,verifiedAt,evidence:'Official channel identity match.'},
+  {destination:'spotify',url:'https://open.spotify.com/artist/video-missing',sourceType:'official artist profile',identityVerified:true,verifiedAt,evidence:'Identity match.'}
 ]};
 const invalidPath=path.join(root,'invalid.json');await fs.writeFile(invalidPath,JSON.stringify(invalid));
 const rejected=spawnSync(process.execPath,[create,invalidPath],{encoding:'utf8',env});
-assert.notEqual(rejected.status,0);assert.match(rejected.stderr,/explicit artist or owner authorization/);
+assert.notEqual(rejected.status,0);assert.match(rejected.stderr,/most-viewed official featured video/);
 await fs.rm(root,{recursive:true,force:true});
-console.log('One-prompt factory tests passed: clock, evidence, opaque route, fixed destinations and Tip safety.');
+console.log('One-prompt factory tests passed: clock, evidence, opaque route, verified destinations and featured-video safety.');
 

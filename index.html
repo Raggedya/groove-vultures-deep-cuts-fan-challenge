@@ -7,7 +7,7 @@
   <meta id="pageDescription" name="description" content="Discover the official music and artist links.">
   <title>Deep Cuts</title>
   <link rel="preload" href="/assets/aggits-original-cutout-v4.png" as="image">
-  <link rel="stylesheet" href="/styles.css?v=20260716-master-1">
+  <link rel="stylesheet" href="/styles.css?v=20260718-video-1">
 </head>
 <body>
   <main id="app" class="discovery-shell">
@@ -22,6 +22,16 @@
           <li>Listen</li><li>Watch</li><li>Follow</li><li>Buy Stuff</li>
         </ul>
       </header>
+
+      <section id="featuredVideo" class="featured-video" aria-labelledby="featuredVideoTitle" hidden>
+        <div class="video-heading">
+          <span>Featured video</span>
+          <h2 id="featuredVideoTitle"></h2>
+        </div>
+        <div class="video-frame">
+          <iframe id="featuredVideoFrame" title="Featured artist video" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+      </section>
 
       <section class="link-section" aria-labelledby="discoverTitle">
         <h2 id="discoverTitle" class="visually-hidden">Official artist destinations</h2>
@@ -44,8 +54,8 @@
       <p id="errorMessage">Please refresh and try again.</p>
     </section>
   </main>
-  <script src="/js/analytics.js?v=20260716-master-1"></script>
-  <script src="/js/interactions.js?v=20260716-master-1"></script>
-  <script src="/js/app.js?v=20260716-master-1"></script>
+  <script src="/js/analytics.js?v=20260718-video-1"></script>
+  <script src="/js/interactions.js?v=20260718-video-1"></script>
+  <script src="/js/app.js?v=20260718-video-1"></script>
 </body>
 </html>

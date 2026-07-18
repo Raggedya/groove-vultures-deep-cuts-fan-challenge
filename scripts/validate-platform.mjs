@@ -38,6 +38,11 @@ for(const edition of platform.editions){
     await fs.access(config.characterArtwork);
     for(const[key,value]of Object.entries(config.links||{}))if(value&&!/^https:\/\//.test(value))errors.push(`${edition.config} links.${key} must be blank or HTTPS.`);
     if(config.featuredVideo?.youtubeURL&&!/^https:\/\/(?:www\.)?(?:youtube\.com|youtu\.be)\//i.test(config.featuredVideo.youtubeURL))errors.push(`${edition.config} featuredVideo.youtubeURL must be a verified YouTube URL.`);
+    if(config.featuredVideo?.youtubeURL&&config.production){
+      const researchPath=edition.config.replace(/edition\.json$/,'research.json');
+      const research=JSON.parse(await fs.readFile(researchPath,'utf8'));
+      if(!research.sources.some(source=>source.destination==='featuredVideo'&&source.identityVerified===true&&normalized(source.url)===normalized(config.featuredVideo.youtubeURL)))errors.push(`${researchPath} lacks verified featured-video evidence.`);
+    }
   }catch(error){errors.push(`${edition.slug}: ${error.message}`)}
 }
 if(!slugs.has(platform.defaultEdition))errors.push('defaultEdition is not registered.');

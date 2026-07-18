@@ -18,6 +18,7 @@ const platformPath=path.join(root,'platform.json');
 const platform=JSON.parse(await fs.readFile(platformPath,'utf8'));
 if(platform.editions.some(item=>item.slug===slug||String(item.name).toLowerCase()===bandName.toLowerCase()))throw new Error(`Edition already exists for ${bandName}.`);
 const links=validateResearch(input);
+const featuredVideo=validateFeaturedVideo(input,links);
 const editionId=uniqueEditionId(platform);
 const canonicalPath=`/e/${editionId}`;
 const now=new Date().toISOString();
@@ -30,7 +31,7 @@ const config={
   characterArtwork:'assets/aggits-original-cutout-v4.png',backgroundArtwork:'',
   social:{copyright:'copyright Clearlight Creative',instagramImage:`output/${slug}/instagram-discovery.png`,qrImage:`output/${slug}/instagram-qr.png`},
   theme:{accent:'#2f80ff',accentSecondary:'#8dbdff'},links,
-  featuredVideo:{title:clean(input.featuredVideo?.title||'',120),youtubeURL:https(input.featuredVideo?.youtubeURL||'')},
+  featuredVideo,
   analytics:{editionId,pageIdentifier:`${editionId}:discovery-v1`},
   production:{jobId:job.jobId,submittedAt:job.submittedAt,researchCompletedAt:now,editionCreatedAt:now}
 };
@@ -44,7 +45,7 @@ await fs.writeFile(jobPath,JSON.stringify(job,null,2)+'\n');
 console.log(JSON.stringify({ok:true,jobId:job.jobId,slug,editionId,canonicalPath,config:`editions/${slug}/edition.json`},null,2));
 
 function validateResearch(value){
-  const keys=['buyMusic','spotify','instagram','bandcamp','youtube','facebook','website','merchandise','tip','newsReviews'];
+  const keys=['buyMusic','spotify','instagram','bandcamp','youtube','facebook','website','merchandise','newsReviews'];
   const links=Object.fromEntries(keys.map(key=>[key,https(value.links?.[key]||'')]));
   const sources=Array.isArray(value.sources)?value.sources:[];
   if(sources.length<2||!sources.some(source=>source.identityVerified===true&&/official/i.test(String(source.sourceType||''))))throw new Error('Research requires two identity-checked sources including one official artist-controlled source.');
@@ -52,10 +53,20 @@ function validateResearch(value){
     if(!url)continue;
     const evidence=sources.find(source=>source.destination===destination&&normalize(source.url)===normalize(url)&&source.identityVerified===true&&validDate(source.verifiedAt)&&clean(source.evidence,300));
     if(!evidence)throw new Error(`${destination} requires matching, dated, identity-verified evidence.`);
-    if(destination==='tip'&&!['artist-provided','owner-provided'].includes(evidence.authorization))throw new Error('Tip destinations require explicit artist or owner authorization.');
     if(destination==='newsReviews'&&evidence.credibleEditorial!==true)throw new Error('News & Reviews requires credible editorial evidence.');
   }
   return links;
+}
+function validateFeaturedVideo(value,links){
+  const youtubeURL=https(value.featuredVideo?.youtubeURL||'');
+  const title=clean(value.featuredVideo?.title||'',120);
+  if(links.youtube&&!youtubeURL)throw new Error('An official YouTube presence requires a verified most-viewed official featured video.');
+  if(!youtubeURL)return{title:'',youtubeURL:'',selectionBasis:'',verifiedAt:''};
+  if(!title)throw new Error('The featured YouTube video requires a title.');
+  if(value.featuredVideo?.selectionBasis!=='most-viewed-official')throw new Error('Featured video selectionBasis must be most-viewed-official.');
+  const evidence=(value.sources||[]).find(source=>source.destination==='featuredVideo'&&normalize(source.url)===normalize(youtubeURL)&&source.identityVerified===true&&validDate(source.verifiedAt)&&clean(source.evidence,300));
+  if(!evidence)throw new Error('The featured YouTube video requires dated, identity-verified selection evidence.');
+  return{title,youtubeURL,selectionBasis:'most-viewed-official',verifiedAt:new Date(evidence.verifiedAt).toISOString()};
 }
 function uniqueEditionId(platform){let id;do{id=`dc_${crypto.randomBytes(5).toString('hex')}`}while(platform.editions.some(item=>item.editionId===id));return id}
 function slugify(value){return value.normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')}

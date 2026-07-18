@@ -6,3 +6,5 @@
 4. Add delivery-latency and deployment-duration trends to the Friday CSV.
 5. Add automatic rollback when live QR or page verification fails after deployment.
 
+Completed platform standard: verified featured-video selection, retired tipping, and automatic removal/rebalancing of unavailable destinations are now part of the reusable engine and research contract.
+
