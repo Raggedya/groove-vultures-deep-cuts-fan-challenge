@@ -1,0 +1,51 @@
+{
+  "brandName": "Deep Cuts",
+  "bandName": "Ashley Davies",
+  "editionTitle": "Ashley Davies",
+  "description": "Melbourne composer, drummer and multi-instrumentalist creating cinematic instrumental music built from rhythm, history and vivid Australian stories.",
+  "discovery": {
+    "bio": "Melbourne composer, drummer and multi-instrumentalist creating cinematic instrumental music built from rhythm, history and vivid Australian stories.",
+    "newsLabel": "Interview: The Curb"
+  },
+  "mode": "discovery",
+  "slug": "ashley-davies",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_941f39c42f",
+  "characterArtwork": "assets/aggits-original-cutout-v4.png",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/ashley-davies/instagram-discovery.png",
+    "qrImage": "output/ashley-davies/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#2f80ff",
+    "accentSecondary": "#8dbdff"
+  },
+  "links": {
+    "buyMusic": "https://ashleydavies.bandcamp.com/music",
+    "spotify": "",
+    "instagram": "https://www.instagram.com/ashleydaviesmusic/",
+    "bandcamp": "https://ashleydavies.bandcamp.com/",
+    "youtube": "https://www.youtube.com/@ashleydaviesmusic",
+    "facebook": "https://www.facebook.com/ashdaviesmusic/",
+    "website": "https://www.ashleydavies.com.au/",
+    "merchandise": "",
+    "newsReviews": "https://www.thecurb.com.au/ashley-davies-talks-about-gold-len-davies-and-lasseters-reef-in-this-interview/"
+  },
+  "featuredVideo": {
+    "title": "Ned Kelly by Ashley Davies & Ian Jones",
+    "youtubeURL": "https://www.youtube.com/watch?v=wq4_UGZoPLQ",
+    "selectionBasis": "Most-viewed upload on Ashley Davies’ official Music and Drumming YouTube channel (3.9K views at verification), ahead of V.F.T. (1.7K) and Mambo Wah Wah (1.3K).",
+    "verifiedAt": "2026-07-18T12:11:41.781Z"
+  },
+  "analytics": {
+    "editionId": "dc_941f39c42f",
+    "pageIdentifier": "dc_941f39c42f:discovery-v1"
+  },
+  "production": {
+    "jobId": "dcjob_c02c3ee2-8478-4dd0-a3d5-451728a9fff6",
+    "submittedAt": "2026-07-18T12:11:41.781Z",
+    "researchCompletedAt": "2026-07-18T12:11:41.781Z",
+    "editionCreatedAt": "2026-07-18T12:11:41.781Z"
+  }
+}
