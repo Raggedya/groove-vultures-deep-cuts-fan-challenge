@@ -38,19 +38,19 @@
     },
     {
       "destination": "instagram",
-      "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fsweepingpromises%2F&is_from_rle",
+      "url": "https://www.instagram.com/sweepingpromises/",
       "sourceType": "official destination verified by unattended batch",
       "identityVerified": true,
       "verifiedAt": "2026-07-18T08:59:49.081Z",
-      "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched Sweeping Promises; HTTP 429."
+      "evidence": "Official artist profile target cross-checked; the authentication redirect was removed from the published destination."
     },
     {
       "destination": "facebook",
-      "url": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Fsweepingpromises%2F",
+      "url": "https://www.facebook.com/sweepingpromises/",
       "sourceType": "official destination verified by unattended batch",
       "identityVerified": true,
       "verifiedAt": "2026-07-18T08:59:50.139Z",
-      "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched Sweeping Promises; HTTP 200."
+      "evidence": "Official artist profile target cross-checked; the authentication redirect was removed from the published destination."
     },
     {
       "destination": "website",
