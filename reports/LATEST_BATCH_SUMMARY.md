@@ -2,17 +2,17 @@
 
 This report explains the latest unattended artist batch in plain language. Artists are published only after reaching the mandatory 98% evidence threshold. Rejected artists did not affect the rest of the batch.
 
-- **Batch ID:** batch_20260718092150_55a1ec
+- **Batch ID:** batch_20260718095636_44a4a3
 - **CSV rows:** 50
 - **Valid rows:** 50
-- **Completed artists:** 1
+- **Completed artists:** 0
 - **Deployed artists:** 0
 - **Rejected artists:** 44
 - **Technical failures:** 0
-- **Skipped completed artists:** 5
-- **Started:** 2026-07-18T09:21:50.854Z
-- **Finished:** 2026-07-18T09:24:17.439Z
-- **Total duration:** 2m 27s
+- **Skipped completed artists:** 6
+- **Started:** 2026-07-18T09:56:36.834Z
+- **Finished:** 2026-07-18T09:59:00.034Z
+- **Total duration:** 2m 23s
 
 ## Artist results
 
@@ -21,8 +21,8 @@ This report explains the latest unattended artist batch in plain language. Artis
 | Upchuck | skipped_completed | — | https://deep-cuts.andrewharris501.workers.dev/e/dc_0ae07425ac | — |
 | Delivery | rejected | 70 | — | DIRECT_DESTINATION_UNRESOLVED: spotify did not resolve to a direct destination. \| DESTINATION_UNREACHABLE: newsReviews failed after automatic retries (404). \| FEATURED_VIDEO_POPULARITY_UNVERIFIED: The most-viewed official video could not be proved from the official channel Popular ordering. \| IDENTITY_CONFIDENCE_FAILED: featuredVideo could not be tied to Delivery with sufficient evidence. \| CONFIDENCE_BELOW_98: Confidence score 70% is below the mandatory 98% gate. |
 | CIVIC | skipped_completed | — | https://deep-cuts.andrewharris501.workers.dev/e/dc_ed35dff0c9 | — |
-| Cash Savage and the Last Drinks | rejected | 90 | — | DESTINATION_UNREACHABLE: newsReviews failed after automatic retries (404). \| CONFIDENCE_BELOW_98: Confidence score 90% is below the mandatory 98% gate. |
-| Cable Ties | configured | 100 | https://deep-cuts.andrewharris501.workers.dev/e/dc_74a4068bb6 | — |
+| Cash Savage and the Last Drinks | rejected | 40 | — | DIRECT_DESTINATION_UNRESOLVED: spotify did not resolve to a direct destination. \| DIRECT_DESTINATION_UNRESOLVED: youtube did not resolve to a direct destination. \| IDENTITY_CONFIDENCE_FAILED: website could not be tied to Cash Savage and the Last Drinks with sufficient evidence. \| IDENTITY_CONFIDENCE_FAILED: merchandise could not be tied to Cash Savage and the Last Drinks with sufficient evidence. \| DESTINATION_UNREACHABLE: newsReviews failed after automatic retries (404). \| DIRECT_DESTINATION_UNRESOLVED: featuredVideo did not resolve to a direct destination. \| CONFIDENCE_BELOW_98: Confidence score 40% is below the mandatory 98% gate. |
+| Cable Ties | skipped_completed | — | https://deep-cuts.andrewharris501.workers.dev/e/dc_74a4068bb6 | — |
 | Gut Health | rejected | 70 | — | DIRECT_DESTINATION_UNRESOLVED: spotify did not resolve to a direct destination. \| DESTINATION_UNREACHABLE: newsReviews failed after automatic retries (404). \| DIRECT_DESTINATION_UNRESOLVED: featuredVideo did not resolve to a direct destination. \| CONFIDENCE_BELOW_98: Confidence score 70% is below the mandatory 98% gate. |
 | Floodlights | rejected | 60 | — | DIRECT_DESTINATION_UNRESOLVED: spotify did not resolve to a direct destination. \| DIRECT_DESTINATION_UNRESOLVED: youtube did not resolve to a direct destination. \| DESTINATION_UNREACHABLE: newsReviews failed after automatic retries (404). \| DIRECT_DESTINATION_UNRESOLVED: featuredVideo did not resolve to a direct destination. \| CONFIDENCE_BELOW_98: Confidence score 60% is below the mandatory 98% gate. |
 | RVG | rejected | 70 | — | DIRECT_DESTINATION_UNRESOLVED: spotify did not resolve to a direct destination. \| DESTINATION_UNREACHABLE: website failed after automatic retries (404). \| DESTINATION_UNREACHABLE: newsReviews failed after automatic retries (404). \| CONFIDENCE_BELOW_98: Confidence score 70% is below the mandatory 98% gate. |
@@ -53,7 +53,7 @@ This report explains the latest unattended artist batch in plain language. Artis
 | The Buoys | rejected | 70 | — | DIRECT_DESTINATION_UNRESOLVED: spotify did not resolve to a direct destination. \| DESTINATION_UNREACHABLE: merchandise failed after automatic retries (404). \| DESTINATION_UNREACHABLE: newsReviews failed after automatic retries (404). \| CONFIDENCE_BELOW_98: Confidence score 70% is below the mandatory 98% gate. |
 | Moaning Lisa | rejected | 60 | — | DIRECT_DESTINATION_UNRESOLVED: spotify did not resolve to a direct destination. \| DESTINATION_UNREACHABLE: website failed after automatic retries (fetch failed). \| DESTINATION_UNREACHABLE: newsReviews failed after automatic retries (404). \| DIRECT_DESTINATION_UNRESOLVED: featuredVideo did not resolve to a direct destination. \| CONFIDENCE_BELOW_98: Confidence score 60% is below the mandatory 98% gate. |
 | VOIID | rejected | 60 | — | DIRECT_DESTINATION_UNRESOLVED: spotify did not resolve to a direct destination. \| DESTINATION_UNREACHABLE: website failed after automatic retries (fetch failed). \| DESTINATION_UNREACHABLE: newsReviews failed after automatic retries (404). \| DIRECT_DESTINATION_UNRESOLVED: featuredVideo did not resolve to a direct destination. \| CONFIDENCE_BELOW_98: Confidence score 60% is below the mandatory 98% gate. |
-| Sunfruits | rejected | 70 | — | DIRECT_DESTINATION_UNRESOLVED: spotify did not resolve to a direct destination. \| DESTINATION_UNREACHABLE: newsReviews failed after automatic retries (404). \| DIRECT_DESTINATION_UNRESOLVED: featuredVideo did not resolve to a direct destination. \| CONFIDENCE_BELOW_98: Confidence score 70% is below the mandatory 98% gate. |
+| Sunfruits | rejected | 60 | — | DIRECT_DESTINATION_UNRESOLVED: spotify did not resolve to a direct destination. \| DESTINATION_UNREACHABLE: website failed after automatic retries (500). \| DESTINATION_UNREACHABLE: newsReviews failed after automatic retries (404). \| DIRECT_DESTINATION_UNRESOLVED: featuredVideo did not resolve to a direct destination. \| CONFIDENCE_BELOW_98: Confidence score 60% is below the mandatory 98% gate. |
 | Eggy | rejected | 70 | — | DIRECT_DESTINATION_UNRESOLVED: spotify did not resolve to a direct destination. \| DESTINATION_UNREACHABLE: newsReviews failed after automatic retries (404). \| FEATURED_VIDEO_POPULARITY_UNVERIFIED: The most-viewed official video could not be proved from the official channel Popular ordering. \| IDENTITY_CONFIDENCE_FAILED: featuredVideo could not be tied to Eggy with sufficient evidence. \| CONFIDENCE_BELOW_98: Confidence score 70% is below the mandatory 98% gate. |
 | Gustaf | rejected | 60 | — | DIRECT_DESTINATION_UNRESOLVED: spotify did not resolve to a direct destination. \| DESTINATION_UNREACHABLE: website failed after automatic retries (fetch failed). \| DESTINATION_UNREACHABLE: merchandise failed after automatic retries (404). \| DESTINATION_UNREACHABLE: newsReviews failed after automatic retries (404). \| CONFIDENCE_BELOW_98: Confidence score 60% is below the mandatory 98% gate. |
 | Sweeping Promises | skipped_completed | — | https://deep-cuts.andrewharris501.workers.dev/e/dc_b68ec88730 | — |

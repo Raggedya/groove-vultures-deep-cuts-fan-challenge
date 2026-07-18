@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "batchId": "batch_20260718092150_55a1ec",
+  "batchId": "batch_20260718095636_44a4a3",
   "mode": "run",
   "inputPath": "/home/runner/work/groove-vultures-deep-cuts-fan-challenge/groove-vultures-deep-cuts-fan-challenge/data/incoming/artists.csv",
-  "startedAt": "2026-07-18T09:21:50.854Z",
-  "finishedAt": "2026-07-18T09:24:17.439Z",
-  "durationMs": 146585,
+  "startedAt": "2026-07-18T09:56:36.834Z",
+  "finishedAt": "2026-07-18T09:59:00.034Z",
+  "durationMs": 143200,
   "artists": [
     {
       "rowNumber": 2,
@@ -34,9 +34,9 @@
       "sourceCount": 0,
       "reasons": [],
       "attempts": 1,
-      "startedAt": "2026-07-18T09:21:50.856Z",
+      "startedAt": "2026-07-18T09:56:36.836Z",
       "liveURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_0ae07425ac",
-      "finishedAt": "2026-07-18T09:21:50.858Z"
+      "finishedAt": "2026-07-18T09:56:36.837Z"
     },
     {
       "rowNumber": 3,
@@ -86,14 +86,14 @@
         }
       ],
       "attempts": 1,
-      "startedAt": "2026-07-18T09:21:50.857Z",
+      "startedAt": "2026-07-18T09:56:36.836Z",
       "evidence": {
         "buyMusic": {
           "url": "https://deliveryband.bandcamp.com/music",
           "sourceHost": "deliveryband.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:21:53.701Z",
+          "verifiedAt": "2026-07-18T09:56:38.133Z",
           "status": 200,
           "evidence": "buyMusic resolved directly and the destination metadata or an official artist-controlled cross-link matched Delivery; HTTP 200."
         },
@@ -102,7 +102,7 @@
           "sourceHost": "deliveryband.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:21:53.128Z",
+          "verifiedAt": "2026-07-18T09:56:37.930Z",
           "status": 200,
           "evidence": "bandcamp resolved directly and the destination metadata or an official artist-controlled cross-link matched Delivery; HTTP 200."
         },
@@ -111,16 +111,16 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:21:55.489Z",
+          "verifiedAt": "2026-07-18T09:56:39.568Z",
           "status": 200,
           "evidence": "youtube resolved directly and the destination metadata or an official artist-controlled cross-link matched Delivery; HTTP 200."
         },
         "instagram": {
-          "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fdelivery_lyf%2F&is_from_rle",
+          "url": "https://www.instagram.com/delivery_lyf/",
           "sourceHost": "instagram.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:21:55.785Z",
+          "verifiedAt": "2026-07-18T09:56:39.853Z",
           "status": 429,
           "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched Delivery; HTTP 429."
         },
@@ -129,7 +129,7 @@
           "sourceHost": "facebook.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:21:56.691Z",
+          "verifiedAt": "2026-07-18T09:56:41.367Z",
           "status": 200,
           "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched Delivery; HTTP 200."
         },
@@ -138,7 +138,7 @@
           "sourceHost": "linktr.ee",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:21:52.078Z",
+          "verifiedAt": "2026-07-18T09:56:37.131Z",
           "status": 200,
           "evidence": "website resolved directly and the destination metadata or an official artist-controlled cross-link matched Delivery; HTTP 200."
         },
@@ -147,7 +147,7 @@
           "sourceHost": "deliveryband.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:21:54.006Z",
+          "verifiedAt": "2026-07-18T09:56:38.510Z",
           "status": 200,
           "evidence": "merchandise resolved directly and the destination metadata or an official artist-controlled cross-link matched Delivery; HTTP 200."
         },
@@ -156,7 +156,7 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": false,
-          "verifiedAt": "2026-07-18T09:21:57.688Z",
+          "verifiedAt": "2026-07-18T09:56:41.904Z",
           "status": 200,
           "evidence": "Insufficient identity evidence."
         }
@@ -188,9 +188,9 @@
         "sourceCount": 0,
         "reasons": [],
         "attempts": 1,
-        "startedAt": "2026-07-18T09:21:50.857Z"
+        "startedAt": "2026-07-18T09:56:36.836Z"
       },
-      "finishedAt": "2026-07-18T09:21:57.695Z"
+      "finishedAt": "2026-07-18T09:56:41.913Z"
     },
     {
       "rowNumber": 4,
@@ -219,9 +219,9 @@
       "sourceCount": 0,
       "reasons": [],
       "attempts": 1,
-      "startedAt": "2026-07-18T09:21:50.857Z",
+      "startedAt": "2026-07-18T09:56:36.836Z",
       "liveURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_ed35dff0c9",
-      "finishedAt": "2026-07-18T09:21:50.904Z"
+      "finishedAt": "2026-07-18T09:56:36.923Z"
     },
     {
       "rowNumber": 5,
@@ -246,72 +246,74 @@
       "buildStatus": "rejected",
       "deploymentStatus": "not_started",
       "postDeploymentStatus": "not_started",
-      "confidence": 90,
-      "sourceCount": 6,
+      "confidence": 40,
+      "sourceCount": 4,
       "reasons": [
+        {
+          "code": "DIRECT_DESTINATION_UNRESOLVED",
+          "message": "spotify did not resolve to a direct destination."
+        },
+        {
+          "code": "DIRECT_DESTINATION_UNRESOLVED",
+          "message": "youtube did not resolve to a direct destination."
+        },
+        {
+          "code": "IDENTITY_CONFIDENCE_FAILED",
+          "message": "website could not be tied to Cash Savage and the Last Drinks with sufficient evidence."
+        },
+        {
+          "code": "IDENTITY_CONFIDENCE_FAILED",
+          "message": "merchandise could not be tied to Cash Savage and the Last Drinks with sufficient evidence."
+        },
         {
           "code": "DESTINATION_UNREACHABLE",
           "message": "newsReviews failed after automatic retries (404)."
         },
         {
+          "code": "DIRECT_DESTINATION_UNRESOLVED",
+          "message": "featuredVideo did not resolve to a direct destination."
+        },
+        {
           "code": "CONFIDENCE_BELOW_98",
-          "message": "Confidence score 90% is below the mandatory 98% gate."
+          "message": "Confidence score 40% is below the mandatory 98% gate."
         }
       ],
       "attempts": 1,
-      "startedAt": "2026-07-18T09:21:50.905Z",
+      "startedAt": "2026-07-18T09:56:36.926Z",
       "evidence": {
         "buyMusic": {
           "url": "https://bandcamp.com/signup?new_domain=cashsavageandthelastdrinks",
           "sourceHost": "bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:21:52.219Z",
+          "verifiedAt": "2026-07-18T09:56:38.570Z",
           "status": 200,
           "evidence": "buyMusic resolved directly and the destination metadata or an official artist-controlled cross-link matched Cash Savage and the Last Drinks; HTTP 200."
-        },
-        "spotify": {
-          "url": "https://open.spotify.com/artist/2K61iAekpIr3wFneBSBwe5",
-          "sourceHost": "open.spotify.com",
-          "officialSource": true,
-          "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:21:53.925Z",
-          "status": 200,
-          "evidence": "spotify resolved directly and the destination metadata or an official artist-controlled cross-link matched Cash Savage and the Last Drinks; HTTP 200."
         },
         "bandcamp": {
           "url": "https://bandcamp.com/signup?new_domain=cashsavageandthelastdrinks",
           "sourceHost": "bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:21:52.219Z",
+          "verifiedAt": "2026-07-18T09:56:38.570Z",
           "status": 200,
           "evidence": "bandcamp resolved directly and the destination metadata or an official artist-controlled cross-link matched Cash Savage and the Last Drinks; HTTP 200."
         },
-        "youtube": {
-          "url": "https://www.youtube.com/@CashSavage",
-          "sourceHost": "youtube.com",
-          "officialSource": true,
-          "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:21:54.410Z",
-          "status": 200,
-          "evidence": "youtube resolved directly and the destination metadata or an official artist-controlled cross-link matched Cash Savage and the Last Drinks; HTTP 200."
-        },
         "instagram": {
-          "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fcashsavageandthelastdrinks%2F&is_from_rle",
+          "url": "https://www.instagram.com/cashsavageandthelastdrinks/",
           "sourceHost": "instagram.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:21:54.922Z",
+          "verifiedAt": "2026-07-18T09:56:40.157Z",
           "status": 429,
           "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched Cash Savage and the Last Drinks; HTTP 429."
         },
         "facebook": {
-          "url": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Fcashsavageandthelastdrinks%2F",
+          "url": "https://www.facebook.com/cashsavageandthelastdrinks/",
           "sourceHost": "facebook.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:21:56.015Z",
+          "verifiedAt": "2026-07-18T09:56:41.050Z",
           "status": 200,
           "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched Cash Savage and the Last Drinks; HTTP 200."
         },
@@ -319,28 +321,19 @@
           "url": "https://cashsavage.com/",
           "sourceHost": "cashsavage.com",
           "officialSource": true,
-          "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:21:51.956Z",
+          "identityVerified": false,
+          "verifiedAt": "2026-07-18T09:56:38.255Z",
           "status": 200,
-          "evidence": "website resolved directly and the destination metadata or an official artist-controlled cross-link matched Cash Savage and the Last Drinks; HTTP 200."
+          "evidence": "Insufficient identity evidence."
         },
         "merchandise": {
           "url": "https://cashsavage.com/collections/all",
           "sourceHost": "cashsavage.com",
           "officialSource": true,
-          "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:21:52.505Z",
+          "identityVerified": false,
+          "verifiedAt": "2026-07-18T09:56:39.418Z",
           "status": 200,
-          "evidence": "merchandise resolved directly and the destination metadata or an official artist-controlled cross-link matched Cash Savage and the Last Drinks; HTTP 200."
-        },
-        "featuredVideo": {
-          "url": "https://www.youtube.com/watch?v=R9KxiOwJjbg",
-          "sourceHost": "youtube.com",
-          "officialSource": true,
-          "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:21:56.828Z",
-          "status": 200,
-          "evidence": "featuredVideo resolved directly and the destination metadata or an official artist-controlled cross-link matched Cash Savage and the Last Drinks; HTTP 200."
+          "evidence": "Insufficient identity evidence."
         }
       },
       "verifiedRow": {
@@ -351,15 +344,15 @@
         "followers": "~16,000",
         "followerPlatform": "Instagram",
         "buyMusic": "https://cashsavageandthelastdrinks.bandcamp.com/",
-        "spotify": "https://open.spotify.com/artist/2K61iAekpIr3wFneBSBwe5",
+        "spotify": "https://open.spotify.com/search/Cash%20Savage%20and%20the%20Last%20Drinks/artists",
         "bandcamp": "https://cashsavageandthelastdrinks.bandcamp.com/",
-        "youtube": "https://www.youtube.com/@CashSavage",
+        "youtube": "https://www.youtube.com/results?search_query=Cash+Savage+and+the+Last+Drinks+official",
         "instagram": "https://www.instagram.com/cashsavageandthelastdrinks/",
         "facebook": "https://www.facebook.com/cashsavageandthelastdrinks/",
         "website": "https://cashsavage.com/",
         "merchandise": "https://cashsavage.com/collections/all",
         "newsReviews": "https://www.theguardian.com/music/2023/apr/28/cash-savage-and-the-last-drinks-so-this-is-love-review",
-        "featuredVideo": "https://www.youtube.com/watch?v=R9KxiOwJjbg",
+        "featuredVideo": "https://www.youtube.com/results?search_query=Cash+Savage+Push+official",
         "slug": "cash-savage-and-the-last-drinks",
         "followerCount": 16000,
         "inputErrors": [],
@@ -370,9 +363,9 @@
         "sourceCount": 0,
         "reasons": [],
         "attempts": 1,
-        "startedAt": "2026-07-18T09:21:50.905Z"
+        "startedAt": "2026-07-18T09:56:36.926Z"
       },
-      "finishedAt": "2026-07-18T09:21:56.836Z"
+      "finishedAt": "2026-07-18T09:56:41.059Z"
     },
     {
       "rowNumber": 6,
@@ -394,138 +387,16 @@
       "slug": "cable-ties",
       "followerCount": 19000,
       "inputErrors": [],
-      "buildStatus": "configured",
-      "deploymentStatus": "pending_merge",
-      "postDeploymentStatus": "pending_deployment",
-      "confidence": 100,
-      "sourceCount": 7,
+      "buildStatus": "skipped_completed",
+      "deploymentStatus": "already_deployed",
+      "postDeploymentStatus": "previously_verified",
+      "confidence": null,
+      "sourceCount": 0,
       "reasons": [],
       "attempts": 1,
-      "startedAt": "2026-07-18T09:21:50.907Z",
-      "evidence": {
-        "buyMusic": {
-          "url": "https://cableties.bandcamp.com/",
-          "sourceHost": "cableties.bandcamp.com",
-          "officialSource": true,
-          "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:21:53.089Z",
-          "status": 200,
-          "evidence": "buyMusic resolved directly and the destination metadata or an official artist-controlled cross-link matched Cable Ties; HTTP 200."
-        },
-        "spotify": {
-          "url": "https://open.spotify.com/artist/2DHxsgHVEiupQyVWHI1XIW?si=c4jhzks2Q86V_fVnBuFYBw",
-          "sourceHost": "open.spotify.com",
-          "officialSource": true,
-          "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:21:54.294Z",
-          "status": 200,
-          "evidence": "spotify resolved directly and the destination metadata or an official artist-controlled cross-link matched Cable Ties; HTTP 200."
-        },
-        "bandcamp": {
-          "url": "https://cableties.bandcamp.com/",
-          "sourceHost": "cableties.bandcamp.com",
-          "officialSource": true,
-          "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:21:53.089Z",
-          "status": 200,
-          "evidence": "bandcamp resolved directly and the destination metadata or an official artist-controlled cross-link matched Cable Ties; HTTP 200."
-        },
-        "youtube": {
-          "url": "https://www.youtube.com/@cabletiesband",
-          "sourceHost": "youtube.com",
-          "officialSource": true,
-          "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:21:54.687Z",
-          "status": 200,
-          "evidence": "youtube resolved directly and the destination metadata or an official artist-controlled cross-link matched Cable Ties; HTTP 200."
-        },
-        "instagram": {
-          "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fcableties%2F&is_from_rle",
-          "sourceHost": "instagram.com",
-          "officialSource": true,
-          "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:21:55.059Z",
-          "status": 429,
-          "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched Cable Ties; HTTP 429."
-        },
-        "facebook": {
-          "url": "https://www.facebook.com/cabletiesband/",
-          "sourceHost": "facebook.com",
-          "officialSource": true,
-          "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:21:56.670Z",
-          "status": 200,
-          "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched Cable Ties; HTTP 200."
-        },
-        "website": {
-          "url": "http://www.cabletiesband.com/",
-          "sourceHost": "cabletiesband.com",
-          "officialSource": true,
-          "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:21:52.470Z",
-          "status": 200,
-          "evidence": "website resolved directly and the destination metadata or an official artist-controlled cross-link matched Cable Ties; HTTP 200."
-        },
-        "merchandise": {
-          "url": "https://cableties.bandcamp.com/merch",
-          "sourceHost": "cableties.bandcamp.com",
-          "officialSource": true,
-          "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:21:53.282Z",
-          "status": 200,
-          "evidence": "merchandise resolved directly and the destination metadata or an official artist-controlled cross-link matched Cable Ties; HTTP 200."
-        },
-        "newsReviews": {
-          "url": "https://pitchfork.com/news/cable-ties-announce-new-album-far-enough-share-song-listen/",
-          "sourceHost": "pitchfork.com",
-          "officialSource": false,
-          "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:21:53.499Z",
-          "status": 200,
-          "evidence": "newsReviews resolved directly and the destination metadata or an official artist-controlled cross-link matched Cable Ties; HTTP 200."
-        },
-        "featuredVideo": {
-          "url": "https://www.youtube.com/watch?v=CdPU_VnC6UI",
-          "sourceHost": "youtube.com",
-          "officialSource": true,
-          "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:21:57.454Z",
-          "status": 200,
-          "evidence": "featuredVideo resolved directly and the destination metadata or an official artist-controlled cross-link matched Cable Ties; HTTP 200."
-        }
-      },
-      "verifiedRow": {
-        "rowNumber": 6,
-        "artist": "Cable Ties",
-        "location": "Melbourne, Australia",
-        "genre": "Post-punk",
-        "followers": "~19,000",
-        "followerPlatform": "Instagram",
-        "buyMusic": "https://cableties.bandcamp.com/",
-        "spotify": "https://open.spotify.com/artist/2DHxsgHVEiupQyVWHI1XIW?si=c4jhzks2Q86V_fVnBuFYBw",
-        "bandcamp": "https://cableties.bandcamp.com/",
-        "youtube": "https://www.youtube.com/@cabletiesband",
-        "instagram": "https://www.instagram.com/cableties/",
-        "facebook": "https://www.facebook.com/cabletiesband/",
-        "website": "https://cabletiesband.com/",
-        "merchandise": "https://cableties.bandcamp.com/merch",
-        "newsReviews": "https://pitchfork.com/news/cable-ties-announce-new-album-far-enough-share-song-listen/",
-        "featuredVideo": "https://www.youtube.com/watch?v=CdPU_VnC6UI",
-        "slug": "cable-ties",
-        "followerCount": 19000,
-        "inputErrors": [],
-        "buildStatus": "verifying",
-        "deploymentStatus": "not_started",
-        "postDeploymentStatus": "not_started",
-        "confidence": null,
-        "sourceCount": 0,
-        "reasons": [],
-        "attempts": 1,
-        "startedAt": "2026-07-18T09:21:50.907Z"
-      },
-      "finishedAt": "2026-07-18T09:24:17.437Z",
-      "editionId": "dc_74a4068bb6",
-      "liveURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_74a4068bb6"
+      "startedAt": "2026-07-18T09:56:36.930Z",
+      "liveURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_74a4068bb6",
+      "finishedAt": "2026-07-18T09:56:36.939Z"
     },
     {
       "rowNumber": 7,
@@ -571,14 +442,14 @@
         }
       ],
       "attempts": 1,
-      "startedAt": "2026-07-18T09:21:56.837Z",
+      "startedAt": "2026-07-18T09:56:36.940Z",
       "evidence": {
         "buyMusic": {
           "url": "https://guthealthband.bandcamp.com/",
           "sourceHost": "guthealthband.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:21:58.091Z",
+          "verifiedAt": "2026-07-18T09:56:37.898Z",
           "status": 200,
           "evidence": "buyMusic resolved directly and the destination metadata or an official artist-controlled cross-link matched Gut Health; HTTP 200."
         },
@@ -587,7 +458,7 @@
           "sourceHost": "guthealthband.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:21:58.091Z",
+          "verifiedAt": "2026-07-18T09:56:37.898Z",
           "status": 200,
           "evidence": "bandcamp resolved directly and the destination metadata or an official artist-controlled cross-link matched Gut Health; HTTP 200."
         },
@@ -596,16 +467,16 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:21:55.489Z",
+          "verifiedAt": "2026-07-18T09:56:39.568Z",
           "status": 200,
           "evidence": "youtube resolved directly and the destination metadata or an official artist-controlled cross-link matched Gut Health; HTTP 200."
         },
         "instagram": {
-          "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fgut___health%2F&is_from_rle",
+          "url": "https://www.instagram.com/gut___health/",
           "sourceHost": "instagram.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:00.139Z",
+          "verifiedAt": "2026-07-18T09:56:39.867Z",
           "status": 429,
           "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched Gut Health; HTTP 429."
         },
@@ -614,7 +485,7 @@
           "sourceHost": "facebook.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:01.130Z",
+          "verifiedAt": "2026-07-18T09:56:41.210Z",
           "status": 200,
           "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched Gut Health; HTTP 200."
         },
@@ -623,7 +494,7 @@
           "sourceHost": "guthealth.space",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:21:57.617Z",
+          "verifiedAt": "2026-07-18T09:56:37.619Z",
           "status": 200,
           "evidence": "website resolved directly and the destination metadata or an official artist-controlled cross-link matched Gut Health; HTTP 200."
         },
@@ -632,7 +503,7 @@
           "sourceHost": "guthealthband.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:21:58.371Z",
+          "verifiedAt": "2026-07-18T09:56:38.159Z",
           "status": 200,
           "evidence": "merchandise resolved directly and the destination metadata or an official artist-controlled cross-link matched Gut Health; HTTP 200."
         }
@@ -664,9 +535,9 @@
         "sourceCount": 0,
         "reasons": [],
         "attempts": 1,
-        "startedAt": "2026-07-18T09:21:56.837Z"
+        "startedAt": "2026-07-18T09:56:36.940Z"
       },
-      "finishedAt": "2026-07-18T09:22:01.140Z"
+      "finishedAt": "2026-07-18T09:56:41.224Z"
     },
     {
       "rowNumber": 8,
@@ -716,14 +587,14 @@
         }
       ],
       "attempts": 1,
-      "startedAt": "2026-07-18T09:21:57.463Z",
+      "startedAt": "2026-07-18T09:56:41.060Z",
       "evidence": {
         "buyMusic": {
           "url": "https://floodlightsband.bandcamp.com/track/abandon",
           "sourceHost": "floodlightsband.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:21:58.664Z",
+          "verifiedAt": "2026-07-18T09:56:42.168Z",
           "status": 200,
           "evidence": "buyMusic resolved directly and the destination metadata or an official artist-controlled cross-link matched Floodlights; HTTP 200."
         },
@@ -732,25 +603,25 @@
           "sourceHost": "floodlightsband.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:21:58.664Z",
+          "verifiedAt": "2026-07-18T09:56:42.168Z",
           "status": 200,
           "evidence": "bandcamp resolved directly and the destination metadata or an official artist-controlled cross-link matched Floodlights; HTTP 200."
         },
         "instagram": {
-          "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Ffloodlights_band%2F&is_from_rle",
+          "url": "https://www.instagram.com/floodlights_band/",
           "sourceHost": "instagram.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:21:59.833Z",
+          "verifiedAt": "2026-07-18T09:56:43.261Z",
           "status": 429,
           "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched Floodlights; HTTP 429."
         },
         "facebook": {
-          "url": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Ffloodlightsband%2F",
+          "url": "https://www.facebook.com/floodlightsband/",
           "sourceHost": "facebook.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:00.471Z",
+          "verifiedAt": "2026-07-18T09:56:44.096Z",
           "status": 200,
           "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched Floodlights; HTTP 200."
         },
@@ -759,7 +630,7 @@
           "sourceHost": "floodlightsband.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:21:57.874Z",
+          "verifiedAt": "2026-07-18T09:56:41.271Z",
           "status": 200,
           "evidence": "website resolved directly and the destination metadata or an official artist-controlled cross-link matched Floodlights; HTTP 200."
         },
@@ -768,7 +639,7 @@
           "sourceHost": "floodlightsband.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:21:59.193Z",
+          "verifiedAt": "2026-07-18T09:56:42.743Z",
           "status": 200,
           "evidence": "merchandise resolved directly and the destination metadata or an official artist-controlled cross-link matched Floodlights; HTTP 200."
         }
@@ -800,9 +671,9 @@
         "sourceCount": 0,
         "reasons": [],
         "attempts": 1,
-        "startedAt": "2026-07-18T09:21:57.463Z"
+        "startedAt": "2026-07-18T09:56:41.060Z"
       },
-      "finishedAt": "2026-07-18T09:22:00.478Z"
+      "finishedAt": "2026-07-18T09:56:44.105Z"
     },
     {
       "rowNumber": 9,
@@ -848,14 +719,14 @@
         }
       ],
       "attempts": 1,
-      "startedAt": "2026-07-18T09:21:57.696Z",
+      "startedAt": "2026-07-18T09:56:41.229Z",
       "evidence": {
         "buyMusic": {
           "url": "https://rvgband.bandcamp.com/",
           "sourceHost": "rvgband.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:21:58.534Z",
+          "verifiedAt": "2026-07-18T09:56:42.143Z",
           "status": 200,
           "evidence": "buyMusic resolved directly and the destination metadata or an official artist-controlled cross-link matched RVG; HTTP 200."
         },
@@ -864,7 +735,7 @@
           "sourceHost": "rvgband.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:21:58.534Z",
+          "verifiedAt": "2026-07-18T09:56:42.143Z",
           "status": 200,
           "evidence": "bandcamp resolved directly and the destination metadata or an official artist-controlled cross-link matched RVG; HTTP 200."
         },
@@ -873,16 +744,16 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:00.432Z",
+          "verifiedAt": "2026-07-18T09:56:43.979Z",
           "status": 200,
           "evidence": "youtube resolved directly and the destination metadata or an official artist-controlled cross-link matched RVG; HTTP 200."
         },
         "instagram": {
-          "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Frvgband%2F&is_from_rle",
+          "url": "https://www.instagram.com/rvgband/",
           "sourceHost": "instagram.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:00.853Z",
+          "verifiedAt": "2026-07-18T09:56:44.094Z",
           "status": 429,
           "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched RVG; HTTP 429."
         },
@@ -891,7 +762,7 @@
           "sourceHost": "facebook.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:02.446Z",
+          "verifiedAt": "2026-07-18T09:56:46.023Z",
           "status": 200,
           "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched RVG; HTTP 200."
         },
@@ -900,7 +771,7 @@
           "sourceHost": "rvgband.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:21:59.136Z",
+          "verifiedAt": "2026-07-18T09:56:42.710Z",
           "status": 200,
           "evidence": "merchandise resolved directly and the destination metadata or an official artist-controlled cross-link matched RVG; HTTP 200."
         },
@@ -909,7 +780,7 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:03.339Z",
+          "verifiedAt": "2026-07-18T09:56:46.719Z",
           "status": 200,
           "evidence": "featuredVideo resolved directly and the destination metadata or an official artist-controlled cross-link matched RVG; HTTP 200."
         }
@@ -941,9 +812,9 @@
         "sourceCount": 0,
         "reasons": [],
         "attempts": 1,
-        "startedAt": "2026-07-18T09:21:57.696Z"
+        "startedAt": "2026-07-18T09:56:41.229Z"
       },
-      "finishedAt": "2026-07-18T09:22:03.348Z"
+      "finishedAt": "2026-07-18T09:56:46.734Z"
     },
     {
       "rowNumber": 10,
@@ -981,14 +852,14 @@
         }
       ],
       "attempts": 1,
-      "startedAt": "2026-07-18T09:22:00.479Z",
+      "startedAt": "2026-07-18T09:56:41.913Z",
       "evidence": {
         "buyMusic": {
           "url": "https://mapleglider.bandcamp.com/",
           "sourceHost": "mapleglider.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:04.443Z",
+          "verifiedAt": "2026-07-18T09:56:45.429Z",
           "status": 200,
           "evidence": "buyMusic resolved directly and the destination metadata or an official artist-controlled cross-link matched Maple Glider; HTTP 200."
         },
@@ -997,7 +868,7 @@
           "sourceHost": "open.spotify.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:06.027Z",
+          "verifiedAt": "2026-07-18T09:56:46.914Z",
           "status": 200,
           "evidence": "spotify resolved directly and the destination metadata or an official artist-controlled cross-link matched Maple Glider; HTTP 200."
         },
@@ -1006,7 +877,7 @@
           "sourceHost": "mapleglider.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:04.443Z",
+          "verifiedAt": "2026-07-18T09:56:45.429Z",
           "status": 200,
           "evidence": "bandcamp resolved directly and the destination metadata or an official artist-controlled cross-link matched Maple Glider; HTTP 200."
         },
@@ -1015,16 +886,16 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:06.386Z",
+          "verifiedAt": "2026-07-18T09:56:47.425Z",
           "status": 200,
           "evidence": "youtube resolved directly and the destination metadata or an official artist-controlled cross-link matched Maple Glider; HTTP 200."
         },
         "instagram": {
-          "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fmapleglider%2F&is_from_rle",
+          "url": "https://www.instagram.com/mapleglider/",
           "sourceHost": "instagram.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:06.704Z",
+          "verifiedAt": "2026-07-18T09:56:47.619Z",
           "status": 429,
           "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched Maple Glider; HTTP 429."
         },
@@ -1033,7 +904,7 @@
           "sourceHost": "facebook.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:07.644Z",
+          "verifiedAt": "2026-07-18T09:56:49.172Z",
           "status": 200,
           "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched Maple Glider; HTTP 200."
         },
@@ -1042,7 +913,7 @@
           "sourceHost": "mapleglider.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:03.810Z",
+          "verifiedAt": "2026-07-18T09:56:45.026Z",
           "status": 200,
           "evidence": "website resolved directly and the destination metadata or an official artist-controlled cross-link matched Maple Glider; HTTP 200."
         },
@@ -1051,7 +922,7 @@
           "sourceHost": "mapleglider.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:04.978Z",
+          "verifiedAt": "2026-07-18T09:56:45.933Z",
           "status": 200,
           "evidence": "merchandise resolved directly and the destination metadata or an official artist-controlled cross-link matched Maple Glider; HTTP 200."
         },
@@ -1060,7 +931,7 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:08.698Z",
+          "verifiedAt": "2026-07-18T09:56:50.079Z",
           "status": 200,
           "evidence": "featuredVideo resolved directly and the destination metadata or an official artist-controlled cross-link matched Maple Glider; HTTP 200."
         }
@@ -1092,9 +963,9 @@
         "sourceCount": 0,
         "reasons": [],
         "attempts": 1,
-        "startedAt": "2026-07-18T09:22:00.479Z"
+        "startedAt": "2026-07-18T09:56:41.913Z"
       },
-      "finishedAt": "2026-07-18T09:22:08.712Z"
+      "finishedAt": "2026-07-18T09:56:50.086Z"
     },
     {
       "rowNumber": 11,
@@ -1132,14 +1003,14 @@
         }
       ],
       "attempts": 1,
-      "startedAt": "2026-07-18T09:22:01.141Z",
+      "startedAt": "2026-07-18T09:56:44.106Z",
       "evidence": {
         "buyMusic": {
           "url": "https://folkbitchtrio.bandcamp.com/album/now-would-be-a-good-time",
           "sourceHost": "folkbitchtrio.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:02.268Z",
+          "verifiedAt": "2026-07-18T09:56:45.359Z",
           "status": 200,
           "evidence": "buyMusic resolved directly and the destination metadata or an official artist-controlled cross-link matched Folk Bitch Trio; HTTP 200."
         },
@@ -1148,7 +1019,7 @@
           "sourceHost": "open.spotify.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:03.803Z",
+          "verifiedAt": "2026-07-18T09:56:46.629Z",
           "status": 200,
           "evidence": "spotify resolved directly and the destination metadata or an official artist-controlled cross-link matched Folk Bitch Trio; HTTP 200."
         },
@@ -1157,7 +1028,7 @@
           "sourceHost": "folkbitchtrio.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:02.268Z",
+          "verifiedAt": "2026-07-18T09:56:45.359Z",
           "status": 200,
           "evidence": "bandcamp resolved directly and the destination metadata or an official artist-controlled cross-link matched Folk Bitch Trio; HTTP 200."
         },
@@ -1166,25 +1037,25 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:04.469Z",
+          "verifiedAt": "2026-07-18T09:56:47.114Z",
           "status": 200,
           "evidence": "youtube resolved directly and the destination metadata or an official artist-controlled cross-link matched Folk Bitch Trio; HTTP 200."
         },
         "instagram": {
-          "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Ffolkbitchtrio%2F&is_from_rle",
+          "url": "https://www.instagram.com/folkbitchtrio/",
           "sourceHost": "instagram.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:04.972Z",
+          "verifiedAt": "2026-07-18T09:56:47.255Z",
           "status": 429,
           "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched Folk Bitch Trio; HTTP 429."
         },
         "facebook": {
-          "url": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Ffolkbitchtrio%2F",
+          "url": "https://www.facebook.com/folkbitchtrio/",
           "sourceHost": "facebook.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:05.667Z",
+          "verifiedAt": "2026-07-18T09:56:48.051Z",
           "status": 200,
           "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched Folk Bitch Trio; HTTP 200."
         },
@@ -1193,7 +1064,7 @@
           "sourceHost": "folkbitchtrio.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:01.574Z",
+          "verifiedAt": "2026-07-18T09:56:44.454Z",
           "status": 200,
           "evidence": "website resolved directly and the destination metadata or an official artist-controlled cross-link matched Folk Bitch Trio; HTTP 200."
         },
@@ -1202,7 +1073,7 @@
           "sourceHost": "folkbitchtrio.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:02.640Z",
+          "verifiedAt": "2026-07-18T09:56:45.603Z",
           "status": 200,
           "evidence": "merchandise resolved directly and the destination metadata or an official artist-controlled cross-link matched Folk Bitch Trio; HTTP 200."
         },
@@ -1211,7 +1082,7 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:06.408Z",
+          "verifiedAt": "2026-07-18T09:56:49.010Z",
           "status": 200,
           "evidence": "featuredVideo resolved directly and the destination metadata or an official artist-controlled cross-link matched Folk Bitch Trio; HTTP 200."
         }
@@ -1243,9 +1114,9 @@
         "sourceCount": 0,
         "reasons": [],
         "attempts": 1,
-        "startedAt": "2026-07-18T09:22:01.141Z"
+        "startedAt": "2026-07-18T09:56:44.106Z"
       },
-      "finishedAt": "2026-07-18T09:22:06.415Z"
+      "finishedAt": "2026-07-18T09:56:49.018Z"
     },
     {
       "rowNumber": 12,
@@ -1295,14 +1166,14 @@
         }
       ],
       "attempts": 1,
-      "startedAt": "2026-07-18T09:22:03.349Z",
+      "startedAt": "2026-07-18T09:56:46.735Z",
       "evidence": {
         "buyMusic": {
           "url": "https://nicebiscuit.bandcamp.com/",
           "sourceHost": "nicebiscuit.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:06.037Z",
+          "verifiedAt": "2026-07-18T09:56:49.226Z",
           "status": 200,
           "evidence": "buyMusic resolved directly and the destination metadata or an official artist-controlled cross-link matched Nice Biscuit; HTTP 200."
         },
@@ -1311,7 +1182,7 @@
           "sourceHost": "nicebiscuit.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:06.037Z",
+          "verifiedAt": "2026-07-18T09:56:49.226Z",
           "status": 200,
           "evidence": "bandcamp resolved directly and the destination metadata or an official artist-controlled cross-link matched Nice Biscuit; HTTP 200."
         },
@@ -1320,16 +1191,16 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:21:55.489Z",
+          "verifiedAt": "2026-07-18T09:56:39.568Z",
           "status": 200,
           "evidence": "youtube resolved directly and the destination metadata or an official artist-controlled cross-link matched Nice Biscuit; HTTP 200."
         },
         "instagram": {
-          "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fnicebiscuitband%2F&is_from_rle",
+          "url": "https://www.instagram.com/nicebiscuitband/",
           "sourceHost": "instagram.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:07.772Z",
+          "verifiedAt": "2026-07-18T09:56:51.131Z",
           "status": 429,
           "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched Nice Biscuit; HTTP 429."
         },
@@ -1338,7 +1209,7 @@
           "sourceHost": "facebook.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:08.612Z",
+          "verifiedAt": "2026-07-18T09:56:52.384Z",
           "status": 200,
           "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched Nice Biscuit; HTTP 200."
         },
@@ -1347,7 +1218,7 @@
           "sourceHost": "nicebiscuit.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:06.296Z",
+          "verifiedAt": "2026-07-18T09:56:49.464Z",
           "status": 200,
           "evidence": "merchandise resolved directly and the destination metadata or an official artist-controlled cross-link matched Nice Biscuit; HTTP 200."
         }
@@ -1379,9 +1250,9 @@
         "sourceCount": 0,
         "reasons": [],
         "attempts": 1,
-        "startedAt": "2026-07-18T09:22:03.349Z"
+        "startedAt": "2026-07-18T09:56:46.735Z"
       },
-      "finishedAt": "2026-07-18T09:22:10.784Z"
+      "finishedAt": "2026-07-18T09:56:54.735Z"
     },
     {
       "rowNumber": 13,
@@ -1423,14 +1294,14 @@
         }
       ],
       "attempts": 1,
-      "startedAt": "2026-07-18T09:22:06.416Z",
+      "startedAt": "2026-07-18T09:56:49.019Z",
       "evidence": {
         "buyMusic": {
           "url": "https://bananagun.bandcamp.com/track/day-by-day",
           "sourceHost": "bananagun.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:08.055Z",
+          "verifiedAt": "2026-07-18T09:56:50.455Z",
           "status": 200,
           "evidence": "buyMusic resolved directly and the destination metadata or an official artist-controlled cross-link matched Bananagun; HTTP 200."
         },
@@ -1439,7 +1310,7 @@
           "sourceHost": "bananagun.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:08.055Z",
+          "verifiedAt": "2026-07-18T09:56:50.455Z",
           "status": 200,
           "evidence": "bandcamp resolved directly and the destination metadata or an official artist-controlled cross-link matched Bananagun; HTTP 200."
         },
@@ -1448,25 +1319,25 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:00.432Z",
+          "verifiedAt": "2026-07-18T09:56:43.979Z",
           "status": 200,
           "evidence": "youtube resolved directly and the destination metadata or an official artist-controlled cross-link matched Bananagun; HTTP 200."
         },
         "instagram": {
-          "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fbananagun_band%2F&is_from_rle",
+          "url": "https://www.instagram.com/bananagun_band/",
           "sourceHost": "instagram.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:09.516Z",
+          "verifiedAt": "2026-07-18T09:56:51.838Z",
           "status": 429,
           "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched Bananagun; HTTP 429."
         },
         "facebook": {
-          "url": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Fbananagunband%2F",
+          "url": "https://www.facebook.com/bananagunband/",
           "sourceHost": "facebook.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:10.374Z",
+          "verifiedAt": "2026-07-18T09:56:52.645Z",
           "status": 200,
           "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched Bananagun; HTTP 200."
         },
@@ -1475,7 +1346,7 @@
           "sourceHost": "bananagun.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:07.169Z",
+          "verifiedAt": "2026-07-18T09:56:49.713Z",
           "status": 200,
           "evidence": "website resolved directly and the destination metadata or an official artist-controlled cross-link matched Bananagun; HTTP 200."
         },
@@ -1484,7 +1355,7 @@
           "sourceHost": "bananagun.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:08.447Z",
+          "verifiedAt": "2026-07-18T09:56:50.833Z",
           "status": 200,
           "evidence": "merchandise resolved directly and the destination metadata or an official artist-controlled cross-link matched Bananagun; HTTP 200."
         },
@@ -1493,7 +1364,7 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:03.339Z",
+          "verifiedAt": "2026-07-18T09:56:46.719Z",
           "status": 200,
           "evidence": "featuredVideo resolved directly and the destination metadata or an official artist-controlled cross-link matched Bananagun; HTTP 200."
         }
@@ -1525,9 +1396,9 @@
         "sourceCount": 0,
         "reasons": [],
         "attempts": 1,
-        "startedAt": "2026-07-18T09:22:06.416Z"
+        "startedAt": "2026-07-18T09:56:49.019Z"
       },
-      "finishedAt": "2026-07-18T09:22:10.392Z"
+      "finishedAt": "2026-07-18T09:56:52.664Z"
     },
     {
       "rowNumber": 14,
@@ -1581,14 +1452,14 @@
         }
       ],
       "attempts": 1,
-      "startedAt": "2026-07-18T09:22:08.713Z",
+      "startedAt": "2026-07-18T09:56:50.087Z",
       "evidence": {
         "buyMusic": {
           "url": "https://surprisechef.bandcamp.com/",
           "sourceHost": "surprisechef.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:13.549Z",
+          "verifiedAt": "2026-07-18T09:56:54.677Z",
           "status": 200,
           "evidence": "buyMusic resolved directly and the destination metadata or an official artist-controlled cross-link matched Surprise Chef; HTTP 200."
         },
@@ -1597,25 +1468,25 @@
           "sourceHost": "surprisechef.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:13.549Z",
+          "verifiedAt": "2026-07-18T09:56:54.677Z",
           "status": 200,
           "evidence": "bandcamp resolved directly and the destination metadata or an official artist-controlled cross-link matched Surprise Chef; HTTP 200."
         },
         "instagram": {
-          "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fsurprisecheff%2F&is_from_rle",
+          "url": "https://www.instagram.com/surprisecheff/",
           "sourceHost": "instagram.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:14.951Z",
+          "verifiedAt": "2026-07-18T09:56:56.187Z",
           "status": 429,
           "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched Surprise Chef; HTTP 429."
         },
         "facebook": {
-          "url": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Fsurprisecheff%2F",
+          "url": "https://www.facebook.com/surprisecheff/",
           "sourceHost": "facebook.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:15.674Z",
+          "verifiedAt": "2026-07-18T09:56:57.047Z",
           "status": 200,
           "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched Surprise Chef; HTTP 200."
         },
@@ -1624,7 +1495,7 @@
           "sourceHost": "surprisechef.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:13.885Z",
+          "verifiedAt": "2026-07-18T09:56:55.310Z",
           "status": 200,
           "evidence": "merchandise resolved directly and the destination metadata or an official artist-controlled cross-link matched Surprise Chef; HTTP 200."
         },
@@ -1633,7 +1504,7 @@
           "sourceHost": "allmusic.com",
           "officialSource": false,
           "identityVerified": false,
-          "verifiedAt": "2026-07-18T09:22:14.640Z",
+          "verifiedAt": "2026-07-18T09:56:55.997Z",
           "status": 200,
           "evidence": "Insufficient identity evidence."
         }
@@ -1665,9 +1536,9 @@
         "sourceCount": 0,
         "reasons": [],
         "attempts": 1,
-        "startedAt": "2026-07-18T09:22:08.713Z"
+        "startedAt": "2026-07-18T09:56:50.087Z"
       },
-      "finishedAt": "2026-07-18T09:22:18.296Z"
+      "finishedAt": "2026-07-18T09:57:00.595Z"
     },
     {
       "rowNumber": 15,
@@ -1717,14 +1588,14 @@
         }
       ],
       "attempts": 1,
-      "startedAt": "2026-07-18T09:22:10.394Z",
+      "startedAt": "2026-07-18T09:56:52.665Z",
       "evidence": {
         "buyMusic": {
           "url": "https://karateboogaloo.bandcamp.com/",
           "sourceHost": "karateboogaloo.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:13.018Z",
+          "verifiedAt": "2026-07-18T09:56:55.362Z",
           "status": 200,
           "evidence": "buyMusic resolved directly and the destination metadata or an official artist-controlled cross-link matched Karate Boogaloo; HTTP 200."
         },
@@ -1733,25 +1604,25 @@
           "sourceHost": "karateboogaloo.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:13.018Z",
+          "verifiedAt": "2026-07-18T09:56:55.362Z",
           "status": 200,
           "evidence": "bandcamp resolved directly and the destination metadata or an official artist-controlled cross-link matched Karate Boogaloo; HTTP 200."
         },
         "instagram": {
-          "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fkarateboogaloo%2F&is_from_rle",
+          "url": "https://www.instagram.com/karateboogaloo/",
           "sourceHost": "instagram.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:14.392Z",
+          "verifiedAt": "2026-07-18T09:56:56.848Z",
           "status": 429,
           "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched Karate Boogaloo; HTTP 429."
         },
         "facebook": {
-          "url": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Fkarateboogaloo%2F",
+          "url": "https://www.facebook.com/karateboogaloo/",
           "sourceHost": "facebook.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:15.475Z",
+          "verifiedAt": "2026-07-18T09:56:58.160Z",
           "status": 200,
           "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched Karate Boogaloo; HTTP 200."
         },
@@ -1760,7 +1631,7 @@
           "sourceHost": "karateboogaloo.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:13.481Z",
+          "verifiedAt": "2026-07-18T09:56:56.245Z",
           "status": 200,
           "evidence": "merchandise resolved directly and the destination metadata or an official artist-controlled cross-link matched Karate Boogaloo; HTTP 200."
         },
@@ -1769,7 +1640,7 @@
           "sourceHost": "allmusic.com",
           "officialSource": false,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:13.680Z",
+          "verifiedAt": "2026-07-18T09:56:56.417Z",
           "status": 403,
           "evidence": "newsReviews resolved directly and the destination metadata or an official artist-controlled cross-link matched Karate Boogaloo; HTTP 403."
         }
@@ -1801,9 +1672,9 @@
         "sourceCount": 0,
         "reasons": [],
         "attempts": 1,
-        "startedAt": "2026-07-18T09:22:10.394Z"
+        "startedAt": "2026-07-18T09:56:52.665Z"
       },
-      "finishedAt": "2026-07-18T09:22:17.332Z"
+      "finishedAt": "2026-07-18T09:57:00.133Z"
     },
     {
       "rowNumber": 16,
@@ -1853,14 +1724,14 @@
         }
       ],
       "attempts": 1,
-      "startedAt": "2026-07-18T09:22:10.785Z",
+      "startedAt": "2026-07-18T09:56:54.736Z",
       "evidence": {
         "buyMusic": {
           "url": "https://theprizeband.bandcamp.com/album/the-prize",
           "sourceHost": "theprizeband.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:12.602Z",
+          "verifiedAt": "2026-07-18T09:56:56.495Z",
           "status": 200,
           "evidence": "buyMusic resolved directly and the destination metadata or an official artist-controlled cross-link matched The Prize; HTTP 200."
         },
@@ -1869,7 +1740,7 @@
           "sourceHost": "theprizeband.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:12.602Z",
+          "verifiedAt": "2026-07-18T09:56:56.495Z",
           "status": 200,
           "evidence": "bandcamp resolved directly and the destination metadata or an official artist-controlled cross-link matched The Prize; HTTP 200."
         },
@@ -1878,25 +1749,25 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:15.227Z",
+          "verifiedAt": "2026-07-18T09:56:58.637Z",
           "status": 200,
           "evidence": "youtube resolved directly and the destination metadata or an official artist-controlled cross-link matched The Prize; HTTP 200."
         },
         "instagram": {
-          "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Ftheprizeband%2F&is_from_rle",
+          "url": "https://www.instagram.com/theprizeband/",
           "sourceHost": "instagram.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:15.631Z",
+          "verifiedAt": "2026-07-18T09:56:58.728Z",
           "status": 429,
           "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched The Prize; HTTP 429."
         },
         "facebook": {
-          "url": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Ftheprizeband%2F",
+          "url": "https://www.facebook.com/theprizeband/",
           "sourceHost": "facebook.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:16.591Z",
+          "verifiedAt": "2026-07-18T09:56:59.715Z",
           "status": 200,
           "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched The Prize; HTTP 200."
         },
@@ -1905,7 +1776,7 @@
           "sourceHost": "linktr.ee",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:11.883Z",
+          "verifiedAt": "2026-07-18T09:56:55.194Z",
           "status": 200,
           "evidence": "website resolved directly and the destination metadata or an official artist-controlled cross-link matched The Prize; HTTP 200."
         },
@@ -1914,7 +1785,7 @@
           "sourceHost": "theprizeband.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:13.711Z",
+          "verifiedAt": "2026-07-18T09:56:57.324Z",
           "status": 200,
           "evidence": "merchandise resolved directly and the destination metadata or an official artist-controlled cross-link matched The Prize; HTTP 200."
         },
@@ -1923,7 +1794,7 @@
           "sourceHost": "nme.com",
           "officialSource": false,
           "identityVerified": false,
-          "verifiedAt": "2026-07-18T09:22:14.046Z",
+          "verifiedAt": "2026-07-18T09:56:57.612Z",
           "status": 200,
           "evidence": "Insufficient identity evidence."
         },
@@ -1932,7 +1803,7 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": false,
-          "verifiedAt": "2026-07-18T09:22:15.227Z",
+          "verifiedAt": "2026-07-18T09:56:58.637Z",
           "status": 200,
           "evidence": "Insufficient identity evidence."
         }
@@ -1964,9 +1835,9 @@
         "sourceCount": 0,
         "reasons": [],
         "attempts": 1,
-        "startedAt": "2026-07-18T09:22:10.785Z"
+        "startedAt": "2026-07-18T09:56:54.736Z"
       },
-      "finishedAt": "2026-07-18T09:22:16.615Z"
+      "finishedAt": "2026-07-18T09:56:59.733Z"
     },
     {
       "rowNumber": 17,
@@ -2016,14 +1887,14 @@
         }
       ],
       "attempts": 1,
-      "startedAt": "2026-07-18T09:22:16.616Z",
+      "startedAt": "2026-07-18T09:56:59.734Z",
       "evidence": {
         "buyMusic": {
           "url": "https://splitsystem.bandcamp.com/",
           "sourceHost": "splitsystem.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:17.695Z",
+          "verifiedAt": "2026-07-18T09:57:00.778Z",
           "status": 200,
           "evidence": "buyMusic resolved directly and the destination metadata or an official artist-controlled cross-link matched Split System; HTTP 200."
         },
@@ -2032,25 +1903,25 @@
           "sourceHost": "splitsystem.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:17.695Z",
+          "verifiedAt": "2026-07-18T09:57:00.778Z",
           "status": 200,
           "evidence": "bandcamp resolved directly and the destination metadata or an official artist-controlled cross-link matched Split System; HTTP 200."
         },
         "instagram": {
-          "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fsplitsystemband%2F&is_from_rle",
+          "url": "https://www.instagram.com/splitsystemband/",
           "sourceHost": "instagram.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:18.921Z",
+          "verifiedAt": "2026-07-18T09:57:01.979Z",
           "status": 429,
           "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched Split System; HTTP 429."
         },
         "facebook": {
-          "url": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Fsplitsystemband%2F",
+          "url": "https://www.facebook.com/splitsystemband/",
           "sourceHost": "facebook.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:19.550Z",
+          "verifiedAt": "2026-07-18T09:57:02.711Z",
           "status": 200,
           "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched Split System; HTTP 200."
         },
@@ -2059,7 +1930,7 @@
           "sourceHost": "splitsystem.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:18.348Z",
+          "verifiedAt": "2026-07-18T09:57:01.026Z",
           "status": 200,
           "evidence": "merchandise resolved directly and the destination metadata or an official artist-controlled cross-link matched Split System; HTTP 200."
         },
@@ -2068,7 +1939,7 @@
           "sourceHost": "maximumrocknroll.com",
           "officialSource": false,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:18.447Z",
+          "verifiedAt": "2026-07-18T09:57:01.536Z",
           "status": 200,
           "evidence": "newsReviews resolved directly and the destination metadata or an official artist-controlled cross-link matched Split System; HTTP 200."
         }
@@ -2100,9 +1971,9 @@
         "sourceCount": 0,
         "reasons": [],
         "attempts": 1,
-        "startedAt": "2026-07-18T09:22:16.616Z"
+        "startedAt": "2026-07-18T09:56:59.734Z"
       },
-      "finishedAt": "2026-07-18T09:22:19.561Z"
+      "finishedAt": "2026-07-18T09:57:02.719Z"
     },
     {
       "rowNumber": 18,
@@ -2156,14 +2027,14 @@
         }
       ],
       "attempts": 1,
-      "startedAt": "2026-07-18T09:22:17.333Z",
+      "startedAt": "2026-07-18T09:57:00.134Z",
       "evidence": {
         "buyMusic": {
           "url": "https://clamm.bandcamp.com/album/pearl-singing-along-to-the-static",
           "sourceHost": "clamm.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:20.231Z",
+          "verifiedAt": "2026-07-18T09:57:03.156Z",
           "status": 200,
           "evidence": "buyMusic resolved directly and the destination metadata or an official artist-controlled cross-link matched CLAMM; HTTP 200."
         },
@@ -2172,25 +2043,25 @@
           "sourceHost": "clamm.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:20.231Z",
+          "verifiedAt": "2026-07-18T09:57:03.156Z",
           "status": 200,
           "evidence": "bandcamp resolved directly and the destination metadata or an official artist-controlled cross-link matched CLAMM; HTTP 200."
         },
         "instagram": {
-          "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fclamm_band%2F&is_from_rle",
+          "url": "https://www.instagram.com/clamm_band/",
           "sourceHost": "instagram.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:21.737Z",
+          "verifiedAt": "2026-07-18T09:57:04.407Z",
           "status": 429,
           "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched CLAMM; HTTP 429."
         },
         "facebook": {
-          "url": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Fclammband%2F",
+          "url": "https://www.facebook.com/clammband/",
           "sourceHost": "facebook.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:22.538Z",
+          "verifiedAt": "2026-07-18T09:57:05.176Z",
           "status": 200,
           "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched CLAMM; HTTP 200."
         },
@@ -2199,7 +2070,7 @@
           "sourceHost": "clamm.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:20.907Z",
+          "verifiedAt": "2026-07-18T09:57:03.861Z",
           "status": 200,
           "evidence": "merchandise resolved directly and the destination metadata or an official artist-controlled cross-link matched CLAMM; HTTP 200."
         },
@@ -2208,7 +2079,7 @@
           "sourceHost": "nme.com",
           "officialSource": false,
           "identityVerified": false,
-          "verifiedAt": "2026-07-18T09:22:21.201Z",
+          "verifiedAt": "2026-07-18T09:57:04.114Z",
           "status": 200,
           "evidence": "Insufficient identity evidence."
         }
@@ -2240,9 +2111,9 @@
         "sourceCount": 0,
         "reasons": [],
         "attempts": 1,
-        "startedAt": "2026-07-18T09:22:17.333Z"
+        "startedAt": "2026-07-18T09:57:00.134Z"
       },
-      "finishedAt": "2026-07-18T09:22:24.624Z"
+      "finishedAt": "2026-07-18T09:57:07.414Z"
     },
     {
       "rowNumber": 19,
@@ -2284,14 +2155,14 @@
         }
       ],
       "attempts": 1,
-      "startedAt": "2026-07-18T09:22:18.297Z",
+      "startedAt": "2026-07-18T09:57:00.596Z",
       "evidence": {
         "buyMusic": {
           "url": "https://benchpressband.bandcamp.com/",
           "sourceHost": "benchpressband.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:19.168Z",
+          "verifiedAt": "2026-07-18T09:57:01.315Z",
           "status": 200,
           "evidence": "buyMusic resolved directly and the destination metadata or an official artist-controlled cross-link matched Bench Press; HTTP 200."
         },
@@ -2300,7 +2171,7 @@
           "sourceHost": "benchpressband.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:19.168Z",
+          "verifiedAt": "2026-07-18T09:57:01.315Z",
           "status": 200,
           "evidence": "bandcamp resolved directly and the destination metadata or an official artist-controlled cross-link matched Bench Press; HTTP 200."
         },
@@ -2309,25 +2180,25 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:21.505Z",
+          "verifiedAt": "2026-07-18T09:57:04.270Z",
           "status": 200,
           "evidence": "youtube resolved directly and the destination metadata or an official artist-controlled cross-link matched Bench Press; HTTP 200."
         },
         "instagram": {
-          "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fbenchpressband%2F&is_from_rle",
+          "url": "https://www.instagram.com/benchpressband/",
           "sourceHost": "instagram.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:22.077Z",
+          "verifiedAt": "2026-07-18T09:57:04.416Z",
           "status": 429,
           "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched Bench Press; HTTP 429."
         },
         "facebook": {
-          "url": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Fbenchpressband%2F",
+          "url": "https://www.facebook.com/benchpressband/",
           "sourceHost": "facebook.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:22.936Z",
+          "verifiedAt": "2026-07-18T09:57:05.163Z",
           "status": 200,
           "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched Bench Press; HTTP 200."
         },
@@ -2336,7 +2207,7 @@
           "sourceHost": "linktr.ee",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:18.375Z",
+          "verifiedAt": "2026-07-18T09:57:00.829Z",
           "status": 200,
           "evidence": "website resolved directly and the destination metadata or an official artist-controlled cross-link matched Bench Press; HTTP 200."
         },
@@ -2345,7 +2216,7 @@
           "sourceHost": "benchpressband.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:19.768Z",
+          "verifiedAt": "2026-07-18T09:57:01.863Z",
           "status": 200,
           "evidence": "merchandise resolved directly and the destination metadata or an official artist-controlled cross-link matched Bench Press; HTTP 200."
         },
@@ -2354,7 +2225,7 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:23.884Z",
+          "verifiedAt": "2026-07-18T09:57:05.815Z",
           "status": 200,
           "evidence": "featuredVideo resolved directly and the destination metadata or an official artist-controlled cross-link matched Bench Press; HTTP 200."
         }
@@ -2386,9 +2257,9 @@
         "sourceCount": 0,
         "reasons": [],
         "attempts": 1,
-        "startedAt": "2026-07-18T09:22:18.297Z"
+        "startedAt": "2026-07-18T09:57:00.596Z"
       },
-      "finishedAt": "2026-07-18T09:22:23.892Z"
+      "finishedAt": "2026-07-18T09:57:05.822Z"
     },
     {
       "rowNumber": 20,
@@ -2434,14 +2305,14 @@
         }
       ],
       "attempts": 1,
-      "startedAt": "2026-07-18T09:22:19.562Z",
+      "startedAt": "2026-07-18T09:57:02.721Z",
       "evidence": {
         "buyMusic": {
           "url": "https://pinchpoints.bandcamp.com/album/mechanical-injury-reissue",
           "sourceHost": "pinchpoints.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:22.889Z",
+          "verifiedAt": "2026-07-18T09:57:05.480Z",
           "status": 200,
           "evidence": "buyMusic resolved directly and the destination metadata or an official artist-controlled cross-link matched Pinch Points; HTTP 200."
         },
@@ -2450,7 +2321,7 @@
           "sourceHost": "pinchpoints.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:22.889Z",
+          "verifiedAt": "2026-07-18T09:57:05.480Z",
           "status": 200,
           "evidence": "bandcamp resolved directly and the destination metadata or an official artist-controlled cross-link matched Pinch Points; HTTP 200."
         },
@@ -2459,25 +2330,25 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:24.534Z",
+          "verifiedAt": "2026-07-18T09:57:07.199Z",
           "status": 200,
           "evidence": "youtube resolved directly and the destination metadata or an official artist-controlled cross-link matched Pinch Points; HTTP 200."
         },
         "instagram": {
-          "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fpinchpointsband%2F&is_from_rle",
+          "url": "https://www.instagram.com/pinchpointsband/",
           "sourceHost": "instagram.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:24.826Z",
+          "verifiedAt": "2026-07-18T09:57:07.414Z",
           "status": 429,
           "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched Pinch Points; HTTP 429."
         },
         "facebook": {
-          "url": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Fpinchpointsband%2F",
+          "url": "https://www.facebook.com/pinchpointsband/",
           "sourceHost": "facebook.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:25.566Z",
+          "verifiedAt": "2026-07-18T09:57:08.257Z",
           "status": 200,
           "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched Pinch Points; HTTP 200."
         },
@@ -2486,7 +2357,7 @@
           "sourceHost": "pinchpoints.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:23.148Z",
+          "verifiedAt": "2026-07-18T09:57:05.979Z",
           "status": 200,
           "evidence": "merchandise resolved directly and the destination metadata or an official artist-controlled cross-link matched Pinch Points; HTTP 200."
         },
@@ -2495,7 +2366,7 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:28.447Z",
+          "verifiedAt": "2026-07-18T09:57:11.088Z",
           "status": 200,
           "evidence": "featuredVideo resolved directly and the destination metadata or an official artist-controlled cross-link matched Pinch Points; HTTP 200."
         }
@@ -2527,9 +2398,9 @@
         "sourceCount": 0,
         "reasons": [],
         "attempts": 1,
-        "startedAt": "2026-07-18T09:22:19.562Z"
+        "startedAt": "2026-07-18T09:57:02.721Z"
       },
-      "finishedAt": "2026-07-18T09:22:28.454Z"
+      "finishedAt": "2026-07-18T09:57:11.096Z"
     },
     {
       "rowNumber": 21,
@@ -2583,14 +2454,14 @@
         }
       ],
       "attempts": 1,
-      "startedAt": "2026-07-18T09:22:23.896Z",
+      "startedAt": "2026-07-18T09:57:05.823Z",
       "evidence": {
         "buyMusic": {
           "url": "https://modcon.bandcamp.com/album/first-contact-ep",
           "sourceHost": "modcon.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:26.767Z",
+          "verifiedAt": "2026-07-18T09:57:08.791Z",
           "status": 200,
           "evidence": "buyMusic resolved directly and the destination metadata or an official artist-controlled cross-link matched Mod Con; HTTP 200."
         },
@@ -2599,25 +2470,25 @@
           "sourceHost": "modcon.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:26.767Z",
+          "verifiedAt": "2026-07-18T09:57:08.791Z",
           "status": 200,
           "evidence": "bandcamp resolved directly and the destination metadata or an official artist-controlled cross-link matched Mod Con; HTTP 200."
         },
         "instagram": {
-          "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fmod_con%2F&is_from_rle",
+          "url": "https://www.instagram.com/mod_con/",
           "sourceHost": "instagram.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:28.660Z",
+          "verifiedAt": "2026-07-18T09:57:09.609Z",
           "status": 429,
           "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched Mod Con; HTTP 429."
         },
         "facebook": {
-          "url": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Fmodconband%2F",
+          "url": "https://www.facebook.com/modconband/",
           "sourceHost": "facebook.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:29.371Z",
+          "verifiedAt": "2026-07-18T09:57:10.525Z",
           "status": 200,
           "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched Mod Con; HTTP 200."
         },
@@ -2626,7 +2497,7 @@
           "sourceHost": "modcon.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:27.494Z",
+          "verifiedAt": "2026-07-18T09:57:09.074Z",
           "status": 200,
           "evidence": "merchandise resolved directly and the destination metadata or an official artist-controlled cross-link matched Mod Con; HTTP 200."
         }
@@ -2658,9 +2529,9 @@
         "sourceCount": 0,
         "reasons": [],
         "attempts": 1,
-        "startedAt": "2026-07-18T09:22:23.896Z"
+        "startedAt": "2026-07-18T09:57:05.823Z"
       },
-      "finishedAt": "2026-07-18T09:22:31.244Z"
+      "finishedAt": "2026-07-18T09:57:12.482Z"
     },
     {
       "rowNumber": 22,
@@ -2702,14 +2573,14 @@
         }
       ],
       "attempts": 1,
-      "startedAt": "2026-07-18T09:22:24.626Z",
+      "startedAt": "2026-07-18T09:57:07.416Z",
       "evidence": {
         "buyMusic": {
           "url": "https://messesque.bandcamp.com/",
           "sourceHost": "messesque.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:26.558Z",
+          "verifiedAt": "2026-07-18T09:57:09.827Z",
           "status": 200,
           "evidence": "buyMusic resolved directly and the destination metadata or an official artist-controlled cross-link matched Mess Esque; HTTP 200."
         },
@@ -2718,7 +2589,7 @@
           "sourceHost": "messesque.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:26.558Z",
+          "verifiedAt": "2026-07-18T09:57:09.827Z",
           "status": 200,
           "evidence": "bandcamp resolved directly and the destination metadata or an official artist-controlled cross-link matched Mess Esque; HTTP 200."
         },
@@ -2727,25 +2598,25 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:00.432Z",
+          "verifiedAt": "2026-07-18T09:56:43.979Z",
           "status": 200,
           "evidence": "youtube resolved directly and the destination metadata or an official artist-controlled cross-link matched Mess Esque; HTTP 200."
         },
         "instagram": {
-          "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fmess_esque%2F&is_from_rle",
+          "url": "https://www.instagram.com/mess_esque/",
           "sourceHost": "instagram.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:27.925Z",
+          "verifiedAt": "2026-07-18T09:57:10.996Z",
           "status": 429,
           "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched Mess Esque; HTTP 429."
         },
         "facebook": {
-          "url": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Fmessesque%2F",
+          "url": "https://www.facebook.com/messesque/",
           "sourceHost": "facebook.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:28.670Z",
+          "verifiedAt": "2026-07-18T09:57:12.010Z",
           "status": 200,
           "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched Mess Esque; HTTP 200."
         },
@@ -2754,7 +2625,7 @@
           "sourceHost": "messesque.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:25.965Z",
+          "verifiedAt": "2026-07-18T09:57:09.370Z",
           "status": 200,
           "evidence": "website resolved directly and the destination metadata or an official artist-controlled cross-link matched Mess Esque; HTTP 200."
         },
@@ -2763,7 +2634,7 @@
           "sourceHost": "messesque.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:26.898Z",
+          "verifiedAt": "2026-07-18T09:57:10.062Z",
           "status": 200,
           "evidence": "merchandise resolved directly and the destination metadata or an official artist-controlled cross-link matched Mess Esque; HTTP 200."
         },
@@ -2772,7 +2643,7 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:03.339Z",
+          "verifiedAt": "2026-07-18T09:56:46.719Z",
           "status": 200,
           "evidence": "featuredVideo resolved directly and the destination metadata or an official artist-controlled cross-link matched Mess Esque; HTTP 200."
         }
@@ -2804,9 +2675,9 @@
         "sourceCount": 0,
         "reasons": [],
         "attempts": 1,
-        "startedAt": "2026-07-18T09:22:24.626Z"
+        "startedAt": "2026-07-18T09:57:07.416Z"
       },
-      "finishedAt": "2026-07-18T09:22:28.688Z"
+      "finishedAt": "2026-07-18T09:57:12.030Z"
     },
     {
       "rowNumber": 23,
@@ -2848,14 +2719,14 @@
         }
       ],
       "attempts": 1,
-      "startedAt": "2026-07-18T09:22:28.456Z",
+      "startedAt": "2026-07-18T09:57:11.097Z",
       "evidence": {
         "buyMusic": {
           "url": "https://acopia.bandcamp.com/",
           "sourceHost": "acopia.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:30.851Z",
+          "verifiedAt": "2026-07-18T09:57:12.974Z",
           "status": 200,
           "evidence": "buyMusic resolved directly and the destination metadata or an official artist-controlled cross-link matched Acopia; HTTP 200."
         },
@@ -2864,7 +2735,7 @@
           "sourceHost": "acopia.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:30.851Z",
+          "verifiedAt": "2026-07-18T09:57:12.974Z",
           "status": 200,
           "evidence": "bandcamp resolved directly and the destination metadata or an official artist-controlled cross-link matched Acopia; HTTP 200."
         },
@@ -2873,25 +2744,25 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:32.119Z",
+          "verifiedAt": "2026-07-18T09:57:14.288Z",
           "status": 200,
           "evidence": "youtube resolved directly and the destination metadata or an official artist-controlled cross-link matched Acopia; HTTP 200."
         },
         "instagram": {
-          "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Facopia%2F&is_from_rle",
+          "url": "https://www.instagram.com/acopia/",
           "sourceHost": "instagram.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:32.488Z",
+          "verifiedAt": "2026-07-18T09:57:14.564Z",
           "status": 429,
           "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched Acopia; HTTP 429."
         },
         "facebook": {
-          "url": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Facopiamusic%2F",
+          "url": "https://www.facebook.com/acopiamusic/",
           "sourceHost": "facebook.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:33.182Z",
+          "verifiedAt": "2026-07-18T09:57:15.526Z",
           "status": 200,
           "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched Acopia; HTTP 200."
         },
@@ -2900,7 +2771,7 @@
           "sourceHost": "acopia.co.uk",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:30.511Z",
+          "verifiedAt": "2026-07-18T09:57:12.709Z",
           "status": 200,
           "evidence": "website resolved directly and the destination metadata or an official artist-controlled cross-link matched Acopia; HTTP 200."
         },
@@ -2909,7 +2780,7 @@
           "sourceHost": "acopia.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:31.192Z",
+          "verifiedAt": "2026-07-18T09:57:13.392Z",
           "status": 200,
           "evidence": "merchandise resolved directly and the destination metadata or an official artist-controlled cross-link matched Acopia; HTTP 200."
         },
@@ -2918,7 +2789,7 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:33.902Z",
+          "verifiedAt": "2026-07-18T09:57:16.083Z",
           "status": 200,
           "evidence": "featuredVideo resolved directly and the destination metadata or an official artist-controlled cross-link matched Acopia; HTTP 200."
         }
@@ -2950,9 +2821,9 @@
         "sourceCount": 0,
         "reasons": [],
         "attempts": 1,
-        "startedAt": "2026-07-18T09:22:28.456Z"
+        "startedAt": "2026-07-18T09:57:11.097Z"
       },
-      "finishedAt": "2026-07-18T09:22:33.909Z"
+      "finishedAt": "2026-07-18T09:57:16.097Z"
     },
     {
       "rowNumber": 24,
@@ -3006,14 +2877,14 @@
         }
       ],
       "attempts": 1,
-      "startedAt": "2026-07-18T09:22:28.689Z",
+      "startedAt": "2026-07-18T09:57:12.031Z",
       "evidence": {
         "buyMusic": {
           "url": "https://bandcamp.com/signup?new_domain=screensaverband",
           "sourceHost": "bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:29.303Z",
+          "verifiedAt": "2026-07-18T09:57:12.607Z",
           "status": 200,
           "evidence": "buyMusic resolved directly and the destination metadata or an official artist-controlled cross-link matched Screensaver; HTTP 200."
         },
@@ -3022,25 +2893,25 @@
           "sourceHost": "bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:29.303Z",
+          "verifiedAt": "2026-07-18T09:57:12.607Z",
           "status": 200,
           "evidence": "bandcamp resolved directly and the destination metadata or an official artist-controlled cross-link matched Screensaver; HTTP 200."
         },
         "instagram": {
-          "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fscreensaverband%2F&is_from_rle",
+          "url": "https://www.instagram.com/screensaverband/",
           "sourceHost": "instagram.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:30.383Z",
+          "verifiedAt": "2026-07-18T09:57:13.538Z",
           "status": 429,
           "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched Screensaver; HTTP 429."
         },
         "facebook": {
-          "url": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Fscreensaverband%2F",
+          "url": "https://www.facebook.com/screensaverband/",
           "sourceHost": "facebook.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:31.234Z",
+          "verifiedAt": "2026-07-18T09:57:14.300Z",
           "status": 200,
           "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched Screensaver; HTTP 200."
         },
@@ -3049,7 +2920,7 @@
           "sourceHost": "maximumrocknroll.com",
           "officialSource": false,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:29.916Z",
+          "verifiedAt": "2026-07-18T09:57:13.338Z",
           "status": 200,
           "evidence": "newsReviews resolved directly and the destination metadata or an official artist-controlled cross-link matched Screensaver; HTTP 200."
         }
@@ -3081,9 +2952,9 @@
         "sourceCount": 0,
         "reasons": [],
         "attempts": 1,
-        "startedAt": "2026-07-18T09:22:28.689Z"
+        "startedAt": "2026-07-18T09:57:12.031Z"
       },
-      "finishedAt": "2026-07-18T09:22:31.240Z"
+      "finishedAt": "2026-07-18T09:57:14.307Z"
     },
     {
       "rowNumber": 25,
@@ -3129,14 +3000,14 @@
         }
       ],
       "attempts": 1,
-      "startedAt": "2026-07-18T09:22:31.241Z",
+      "startedAt": "2026-07-18T09:57:12.484Z",
       "evidence": {
         "buyMusic": {
           "url": "https://coolsounds.bandcamp.com/",
           "sourceHost": "coolsounds.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:34.238Z",
+          "verifiedAt": "2026-07-18T09:57:15.058Z",
           "status": 200,
           "evidence": "buyMusic resolved directly and the destination metadata or an official artist-controlled cross-link matched Cool Sounds; HTTP 200."
         },
@@ -3145,7 +3016,7 @@
           "sourceHost": "coolsounds.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:34.238Z",
+          "verifiedAt": "2026-07-18T09:57:15.058Z",
           "status": 200,
           "evidence": "bandcamp resolved directly and the destination metadata or an official artist-controlled cross-link matched Cool Sounds; HTTP 200."
         },
@@ -3154,25 +3025,25 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:35.530Z",
+          "verifiedAt": "2026-07-18T09:57:16.996Z",
           "status": 200,
           "evidence": "youtube resolved directly and the destination metadata or an official artist-controlled cross-link matched Cool Sounds; HTTP 200."
         },
         "instagram": {
-          "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fcoolsoundsband%2F&is_from_rle",
+          "url": "https://www.instagram.com/coolsoundsband/",
           "sourceHost": "instagram.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:35.879Z",
+          "verifiedAt": "2026-07-18T09:57:17.246Z",
           "status": 429,
           "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched Cool Sounds; HTTP 429."
         },
         "facebook": {
-          "url": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Fcoolsoundsband%2F",
+          "url": "https://www.facebook.com/coolsoundsband/",
           "sourceHost": "facebook.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:36.644Z",
+          "verifiedAt": "2026-07-18T09:57:18.036Z",
           "status": 200,
           "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched Cool Sounds; HTTP 200."
         },
@@ -3181,7 +3052,7 @@
           "sourceHost": "coolsounds.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:34.567Z",
+          "verifiedAt": "2026-07-18T09:57:15.402Z",
           "status": 200,
           "evidence": "merchandise resolved directly and the destination metadata or an official artist-controlled cross-link matched Cool Sounds; HTTP 200."
         },
@@ -3190,7 +3061,7 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:40.089Z",
+          "verifiedAt": "2026-07-18T09:57:20.997Z",
           "status": 200,
           "evidence": "featuredVideo resolved directly and the destination metadata or an official artist-controlled cross-link matched Cool Sounds; HTTP 200."
         }
@@ -3222,9 +3093,9 @@
         "sourceCount": 0,
         "reasons": [],
         "attempts": 1,
-        "startedAt": "2026-07-18T09:22:31.241Z"
+        "startedAt": "2026-07-18T09:57:12.484Z"
       },
-      "finishedAt": "2026-07-18T09:22:40.102Z"
+      "finishedAt": "2026-07-18T09:57:21.004Z"
     },
     {
       "rowNumber": 26,
@@ -3270,14 +3141,14 @@
         }
       ],
       "attempts": 1,
-      "startedAt": "2026-07-18T09:22:31.246Z",
+      "startedAt": "2026-07-18T09:57:14.308Z",
       "evidence": {
         "buyMusic": {
           "url": "https://thestroppies.bandcamp.com/album/levity",
           "sourceHost": "thestroppies.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:34.507Z",
+          "verifiedAt": "2026-07-18T09:57:17.384Z",
           "status": 200,
           "evidence": "buyMusic resolved directly and the destination metadata or an official artist-controlled cross-link matched The Stroppies; HTTP 200."
         },
@@ -3286,7 +3157,7 @@
           "sourceHost": "thestroppies.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:34.507Z",
+          "verifiedAt": "2026-07-18T09:57:17.384Z",
           "status": 200,
           "evidence": "bandcamp resolved directly and the destination metadata or an official artist-controlled cross-link matched The Stroppies; HTTP 200."
         },
@@ -3295,25 +3166,25 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:00.432Z",
+          "verifiedAt": "2026-07-18T09:56:43.979Z",
           "status": 200,
           "evidence": "youtube resolved directly and the destination metadata or an official artist-controlled cross-link matched The Stroppies; HTTP 200."
         },
         "instagram": {
-          "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fthestroppies%2F&is_from_rle",
+          "url": "https://www.instagram.com/thestroppies/",
           "sourceHost": "instagram.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:35.927Z",
+          "verifiedAt": "2026-07-18T09:57:18.635Z",
           "status": 429,
           "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched The Stroppies; HTTP 429."
         },
         "facebook": {
-          "url": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Fthestroppies%2F",
+          "url": "https://www.facebook.com/thestroppies/",
           "sourceHost": "facebook.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:36.595Z",
+          "verifiedAt": "2026-07-18T09:57:19.504Z",
           "status": 200,
           "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched The Stroppies; HTTP 200."
         },
@@ -3322,7 +3193,7 @@
           "sourceHost": "thestroppies.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:34.842Z",
+          "verifiedAt": "2026-07-18T09:57:17.658Z",
           "status": 200,
           "evidence": "merchandise resolved directly and the destination metadata or an official artist-controlled cross-link matched The Stroppies; HTTP 200."
         },
@@ -3331,7 +3202,7 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:03.339Z",
+          "verifiedAt": "2026-07-18T09:56:46.719Z",
           "status": 200,
           "evidence": "featuredVideo resolved directly and the destination metadata or an official artist-controlled cross-link matched The Stroppies; HTTP 200."
         }
@@ -3363,9 +3234,9 @@
         "sourceCount": 0,
         "reasons": [],
         "attempts": 1,
-        "startedAt": "2026-07-18T09:22:31.246Z"
+        "startedAt": "2026-07-18T09:57:14.308Z"
       },
-      "finishedAt": "2026-07-18T09:22:38.245Z"
+      "finishedAt": "2026-07-18T09:57:21.482Z"
     },
     {
       "rowNumber": 27,
@@ -3415,14 +3286,14 @@
         }
       ],
       "attempts": 1,
-      "startedAt": "2026-07-18T09:22:33.911Z",
+      "startedAt": "2026-07-18T09:57:16.098Z",
       "evidence": {
         "buyMusic": {
           "url": "https://parsnip.bandcamp.com/",
           "sourceHost": "parsnip.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:35.204Z",
+          "verifiedAt": "2026-07-18T09:57:16.721Z",
           "status": 200,
           "evidence": "buyMusic resolved directly and the destination metadata or an official artist-controlled cross-link matched Parsnip; HTTP 200."
         },
@@ -3431,25 +3302,25 @@
           "sourceHost": "parsnip.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:35.204Z",
+          "verifiedAt": "2026-07-18T09:57:16.721Z",
           "status": 200,
           "evidence": "bandcamp resolved directly and the destination metadata or an official artist-controlled cross-link matched Parsnip; HTTP 200."
         },
         "instagram": {
-          "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fparsnipband%2F&is_from_rle",
+          "url": "https://www.instagram.com/parsnipband/",
           "sourceHost": "instagram.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:36.553Z",
+          "verifiedAt": "2026-07-18T09:57:17.618Z",
           "status": 429,
           "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched Parsnip; HTTP 429."
         },
         "facebook": {
-          "url": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Fparsnipband%2F",
+          "url": "https://www.facebook.com/parsnipband/",
           "sourceHost": "facebook.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:37.293Z",
+          "verifiedAt": "2026-07-18T09:57:18.446Z",
           "status": 200,
           "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched Parsnip; HTTP 200."
         },
@@ -3458,7 +3329,7 @@
           "sourceHost": "parsnip.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:35.703Z",
+          "verifiedAt": "2026-07-18T09:57:17.063Z",
           "status": 200,
           "evidence": "merchandise resolved directly and the destination metadata or an official artist-controlled cross-link matched Parsnip; HTTP 200."
         },
@@ -3467,7 +3338,7 @@
           "sourceHost": "allmusic.com",
           "officialSource": false,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:36.013Z",
+          "verifiedAt": "2026-07-18T09:57:17.183Z",
           "status": 403,
           "evidence": "newsReviews resolved directly and the destination metadata or an official artist-controlled cross-link matched Parsnip; HTTP 403."
         }
@@ -3499,9 +3370,9 @@
         "sourceCount": 0,
         "reasons": [],
         "attempts": 1,
-        "startedAt": "2026-07-18T09:22:33.911Z"
+        "startedAt": "2026-07-18T09:57:16.098Z"
       },
-      "finishedAt": "2026-07-18T09:22:37.299Z"
+      "finishedAt": "2026-07-18T09:57:18.463Z"
     },
     {
       "rowNumber": 28,
@@ -3551,14 +3422,14 @@
         }
       ],
       "attempts": 1,
-      "startedAt": "2026-07-18T09:22:37.301Z",
+      "startedAt": "2026-07-18T09:57:18.484Z",
       "evidence": {
         "buyMusic": {
           "url": "https://vintagecrop.bandcamp.com/album/springtime",
           "sourceHost": "vintagecrop.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:39.897Z",
+          "verifiedAt": "2026-07-18T09:57:20.305Z",
           "status": 200,
           "evidence": "buyMusic resolved directly and the destination metadata or an official artist-controlled cross-link matched Vintage Crop; HTTP 200."
         },
@@ -3567,7 +3438,7 @@
           "sourceHost": "vintagecrop.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:39.897Z",
+          "verifiedAt": "2026-07-18T09:57:20.305Z",
           "status": 200,
           "evidence": "bandcamp resolved directly and the destination metadata or an official artist-controlled cross-link matched Vintage Crop; HTTP 200."
         },
@@ -3576,25 +3447,25 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": false,
-          "verifiedAt": "2026-07-18T09:22:41.985Z",
+          "verifiedAt": "2026-07-18T09:57:22.729Z",
           "status": 200,
           "evidence": "Insufficient identity evidence."
         },
         "instagram": {
-          "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fvintagecropband%2F&is_from_rle",
+          "url": "https://www.instagram.com/vintagecropband/",
           "sourceHost": "instagram.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:42.433Z",
+          "verifiedAt": "2026-07-18T09:57:22.874Z",
           "status": 429,
           "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched Vintage Crop; HTTP 429."
         },
         "facebook": {
-          "url": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Fvintagecropband%2F",
+          "url": "https://www.facebook.com/vintagecropband/",
           "sourceHost": "facebook.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:43.264Z",
+          "verifiedAt": "2026-07-18T09:57:23.818Z",
           "status": 200,
           "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched Vintage Crop; HTTP 200."
         },
@@ -3603,7 +3474,7 @@
           "sourceHost": "linktr.ee",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:39.032Z",
+          "verifiedAt": "2026-07-18T09:57:18.585Z",
           "status": 200,
           "evidence": "website resolved directly and the destination metadata or an official artist-controlled cross-link matched Vintage Crop; HTTP 200."
         },
@@ -3612,7 +3483,7 @@
           "sourceHost": "vintagecrop.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:40.526Z",
+          "verifiedAt": "2026-07-18T09:57:21.073Z",
           "status": 200,
           "evidence": "merchandise resolved directly and the destination metadata or an official artist-controlled cross-link matched Vintage Crop; HTTP 200."
         },
@@ -3621,7 +3492,7 @@
           "sourceHost": "maximumrocknroll.com",
           "officialSource": false,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:40.873Z",
+          "verifiedAt": "2026-07-18T09:57:21.718Z",
           "status": 200,
           "evidence": "newsReviews resolved directly and the destination metadata or an official artist-controlled cross-link matched Vintage Crop; HTTP 200."
         },
@@ -3630,7 +3501,7 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": false,
-          "verifiedAt": "2026-07-18T09:22:41.985Z",
+          "verifiedAt": "2026-07-18T09:57:22.729Z",
           "status": 200,
           "evidence": "Insufficient identity evidence."
         }
@@ -3662,9 +3533,9 @@
         "sourceCount": 0,
         "reasons": [],
         "attempts": 1,
-        "startedAt": "2026-07-18T09:22:37.301Z"
+        "startedAt": "2026-07-18T09:57:18.484Z"
       },
-      "finishedAt": "2026-07-18T09:22:43.279Z"
+      "finishedAt": "2026-07-18T09:57:23.836Z"
     },
     {
       "rowNumber": 29,
@@ -3714,14 +3585,14 @@
         }
       ],
       "attempts": 1,
-      "startedAt": "2026-07-18T09:22:38.246Z",
+      "startedAt": "2026-07-18T09:57:21.006Z",
       "evidence": {
         "buyMusic": {
           "url": "https://aliennosejob.bandcamp.com/",
           "sourceHost": "aliennosejob.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:39.172Z",
+          "verifiedAt": "2026-07-18T09:57:21.632Z",
           "status": 200,
           "evidence": "buyMusic resolved directly and the destination metadata or an official artist-controlled cross-link matched Alien Nosejob; HTTP 200."
         },
@@ -3730,7 +3601,7 @@
           "sourceHost": "aliennosejob.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:39.172Z",
+          "verifiedAt": "2026-07-18T09:57:21.632Z",
           "status": 200,
           "evidence": "bandcamp resolved directly and the destination metadata or an official artist-controlled cross-link matched Alien Nosejob; HTTP 200."
         },
@@ -3739,25 +3610,25 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": false,
-          "verifiedAt": "2026-07-18T09:22:40.699Z",
+          "verifiedAt": "2026-07-18T09:57:23.040Z",
           "status": 200,
           "evidence": "Insufficient identity evidence."
         },
         "instagram": {
-          "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Faliennosejob%2F&is_from_rle",
+          "url": "https://www.instagram.com/aliennosejob/",
           "sourceHost": "instagram.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:41.216Z",
+          "verifiedAt": "2026-07-18T09:57:23.224Z",
           "status": 429,
           "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched Alien Nosejob; HTTP 429."
         },
         "facebook": {
-          "url": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Faliennosejob%2F",
+          "url": "https://www.facebook.com/aliennosejob/",
           "sourceHost": "facebook.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:42.257Z",
+          "verifiedAt": "2026-07-18T09:57:24.048Z",
           "status": 200,
           "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched Alien Nosejob; HTTP 200."
         },
@@ -3766,7 +3637,7 @@
           "sourceHost": "linktr.ee",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:38.588Z",
+          "verifiedAt": "2026-07-18T09:57:21.030Z",
           "status": 200,
           "evidence": "website resolved directly and the destination metadata or an official artist-controlled cross-link matched Alien Nosejob; HTTP 200."
         },
@@ -3775,7 +3646,7 @@
           "sourceHost": "aliennosejob.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:39.797Z",
+          "verifiedAt": "2026-07-18T09:57:21.891Z",
           "status": 200,
           "evidence": "merchandise resolved directly and the destination metadata or an official artist-controlled cross-link matched Alien Nosejob; HTTP 200."
         },
@@ -3784,7 +3655,7 @@
           "sourceHost": "maximumrocknroll.com",
           "officialSource": false,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:39.899Z",
+          "verifiedAt": "2026-07-18T09:57:22.142Z",
           "status": 200,
           "evidence": "newsReviews resolved directly and the destination metadata or an official artist-controlled cross-link matched Alien Nosejob; HTTP 200."
         },
@@ -3793,7 +3664,7 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": false,
-          "verifiedAt": "2026-07-18T09:22:40.699Z",
+          "verifiedAt": "2026-07-18T09:57:23.040Z",
           "status": 200,
           "evidence": "Insufficient identity evidence."
         }
@@ -3825,9 +3696,9 @@
         "sourceCount": 0,
         "reasons": [],
         "attempts": 1,
-        "startedAt": "2026-07-18T09:22:38.246Z"
+        "startedAt": "2026-07-18T09:57:21.006Z"
       },
-      "finishedAt": "2026-07-18T09:22:42.273Z"
+      "finishedAt": "2026-07-18T09:57:24.067Z"
     },
     {
       "rowNumber": 30,
@@ -3877,14 +3748,14 @@
         }
       ],
       "attempts": 1,
-      "startedAt": "2026-07-18T09:22:40.104Z",
+      "startedAt": "2026-07-18T09:57:21.484Z",
       "evidence": {
         "buyMusic": {
           "url": "https://romeromelbourne.bandcamp.com/album/turn-it-on",
           "sourceHost": "romeromelbourne.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:41.406Z",
+          "verifiedAt": "2026-07-18T09:57:22.526Z",
           "status": 200,
           "evidence": "buyMusic resolved directly and the destination metadata or an official artist-controlled cross-link matched Romero; HTTP 200."
         },
@@ -3893,7 +3764,7 @@
           "sourceHost": "romeromelbourne.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:41.406Z",
+          "verifiedAt": "2026-07-18T09:57:22.526Z",
           "status": 200,
           "evidence": "bandcamp resolved directly and the destination metadata or an official artist-controlled cross-link matched Romero; HTTP 200."
         },
@@ -3902,25 +3773,25 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:21:55.489Z",
+          "verifiedAt": "2026-07-18T09:56:39.568Z",
           "status": 200,
           "evidence": "youtube resolved directly and the destination metadata or an official artist-controlled cross-link matched Romero; HTTP 200."
         },
         "instagram": {
-          "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fromero.melbourne%2F&is_from_rle",
+          "url": "https://www.instagram.com/romero.melbourne/",
           "sourceHost": "instagram.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:43.141Z",
+          "verifiedAt": "2026-07-18T09:57:24.238Z",
           "status": 429,
           "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched Romero; HTTP 429."
         },
         "facebook": {
-          "url": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Fromeromelbourne%2F",
+          "url": "https://www.facebook.com/romeromelbourne/",
           "sourceHost": "facebook.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:43.859Z",
+          "verifiedAt": "2026-07-18T09:57:25.324Z",
           "status": 200,
           "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched Romero; HTTP 200."
         },
@@ -3929,7 +3800,7 @@
           "sourceHost": "romeromelbourne.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:41.740Z",
+          "verifiedAt": "2026-07-18T09:57:22.920Z",
           "status": 200,
           "evidence": "merchandise resolved directly and the destination metadata or an official artist-controlled cross-link matched Romero; HTTP 200."
         }
@@ -3961,9 +3832,9 @@
         "sourceCount": 0,
         "reasons": [],
         "attempts": 1,
-        "startedAt": "2026-07-18T09:22:40.104Z"
+        "startedAt": "2026-07-18T09:57:21.484Z"
       },
-      "finishedAt": "2026-07-18T09:22:43.867Z"
+      "finishedAt": "2026-07-18T09:57:25.333Z"
     },
     {
       "rowNumber": 31,
@@ -4009,14 +3880,14 @@
         }
       ],
       "attempts": 1,
-      "startedAt": "2026-07-18T09:22:42.275Z",
+      "startedAt": "2026-07-18T09:57:23.838Z",
       "evidence": {
         "buyMusic": {
           "url": "https://bodytypeband.bandcamp.com/",
           "sourceHost": "bodytypeband.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:51.600Z",
+          "verifiedAt": "2026-07-18T09:57:32.184Z",
           "status": 200,
           "evidence": "buyMusic resolved directly and the destination metadata or an official artist-controlled cross-link matched Body Type; HTTP 200."
         },
@@ -4025,7 +3896,7 @@
           "sourceHost": "bodytypeband.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:51.600Z",
+          "verifiedAt": "2026-07-18T09:57:32.184Z",
           "status": 200,
           "evidence": "bandcamp resolved directly and the destination metadata or an official artist-controlled cross-link matched Body Type; HTTP 200."
         },
@@ -4034,25 +3905,25 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:21:55.489Z",
+          "verifiedAt": "2026-07-18T09:56:39.568Z",
           "status": 200,
           "evidence": "youtube resolved directly and the destination metadata or an official artist-controlled cross-link matched Body Type; HTTP 200."
         },
         "instagram": {
-          "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fbodytypeband%2F&is_from_rle",
+          "url": "https://www.instagram.com/bodytypeband/",
           "sourceHost": "instagram.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:52.927Z",
+          "verifiedAt": "2026-07-18T09:57:33.501Z",
           "status": 429,
           "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched Body Type; HTTP 429."
         },
         "facebook": {
-          "url": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Fbodytypeband%2F",
+          "url": "https://www.facebook.com/bodytypeband/",
           "sourceHost": "facebook.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:53.668Z",
+          "verifiedAt": "2026-07-18T09:57:34.313Z",
           "status": 200,
           "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched Body Type; HTTP 200."
         },
@@ -4061,7 +3932,7 @@
           "sourceHost": "bodytypeband.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:52.049Z",
+          "verifiedAt": "2026-07-18T09:57:32.651Z",
           "status": 200,
           "evidence": "merchandise resolved directly and the destination metadata or an official artist-controlled cross-link matched Body Type; HTTP 200."
         },
@@ -4070,7 +3941,7 @@
           "sourceHost": "nme.com",
           "officialSource": false,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:52.082Z",
+          "verifiedAt": "2026-07-18T09:57:32.776Z",
           "status": 200,
           "evidence": "newsReviews resolved directly and the destination metadata or an official artist-controlled cross-link matched Body Type; HTTP 200."
         }
@@ -4102,9 +3973,9 @@
         "sourceCount": 0,
         "reasons": [],
         "attempts": 1,
-        "startedAt": "2026-07-18T09:22:42.275Z"
+        "startedAt": "2026-07-18T09:57:23.838Z"
       },
-      "finishedAt": "2026-07-18T09:23:00.834Z"
+      "finishedAt": "2026-07-18T09:57:40.813Z"
     },
     {
       "rowNumber": 32,
@@ -4146,14 +4017,14 @@
         }
       ],
       "attempts": 1,
-      "startedAt": "2026-07-18T09:22:43.281Z",
+      "startedAt": "2026-07-18T09:57:24.076Z",
       "evidence": {
         "buyMusic": {
           "url": "https://bandcamp.com/signup?new_domain=partydozen",
           "sourceHost": "bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:43.909Z",
+          "verifiedAt": "2026-07-18T09:57:24.761Z",
           "status": 200,
           "evidence": "buyMusic resolved directly and the destination metadata or an official artist-controlled cross-link matched Party Dozen; HTTP 200."
         },
@@ -4162,7 +4033,7 @@
           "sourceHost": "open.spotify.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:45.158Z",
+          "verifiedAt": "2026-07-18T09:57:29.000Z",
           "status": 200,
           "evidence": "spotify resolved directly and the destination metadata or an official artist-controlled cross-link matched Party Dozen; HTTP 200."
         },
@@ -4171,7 +4042,7 @@
           "sourceHost": "bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:43.909Z",
+          "verifiedAt": "2026-07-18T09:57:24.761Z",
           "status": 200,
           "evidence": "bandcamp resolved directly and the destination metadata or an official artist-controlled cross-link matched Party Dozen; HTTP 200."
         },
@@ -4180,25 +4051,25 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:45.677Z",
+          "verifiedAt": "2026-07-18T09:57:29.488Z",
           "status": 200,
           "evidence": "youtube resolved directly and the destination metadata or an official artist-controlled cross-link matched Party Dozen; HTTP 200."
         },
         "instagram": {
-          "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fpartydozen%2F&is_from_rle",
+          "url": "https://www.instagram.com/partydozen/",
           "sourceHost": "instagram.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:45.941Z",
+          "verifiedAt": "2026-07-18T09:57:29.666Z",
           "status": 429,
           "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched Party Dozen; HTTP 429."
         },
         "facebook": {
-          "url": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Fpartydozen%2F",
+          "url": "https://www.facebook.com/partydozen/",
           "sourceHost": "facebook.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:46.682Z",
+          "verifiedAt": "2026-07-18T09:57:30.435Z",
           "status": 200,
           "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched Party Dozen; HTTP 200."
         },
@@ -4207,7 +4078,7 @@
           "sourceHost": "partydozen.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:43.566Z",
+          "verifiedAt": "2026-07-18T09:57:24.270Z",
           "status": 200,
           "evidence": "website resolved directly and the destination metadata or an official artist-controlled cross-link matched Party Dozen; HTTP 200."
         },
@@ -4216,7 +4087,7 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:47.470Z",
+          "verifiedAt": "2026-07-18T09:57:31.351Z",
           "status": 200,
           "evidence": "featuredVideo resolved directly and the destination metadata or an official artist-controlled cross-link matched Party Dozen; HTTP 200."
         }
@@ -4248,9 +4119,9 @@
         "sourceCount": 0,
         "reasons": [],
         "attempts": 1,
-        "startedAt": "2026-07-18T09:22:43.281Z"
+        "startedAt": "2026-07-18T09:57:24.076Z"
       },
-      "finishedAt": "2026-07-18T09:22:47.477Z"
+      "finishedAt": "2026-07-18T09:57:31.358Z"
     },
     {
       "rowNumber": 33,
@@ -4304,14 +4175,14 @@
         }
       ],
       "attempts": 1,
-      "startedAt": "2026-07-18T09:22:43.869Z",
+      "startedAt": "2026-07-18T09:57:25.342Z",
       "evidence": {
         "buyMusic": {
           "url": "https://loosefit.bandcamp.com/",
           "sourceHost": "loosefit.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:46.342Z",
+          "verifiedAt": "2026-07-18T09:57:27.677Z",
           "status": 200,
           "evidence": "buyMusic resolved directly and the destination metadata or an official artist-controlled cross-link matched Loose Fit; HTTP 200."
         },
@@ -4320,25 +4191,25 @@
           "sourceHost": "loosefit.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:46.342Z",
+          "verifiedAt": "2026-07-18T09:57:27.677Z",
           "status": 200,
           "evidence": "bandcamp resolved directly and the destination metadata or an official artist-controlled cross-link matched Loose Fit; HTTP 200."
         },
         "instagram": {
-          "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Floosefitband%2F&is_from_rle",
+          "url": "https://www.instagram.com/loosefitband/",
           "sourceHost": "instagram.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:47.345Z",
+          "verifiedAt": "2026-07-18T09:57:28.623Z",
           "status": 429,
           "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched Loose Fit; HTTP 429."
         },
         "facebook": {
-          "url": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Floosefitband%2F",
+          "url": "https://www.facebook.com/loosefitband/",
           "sourceHost": "facebook.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:48.109Z",
+          "verifiedAt": "2026-07-18T09:57:29.372Z",
           "status": 200,
           "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched Loose Fit; HTTP 200."
         },
@@ -4347,7 +4218,7 @@
           "sourceHost": "loosefit.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:46.695Z",
+          "verifiedAt": "2026-07-18T09:57:28.041Z",
           "status": 200,
           "evidence": "merchandise resolved directly and the destination metadata or an official artist-controlled cross-link matched Loose Fit; HTTP 200."
         },
@@ -4356,7 +4227,7 @@
           "sourceHost": "nme.com",
           "officialSource": false,
           "identityVerified": false,
-          "verifiedAt": "2026-07-18T09:22:46.858Z",
+          "verifiedAt": "2026-07-18T09:57:28.348Z",
           "status": 200,
           "evidence": "Insufficient identity evidence."
         }
@@ -4388,9 +4259,9 @@
         "sourceCount": 0,
         "reasons": [],
         "attempts": 1,
-        "startedAt": "2026-07-18T09:22:43.869Z"
+        "startedAt": "2026-07-18T09:57:25.342Z"
       },
-      "finishedAt": "2026-07-18T09:22:50.028Z"
+      "finishedAt": "2026-07-18T09:57:31.316Z"
     },
     {
       "rowNumber": 34,
@@ -4436,14 +4307,14 @@
         }
       ],
       "attempts": 1,
-      "startedAt": "2026-07-18T09:22:47.479Z",
+      "startedAt": "2026-07-18T09:57:31.317Z",
       "evidence": {
         "buyMusic": {
           "url": "https://thebuoys.bandcamp.com/",
           "sourceHost": "thebuoys.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:48.322Z",
+          "verifiedAt": "2026-07-18T09:57:32.260Z",
           "status": 200,
           "evidence": "buyMusic resolved directly and the destination metadata or an official artist-controlled cross-link matched The Buoys; HTTP 200."
         },
@@ -4452,7 +4323,7 @@
           "sourceHost": "thebuoys.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:48.322Z",
+          "verifiedAt": "2026-07-18T09:57:32.260Z",
           "status": 200,
           "evidence": "bandcamp resolved directly and the destination metadata or an official artist-controlled cross-link matched The Buoys; HTTP 200."
         },
@@ -4461,25 +4332,25 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:50.263Z",
+          "verifiedAt": "2026-07-18T09:57:34.009Z",
           "status": 200,
           "evidence": "youtube resolved directly and the destination metadata or an official artist-controlled cross-link matched The Buoys; HTTP 200."
         },
         "instagram": {
-          "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fthebuoysband%2F&is_from_rle",
+          "url": "https://www.instagram.com/thebuoysband/",
           "sourceHost": "instagram.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:50.489Z",
+          "verifiedAt": "2026-07-18T09:57:34.210Z",
           "status": 429,
           "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched The Buoys; HTTP 429."
         },
         "facebook": {
-          "url": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Fthebuoysband%2F",
+          "url": "https://www.facebook.com/thebuoysband/",
           "sourceHost": "facebook.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:51.285Z",
+          "verifiedAt": "2026-07-18T09:57:35.062Z",
           "status": 200,
           "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched The Buoys; HTTP 200."
         },
@@ -4488,7 +4359,7 @@
           "sourceHost": "thebuoysband.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:47.749Z",
+          "verifiedAt": "2026-07-18T09:57:31.840Z",
           "status": 200,
           "evidence": "website resolved directly and the destination metadata or an official artist-controlled cross-link matched The Buoys; HTTP 200."
         },
@@ -4497,7 +4368,7 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:51.939Z",
+          "verifiedAt": "2026-07-18T09:57:35.853Z",
           "status": 200,
           "evidence": "featuredVideo resolved directly and the destination metadata or an official artist-controlled cross-link matched The Buoys; HTTP 200."
         }
@@ -4529,9 +4400,9 @@
         "sourceCount": 0,
         "reasons": [],
         "attempts": 1,
-        "startedAt": "2026-07-18T09:22:47.479Z"
+        "startedAt": "2026-07-18T09:57:31.317Z"
       },
-      "finishedAt": "2026-07-18T09:22:51.946Z"
+      "finishedAt": "2026-07-18T09:57:35.861Z"
     },
     {
       "rowNumber": 35,
@@ -4581,14 +4452,14 @@
         }
       ],
       "attempts": 1,
-      "startedAt": "2026-07-18T09:22:50.030Z",
+      "startedAt": "2026-07-18T09:57:31.360Z",
       "evidence": {
         "buyMusic": {
           "url": "https://moaninglisa.bandcamp.com/album/wonderful",
           "sourceHost": "moaninglisa.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:52.925Z",
+          "verifiedAt": "2026-07-18T09:57:34.964Z",
           "status": 200,
           "evidence": "buyMusic resolved directly and the destination metadata or an official artist-controlled cross-link matched Moaning Lisa; HTTP 200."
         },
@@ -4597,7 +4468,7 @@
           "sourceHost": "moaninglisa.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:52.925Z",
+          "verifiedAt": "2026-07-18T09:57:34.964Z",
           "status": 200,
           "evidence": "bandcamp resolved directly and the destination metadata or an official artist-controlled cross-link matched Moaning Lisa; HTTP 200."
         },
@@ -4606,25 +4477,25 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:21:55.489Z",
+          "verifiedAt": "2026-07-18T09:56:39.568Z",
           "status": 200,
           "evidence": "youtube resolved directly and the destination metadata or an official artist-controlled cross-link matched Moaning Lisa; HTTP 200."
         },
         "instagram": {
-          "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fmoaninglisaband%2F&is_from_rle",
+          "url": "https://www.instagram.com/moaninglisaband/",
           "sourceHost": "instagram.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:54.711Z",
+          "verifiedAt": "2026-07-18T09:57:36.809Z",
           "status": 429,
           "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched Moaning Lisa; HTTP 429."
         },
         "facebook": {
-          "url": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Fmoaninglisaband%2F",
+          "url": "https://www.facebook.com/moaninglisaband/",
           "sourceHost": "facebook.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:55.435Z",
+          "verifiedAt": "2026-07-18T09:57:37.628Z",
           "status": 200,
           "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched Moaning Lisa; HTTP 200."
         },
@@ -4633,7 +4504,7 @@
           "sourceHost": "moaninglisa.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:53.484Z",
+          "verifiedAt": "2026-07-18T09:57:35.350Z",
           "status": 200,
           "evidence": "merchandise resolved directly and the destination metadata or an official artist-controlled cross-link matched Moaning Lisa; HTTP 200."
         }
@@ -4665,9 +4536,9 @@
         "sourceCount": 0,
         "reasons": [],
         "attempts": 1,
-        "startedAt": "2026-07-18T09:22:50.030Z"
+        "startedAt": "2026-07-18T09:57:31.360Z"
       },
-      "finishedAt": "2026-07-18T09:22:57.529Z"
+      "finishedAt": "2026-07-18T09:57:39.866Z"
     },
     {
       "rowNumber": 36,
@@ -4717,14 +4588,14 @@
         }
       ],
       "attempts": 1,
-      "startedAt": "2026-07-18T09:22:51.948Z",
+      "startedAt": "2026-07-18T09:57:35.863Z",
       "evidence": {
         "buyMusic": {
           "url": "https://voiid.bandcamp.com/",
           "sourceHost": "voiid.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:54.902Z",
+          "verifiedAt": "2026-07-18T09:57:38.697Z",
           "status": 200,
           "evidence": "buyMusic resolved directly and the destination metadata or an official artist-controlled cross-link matched VOIID; HTTP 200."
         },
@@ -4733,7 +4604,7 @@
           "sourceHost": "voiid.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:54.902Z",
+          "verifiedAt": "2026-07-18T09:57:38.697Z",
           "status": 200,
           "evidence": "bandcamp resolved directly and the destination metadata or an official artist-controlled cross-link matched VOIID; HTTP 200."
         },
@@ -4742,25 +4613,25 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:21:55.489Z",
+          "verifiedAt": "2026-07-18T09:56:39.568Z",
           "status": 200,
           "evidence": "youtube resolved directly and the destination metadata or an official artist-controlled cross-link matched VOIID; HTTP 200."
         },
         "instagram": {
-          "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fvoiidtheband%2F&is_from_rle",
+          "url": "https://www.instagram.com/voiidtheband/",
           "sourceHost": "instagram.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:57.199Z",
+          "verifiedAt": "2026-07-18T09:57:40.317Z",
           "status": 429,
           "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched VOIID; HTTP 429."
         },
         "facebook": {
-          "url": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Fvoiidtheband%2F",
+          "url": "https://www.facebook.com/voiidtheband/",
           "sourceHost": "facebook.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:58.079Z",
+          "verifiedAt": "2026-07-18T09:57:41.039Z",
           "status": 200,
           "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched VOIID; HTTP 200."
         },
@@ -4769,7 +4640,7 @@
           "sourceHost": "voiid.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:55.643Z",
+          "verifiedAt": "2026-07-18T09:57:39.095Z",
           "status": 200,
           "evidence": "merchandise resolved directly and the destination metadata or an official artist-controlled cross-link matched VOIID; HTTP 200."
         }
@@ -4801,9 +4672,9 @@
         "sourceCount": 0,
         "reasons": [],
         "attempts": 1,
-        "startedAt": "2026-07-18T09:22:51.948Z"
+        "startedAt": "2026-07-18T09:57:35.863Z"
       },
-      "finishedAt": "2026-07-18T09:22:59.898Z"
+      "finishedAt": "2026-07-18T09:57:42.987Z"
     },
     {
       "rowNumber": 37,
@@ -4828,12 +4699,16 @@
       "buildStatus": "rejected",
       "deploymentStatus": "not_started",
       "postDeploymentStatus": "not_started",
-      "confidence": 70,
-      "sourceCount": 5,
+      "confidence": 60,
+      "sourceCount": 4,
       "reasons": [
         {
           "code": "DIRECT_DESTINATION_UNRESOLVED",
           "message": "spotify did not resolve to a direct destination."
+        },
+        {
+          "code": "DESTINATION_UNREACHABLE",
+          "message": "website failed after automatic retries (500)."
         },
         {
           "code": "DESTINATION_UNREACHABLE",
@@ -4845,18 +4720,18 @@
         },
         {
           "code": "CONFIDENCE_BELOW_98",
-          "message": "Confidence score 70% is below the mandatory 98% gate."
+          "message": "Confidence score 60% is below the mandatory 98% gate."
         }
       ],
       "attempts": 1,
-      "startedAt": "2026-07-18T09:22:57.531Z",
+      "startedAt": "2026-07-18T09:57:39.868Z",
       "evidence": {
         "buyMusic": {
           "url": "https://sunfruits.bandcamp.com/",
           "sourceHost": "sunfruits.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:03.549Z",
+          "verifiedAt": "2026-07-18T09:58:36.007Z",
           "status": 200,
           "evidence": "buyMusic resolved directly and the destination metadata or an official artist-controlled cross-link matched Sunfruits; HTTP 200."
         },
@@ -4865,7 +4740,7 @@
           "sourceHost": "sunfruits.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:03.549Z",
+          "verifiedAt": "2026-07-18T09:58:36.007Z",
           "status": 200,
           "evidence": "bandcamp resolved directly and the destination metadata or an official artist-controlled cross-link matched Sunfruits; HTTP 200."
         },
@@ -4874,43 +4749,34 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:21:55.489Z",
+          "verifiedAt": "2026-07-18T09:56:39.568Z",
           "status": 200,
           "evidence": "youtube resolved directly and the destination metadata or an official artist-controlled cross-link matched Sunfruits; HTTP 200."
         },
         "instagram": {
-          "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fsunfruitsband%2F&is_from_rle",
+          "url": "https://www.instagram.com/sunfruitsband/",
           "sourceHost": "instagram.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:05.630Z",
+          "verifiedAt": "2026-07-18T09:58:37.531Z",
           "status": 429,
           "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched Sunfruits; HTTP 429."
         },
         "facebook": {
-          "url": "https://www.facebook.com/Sunfruitsband/",
+          "url": "https://www.facebook.com/sunfruitsband/",
           "sourceHost": "facebook.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:06.821Z",
+          "verifiedAt": "2026-07-18T09:58:38.291Z",
           "status": 200,
           "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched Sunfruits; HTTP 200."
-        },
-        "website": {
-          "url": "https://sunfruitsband.com/",
-          "sourceHost": "sunfruitsband.com",
-          "officialSource": true,
-          "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:03.185Z",
-          "status": 200,
-          "evidence": "website resolved directly and the destination metadata or an official artist-controlled cross-link matched Sunfruits; HTTP 200."
         },
         "merchandise": {
           "url": "https://sunfruits.bandcamp.com/merch",
           "sourceHost": "sunfruits.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:03.779Z",
+          "verifiedAt": "2026-07-18T09:58:36.248Z",
           "status": 200,
           "evidence": "merchandise resolved directly and the destination metadata or an official artist-controlled cross-link matched Sunfruits; HTTP 200."
         }
@@ -4942,9 +4808,9 @@
         "sourceCount": 0,
         "reasons": [],
         "attempts": 1,
-        "startedAt": "2026-07-18T09:22:57.531Z"
+        "startedAt": "2026-07-18T09:57:39.868Z"
       },
-      "finishedAt": "2026-07-18T09:23:06.831Z"
+      "finishedAt": "2026-07-18T09:58:52.168Z"
     },
     {
       "rowNumber": 38,
@@ -4994,14 +4860,14 @@
         }
       ],
       "attempts": 1,
-      "startedAt": "2026-07-18T09:22:59.900Z",
+      "startedAt": "2026-07-18T09:57:40.815Z",
       "evidence": {
         "buyMusic": {
           "url": "https://eggyband.bandcamp.com/",
           "sourceHost": "eggyband.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:01.101Z",
+          "verifiedAt": "2026-07-18T09:57:41.504Z",
           "status": 200,
           "evidence": "buyMusic resolved directly and the destination metadata or an official artist-controlled cross-link matched Eggy; HTTP 200."
         },
@@ -5010,7 +4876,7 @@
           "sourceHost": "eggyband.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:01.101Z",
+          "verifiedAt": "2026-07-18T09:57:41.504Z",
           "status": 200,
           "evidence": "bandcamp resolved directly and the destination metadata or an official artist-controlled cross-link matched Eggy; HTTP 200."
         },
@@ -5019,16 +4885,16 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:02.860Z",
+          "verifiedAt": "2026-07-18T09:57:43.101Z",
           "status": 200,
           "evidence": "youtube resolved directly and the destination metadata or an official artist-controlled cross-link matched Eggy; HTTP 200."
         },
         "instagram": {
-          "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Feggyband%2F&is_from_rle",
+          "url": "https://www.instagram.com/eggyband/",
           "sourceHost": "instagram.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:03.333Z",
+          "verifiedAt": "2026-07-18T09:57:43.434Z",
           "status": 429,
           "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched Eggy; HTTP 429."
         },
@@ -5037,7 +4903,7 @@
           "sourceHost": "facebook.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:04.423Z",
+          "verifiedAt": "2026-07-18T09:57:44.547Z",
           "status": 200,
           "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched Eggy; HTTP 200."
         },
@@ -5046,7 +4912,7 @@
           "sourceHost": "linktr.ee",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:00.792Z",
+          "verifiedAt": "2026-07-18T09:57:40.958Z",
           "status": 200,
           "evidence": "website resolved directly and the destination metadata or an official artist-controlled cross-link matched Eggy; HTTP 200."
         },
@@ -5055,7 +4921,7 @@
           "sourceHost": "eggyband.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:01.420Z",
+          "verifiedAt": "2026-07-18T09:57:41.882Z",
           "status": 200,
           "evidence": "merchandise resolved directly and the destination metadata or an official artist-controlled cross-link matched Eggy; HTTP 200."
         },
@@ -5064,7 +4930,7 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": false,
-          "verifiedAt": "2026-07-18T09:23:02.860Z",
+          "verifiedAt": "2026-07-18T09:57:43.101Z",
           "status": 200,
           "evidence": "Insufficient identity evidence."
         }
@@ -5096,9 +4962,9 @@
         "sourceCount": 0,
         "reasons": [],
         "attempts": 1,
-        "startedAt": "2026-07-18T09:22:59.900Z"
+        "startedAt": "2026-07-18T09:57:40.815Z"
       },
-      "finishedAt": "2026-07-18T09:23:04.438Z"
+      "finishedAt": "2026-07-18T09:57:44.566Z"
     },
     {
       "rowNumber": 39,
@@ -5148,14 +5014,14 @@
         }
       ],
       "attempts": 1,
-      "startedAt": "2026-07-18T09:23:00.836Z",
+      "startedAt": "2026-07-18T09:57:42.989Z",
       "evidence": {
         "buyMusic": {
           "url": "https://bandcamp.com/signup?new_domain=gustafnyc",
           "sourceHost": "bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:04.183Z",
+          "verifiedAt": "2026-07-18T09:57:45.837Z",
           "status": 200,
           "evidence": "buyMusic resolved directly and the destination metadata or an official artist-controlled cross-link matched Gustaf; HTTP 200."
         },
@@ -5164,7 +5030,7 @@
           "sourceHost": "bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:04.183Z",
+          "verifiedAt": "2026-07-18T09:57:45.837Z",
           "status": 200,
           "evidence": "bandcamp resolved directly and the destination metadata or an official artist-controlled cross-link matched Gustaf; HTTP 200."
         },
@@ -5173,25 +5039,25 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:00.432Z",
+          "verifiedAt": "2026-07-18T09:56:43.979Z",
           "status": 200,
           "evidence": "youtube resolved directly and the destination metadata or an official artist-controlled cross-link matched Gustaf; HTTP 200."
         },
         "instagram": {
-          "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fgustaf_nyc%2F&is_from_rle",
+          "url": "https://www.instagram.com/gustaf_nyc/",
           "sourceHost": "instagram.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:05.515Z",
+          "verifiedAt": "2026-07-18T09:57:47.108Z",
           "status": 429,
           "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched Gustaf; HTTP 429."
         },
         "facebook": {
-          "url": "https://www.facebook.com/Gustafnyc/",
+          "url": "https://www.facebook.com/gustafnyc/",
           "sourceHost": "facebook.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:06.386Z",
+          "verifiedAt": "2026-07-18T09:57:47.932Z",
           "status": 200,
           "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched Gustaf; HTTP 200."
         },
@@ -5200,7 +5066,7 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:03.339Z",
+          "verifiedAt": "2026-07-18T09:56:46.719Z",
           "status": 200,
           "evidence": "featuredVideo resolved directly and the destination metadata or an official artist-controlled cross-link matched Gustaf; HTTP 200."
         }
@@ -5232,9 +5098,9 @@
         "sourceCount": 0,
         "reasons": [],
         "attempts": 1,
-        "startedAt": "2026-07-18T09:23:00.836Z"
+        "startedAt": "2026-07-18T09:57:42.989Z"
       },
-      "finishedAt": "2026-07-18T09:23:08.327Z"
+      "finishedAt": "2026-07-18T09:57:50.292Z"
     },
     {
       "rowNumber": 40,
@@ -5263,9 +5129,9 @@
       "sourceCount": 0,
       "reasons": [],
       "attempts": 1,
-      "startedAt": "2026-07-18T09:23:04.440Z",
+      "startedAt": "2026-07-18T09:57:44.568Z",
       "liveURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_b68ec88730",
-      "finishedAt": "2026-07-18T09:23:04.442Z"
+      "finishedAt": "2026-07-18T09:57:44.570Z"
     },
     {
       "rowNumber": 41,
@@ -5307,14 +5173,14 @@
         }
       ],
       "attempts": 1,
-      "startedAt": "2026-07-18T09:23:04.451Z",
+      "startedAt": "2026-07-18T09:57:44.572Z",
       "evidence": {
         "buyMusic": {
           "url": "https://bodega.bandcamp.com/album/without-a-plan",
           "sourceHost": "bodega.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:05.488Z",
+          "verifiedAt": "2026-07-18T09:57:45.499Z",
           "status": 200,
           "evidence": "buyMusic resolved directly and the destination metadata or an official artist-controlled cross-link matched Bodega; HTTP 200."
         },
@@ -5323,7 +5189,7 @@
           "sourceHost": "bodega.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:05.488Z",
+          "verifiedAt": "2026-07-18T09:57:45.499Z",
           "status": 200,
           "evidence": "bandcamp resolved directly and the destination metadata or an official artist-controlled cross-link matched Bodega; HTTP 200."
         },
@@ -5332,25 +5198,25 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:00.432Z",
+          "verifiedAt": "2026-07-18T09:56:43.979Z",
           "status": 200,
           "evidence": "youtube resolved directly and the destination metadata or an official artist-controlled cross-link matched Bodega; HTTP 200."
         },
         "instagram": {
-          "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fbodega_bk%2F&is_from_rle",
+          "url": "https://www.instagram.com/bodega_bk/",
           "sourceHost": "instagram.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:07.005Z",
+          "verifiedAt": "2026-07-18T09:57:47.502Z",
           "status": 429,
           "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched Bodega; HTTP 429."
         },
         "facebook": {
-          "url": "https://www.facebook.com/BODEGABK/",
+          "url": "https://www.facebook.com/bodegabk/",
           "sourceHost": "facebook.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:07.929Z",
+          "verifiedAt": "2026-07-18T09:57:48.255Z",
           "status": 200,
           "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched Bodega; HTTP 200."
         },
@@ -5359,7 +5225,7 @@
           "sourceHost": "bodegabk.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:04.770Z",
+          "verifiedAt": "2026-07-18T09:57:44.744Z",
           "status": 200,
           "evidence": "website resolved directly and the destination metadata or an official artist-controlled cross-link matched Bodega; HTTP 200."
         },
@@ -5368,7 +5234,7 @@
           "sourceHost": "bodega.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:06.112Z",
+          "verifiedAt": "2026-07-18T09:57:46.132Z",
           "status": 200,
           "evidence": "merchandise resolved directly and the destination metadata or an official artist-controlled cross-link matched Bodega; HTTP 200."
         },
@@ -5377,7 +5243,7 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:03.339Z",
+          "verifiedAt": "2026-07-18T09:56:46.719Z",
           "status": 200,
           "evidence": "featuredVideo resolved directly and the destination metadata or an official artist-controlled cross-link matched Bodega; HTTP 200."
         }
@@ -5409,9 +5275,9 @@
         "sourceCount": 0,
         "reasons": [],
         "attempts": 1,
-        "startedAt": "2026-07-18T09:23:04.451Z"
+        "startedAt": "2026-07-18T09:57:44.572Z"
       },
-      "finishedAt": "2026-07-18T09:23:07.949Z"
+      "finishedAt": "2026-07-18T09:57:48.275Z"
     },
     {
       "rowNumber": 42,
@@ -5449,14 +5315,14 @@
         }
       ],
       "attempts": 1,
-      "startedAt": "2026-07-18T09:23:06.839Z",
+      "startedAt": "2026-07-18T09:57:48.277Z",
       "evidence": {
         "buyMusic": {
           "url": "https://deeperchi.bandcamp.com/",
           "sourceHost": "deeperchi.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:08.007Z",
+          "verifiedAt": "2026-07-18T09:57:49.090Z",
           "status": 200,
           "evidence": "buyMusic resolved directly and the destination metadata or an official artist-controlled cross-link matched Deeper; HTTP 200."
         },
@@ -5465,7 +5331,7 @@
           "sourceHost": "open.spotify.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:09.546Z",
+          "verifiedAt": "2026-07-18T09:57:50.331Z",
           "status": 200,
           "evidence": "spotify resolved directly and the destination metadata or an official artist-controlled cross-link matched Deeper; HTTP 200."
         },
@@ -5474,7 +5340,7 @@
           "sourceHost": "deeperchi.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:08.007Z",
+          "verifiedAt": "2026-07-18T09:57:49.090Z",
           "status": 200,
           "evidence": "bandcamp resolved directly and the destination metadata or an official artist-controlled cross-link matched Deeper; HTTP 200."
         },
@@ -5483,25 +5349,25 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:00.432Z",
+          "verifiedAt": "2026-07-18T09:56:43.979Z",
           "status": 200,
           "evidence": "youtube resolved directly and the destination metadata or an official artist-controlled cross-link matched Deeper; HTTP 200."
         },
         "instagram": {
-          "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fdeeperchi%2F&is_from_rle",
+          "url": "https://www.instagram.com/deeperchi/",
           "sourceHost": "instagram.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:09.960Z",
+          "verifiedAt": "2026-07-18T09:57:50.621Z",
           "status": 429,
           "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched Deeper; HTTP 429."
         },
         "facebook": {
-          "url": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Fdeeperchi%2F",
+          "url": "https://www.facebook.com/deeperchi/",
           "sourceHost": "facebook.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:10.496Z",
+          "verifiedAt": "2026-07-18T09:57:51.600Z",
           "status": 200,
           "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched Deeper; HTTP 200."
         },
@@ -5510,7 +5376,7 @@
           "sourceHost": "deeperchi.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:07.352Z",
+          "verifiedAt": "2026-07-18T09:57:48.535Z",
           "status": 200,
           "evidence": "website resolved directly and the destination metadata or an official artist-controlled cross-link matched Deeper; HTTP 200."
         },
@@ -5519,7 +5385,7 @@
           "sourceHost": "deeperchi.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:08.533Z",
+          "verifiedAt": "2026-07-18T09:57:49.448Z",
           "status": 200,
           "evidence": "merchandise resolved directly and the destination metadata or an official artist-controlled cross-link matched Deeper; HTTP 200."
         },
@@ -5528,7 +5394,7 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:03.339Z",
+          "verifiedAt": "2026-07-18T09:56:46.719Z",
           "status": 200,
           "evidence": "featuredVideo resolved directly and the destination metadata or an official artist-controlled cross-link matched Deeper; HTTP 200."
         }
@@ -5560,9 +5426,9 @@
         "sourceCount": 0,
         "reasons": [],
         "attempts": 1,
-        "startedAt": "2026-07-18T09:23:06.839Z"
+        "startedAt": "2026-07-18T09:57:48.277Z"
       },
-      "finishedAt": "2026-07-18T09:23:10.515Z"
+      "finishedAt": "2026-07-18T09:57:51.621Z"
     },
     {
       "rowNumber": 43,
@@ -5612,14 +5478,14 @@
         }
       ],
       "attempts": 1,
-      "startedAt": "2026-07-18T09:23:07.950Z",
+      "startedAt": "2026-07-18T09:57:50.294Z",
       "evidence": {
         "buyMusic": {
           "url": "https://cola.bandcamp.com/",
           "sourceHost": "cola.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:10.463Z",
+          "verifiedAt": "2026-07-18T09:57:52.885Z",
           "status": 200,
           "evidence": "buyMusic resolved directly and the destination metadata or an official artist-controlled cross-link matched Cola; HTTP 200."
         },
@@ -5628,7 +5494,7 @@
           "sourceHost": "cola.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:10.463Z",
+          "verifiedAt": "2026-07-18T09:57:52.885Z",
           "status": 200,
           "evidence": "bandcamp resolved directly and the destination metadata or an official artist-controlled cross-link matched Cola; HTTP 200."
         },
@@ -5637,25 +5503,25 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:12.270Z",
+          "verifiedAt": "2026-07-18T09:57:54.407Z",
           "status": 200,
           "evidence": "youtube resolved directly and the destination metadata or an official artist-controlled cross-link matched Cola; HTTP 200."
         },
         "instagram": {
-          "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fcola.band%2F&is_from_rle",
+          "url": "https://www.instagram.com/cola.band/",
           "sourceHost": "instagram.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:12.843Z",
+          "verifiedAt": "2026-07-18T09:57:54.516Z",
           "status": 429,
           "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched Cola; HTTP 429."
         },
         "facebook": {
-          "url": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Fcolaband%2F",
+          "url": "https://www.facebook.com/colaband/",
           "sourceHost": "facebook.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:13.445Z",
+          "verifiedAt": "2026-07-18T09:57:55.350Z",
           "status": 200,
           "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched Cola; HTTP 200."
         },
@@ -5664,7 +5530,7 @@
           "sourceHost": "cola.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:10.908Z",
+          "verifiedAt": "2026-07-18T09:57:53.463Z",
           "status": 200,
           "evidence": "merchandise resolved directly and the destination metadata or an official artist-controlled cross-link matched Cola; HTTP 200."
         },
@@ -5673,7 +5539,7 @@
           "sourceHost": "pitchfork.com",
           "officialSource": false,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:11.211Z",
+          "verifiedAt": "2026-07-18T09:57:53.531Z",
           "status": 200,
           "evidence": "newsReviews resolved directly and the destination metadata or an official artist-controlled cross-link matched Cola; HTTP 200."
         },
@@ -5682,7 +5548,7 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": false,
-          "verifiedAt": "2026-07-18T09:23:12.270Z",
+          "verifiedAt": "2026-07-18T09:57:54.407Z",
           "status": 200,
           "evidence": "Insufficient identity evidence."
         }
@@ -5714,9 +5580,9 @@
         "sourceCount": 0,
         "reasons": [],
         "attempts": 1,
-        "startedAt": "2026-07-18T09:23:07.950Z"
+        "startedAt": "2026-07-18T09:57:50.294Z"
       },
-      "finishedAt": "2026-07-18T09:23:15.289Z"
+      "finishedAt": "2026-07-18T09:57:57.013Z"
     },
     {
       "rowNumber": 44,
@@ -5762,14 +5628,14 @@
         }
       ],
       "attempts": 1,
-      "startedAt": "2026-07-18T09:23:08.329Z",
+      "startedAt": "2026-07-18T09:57:51.623Z",
       "evidence": {
         "buyMusic": {
           "url": "https://omniatl.bandcamp.com/track/high-ceilings",
           "sourceHost": "omniatl.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:42.139Z",
+          "verifiedAt": "2026-07-18T09:58:25.303Z",
           "status": 200,
           "evidence": "buyMusic resolved directly and the destination metadata or an official artist-controlled cross-link matched Omni; HTTP 200."
         },
@@ -5778,7 +5644,7 @@
           "sourceHost": "omniatl.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:42.139Z",
+          "verifiedAt": "2026-07-18T09:58:25.303Z",
           "status": 200,
           "evidence": "bandcamp resolved directly and the destination metadata or an official artist-controlled cross-link matched Omni; HTTP 200."
         },
@@ -5787,25 +5653,25 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:00.432Z",
+          "verifiedAt": "2026-07-18T09:56:43.979Z",
           "status": 200,
           "evidence": "youtube resolved directly and the destination metadata or an official artist-controlled cross-link matched Omni; HTTP 200."
         },
         "instagram": {
-          "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fomniatl%2F&is_from_rle",
+          "url": "https://www.instagram.com/omniatl/",
           "sourceHost": "instagram.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:43.624Z",
+          "verifiedAt": "2026-07-18T09:58:26.479Z",
           "status": 429,
           "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched Omni; HTTP 429."
         },
         "facebook": {
-          "url": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Fomniatl%2F",
+          "url": "https://www.facebook.com/omniatl/",
           "sourceHost": "facebook.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:44.352Z",
+          "verifiedAt": "2026-07-18T09:58:27.447Z",
           "status": 200,
           "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched Omni; HTTP 200."
         },
@@ -5814,7 +5680,7 @@
           "sourceHost": "omniatl.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:42.488Z",
+          "verifiedAt": "2026-07-18T09:58:25.491Z",
           "status": 200,
           "evidence": "merchandise resolved directly and the destination metadata or an official artist-controlled cross-link matched Omni; HTTP 200."
         },
@@ -5823,7 +5689,7 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:03.339Z",
+          "verifiedAt": "2026-07-18T09:56:46.719Z",
           "status": 200,
           "evidence": "featuredVideo resolved directly and the destination metadata or an official artist-controlled cross-link matched Omni; HTTP 200."
         }
@@ -5855,9 +5721,9 @@
         "sourceCount": 0,
         "reasons": [],
         "attempts": 1,
-        "startedAt": "2026-07-18T09:23:08.329Z"
+        "startedAt": "2026-07-18T09:57:51.623Z"
       },
-      "finishedAt": "2026-07-18T09:24:17.347Z"
+      "finishedAt": "2026-07-18T09:59:00.027Z"
     },
     {
       "rowNumber": 45,
@@ -5886,9 +5752,9 @@
       "sourceCount": 0,
       "reasons": [],
       "attempts": 1,
-      "startedAt": "2026-07-18T09:23:10.517Z",
+      "startedAt": "2026-07-18T09:57:57.015Z",
       "liveURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_fa611340b5",
-      "finishedAt": "2026-07-18T09:23:10.519Z"
+      "finishedAt": "2026-07-18T09:57:57.017Z"
     },
     {
       "rowNumber": 46,
@@ -5938,14 +5804,14 @@
         }
       ],
       "attempts": 1,
-      "startedAt": "2026-07-18T09:23:10.521Z",
+      "startedAt": "2026-07-18T09:57:57.019Z",
       "evidence": {
         "buyMusic": {
           "url": "https://tvpriest.bandcamp.com/",
           "sourceHost": "tvpriest.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:11.596Z",
+          "verifiedAt": "2026-07-18T09:57:57.897Z",
           "status": 200,
           "evidence": "buyMusic resolved directly and the destination metadata or an official artist-controlled cross-link matched TV Priest; HTTP 200."
         },
@@ -5954,7 +5820,7 @@
           "sourceHost": "tvpriest.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:11.596Z",
+          "verifiedAt": "2026-07-18T09:57:57.897Z",
           "status": 200,
           "evidence": "bandcamp resolved directly and the destination metadata or an official artist-controlled cross-link matched TV Priest; HTTP 200."
         },
@@ -5963,25 +5829,25 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:13.311Z",
+          "verifiedAt": "2026-07-18T09:57:59.499Z",
           "status": 200,
           "evidence": "youtube resolved directly and the destination metadata or an official artist-controlled cross-link matched TV Priest; HTTP 200."
         },
         "instagram": {
-          "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Ftvpriest%2F&is_from_rle",
+          "url": "https://www.instagram.com/tvpriest/",
           "sourceHost": "instagram.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:13.540Z",
+          "verifiedAt": "2026-07-18T09:57:59.646Z",
           "status": 429,
           "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched TV Priest; HTTP 429."
         },
         "facebook": {
-          "url": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Ftvpriestband%2F",
+          "url": "https://www.facebook.com/tvpriestband/",
           "sourceHost": "facebook.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:14.165Z",
+          "verifiedAt": "2026-07-18T09:58:00.306Z",
           "status": 200,
           "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched TV Priest; HTTP 200."
         },
@@ -5990,7 +5856,7 @@
           "sourceHost": "tvpriest.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:12.260Z",
+          "verifiedAt": "2026-07-18T09:57:58.259Z",
           "status": 200,
           "evidence": "merchandise resolved directly and the destination metadata or an official artist-controlled cross-link matched TV Priest; HTTP 200."
         },
@@ -5999,7 +5865,7 @@
           "sourceHost": "pitchfork.com",
           "officialSource": false,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:12.304Z",
+          "verifiedAt": "2026-07-18T09:57:58.462Z",
           "status": 200,
           "evidence": "newsReviews resolved directly and the destination metadata or an official artist-controlled cross-link matched TV Priest; HTTP 200."
         },
@@ -6008,7 +5874,7 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": false,
-          "verifiedAt": "2026-07-18T09:23:13.311Z",
+          "verifiedAt": "2026-07-18T09:57:59.499Z",
           "status": 200,
           "evidence": "Insufficient identity evidence."
         }
@@ -6040,9 +5906,9 @@
         "sourceCount": 0,
         "reasons": [],
         "attempts": 1,
-        "startedAt": "2026-07-18T09:23:10.521Z"
+        "startedAt": "2026-07-18T09:57:57.019Z"
       },
-      "finishedAt": "2026-07-18T09:23:14.186Z"
+      "finishedAt": "2026-07-18T09:58:00.329Z"
     },
     {
       "rowNumber": 47,
@@ -6080,14 +5946,14 @@
         }
       ],
       "attempts": 1,
-      "startedAt": "2026-07-18T09:23:14.188Z",
+      "startedAt": "2026-07-18T09:58:00.331Z",
       "evidence": {
         "buyMusic": {
           "url": "https://silversynthetic.bandcamp.com/",
           "sourceHost": "silversynthetic.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:15.201Z",
+          "verifiedAt": "2026-07-18T09:58:00.910Z",
           "status": 200,
           "evidence": "buyMusic resolved directly and the destination metadata or an official artist-controlled cross-link matched Silver Synthetic; HTTP 200."
         },
@@ -6096,7 +5962,7 @@
           "sourceHost": "open.spotify.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:16.753Z",
+          "verifiedAt": "2026-07-18T09:58:02.346Z",
           "status": 200,
           "evidence": "spotify resolved directly and the destination metadata or an official artist-controlled cross-link matched Silver Synthetic; HTTP 200."
         },
@@ -6105,7 +5971,7 @@
           "sourceHost": "silversynthetic.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:15.201Z",
+          "verifiedAt": "2026-07-18T09:58:00.910Z",
           "status": 200,
           "evidence": "bandcamp resolved directly and the destination metadata or an official artist-controlled cross-link matched Silver Synthetic; HTTP 200."
         },
@@ -6114,25 +5980,25 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:17.150Z",
+          "verifiedAt": "2026-07-18T09:58:02.693Z",
           "status": 200,
           "evidence": "youtube resolved directly and the destination metadata or an official artist-controlled cross-link matched Silver Synthetic; HTTP 200."
         },
         "instagram": {
-          "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fsilversynthetic%2F&is_from_rle",
+          "url": "https://www.instagram.com/silversynthetic/",
           "sourceHost": "instagram.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:17.581Z",
+          "verifiedAt": "2026-07-18T09:58:03.028Z",
           "status": 429,
           "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched Silver Synthetic; HTTP 429."
         },
         "facebook": {
-          "url": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Fsilversynthetic%2F",
+          "url": "https://www.facebook.com/silversynthetic/",
           "sourceHost": "facebook.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:18.078Z",
+          "verifiedAt": "2026-07-18T09:58:04.010Z",
           "status": 200,
           "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched Silver Synthetic; HTTP 200."
         },
@@ -6141,7 +6007,7 @@
           "sourceHost": "silversynthetic.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:14.746Z",
+          "verifiedAt": "2026-07-18T09:58:00.520Z",
           "status": 200,
           "evidence": "website resolved directly and the destination metadata or an official artist-controlled cross-link matched Silver Synthetic; HTTP 200."
         },
@@ -6150,7 +6016,7 @@
           "sourceHost": "silversynthetic.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:15.661Z",
+          "verifiedAt": "2026-07-18T09:58:01.508Z",
           "status": 200,
           "evidence": "merchandise resolved directly and the destination metadata or an official artist-controlled cross-link matched Silver Synthetic; HTTP 200."
         },
@@ -6159,7 +6025,7 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:18.843Z",
+          "verifiedAt": "2026-07-18T09:58:04.701Z",
           "status": 200,
           "evidence": "featuredVideo resolved directly and the destination metadata or an official artist-controlled cross-link matched Silver Synthetic; HTTP 200."
         }
@@ -6191,9 +6057,9 @@
         "sourceCount": 0,
         "reasons": [],
         "attempts": 1,
-        "startedAt": "2026-07-18T09:23:14.188Z"
+        "startedAt": "2026-07-18T09:58:00.331Z"
       },
-      "finishedAt": "2026-07-18T09:23:18.851Z"
+      "finishedAt": "2026-07-18T09:58:04.709Z"
     },
     {
       "rowNumber": 48,
@@ -6235,14 +6101,14 @@
         }
       ],
       "attempts": 1,
-      "startedAt": "2026-07-18T09:23:15.291Z",
+      "startedAt": "2026-07-18T09:58:04.711Z",
       "evidence": {
         "buyMusic": {
           "url": "https://beingdead.bandcamp.com/album/eels",
           "sourceHost": "beingdead.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:18.377Z",
+          "verifiedAt": "2026-07-18T09:58:07.138Z",
           "status": 200,
           "evidence": "buyMusic resolved directly and the destination metadata or an official artist-controlled cross-link matched Being Dead; HTTP 200."
         },
@@ -6251,7 +6117,7 @@
           "sourceHost": "beingdead.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:18.377Z",
+          "verifiedAt": "2026-07-18T09:58:07.138Z",
           "status": 200,
           "evidence": "bandcamp resolved directly and the destination metadata or an official artist-controlled cross-link matched Being Dead; HTTP 200."
         },
@@ -6260,25 +6126,25 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:00.432Z",
+          "verifiedAt": "2026-07-18T09:56:43.979Z",
           "status": 200,
           "evidence": "youtube resolved directly and the destination metadata or an official artist-controlled cross-link matched Being Dead; HTTP 200."
         },
         "instagram": {
-          "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fbeingdeadband%2F&is_from_rle",
+          "url": "https://www.instagram.com/beingdeadband/",
           "sourceHost": "instagram.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:20.050Z",
+          "verifiedAt": "2026-07-18T09:58:08.300Z",
           "status": 429,
           "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched Being Dead; HTTP 429."
         },
         "facebook": {
-          "url": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Fbeingdeadband%2F",
+          "url": "https://www.facebook.com/beingdeadband/",
           "sourceHost": "facebook.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:20.666Z",
+          "verifiedAt": "2026-07-18T09:58:09.045Z",
           "status": 200,
           "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched Being Dead; HTTP 200."
         },
@@ -6287,7 +6153,7 @@
           "sourceHost": "beingdead.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:18.696Z",
+          "verifiedAt": "2026-07-18T09:58:07.331Z",
           "status": 200,
           "evidence": "merchandise resolved directly and the destination metadata or an official artist-controlled cross-link matched Being Dead; HTTP 200."
         },
@@ -6296,7 +6162,7 @@
           "sourceHost": "pitchfork.com",
           "officialSource": false,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:18.836Z",
+          "verifiedAt": "2026-07-18T09:58:07.576Z",
           "status": 200,
           "evidence": "newsReviews resolved directly and the destination metadata or an official artist-controlled cross-link matched Being Dead; HTTP 200."
         },
@@ -6305,7 +6171,7 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:03.339Z",
+          "verifiedAt": "2026-07-18T09:56:46.719Z",
           "status": 200,
           "evidence": "featuredVideo resolved directly and the destination metadata or an official artist-controlled cross-link matched Being Dead; HTTP 200."
         }
@@ -6337,9 +6203,9 @@
         "sourceCount": 0,
         "reasons": [],
         "attempts": 1,
-        "startedAt": "2026-07-18T09:23:15.291Z"
+        "startedAt": "2026-07-18T09:58:04.711Z"
       },
-      "finishedAt": "2026-07-18T09:23:22.447Z"
+      "finishedAt": "2026-07-18T09:58:10.723Z"
     },
     {
       "rowNumber": 49,
@@ -6368,9 +6234,9 @@
       "sourceCount": 0,
       "reasons": [],
       "attempts": 1,
-      "startedAt": "2026-07-18T09:23:18.853Z",
+      "startedAt": "2026-07-18T09:58:10.725Z",
       "liveURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_dafd3e067a",
-      "finishedAt": "2026-07-18T09:23:18.856Z"
+      "finishedAt": "2026-07-18T09:58:10.727Z"
     },
     {
       "rowNumber": 50,
@@ -6416,14 +6282,14 @@
         }
       ],
       "attempts": 1,
-      "startedAt": "2026-07-18T09:23:18.857Z",
+      "startedAt": "2026-07-18T09:58:10.729Z",
       "evidence": {
         "buyMusic": {
           "url": "https://thuslove.bandcamp.com/",
           "sourceHost": "thuslove.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:21.680Z",
+          "verifiedAt": "2026-07-18T09:58:13.869Z",
           "status": 200,
           "evidence": "buyMusic resolved directly and the destination metadata or an official artist-controlled cross-link matched THUS LOVE; HTTP 200."
         },
@@ -6432,7 +6298,7 @@
           "sourceHost": "thuslove.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:21.680Z",
+          "verifiedAt": "2026-07-18T09:58:13.869Z",
           "status": 200,
           "evidence": "bandcamp resolved directly and the destination metadata or an official artist-controlled cross-link matched THUS LOVE; HTTP 200."
         },
@@ -6441,25 +6307,25 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:00.432Z",
+          "verifiedAt": "2026-07-18T09:56:43.979Z",
           "status": 200,
           "evidence": "youtube resolved directly and the destination metadata or an official artist-controlled cross-link matched THUS LOVE; HTTP 200."
         },
         "instagram": {
-          "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fthuslove%2F&is_from_rle",
+          "url": "https://www.instagram.com/thuslove/",
           "sourceHost": "instagram.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:22.997Z",
+          "verifiedAt": "2026-07-18T09:58:15.044Z",
           "status": 429,
           "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched THUS LOVE; HTTP 429."
         },
         "facebook": {
-          "url": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Fthuslove%2F",
+          "url": "https://www.facebook.com/thuslove/",
           "sourceHost": "facebook.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:23.640Z",
+          "verifiedAt": "2026-07-18T09:58:16.151Z",
           "status": 200,
           "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched THUS LOVE; HTTP 200."
         },
@@ -6468,7 +6334,7 @@
           "sourceHost": "thuslove.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:21.927Z",
+          "verifiedAt": "2026-07-18T09:58:14.144Z",
           "status": 200,
           "evidence": "merchandise resolved directly and the destination metadata or an official artist-controlled cross-link matched THUS LOVE; HTTP 200."
         },
@@ -6477,7 +6343,7 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:03.339Z",
+          "verifiedAt": "2026-07-18T09:56:46.719Z",
           "status": 200,
           "evidence": "featuredVideo resolved directly and the destination metadata or an official artist-controlled cross-link matched THUS LOVE; HTTP 200."
         }
@@ -6509,9 +6375,9 @@
         "sourceCount": 0,
         "reasons": [],
         "attempts": 1,
-        "startedAt": "2026-07-18T09:23:18.857Z"
+        "startedAt": "2026-07-18T09:58:10.729Z"
       },
-      "finishedAt": "2026-07-18T09:23:25.442Z"
+      "finishedAt": "2026-07-18T09:58:18.190Z"
     },
     {
       "rowNumber": 51,
@@ -6553,14 +6419,14 @@
         }
       ],
       "attempts": 1,
-      "startedAt": "2026-07-18T09:23:22.449Z",
+      "startedAt": "2026-07-18T09:58:18.193Z",
       "evidence": {
         "buyMusic": {
           "url": "https://thetubs.bandcamp.com/",
           "sourceHost": "thetubs.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:25.359Z",
+          "verifiedAt": "2026-07-18T09:58:20.668Z",
           "status": 200,
           "evidence": "buyMusic resolved directly and the destination metadata or an official artist-controlled cross-link matched The Tubs; HTTP 200."
         },
@@ -6569,7 +6435,7 @@
           "sourceHost": "thetubs.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:25.359Z",
+          "verifiedAt": "2026-07-18T09:58:20.668Z",
           "status": 200,
           "evidence": "bandcamp resolved directly and the destination metadata or an official artist-controlled cross-link matched The Tubs; HTTP 200."
         },
@@ -6578,25 +6444,25 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:00.432Z",
+          "verifiedAt": "2026-07-18T09:56:43.979Z",
           "status": 200,
           "evidence": "youtube resolved directly and the destination metadata or an official artist-controlled cross-link matched The Tubs; HTTP 200."
         },
         "instagram": {
-          "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fthe_tubs_%2F&is_from_rle",
+          "url": "https://www.instagram.com/the_tubs_/",
           "sourceHost": "instagram.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:26.692Z",
+          "verifiedAt": "2026-07-18T09:58:21.991Z",
           "status": 429,
           "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched The Tubs; HTTP 429."
         },
         "facebook": {
-          "url": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Fthetubsband%2F",
+          "url": "https://www.facebook.com/thetubsband/",
           "sourceHost": "facebook.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:27.407Z",
+          "verifiedAt": "2026-07-18T09:58:22.827Z",
           "status": 200,
           "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched The Tubs; HTTP 200."
         },
@@ -6605,7 +6471,7 @@
           "sourceHost": "thetubs.bandcamp.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:25.688Z",
+          "verifiedAt": "2026-07-18T09:58:21.064Z",
           "status": 200,
           "evidence": "merchandise resolved directly and the destination metadata or an official artist-controlled cross-link matched The Tubs; HTTP 200."
         },
@@ -6614,7 +6480,7 @@
           "sourceHost": "pitchfork.com",
           "officialSource": false,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:23:25.810Z",
+          "verifiedAt": "2026-07-18T09:58:21.251Z",
           "status": 200,
           "evidence": "newsReviews resolved directly and the destination metadata or an official artist-controlled cross-link matched The Tubs; HTTP 200."
         },
@@ -6623,7 +6489,7 @@
           "sourceHost": "youtube.com",
           "officialSource": true,
           "identityVerified": true,
-          "verifiedAt": "2026-07-18T09:22:03.339Z",
+          "verifiedAt": "2026-07-18T09:56:46.719Z",
           "status": 200,
           "evidence": "featuredVideo resolved directly and the destination metadata or an official artist-controlled cross-link matched The Tubs; HTTP 200."
         }
@@ -6655,18 +6521,18 @@
         "sourceCount": 0,
         "reasons": [],
         "attempts": 1,
-        "startedAt": "2026-07-18T09:23:22.449Z"
+        "startedAt": "2026-07-18T09:58:18.193Z"
       },
-      "finishedAt": "2026-07-18T09:23:29.014Z"
+      "finishedAt": "2026-07-18T09:58:24.473Z"
     }
   ],
   "counts": {
     "total": 50,
     "valid": 50,
-    "completed": 1,
+    "completed": 0,
     "deployed": 0,
     "rejected": 44,
     "technicalFailures": 0,
-    "skippedCompleted": 5
+    "skippedCompleted": 6
   }
 }
