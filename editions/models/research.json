@@ -1,0 +1,82 @@
+{
+  "bandName": "Models",
+  "slug": "models",
+  "editionId": "dc_f27cfbaba4",
+  "verifiedAt": "2026-07-18T11:42:27.923Z",
+  "sources": [
+    {
+      "destination": "website",
+      "url": "https://modelsband.com/",
+      "sourceType": "official band website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T11:42:27.923Z",
+      "evidence": "The supplied Facebook page links directly to modelsband.com; the site identifies Models, publishes the band’s history, music, current news and official contact information."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/Models.Band/",
+      "sourceType": "official artist-controlled Facebook page",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T11:42:27.923Z",
+      "evidence": "The supplied mobile share URL resolved to the canonical public page @Models.Band. The page identifies Models as established in 1978 and links back to modelsband.com."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/2k0zkxxRvJKwiHQq5QfjYn",
+      "sourceType": "official website cross-linked streaming profile",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T11:42:27.923Z",
+      "evidence": "The official Models website links directly to this Spotify artist profile from both its site footer and music page."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/@models6460",
+      "sourceType": "official band YouTube channel",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T11:42:27.923Z",
+      "evidence": "The official Models site curates videos from this channel; the channel publishes Models’ official music videos and identifies the artist as Models."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=k5EZmJoNeYs",
+      "sourceType": "official music video",
+      "identityVerified": true,
+      "mostViewedVerified": true,
+      "verifiedAt": "2026-07-18T11:42:27.923Z",
+      "evidence": "The official Models video page links this clip. The official Models channel showed 555K views, higher than the verified flagship clips I Hear Motion (414K), Barbados (389K) and Big On Love (67K)."
+    },
+    {
+      "destination": "buyMusic",
+      "url": "https://store.warnermusic.com.au/collections/models",
+      "sourceType": "official website cross-linked label store",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T11:42:27.923Z",
+      "evidence": "The official Models music page directs fans to Warner Music Australia’s Models collection to buy new vinyl editions."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://modelsband.com/shop/",
+      "sourceType": "official band merchandise shop",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T11:42:27.923Z",
+      "evidence": "The band’s official website shop lists Models music, clothing and merchandise with active purchase controls."
+    },
+    {
+      "destination": "newsReviews",
+      "url": "https://www.sgst.com.au/models-never-go-out-of-style-returning-to-archies-creek-hotel/",
+      "sourceType": "independent current artist interview/profile",
+      "identityVerified": true,
+      "credibleEditorial": true,
+      "verifiedAt": "2026-07-18T11:42:27.923Z",
+      "evidence": "The January 2026 Sentinel-Times profile interviews Andrew Duffield about Models’ live repertoire, history, continuing studio work and current activity."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/yarravillian/",
+      "sourceType": "member personal account linked by official website",
+      "identityVerified": false,
+      "verifiedAt": "2026-07-18T11:42:27.923Z",
+      "evidence": "The official site explicitly labels this as “(Mark’s) Instagram”, not an official Models band account; it is therefore intentionally omitted from the edition."
+    }
+  ]
+}
