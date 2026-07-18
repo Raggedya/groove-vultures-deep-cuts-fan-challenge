@@ -145,6 +145,14 @@
       "name": "Screamin' Eagles",
       "config": "editions/screamin-eagles/edition.json",
       "active": true
+    },
+    {
+      "slug": "models",
+      "editionId": "dc_f27cfbaba4",
+      "canonicalPath": "/e/dc_f27cfbaba4",
+      "name": "Models",
+      "config": "editions/models/edition.json",
+      "active": true
     }
   ]
 }
