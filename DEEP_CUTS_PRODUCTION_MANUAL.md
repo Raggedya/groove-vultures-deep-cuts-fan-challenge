@@ -12,11 +12,11 @@ The standard owner instruction is `Deep Cuts [Artist]`. It authorizes the factor
 
 ## Locked visual model
 
-The user-approved screen in `assets/main-screen-master-reference.png` is the immutable visual reference. The live implementation must preserve its blue-black composition, original Aggits character, artist title, concise biography, unique sonic signature, fixed destination structure, small Share control and restrained footer.
+The user-approved screen in `assets/main-screen-master-reference.png` remains the visual foundation. The live implementation must preserve its blue-black composition, original Aggits character, artist title, concise biography, unique sonic signature, small Share control and restrained footer. Directly below Listen / Watch / Follow / Buy Stuff, a restrained 16:9 YouTube screen presents the artist's verified most-viewed official music video when one exists.
 
 The original `assets/aggits-original-cutout-v4.png` appears once on the live page and is never redrawn, recoloured, stretched or substituted. `assets/aggits-qr-master-final.png` is the immutable square QR-poster reference. Both are protected by SHA-256 checks.
 
-Every destination remains visible in the standard position. Verified destinations are active. Missing or uncertain destinations are visibly disabled and cannot be clicked. The waveform pulses once on opening and every ten seconds; verified destinations receive one restrained sequential glow. Disabled destinations do not animate. Reduced-motion settings and hidden tabs stop animation.
+Only verified, currently available destinations appear. Missing or uncertain destinations are omitted completely, and the remaining cards automatically rebalance into a deliberate full-width and paired composition without gaps. The waveform pulses once on opening and every ten seconds; verified destinations receive one restrained sequential glow. Reduced-motion settings and hidden tabs stop animation.
 
 ## Permanent public URL model
 
@@ -25,13 +25,15 @@ No artist or band name may appear in the public URL. Each edition receives a sta
 - Canonical page: `/e/<editionId>`
 - QR entry: `/q/<editionId>`
 
-The QR route records a `qr_scan` event and redirects to the canonical page. Existing edition IDs are never recycled. A changed destination or Tip link never requires a replacement QR.
+The QR route records a `qr_scan` event and redirects to the canonical page. Existing edition IDs are never recycled. A changed destination never requires a replacement QR.
 
 ## Research and destination integrity
 
 Use official artist-controlled sources first: official website, verified Spotify and Bandcamp artist pages, official social profiles, official YouTube channel, official store and direct ticket destinations. Cross-check identity before publication. Never guess a destination.
 
-Every active link must be HTTPS, resolve successfully, belong to the correct artist and retain evidence plus a verification timestamp. Ambiguous or unverified links remain disabled. A payment or Tip destination is never inferred; it must be explicitly supplied by the owner or officially published by the artist.
+Every active link must be HTTPS, resolve successfully, belong to the correct artist and retain evidence plus a verification timestamp. Ambiguous or unverified links are omitted. The tipping destination and tipping button are retired from the product.
+
+When an official YouTube channel exists, research selects the most-viewed official music video visible on that artist-controlled channel at verification time. The title, URL, verification timestamp and selection evidence are stored with the edition. The live player uses YouTube's privacy-enhanced embed domain. If no official video can be verified, the entire video screen is omitted rather than guessed.
 
 News & Reviews links to the strongest recent credible accessible interview, feature or review, not search results, scraped directories or low-quality aggregation. If no suitable coverage exists, it remains disabled.
 
@@ -54,7 +56,7 @@ The Cloudflare Worker and D1 database are the authoritative analytics backend. T
 - Production stages and duration
 - Delivery accepted and delivery confirmed
 
-Clicks represent intent only. A Spotify click is not a stream, a Tip click is not a payment, and a share action is not proof of publication. Analytics failure must never delay or prevent navigation.
+Clicks represent intent only. A Spotify click is not a stream, and a share action is not proof of publication. Analytics failure must never delay or prevent navigation. Historical Tip-click fields may remain in reporting solely to preserve old analytics records; no current page displays or records a new Tip action.
 
 Collect only anonymous session IDs, source, device category and coarse country/region supplied at the network edge. Do not store raw IP addresses, precise coordinates, passwords, payment details or social logins.
 

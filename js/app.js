@@ -1,20 +1,19 @@
 "use strict";
 
-const VERSION="20260716-master-1";
+const VERSION="20260718-video-1";
 const $=id=>document.getElementById(id);
-const els={page:$("discoveryPage"),error:$("errorScreen"),errorMessage:$("errorMessage"),bandName:$("bandName"),bio:$("artistBio"),artwork:$("heroArtwork"),waveform:$("sonicSignature"),links:$("platformLinks"),share:$("shareButton"),status:$("shareStatus"),description:$("pageDescription"),copyright:$("coverCopyright")};
+const els={page:$("discoveryPage"),error:$("errorScreen"),errorMessage:$("errorMessage"),bandName:$("bandName"),bio:$("artistBio"),artwork:$("heroArtwork"),waveform:$("sonicSignature"),video:$("featuredVideo"),videoTitle:$("featuredVideoTitle"),videoFrame:$("featuredVideoFrame"),links:$("platformLinks"),share:$("shareButton"),status:$("shareStatus"),description:$("pageDescription"),copyright:$("coverCopyright")};
 
 const LINK_DEFINITIONS=[
-  {key:"buyMusic",label:"Buy Music",subLabel:"Purchase music directly",wide:true,fallback:"bandcamp"},
-  {key:"spotify",label:"Listen on Spotify",subLabel:"Open the artist on Spotify",wide:true},
-  {key:"instagram",label:"Instagram",subLabel:"Latest updates"},
+  {key:"buyMusic",label:"Buy Music",subLabel:"Purchase music directly",priority:"primary",fallback:"bandcamp"},
+  {key:"spotify",label:"Listen on Spotify",subLabel:"Open the artist on Spotify",priority:"primary"},
   {key:"bandcamp",label:"Bandcamp",subLabel:"Listen directly"},
   {key:"youtube",label:"YouTube",subLabel:"Official videos"},
+  {key:"instagram",label:"Instagram",subLabel:"Latest updates"},
   {key:"facebook",label:"Facebook",subLabel:"Follow the artist"},
   {key:"website",label:"Band Website",subLabel:"Official website"},
   {key:"merchandise",label:"Buy Merch",subLabel:"Official merchandise"},
-  {key:"tip",label:"Tip the Band",subLabel:"Support the artist directly",wide:true},
-  {key:"newsReviews",label:"News & Reviews",subLabel:"Latest verified coverage",wide:true}
+  {key:"newsReviews",label:"News & Reviews",subLabel:"Latest verified coverage",priority:"editorial"}
 ];
 
 let platform,editionEntry,config;
@@ -43,7 +42,7 @@ function applyConfig(){
   const name=config.bandName||editionEntry.name;
   document.title=`${name} | Deep Cuts`;
   const bio=config.discovery?.bio||config.description||`Discover ${name}.`;
-  els.description.content=`Official music, social and support links for ${name}.`;
+  els.description.content=`Official music, video and social links for ${name}.`;
   els.bandName.textContent=name;
   els.bio.textContent=bio;
   els.artwork.src=`/${config.characterArtwork||"assets/aggits-original-cutout-v4.png"}`;
@@ -51,6 +50,7 @@ function applyConfig(){
   els.copyright.textContent=config.social?.copyright||"copyright Clearlight Creative";
   document.documentElement.style.setProperty("--accent",config.theme?.accent||"#2f80ff");
   buildWaveform(name);
+  buildFeaturedVideo();
   buildLinks();
   startAttentionCycle();
 }
@@ -74,23 +74,52 @@ function linkValue(definition){
   return validHttps(config.links?.[definition.key]);
 }
 
+function youtubeVideoId(value){
+  const url=validHttps(value);if(!url)return"";
+  try{
+    const parsed=new URL(url);const host=parsed.hostname.replace(/^www\./,"").toLowerCase();
+    if(host==="youtu.be")return safeVideoId(parsed.pathname.split("/").filter(Boolean)[0]);
+    if(host!=="youtube.com"&&host!=="m.youtube.com"&&host!=="music.youtube.com"&&host!=="youtube-nocookie.com")return"";
+    if(parsed.pathname==="/watch")return safeVideoId(parsed.searchParams.get("v"));
+    const match=parsed.pathname.match(/^\/(?:embed|shorts|live)\/([^/?#]+)/);return safeVideoId(match?.[1]);
+  }catch{return""}
+}
+
+function safeVideoId(value){return /^[A-Za-z0-9_-]{11}$/.test(String(value||""))?String(value):""}
+
+function buildFeaturedVideo(){
+  const id=youtubeVideoId(config.featuredVideo?.youtubeURL);
+  if(!id){els.video.hidden=true;els.videoFrame.removeAttribute("src");return}
+  const title=config.featuredVideo?.title||`${config.bandName} featured video`;
+  els.videoTitle.textContent=title;
+  els.videoFrame.title=`${title} — ${config.bandName}`;
+  els.videoFrame.src=`https://www.youtube-nocookie.com/embed/${id}?rel=0&modestbranding=1`;
+  els.video.hidden=false;
+}
+
 function buildLinks(){
   els.links.innerHTML="";
   for(const definition of LINK_DEFINITIONS){
     const url=linkValue(definition);
-    const element=document.createElement(url?"a":"div");
-    element.className=`platform-link${definition.wide?" wide":""}${url?" is-active":" is-disabled"}`;
+    if(!url)continue;
+    const element=document.createElement("a");
+    element.className=`platform-link is-active${definition.priority?` ${definition.priority}`:""}`;
     element.dataset.destination=definition.key;
-    element.innerHTML=`<span class="link-copy"><strong>${definition.label}</strong><small>${url?activeSubtitle(definition):"Not currently available"}</small></span>${url?'<span class="link-arrow" aria-hidden="true">&gt;</span>':""}`;
-    if(url){
-      element.href=url;element.target="_blank";element.rel="noopener noreferrer";
-      element.setAttribute("aria-label",`${definition.label} for ${config.bandName} (opens in a new tab)`);
-      element.addEventListener("click",()=>DeepCutsInteractions.trackOutbound(analytics,analyticsDestination(definition.key),url),{passive:true});
-    }else{
-      element.setAttribute("aria-disabled","true");
-    }
+    element.innerHTML=`<span class="link-copy"><strong>${definition.label}</strong><small>${activeSubtitle(definition)}</small></span><span class="link-arrow" aria-hidden="true">&gt;</span>`;
+    element.href=url;element.target="_blank";element.rel="noopener noreferrer";
+    element.setAttribute("aria-label",`${definition.label} for ${config.bandName} (opens in a new tab)`);
+    element.addEventListener("click",()=>DeepCutsInteractions.trackOutbound(analytics,analyticsDestination(definition.key),url),{passive:true});
     els.links.append(element);
   }
+  balanceLinkGrid();
+}
+
+function balanceLinkGrid(){
+  const cards=[...els.links.children];
+  cards.forEach(card=>card.classList.toggle("wide",card.classList.contains("primary")||card.classList.contains("editorial")));
+  const paired=cards.filter(card=>!card.classList.contains("wide"));
+  if(paired.length%2===1)paired.at(-1)?.classList.add("wide");
+  els.links.hidden=cards.length===0;
 }
 
 function activeSubtitle(definition){
@@ -116,7 +145,7 @@ function startAttentionCycle(){
 function validHttps(value){try{const url=new URL(String(value||""));return url.protocol==="https:"?url.href:""}catch{return""}}
 function pageIdentifier(){return config.analytics?.pageIdentifier||`${editionEntry.editionId}:discovery-v1`}
 function canonicalURL(){return new URL(editionEntry.canonicalPath||`/e/${editionEntry.editionId}`,location.origin).href}
-function sharePayload(){return{title:`${config.bandName} | Deep Cuts`,text:`Discover ${config.bandName}: official music, video, socials and ways to support the artist.`,url:canonicalURL()}}
+function sharePayload(){return{title:`${config.bandName} | Deep Cuts`,text:`Discover ${config.bandName}: official music, video and social links.`,url:canonicalURL()}}
 
 async function sharePage(){
   analytics.track("share_button_clicked",{page_identifier:pageIdentifier()},{dedupeKey:"main-share",dedupeMs:500});
@@ -133,4 +162,4 @@ async function sharePage(){
 
 function showError(message){els.page.hidden=true;els.errorMessage.textContent=message;els.error.hidden=false}
 els.share.addEventListener("click",sharePage);
-window.__deepCutsDiscoveryTest={validHttps,getConfig:()=>config,getRenderedLinks:()=>[...els.links.children].map(link=>({destination:link.dataset.destination,disabled:link.classList.contains("is-disabled")}))};
+window.__deepCutsDiscoveryTest={validHttps,youtubeVideoId,getConfig:()=>config,getRenderedLinks:()=>[...els.links.children].map(link=>({destination:link.dataset.destination,wide:link.classList.contains("wide")}))};

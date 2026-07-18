@@ -1,6 +1,6 @@
 # Deep Cuts
 
-Deep Cuts is one permanent artist-discovery platform. A fan scans an artist-specific QR and opens a calm one-screen page containing verified music, social, website, merchandise, Tip and editorial destinations.
+Deep Cuts is one permanent artist-discovery platform. A fan scans an artist-specific QR and opens a calm page containing the artist's verified featured YouTube video and only the music, social, website, merchandise and editorial destinations that are genuinely available.
 
 ## Standard owner request
 
