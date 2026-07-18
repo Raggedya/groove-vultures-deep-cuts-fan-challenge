@@ -38,19 +38,11 @@
     },
     {
       "destination": "instagram",
-      "url": "https://www.instagram.com/daiistar/",
-      "sourceType": "official destination verified by unattended batch",
+      "url": "https://www.instagram.com/daiistarr/",
+      "sourceType": "official artist website cross-link",
       "identityVerified": true,
-      "verifiedAt": "2026-07-18T09:00:09.335Z",
-      "evidence": "Official artist profile target cross-checked; the authentication redirect was removed from the published destination."
-    },
-    {
-      "destination": "facebook",
-      "url": "https://www.facebook.com/daiistar/",
-      "sourceType": "official destination verified by unattended batch",
-      "identityVerified": true,
-      "verifiedAt": "2026-07-18T09:00:10.461Z",
-      "evidence": "Official artist profile target cross-checked; the authentication redirect was removed from the published destination."
+      "verifiedAt": "2026-07-18T10:07:36.292Z",
+      "evidence": "DAIISTAR's official website links directly to the @daiistarr Instagram profile."
     },
     {
       "destination": "website",
