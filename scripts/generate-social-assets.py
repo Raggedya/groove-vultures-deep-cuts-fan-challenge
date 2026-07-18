@@ -198,9 +198,25 @@ def create_qr(config: dict, aggits: Image.Image, destination: Path) -> str:
         title_y += selected.size + 5
     canvas.alpha_composite(head_layer)
 
+    # Preserve the naturally curled foreground fingers from the approved
+    # master. The variable white card and QR are painted next, then this
+    # skin-only layer is restored so the card is visibly gripped rather than
+    # appearing to float in front of the hand.
+    hand_mask = Image.new("L", (SIZE, SIZE), 0)
+    hand_pixels = hand_mask.load()
+    for y in range(560, 701):
+        for x in range(170, 366):
+            red, green, blue, alpha = master.getpixel((x, y))
+            if alpha and red > 72 and green > 34 and red > green * 1.12 and green > blue * 1.08:
+                hand_pixels[x, y] = 255
+    hand_mask = hand_mask.filter(ImageFilter.GaussianBlur(0.55))
+    foreground_hand = Image.new("RGBA", (SIZE, SIZE), (0, 0, 0, 0))
+    foreground_hand.paste(master, (0, 0), hand_mask)
+
     # Replace the placeholder only inside the approved white card.
     canvas.alpha_composite(Image.new("RGBA", (239, 253), (255, 255, 255, 255)), (241, 385))
     canvas.alpha_composite(qr_image, (253 + (214 - qr_size) // 2, 404 + (214 - qr_size) // 2))
+    canvas.alpha_composite(foreground_hand)
     canvas.convert("RGB").save(destination, "PNG", optimize=True)
 
     if not matrix or len(matrix) != len(matrix[0]):
