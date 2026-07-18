@@ -1,0 +1,98 @@
+{
+  "bandName": "Ashley Davies",
+  "slug": "ashley-davies",
+  "editionId": "dc_941f39c42f",
+  "verifiedAt": "2026-07-18T12:11:41.781Z",
+  "sources": [
+    {
+      "destination": "identityHub",
+      "url": "https://linktr.ee/ashdaviesmusic",
+      "sourceType": "artist-controlled Linktree supplied by user",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T12:11:41.781Z",
+      "evidence": "The supplied Linktree identifies @ashdaviesmusicanddrums as a Melbourne composer and drummer and links directly to Ashley Davies’ official music website, Bandcamp, Facebook, Instagram and YouTube properties."
+    },
+    {
+      "destination": "website",
+      "url": "https://www.ashleydavies.com.au/",
+      "sourceType": "official artist website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T12:11:41.781Z",
+      "evidence": "The official site identifies Ashley Davies, publishes his biography and work, and cross-links the same Bandcamp, Facebook, Instagram and YouTube destinations as the supplied Linktree."
+    },
+    {
+      "destination": "buyMusic",
+      "url": "https://ashleydavies.bandcamp.com/music",
+      "sourceType": "official artist Bandcamp catalogue",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T12:11:41.781Z",
+      "evidence": "Both the supplied Linktree and official website link to Ashley Davies’ Bandcamp catalogue; the official site directs fans there to listen to and buy his releases."
+    },
+    {
+      "destination": "bandcamp",
+      "url": "https://ashleydavies.bandcamp.com/",
+      "sourceType": "official artist Bandcamp",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T12:11:41.781Z",
+      "evidence": "Exact Bandcamp destination is cross-linked by the supplied artist Linktree and Ashley Davies’ official website."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/ashdaviesmusic/",
+      "sourceType": "official artist-controlled Facebook page",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T12:11:41.781Z",
+      "evidence": "Exact Facebook destination is published on the supplied artist Linktree and cross-linked from the official Ashley Davies website."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/ashleydaviesmusic/",
+      "sourceType": "official artist-controlled Instagram profile",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T12:11:41.781Z",
+      "evidence": "Exact Instagram destination is published on the supplied artist Linktree and cross-linked from the official Ashley Davies website."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/@ashleydaviesmusic",
+      "sourceType": "official artist music YouTube channel",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T12:11:41.781Z",
+      "evidence": "Ashley Davies’ official website links to this Music and Drumming channel; the channel links back to ashleydavies.com.au and describes his six solo instrumental albums and festival work."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=wq4_UGZoPLQ",
+      "sourceType": "official artist video",
+      "identityVerified": true,
+      "mostViewedVerified": true,
+      "verifiedAt": "2026-07-18T12:11:41.781Z",
+      "evidence": "The official channel’s Popular view showed Ned Kelly by Ashley Davies & Ian Jones at 3.9K views, ahead of V.F.T. at 1.7K and Mambo Wah Wah at 1.3K."
+    },
+    {
+      "destination": "newsReviews",
+      "url": "https://www.thecurb.com.au/ashley-davies-talks-about-gold-len-davies-and-lasseters-reef-in-this-interview/",
+      "sourceType": "independent current artist interview",
+      "identityVerified": true,
+      "credibleEditorial": true,
+      "verifiedAt": "2026-07-18T12:11:41.781Z",
+      "evidence": "The 2025 Curb interview speaks directly with Ashley Davies about GOLD, his uncle Len Davies and the Lasseter’s Reef project."
+    },
+    {
+      "destination": "spotify",
+      "url": "",
+      "sourceType": "not found in artist-controlled sources",
+      "identityVerified": false,
+      "verifiedAt": "2026-07-18T12:11:41.781Z",
+      "evidence": "Neither the supplied Linktree nor official artist website provides a Spotify profile; the button is intentionally omitted."
+    },
+    {
+      "destination": "merchandise",
+      "url": "",
+      "sourceType": "not confirmed",
+      "identityVerified": false,
+      "verifiedAt": "2026-07-18T12:11:41.781Z",
+      "evidence": "The official shop is presented as an album store rather than a general merchandise shop; Buy Music and Bandcamp cover the verified purchase destinations without mislabelling."
+    }
+  ]
+}

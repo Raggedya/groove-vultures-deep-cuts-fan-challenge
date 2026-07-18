@@ -153,6 +153,14 @@
       "name": "Models",
       "config": "editions/models/edition.json",
       "active": true
+    },
+    {
+      "slug": "ashley-davies",
+      "editionId": "dc_941f39c42f",
+      "canonicalPath": "/e/dc_941f39c42f",
+      "name": "Ashley Davies",
+      "config": "editions/ashley-davies/edition.json",
+      "active": true
     }
   ]
 }
