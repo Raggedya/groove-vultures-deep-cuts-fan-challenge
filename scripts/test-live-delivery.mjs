@@ -15,6 +15,8 @@ assert.ok(generator.indexOf('canvas.alpha_composite(qr_image')<generator.indexOf
 assert.ok(deploy.indexOf('Generate scan-tested delivery artwork')<deploy.indexOf('npm run build'),'Delivery artwork must be generated before the static deployment bundle.');
 assert.match(deploy,/Verify deployed QR artwork/,'Deployment must verify every public QR PNG.');
 assert.match(delivery,/\/output\/\$\{encodeURIComponent\(slug\)\}\/instagram-qr\.png/,'Email must attach the public scan-tested QR PNG.');
+assert.match(delivery,/fetchQrWithPropagationRetry\(qrImageURL\)/,'Email delivery must tolerate brief post-deployment QR propagation.');
+assert.match(delivery,/DEEP_CUTS_QR_DELIVERY_ATTEMPTS\|\|12/,'QR propagation retries must be bounded.');
 assert.match(delivery,/\/api\/delivery/,'Email delivery must use the permanent authenticated delivery API.');
 assert.match(delivery,/waitForDelivery\(jobId\)/,'Publishing must wait for confirmed email delivery.');
 assert.match(emailWorkflow,/DEEP_CUTS_ADMIN_TOKEN: \$\{\{ secrets\.DEEP_CUTS_ADMIN_TOKEN \}\}/,'The email verification workflow must keep the admin token encrypted.');
