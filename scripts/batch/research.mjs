@@ -1,4 +1,4 @@
-import {DESTINATIONS,isDirectDestination,confidenceFor,reason} from './policy.mjs';
+import {DESTINATIONS,isDirectDestination,isAuthenticationWall,confidenceFor,reason} from './policy.mjs';
 import {extractLinks} from './network.mjs';
 
 export async function verifyArtist(row,network,{offline=false}={}){
@@ -25,14 +25,17 @@ export async function verifyArtist(row,network,{offline=false}={}){
     if(!isDirectDestination(key,url)){errors.push(reason('DIRECT_DESTINATION_UNRESOLVED',`${key} did not resolve to a direct destination.`));continue;}
     const page=offline?synthetic(url):await network.inspect(url);
     if(!page.ok){errors.push(reason('DESTINATION_UNREACHABLE',`${key} failed after automatic retries (${page.status||page.error}).`));continue;}
-    const sourceHost=host(page.finalURL||url);const officialSource=key!=='newsReviews';
+    const inspectedURL=page.finalURL||url;
+    const evidenceURL=['instagram','facebook'].includes(key)&&isAuthenticationWall(inspectedURL)?url:inspectedURL;
+    const evidencePage={...page,finalURL:evidenceURL};
+    const sourceHost=host(evidenceURL);const officialSource=key!=='newsReviews';
     const popularityVerified=key!=='featuredVideo'||popularSelection?.verified===true;
     const identityVerified=key==='featuredVideo'
       ? popularityVerified&&evidence.youtube?.identityVerified===true
-      : popularityVerified&&identityMatch(row,page,key,discovered);
+      : popularityVerified&&identityMatch(row,evidencePage,key,discovered);
     if(key==='featuredVideo'&&!popularityVerified)errors.push(reason('FEATURED_VIDEO_POPULARITY_UNVERIFIED','The most-viewed official video could not be proved from the official channel Popular ordering.'));
     if(!identityVerified)errors.push(reason('IDENTITY_CONFIDENCE_FAILED',`${key} could not be tied to ${row.artist} with sufficient evidence.`));
-    evidence[key]={url:page.finalURL||url,sourceHost,officialSource,identityVerified,verifiedAt:page.checkedAt,status:page.status,evidence:identityVerified?identitySentence(row,key,page):'Insufficient identity evidence.'};
+    evidence[key]={url:evidenceURL,sourceHost,officialSource,identityVerified,verifiedAt:page.checkedAt,status:page.status,evidence:identityVerified?identitySentence(row,key,evidencePage):'Insufficient identity evidence.'};
   }
   const confidence=confidenceFor(row,evidence);
   if(confidence<98)errors.push(reason('CONFIDENCE_BELOW_98',`Confidence score ${confidence}% is below the mandatory 98% gate.`));
