@@ -1,0 +1,51 @@
+{
+  "brandName": "Deep Cuts",
+  "bandName": "Upchuck",
+  "editionTitle": "Upchuck",
+  "description": "Atlanta punk firebrands channel raw garage-rock force, political urgency and the lived experience of their Black and Latino members into explosive songs and shows.",
+  "discovery": {
+    "bio": "Atlanta punk firebrands channel raw garage-rock force, political urgency and the lived experience of their Black and Latino members into explosive songs and shows.",
+    "newsLabel": "KT Thompson & Chris Salado - FLOOD"
+  },
+  "mode": "discovery",
+  "slug": "upchuck",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_0ae07425ac",
+  "characterArtwork": "assets/aggits-original-cutout-v4.png",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/upchuck/instagram-discovery.png",
+    "qrImage": "output/upchuck/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#2f80ff",
+    "accentSecondary": "#8dbdff"
+  },
+  "links": {
+    "buyMusic": "https://upchuck.ffm.to/imnicenow-lp",
+    "spotify": "https://open.spotify.com/artist/7mhCgHESQzEKKyWshkMTwW",
+    "instagram": "https://www.instagram.com/_upchuck_/",
+    "bandcamp": "https://upchuckatl.bandcamp.com/",
+    "youtube": "https://www.youtube.com/@upchuck2135",
+    "facebook": "https://www.facebook.com/people/Upchuck-ATL/61576276813686/",
+    "website": "https://upchuckatlanta.com/",
+    "merchandise": "https://upchuck.ffm.to/merch.owe",
+    "newsReviews": "https://floodmagazine.com/214928/upchuck-breaking/"
+  },
+  "featuredVideo": {
+    "title": "Upchuck - Forgotten Token (Official Video)",
+    "youtubeURL": "https://www.youtube.com/watch?v=WRW_XT7ACvM",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-07-18T04:35:32.793Z"
+  },
+  "analytics": {
+    "editionId": "dc_0ae07425ac",
+    "pageIdentifier": "dc_0ae07425ac:discovery-v1"
+  },
+  "production": {
+    "jobId": "dcjob_096144bf-75bd-4eb5-973f-7bf7c1c6fdc5",
+    "submittedAt": "2026-07-18T03:43:11.962Z",
+    "researchCompletedAt": "2026-07-18T04:36:34.294Z",
+    "editionCreatedAt": "2026-07-18T04:36:34.294Z"
+  }
+}

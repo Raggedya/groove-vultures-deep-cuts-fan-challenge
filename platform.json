@@ -89,6 +89,14 @@
       "name": "Iron Maiden",
       "config": "editions/iron-maiden/edition.json",
       "active": true
+    },
+    {
+      "slug": "upchuck",
+      "editionId": "dc_0ae07425ac",
+      "canonicalPath": "/e/dc_0ae07425ac",
+      "name": "Upchuck",
+      "config": "editions/upchuck/edition.json",
+      "active": true
     }
   ]
 }
