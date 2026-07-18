@@ -1,12 +1,17 @@
 import assert from 'node:assert/strict';
 import {parseCsv} from './batch/csv.mjs';
-import {validateInput,isDirectDestination,HEADERS} from './batch/policy.mjs';
+import {validateInput,isDirectDestination,isAuthenticationWall,HEADERS} from './batch/policy.mjs';
 
 assert.deepEqual(parseCsv('a,b\n"x,y","he said ""yes"""\n'),[['a','b'],['x,y','he said "yes"']]);
 assert.equal(isDirectDestination('spotify','https://open.spotify.com/artist/abc123'),true);
 assert.equal(isDirectDestination('spotify','https://open.spotify.com/search/Artist/artists'),false);
 assert.equal(isDirectDestination('youtube','https://www.youtube.com/results?search_query=artist'),false);
 assert.equal(isDirectDestination('featuredVideo','https://www.youtube.com/watch?v=abc123'),true);
+assert.equal(isDirectDestination('instagram','https://www.instagram.com/notdummy/'),true);
+assert.equal(isDirectDestination('instagram','https://www.instagram.com/accounts/login/?next=%2Fnotdummy%2F'),false);
+assert.equal(isDirectDestination('facebook','https://www.facebook.com/notdummyband/'),true);
+assert.equal(isDirectDestination('facebook','https://www.facebook.com/login/?next=%2Fnotdummyband%2F'),false);
+assert.equal(isAuthenticationWall('https://m.facebook.com/login/?next=%2Fnotdummyband%2F'),true);
 const base=Object.fromEntries(Object.values(HEADERS).map(key=>[key,'https://example.com/value']));
 Object.assign(base,{'Artist Name':'Test Artist','Location':'Melbourne','Genre':'Rock','Follower Count (approx.)':'2,001','Follower Platform':'Instagram'});
 const valid=validateInput([{rowNumber:2,...base}])[0];assert.equal(valid.inputErrors.length,0);
