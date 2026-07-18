@@ -6,6 +6,9 @@ on:
     paths:
       - "data/incoming/**.csv"
       - ".github/workflows/deep-cuts-batch.yml"
+      - "scripts/create-edition.mjs"
+      - "scripts/deep-cuts-batch.mjs"
+      - "scripts/batch/**.mjs"
   workflow_dispatch:
     inputs:
       csv_path:
