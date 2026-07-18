@@ -8,6 +8,7 @@ export async function verifyArtist(row,network,{offline=false}={}){
     const page=offline?synthetic(row[key]):await network.inspect(row[key]);pages.push({key,...page});
   }
   const discovered=pages.flatMap(page=>extractLinks(page.body,page.finalURL));
+  const officialDiscovered=pages.filter(page=>page.key!=='newsReviews').flatMap(page=>extractLinks(page.body,page.finalURL));
   const resolved={...row};
   for(const key of DESTINATIONS){
     if(!isDirectDestination(key,resolved[key])){
@@ -32,7 +33,7 @@ export async function verifyArtist(row,network,{offline=false}={}){
     const popularityVerified=key!=='featuredVideo'||popularSelection?.verified===true;
     const identityVerified=key==='featuredVideo'
       ? popularityVerified&&evidence.youtube?.identityVerified===true
-      : popularityVerified&&identityMatch(row,evidencePage,key,discovered);
+      : popularityVerified&&identityMatch(row,evidencePage,key,officialDiscovered);
     if(key==='featuredVideo'&&!popularityVerified)errors.push(reason('FEATURED_VIDEO_POPULARITY_UNVERIFIED','The most-viewed official video could not be proved from the official channel Popular ordering.'));
     if(!identityVerified)errors.push(reason('IDENTITY_CONFIDENCE_FAILED',`${key} could not be tied to ${row.artist} with sufficient evidence.`));
     evidence[key]={url:evidenceURL,sourceHost,officialSource,identityVerified,verifiedAt:page.checkedAt,status:page.status,evidence:identityVerified?identitySentence(row,key,evidencePage):'Insufficient identity evidence.'};
@@ -53,6 +54,7 @@ async function resolvePopularVideo(channelURL,network){
 
 function identityMatch(row,page,key,discovered){
   if(key==='featuredVideo')return isOfficialYoutubeEvidence(row,page,discovered);
+  if(['instagram','facebook'].includes(key))return discovered.some(url=>sameURL(url,page.finalURL));
   const haystack=decode(`${page.finalURL} ${page.body.slice(0,350000)}`).toLowerCase();
   const tokens=row.artist.toLowerCase().split(/[^a-z0-9]+/).filter(token=>token.length>2&&!['the','and','band'].includes(token));
   const tokenMatch=tokens.length&&tokens.every(token=>haystack.includes(token));
