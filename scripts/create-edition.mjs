@@ -72,6 +72,6 @@ function uniqueEditionId(platform){let id;do{id=`dc_${crypto.randomBytes(5).toSt
 function slugify(value){return value.normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')}
 function clean(value,max){return String(value||'').trim().replace(/\s+/g,' ').slice(0,max)}
 function https(value){if(!value)return'';const url=new URL(String(value));if(url.protocol==='http:')url.protocol='https:';if(url.protocol!=='https:')throw new Error(`Destination must use HTTPS: ${value}`);url.hash='';return url.href}
-function normalize(value){try{const url=new URL(String(value));url.hash='';return url.href.replace(/\/$/,'')}catch{return''}}
+function normalize(value){try{const url=new URL(String(value));if(url.protocol==='http:')url.protocol='https:';url.hash='';return url.href.replace(/\/$/,'')}catch{return''}}
 function validDate(value){return Number.isFinite(new Date(value).getTime())}
 
