@@ -1,0 +1,89 @@
+{
+  "bandName": "Upchuck",
+  "slug": "upchuck",
+  "editionId": "dc_0ae07425ac",
+  "verifiedAt": "2026-07-18T04:36:34.294Z",
+  "sources": [
+    {
+      "destination": "website",
+      "url": "https://upchuckatlanta.com/",
+      "sourceType": "official artist website linked by official label",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T04:35:32.793Z",
+      "evidence": "Domino's official Upchuck artist page links this exact artist website, which presents the current I'm Nice Now release, store and tour information."
+    },
+    {
+      "destination": "buyMusic",
+      "url": "https://upchuck.ffm.to/imnicenow-lp",
+      "sourceType": "official release purchase page linked by artist website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T04:35:32.793Z",
+      "evidence": "The official Upchuck website's Buy control links to this I'm Nice Now purchase campaign."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://upchuck.ffm.to/merch.owe",
+      "sourceType": "official merchandise page linked by artist website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T04:35:32.793Z",
+      "evidence": "The official Upchuck website's Merch control links to this exact artist merchandise campaign."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/7mhCgHESQzEKKyWshkMTwW",
+      "sourceType": "official artist profile linked by official label",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T04:35:32.793Z",
+      "evidence": "Domino's official Upchuck page links this profile; its current catalogue, biography and Atlanta identity match the band."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/_upchuck_/",
+      "sourceType": "official social profile linked by official label",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T04:35:32.793Z",
+      "evidence": "Domino's official Upchuck artist page links the _upchuck_ Instagram profile."
+    },
+    {
+      "destination": "bandcamp",
+      "url": "https://upchuckatl.bandcamp.com/",
+      "sourceType": "official artist storefront linked by booking representation",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T04:35:32.793Z",
+      "evidence": "Upchuck's Ground Control Touring artist page links this Bandcamp; the profile identifies Upchuck of Atlanta and carries the verified catalogue."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/@upchuck2135",
+      "sourceType": "official YouTube channel linked by official label",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T04:35:32.793Z",
+      "evidence": "Domino's official Upchuck artist page links this channel, whose catalogue consists of Upchuck's official videos and audio."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/people/Upchuck-ATL/61576276813686/",
+      "sourceType": "official social profile linked by official label",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T04:35:32.793Z",
+      "evidence": "Domino's official Upchuck artist page links the Facebook profile ID that resolves to this canonical Upchuck ATL profile."
+    },
+    {
+      "destination": "newsReviews",
+      "url": "https://floodmagazine.com/214928/upchuck-breaking/",
+      "sourceType": "current established music editorial interview",
+      "identityVerified": true,
+      "credibleEditorial": true,
+      "verifiedAt": "2026-07-18T04:35:32.793Z",
+      "evidence": "FLOOD's 13 January 2026 feature interviews vocalist KT Thompson and drummer Chris Salado about Upchuck's politics and I'm Nice Now."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=WRW_XT7ACvM",
+      "sourceType": "official YouTube channel popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T04:35:32.793Z",
+      "evidence": "The official channel's Popular ordering identifies Forgotten Token as its most-viewed official music video, showing 138K views at verification time."
+    }
+  ]
+}
