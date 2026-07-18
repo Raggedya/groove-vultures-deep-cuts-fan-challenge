@@ -137,6 +137,14 @@
       "name": "Cable Ties",
       "config": "editions/cable-ties/edition.json",
       "active": true
+    },
+    {
+      "slug": "screamin-eagles",
+      "editionId": "dc_448bfea6db",
+      "canonicalPath": "/e/dc_448bfea6db",
+      "name": "Screamin' Eagles",
+      "config": "editions/screamin-eagles/edition.json",
+      "active": true
     }
   ]
 }
