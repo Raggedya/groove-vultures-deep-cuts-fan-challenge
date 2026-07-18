@@ -49,5 +49,5 @@ if(!slugs.has(platform.defaultEdition))errors.push('defaultEdition is not regist
 if(errors.length){console.error(errors.join('\n'));process.exit(1)}
 console.log(`Deep Cuts discovery platform validation passed: ${platform.editions.length} registered edition(s).`);
 
-function normalized(value){try{const url=new URL(String(value));url.hash='';return url.href.replace(/\/$/,'')}catch{return''}}
+function normalized(value){try{const url=new URL(String(value));if(url.protocol==='http:')url.protocol='https:';url.hash='';return url.href.replace(/\/$/,'')}catch{return''}}
 
