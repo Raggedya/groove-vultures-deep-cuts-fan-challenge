@@ -36,7 +36,7 @@ for(const edition of platform.editions){
       for(const[key,value]of Object.entries(config.links||{}))if(value&&!research.sources.some(source=>source.destination===key&&source.identityVerified===true&&normalized(source.url)===normalized(value)))errors.push(`${researchPath} lacks matching verified evidence for links.${key}.`);
     }
     await fs.access(config.characterArtwork);
-    for(const[key,value]of Object.entries(config.links||{}))if(value&&!/^https:\/\//.test(value))errors.push(`${edition.config} links.${key} must be blank or HTTPS.`);
+    for(const[key,value]of Object.entries(config.links||{}))if(value&&(!/^https:\/\//.test(value)||authenticationWall(value)))errors.push(`${edition.config} links.${key} must be a direct HTTPS destination, never an authentication URL.`);
     if(config.featuredVideo?.youtubeURL&&!/^https:\/\/(?:www\.)?(?:youtube\.com|youtu\.be)\//i.test(config.featuredVideo.youtubeURL))errors.push(`${edition.config} featuredVideo.youtubeURL must be a verified YouTube URL.`);
     if(config.featuredVideo?.youtubeURL&&config.production){
       const researchPath=edition.config.replace(/edition\.json$/,'research.json');
@@ -50,4 +50,5 @@ if(errors.length){console.error(errors.join('\n'));process.exit(1)}
 console.log(`Deep Cuts discovery platform validation passed: ${platform.editions.length} registered edition(s).`);
 
 function normalized(value){try{const url=new URL(String(value));if(url.protocol==='http:')url.protocol='https:';url.hash='';return url.href.replace(/\/$/,'')}catch{return''}}
+function authenticationWall(value){try{const url=new URL(String(value));const host=url.hostname.replace(/^www\./,'').toLowerCase(),path=url.pathname.toLowerCase();return host==='instagram.com'&&(path.startsWith('/accounts/login')||path.startsWith('/accounts/signup')||url.searchParams.has('next'))||(host==='facebook.com'||host==='m.facebook.com')&&(/^\/(?:login|checkpoint|recover|reg)(?:\/|$)/.test(path)||(path.startsWith('/login')&&url.searchParams.has('next')))}catch{return false}}
 

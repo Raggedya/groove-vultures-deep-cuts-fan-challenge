@@ -6,6 +6,14 @@ export const HEADERS={
 export const REQUIRED=Object.values(HEADERS);
 export const DESTINATIONS=['buyMusic','spotify','bandcamp','youtube','instagram','facebook','website','merchandise','newsReviews','featuredVideo'];
 
+export function isAuthenticationWall(value){
+  let url;try{url=value instanceof URL?value:new URL(value)}catch{return false}
+  const host=url.hostname.replace(/^www\./,'').toLowerCase();const path=url.pathname.toLowerCase();
+  if(host==='instagram.com')return path.startsWith('/accounts/login')||path.startsWith('/accounts/signup')||url.searchParams.has('next');
+  if(host==='facebook.com'||host==='m.facebook.com')return /^\/(?:login|checkpoint|recover|reg)(?:\/|$)/.test(path)||(path.startsWith('/login')&&url.searchParams.has('next'));
+  return false;
+}
+
 export function normalizeRow(row){
   const result={rowNumber:row.rowNumber};for(const[key,header]of Object.entries(HEADERS))result[key]=clean(row[header]);
   result.slug=slugify(result.artist);result.followerCount=parseFollowerCount(result.followers);return result;
@@ -29,7 +37,7 @@ export function validateInput(rawRows){
 }
 
 export function isDirectDestination(key,value){
-  let url;try{url=new URL(value)}catch{return false}if(url.protocol!=='https:')return false;
+  let url;try{url=new URL(value)}catch{return false}if(url.protocol!=='https:'||isAuthenticationWall(url))return false;
   const host=url.hostname.replace(/^www\./,'').toLowerCase();const path=url.pathname.toLowerCase();
   if(key==='spotify')return host==='open.spotify.com'&&/^\/artist\/[a-z0-9]+/i.test(path);
   if(key==='youtube')return ['youtube.com','youtu.be'].includes(host)&&!path.startsWith('/results')&&!path.startsWith('/search');

@@ -38,11 +38,11 @@
     },
     {
       "destination": "instagram",
-      "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fcivic_aus%2F&is_from_rle",
+      "url": "https://www.instagram.com/civic_aus/",
       "sourceType": "official destination verified by unattended batch",
       "identityVerified": true,
       "verifiedAt": "2026-07-18T08:58:27.992Z",
-      "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched CIVIC; HTTP 429."
+      "evidence": "Official artist profile target cross-checked; the authentication redirect was removed from the published destination."
     },
     {
       "destination": "facebook",
