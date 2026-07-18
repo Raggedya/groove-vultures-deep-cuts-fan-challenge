@@ -13,7 +13,7 @@ const jobId=process.env.DEEP_CUTS_DELIVERY_JOB_ID||config.production?.jobId||`de
 const liveURL=`${baseURL}${edition.canonicalPath}`;
 const qrImageURL=`${baseURL}/output/${encodeURIComponent(slug)}/instagram-qr.png`;
 
-const qrResponse=await fetch(qrImageURL,{headers:{accept:'image/png'}});
+const qrResponse=await fetchQrWithPropagationRetry(qrImageURL);
 if(!qrResponse.ok||!(qrResponse.headers.get('content-type')||'').toLowerCase().includes('image/png'))throw new Error('The public scan-tested QR PNG is unavailable; email delivery was blocked.');
 
 await post('/api/builds',{job_id:jobId,edition_id:edition.editionId,band_name:edition.name,stage:'submitted',timestamp:config.production?.submittedAt||new Date().toISOString()});
@@ -41,5 +41,21 @@ async function waitForDelivery(id){
     await new Promise(resolve=>setTimeout(resolve,4000));
   }
   throw new Error('Resend accepted the email but confirmed delivery was not recorded within two minutes.');
+}
+
+async function fetchQrWithPropagationRetry(url){
+  const attempts=Number(process.env.DEEP_CUTS_QR_DELIVERY_ATTEMPTS||12);
+  const delayMs=Number(process.env.DEEP_CUTS_QR_DELIVERY_DELAY_MS||5000);
+  let response;
+  for(let attempt=1;attempt<=attempts;attempt+=1){
+    response=await fetch(url,{headers:{accept:'image/png'}});
+    const contentType=(response.headers.get('content-type')||'').toLowerCase();
+    if(response.ok&&contentType.includes('image/png'))return response;
+    if(attempt<attempts){
+      console.log(`Delivery QR is still propagating (${attempt}/${attempts}): ${url}`);
+      await new Promise(resolve=>setTimeout(resolve,delayMs));
+    }
+  }
+  return response;
 }
 
