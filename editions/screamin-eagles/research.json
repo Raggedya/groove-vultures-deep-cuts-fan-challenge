@@ -1,0 +1,33 @@
+{
+  "bandName": "Screamin' Eagles",
+  "slug": "screamin-eagles",
+  "editionId": "dc_448bfea6db",
+  "verifiedAt": "2026-07-18T11:22:29.019Z",
+  "sources": [
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/thescreamineagles/",
+      "sourceType": "official artist-controlled Facebook page",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T11:22:29.019Z",
+      "evidence": "The supplied Facebook share URL resolved to the public Screamin' Eagles musician/band page at the exact canonical handle @thescreamineagles; the page displays current posts, 3.7K followers and the artist contact email."
+    },
+    {
+      "destination": "newsReviews",
+      "url": "https://www.echo.net.au/2026/01/screamin-eagles-live/",
+      "sourceType": "independent current artist profile",
+      "identityVerified": true,
+      "credibleEditorial": true,
+      "verifiedAt": "2026-07-18T11:22:29.019Z",
+      "evidence": "The Echo identifies the act as a Melbourne party-rock band and describes its high-energy live sound, instrumentation and Australian touring profile."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.brighterdays.org.au/downloads/BDF-March2026-Event-Guide.pdf",
+      "sourceType": "official festival programme biography",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T11:22:29.019Z",
+      "evidence": "The 2026 Brighter Days Festival guide identifies the Screamin' Eagles lineup and describes their Eagles repertoire, rock anthems, multiple vocalists, guitars, keys and sax."
+    }
+  ]
+}
