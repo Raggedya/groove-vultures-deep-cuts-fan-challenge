@@ -11,6 +11,7 @@ assert.equal(platform.publicBaseURL,'https://deep-cuts.andrewharris501.workers.d
 assert.ok(!platform.publicBaseURL.includes('groove-vultures'),'The permanent base URL must not contain an artist name.');
 assert.match(generator,/platform\.get\("publicBaseURL"/,'QR generation must default to the permanent platform URL.');
 assert.match(generator,/\.example/,'Placeholder QR destinations must be rejected.');
+assert.ok(generator.indexOf('canvas.alpha_composite(qr_image')<generator.indexOf('canvas.alpha_composite(foreground_hand)'),'The natural foreground fingers must be restored after the variable QR card is painted.');
 assert.ok(deploy.indexOf('Generate scan-tested delivery artwork')<deploy.indexOf('npm run build'),'Delivery artwork must be generated before the static deployment bundle.');
 assert.match(deploy,/Verify deployed QR artwork/,'Deployment must verify every public QR PNG.');
 assert.match(delivery,/\/output\/\$\{encodeURIComponent\(slug\)\}\/instagram-qr\.png/,'Email must attach the public scan-tested QR PNG.');
