@@ -1,0 +1,51 @@
+{
+  "brandName": "Deep Cuts",
+  "bandName": "Cable Ties",
+  "editionTitle": "Cable Ties",
+  "description": "Melbourne, Australia Post-punk artist Cable Ties.",
+  "discovery": {
+    "bio": "Melbourne, Australia Post-punk artist Cable Ties.",
+    "newsLabel": "Latest verified interview or review"
+  },
+  "mode": "discovery",
+  "slug": "cable-ties",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_74a4068bb6",
+  "characterArtwork": "assets/aggits-original-cutout-v4.png",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/cable-ties/instagram-discovery.png",
+    "qrImage": "output/cable-ties/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#2f80ff",
+    "accentSecondary": "#8dbdff"
+  },
+  "links": {
+    "buyMusic": "https://cableties.bandcamp.com/",
+    "spotify": "https://open.spotify.com/artist/2DHxsgHVEiupQyVWHI1XIW?si=c4jhzks2Q86V_fVnBuFYBw",
+    "instagram": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fcableties%2F&is_from_rle",
+    "bandcamp": "https://cableties.bandcamp.com/",
+    "youtube": "https://www.youtube.com/@cabletiesband",
+    "facebook": "https://www.facebook.com/cabletiesband/",
+    "website": "https://www.cabletiesband.com/",
+    "merchandise": "https://cableties.bandcamp.com/merch",
+    "newsReviews": "https://pitchfork.com/news/cable-ties-announce-new-album-far-enough-share-song-listen/"
+  },
+  "featuredVideo": {
+    "title": "Cable Ties — featured official video",
+    "youtubeURL": "https://www.youtube.com/watch?v=CdPU_VnC6UI",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-07-18T09:21:57.454Z"
+  },
+  "analytics": {
+    "editionId": "dc_74a4068bb6",
+    "pageIdentifier": "dc_74a4068bb6:discovery-v1"
+  },
+  "production": {
+    "jobId": "dcjob_bb098ee6-351d-4b94-90b5-af683a51a33a",
+    "submittedAt": "2026-07-18T09:24:17.389Z",
+    "researchCompletedAt": "2026-07-18T09:24:17.429Z",
+    "editionCreatedAt": "2026-07-18T09:24:17.429Z"
+  }
+}
