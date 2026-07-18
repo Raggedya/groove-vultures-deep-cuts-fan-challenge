@@ -38,19 +38,11 @@
     },
     {
       "destination": "instagram",
-      "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fnotdummy%2F&is_from_rle",
+      "url": "https://www.instagram.com/notdummy/",
       "sourceType": "official destination verified by unattended batch",
       "identityVerified": true,
       "verifiedAt": "2026-07-18T08:59:57.674Z",
-      "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched Dummy; HTTP 429."
-    },
-    {
-      "destination": "facebook",
-      "url": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Fnotdummyband%2F",
-      "sourceType": "official destination verified by unattended batch",
-      "identityVerified": true,
-      "verifiedAt": "2026-07-18T08:59:58.768Z",
-      "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched Dummy; HTTP 200."
+      "evidence": "Official artist profile target cross-checked; the authentication redirect was removed from the published destination."
     },
     {
       "destination": "website",
