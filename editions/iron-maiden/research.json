@@ -1,0 +1,81 @@
+{
+  "bandName": "Iron Maiden",
+  "slug": "iron-maiden",
+  "editionId": "dc_5850959a21",
+  "verifiedAt": "2026-07-18T02:30:38.767Z",
+  "sources": [
+    {
+      "destination": "website",
+      "url": "https://www.ironmaiden.com/",
+      "sourceType": "official artist website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T02:28:53.571Z",
+      "evidence": "Official Iron Maiden website; current band news and official channel links identify the artist-controlled destination."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/6mdiAmATAx73kdxrNrnlao",
+      "sourceType": "official artist profile linked by official website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T02:28:53.571Z",
+      "evidence": "The official Iron Maiden website links this exact artist profile; the profile identity and catalogue match Iron Maiden."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/ironmaiden",
+      "sourceType": "official social profile linked by official website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T02:28:53.571Z",
+      "evidence": "The official Iron Maiden website exposes this exact Instagram destination in its official social links."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/user/ironmaiden",
+      "sourceType": "official YouTube channel linked by official website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T02:28:53.571Z",
+      "evidence": "The official Iron Maiden website links this channel, whose video catalogue and channel identity match the band."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/ironmaiden",
+      "sourceType": "official social profile linked by official website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T02:28:53.571Z",
+      "evidence": "The official Iron Maiden website exposes this exact Facebook destination in its official social links."
+    },
+    {
+      "destination": "buyMusic",
+      "url": "https://merch.ironmaiden.com/",
+      "sourceType": "official artist store linked by official website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T02:28:53.571Z",
+      "evidence": "The official Iron Maiden website links this store; its navigation includes the band's official Music range."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://merch.ironmaiden.com/",
+      "sourceType": "official artist store linked by official website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T02:28:53.571Z",
+      "evidence": "The official Iron Maiden website links this exact official store for band merchandise."
+    },
+    {
+      "destination": "newsReviews",
+      "url": "https://www.loudersound.com/bands-artists/iron-maiden-interview-eddfest-bruce-dickinson-steve-harris",
+      "sourceType": "current established music editorial interview",
+      "identityVerified": true,
+      "credibleEditorial": true,
+      "verifiedAt": "2026-07-18T02:28:53.571Z",
+      "evidence": "Current Metal Hammer/Louder interview published 9 July 2026 featuring Iron Maiden founders Steve Harris and Bruce Dickinson."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=X4bgXH3sJ2Q",
+      "sourceType": "official YouTube channel popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T02:28:53.571Z",
+      "evidence": "The official channel's Popular ordering identifies The Trooper as its most-viewed official music video, showing 137M views at verification time."
+    }
+  ]
+}

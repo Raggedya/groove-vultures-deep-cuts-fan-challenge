@@ -1,0 +1,51 @@
+{
+  "brandName": "Deep Cuts",
+  "bandName": "Iron Maiden",
+  "editionTitle": "Iron Maiden",
+  "description": "British heavy metal pioneers whose five-decade catalogue, theatrical live shows and fiercely independent spirit made them one of the genre's defining global bands.",
+  "discovery": {
+    "bio": "British heavy metal pioneers whose five-decade catalogue, theatrical live shows and fiercely independent spirit made them one of the genre's defining global bands.",
+    "newsLabel": "Steve Harris & Bruce Dickinson — Metal Hammer"
+  },
+  "mode": "discovery",
+  "slug": "iron-maiden",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_5850959a21",
+  "characterArtwork": "assets/aggits-original-cutout-v4.png",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/iron-maiden/instagram-discovery.png",
+    "qrImage": "output/iron-maiden/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#2f80ff",
+    "accentSecondary": "#8dbdff"
+  },
+  "links": {
+    "buyMusic": "https://merch.ironmaiden.com/",
+    "spotify": "https://open.spotify.com/artist/6mdiAmATAx73kdxrNrnlao",
+    "instagram": "https://www.instagram.com/ironmaiden",
+    "bandcamp": "",
+    "youtube": "https://www.youtube.com/user/ironmaiden",
+    "facebook": "https://www.facebook.com/ironmaiden",
+    "website": "https://www.ironmaiden.com/",
+    "merchandise": "https://merch.ironmaiden.com/",
+    "newsReviews": "https://www.loudersound.com/bands-artists/iron-maiden-interview-eddfest-bruce-dickinson-steve-harris"
+  },
+  "featuredVideo": {
+    "title": "Iron Maiden - The Trooper (Official Video)",
+    "youtubeURL": "https://www.youtube.com/watch?v=X4bgXH3sJ2Q",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-07-18T02:28:53.571Z"
+  },
+  "analytics": {
+    "editionId": "dc_5850959a21",
+    "pageIdentifier": "dc_5850959a21:discovery-v1"
+  },
+  "production": {
+    "jobId": "dcjob_2f0c54ef-49b1-4d2d-8ce9-e856c0cbbb97",
+    "submittedAt": "2026-07-18T02:10:53.768Z",
+    "researchCompletedAt": "2026-07-18T02:30:38.767Z",
+    "editionCreatedAt": "2026-07-18T02:30:38.767Z"
+  }
+}

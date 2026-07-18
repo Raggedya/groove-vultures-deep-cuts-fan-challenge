@@ -81,6 +81,14 @@
       "name": "The Living End",
       "config": "editions/the-living-end/edition.json",
       "active": true
+    },
+    {
+      "slug": "iron-maiden",
+      "editionId": "dc_5850959a21",
+      "canonicalPath": "/e/dc_5850959a21",
+      "name": "Iron Maiden",
+      "config": "editions/iron-maiden/edition.json",
+      "active": true
     }
   ]
 }
