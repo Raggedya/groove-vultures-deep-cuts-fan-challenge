@@ -5,6 +5,7 @@ output/*/
 !output/*/.gitkeep
 build-records/in-progress/*.json
 .deep-cuts/
+data/research-cache/
 .env
 node_modules/
 dist/
