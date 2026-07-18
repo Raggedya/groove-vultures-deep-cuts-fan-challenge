@@ -1,0 +1,51 @@
+{
+  "brandName": "Deep Cuts",
+  "bandName": "Screamin' Eagles",
+  "editionTitle": "Screamin' Eagles",
+  "description": "Melbourne party-rock veterans delivering classic Eagles songs and big rock anthems with multiple guitars, soaring harmonies, keys and sax.",
+  "discovery": {
+    "bio": "Melbourne party-rock veterans delivering classic Eagles songs and big rock anthems with multiple guitars, soaring harmonies, keys and sax.",
+    "newsLabel": "Profile: The Echo"
+  },
+  "mode": "discovery",
+  "slug": "screamin-eagles",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_448bfea6db",
+  "characterArtwork": "assets/aggits-original-cutout-v4.png",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/screamin-eagles/instagram-discovery.png",
+    "qrImage": "output/screamin-eagles/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#2f80ff",
+    "accentSecondary": "#8dbdff"
+  },
+  "links": {
+    "buyMusic": "",
+    "spotify": "",
+    "instagram": "",
+    "bandcamp": "",
+    "youtube": "",
+    "facebook": "https://www.facebook.com/thescreamineagles/",
+    "website": "",
+    "merchandise": "",
+    "newsReviews": "https://www.echo.net.au/2026/01/screamin-eagles-live/"
+  },
+  "featuredVideo": {
+    "title": "",
+    "youtubeURL": "",
+    "selectionBasis": "",
+    "verifiedAt": ""
+  },
+  "analytics": {
+    "editionId": "dc_448bfea6db",
+    "pageIdentifier": "dc_448bfea6db:discovery-v1"
+  },
+  "production": {
+    "jobId": "dcjob_bb6b9204-4047-48bc-ae89-3158e1a5c4ed",
+    "submittedAt": "2026-07-18T11:22:29.019Z",
+    "researchCompletedAt": "2026-07-18T11:22:29.019Z",
+    "editionCreatedAt": "2026-07-18T11:22:29.019Z"
+  }
+}
