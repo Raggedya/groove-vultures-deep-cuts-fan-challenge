@@ -1,0 +1,51 @@
+{
+  "brandName": "Deep Cuts",
+  "bandName": "Models",
+  "editionTitle": "Models",
+  "description": "Melbourne new-wave originals blending art-pop invention, sharp synth textures and enduring Australian rock hooks since 1978.",
+  "discovery": {
+    "bio": "Melbourne new-wave originals blending art-pop invention, sharp synth textures and enduring Australian rock hooks since 1978.",
+    "newsLabel": "Interview: Sentinel-Times"
+  },
+  "mode": "discovery",
+  "slug": "models",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_f27cfbaba4",
+  "characterArtwork": "assets/aggits-original-cutout-v4.png",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/models/instagram-discovery.png",
+    "qrImage": "output/models/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#2f80ff",
+    "accentSecondary": "#8dbdff"
+  },
+  "links": {
+    "buyMusic": "https://store.warnermusic.com.au/collections/models",
+    "spotify": "https://open.spotify.com/artist/2k0zkxxRvJKwiHQq5QfjYn",
+    "instagram": "",
+    "bandcamp": "",
+    "youtube": "https://www.youtube.com/@models6460",
+    "facebook": "https://www.facebook.com/Models.Band/",
+    "website": "https://modelsband.com/",
+    "merchandise": "https://modelsband.com/shop/",
+    "newsReviews": "https://www.sgst.com.au/models-never-go-out-of-style-returning-to-archies-creek-hotel/"
+  },
+  "featuredVideo": {
+    "title": "Models - Out of Mind Out of Sight (Official Music Video)",
+    "youtubeURL": "https://www.youtube.com/watch?v=k5EZmJoNeYs",
+    "selectionBasis": "Most-viewed verified official music video on the band’s official Models YouTube channel (555K views at verification), exceeding I Hear Motion (414K), Barbados (389K) and Big On Love (67K).",
+    "verifiedAt": "2026-07-18T11:42:27.923Z"
+  },
+  "analytics": {
+    "editionId": "dc_f27cfbaba4",
+    "pageIdentifier": "dc_f27cfbaba4:discovery-v1"
+  },
+  "production": {
+    "jobId": "dcjob_517c1ab0-c230-46ad-bd81-ad8246977a0d",
+    "submittedAt": "2026-07-18T11:42:27.923Z",
+    "researchCompletedAt": "2026-07-18T11:42:27.923Z",
+    "editionCreatedAt": "2026-07-18T11:42:27.923Z"
+  }
+}
