@@ -129,6 +129,14 @@
       "name": "DAIISTAR",
       "config": "editions/daiistar/edition.json",
       "active": true
+    },
+    {
+      "slug": "cable-ties",
+      "editionId": "dc_74a4068bb6",
+      "canonicalPath": "/e/dc_74a4068bb6",
+      "name": "Cable Ties",
+      "config": "editions/cable-ties/edition.json",
+      "active": true
     }
   ]
 }

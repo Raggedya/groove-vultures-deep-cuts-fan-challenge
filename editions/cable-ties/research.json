@@ -1,0 +1,89 @@
+{
+  "bandName": "Cable Ties",
+  "slug": "cable-ties",
+  "editionId": "dc_74a4068bb6",
+  "verifiedAt": "2026-07-18T09:24:17.429Z",
+  "sources": [
+    {
+      "destination": "buyMusic",
+      "url": "https://cableties.bandcamp.com/",
+      "sourceType": "official destination verified by unattended batch",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T09:21:53.089Z",
+      "evidence": "buyMusic resolved directly and the destination metadata or an official artist-controlled cross-link matched Cable Ties; HTTP 200."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/2DHxsgHVEiupQyVWHI1XIW?si=c4jhzks2Q86V_fVnBuFYBw",
+      "sourceType": "official destination verified by unattended batch",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T09:21:54.294Z",
+      "evidence": "spotify resolved directly and the destination metadata or an official artist-controlled cross-link matched Cable Ties; HTTP 200."
+    },
+    {
+      "destination": "bandcamp",
+      "url": "https://cableties.bandcamp.com/",
+      "sourceType": "official destination verified by unattended batch",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T09:21:53.089Z",
+      "evidence": "bandcamp resolved directly and the destination metadata or an official artist-controlled cross-link matched Cable Ties; HTTP 200."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/@cabletiesband",
+      "sourceType": "official destination verified by unattended batch",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T09:21:54.687Z",
+      "evidence": "youtube resolved directly and the destination metadata or an official artist-controlled cross-link matched Cable Ties; HTTP 200."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fcableties%2F&is_from_rle",
+      "sourceType": "official destination verified by unattended batch",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T09:21:55.059Z",
+      "evidence": "instagram resolved directly and the destination metadata or an official artist-controlled cross-link matched Cable Ties; HTTP 429."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/cabletiesband/",
+      "sourceType": "official destination verified by unattended batch",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T09:21:56.670Z",
+      "evidence": "facebook resolved directly and the destination metadata or an official artist-controlled cross-link matched Cable Ties; HTTP 200."
+    },
+    {
+      "destination": "website",
+      "url": "http://www.cabletiesband.com/",
+      "sourceType": "official destination verified by unattended batch",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T09:21:52.470Z",
+      "evidence": "website resolved directly and the destination metadata or an official artist-controlled cross-link matched Cable Ties; HTTP 200."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://cableties.bandcamp.com/merch",
+      "sourceType": "official destination verified by unattended batch",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T09:21:53.282Z",
+      "evidence": "merchandise resolved directly and the destination metadata or an official artist-controlled cross-link matched Cable Ties; HTTP 200."
+    },
+    {
+      "destination": "newsReviews",
+      "url": "https://pitchfork.com/news/cable-ties-announce-new-album-far-enough-share-song-listen/",
+      "sourceType": "credible music editorial",
+      "identityVerified": true,
+      "credibleEditorial": true,
+      "verifiedAt": "2026-07-18T09:21:53.499Z",
+      "evidence": "newsReviews resolved directly and the destination metadata or an official artist-controlled cross-link matched Cable Ties; HTTP 200."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=CdPU_VnC6UI",
+      "sourceType": "official destination verified by unattended batch",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-18T09:21:57.454Z",
+      "evidence": "featuredVideo resolved directly and the destination metadata or an official artist-controlled cross-link matched Cable Ties; HTTP 200."
+    }
+  ]
+}
