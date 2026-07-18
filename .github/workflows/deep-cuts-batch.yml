@@ -37,8 +37,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
-      - run: npm ci
+      - run: npm install --ignore-scripts --no-audit --no-fund
       - run: npm run deepcuts:batch:test
       - name: Run isolated artist pipeline
         env:
