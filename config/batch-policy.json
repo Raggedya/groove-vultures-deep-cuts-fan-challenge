@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "minimumConfidence": 98,
+  "minimumFollowersExclusive": 2000,
+  "maximumFollowersInclusive": 50000,
+  "concurrency": 3,
+  "requestTimeoutMs": 18000,
+  "requestRetries": 3,
+  "requiredDestinations": ["buyMusic", "spotify", "bandcamp", "youtube", "instagram", "facebook", "website", "merchandise", "newsReviews", "featuredVideo"],
+  "failClosed": true,
+  "allowSearchResultDestinations": false
+}

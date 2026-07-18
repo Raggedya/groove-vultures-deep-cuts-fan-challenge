@@ -1,5 +1,11 @@
 # Deep Cuts Production Manual
 
+## Unattended artist batches
+
+Deep Cuts accepts CSV batches through one permanent controller. Intake data is evidence to verify, not truth to copy. Every artist is normalized, duplicate-checked, range-checked, researched and independently gated. Publication requires at least 98% confidence in artist identity and every mandatory direct destination. Search pages, guesses and placeholders are forbidden. Rejections are recorded and isolated. Temporary failures receive bounded retries with exponential backoff; checkpoints allow safe resume. Accepted artists flow through the existing factory, immutable artwork checks, QR scan-back, shared Cloudflare deployment, live verification, analytics registration and email delivery.
+
+The current product is a discovery platform, not a quiz. Legacy batch requirements for question counts, scoring or timers are not applicable; reports record `question_count` as zero to make that explicit.
+
 Version 3.0 â€” Permanent Artist Discovery Platform
 
 ## Constitution
