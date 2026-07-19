@@ -35,7 +35,11 @@ for(const edition of platform.editions){
       if(research.editionId!==edition.editionId||!Array.isArray(research.sources)||research.sources.length<2)errors.push(`${researchPath} requires matching edition identity and at least two sources.`);
       for(const[key,value]of Object.entries(config.links||{}))if(value&&!research.sources.some(source=>source.destination===key&&source.identityVerified===true&&normalized(source.url)===normalized(value)))errors.push(`${researchPath} lacks matching verified evidence for links.${key}.`);
     }
-    await fs.access(config.characterArtwork);
+    if(config.editionType==='school'){
+      if(config.characterArtwork)errors.push(`${edition.config} School Discovery must not configure character artwork.`);
+      if(config.theme?.logoPolicy!=='colour-reference-only; no logo or emblem displayed')errors.push(`${edition.config} must preserve the School Discovery no-logo policy.`);
+      if(!config.featuredVideo?.youtubeURL)errors.push(`${edition.config} School Discovery requires a featured YouTube video.`);
+    }else await fs.access(config.characterArtwork);
     for(const[key,value]of Object.entries(config.links||{}))if(value&&(!/^https:\/\//.test(value)||authenticationWall(value)))errors.push(`${edition.config} links.${key} must be a direct HTTPS destination, never an authentication URL.`);
     if(config.featuredVideo?.youtubeURL&&!/^https:\/\/(?:www\.)?(?:youtube\.com|youtu\.be)\//i.test(config.featuredVideo.youtubeURL))errors.push(`${edition.config} featuredVideo.youtubeURL must be a verified YouTube URL.`);
     if(config.featuredVideo?.youtubeURL&&config.production){

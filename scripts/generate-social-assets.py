@@ -105,6 +105,24 @@ def centred_text(draw: ImageDraw.ImageDraw, text: str, y: int, selected_font: Im
     draw.text((x, y), text, font=selected_font, fill=fill, stroke_width=stroke, stroke_fill=(2, 9, 23))
 
 
+def centred_wrapped_text(draw: ImageDraw.ImageDraw, text: str, y: int, max_width: int, selected_font: ImageFont.FreeTypeFont, fill=WHITE, line_gap: int = 10) -> int:
+    lines: list[str] = []
+    current = ""
+    for word in text.split():
+        candidate = f"{current} {word}".strip()
+        if current and draw.textbbox((0, 0), candidate, font=selected_font)[2] > max_width:
+            lines.append(current)
+            current = word
+        else:
+            current = candidate
+    if current:
+        lines.append(current)
+    for line in lines[:3]:
+        centred_text(draw, line, y, selected_font, fill=fill)
+        y += selected_font.size + line_gap
+    return y
+
+
 def create_instagram(config: dict, aggits: Image.Image, destination: Path) -> None:
     canvas = background()
     draw = ImageDraw.Draw(canvas)
@@ -123,6 +141,93 @@ def create_instagram(config: dict, aggits: Image.Image, destination: Path) -> No
     challenge_font = fit_font(draw, footer_label, 820, 54, 38)
     centred_text(draw, footer_label, 961, challenge_font, fill=(173, 210, 255), stroke=1)
     canvas.convert("RGB").save(destination, "PNG", optimize=True)
+
+
+def school_palette(config: dict) -> tuple[tuple[int, int, int], ...]:
+    theme = config.get("theme", {})
+    def rgb(key: str, fallback: str) -> tuple[int, int, int]:
+        value = str(theme.get(key) or fallback).lstrip("#")
+        if len(value) != 6:
+            raise SystemExit(f"School theme colour {key} is invalid.")
+        return tuple(int(value[index:index + 2], 16) for index in (0, 2, 4))
+    return rgb("accent", "#CE2029"), rgb("navy", "#0A2342"), rgb("accentSecondary", "#00C4B4"), rgb("contentBackground", "#F8FAFC")
+
+
+def school_background(config: dict) -> Image.Image:
+    primary, navy, secondary, content = school_palette(config)
+    canvas = Image.new("RGBA", (SIZE, SIZE), navy + (255,))
+    glow = Image.new("RGBA", (SIZE, SIZE), (0, 0, 0, 0))
+    glow_draw = ImageDraw.Draw(glow)
+    glow_draw.ellipse((-120, -220, 1200, 760), fill=primary + (125,))
+    glow_draw.ellipse((520, 600, 1250, 1260), fill=secondary + (50,))
+    glow = glow.filter(ImageFilter.GaussianBlur(120))
+    canvas = Image.alpha_composite(canvas, glow)
+    draw = ImageDraw.Draw(canvas)
+    for offset in range(0, 210, 18):
+        draw.arc((90 + offset // 3, 80 + offset // 4, 990 - offset // 3, 980 - offset // 6), 198, 338, fill=content + (24,), width=2)
+    return canvas
+
+
+def create_school_instagram(config: dict, destination: Path) -> None:
+    canvas = school_background(config)
+    draw = ImageDraw.Draw(canvas)
+    primary, _, secondary, _ = school_palette(config)
+    centred_text(draw, "DISCOVER OUR SCHOOL", 120, fit_font(draw, "DISCOVER OUR SCHOOL", 880, 62, 42), fill=WHITE, stroke=1)
+    draw.rounded_rectangle((165, 225, 915, 235), radius=5, fill=secondary + (255,))
+    name = config["bandName"].upper()
+    selected = fit_font(draw, name, 900, 112, 54)
+    centred_text(draw, name, 360, selected, fill=WHITE, stroke=2)
+    bio = str(config.get("description") or "A school community to discover.")
+    bio_font = font(30)
+    centred_wrapped_text(draw, bio, 545, 820, bio_font, fill=(225, 235, 244), line_gap=12)
+    draw.rounded_rectangle((230, 720, 850, 860), radius=28, outline=secondary + (255,), width=4, fill=(10, 35, 66, 235))
+    centred_text(draw, "SCHOOL DISCOVERY", 764, fit_font(draw, "SCHOOL DISCOVERY", 560, 42, 34), fill=WHITE)
+    centred_text(draw, "copyright Clearlight Creative", 1014, font(22), fill=(177, 196, 214))
+    canvas.convert("RGB").save(destination, "PNG", optimize=True)
+
+
+def create_school_qr(config: dict, destination: Path) -> str:
+    platform = json.loads((ROOT / "platform.json").read_text(encoding="utf-8"))
+    base_url = os.environ.get("DEEP_CUTS_BASE_URL", platform.get("publicBaseURL", "")).rstrip("/")
+    if not base_url.startswith("https://") or ".example" in base_url:
+        raise ValueError("A permanent HTTPS publicBaseURL is required before School Discovery QR artwork can be generated.")
+    edition_id = config.get("analytics", {}).get("editionId")
+    url = f"{base_url}/q/{edition_id}"
+    node = os.environ.get("DEEP_CUTS_NODE", "node")
+    result = subprocess.run([node, str(ROOT / "scripts" / "qr-matrix.cjs"), url], cwd=ROOT, check=True, capture_output=True, text=True)
+    matrix = json.loads(result.stdout)
+    border = 4
+    module = 520 // (len(matrix) + border * 2)
+    qr_size = module * (len(matrix) + border * 2)
+    qr_image = Image.new("RGBA", (qr_size, qr_size), (255, 255, 255, 255))
+    qr_draw = ImageDraw.Draw(qr_image)
+    for row, values in enumerate(matrix):
+        for column, dark in enumerate(values):
+            if dark:
+                x, y = (column + border) * module, (row + border) * module
+                qr_draw.rectangle((x, y, x + module - 1, y + module - 1), fill=(5, 14, 28, 255))
+    canvas = school_background(config)
+    draw = ImageDraw.Draw(canvas)
+    primary, _, secondary, _ = school_palette(config)
+    centred_text(draw, "DISCOVER OUR SCHOOL", 64, fit_font(draw, "DISCOVER OUR SCHOOL", 900, 68, 46), fill=WHITE, stroke=1)
+    draw.rounded_rectangle((150, 160, 930, 168), radius=4, fill=secondary + (255,))
+    name = config["bandName"].upper()
+    centred_text(draw, name, 205, fit_font(draw, name, 900, 72, 42), fill=WHITE, stroke=1)
+    card_size = qr_size + 42
+    card_x, card_y = (SIZE - card_size) // 2, 350
+    draw.rounded_rectangle((card_x, card_y, card_x + card_size, card_y + card_size), radius=32, fill=(255, 255, 255), outline=primary + (255,), width=5)
+    canvas.alpha_composite(qr_image, (card_x + 21, card_y + 21))
+    centred_text(draw, "SCHOOL DISCOVERY", 935, fit_font(draw, "SCHOOL DISCOVERY", 720, 42, 32), fill=(225, 235, 244))
+    centred_text(draw, "copyright Clearlight Creative", 1015, font(21), fill=(177, 196, 214))
+    canvas.convert("RGB").save(destination, "PNG", optimize=True)
+    if zxingcpp is not None:
+        scan = zxingcpp.read_barcode(Image.open(destination))
+        if scan is None or scan.text != url:
+            raise SystemExit(f"Rendered School Discovery QR scan-back failed for {destination}")
+        reduced_scan = zxingcpp.read_barcode(Image.open(destination).resize((540, 540), Image.Resampling.LANCZOS))
+        if reduced_scan is None or reduced_scan.text != url:
+            raise SystemExit(f"Reduced-size School Discovery QR scan-back failed for {destination}")
+    return url
 
 
 def create_qr(config: dict, aggits: Image.Image, destination: Path) -> str:
@@ -242,11 +347,15 @@ def main() -> None:
     config = load_edition(slug)
     output = ROOT / "output" / slug
     output.mkdir(parents=True, exist_ok=True)
-    aggits = Image.open(ROOT / config["characterArtwork"]).convert("RGBA")
     instagram = output / "instagram-discovery.png"
     qr_path = output / "instagram-qr.png"
-    create_instagram(config, aggits, instagram)
-    verified_url = create_qr(config, aggits, qr_path)
+    if config.get("editionType") == "school":
+        create_school_instagram(config, instagram)
+        verified_url = create_school_qr(config, qr_path)
+    else:
+        aggits = Image.open(ROOT / config["characterArtwork"]).convert("RGBA")
+        create_instagram(config, aggits, instagram)
+        verified_url = create_qr(config, aggits, qr_path)
     manifest = {
         "slug": slug,
         "bandName": config["bandName"],

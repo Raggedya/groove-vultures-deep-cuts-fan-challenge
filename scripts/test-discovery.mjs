@@ -17,10 +17,16 @@ assert.ok(app.includes('setInterval(run,10000)'),'Waveform and destination atten
 for(const platform of ['buyMusic','spotify','instagram','bandcamp','youtube','facebook','website','merchandise','newsReviews'])assert.ok(app.includes(`key:"${platform}"`),`Missing standard ${platform} destination`);
 for(const destination of ['history','specifications','buyerGuide','ownersClub','partsRestoration','carsForSale'])assert.ok(app.includes(`key:"${destination}"`),`Missing standard Cars destination ${destination}`);
 for(const destination of ['calendar','news','events','membership','barefootBowls','pennant','venueHire','contact','bowlsVictoria'])assert.ok(app.includes(`key:"${destination}"`),`Missing standard Clubs destination ${destination}`);
+for(const destination of ['enrolment','virtualTour','principalMessage','visionValues','curriculum','studentLife','newsletter','termDates','policies','schoolProject'])assert.ok(app.includes(`key:"${destination}"`),`Missing isolated School Discovery destination ${destination}`);
 assert.ok(app.includes('config.editionType==="car"'),'Music and Cars editions must remain explicitly separated by configuration.');
 assert.ok(app.includes('config.editionType==="club"'),'Music, Cars and Clubs editions must remain explicitly separated by configuration.');
+assert.ok(app.includes('config.editionType==="school"'),'School Discovery must remain explicitly separated from Music, Cars and Clubs.');
 for(const label of ['Discover','Watch','Connect','Own & Restore'])assert.ok(app.includes(`"${label}"`),`Missing locked Cars navigation label ${label}`);
 for(const label of ['Visit','Play','Join','Connect'])assert.ok(factory.includes(`'${label}'`),`Missing locked Clubs navigation label ${label}`);
+for(const label of ['Discover','Learn','Connect','Enrol'])assert.ok(factory.includes(`'${label}'`),`Missing locked School Discovery navigation label ${label}`);
+assert.ok(factory.includes("characterArtwork:editionType==='school'?'':"),'School Discovery must never configure Aggits artwork.');
+assert.ok(factory.includes("logoPolicy:'colour-reference-only; no logo or emblem displayed'"),'School branding may use official colours but never the school logo or emblem.');
+assert.ok(app.includes('els.artwork.removeAttribute("src")'),'School Discovery must remove the character image source entirely.');
 assert.ok(!app.includes('key:"tip"'),'Tip must not be rendered by the discovery engine.');
 assert.ok(app.includes('if(!url)continue'),'Unverified or unavailable destinations must be omitted entirely.');
 assert.ok(app.includes('youtube-nocookie.com/embed/'),'Featured videos must use the privacy-enhanced YouTube player.');

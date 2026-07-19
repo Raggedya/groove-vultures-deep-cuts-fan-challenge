@@ -8,7 +8,7 @@ if(!inputPath)throw new Error('Usage: node scripts/create-edition.mjs <verified-
 const input=JSON.parse(await fs.readFile(path.resolve(inputPath),'utf8'));
 const bandName=clean(input.bandName,120);
 const bio=clean(input.bio,190);
-const editionType=input.editionType==='car'?'car':input.editionType==='club'?'club':'music';
+const editionType=['car','club','school'].includes(input.editionType)?input.editionType:'music';
 if(!bandName||!bio)throw new Error('Verified research requires bandName and a concise bio.');
 const slug=slugify(bandName);
 const jobPath=path.join(root,'.deep-cuts','jobs',`${slug}.json`);
@@ -26,18 +26,19 @@ const now=new Date().toISOString();
 const directory=path.join(root,'editions',slug);
 await fs.mkdir(directory,{recursive:true});
 const config={
-  brandName:editionType==='club'?'Deep Cuts Clubs':editionType==='car'?'Deep Cuts Cars':'Deep Cuts',editionType,bandName,editionTitle:bandName,description:bio,
+  brandName:editionType==='school'?'School Discovery':editionType==='club'?'Deep Cuts Clubs':editionType==='car'?'Deep Cuts Cars':'Deep Cuts',editionType,bandName,editionTitle:bandName,description:bio,
   discovery:{bio,newsLabel:clean(input.newsLabel||'',90)},mode:'discovery',slug,
   publicURL:`${String(platform.publicBaseURL).replace(/\/$/,'')}${canonicalPath}`,
-  characterArtwork:'assets/aggits-original-cutout-v4.png',backgroundArtwork:'',
+  characterArtwork:editionType==='school'?'':'assets/aggits-original-cutout-v4.png',backgroundArtwork:'',
   social:{copyright:'copyright Clearlight Creative',instagramImage:`output/${slug}/instagram-discovery.png`,qrImage:`output/${slug}/instagram-qr.png`},
-  theme:{accent:'#2f80ff',accentSecondary:'#8dbdff'},links,
+  theme:editionType==='school'?schoolTheme(input):{accent:'#2f80ff',accentSecondary:'#8dbdff'},links,
   featuredVideo,
-  analytics:{editionId,pageIdentifier:`${editionId}:${editionType==='club'?'club-v1':editionType==='car'?'automotive-v1':'discovery-v1'}`},
+  analytics:{editionId,pageIdentifier:`${editionId}:${editionType==='school'?'school-discovery-v1':editionType==='club'?'club-v1':editionType==='car'?'automotive-v1':'discovery-v1'}`},
   production:{jobId:job.jobId,submittedAt:job.submittedAt,researchCompletedAt:now,editionCreatedAt:now}
 };
 if(editionType==='car')config.automotive={make:clean(input.automotive?.make,60),model:clean(input.automotive?.model,60),productionYears:clean(input.automotive?.productionYears,30),heroLabels:['Discover','Watch','Connect','Own & Restore']};
 if(editionType==='club')config.club={location:clean(input.club?.location,120),formed:clean(input.club?.formed,30),heroLabels:['Visit','Play','Join','Connect']};
+if(editionType==='school')config.school={officialWebsite:https(input.school?.officialWebsite||''),paletteSource:https(input.school?.paletteSource||input.school?.officialWebsite||''),logoPolicy:'colour-reference-only; no logo or emblem displayed',heroLabels:['Discover','Learn','Connect','Enrol']};
 const research={bandName,slug,editionId,verifiedAt:now,sources:input.sources};
 await fs.writeFile(path.join(directory,'edition.json'),JSON.stringify(config,null,2)+'\n');
 await fs.writeFile(path.join(directory,'research.json'),JSON.stringify(research,null,2)+'\n');
@@ -50,7 +51,8 @@ console.log(JSON.stringify({ok:true,jobId:job.jobId,slug,editionId,canonicalPath
 function validateResearch(value){
   const car=value.editionType==='car';
   const club=value.editionType==='club';
-  const keys=club?['website','calendar','news','events','membership','barefootBowls','pennant','venueHire','history','contact','facebook','bowlsVictoria']:car?['history','specifications','buyerGuide','youtube','ownersClub','partsRestoration','carsForSale','newsReviews']:['buyMusic','spotify','instagram','bandcamp','youtube','facebook','website','merchandise','newsReviews'];
+  const school=value.editionType==='school';
+  const keys=school?['website','enrolment','virtualTour','principalMessage','visionValues','curriculum','studentLife','newsletter','termDates','policies','contact','schoolProject','youtube']:club?['website','calendar','news','events','membership','barefootBowls','pennant','venueHire','history','contact','facebook','bowlsVictoria']:car?['history','specifications','buyerGuide','youtube','ownersClub','partsRestoration','carsForSale','newsReviews']:['buyMusic','spotify','instagram','bandcamp','youtube','facebook','website','merchandise','newsReviews'];
   const links=Object.fromEntries(keys.map(key=>[key,https(value.links?.[key]||'')]));
   const sources=Array.isArray(value.sources)?value.sources:[];
   if(sources.length<2||!sources.some(source=>source.identityVerified===true&&/official|authoritative/i.test(String(source.sourceType||''))))throw new Error('Research requires two identity-checked sources including one official or authoritative source.');
@@ -66,6 +68,7 @@ function validateFeaturedVideo(value,links){
   const youtubeURL=https(value.featuredVideo?.youtubeURL||'');
   const title=clean(value.featuredVideo?.title||'',120);
   const expectedBasis=value.editionType==='music'?'most-viewed-official':'best-authoritative';
+  if(value.editionType==='school'&&!youtubeURL)throw new Error('School Discovery requires a verified authoritative featured YouTube video.');
   if(links.youtube&&!youtubeURL)throw new Error(value.editionType==='music'?'An official YouTube presence requires a verified most-viewed official featured video.':'A non-music YouTube destination requires a verified authoritative featured video.');
   if(!youtubeURL)return{title:'',youtubeURL:'',selectionBasis:'',verifiedAt:''};
   if(!title)throw new Error('The featured YouTube video requires a title.');
@@ -80,4 +83,13 @@ function clean(value,max){return String(value||'').trim().replace(/\s+/g,' ').sl
 function https(value){if(!value)return'';const url=new URL(String(value));if(url.protocol==='http:')url.protocol='https:';if(url.protocol!=='https:')throw new Error(`Destination must use HTTPS: ${value}`);url.hash='';return url.href}
 function normalize(value){try{const url=new URL(String(value));if(url.protocol==='http:')url.protocol='https:';url.hash='';return url.href.replace(/\/$/,'')}catch{return''}}
 function validDate(value){return Number.isFinite(new Date(value).getTime())}
+function schoolTheme(value){
+  const source=value.theme||{};
+  const palette={accent:hex(source.accent),accentSecondary:hex(source.accentSecondary),navy:hex(source.navy),surface:hex(source.surface),contentBackground:hex(source.contentBackground)};
+  if(Object.values(palette).some(item=>!item))throw new Error('School Discovery requires five verified website-derived theme colours.');
+  const evidence=(value.sources||[]).find(item=>item.destination==='themePalette'&&item.identityVerified===true&&validDate(item.verifiedAt)&&/official school website/i.test(String(item.sourceType||'')));
+  if(!evidence)throw new Error('School colours require dated evidence from the official school website.');
+  return{...palette,paletteSource:https(value.school?.paletteSource||value.school?.officialWebsite||''),logoPolicy:'colour-reference-only; no logo or emblem displayed'};
+}
+function hex(value){const result=String(value||'').trim().toUpperCase();return /^#[0-9A-F]{6}$/.test(result)?result:''}
 

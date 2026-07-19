@@ -19,6 +19,12 @@
       "allowedLinks": ["website", "calendar", "news", "events", "membership", "barefootBowls", "pennant", "venueHire", "history", "contact", "facebook", "bowlsVictoria"],
       "renderedLinks": ["website", "calendar", "news", "events", "membership", "barefootBowls", "pennant", "venueHire", "history", "contact", "facebook", "bowlsVictoria"],
       "exclusiveConfig": ["club"]
+    },
+    "school": {
+      "brandNames": ["School Discovery"],
+      "allowedLinks": ["website", "enrolment", "virtualTour", "principalMessage", "visionValues", "curriculum", "studentLife", "newsletter", "termDates", "policies", "contact", "schoolProject", "youtube"],
+      "renderedLinks": ["website", "enrolment", "virtualTour", "principalMessage", "visionValues", "curriculum", "studentLife", "newsletter", "termDates", "policies", "contact", "schoolProject", "youtube"],
+      "exclusiveConfig": ["school"]
     }
   }
 }
