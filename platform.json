@@ -193,6 +193,14 @@
       "name": "Blackburn Bowls Club",
       "config": "editions/blackburn-bowls-club/edition.json",
       "active": true
+    },
+    {
+      "slug": "kerrimuir-primary-school",
+      "editionId": "dc_163d4aae1b",
+      "canonicalPath": "/e/dc_163d4aae1b",
+      "name": "Kerrimuir Primary School",
+      "config": "editions/kerrimuir-primary-school/edition.json",
+      "active": true
     }
   ]
 }

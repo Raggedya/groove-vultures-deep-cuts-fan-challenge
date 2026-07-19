@@ -1,6 +1,6 @@
 "use strict";
 
-const VERSION="20260719-clubs-1";
+const VERSION="20260720-schools-1";
 const $=id=>document.getElementById(id);
 const els={page:$("discoveryPage"),error:$("errorScreen"),errorMessage:$("errorMessage"),bandName:$("bandName"),bio:$("artistBio"),artwork:$("heroArtwork"),waveform:$("sonicSignature"),features:$("featureList"),video:$("featuredVideo"),videoLabel:$("featuredVideoLabel"),videoTitle:$("featuredVideoTitle"),videoFrame:$("featuredVideoFrame"),links:$("platformLinks"),share:$("shareButton"),status:$("shareStatus"),description:$("pageDescription"),poweredBy:$("poweredByLabel"),copyright:$("coverCopyright")};
 
@@ -42,6 +42,22 @@ const CLUB_LINK_DEFINITIONS=[
   {key:"bowlsVictoria",label:"Bowls Victoria",subLabel:"State bowls resources",priority:"editorial"}
 ];
 
+const SCHOOL_LINK_DEFINITIONS=[
+  {key:"website",label:"Official Website",subLabel:"School home",priority:"primary"},
+  {key:"enrolment",label:"Enrolment",subLabel:"How to enrol",priority:"primary"},
+  {key:"virtualTour",label:"Virtual Tour",subLabel:"Explore the school"},
+  {key:"principalMessage",label:"Principal's Message",subLabel:"Welcome from the principal"},
+  {key:"visionValues",label:"Vision & Values",subLabel:"What guides the school"},
+  {key:"curriculum",label:"Curriculum",subLabel:"Teaching and learning"},
+  {key:"studentLife",label:"Student Life",subLabel:"Programs and opportunities"},
+  {key:"newsletter",label:"Newsletter",subLabel:"Latest school news"},
+  {key:"termDates",label:"Term Dates",subLabel:"School calendar"},
+  {key:"policies",label:"Policies",subLabel:"Policies and procedures"},
+  {key:"contact",label:"Contact",subLabel:"Location and enquiries"},
+  {key:"schoolProject",label:"School Upgrade",subLabel:"Official project information",priority:"editorial"},
+  {key:"youtube",label:"Watch Our School",subLabel:"Featured school video"}
+];
+
 let platform,editionEntry,config;
 let analytics={device:"desktop",track(){return null}};
 let attentionTimer=0;
@@ -66,19 +82,20 @@ async function fetchJson(url){const response=await fetch(url,{cache:"no-store"})
 
 function applyConfig(){
   const name=config.bandName||editionEntry.name;
-  const cars=isCarEdition(),clubs=isClubEdition();
-  document.title=`${name} | ${clubs?"Deep Cuts Clubs":cars?"Deep Cuts Cars":"Deep Cuts"}`;
+  const cars=isCarEdition(),clubs=isClubEdition(),schools=isSchoolEdition();
+  document.documentElement.dataset.editionType=config.editionType||"music";
+  document.title=`${name} | ${schools?"School Discovery":clubs?"Deep Cuts Clubs":cars?"Deep Cuts Cars":"Deep Cuts"}`;
   const bio=config.discovery?.bio||config.description||`Discover ${name}.`;
-  els.description.content=clubs?`Verified club, membership, events, bowls and community links for ${name}.`:cars?`Verified history, specifications, buying, ownership and restoration links for ${name}.`:`Official music, video and social links for ${name}.`;
+  els.description.content=schools?`Discover ${name} through verified official school information and video.`:clubs?`Verified club, membership, events, bowls and community links for ${name}.`:cars?`Verified history, specifications, buying, ownership and restoration links for ${name}.`:`Official music, video and social links for ${name}.`;
   els.bandName.textContent=name;
   els.bio.textContent=bio;
-  els.artwork.src=`/${config.characterArtwork||"assets/aggits-original-cutout-v4.png"}`;
-  els.artwork.alt=`Aggits presenting ${name}`;
+  if(schools){els.artwork.hidden=true;els.artwork.removeAttribute("src");els.artwork.alt=""}else{els.artwork.hidden=false;els.artwork.src=`/${config.characterArtwork||"assets/aggits-original-cutout-v4.png"}`;els.artwork.alt=`Aggits presenting ${name}`}
   els.copyright.textContent=config.social?.copyright||"copyright Clearlight Creative";
-  els.poweredBy.textContent=clubs?"Powered by Deep Cuts Clubs":cars?"Powered by Deep Cuts Cars":"Powered by Deep Cuts";
-  els.videoLabel.textContent=clubs?"Featured club video":cars?"Featured automotive video":"Featured video";
-  buildFeatures(clubs?config.club?.heroLabels:cars?config.automotive?.heroLabels:["Listen","Watch","Follow","Buy Stuff"]);
+  els.poweredBy.textContent=schools?"School Discovery":clubs?"Powered by Deep Cuts Clubs":cars?"Powered by Deep Cuts Cars":"Powered by Deep Cuts";
+  els.videoLabel.textContent=schools?"Discover our school":clubs?"Featured club video":cars?"Featured automotive video":"Featured video";
+  buildFeatures(schools?config.school?.heroLabels:clubs?config.club?.heroLabels:cars?config.automotive?.heroLabels:["Listen","Watch","Follow","Buy Stuff"]);
   document.documentElement.style.setProperty("--accent",config.theme?.accent||"#2f80ff");
+  if(schools){document.documentElement.style.setProperty("--school-secondary",config.theme?.accentSecondary||"#00C4B4");document.documentElement.style.setProperty("--school-navy",config.theme?.navy||"#0A2342");document.documentElement.style.setProperty("--school-surface",config.theme?.surface||"#FFFFFF");document.documentElement.style.setProperty("--school-content",config.theme?.contentBackground||"#F8FAFC")}
   buildWaveform(name);
   buildFeaturedVideo();
   buildLinks();
@@ -87,6 +104,7 @@ function applyConfig(){
 
 function isCarEdition(){return config.editionType==="car"}
 function isClubEdition(){return config.editionType==="club"}
+function isSchoolEdition(){return config.editionType==="school"}
 
 function buildFeatures(labels){
   const values=Array.isArray(labels)&&labels.length===4?labels:["Discover","Watch","Connect","Own & Restore"];
@@ -137,7 +155,7 @@ function buildFeaturedVideo(){
 
 function buildLinks(){
   els.links.innerHTML="";
-  const definitions=isClubEdition()?CLUB_LINK_DEFINITIONS:isCarEdition()?CAR_LINK_DEFINITIONS:MUSIC_LINK_DEFINITIONS;
+  const definitions=isSchoolEdition()?SCHOOL_LINK_DEFINITIONS:isClubEdition()?CLUB_LINK_DEFINITIONS:isCarEdition()?CAR_LINK_DEFINITIONS:MUSIC_LINK_DEFINITIONS;
   for(const definition of definitions){
     const url=linkValue(definition);
     if(!url)continue;
@@ -184,7 +202,7 @@ function startAttentionCycle(){
 function validHttps(value){try{const url=new URL(String(value||""));return url.protocol==="https:"?url.href:""}catch{return""}}
 function pageIdentifier(){return config.analytics?.pageIdentifier||`${editionEntry.editionId}:discovery-v1`}
 function canonicalURL(){return new URL(editionEntry.canonicalPath||`/e/${editionEntry.editionId}`,location.origin).href}
-function sharePayload(){return isClubEdition()?{title:`${config.bandName} | Deep Cuts Clubs`,text:`Explore ${config.bandName}: verified club, membership, events and community links.`,url:canonicalURL()}:isCarEdition()?{title:`${config.bandName} | Deep Cuts Cars`,text:`Explore ${config.bandName}: verified history, specifications, buying and restoration links.`,url:canonicalURL()}:{title:`${config.bandName} | Deep Cuts`,text:`Discover ${config.bandName}: official music, video and social links.`,url:canonicalURL()}}
+function sharePayload(){return isSchoolEdition()?{title:`${config.bandName} | School Discovery`,text:`Discover ${config.bandName}: official school information, programs and video.`,url:canonicalURL()}:isClubEdition()?{title:`${config.bandName} | Deep Cuts Clubs`,text:`Explore ${config.bandName}: verified club, membership, events and community links.`,url:canonicalURL()}:isCarEdition()?{title:`${config.bandName} | Deep Cuts Cars`,text:`Explore ${config.bandName}: verified history, specifications, buying and restoration links.`,url:canonicalURL()}:{title:`${config.bandName} | Deep Cuts`,text:`Discover ${config.bandName}: official music, video and social links.`,url:canonicalURL()}}
 
 async function sharePage(){
   analytics.track("share_button_clicked",{page_identifier:pageIdentifier()},{dedupeKey:"main-share",dedupeMs:500});

@@ -1,0 +1,72 @@
+{
+  "brandName": "School Discovery",
+  "editionType": "school",
+  "bandName": "Kerrimuir Primary School",
+  "editionTitle": "Kerrimuir Primary School",
+  "description": "A welcoming Box Hill North primary school building confident learners through inclusive teaching, specialist programs and a safe, supportive community.",
+  "discovery": {
+    "bio": "A welcoming Box Hill North primary school building confident learners through inclusive teaching, specialist programs and a safe, supportive community.",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "kerrimuir-primary-school",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_163d4aae1b",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/kerrimuir-primary-school/instagram-discovery.png",
+    "qrImage": "output/kerrimuir-primary-school/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#CE2029",
+    "accentSecondary": "#00C4B4",
+    "navy": "#0A2342",
+    "surface": "#FFFFFF",
+    "contentBackground": "#F8FAFC",
+    "paletteSource": "https://www.kerrimuirps.vic.edu.au/",
+    "logoPolicy": "colour-reference-only; no logo or emblem displayed"
+  },
+  "links": {
+    "website": "https://www.kerrimuirps.vic.edu.au/",
+    "enrolment": "https://www.kerrimuirps.vic.edu.au/enrolment/information/",
+    "virtualTour": "https://www.kerrimuirps.vic.edu.au/our-school/virtual-tour/",
+    "principalMessage": "https://www.kerrimuirps.vic.edu.au/our-school/principals-message/",
+    "visionValues": "https://www.kerrimuirps.vic.edu.au/our-school/vision-and-values/",
+    "curriculum": "",
+    "studentLife": "",
+    "newsletter": "https://www.kerrimuirps.vic.edu.au/current-families/newsletter/",
+    "termDates": "https://www.kerrimuirps.vic.edu.au/current-families/term-dates/",
+    "policies": "https://www.kerrimuirps.vic.edu.au/our-school/policies-and-procedures/",
+    "contact": "",
+    "schoolProject": "https://www.schoolbuildings.vic.gov.au/kerrimuir-primary-school",
+    "youtube": "https://www.youtube.com/watch?v=4qEHQ7akVYA"
+  },
+  "featuredVideo": {
+    "title": "Upgrade and Modernisation - Kerrimuir Primary School",
+    "youtubeURL": "https://www.youtube.com/watch?v=4qEHQ7akVYA",
+    "selectionBasis": "best-authoritative",
+    "verifiedAt": "2026-07-20T00:00:00.000Z"
+  },
+  "analytics": {
+    "editionId": "dc_163d4aae1b",
+    "pageIdentifier": "dc_163d4aae1b:school-discovery-v1"
+  },
+  "production": {
+    "jobId": "dcjob_09df145e-0e7b-4047-a64e-f185aa12538b",
+    "submittedAt": "2026-07-19T21:39:36.765Z",
+    "researchCompletedAt": "2026-07-19T21:53:40.278Z",
+    "editionCreatedAt": "2026-07-19T21:53:40.278Z"
+  },
+  "school": {
+    "officialWebsite": "https://www.kerrimuirps.vic.edu.au/",
+    "paletteSource": "https://www.kerrimuirps.vic.edu.au/",
+    "logoPolicy": "colour-reference-only; no logo or emblem displayed",
+    "heroLabels": [
+      "Discover",
+      "Learn",
+      "Connect",
+      "Enrol"
+    ]
+  }
+}

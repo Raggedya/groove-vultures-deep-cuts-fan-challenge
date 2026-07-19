@@ -35,3 +35,12 @@ Every pull request must:
 ## Permanent rule
 
 Treat every completed edition as a finished commercial product that must remain stable forever. Future work extends the platform; it does not modify, replace or compromise existing editions. This directive applies to every future development task unless the owner explicitly overrides it in writing.
+
+## School Discovery contract
+
+- School Discovery is an independent edition and never inherits Music, Cars or Clubs presentation rules.
+- Aggits is completely absent from the School Discovery page and every School Discovery delivery asset.
+- A featured, identity-verified YouTube video is mandatory.
+- The colour scheme is derived from the current official school website and recorded with dated evidence.
+- The school logo, crest or emblem is never copied or displayed. Only verified website colour values inform the palette.
+- QR artwork uses the heading `Discover Our School` and the edition-specific school name.

@@ -2,6 +2,10 @@
 
 `PLATFORM_ARCHITECTURE_DIRECTIVE.md` governs this manual. Every completed edition is an isolated commercial product. Edition preservation and backward compatibility are mandatory and take priority over new features.
 
+## School Discovery permanent rules
+
+School Discovery is a separate product contract. Research begins with the official school website, from which the engine records the primary, secondary, accent, surface and content-background colours. These values may be used for the School Discovery interface and QR artwork; the school logo, crest and emblem must not be copied or displayed. Aggits is never used. Every edition requires a verified, authoritative featured YouTube video and direct official school links. Existing Music, Cars and Clubs output remains unchanged.
+
 ## Unattended artist batches
 
 Deep Cuts accepts CSV batches through one permanent controller. Intake data is evidence to verify, not truth to copy. Every artist is normalized, duplicate-checked, range-checked, researched and independently gated. Publication requires at least 98% confidence in artist identity and every mandatory direct destination. Search pages, guesses and placeholders are forbidden. Rejections are recorded and isolated. Temporary failures receive bounded retries with exponential backoff; checkpoints allow safe resume. Accepted artists flow through the existing factory, immutable artwork checks, QR scan-back, shared Cloudflare deployment, live verification, analytics registration and email delivery.

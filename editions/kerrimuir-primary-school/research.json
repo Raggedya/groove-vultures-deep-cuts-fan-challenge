@@ -1,0 +1,120 @@
+{
+  "bandName": "Kerrimuir Primary School",
+  "slug": "kerrimuir-primary-school",
+  "editionId": "dc_163d4aae1b",
+  "verifiedAt": "2026-07-19T21:53:40.278Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://www.kerrimuirps.vic.edu.au/",
+      "sourceType": "official school website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-20T00:00:00.000Z",
+      "evidence": "Official Kerrimuir Primary School website identifies the school, principal, location, programs and contact details."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.vic.gov.au/kerrimuir-primary-school-number-4816",
+      "sourceType": "authoritative Victorian Government register",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-20T00:00:00.000Z",
+      "evidence": "Victorian Government record confirms Kerrimuir Primary School, school number 4816, Box Hill North and Prep-6 operation."
+    },
+    {
+      "destination": "themePalette",
+      "url": "https://www.kerrimuirps.vic.edu.au/",
+      "sourceType": "official school website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-20T00:00:00.000Z",
+      "evidence": "Computed official website design variables: primary #CE2029, secondary #0A2342, accent #00C4B4, white #FFFFFF and content background #F8FAFC. No logo or emblem is reproduced."
+    },
+    {
+      "destination": "website",
+      "url": "https://www.kerrimuirps.vic.edu.au/",
+      "sourceType": "official school website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-20T00:00:00.000Z",
+      "evidence": "Direct official school homepage."
+    },
+    {
+      "destination": "enrolment",
+      "url": "https://www.kerrimuirps.vic.edu.au/enrolment/information/",
+      "sourceType": "official school website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-20T00:00:00.000Z",
+      "evidence": "Direct Enrol Now destination published in the official website footer."
+    },
+    {
+      "destination": "virtualTour",
+      "url": "https://www.kerrimuirps.vic.edu.au/our-school/virtual-tour/",
+      "sourceType": "official school website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-20T00:00:00.000Z",
+      "evidence": "Direct Virtual Tour destination published on the official homepage and footer."
+    },
+    {
+      "destination": "principalMessage",
+      "url": "https://www.kerrimuirps.vic.edu.au/our-school/principals-message/",
+      "sourceType": "official school website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-20T00:00:00.000Z",
+      "evidence": "Direct Principal's Message destination published in the official website footer."
+    },
+    {
+      "destination": "visionValues",
+      "url": "https://www.kerrimuirps.vic.edu.au/our-school/vision-and-values/",
+      "sourceType": "official school website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-20T00:00:00.000Z",
+      "evidence": "Direct Vision & Values destination published in the official website footer."
+    },
+    {
+      "destination": "newsletter",
+      "url": "https://www.kerrimuirps.vic.edu.au/current-families/newsletter/",
+      "sourceType": "official school website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-20T00:00:00.000Z",
+      "evidence": "Direct Newsletter destination published in the official website footer."
+    },
+    {
+      "destination": "termDates",
+      "url": "https://www.kerrimuirps.vic.edu.au/current-families/term-dates/",
+      "sourceType": "official school website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-20T00:00:00.000Z",
+      "evidence": "Direct Term Dates destination published in the official website footer."
+    },
+    {
+      "destination": "policies",
+      "url": "https://www.kerrimuirps.vic.edu.au/our-school/policies-and-procedures/",
+      "sourceType": "official school website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-20T00:00:00.000Z",
+      "evidence": "Direct Policies & Procedures destination published in the official website footer."
+    },
+    {
+      "destination": "schoolProject",
+      "url": "https://www.schoolbuildings.vic.gov.au/kerrimuir-primary-school",
+      "sourceType": "authoritative Victorian School Building Authority",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-20T00:00:00.000Z",
+      "evidence": "Official Victorian Government project page documents the school's completed upgrade and modernisation."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/watch?v=4qEHQ7akVYA",
+      "sourceType": "authoritative government school video",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-20T00:00:00.000Z",
+      "evidence": "Victorian School Building Authority page embeds this school-specific YouTube video."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=4qEHQ7akVYA",
+      "sourceType": "authoritative government school video",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-20T00:00:00.000Z",
+      "evidence": "Selected as the best authoritative school video because the Victorian School Building Authority publishes it with a school-specific transcript and project context."
+    }
+  ]
+}
