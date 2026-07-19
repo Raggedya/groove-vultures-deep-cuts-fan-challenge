@@ -1,6 +1,6 @@
 "use strict";
 
-const VERSION="20260719-cars-1";
+const VERSION="20260719-clubs-1";
 const $=id=>document.getElementById(id);
 const els={page:$("discoveryPage"),error:$("errorScreen"),errorMessage:$("errorMessage"),bandName:$("bandName"),bio:$("artistBio"),artwork:$("heroArtwork"),waveform:$("sonicSignature"),features:$("featureList"),video:$("featuredVideo"),videoLabel:$("featuredVideoLabel"),videoTitle:$("featuredVideoTitle"),videoFrame:$("featuredVideoFrame"),links:$("platformLinks"),share:$("shareButton"),status:$("shareStatus"),description:$("pageDescription"),poweredBy:$("poweredByLabel"),copyright:$("coverCopyright")};
 
@@ -27,6 +27,21 @@ const CAR_LINK_DEFINITIONS=[
   {key:"newsReviews",label:"Articles & Features",subLabel:"Independent automotive coverage",priority:"editorial"}
 ];
 
+const CLUB_LINK_DEFINITIONS=[
+  {key:"website",label:"Official Website",subLabel:"Club home",priority:"primary"},
+  {key:"calendar",label:"Club Calendar",subLabel:"What’s on",priority:"primary"},
+  {key:"membership",label:"Join the Club",subLabel:"Membership and coaching"},
+  {key:"barefootBowls",label:"Barefoot Bowls",subLabel:"Casual public sessions"},
+  {key:"pennant",label:"Pennant Bowls",subLabel:"Teams, sides and competition"},
+  {key:"events",label:"Club Events",subLabel:"Social and bowls events"},
+  {key:"venueHire",label:"Venue Hire",subLabel:"Functions, bowls and facilities"},
+  {key:"news",label:"Club News",subLabel:"Latest club updates"},
+  {key:"history",label:"Club History",subLabel:"The club story"},
+  {key:"contact",label:"Contact the Club",subLabel:"Location and enquiries"},
+  {key:"facebook",label:"Facebook",subLabel:"Official club updates"},
+  {key:"bowlsVictoria",label:"Bowls Victoria",subLabel:"State bowls resources",priority:"editorial"}
+];
+
 let platform,editionEntry,config;
 let analytics={device:"desktop",track(){return null}};
 let attentionTimer=0;
@@ -51,18 +66,18 @@ async function fetchJson(url){const response=await fetch(url,{cache:"no-store"})
 
 function applyConfig(){
   const name=config.bandName||editionEntry.name;
-  const cars=isCarEdition();
-  document.title=`${name} | ${cars?"Deep Cuts Cars":"Deep Cuts"}`;
+  const cars=isCarEdition(),clubs=isClubEdition();
+  document.title=`${name} | ${clubs?"Deep Cuts Clubs":cars?"Deep Cuts Cars":"Deep Cuts"}`;
   const bio=config.discovery?.bio||config.description||`Discover ${name}.`;
-  els.description.content=cars?`Verified history, specifications, buying, ownership and restoration links for ${name}.`:`Official music, video and social links for ${name}.`;
+  els.description.content=clubs?`Verified club, membership, events, bowls and community links for ${name}.`:cars?`Verified history, specifications, buying, ownership and restoration links for ${name}.`:`Official music, video and social links for ${name}.`;
   els.bandName.textContent=name;
   els.bio.textContent=bio;
   els.artwork.src=`/${config.characterArtwork||"assets/aggits-original-cutout-v4.png"}`;
   els.artwork.alt=`Aggits presenting ${name}`;
   els.copyright.textContent=config.social?.copyright||"copyright Clearlight Creative";
-  els.poweredBy.textContent=cars?"Powered by Deep Cuts Cars":"Powered by Deep Cuts";
-  els.videoLabel.textContent=cars?"Featured automotive video":"Featured video";
-  buildFeatures(cars?config.automotive?.heroLabels:["Listen","Watch","Follow","Buy Stuff"]);
+  els.poweredBy.textContent=clubs?"Powered by Deep Cuts Clubs":cars?"Powered by Deep Cuts Cars":"Powered by Deep Cuts";
+  els.videoLabel.textContent=clubs?"Featured club video":cars?"Featured automotive video":"Featured video";
+  buildFeatures(clubs?config.club?.heroLabels:cars?config.automotive?.heroLabels:["Listen","Watch","Follow","Buy Stuff"]);
   document.documentElement.style.setProperty("--accent",config.theme?.accent||"#2f80ff");
   buildWaveform(name);
   buildFeaturedVideo();
@@ -71,6 +86,7 @@ function applyConfig(){
 }
 
 function isCarEdition(){return config.editionType==="car"}
+function isClubEdition(){return config.editionType==="club"}
 
 function buildFeatures(labels){
   const values=Array.isArray(labels)&&labels.length===4?labels:["Discover","Watch","Connect","Own & Restore"];
@@ -121,7 +137,7 @@ function buildFeaturedVideo(){
 
 function buildLinks(){
   els.links.innerHTML="";
-  const definitions=isCarEdition()?CAR_LINK_DEFINITIONS:MUSIC_LINK_DEFINITIONS;
+  const definitions=isClubEdition()?CLUB_LINK_DEFINITIONS:isCarEdition()?CAR_LINK_DEFINITIONS:MUSIC_LINK_DEFINITIONS;
   for(const definition of definitions){
     const url=linkValue(definition);
     if(!url)continue;
@@ -168,7 +184,7 @@ function startAttentionCycle(){
 function validHttps(value){try{const url=new URL(String(value||""));return url.protocol==="https:"?url.href:""}catch{return""}}
 function pageIdentifier(){return config.analytics?.pageIdentifier||`${editionEntry.editionId}:discovery-v1`}
 function canonicalURL(){return new URL(editionEntry.canonicalPath||`/e/${editionEntry.editionId}`,location.origin).href}
-function sharePayload(){return isCarEdition()?{title:`${config.bandName} | Deep Cuts Cars`,text:`Explore ${config.bandName}: verified history, specifications, buying and restoration links.`,url:canonicalURL()}:{title:`${config.bandName} | Deep Cuts`,text:`Discover ${config.bandName}: official music, video and social links.`,url:canonicalURL()}}
+function sharePayload(){return isClubEdition()?{title:`${config.bandName} | Deep Cuts Clubs`,text:`Explore ${config.bandName}: verified club, membership, events and community links.`,url:canonicalURL()}:isCarEdition()?{title:`${config.bandName} | Deep Cuts Cars`,text:`Explore ${config.bandName}: verified history, specifications, buying and restoration links.`,url:canonicalURL()}:{title:`${config.bandName} | Deep Cuts`,text:`Discover ${config.bandName}: official music, video and social links.`,url:canonicalURL()}}
 
 async function sharePage(){
   analytics.track("share_button_clicked",{page_identifier:pageIdentifier()},{dedupeKey:"main-share",dedupeMs:500});

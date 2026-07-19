@@ -1,0 +1,65 @@
+{
+  "brandName": "Deep Cuts Clubs",
+  "editionType": "club",
+  "bandName": "Blackburn Bowls Club",
+  "editionTitle": "Blackburn Bowls Club",
+  "description": "A friendly Blackburn community club founded in 1927, with two grass greens, a synthetic green, pennant bowls, social play and welcoming public events.",
+  "discovery": {
+    "bio": "A friendly Blackburn community club founded in 1927, with two grass greens, a synthetic green, pennant bowls, social play and welcoming public events.",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "blackburn-bowls-club",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_f4deb0ed51",
+  "characterArtwork": "assets/aggits-original-cutout-v4.png",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/blackburn-bowls-club/instagram-discovery.png",
+    "qrImage": "output/blackburn-bowls-club/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#2f80ff",
+    "accentSecondary": "#8dbdff"
+  },
+  "links": {
+    "website": "https://blackburnbowlsclub.com.au/",
+    "calendar": "https://blackburnbowlsclub.com.au/club-calendar/",
+    "news": "https://blackburnbowlsclub.com.au/category/club-news/",
+    "events": "https://blackburnbowlsclub.com.au/club-events/",
+    "membership": "https://blackburnbowlsclub.com.au/new-bowlers/",
+    "barefootBowls": "https://blackburnbowlsclub.com.au/barefoot-bowls/",
+    "pennant": "https://blackburnbowlsclub.com.au/pennant-bowls/",
+    "venueHire": "https://blackburnbowlsclub.com.au/facilities-hire/",
+    "history": "https://blackburnbowlsclub.com.au/history/",
+    "contact": "https://blackburnbowlsclub.com.au/contact-us/",
+    "facebook": "",
+    "bowlsVictoria": ""
+  },
+  "featuredVideo": {
+    "title": "",
+    "youtubeURL": "",
+    "selectionBasis": "",
+    "verifiedAt": ""
+  },
+  "analytics": {
+    "editionId": "dc_f4deb0ed51",
+    "pageIdentifier": "dc_f4deb0ed51:club-v1"
+  },
+  "production": {
+    "jobId": "dcjob_cd31ec8e-ec94-4006-a7a5-d936b78f6332",
+    "submittedAt": "2026-07-19T12:00:59.516Z",
+    "researchCompletedAt": "2026-07-19T12:10:21.011Z",
+    "editionCreatedAt": "2026-07-19T12:10:21.011Z"
+  },
+  "club": {
+    "location": "Blackburn, Melbourne, Victoria",
+    "formed": "1927",
+    "heroLabels": [
+      "Visit",
+      "Play",
+      "Join",
+      "Connect"
+    ]
+  }
+}

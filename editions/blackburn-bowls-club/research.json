@@ -1,0 +1,88 @@
+{
+  "bandName": "Blackburn Bowls Club",
+  "slug": "blackburn-bowls-club",
+  "editionId": "dc_f4deb0ed51",
+  "verifiedAt": "2026-07-19T12:10:21.011Z",
+  "sources": [
+    {
+      "destination": "website",
+      "url": "https://blackburnbowlsclub.com.au/",
+      "sourceType": "official club website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-19T12:08:00.000Z",
+      "evidence": "Official Blackburn Bowls Club home page identifies the club at 65 Pakenham Street, Blackburn, its 1927 formation, greens, pennant sides, membership and public bowls."
+    },
+    {
+      "destination": "calendar",
+      "url": "https://blackburnbowlsclub.com.au/club-calendar/",
+      "sourceType": "official club website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-19T12:08:00.000Z",
+      "evidence": "Official club calendar page carrying the Blackburn Bowls Club identity, address and club contact details."
+    },
+    {
+      "destination": "news",
+      "url": "https://blackburnbowlsclub.com.au/category/club-news/",
+      "sourceType": "official club website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-19T12:08:00.000Z",
+      "evidence": "Official Blackburn Bowls Club news category containing current club announcements and office-bearer updates."
+    },
+    {
+      "destination": "events",
+      "url": "https://blackburnbowlsclub.com.au/club-events/",
+      "sourceType": "official club website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-19T12:08:00.000Z",
+      "evidence": "Official club events page describes year-round bowls, social events and Blackburn's Saturday and Midweek Pennant participation."
+    },
+    {
+      "destination": "membership",
+      "url": "https://blackburnbowlsclub.com.au/new-bowlers/",
+      "sourceType": "official club website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-19T12:08:00.000Z",
+      "evidence": "Official new bowlers page documents coaching, practice access and current membership categories for Blackburn Bowls Club."
+    },
+    {
+      "destination": "barefootBowls",
+      "url": "https://blackburnbowlsclub.com.au/barefoot-bowls/",
+      "sourceType": "official club website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-19T12:08:00.000Z",
+      "evidence": "Official club page describes Blackburn's Wednesday Night Owls and Friday Barefoot Bowls public sessions."
+    },
+    {
+      "destination": "pennant",
+      "url": "https://blackburnbowlsclub.com.au/pennant-bowls/",
+      "sourceType": "official club website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-19T12:08:00.000Z",
+      "evidence": "Official pennant page links Blackburn's Saturday, Midweek and Night Pennant information and identifies its competition sides."
+    },
+    {
+      "destination": "venueHire",
+      "url": "https://blackburnbowlsclub.com.au/facilities-hire/",
+      "sourceType": "official club website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-19T12:08:00.000Z",
+      "evidence": "Official facilities page provides Blackburn Bowls Club function, hall, bowls, kitchen and bar hire information."
+    },
+    {
+      "destination": "history",
+      "url": "https://blackburnbowlsclub.com.au/history/",
+      "sourceType": "official club website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-19T12:08:00.000Z",
+      "evidence": "Official history page documents the club's 1926 organising meeting, 1927 formation and move from South Parade to Pakenham Street."
+    },
+    {
+      "destination": "contact",
+      "url": "https://blackburnbowlsclub.com.au/contact-us/",
+      "sourceType": "official club website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-19T12:08:00.000Z",
+      "evidence": "Official contact page supplies Blackburn Bowls Club's location and enquiry details."
+    }
+  ]
+}

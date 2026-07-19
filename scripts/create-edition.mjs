@@ -8,7 +8,7 @@ if(!inputPath)throw new Error('Usage: node scripts/create-edition.mjs <verified-
 const input=JSON.parse(await fs.readFile(path.resolve(inputPath),'utf8'));
 const bandName=clean(input.bandName,120);
 const bio=clean(input.bio,190);
-const editionType=input.editionType==='car'?'car':'music';
+const editionType=input.editionType==='car'?'car':input.editionType==='club'?'club':'music';
 if(!bandName||!bio)throw new Error('Verified research requires bandName and a concise bio.');
 const slug=slugify(bandName);
 const jobPath=path.join(root,'.deep-cuts','jobs',`${slug}.json`);
@@ -26,17 +26,18 @@ const now=new Date().toISOString();
 const directory=path.join(root,'editions',slug);
 await fs.mkdir(directory,{recursive:true});
 const config={
-  brandName:editionType==='car'?'Deep Cuts Cars':'Deep Cuts',editionType,bandName,editionTitle:bandName,description:bio,
+  brandName:editionType==='club'?'Deep Cuts Clubs':editionType==='car'?'Deep Cuts Cars':'Deep Cuts',editionType,bandName,editionTitle:bandName,description:bio,
   discovery:{bio,newsLabel:clean(input.newsLabel||'',90)},mode:'discovery',slug,
   publicURL:`${String(platform.publicBaseURL).replace(/\/$/,'')}${canonicalPath}`,
   characterArtwork:'assets/aggits-original-cutout-v4.png',backgroundArtwork:'',
   social:{copyright:'copyright Clearlight Creative',instagramImage:`output/${slug}/instagram-discovery.png`,qrImage:`output/${slug}/instagram-qr.png`},
   theme:{accent:'#2f80ff',accentSecondary:'#8dbdff'},links,
   featuredVideo,
-  analytics:{editionId,pageIdentifier:`${editionId}:${editionType==='car'?'automotive-v1':'discovery-v1'}`},
+  analytics:{editionId,pageIdentifier:`${editionId}:${editionType==='club'?'club-v1':editionType==='car'?'automotive-v1':'discovery-v1'}`},
   production:{jobId:job.jobId,submittedAt:job.submittedAt,researchCompletedAt:now,editionCreatedAt:now}
 };
 if(editionType==='car')config.automotive={make:clean(input.automotive?.make,60),model:clean(input.automotive?.model,60),productionYears:clean(input.automotive?.productionYears,30),heroLabels:['Discover','Watch','Connect','Own & Restore']};
+if(editionType==='club')config.club={location:clean(input.club?.location,120),formed:clean(input.club?.formed,30),heroLabels:['Visit','Play','Join','Connect']};
 const research={bandName,slug,editionId,verifiedAt:now,sources:input.sources};
 await fs.writeFile(path.join(directory,'edition.json'),JSON.stringify(config,null,2)+'\n');
 await fs.writeFile(path.join(directory,'research.json'),JSON.stringify(research,null,2)+'\n');
@@ -48,7 +49,8 @@ console.log(JSON.stringify({ok:true,jobId:job.jobId,slug,editionId,canonicalPath
 
 function validateResearch(value){
   const car=value.editionType==='car';
-  const keys=car?['history','specifications','buyerGuide','youtube','ownersClub','partsRestoration','carsForSale','newsReviews']:['buyMusic','spotify','instagram','bandcamp','youtube','facebook','website','merchandise','newsReviews'];
+  const club=value.editionType==='club';
+  const keys=club?['website','calendar','news','events','membership','barefootBowls','pennant','venueHire','history','contact','facebook','bowlsVictoria']:car?['history','specifications','buyerGuide','youtube','ownersClub','partsRestoration','carsForSale','newsReviews']:['buyMusic','spotify','instagram','bandcamp','youtube','facebook','website','merchandise','newsReviews'];
   const links=Object.fromEntries(keys.map(key=>[key,https(value.links?.[key]||'')]));
   const sources=Array.isArray(value.sources)?value.sources:[];
   if(sources.length<2||!sources.some(source=>source.identityVerified===true&&/official|authoritative/i.test(String(source.sourceType||''))))throw new Error('Research requires two identity-checked sources including one official or authoritative source.');
@@ -63,8 +65,8 @@ function validateResearch(value){
 function validateFeaturedVideo(value,links){
   const youtubeURL=https(value.featuredVideo?.youtubeURL||'');
   const title=clean(value.featuredVideo?.title||'',120);
-  const expectedBasis=value.editionType==='car'?'best-authoritative':'most-viewed-official';
-  if(links.youtube&&!youtubeURL)throw new Error(value.editionType==='car'?'A Cars YouTube destination requires a verified authoritative featured video.':'An official YouTube presence requires a verified most-viewed official featured video.');
+  const expectedBasis=value.editionType==='music'?'most-viewed-official':'best-authoritative';
+  if(links.youtube&&!youtubeURL)throw new Error(value.editionType==='music'?'An official YouTube presence requires a verified most-viewed official featured video.':'A non-music YouTube destination requires a verified authoritative featured video.');
   if(!youtubeURL)return{title:'',youtubeURL:'',selectionBasis:'',verifiedAt:''};
   if(!title)throw new Error('The featured YouTube video requires a title.');
   if(value.featuredVideo?.selectionBasis!==expectedBasis)throw new Error(`Featured video selectionBasis must be ${expectedBasis}.`);
