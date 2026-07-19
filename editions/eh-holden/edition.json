@@ -1,0 +1,62 @@
+{
+  "brandName": "Deep Cuts Cars",
+  "editionType": "car",
+  "bandName": "EH Holden",
+  "editionTitle": "EH Holden",
+  "description": "Australia’s landmark 1963–65 Holden, celebrated for crisp styling, the new Red motor and enduring owner enthusiasm.",
+  "discovery": {
+    "bio": "Australia’s landmark 1963–65 Holden, celebrated for crisp styling, the new Red motor and enduring owner enthusiasm.",
+    "newsLabel": "The Holden EJ & EH story — Street Machine"
+  },
+  "mode": "discovery",
+  "slug": "eh-holden",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_d6559c73e2",
+  "characterArtwork": "assets/aggits-original-cutout-v4.png",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/eh-holden/instagram-discovery.png",
+    "qrImage": "output/eh-holden/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#2f80ff",
+    "accentSecondary": "#8dbdff"
+  },
+  "links": {
+    "history": "https://www.ehholden.com.au/eh-history/",
+    "specifications": "https://www.uniquecarsandparts.com.au/holden_EH_technical_specifications.htm",
+    "buyerGuide": "https://www.ehholden.com.au/buying-guide/",
+    "youtube": "https://www.youtube.com/watch?v=O-BRV25r8cs",
+    "ownersClub": "https://www.ehholden.com.au/",
+    "partsRestoration": "https://www.oldholdenparts.com.au/",
+    "carsForSale": "https://www.carsales.com.au/cars/holden/eh/",
+    "newsReviews": "https://www.streetmachine.com.au/features/holden-ej-holden-eh-history"
+  },
+  "featuredVideo": {
+    "title": "EJ & EH Holden — Shannons Club TV",
+    "youtubeURL": "https://www.youtube.com/watch?v=O-BRV25r8cs",
+    "selectionBasis": "best-authoritative",
+    "verifiedAt": "2026-07-19T11:20:00.000Z"
+  },
+  "analytics": {
+    "editionId": "dc_d6559c73e2",
+    "pageIdentifier": "dc_d6559c73e2:automotive-v1"
+  },
+  "production": {
+    "jobId": "dcjob_9cbb2aa4-5baa-4fe8-a5fe-3a73fd9e8a8d",
+    "submittedAt": "2026-07-19T11:09:40.630Z",
+    "researchCompletedAt": "2026-07-19T11:16:49.456Z",
+    "editionCreatedAt": "2026-07-19T11:16:49.456Z"
+  },
+  "automotive": {
+    "make": "Holden",
+    "model": "EH",
+    "productionYears": "1963–1965",
+    "heroLabels": [
+      "Discover",
+      "Watch",
+      "Connect",
+      "Own & Restore"
+    ]
+  }
+}

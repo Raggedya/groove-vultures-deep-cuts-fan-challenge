@@ -8,6 +8,7 @@ if(!inputPath)throw new Error('Usage: node scripts/create-edition.mjs <verified-
 const input=JSON.parse(await fs.readFile(path.resolve(inputPath),'utf8'));
 const bandName=clean(input.bandName,120);
 const bio=clean(input.bio,190);
+const editionType=input.editionType==='car'?'car':'music';
 if(!bandName||!bio)throw new Error('Verified research requires bandName and a concise bio.');
 const slug=slugify(bandName);
 const jobPath=path.join(root,'.deep-cuts','jobs',`${slug}.json`);
@@ -25,16 +26,17 @@ const now=new Date().toISOString();
 const directory=path.join(root,'editions',slug);
 await fs.mkdir(directory,{recursive:true});
 const config={
-  brandName:'Deep Cuts',bandName,editionTitle:bandName,description:bio,
+  brandName:editionType==='car'?'Deep Cuts Cars':'Deep Cuts',editionType,bandName,editionTitle:bandName,description:bio,
   discovery:{bio,newsLabel:clean(input.newsLabel||'',90)},mode:'discovery',slug,
   publicURL:`${String(platform.publicBaseURL).replace(/\/$/,'')}${canonicalPath}`,
   characterArtwork:'assets/aggits-original-cutout-v4.png',backgroundArtwork:'',
   social:{copyright:'copyright Clearlight Creative',instagramImage:`output/${slug}/instagram-discovery.png`,qrImage:`output/${slug}/instagram-qr.png`},
   theme:{accent:'#2f80ff',accentSecondary:'#8dbdff'},links,
   featuredVideo,
-  analytics:{editionId,pageIdentifier:`${editionId}:discovery-v1`},
+  analytics:{editionId,pageIdentifier:`${editionId}:${editionType==='car'?'automotive-v1':'discovery-v1'}`},
   production:{jobId:job.jobId,submittedAt:job.submittedAt,researchCompletedAt:now,editionCreatedAt:now}
 };
+if(editionType==='car')config.automotive={make:clean(input.automotive?.make,60),model:clean(input.automotive?.model,60),productionYears:clean(input.automotive?.productionYears,30),heroLabels:['Discover','Watch','Connect','Own & Restore']};
 const research={bandName,slug,editionId,verifiedAt:now,sources:input.sources};
 await fs.writeFile(path.join(directory,'edition.json'),JSON.stringify(config,null,2)+'\n');
 await fs.writeFile(path.join(directory,'research.json'),JSON.stringify(research,null,2)+'\n');
@@ -45,10 +47,11 @@ await fs.writeFile(jobPath,JSON.stringify(job,null,2)+'\n');
 console.log(JSON.stringify({ok:true,jobId:job.jobId,slug,editionId,canonicalPath,config:`editions/${slug}/edition.json`},null,2));
 
 function validateResearch(value){
-  const keys=['buyMusic','spotify','instagram','bandcamp','youtube','facebook','website','merchandise','newsReviews'];
+  const car=value.editionType==='car';
+  const keys=car?['history','specifications','buyerGuide','youtube','ownersClub','partsRestoration','carsForSale','newsReviews']:['buyMusic','spotify','instagram','bandcamp','youtube','facebook','website','merchandise','newsReviews'];
   const links=Object.fromEntries(keys.map(key=>[key,https(value.links?.[key]||'')]));
   const sources=Array.isArray(value.sources)?value.sources:[];
-  if(sources.length<2||!sources.some(source=>source.identityVerified===true&&/official/i.test(String(source.sourceType||''))))throw new Error('Research requires two identity-checked sources including one official artist-controlled source.');
+  if(sources.length<2||!sources.some(source=>source.identityVerified===true&&/official|authoritative/i.test(String(source.sourceType||''))))throw new Error('Research requires two identity-checked sources including one official or authoritative source.');
   for(const [destination,url] of Object.entries(links)){
     if(!url)continue;
     const evidence=sources.find(source=>source.destination===destination&&normalize(source.url)===normalize(url)&&source.identityVerified===true&&validDate(source.verifiedAt)&&clean(source.evidence,300));
@@ -60,13 +63,14 @@ function validateResearch(value){
 function validateFeaturedVideo(value,links){
   const youtubeURL=https(value.featuredVideo?.youtubeURL||'');
   const title=clean(value.featuredVideo?.title||'',120);
-  if(links.youtube&&!youtubeURL)throw new Error('An official YouTube presence requires a verified most-viewed official featured video.');
+  const expectedBasis=value.editionType==='car'?'best-authoritative':'most-viewed-official';
+  if(links.youtube&&!youtubeURL)throw new Error(value.editionType==='car'?'A Cars YouTube destination requires a verified authoritative featured video.':'An official YouTube presence requires a verified most-viewed official featured video.');
   if(!youtubeURL)return{title:'',youtubeURL:'',selectionBasis:'',verifiedAt:''};
   if(!title)throw new Error('The featured YouTube video requires a title.');
-  if(value.featuredVideo?.selectionBasis!=='most-viewed-official')throw new Error('Featured video selectionBasis must be most-viewed-official.');
+  if(value.featuredVideo?.selectionBasis!==expectedBasis)throw new Error(`Featured video selectionBasis must be ${expectedBasis}.`);
   const evidence=(value.sources||[]).find(source=>source.destination==='featuredVideo'&&normalize(source.url)===normalize(youtubeURL)&&source.identityVerified===true&&validDate(source.verifiedAt)&&clean(source.evidence,300));
   if(!evidence)throw new Error('The featured YouTube video requires dated, identity-verified selection evidence.');
-  return{title,youtubeURL,selectionBasis:'most-viewed-official',verifiedAt:new Date(evidence.verifiedAt).toISOString()};
+  return{title,youtubeURL,selectionBasis:expectedBasis,verifiedAt:new Date(evidence.verifiedAt).toISOString()};
 }
 function uniqueEditionId(platform){let id;do{id=`dc_${crypto.randomBytes(5).toString('hex')}`}while(platform.editions.some(item=>item.editionId===id));return id}
 function slugify(value){return value.normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')}

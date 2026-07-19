@@ -4,7 +4,7 @@ import fs from 'node:fs/promises';
 const html=await fs.readFile('index.html','utf8');
 const app=await fs.readFile('js/app.js','utf8');
 const css=await fs.readFile('styles.css','utf8');
-for(const id of ['bandName','artistBio','sonicSignature','featuredVideo','featuredVideoFrame','platformLinks','shareButton'])assert.ok(html.includes(`id="${id}"`),`Missing locked discovery control ${id}`);
+for(const id of ['bandName','artistBio','sonicSignature','featureList','featuredVideo','featuredVideoFrame','platformLinks','shareButton','poweredByLabel'])assert.ok(html.includes(`id="${id}"`),`Missing locked discovery control ${id}`);
 for(const forbidden of ['quizScreen','timerRing','answerList','copyButton','Official Music'])assert.ok(!html.includes(forbidden),`Locked artist page must not contain ${forbidden}`);
 for(const visualClass of ['hero-stage','hero-artwork','artist-title-row','artist-bio','sonic-signature','feature-list','featured-video','video-frame','platform-links'])assert.ok(html.includes(`class="${visualClass}`),`Missing master-layout element ${visualClass}`);
 assert.match(css,/\.hero-artwork\{[^}]*height:auto/,'Aggits must preserve his native aspect ratio.');
@@ -14,6 +14,9 @@ assert.ok(!css.includes('.platform-link.is-disabled'),'Unavailable destinations 
 assert.match(css,/@media\(prefers-reduced-motion:reduce\)/,'Attention animation must respect reduced-motion settings.');
 assert.ok(app.includes('setInterval(run,10000)'),'Waveform and destination attention cycle must repeat every ten seconds.');
 for(const platform of ['buyMusic','spotify','instagram','bandcamp','youtube','facebook','website','merchandise','newsReviews'])assert.ok(app.includes(`key:"${platform}"`),`Missing standard ${platform} destination`);
+for(const destination of ['history','specifications','buyerGuide','ownersClub','partsRestoration','carsForSale'])assert.ok(app.includes(`key:"${destination}"`),`Missing standard Cars destination ${destination}`);
+assert.ok(app.includes('config.editionType==="car"'),'Music and Cars editions must remain explicitly separated by configuration.');
+for(const label of ['Discover','Watch','Connect','Own & Restore'])assert.ok(app.includes(`"${label}"`),`Missing locked Cars navigation label ${label}`);
 assert.ok(!app.includes('key:"tip"'),'Tip must not be rendered by the discovery engine.');
 assert.ok(app.includes('if(!url)continue'),'Unverified or unavailable destinations must be omitted entirely.');
 assert.ok(app.includes('youtube-nocookie.com/embed/'),'Featured videos must use the privacy-enhanced YouTube player.');

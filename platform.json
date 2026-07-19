@@ -177,6 +177,14 @@
       "name": "laurapanic",
       "config": "editions/laura-panic/edition.json",
       "active": true
+    },
+    {
+      "slug": "eh-holden",
+      "editionId": "dc_d6559c73e2",
+      "canonicalPath": "/e/dc_d6559c73e2",
+      "name": "EH Holden",
+      "config": "editions/eh-holden/edition.json",
+      "active": true
     }
   ]
 }
