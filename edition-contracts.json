@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "defaultPolicy": "preserve-existing-editions",
+  "editionTypes": {
+    "music": {
+      "brandNames": ["Deep Cuts", "Fan Challenge"],
+      "allowedLinks": ["buyMusic", "spotify", "instagram", "bandcamp", "youtube", "facebook", "website", "merchandise", "newsReviews", "mailingList", "tickets", "tiktok", "tip"],
+      "renderedLinks": ["buyMusic", "spotify", "instagram", "bandcamp", "youtube", "facebook", "website", "merchandise", "newsReviews"],
+      "exclusiveConfig": []
+    },
+    "car": {
+      "brandNames": ["Deep Cuts Cars"],
+      "allowedLinks": ["history", "specifications", "buyerGuide", "youtube", "ownersClub", "partsRestoration", "carsForSale", "newsReviews"],
+      "renderedLinks": ["history", "specifications", "buyerGuide", "youtube", "ownersClub", "partsRestoration", "carsForSale", "newsReviews"],
+      "exclusiveConfig": ["automotive"]
+    },
+    "club": {
+      "brandNames": ["Deep Cuts Clubs"],
+      "allowedLinks": ["website", "calendar", "news", "events", "membership", "barefootBowls", "pennant", "venueHire", "history", "contact", "facebook", "bowlsVictoria"],
+      "renderedLinks": ["website", "calendar", "news", "events", "membership", "barefootBowls", "pennant", "venueHire", "history", "contact", "facebook", "bowlsVictoria"],
+      "exclusiveConfig": ["club"]
+    }
+  }
+}

@@ -5,7 +5,7 @@ description: Research, configure, validate, auto-publish and deliver one permane
 
 # Deep Cuts Factory
 
-Read `DEEP_CUTS_PRODUCTION_MANUAL.md`, `CLAUDE.md` and `ROADMAP.md` completely before acting.
+Read `PLATFORM_ARCHITECTURE_DIRECTIVE.md` first, then read `DEEP_CUTS_PRODUCTION_MANUAL.md`, `CLAUDE.md` and `ROADMAP.md` completely before acting. Complete the directive's impact assessment and preserve every unrelated edition.
 
 For `Deep Cuts [Artist]`:
 

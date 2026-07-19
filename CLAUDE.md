@@ -1,5 +1,7 @@
 # Deep Cuts Agent Instructions
 
+Always read `PLATFORM_ARCHITECTURE_DIRECTIVE.md` before every other project instruction. Perform its edition impact assessment before changing anything. If isolation or backward compatibility is uncertain, preserve the completed editions and stop the change unless the owner explicitly authorises the impact.
+
 ## Unattended batch constitution
 
 - A future CSV batch is started with **Run the Deep Cuts batch.**
