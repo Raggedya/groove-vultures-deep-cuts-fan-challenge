@@ -1,0 +1,98 @@
+{
+  "bandName": "Autopharge",
+  "slug": "autopharge",
+  "editionId": "dc_042f40081f",
+  "verifiedAt": "2026-07-19T08:59:25.554Z",
+  "sources": [
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/autopharge/",
+      "sourceType": "official artist-controlled Instagram profile",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-19T08:59:25.554Z",
+      "evidence": "Google’s verified profile result identifies @autopharge as Autopharge – Band and the profile describes the act as 'hard heavy mostly fast psych punk rock'; this matches current Melbourne venue and media listings."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/@AutoPharge3",
+      "sourceType": "official artist YouTube channel",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-19T08:59:25.554Z",
+      "evidence": "The Auto Pharge channel identifies itself as the band’s channel, contains five Autopharge performance videos and describes the uploads as 'Autopharge - Melbourne Music'."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=yUu3sERPxWA",
+      "sourceType": "official artist video",
+      "identityVerified": true,
+      "mostViewedVerified": true,
+      "verifiedAt": "2026-07-19T08:59:25.554Z",
+      "evidence": "The official channel’s Videos page showed Couch Jesus at 64 views, ahead of Whose Crisis (51), Aches and Dreams (49), Culture Claws (41) and Black Coffee (38)."
+    },
+    {
+      "destination": "newsReviews",
+      "url": "https://www.rrr.org.au/events/badinage-banter-album-launch-thongs-arvo-autopharge-niche-bombed-evening",
+      "sourceType": "credible Melbourne independent-radio live profile",
+      "identityVerified": true,
+      "credibleEditorial": true,
+      "verifiedAt": "2026-07-19T08:59:25.554Z",
+      "evidence": "Triple R’s current Melbourne event profile describes Autopharge as high-energy, guitar-driven chaos with massive riffs, pounding drums and poetic screams about modern existence."
+    },
+    {
+      "destination": "identityReference",
+      "url": "https://musick.com.au/artist/autopharge/",
+      "sourceType": "independent Australian live-music artist directory",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-19T08:59:25.554Z",
+      "evidence": "Musick lists Autopharge as a Melbourne artist and corroborates the active band identity and live performance history."
+    },
+    {
+      "destination": "buyMusic",
+      "url": "",
+      "sourceType": "not confirmed in artist-controlled sources",
+      "identityVerified": false,
+      "verifiedAt": "2026-07-19T08:59:25.554Z",
+      "evidence": "No exact artist-controlled buyMusic destination was found and identity-verified; the button is intentionally omitted."
+    },
+    {
+      "destination": "spotify",
+      "url": "",
+      "sourceType": "not confirmed in artist-controlled sources",
+      "identityVerified": false,
+      "verifiedAt": "2026-07-19T08:59:25.554Z",
+      "evidence": "No exact artist-controlled spotify destination was found and identity-verified; the button is intentionally omitted."
+    },
+    {
+      "destination": "bandcamp",
+      "url": "",
+      "sourceType": "not confirmed in artist-controlled sources",
+      "identityVerified": false,
+      "verifiedAt": "2026-07-19T08:59:25.554Z",
+      "evidence": "No exact artist-controlled bandcamp destination was found and identity-verified; the button is intentionally omitted."
+    },
+    {
+      "destination": "facebook",
+      "url": "",
+      "sourceType": "not confirmed in artist-controlled sources",
+      "identityVerified": false,
+      "verifiedAt": "2026-07-19T08:59:25.554Z",
+      "evidence": "No exact artist-controlled facebook destination was found and identity-verified; the button is intentionally omitted."
+    },
+    {
+      "destination": "website",
+      "url": "",
+      "sourceType": "not confirmed in artist-controlled sources",
+      "identityVerified": false,
+      "verifiedAt": "2026-07-19T08:59:25.554Z",
+      "evidence": "No exact artist-controlled website destination was found and identity-verified; the button is intentionally omitted."
+    },
+    {
+      "destination": "merchandise",
+      "url": "",
+      "sourceType": "not confirmed in artist-controlled sources",
+      "identityVerified": false,
+      "verifiedAt": "2026-07-19T08:59:25.554Z",
+      "evidence": "No exact artist-controlled merchandise destination was found and identity-verified; the button is intentionally omitted."
+    }
+  ]
+}
