@@ -1,0 +1,90 @@
+{
+  "bandName": "laurapanic",
+  "slug": "laura-panic",
+  "editionId": "dc_03ce82298e",
+  "verifiedAt": "2026-07-19T10:33:25.679Z",
+  "sources": [
+    {
+      "destination": "website",
+      "url": "https://laurapanic.bandzoogle.com/home",
+      "sourceType": "official artist website and press kit",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-19T10:33:25.679Z",
+      "evidence": "The official Bandzoogle press site identifies laurapanic as a three-piece noisegaze rock band from Newcastle, Australia and directly cross-links the Bandcamp, Facebook, Instagram and YouTube destinations used in this edition."
+    },
+    {
+      "destination": "buyMusic",
+      "url": "https://laurapanic.bandcamp.com/album/laurapanic",
+      "sourceType": "official artist Bandcamp album",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-19T10:33:25.679Z",
+      "evidence": "The official artist website directs listeners to this self-titled album as its primary album purchase destination."
+    },
+    {
+      "destination": "bandcamp",
+      "url": "https://laurapanic.bandcamp.com/",
+      "sourceType": "official artist Bandcamp",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-19T10:33:25.679Z",
+      "evidence": "The official artist website cross-links this Bandcamp profile, which identifies laurapanic and describes the music as noise and tension."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://laurapanic.bandcamp.com/merch",
+      "sourceType": "official artist Bandcamp merchandise shop",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-19T10:33:25.679Z",
+      "evidence": "The official Bandcamp profile exposes an active merchandise catalogue; recent artist social results also advertise the current record and shirt."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/_laurapanicband/",
+      "sourceType": "official artist-controlled Instagram profile",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-19T10:33:25.679Z",
+      "evidence": "The exact Instagram destination is cross-linked by both the official artist website and official YouTube channel."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/laurapanicband/",
+      "sourceType": "official artist-controlled Facebook page",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-19T10:33:25.679Z",
+      "evidence": "The official artist website cross-links this exact LauraPanic page, which publishes the same releases and live activity."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/@laurapanic2332",
+      "sourceType": "official artist YouTube channel",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-19T10:33:25.679Z",
+      "evidence": "The channel identifies laurapanic as a heavy noisegaze band from Mulubinba/Newcastle, Australia and links back to the verified artist Instagram."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=bhVCYMxnbpA",
+      "sourceType": "official artist video",
+      "identityVerified": true,
+      "mostViewedVerified": true,
+      "verifiedAt": "2026-07-19T10:33:25.679Z",
+      "evidence": "The official channel’s Videos page showed denial [visualiser] at 320 views, ahead of the full live set at The Lass (221), the Denial demo (164) and Hellnation V full set (154)."
+    },
+    {
+      "destination": "newsReviews",
+      "url": "https://www.abc.net.au/triplejunearthed/artist/laurapanic",
+      "sourceType": "Australian national broadcaster artist profile",
+      "identityVerified": true,
+      "credibleEditorial": true,
+      "verifiedAt": "2026-07-19T10:33:25.679Z",
+      "evidence": "Triple J Unearthed identifies laurapanic as a Newcastle NoWave/heavy noise rock band and lists Rock, Experimental and Punk alongside the featured track Denial."
+    },
+    {
+      "destination": "spotify",
+      "url": "",
+      "sourceType": "not confirmed in artist-controlled sources",
+      "identityVerified": false,
+      "verifiedAt": "2026-07-19T10:33:25.679Z",
+      "evidence": "No Spotify profile was linked by the official website, Bandcamp or YouTube channel and no exact identity-verified Spotify result was found; the button is intentionally omitted."
+    }
+  ]
+}

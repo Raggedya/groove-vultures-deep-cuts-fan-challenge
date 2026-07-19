@@ -169,6 +169,14 @@
       "name": "Autopharge",
       "config": "editions/autopharge/edition.json",
       "active": true
+    },
+    {
+      "slug": "laura-panic",
+      "editionId": "dc_03ce82298e",
+      "canonicalPath": "/e/dc_03ce82298e",
+      "name": "laurapanic",
+      "config": "editions/laura-panic/edition.json",
+      "active": true
     }
   ]
 }
