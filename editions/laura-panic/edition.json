@@ -1,0 +1,51 @@
+{
+  "brandName": "Deep Cuts",
+  "bandName": "laurapanic",
+  "editionTitle": "laurapanic",
+  "description": "Newcastle three-piece noisegaze rock band turning distortion, feedback and post-punk tension into fearsome waves of heavy sound.",
+  "discovery": {
+    "bio": "Newcastle three-piece noisegaze rock band turning distortion, feedback and post-punk tension into fearsome waves of heavy sound.",
+    "newsLabel": "Artist profile: triple j Unearthed"
+  },
+  "mode": "discovery",
+  "slug": "laura-panic",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_03ce82298e",
+  "characterArtwork": "assets/aggits-original-cutout-v4.png",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/laura-panic/instagram-discovery.png",
+    "qrImage": "output/laura-panic/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#2f80ff",
+    "accentSecondary": "#8dbdff"
+  },
+  "links": {
+    "buyMusic": "https://laurapanic.bandcamp.com/album/laurapanic",
+    "spotify": "",
+    "instagram": "https://www.instagram.com/_laurapanicband/",
+    "bandcamp": "https://laurapanic.bandcamp.com/",
+    "youtube": "https://www.youtube.com/@laurapanic2332",
+    "facebook": "https://www.facebook.com/laurapanicband/",
+    "website": "https://laurapanic.bandzoogle.com/home",
+    "merchandise": "https://laurapanic.bandcamp.com/merch",
+    "newsReviews": "https://www.abc.net.au/triplejunearthed/artist/laurapanic"
+  },
+  "featuredVideo": {
+    "title": "laurapanic - denial [visualiser]",
+    "youtubeURL": "https://www.youtube.com/watch?v=bhVCYMxnbpA",
+    "selectionBasis": "Most-viewed upload on laurapanic’s official YouTube channel (320 views at verification), ahead of the full live set at The Lass (221), the Denial demo (164) and Hellnation V full set (154).",
+    "verifiedAt": "2026-07-19T10:33:25.679Z"
+  },
+  "analytics": {
+    "editionId": "dc_03ce82298e",
+    "pageIdentifier": "dc_03ce82298e:discovery-v1"
+  },
+  "production": {
+    "jobId": "dcjob_59c0fc2a-0e81-445b-a5e5-5e26a985a54e",
+    "submittedAt": "2026-07-19T10:33:25.679Z",
+    "researchCompletedAt": "2026-07-19T10:33:25.679Z",
+    "editionCreatedAt": "2026-07-19T10:33:25.679Z"
+  }
+}
