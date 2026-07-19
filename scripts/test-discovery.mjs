@@ -3,6 +3,7 @@ import fs from 'node:fs/promises';
 
 const html=await fs.readFile('index.html','utf8');
 const app=await fs.readFile('js/app.js','utf8');
+const factory=await fs.readFile('scripts/create-edition.mjs','utf8');
 const css=await fs.readFile('styles.css','utf8');
 for(const id of ['bandName','artistBio','sonicSignature','featureList','featuredVideo','featuredVideoFrame','platformLinks','shareButton','poweredByLabel'])assert.ok(html.includes(`id="${id}"`),`Missing locked discovery control ${id}`);
 for(const forbidden of ['quizScreen','timerRing','answerList','copyButton','Official Music'])assert.ok(!html.includes(forbidden),`Locked artist page must not contain ${forbidden}`);
@@ -15,8 +16,11 @@ assert.match(css,/@media\(prefers-reduced-motion:reduce\)/,'Attention animation 
 assert.ok(app.includes('setInterval(run,10000)'),'Waveform and destination attention cycle must repeat every ten seconds.');
 for(const platform of ['buyMusic','spotify','instagram','bandcamp','youtube','facebook','website','merchandise','newsReviews'])assert.ok(app.includes(`key:"${platform}"`),`Missing standard ${platform} destination`);
 for(const destination of ['history','specifications','buyerGuide','ownersClub','partsRestoration','carsForSale'])assert.ok(app.includes(`key:"${destination}"`),`Missing standard Cars destination ${destination}`);
+for(const destination of ['calendar','news','events','membership','barefootBowls','pennant','venueHire','contact','bowlsVictoria'])assert.ok(app.includes(`key:"${destination}"`),`Missing standard Clubs destination ${destination}`);
 assert.ok(app.includes('config.editionType==="car"'),'Music and Cars editions must remain explicitly separated by configuration.');
+assert.ok(app.includes('config.editionType==="club"'),'Music, Cars and Clubs editions must remain explicitly separated by configuration.');
 for(const label of ['Discover','Watch','Connect','Own & Restore'])assert.ok(app.includes(`"${label}"`),`Missing locked Cars navigation label ${label}`);
+for(const label of ['Visit','Play','Join','Connect'])assert.ok(factory.includes(`'${label}'`),`Missing locked Clubs navigation label ${label}`);
 assert.ok(!app.includes('key:"tip"'),'Tip must not be rendered by the discovery engine.');
 assert.ok(app.includes('if(!url)continue'),'Unverified or unavailable destinations must be omitted entirely.');
 assert.ok(app.includes('youtube-nocookie.com/embed/'),'Featured videos must use the privacy-enhanced YouTube player.');

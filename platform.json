@@ -185,6 +185,14 @@
       "name": "EH Holden",
       "config": "editions/eh-holden/edition.json",
       "active": true
+    },
+    {
+      "slug": "blackburn-bowls-club",
+      "editionId": "dc_f4deb0ed51",
+      "canonicalPath": "/e/dc_f4deb0ed51",
+      "name": "Blackburn Bowls Club",
+      "config": "editions/blackburn-bowls-club/edition.json",
+      "active": true
     }
   ]
 }

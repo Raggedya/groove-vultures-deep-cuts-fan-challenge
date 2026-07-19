@@ -15,6 +15,8 @@ For `Deep Cuts [Artist]`:
 4. Run the complete validation and the edition QR scan-back. Fix failures without involving the owner.
 
 For `Deep Cuts Cars [Make and Model]`, follow the same clock, validation, opaque-route, QR, deployment and delivery workflow with `editionType: car`. Verify the automotive identity and the model-specific history, specifications, buyer guidance, authoritative video, owners' community, restoration parts, live sales and editorial sources. Do not alter Music definitions.
+
+For `Deep Cuts Clubs [Club name and location]`, use `editionType: club` and the same unattended clock-to-delivery workflow. Verify the exact club and its direct official website, calendar, news, events, membership, public participation, competition, venue, history, contact, social and governing-body destinations. Omit login, share, search, generic and uncertain links. Do not alter Music or Cars definitions.
 5. Create an `agent/deep-cuts-<slug>` branch and pull request through the connected GitHub app. Mark it ready and wait for green validation. Enable auto-merge when the repository allows it; otherwise merge through the authorised GitHub connector only after the head SHA and green checks are re-confirmed. Do not ask the owner to merge or use PowerShell.
 6. Monitor the main-branch deployment. It regenerates and verifies artwork, registers analytics, emails the live opaque URL and QR PNG, and waits for the signed `email.delivered` webhook.
 7. Report the live link only after the deployment and confirmed email delivery are green. Report exceptions only when credentials, ambiguous identity or missing authority make safe completion impossible.

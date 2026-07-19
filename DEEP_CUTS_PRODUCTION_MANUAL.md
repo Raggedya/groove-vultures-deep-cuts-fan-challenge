@@ -18,6 +18,8 @@ The standard owner instruction is `Deep Cuts [Artist]`. It authorizes the factor
 
 The automotive instruction is `Deep Cuts Cars [Make and Model]`. Cars editions run on the same permanent engine and deployment but use a separately locked configuration, labels and evidence standard. They never replace or mutate the Music template. The standard Cars destinations are model history, specifications, buyer's guide, authoritative video, owners' community, parts and restoration, current cars for sale, and credible articles or features. Every active destination must resolve to the nominated make and model; unavailable destinations are omitted.
 
+The club instruction is `Deep Cuts Clubs [Club name and location]`. Clubs run on the same permanent engine and deployment with a third separately locked configuration. They never replace or mutate Music or Cars. Standard Club destinations are the official website, calendar, club news, events, membership and coaching, public participation, competition, venue hire, history, contact, verified official social presence and a relevant governing body. A social destination is omitted if it resolves only to login, search, sharing or generic platform content. The location supplied in the instruction is part of the identity check.
+
 ## Locked visual model
 
 The user-approved screen in `assets/main-screen-master-reference.png` remains the visual foundation. The live implementation must preserve its blue-black composition, original Aggits character, artist title, concise biography, unique sonic signature, small Share control and restrained footer. Directly below Listen / Watch / Follow / Buy Stuff, a restrained 16:9 YouTube screen presents the artist's verified most-viewed official music video when one exists.

@@ -10,4 +10,6 @@ This is the one permanent Deep Cuts artist-discovery platform. Never create or c
 
 `Deep Cuts Cars [Make and Model]` uses the separately locked automotive configuration on the same engine. It must never change the Music destination set. Verify model history, specifications, buying guidance, an authoritative video, owners' community, restoration parts, current sale listings and credible editorial coverage; omit any destination that cannot be verified.
 
+`Deep Cuts Clubs [Club name and location]` uses a third separately locked configuration. Verify the exact club identity and direct official website, calendar, news, events, membership, participation, competition, venue, history, contact, social and governing-body destinations. Omit unavailable or uncertain links, especially social links that lead only to login or generic pages. Never change the Music or Cars definitions.
+
 Never invent destinations. Unavailable destinations are omitted. Preserve the approved Aggits assets and their integrity checks. Public artist routes use opaque edition IDs, never band names. Optimise every change for less production time and less owner interaction.

@@ -1,6 +1,6 @@
 # Deep Cuts Roadmap â€” Ordered Only by Production Time Saved
 
-- [x] Add separately typed Music and Cars configurations to the one permanent engine, avoiding duplicated repositories and code.
+- [x] Add separately typed Music, Cars and Clubs configurations to the one permanent engine, avoiding duplicated repositories and code.
 
 ## Batch-production time savings
 
