@@ -16,6 +16,8 @@ The primary production KPI is elapsed time from artist-name submission to confir
 
 The standard owner instruction is `Deep Cuts [Artist]`. It authorizes the factory to research, configure, validate, create a branch and pull request, merge through the authorised GitHub connector only after green checks, deploy, verify and send the completion email without intermediate owner interaction. Repository auto-merge may be used when available but is not required. Only ambiguous artist identity, unavailable credentials or a destination requiring explicit authority may stop the factory.
 
+The automotive instruction is `Deep Cuts Cars [Make and Model]`. Cars editions run on the same permanent engine and deployment but use a separately locked configuration, labels and evidence standard. They never replace or mutate the Music template. The standard Cars destinations are model history, specifications, buyer's guide, authoritative video, owners' community, parts and restoration, current cars for sale, and credible articles or features. Every active destination must resolve to the nominated make and model; unavailable destinations are omitted.
+
 ## Locked visual model
 
 The user-approved screen in `assets/main-screen-master-reference.png` remains the visual foundation. The live implementation must preserve its blue-black composition, original Aggits character, artist title, concise biography, unique sonic signature, small Share control and restrained footer. Directly below Listen / Watch / Follow / Buy Stuff, a restrained 16:9 YouTube screen presents the artist's verified most-viewed official music video when one exists.

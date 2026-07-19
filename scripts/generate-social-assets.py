@@ -119,8 +119,9 @@ def create_instagram(config: dict, aggits: Image.Image, destination: Path) -> No
     footer = Image.new("RGBA", (SIZE, 154), (1, 6, 16, 214))
     canvas.alpha_composite(footer, (0, SIZE - 154))
     draw = ImageDraw.Draw(canvas)
-    challenge_font = fit_font(draw, "OFFICIAL FAN CHALLENGE", 820, 54, 38)
-    centred_text(draw, "OFFICIAL FAN CHALLENGE", 961, challenge_font, fill=(173, 210, 255), stroke=1)
+    footer_label = "DEEP CUTS CARS" if config.get("editionType") == "car" else "OFFICIAL FAN CHALLENGE"
+    challenge_font = fit_font(draw, footer_label, 820, 54, 38)
+    centred_text(draw, footer_label, 961, challenge_font, fill=(173, 210, 255), stroke=1)
     canvas.convert("RGB").save(destination, "PNG", optimize=True)
 
 

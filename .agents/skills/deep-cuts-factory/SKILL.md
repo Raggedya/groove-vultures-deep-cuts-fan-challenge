@@ -13,6 +13,8 @@ For `Deep Cuts [Artist]`:
 2. Research current official artist-controlled sources first. Open and identity-check every proposed destination. When an official YouTube channel exists, verify its most-viewed official music video for the featured player. Record evidence using `references/research-contract.md`. Omit every unavailable destination.
 3. Save the completed research input outside the edition folder, then run `node scripts/create-edition.mjs <input.json>`. This creates only edition configuration, evidence and the opaque route.
 4. Run the complete validation and the edition QR scan-back. Fix failures without involving the owner.
+
+For `Deep Cuts Cars [Make and Model]`, follow the same clock, validation, opaque-route, QR, deployment and delivery workflow with `editionType: car`. Verify the automotive identity and the model-specific history, specifications, buyer guidance, authoritative video, owners' community, restoration parts, live sales and editorial sources. Do not alter Music definitions.
 5. Create an `agent/deep-cuts-<slug>` branch and pull request through the connected GitHub app. Mark it ready and wait for green validation. Enable auto-merge when the repository allows it; otherwise merge through the authorised GitHub connector only after the head SHA and green checks are re-confirmed. Do not ask the owner to merge or use PowerShell.
 6. Monitor the main-branch deployment. It regenerates and verifies artwork, registers analytics, emails the live opaque URL and QR PNG, and waits for the signed `email.delivered` webhook.
 7. Report the live link only after the deployment and confirmed email delivery are green. Report exceptions only when credentials, ambiguous identity or missing authority make safe completion impossible.

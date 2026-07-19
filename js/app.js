@@ -1,10 +1,10 @@
 "use strict";
 
-const VERSION="20260718-video-1";
+const VERSION="20260719-cars-1";
 const $=id=>document.getElementById(id);
-const els={page:$("discoveryPage"),error:$("errorScreen"),errorMessage:$("errorMessage"),bandName:$("bandName"),bio:$("artistBio"),artwork:$("heroArtwork"),waveform:$("sonicSignature"),video:$("featuredVideo"),videoTitle:$("featuredVideoTitle"),videoFrame:$("featuredVideoFrame"),links:$("platformLinks"),share:$("shareButton"),status:$("shareStatus"),description:$("pageDescription"),copyright:$("coverCopyright")};
+const els={page:$("discoveryPage"),error:$("errorScreen"),errorMessage:$("errorMessage"),bandName:$("bandName"),bio:$("artistBio"),artwork:$("heroArtwork"),waveform:$("sonicSignature"),features:$("featureList"),video:$("featuredVideo"),videoLabel:$("featuredVideoLabel"),videoTitle:$("featuredVideoTitle"),videoFrame:$("featuredVideoFrame"),links:$("platformLinks"),share:$("shareButton"),status:$("shareStatus"),description:$("pageDescription"),poweredBy:$("poweredByLabel"),copyright:$("coverCopyright")};
 
-const LINK_DEFINITIONS=[
+const MUSIC_LINK_DEFINITIONS=[
   {key:"buyMusic",label:"Buy Music",subLabel:"Purchase music directly",priority:"primary",fallback:"bandcamp"},
   {key:"spotify",label:"Listen on Spotify",subLabel:"Open the artist on Spotify",priority:"primary"},
   {key:"bandcamp",label:"Bandcamp",subLabel:"Listen directly"},
@@ -14,6 +14,17 @@ const LINK_DEFINITIONS=[
   {key:"website",label:"Band Website",subLabel:"Official website"},
   {key:"merchandise",label:"Buy Merch",subLabel:"Official merchandise"},
   {key:"newsReviews",label:"News & Reviews",subLabel:"Latest verified coverage",priority:"editorial"}
+];
+
+const CAR_LINK_DEFINITIONS=[
+  {key:"history",label:"Model History",subLabel:"Discover the EH story",priority:"primary"},
+  {key:"specifications",label:"Specifications",subLabel:"Engines, dimensions and variants",priority:"primary"},
+  {key:"buyerGuide",label:"Buyer’s Guide",subLabel:"What to inspect before buying"},
+  {key:"youtube",label:"Watch",subLabel:"Verified EH Holden video"},
+  {key:"ownersClub",label:"Owners’ Community",subLabel:"Connect with EH enthusiasts"},
+  {key:"partsRestoration",label:"Parts & Restoration",subLabel:"Keep an EH on the road"},
+  {key:"carsForSale",label:"Cars for Sale",subLabel:"Browse current EH listings"},
+  {key:"newsReviews",label:"Articles & Features",subLabel:"Independent automotive coverage",priority:"editorial"}
 ];
 
 let platform,editionEntry,config;
@@ -33,26 +44,37 @@ async function init(){
     analytics=new DeepCutsAnalytics.Tracker({platformConfig:platform,editionEntry,editionConfig:config});
     applyConfig();
     analytics.track("discovery_page_viewed",{page_location:location.origin+location.pathname,page_identifier:pageIdentifier()},{onceKey:`page:${editionEntry.editionId||editionEntry.slug}`});
-  }catch(error){console.error(error);showError("This artist page could not be loaded. Please refresh and try again.")}
+  }catch(error){console.error(error);showError("This Deep Cuts page could not be loaded. Please refresh and try again.")}
 }
 
 async function fetchJson(url){const response=await fetch(url,{cache:"no-store"});if(!response.ok)throw new Error(`${url} returned ${response.status}`);return response.json()}
 
 function applyConfig(){
   const name=config.bandName||editionEntry.name;
-  document.title=`${name} | Deep Cuts`;
+  const cars=isCarEdition();
+  document.title=`${name} | ${cars?"Deep Cuts Cars":"Deep Cuts"}`;
   const bio=config.discovery?.bio||config.description||`Discover ${name}.`;
-  els.description.content=`Official music, video and social links for ${name}.`;
+  els.description.content=cars?`Verified history, specifications, buying, ownership and restoration links for ${name}.`:`Official music, video and social links for ${name}.`;
   els.bandName.textContent=name;
   els.bio.textContent=bio;
   els.artwork.src=`/${config.characterArtwork||"assets/aggits-original-cutout-v4.png"}`;
   els.artwork.alt=`Aggits presenting ${name}`;
   els.copyright.textContent=config.social?.copyright||"copyright Clearlight Creative";
+  els.poweredBy.textContent=cars?"Powered by Deep Cuts Cars":"Powered by Deep Cuts";
+  els.videoLabel.textContent=cars?"Featured automotive video":"Featured video";
+  buildFeatures(cars?config.automotive?.heroLabels:["Listen","Watch","Follow","Buy Stuff"]);
   document.documentElement.style.setProperty("--accent",config.theme?.accent||"#2f80ff");
   buildWaveform(name);
   buildFeaturedVideo();
   buildLinks();
   startAttentionCycle();
+}
+
+function isCarEdition(){return config.editionType==="car"}
+
+function buildFeatures(labels){
+  const values=Array.isArray(labels)&&labels.length===4?labels:["Discover","Watch","Connect","Own & Restore"];
+  els.features.innerHTML=values.map(label=>`<li>${escapeHtml(label)}</li>`).join("");
 }
 
 function buildWaveform(name){
@@ -99,7 +121,8 @@ function buildFeaturedVideo(){
 
 function buildLinks(){
   els.links.innerHTML="";
-  for(const definition of LINK_DEFINITIONS){
+  const definitions=isCarEdition()?CAR_LINK_DEFINITIONS:MUSIC_LINK_DEFINITIONS;
+  for(const definition of definitions){
     const url=linkValue(definition);
     if(!url)continue;
     const element=document.createElement("a");
@@ -145,7 +168,7 @@ function startAttentionCycle(){
 function validHttps(value){try{const url=new URL(String(value||""));return url.protocol==="https:"?url.href:""}catch{return""}}
 function pageIdentifier(){return config.analytics?.pageIdentifier||`${editionEntry.editionId}:discovery-v1`}
 function canonicalURL(){return new URL(editionEntry.canonicalPath||`/e/${editionEntry.editionId}`,location.origin).href}
-function sharePayload(){return{title:`${config.bandName} | Deep Cuts`,text:`Discover ${config.bandName}: official music, video and social links.`,url:canonicalURL()}}
+function sharePayload(){return isCarEdition()?{title:`${config.bandName} | Deep Cuts Cars`,text:`Explore ${config.bandName}: verified history, specifications, buying and restoration links.`,url:canonicalURL()}:{title:`${config.bandName} | Deep Cuts`,text:`Discover ${config.bandName}: official music, video and social links.`,url:canonicalURL()}}
 
 async function sharePage(){
   analytics.track("share_button_clicked",{page_identifier:pageIdentifier()},{dedupeKey:"main-share",dedupeMs:500});
@@ -157,9 +180,10 @@ async function sharePage(){
   const actionId=DeepCutsAnalytics.randomId();
   analytics.track("copy_link_clicked",{share_method:"copy_link",share_action_id:actionId},{dedupeKey:"share-copy",dedupeMs:500});
   const copied=await DeepCutsInteractions.copyLink({clipboard:navigator.clipboard,tracker:analytics,text:canonicalURL(),trigger:"share_fallback",actionId});
-  els.status.textContent=copied?"Artist page link copied.":"Copy was blocked. Please copy the address from your browser.";
+  els.status.textContent=copied?"Deep Cuts page link copied.":"Copy was blocked. Please copy the address from your browser.";
 }
 
+function escapeHtml(value){return String(value).replace(/[&<>'"]/g,char=>({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"})[char])}
 function showError(message){els.page.hidden=true;els.errorMessage.textContent=message;els.error.hidden=false}
 els.share.addEventListener("click",sharePage);
 window.__deepCutsDiscoveryTest={validHttps,youtubeVideoId,getConfig:()=>config,getRenderedLinks:()=>[...els.links.children].map(link=>({destination:link.dataset.destination,wide:link.classList.contains("wide")}))};

@@ -1,0 +1,81 @@
+{
+  "bandName": "EH Holden",
+  "slug": "eh-holden",
+  "editionId": "dc_d6559c73e2",
+  "verifiedAt": "2026-07-19T11:16:49.456Z",
+  "sources": [
+    {
+      "destination": "history",
+      "url": "https://www.ehholden.com.au/eh-history/",
+      "sourceType": "official owners club",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-19T11:20:00.000Z",
+      "evidence": "The EH Holden Car Club of Victoria model history records the 26 August 1963 release, Red motor introduction, S4 details and 256,959-unit production total."
+    },
+    {
+      "destination": "specifications",
+      "url": "https://www.uniquecarsandparts.com.au/holden_EH_technical_specifications.htm",
+      "sourceType": "authoritative automotive reference",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-19T11:20:00.000Z",
+      "evidence": "Unique Cars and Parts provides model-specific 149 and 179 engine, transmission, suspension, brake and dimension specifications for the EH Holden."
+    },
+    {
+      "destination": "buyerGuide",
+      "url": "https://www.ehholden.com.au/buying-guide/",
+      "sourceType": "official owners club",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-19T11:20:00.000Z",
+      "evidence": "The official club guide covers research, seller questions, test driving, rust inspection, mechanical checks, professional inspection and paperwork."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/watch?v=O-BRV25r8cs",
+      "sourceType": "authoritative automotive video",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-19T11:20:00.000Z",
+      "evidence": "Verified Shannons Insurance channel episode dedicated to the EJ and EH Holden; 14:48 duration and approximately 20,000 views at verification."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=O-BRV25r8cs",
+      "sourceType": "authoritative automotive video",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-19T11:20:00.000Z",
+      "evidence": "Selected as the strongest concise authoritative overview: a dedicated Shannons Club TV episode from the verified Shannons Insurance channel, covering styling and performance context."
+    },
+    {
+      "destination": "ownersClub",
+      "url": "https://www.ehholden.com.au/",
+      "sourceType": "official owners club",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-19T11:20:00.000Z",
+      "evidence": "Official EH Holden Car Club of Victoria site, open to EJ/EH owners and enthusiasts and providing club, technical and model information."
+    },
+    {
+      "destination": "partsRestoration",
+      "url": "https://www.oldholdenparts.com.au/",
+      "sourceType": "authoritative specialist supplier",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-19T11:20:00.000Z",
+      "evidence": "Warburton Early Holden Spares identifies itself as a specialist in FE–HG Holden parts, explicitly including EH, with worldwide shipping."
+    },
+    {
+      "destination": "carsForSale",
+      "url": "https://www.carsales.com.au/cars/holden/eh/",
+      "sourceType": "authoritative current marketplace",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-19T11:20:00.000Z",
+      "evidence": "Carsales model-filtered Holden EH inventory page; individual stock changes while the verified model route remains stable."
+    },
+    {
+      "destination": "newsReviews",
+      "url": "https://www.streetmachine.com.au/features/holden-ej-holden-eh-history",
+      "sourceType": "credible automotive editorial",
+      "identityVerified": true,
+      "credibleEditorial": true,
+      "verifiedAt": "2026-07-19T11:20:00.000Z",
+      "evidence": "Street Machine’s editorial history places the EJ and EH within Holden design, engineering and Australian cultural context."
+    }
+  ]
+}

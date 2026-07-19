@@ -2,6 +2,8 @@
 
 Deep Cuts is one permanent artist-discovery platform. A fan scans an artist-specific QR and opens a calm page containing the artist's verified featured YouTube video and only the music, social, website, merchandise and editorial destinations that are genuinely available.
 
+The same permanent engine also supports separately typed `Deep Cuts Cars` editions with verified model history, specifications, buying, ownership, restoration, sale and editorial destinations. Music and Cars keep independent locked definitions without duplicating the application.
+
 ## Standard owner request
 
 `Deep Cuts [Band or Artist]`
