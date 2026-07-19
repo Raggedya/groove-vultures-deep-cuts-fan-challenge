@@ -1,6 +1,7 @@
 # Deep Cuts Roadmap â€” Ordered Only by Production Time Saved
 
 - [x] Add separately typed Music, Cars and Clubs configurations to the one permanent engine, avoiding duplicated repositories and code.
+- [x] Lock permanent edition-protection governance, typed contracts, pull-request impact assessment and automated cross-edition isolation checks.
 
 ## Batch-production time savings
 
