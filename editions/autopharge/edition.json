@@ -1,0 +1,51 @@
+{
+  "brandName": "Deep Cuts",
+  "bandName": "Autopharge",
+  "editionTitle": "Autopharge",
+  "description": "Melbourne psych-punk rockers delivering hard, heavy and mostly fast guitar-driven chaos, massive riffs, pounding drums and poetic screams.",
+  "discovery": {
+    "bio": "Melbourne psych-punk rockers delivering hard, heavy and mostly fast guitar-driven chaos, massive riffs, pounding drums and poetic screams.",
+    "newsLabel": "Live profile: Triple R"
+  },
+  "mode": "discovery",
+  "slug": "autopharge",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_042f40081f",
+  "characterArtwork": "assets/aggits-original-cutout-v4.png",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/autopharge/instagram-discovery.png",
+    "qrImage": "output/autopharge/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#2f80ff",
+    "accentSecondary": "#8dbdff"
+  },
+  "links": {
+    "buyMusic": "",
+    "spotify": "",
+    "instagram": "https://www.instagram.com/autopharge/",
+    "bandcamp": "",
+    "youtube": "https://www.youtube.com/@AutoPharge3",
+    "facebook": "",
+    "website": "",
+    "merchandise": "",
+    "newsReviews": "https://www.rrr.org.au/events/badinage-banter-album-launch-thongs-arvo-autopharge-niche-bombed-evening"
+  },
+  "featuredVideo": {
+    "title": "Couch Jesus",
+    "youtubeURL": "https://www.youtube.com/watch?v=yUu3sERPxWA",
+    "selectionBasis": "Most-viewed upload on Autopharge’s official Auto Pharge YouTube channel (64 views at verification), ahead of Whose Crisis (51), Aches and Dreams (49), Culture Claws (41) and Black Coffee (38).",
+    "verifiedAt": "2026-07-19T08:59:25.554Z"
+  },
+  "analytics": {
+    "editionId": "dc_042f40081f",
+    "pageIdentifier": "dc_042f40081f:discovery-v1"
+  },
+  "production": {
+    "jobId": "dcjob_5419ab08-0cb7-4e45-8a7a-ffcf1bc967aa",
+    "submittedAt": "2026-07-19T08:59:25.554Z",
+    "researchCompletedAt": "2026-07-19T08:59:25.554Z",
+    "editionCreatedAt": "2026-07-19T08:59:25.554Z"
+  }
+}
