@@ -161,6 +161,14 @@
       "name": "Ashley Davies",
       "config": "editions/ashley-davies/edition.json",
       "active": true
+    },
+    {
+      "slug": "autopharge",
+      "editionId": "dc_042f40081f",
+      "canonicalPath": "/e/dc_042f40081f",
+      "name": "Autopharge",
+      "config": "editions/autopharge/edition.json",
+      "active": true
     }
   ]
 }
