@@ -115,6 +115,22 @@
       "identityVerified": true,
       "verifiedAt": "2026-07-20T00:00:00.000Z",
       "evidence": "Selected as the best authoritative school video because the Victorian School Building Authority publishes it with a school-specific transcript and project context."
+    },
+    {
+      "destination": "schoolChallenge",
+      "url": "https://www.kerrimuirps.vic.edu.au/our-school/vision-and-values/",
+      "sourceType": "official school website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-20T00:00:00.000Z",
+      "evidence": "Official school source for the CARE values used in the positive School Discovery challenge."
+    },
+    {
+      "destination": "schoolChallenge",
+      "url": "https://www.vrqa.vic.gov.au/StateRegister/Provider.aspx/GetFile?EntityID=1&SchoolNumber=4816&Type=AnnualReport&requestFileType=Pdf",
+      "sourceType": "authoritative Victorian school annual report",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-20T00:00:00.000Z",
+      "evidence": "Official 2025 Annual Report source for parent satisfaction, language diversity and learning-growth challenge facts."
     }
   ]
 }

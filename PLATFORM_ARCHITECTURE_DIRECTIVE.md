@@ -44,3 +44,7 @@ Treat every completed edition as a finished commercial product that must remain 
 - The colour scheme is derived from the current official school website and recorded with dated evidence.
 - The school logo, crest or emblem is never copied or displayed. Only verified website colour values inform the palette.
 - QR artwork uses the heading `Discover Our School` and the edition-specific school name.
+- School Discovery alone includes a six-question positive school challenge. Music, Cars and Clubs remain discovery-only and must not inherit any quiz interface or logic.
+- The challenge CTA is placed immediately before the School Upgrade destination. It reads `How Well Do You Know Our School?` and `Take the Challenge` and uses the edition's verified school accent colour.
+- Each question has four choices, a 15-second countdown, a time-up bell at zero, a ten-second positive fact explanation and a verified authoritative source. Exactly six questions are required.
+- Results use encouraging, non-punitive ratings. The challenge always provides an explicit School Home control, and browser Back also restores the school discovery page without requiring another QR scan.

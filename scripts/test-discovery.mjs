@@ -6,7 +6,8 @@ const app=await fs.readFile('js/app.js','utf8');
 const factory=await fs.readFile('scripts/create-edition.mjs','utf8');
 const css=await fs.readFile('styles.css','utf8');
 for(const id of ['bandName','artistBio','sonicSignature','featureList','featuredVideo','featuredVideoFrame','platformLinks','shareButton','poweredByLabel'])assert.ok(html.includes(`id="${id}"`),`Missing locked discovery control ${id}`);
-for(const forbidden of ['quizScreen','timerRing','answerList','copyButton','Official Music'])assert.ok(!html.includes(forbidden),`Locked artist page must not contain ${forbidden}`);
+for(const forbidden of ['id="quizScreen"','id="timerRing"','id="answerList"','copyButton','Official Music'])assert.ok(!html.includes(forbidden),`Locked artist page must not contain ${forbidden}`);
+for(const id of ['schoolQuizScreen','schoolQuizHomeButton','schoolTimerRing','schoolAnswerList','schoolResultScreen','schoolResultHomeButton'])assert.ok(html.includes(`id="${id}"`),`Missing isolated Schools Edition challenge control ${id}`);
 for(const visualClass of ['hero-stage','hero-artwork','artist-title-row','artist-bio','sonic-signature','feature-list','featured-video','video-frame','platform-links'])assert.ok(html.includes(`class="${visualClass}`),`Missing master-layout element ${visualClass}`);
 assert.match(css,/\.hero-artwork\{[^}]*height:auto/,'Aggits must preserve his native aspect ratio.');
 assert.match(css,/\.platform-links\{[^}]*grid-template-columns:1fr 1fr/,'Master layout requires paired destination cards.');
@@ -21,6 +22,9 @@ for(const destination of ['enrolment','virtualTour','principalMessage','visionVa
 assert.ok(app.includes('config.editionType==="car"'),'Music and Cars editions must remain explicitly separated by configuration.');
 assert.ok(app.includes('config.editionType==="club"'),'Music, Cars and Clubs editions must remain explicitly separated by configuration.');
 assert.ok(app.includes('config.editionType==="school"'),'School Discovery must remain explicitly separated from Music, Cars and Clubs.');
+assert.ok(app.includes('if(schools)await SchoolDiscoveryQuiz.configure'),'The challenge engine must initialise only for the Schools Edition.');
+assert.ok(app.includes('definition.key==="schoolProject"&&!schoolChallengeAdded'),'The Schools challenge CTA must appear immediately before School Upgrade.');
+assert.ok(app.includes('card.classList.contains("school-challenge-card")'),'The Schools challenge CTA must remain full width after link-grid balancing.');
 for(const label of ['Discover','Watch','Connect','Own & Restore'])assert.ok(app.includes(`"${label}"`),`Missing locked Cars navigation label ${label}`);
 for(const label of ['Visit','Play','Join','Connect'])assert.ok(factory.includes(`'${label}'`),`Missing locked Clubs navigation label ${label}`);
 for(const label of ['Discover','Learn','Connect','Enrol'])assert.ok(factory.includes(`'${label}'`),`Missing locked School Discovery navigation label ${label}`);
@@ -37,6 +41,8 @@ for(const edition of platform.editions){
   assert.match(edition.editionId,/^[A-Za-z0-9_-]{4,40}$/);
   assert.equal(edition.canonicalPath,`/e/${edition.editionId}`);
   assert.ok(!edition.canonicalPath.toLowerCase().includes(edition.slug),'Public route must not expose the band slug.');
-  JSON.parse(await fs.readFile(edition.config,'utf8'));
+  const config=JSON.parse(await fs.readFile(edition.config,'utf8'));
+  if(config.editionType==='school')assert.ok(config.schoolChallenge,'Schools editions require the isolated challenge configuration.');
+  else assert.equal(config.schoolChallenge,undefined,`${config.editionType} editions must remain untouched by the Schools challenge.`);
 }
-console.log('Discovery tests passed: featured video, opaque routes, verified-only links, balanced cards and attention cycle.');
+console.log('Discovery tests passed: featured video, opaque routes, verified-only links, balanced cards, edition isolation and Schools-only challenge.');

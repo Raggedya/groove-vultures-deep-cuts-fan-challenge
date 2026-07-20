@@ -68,5 +68,40 @@
       "Connect",
       "Enrol"
     ]
+  },
+  "schoolChallenge": {
+    "title": "How Well Do You Know Our School?",
+    "ctaLabel": "Take the Challenge",
+    "numberOfQuestions": 6,
+    "secondsPerQuestion": 15,
+    "feedbackMilliseconds": 10000,
+    "questionFile": "editions/kerrimuir-primary-school/school-questions.json",
+    "dingSound": "assets/ding.mp3",
+    "classifications": [
+      {
+        "min": 0,
+        "max": 1,
+        "label": "Curious Explorer",
+        "message": "Your discovery of {band} has just begun. There is plenty more to explore on the school home screen."
+      },
+      {
+        "min": 2,
+        "max": 3,
+        "label": "Keen School Learner",
+        "message": "You already know some of what makes {band} special. Keep exploring and discovering the school community."
+      },
+      {
+        "min": 4,
+        "max": 5,
+        "label": "School Champion",
+        "message": "A terrific result. You know many of the people, programs and achievements that make {band} shine."
+      },
+      {
+        "min": 6,
+        "max": 6,
+        "label": "School Discovery Wizard",
+        "message": "A perfect score. You are a true {band} discovery wizard and know the school exceptionally well."
+      }
+    ]
   }
 }

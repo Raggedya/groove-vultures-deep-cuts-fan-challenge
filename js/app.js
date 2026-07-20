@@ -1,6 +1,6 @@
 "use strict";
 
-const VERSION="20260720-schools-1";
+const VERSION="20260720-schools-quiz-1";
 const $=id=>document.getElementById(id);
 const els={page:$("discoveryPage"),error:$("errorScreen"),errorMessage:$("errorMessage"),bandName:$("bandName"),bio:$("artistBio"),artwork:$("heroArtwork"),waveform:$("sonicSignature"),features:$("featureList"),video:$("featuredVideo"),videoLabel:$("featuredVideoLabel"),videoTitle:$("featuredVideoTitle"),videoFrame:$("featuredVideoFrame"),links:$("platformLinks"),share:$("shareButton"),status:$("shareStatus"),description:$("pageDescription"),poweredBy:$("poweredByLabel"),copyright:$("coverCopyright")};
 
@@ -73,14 +73,14 @@ async function init(){
     if(!editionEntry)throw new Error(`Unknown edition: ${requested}`);
     config=await fetchJson(`/${editionEntry.config}?v=${VERSION}`);
     analytics=new DeepCutsAnalytics.Tracker({platformConfig:platform,editionEntry,editionConfig:config});
-    applyConfig();
+    await applyConfig();
     analytics.track("discovery_page_viewed",{page_location:location.origin+location.pathname,page_identifier:pageIdentifier()},{onceKey:`page:${editionEntry.editionId||editionEntry.slug}`});
   }catch(error){console.error(error);showError("This Deep Cuts page could not be loaded. Please refresh and try again.")}
 }
 
 async function fetchJson(url){const response=await fetch(url,{cache:"no-store"});if(!response.ok)throw new Error(`${url} returned ${response.status}`);return response.json()}
 
-function applyConfig(){
+async function applyConfig(){
   const name=config.bandName||editionEntry.name;
   const cars=isCarEdition(),clubs=isClubEdition(),schools=isSchoolEdition();
   document.documentElement.dataset.editionType=config.editionType||"music";
@@ -99,6 +99,7 @@ function applyConfig(){
   buildWaveform(name);
   buildFeaturedVideo();
   buildLinks();
+  if(schools)await SchoolDiscoveryQuiz.configure({config,analytics,homeElement:els.page,challengeButton:$("schoolChallengeButton")});
   startAttentionCycle();
 }
 
@@ -156,7 +157,9 @@ function buildFeaturedVideo(){
 function buildLinks(){
   els.links.innerHTML="";
   const definitions=isSchoolEdition()?SCHOOL_LINK_DEFINITIONS:isClubEdition()?CLUB_LINK_DEFINITIONS:isCarEdition()?CAR_LINK_DEFINITIONS:MUSIC_LINK_DEFINITIONS;
+  let schoolChallengeAdded=false;
   for(const definition of definitions){
+    if(isSchoolEdition()&&definition.key==="schoolProject"&&!schoolChallengeAdded){els.links.append(createSchoolChallengeCard());schoolChallengeAdded=true}
     const url=linkValue(definition);
     if(!url)continue;
     const element=document.createElement("a");
@@ -168,12 +171,29 @@ function buildLinks(){
     element.addEventListener("click",()=>DeepCutsInteractions.trackOutbound(analytics,analyticsDestination(definition.key),url),{passive:true});
     els.links.append(element);
   }
+  if(isSchoolEdition()&&!schoolChallengeAdded)els.links.append(createSchoolChallengeCard());
   balanceLinkGrid();
+}
+
+function createSchoolChallengeCard(){
+  const button=document.createElement("button");
+  button.id="schoolChallengeButton";
+  button.type="button";
+  button.className="school-challenge-card wide";
+  button.disabled=true;
+  const icon=document.createElement("span");icon.className="school-challenge-icon";icon.setAttribute("aria-hidden","true");icon.textContent="?";
+  const copy=document.createElement("span");copy.className="link-copy";
+  const title=document.createElement("strong");title.textContent=config.schoolChallenge?.title||"How Well Do You Know Our School?";
+  const subtitle=document.createElement("small");subtitle.textContent=config.schoolChallenge?.ctaLabel||"Take the Challenge";
+  const arrow=document.createElement("span");arrow.className="link-arrow";arrow.setAttribute("aria-hidden","true");arrow.textContent=">";
+  copy.append(title,subtitle);button.append(icon,copy,arrow);
+  button.addEventListener("click",()=>SchoolDiscoveryQuiz.open());
+  return button;
 }
 
 function balanceLinkGrid(){
   const cards=[...els.links.children];
-  cards.forEach(card=>card.classList.toggle("wide",card.classList.contains("primary")||card.classList.contains("editorial")));
+  cards.forEach(card=>card.classList.toggle("wide",card.classList.contains("primary")||card.classList.contains("editorial")||card.classList.contains("school-challenge-card")));
   const paired=cards.filter(card=>!card.classList.contains("wide"));
   if(paired.length%2===1)paired.at(-1)?.classList.add("wide");
   els.links.hidden=cards.length===0;

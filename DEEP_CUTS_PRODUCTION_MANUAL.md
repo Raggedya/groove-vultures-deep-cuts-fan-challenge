@@ -6,11 +6,13 @@
 
 School Discovery is a separate product contract. Research begins with the official school website, from which the engine records the primary, secondary, accent, surface and content-background colours. These values may be used for the School Discovery interface and QR artwork; the school logo, crest and emblem must not be copied or displayed. Aggits is never used. Every edition requires a verified, authoritative featured YouTube video and direct official school links. Existing Music, Cars and Clubs output remains unchanged.
 
+Every Schools Edition also includes exactly six positive, factual multiple-choice questions in a separate `school-questions.json` file. Questions draw on official school pages, annual reports, government project pages and other authoritative evidence. Each question has four unique choices, a verified answer, a useful positive explanation and a direct HTTPS source. The locked experience is a 15-second countdown, the existing ding only at zero, ten seconds to read the explanation, automatic progression, an encouraging final rating, replay and School Home return. The red challenge card appears immediately before School Upgrade. No other edition receives this feature.
+
 ## Unattended artist batches
 
 Deep Cuts accepts CSV batches through one permanent controller. Intake data is evidence to verify, not truth to copy. Every artist is normalized, duplicate-checked, range-checked, researched and independently gated. Publication requires at least 98% confidence in artist identity and every mandatory direct destination. Search pages, guesses and placeholders are forbidden. Rejections are recorded and isolated. Temporary failures receive bounded retries with exponential backoff; checkpoints allow safe resume. Accepted artists flow through the existing factory, immutable artwork checks, QR scan-back, shared Cloudflare deployment, live verification, analytics registration and email delivery.
 
-The current product is a discovery platform, not a quiz. Legacy batch requirements for question counts, scoring or timers are not applicable; reports record `question_count` as zero to make that explicit.
+Music, Cars and Clubs are discovery products, not quizzes; their legacy question count remains zero. School Discovery is the sole exception and carries its own isolated six-question positive challenge contract.
 
 Version 3.0 â€” Permanent Artist Discovery Platform
 
