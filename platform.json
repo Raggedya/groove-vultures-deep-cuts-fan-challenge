@@ -201,6 +201,14 @@
       "name": "Kerrimuir Primary School",
       "config": "editions/kerrimuir-primary-school/edition.json",
       "active": true
+    },
+    {
+      "slug": "keysborough-secondary-college",
+      "editionId": "dc_9078af1a20",
+      "canonicalPath": "/e/dc_9078af1a20",
+      "name": "Keysborough Secondary College",
+      "config": "editions/keysborough-secondary-college/edition.json",
+      "active": true
     }
   ]
 }

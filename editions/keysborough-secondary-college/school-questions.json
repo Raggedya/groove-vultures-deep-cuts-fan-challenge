@@ -1,0 +1,98 @@
+[
+  {
+    "id": "ksc-red-values",
+    "category": "College Values",
+    "question": "What do Keysborough Secondary College's RED values stand for?",
+    "options": [
+      "Respect, Excellence and Diversity",
+      "Resilience, Endeavour and Discovery",
+      "Responsibility, Empathy and Determination",
+      "Reflection, Energy and Direction"
+    ],
+    "correctAnswer": "Respect, Excellence and Diversity",
+    "explanation": "Respect, Excellence and Diversity guide the College's inclusive, aspirational approach to learning, growth and wellbeing.",
+    "sourceName": "Keysborough Secondary College - About Us",
+    "sourceURL": "https://www6.keysboroughsc.vic.edu.au/prospective-families/about-us/",
+    "active": true
+  },
+  {
+    "id": "ksc-high-performance",
+    "category": "College Achievement",
+    "question": "What Department of Education performance category did the College achieve for 2025?",
+    "options": [
+      "High - the highest category available",
+      "Developing",
+      "Emerging",
+      "Standard"
+    ],
+    "correctAnswer": "High - the highest category available",
+    "explanation": "Keysborough Secondary College was categorised as High for 2025, the Department of Education's highest School Performance Report rating, reflecting strong learning and wellbeing data.",
+    "sourceName": "Keysborough Secondary College - Principal's Message",
+    "sourceURL": "https://www6.keysboroughsc.vic.edu.au/principals-message/",
+    "active": true
+  },
+  {
+    "id": "ksc-two-campuses",
+    "category": "Our College",
+    "question": "What are the College's two campus names?",
+    "options": [
+      "Acacia and Banksia",
+      "Wattle and Waratah",
+      "Gumtree and Jacaranda",
+      "Melaleuca and Grevillea"
+    ],
+    "correctAnswer": "Acacia and Banksia",
+    "explanation": "The Acacia Campus in Keysborough and Banksia Campus in Springvale South together form one connected College community.",
+    "sourceName": "Keysborough Secondary College - School Tours",
+    "sourceURL": "https://www6.keysboroughsc.vic.edu.au/school-tours/",
+    "active": true
+  },
+  {
+    "id": "ksc-music-opportunity",
+    "category": "Creative Learning",
+    "question": "Which award-winning program gives every Year 7 student an opportunity to participate?",
+    "options": [
+      "Music and instrumental learning",
+      "Aviation studies",
+      "Marine science",
+      "Equestrian studies"
+    ],
+    "correctAnswer": "Music and instrumental learning",
+    "explanation": "Every Year 7 student can engage with the College's award-winning music and instrumental programs before music becomes an elective from Year 8.",
+    "sourceName": "Keysborough Secondary College - 2025 Improvements",
+    "sourceURL": "https://www6.keysboroughsc.vic.edu.au/school-updated-information-and-improvements-for-2025/",
+    "active": true
+  },
+  {
+    "id": "ksc-keep-focus",
+    "category": "Extension and Enrichment",
+    "question": "The KEEP select-entry program supports high-potential Year 7 students to excel particularly in which subjects?",
+    "options": [
+      "English and Mathematics",
+      "Drama and Dance",
+      "Geography and Art",
+      "Food Studies and Media"
+    ],
+    "correctAnswer": "English and Mathematics",
+    "explanation": "The Keysborough College Extension and Enrichment Program challenges ambitious students with high potential in English and Mathematics, with wider enrichment opportunities throughout the year.",
+    "sourceName": "Keysborough Secondary College - Gifted and Talented Education",
+    "sourceURL": "https://www6.keysboroughsc.vic.edu.au/prospective-families/gate/",
+    "active": true
+  },
+  {
+    "id": "ksc-monash-partnership",
+    "category": "Pathways",
+    "question": "Which university partners with the College through Schools Access Monash?",
+    "options": [
+      "Monash University",
+      "Oxford University",
+      "University of Tasmania",
+      "Australian National University"
+    ],
+    "correctAnswer": "Monash University",
+    "explanation": "The Monash partnership supports students' aspirations through opportunities including free senior exam-revision lectures and the Hands on Health program.",
+    "sourceName": "Keysborough Secondary College - Student Programs",
+    "sourceURL": "https://www6.keysboroughsc.vic.edu.au/co-curricular/student-programs/",
+    "active": true
+  }
+]

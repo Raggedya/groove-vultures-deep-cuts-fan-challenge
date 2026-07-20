@@ -1,0 +1,107 @@
+{
+  "brandName": "School Discovery",
+  "editionType": "school",
+  "bandName": "Keysborough Secondary College",
+  "editionTitle": "Keysborough Secondary College",
+  "description": "A vibrant two-campus secondary college in Melbourne's southeast where students thrive through Respect, Excellence and Diversity.",
+  "discovery": {
+    "bio": "A vibrant two-campus secondary college in Melbourne's southeast where students thrive through Respect, Excellence and Diversity.",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "keysborough-secondary-college",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_9078af1a20",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/keysborough-secondary-college/instagram-discovery.png",
+    "qrImage": "output/keysborough-secondary-college/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#4D2177",
+    "accentSecondary": "#B8DAAE",
+    "navy": "#2D1743",
+    "surface": "#FFFFFF",
+    "contentBackground": "#F7F5FA",
+    "paletteSource": "https://www6.keysboroughsc.vic.edu.au/",
+    "logoPolicy": "colour-reference-only; no logo or emblem displayed"
+  },
+  "links": {
+    "website": "https://www6.keysboroughsc.vic.edu.au/",
+    "enrolment": "https://www6.keysboroughsc.vic.edu.au/prospective-families/year-7-transition/",
+    "virtualTour": "https://www6.keysboroughsc.vic.edu.au/school-tours/",
+    "principalMessage": "https://www6.keysboroughsc.vic.edu.au/principals-message/",
+    "visionValues": "https://www6.keysboroughsc.vic.edu.au/prospective-families/about-us/",
+    "curriculum": "https://www6.keysboroughsc.vic.edu.au/curriculum/junior-school/",
+    "studentLife": "https://www6.keysboroughsc.vic.edu.au/co-curricular/student-programs/",
+    "newsletter": "https://www6.keysboroughsc.vic.edu.au/newsletters/",
+    "termDates": "https://www.vic.gov.au/school-term-dates-and-holidays-victoria",
+    "policies": "https://www6.keysboroughsc.vic.edu.au/policies/",
+    "contact": "https://www6.keysboroughsc.vic.edu.au/contact/office-contact-details/",
+    "schoolProject": "https://www6.keysboroughsc.vic.edu.au/school-updated-information-and-improvements-for-2025/",
+    "youtube": "https://www.youtube.com/watch?v=dIhvwo21ZCE"
+  },
+  "featuredVideo": {
+    "title": "An Introduction to Keysborough Secondary College",
+    "youtubeURL": "https://www.youtube.com/watch?v=dIhvwo21ZCE",
+    "selectionBasis": "best-authoritative",
+    "verifiedAt": "2026-07-20T03:05:00.000Z"
+  },
+  "analytics": {
+    "editionId": "dc_9078af1a20",
+    "pageIdentifier": "dc_9078af1a20:school-discovery-v1"
+  },
+  "production": {
+    "jobId": "dcjob_1701c93c-94ff-48c3-9a35-8ffb28f859dc",
+    "submittedAt": "2026-07-20T03:00:22.157Z",
+    "researchCompletedAt": "2026-07-20T03:18:01.586Z",
+    "editionCreatedAt": "2026-07-20T03:18:01.586Z"
+  },
+  "school": {
+    "officialWebsite": "https://www6.keysboroughsc.vic.edu.au/",
+    "paletteSource": "https://www6.keysboroughsc.vic.edu.au/",
+    "logoPolicy": "colour-reference-only; no logo or emblem displayed",
+    "heroLabels": [
+      "Discover",
+      "Learn",
+      "Connect",
+      "Enrol"
+    ]
+  },
+  "schoolChallenge": {
+    "title": "How Well Do You Know Our School?",
+    "ctaLabel": "Take the Challenge",
+    "numberOfQuestions": 6,
+    "secondsPerQuestion": 15,
+    "feedbackMilliseconds": 10000,
+    "questionFile": "editions/keysborough-secondary-college/school-questions.json",
+    "dingSound": "assets/ding.mp3",
+    "classifications": [
+      {
+        "min": 0,
+        "max": 1,
+        "label": "Curious Explorer",
+        "message": "Your discovery of {band} has just begun. There is plenty more to explore on the school home screen."
+      },
+      {
+        "min": 2,
+        "max": 3,
+        "label": "Keen School Learner",
+        "message": "You already know some of what makes {band} special. Keep exploring and discovering the school community."
+      },
+      {
+        "min": 4,
+        "max": 5,
+        "label": "School Champion",
+        "message": "A terrific result. You know many of the people, programs and achievements that make {band} shine."
+      },
+      {
+        "min": 6,
+        "max": 6,
+        "label": "School Discovery Wizard",
+        "message": "A perfect score. You are a true {band} discovery wizard and know the school exceptionally well."
+      }
+    ]
+  }
+}

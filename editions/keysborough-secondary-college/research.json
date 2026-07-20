@@ -1,0 +1,152 @@
+{
+  "bandName": "Keysborough Secondary College",
+  "slug": "keysborough-secondary-college",
+  "editionId": "dc_9078af1a20",
+  "verifiedAt": "2026-07-20T03:18:01.586Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://www6.keysboroughsc.vic.edu.au/",
+      "sourceType": "official school website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-20T03:05:00.000Z",
+      "evidence": "The official College website identifies Keysborough Secondary College, its two campuses, programs, values and current principal message."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.vic.gov.au/keysborough-secondary-college-2009-number-8867",
+      "sourceType": "authoritative Victorian Government register",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-20T03:05:00.000Z",
+      "evidence": "The Victorian Government school record confirms Keysborough Secondary College, school number 8867, as an open secondary school."
+    },
+    {
+      "destination": "themePalette",
+      "url": "https://www6.keysboroughsc.vic.edu.au/",
+      "sourceType": "official school website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-20T03:05:00.000Z",
+      "evidence": "The official website publishes primary #4D2177, secondary #B8DAAE and complementary #C7BBDC design colours; the edition uses these colours and accessible tonal variants without displaying the school logo or emblem."
+    },
+    {
+      "destination": "website",
+      "url": "https://www6.keysboroughsc.vic.edu.au/",
+      "sourceType": "official school website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-20T03:05:00.000Z",
+      "evidence": "Direct official College homepage, returning HTTP 200 at verification."
+    },
+    {
+      "destination": "enrolment",
+      "url": "https://www6.keysboroughsc.vic.edu.au/prospective-families/year-7-transition/",
+      "sourceType": "official school website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-20T03:05:00.000Z",
+      "evidence": "Direct official Year 7 transition and enrolment destination, returning HTTP 200 at verification."
+    },
+    {
+      "destination": "virtualTour",
+      "url": "https://www6.keysboroughsc.vic.edu.au/school-tours/",
+      "sourceType": "official school website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-20T03:05:00.000Z",
+      "evidence": "Official school tour information and booking destination for both campuses, returning HTTP 200 at verification."
+    },
+    {
+      "destination": "principalMessage",
+      "url": "https://www6.keysboroughsc.vic.edu.au/principals-message/",
+      "sourceType": "official school website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-20T03:05:00.000Z",
+      "evidence": "Direct current principal message from the official College website, returning HTTP 200 at verification."
+    },
+    {
+      "destination": "visionValues",
+      "url": "https://www6.keysboroughsc.vic.edu.au/prospective-families/about-us/",
+      "sourceType": "official school website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-20T03:05:00.000Z",
+      "evidence": "Official About Us page explains the College vision and Respect, Excellence and Diversity values."
+    },
+    {
+      "destination": "curriculum",
+      "url": "https://www6.keysboroughsc.vic.edu.au/curriculum/junior-school/",
+      "sourceType": "official school website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-20T03:05:00.000Z",
+      "evidence": "Direct official junior curriculum destination, returning HTTP 200 at verification."
+    },
+    {
+      "destination": "studentLife",
+      "url": "https://www6.keysboroughsc.vic.edu.au/co-curricular/student-programs/",
+      "sourceType": "official school website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-20T03:05:00.000Z",
+      "evidence": "Official student programs page documents Youth Action, Schools Access Monash and study groups."
+    },
+    {
+      "destination": "newsletter",
+      "url": "https://www6.keysboroughsc.vic.edu.au/newsletters/",
+      "sourceType": "official school website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-20T03:05:00.000Z",
+      "evidence": "Direct official online newsletters destination, returning HTTP 200 at verification."
+    },
+    {
+      "destination": "termDates",
+      "url": "https://www.vic.gov.au/school-term-dates-and-holidays-victoria",
+      "sourceType": "authoritative Victorian Government calendar",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-20T03:05:00.000Z",
+      "evidence": "Official Victorian Government school term dates destination, linked by the College website and returning HTTP 200."
+    },
+    {
+      "destination": "policies",
+      "url": "https://www6.keysboroughsc.vic.edu.au/policies/",
+      "sourceType": "official school website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-20T03:05:00.000Z",
+      "evidence": "Direct official College policies destination, returning HTTP 200 at verification."
+    },
+    {
+      "destination": "contact",
+      "url": "https://www6.keysboroughsc.vic.edu.au/contact/office-contact-details/",
+      "sourceType": "official school website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-20T03:05:00.000Z",
+      "evidence": "Direct official office contact destination for the College campuses, returning HTTP 200 at verification."
+    },
+    {
+      "destination": "schoolProject",
+      "url": "https://www6.keysboroughsc.vic.edu.au/school-updated-information-and-improvements-for-2025/",
+      "sourceType": "official school website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-20T03:05:00.000Z",
+      "evidence": "Official College page documents infrastructure upgrades, expanded programs and learning improvements."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/watch?v=dIhvwo21ZCE",
+      "sourceType": "official school video",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-20T03:05:00.000Z",
+      "evidence": "This video is embedded on the official College homepage and is published by the verified Keysborough College YouTube channel."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=dIhvwo21ZCE",
+      "sourceType": "official school video",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-20T03:05:00.000Z",
+      "evidence": "Selected as the best authoritative video because it is titled An Introduction to Keysborough Secondary College, is embedded on the official homepage and is published by the College's own channel."
+    },
+    {
+      "destination": "questionGate",
+      "url": "https://www6.keysboroughsc.vic.edu.au/prospective-families/gate/",
+      "sourceType": "official school website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-20T03:05:00.000Z",
+      "evidence": "Official Gifted and Talented Education page documents the KEEP select-entry program and its English and Mathematics focus."
+    }
+  ]
+}
