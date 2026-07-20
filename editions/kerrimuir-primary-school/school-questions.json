@@ -1,0 +1,98 @@
+[
+  {
+    "id": "kps-care-values",
+    "category": "School Values",
+    "question": "What do Kerrimuir Primary School's CARE values stand for?",
+    "options": [
+      "Caring, Achieve, Respect and Educating",
+      "Confidence, Adventure, Responsibility and Excellence",
+      "Community, Aspiration, Resilience and Energy",
+      "Curiosity, Achievement, Relationships and Enjoyment"
+    ],
+    "correctAnswer": "Caring, Achieve, Respect and Educating",
+    "explanation": "CARE brings together Caring, Achieve, Respect and Educating - values that guide a safe, inclusive and supportive learning community.",
+    "sourceName": "Kerrimuir Primary School - Vision and Values",
+    "sourceURL": "https://www.kerrimuirps.vic.edu.au/our-school/vision-and-values/",
+    "active": true
+  },
+  {
+    "id": "kps-specialist-programs",
+    "category": "Learning",
+    "question": "Which group of specialist programs can Kerrimuir students explore?",
+    "options": [
+      "Visual Arts, Performing Arts, Physical Education, ICT and Robotics, and Japanese",
+      "Marine Biology, Aviation, Latin and Film Production",
+      "Equestrian Studies, Astronomy, Architecture and Italian",
+      "Agriculture, Sailing, Classical Greek and Photography"
+    ],
+    "correctAnswer": "Visual Arts, Performing Arts, Physical Education, ICT and Robotics, and Japanese",
+    "explanation": "Kerrimuir's broad specialist program gives students creative, physical, technological and cultural opportunities alongside their core classroom learning.",
+    "sourceName": "Kerrimuir Primary School - Official Website",
+    "sourceURL": "https://www.kerrimuirps.vic.edu.au/",
+    "active": true
+  },
+  {
+    "id": "kps-new-gymnasium",
+    "category": "School Upgrade",
+    "question": "What major new facility was delivered through Kerrimuir's completed school upgrade?",
+    "options": [
+      "A competition-grade gymnasium",
+      "An indoor swimming centre",
+      "A performing arts theatre",
+      "A rooftop community garden"
+    ],
+    "correctAnswer": "A competition-grade gymnasium",
+    "explanation": "The completed Victorian Government project delivered a competition-grade gymnasium, expanding opportunities for sport, movement and community activity.",
+    "sourceName": "Victorian School Building Authority",
+    "sourceURL": "https://www.schoolbuildings.vic.gov.au/kerrimuir-primary-school",
+    "active": true
+  },
+  {
+    "id": "kps-parent-satisfaction",
+    "category": "Community",
+    "question": "What level of general parent satisfaction did Kerrimuir record in its 2025 Annual Report?",
+    "options": [
+      "95.5%",
+      "85.5%",
+      "75.5%",
+      "65.5%"
+    ],
+    "correctAnswer": "95.5%",
+    "explanation": "Kerrimuir recorded 95.5% general parent satisfaction - a strong sign of family confidence in the school's learning environment and community.",
+    "sourceName": "Kerrimuir Primary School 2025 Annual Report",
+    "sourceURL": "https://www.vrqa.vic.gov.au/StateRegister/Provider.aspx/GetFile?EntityID=1&SchoolNumber=4816&Type=AnnualReport&requestFileType=Pdf",
+    "active": true
+  },
+  {
+    "id": "kps-language-diversity",
+    "category": "Belonging",
+    "question": "What proportion of Kerrimuir students were learning English as an additional language in the 2025 report?",
+    "options": [
+      "54%",
+      "44%",
+      "34%",
+      "24%"
+    ],
+    "correctAnswer": "54%",
+    "explanation": "With 54% of students learning English as an additional language, Kerrimuir's rich cultural and language diversity strengthens the whole school community.",
+    "sourceName": "Kerrimuir Primary School 2025 Annual Report",
+    "sourceURL": "https://www.vrqa.vic.gov.au/StateRegister/Provider.aspx/GetFile?EntityID=1&SchoolNumber=4816&Type=AnnualReport&requestFileType=Pdf",
+    "active": true
+  },
+  {
+    "id": "kps-learning-growth",
+    "category": "Achievement",
+    "question": "What percentage of students achieved the school's goal of twelve months' learning growth in twelve months?",
+    "options": [
+      "80%",
+      "70%",
+      "60%",
+      "50%"
+    ],
+    "correctAnswer": "80%",
+    "explanation": "Eighty per cent of students achieved twelve months' learning growth in twelve months, reflecting focused teaching and strong learning progress.",
+    "sourceName": "Kerrimuir Primary School 2025 Annual Report",
+    "sourceURL": "https://www.vrqa.vic.gov.au/StateRegister/Provider.aspx/GetFile?EntityID=1&SchoolNumber=4816&Type=AnnualReport&requestFileType=Pdf",
+    "active": true
+  }
+]

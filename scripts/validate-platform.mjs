@@ -39,6 +39,16 @@ for(const edition of platform.editions){
       if(config.characterArtwork)errors.push(`${edition.config} School Discovery must not configure character artwork.`);
       if(config.theme?.logoPolicy!=='colour-reference-only; no logo or emblem displayed')errors.push(`${edition.config} must preserve the School Discovery no-logo policy.`);
       if(!config.featuredVideo?.youtubeURL)errors.push(`${edition.config} School Discovery requires a featured YouTube video.`);
+      if(config.schoolChallenge?.numberOfQuestions!==6||config.schoolChallenge?.secondsPerQuestion!==15||config.schoolChallenge?.feedbackMilliseconds!==10000)errors.push(`${edition.config} must preserve the locked six-question, 15-second Schools Edition challenge.`);
+      if(config.schoolChallenge?.dingSound!=='assets/ding.mp3')errors.push(`${edition.config} must preserve the approved time-up bell.`);
+      if(!config.schoolChallenge?.questionFile)errors.push(`${edition.config} requires an external School challenge question file.`);
+      else{
+        const questionPath=String(config.schoolChallenge.questionFile).replace(/^\//,'');
+        const questions=JSON.parse(await fs.readFile(questionPath,'utf8'));
+        validateSchoolQuestions(questions,questionPath,errors);
+        const research=JSON.parse(await fs.readFile(edition.config.replace(/edition\.json$/,'research.json'),'utf8'));
+        for(const question of questions)if(!research.sources.some(source=>source.identityVerified===true&&normalized(source.url)===normalized(question.sourceURL)))errors.push(`${questionPath} question ${question.id} lacks matching verified source evidence.`);
+      }
     }else await fs.access(config.characterArtwork);
     for(const[key,value]of Object.entries(config.links||{}))if(value&&(!/^https:\/\//.test(value)||authenticationWall(value)))errors.push(`${edition.config} links.${key} must be a direct HTTPS destination, never an authentication URL.`);
     if(config.featuredVideo?.youtubeURL&&!/^https:\/\/(?:www\.)?(?:youtube\.com|youtu\.be)\//i.test(config.featuredVideo.youtubeURL))errors.push(`${edition.config} featuredVideo.youtubeURL must be a verified YouTube URL.`);
@@ -55,4 +65,14 @@ console.log(`Deep Cuts discovery platform validation passed: ${platform.editions
 
 function normalized(value){try{const url=new URL(String(value));if(url.protocol==='http:')url.protocol='https:';url.hash='';return url.href.replace(/\/$/,'')}catch{return''}}
 function authenticationWall(value){try{const url=new URL(String(value));const host=url.hostname.replace(/^www\./,'').toLowerCase(),path=url.pathname.toLowerCase();return host==='instagram.com'&&(path.startsWith('/accounts/login')||path.startsWith('/accounts/signup')||url.searchParams.has('next'))||(host==='facebook.com'||host==='m.facebook.com')&&(/^\/(?:login|checkpoint|recover|reg)(?:\/|$)/.test(path)||(path.startsWith('/login')&&url.searchParams.has('next')))}catch{return false}}
+function validateSchoolQuestions(questions,file,errors){
+  if(!Array.isArray(questions)||questions.length!==6){errors.push(`${file} must contain exactly six School Discovery questions.`);return}
+  const ids=new Set(),prompts=new Set();
+  for(const question of questions){
+    if(!question.active||!question.id||!question.question||!question.explanation||!question.sourceName||!/^https:\/\//.test(question.sourceURL||''))errors.push(`${file} contains an incomplete School Discovery question.`);
+    if(ids.has(question.id)||prompts.has(String(question.question).toLowerCase()))errors.push(`${file} contains a duplicate question.`);
+    if(!Array.isArray(question.options)||question.options.length!==4||new Set(question.options).size!==4||!question.options.includes(question.correctAnswer))errors.push(`${file} question ${question.id||'unknown'} requires four unique choices including the correct answer.`);
+    ids.add(question.id);prompts.add(String(question.question).toLowerCase());
+  }
+}
 

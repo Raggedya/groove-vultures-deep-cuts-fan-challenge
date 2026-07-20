@@ -5,7 +5,7 @@
   "version": "3.0.0",
   "description": "Permanent Deep Cuts artist discovery, analytics and publishing platform.",
   "scripts": {
-    "validate": "node scripts/validate-platform.mjs && node scripts/test-edition-isolation.mjs && node scripts/test-discovery.mjs && node scripts/test-analytics.mjs && node scripts/test-build-tracking.mjs && node scripts/test-worker.mjs && node scripts/test-sync-editions.mjs && node scripts/test-runtime-secrets.mjs && node scripts/test-live-delivery.mjs && node scripts/test-factory.mjs && node scripts/test-batch.mjs && node --check scripts/deep-cuts-batch.mjs && node --check js/app.js && node --check js/analytics.js && node --check js/interactions.js && node --check js/reporting.js && node --check js/report.js && node --check worker/index.js",
+    "validate": "node scripts/validate-platform.mjs && node scripts/test-edition-isolation.mjs && node scripts/test-discovery.mjs && node scripts/test-school-challenge.mjs && node scripts/test-analytics.mjs && node scripts/test-build-tracking.mjs && node scripts/test-worker.mjs && node scripts/test-sync-editions.mjs && node scripts/test-runtime-secrets.mjs && node scripts/test-live-delivery.mjs && node scripts/test-factory.mjs && node scripts/test-batch.mjs && node --check scripts/deep-cuts-batch.mjs && node --check js/app.js && node --check js/school-quiz.js && node --check js/analytics.js && node --check js/interactions.js && node --check js/reporting.js && node --check js/report.js && node --check worker/index.js",
     "build": "node scripts/build-cloudflare.mjs",
     "build:edition": "node scripts/build-edition.mjs",
     "register": "node scripts/register-edition.mjs",

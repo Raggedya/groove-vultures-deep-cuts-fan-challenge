@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#000713">
   <meta id="pageDescription" name="description" content="Discover a verified Deep Cuts edition.">
   <title>Deep Cuts</title>
-  <link rel="stylesheet" href="/styles.css?v=20260720-schools-1">
+  <link rel="stylesheet" href="/styles.css?v=20260720-schools-quiz-1">
 </head>
 <body>
   <main id="app" class="discovery-shell">
@@ -52,9 +52,43 @@
       <h1>Deep Cuts page unavailable</h1>
       <p id="errorMessage">Please refresh and try again.</p>
     </section>
+
+    <section id="schoolQuizScreen" class="school-quiz-screen" aria-labelledby="schoolQuestionText" hidden>
+      <div class="school-quiz-topbar">
+        <button id="schoolQuizHomeButton" class="school-home-button" type="button">&larr; School Home</button>
+        <p id="schoolQuizProgress" class="school-quiz-progress">Question 1 of 6</p>
+        <button id="schoolQuizSoundButton" class="school-sound-button" type="button" aria-pressed="false">Sound: On</button>
+      </div>
+      <div class="school-question-card">
+        <p id="schoolQuizCategory" class="school-quiz-category">Our School</p>
+        <div id="schoolTimerRing" class="school-timer-ring" role="timer" aria-label="15 seconds remaining"><span id="schoolTimerNumber">15</span></div>
+        <h2 id="schoolQuestionText" tabindex="-1">Loading question...</h2>
+        <div id="schoolAnswerList" class="school-answer-list" role="group" aria-label="Answer choices"></div>
+        <div id="schoolAnswerFeedback" class="school-answer-feedback" aria-live="polite" hidden>
+          <strong id="schoolFeedbackTitle"></strong>
+          <p id="schoolFeedbackExplanation"></p>
+          <a id="schoolFeedbackSource" target="_blank" rel="noopener noreferrer">Read the source</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="schoolResultScreen" class="school-result-screen" aria-labelledby="schoolResultTitle" hidden>
+      <div class="school-result-card">
+        <p class="school-result-kicker">Your School Discovery Result</p>
+        <h1 id="schoolResultScore">0 / 6</h1>
+        <h2 id="schoolResultTitle">Curious Explorer</h2>
+        <p id="schoolResultMessage"></p>
+        <div class="school-result-actions">
+          <button id="schoolReplayButton" class="school-result-primary" type="button">Take the Challenge Again</button>
+          <button id="schoolResultHomeButton" class="school-result-secondary" type="button">Back to School Home</button>
+        </div>
+      </div>
+    </section>
   </main>
-  <script src="/js/analytics.js?v=20260720-schools-1"></script>
-  <script src="/js/interactions.js?v=20260720-schools-1"></script>
-  <script src="/js/app.js?v=20260720-schools-1"></script>
+  <script src="/js/engine.js?v=20260720-schools-quiz-1"></script>
+  <script src="/js/analytics.js?v=20260720-schools-quiz-1"></script>
+  <script src="/js/interactions.js?v=20260720-schools-quiz-1"></script>
+  <script src="/js/school-quiz.js?v=20260720-schools-quiz-1"></script>
+  <script src="/js/app.js?v=20260720-schools-quiz-1"></script>
 </body>
 </html>

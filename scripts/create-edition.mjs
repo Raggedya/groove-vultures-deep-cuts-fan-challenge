@@ -20,6 +20,7 @@ const platform=JSON.parse(await fs.readFile(platformPath,'utf8'));
 if(platform.editions.some(item=>item.slug===slug||String(item.name).toLowerCase()===bandName.toLowerCase()))throw new Error(`Edition already exists for ${bandName}.`);
 const links=validateResearch(input);
 const featuredVideo=validateFeaturedVideo(input,links);
+const schoolQuestions=editionType==='school'?validateSchoolChallenge(input):null;
 const editionId=uniqueEditionId(platform);
 const canonicalPath=`/e/${editionId}`;
 const now=new Date().toISOString();
@@ -38,10 +39,14 @@ const config={
 };
 if(editionType==='car')config.automotive={make:clean(input.automotive?.make,60),model:clean(input.automotive?.model,60),productionYears:clean(input.automotive?.productionYears,30),heroLabels:['Discover','Watch','Connect','Own & Restore']};
 if(editionType==='club')config.club={location:clean(input.club?.location,120),formed:clean(input.club?.formed,30),heroLabels:['Visit','Play','Join','Connect']};
-if(editionType==='school')config.school={officialWebsite:https(input.school?.officialWebsite||''),paletteSource:https(input.school?.paletteSource||input.school?.officialWebsite||''),logoPolicy:'colour-reference-only; no logo or emblem displayed',heroLabels:['Discover','Learn','Connect','Enrol']};
+if(editionType==='school'){
+  config.school={officialWebsite:https(input.school?.officialWebsite||''),paletteSource:https(input.school?.paletteSource||input.school?.officialWebsite||''),logoPolicy:'colour-reference-only; no logo or emblem displayed',heroLabels:['Discover','Learn','Connect','Enrol']};
+  config.schoolChallenge=schoolChallengeConfig(slug);
+}
 const research={bandName,slug,editionId,verifiedAt:now,sources:input.sources};
 await fs.writeFile(path.join(directory,'edition.json'),JSON.stringify(config,null,2)+'\n');
 await fs.writeFile(path.join(directory,'research.json'),JSON.stringify(research,null,2)+'\n');
+if(schoolQuestions)await fs.writeFile(path.join(directory,'school-questions.json'),JSON.stringify(schoolQuestions,null,2)+'\n');
 platform.editions.push({slug,editionId,canonicalPath,name:bandName,config:`editions/${slug}/edition.json`,active:true});
 await fs.writeFile(platformPath,JSON.stringify(platform,null,2)+'\n');
 job.status='configured';job.editionId=editionId;job.configuredAt=now;
@@ -76,6 +81,34 @@ function validateFeaturedVideo(value,links){
   const evidence=(value.sources||[]).find(source=>source.destination==='featuredVideo'&&normalize(source.url)===normalize(youtubeURL)&&source.identityVerified===true&&validDate(source.verifiedAt)&&clean(source.evidence,300));
   if(!evidence)throw new Error('The featured YouTube video requires dated, identity-verified selection evidence.');
   return{title,youtubeURL,selectionBasis:expectedBasis,verifiedAt:new Date(evidence.verifiedAt).toISOString()};
+}
+function validateSchoolChallenge(value){
+  const questions=value.schoolChallenge?.questions;
+  if(!Array.isArray(questions)||questions.length!==6)throw new Error('Schools Edition requires exactly six positive, sourced challenge questions.');
+  const ids=new Set(),prompts=new Set();
+  return questions.map((question,index)=>{
+    const id=clean(question.id,80),category=clean(question.category||'Our School',50),prompt=clean(question.question,180),correctAnswer=clean(question.correctAnswer,160),explanation=clean(question.explanation,360),sourceName=clean(question.sourceName,120),sourceURL=https(question.sourceURL||'');
+    const options=Array.isArray(question.options)?question.options.map(option=>clean(option,160)):[];
+    if(!id||!prompt||!correctAnswer||!explanation||!sourceName||!sourceURL)throw new Error(`School question ${index+1} requires complete positive content and a source.`);
+    if(ids.has(id)||prompts.has(prompt.toLowerCase()))throw new Error(`School question ${index+1} is duplicated.`);
+    if(options.length!==4||new Set(options).size!==4||!options.includes(correctAnswer))throw new Error(`School question ${index+1} requires four unique choices including the correct answer.`);
+    const evidence=(value.sources||[]).find(source=>normalize(source.url)===normalize(sourceURL)&&source.identityVerified===true&&validDate(source.verifiedAt)&&clean(source.evidence,300));
+    if(!evidence)throw new Error(`School question ${index+1} requires matching, dated, identity-verified source evidence.`);
+    ids.add(id);prompts.add(prompt.toLowerCase());
+    return{id,category,question:prompt,options,correctAnswer,explanation,sourceName,sourceURL,active:true};
+  });
+}
+function schoolChallengeConfig(slug){
+  return{
+    title:'How Well Do You Know Our School?',ctaLabel:'Take the Challenge',numberOfQuestions:6,secondsPerQuestion:15,feedbackMilliseconds:10000,
+    questionFile:`editions/${slug}/school-questions.json`,dingSound:'assets/ding.mp3',
+    classifications:[
+      {min:0,max:1,label:'Curious Explorer',message:'Your discovery of {band} has just begun. There is plenty more to explore on the school home screen.'},
+      {min:2,max:3,label:'Keen School Learner',message:'You already know some of what makes {band} special. Keep exploring and discovering the school community.'},
+      {min:4,max:5,label:'School Champion',message:'A terrific result. You know many of the people, programs and achievements that make {band} shine.'},
+      {min:6,max:6,label:'School Discovery Wizard',message:'A perfect score. You are a true {band} discovery wizard and know the school exceptionally well.'}
+    ]
+  };
 }
 function uniqueEditionId(platform){let id;do{id=`dc_${crypto.randomBytes(5).toString('hex')}`}while(platform.editions.some(item=>item.editionId===id));return id}
 function slugify(value){return value.normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')}
