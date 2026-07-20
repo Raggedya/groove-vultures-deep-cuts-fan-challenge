@@ -1,3 +1,5 @@
+import {handleRacingRequest,reconcilePendingResults} from "./racing.js";
+
 const JSON_HEADERS={"content-type":"application/json; charset=utf-8","cache-control":"no-store"};
 const EVENT_NAMES=new Set([
   "qr_scan","discovery_page_viewed","share_button_clicked","share_method_selected",
@@ -17,6 +19,7 @@ export default {
     try{
       const url=new URL(request.url);
       if(request.method==="OPTIONS")return cors(new Response(null,{status:204}),request,env);
+      if(url.pathname.startsWith("/api/racing/"))return handleRacingRequest(request,env,url);
       if(url.pathname.startsWith("/q/"))return handleQr(request,env,ctx,url);
       if(url.pathname==="/api/events"&&request.method==="POST")return handleEvent(request,env);
       if(url.pathname==="/api/editions"&&request.method==="POST")return handleEdition(request,env);
@@ -33,7 +36,7 @@ export default {
     }
   },
   async scheduled(controller,env,ctx){
-    ctx.waitUntil(sendWeeklyReportIfDue(controller,env));
+    ctx.waitUntil(Promise.all([sendWeeklyReportIfDue(controller,env),reconcilePendingResults(env)]));
   }
 };
 

@@ -2,6 +2,8 @@
 
 **Status: permanent, governing and non-negotiable.**
 
+Deep Cuts Racing is an independent product module. Its interface, provider integrations, analysis logic and `racing_*` records remain isolated behind `/racing/` and `/api/racing/*`; Racing work must never alter the behaviour or visual identity of completed discovery editions.
+
 Deep Cuts is one platform supporting multiple independent commercial product editions, including Bands, Artists, Businesses, Cafés, Restaurants, Classic Cars, Car Clubs, Bowls Clubs, Sporting Clubs, Museums and future editions.
 
 Unless the owner explicitly overrides this directive in writing, preserving every completed edition takes priority over implementing a new feature.
