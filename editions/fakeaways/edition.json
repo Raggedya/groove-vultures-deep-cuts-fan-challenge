@@ -1,0 +1,52 @@
+{
+  "brandName": "Deep Cuts",
+  "editionType": "music",
+  "bandName": "Fakeaways",
+  "editionTitle": "Fakeaways",
+  "description": "Melbourne band The Fakeaways play covers and originals that blend blues, soul and rock'n'roll.",
+  "discovery": {
+    "bio": "Melbourne band The Fakeaways play covers and originals that blend blues, soul and rock'n'roll.",
+    "newsLabel": "The Anthem Sessions - Beat Magazine"
+  },
+  "mode": "discovery",
+  "slug": "fakeaways",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_f414462d09",
+  "characterArtwork": "assets/aggits-original-cutout-v4.png",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/fakeaways/instagram-discovery.png",
+    "qrImage": "output/fakeaways/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#2f80ff",
+    "accentSecondary": "#8dbdff"
+  },
+  "links": {
+    "buyMusic": "",
+    "spotify": "",
+    "instagram": "https://www.instagram.com/thefakeaways/",
+    "bandcamp": "",
+    "youtube": "",
+    "facebook": "",
+    "website": "",
+    "merchandise": "",
+    "newsReviews": "https://beat.com.au/the-anthem-sessions-nature-in-the-city-the-fakeaways/"
+  },
+  "featuredVideo": {
+    "title": "",
+    "youtubeURL": "",
+    "selectionBasis": "",
+    "verifiedAt": ""
+  },
+  "analytics": {
+    "editionId": "dc_f414462d09",
+    "pageIdentifier": "dc_f414462d09:discovery-v1"
+  },
+  "production": {
+    "jobId": "dcjob_2fc7b381-60d9-4ee1-8b64-9ff46ffd098b",
+    "submittedAt": "2026-07-22T06:19:28.518Z",
+    "researchCompletedAt": "2026-07-22T06:21:26.124Z",
+    "editionCreatedAt": "2026-07-22T06:21:26.124Z"
+  }
+}
