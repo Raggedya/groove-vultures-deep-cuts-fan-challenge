@@ -1,6 +1,15 @@
-# Deep Cuts Decision Intelligence: Sell to this company
+# Commercial Instinct by Deep Cuts
 
-This module is a private, evidence-led sales-preparation pathway. It is not a company directory, lead scraper or outreach tool. It turns current public evidence into clearly labelled facts, interpretations, unknowns and practical questions.
+Commercial Instinct is a private, evidence-led sales-preparation pathway. The user supplies two official URLs: **My Company** and **Target Company**. The system researches the public commercial identity of both, then turns the comparison into concise, candid sales advice. It is not a company directory, lead scraper or outreach tool.
+
+## Locked experience
+
+- The intake is deliberately limited to the two company URLs.
+- The protected original `assets/aggits-original-cutout-v4.png` appears at the top; it is never redrawn or modified.
+- The results use the established blue-black Deep Cuts language.
+- Every analysis parameter has its own blue button. A button opens only that focused insight area.
+- Advice is short, plain and commercially candid. Evidence and confidence remain available under `Why I think this` rather than overwhelming the initial read.
+- The report remains explicit about confirmed facts, interpretations, unknowns and low-confidence conclusions.
 
 ## Architecture and isolation
 
@@ -8,7 +17,7 @@ The module lives at `/sell/` and its API lives only under `/api/sell/*`. It does
 
 | Layer | Location | Responsibility |
 | --- | --- | --- |
-| Mobile client | `sell/index.html`, `sell/styles.css`, `sell/app.js` | Search, confirmation, supplier context, layered briefing, copy, print/PDF and private sharing |
+| Mobile client | `sell/index.html`, `sell/styles.css`, `sell/app.js` | Two-URL intake, target confirmation, layered blue-button briefing, copy, print/PDF and private sharing |
 | Shared sales schema | `sell/schemas.js` | Business identity, evidence, interpretation, confidence and current-person validation |
 | Verified demo | `sell/demo-data.js` | Complete Telstra workflow with dated public evidence; not a hard-coded application architecture |
 | Worker API | `worker/sales.js` | Identification, research-provider boundary, validation, private saving and anonymous analytics |
@@ -22,7 +31,7 @@ Existing edition routes, configurations, renderers and assets are not changed. T
 1. Run `npm run validate`.
 2. Run `npm run build`.
 3. Run `npm run sales:demo` for a credential-free local preview, or `npx wrangler dev` for the full Worker.
-4. Open `/sell/` and enter `Telstra`.
+4. Open `/sell/` and enter a My Company URL plus the target URL `https://www.telstra.com.au`, or select the demonstration.
 
 The Telstra demo exercises business confirmation, optional supplier input, honest progress, all 17 Deep Cuts, current leadership, evidence, unknowns, copying, saving and PDF export.
 
@@ -39,8 +48,10 @@ The browser never receives either value. If they are absent, the verified demons
 
 The Worker sends one of two POST requests:
 
-* `{ operation: "identify", query, website, location }`
-* `{ operation: "research", business, offering, objective: "sell_to_company", requiredSchema: "deep-cuts-sales-1.0" }`
+* `{ operation: "identify", query, targetWebsite, sellerWebsite, location }`
+* `{ operation: "research", business, offering, seller, target, objective: "sell_to_company", product: "commercial_instinct", requiredSchema: "deep-cuts-sales-1.0" }`
+
+The provider must inspect both supplied public websites. It must not infer seller capabilities from a domain name alone. If either site cannot be interpreted reliably, the resulting gap must be marked unknown rather than filled with generic sales language.
 
 Identification must return `{ matches: BusinessIdentity[] }`. Research must return `{ report: SalesReport }`. The Worker rejects malformed identities, reports without sources, unsupported insights, invalid source references, unverifiable executives and any person record containing email or phone data.
 

@@ -3,119 +3,105 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#020b18">
+  <meta name="theme-color" content="#010816">
   <meta name="robots" content="noindex,nofollow">
-  <title>Deep Cuts — Sell to this company</title>
+  <title>Commercial Instinct by Deep Cuts</title>
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
   <header class="app-header">
-    <button class="wordmark" data-action="home" aria-label="Return to company briefing home"><span>DEEP</span> CUTS</button>
+    <button class="wordmark" data-action="home" aria-label="Return to Commercial Instinct home"><span>DEEP</span> CUTS</button>
     <div class="header-actions">
-      <button class="quiet hidden" data-action="edit-offering">Edit what I’m selling</button>
-      <button class="quiet hidden" data-action="new-search">New company</button>
+      <button class="quiet hidden" data-action="edit-companies">Edit companies</button>
+      <button class="quiet hidden" data-action="new-search">New search</button>
     </div>
   </header>
+
   <main id="app" aria-live="polite">
     <section class="screen active" data-screen="search">
-      <p class="eyebrow">BUSINESS INTELLIGENCE</p>
-      <h1>I want to sell to this company</h1>
-      <p class="lead">Research that turns public evidence into a practical, better-prepared sales conversation.</p>
-      <form id="search-form" class="panel form-panel">
-        <label for="business-query">Enter business name</label>
-        <input id="business-query" name="query" autocomplete="organization" placeholder="For example, Telstra" required>
-        <details>
-          <summary>Help identify the right business</summary>
-          <label for="business-website">Official website <span>optional</span></label>
-          <input id="business-website" name="website" type="url" inputmode="url" placeholder="https://…">
-          <label for="business-location">Location <span>optional</span></label>
-          <input id="business-location" name="location" placeholder="City, state or country">
-        </details>
-        <div class="pathway"><small>What do you want to do?</small><strong>I want to sell to this company</strong></div>
-        <button class="primary" type="submit">Find the company</button>
-        <button class="demo-link" type="button" data-action="demo">Try the complete Telstra demonstration</button>
+      <div class="product-hero">
+        <img class="aggits aggits-entry" src="/assets/aggits-original-cutout-v4.png" alt="Aggits, the Deep Cuts character">
+        <p class="eyebrow">DEEP CUTS PRESENTS</p>
+        <h1>Commercial<br><span>Instinct</span></h1>
+        <p class="lead">See the opportunity before you make the pitch.</p>
+      </div>
+
+      <form id="company-form" class="panel company-form">
+        <label for="my-company-url"><span>01</span> My Company</label>
+        <p class="field-note">Your website tells us what you do and what you can credibly offer.</p>
+        <input id="my-company-url" name="myCompanyUrl" inputmode="url" autocomplete="url" placeholder="yourcompany.com.au" required>
+
+        <div class="relationship-line" aria-hidden="true"><span></span><b>SELLING TO</b><span></span></div>
+
+        <label for="target-company-url"><span>02</span> Target Company</label>
+        <p class="field-note">Use the official website so we research the right business.</p>
+        <input id="target-company-url" name="targetCompanyUrl" inputmode="url" autocomplete="url" placeholder="targetcompany.com.au" required>
+
+        <div class="pathway"><small>YOUR OBJECTIVE</small><strong>I want to sell to this company</strong></div>
+        <button class="primary" type="submit">Read the opportunity <b>&gt;</b></button>
+        <button class="demo-link" type="button" data-action="demo">Preview the complete demonstration</button>
       </form>
-      <p class="privacy-note">Public information only. Nothing is sent to the company.</p>
+      <p class="privacy-note">Public business information only. Nothing is sent to either company.</p>
     </section>
 
     <section class="screen" data-screen="confirm">
-      <button class="back" data-action="back-search">‹ Back</button>
-      <p class="eyebrow">CONFIRM THE BUSINESS</p>
-      <h1>Which company do you mean?</h1>
-      <p class="lead">We will not research until the correct entity is selected.</p>
+      <button class="back" data-action="back-search">&lsaquo; Back</button>
+      <div class="compact-brand">
+        <img class="aggits" src="/assets/aggits-original-cutout-v4.png" alt="">
+        <div><p class="eyebrow">COMMERCIAL INSTINCT</p><h1>Confirm the target</h1></div>
+      </div>
+      <p id="confirm-relationship" class="relationship-summary"></p>
+      <p class="lead">Choose the exact company. We will not create a briefing for an uncertain match.</p>
       <div id="matches" class="match-list"></div>
-      <p id="match-empty" class="notice hidden">No confident match was found. Add the official website or location and try again.</p>
+      <p id="match-empty" class="notice hidden">No confident match was found. Check the official target-company website and try again.</p>
     </section>
 
-    <section class="screen" data-screen="offering">
-      <button class="back" data-action="back-confirm">‹ Back</button>
-      <div id="confirmed-company" class="company-chip"></div>
-      <p class="eyebrow">YOUR CONTEXT</p>
-      <h1>What are you selling?</h1>
-      <p class="lead">A short description makes the briefing more useful. You can skip this for a general analysis.</p>
-      <form id="offering-form" class="panel form-panel">
-        <label for="offer-description">Product or service <span>optional</span></label>
-        <textarea id="offer-description" name="description" rows="3" placeholder="For example, commercial cleaning services"></textarea>
-        <details>
-          <summary>Add useful supplier detail</summary>
-          <div class="field-grid">
-            <label>My business name<input name="businessName" autocomplete="organization"></label>
-            <label>My website<input name="website" type="url" inputmode="url"></label>
-            <label>My location<input name="location"></label>
-            <label>Geographic coverage<input name="coverage"></label>
-            <label>Key capabilities<textarea name="capabilities" rows="2"></textarea></label>
-            <label>Certifications<textarea name="certifications" rows="2"></textarea></label>
-            <label>Relevant customers<textarea name="customers" rows="2"></textarea></label>
-            <label>Typical contract size<input name="contractSize"></label>
-            <label>Why it may be relevant<textarea name="relevance" rows="2"></textarea></label>
-            <label>Anything else<textarea name="other" rows="2"></textarea></label>
-          </div>
-        </details>
-        <button class="primary" type="submit">Prepare my briefing</button>
-      </form>
-    </section>
-
-    <section class="screen" data-screen="progress">
-      <div class="progress-orbit" aria-hidden="true"><span></span></div>
-      <p class="eyebrow">RESEARCH IN PROGRESS</p>
-      <h1 id="progress-company">Preparing your briefing</h1>
-      <p id="progress-current" class="lead">Confirming the research request…</p>
+    <section class="screen progress-screen" data-screen="progress">
+      <img class="aggits aggits-progress" src="/assets/aggits-original-cutout-v4.png" alt="">
+      <div class="progress-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <p class="eyebrow">COMMERCIAL INSTINCT AT WORK</p>
+      <h1 id="progress-company">Reading the opportunity</h1>
+      <p id="progress-current" class="lead">Confirming both companies...</p>
       <ul id="progress-stages" class="stage-list"></ul>
-      <p class="privacy-note">If reliable evidence is unavailable, Deep Cuts will say so. It will not invent a briefing.</p>
+      <p class="privacy-note">If the evidence is weak, we will say so. Commercial confidence is never invented.</p>
     </section>
 
     <section class="screen" data-screen="menu">
-      <div class="company-hero">
-        <p class="eyebrow">I WANT TO SELL TO</p>
+      <div class="results-hero">
+        <img class="aggits aggits-menu" src="/assets/aggits-original-cutout-v4.png" alt="Aggits">
+        <p class="eyebrow">COMMERCIAL INSTINCT</p>
         <h1 id="menu-company"></h1>
         <p id="menu-meta"></p>
-        <div id="menu-offer" class="offer-summary"></div>
+        <div id="menu-relationship" class="company-relationship"></div>
+        <div class="signal" aria-hidden="true"><span></span><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><span></span></div>
       </div>
+      <div id="section-menu" class="section-menu"></div>
       <div class="menu-toolbar">
         <button class="secondary" data-action="save">Save privately</button>
         <button class="secondary" data-action="export">Export PDF</button>
       </div>
-      <div id="section-menu" class="section-menu"></div>
       <p id="report-notice" class="legal-note"></p>
     </section>
 
     <section class="screen" data-screen="section">
       <div class="section-topbar">
-        <button class="back" data-action="home">‹ Company overview</button>
+        <button class="back" data-action="home">&lsaquo; All insights</button>
         <button class="quiet" data-action="copy-section">Copy</button>
       </div>
       <div id="section-content"></div>
     </section>
 
     <section class="screen" data-screen="error">
-      <p class="eyebrow">WE COULDN’T COMPLETE THAT</p>
-      <h1>No fictional briefing was created</h1>
+      <img class="aggits aggits-error" src="/assets/aggits-original-cutout-v4.png" alt="">
+      <p class="eyebrow">COMMERCIAL INSTINCT</p>
+      <h1>No guesswork.</h1>
       <p id="error-message" class="lead"></p>
-      <div class="button-stack"><button class="primary" data-action="retry">Try again</button><button class="secondary" data-action="new-search">Start a new company</button></div>
+      <div class="button-stack"><button class="primary" data-action="retry">Try again</button><button class="secondary" data-action="new-search">Start a new search</button></div>
     </section>
   </main>
+
   <div id="toast" role="status" aria-live="polite"></div>
-  <footer>Deep Cuts decision intelligence · public evidence, clearly interpreted</footer>
+  <footer><strong>POWERED BY DEEP CUTS</strong><br>copyright Clearlight Creative</footer>
   <script type="module" src="./app.js"></script>
 </body>
 </html>

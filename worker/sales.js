@@ -10,18 +10,19 @@ export async function handleSales(request,env,ctx,url){
   if(url.pathname==="/api/sell/briefings"&&request.method==="POST")return saveBriefing(request,env);
   if(url.pathname.startsWith("/api/sell/briefings/")&&request.method==="GET")return loadBriefing(request,env,url);
   if(url.pathname==="/api/sell/events"&&request.method==="POST")return recordEvent(request,env,ctx);
-  if(url.pathname==="/api/sell/health"&&request.method==="GET")return reply({ok:true,module:"sell-to-company",providerConfigured:Boolean(env.SALES_RESEARCH_API_URL&&env.SALES_RESEARCH_API_KEY)});
+  if(url.pathname==="/api/sell/health"&&request.method==="GET")return reply({ok:true,module:"commercial-instinct",providerConfigured:Boolean(env.SALES_RESEARCH_API_URL&&env.SALES_RESEARCH_API_KEY)});
   return reply({ok:false,error:"Unknown sales-intelligence route"},404);
 }
 
 async function identify(request,env){
   const body=await bodyJson(request);
-  const query=clean(body?.query,200);
-  if(query.length<2)return reply({ok:false,error:"Enter a business name"},400);
-  const demo=telstraMatches(query);
+  const website=secureUrl(body?.targetWebsite||body?.website);
+  const query=clean(body?.query,200)||companyNameFromUrl(website);
+  if(query.length<2||!website)return reply({ok:false,error:"Enter the official target-company website"},400);
+  const demo=telstraMatches(query,website);
   if(demo.length)return reply({ok:true,matches:demo,source:"verified_demo"});
   if(!providerReady(env))return reply({ok:false,code:"RESEARCH_PROVIDER_UNAVAILABLE",error:"Live company research is not configured yet. The complete Telstra demonstration remains available.",demo:"Telstra"},503);
-  const result=await providerCall(env,"identify",{query,website:clean(body.website,300),location:clean(body.location,200)});
+  const result=await providerCall(env,"identify",{query,website,targetWebsite:website,sellerWebsite:secureUrl(body.sellerWebsite),location:clean(body.location,200)});
   if(!result.ok)return result.response;
   const matches=(Array.isArray(result.data.matches)?result.data.matches:[]).filter(item=>validateIdentity(item).length===0).slice(0,8);
   if(!matches.length)return reply({ok:true,matches:[],message:"No business could be identified confidently. Add an official website or location and try again."});
@@ -34,11 +35,12 @@ async function research(request,env){
   const identityErrors=validateIdentity(identity);
   if(identityErrors.length)return reply({ok:false,error:"Confirm the business before research",details:identityErrors},400);
   const offering=sanitizeOffering(body?.offering);
+  if(!secureUrl(offering.website))return reply({ok:false,error:"Enter the official My Company website before research"},400);
   let report;
   if(identity.id==="au-asx-tls")report=buildTelstraReport(offering);
   else{
     if(!providerReady(env))return reply({ok:false,code:"RESEARCH_PROVIDER_UNAVAILABLE",error:"The research service is unavailable. No briefing has been invented."},503);
-    const result=await providerCall(env,"research",{business:identity,offering,objective:"sell_to_company",requiredSchema:"deep-cuts-sales-1.0"});
+    const result=await providerCall(env,"research",{business:identity,offering,seller:{website:secureUrl(offering.website)},target:{website:secureUrl(identity.website)},objective:"sell_to_company",product:"commercial_instinct",requiredSchema:"deep-cuts-sales-1.0"});
     if(!result.ok)return result.response;
     report=result.data.report;
   }
@@ -104,6 +106,8 @@ async function providerCall(env,operation,payload){
 function providerReady(env){try{return Boolean(env.SALES_RESEARCH_API_KEY)&&new URL(env.SALES_RESEARCH_API_URL).protocol==="https:"}catch{return false}}
 async function bodyJson(request){try{return await request.json()}catch{return null}}
 function clean(value,max=200){return String(value||"").trim().slice(0,max)}
+function secureUrl(value){try{const url=new URL(clean(value,500));return url.protocol==="https:"?url.toString():""}catch{return ""}}
+function companyNameFromUrl(value){try{return new URL(value).hostname.replace(/^www\./,"").split(".")[0].replace(/[-_]+/g," ")}catch{return ""}}
 function validDate(value){const date=new Date(value||Date.now());return Number.isNaN(date.getTime())?new Date().toISOString():date.toISOString()}
 function randomToken(){const bytes=crypto.getRandomValues(new Uint8Array(32));return Array.from(bytes,item=>item.toString(16).padStart(2,"0")).join("")}
 async function hash(value){const bytes=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(value));return Array.from(new Uint8Array(bytes),item=>item.toString(16).padStart(2,"0")).join("")}
