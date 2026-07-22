@@ -48,3 +48,7 @@ Treat every completed edition as a finished commercial product that must remain 
 - The challenge CTA is placed immediately before the School Upgrade destination. It reads `How Well Do You Know Our School?` and `Take the Challenge` and uses the edition's verified school accent colour.
 - Each question has four choices, a 15-second countdown, a time-up bell at zero, a ten-second positive fact explanation and a verified authoritative source. Exactly six questions are required.
 - Results use encouraging, non-punitive ratings. The challenge always provides an explicit School Home control, and browser Back also restores the school discovery page without requiring another QR scan.
+
+## Decision-intelligence module contract
+
+“I Want to Sell to This Company” is an isolated decision-intelligence module, not an edition. Its public route is `/sell/`, its Worker namespace is `/api/sell/*`, its data tables use the `sales_` prefix and its executable schema lives in `sell/schemas.js`. It must never import edition-specific business rules or store sales data in edition tables. Existing editions must remain operational if this module is removed.

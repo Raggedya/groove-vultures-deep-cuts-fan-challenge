@@ -1,5 +1,9 @@
 # Deep Cuts
 
+## Decision intelligence
+
+The isolated mobile pathway **I Want to Sell to This Company** is available at `/sell/`. It confirms the business, accepts optional supplier context and produces a layered, evidence-led sales briefing with private saving and PDF export. See [SALES_INTELLIGENCE.md](SALES_INTELLIGENCE.md) for setup, schemas, provider configuration, privacy rules and testing.
+
 All development is governed by `PLATFORM_ARCHITECTURE_DIRECTIVE.md`: completed editions are isolated commercial products, backward compatibility is mandatory, and new editions extend rather than modify existing products. `edition-contracts.json` and the CI isolation test enforce the current Music, Cars and Clubs boundaries.
 
 Deep Cuts is one permanent artist-discovery platform. A fan scans an artist-specific QR and opens a calm page containing the artist's verified featured YouTube video and only the music, social, website, merchandise and editorial destinations that are genuinely available.
