@@ -87,6 +87,8 @@ jobs:
           put_required_secret REPORT_RECIPIENT "$REPORT_RECIPIENT"
           put_required_secret REPORT_FROM_EMAIL "$REPORT_FROM_EMAIL"
           put_optional_secret RESEND_WEBHOOK_SECRET "$RESEND_WEBHOOK_SECRET"
+          put_optional_secret SALES_RESEARCH_API_URL "$SALES_RESEARCH_API_URL"
+          put_optional_secret SALES_RESEARCH_API_KEY "$SALES_RESEARCH_API_KEY"
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
@@ -95,6 +97,8 @@ jobs:
           REPORT_RECIPIENT: ${{ secrets.REPORT_RECIPIENT }}
           REPORT_FROM_EMAIL: ${{ secrets.REPORT_FROM_EMAIL }}
           RESEND_WEBHOOK_SECRET: ${{ secrets.RESEND_WEBHOOK_SECRET }}
+          SALES_RESEARCH_API_URL: ${{ secrets.SALES_RESEARCH_API_URL }}
+          SALES_RESEARCH_API_KEY: ${{ secrets.SALES_RESEARCH_API_KEY }}
       - name: Synchronise edition registry
         run: node scripts/sync-editions.mjs
         env:

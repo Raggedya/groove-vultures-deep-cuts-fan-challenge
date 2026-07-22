@@ -1,5 +1,7 @@
 # Deep Cuts Production Manual
 
+> Decision intelligence: the isolated “I Want to Sell to This Company” pathway is governed by [SALES_INTELLIGENCE.md](SALES_INTELLIGENCE.md). It must preserve every edition contract and must never turn an interpretation into a sourced fact.
+
 `PLATFORM_ARCHITECTURE_DIRECTIVE.md` governs this manual. Every completed edition is an isolated commercial product. Edition preservation and backward compatibility are mandatory and take priority over new features.
 
 ## School Discovery permanent rules
