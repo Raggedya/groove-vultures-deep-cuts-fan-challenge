@@ -18,15 +18,18 @@ export const TELSTRA_IDENTITY={
   matchConfidence:"high",identityEvidence:["annual25","leadership"]
 };
 
-export function telstraMatches(query){
+export function telstraMatches(query,website=""){
   const normalized=String(query||"").toLowerCase().replace(/[^a-z0-9]/g,"");
-  return ["telstra","telstragroup","telstragrouplimited"].includes(normalized)?[TELSTRA_IDENTITY]:[];
+  let host="";try{host=new URL(website).hostname.replace(/^www\./,"").toLowerCase()}catch{}
+  return ["telstra","telstragroup","telstragrouplimited"].includes(normalized)||host==="telstra.com.au"?[TELSTRA_IDENTITY]:[];
 }
 
 export function buildTelstraReport(offering={}){
   const offer=String(offering.description||"").trim();
-  const offerLabel=offer||"your product or service";
-  const fit=fitFor(offer);
+  const sellerName=String(offering.businessName||"").trim();
+  const sellerWebsite=String(offering.website||"").trim();
+  const offerLabel=offer||(sellerWebsite?`the publicly presented capabilities of ${sellerName||sellerWebsite}`:"your product or service");
+  const fit=fitFor(offer,sellerWebsite);
   const sections={
     priorities:section("What they are trying to achieve",[
       insight("Become the first choice for connectivity","confirmed_fact","Telstra describes Connected Future 30 as its plan to become Australia’s number-one choice for connectivity.","Customer experience, network performance and dependable delivery are central—not side issues.",`Show how ${offerLabel} can improve reliability, customer outcomes or the speed of delivery.`,"Tie your opening to one measurable operational outcome rather than a broad claim.","Which Connected Future 30 outcome is creating the most pressure for your team right now?","High confidence",["strategy","annual25"]),
@@ -92,18 +95,18 @@ export function buildTelstraReport(offering={}){
       insight("Evidence register","confirmed_fact",`${sources.length} public sources support this demonstration briefing. Official company and regulatory material is prioritised.`,"Every important conclusion can be traced to a dated source; interpretations remain labelled.","Open the source before using a finding in a real conversation.","Refresh the briefing when decisions depend on current people, projects or procurement rules.","What has changed since this research cut-off?","High confidence",sources.map(item=>item.id))
     ]}
   };
-  return {schemaVersion:"1.0",reportVersion:"demo-1",objective:"sell_to_company",business:TELSTRA_IDENTITY,offering,researchMode:"verified_demo",researchedAt:ACCESSED,researchCutoff:"2026-07-23T00:00:00.000Z",notice:"This briefing uses public information and evidence-based interpretation. It does not guarantee a sale or prove internal company conditions.",unknowns:["Current budget and buying timetable","Incumbent supplier arrangements","The final decision group for this offering","Whether an active requirement exists"],sources,sections,stagesCompleted:["Confirming the business","Reviewing official company information","Looking at current priorities","Checking procurement and supplier information","Reviewing customer and market feedback","Looking for relevant executives and managers","Comparing the evidence","Preparing your sales briefing"]};
+  return {schemaVersion:"1.0",reportVersion:"commercial-instinct-demo-1",objective:"sell_to_company",business:TELSTRA_IDENTITY,offering,researchMode:"verified_demo",researchedAt:ACCESSED,researchCutoff:"2026-07-23T00:00:00.000Z",notice:"Commercial Instinct uses public evidence and clearly labelled interpretation. It cannot prove an internal need, buying decision or final decision-maker.",unknowns:["Current budget and buying timetable","Incumbent supplier arrangements","The final decision group for this offering","Whether an active requirement exists"],sources,sections,stagesCompleted:["Confirming the target company","Reviewing official target-company information","Checking current priorities and pressures","Checking procurement and supplier expectations","Reviewing relevant leadership and market evidence","Comparing the two companies","Preparing candid sales advice"]};
 }
 
 function source(id,title,publisher,publishedAt,url,type,relevance){return {id,title,publisher,publishedAt,url,sourceType:type,relevance,accessedAt:ACCESSED,insightIds:[]}}
 function section(title,items){return {title,items}}
 function insight(title,status,found,meaning,relevance,action,question,confidence,sourceIds,alternativeExplanation=""){return {id:title.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/(^-|-$)/g,""),title,status,found,meaning,relevance,action,question,confidence,sourceIds,alternativeExplanation}}
 
-function fitFor(offer){
+function fitFor(offer,website=""){
   const text=offer.toLowerCase();
   if(/cyber|security|privacy|software|technology|automation|data/.test(text))return {title:"A controlled technology use case may be relevant",status:"possible_interpretation",found:"Telstra names technology leadership and digital infrastructure as priorities, while supplier governance explicitly assesses cyber security, privacy and resilience.",meaning:"A technology offer may align, but it will face strong control and integration questions.",relevance:"Strong possible fit if the offer produces a measurable outcome and can satisfy enterprise controls.",action:"Lead with a contained use case, architecture boundaries, security evidence and measurable value.",question:"Which controlled use case would be useful without creating unnecessary integration risk?",confidence:"Moderate confidence",sources:["strategy","supplier-governance"]};
   if(/clean|facility|maintenance|property|safety|energy/.test(text))return {title:"Operational reliability may create a practical fit",status:"possible_interpretation",found:"Telstra operates national infrastructure and assesses suppliers for operational, resilience, safety and environmental risk.",meaning:"A facilities or operational offer may matter where it improves consistency across sites, but no live requirement is public.",relevance:"Moderate possible fit if geographic coverage and governance can be proven.",action:"Lead with coverage, response times, safety performance and central reporting.",question:"Where do current site-service arrangements create inconsistent outcomes?",confidence:"Moderate confidence",sources:["strategy","supplier-governance"]};
-  return {title:"The commercial fit still needs to be qualified",status:"possible_interpretation",found:offer?`The user described the offer as “${offer}”. Public material shows broad priorities but no verified current requirement for this specific offer.`:"No supplier offering was provided.",meaning:"A plausible strategic connection is not evidence of active demand.",relevance:offer?"Weak or unproven fit until an operating problem, owner and timing are confirmed.":"Insufficient information for a tailored fit assessment.",action:"Use a short discovery conversation before preparing a detailed proposal.",question:"Is there a current problem in this area, and what outcome would justify change?",confidence:"Low confidence",sources:["strategy","supplier-page"]};
+  return {title:"The commercial fit still needs to be qualified",status:"possible_interpretation",found:offer?`The user described the offer as “${offer}”. Public material shows broad priorities but no verified current requirement for this specific offer.`:website?`A supplier website was provided, but this credential-free demonstration does not claim to have researched or interpreted that website.`:"No supplier offering was provided.",meaning:"A plausible strategic connection is not evidence of active demand.",relevance:offer?"Weak or unproven fit until an operating problem, owner and timing are confirmed.":website?"The target-company briefing is useful, but supplier-specific fit remains unproven until the live research provider reviews both sites.":"Insufficient information for a tailored fit assessment.",action:"Use a short discovery conversation before preparing a detailed proposal.",question:"Is there a current problem in this area, and what outcome would justify change?",confidence:"Low confidence",sources:["strategy","supplier-page"]};
 }
 
 function questionInsights(){return [
