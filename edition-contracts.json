@@ -25,6 +25,12 @@
       "allowedLinks": ["website", "enrolment", "virtualTour", "principalMessage", "visionValues", "curriculum", "studentLife", "newsletter", "termDates", "policies", "contact", "schoolProject", "youtube"],
       "renderedLinks": ["website", "enrolment", "virtualTour", "principalMessage", "visionValues", "curriculum", "studentLife", "newsletter", "termDates", "policies", "contact", "schoolProject", "youtube"],
       "exclusiveConfig": ["school"]
+    },
+    "racing": {
+      "brandNames": ["Deep Cuts Racing"],
+      "allowedLinks": [],
+      "renderedLinks": [],
+      "exclusiveConfig": ["racing"]
     }
   }
 }

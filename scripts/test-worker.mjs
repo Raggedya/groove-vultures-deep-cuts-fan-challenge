@@ -8,7 +8,10 @@ const schema=fs.readFileSync('migrations/0001_deep_cuts.sql','utf8');
 const config=JSON.parse(fs.readFileSync('wrangler.jsonc','utf8'));
 
 for(const route of ['/q/','/api/events','/api/editions','/api/builds','/api/builds/','/api/delivery','/api/webhooks/resend','/api/reports/weekly.csv'])assert.ok(source.includes(route),`Worker route missing: ${route}`);
+assert.ok(source.includes('/api/racing/'),'Isolated Racing API route is missing.');
 for(const table of ['editions','analytics_events','production_jobs','delivery_events'])assert.match(schema,new RegExp(`CREATE TABLE IF NOT EXISTS ${table}`));
+const racingSchema=fs.readFileSync('migrations/0002_racing_v1.sql','utf8');
+for(const table of ['racing_races','racing_runners','racing_predictions','racing_tipsters','racing_results','racing_post_race_reviews'])assert.match(racingSchema,new RegExp(`CREATE TABLE IF NOT EXISTS ${table}`));
 for(const event of ['qr_scan','outbound_clicked','share_button_clicked'])assert.ok(source.includes(`"${event}"`),`Worker event missing: ${event}`);
 assert.equal(config.name,'deep-cuts');
 assert.ok(config.assets.run_worker_first.includes('/q/*'));

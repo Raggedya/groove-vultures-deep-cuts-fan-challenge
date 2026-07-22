@@ -4,7 +4,7 @@ import path from 'node:path';
 const root=process.cwd();
 const dist=path.join(root,'dist');
 const files=['index.html','styles.css','platform.json','analytics.html','analytics.css'];
-const directories=['js','assets','editions','output'];
+const directories=['js','assets','editions','output','racing'];
 
 await fs.rm(dist,{recursive:true,force:true});
 await fs.mkdir(dist,{recursive:true});

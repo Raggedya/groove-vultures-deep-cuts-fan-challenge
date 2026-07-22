@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#07111f">
+  <meta name="description" content="Transparent, evidence-based Australian horse-racing analysis.">
+  <title>Deep Cuts Racing</title>
+  <link rel="stylesheet" href="/racing/styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="masthead">
+      <div><p class="kicker">Deep Cuts</p><h1>Racing</h1></div>
+      <button id="openData" class="text-button" type="button">Data Points Considered</button>
+    </header>
+
+    <section id="selectionView" class="view active" aria-labelledby="selectionTitle">
+      <div class="intro"><p class="eyebrow">Version 1</p><h2 id="selectionTitle">Select a race</h2><p>Choose one confirmed race. Analysis begins only after all three details identify it.</p></div>
+      <form id="raceForm" class="race-form">
+        <label>Race Date<input id="raceDate" name="date" type="date" required></label>
+        <label>Race Location<input id="raceLocation" name="location" type="search" list="courseSuggestions" autocomplete="off" placeholder="e.g. Flemington" required><datalist id="courseSuggestions"></datalist></label>
+        <label>Race Number<select id="raceNumber" name="raceNumber" required></select></label>
+        <button id="analyseButton" class="primary-button" type="submit">Analyse Race</button>
+      </form>
+      <div id="status" class="status" role="status" aria-live="polite"></div>
+    </section>
+
+    <section id="resultView" class="view" aria-labelledby="resultTitle">
+      <button class="back-button" data-view="selectionView" type="button">← Change race</button>
+      <div id="raceHeader" class="race-header"></div>
+      <article id="selectionCard" class="selection-card"></article>
+      <article class="panel"><p class="eyebrow">Deep Cuts verdict</p><p id="verdict" class="verdict"></p></article>
+      <div class="two-column"><article class="panel"><h3>Why it rates first</h3><ul id="strengths"></ul></article><article class="panel risk"><h3>What could go wrong</h3><ul id="risks"></ul></article></div>
+      <section class="section"><h2>Top three chances</h2><div id="topThree" class="rank-list"></div></section>
+      <section class="section"><h2>What the tipsters say</h2><div id="tipsters" class="panel"></div></section>
+      <details class="field-details"><summary>Full field</summary><div id="fullField" class="rank-list compact"></div></details>
+      <p class="responsible">Horse-racing outcomes are uncertain. This analysis provides statistical estimates and a summary of available information. It is not a guarantee, betting certainty or financial advice. Odds, scratchings, weather, track conditions and other information can change. Bet responsibly and never wager more than you can afford to lose.</p>
+    </section>
+
+    <section id="dataView" class="view" aria-labelledby="dataTitle">
+      <button class="back-button" data-view="resultView" type="button">← Back to analysis</button>
+      <p class="eyebrow">Transparency</p><h2 id="dataTitle"><span id="usedCount">0</span> data points considered</h2>
+      <div id="dataSummary" class="metric-grid"></div><div id="dataSections" class="data-sections"></div>
+    </section>
+
+    <section id="adminView" class="view" aria-labelledby="adminTitle">
+      <button class="back-button" data-view="selectionView" type="button">← Back</button><p class="eyebrow">Internal</p><h2 id="adminTitle">Racing performance</h2>
+      <form id="adminForm" class="admin-form"><label>Admin access token<input id="adminToken" type="password" autocomplete="current-password" required></label><button class="primary-button" type="submit">Open dashboard</button></form>
+      <div id="dashboard" hidden><div id="dashboardMetrics" class="metric-grid"></div><div id="dashboardBreakdowns" class="data-sections"></div><a id="exportCsv" class="primary-button link-button" href="#">Export CSV</a><div class="table-wrap"><table><thead><tr><th>Race</th><th>Selection</th><th>Winner</th><th>Top-three hits</th></tr></thead><tbody id="historyRows"></tbody></table></div></div>
+    </section>
+    <footer><span>Deep Cuts Racing</span><button id="openAdmin" class="footer-button" type="button">Performance dashboard</button></footer>
+  </main>
+  <script type="module" src="/racing/app.js"></script>
+</body>
+</html>
