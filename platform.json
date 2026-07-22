@@ -201,6 +201,14 @@
       "name": "Kerrimuir Primary School",
       "config": "editions/kerrimuir-primary-school/edition.json",
       "active": true
+    },
+    {
+      "slug": "fakeaways",
+      "editionId": "dc_f414462d09",
+      "canonicalPath": "/e/dc_f414462d09",
+      "name": "Fakeaways",
+      "config": "editions/fakeaways/edition.json",
+      "active": true
     }
   ]
 }

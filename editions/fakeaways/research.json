@@ -1,0 +1,25 @@
+{
+  "bandName": "Fakeaways",
+  "slug": "fakeaways",
+  "editionId": "dc_f414462d09",
+  "verifiedAt": "2026-07-22T06:21:26.124Z",
+  "sources": [
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/thefakeaways/",
+      "sourceType": "official artist social profile linked by established music publication",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-22T06:21:00.000Z",
+      "evidence": "Beat Magazine's Melbourne gig listing links The Fakeaways name directly to this Instagram profile and describes the band's covers-and-originals repertoire."
+    },
+    {
+      "destination": "newsReviews",
+      "url": "https://beat.com.au/the-anthem-sessions-nature-in-the-city-the-fakeaways/",
+      "sourceType": "established Melbourne music publication gig feature",
+      "identityVerified": true,
+      "credibleEditorial": true,
+      "verifiedAt": "2026-07-22T06:21:00.000Z",
+      "evidence": "Beat Magazine identifies The Fakeaways on a 5 July 2024 Hawthorn Hotel bill and describes them as playing covers and originals blending blues, soul and rock'n'roll."
+    }
+  ]
+}
