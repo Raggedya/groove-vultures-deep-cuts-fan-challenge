@@ -13,6 +13,9 @@ assert.deepEqual(validateReport(report),[],"Verified demo report must satisfy th
 for(const [key] of SALES_SECTION_ORDER)assert.ok(report.sections[key],`Required sales section missing: ${key}`);
 assert.match(report.sections.opportunities.items[0].relevance,/fit/i,"Offering must affect the opportunity analysis");
 assert.ok(report.sections.executives.people.length>0,"Verified executives must be present in the complete demo");
+assert.ok(report.sections.questions.items.length>=8,"Questions must cover the eight required discovery categories");
+assert.ok(report.sections.approach.items.length>=10,"Approach guidance must cover the complete sales strategy");
+assert.ok(report.sections.tomorrow.items.length>=9,"Tomorrow briefing must contain the complete meeting-ready checklist");
 
 const unsupported=structuredClone(report);
 unsupported.sections.priorities.items[0].sourceIds=[];
