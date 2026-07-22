@@ -209,6 +209,14 @@
       "name": "Fakeaways",
       "config": "editions/fakeaways/edition.json",
       "active": true
+    },
+    {
+      "slug": "horsepower-in-the-high-country",
+      "editionId": "dc_73b738af75",
+      "canonicalPath": "/e/dc_73b738af75",
+      "name": "Horsepower in the High Country",
+      "config": "editions/horsepower-in-the-high-country/edition.json",
+      "active": true
     }
   ]
 }

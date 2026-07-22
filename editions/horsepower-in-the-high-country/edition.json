@@ -1,0 +1,65 @@
+{
+  "brandName": "Deep Cuts Clubs",
+  "editionType": "club",
+  "bandName": "Horsepower in the High Country",
+  "editionTitle": "Horsepower in the High Country",
+  "description": "Mansfield's annual family show-and-shine brings together cars, motorbikes and boats while raising funds for Mansfield Autism Statewide Services.",
+  "discovery": {
+    "bio": "Mansfield's annual family show-and-shine brings together cars, motorbikes and boats while raising funds for Mansfield Autism Statewide Services.",
+    "newsLabel": "Mansfield Shire community event report"
+  },
+  "mode": "discovery",
+  "slug": "horsepower-in-the-high-country",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_73b738af75",
+  "characterArtwork": "assets/aggits-original-cutout-v4.png",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/horsepower-in-the-high-country/instagram-discovery.png",
+    "qrImage": "output/horsepower-in-the-high-country/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#2f80ff",
+    "accentSecondary": "#8dbdff"
+  },
+  "links": {
+    "website": "https://horsepowerinthehighcountry.org.au/",
+    "calendar": "",
+    "news": "https://www.mansfield.vic.gov.au/files/assets/public/v/1/documents/council-meetings/2024/20-february-2024/13.1.1.1-ceo-monthly-report-december-2023-january-2024.pdf",
+    "events": "https://www.visitmelbourne.com/regions/high-country/whats-on/community/horsepower-in-the-high-country",
+    "membership": "",
+    "barefootBowls": "",
+    "pennant": "",
+    "venueHire": "",
+    "history": "",
+    "contact": "",
+    "facebook": "https://www.facebook.com/groups/706823554164958",
+    "bowlsVictoria": ""
+  },
+  "featuredVideo": {
+    "title": "",
+    "youtubeURL": "",
+    "selectionBasis": "",
+    "verifiedAt": ""
+  },
+  "analytics": {
+    "editionId": "dc_73b738af75",
+    "pageIdentifier": "dc_73b738af75:club-v1"
+  },
+  "production": {
+    "jobId": "dcjob_e1b0836e-18e6-4910-8e33-22390f58c1bf",
+    "submittedAt": "2026-07-22T07:09:13.670Z",
+    "researchCompletedAt": "2026-07-22T07:10:42.353Z",
+    "editionCreatedAt": "2026-07-22T07:10:42.353Z"
+  },
+  "club": {
+    "location": "Mansfield Botanic Park, Mansfield, Victoria",
+    "formed": "",
+    "heroLabels": [
+      "Visit",
+      "Play",
+      "Join",
+      "Connect"
+    ]
+  }
+}

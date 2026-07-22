@@ -1,0 +1,40 @@
+{
+  "bandName": "Horsepower in the High Country",
+  "slug": "horsepower-in-the-high-country",
+  "editionId": "dc_73b738af75",
+  "verifiedAt": "2026-07-22T07:10:42.353Z",
+  "sources": [
+    {
+      "destination": "website",
+      "url": "https://horsepowerinthehighcountry.org.au/",
+      "sourceType": "official event-controlled website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-22T07:10:00.000Z",
+      "evidence": "The dedicated event domain identifies itself as Horsepower in the High Country 2027 and is linked as both the website and booking destination by Mansfield's official tourism listing."
+    },
+    {
+      "destination": "events",
+      "url": "https://www.visitmelbourne.com/regions/high-country/whats-on/community/horsepower-in-the-high-country",
+      "sourceType": "authoritative Visit Victoria event listing",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-22T07:10:00.000Z",
+      "evidence": "Visit Victoria lists the exact event at Mansfield Botanic Park on 23 January 2027, with vehicle entry, spectator donation and Mansfield Autism fundraising details."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/groups/706823554164958",
+      "sourceType": "official event social community linked by authoritative tourism listing",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-22T07:10:00.000Z",
+      "evidence": "Mansfield Mt Buller's authoritative event record links this exact Facebook group as the event's social presence."
+    },
+    {
+      "destination": "news",
+      "url": "https://www.mansfield.vic.gov.au/files/assets/public/v/1/documents/council-meetings/2024/20-february-2024/13.1.1.1-ceo-monthly-report-december-2023-january-2024.pdf",
+      "sourceType": "official Mansfield Shire Council event report",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-22T07:10:00.000Z",
+      "evidence": "Mansfield Shire Council records more than 2,000 attendees and identifies the event as a Mansfield Autism fundraiser delivered with Delatite Drivers Car Club."
+    }
+  ]
+}
