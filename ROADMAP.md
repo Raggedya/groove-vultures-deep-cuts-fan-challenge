@@ -1,4 +1,4 @@
-# Deep Cuts Roadmap â€” Ordered Only by Production Time Saved
+# Deep Cuts Roadmap Ã¢â‚¬â€ Ordered Only by Production Time Saved
 
 - [x] Add separately typed Music, Cars and Clubs configurations to the one permanent engine, avoiding duplicated repositories and code.
 - [x] Lock permanent edition-protection governance, typed contracts, pull-request impact assessment and automated cross-edition isolation checks.
@@ -12,6 +12,7 @@
 - [ ] Add provider-backed follower verification for platforms that block anonymous metadata access.
 - [ ] Add self-healing official-destination resolution from artist-controlled link graphs.
 - [ ] Add automatic evidence freshness re-checks before stale editions are republished.
+- [x] Add an isolated, versioned Commercial Instinct to Banjo Strategy Brief handoff with owner-controlled script review and consent.
 
 1. Add self-healing destination checks and exception-only owner notification.
 2. Add automated duplicate-artist and identity-collision detection before research.
@@ -20,4 +21,5 @@
 5. Add automatic rollback when live QR or page verification fails after deployment.
 
 Completed platform standard: verified featured-video selection, retired tipping, and automatic removal/rebalancing of unavailable destinations are now part of the reusable engine and research contract.
+
 
