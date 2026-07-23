@@ -137,4 +137,3 @@ async function safeDb(env,sql,values){if(!env.DB)return;await env.DB.prepare(sql
 function reply(body,status=200){return new Response(JSON.stringify(body),{status,headers:HEADERS})}
 
 export const __test={EVENTS,providerReady,externalProviderReady,hash,equalHash};
-
