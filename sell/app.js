@@ -54,11 +54,11 @@ async function submitCompanies(myCompany,targetCompany){
 
 function renderMatches(){
   const list=$("#matches");list.replaceChildren();
-  $("#confirm-relationship").textContent=`${displayHost(state.myCompanyUrl)}  â†’  ${displayHost(state.targetCompanyUrl)}`;
+  $("#confirm-relationship").textContent=`${displayHost(state.myCompanyUrl)}  →  ${displayHost(state.targetCompanyUrl)}`;
   $("#match-empty").classList.toggle("hidden",state.matches.length>0);
   for(const business of state.matches){
     const button=el("button","match-card");button.type="button";
-    button.append(el("b","",business.matchConfidence==="high"?"Verified target":"Check this target"),el("strong","",business.officialName),el("span","",[business.tradingName,business.industry,business.location,business.publicStatus].filter(Boolean).join(" Â· ")),el("span","",business.website));
+    button.append(el("b","",business.matchConfidence==="high"?"Verified target":"Check this target"),el("strong","",business.officialName),el("span","",[business.tradingName,business.industry,business.location,business.publicStatus].filter(Boolean).join(" · ")),el("span","",business.website));
     button.addEventListener("click",()=>confirmBusiness(business));list.append(button);
   }
 }
@@ -91,8 +91,8 @@ function renderMenu(){
   state.myCompanyUrl=report.offering?.website||state.myCompanyUrl;
   state.targetCompanyUrl=report.business.website||state.targetCompanyUrl;
   $("#menu-company").textContent=report.business.tradingName||report.business.officialName;
-  $("#menu-meta").textContent=`${report.business.industry} Â· ${report.business.location} Â· Updated ${formatDate(report.researchCutoff)}`;
-  $("#menu-relationship").innerHTML=`<strong>${escapeHtml(displayHost(state.myCompanyUrl)||"My Company")}</strong> &nbsp;â†’&nbsp; <strong>${escapeHtml(report.business.tradingName||report.business.officialName)}</strong>`;
+  $("#menu-meta").textContent=`${report.business.industry} · ${report.business.location} · Updated ${formatDate(report.researchCutoff)}`;
+  $("#menu-relationship").innerHTML=`<strong>${escapeHtml(displayHost(state.myCompanyUrl)||"My Company")}</strong> &nbsp;→&nbsp; <strong>${escapeHtml(report.business.tradingName||report.business.officialName)}</strong>`;
   $("#report-notice").textContent=report.notice;
   const menu=$("#section-menu");menu.replaceChildren();
   const visible=SALES_SECTION_ORDER.filter(([key])=>key!=="executives"||report.sections.executives?.people?.length);
@@ -108,7 +108,7 @@ function renderMenu(){
 function openSection(key){
   state.currentSection=key;
   const section=state.report.sections[key],root=$("#section-content");
-  root.replaceChildren(el("p","eyebrow section-kicker","COMMERCIAL INSTINCT Â· "+(state.report.business.tradingName||state.report.business.officialName).toUpperCase()),el("h2","",section.title),el("p","lead","The straight commercial read â€” concise advice, with evidence available when you need it."));
+  root.replaceChildren(el("p","eyebrow section-kicker","COMMERCIAL INSTINCT · "+(state.report.business.tradingName||state.report.business.officialName).toUpperCase()),el("h2","",section.title),el("p","lead","The straight commercial read — concise advice, with evidence available when you need it."));
   for(const item of section.items||[])root.append(renderInsight(item));
   if(key==="executives")renderPeople(root,section.people||[]);
   if(key==="evidence")renderSources(root,state.report.sources);
@@ -132,13 +132,13 @@ function renderInsight(item){
 
 function renderPeople(root,people){
   if(!people.length)return;root.append(el("h3","","Current publicly verified people"));const grid=el("div","people-grid");
-  for(const person of people){const source=state.report.sources.find(item=>item.id===person.sourceId),card=el("article","panel person-card");card.append(el("h3","",person.name),el("strong","",person.title),el("p","",person.why),el("p","",`Best legitimate approach: ${person.approach}`),el("small","",`Verified ${formatDate(person.verifiedAt)} Â· ${person.confidence}`));if(source)card.append(sourceLink(source));grid.append(card)}
+  for(const person of people){const source=state.report.sources.find(item=>item.id===person.sourceId),card=el("article","panel person-card");card.append(el("h3","",person.name),el("strong","",person.title),el("p","",person.why),el("p","",`Best legitimate approach: ${person.approach}`),el("small","",`Verified ${formatDate(person.verifiedAt)} · ${person.confidence}`));if(source)card.append(sourceLink(source));grid.append(card)}
   root.append(grid);
 }
 
 function renderSources(root,sources){
   const register=el("div","source-register");
-  for(const source of sources){const card=el("article","panel source-record"),link=el("a","",source.title);link.href=source.url;link.target="_blank";link.rel="noopener noreferrer";link.addEventListener("click",()=>track("source_opened",{sectionId:"evidence",sourceId:source.id}));card.append(link,el("p","source-meta",[source.publisher,source.publishedAt?formatDate(source.publishedAt):"Publication date not stated",source.sourceType.replaceAll("_"," ")].join(" Â· ")),el("p","",source.relevance),el("p","",`Accessed ${formatDate(source.accessedAt)}`));register.append(card)}
+  for(const source of sources){const card=el("article","panel source-record"),link=el("a","",source.title);link.href=source.url;link.target="_blank";link.rel="noopener noreferrer";link.addEventListener("click",()=>track("source_opened",{sectionId:"evidence",sourceId:source.id}));card.append(link,el("p","source-meta",[source.publisher,source.publishedAt?formatDate(source.publishedAt):"Publication date not stated",source.sourceType.replaceAll("_"," ")].join(" · ")),el("p","",source.relevance),el("p","",`Accessed ${formatDate(source.accessedAt)}`));register.append(card)}
   root.append(register);
 }
 
@@ -153,10 +153,10 @@ function exportPdf(){if(!state.report)return;track("report_exported",{briefingId
 
 function createBanjoBrief(){
   if(!state.report)return;state.banjoBrief=buildBanjoStrategyBrief(state.report);
-  $("#banjo-relationship").textContent=`${state.banjoBrief.seller.name} â†’ ${state.banjoBrief.target.name}`;
+  $("#banjo-relationship").textContent=`${state.banjoBrief.seller.name} → ${state.banjoBrief.target.name}`;
   $("#banjo-script").value=state.banjoBrief.script;$("#banjo-consent").checked=false;renderBanjoStats();show("banjo");track("banjo_brief_created");
 }
-function renderBanjoStats(){const brief=state.banjoBrief;if(brief)$("#banjo-stats").textContent=`${wordCount(brief.script)} words Â· approximately ${estimateDuration(brief.script)} seconds Â· maximum ${brief.maximumDurationSeconds} seconds`}
+function renderBanjoStats(){const brief=state.banjoBrief;if(brief)$("#banjo-stats").textContent=`${wordCount(brief.script)} words · approximately ${estimateDuration(brief.script)} seconds · maximum ${brief.maximumDurationSeconds} seconds`}
 function downloadBanjoBrief(){
   if(!state.banjoBrief)return;state.banjoBrief.script=$("#banjo-script").value.trim();state.banjoBrief.estimatedDurationSeconds=estimateDuration(state.banjoBrief.script);
   if(!$("#banjo-consent").checked)return toast("Confirm that you are using your own voice");
@@ -172,7 +172,7 @@ async function copySection(){
 }
 
 function buildPrintReport(){
-  document.querySelector(".print-report")?.remove();const root=el("div","print-report print-only");root.append(el("h2","","Commercial Instinct â€” complete briefing"));
+  document.querySelector(".print-report")?.remove();const root=el("div","print-report print-only");root.append(el("h2","","Commercial Instinct — complete briefing"));
   for(const [key,label] of SALES_SECTION_ORDER){const section=state.report.sections[key];root.append(el("h2","",label));for(const item of section.items||[])root.append(renderInsight(item));if(key==="evidence")renderSources(root,state.report.sources)}screens.menu.append(root);
 }
 
@@ -204,4 +204,3 @@ function escapeHtml(value){return String(value||"").replace(/[&<>'"]/g,char=>({"
 let toastTimer;function toast(message){const node=$("#toast");node.textContent=message;node.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(()=>node.classList.remove("show"),2600)}
 
 restorePrivate();
-
