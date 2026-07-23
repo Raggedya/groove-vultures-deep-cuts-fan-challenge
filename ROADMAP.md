@@ -1,4 +1,4 @@
-# Deep Cuts Roadmap Ã¢â‚¬â€ Ordered Only by Production Time Saved
+# Deep Cuts Roadmap â€” Ordered Only by Production Time Saved
 
 - [x] Add separately typed Music, Cars and Clubs configurations to the one permanent engine, avoiding duplicated repositories and code.
 - [x] Lock permanent edition-protection governance, typed contracts, pull-request impact assessment and automated cross-edition isolation checks.
@@ -21,5 +21,4 @@
 5. Add automatic rollback when live QR or page verification fails after deployment.
 
 Completed platform standard: verified featured-video selection, retired tipping, and automatic removal/rebalancing of unavailable destinations are now part of the reusable engine and research contract.
-
 
