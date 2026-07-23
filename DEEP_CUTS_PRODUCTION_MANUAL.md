@@ -14,6 +14,8 @@ Every Schools Edition also includes exactly six positive, factual multiple-choic
 
 Commercial Instinct compares a seller and target from their two official public website URLs. It is a separate decision-intelligence product, not an edition and not a generic company report. The original Aggits cutout, blue-black Deep Cuts presentation and one-blue-button-per-parameter navigation are locked. Each opened section leads with a short, candid commercial read, practical advice and a useful question; evidence and confidence remain available without dominating the phone screen. The system must never pretend that a domain name proves capabilities, that public strategy proves live demand, or that an interpretation is an internal fact.
 
+Its optional Banjo Strategy Brief is a versioned, removable handoff containing an owner-reviewed script rather than the private report. It has an independent two-minute ceiling, requires explicit owner-voice consent and does not change any edition or the 40-second business-advertisement workflow.
+
 ## Unattended artist batches
 
 Deep Cuts accepts CSV batches through one permanent controller. Intake data is evidence to verify, not truth to copy. Every artist is normalized, duplicate-checked, range-checked, researched and independently gated. Publication requires at least 98% confidence in artist identity and every mandatory direct destination. Search pages, guesses and placeholders are forbidden. Rejections are recorded and isolated. Temporary failures receive bounded retries with exponential backoff; checkpoints allow safe resume. Accepted artists flow through the existing factory, immutable artwork checks, QR scan-back, shared Cloudflare deployment, live verification, analytics registration and email delivery.
