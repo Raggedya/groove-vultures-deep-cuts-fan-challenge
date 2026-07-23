@@ -66,4 +66,3 @@ function validDate(value){return !Number.isNaN(new Date(value).getTime())}
 function evidenceBacked(item,sourceById){return usable(item?.found)&&usable(item?.action)&&SPOKEN_STATUSES.has(item?.status)&&Array.isArray(item?.sourceIds)&&item.sourceIds.length>0&&item.sourceIds.every(id=>sourceById.has(String(id)))}
 function host(value){try{return new URL(value).hostname.replace(/^www\./,"")}catch{return ""}}
 function slug(value){return String(value||"company").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,60)||"company"}
-
