@@ -14,6 +14,7 @@ assert.equal(config.name,'deep-cuts');
 assert.ok(config.assets.run_worker_first.includes('/q/*'));
 assert.ok(config.assets.run_worker_first.includes('/api/*'));
 assert.equal(config.d1_databases[0].binding,'DB');
+assert.equal(config.ai.binding,'AI','Workers AI binding must be configured for live Commercial Instinct research');
 assert.ok(source.includes('verifySvixWebhook(payload,request.headers,env.RESEND_WEBHOOK_SECRET)'),'Resend webhook signature verification is required');
 assert.ok(source.includes('duplicate:true'),'Resend webhook delivery must be idempotent');
 

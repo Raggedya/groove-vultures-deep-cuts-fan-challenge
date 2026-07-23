@@ -2,7 +2,7 @@
 
 ## Decision intelligence
 
-The isolated mobile product **Commercial Instinct** is available at `/sell/`. It accepts the official URLs for **My Company** and **Target Company**, confirms the target identity and produces a layered, evidence-led briefing through individual Deep Cuts blue buttons, with private saving and PDF export. See [SALES_INTELLIGENCE.md](SALES_INTELLIGENCE.md) for setup, schemas, provider configuration, privacy rules and testing.
+The isolated mobile product **Commercial Instinct** is available at `/sell/`. It accepts the official URLs for **My Company** and **Target Company**, securely researches their public official pages, confirms the target identity and produces a layered, evidence-led briefing through individual Deep Cuts blue buttons, with private saving and PDF export. See [SALES_INTELLIGENCE.md](SALES_INTELLIGENCE.md) for setup, schemas, provider configuration, privacy rules and testing.
 
 All development is governed by `PLATFORM_ARCHITECTURE_DIRECTIVE.md`: completed editions are isolated commercial products, backward compatibility is mandatory, and new editions extend rather than modify existing products. `edition-contracts.json` and the CI isolation test enforce the current Music, Cars and Clubs boundaries.
 

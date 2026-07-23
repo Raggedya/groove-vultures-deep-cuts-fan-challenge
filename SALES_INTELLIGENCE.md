@@ -37,12 +37,25 @@ The Telstra demo exercises business confirmation, optional supplier input, hones
 
 ## Live research provider
 
-Generic live research passes through one private provider adapter. Configure these optional Cloudflare secrets:
+Commercial Instinct is active for arbitrary public company websites through the private Cloudflare Workers AI binding. The binding is declared in `wrangler.jsonc`; it is available only to the Worker and never to browser JavaScript.
+
+The internal provider:
+
+1. validates both URLs as public HTTPS websites;
+2. reads the official home page and a tightly bounded set of relevant same-site pages;
+3. records every page as a dated source;
+4. compares the target's published signals with the seller's published capabilities;
+5. creates all 17 Commercial Instinct sections in concise language;
+6. rejects unsupported source IDs and converts thin evidence into explicit unknowns.
+
+The service does not bypass logins, access controls or paywalls. Some websites block automated access or render all content in client-side JavaScript; those cases fail honestly rather than producing a fictional briefing.
+
+An approved external research provider can still override the internal provider by configuring these optional Cloudflare secrets:
 
 * `SALES_RESEARCH_API_URL` — HTTPS endpoint for the approved research service.
 * `SALES_RESEARCH_API_KEY` — bearer credential sent only from the Worker.
 
-The browser never receives either value. If they are absent, the verified demonstration continues to work and arbitrary research fails clearly. The product never fills the gap with invented information.
+The browser never receives either value. If they are absent, the internal official-website research provider is used. The verified demonstration remains available as an explicit demonstration only.
 
 ### Provider request contract
 
@@ -51,7 +64,7 @@ The Worker sends one of two POST requests:
 * `{ operation: "identify", query, targetWebsite, sellerWebsite, location }`
 * `{ operation: "research", business, offering, seller, target, objective: "sell_to_company", product: "commercial_instinct", requiredSchema: "deep-cuts-sales-1.0" }`
 
-The provider must inspect both supplied public websites. It must not infer seller capabilities from a domain name alone. If either site cannot be interpreted reliably, the resulting gap must be marked unknown rather than filled with generic sales language.
+Every provider must inspect both supplied public websites. It must not infer seller capabilities from a domain name alone. If either site cannot be interpreted reliably, the resulting gap must be marked unknown rather than filled with generic sales language.
 
 Identification must return `{ matches: BusinessIdentity[] }`. Research must return `{ report: SalesReport }`. The Worker rejects malformed identities, reports without sources, unsupported insights, invalid source references, unverifiable executives and any person record containing email or phone data.
 
