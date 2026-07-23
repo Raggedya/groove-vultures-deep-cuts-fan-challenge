@@ -55,6 +55,8 @@ assert.equal(validateIdentity(arbitraryIdentity).length,0,"An arbitrary official
 const arbitraryReport=await buildCommercialReport({business:arbitraryIdentity,offering:{website:"https://seller.example/",businessName:"Seller Company"}},{AI:ai});
 assert.deepEqual(validateReport(arbitraryReport),[],"The internal provider must produce a schema-valid evidence-linked briefing for arbitrary company URLs");
 assert.equal(arbitraryReport.researchMode,"official_websites_workers_ai");
+assert.equal(arbitraryReport.sections.opportunities.items[0].status,"unknown","A claimed opportunity without both seller and target evidence must be downgraded");
+assert.match(arbitraryReport.sections.opportunities.items[0].action,/discovery conversation/i,"Unsupported fit advice must be replaced with honest discovery guidance");
 globalThis.fetch=originalFetch;
 const token="private-token";const digest=await salesTest.hash(token);assert.equal(await salesTest.equalHash(digest,token),true);assert.equal(await salesTest.equalHash(digest,"wrong"),false);
 
