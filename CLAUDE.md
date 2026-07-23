@@ -30,4 +30,3 @@ Continually reduce manual work, GitHub interaction, PowerShell interaction, copy
 Use only verified official destinations. Omit unavailable buttons completely. When an official YouTube presence exists, verify and feature the most-viewed official music video; never invent one. The tipping feature is retired. Analytics must be best-effort and must never block a link.
 
 Update the manual, README, roadmap, skill and tests whenever the workflow changes. Every future edition must be faster than the previous edition. At the end of every task ask what can be automated next, then implement it when practical.
-
