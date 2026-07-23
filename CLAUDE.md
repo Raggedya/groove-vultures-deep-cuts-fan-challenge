@@ -13,6 +13,10 @@ Always read `PLATFORM_ARCHITECTURE_DIRECTIVE.md` before every other project inst
 - Never alter Aggits, commit secrets, damage completed editions or ask routine per-artist questions.
 - Every production change must reduce manual work and update the batch guide, tests and reports where relevant.
 
+## Commercial Instinct Banjo handoff
+
+Keep `banjo-strategy-brief/1.0` isolated inside `/sell/`. Export only the reviewed speaking script and minimal seller/target provenance. Never include the complete private report, enable voice cloning without explicit consent, or alter Music, Cars, Clubs or Schools for this workflow.
+
 Read `DEEP_CUTS_PRODUCTION_MANUAL.md` completely before acting. Treat it as the project constitution.
 
 Preserve one reusable discovery engine. Put all band-specific information in edition configuration. Never create another repository or duplicate the application for a band. Protect both approved Aggits files and their integrity hashes.
@@ -26,3 +30,4 @@ Continually reduce manual work, GitHub interaction, PowerShell interaction, copy
 Use only verified official destinations. Omit unavailable buttons completely. When an official YouTube presence exists, verify and feature the most-viewed official music video; never invent one. The tipping feature is retired. Analytics must be best-effort and must never block a link.
 
 Update the manual, README, roadmap, skill and tests whenever the workflow changes. Every future edition must be faster than the previous edition. At the end of every task ask what can be automated next, then implement it when practical.
+
