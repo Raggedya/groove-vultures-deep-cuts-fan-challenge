@@ -3,7 +3,7 @@ import fs from "node:fs";
 import {buildTelstraReport,TELSTRA_IDENTITY,telstraMatches} from "../sell/demo-data.js";
 import {SALES_SECTION_ORDER,validateIdentity,validateReport} from "../sell/schemas.js";
 import {__test as salesTest} from "../worker/sales.js";
-import {buildCommercialReport,identifyOfficialCompany,__test as researchTest} from "../worker/commercial-research.js";
+import {buildCommercialReport,buildDocumentReview,identifyOfficialCompany,__test as researchTest} from "../worker/commercial-research.js";
 import {BANJO_BRIEF_CONFIG,buildBanjoStrategyBrief,validateBanjoStrategyBrief,wordCount} from "../sell/banjo-brief.js";
 
 assert.equal(validateIdentity(TELSTRA_IDENTITY).length,0,"Demo business identity must be valid");
@@ -69,6 +69,9 @@ assert.equal(arbitraryReport.researchMode,"free_public_official_websites_workers
 assert.equal(arbitraryReport.sections.opportunities.items[0].status,"unknown","A claimed opportunity without both seller and target evidence must be downgraded");
 assert.match(arbitraryReport.sections.opportunities.items[0].action,/discovery conversation/i,"Unsupported fit advice must be replaced with honest discovery guidance");
 globalThis.fetch=originalFetch;
+const documentReview=await buildDocumentReview({text:"This tender requires a response by 30 September. Suppliers must describe safety controls, delivery timing, exclusions and pricing assumptions. The buyer may request clarification before selection.",fileName:"example-tender.txt",reviewType:"tender",request:"Identify risks and questions"},{AI:{run:async()=>({response:JSON.stringify({title:"Example Tender Review",documentType:"tender",script:"This tender sets a clear response deadline and asks suppliers to explain safety controls, delivery timing, exclusions and pricing assumptions. Those are stated requirements, not optional extras. The practical risk is an incomplete response: any missing assumption or unexplained exclusion could make comparison harder. The document also says the buyer may seek clarification, but that should not be treated as permission to submit an unclear offer. Before responding, confirm who owns each requirement, what evidence supports the safety claims, whether delivery dates are achievable, and which costs rely on assumptions. Ask whether the stated deadline includes a specific time zone, whether alternative solutions are accepted, and how clarifications will be shared with all bidders. This review is based only on the supplied text, so check the original tender and obtain professional advice for any legal or financial commitment.",findings:["Response deadline stated"],questions:["Which time zone applies?"],limitations:["Extract only"]})})}});
+assert.equal(documentReview.schemaVersion,"banjo-document-review/1.0");
+assert.equal(documentReview.documentType,"tender");
 const token="private-token";const digest=await salesTest.hash(token);assert.equal(await salesTest.equalHash(digest,token),true);assert.equal(await salesTest.equalHash(digest,"wrong"),false);
 
 const html=fs.readFileSync("sell/index.html","utf8");
@@ -88,6 +91,7 @@ assert.ok(app.includes('targetWebsite:targetUrl')&&app.includes('sellerWebsite:m
 assert.ok(worker.includes('url.pathname.startsWith("/api/sell/")'),"Worker must isolate the sales-intelligence API namespace");
 assert.equal(wrangler.ai.binding,"AI","Commercial Instinct must use the private Workers AI binding");
 assert.ok(salesWorker.includes("identifyOfficialCompany")&&salesWorker.includes("buildCommercialReport"),"Arbitrary-company research must be connected to the live sales API");
+assert.ok(salesWorker.includes("/api/sell/document-review")&&salesWorker.includes("buildDocumentReview"),"Document review must remain isolated inside the sales API namespace");
 assert.ok(researchWorker.toLowerCase().includes("official website evidence")&&researchWorker.includes("Never invent"),"Research instructions must preserve evidence and anti-fabrication rules");
 for(const table of ["sales_briefings","sales_research_runs","sales_events"])assert.match(migration,new RegExp(`CREATE TABLE IF NOT EXISTS ${table}`));
 assert.ok(!migration.includes("FOREIGN KEY (business_id) REFERENCES editions"),"Sales records must not depend on edition records");
