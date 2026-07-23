@@ -1,6 +1,7 @@
 import {SALES_SECTION_ORDER} from "./schemas.js";
+import {buildBanjoStrategyBrief,estimateDuration,fileNameForBrief,validateBanjoStrategyBrief,wordCount} from "./banjo-brief.js";
 
-const state={matches:[],business:null,offering:{},myCompanyUrl:"",targetCompanyUrl:"",demo:false,report:null,currentSection:null,briefingId:null,lastResearchRequest:null,sessionId:sessionStorage.getItem("dc-sales-session")||crypto.randomUUID()};
+const state={matches:[],business:null,offering:{},myCompanyUrl:"",targetCompanyUrl:"",demo:false,report:null,currentSection:null,briefingId:null,banjoBrief:null,lastResearchRequest:null,sessionId:sessionStorage.getItem("dc-sales-session")||crypto.randomUUID()};
 sessionStorage.setItem("dc-sales-session",state.sessionId);
 
 const screens=Object.fromEntries([...document.querySelectorAll("[data-screen]")].map(node=>[node.dataset.screen,node]));
@@ -12,10 +13,13 @@ document.addEventListener("click",event=>{
   const actions={
     demo:runDemo,"back-search":()=>show("search"),home:()=>state.report?show("menu"):show("search"),
     "new-search":reset,"edit-companies":editCompanies,save:savePrivate,export:exportPdf,
-    "copy-section":copySection,retry:retry
+    "copy-section":copySection,retry:retry,"create-banjo":createBanjoBrief,"back-menu":()=>show("menu"),
+    "download-banjo":downloadBanjoBrief,"copy-banjo":copyBanjoScript
   };
   actions[action]?.();
 });
+
+$("#banjo-script").addEventListener("input",()=>{if(state.banjoBrief){state.banjoBrief.script=$("#banjo-script").value;state.banjoBrief.estimatedDurationSeconds=estimateDuration(state.banjoBrief.script);state.banjoBrief.manualEdits=true;renderBanjoStats()}});
 
 $("#company-form").addEventListener("submit",event=>{
   event.preventDefault();
@@ -147,6 +151,20 @@ async function savePrivate(){
 
 function exportPdf(){if(!state.report)return;track("report_exported",{briefingId:state.briefingId,result:"print_pdf"});window.print()}
 
+function createBanjoBrief(){
+  if(!state.report)return;state.banjoBrief=buildBanjoStrategyBrief(state.report);
+  $("#banjo-relationship").textContent=`${state.banjoBrief.seller.name} → ${state.banjoBrief.target.name}`;
+  $("#banjo-script").value=state.banjoBrief.script;$("#banjo-consent").checked=false;renderBanjoStats();show("banjo");track("banjo_brief_created");
+}
+function renderBanjoStats(){const brief=state.banjoBrief;if(brief)$("#banjo-stats").textContent=`${wordCount(brief.script)} words · approximately ${estimateDuration(brief.script)} seconds · maximum ${brief.maximumDurationSeconds} seconds`}
+function downloadBanjoBrief(){
+  if(!state.banjoBrief)return;state.banjoBrief.script=$("#banjo-script").value.trim();state.banjoBrief.estimatedDurationSeconds=estimateDuration(state.banjoBrief.script);
+  if(!$("#banjo-consent").checked)return toast("Confirm that you are using your own voice");
+  state.banjoBrief.voice.consentConfirmedAt=new Date().toISOString();const errors=validateBanjoStrategyBrief(state.banjoBrief);if(errors.length)return toast(errors[0]);
+  const blob=new Blob([JSON.stringify(state.banjoBrief,null,2)],{type:"application/json"}),link=document.createElement("a");link.href=URL.createObjectURL(blob);link.download=fileNameForBrief(state.banjoBrief);link.click();setTimeout(()=>URL.revokeObjectURL(link.href),1000);track("banjo_brief_exported");toast("Banjo Brief downloaded. Import it into Andy's Lip Sync Engine.");
+}
+async function copyBanjoScript(){if(state.banjoBrief){await navigator.clipboard.writeText($("#banjo-script").value);toast("Banjo script copied")}}
+
 async function copySection(){
   if(!state.currentSection)return;const section=state.report.sections[state.currentSection];
   const text=[section.title,...(section.items||[]).flatMap(item=>["",item.title,joinThought(item.meaning,item.relevance),`My advice: ${item.action}`,`Ask them: ${item.question}`,`Confidence: ${item.confidence}`,`Evidence: ${item.found}`])].join("\n");
@@ -162,7 +180,7 @@ function editCompanies(){
   $("#my-company-url").value=state.myCompanyUrl;$("#target-company-url").value=state.targetCompanyUrl;show("search");
 }
 function retry(){state.myCompanyUrl&&state.targetCompanyUrl?submitCompanies(state.myCompanyUrl,state.targetCompanyUrl):show("search")}
-function reset(){state.matches=[];state.business=null;state.offering={};state.myCompanyUrl="";state.targetCompanyUrl="";state.demo=false;state.report=null;state.currentSection=null;state.briefingId=null;history.replaceState(null,"",location.pathname);track("new_search_started");$("#company-form").reset();show("search")}
+function reset(){state.matches=[];state.business=null;state.offering={};state.myCompanyUrl="";state.targetCompanyUrl="";state.demo=false;state.report=null;state.currentSection=null;state.briefingId=null;state.banjoBrief=null;history.replaceState(null,"",location.pathname);track("new_search_started");$("#company-form").reset();show("search")}
 function show(name){for(const [key,node] of Object.entries(screens))node.classList.toggle("active",key===name);const hasReport=Boolean(state.report);document.querySelectorAll('[data-action="new-search"],[data-action="edit-companies"]').forEach(node=>node.classList.toggle("hidden",!hasReport));scrollTo({top:0,behavior:"instant"})}
 function showError(message){$("#error-message").textContent=message;show("error")}
 

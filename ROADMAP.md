@@ -12,6 +12,7 @@
 - [ ] Add provider-backed follower verification for platforms that block anonymous metadata access.
 - [ ] Add self-healing official-destination resolution from artist-controlled link graphs.
 - [ ] Add automatic evidence freshness re-checks before stale editions are republished.
+- [x] Add an isolated, versioned Commercial Instinct to Banjo Strategy Brief handoff with owner-controlled script review and consent.
 
 1. Add self-healing destination checks and exception-only owner notification.
 2. Add automated duplicate-artist and identity-collision detection before research.
