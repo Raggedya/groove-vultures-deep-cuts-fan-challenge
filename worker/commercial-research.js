@@ -1,9 +1,9 @@
 import {SALES_SECTION_ORDER} from "../sell/schemas.js";
 
 const MODEL="@cf/meta/llama-4-scout-17b-16e-instruct";
-const MAX_PAGES=6;
+const MAX_PAGES=12;
 const MAX_SOURCE_CHARS=4200;
-const PAGE_HINT=/(about|company|who-we-are|services|solutions|capabilities|industr|customer|case-stud|project|news|media|insight|career|leadership|team|supplier|procurement|sustainab|contact)/i;
+const PAGE_HINT=/(about|company|who-we-are|services|solutions|capabilities|industr|customer|case-stud|project|news|media|insight|career|leadership|team|supplier|procurement|sustainab|contact|product|shop|catalog|workwear|safety|ppe|uniform|location|delivery|quality|certif|testimonial|review|operation|report)/i;
 const SKIP_HINT=/\.(?:pdf|jpe?g|png|gif|svg|webp|zip|docx?|xlsx?|pptx?|mp4|mp3)(?:$|[?#])/i;
 
 export function internalResearchReady(env){return Boolean(env?.AI&&typeof env.AI.run==="function")}
@@ -62,10 +62,10 @@ export async function buildCommercialReport({business,offering},env){
     objective:"sell_to_company",
     business,
     offering:{...offering,businessName:clean(offering.businessName,160)||sellerName},
-    researchMode:"official_websites_workers_ai",
+    researchMode:"free_public_official_websites_workers_ai",
     researchedAt:accessedAt,
     researchCutoff:accessedAt,
-    notice:"Commercial Instinct uses public website evidence and clearly labelled interpretation. It cannot prove an internal need, buying decision, budget or final decision-maker.",
+    notice:"Commercial Instinct uses freely accessible public evidence and clearly labelled interpretation. Spoken claims require exact source links. It cannot prove an internal need, buying decision, budget or final decision-maker.",
     unknowns:(Array.isArray(result?.unknowns)?result.unknowns:[]).map(item=>clean(item,300)).filter(Boolean).slice(0,12),
     sources,
     sections,
@@ -126,6 +126,21 @@ function normalizeInsight(item,key,sourceIds){
   if(!ids.length&&!new Set(["unknown","unable_to_verify"]).has(status))status="unknown";
   if(twoSidedMissing)status="unknown";
   return {title:clean(item?.title,180)||sectionFallbackTitle(key),status,found:clean(item?.found,800)||"The available official pages do not confirm this point.",meaning:twoSidedMissing?"The public evidence does not establish a credible connection between the seller's capabilities and the target's needs.":clean(item?.meaning,600)||"There is not enough evidence for a firm interpretation.",relevance:twoSidedMissing?"Treat the commercial fit as unproven.":clean(item?.relevance,600)||"Treat this as an open question, not a sales claim.",action:twoSidedMissing?"Run a short discovery conversation before proposing a solution.":clean(item?.action,600)||"Validate this directly before shaping a proposal.",question:twoSidedMissing?"Is there a current problem here that would justify considering outside help?":clean(item?.question,400)||"How does this work in practice today?",confidence:twoSidedMissing?"Low confidence":allowedConfidence.has(item?.confidence)?item.confidence:"Low confidence",sourceIds:ids};
+}
+
+export async function buildUrlReview({url,reviewType="auto",spoilerFree=true},env){
+  if(!internalResearchReady(env))throw new ResearchError("RESEARCH_PROVIDER_UNAVAILABLE","Live review research is not available at the moment.");
+  const safe=validPublicHttps(url);if(!safe)throw new ResearchError("INVALID_REVIEW_URL","Enter a public HTTPS page.");
+  const page=await fetchPage(safe,new URL(safe).hostname).catch(()=>null);
+  if(!page)throw new ResearchError("REVIEW_PAGE_UNAVAILABLE","The supplied page could not be read. No review was invented.");
+  const accessedAt=new Date().toISOString();
+  const result=await askJson(env,[
+    {role:"system",content:"You write candid, witty but fair two-minute scripts for Banjo, an animated seagull. Use only supplied page evidence. Do not reproduce long passages. Distinguish fact from opinion. Never invent features, reactions, reviews, plot details or consensus. If the page is a book or film, avoid spoilers when requested. If the page lacks enough material, say so plainly. Return JSON only."},
+    {role:"user",content:`Review type: ${clean(reviewType,40)||"auto"}\nSpoiler free: ${spoilerFree!==false?"yes":"no"}\nTarget length: 180-260 words.\nReturn {"title":"...","contentType":"book|film|article|product|other","script":"...","limitations":["..."]}.\n\nSOURCE\nTitle: ${page.title}\nURL: ${page.url}\nDescription: ${page.description}\nText: ${page.text.slice(0,15000)}`}
+  ],1400);
+  const script=clean(result?.script,5000);
+  if(!script||script.split(/\s+/).length<40)throw new ResearchError("REVIEW_SYNTHESIS_FAILED","The page was read, but there was not enough reliable material for a useful review.");
+  return {schemaVersion:"banjo-url-review/1.0",title:clean(result?.title,220)||page.title,contentType:["book","film","article","product","other"].includes(result?.contentType)?result.contentType:"other",script,spoilerFree:spoilerFree!==false,reviewedAt:accessedAt,sources:[{id:"supplied-page",title:page.title,publisher:page.siteName||new URL(page.url).hostname,url:page.url,accessedAt}],limitations:(Array.isArray(result?.limitations)?result.limitations:[]).map(item=>clean(item,300)).filter(Boolean).slice(0,8),researchMode:"supplied_public_page_ai"};
 }
 function normalizePeople(value,sourceIds,verifiedAt){return (Array.isArray(value)?value:[]).filter(person=>person?.name&&person?.title&&sourceIds.has(String(person.sourceId))).slice(0,12).map(person=>({name:clean(person.name,140),title:clean(person.title,180),area:clean(person.area,180)||"Relevant business function",why:clean(person.why,500)||"The official website identifies this professional role.",approach:clean(person.approach,500)||"Use an official business contact route.",sourceId:String(person.sourceId),verifiedAt,confidence:["High confidence","Moderate confidence","Low confidence"].includes(person.confidence)?person.confidence:"Moderate confidence"}))}
 function unknownInsight(key){return {title:sectionFallbackTitle(key),status:"unable_to_verify",found:"The official websites reviewed do not publish enough information to confirm this point.",meaning:"The answer may exist inside the business, but it is not visible in the current public evidence.",relevance:"Do not turn this gap into an assumption.",action:"Use the gap as a sensible discovery topic.",question:"Could you explain how this works in your business today?",confidence:"Low confidence",sourceIds:[]}}
