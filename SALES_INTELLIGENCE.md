@@ -52,8 +52,8 @@ The service does not bypass logins, access controls or paywalls. Some websites b
 
 An approved external research provider can still override the internal provider by configuring these optional Cloudflare secrets:
 
-* `SALES_RESEARCH_API_URL` — HTTPS endpoint for the approved research service.
-* `SALES_RESEARCH_API_KEY` — bearer credential sent only from the Worker.
+* `SALES_RESEARCH_API_URL` â€” HTTPS endpoint for the approved research service.
+* `SALES_RESEARCH_API_KEY` â€” bearer credential sent only from the Worker.
 
 The browser never receives either value. If they are absent, the internal official-website research provider is used. The verified demonstration remains available as an explicit demonstration only.
 
@@ -78,9 +78,9 @@ A recommendation is never stored as a source fact. A fact can support an interpr
 
 Prefer official company sources, regulators, stock-exchange material, official procurement portals and credible industry or news sources in that order. Important claims should use more than one source where practical. Publication and access dates must be retained. Historical information must be labelled. Conflicting sources must both be shown and explained.
 
-* **High confidence** — direct, current and authoritative evidence with no material unresolved conflict.
-* **Moderate confidence** — credible evidence supports a reasonable interpretation, but an internal condition or current detail remains unverified.
-* **Low confidence** — limited public evidence supports only a tentative hypothesis.
+* **High confidence** â€” direct, current and authoritative evidence with no material unresolved conflict.
+* **Moderate confidence** â€” credible evidence supports a reasonable interpretation, but an internal condition or current detail remains unverified.
+* **Low confidence** â€” limited public evidence supports only a tentative hypothesis.
 
 Low confidence is not hidden. An unknown is useful when paired with a question that can validate it.
 
@@ -98,11 +98,17 @@ This is decision support, not a promise that a company will buy or that public i
 
 ## Save, export and share
 
-“Save privately” stores a validated report and copies a private 30-day link. “Export PDF” opens the device’s print dialogue with a clean, complete briefing; choose Save as PDF. Individual sections can be copied. Source links remain clickable.
+â€œSave privatelyâ€ stores a validated report and copies a private 30-day link. â€œExport PDFâ€ opens the deviceâ€™s print dialogue with a clean, complete briefing; choose Save as PDF. Individual sections can be copied. Source links remain clickable.
+
+## Banjo Strategy Brief handoff
+
+After a validated report is complete, the optional **Create Banjo Strategy Brief** control creates an editable, plain-language speaking script. The versioned `banjo-strategy-brief/1.0` JSON download contains only the seller and target identity, approved script, duration estimate and non-sensitive provenance. It does not contain the full private report or evidence register.
+
+The initial voice mode is `owner_live_recording`: the consenting owner imports the file into Andy's Lip Sync Engine and reads the teleprompter while Banjo lip-syncs and records. Commercial Instinct does not upload, clone or retain voice recordings. Automatic synthetic use of an authorised owner voice remains behind a future replaceable provider boundary and must never be enabled without explicit consent and secure provider configuration.
 
 ## Analytics
 
-The sales-only allow-list includes business search and confirmation, supplier context, research start/completion/failure, section/source/strategy/meeting views, export, save, private-share creation, low-confidence result and new search. Analytics failure never interrupts research, navigation, saving or export.
+The sales-only allow-list includes business search and confirmation, supplier context, research start/completion/failure, section/source/strategy/meeting views, Banjo Brief creation/export, report export, save, private-share creation, low-confidence result and new search. Analytics failure never interrupts research, navigation, saving or export.
 
 ## Testing and deployment
 
@@ -113,3 +119,4 @@ The sales-only allow-list includes business search and confirmation, supplier co
 ## Adding a future decision pathway
 
 Add a separate route, schema, provider objective, storage namespace, UI and test contract. Reuse neutral services only when behaviour is genuinely shared. Do not expose a partial option. A future pathway must be complete, isolated and removable before release.
+
