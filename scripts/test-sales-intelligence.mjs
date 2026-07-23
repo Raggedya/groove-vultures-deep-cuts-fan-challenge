@@ -94,4 +94,3 @@ assert.ok(!migration.includes("FOREIGN KEY (business_id) REFERENCES editions"),"
 const privateIdentity={...TELSTRA_IDENTITY,id:"au-private-example",officialName:"Example Private Company Pty Ltd",publicStatus:"Private company",registration:"ABN not included in demo"};
 assert.equal(validateIdentity(privateIdentity).length,0,"Private companies must be supported without fabricated financial data");
 console.log("Deep Cuts sales-intelligence contracts passed.");
-
