@@ -1,6 +1,6 @@
 import {SALES_SECTION_ORDER} from "./schemas.js";
 
-const state={matches:[],business:null,offering:{},myCompanyUrl:"",targetCompanyUrl:"",report:null,currentSection:null,briefingId:null,lastResearchRequest:null,sessionId:sessionStorage.getItem("dc-sales-session")||crypto.randomUUID()};
+const state={matches:[],business:null,offering:{},myCompanyUrl:"",targetCompanyUrl:"",demo:false,report:null,currentSection:null,briefingId:null,lastResearchRequest:null,sessionId:sessionStorage.getItem("dc-sales-session")||crypto.randomUUID()};
 sessionStorage.setItem("dc-sales-session",state.sessionId);
 
 const screens=Object.fromEntries([...document.querySelectorAll("[data-screen]")].map(node=>[node.dataset.screen,node]));
@@ -24,6 +24,7 @@ $("#company-form").addEventListener("submit",event=>{
 });
 
 function runDemo(){
+  state.demo=true;
   $("#my-company-url").value="https://www.accessworkwear.com.au";
   $("#target-company-url").value="https://www.telstra.com.au";
   submitCompanies("https://www.accessworkwear.com.au","https://www.telstra.com.au");
@@ -34,6 +35,7 @@ async function submitCompanies(myCompany,targetCompany){
   if(!myUrl)return toast("Enter a valid My Company website");
   if(!targetUrl)return toast("Enter a valid Target Company website");
   if(new URL(myUrl).hostname===new URL(targetUrl).hostname)return toast("Use two different company websites");
+  if(!(myUrl==="https://www.accessworkwear.com.au/"&&targetUrl==="https://www.telstra.com.au/"&&state.demo))state.demo=false;
   state.myCompanyUrl=myUrl;state.targetCompanyUrl=targetUrl;
   state.offering={website:myUrl,businessName:companyNameFromUrl(myUrl),description:""};
   track("business_searched");show("progress");
@@ -41,7 +43,7 @@ async function submitCompanies(myCompany,targetCompany){
   $("#progress-current").textContent="Checking the official website and company identity...";
   $("#progress-stages").replaceChildren();
   try{
-    const result=await api("/api/sell/identify",{query:companyNameFromUrl(targetUrl),website:targetUrl,targetWebsite:targetUrl,sellerWebsite:myUrl});
+    const result=await api("/api/sell/identify",{query:companyNameFromUrl(targetUrl),website:targetUrl,targetWebsite:targetUrl,sellerWebsite:myUrl,demo:state.demo});
     state.matches=result.matches||[];renderMatches();show("confirm");
   }catch(error){showError(error.message)}
 }
@@ -63,7 +65,7 @@ function confirmBusiness(business){
 
 async function research(){
   track("offering_entered",{result:"website_comparison"});track("research_started");
-  state.lastResearchRequest={business:state.business,offering:state.offering,seller:{website:state.myCompanyUrl},target:{website:state.targetCompanyUrl}};
+  state.lastResearchRequest={business:state.business,offering:state.offering,seller:{website:state.myCompanyUrl},target:{website:state.targetCompanyUrl},demo:state.demo};
   show("progress");
   $("#progress-company").textContent=`Reading ${state.business.officialName}`;
   $("#progress-current").textContent="Comparing public evidence from both companies...";
@@ -160,7 +162,7 @@ function editCompanies(){
   $("#my-company-url").value=state.myCompanyUrl;$("#target-company-url").value=state.targetCompanyUrl;show("search");
 }
 function retry(){state.myCompanyUrl&&state.targetCompanyUrl?submitCompanies(state.myCompanyUrl,state.targetCompanyUrl):show("search")}
-function reset(){state.matches=[];state.business=null;state.offering={};state.myCompanyUrl="";state.targetCompanyUrl="";state.report=null;state.currentSection=null;state.briefingId=null;history.replaceState(null,"",location.pathname);track("new_search_started");$("#company-form").reset();show("search")}
+function reset(){state.matches=[];state.business=null;state.offering={};state.myCompanyUrl="";state.targetCompanyUrl="";state.demo=false;state.report=null;state.currentSection=null;state.briefingId=null;history.replaceState(null,"",location.pathname);track("new_search_started");$("#company-form").reset();show("search")}
 function show(name){for(const [key,node] of Object.entries(screens))node.classList.toggle("active",key===name);const hasReport=Boolean(state.report);document.querySelectorAll('[data-action="new-search"],[data-action="edit-companies"]').forEach(node=>node.classList.toggle("hidden",!hasReport));scrollTo({top:0,behavior:"instant"})}
 function showError(message){$("#error-message").textContent=message;show("error")}
 
