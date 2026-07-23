@@ -52,8 +52,8 @@ The service does not bypass logins, access controls or paywalls. Some websites b
 
 An approved external research provider can still override the internal provider by configuring these optional Cloudflare secrets:
 
-* `SALES_RESEARCH_API_URL` â€” HTTPS endpoint for the approved research service.
-* `SALES_RESEARCH_API_KEY` â€” bearer credential sent only from the Worker.
+* `SALES_RESEARCH_API_URL` — HTTPS endpoint for the approved research service.
+* `SALES_RESEARCH_API_KEY` — bearer credential sent only from the Worker.
 
 The browser never receives either value. If they are absent, the internal official-website research provider is used. The verified demonstration remains available as an explicit demonstration only.
 
@@ -78,9 +78,9 @@ A recommendation is never stored as a source fact. A fact can support an interpr
 
 Prefer official company sources, regulators, stock-exchange material, official procurement portals and credible industry or news sources in that order. Important claims should use more than one source where practical. Publication and access dates must be retained. Historical information must be labelled. Conflicting sources must both be shown and explained.
 
-* **High confidence** â€” direct, current and authoritative evidence with no material unresolved conflict.
-* **Moderate confidence** â€” credible evidence supports a reasonable interpretation, but an internal condition or current detail remains unverified.
-* **Low confidence** â€” limited public evidence supports only a tentative hypothesis.
+* **High confidence** — direct, current and authoritative evidence with no material unresolved conflict.
+* **Moderate confidence** — credible evidence supports a reasonable interpretation, but an internal condition or current detail remains unverified.
+* **Low confidence** — limited public evidence supports only a tentative hypothesis.
 
 Low confidence is not hidden. An unknown is useful when paired with a question that can validate it.
 
@@ -98,7 +98,7 @@ This is decision support, not a promise that a company will buy or that public i
 
 ## Save, export and share
 
-â€œSave privatelyâ€ stores a validated report and copies a private 30-day link. â€œExport PDFâ€ opens the deviceâ€™s print dialogue with a clean, complete briefing; choose Save as PDF. Individual sections can be copied. Source links remain clickable.
+“Save privately” stores a validated report and copies a private 30-day link. “Export PDF” opens the device’s print dialogue with a clean, complete briefing; choose Save as PDF. Individual sections can be copied. Source links remain clickable.
 
 ## Banjo Strategy Brief handoff
 
@@ -119,4 +119,3 @@ The sales-only allow-list includes business search and confirmation, supplier co
 ## Adding a future decision pathway
 
 Add a separate route, schema, provider objective, storage namespace, UI and test contract. Reuse neutral services only when behaviour is genuinely shared. Do not expose a partial option. A future pathway must be complete, isolated and removable before release.
-
