@@ -1,6 +1,6 @@
 import {buildTelstraReport,telstraMatches} from "../sell/demo-data.js";
 import {publicReport,sanitizeOffering,validateIdentity,validateReport} from "../sell/schemas.js";
-import {buildCommercialReport,buildUrlReview,identifyOfficialCompany,internalResearchReady,ResearchError} from "./commercial-research.js";
+import {buildCommercialReport,buildDocumentReview,buildUrlReview,identifyOfficialCompany,internalResearchReady,ResearchError} from "./commercial-research.js";
 
 const HEADERS={"content-type":"application/json; charset=utf-8","cache-control":"no-store","x-content-type-options":"nosniff"};
 const EVENTS=new Set(["business_searched","business_confirmed","offering_entered","research_started","research_completed","section_opened","executive_section_opened","source_opened","strategy_viewed","meeting_briefing_viewed","report_exported","briefing_saved","private_share_created","banjo_brief_created","banjo_brief_exported","low_confidence_result","research_failure","new_search_started"]);
@@ -9,6 +9,7 @@ export async function handleSales(request,env,ctx,url){
   if(url.pathname==="/api/sell/identify"&&request.method==="POST")return identify(request,env);
   if(url.pathname==="/api/sell/research"&&request.method==="POST")return research(request,env);
   if(url.pathname==="/api/sell/review"&&request.method==="POST")return reviewUrl(request,env);
+  if(url.pathname==="/api/sell/document-review"&&request.method==="POST")return reviewDocument(request,env);
   if(url.pathname==="/api/sell/briefings"&&request.method==="POST")return saveBriefing(request,env);
   if(url.pathname.startsWith("/api/sell/briefings/")&&request.method==="GET")return loadBriefing(request,env,url);
   if(url.pathname==="/api/sell/events"&&request.method==="POST")return recordEvent(request,env,ctx);
@@ -18,7 +19,13 @@ export async function handleSales(request,env,ctx,url){
 
 async function reviewUrl(request,env){
   const body=await bodyJson(request);
-  try{return reply({ok:true,review:await buildUrlReview({url:body?.url,reviewType:body?.reviewType,spoilerFree:body?.spoilerFree!==false},env)})}
+  try{return reply({ok:true,review:await buildUrlReview({url:body?.url,reviewType:body?.reviewType,spoilerFree:body?.spoilerFree!==false,request:body?.request},env)})}
+  catch(error){return researchFailure(error)}
+}
+
+async function reviewDocument(request,env){
+  const body=await bodyJson(request);
+  try{return reply({ok:true,review:await buildDocumentReview({text:body?.text,fileName:body?.fileName,reviewType:body?.reviewType,request:body?.request},env)})}
   catch(error){return researchFailure(error)}
 }
 
@@ -59,7 +66,7 @@ async function research(request,env){
       if(!result.ok)return result.response;
       report=result.data.report;
     }else{
-      try{report=await buildCommercialReport({business:identity,offering},env)}
+      try{report=await buildCommercialReport({business:identity,offering,request:body?.request},env)}
       catch(error){return researchFailure(error)}
     }
   }
