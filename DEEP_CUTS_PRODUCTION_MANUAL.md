@@ -1,6 +1,6 @@
 # Deep Cuts Production Manual
 
-> Decision intelligence: the isolated â€œI Want to Sell to This Companyâ€ pathway is governed by [SALES_INTELLIGENCE.md](SALES_INTELLIGENCE.md). It must preserve every edition contract and must never turn an interpretation into a sourced fact.
+> Decision intelligence: the isolated “I Want to Sell to This Company” pathway is governed by [SALES_INTELLIGENCE.md](SALES_INTELLIGENCE.md). It must preserve every edition contract and must never turn an interpretation into a sourced fact.
 
 `PLATFORM_ARCHITECTURE_DIRECTIVE.md` governs this manual. Every completed edition is an isolated commercial product. Edition preservation and backward compatibility are mandatory and take priority over new features.
 
@@ -22,7 +22,7 @@ Deep Cuts accepts CSV batches through one permanent controller. Intake data is e
 
 Music, Cars and Clubs are discovery products, not quizzes; their legacy question count remains zero. School Discovery is the sole exception and carries its own isolated six-question positive challenge contract.
 
-Version 3.0 Ã¢â‚¬â€ Permanent Artist Discovery Platform
+Version 3.0 â€” Permanent Artist Discovery Platform
 
 ## Constitution
 
@@ -65,7 +65,7 @@ News & Reviews links to the strongest recent credible accessible interview, feat
 
 ## QR production standard
 
-The QR promotion is a square 1080 Ãƒâ€” 1080 PNG using the locked QR master composition. The final QR is generated deterministically from `/q/<editionId>`, uses black modules on white, retains a four-module quiet zone, is not skewed or decorated, and is placed only within the card held by Aggits.
+The QR promotion is a square 1080 Ã— 1080 PNG using the locked QR master composition. The final QR is generated deterministically from `/q/<editionId>`, uses black modules on white, retains a four-module quiet zone, is not skewed or decorated, and is placed only within the card held by Aggits.
 
 The final rendered PNG must be decoded automatically and the decoded URL must exactly match the intended QR route. It must also decode after representative social-media resizing. A failed or mismatched scan blocks publication.
 
@@ -110,6 +110,5 @@ New active edition IDs are detected automatically on the main-branch deployment.
 
 An edition is complete only when identity is verified; configuration validates; all active links resolve to the correct artist; unavailable buttons are disabled; the locked screen passes mobile checks; analytics event names and edition IDs pass tests; the final QR scan-back matches; deployment is live; the live smoke test passes; and the delivery email is confirmed.
 
-After every change ask: Ã¢â‚¬Å“What can I automate next?Ã¢â‚¬Â Implement the practical answer.
-
+After every change ask: â€œWhat can I automate next?â€ Implement the practical answer.
 
