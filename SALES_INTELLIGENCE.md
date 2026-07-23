@@ -100,9 +100,15 @@ This is decision support, not a promise that a company will buy or that public i
 
 “Save privately” stores a validated report and copies a private 30-day link. “Export PDF” opens the device’s print dialogue with a clean, complete briefing; choose Save as PDF. Individual sections can be copied. Source links remain clickable.
 
+## Banjo Strategy Brief handoff
+
+After a validated report is complete, the optional **Create Banjo Strategy Brief** control creates an editable, plain-language speaking script. The versioned `banjo-strategy-brief/1.0` JSON download contains only the seller and target identity, approved script, duration estimate and non-sensitive provenance. It does not contain the full private report or evidence register.
+
+The initial voice mode is `owner_live_recording`: the consenting owner imports the file into Andy's Lip Sync Engine and reads the teleprompter while Banjo lip-syncs and records. Commercial Instinct does not upload, clone or retain voice recordings. Automatic synthetic use of an authorised owner voice remains behind a future replaceable provider boundary and must never be enabled without explicit consent and secure provider configuration.
+
 ## Analytics
 
-The sales-only allow-list includes business search and confirmation, supplier context, research start/completion/failure, section/source/strategy/meeting views, export, save, private-share creation, low-confidence result and new search. Analytics failure never interrupts research, navigation, saving or export.
+The sales-only allow-list includes business search and confirmation, supplier context, research start/completion/failure, section/source/strategy/meeting views, Banjo Brief creation/export, report export, save, private-share creation, low-confidence result and new search. Analytics failure never interrupts research, navigation, saving or export.
 
 ## Testing and deployment
 
