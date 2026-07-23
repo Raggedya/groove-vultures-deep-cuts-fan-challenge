@@ -4,6 +4,7 @@ import {buildTelstraReport,TELSTRA_IDENTITY,telstraMatches} from "../sell/demo-d
 import {SALES_SECTION_ORDER,validateIdentity,validateReport} from "../sell/schemas.js";
 import {__test as salesTest} from "../worker/sales.js";
 import {buildCommercialReport,identifyOfficialCompany,__test as researchTest} from "../worker/commercial-research.js";
+import {BANJO_BRIEF_CONFIG,buildBanjoStrategyBrief,validateBanjoStrategyBrief,wordCount} from "../sell/banjo-brief.js";
 
 assert.equal(validateIdentity(TELSTRA_IDENTITY).length,0,"Demo business identity must be valid");
 assert.equal(telstraMatches("Telstra").length,1,"Business resolution must find the verified demo");
@@ -18,6 +19,16 @@ assert.ok(report.sections.executives.people.length>0,"Verified executives must b
 assert.ok(report.sections.questions.items.length>=8,"Questions must cover the eight required discovery categories");
 assert.ok(report.sections.approach.items.length>=10,"Approach guidance must cover the complete sales strategy");
 assert.ok(report.sections.tomorrow.items.length>=9,"Tomorrow briefing must contain the complete meeting-ready checklist");
+const banjoBrief=buildBanjoStrategyBrief(report,{createdAt:"2026-07-23T00:00:00.000Z"});
+assert.deepEqual(validateBanjoStrategyBrief(banjoBrief),[],"A completed report must produce a valid Banjo Strategy Brief");
+assert.equal(banjoBrief.maximumDurationSeconds,120,"Banjo strategy duration must remain separate from advertising limits");
+assert.ok(wordCount(banjoBrief.script)<=BANJO_BRIEF_CONFIG.maximumWords,"Banjo script must fit its speaking-time budget");
+assert.match(banjoBrief.script,/straight commercial read/i,"Banjo script must be candid and plain-language");
+assert.equal(banjoBrief.voice.mode,"owner_live_recording","The first version must use the consenting owner's real recording");
+assert.equal(banjoBrief.provenance.integrityRule,"No evidence, no spoken claim");
+assert.ok(banjoBrief.spokenClaims.length>0,"The spoken brief must retain claim-level provenance");
+assert.ok(banjoBrief.spokenClaims.every(claim=>claim.sourceIds.length>0),"Every spoken claim must cite evidence");
+assert.ok(banjoBrief.evidence.every(source=>source.url.startsWith("https://")),"Spoken evidence must use secure public links");
 
 const unsupported=structuredClone(report);
 unsupported.sections.priorities.items[0].sourceIds=[];
@@ -29,7 +40,7 @@ const stalePerson=structuredClone(report);
 stalePerson.sections.executives.people[0].verifiedAt="not-a-date";
 assert.ok(validateReport(stalePerson).some(error=>error.includes("not current")),"Unverified executive records must be rejected");
 
-for(const name of ["business_searched","business_confirmed","offering_entered","research_started","research_completed","section_opened","executive_section_opened","source_opened","strategy_viewed","meeting_briefing_viewed","report_exported","new_search_started"])assert.ok(salesTest.EVENTS.has(name),`Privacy-conscious event missing: ${name}`);
+for(const name of ["business_searched","business_confirmed","offering_entered","research_started","research_completed","section_opened","executive_section_opened","source_opened","strategy_viewed","meeting_briefing_viewed","report_exported","banjo_brief_created","banjo_brief_exported","new_search_started"])assert.ok(salesTest.EVENTS.has(name),`Privacy-conscious event missing: ${name}`);
 assert.equal(salesTest.providerReady({}),false,"Missing provider credentials must fail closed");
 assert.equal(salesTest.providerReady({SALES_RESEARCH_API_URL:"http://provider.example",SALES_RESEARCH_API_KEY:"secret"}),false,"Research providers must use HTTPS");
 assert.equal(salesTest.providerReady({SALES_RESEARCH_API_URL:"https://provider.example",SALES_RESEARCH_API_KEY:"secret"}),true);
@@ -54,7 +65,7 @@ const arbitraryIdentity=await identifyOfficialCompany("https://target.example/",
 assert.equal(validateIdentity(arbitraryIdentity).length,0,"An arbitrary official website must produce a confirmable identity");
 const arbitraryReport=await buildCommercialReport({business:arbitraryIdentity,offering:{website:"https://seller.example/",businessName:"Seller Company"}},{AI:ai});
 assert.deepEqual(validateReport(arbitraryReport),[],"The internal provider must produce a schema-valid evidence-linked briefing for arbitrary company URLs");
-assert.equal(arbitraryReport.researchMode,"official_websites_workers_ai");
+assert.equal(arbitraryReport.researchMode,"free_public_official_websites_workers_ai");
 assert.equal(arbitraryReport.sections.opportunities.items[0].status,"unknown","A claimed opportunity without both seller and target evidence must be downgraded");
 assert.match(arbitraryReport.sections.opportunities.items[0].action,/discovery conversation/i,"Unsupported fit advice must be replaced with honest discovery guidance");
 globalThis.fetch=originalFetch;
@@ -67,7 +78,7 @@ const salesWorker=fs.readFileSync("worker/sales.js","utf8");
 const researchWorker=fs.readFileSync("worker/commercial-research.js","utf8");
 const wrangler=JSON.parse(fs.readFileSync("wrangler.jsonc","utf8"));
 const migration=fs.readFileSync("migrations/0002_sales_intelligence.sql","utf8");
-for(const phrase of ["Commercial Instinct","My Company","Target Company","I want to sell to this company","Save privately","Export PDF"])assert.ok(html.includes(phrase),`Required user experience missing: ${phrase}`);
+for(const phrase of ["Commercial Instinct","My Company","Target Company","I want to sell to this company","Save privately","Export PDF","Create Banjo Strategy Brief","Download for Andy's Lip Sync Engine"])assert.ok(html.includes(phrase),`Required user experience missing: ${phrase}`);
 for(const action of ["back-search","home","new-search","edit-companies","copy-section"])assert.ok(html.includes(`data-action=\"${action}\"`),`Navigation control missing: ${action}`);
 assert.ok(html.includes('/assets/aggits-original-cutout-v4.png'),"Commercial Instinct must reuse the protected original Aggits asset");
 assert.ok(!html.includes("offer-description"),"Commercial Instinct intake must remain a simple two-company URL experience");
