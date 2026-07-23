@@ -1,18 +1,25 @@
 import {buildTelstraReport,telstraMatches} from "../sell/demo-data.js";
 import {publicReport,sanitizeOffering,validateIdentity,validateReport} from "../sell/schemas.js";
-import {buildCommercialReport,identifyOfficialCompany,internalResearchReady,ResearchError} from "./commercial-research.js";
+import {buildCommercialReport,buildUrlReview,identifyOfficialCompany,internalResearchReady,ResearchError} from "./commercial-research.js";
 
 const HEADERS={"content-type":"application/json; charset=utf-8","cache-control":"no-store","x-content-type-options":"nosniff"};
-const EVENTS=new Set(["business_searched","business_confirmed","offering_entered","research_started","research_completed","section_opened","executive_section_opened","source_opened","strategy_viewed","meeting_briefing_viewed","report_exported","briefing_saved","private_share_created","low_confidence_result","research_failure","new_search_started"]);
+const EVENTS=new Set(["business_searched","business_confirmed","offering_entered","research_started","research_completed","section_opened","executive_section_opened","source_opened","strategy_viewed","meeting_briefing_viewed","report_exported","briefing_saved","private_share_created","banjo_brief_created","banjo_brief_exported","low_confidence_result","research_failure","new_search_started"]);
 
 export async function handleSales(request,env,ctx,url){
   if(url.pathname==="/api/sell/identify"&&request.method==="POST")return identify(request,env);
   if(url.pathname==="/api/sell/research"&&request.method==="POST")return research(request,env);
+  if(url.pathname==="/api/sell/review"&&request.method==="POST")return reviewUrl(request,env);
   if(url.pathname==="/api/sell/briefings"&&request.method==="POST")return saveBriefing(request,env);
   if(url.pathname.startsWith("/api/sell/briefings/")&&request.method==="GET")return loadBriefing(request,env,url);
   if(url.pathname==="/api/sell/events"&&request.method==="POST")return recordEvent(request,env,ctx);
   if(url.pathname==="/api/sell/health"&&request.method==="GET")return reply({ok:true,module:"commercial-instinct",providerConfigured:providerReady(env),providerMode:externalProviderReady(env)?"external":internalResearchReady(env)?"official-websites-ai":"unavailable"});
   return reply({ok:false,error:"Unknown sales-intelligence route"},404);
+}
+
+async function reviewUrl(request,env){
+  const body=await bodyJson(request);
+  try{return reply({ok:true,review:await buildUrlReview({url:body?.url,reviewType:body?.reviewType,spoilerFree:body?.spoilerFree!==false},env)})}
+  catch(error){return researchFailure(error)}
 }
 
 async function identify(request,env){
@@ -130,3 +137,4 @@ async function safeDb(env,sql,values){if(!env.DB)return;await env.DB.prepare(sql
 function reply(body,status=200){return new Response(JSON.stringify(body),{status,headers:HEADERS})}
 
 export const __test={EVENTS,providerReady,externalProviderReady,hash,equalHash};
+
