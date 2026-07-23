@@ -41,4 +41,3 @@ Public URLs use opaque IDs and never expose the artist name:
 `npm run validate` checks the locked UI, approved Aggits hashes, edition routes, analytics, build tracking and Worker contract. `npm run build` creates the Cloudflare static bundle.
 
 Secrets and account identifiers are configured once after the Cloudflare and email accounts are connected. They are never committed.
-
