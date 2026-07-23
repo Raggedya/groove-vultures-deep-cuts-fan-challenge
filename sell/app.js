@@ -1,6 +1,7 @@
 import {SALES_SECTION_ORDER} from "./schemas.js";
+import {buildBanjoStrategyBrief,estimateDuration,fileNameForBrief,validateBanjoStrategyBrief,wordCount} from "./banjo-brief.js";
 
-const state={matches:[],business:null,offering:{},myCompanyUrl:"",targetCompanyUrl:"",demo:false,report:null,currentSection:null,briefingId:null,lastResearchRequest:null,sessionId:sessionStorage.getItem("dc-sales-session")||crypto.randomUUID()};
+const state={matches:[],business:null,offering:{},myCompanyUrl:"",targetCompanyUrl:"",demo:false,report:null,currentSection:null,briefingId:null,banjoBrief:null,lastResearchRequest:null,sessionId:sessionStorage.getItem("dc-sales-session")||crypto.randomUUID()};
 sessionStorage.setItem("dc-sales-session",state.sessionId);
 
 const screens=Object.fromEntries([...document.querySelectorAll("[data-screen]")].map(node=>[node.dataset.screen,node]));
@@ -12,10 +13,13 @@ document.addEventListener("click",event=>{
   const actions={
     demo:runDemo,"back-search":()=>show("search"),home:()=>state.report?show("menu"):show("search"),
     "new-search":reset,"edit-companies":editCompanies,save:savePrivate,export:exportPdf,
-    "copy-section":copySection,retry:retry
+    "copy-section":copySection,retry:retry,"create-banjo":createBanjoBrief,"back-menu":()=>show("menu"),
+    "download-banjo":downloadBanjoBrief,"copy-banjo":copyBanjoScript
   };
   actions[action]?.();
 });
+
+$("#banjo-script").addEventListener("input",()=>{if(state.banjoBrief){state.banjoBrief.script=$("#banjo-script").value;state.banjoBrief.estimatedDurationSeconds=estimateDuration(state.banjoBrief.script);state.banjoBrief.manualEdits=true;renderBanjoStats()}});
 
 $("#company-form").addEventListener("submit",event=>{
   event.preventDefault();
@@ -50,11 +54,11 @@ async function submitCompanies(myCompany,targetCompany){
 
 function renderMatches(){
   const list=$("#matches");list.replaceChildren();
-  $("#confirm-relationship").textContent=`${displayHost(state.myCompanyUrl)}  →  ${displayHost(state.targetCompanyUrl)}`;
+  $("#confirm-relationship").textContent=`${displayHost(state.myCompanyUrl)}  â†’  ${displayHost(state.targetCompanyUrl)}`;
   $("#match-empty").classList.toggle("hidden",state.matches.length>0);
   for(const business of state.matches){
     const button=el("button","match-card");button.type="button";
-    button.append(el("b","",business.matchConfidence==="high"?"Verified target":"Check this target"),el("strong","",business.officialName),el("span","",[business.tradingName,business.industry,business.location,business.publicStatus].filter(Boolean).join(" · ")),el("span","",business.website));
+    button.append(el("b","",business.matchConfidence==="high"?"Verified target":"Check this target"),el("strong","",business.officialName),el("span","",[business.tradingName,business.industry,business.location,business.publicStatus].filter(Boolean).join(" Â· ")),el("span","",business.website));
     button.addEventListener("click",()=>confirmBusiness(business));list.append(button);
   }
 }
@@ -87,8 +91,8 @@ function renderMenu(){
   state.myCompanyUrl=report.offering?.website||state.myCompanyUrl;
   state.targetCompanyUrl=report.business.website||state.targetCompanyUrl;
   $("#menu-company").textContent=report.business.tradingName||report.business.officialName;
-  $("#menu-meta").textContent=`${report.business.industry} · ${report.business.location} · Updated ${formatDate(report.researchCutoff)}`;
-  $("#menu-relationship").innerHTML=`<strong>${escapeHtml(displayHost(state.myCompanyUrl)||"My Company")}</strong> &nbsp;→&nbsp; <strong>${escapeHtml(report.business.tradingName||report.business.officialName)}</strong>`;
+  $("#menu-meta").textContent=`${report.business.industry} Â· ${report.business.location} Â· Updated ${formatDate(report.researchCutoff)}`;
+  $("#menu-relationship").innerHTML=`<strong>${escapeHtml(displayHost(state.myCompanyUrl)||"My Company")}</strong> &nbsp;â†’&nbsp; <strong>${escapeHtml(report.business.tradingName||report.business.officialName)}</strong>`;
   $("#report-notice").textContent=report.notice;
   const menu=$("#section-menu");menu.replaceChildren();
   const visible=SALES_SECTION_ORDER.filter(([key])=>key!=="executives"||report.sections.executives?.people?.length);
@@ -104,7 +108,7 @@ function renderMenu(){
 function openSection(key){
   state.currentSection=key;
   const section=state.report.sections[key],root=$("#section-content");
-  root.replaceChildren(el("p","eyebrow section-kicker","COMMERCIAL INSTINCT · "+(state.report.business.tradingName||state.report.business.officialName).toUpperCase()),el("h2","",section.title),el("p","lead","The straight commercial read — concise advice, with evidence available when you need it."));
+  root.replaceChildren(el("p","eyebrow section-kicker","COMMERCIAL INSTINCT Â· "+(state.report.business.tradingName||state.report.business.officialName).toUpperCase()),el("h2","",section.title),el("p","lead","The straight commercial read â€” concise advice, with evidence available when you need it."));
   for(const item of section.items||[])root.append(renderInsight(item));
   if(key==="executives")renderPeople(root,section.people||[]);
   if(key==="evidence")renderSources(root,state.report.sources);
@@ -128,13 +132,13 @@ function renderInsight(item){
 
 function renderPeople(root,people){
   if(!people.length)return;root.append(el("h3","","Current publicly verified people"));const grid=el("div","people-grid");
-  for(const person of people){const source=state.report.sources.find(item=>item.id===person.sourceId),card=el("article","panel person-card");card.append(el("h3","",person.name),el("strong","",person.title),el("p","",person.why),el("p","",`Best legitimate approach: ${person.approach}`),el("small","",`Verified ${formatDate(person.verifiedAt)} · ${person.confidence}`));if(source)card.append(sourceLink(source));grid.append(card)}
+  for(const person of people){const source=state.report.sources.find(item=>item.id===person.sourceId),card=el("article","panel person-card");card.append(el("h3","",person.name),el("strong","",person.title),el("p","",person.why),el("p","",`Best legitimate approach: ${person.approach}`),el("small","",`Verified ${formatDate(person.verifiedAt)} Â· ${person.confidence}`));if(source)card.append(sourceLink(source));grid.append(card)}
   root.append(grid);
 }
 
 function renderSources(root,sources){
   const register=el("div","source-register");
-  for(const source of sources){const card=el("article","panel source-record"),link=el("a","",source.title);link.href=source.url;link.target="_blank";link.rel="noopener noreferrer";link.addEventListener("click",()=>track("source_opened",{sectionId:"evidence",sourceId:source.id}));card.append(link,el("p","source-meta",[source.publisher,source.publishedAt?formatDate(source.publishedAt):"Publication date not stated",source.sourceType.replaceAll("_"," ")].join(" · ")),el("p","",source.relevance),el("p","",`Accessed ${formatDate(source.accessedAt)}`));register.append(card)}
+  for(const source of sources){const card=el("article","panel source-record"),link=el("a","",source.title);link.href=source.url;link.target="_blank";link.rel="noopener noreferrer";link.addEventListener("click",()=>track("source_opened",{sectionId:"evidence",sourceId:source.id}));card.append(link,el("p","source-meta",[source.publisher,source.publishedAt?formatDate(source.publishedAt):"Publication date not stated",source.sourceType.replaceAll("_"," ")].join(" Â· ")),el("p","",source.relevance),el("p","",`Accessed ${formatDate(source.accessedAt)}`));register.append(card)}
   root.append(register);
 }
 
@@ -147,6 +151,20 @@ async function savePrivate(){
 
 function exportPdf(){if(!state.report)return;track("report_exported",{briefingId:state.briefingId,result:"print_pdf"});window.print()}
 
+function createBanjoBrief(){
+  if(!state.report)return;state.banjoBrief=buildBanjoStrategyBrief(state.report);
+  $("#banjo-relationship").textContent=`${state.banjoBrief.seller.name} â†’ ${state.banjoBrief.target.name}`;
+  $("#banjo-script").value=state.banjoBrief.script;$("#banjo-consent").checked=false;renderBanjoStats();show("banjo");track("banjo_brief_created");
+}
+function renderBanjoStats(){const brief=state.banjoBrief;if(brief)$("#banjo-stats").textContent=`${wordCount(brief.script)} words Â· approximately ${estimateDuration(brief.script)} seconds Â· maximum ${brief.maximumDurationSeconds} seconds`}
+function downloadBanjoBrief(){
+  if(!state.banjoBrief)return;state.banjoBrief.script=$("#banjo-script").value.trim();state.banjoBrief.estimatedDurationSeconds=estimateDuration(state.banjoBrief.script);
+  if(!$("#banjo-consent").checked)return toast("Confirm that you are using your own voice");
+  state.banjoBrief.voice.consentConfirmedAt=new Date().toISOString();const errors=validateBanjoStrategyBrief(state.banjoBrief);if(errors.length)return toast(errors[0]);
+  const blob=new Blob([JSON.stringify(state.banjoBrief,null,2)],{type:"application/json"}),link=document.createElement("a");link.href=URL.createObjectURL(blob);link.download=fileNameForBrief(state.banjoBrief);link.click();setTimeout(()=>URL.revokeObjectURL(link.href),1000);track("banjo_brief_exported");toast("Banjo Brief downloaded. Import it into Andy's Lip Sync Engine.");
+}
+async function copyBanjoScript(){if(state.banjoBrief){await navigator.clipboard.writeText($("#banjo-script").value);toast("Banjo script copied")}}
+
 async function copySection(){
   if(!state.currentSection)return;const section=state.report.sections[state.currentSection];
   const text=[section.title,...(section.items||[]).flatMap(item=>["",item.title,joinThought(item.meaning,item.relevance),`My advice: ${item.action}`,`Ask them: ${item.question}`,`Confidence: ${item.confidence}`,`Evidence: ${item.found}`])].join("\n");
@@ -154,7 +172,7 @@ async function copySection(){
 }
 
 function buildPrintReport(){
-  document.querySelector(".print-report")?.remove();const root=el("div","print-report print-only");root.append(el("h2","","Commercial Instinct — complete briefing"));
+  document.querySelector(".print-report")?.remove();const root=el("div","print-report print-only");root.append(el("h2","","Commercial Instinct â€” complete briefing"));
   for(const [key,label] of SALES_SECTION_ORDER){const section=state.report.sections[key];root.append(el("h2","",label));for(const item of section.items||[])root.append(renderInsight(item));if(key==="evidence")renderSources(root,state.report.sources)}screens.menu.append(root);
 }
 
@@ -162,7 +180,7 @@ function editCompanies(){
   $("#my-company-url").value=state.myCompanyUrl;$("#target-company-url").value=state.targetCompanyUrl;show("search");
 }
 function retry(){state.myCompanyUrl&&state.targetCompanyUrl?submitCompanies(state.myCompanyUrl,state.targetCompanyUrl):show("search")}
-function reset(){state.matches=[];state.business=null;state.offering={};state.myCompanyUrl="";state.targetCompanyUrl="";state.demo=false;state.report=null;state.currentSection=null;state.briefingId=null;history.replaceState(null,"",location.pathname);track("new_search_started");$("#company-form").reset();show("search")}
+function reset(){state.matches=[];state.business=null;state.offering={};state.myCompanyUrl="";state.targetCompanyUrl="";state.demo=false;state.report=null;state.currentSection=null;state.briefingId=null;state.banjoBrief=null;history.replaceState(null,"",location.pathname);track("new_search_started");$("#company-form").reset();show("search")}
 function show(name){for(const [key,node] of Object.entries(screens))node.classList.toggle("active",key===name);const hasReport=Boolean(state.report);document.querySelectorAll('[data-action="new-search"],[data-action="edit-companies"]').forEach(node=>node.classList.toggle("hidden",!hasReport));scrollTo({top:0,behavior:"instant"})}
 function showError(message){$("#error-message").textContent=message;show("error")}
 
@@ -186,3 +204,4 @@ function escapeHtml(value){return String(value||"").replace(/[&<>'"]/g,char=>({"
 let toastTimer;function toast(message){const node=$("#toast");node.textContent=message;node.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(()=>node.classList.remove("show"),2600)}
 
 restorePrivate();
+
