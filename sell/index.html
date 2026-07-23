@@ -77,10 +77,28 @@
       </div>
       <div id="section-menu" class="section-menu"></div>
       <div class="menu-toolbar">
+        <button class="primary banjo-action" data-action="create-banjo">Create Banjo Strategy Brief</button>
         <button class="secondary" data-action="save">Save privately</button>
         <button class="secondary" data-action="export">Export PDF</button>
       </div>
       <p id="report-notice" class="legal-note"></p>
+    </section>
+
+    <section class="screen" data-screen="banjo">
+      <button class="back" data-action="back-menu">&lsaquo; All insights</button>
+      <div class="banjo-hero">
+        <p class="eyebrow">COMMERCIAL INSTINCT &middot; BANJO</p><h2>Strategy Brief</h2>
+        <p class="lead">A candid script you can review before Banjo speaks in your voice.</p>
+      </div>
+      <div class="panel banjo-editor">
+        <div id="banjo-relationship" class="relationship-summary"></div>
+        <label for="banjo-script">What Banjo will say</label>
+        <textarea id="banjo-script" rows="18" spellcheck="true"></textarea>
+        <p id="banjo-stats" class="field-note"></p>
+        <label class="consent-check"><input id="banjo-consent" type="checkbox"> I confirm that the recording will use my own voice, with my permission.</label>
+        <div class="button-stack"><button class="primary" data-action="download-banjo">Download for Andy's Lip Sync Engine</button><button class="secondary" data-action="copy-banjo">Copy script</button></div>
+        <p class="legal-note">This version uses your real live recording. It does not upload, clone or store your voice.</p>
+      </div>
     </section>
 
     <section class="screen" data-screen="section">
@@ -105,3 +123,4 @@
   <script type="module" src="./app.js"></script>
 </body>
 </html>
+
