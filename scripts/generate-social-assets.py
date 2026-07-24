@@ -256,7 +256,7 @@ def create_laneway_instagram(config: dict, destination: Path) -> None:
     draw.rounded_rectangle((120, 595, 960, 765), radius=24, outline=(255, 255, 255, 92), width=3, fill=(38, 38, 38, 245))
     centred_text(draw, "FIVE POSITIVE QUESTIONS", 632, fit_font(draw, "FIVE POSITIVE QUESTIONS", 740, 44, 34), fill=(245, 245, 245))
     centred_text(draw, "MUSIC • STORY • DISCOVERY", 704, fit_font(draw, "MUSIC • STORY • DISCOVERY", 700, 30, 24), fill=(184, 184, 184))
-    centred_text(draw, "LANEWAY", 936, fit_font(draw, "LANEWAY", 500, 42, 34), fill=(220, 220, 220))
+    centred_text(draw, "DEEP CUTS", 936, fit_font(draw, "DEEP CUTS", 500, 42, 34), fill=(220, 220, 220))
     centred_text(draw, "copyright Clearlight Creative", 1015, font(21), fill=(132, 132, 132))
     canvas.convert("RGB").save(destination, "PNG", optimize=True)
 
@@ -291,7 +291,7 @@ def create_laneway_qr(config: dict, destination: Path) -> str:
     card_x, card_y = (SIZE - card_size) // 2, 380
     draw.rounded_rectangle((card_x, card_y, card_x + card_size, card_y + card_size), radius=28, fill=(255, 255, 255), outline=(190, 190, 190), width=3)
     canvas.alpha_composite(qr_image, (card_x + 21, card_y + 21))
-    centred_text(draw, "LANEWAY", 972, fit_font(draw, "LANEWAY", 500, 40, 32), fill=(220, 220, 220))
+    centred_text(draw, "DEEP CUTS", 972, fit_font(draw, "DEEP CUTS", 500, 40, 32), fill=(220, 220, 220))
     centred_text(draw, "copyright Clearlight Creative", 1025, font(19), fill=(132, 132, 132))
     canvas.convert("RGB").save(destination, "PNG", optimize=True)
     if zxingcpp is not None:

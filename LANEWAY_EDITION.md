@@ -16,6 +16,7 @@ It must not modify or inherit the appearance or quiz behaviour of Music, Cars, C
 - Character: none; Aggits is forbidden on the page, social image and QR artwork
 - Buttons: charcoal surfaces, fine pale borders, white type
 - Layout: mobile-first and consistent with the Deep Cuts discovery structure
+- Delivery footer: `DEEP CUTS` appears immediately above `copyright Clearlight Creative`; the word `Laneway` is not repeated in this footer
 
 ## Five-question challenge
 

@@ -33,7 +33,10 @@ assert.match(validator,/Laneway must never configure Aggits/);
 assert.match(artwork,/elif config\.get\("editionType"\) == "laneway":/);
 assert.match(artwork,/create_laneway_instagram/);
 assert.match(artwork,/create_laneway_qr/);
-assert.doesNotMatch(artwork.split('def create_laneway_instagram')[1].split('def create_qr')[0],/aggits/i);
+const lanewayArtwork=artwork.split('def create_laneway_instagram')[1].split('def create_qr')[0];
+assert.doesNotMatch(lanewayArtwork,/aggits/i);
+assert.equal((lanewayArtwork.match(/centred_text\(draw, "DEEP CUTS"/g)||[]).length,2,'Both Laneway delivery images must identify Deep Cuts above the copyright notice.');
+assert.doesNotMatch(lanewayArtwork,/centred_text\(draw, "LANEWAY"/,'Laneway delivery footers must not repeat the Laneway name above copyright.');
 await fs.access('assets/laneway-music-logo-source.jpg');
 
-console.log('Laneway edition tests passed: no Aggits, exact reversed logo treatment, charcoal identity and isolated five-question positive quiz.');
+console.log('Laneway edition tests passed: no Aggits, exact reversed logo treatment, Deep Cuts footer, charcoal identity and isolated five-question positive quiz.');
