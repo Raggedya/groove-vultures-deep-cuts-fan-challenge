@@ -1,0 +1,94 @@
+{
+  "brandName": "Laneway",
+  "editionType": "laneway",
+  "bandName": "Celibate Rifles",
+  "editionTitle": "Celibate Rifles",
+  "description": "Sydney Northern Beaches originals whose sharp, guitar-driven punk, garage-rock force and distinctly Australian wit powered a remarkable four-decade legacy.",
+  "discovery": {
+    "bio": "Sydney Northern Beaches originals whose sharp, guitar-driven punk, garage-rock force and distinctly Australian wit powered a remarkable four-decade legacy.",
+    "newsLabel": "The Birth of the Celibate Rifles"
+  },
+  "mode": "discovery",
+  "slug": "celibate-rifles",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_f63a383fac",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/celibate-rifles/instagram-discovery.png",
+    "qrImage": "output/celibate-rifles/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#2f80ff",
+    "accentSecondary": "#8dbdff"
+  },
+  "links": {
+    "buyMusic": "https://music.apple.com/gb/album/sideroxylon/1828640766",
+    "spotify": "https://open.spotify.com/artist/4mZlgrDsGRgWXy7T5ke3hP",
+    "instagram": "",
+    "bandcamp": "",
+    "youtube": "",
+    "facebook": "",
+    "website": "",
+    "merchandise": "",
+    "newsReviews": "https://i94bar.com/?catid=19%3Afeatures&id=496%3Abloodymindedness-the-birth-of-the-celibate-rifles&view=article"
+  },
+  "featuredVideo": {
+    "title": "",
+    "youtubeURL": "",
+    "selectionBasis": "",
+    "verifiedAt": ""
+  },
+  "analytics": {
+    "editionId": "dc_f63a383fac",
+    "pageIdentifier": "dc_f63a383fac:laneway-v1"
+  },
+  "production": {
+    "jobId": "dcjob_77d1aa4b-08a5-45ed-a23d-ecc1e560fb13",
+    "submittedAt": "2026-07-24T12:44:54.210Z",
+    "researchCompletedAt": "2026-07-24T18:23:06.395Z",
+    "editionCreatedAt": "2026-07-24T18:23:06.395Z"
+  },
+  "laneway": {
+    "logoArtwork": "assets/laneway-music-logo-source.jpg",
+    "logoTreatment": "reverse-white",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Discover",
+      "Quiz"
+    ]
+  },
+  "lanewayChallenge": {
+    "title": "How Well Do You Know Celibate Rifles?",
+    "ctaLabel": "Take the Five-Question Quiz",
+    "numberOfQuestions": 5,
+    "questionFile": "editions/celibate-rifles/laneway-questions.json",
+    "classifications": [
+      {
+        "min": 0,
+        "max": 1,
+        "label": "Laneway Listener",
+        "message": "You have started discovering {band}. Every answer reveals another good part of their story."
+      },
+      {
+        "min": 2,
+        "max": 3,
+        "label": "Backstage Regular",
+        "message": "A strong result. You already know plenty about what makes {band} worth discovering."
+      },
+      {
+        "min": 4,
+        "max": 4,
+        "label": "Laneway Insider",
+        "message": "Excellent work. You know the music, story and character of {band} exceptionally well."
+      },
+      {
+        "min": 5,
+        "max": 5,
+        "label": "Laneway Legend",
+        "message": "Five out of five. You are a true {band} Laneway legend."
+      }
+    ]
+  }
+}

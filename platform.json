@@ -217,6 +217,14 @@
       "name": "Horsepower in the High Country",
       "config": "editions/horsepower-in-the-high-country/edition.json",
       "active": true
+    },
+    {
+      "slug": "celibate-rifles",
+      "editionId": "dc_f63a383fac",
+      "canonicalPath": "/e/dc_f63a383fac",
+      "name": "Celibate Rifles",
+      "config": "editions/celibate-rifles/edition.json",
+      "active": true
     }
   ]
 }

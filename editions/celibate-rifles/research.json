@@ -1,0 +1,81 @@
+{
+  "bandName": "Celibate Rifles",
+  "slug": "celibate-rifles",
+  "editionId": "dc_f63a383fac",
+  "verifiedAt": "2026-07-24T18:23:06.395Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://www.lanewaymusic.com.au/",
+      "sourceType": "official label artist roster",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-24T12:55:00.000Z",
+      "evidence": "Laneway Music's official artist roster explicitly lists Celibate Rifles and Damien Lovelock, confirming the intended Australian band and its Laneway connection."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/4mZlgrDsGRgWXy7T5ke3hP",
+      "sourceType": "official artist streaming profile",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-24T12:55:00.000Z",
+      "evidence": "The Spotify artist profile identifies The Celibate Rifles and presents the band's catalogue, including Johnny, Wonderful Life '88 and Sideroxylon material."
+    },
+    {
+      "destination": "buyMusic",
+      "url": "https://music.apple.com/gb/album/sideroxylon/1828640766",
+      "sourceType": "authoritative licensed music store",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-24T12:55:00.000Z",
+      "evidence": "Apple Music identifies Sideroxylon as a 1983 Celibate Rifles album carrying a Laneway Music copyright and provides a direct licensed catalogue destination."
+    },
+    {
+      "destination": "newsReviews",
+      "url": "https://i94bar.com/?catid=19%3Afeatures&id=496%3Abloodymindedness-the-birth-of-the-celibate-rifles&view=article",
+      "sourceType": "credible editorial Australian music history",
+      "identityVerified": true,
+      "credibleEditorial": true,
+      "verifiedAt": "2026-07-24T12:55:00.000Z",
+      "evidence": "I-94 Bar's long-form oral history uses first-hand recollections from band members to document the band's Northern Beaches beginnings, early performances and musical character."
+    },
+    {
+      "destination": "question-origins",
+      "url": "https://i94bar.com/?catid=19%3Afeatures&id=496%3Abloodymindedness-the-birth-of-the-celibate-rifles&view=article",
+      "sourceType": "credible editorial oral history",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-24T12:55:00.000Z",
+      "evidence": "The first-hand history places the band's beginnings in 1979 in schools, surf clubs and garages on Sydney's Northern Beaches."
+    },
+    {
+      "destination": "question-name",
+      "url": "https://www.allmusic.com/artist/the-celibate-rifles-mn0000185064",
+      "sourceType": "authoritative music reference",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-24T12:55:00.000Z",
+      "evidence": "AllMusic describes the Celibate Rifles as Sydney clever punk rock and explicitly notes the band's Sex Pistols-referencing name."
+    },
+    {
+      "destination": "question-damien",
+      "url": "https://www.abc.net.au/listen/doublej/music-reads/music-news/damien-lovelock-died-celibate-rifles/11381028",
+      "sourceType": "authoritative national broadcaster profile",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-24T12:55:00.000Z",
+      "evidence": "ABC Double J identifies Damien Lovelock as the band's magnetic frontman from 1980 and records his wider work in soccer, books, radio and television."
+    },
+    {
+      "destination": "question-albums",
+      "url": "https://www.abc.net.au/listen/doublej/music-reads/music-news/damien-lovelock-died-celibate-rifles/11381028",
+      "sourceType": "authoritative national broadcaster profile",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-24T12:55:00.000Z",
+      "evidence": "ABC Double J reports that the Celibate Rifles released nine studio albums and remained a potent live act for decades."
+    },
+    {
+      "destination": "question-debut",
+      "url": "https://music.apple.com/gb/album/sideroxylon/1828640766",
+      "sourceType": "authoritative licensed music catalogue",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-24T12:55:00.000Z",
+      "evidence": "Apple Music identifies Sideroxylon as the band's 1983 eleven-song album and credits Laneway Music."
+    }
+  ]
+}

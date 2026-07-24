@@ -1,0 +1,82 @@
+[
+  {
+    "id": "celibate-rifles-origins",
+    "category": "Band Story",
+    "question": "Where did the Celibate Rifles' story begin in 1979?",
+    "options": [
+      "Sydney's Northern Beaches",
+      "Melbourne's inner north",
+      "Brisbane's Fortitude Valley",
+      "Perth's western suburbs"
+    ],
+    "correctAnswer": "Sydney's Northern Beaches",
+    "explanation": "The band grew from school rehearsals, surf-club dances, garages and parties around Sydney's Northern Beaches—a proudly local beginning for a group that would take its music around the world.",
+    "sourceName": "I-94 Bar",
+    "sourceURL": "https://i94bar.com/?catid=19%3Afeatures&id=496%3Abloodymindedness-the-birth-of-the-celibate-rifles&view=article",
+    "active": true
+  },
+  {
+    "id": "celibate-rifles-name",
+    "category": "Band Identity",
+    "question": "Which famous punk band's name inspired the Celibate Rifles' witty opposite?",
+    "options": [
+      "The Sex Pistols",
+      "The Clash",
+      "The Ramones",
+      "Radio Birdman"
+    ],
+    "correctAnswer": "The Sex Pistols",
+    "explanation": "Their name is a clever inversion of the Sex Pistols: a memorable joke that fits the band's mix of punk intelligence, sharp humour and powerful guitar music.",
+    "sourceName": "AllMusic",
+    "sourceURL": "https://www.allmusic.com/artist/the-celibate-rifles-mn0000185064",
+    "active": true
+  },
+  {
+    "id": "celibate-rifles-damien",
+    "category": "People",
+    "question": "Besides fronting the band, which sport did Damien Lovelock famously cover as a commentator?",
+    "options": [
+      "Soccer",
+      "Cricket",
+      "Surfing",
+      "Rugby league"
+    ],
+    "correctAnswer": "Soccer",
+    "explanation": "Damien's wit travelled far beyond the stage. He became a familiar soccer voice on SBS, wrote books about the game and also brought his singular personality to Australian radio.",
+    "sourceName": "ABC Double J",
+    "sourceURL": "https://www.abc.net.au/listen/doublej/music-reads/music-news/damien-lovelock-died-celibate-rifles/11381028",
+    "active": true
+  },
+  {
+    "id": "celibate-rifles-albums",
+    "category": "Catalogue",
+    "question": "How many studio albums did the Celibate Rifles release across their career?",
+    "options": [
+      "Nine",
+      "Five",
+      "Seven",
+      "Twelve"
+    ],
+    "correctAnswer": "Nine",
+    "explanation": "Nine studio albums gave the band room to keep its intensity while stretching its writing and ideas. The catalogue is a substantial record of one of Australia's great cult rock groups.",
+    "sourceName": "ABC Double J",
+    "sourceURL": "https://www.abc.net.au/listen/doublej/music-reads/music-news/damien-lovelock-died-celibate-rifles/11381028",
+    "active": true
+  },
+  {
+    "id": "celibate-rifles-debut",
+    "category": "Records",
+    "question": "What is the title of the band's landmark 1983 debut album?",
+    "options": [
+      "Sideroxylon",
+      "Blind Ear",
+      "Roman Beach Party",
+      "Beyond Respect"
+    ],
+    "correctAnswer": "Sideroxylon",
+    "explanation": "Sideroxylon arrived in 1983 with eleven tracks of the band's early guitar-driven force. Its title has become inseparable from the opening chapter of the Celibate Rifles' recorded legacy.",
+    "sourceName": "Apple Music",
+    "sourceURL": "https://music.apple.com/gb/album/sideroxylon/1828640766",
+    "active": true
+  }
+]
