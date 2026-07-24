@@ -1,0 +1,39 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+
+const contracts=JSON.parse(await fs.readFile('edition-contracts.json','utf8'));
+const html=await fs.readFile('index.html','utf8');
+const app=await fs.readFile('js/app.js','utf8');
+const quiz=await fs.readFile('js/laneway-quiz.js','utf8');
+const css=await fs.readFile('styles.css','utf8');
+const factory=await fs.readFile('scripts/create-edition.mjs','utf8');
+const validator=await fs.readFile('scripts/validate-platform.mjs','utf8');
+const artwork=await fs.readFile('scripts/generate-social-assets.py','utf8');
+
+assert.deepEqual(contracts.editionTypes.laneway.brandNames,['Laneway']);
+assert.deepEqual(contracts.editionTypes.laneway.exclusiveConfig,['laneway','lanewayChallenge']);
+for(const key of ['buyMusic','spotify','instagram','bandcamp','youtube','facebook','website','merchandise','newsReviews'])assert.ok(contracts.editionTypes.laneway.allowedLinks.includes(key));
+assert.ok(html.includes('id="editionBrandLogo"'));
+assert.ok(html.includes('src="/js/laneway-quiz.js'));
+assert.match(app,/isLanewayEdition\(\)/);
+assert.match(app,/LanewayQuiz\.configure/);
+assert.match(app,/createLanewayChallengeCard/);
+assert.match(app,/els\.artwork\.removeAttribute\("src"\)/);
+assert.match(quiz,/value\.length!==5/);
+assert.match(quiz,/prepareQuestions\(questionBank,5\)/);
+assert.match(quiz,/question_count:5/);
+assert.match(quiz,/Good choice — here is the story\./);
+assert.doesNotMatch(quiz,/SchoolDiscoveryQuiz|schoolChallenge|Aggits/);
+assert.match(css,/\[data-edition-type="laneway"\] \.edition-brand-logo\{[^}]*filter:invert\(1\)/);
+assert.match(css,/\[data-edition-type="laneway"\] \.discovery-shell\{[^}]*#161616/);
+assert.match(factory,/editionType===['"]laneway['"]/);
+assert.match(factory,/exactly five positive, informative and sourced band questions/);
+assert.match(factory,/logoArtwork:'assets\/laneway-music-logo-source\.jpg'/);
+assert.match(validator,/Laneway must never configure Aggits/);
+assert.match(artwork,/elif config\.get\("editionType"\) == "laneway":/);
+assert.match(artwork,/create_laneway_instagram/);
+assert.match(artwork,/create_laneway_qr/);
+assert.doesNotMatch(artwork.split('def create_laneway_instagram')[1].split('def create_qr')[0],/aggits/i);
+await fs.access('assets/laneway-music-logo-source.jpg');
+
+console.log('Laneway edition tests passed: no Aggits, exact reversed logo treatment, charcoal identity and isolated five-question positive quiz.');

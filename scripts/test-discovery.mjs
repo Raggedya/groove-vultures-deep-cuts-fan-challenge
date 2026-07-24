@@ -8,6 +8,7 @@ const css=await fs.readFile('styles.css','utf8');
 for(const id of ['bandName','artistBio','sonicSignature','featureList','featuredVideo','featuredVideoFrame','platformLinks','shareButton','poweredByLabel'])assert.ok(html.includes(`id="${id}"`),`Missing locked discovery control ${id}`);
 for(const forbidden of ['id="quizScreen"','id="timerRing"','id="answerList"','copyButton','Official Music'])assert.ok(!html.includes(forbidden),`Locked artist page must not contain ${forbidden}`);
 for(const id of ['schoolQuizScreen','schoolQuizHomeButton','schoolTimerRing','schoolAnswerList','schoolResultScreen','schoolResultHomeButton'])assert.ok(html.includes(`id="${id}"`),`Missing isolated Schools Edition challenge control ${id}`);
+for(const id of ['editionBrandLogo','lanewayQuizScreen','lanewayQuizHomeButton','lanewayAnswerList','lanewayResultScreen','lanewayResultHomeButton'])assert.ok(html.includes(`id="${id}"`),`Missing isolated Laneway control ${id}`);
 for(const visualClass of ['hero-stage','hero-artwork','artist-title-row','artist-bio','sonic-signature','feature-list','featured-video','video-frame','platform-links'])assert.ok(html.includes(`class="${visualClass}`),`Missing master-layout element ${visualClass}`);
 assert.match(css,/\.hero-artwork\{[^}]*height:auto/,'Aggits must preserve his native aspect ratio.');
 assert.match(css,/\.platform-links\{[^}]*grid-template-columns:1fr 1fr/,'Master layout requires paired destination cards.');
@@ -22,13 +23,15 @@ for(const destination of ['enrolment','virtualTour','principalMessage','visionVa
 assert.ok(app.includes('config.editionType==="car"'),'Music and Cars editions must remain explicitly separated by configuration.');
 assert.ok(app.includes('config.editionType==="club"'),'Music, Cars and Clubs editions must remain explicitly separated by configuration.');
 assert.ok(app.includes('config.editionType==="school"'),'School Discovery must remain explicitly separated from Music, Cars and Clubs.');
+assert.ok(app.includes('config.editionType==="laneway"'),'Laneway must remain explicitly separated from Music, Cars, Clubs and Schools.');
 assert.ok(app.includes('if(schools)await SchoolDiscoveryQuiz.configure'),'The challenge engine must initialise only for the Schools Edition.');
+assert.ok(app.includes('if(laneway)await LanewayQuiz.configure'),'The Laneway quiz must initialise only for Laneway editions.');
 assert.ok(app.includes('definition.key==="schoolProject"&&!schoolChallengeAdded'),'The Schools challenge CTA must appear immediately before School Upgrade.');
 assert.ok(app.includes('card.classList.contains("school-challenge-card")'),'The Schools challenge CTA must remain full width after link-grid balancing.');
 for(const label of ['Discover','Watch','Connect','Own & Restore'])assert.ok(app.includes(`"${label}"`),`Missing locked Cars navigation label ${label}`);
 for(const label of ['Visit','Play','Join','Connect'])assert.ok(factory.includes(`'${label}'`),`Missing locked Clubs navigation label ${label}`);
 for(const label of ['Discover','Learn','Connect','Enrol'])assert.ok(factory.includes(`'${label}'`),`Missing locked School Discovery navigation label ${label}`);
-assert.ok(factory.includes("characterArtwork:editionType==='school'?'':"),'School Discovery must never configure Aggits artwork.');
+assert.ok(factory.includes("characterArtwork:editionType==='school'||editionType==='laneway'?'':"),'School Discovery and Laneway must never configure Aggits artwork.');
 assert.ok(factory.includes("logoPolicy:'colour-reference-only; no logo or emblem displayed'"),'School branding may use official colours but never the school logo or emblem.');
 assert.ok(app.includes('els.artwork.removeAttribute("src")'),'School Discovery must remove the character image source entirely.');
 assert.ok(!app.includes('key:"tip"'),'Tip must not be rendered by the discovery engine.');
@@ -44,5 +47,7 @@ for(const edition of platform.editions){
   const config=JSON.parse(await fs.readFile(edition.config,'utf8'));
   if(config.editionType==='school')assert.ok(config.schoolChallenge,'Schools editions require the isolated challenge configuration.');
   else assert.equal(config.schoolChallenge,undefined,`${config.editionType} editions must remain untouched by the Schools challenge.`);
+  if(config.editionType==='laneway')assert.ok(config.lanewayChallenge,'Laneway editions require their isolated five-question challenge.');
+  else assert.equal(config.lanewayChallenge,undefined,`${config.editionType} editions must remain untouched by the Laneway challenge.`);
 }
-console.log('Discovery tests passed: featured video, opaque routes, verified-only links, balanced cards, edition isolation and Schools-only challenge.');
+console.log('Discovery tests passed: featured video, opaque routes, verified-only links, balanced cards, and isolated Schools and Laneway challenges.');

@@ -8,7 +8,7 @@ if(!inputPath)throw new Error('Usage: node scripts/create-edition.mjs <verified-
 const input=JSON.parse(await fs.readFile(path.resolve(inputPath),'utf8'));
 const bandName=clean(input.bandName,120);
 const bio=clean(input.bio,190);
-const editionType=['car','club','school'].includes(input.editionType)?input.editionType:'music';
+const editionType=['car','club','school','laneway'].includes(input.editionType)?input.editionType:'music';
 if(!bandName||!bio)throw new Error('Verified research requires bandName and a concise bio.');
 const slug=slugify(bandName);
 const jobPath=path.join(root,'.deep-cuts','jobs',`${slug}.json`);
@@ -21,20 +21,21 @@ if(platform.editions.some(item=>item.slug===slug||String(item.name).toLowerCase(
 const links=validateResearch(input);
 const featuredVideo=validateFeaturedVideo(input,links);
 const schoolQuestions=editionType==='school'?validateSchoolChallenge(input):null;
+const lanewayQuestions=editionType==='laneway'?validateLanewayChallenge(input):null;
 const editionId=uniqueEditionId(platform);
 const canonicalPath=`/e/${editionId}`;
 const now=new Date().toISOString();
 const directory=path.join(root,'editions',slug);
 await fs.mkdir(directory,{recursive:true});
 const config={
-  brandName:editionType==='school'?'School Discovery':editionType==='club'?'Deep Cuts Clubs':editionType==='car'?'Deep Cuts Cars':'Deep Cuts',editionType,bandName,editionTitle:bandName,description:bio,
+  brandName:editionType==='laneway'?'Laneway':editionType==='school'?'School Discovery':editionType==='club'?'Deep Cuts Clubs':editionType==='car'?'Deep Cuts Cars':'Deep Cuts',editionType,bandName,editionTitle:bandName,description:bio,
   discovery:{bio,newsLabel:clean(input.newsLabel||'',90)},mode:'discovery',slug,
   publicURL:`${String(platform.publicBaseURL).replace(/\/$/,'')}${canonicalPath}`,
-  characterArtwork:editionType==='school'?'':'assets/aggits-original-cutout-v4.png',backgroundArtwork:'',
+  characterArtwork:editionType==='school'||editionType==='laneway'?'':'assets/aggits-original-cutout-v4.png',backgroundArtwork:'',
   social:{copyright:'copyright Clearlight Creative',instagramImage:`output/${slug}/instagram-discovery.png`,qrImage:`output/${slug}/instagram-qr.png`},
   theme:editionType==='school'?schoolTheme(input):{accent:'#2f80ff',accentSecondary:'#8dbdff'},links,
   featuredVideo,
-  analytics:{editionId,pageIdentifier:`${editionId}:${editionType==='school'?'school-discovery-v1':editionType==='club'?'club-v1':editionType==='car'?'automotive-v1':'discovery-v1'}`},
+  analytics:{editionId,pageIdentifier:`${editionId}:${editionType==='laneway'?'laneway-v1':editionType==='school'?'school-discovery-v1':editionType==='club'?'club-v1':editionType==='car'?'automotive-v1':'discovery-v1'}`},
   production:{jobId:job.jobId,submittedAt:job.submittedAt,researchCompletedAt:now,editionCreatedAt:now}
 };
 if(editionType==='car')config.automotive={make:clean(input.automotive?.make,60),model:clean(input.automotive?.model,60),productionYears:clean(input.automotive?.productionYears,30),heroLabels:['Discover','Watch','Connect','Own & Restore']};
@@ -43,10 +44,15 @@ if(editionType==='school'){
   config.school={officialWebsite:https(input.school?.officialWebsite||''),paletteSource:https(input.school?.paletteSource||input.school?.officialWebsite||''),logoPolicy:'colour-reference-only; no logo or emblem displayed',heroLabels:['Discover','Learn','Connect','Enrol']};
   config.schoolChallenge=schoolChallengeConfig(slug);
 }
+if(editionType==='laneway'){
+  config.laneway={logoArtwork:'assets/laneway-music-logo-source.jpg',logoTreatment:'reverse-white',heroLabels:['Listen','Watch','Discover','Quiz']};
+  config.lanewayChallenge=lanewayChallengeConfig(slug,bandName);
+}
 const research={bandName,slug,editionId,verifiedAt:now,sources:input.sources};
 await fs.writeFile(path.join(directory,'edition.json'),JSON.stringify(config,null,2)+'\n');
 await fs.writeFile(path.join(directory,'research.json'),JSON.stringify(research,null,2)+'\n');
 if(schoolQuestions)await fs.writeFile(path.join(directory,'school-questions.json'),JSON.stringify(schoolQuestions,null,2)+'\n');
+if(lanewayQuestions)await fs.writeFile(path.join(directory,'laneway-questions.json'),JSON.stringify(lanewayQuestions,null,2)+'\n');
 platform.editions.push({slug,editionId,canonicalPath,name:bandName,config:`editions/${slug}/edition.json`,active:true});
 await fs.writeFile(platformPath,JSON.stringify(platform,null,2)+'\n');
 job.status='configured';job.editionId=editionId;job.configuredAt=now;
@@ -72,7 +78,7 @@ function validateResearch(value){
 function validateFeaturedVideo(value,links){
   const youtubeURL=https(value.featuredVideo?.youtubeURL||'');
   const title=clean(value.featuredVideo?.title||'',120);
-  const expectedBasis=value.editionType==='music'?'most-viewed-official':'best-authoritative';
+  const expectedBasis=value.editionType==='music'||value.editionType==='laneway'?'most-viewed-official':'best-authoritative';
   if(value.editionType==='school'&&!youtubeURL)throw new Error('School Discovery requires a verified authoritative featured YouTube video.');
   if(links.youtube&&!youtubeURL)throw new Error(value.editionType==='music'?'An official YouTube presence requires a verified most-viewed official featured video.':'A non-music YouTube destination requires a verified authoritative featured video.');
   if(!youtubeURL)return{title:'',youtubeURL:'',selectionBasis:'',verifiedAt:''};
@@ -82,21 +88,41 @@ function validateFeaturedVideo(value,links){
   if(!evidence)throw new Error('The featured YouTube video requires dated, identity-verified selection evidence.');
   return{title,youtubeURL,selectionBasis:expectedBasis,verifiedAt:new Date(evidence.verifiedAt).toISOString()};
 }
+function validateLanewayChallenge(value){
+  const questions=value.lanewayChallenge?.questions;
+  if(!Array.isArray(questions)||questions.length!==5)throw new Error('Laneway requires exactly five positive, informative and sourced band questions.');
+  return validatePositiveQuestions(questions,value.sources,'Laneway');
+}
 function validateSchoolChallenge(value){
   const questions=value.schoolChallenge?.questions;
   if(!Array.isArray(questions)||questions.length!==6)throw new Error('Schools Edition requires exactly six positive, sourced challenge questions.');
+  return validatePositiveQuestions(questions,value.sources,'School');
+}
+function validatePositiveQuestions(questions,sources,label){
   const ids=new Set(),prompts=new Set();
   return questions.map((question,index)=>{
-    const id=clean(question.id,80),category=clean(question.category||'Our School',50),prompt=clean(question.question,180),correctAnswer=clean(question.correctAnswer,160),explanation=clean(question.explanation,360),sourceName=clean(question.sourceName,120),sourceURL=https(question.sourceURL||'');
+    const id=clean(question.id,80),category=clean(question.category||'Band Story',50),prompt=clean(question.question,180),correctAnswer=clean(question.correctAnswer,160),explanation=clean(question.explanation,360),sourceName=clean(question.sourceName,120),sourceURL=https(question.sourceURL||'');
     const options=Array.isArray(question.options)?question.options.map(option=>clean(option,160)):[];
-    if(!id||!prompt||!correctAnswer||!explanation||!sourceName||!sourceURL)throw new Error(`School question ${index+1} requires complete positive content and a source.`);
-    if(ids.has(id)||prompts.has(prompt.toLowerCase()))throw new Error(`School question ${index+1} is duplicated.`);
-    if(options.length!==4||new Set(options).size!==4||!options.includes(correctAnswer))throw new Error(`School question ${index+1} requires four unique choices including the correct answer.`);
-    const evidence=(value.sources||[]).find(source=>normalize(source.url)===normalize(sourceURL)&&source.identityVerified===true&&validDate(source.verifiedAt)&&clean(source.evidence,300));
-    if(!evidence)throw new Error(`School question ${index+1} requires matching, dated, identity-verified source evidence.`);
+    if(!id||!prompt||!correctAnswer||explanation.length<50||!sourceName||!sourceURL)throw new Error(`${label} question ${index+1} requires complete positive content and a useful sourced explanation.`);
+    if(ids.has(id)||prompts.has(prompt.toLowerCase()))throw new Error(`${label} question ${index+1} is duplicated.`);
+    if(options.length!==4||new Set(options).size!==4||!options.includes(correctAnswer))throw new Error(`${label} question ${index+1} requires four unique choices including the correct answer.`);
+    const evidence=(sources||[]).find(source=>normalize(source.url)===normalize(sourceURL)&&source.identityVerified===true&&validDate(source.verifiedAt)&&clean(source.evidence,300));
+    if(!evidence)throw new Error(`${label} question ${index+1} requires matching, dated, identity-verified source evidence.`);
     ids.add(id);prompts.add(prompt.toLowerCase());
     return{id,category,question:prompt,options,correctAnswer,explanation,sourceName,sourceURL,active:true};
   });
+}
+function lanewayChallengeConfig(slug,bandName){
+  return{
+    title:`How Well Do You Know ${bandName}?`,ctaLabel:'Take the Five-Question Quiz',numberOfQuestions:5,
+    questionFile:`editions/${slug}/laneway-questions.json`,
+    classifications:[
+      {min:0,max:1,label:'Laneway Listener',message:'You have started discovering {band}. Every answer reveals another good part of their story.'},
+      {min:2,max:3,label:'Backstage Regular',message:'A strong result. You already know plenty about what makes {band} worth discovering.'},
+      {min:4,max:4,label:'Laneway Insider',message:'Excellent work. You know the music, story and character of {band} exceptionally well.'},
+      {min:5,max:5,label:'Laneway Legend',message:'Five out of five. You are a true {band} Laneway legend.'}
+    ]
+  };
 }
 function schoolChallengeConfig(slug){
   return{

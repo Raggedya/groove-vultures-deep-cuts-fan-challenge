@@ -57,6 +57,16 @@ Treat every completed edition as a finished commercial product that must remain 
 - Every sales-intelligence parameter has its own blue button and focused view. Advice is candid, concise and plain-language, while facts, interpretations, unknowns, confidence and evidence remain distinguishable.
 - A research provider must compare both companies. It may never infer capabilities from a domain alone or invent a fit when supplier research is unavailable.
 
+## Laneway contract
+
+- Laneway is an independent music-discovery edition. It does not inherit the Music/Aggits, Cars, Clubs, Schools or Commercial Instinct visual contracts.
+- Aggits is absent from the Laneway page and every Laneway delivery asset.
+- The exact approved Laneway Music source logo is preserved and rendered in reverse white over a predominantly charcoal and black interface.
+- Each Laneway edition contains exactly five positive, informative, sourced multiple-choice questions about the nominated band or artist.
+- Questions, answer explanations and source evidence live in the isolated `lanewayChallenge` configuration and `laneway-questions.json`; no other edition may render or depend on them.
+- Unavailable or uncertain destinations are omitted. Verified music, video, social, website, merchandise and editorial links retain the Music destination integrity standard.
+- The standard instruction is `Laneway [Band or Artist]`.
+
 ## Decision-intelligence module contract
 
 “I Want to Sell to This Company” is an isolated decision-intelligence module, not an edition. Its public route is `/sell/`, its Worker namespace is `/api/sell/*`, its data tables use the `sales_` prefix and its executable schema lives in `sell/schemas.js`. It must never import edition-specific business rules or store sales data in edition tables. Existing editions must remain operational if this module is removed.

@@ -25,6 +25,12 @@
       "allowedLinks": ["website", "enrolment", "virtualTour", "principalMessage", "visionValues", "curriculum", "studentLife", "newsletter", "termDates", "policies", "contact", "schoolProject", "youtube"],
       "renderedLinks": ["website", "enrolment", "virtualTour", "principalMessage", "visionValues", "curriculum", "studentLife", "newsletter", "termDates", "policies", "contact", "schoolProject", "youtube"],
       "exclusiveConfig": ["school"]
+    },
+    "laneway": {
+      "brandNames": ["Laneway"],
+      "allowedLinks": ["buyMusic", "spotify", "instagram", "bandcamp", "youtube", "facebook", "website", "merchandise", "newsReviews"],
+      "renderedLinks": ["buyMusic", "spotify", "instagram", "bandcamp", "youtube", "facebook", "website", "merchandise", "newsReviews"],
+      "exclusiveConfig": ["laneway", "lanewayChallenge"]
     }
   }
 }

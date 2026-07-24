@@ -20,6 +20,10 @@ The same permanent engine also supports separately typed `Deep Cuts Cars` and `D
 
 `Deep Cuts Clubs [Club name and location]`
 
+`Laneway [Band or Artist]`
+
+Laneway is a separate charcoal-and-white music edition using the approved Laneway Music logo, no Aggits, and exactly five positive sourced questions about the nominated artist. It does not change the standard Deep Cuts music model.
+
 The production factory records the submission time, verifies the artist and destinations, creates configuration and promotional assets, validates the QR, deploys the edition and emails the finished package. It never creates another repository.
 
 Public URLs use opaque IDs and never expose the artist name:

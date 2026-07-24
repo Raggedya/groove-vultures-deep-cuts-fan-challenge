@@ -49,6 +49,18 @@ for(const edition of platform.editions){
         const research=JSON.parse(await fs.readFile(edition.config.replace(/edition\.json$/,'research.json'),'utf8'));
         for(const question of questions)if(!research.sources.some(source=>source.identityVerified===true&&normalized(source.url)===normalized(question.sourceURL)))errors.push(`${questionPath} question ${question.id} lacks matching verified source evidence.`);
       }
+    }else if(config.editionType==='laneway'){
+      if(config.characterArtwork)errors.push(`${edition.config} Laneway must never configure Aggits or other character artwork.`);
+      if(config.laneway?.logoArtwork!=='assets/laneway-music-logo-source.jpg'||config.laneway?.logoTreatment!=='reverse-white')errors.push(`${edition.config} must preserve the approved reversed Laneway Music logo treatment.`);
+      if(config.lanewayChallenge?.numberOfQuestions!==5||!config.lanewayChallenge?.questionFile)errors.push(`${edition.config} must preserve the isolated five-question Laneway challenge.`);
+      else{
+        const questionPath=String(config.lanewayChallenge.questionFile).replace(/^\//,'');
+        const questions=JSON.parse(await fs.readFile(questionPath,'utf8'));
+        validateLanewayQuestions(questions,questionPath,errors);
+        const research=JSON.parse(await fs.readFile(edition.config.replace(/edition\.json$/,'research.json'),'utf8'));
+        for(const question of questions)if(!research.sources.some(source=>source.identityVerified===true&&normalized(source.url)===normalized(question.sourceURL)))errors.push(`${questionPath} question ${question.id} lacks matching verified source evidence.`);
+      }
+      await fs.access(config.laneway.logoArtwork);
     }else await fs.access(config.characterArtwork);
     for(const[key,value]of Object.entries(config.links||{}))if(value&&(!/^https:\/\//.test(value)||authenticationWall(value)))errors.push(`${edition.config} links.${key} must be a direct HTTPS destination, never an authentication URL.`);
     if(config.featuredVideo?.youtubeURL&&!/^https:\/\/(?:www\.)?(?:youtube\.com|youtu\.be)\//i.test(config.featuredVideo.youtubeURL))errors.push(`${edition.config} featuredVideo.youtubeURL must be a verified YouTube URL.`);
@@ -70,6 +82,16 @@ function validateSchoolQuestions(questions,file,errors){
   const ids=new Set(),prompts=new Set();
   for(const question of questions){
     if(!question.active||!question.id||!question.question||!question.explanation||!question.sourceName||!/^https:\/\//.test(question.sourceURL||''))errors.push(`${file} contains an incomplete School Discovery question.`);
+    if(ids.has(question.id)||prompts.has(String(question.question).toLowerCase()))errors.push(`${file} contains a duplicate question.`);
+    if(!Array.isArray(question.options)||question.options.length!==4||new Set(question.options).size!==4||!question.options.includes(question.correctAnswer))errors.push(`${file} question ${question.id||'unknown'} requires four unique choices including the correct answer.`);
+    ids.add(question.id);prompts.add(String(question.question).toLowerCase());
+  }
+}
+function validateLanewayQuestions(questions,file,errors){
+  if(!Array.isArray(questions)||questions.length!==5){errors.push(`${file} must contain exactly five Laneway questions.`);return}
+  const ids=new Set(),prompts=new Set();
+  for(const question of questions){
+    if(!question.active||!question.id||!question.question||String(question.explanation||'').length<50||!question.sourceName||!/^https:\/\//.test(question.sourceURL||''))errors.push(`${file} contains an incomplete Laneway question.`);
     if(ids.has(question.id)||prompts.has(String(question.question).toLowerCase()))errors.push(`${file} contains a duplicate question.`);
     if(!Array.isArray(question.options)||question.options.length!==4||new Set(question.options).size!==4||!question.options.includes(question.correctAnswer))errors.push(`${file} question ${question.id||'unknown'} requires four unique choices including the correct answer.`);
     ids.add(question.id);prompts.add(String(question.question).toLowerCase());
