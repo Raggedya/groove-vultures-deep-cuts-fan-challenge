@@ -63,6 +63,10 @@ Treat every completed edition as a finished commercial product that must remain 
 - Aggits is absent from the Laneway page and every Laneway delivery asset.
 - The exact approved Laneway Music source logo is preserved and rendered in reverse white over a predominantly charcoal and black interface.
 - Laneway QR and social delivery images use `DEEP CUTS` immediately above the copyright notice; they never repeat `Laneway` in that footer position.
+- Laneway's live footer also uses `Deep Cuts` immediately above the copyright notice.
+- The locked hero labels are `Listen`, `Watch`, `Discover`, `Buy`, followed immediately by the verified YouTube video selected on the official Laneway Music artist page.
+- Verified artist destinations follow the video. The five-question challenge appears after those destinations and immediately before a compact `Home`, `Share`, `Recommended` row.
+- `Home` opens the official Laneway Music home page. `Recommended` opens Laneway Music's official artist catalogue. Both are analytics-tracked, direct HTTPS destinations and must never be guessed.
 - Each Laneway edition contains exactly five positive, informative, sourced multiple-choice questions about the nominated band or artist.
 - Questions, answer explanations and source evidence live in the isolated `lanewayChallenge` configuration and `laneway-questions.json`; no other edition may render or depend on them.
 - Unavailable or uncertain destinations are omitted. Verified music, video, social, website, merchandise and editorial links retain the Music destination integrity standard.

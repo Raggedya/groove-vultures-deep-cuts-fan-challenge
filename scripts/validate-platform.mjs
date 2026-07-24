@@ -52,6 +52,9 @@ for(const edition of platform.editions){
     }else if(config.editionType==='laneway'){
       if(config.characterArtwork)errors.push(`${edition.config} Laneway must never configure Aggits or other character artwork.`);
       if(config.laneway?.logoArtwork!=='assets/laneway-music-logo-source.jpg'||config.laneway?.logoTreatment!=='reverse-white')errors.push(`${edition.config} must preserve the approved reversed Laneway Music logo treatment.`);
+      if(JSON.stringify(config.laneway?.heroLabels)!==JSON.stringify(['Listen','Watch','Discover','Buy']))errors.push(`${edition.config} must preserve the Laneway Listen, Watch, Discover, Buy navigation labels.`);
+      if(normalized(config.laneway?.recordCompanyHomeURL)!=='https://www.lanewaymusic.com.au'||normalized(config.laneway?.recommendedArtistsURL)!=='https://www.lanewaymusic.com.au')errors.push(`${edition.config} must preserve verified Laneway Music Home and Recommended navigation.`);
+      if(!config.featuredVideo?.youtubeURL||config.featuredVideo?.selectionBasis!=='official-label-feature')errors.push(`${edition.config} requires the verified official-label featured YouTube video.`);
       if(config.lanewayChallenge?.numberOfQuestions!==5||!config.lanewayChallenge?.questionFile)errors.push(`${edition.config} must preserve the isolated five-question Laneway challenge.`);
       else{
         const questionPath=String(config.lanewayChallenge.questionFile).replace(/^\//,'');

@@ -3,6 +3,7 @@
 - [x] Add separately typed Music, Cars and Clubs configurations to the one permanent engine, avoiding duplicated repositories and code.
 - [x] Lock permanent edition-protection governance, typed contracts, pull-request impact assessment and automated cross-edition isolation checks.
 - [x] Add one configuration-driven Laneway edition with a protected reverse-white logo, charcoal identity, no Aggits and an isolated five-question positive quiz.
+- [x] Lock Laneway's official featured-video placement and record-company Home / Share / Recommended navigation into the reusable factory.
 
 ## Batch-production time savings
 

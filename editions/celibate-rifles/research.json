@@ -29,6 +29,14 @@
       "evidence": "Apple Music identifies Sideroxylon as a 1983 Celibate Rifles album carrying a Laneway Music copyright and provides a direct licensed catalogue destination."
     },
     {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=0yPDW5NJaRY",
+      "sourceType": "official label artist page embedded video",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-25T00:00:00.000Z",
+      "evidence": "Laneway Music's official Celibate Rifles artist page introduces the band's performance of Johnny and embeds this exact YouTube video as its selected feature."
+    },
+    {
       "destination": "newsReviews",
       "url": "https://i94bar.com/?catid=19%3Afeatures&id=496%3Abloodymindedness-the-birth-of-the-celibate-rifles&view=article",
       "sourceType": "credible editorial Australian music history",

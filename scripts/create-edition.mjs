@@ -45,7 +45,13 @@ if(editionType==='school'){
   config.schoolChallenge=schoolChallengeConfig(slug);
 }
 if(editionType==='laneway'){
-  config.laneway={logoArtwork:'assets/laneway-music-logo-source.jpg',logoTreatment:'reverse-white',heroLabels:['Listen','Watch','Discover','Quiz']};
+  config.laneway={
+    logoArtwork:'assets/laneway-music-logo-source.jpg',
+    logoTreatment:'reverse-white',
+    heroLabels:['Listen','Watch','Discover','Buy'],
+    recordCompanyHomeURL:'https://www.lanewaymusic.com.au/',
+    recommendedArtistsURL:'https://www.lanewaymusic.com.au/'
+  };
   config.lanewayChallenge=lanewayChallengeConfig(slug,bandName);
 }
 const research={bandName,slug,editionId,verifiedAt:now,sources:input.sources};
@@ -78,8 +84,9 @@ function validateResearch(value){
 function validateFeaturedVideo(value,links){
   const youtubeURL=https(value.featuredVideo?.youtubeURL||'');
   const title=clean(value.featuredVideo?.title||'',120);
-  const expectedBasis=value.editionType==='music'||value.editionType==='laneway'?'most-viewed-official':'best-authoritative';
+  const expectedBasis=value.editionType==='laneway'?'official-label-feature':value.editionType==='music'?'most-viewed-official':'best-authoritative';
   if(value.editionType==='school'&&!youtubeURL)throw new Error('School Discovery requires a verified authoritative featured YouTube video.');
+  if(value.editionType==='laneway'&&!youtubeURL)throw new Error('Laneway requires the verified YouTube video selected on the official Laneway Music artist page.');
   if(links.youtube&&!youtubeURL)throw new Error(value.editionType==='music'?'An official YouTube presence requires a verified most-viewed official featured video.':'A non-music YouTube destination requires a verified authoritative featured video.');
   if(!youtubeURL)return{title:'',youtubeURL:'',selectionBasis:'',verifiedAt:''};
   if(!title)throw new Error('The featured YouTube video requires a title.');

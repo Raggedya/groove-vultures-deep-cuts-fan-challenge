@@ -34,10 +34,10 @@
     "newsReviews": "https://i94bar.com/?catid=19%3Afeatures&id=496%3Abloodymindedness-the-birth-of-the-celibate-rifles&view=article"
   },
   "featuredVideo": {
-    "title": "",
-    "youtubeURL": "",
-    "selectionBasis": "",
-    "verifiedAt": ""
+    "title": "Celibate Rifles - Johnny",
+    "youtubeURL": "https://www.youtube.com/watch?v=0yPDW5NJaRY",
+    "selectionBasis": "official-label-feature",
+    "verifiedAt": "2026-07-25T00:00:00.000Z"
   },
   "analytics": {
     "editionId": "dc_f63a383fac",
@@ -56,8 +56,10 @@
       "Listen",
       "Watch",
       "Discover",
-      "Quiz"
-    ]
+      "Buy"
+    ],
+    "recordCompanyHomeURL": "https://www.lanewaymusic.com.au/",
+    "recommendedArtistsURL": "https://www.lanewaymusic.com.au/"
   },
   "lanewayChallenge": {
     "title": "How Well Do You Know Celibate Rifles?",

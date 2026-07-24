@@ -39,8 +39,10 @@ body{margin:0;min-height:100%;color:var(--ink);background:#000713;overflow-x:hid
 .platform-link.is-active:active{transform:translateY(0)}
 .platform-link.attention{border-color:#68b8fa;background:#06244a;box-shadow:0 0 22px rgba(24,139,242,.44),inset 0 0 18px rgba(31,140,238,.12)}
 .share-section{display:flex;flex-direction:column;align-items:center;margin-top:17px}
+.edition-utility-actions{display:flex;align-items:stretch;justify-content:center;gap:8px}
+.utility-action{display:inline-flex;align-items:center;justify-content:center;min-width:120px;min-height:38px;padding:0 20px;border:1px solid rgba(102,170,225,.6);border-radius:12px;color:#f3f8ff;background:#063c76;font:inherit;font-size:.72rem;font-weight:900;text-align:center;text-decoration:none;text-transform:uppercase;cursor:pointer}
 .share-button{min-width:120px;min-height:38px;padding:0 20px;border:1px solid rgba(102,170,225,.6);border-radius:12px;color:#f3f8ff;background:#063c76;font:inherit;font-size:.72rem;font-weight:900;text-transform:uppercase;cursor:pointer}
-.share-button:hover,.share-button:focus-visible{outline:none;box-shadow:0 0 18px rgba(30,140,235,.36)}
+.utility-action:hover,.utility-action:focus-visible{outline:none;box-shadow:0 0 18px rgba(30,140,235,.36)}
 .status{min-height:12px;margin:5px 0 0;color:#8dbde6;font-size:.62rem}
 .page-footer{display:flex;flex-direction:column;align-items:center;gap:8px;padding-top:36px;color:#a9c1dc;font-size:.68rem;font-weight:800;text-transform:uppercase}
 .page-footer small{color:#55718f;font-size:.58rem;font-weight:400;text-transform:none}
@@ -70,13 +72,16 @@ body{margin:0;min-height:100%;color:var(--ink);background:#000713;overflow-x:hid
 [data-edition-type="laneway"] .link-arrow{color:#ddd}
 [data-edition-type="laneway"] .platform-link.is-active:hover,[data-edition-type="laneway"] .platform-link.is-active:focus-visible{border-color:#fff;box-shadow:0 0 18px rgba(255,255,255,.14),inset 0 0 14px rgba(255,255,255,.04)}
 [data-edition-type="laneway"] .platform-link.attention{border-color:#e6e6e6;background:#323232;box-shadow:0 0 18px rgba(255,255,255,.16),inset 0 0 14px rgba(255,255,255,.05)}
-[data-edition-type="laneway"] .share-button{color:#fff;border-color:rgba(255,255,255,.34);background:#2d2d2d}
+[data-edition-type="laneway"] .edition-utility-actions{display:grid;width:100%;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+[data-edition-type="laneway"] .utility-action{min-width:0;min-height:40px;padding:0 8px;color:#fff;border-color:rgba(255,255,255,.28);background:#2d2d2d;font-size:clamp(.58rem,2.7vw,.72rem)}
+[data-edition-type="laneway"] .utility-action:hover,[data-edition-type="laneway"] .utility-action:focus-visible{border-color:#fff;box-shadow:0 0 18px rgba(255,255,255,.14)}
 [data-edition-type="laneway"] .page-footer{color:#c8c8c8}
 [data-edition-type="laneway"] .laneway-challenge-card{position:relative;grid-column:1/-1;display:flex;align-items:center;justify-content:center;min-height:64px;padding:10px 40px;border:1px solid rgba(255,255,255,.62);border-radius:14px;color:#111;background:#f0f0f0;box-shadow:0 9px 28px rgba(0,0,0,.28),inset 0 1px #fff;font:inherit;cursor:pointer}
 [data-edition-type="laneway"] .laneway-challenge-card:disabled{cursor:wait;opacity:.7}
 [data-edition-type="laneway"] .laneway-challenge-card:not(:disabled):hover,[data-edition-type="laneway"] .laneway-challenge-card:not(:disabled):focus-visible{outline:none;transform:translateY(-1px);box-shadow:0 0 22px rgba(255,255,255,.18)}
 [data-edition-type="laneway"] .laneway-challenge-card .link-copy small{color:#555}
 [data-edition-type="laneway"] .laneway-challenge-card .link-arrow{color:#333}
+[data-edition-type="laneway"] .laneway-challenge-card{margin-top:4px}
 [data-edition-type="laneway"] .laneway-quiz-screen,[data-edition-type="laneway"] .laneway-result-screen{min-height:calc(100svh - 40px);padding:12px 0 24px;color:#fff}
 [data-edition-type="laneway"] .laneway-quiz-topbar{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:10px;margin-bottom:16px}
 [data-edition-type="laneway"] .laneway-home-button{min-height:38px;padding:0 12px;border:1px solid var(--laneway-line);border-radius:10px;color:#fff;background:#292929;font:inherit;font-size:.68rem;font-weight:800;text-transform:uppercase;cursor:pointer}

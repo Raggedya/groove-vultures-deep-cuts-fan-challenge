@@ -16,7 +16,10 @@ It must not modify or inherit the appearance or quiz behaviour of Music, Cars, C
 - Character: none; Aggits is forbidden on the page, social image and QR artwork
 - Buttons: charcoal surfaces, fine pale borders, white type
 - Layout: mobile-first and consistent with the Deep Cuts discovery structure
-- Delivery footer: `DEEP CUTS` appears immediately above `copyright Clearlight Creative`; the word `Laneway` is not repeated in this footer
+- Hero labels: `Listen`, `Watch`, `Discover`, `Buy`
+- Content order: official-label-selected featured YouTube video, verified artist destinations, five-question challenge, then `Home / Share / Recommended`
+- Home and Recommended: verified direct links to the official Laneway Music home and artist catalogue
+- Live and delivery footer: `DEEP CUTS` appears immediately above `copyright Clearlight Creative`; the word `Laneway` is not repeated in this footer
 
 ## Five-question challenge
 
@@ -33,4 +36,4 @@ The experience gives immediate, friendly feedback and an encouraging result. It 
 
 ## Research and publication
 
-Verified music destinations follow the normal direct-link standard. Unavailable destinations are omitted. The factory, platform validator and Laneway-specific regression test must pass before publication. Delivery artwork uses the approved logo and charcoal identity, and the QR must scan back to the opaque `/q/<editionId>` route at full and reduced social-media size.
+The official Laneway Music artist page supplies the verified featured YouTube selection. Verified music destinations follow the normal direct-link standard. Unavailable destinations are omitted. The factory, platform validator and Laneway-specific regression test must pass before publication. Delivery artwork uses the approved logo and charcoal identity, and the QR must scan back to the opaque `/q/<editionId>` route at full and reduced social-media size.

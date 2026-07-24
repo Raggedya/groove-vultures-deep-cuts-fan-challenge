@@ -27,6 +27,8 @@ Treat `Deep Cuts Clubs [Club name and location]` as a separately typed club edit
 
 Treat `Laneway [Band or Artist]` as a separately typed Laneway edition. Preserve Music, Cars, Clubs and Schools. Laneway alone uses the approved reverse-white Laneway Music logo, charcoal/black styling, no Aggits, and exactly five positive sourced questions in its isolated quiz engine.
 
+Preserve Laneway's locked discovery order: `Listen / Watch / Discover / Buy`, official-label-selected YouTube feature, verified destinations, five-question challenge, then `Home / Share / Recommended`. Never replace the official Laneway Music navigation URLs with guesses.
+
 Continually reduce manual work, GitHub interaction, PowerShell interaction, copy/paste and prompts. Automate research capture, configuration, link validation, artwork, scan-back testing, commits, deployment and delivery wherever credentials permit. Never ask the non-technical owner to perform repetitive engineering work that the system can safely perform.
 
 Use only verified official destinations. Omit unavailable buttons completely. When an official YouTube presence exists, verify and feature the most-viewed official music video; never invent one. The tipping feature is retired. Analytics must be best-effort and must never block a link.
