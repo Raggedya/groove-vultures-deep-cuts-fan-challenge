@@ -61,7 +61,7 @@ Treat every completed edition as a finished commercial product that must remain 
 
 - Laneway is an independent music-discovery edition. It does not inherit the Music/Aggits, Cars, Clubs, Schools or Commercial Instinct visual contracts.
 - Aggits is absent from the Laneway page and every Laneway delivery asset.
-- The exact approved Laneway Music source logo is preserved and rendered in reverse white over a predominantly charcoal and black interface.
+- The exact approved Laneway Music source logo is preserved. Its deterministic transparent reverse-white rendition is used over the predominantly charcoal and black interface so no rectangular image background can appear on any browser.
 - Laneway QR and social delivery images use `DEEP CUTS` immediately above the copyright notice; they never repeat `Laneway` in that footer position.
 - Laneway's live footer also uses `Deep Cuts` immediately above the copyright notice.
 - The locked hero labels are `Listen`, `Watch`, `Discover`, `Buy`, followed immediately by the verified YouTube video selected on the official Laneway Music artist page.

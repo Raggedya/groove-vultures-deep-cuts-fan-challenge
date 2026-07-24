@@ -52,7 +52,7 @@ body{margin:0;min-height:100%;color:var(--ink);background:#000713;overflow-x:hid
 [data-edition-type="laneway"] .discovery-shell{color:#fff;background:radial-gradient(ellipse 76% 28% at 50% 5%,rgba(255,255,255,.065),transparent 72%),linear-gradient(180deg,#161616,#0e0e0e)}
 [data-edition-type="laneway"] .hero{padding-top:18px}
 [data-edition-type="laneway"] .hero-stage{display:none}
-[data-edition-type="laneway"] .edition-brand-logo{position:relative;z-index:1;display:block;width:min(58%,245px);height:auto;margin:0 auto 20px;filter:invert(1) contrast(1.18);mix-blend-mode:screen}
+[data-edition-type="laneway"] .edition-brand-logo{position:relative;z-index:1;display:block;width:min(58%,245px);height:auto;margin:0 auto 20px}
 [data-edition-type="laneway"] .artist-title-row{margin:0}
 [data-edition-type="laneway"] .artist-title-row span{background:rgba(255,255,255,.36)}
 [data-edition-type="laneway"] .artist-title-row h1{color:#fff;font-size:clamp(1.55rem,6.4vw,2.2rem);letter-spacing:.025em}
