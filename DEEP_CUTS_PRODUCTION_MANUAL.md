@@ -10,6 +10,12 @@ School Discovery is a separate product contract. Research begins with the offici
 
 Every Schools Edition also includes exactly six positive, factual multiple-choice questions in a separate `school-questions.json` file. Questions draw on official school pages, annual reports, government project pages and other authoritative evidence. Each question has four unique choices, a verified answer, a useful positive explanation and a direct HTTPS source. The locked experience is a 15-second countdown, the existing ding only at zero, ten seconds to read the explanation, automatic progression, an encouraging final rating, replay and School Home return. The red challenge card appears immediately before School Upgrade. No other edition receives this feature.
 
+## Laneway permanent rules
+
+`Laneway [Band or Artist]` creates an isolated Laneway edition on the permanent platform. It uses the exact supplied Laneway Music logo in reverse white, a charcoal/black interface and no Aggits character or Aggits artwork. It must never change the standard Deep Cuts Music edition.
+
+Every Laneway edition contains exactly five positive, informative multiple-choice questions. Each question has four distinct options, one best answer, a concise story-led explanation and matching dated, identity-verified HTTPS evidence. The tone celebrates and teaches rather than catching fans out. The quiz has its own engine, configuration and question file, and results remain encouraging at every score.
+
 ## Commercial Instinct permanent rules
 
 Commercial Instinct compares a seller and target from their two official public website URLs. It is a separate decision-intelligence product, not an edition and not a generic company report. The original Aggits cutout, blue-black Deep Cuts presentation and one-blue-button-per-parameter navigation are locked. Each opened section leads with a short, candid commercial read, practical advice and a useful question; evidence and confidence remain available without dominating the phone screen. The system must never pretend that a domain name proves capabilities, that public strategy proves live demand, or that an interpretation is an internal fact.
@@ -20,7 +26,7 @@ Its optional Banjo Strategy Brief is a versioned, removable handoff containing a
 
 Deep Cuts accepts CSV batches through one permanent controller. Intake data is evidence to verify, not truth to copy. Every artist is normalized, duplicate-checked, range-checked, researched and independently gated. Publication requires at least 98% confidence in artist identity and every mandatory direct destination. Search pages, guesses and placeholders are forbidden. Rejections are recorded and isolated. Temporary failures receive bounded retries with exponential backoff; checkpoints allow safe resume. Accepted artists flow through the existing factory, immutable artwork checks, QR scan-back, shared Cloudflare deployment, live verification, analytics registration and email delivery.
 
-Music, Cars and Clubs are discovery products, not quizzes; their legacy question count remains zero. School Discovery is the sole exception and carries its own isolated six-question positive challenge contract.
+Music, Cars and Clubs are discovery products, not quizzes; their legacy question count remains zero. School Discovery and Laneway are explicit, separately isolated exceptions with six-question and five-question positive challenge contracts respectively.
 
 Version 3.0 â€” Permanent Artist Discovery Platform
 

@@ -6,13 +6,14 @@
   <meta name="theme-color" content="#000713">
   <meta id="pageDescription" name="description" content="Discover a verified Deep Cuts edition.">
   <title>Deep Cuts</title>
-  <link rel="stylesheet" href="/styles.css?v=20260720-schools-quiz-1">
+  <link rel="stylesheet" href="/styles.css?v=20260724-laneway-1">
 </head>
 <body>
   <main id="app" class="discovery-shell">
     <section id="discoveryPage" class="discovery-page" aria-labelledby="bandName">
       <header class="hero">
         <div class="hero-stage" aria-hidden="true"></div>
+        <img id="editionBrandLogo" class="edition-brand-logo" alt="" hidden>
         <img id="heroArtwork" class="hero-artwork" alt="">
         <div class="artist-title-row"><span></span><h1 id="bandName">Deep Cuts</h1><span></span></div>
         <p id="artistBio" class="artist-bio"></p>
@@ -84,11 +85,44 @@
         </div>
       </div>
     </section>
+
+    <section id="lanewayQuizScreen" class="laneway-quiz-screen" aria-labelledby="lanewayQuestionText" hidden>
+      <div class="laneway-quiz-topbar">
+        <button id="lanewayQuizHomeButton" class="laneway-home-button" type="button">&larr; Laneway Home</button>
+        <p id="lanewayQuizProgress" class="laneway-quiz-progress">Question 1 of 5</p>
+      </div>
+      <div class="laneway-question-card">
+        <p id="lanewayQuizCategory" class="laneway-quiz-category">Band Story</p>
+        <h2 id="lanewayQuestionText" tabindex="-1">Loading question...</h2>
+        <div id="lanewayAnswerList" class="laneway-answer-list" role="group" aria-label="Answer choices"></div>
+        <div id="lanewayAnswerFeedback" class="laneway-answer-feedback" aria-live="polite" hidden>
+          <strong id="lanewayFeedbackTitle"></strong>
+          <p id="lanewayFeedbackExplanation"></p>
+          <a id="lanewayFeedbackSource" target="_blank" rel="noopener noreferrer">Read the source</a>
+          <button id="lanewayNextButton" class="laneway-next-button" type="button">Next Question</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="lanewayResultScreen" class="laneway-result-screen" aria-labelledby="lanewayResultTitle" hidden>
+      <div class="laneway-result-card">
+        <img class="laneway-result-logo" src="/assets/laneway-music-logo-source.jpg" alt="Laneway Music">
+        <p class="laneway-result-kicker">Your Laneway Result</p>
+        <h1 id="lanewayResultScore">0 / 5</h1>
+        <h2 id="lanewayResultTitle">Laneway Listener</h2>
+        <p id="lanewayResultMessage"></p>
+        <div class="laneway-result-actions">
+          <button id="lanewayReplayButton" class="laneway-result-primary" type="button">Play Again</button>
+          <button id="lanewayResultHomeButton" class="laneway-result-secondary" type="button">Back to Laneway Home</button>
+        </div>
+      </div>
+    </section>
   </main>
-  <script src="/js/engine.js?v=20260720-schools-quiz-1"></script>
-  <script src="/js/analytics.js?v=20260720-schools-quiz-1"></script>
-  <script src="/js/interactions.js?v=20260720-schools-quiz-1"></script>
-  <script src="/js/school-quiz.js?v=20260720-schools-quiz-1"></script>
-  <script src="/js/app.js?v=20260720-schools-quiz-1"></script>
+  <script src="/js/engine.js?v=20260724-laneway-1"></script>
+  <script src="/js/analytics.js?v=20260724-laneway-1"></script>
+  <script src="/js/interactions.js?v=20260724-laneway-1"></script>
+  <script src="/js/school-quiz.js?v=20260724-laneway-1"></script>
+  <script src="/js/laneway-quiz.js?v=20260724-laneway-1"></script>
+  <script src="/js/app.js?v=20260724-laneway-1"></script>
 </body>
 </html>
