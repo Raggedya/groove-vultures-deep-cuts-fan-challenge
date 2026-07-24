@@ -46,8 +46,8 @@ if(editionType==='school'){
 }
 if(editionType==='laneway'){
   config.laneway={
-    logoArtwork:'assets/laneway-music-logo-source.jpg',
-    logoTreatment:'reverse-white',
+    logoArtwork:'assets/laneway-music-logo-reverse-transparent.png',
+    logoTreatment:'reverse-white-transparent',
     heroLabels:['Listen','Watch','Discover','Buy'],
     recordCompanyHomeURL:'https://www.lanewaymusic.com.au/',
     recommendedArtistsURL:'https://www.lanewaymusic.com.au/'

@@ -51,7 +51,7 @@ for(const edition of platform.editions){
       }
     }else if(config.editionType==='laneway'){
       if(config.characterArtwork)errors.push(`${edition.config} Laneway must never configure Aggits or other character artwork.`);
-      if(config.laneway?.logoArtwork!=='assets/laneway-music-logo-source.jpg'||config.laneway?.logoTreatment!=='reverse-white')errors.push(`${edition.config} must preserve the approved reversed Laneway Music logo treatment.`);
+      if(config.laneway?.logoArtwork!=='assets/laneway-music-logo-reverse-transparent.png'||config.laneway?.logoTreatment!=='reverse-white-transparent')errors.push(`${edition.config} must preserve the approved transparent reverse-white Laneway Music logo treatment.`);
       if(JSON.stringify(config.laneway?.heroLabels)!==JSON.stringify(['Listen','Watch','Discover','Buy']))errors.push(`${edition.config} must preserve the Laneway Listen, Watch, Discover, Buy navigation labels.`);
       if(normalized(config.laneway?.recordCompanyHomeURL)!=='https://www.lanewaymusic.com.au'||normalized(config.laneway?.recommendedArtistsURL)!=='https://www.lanewaymusic.com.au')errors.push(`${edition.config} must preserve verified Laneway Music Home and Recommended navigation.`);
       const labelSelected=config.featuredVideo?.selectionBasis==='official-label-feature';

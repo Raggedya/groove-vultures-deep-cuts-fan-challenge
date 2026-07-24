@@ -12,7 +12,7 @@ Every Schools Edition also includes exactly six positive, factual multiple-choic
 
 ## Laneway permanent rules
 
-`Laneway [Band or Artist]` creates an isolated Laneway edition on the permanent platform. It uses the exact supplied Laneway Music logo in reverse white, a charcoal/black interface and no Aggits character or Aggits artwork. Its QR and social delivery images show `DEEP CUTS` immediately above `copyright Clearlight Creative`, never `Laneway` in that footer position. It must never change the standard Deep Cuts Music edition.
+`Laneway [Band or Artist]` creates an isolated Laneway edition on the permanent platform. It preserves the exact supplied Laneway Music source logo and displays a deterministic transparent reverse-white rendition, preventing a rectangular image background on every browser. It uses a charcoal/black interface and no Aggits character or Aggits artwork. Its QR and social delivery images show `DEEP CUTS` immediately above `copyright Clearlight Creative`, never `Laneway` in that footer position. It must never change the standard Deep Cuts Music edition.
 
 The permanent Laneway discovery order is: `Listen / Watch / Discover / Buy`; the official-label-selected YouTube video; verified artist destination cards; the five-question challenge; then the compact `Home / Share / Recommended` controls. Home and Recommended use the verified Laneway Music home/artist-catalogue destination. The live footer reads `Deep Cuts` above the copyright notice. Missing or unverified artist destination cards remain omitted without changing this order.
 

@@ -51,8 +51,8 @@
     "editionCreatedAt": "2026-07-24T18:23:06.395Z"
   },
   "laneway": {
-    "logoArtwork": "assets/laneway-music-logo-source.jpg",
-    "logoTreatment": "reverse-white",
+    "logoArtwork": "assets/laneway-music-logo-reverse-transparent.png",
+    "logoTreatment": "reverse-white-transparent",
     "heroLabels": [
       "Listen",
       "Watch",
