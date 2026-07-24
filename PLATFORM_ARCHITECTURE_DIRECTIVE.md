@@ -62,6 +62,7 @@ Treat every completed edition as a finished commercial product that must remain 
 - Laneway is an independent music-discovery edition. It does not inherit the Music/Aggits, Cars, Clubs, Schools or Commercial Instinct visual contracts.
 - Aggits is absent from the Laneway page and every Laneway delivery asset.
 - The exact approved Laneway Music source logo is preserved and rendered in reverse white over a predominantly charcoal and black interface.
+- Laneway QR and social delivery images use `DEEP CUTS` immediately above the copyright notice; they never repeat `Laneway` in that footer position.
 - Each Laneway edition contains exactly five positive, informative, sourced multiple-choice questions about the nominated band or artist.
 - Questions, answer explanations and source evidence live in the isolated `lanewayChallenge` configuration and `laneway-questions.json`; no other edition may render or depend on them.
 - Unavailable or uncertain destinations are omitted. Verified music, video, social, website, merchandise and editorial links retain the Music destination integrity standard.

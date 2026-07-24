@@ -12,7 +12,7 @@ Every Schools Edition also includes exactly six positive, factual multiple-choic
 
 ## Laneway permanent rules
 
-`Laneway [Band or Artist]` creates an isolated Laneway edition on the permanent platform. It uses the exact supplied Laneway Music logo in reverse white, a charcoal/black interface and no Aggits character or Aggits artwork. It must never change the standard Deep Cuts Music edition.
+`Laneway [Band or Artist]` creates an isolated Laneway edition on the permanent platform. It uses the exact supplied Laneway Music logo in reverse white, a charcoal/black interface and no Aggits character or Aggits artwork. Its QR and social delivery images show `DEEP CUTS` immediately above `copyright Clearlight Creative`, never `Laneway` in that footer position. It must never change the standard Deep Cuts Music edition.
 
 Every Laneway edition contains exactly five positive, informative multiple-choice questions. Each question has four distinct options, one best answer, a concise story-led explanation and matching dated, identity-verified HTTPS evidence. The tone celebrates and teaches rather than catching fans out. The quiz has its own engine, configuration and question file, and results remain encouraging at every score.
 
