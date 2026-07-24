@@ -104,7 +104,7 @@ body{margin:0;min-height:100%;color:var(--ink);background:#000713;overflow-x:hid
 [data-edition-type="laneway"] .laneway-next-button{display:block;width:100%;min-height:44px;margin-top:14px;border:1px solid #fff;border-radius:11px;color:#111;background:#f2f2f2;font:inherit;font-size:.75rem;font-weight:900;text-transform:uppercase;cursor:pointer}
 [data-edition-type="laneway"] .laneway-result-screen{display:grid;place-items:center}
 [data-edition-type="laneway"] .laneway-result-card{text-align:center}
-[data-edition-type="laneway"] .laneway-result-logo{display:block;width:min(52%,220px);height:auto;margin:0 auto 18px;filter:invert(1) contrast(1.18);mix-blend-mode:screen}
+[data-edition-type="laneway"] .laneway-result-logo{display:block;width:min(52%,220px);height:auto;margin:0 auto 18px}
 [data-edition-type="laneway"] .laneway-result-kicker{margin:0;color:#bbb;font-size:.68rem;font-weight:900;letter-spacing:.16em;text-transform:uppercase}
 [data-edition-type="laneway"] .laneway-result-card h1{margin:20px 0 8px;color:#fff;font-size:clamp(3.6rem,18vw,5.7rem);line-height:.9}
 [data-edition-type="laneway"] .laneway-result-card h2{margin:13px 0;padding:13px;border:1px solid rgba(255,255,255,.3);border-radius:13px;color:#fff;background:#2a2a2a;font-size:clamp(1.1rem,5vw,1.45rem);text-transform:uppercase}
