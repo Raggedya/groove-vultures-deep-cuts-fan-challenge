@@ -34,9 +34,10 @@
     "newsReviews": "https://i94bar.com/?catid=19%3Afeatures&id=496%3Abloodymindedness-the-birth-of-the-celibate-rifles&view=article"
   },
   "featuredVideo": {
-    "title": "Celibate Rifles - Johnny",
-    "youtubeURL": "https://www.youtube.com/watch?v=0yPDW5NJaRY",
-    "selectionBasis": "official-label-feature",
+    "title": "Groovin' In The Land of Love by The Celibate Rifles",
+    "youtubeURL": "https://www.youtube.com/watch?v=GkZPRgnTOvg",
+    "selectionBasis": "owner-selected",
+    "ownerSelected": true,
     "verifiedAt": "2026-07-25T00:00:00.000Z"
   },
   "analytics": {

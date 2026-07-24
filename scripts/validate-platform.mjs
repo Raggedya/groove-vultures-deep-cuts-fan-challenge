@@ -54,7 +54,9 @@ for(const edition of platform.editions){
       if(config.laneway?.logoArtwork!=='assets/laneway-music-logo-source.jpg'||config.laneway?.logoTreatment!=='reverse-white')errors.push(`${edition.config} must preserve the approved reversed Laneway Music logo treatment.`);
       if(JSON.stringify(config.laneway?.heroLabels)!==JSON.stringify(['Listen','Watch','Discover','Buy']))errors.push(`${edition.config} must preserve the Laneway Listen, Watch, Discover, Buy navigation labels.`);
       if(normalized(config.laneway?.recordCompanyHomeURL)!=='https://www.lanewaymusic.com.au'||normalized(config.laneway?.recommendedArtistsURL)!=='https://www.lanewaymusic.com.au')errors.push(`${edition.config} must preserve verified Laneway Music Home and Recommended navigation.`);
-      if(!config.featuredVideo?.youtubeURL||config.featuredVideo?.selectionBasis!=='official-label-feature')errors.push(`${edition.config} requires the verified official-label featured YouTube video.`);
+      const labelSelected=config.featuredVideo?.selectionBasis==='official-label-feature';
+      const ownerSelected=config.featuredVideo?.selectionBasis==='owner-selected'&&config.featuredVideo?.ownerSelected===true;
+      if(!config.featuredVideo?.youtubeURL||(!labelSelected&&!ownerSelected))errors.push(`${edition.config} requires a verified official-label feature or an explicit owner-selected YouTube video.`);
       if(config.lanewayChallenge?.numberOfQuestions!==5||!config.lanewayChallenge?.questionFile)errors.push(`${edition.config} must preserve the isolated five-question Laneway challenge.`);
       else{
         const questionPath=String(config.lanewayChallenge.questionFile).replace(/^\//,'');
