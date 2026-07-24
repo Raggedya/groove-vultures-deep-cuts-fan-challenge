@@ -54,7 +54,9 @@ assert.doesNotMatch(lanewayArtwork,/centred_text\(draw, "LANEWAY"/,'Laneway deli
 assert.deepEqual(celibateRifles.laneway.heroLabels,['Listen','Watch','Discover','Buy']);
 assert.equal(celibateRifles.laneway.recordCompanyHomeURL,'https://www.lanewaymusic.com.au/');
 assert.equal(celibateRifles.laneway.recommendedArtistsURL,'https://www.lanewaymusic.com.au/');
-assert.equal(celibateRifles.featuredVideo.selectionBasis,'official-label-feature');
+assert.equal(celibateRifles.featuredVideo.selectionBasis,'owner-selected');
+assert.equal(celibateRifles.featuredVideo.ownerSelected,true);
+assert.equal(celibateRifles.featuredVideo.youtubeURL,'https://www.youtube.com/watch?v=GkZPRgnTOvg');
 assert.match(celibateRifles.featuredVideo.youtubeURL,/^https:\/\/www\.youtube\.com\/watch\?v=[A-Za-z0-9_-]{11}$/);
 await fs.access('assets/laneway-music-logo-source.jpg');
 

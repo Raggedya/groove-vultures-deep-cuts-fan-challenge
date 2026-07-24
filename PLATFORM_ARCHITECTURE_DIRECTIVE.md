@@ -65,6 +65,7 @@ Treat every completed edition as a finished commercial product that must remain 
 - Laneway QR and social delivery images use `DEEP CUTS` immediately above the copyright notice; they never repeat `Laneway` in that footer position.
 - Laneway's live footer also uses `Deep Cuts` immediately above the copyright notice.
 - The locked hero labels are `Listen`, `Watch`, `Discover`, `Buy`, followed immediately by the verified YouTube video selected on the official Laneway Music artist page.
+- An explicit owner-supplied replacement video may override the label selection for a named Laneway edition. It must be identity-checked, embeddable, recorded as `owner-selected` and must never be misrepresented as an official-label selection.
 - Verified artist destinations follow the video. The five-question challenge appears after those destinations and immediately before a compact `Home`, `Share`, `Recommended` row.
 - `Home` opens the official Laneway Music home page. `Recommended` opens Laneway Music's official artist catalogue. Both are analytics-tracked, direct HTTPS destinations and must never be guessed.
 - Each Laneway edition contains exactly five positive, informative, sourced multiple-choice questions about the nominated band or artist.

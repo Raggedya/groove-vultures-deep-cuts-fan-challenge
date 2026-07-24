@@ -16,6 +16,8 @@ Every Schools Edition also includes exactly six positive, factual multiple-choic
 
 The permanent Laneway discovery order is: `Listen / Watch / Discover / Buy`; the official-label-selected YouTube video; verified artist destination cards; the five-question challenge; then the compact `Home / Share / Recommended` controls. Home and Recommended use the verified Laneway Music home/artist-catalogue destination. The live footer reads `Deep Cuts` above the copyright notice. Missing or unverified artist destination cards remain omitted without changing this order.
 
+The owner may explicitly replace the featured video for a named Laneway edition. The replacement must be identity-checked and embeddable, stored as `owner-selected`, and supported by dated evidence. This exception changes only that edition and does not alter the official-label default for future editions.
+
 Every Laneway edition contains exactly five positive, informative multiple-choice questions. Each question has four distinct options, one best answer, a concise story-led explanation and matching dated, identity-verified HTTPS evidence. The tone celebrates and teaches rather than catching fans out. The quiz has its own engine, configuration and question file, and results remain encouraging at every score.
 
 ## Commercial Instinct permanent rules

@@ -30,11 +30,11 @@
     },
     {
       "destination": "featuredVideo",
-      "url": "https://www.youtube.com/watch?v=0yPDW5NJaRY",
-      "sourceType": "official label artist page embedded video",
+      "url": "https://www.youtube.com/watch?v=GkZPRgnTOvg",
+      "sourceType": "owner-selected YouTube video",
       "identityVerified": true,
       "verifiedAt": "2026-07-25T00:00:00.000Z",
-      "evidence": "Laneway Music's official Celibate Rifles artist page introduces the band's performance of Johnny and embeds this exact YouTube video as its selected feature."
+      "evidence": "The owner explicitly selected this video for the Celibate Rifles Laneway edition. YouTube oEmbed identifies it as Groovin' In The Land of Love by The Celibate Rifles, published by Stuart Spencer, and the privacy-enhanced player returned successfully."
     },
     {
       "destination": "newsReviews",

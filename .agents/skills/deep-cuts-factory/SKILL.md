@@ -25,5 +25,7 @@ For `Laneway [Band or Artist]`, use `editionType: laneway`. Preserve the exact a
 
 For a destination update, modify only the verified edition configuration and evidence, preserve the existing `editionId`, validate, auto-merge and deploy. The QR must not change.
 
+For an explicit owner-selected Laneway video replacement, verify the supplied YouTube identity and privacy-enhanced embed, record `selectionBasis: owner-selected` with `ownerSelected: true`, update matching research evidence and preserve the official-label default for every future edition.
+
 Never create another repository, expose a band name in a public URL, invent a link or video, redraw Aggits, bypass QR scan-back, or ask the owner to perform repeatable engineering work. Analytics is best effort and must never interrupt navigation. Every repeated manual step is an automation opportunity.
 
