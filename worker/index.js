@@ -25,7 +25,7 @@ export default {
       if(["/record-company/terms.html","/record-company/privacy.html"].includes(url.pathname))return recordCompanyAsset(request,env);
       if(isRecordCompanyRootPath(url.pathname))return recordCompanyHome(env,url);
       if(isRecordCompanyPagePath(url.pathname)){
-        const assetUrl=new URL("/record-company/index.html",url.origin);
+        const assetUrl=new URL("/record-company/",url.origin);
         return recordCompanyAsset(new Request(assetUrl,request),env);
       }
       if(url.pathname.startsWith("/api/sell/"))return handleSales(request,env,ctx,url);
