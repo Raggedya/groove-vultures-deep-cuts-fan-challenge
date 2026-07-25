@@ -66,6 +66,23 @@ for(const edition of platform.editions){
         for(const question of questions)if(!research.sources.some(source=>source.identityVerified===true&&normalized(source.url)===normalized(question.sourceURL)))errors.push(`${questionPath} question ${question.id} lacks matching verified source evidence.`);
       }
       await fs.access(config.laneway.logoArtwork);
+    }else if(config.editionType==='laneway_company'){
+      if(config.characterArtwork)errors.push(`${edition.config} Laneway Music company edition must never configure character artwork.`);
+      if(config.lanewayCompany?.logoArtwork!=='assets/laneway-music-logo-reverse-transparent.png'||config.lanewayCompany?.logoTreatment!=='reverse-white-transparent')errors.push(`${edition.config} must preserve the approved transparent reverse-white Laneway Music logo treatment.`);
+      if(normalized(config.lanewayCompany?.recordCompanyHomeURL)!=='https://www.lanewaymusic.com.au/about'||normalized(config.lanewayCompany?.recommendedArtistsURL)!=='https://www.lanewaymusic.com.au')errors.push(`${edition.config} must preserve the verified Laneway Music company navigation.`);
+      if(config.featuredVideo?.selectionBasis!=='owner-selected'||config.featuredVideo?.ownerSelected!==true||!config.featuredVideo?.youtubeURL)errors.push(`${edition.config} requires the explicit owner-selected featured video.`);
+      if(config.lanewayCompanyChallenge?.numberOfQuestions!==8||!config.lanewayCompanyChallenge?.questionFile)errors.push(`${edition.config} must preserve the isolated eight-question Laneway Music challenge.`);
+      else{
+        const questionPath=String(config.lanewayCompanyChallenge.questionFile).replace(/^\//,'');
+        const questions=JSON.parse(await fs.readFile(questionPath,'utf8'));
+        validateLanewayCompanyQuestions(questions,questionPath,errors);
+        const research=JSON.parse(await fs.readFile(edition.config.replace(/edition\.json$/,'research.json'),'utf8'));
+        for(const question of questions)if(!research.sources.some(source=>source.identityVerified===true&&normalized(source.url)===normalized(question.sourceURL)))errors.push(`${questionPath} question ${question.id} lacks matching verified source evidence.`);
+      }
+      const rosterPath=String(config.lanewayCompany?.rosterFile||'').replace(/^\//,'');
+      const roster=JSON.parse(await fs.readFile(rosterPath,'utf8'));
+      validateLanewayCompanyRoster(roster,rosterPath,errors);
+      await fs.access(config.lanewayCompany.logoArtwork);
     }else await fs.access(config.characterArtwork);
     for(const[key,value]of Object.entries(config.links||{}))if(value&&(!/^https:\/\//.test(value)||authenticationWall(value)))errors.push(`${edition.config} links.${key} must be a direct HTTPS destination, never an authentication URL.`);
     if(config.featuredVideo?.youtubeURL&&!/^https:\/\/(?:www\.)?(?:youtube\.com|youtu\.be)\//i.test(config.featuredVideo.youtubeURL))errors.push(`${edition.config} featuredVideo.youtubeURL must be a verified YouTube URL.`);
@@ -100,6 +117,29 @@ function validateLanewayQuestions(questions,file,errors){
     if(ids.has(question.id)||prompts.has(String(question.question).toLowerCase()))errors.push(`${file} contains a duplicate question.`);
     if(!Array.isArray(question.options)||question.options.length!==4||new Set(question.options).size!==4||!question.options.includes(question.correctAnswer))errors.push(`${file} question ${question.id||'unknown'} requires four unique choices including the correct answer.`);
     ids.add(question.id);prompts.add(String(question.question).toLowerCase());
+  }
+}
+function validateLanewayCompanyQuestions(questions,file,errors){
+  if(!Array.isArray(questions)||questions.length!==8){errors.push(`${file} must contain exactly eight Laneway Music company questions.`);return}
+  const ids=new Set(),prompts=new Set();
+  for(const question of questions){
+    if(!question.active||!question.id||!question.question||String(question.explanation||'').length<50||!question.sourceName||!/^https:\/\//.test(question.sourceURL||''))errors.push(`${file} contains an incomplete Laneway Music company question.`);
+    if(ids.has(question.id)||prompts.has(String(question.question).toLowerCase()))errors.push(`${file} contains a duplicate question.`);
+    if(!Array.isArray(question.options)||question.options.length!==4||new Set(question.options).size!==4||!question.options.includes(question.correctAnswer))errors.push(`${file} question ${question.id||'unknown'} requires four unique choices including the correct answer.`);
+    ids.add(question.id);prompts.add(String(question.question).toLowerCase());
+  }
+}
+function validateLanewayCompanyRoster(roster,file,errors){
+  if(!Array.isArray(roster.artists)||roster.artists.length<1){errors.push(`${file} requires at least one verified Laneway artist.`);return}
+  if(roster.pendingArtistCount!==0)errors.push(`${file} still has pending artists.`);
+  const names=new Set(),spotify=new Set();
+  for(const artist of roster.artists){
+    const name=String(artist.name||'').trim(),spotifyURL=normalized(artist.spotifyURL);
+    if(!name||!/^https:\/\/open\.spotify\.com\/artist\/[A-Za-z0-9]+$/i.test(spotifyURL))errors.push(`${file} contains an invalid direct Spotify artist destination for ${name||'unknown'}.`);
+    if(!/^https:\/\/www\.lanewaymusic\.com\.au\//i.test(artist.sourceURL||''))errors.push(`${file} artist ${name||'unknown'} lacks an official Laneway source page.`);
+    if(artist.websiteURL&&!/^https:\/\//i.test(artist.websiteURL))errors.push(`${file} artist ${name} has an invalid optional website.`);
+    if(names.has(name.toLowerCase())||spotify.has(spotifyURL))errors.push(`${file} contains a duplicate artist or Spotify destination: ${name}.`);
+    names.add(name.toLowerCase());spotify.add(spotifyURL);
   }
 }
 

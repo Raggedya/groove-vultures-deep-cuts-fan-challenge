@@ -1,0 +1,90 @@
+[
+  {
+    "id": "laneway-founded",
+    "category": "The Beginning",
+    "question": "In which year was Laneway Music founded?",
+    "options": ["2015", "2005", "1995", "2020"],
+    "correctAnswer": "2015",
+    "explanation": "Laneway Music was founded in September 2015. Its beginnings came from a practical music-lover's problem: important artists and recordings were difficult to find on modern digital services.",
+    "sourceName": "Laneway Music — About",
+    "sourceURL": "https://www.lanewaymusic.com.au/about",
+    "active": true
+  },
+  {
+    "id": "laneway-purpose",
+    "category": "Purpose",
+    "question": "What problem helped inspire the creation of Laneway Music?",
+    "options": ["Favourite artists were missing from digital platforms", "Concert tickets were too expensive", "Radio stations played too much new music", "Record stores had stopped selling vinyl"],
+    "correctAnswer": "Favourite artists were missing from digital platforms",
+    "explanation": "The founders describe being unable to access some of their favourite artists digitally. Laneway was created to help make that music available worldwide rather than let it disappear from easy reach.",
+    "sourceName": "Laneway Music — About",
+    "sourceURL": "https://www.lanewaymusic.com.au/about",
+    "active": true
+  },
+  {
+    "id": "laneway-artist-values",
+    "category": "Artist Values",
+    "question": "Which promise sits at the heart of Laneway Music's relationship with artists?",
+    "options": ["Transparent, respectful and fair treatment", "Exclusive lifetime contracts", "A compulsory touring schedule", "Re-recording every catalogue album"],
+    "correctAnswer": "Transparent, respectful and fair treatment",
+    "explanation": "Laneway explicitly describes its artist relationships as transparent, respectful and fair, with a commitment to ensuring artists are paid fairly and on time for their music.",
+    "sourceName": "Laneway Music — About",
+    "sourceURL": "https://www.lanewaymusic.com.au/about",
+    "active": true
+  },
+  {
+    "id": "laneway-founders",
+    "category": "People",
+    "question": "Who are the two directors named by Laneway Music?",
+    "options": ["Vincent Donato and Dan Bradley", "Michael Gudinski and Chris Murphy", "Nick Cave and Warren Ellis", "Molly Meldrum and Lee Simon"],
+    "correctAnswer": "Vincent Donato and Dan Bradley",
+    "explanation": "Laneway Music identifies Vincent Donato and Dan Bradley as its directors. Their experience spans music, media, digital strategy, technology and the development of Australian artists.",
+    "sourceName": "Laneway Music — About",
+    "sourceURL": "https://www.lanewaymusic.com.au/about",
+    "active": true
+  },
+  {
+    "id": "laneway-vincent",
+    "category": "Industry Story",
+    "question": "Which major Australian music company did Vincent Donato join in the mid-1980s?",
+    "options": ["Mushroom Records", "Alberts", "Festival Records", "EMI Australia"],
+    "correctAnswer": "Mushroom Records",
+    "explanation": "Vincent Donato joined Mushroom Records in the mid-1980s. His career later included Shock Records, Mushroom's commercial division, Liberator Music, Third Verse and the creation of Laneway Music.",
+    "sourceName": "Laneway Music — About",
+    "sourceURL": "https://www.lanewaymusic.com.au/about",
+    "active": true
+  },
+  {
+    "id": "laneway-dan",
+    "category": "Media Story",
+    "question": "Which Australian radio network did Dan Bradley help co-design and launch?",
+    "options": ["Nova FM", "Triple J", "SYN Media", "PBS 106.7FM"],
+    "correctAnswer": "Nova FM",
+    "explanation": "Dan Bradley's background combines programming and brand strategy. Laneway's history notes that he helped co-design and launch the Nova FM network before building other media ventures.",
+    "sourceName": "Laneway Music — About",
+    "sourceURL": "https://www.lanewaymusic.com.au/about",
+    "active": true
+  },
+  {
+    "id": "laneway-sync",
+    "category": "Music in Pictures",
+    "question": "What can Laneway Music offer when it controls both the master recording and publishing?",
+    "options": ["One-stop, 100% sync clearance", "Automatic radio airplay", "A guaranteed chart position", "Free international touring"],
+    "correctAnswer": "One-stop, 100% sync clearance",
+    "explanation": "Laneway explains that when it controls both the master and publishing, it can provide one-stop, 100% clearance for film, television and other synchronisation uses.",
+    "sourceName": "Laneway Music — Sync",
+    "sourceURL": "https://www.lanewaymusic.com.au/sync",
+    "active": true
+  },
+  {
+    "id": "laneway-ekko",
+    "category": "Electronic Music",
+    "question": "What is the name of Laneway Music's specialist electronic label?",
+    "options": ["Ekko Music", "Neon Lane", "Pulse Archive", "Circuit House"],
+    "correctAnswer": "Ekko Music",
+    "explanation": "Ekko Music is Laneway's specialist electronic label. Its catalogue includes music connected with Puretone and Josh Abrahams as well as Them Swoops.",
+    "sourceName": "Laneway Music — Ekko Music",
+    "sourceURL": "https://www.lanewaymusic.com.au/ekkomusic",
+    "active": true
+  }
+]

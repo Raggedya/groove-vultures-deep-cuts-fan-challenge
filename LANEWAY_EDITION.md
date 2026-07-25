@@ -37,3 +37,9 @@ The experience gives immediate, friendly feedback and an encouraging result. It 
 ## Research and publication
 
 The official Laneway Music artist page supplies the verified featured YouTube selection. Verified music destinations follow the normal direct-link standard. Unavailable destinations are omitted. The factory, platform validator and Laneway-specific regression test must pass before publication. Delivery artwork uses the approved logo and charcoal identity, and the QR must scan back to the opaque `/q/<editionId>` route at full and reduced social-media size.
+
+## One-off Laneway Music company page
+
+The separately typed `laneway_company` edition is an approved one-off and does not change the standard `Laneway [Band or Artist]` workflow above. It has a logo-only heading, the owner-selected Celibate Rifles feature video, an isolated eight-question company quiz, and a searchable artist directory.
+
+The directory begins with the official Laneway Music roster. An artist is published only when its official Laneway profile or a distinctive exact-name verification resolves to a direct `open.spotify.com/artist/...` destination. Ambiguous names fail closed. An official artist website is optional and appears only when it is explicitly published through a reliable artist or Laneway source. The resolver checkpoints its work, records omissions, and must finish with zero pending entries before publication.
