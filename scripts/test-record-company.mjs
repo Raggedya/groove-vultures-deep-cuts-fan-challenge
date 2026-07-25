@@ -33,6 +33,8 @@ assert.deepEqual(wixCandidates.map(item=>item.url),[
 ]);
 assert.ok(wixCandidates.every(item=>item.confidenceScore>=PUBLICATION_CONFIDENCE));
 assert.ok(!wixCandidates.some(item=>["Sync","Artists","Search Results"].includes(item.name)));
+const evidenceUrls=__test.companyEvidenceUrls(`${home}<script type="application/json">{"pageUriSEO":"about"}</script>`,"https://midnightharbour.example/");
+assert.deepEqual(evidenceUrls,["https://midnightharbour.example/about"]);
 
 const links=__test.extractLinks(neon,"https://midnightharbour.example/artists/neon-tide","artist");
 assert.deepEqual(links.map(item=>item.type).sort(),["instagram","spotify","youtube"]);
@@ -61,6 +63,15 @@ const aiQuiz=await __test.generateQuiz({RECORD_COMPANY_RESEARCH_PROVIDER:{analys
   entityType:"artist",name:"Neon Tide",description:"Official artist",pageText:"Official facts",sourceUrl:"https://midnightharbour.example/artists/neon-tide"
 });
 assert.equal(validateQuiz(aiQuiz),true);
+let quizQualityAttempts=0;
+const qualityRetriedQuiz=await __test.generateQuiz({RECORD_COMPANY_RESEARCH_PROVIDER:{analyse:async()=>{
+  quizQualityAttempts++;
+  return{title:"Discover Neon Tide",questions:quizQualityAttempts===1?questions.slice(0,4):questions};
+}}},{
+  entityType:"artist",name:"Neon Tide",description:"Official artist",pageText:"Official facts",sourceUrl:"https://midnightharbour.example/artists/neon-tide"
+});
+assert.equal(quizQualityAttempts,2);
+assert.equal(validateQuiz(qualityRetriedQuiz),true);
 assert.deepEqual(__test.parseStructuredAIResult({response:{name:"Laneway Music"}}),{name:"Laneway Music"});
 assert.deepEqual(__test.parseStructuredAIResult({response:'```json\n{"name":"Laneway Music"}\n```'}),{name:"Laneway Music"});
 assert.deepEqual(__test.parseStructuredAIResult({response:'Here is the result: {"name":"Laneway Music"}'}),{name:"Laneway Music"});

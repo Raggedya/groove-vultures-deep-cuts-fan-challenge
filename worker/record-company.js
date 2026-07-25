@@ -8,6 +8,7 @@ const AI_MODEL="@cf/meta/llama-4-scout-17b-16e-instruct";
 const ROBOTS_CACHE=new Map();
 const ROSTER_TERMS=/\b(artists?|roster|bands?|acts?|talent|our\s+music|catalogue)\b/i;
 const NON_ARTIST_TERMS=/\b(news|release|album|single|shop|store|merch|contact|about|privacy|terms|licen[cs]|publish|distribution|playlist|event|tour|login|sign|cart|search|staff|team)\b/i;
+const COMPANY_EVIDENCE_TERMS=/\b(about|our[\s-]+story|history|who[\s-]+we[\s-]+are|mission|philosophy|values)\b/i;
 const WIX_NON_ARTIST_PAGES=new Set([
   "about","artists","catalogue","contact","events","fullscreen-page","home","licensing","mailing-list",
   "news","playlists","privacy","search","search-results","search-results-page","shop","store","submit-music",
@@ -108,7 +109,8 @@ async function validateAndDiscoverCompany(job,checkpoint,env){
   if(validHttpsUrl(settings.recordCompanyLogo))profile.logoUrl=settings.recordCompanyLogo;
   if(profile.confidenceScore<PUBLICATION_CONFIDENCE)throw new Error("The record-company identity could not be verified to 98% confidence.");
   const companyId=`rc_${hashId(profile.canonicalDomain)}`;
-  const companyQuiz=await generateQuiz(env,{entityType:"record_company",name:profile.name,description:profile.description,pageText:page.text,sourceUrl:page.url});
+  const companyEvidence=await collectCompanyEvidence(page,env);
+  const companyQuiz=await generateQuiz(env,{entityType:"record_company",name:profile.name,description:profile.description,pageText:companyEvidence.text,sourceUrl:companyEvidence.primaryUrl});
   if(!validateQuiz(companyQuiz))throw new Error("Five verified record-company quiz questions could not be generated.");
   const now=new Date().toISOString();
   await env.DB.prepare(`INSERT INTO record_companies
@@ -123,6 +125,41 @@ async function validateAndDiscoverCompany(job,checkpoint,env){
   await saveSources(env,companyId,null,"record_company",companyId,profile.evidence);
   await env.DB.prepare("UPDATE record_company_jobs SET record_company_id=?1,status='discovering_company',current_stage='discovering_company',checkpoint_json=?2,updated_at=?3 WHERE job_id=?4")
     .bind(companyId,JSON.stringify({...checkpoint,companyPage:{url:page.url,html:page.html.slice(0,500000)},companySlug:profile.slug}),now,job.job_id).run();
+}
+
+async function collectCompanyEvidence(home,env){
+  const urls=companyEvidenceUrls(home.html,home.url).slice(0,4);
+  const pages=[{url:home.url,text:home.text}];
+  for(const url of urls){
+    if(url===home.url)continue;
+    try{
+      const page=await fetchOfficial(url,home.url);
+      if(page.text.length>=120)pages.push({url:page.url,text:page.text});
+    }catch(error){
+      console.warn("record-company-evidence-page-skipped",url,safeError(error));
+    }
+    await delay(100);
+  }
+  const detailed=pages.find(page=>page.url!==home.url&&page.text.length>=400);
+  return{
+    primaryUrl:detailed?.url||home.url,
+    text:pages.map(page=>`OFFICIAL SOURCE: ${page.url}\n${page.text}`).join("\n\n").slice(0,30000)
+  };
+}
+
+function companyEvidenceUrls(html,base){
+  const urls=[];
+  for(const link of extractAnchors(html,base)){
+    if(sameDomain(link.url,base)&&COMPANY_EVIDENCE_TERMS.test(`${link.text} ${new URL(link.url).pathname}`))urls.push(link.url);
+  }
+  for(const match of String(html||"").matchAll(/"pageUriSEO"\s*:\s*"([^"]+)"/g)){
+    const pagePath=decodeJsonString(match[1]).replace(/^\/+/,"");
+    if(COMPANY_EVIDENCE_TERMS.test(pagePath)){
+      const url=absoluteUrl(pagePath,base);
+      if(url&&sameDomain(url,base))urls.push(normalizeUrl(url));
+    }
+  }
+  return [...new Set(urls)];
 }
 
 async function discoverRoster(job,checkpoint,env){
@@ -419,16 +456,22 @@ The artist is ${input.name}. Official source: ${input.sourceUrl}. Text:\n${input
 }
 
 async function generateQuiz(env,input){
-  const response=await structuredAI(env,`Create exactly five positive, intelligent, surprising multiple-choice questions about this ${input.entityType}.
+  const prompt=`Create exactly five positive, intelligent, surprising multiple-choice questions about this ${input.entityType}.
 Use only facts explicitly supported by the official source text. Each question must have one unambiguous answer, four unique plausible choices, a concise informative explanation,
 the supplied HTTPS source URL, and confidenceScore at least 0.98 only when truly supported. Avoid negative framing, gossip, failure, generic trivia and substantial song lyrics.
 Return JSON: {"title":"...","questions":[{"id":"q1","displayOrder":1,"question":"...","options":["...","...","...","..."],"correctAnswer":"...","explanation":"...","sourceUrl":"${input.sourceUrl}","evidence":"short supporting fact","confidenceScore":0.99}, ...]}.
-Name: ${input.name}. Description: ${input.description||""}. Official source text:\n${input.pageText.slice(0,30000)}`);
-  return{id:`quiz_${hashId(`${input.entityType}:${input.name}`)}`,title:cleanText(response.title,160)||`Discover ${input.name}`,questions:(response.questions||[]).map((question,index)=>({
-    id:cleanText(question.id,60)||`q${index+1}`,displayOrder:index+1,question:cleanText(question.question,220),options:(question.options||[]).map(item=>cleanText(item,140)),
-    correctAnswer:cleanText(question.correctAnswer,140),explanation:cleanText(question.explanation,500),sourceUrl:input.sourceUrl,evidence:cleanText(question.evidence,500),
-    confidenceScore:Number(question.confidenceScore||0)
-  }))};
+Name: ${input.name}. Description: ${input.description||""}. Official source text:\n${input.pageText.slice(0,30000)}`;
+  let quiz={id:`quiz_${hashId(`${input.entityType}:${input.name}`)}`,title:`Discover ${input.name}`,questions:[]};
+  for(let attempt=0;attempt<3;attempt++){
+    const response=await structuredAI(env,`${prompt}${attempt?`\nA previous draft failed the strict five-question evidence gate. Regenerate all five questions and ensure every answer is directly supported, every confidenceScore is at least 0.98, every question has four unique options, and each correct answer exactly matches one option.`:""}`);
+    quiz={id:quiz.id,title:cleanText(response.title,160)||`Discover ${input.name}`,questions:(response.questions||[]).map((question,index)=>({
+      id:cleanText(question.id,60)||`q${index+1}`,displayOrder:index+1,question:cleanText(question.question,220),options:(question.options||[]).map(item=>cleanText(item,140)),
+      correctAnswer:cleanText(question.correctAnswer,140),explanation:cleanText(question.explanation,500),sourceUrl:input.sourceUrl,evidence:cleanText(question.evidence,500),
+      confidenceScore:Number(question.confidenceScore||0)
+    }))};
+    if(validateQuiz(quiz))return quiz;
+  }
+  return quiz;
 }
 
 async function structuredAI(env,prompt){
@@ -660,5 +703,5 @@ function toCsv(rows){const columns=[...new Set(rows.flatMap(row=>Object.keys(row
 
 export const __test={
   extractCompanyProfile,extractArtistCandidates,extractWixPageCandidates,dedupeCandidates,extractLinks,extractPalette,
-  normalizeUrl,sameDomain,reconciliationReport,generateQuiz,structuredAI,parseStructuredAIResult,hashId,destinationAllowed,robotsAllowsPath
+  normalizeUrl,sameDomain,reconciliationReport,generateQuiz,structuredAI,parseStructuredAIResult,companyEvidenceUrls,hashId,destinationAllowed,robotsAllowsPath
 };
