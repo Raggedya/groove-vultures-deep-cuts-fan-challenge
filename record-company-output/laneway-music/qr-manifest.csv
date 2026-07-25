@@ -1,5 +1,5 @@
 ﻿entityId,entityType,featured,label,png,svg,trackingUrl,verified
-rc_b9181116,record_company,True,laneway-music,qr/record-company.png,qr/record-company.svg,https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_978fbcca,True
+rc_b9181116,record_company,True,Laneway Music,qr/record-company.png,qr/record-company.svg,https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_978fbcca,True
 rca_f0860652,artist,False,Argus,qr/argus.png,qr/argus.svg,https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_54ea6ab1,True
 rca_26e83b0c,artist,False,Billy Miller,qr/billy-miller.png,qr/billy-miller.svg,https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_aa822441,True
 rca_effd9d86,artist,False,Billy T,qr/billy-t.png,qr/billy-t.svg,https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_e47df766,True

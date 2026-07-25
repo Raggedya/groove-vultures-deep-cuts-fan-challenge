@@ -1,6 +1,6 @@
 ﻿artist_id,confidence_score,http_status,label,last_checked_at,link_id,link_type,record_company_id,redirect_url,source_url,url,validation_status
-,0.99,200,About,2026-07-25T03:28:06.329Z,rcl_85c9f4ad,about,rc_b9181116,https://www.lanewaymusic.com.au/about,https://www.lanewaymusic.com.au/,https://www.lanewaymusic.com.au/about,verified
-,0.99,200,Artists,2026-07-25T03:28:06.475Z,rcl_d51e1223,artists,rc_b9181116,https://www.lanewaymusic.com.au/,https://www.lanewaymusic.com.au/,https://www.lanewaymusic.com.au/,verified
+,0.99,200,About,2026-07-25T04:54:16.087Z,rcl_85c9f4ad,about,rc_b9181116,https://www.lanewaymusic.com.au/about,https://www.lanewaymusic.com.au/,https://www.lanewaymusic.com.au/about,verified
+,0.99,200,Artists,2026-07-25T04:54:16.212Z,rcl_d51e1223,artists,rc_b9181116,https://www.lanewaymusic.com.au/,https://www.lanewaymusic.com.au/,https://www.lanewaymusic.com.au/,verified
 rca_01f22af2,0.99,200,About,2026-07-25T03:39:28.835Z,rcl_6632d407,about,rc_b9181116,https://www.lanewaymusic.com.au/about,https://www.lanewaymusic.com.au/fuzzrays,https://www.lanewaymusic.com.au/about,verified
 rca_01f22af2,0.99,200,Artists,2026-07-25T03:39:28.964Z,rcl_6fd02bad,artists,rc_b9181116,https://www.lanewaymusic.com.au/,https://www.lanewaymusic.com.au/fuzzrays,https://www.lanewaymusic.com.au/,verified
 rca_0443ced3,0.99,200,About,2026-07-25T03:57:37.618Z,rcl_4f4412c9,about,rc_b9181116,https://www.lanewaymusic.com.au/about,https://www.lanewaymusic.com.au/spencerpjones,https://www.lanewaymusic.com.au/about,verified

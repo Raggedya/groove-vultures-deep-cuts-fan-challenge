@@ -1,8 +1,8 @@
 {
   "version": 1,
-  "recordCompany": "laneway-music",
+  "recordCompany": "Laneway Music",
   "recordCompanySlug": "laneway-music",
-  "generatedAt": "2026-07-25T04:12:58.473866+00:00",
+  "generatedAt": "2026-07-25T04:56:23.563711+00:00",
   "masterQrFile": "laneway-music-deep-cuts-qr-collection.png",
   "xlsxFile": "laneway-music-deep-cuts-report.xlsx",
   "reportingZipFile": "laneway-music-deep-cuts-reporting.zip",
@@ -12,7 +12,7 @@
     {
       "entityType": "record_company",
       "entityId": "rc_b9181116",
-      "label": "laneway-music",
+      "label": "Laneway Music",
       "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_978fbcca",
       "png": "qr/record-company.png",
       "svg": "qr/record-company.svg",
