@@ -17,6 +17,10 @@ assert.equal(profile.slug,"midnight-harbour-records");
 assert.equal(profile.confidenceScore,0.99);
 assert.match(profile.logoUrl,/\/media\/logo\.svg$/);
 assert.ok(/^#[0-9a-f]{6}$/i.test(profile.brandPalette.primary));
+const wixIdentity=__test.extractCompanyProfile('<meta property="og:site_name" content="laneway-music"><meta name="description" content="Official label">',"https://www.lanewaymusic.com.au/");
+assert.equal(wixIdentity.name,"Laneway Music");
+assert.equal(wixIdentity.slug,"laneway-music");
+assert.equal(wixIdentity.logoUrl,"");
 
 const candidates=__test.extractArtistCandidates(roster,"https://midnightharbour.example/artists","https://midnightharbour.example/");
 const unique=__test.dedupeCandidates(candidates);
