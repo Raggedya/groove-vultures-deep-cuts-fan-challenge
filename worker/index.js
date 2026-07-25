@@ -49,12 +49,36 @@ export default {
 };
 
 async function recordCompanyAsset(request,env){
-  const asset=await env.ASSETS.fetch(request),headers=new Headers(asset.headers);
+  const pathname=new URL(request.url).pathname;
+  const legal=recordCompanyLegalDocument(pathname);
+  const asset=legal
+    ?new Response(legal,{headers:{"content-type":"text/html; charset=utf-8","cache-control":"public, max-age=300"}})
+    :await env.ASSETS.fetch(request);
+  const headers=new Headers(asset.headers);
   headers.set("content-security-policy","default-src 'self'; img-src 'self' https: data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; media-src 'self'; frame-src https://www.youtube-nocookie.com; frame-ancestors 'none'; base-uri 'none'; form-action 'none'");
   headers.set("referrer-policy","strict-origin-when-cross-origin");
   headers.set("x-content-type-options","nosniff");
   headers.set("permissions-policy","camera=(), microphone=(), geolocation=()");
   return new Response(asset.body,{status:asset.status,statusText:asset.statusText,headers});
+}
+
+function recordCompanyLegalDocument(pathname){
+  const privacy=pathname==="/record-company/privacy.html";
+  const terms=pathname==="/record-company/terms.html";
+  if(!privacy&&!terms)return "";
+  const title=privacy?"Record Company Edition privacy":"Record Company Edition terms";
+  const paragraphs=privacy?[
+    "The Record Company Edition uses privacy-conscious session identifiers to understand page journeys, quiz engagement, QR scans and outbound-link choices.",
+    "It does not store raw IP addresses, use invasive fingerprinting, collect platform login details or claim that a click became a stream, follow, share or sale.",
+    "Operational records may include timestamps, device category, referring source, collection identifier, artist identifier and the action selected. These records support reporting, reliability and link maintenance.",
+    "Record-company and artist information is drawn from publicly accessible sources. Contact the Deep Cuts operator if published information requires correction."
+  ]:[
+    "Deep Cuts is an independent music-discovery experience. There is no endorsement, partnership or approval by the featured record company or artist unless that is expressly stated.",
+    "Company, artist, music, video and platform names remain the property of their respective owners. Links lead to third-party services governed by their own terms.",
+    "Profiles and quizzes are produced from publicly accessible sources and may become outdated. Do not rely on this service as an authoritative catalogue or legal record.",
+    "Automated access, interference, misuse of QR tracking routes, or attempts to compromise the service are prohibited."
+  ];
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${title} | Deep Cuts</title><link rel="stylesheet" href="/record-company/styles.css?v=1"></head><body><main class="rc-app"><article class="rc-legal"><span class="rc-mark">Deep Cuts</span><h1>${title}</h1>${paragraphs.map(text=>`<p>${text}</p>`).join("")}<a class="rc-button rc-wide" href="/">Return to Deep Cuts</a></article></main></body></html>`;
 }
 
 async function handleQr(request,env,ctx,url){
