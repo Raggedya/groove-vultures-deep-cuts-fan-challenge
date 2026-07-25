@@ -31,6 +31,12 @@
       "allowedLinks": ["buyMusic", "spotify", "instagram", "bandcamp", "youtube", "facebook", "website", "merchandise", "newsReviews"],
       "renderedLinks": ["buyMusic", "spotify", "instagram", "bandcamp", "youtube", "facebook", "website", "merchandise", "newsReviews"],
       "exclusiveConfig": ["laneway", "lanewayChallenge"]
+    },
+    "record_company": {
+      "brandNames": ["Deep Cuts — Record Company Edition"],
+      "allowedLinks": [],
+      "renderedLinks": [],
+      "exclusiveConfig": ["recordCompany"]
     }
   }
 }

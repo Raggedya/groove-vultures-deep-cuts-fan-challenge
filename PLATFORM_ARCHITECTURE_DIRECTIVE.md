@@ -76,3 +76,15 @@ Treat every completed edition as a finished commercial product that must remain 
 ## Decision-intelligence module contract
 
 “I Want to Sell to This Company” is an isolated decision-intelligence module, not an edition. Its public route is `/sell/`, its Worker namespace is `/api/sell/*`, its data tables use the `sales_` prefix and its executable schema lives in `sell/schemas.js`. It must never import edition-specific business rules or store sales data in edition tables. Existing editions must remain operational if this module is removed.
+
+## Record Company Edition contract
+
+- `record_company` is an independent parent/child discovery ecosystem. It uses `/record-company/*`, `/api/record-company/*` and D1 tables prefixed `record_company_`.
+- It never enters or modifies standard Music, Cars, Clubs, Schools, Laneway or Commercial Instinct configuration.
+- One official company URL authorises unattended processing of the complete accessible roster. Failures are isolated and recorded.
+- Publication requires at least 98% confidence in company association, artist identity, direct destinations and every question.
+- The company and each published artist have exactly five positive, sourced questions and stable tracked QR routes.
+- Aggits is absent from every page, state, quiz, QR, report and email.
+- The company page provides fair random discovery. Artist pages provide same-roster recommendations and a direct company-home route.
+- Every QR is decoded individually and from the Ultra HD master grid before delivery.
+- D1 is the reporting source of truth. Completion delivery uses the existing encrypted Resend integration.
