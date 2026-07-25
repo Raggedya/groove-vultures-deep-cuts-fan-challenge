@@ -19,8 +19,9 @@ async function boot(){
   if(!response.ok)throw new Error("Public collection unavailable");
   const payload=await response.json();
   state.company=payload.company;state.artist=payload.artist||null;
+  document.body.dataset.rcView=state.artist?"artist":"company";
   applyPalette(state.company.brandPalette);
-  if(state.artist)renderArtist(payload);else renderCompany(payload);
+  if(state.artist)renderArtistMaster(payload);else renderCompany(payload);
   track(state.artist?"artist_page_view":"company_page_view",{artist_id:state.artist?.id});
 }
 
@@ -39,23 +40,68 @@ function renderCompany({company,artists}){
   wireOutbound();
 }
 
-function renderArtist({company,artist,artists}){
+function renderArtistMaster({company,artist,artists}){
   document.title=`${artist.name} — ${company.name} Deep Cuts`;
-  app.innerHTML=`${header(company,artist)}
-    ${artist.featuredVideo?.embedUrl?`<figure class="rc-hero rc-video"><iframe src="${escapeAttr(artist.featuredVideo.embedUrl)}" title="${escapeAttr(artist.featuredVideo.title||`${artist.name} featured video`)}" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen></iframe></figure>`:artist.heroAsset?`<figure class="rc-hero"><img src="${escapeAttr(artist.heroAsset)}" alt="${escapeAttr(artist.name)}" loading="eager"></figure>`:""}
-    <p class="rc-section-label">Explore ${escapeHtml(artist.name)}</p>
-    <div class="rc-actions">
-      ${linksMarkup(artist.links)}
-      <button class="rc-button rc-wide" id="artistQuiz"><span><strong>Artist Quiz</strong><small>Five positive deep-cut questions</small></span></button>
+  app.innerHTML=`${artistHeader(company,artist)}
+    ${featuredMedia(artist)}
+    <div class="rc-actions rc-artist-actions">
+      ${artistLinksMarkup(artist.links,Boolean(artist.featuredVideo?.embedUrl))}
+      <button class="rc-button rc-wide rc-quiz-button" id="artistQuiz"><span><strong>How Well Do You Know ${escapeHtml(artist.name)}?</strong><small>Take the Five-Question Quiz</small></span><b class="rc-arrow" aria-hidden="true">&gt;</b></button>
     </div>
-    <div class="rc-utilities">
-      <button class="rc-button" id="recommendedArtist"><span><strong>Recommended For You</strong><small>Another label artist</small></span></button>
-      <a class="rc-button" id="backCompany" href="/record-company/${encodeURIComponent(company.slug)}"><span><strong>Back to ${escapeHtml(company.name)}</strong><small>Record-company home</small></span></a>
+    <div class="rc-utilities rc-artist-utilities">
+      <button class="rc-utility-button" id="shareArtist" type="button">Share</button>
+      <button class="rc-utility-button" id="recommendedArtist" type="button" aria-label="Recommended For You">Recommended</button>
+      <a class="rc-utility-button" id="backCompany" href="/record-company/${encodeURIComponent(company.slug)}" aria-label="Back to ${escapeAttr(company.name)}">Home</a>
     </div>${footer(company)}`;
   document.getElementById("artistQuiz")?.addEventListener("click",()=>openQuiz(artist.quiz,"artist"));
   document.getElementById("recommendedArtist")?.addEventListener("click",()=>recommendArtist(artists,artist));
   document.getElementById("backCompany")?.addEventListener("click",()=>track("back_to_company",{artist_id:artist.id}));
+  document.getElementById("shareArtist")?.addEventListener("click",()=>shareArtist(company,artist));
   rememberViewed(artist.id);wireOutbound();
+}
+
+function artistHeader(company,artist){
+  return `<header class="rc-header rc-artist-header">
+    ${company.logoUrl?`<img class="rc-logo rc-artist-logo" src="${escapeAttr(company.logoUrl)}" alt="${escapeAttr(company.name)} logo">`:`<strong class="rc-company-wordmark">${escapeHtml(company.name)}</strong>`}
+    <div class="rc-artist-title-row"><span aria-hidden="true"></span><h1 class="rc-title">${escapeHtml(artist.name)}</h1><span aria-hidden="true"></span></div>
+    <p class="rc-description">${escapeHtml(compactBio(artist.biography||artist.description||`Discover ${artist.name} through ${company.name}.`))}</p>
+    ${waveformMarkup()}
+    <nav class="rc-intent-strip" aria-label="Artist discovery categories"><span>Listen</span><span>Watch</span><span>Discover</span><span>Buy</span></nav>
+  </header>`;
+}
+function waveformMarkup(){
+  const heights=[6,10,13,18,12,22,16,28,20,35,24,42,30,50,34,58,39,64,45,52,36,61,42,55,33,47,27,39,22,31,17,25,13,19,10,14,7];
+  return `<div class="rc-waveform" aria-hidden="true"><i></i><div>${heights.map(height=>`<span style="height:${height}%"></span>`).join("")}</div><i></i></div>`;
+}
+function featuredMedia(artist){
+  if(artist.featuredVideo?.embedUrl)return `<section class="rc-featured">
+    <div class="rc-featured-heading"><span>Featured Video</span><strong>${escapeHtml(artist.featuredVideo.title||`${artist.name} featured video`)}</strong></div>
+    <div class="rc-video"><iframe src="${escapeAttr(artist.featuredVideo.embedUrl)}" title="${escapeAttr(artist.featuredVideo.title||`${artist.name} featured video`)}" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
+  </section>`;
+  return artist.heroAsset?`<figure class="rc-featured rc-artist-image"><img src="${escapeAttr(artist.heroAsset)}" alt="${escapeAttr(artist.name)}" loading="eager"></figure>`:"";
+}
+function artistLinksMarkup(links=[],hasFeaturedVideo=false){
+  const presentation={
+    bandcamp:{label:"Buy Music",description:"Purchase music directly",rank:10},
+    store:{label:"Buy Music",description:"Purchase music directly",rank:12},
+    spotify:{label:"Listen on Spotify",description:"Open the artist on Spotify",rank:20},
+    apple_music:{label:"Listen on Apple Music",description:"Open the artist on Apple Music",rank:25},
+    news:{label:"News & Reviews",description:"Read the latest artist story",rank:30},
+    website:{label:"Official Website",description:"Visit the artist website",rank:40},
+    events:{label:"Tour Dates",description:"See upcoming performances",rank:45},
+    instagram:{label:"Instagram",description:"Latest artist updates",rank:50},
+    facebook:{label:"Facebook",description:"Follow the artist",rank:55},
+    tiktok:{label:"TikTok",description:"Watch the artist on TikTok",rank:60},
+    soundcloud:{label:"SoundCloud",description:"Listen on SoundCloud",rank:65},
+    latest_releases:{label:"Latest Release",description:"Discover the latest music",rank:70},
+    youtube:{label:"YouTube",description:"Official artist videos",rank:80}
+  };
+  const seen=new Set(),prepared=(links||[])
+    .filter(link=>!(hasFeaturedVideo&&link.type==="youtube"))
+    .filter(link=>{const destination=link.type==="store"?"buy_music":link.type;if(seen.has(destination))return false;seen.add(destination);return true})
+    .map(link=>({link,view:presentation[link.type]||{label:link.label,description:link.description||"Open official destination",rank:100}}))
+    .sort((left,right)=>left.view.rank-right.view.rank||left.view.label.localeCompare(right.view.label));
+  return prepared.map(({link,view})=>`<a class="rc-button rc-wide" href="${escapeAttr(link.url)}" target="_blank" rel="noopener noreferrer" data-outbound="${escapeAttr(link.type)}"><span><strong>${escapeHtml(view.label)}</strong><small>${escapeHtml(view.description)}</small></span><b class="rc-arrow" aria-hidden="true">&gt;</b></a>`).join("");
 }
 
 function header(company,artist=null){
@@ -89,6 +135,18 @@ function selectFair(artists,excludeId){
 }
 function rememberViewed(id){const viewed=new Set(JSON.parse(sessionStorage.getItem(viewKey())||"[]"));viewed.add(id);sessionStorage.setItem(viewKey(),JSON.stringify([...viewed]))}
 function viewKey(){return `deep-cuts-record-company:${state.company?.id||route.companySlug}:viewed`}
+async function shareArtist(company,artist){
+  const shareData={title:`${artist.name} — ${company.name} Deep Cuts`,text:`Discover ${artist.name} with ${company.name} and Deep Cuts.`,url:location.href};
+  if(navigator.share){
+    try{await navigator.share(shareData);return}catch(error){if(error?.name==="AbortError")return}
+  }
+  try{
+    await navigator.clipboard.writeText(location.href);
+    const button=document.getElementById("shareArtist");
+    button.textContent="Link Copied";
+    setTimeout(()=>{button.textContent="Share"},1800);
+  }catch{}
+}
 
 function openQuiz(quiz,type){
   if(!validateQuiz(quiz))return renderError("This quiz is temporarily unavailable.");
@@ -181,6 +239,13 @@ function applyPalette(palette={}){for(const [key,value] of Object.entries({prima
 function parseRoute(path){const parts=path.split("/").filter(Boolean);return{companySlug:parts[1]||"",artistSlug:parts[2]==="artists"?parts[3]||"":""}}
 function sessionId(){const key="deep-cuts-rc-session";let id=sessionStorage.getItem(key);if(!id){id=crypto.randomUUID();sessionStorage.setItem(key,id)}return id}
 function formatDate(value){const date=new Date(value);return Number.isNaN(date.getTime())?"recently":new Intl.DateTimeFormat("en-AU",{day:"numeric",month:"short",year:"numeric"}).format(date)}
+function compactBio(value){
+  const text=String(value||"").replace(/\s+/g," ").trim();
+  if(text.length<=230)return text;
+  const firstSentence=text.match(/^.{80,230}?[.!?](?:\s|$)/)?.[0];
+  if(firstSentence)return firstSentence.trim();
+  return `${text.slice(0,227).replace(/\s+\S*$/,"")}…`;
+}
 function renderError(message){app.innerHTML=`<section class="rc-error"><span class="rc-mark">Deep Cuts</span><h1>Discovery paused.</h1><p>${escapeHtml(message)}</p><a class="rc-button" href="/record-company/">Return to the collection</a></section>`}
 function escapeHtml(value){return String(value||"").replace(/[&<>"']/g,char=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[char]))}
 function escapeAttr(value){return escapeHtml(value).replace(/`/g,"&#96;")}
