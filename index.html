@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#000713">
   <meta id="pageDescription" name="description" content="Discover a verified Deep Cuts edition.">
   <title>Deep Cuts</title>
-  <link rel="stylesheet" href="/styles.css?v=20260725-laneway-2">
+  <link rel="stylesheet" href="/styles.css?v=20260726-laneway-company-1">
 </head>
 <body>
   <main id="app" class="discovery-shell">
@@ -36,6 +36,20 @@
       <section class="link-section" aria-labelledby="discoverTitle">
         <h2 id="discoverTitle" class="visually-hidden">Verified destinations</h2>
         <div id="platformLinks" class="platform-links"></div>
+      </section>
+
+      <section id="lanewayCompanyDirectory" class="laneway-company-directory" aria-labelledby="lanewayCompanyDirectoryTitle" hidden>
+        <div class="laneway-company-directory-heading">
+          <p>Laneway Music artist collection</p>
+          <h2 id="lanewayCompanyDirectoryTitle">Find an artist</h2>
+          <span id="lanewayCompanyDirectoryCount"></span>
+        </div>
+        <label class="laneway-company-search">
+          <span>Search artists</span>
+          <input id="lanewayCompanySearch" type="search" inputmode="search" autocomplete="off" placeholder="Start typing an artist name">
+        </label>
+        <div id="lanewayCompanyArtistList" class="laneway-company-artist-list"></div>
+        <p id="lanewayCompanyEmpty" class="laneway-company-empty" hidden>No matching artist found.</p>
       </section>
 
       <section class="share-section" aria-label="Share this edition">
@@ -121,12 +135,45 @@
         </div>
       </div>
     </section>
+
+    <section id="lanewayCompanyQuizScreen" class="laneway-quiz-screen laneway-company-quiz-screen" aria-labelledby="lanewayCompanyQuestionText" hidden>
+      <div class="laneway-quiz-topbar">
+        <button id="lanewayCompanyQuizHomeButton" class="laneway-home-button" type="button">&larr; Laneway Home</button>
+        <p id="lanewayCompanyQuizProgress" class="laneway-quiz-progress">Question 1 of 8</p>
+      </div>
+      <div class="laneway-question-card">
+        <p id="lanewayCompanyQuizCategory" class="laneway-quiz-category">Laneway Story</p>
+        <h2 id="lanewayCompanyQuestionText" tabindex="-1">Loading question...</h2>
+        <div id="lanewayCompanyAnswerList" class="laneway-answer-list" role="group" aria-label="Answer choices"></div>
+        <div id="lanewayCompanyAnswerFeedback" class="laneway-answer-feedback" aria-live="polite" hidden>
+          <strong id="lanewayCompanyFeedbackTitle"></strong>
+          <p id="lanewayCompanyFeedbackExplanation"></p>
+          <a id="lanewayCompanyFeedbackSource" target="_blank" rel="noopener noreferrer">Read the source</a>
+          <button id="lanewayCompanyNextButton" class="laneway-next-button" type="button">Next Question</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="lanewayCompanyResultScreen" class="laneway-result-screen laneway-company-result-screen" aria-labelledby="lanewayCompanyResultTitle" hidden>
+      <div class="laneway-result-card">
+        <img class="laneway-result-logo" src="/assets/laneway-music-logo-reverse-transparent.png" alt="Laneway Music">
+        <p class="laneway-result-kicker">Your Laneway Music Result</p>
+        <h1 id="lanewayCompanyResultScore">0 / 8</h1>
+        <h2 id="lanewayCompanyResultTitle">Laneway Listener</h2>
+        <p id="lanewayCompanyResultMessage"></p>
+        <div class="laneway-result-actions">
+          <button id="lanewayCompanyReplayButton" class="laneway-result-primary" type="button">Play Again</button>
+          <button id="lanewayCompanyResultHomeButton" class="laneway-result-secondary" type="button">Back to Laneway Home</button>
+        </div>
+      </div>
+    </section>
   </main>
-  <script src="/js/engine.js?v=20260725-laneway-3"></script>
-  <script src="/js/analytics.js?v=20260725-laneway-3"></script>
-  <script src="/js/interactions.js?v=20260725-laneway-3"></script>
-  <script src="/js/school-quiz.js?v=20260725-laneway-3"></script>
-  <script src="/js/laneway-quiz.js?v=20260725-laneway-3"></script>
-  <script src="/js/app.js?v=20260725-laneway-3"></script>
+  <script src="/js/engine.js?v=20260726-laneway-company-1"></script>
+  <script src="/js/analytics.js?v=20260726-laneway-company-1"></script>
+  <script src="/js/interactions.js?v=20260726-laneway-company-1"></script>
+  <script src="/js/school-quiz.js?v=20260726-laneway-company-1"></script>
+  <script src="/js/laneway-quiz.js?v=20260726-laneway-company-1"></script>
+  <script src="/js/laneway-company-quiz.js?v=20260726-laneway-company-1"></script>
+  <script src="/js/app.js?v=20260726-laneway-company-1"></script>
 </body>
 </html>

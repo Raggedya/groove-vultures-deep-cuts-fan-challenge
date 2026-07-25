@@ -254,8 +254,10 @@ def create_laneway_instagram(config: dict, destination: Path) -> None:
     name = config["bandName"].upper()
     centred_text(draw, name, 410, fit_font(draw, name, 900, 98, 52), fill=(250, 250, 250), stroke=1)
     draw.rounded_rectangle((120, 595, 960, 765), radius=24, outline=(255, 255, 255, 92), width=3, fill=(38, 38, 38, 245))
-    centred_text(draw, "FIVE POSITIVE QUESTIONS", 632, fit_font(draw, "FIVE POSITIVE QUESTIONS", 740, 44, 34), fill=(245, 245, 245))
-    centred_text(draw, "MUSIC • STORY • DISCOVERY", 704, fit_font(draw, "MUSIC • STORY • DISCOVERY", 700, 30, 24), fill=(184, 184, 184))
+    challenge = "EIGHT POSITIVE QUESTIONS" if config.get("editionType") == "laneway_company" else "FIVE POSITIVE QUESTIONS"
+    descriptor = "ARTISTS • MUSIC • DISCOVERY" if config.get("editionType") == "laneway_company" else "MUSIC • STORY • DISCOVERY"
+    centred_text(draw, challenge, 632, fit_font(draw, challenge, 740, 44, 34), fill=(245, 245, 245))
+    centred_text(draw, descriptor, 704, fit_font(draw, descriptor, 700, 30, 24), fill=(184, 184, 184))
     centred_text(draw, "DEEP CUTS", 936, fit_font(draw, "DEEP CUTS", 500, 42, 34), fill=(220, 220, 220))
     centred_text(draw, "copyright Clearlight Creative", 1015, font(21), fill=(132, 132, 132))
     canvas.convert("RGB").save(destination, "PNG", optimize=True)
@@ -427,6 +429,9 @@ def main() -> None:
         create_school_instagram(config, instagram)
         verified_url = create_school_qr(config, qr_path)
     elif config.get("editionType") == "laneway":
+        create_laneway_instagram(config, instagram)
+        verified_url = create_laneway_qr(config, qr_path)
+    elif config.get("editionType") == "laneway_company":
         create_laneway_instagram(config, instagram)
         verified_url = create_laneway_qr(config, qr_path)
     else:

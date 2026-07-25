@@ -233,6 +233,14 @@
       "name": "Chain",
       "config": "editions/chain/edition.json",
       "active": true
+    },
+    {
+      "slug": "laneway-music-one-off",
+      "editionId": "dc_b9e7b66620",
+      "canonicalPath": "/e/dc_b9e7b66620",
+      "name": "Laneway Music",
+      "config": "editions/laneway-music-one-off/edition.json",
+      "active": true
     }
   ]
 }

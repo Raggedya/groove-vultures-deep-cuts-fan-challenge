@@ -1,0 +1,56 @@
+{
+  "bandName": "Laneway Music",
+  "slug": "laneway-music-one-off",
+  "editionId": "dc_b9e7b66620",
+  "verifiedAt": "2026-07-26T00:00:00.000Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://www.lanewaymusic.com.au/about",
+      "sourceType": "official company history",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-26T00:00:00.000Z",
+      "evidence": "Laneway Music's official About page identifies its founding date, purpose, directors, operating philosophy and company history."
+    },
+    {
+      "destination": "roster",
+      "url": "https://www.lanewaymusic.com.au/",
+      "sourceType": "official artist roster",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-26T00:00:00.000Z",
+      "evidence": "Laneway Music's official home page publishes the artist catalogue used as the source roster for this edition."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=GkZPRgnTOvg",
+      "sourceType": "owner-selected YouTube video",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-26T00:00:00.000Z",
+      "evidence": "The owner requested the featured video shown in the approved Celibate Rifles Laneway model; the same verified YouTube video is used here."
+    },
+    {
+      "destination": "question-about",
+      "url": "https://www.lanewaymusic.com.au/about",
+      "sourceType": "official company history",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-26T00:00:00.000Z",
+      "evidence": "The official About page supports the questions concerning Laneway's foundation, purpose, directors, values and director histories."
+    },
+    {
+      "destination": "question-sync",
+      "url": "https://www.lanewaymusic.com.au/sync",
+      "sourceType": "official service information",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-26T00:00:00.000Z",
+      "evidence": "Laneway Music's official Sync page explains its one-stop clearance capability when it controls both masters and publishing."
+    },
+    {
+      "destination": "question-ekko",
+      "url": "https://www.lanewaymusic.com.au/ekkomusic",
+      "sourceType": "official label information",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-26T00:00:00.000Z",
+      "evidence": "Laneway Music's official Ekko page identifies the specialist electronic label and catalogue connections."
+    }
+  ]
+}
