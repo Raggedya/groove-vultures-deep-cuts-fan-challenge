@@ -26,6 +26,12 @@ Commercial Instinct compares a seller and target from their two official public 
 
 Its optional Banjo Strategy Brief is a versioned, removable handoff containing an owner-reviewed script rather than the private report. It has an independent two-minute ceiling, requires explicit owner-voice consent and does not change any edition or the 40-second business-advertisement workflow.
 
+## Record Company Edition permanent rules
+
+The only required input is an official record-company website URL. The permanent workflow discovers the official roster, processes each artist independently, publishes only identities and questions that pass the 98% evidence gate, generates stable tracked QR codes, reconciles reports, publishes generated assets and sends the master QR/report package without repeated owner interaction.
+
+The edition uses its own public renderer, Worker API, D1 tables, job stages, analytics and generated-output directory. No Aggits asset or standard Music layout is imported. Failed artists never stop the batch and never enter discovery, recommendations or QR sheets. QR scan reliability takes priority over decoration.
+
 ## Unattended artist batches
 
 Deep Cuts accepts CSV batches through one permanent controller. Intake data is evidence to verify, not truth to copy. Every artist is normalized, duplicate-checked, range-checked, researched and independently gated. Publication requires at least 98% confidence in artist identity and every mandatory direct destination. Search pages, guesses and placeholders are forbidden. Rejections are recorded and isolated. Temporary failures receive bounded retries with exponential backoff; checkpoints allow safe resume. Accepted artists flow through the existing factory, immutable artwork checks, QR scan-back, shared Cloudflare deployment, live verification, analytics registration and email delivery.

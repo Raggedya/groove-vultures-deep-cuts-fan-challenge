@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#080b12">
+  <title>Deep Cuts — Record Company Discovery</title>
+  <link rel="stylesheet" href="/record-company/styles.css?v=1">
+</head>
+<body>
+  <main id="recordCompanyApp" class="rc-app" aria-live="polite">
+    <section class="rc-loading" id="loadingState">
+      <span class="rc-mark">DEEP CUTS</span>
+      <div class="rc-loader" aria-hidden="true"></div>
+      <p>Opening the discovery collection…</p>
+    </section>
+  </main>
+
+  <dialog id="quizDialog" class="rc-quiz">
+    <form method="dialog"><button class="rc-close" aria-label="Close quiz">×</button></form>
+    <div id="quizContent"></div>
+  </dialog>
+  <audio id="quizDing" src="/assets/ding.mp3" preload="auto"></audio>
+  <script type="module" src="/record-company/app.js?v=1"></script>
+</body>
+</html>

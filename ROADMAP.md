@@ -4,6 +4,7 @@
 - [x] Lock permanent edition-protection governance, typed contracts, pull-request impact assessment and automated cross-edition isolation checks.
 - [x] Add one configuration-driven Laneway edition with a protected reverse-white logo, charcoal identity, no Aggits and an isolated five-question positive quiz.
 - [x] Lock Laneway's official featured-video placement and record-company Home / Share / Recommended navigation into the reusable factory.
+- [x] Add a one-URL unattended Record Company Edition with roster isolation, checkpointed builds, verified quizzes, QR/report production and completion delivery.
 
 ## Batch-production time savings
 

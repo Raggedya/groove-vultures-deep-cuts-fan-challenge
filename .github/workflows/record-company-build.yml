@@ -1,0 +1,118 @@
+name: Build Record Company Deep Cuts
+
+on:
+  workflow_dispatch:
+    inputs:
+      record_company_url:
+        description: Official record-company website URL
+        required: true
+        type: string
+      record_company_logo:
+        description: Optional approved HTTPS logo URL
+        required: false
+        type: string
+      notification_email:
+        description: Optional completion email override
+        required: false
+        type: string
+      refresh_existing:
+        description: Refresh an existing collection
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+  pull-requests: write
+  actions: read
+
+concurrency:
+  group: record-company-${{ inputs.record_company_url }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: production
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install verified delivery dependencies
+        run: python -m pip install --disable-pip-version-check -r requirements.txt
+      - name: Start and complete unattended research
+        shell: bash
+        run: |
+          set -euo pipefail
+          args=("${{ inputs.record_company_url }}")
+          if [ -n "${{ inputs.record_company_logo }}" ]; then args+=(--logo "${{ inputs.record_company_logo }}"); fi
+          if [ -n "${{ inputs.notification_email }}" ]; then args+=(--email "${{ inputs.notification_email }}"); fi
+          if [ "${{ inputs.refresh_existing }}" = "true" ]; then args+=(--refresh); fi
+          node scripts/record-company/start.mjs "${args[@]}"
+          export_file="$(find record-company-output -name build-export.json -print -quit)"
+          test -n "$export_file"
+          echo "EXPORT_FILE=$export_file" >> "$GITHUB_ENV"
+          echo "OUTPUT_DIR=$(dirname "$export_file")" >> "$GITHUB_ENV"
+        env:
+          DEEP_CUTS_API_URL: ${{ vars.DEEP_CUTS_BASE_URL || 'https://deep-cuts.andrewharris501.workers.dev' }}
+          DEEP_CUTS_ADMIN_TOKEN: ${{ secrets.DEEP_CUTS_ADMIN_TOKEN }}
+          REPORT_RECIPIENT: ${{ secrets.REPORT_RECIPIENT }}
+      - name: Generate and scan-verify QR and reporting package
+        shell: bash
+        run: |
+          set -euo pipefail
+          job_id="$(node -e "const fs=require('fs'); console.log(JSON.parse(fs.readFileSync(process.argv[1],'utf8')).job.job_id)" "$EXPORT_FILE")"
+          curl --fail-with-body --silent --show-error \
+            -H "Authorization: Bearer $DEEP_CUTS_ADMIN_TOKEN" \
+            -H "Content-Type: application/json" \
+            --data '{"stage":"generating_master_qr_image"}' \
+            "$DEEP_CUTS_API_URL/api/record-company/jobs/$job_id/stage"
+          python scripts/record-company/generate-deliverables.py "$EXPORT_FILE" "$DEEP_CUTS_API_URL"
+        env:
+          DEEP_CUTS_API_URL: ${{ vars.DEEP_CUTS_BASE_URL || 'https://deep-cuts.andrewharris501.workers.dev' }}
+          DEEP_CUTS_ADMIN_TOKEN: ${{ secrets.DEEP_CUTS_ADMIN_TOKEN }}
+      - name: Validate generated collection
+        run: npm run validate
+      - name: Publish generated assets through a validated pull request
+        id: publish
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          slug="$(basename "$OUTPUT_DIR")"
+          branch="generated/record-company-${slug}-${GITHUB_RUN_ID}"
+          git config user.name "Deep Cuts Factory"
+          git config user.email "deep-cuts-factory@users.noreply.github.com"
+          git switch -c "$branch"
+          git add "$OUTPUT_DIR"
+          git commit -m "Publish ${slug} record-company collection"
+          git push -u origin "$branch"
+          pr_url="$(gh pr create --base main --head "$branch" --title "Publish ${slug} Record Company Deep Cuts" --body "Automated, scan-verified Record Company Edition output. Generated from official source evidence; failed artists remain isolated in the exception report.")"
+          sleep 10
+          gh pr checks "$pr_url" --watch --interval 10
+          gh pr merge "$pr_url" --squash --delete-branch
+          echo "pr_url=$pr_url" >> "$GITHUB_OUTPUT"
+      - name: Send completion email with master QR and reports
+        run: node scripts/record-company/send-completion.mjs "$OUTPUT_DIR"
+        env:
+          DEEP_CUTS_API_URL: ${{ vars.DEEP_CUTS_BASE_URL || 'https://deep-cuts.andrewharris501.workers.dev' }}
+          DEEP_CUTS_ADMIN_TOKEN: ${{ secrets.DEEP_CUTS_ADMIN_TOKEN }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          REPORT_RECIPIENT: ${{ secrets.REPORT_RECIPIENT }}
+          REPORT_FROM_EMAIL: ${{ secrets.REPORT_FROM_EMAIL }}
+      - name: Upload retained production package
+        uses: actions/upload-artifact@v4
+        with:
+          name: record-company-deep-cuts-${{ github.run_id }}
+          path: ${{ env.OUTPUT_DIR }}/**
+          if-no-files-found: error
+          retention-days: 90

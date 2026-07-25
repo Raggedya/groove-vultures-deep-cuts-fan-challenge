@@ -1,4 +1,5 @@
 import {handleSales} from "./sales.js";
+import {handleRecordCompany,handleRecordCompanyQr,processRecordCompanyJobs} from "./record-company.js";
 
 const JSON_HEADERS={"content-type":"application/json; charset=utf-8","cache-control":"no-store"};
 const EVENT_NAMES=new Set([
@@ -19,6 +20,13 @@ export default {
     try{
       const url=new URL(request.url);
       if(request.method==="OPTIONS")return cors(new Response(null,{status:204}),request,env);
+      if(url.pathname.startsWith("/api/record-company/"))return handleRecordCompany(request,env,ctx,url);
+      if(url.pathname.startsWith("/record-company/q/"))return handleRecordCompanyQr(request,env,ctx,url);
+      if(["/record-company/terms.html","/record-company/privacy.html"].includes(url.pathname))return recordCompanyAsset(request,env);
+      if(/^\/record-company\/[^/]+(?:\/artists\/[^/]+)?\/?$/.test(url.pathname)){
+        const assetUrl=new URL("/record-company/index.html",url.origin);
+        return recordCompanyAsset(new Request(assetUrl,request),env);
+      }
       if(url.pathname.startsWith("/api/sell/"))return handleSales(request,env,ctx,url);
       if(url.pathname.startsWith("/q/"))return handleQr(request,env,ctx,url);
       if(url.pathname==="/api/events"&&request.method==="POST")return handleEvent(request,env);
@@ -36,9 +44,18 @@ export default {
     }
   },
   async scheduled(controller,env,ctx){
-    ctx.waitUntil(sendWeeklyReportIfDue(controller,env));
+    ctx.waitUntil(Promise.all([sendWeeklyReportIfDue(controller,env),processRecordCompanyJobs(env)]));
   }
 };
+
+async function recordCompanyAsset(request,env){
+  const asset=await env.ASSETS.fetch(request),headers=new Headers(asset.headers);
+  headers.set("content-security-policy","default-src 'self'; img-src 'self' https: data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; media-src 'self'; frame-src https://www.youtube-nocookie.com; frame-ancestors 'none'; base-uri 'none'; form-action 'none'");
+  headers.set("referrer-policy","strict-origin-when-cross-origin");
+  headers.set("x-content-type-options","nosniff");
+  headers.set("permissions-policy","camera=(), microphone=(), geolocation=()");
+  return new Response(asset.body,{status:asset.status,statusText:asset.statusText,headers});
+}
 
 async function handleQr(request,env,ctx,url){
   const editionId=cleanId(url.pathname.split("/").filter(Boolean)[1]);
@@ -165,13 +182,21 @@ async function handleResendWebhook(request,env){
   if(!body?.type||!body?.data?.email_id)return json({ok:false},400);
   const tags=normalizeTags(body.data.tags);
   const jobId=cleanText(tags.job_id,100);
+  const jobType=cleanText(tags.job_type,40);
   const eventId=cleanText(request.headers.get("svix-id"),120);
   const occurredAt=validDate(body.created_at);
   const inserted=await env.DB.prepare("INSERT OR IGNORE INTO delivery_events (delivery_event_id,email_id,job_id,event_type,occurred_at,received_at) VALUES (?1,?2,?3,?4,?5,?6)").bind(eventId,body.data.email_id,jobId||null,body.type,occurredAt,new Date().toISOString()).run();
   if(Number(inserted.meta?.changes||0)===0)return json({ok:true,duplicate:true});
   if(body.type==="email.delivered"&&jobId){
-    await env.DB.prepare("UPDATE production_jobs SET email_delivered_at=?1,updated_at=?1 WHERE job_id=?2").bind(occurredAt,jobId).run();
-    await completeJob(env,jobId,occurredAt);
+    if(jobType==="record_company"){
+      await env.DB.prepare("UPDATE record_company_jobs SET notification_email_status='delivered',updated_at=?1 WHERE job_id=?2").bind(occurredAt,jobId).run();
+    }else{
+      await env.DB.prepare("UPDATE production_jobs SET email_delivered_at=?1,updated_at=?1 WHERE job_id=?2").bind(occurredAt,jobId).run();
+      await completeJob(env,jobId,occurredAt);
+    }
+  }
+  if(["email.bounced","email.failed","email.complained"].includes(body.type)&&jobId&&jobType==="record_company"){
+    await env.DB.prepare("UPDATE record_company_jobs SET notification_email_status=?1,updated_at=?2 WHERE job_id=?3").bind(body.type.replace("email.",""),occurredAt,jobId).run();
   }
   return json({ok:true});
 }
