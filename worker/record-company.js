@@ -584,7 +584,7 @@ function robotsAllowsPath(text,path){
 
 function extractCompanyProfile(html,url){
   const domain=canonicalDomain(url),title=decodeEntities(meta(html,"og:site_name")||tagText(html,"title")||domain);
-  const name=cleanCompanyName(title,domain),description=decodeEntities(meta(html,"description")||meta(html,"og:description")||"");
+  const name=presentCompanyName(cleanCompanyName(title,domain)),description=decodeEntities(meta(html,"description")||meta(html,"og:description")||"");
   const logo=absoluteUrl(meta(html,"og:logo")||findLogo(html),url),hero=absoluteUrl(meta(html,"og:image")||"",url);
   const palette=extractPalette(html);const now=new Date().toISOString();
   const evidence=[{fieldName:"identity",sourceUrl:url,summary:`Official domain ${domain} identifies ${name}.`,confidenceScore:0.99,checkedAt:now}];
@@ -678,8 +678,9 @@ function meta(html,name){const escaped=name.replace(/[.*+?^${}()|[\]\\]/g,"\\$&"
 function tagText(html,tag){return html.match(new RegExp(`<${tag}[^>]*>([\\s\\S]*?)<\\/${tag}>`,"i"))?.[1]?.replace(/<[^>]+>/g," ").trim()||""}
 function findLogo(html){return html.match(/<img[^>]+(?:class|id)=["'][^"']*logo[^"']*["'][^>]+src=["']([^"']+)["']/i)?.[1]||html.match(/<img[^>]+src=["']([^"']+)["'][^>]+(?:class|id)=["'][^"']*logo/i)?.[1]||""}
 function cleanCompanyName(title,domain){const domainWord=domain.split(".")[0].replace(/[-_]/g," ");return cleanText(String(title||domainWord).split(/\s[|–—-]\s/)[0].replace(/\b(home|official site|website)\b/ig,"").trim(),120)}
+function presentCompanyName(value){const text=String(value||"").trim();return/^[a-z0-9]+(?:[-_][a-z0-9]+)+$/i.test(text)?text.replace(/[-_]+/g," ").replace(/\b\w/g,letter=>letter.toUpperCase()):text}
 function normalizeUrl(value){const url=new URL(value);url.hash="";if(url.pathname!=="/")url.pathname=url.pathname.replace(/\/+$/,"");return url.toString()}
-function absoluteUrl(value,base){try{const url=new URL(decodeEntities(value),base);return url.protocol==="https:"?url.toString():""}catch{return""}}
+function absoluteUrl(value,base){if(!String(value||"").trim())return"";try{const url=new URL(decodeEntities(value),base);return url.protocol==="https:"?url.toString():""}catch{return""}}
 function sameDomain(left,right){return canonicalDomain(left)===canonicalDomain(right)}
 function uniqueSlug(name,url){const base=safeSlug(name)||"artist";return`${base}-${hashId(url).slice(0,6)}`}
 function youtubeVideo(url,name){let id="";try{const parsed=new URL(url);id=parsed.hostname==="youtu.be"?parsed.pathname.slice(1):parsed.searchParams.get("v")||""}catch{}return/^[A-Za-z0-9_-]{11}$/.test(id)?{title:`${name} featured video`,embedUrl:`https://www.youtube-nocookie.com/embed/${id}`} :null}
