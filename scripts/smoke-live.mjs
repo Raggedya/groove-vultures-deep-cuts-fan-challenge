@@ -13,6 +13,13 @@ if(!recordCompanyTerms.ok||!recordCompanyTermsBody.includes("Record Company Edit
 if(!String(recordCompanyTerms.headers.get("content-security-policy")||"").includes("frame-ancestors 'none'")){
   throw new Error("/record-company/terms.html did not pass through the Record Company security middleware.");
 }
+for(const [assetPath,expectedType] of [["/record-company/app.js","javascript"],["/record-company/styles.css","text/css"],["/record-company/schemas.js","javascript"]]){
+  const asset=await fetch(`${base}${assetPath}`,{cache:"no-store"});
+  const contentType=asset.headers.get("content-type")||"";
+  if(!asset.ok||!contentType.includes(expectedType)){
+    throw new Error(`${assetPath} returned ${asset.status} ${contentType||"without a content type"} instead of ${expectedType}.`);
+  }
+}
 for(const edition of platform.editions.filter(item=>item.active)){
   const page=await fetch(`${base}${edition.canonicalPath}`);
   if(!page.ok)throw new Error(`${edition.canonicalPath} returned ${page.status}`);
