@@ -103,4 +103,5 @@ assert.match(deliverables,/max\(3840,/);
 assert.match(deliverables,/zxingcpp\.read_barcode/);
 assert.match(deliverables,/sorted\(\s*\[artist/);
 for(const text of ["record_company_url","generate-deliverables.py","send-completion.mjs","gh pr checks","gh pr merge","generating_master_qr_image"])assert.ok(workflow.includes(text));
+for(const queueMarker of ["issues:","github.event.issue.user.login == github.repository_owner","Record Company Build:","RECORD_COMPANY_URL_INPUT","Close completed URL request"])assert.ok(workflow.includes(queueMarker));
 console.log("Record Company Edition tests passed: isolated contract, safe ingestion, 98% gate, five-question schema, discovery navigation, QR production and unattended delivery workflow.");
