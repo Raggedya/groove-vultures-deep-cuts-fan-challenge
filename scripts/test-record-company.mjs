@@ -61,6 +61,18 @@ const aiQuiz=await __test.generateQuiz({RECORD_COMPANY_RESEARCH_PROVIDER:{analys
   entityType:"artist",name:"Neon Tide",description:"Official artist",pageText:"Official facts",sourceUrl:"https://midnightharbour.example/artists/neon-tide"
 });
 assert.equal(validateQuiz(aiQuiz),true);
+assert.deepEqual(__test.parseStructuredAIResult({response:{name:"Laneway Music"}}),{name:"Laneway Music"});
+assert.deepEqual(__test.parseStructuredAIResult({response:'```json\n{"name":"Laneway Music"}\n```'}),{name:"Laneway Music"});
+assert.deepEqual(__test.parseStructuredAIResult({response:'Here is the result: {"name":"Laneway Music"}'}),{name:"Laneway Music"});
+let aiAttempts=0;
+const retried=await __test.structuredAI({AI:{run:async(_model,input)=>{
+  aiAttempts++;
+  assert.equal(input.response_format.type,"json_object");
+  if(aiAttempts<3)return{response:"not json"};
+  return{response:{name:"Laneway Music"}};
+}}},"Return a record-company identity object.");
+assert.equal(aiAttempts,3);
+assert.deepEqual(retried,{name:"Laneway Music"});
 
 const contracts=JSON.parse(await fs.readFile("edition-contracts.json","utf8"));
 assert.deepEqual(contracts.editionTypes.record_company.brandNames,["Deep Cuts — Record Company Edition"]);
