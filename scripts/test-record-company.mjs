@@ -114,7 +114,11 @@ for(const legalMarker of ["recordCompanyLegalDocument","Record Company Edition t
 for(const deliveryMarker of ['jobType==="record_company"',"notification_email_status='delivered'","email.bounced"])assert.ok(workerIndex.includes(deliveryMarker));
 for(const stage of ["discovering_company","discovering_roster","researching_artists","generating_quizzes","generating_pages","generating_qr_codes","validating_output","generating_reports","ready_for_delivery"])assert.ok(worker.includes(`"${stage}"`)||worker.includes(`'${stage}'`));
 for(const reliabilityMarker of ['["queued","validating"]',"settings.refreshExisting","removed_from_current_roster","while(queue.length&&seen.size<25)","robotsAllows","validateOfficialLinks","extractWixPageCandidates","WIX_NON_ARTIST_PAGES","recordExternalStage","generating_master_qr_image","sending_completion_email"])assert.ok(worker.includes(reliabilityMarker));
-for(const required of ["Discover Our Bands &amp; Artists","Recommended For You","Back to","quiz_completed","quiz_abandoned","outbound_click","source_opened","response_seconds","completion_seconds"])assert.ok(frontend.includes(required));
+for(const required of ["Discover Our Bands &amp; Artists","recommended_artist","back_to_company","quiz_completed","quiz_abandoned","outbound_click","source_opened","response_seconds","completion_seconds"])assert.ok(frontend.includes(required));
+for(const artistMasterMarker of ["renderArtistMaster","rc-artist-title-row","rc-waveform","rc-intent-strip","rc-featured-heading","Featured Video","How Well Do You Know","Take the Five-Question Quiz","Share","Recommended","Home","artistLinksMarkup"])assert.ok(frontend.includes(artistMasterMarker));
+for(const artistMasterStyle of ['body[data-rc-view="artist"]',".rc-artist-logo",".rc-artist-actions",".rc-quiz-button",".rc-artist-utilities","mix-blend-mode:screen"])assert.ok(css.includes(artistMasterStyle));
+assert.ok(html.includes('/record-company/styles.css?v=2'));
+assert.ok(html.includes('/record-company/app.js?v=3'));
 assert.match(frontend,/item\.id!==excludeId/);
 assert.match(frontend,/const unseen=eligible\.filter/);
 assert.match(frontend,/Math\.random\(\)\*finalPool\.length/);
