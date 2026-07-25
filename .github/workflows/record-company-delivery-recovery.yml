@@ -1,0 +1,49 @@
+name: Complete Record Company Delivery
+
+on:
+  issues:
+    types:
+      - opened
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  deliver:
+    if: >-
+      github.event.issue.user.login == github.repository_owner &&
+      startsWith(github.event.issue.title, 'Record Company Delivery:')
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate and email retained delivery package
+        shell: bash
+        env:
+          DELIVERY_SLUG_INPUT: ${{ github.event.issue.body }}
+          DEEP_CUTS_API_URL: ${{ vars.DEEP_CUTS_BASE_URL || 'https://deep-cuts.andrewharris501.workers.dev' }}
+          DEEP_CUTS_ADMIN_TOKEN: ${{ secrets.DEEP_CUTS_ADMIN_TOKEN }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          REPORT_RECIPIENT: ${{ secrets.REPORT_RECIPIENT }}
+          REPORT_FROM_EMAIL: ${{ secrets.REPORT_FROM_EMAIL }}
+        run: |
+          set -euo pipefail
+          slug="$(printf '%s' "$DELIVERY_SLUG_INPUT" | tr -d '\r\n' | sed 's/[^a-zA-Z0-9-]//g')"
+          test -n "$slug"
+          output_dir="record-company-output/$slug"
+          test -f "$output_dir/build-export.json"
+          find "$output_dir" -name '*-deep-cuts-qr-collection.png' -print -quit | grep -q .
+          node scripts/record-company/send-completion.mjs "$output_dir"
+      - name: Close completed delivery request
+        if: success()
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          slug="$(printf '%s' "${{ github.event.issue.body }}" | tr -d '\r\n' | sed 's/[^a-zA-Z0-9-]//g')"
+          gh issue comment "${{ github.event.issue.number }}" --body "Delivery email completed: https://deep-cuts.andrewharris501.workers.dev/record-company/$slug"
+          gh issue close "${{ github.event.issue.number }}" --reason completed
