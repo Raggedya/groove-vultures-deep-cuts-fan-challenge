@@ -17,6 +17,11 @@ assert.equal(config.d1_databases[0].binding,'DB');
 assert.equal(config.ai.binding,'AI','Workers AI binding must be configured for live Commercial Instinct research');
 assert.ok(source.includes('verifySvixWebhook(payload,request.headers,env.RESEND_WEBHOOK_SECRET)'),'Resend webhook signature verification is required');
 assert.ok(source.includes('duplicate:true'),'Resend webhook delivery must be idempotent');
+assert.equal(__test.isRecordCompanyPagePath('/record-company/laneway-music'),true,'Company routes must load the Record Company application shell');
+assert.equal(__test.isRecordCompanyPagePath('/record-company/laneway-music/artists/cel-001'),true,'Artist routes must load the Record Company application shell');
+for(const assetPath of ['/record-company/app.js','/record-company/styles.css','/record-company/schemas.js','/record-company/index.html']){
+  assert.equal(__test.isRecordCompanyPagePath(assetPath),false,`${assetPath} must be served as a static asset`);
+}
 
 const payload=JSON.stringify({type:'email.delivered',data:{email_id:'email_123'}});
 const webhookId='msg_test';

@@ -23,7 +23,7 @@ export default {
       if(url.pathname.startsWith("/api/record-company/"))return handleRecordCompany(request,env,ctx,url);
       if(url.pathname.startsWith("/record-company/q/"))return handleRecordCompanyQr(request,env,ctx,url);
       if(["/record-company/terms.html","/record-company/privacy.html"].includes(url.pathname))return recordCompanyAsset(request,env);
-      if(/^\/record-company\/[^/]+(?:\/artists\/[^/]+)?\/?$/.test(url.pathname)){
+      if(isRecordCompanyPagePath(url.pathname)){
         const assetUrl=new URL("/record-company/index.html",url.origin);
         return recordCompanyAsset(new Request(assetUrl,request),env);
       }
@@ -79,6 +79,12 @@ function recordCompanyLegalDocument(pathname){
     "Automated access, interference, misuse of QR tracking routes, or attempts to compromise the service are prohibited."
   ];
   return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${title} | Deep Cuts</title><link rel="stylesheet" href="/record-company/styles.css?v=1"></head><body><main class="rc-app"><article class="rc-legal"><span class="rc-mark">Deep Cuts</span><h1>${title}</h1>${paragraphs.map(text=>`<p>${text}</p>`).join("")}<a class="rc-button rc-wide" href="/">Return to Deep Cuts</a></article></main></body></html>`;
+}
+
+function isRecordCompanyPagePath(pathname){
+  const parts=String(pathname||"").split("/").filter(Boolean);
+  if(parts[0]!=="record-company"||parts.some(part=>part.includes(".")))return false;
+  return parts.length===2||(parts.length===4&&parts[2]==="artists");
 }
 
 async function handleQr(request,env,ctx,url){
@@ -316,5 +322,5 @@ function toCsv(rows){const columns=["edition_id","band_name","deployed_at","qr_s
 function csvResponse(rows,filename){return new Response(toCsv(rows),{headers:{"content-type":"text/csv; charset=utf-8","content-disposition":`attachment; filename="${filename}"`,"cache-control":"no-store"}})}
 function base64(text){const bytes=new TextEncoder().encode(text);let binary="";for(const byte of bytes)binary+=String.fromCharCode(byte);return btoa(binary)}
 
-export const __test={verifySvixWebhook};
+export const __test={verifySvixWebhook,isRecordCompanyPagePath};
 
