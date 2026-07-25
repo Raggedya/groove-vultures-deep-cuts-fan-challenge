@@ -21,13 +21,18 @@ for(const [assetPath,expectedType] of [["/record-company/app.js","javascript"],[
   }
 }
 const recordCompanyEntry=await fetch(`${base}/record-company/`,{redirect:"manual",cache:"no-store"});
-if(recordCompanyEntry.status!==302||!String(recordCompanyEntry.headers.get("location")||"").includes("/record-company/")){
-  throw new Error("/record-company/ did not redirect to an active collection.");
+const restoredLanewayPath="/e/dc_f63a383fac";
+if(recordCompanyEntry.status!==302||new URL(recordCompanyEntry.headers.get("location"),base).pathname!==restoredLanewayPath){
+  throw new Error("/record-company/ did not restore the standalone Celibate Rifles edition.");
 }
 const recordCompanyTarget=new URL(recordCompanyEntry.headers.get("location"),base);
 const recordCompanyPage=await fetch(recordCompanyTarget,{redirect:"manual",cache:"no-store"});
 if(!recordCompanyPage.ok||recordCompanyPage.status>=300){
-  throw new Error(`${recordCompanyTarget.pathname} did not preserve its collection route while loading the application shell.`);
+  throw new Error(`${recordCompanyTarget.pathname} did not load the restored Celibate Rifles edition.`);
+}
+const previousLanewayEntry=await fetch(`${base}/record-company/laneway-music`,{redirect:"manual",cache:"no-store"});
+if(previousLanewayEntry.status!==302||new URL(previousLanewayEntry.headers.get("location"),base).pathname!==restoredLanewayPath){
+  throw new Error("/record-company/laneway-music did not restore the standalone Celibate Rifles edition.");
 }
 for(const edition of platform.editions.filter(item=>item.active)){
   const page=await fetch(`${base}${edition.canonicalPath}`);
