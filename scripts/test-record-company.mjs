@@ -64,6 +64,7 @@ const workflow=await fs.readFile(".github/workflows/record-company-build.yml","u
 const deliverables=await fs.readFile("scripts/record-company/generate-deliverables.py","utf8");
 const terms=await fs.readFile("record-company/terms.html","utf8");
 const privacy=await fs.readFile("record-company/privacy.html","utf8");
+const wrangler=await fs.readFile("wrangler.jsonc","utf8");
 
 for(const table of ["record_companies","record_company_artists","record_company_links","record_company_quizzes","record_company_qr_codes","record_company_jobs","record_company_analytics","record_company_sources"])assert.match(migration,new RegExp(`CREATE TABLE IF NOT EXISTS ${table}`));
 for(const route of ["/api/record-company/","/record-company/q/","/record-company/index.html"])assert.ok(workerIndex.includes(route));
@@ -80,6 +81,7 @@ for(const audioMarker of ["AudioContext","decodeAudioData","unlockAudio","visibi
 assert.ok(frontend.includes("/record-company/terms.html")&&frontend.includes("/record-company/privacy.html"));
 assert.match(terms,/no endorsement/i);
 assert.match(privacy,/does not store raw IP addresses/i);
+assert.match(wrangler,/"run_worker_first": true/);
 assert.ok(css.includes("prefers-reduced-motion"));
 assert.doesNotMatch(`${frontend}\n${html}\n${css}\n${worker}`,/Aggits/i);
 assert.match(deliverables,/min\(5, max\(1, len\(items\)\)\)/);
