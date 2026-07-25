@@ -14,6 +14,7 @@ const BUILD_STAGES=new Set([
   "submitted","research_started","research_completed","artwork_completed",
   "validation_completed","deployed","email_accepted","email_delivered","failed"
 ]);
+const CELIBATE_RIFLES_LANEWAY_PATH="/e/dc_f63a383fac";
 
 export default {
   async fetch(request,env,ctx){
@@ -23,6 +24,10 @@ export default {
       if(url.pathname.startsWith("/api/record-company/"))return handleRecordCompany(request,env,ctx,url);
       if(url.pathname.startsWith("/record-company/q/"))return handleRecordCompanyQr(request,env,ctx,url);
       if(["/record-company/terms.html","/record-company/privacy.html"].includes(url.pathname))return recordCompanyAsset(request,env);
+      const restoredLanewayPath=restoredLanewayEntryPath(url.pathname);
+      if(restoredLanewayPath&&["GET","HEAD"].includes(request.method)){
+        return Response.redirect(new URL(restoredLanewayPath,url.origin).toString(),302);
+      }
       if(isRecordCompanyRootPath(url.pathname))return recordCompanyHome(env,url);
       if(isRecordCompanyPagePath(url.pathname)){
         const assetUrl=new URL("/record-company/",url.origin);
@@ -90,6 +95,14 @@ function isRecordCompanyPagePath(pathname){
 
 function isRecordCompanyRootPath(pathname){
   return pathname==="/record-company"||pathname==="/record-company/";
+}
+
+function restoredLanewayEntryPath(pathname){
+  const path=String(pathname||"").replace(/\/+$/,"")||"/";
+  if(path==="/record-company"||path==="/record-company/laneway-music"){
+    return CELIBATE_RIFLES_LANEWAY_PATH;
+  }
+  return "";
 }
 
 async function recordCompanyHome(env,url){
@@ -333,5 +346,5 @@ function toCsv(rows){const columns=["edition_id","band_name","deployed_at","qr_s
 function csvResponse(rows,filename){return new Response(toCsv(rows),{headers:{"content-type":"text/csv; charset=utf-8","content-disposition":`attachment; filename="${filename}"`,"cache-control":"no-store"}})}
 function base64(text){const bytes=new TextEncoder().encode(text);let binary="";for(const byte of bytes)binary+=String.fromCharCode(byte);return btoa(binary)}
 
-export const __test={verifySvixWebhook,isRecordCompanyPagePath,isRecordCompanyRootPath};
+export const __test={verifySvixWebhook,isRecordCompanyPagePath,isRecordCompanyRootPath,restoredLanewayEntryPath};
 

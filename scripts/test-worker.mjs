@@ -25,6 +25,12 @@ for(const assetPath of ['/record-company/app.js','/record-company/styles.css','/
 assert.equal(__test.isRecordCompanyRootPath('/record-company'),true,'The Record Company entry route must recover a missing collection slug');
 assert.equal(__test.isRecordCompanyRootPath('/record-company/'),true,'The trailing-slash Record Company entry route must recover a missing collection slug');
 assert.equal(__test.isRecordCompanyRootPath('/record-company/laneway-music'),false,'A complete collection route must not be treated as the entry route');
+assert.equal(__test.restoredLanewayEntryPath('/record-company'),'/e/dc_f63a383fac','The Record Company entry must restore the standalone Celibate Rifles edition');
+assert.equal(__test.restoredLanewayEntryPath('/record-company/'),'/e/dc_f63a383fac','The trailing-slash entry must restore the standalone Celibate Rifles edition');
+assert.equal(__test.restoredLanewayEntryPath('/record-company/laneway-music'),'/e/dc_f63a383fac','The former Laneway collection entry must restore Celibate Rifles');
+assert.equal(__test.restoredLanewayEntryPath('/record-company/laneway-music/'),'/e/dc_f63a383fac','The former Laneway collection entry must tolerate a trailing slash');
+assert.equal(__test.restoredLanewayEntryPath('/record-company/laneway-music/artists/argus'),'','Individual collection artist routes must remain available');
+assert.equal(__test.restoredLanewayEntryPath('/record-company/another-label'),'','Other Record Company collections must remain available');
 assert.ok(source.includes('new URL("/record-company/",url.origin)'),'Collection routes must fetch the directory asset without redirecting through index.html');
 assert.ok(!source.includes('new URL("/record-company/index.html",url.origin)'),'Collection routes must preserve the company slug in the browser address');
 
