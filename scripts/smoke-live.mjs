@@ -20,6 +20,10 @@ for(const [assetPath,expectedType] of [["/record-company/app.js","javascript"],[
     throw new Error(`${assetPath} returned ${asset.status} ${contentType||"without a content type"} instead of ${expectedType}.`);
   }
 }
+const recordCompanyEntry=await fetch(`${base}/record-company/`,{redirect:"manual",cache:"no-store"});
+if(recordCompanyEntry.status!==302||!String(recordCompanyEntry.headers.get("location")||"").includes("/record-company/")){
+  throw new Error("/record-company/ did not redirect to an active collection.");
+}
 for(const edition of platform.editions.filter(item=>item.active)){
   const page=await fetch(`${base}${edition.canonicalPath}`);
   if(!page.ok)throw new Error(`${edition.canonicalPath} returned ${page.status}`);

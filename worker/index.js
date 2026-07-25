@@ -23,6 +23,7 @@ export default {
       if(url.pathname.startsWith("/api/record-company/"))return handleRecordCompany(request,env,ctx,url);
       if(url.pathname.startsWith("/record-company/q/"))return handleRecordCompanyQr(request,env,ctx,url);
       if(["/record-company/terms.html","/record-company/privacy.html"].includes(url.pathname))return recordCompanyAsset(request,env);
+      if(isRecordCompanyRootPath(url.pathname))return recordCompanyHome(env,url);
       if(isRecordCompanyPagePath(url.pathname)){
         const assetUrl=new URL("/record-company/index.html",url.origin);
         return recordCompanyAsset(new Request(assetUrl,request),env);
@@ -85,6 +86,16 @@ function isRecordCompanyPagePath(pathname){
   const parts=String(pathname||"").split("/").filter(Boolean);
   if(parts[0]!=="record-company"||parts.some(part=>part.includes(".")))return false;
   return parts.length===2||(parts.length===4&&parts[2]==="artists");
+}
+
+function isRecordCompanyRootPath(pathname){
+  return pathname==="/record-company"||pathname==="/record-company/";
+}
+
+async function recordCompanyHome(env,url){
+  const company=await env.DB.prepare("SELECT slug FROM record_companies WHERE status='active' ORDER BY updated_at DESC LIMIT 1").first();
+  if(!company?.slug)return new Response("No active Record Company collection is available.",{status:404});
+  return Response.redirect(new URL(`/record-company/${encodeURIComponent(company.slug)}`,url.origin).toString(),302);
 }
 
 async function handleQr(request,env,ctx,url){
@@ -322,5 +333,5 @@ function toCsv(rows){const columns=["edition_id","band_name","deployed_at","qr_s
 function csvResponse(rows,filename){return new Response(toCsv(rows),{headers:{"content-type":"text/csv; charset=utf-8","content-disposition":`attachment; filename="${filename}"`,"cache-control":"no-store"}})}
 function base64(text){const bytes=new TextEncoder().encode(text);let binary="";for(const byte of bytes)binary+=String.fromCharCode(byte);return btoa(binary)}
 
-export const __test={verifySvixWebhook,isRecordCompanyPagePath};
+export const __test={verifySvixWebhook,isRecordCompanyPagePath,isRecordCompanyRootPath};
 

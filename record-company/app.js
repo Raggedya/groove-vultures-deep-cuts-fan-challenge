@@ -181,6 +181,6 @@ function applyPalette(palette={}){for(const [key,value] of Object.entries({prima
 function parseRoute(path){const parts=path.split("/").filter(Boolean);return{companySlug:parts[1]||"",artistSlug:parts[2]==="artists"?parts[3]||"":""}}
 function sessionId(){const key="deep-cuts-rc-session";let id=sessionStorage.getItem(key);if(!id){id=crypto.randomUUID();sessionStorage.setItem(key,id)}return id}
 function formatDate(value){const date=new Date(value);return Number.isNaN(date.getTime())?"recently":new Intl.DateTimeFormat("en-AU",{day:"numeric",month:"short",year:"numeric"}).format(date)}
-function renderError(message){app.innerHTML=`<section class="rc-error"><span class="rc-mark">Deep Cuts</span><h1>Discovery paused.</h1><p>${escapeHtml(message)}</p><a class="rc-button" href="/">Return home</a></section>`}
+function renderError(message){app.innerHTML=`<section class="rc-error"><span class="rc-mark">Deep Cuts</span><h1>Discovery paused.</h1><p>${escapeHtml(message)}</p><a class="rc-button" href="/record-company/">Return to the collection</a></section>`}
 function escapeHtml(value){return String(value||"").replace(/[&<>"']/g,char=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[char]))}
 function escapeAttr(value){return escapeHtml(value).replace(/`/g,"&#96;")}

@@ -22,6 +22,9 @@ assert.equal(__test.isRecordCompanyPagePath('/record-company/laneway-music/artis
 for(const assetPath of ['/record-company/app.js','/record-company/styles.css','/record-company/schemas.js','/record-company/index.html']){
   assert.equal(__test.isRecordCompanyPagePath(assetPath),false,`${assetPath} must be served as a static asset`);
 }
+assert.equal(__test.isRecordCompanyRootPath('/record-company'),true,'The Record Company entry route must recover a missing collection slug');
+assert.equal(__test.isRecordCompanyRootPath('/record-company/'),true,'The trailing-slash Record Company entry route must recover a missing collection slug');
+assert.equal(__test.isRecordCompanyRootPath('/record-company/laneway-music'),false,'A complete collection route must not be treated as the entry route');
 
 const payload=JSON.stringify({type:'email.delivered',data:{email_id:'email_123'}});
 const webhookId='msg_test';
