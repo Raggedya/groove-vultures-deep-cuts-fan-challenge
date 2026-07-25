@@ -20,18 +20,27 @@ on:
         required: false
         default: false
         type: boolean
+  issues:
+    types:
+      - opened
 
 permissions:
   contents: write
   pull-requests: write
   actions: read
+  issues: write
 
 concurrency:
-  group: record-company-${{ inputs.record_company_url }}
+  group: record-company-${{ inputs.record_company_url || github.event.issue.number || github.run_id }}
   cancel-in-progress: false
 
 jobs:
   build:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'issues' &&
+      github.event.issue.user.login == github.repository_owner &&
+      startsWith(github.event.issue.title, 'Record Company Build:'))
     runs-on: ubuntu-latest
     environment: production
     timeout-minutes: 360
@@ -50,21 +59,25 @@ jobs:
         run: python -m pip install --disable-pip-version-check -r requirements.txt
       - name: Start and complete unattended research
         shell: bash
+        env:
+          RECORD_COMPANY_URL_INPUT: ${{ github.event_name == 'issues' && github.event.issue.body || inputs.record_company_url }}
+          RECORD_COMPANY_LOGO_INPUT: ${{ inputs.record_company_logo }}
+          NOTIFICATION_EMAIL_INPUT: ${{ inputs.notification_email }}
+          REFRESH_EXISTING_INPUT: ${{ inputs.refresh_existing }}
+          DEEP_CUTS_API_URL: ${{ vars.DEEP_CUTS_BASE_URL || 'https://deep-cuts.andrewharris501.workers.dev' }}
+          DEEP_CUTS_ADMIN_TOKEN: ${{ secrets.DEEP_CUTS_ADMIN_TOKEN }}
+          REPORT_RECIPIENT: ${{ secrets.REPORT_RECIPIENT }}
         run: |
           set -euo pipefail
-          args=("${{ inputs.record_company_url }}")
-          if [ -n "${{ inputs.record_company_logo }}" ]; then args+=(--logo "${{ inputs.record_company_logo }}"); fi
-          if [ -n "${{ inputs.notification_email }}" ]; then args+=(--email "${{ inputs.notification_email }}"); fi
-          if [ "${{ inputs.refresh_existing }}" = "true" ]; then args+=(--refresh); fi
+          args=("$RECORD_COMPANY_URL_INPUT")
+          if [ -n "$RECORD_COMPANY_LOGO_INPUT" ]; then args+=(--logo "$RECORD_COMPANY_LOGO_INPUT"); fi
+          if [ -n "$NOTIFICATION_EMAIL_INPUT" ]; then args+=(--email "$NOTIFICATION_EMAIL_INPUT"); fi
+          if [ "$REFRESH_EXISTING_INPUT" = "true" ]; then args+=(--refresh); fi
           node scripts/record-company/start.mjs "${args[@]}"
           export_file="$(find record-company-output -name build-export.json -print -quit)"
           test -n "$export_file"
           echo "EXPORT_FILE=$export_file" >> "$GITHUB_ENV"
           echo "OUTPUT_DIR=$(dirname "$export_file")" >> "$GITHUB_ENV"
-        env:
-          DEEP_CUTS_API_URL: ${{ vars.DEEP_CUTS_BASE_URL || 'https://deep-cuts.andrewharris501.workers.dev' }}
-          DEEP_CUTS_ADMIN_TOKEN: ${{ secrets.DEEP_CUTS_ADMIN_TOKEN }}
-          REPORT_RECIPIENT: ${{ secrets.REPORT_RECIPIENT }}
       - name: Generate and scan-verify QR and reporting package
         shell: bash
         run: |
@@ -109,6 +122,15 @@ jobs:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           REPORT_RECIPIENT: ${{ secrets.REPORT_RECIPIENT }}
           REPORT_FROM_EMAIL: ${{ secrets.REPORT_FROM_EMAIL }}
+      - name: Close completed URL request
+        if: github.event_name == 'issues'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          slug="$(basename "$OUTPUT_DIR")"
+          gh issue comment "${{ github.event.issue.number }}" --body "Completed and emailed: https://deep-cuts.andrewharris501.workers.dev/record-company/$slug"
+          gh issue close "${{ github.event.issue.number }}" --reason completed
       - name: Upload retained production package
         uses: actions/upload-artifact@v4
         with:
