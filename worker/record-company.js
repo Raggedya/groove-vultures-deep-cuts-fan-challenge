@@ -432,14 +432,36 @@ Name: ${input.name}. Description: ${input.description||""}. Official source text
 }
 
 async function structuredAI(env,prompt){
-  if(env.RECORD_COMPANY_RESEARCH_PROVIDER?.analyse)return env.RECORD_COMPANY_RESEARCH_PROVIDER.analyse(prompt);
+  if(env.RECORD_COMPANY_RESEARCH_PROVIDER?.analyse)return parseStructuredAIResult(await env.RECORD_COMPANY_RESEARCH_PROVIDER.analyse(prompt));
   if(!env.AI?.run)throw new Error("The configured research provider is unavailable.");
-  const output=await env.AI.run(env.RECORD_COMPANY_AI_MODEL||AI_MODEL,{messages:[
-    {role:"system",content:"Return strict JSON only. Facts must come only from the supplied official source."},
-    {role:"user",content:prompt}
-  ],temperature:0.1,max_tokens:3600});
-  const text=String(output?.response||output?.result?.response||"").replace(/^```json\s*|\s*```$/g,"").trim();
-  try{return JSON.parse(text)}catch{throw new Error("The research provider returned invalid structured evidence.")}
+  let lastError;
+  for(let attempt=0;attempt<3;attempt++){
+    try{
+      const output=await env.AI.run(env.RECORD_COMPANY_AI_MODEL||AI_MODEL,{messages:[
+        {role:"system",content:"Return one strict JSON object only. Do not use Markdown. Facts must come only from the supplied official source."},
+        {role:"user",content:prompt}
+      ],response_format:{type:"json_object"},temperature:0,max_tokens:4200});
+      return parseStructuredAIResult(output);
+    }catch(error){
+      lastError=error;
+      if(attempt<2)await delay(250*(2**attempt));
+    }
+  }
+  throw new Error(`The research provider returned invalid structured evidence after three attempts${lastError?.message?`: ${cleanText(lastError.message,180)}`:"."}`);
+}
+
+function parseStructuredAIResult(output){
+  const candidate=output?.response??output?.result?.response??output;
+  if(candidate&&typeof candidate==="object"&&!Array.isArray(candidate))return candidate;
+  const text=String(candidate||"").trim()
+    .replace(/^```(?:json)?\s*/i,"").replace(/\s*```$/,"").trim();
+  if(!text)throw new Error("The research provider returned an empty response.");
+  try{return JSON.parse(text)}catch{}
+  const start=text.indexOf("{"),end=text.lastIndexOf("}");
+  if(start>=0&&end>start){
+    try{return JSON.parse(text.slice(start,end+1))}catch{}
+  }
+  throw new Error("The research provider returned malformed JSON.");
 }
 
 async function fetchOfficial(target,root){
@@ -638,5 +660,5 @@ function toCsv(rows){const columns=[...new Set(rows.flatMap(row=>Object.keys(row
 
 export const __test={
   extractCompanyProfile,extractArtistCandidates,extractWixPageCandidates,dedupeCandidates,extractLinks,extractPalette,
-  normalizeUrl,sameDomain,reconciliationReport,generateQuiz,hashId,destinationAllowed,robotsAllowsPath
+  normalizeUrl,sameDomain,reconciliationReport,generateQuiz,structuredAI,parseStructuredAIResult,hashId,destinationAllowed,robotsAllowsPath
 };
