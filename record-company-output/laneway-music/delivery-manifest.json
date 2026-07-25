@@ -1,0 +1,593 @@
+{
+  "version": 1,
+  "recordCompany": "laneway-music",
+  "recordCompanySlug": "laneway-music",
+  "generatedAt": "2026-07-25T04:12:58.473866+00:00",
+  "masterQrFile": "laneway-music-deep-cuts-qr-collection.png",
+  "xlsxFile": "laneway-music-deep-cuts-report.xlsx",
+  "reportingZipFile": "laneway-music-deep-cuts-reporting.zip",
+  "masterQrVerified": true,
+  "reportsReconciled": true,
+  "qrCodes": [
+    {
+      "entityType": "record_company",
+      "entityId": "rc_b9181116",
+      "label": "laneway-music",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_978fbcca",
+      "png": "qr/record-company.png",
+      "svg": "qr/record-company.svg",
+      "verified": true,
+      "featured": true
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_f0860652",
+      "label": "Argus",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_54ea6ab1",
+      "png": "qr/argus.png",
+      "svg": "qr/argus.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_26e83b0c",
+      "label": "Billy Miller",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_aa822441",
+      "png": "qr/billy-miller.png",
+      "svg": "qr/billy-miller.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_effd9d86",
+      "label": "Billy T",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_e47df766",
+      "png": "qr/billy-t.png",
+      "svg": "qr/billy-t.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_6c287f3b",
+      "label": "Bitter Sweet Kicks",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_71b868c5",
+      "png": "qr/bitter-sweet-kicks.png",
+      "svg": "qr/bitter-sweet-kicks.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_992a163c",
+      "label": "Cattletruck",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_c2d40662",
+      "png": "qr/cattletruck.png",
+      "svg": "qr/cattletruck.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_5fe1f13f",
+      "label": "Chain",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_fcc18389",
+      "png": "qr/chain.png",
+      "svg": "qr/chain.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_f3bd4eba",
+      "label": "Charlie Marshall / Body Electric",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_3b7bca0b",
+      "png": "qr/charlie-marshall---body-electric.png",
+      "svg": "qr/charlie-marshall---body-electric.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_5ce31262",
+      "label": "Charlie Marshall / Curious Minds",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_ccd619cf",
+      "png": "qr/charlie-marshall---curious-minds.png",
+      "svg": "qr/charlie-marshall---curious-minds.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_132f9f23",
+      "label": "Chosen Few/Deathwish",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_a764b2cc",
+      "png": "qr/chosen-few-deathwish.png",
+      "svg": "qr/chosen-few-deathwish.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_557605fc",
+      "label": "Chris Stockley",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_a642a81b",
+      "png": "qr/chris-stockley.png",
+      "svg": "qr/chris-stockley.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_53aede90",
+      "label": "Chris Turner",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_03eca2b0",
+      "png": "qr/chris-turner.png",
+      "svg": "qr/chris-turner.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_8361f035",
+      "label": "Christopher Marshall",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_25934f82",
+      "png": "qr/christopher-marshall.png",
+      "svg": "qr/christopher-marshall.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_653de027",
+      "label": "Damien Lovelock",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_9a571058",
+      "png": "qr/damien-lovelock.png",
+      "svg": "qr/damien-lovelock.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_371f6aa6",
+      "label": "Deadly Hume",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_12e747ef",
+      "png": "qr/deadly-hume.png",
+      "svg": "qr/deadly-hume.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_b3746ae3",
+      "label": "Degenerates",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_877cd9d1",
+      "png": "qr/degenerates.png",
+      "svg": "qr/degenerates.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_65232d13",
+      "label": "DollSquad",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_6562c594",
+      "png": "qr/dollsquad.png",
+      "svg": "qr/dollsquad.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_47f3c3da",
+      "label": "Dropbears",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_3e97db4f",
+      "png": "qr/dropbears.png",
+      "svg": "qr/dropbears.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_692ae78f",
+      "label": "Ekko",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_5de21de2",
+      "png": "qr/ekko.png",
+      "svg": "qr/ekko.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_01f22af2",
+      "label": "Fuzzrays",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_54db39ca",
+      "png": "qr/fuzzrays.png",
+      "svg": "qr/fuzzrays.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_ad51176e",
+      "label": "Harry Carman",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_8a58fb56",
+      "png": "qr/harry-carman.png",
+      "svg": "qr/harry-carman.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_2563e4ca",
+      "label": "Hot City Bump Band",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_64511b23",
+      "png": "qr/hot-city-bump-band.png",
+      "svg": "qr/hot-city-bump-band.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_aecd3cc1",
+      "label": "Jeff Duff",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_7524e98b",
+      "png": "qr/jeff-duff.png",
+      "svg": "qr/jeff-duff.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_c3961da1",
+      "label": "Jeff St John",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_91fa4822",
+      "png": "qr/jeff-st-john.png",
+      "svg": "qr/jeff-st-john.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_36d058c0",
+      "label": "Jim Kelly/Crossfire",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_230217af",
+      "png": "qr/jim-kelly-crossfire.png",
+      "svg": "qr/jim-kelly-crossfire.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_9255b66a",
+      "label": "John Kennedy",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_7a0be514",
+      "png": "qr/john-kennedy.png",
+      "svg": "qr/john-kennedy.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_7931959f",
+      "label": "Josh Abrahams",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_198da9a1",
+      "png": "qr/josh-abrahams.png",
+      "svg": "qr/josh-abrahams.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_1979d6e6",
+      "label": "Kerry Ian McKenna",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_bfd76883",
+      "png": "qr/kerry-ian-mckenna.png",
+      "svg": "qr/kerry-ian-mckenna.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_1677cfec",
+      "label": "Kerryn Tolhurst",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_97d21558",
+      "png": "qr/kerryn-tolhurst.png",
+      "svg": "qr/kerryn-tolhurst.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_709fd8c1",
+      "label": "La Femme",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_ac56cd10",
+      "png": "qr/la-femme.png",
+      "svg": "qr/la-femme.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_b6b4b492",
+      "label": "Lez Karski",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_b0ac119b",
+      "png": "qr/lez-karski.png",
+      "svg": "qr/lez-karski.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_fa034418",
+      "label": "Lime Spiders",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_2e3f4929",
+      "png": "qr/lime-spiders.png",
+      "svg": "qr/lime-spiders.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_62970ef1",
+      "label": "Little Heroes",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_e7ec236a",
+      "png": "qr/little-heroes.png",
+      "svg": "qr/little-heroes.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_a8764227",
+      "label": "Little Murders",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_3b1e17b1",
+      "png": "qr/little-murders.png",
+      "svg": "qr/little-murders.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_f956beb0",
+      "label": "Love Child",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_ca457581",
+      "png": "qr/love-child.png",
+      "svg": "qr/love-child.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_c151fb41",
+      "label": "Madder Lake",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_3467b249",
+      "png": "qr/madder-lake.png",
+      "svg": "qr/madder-lake.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_33bd6ddc",
+      "label": "Mark Williams",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_2ed7aadb",
+      "png": "qr/mark-williams.png",
+      "svg": "qr/mark-williams.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_7f5426e0",
+      "label": "Matt Taylor",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_0f22dd05",
+      "png": "qr/matt-taylor.png",
+      "svg": "qr/matt-taylor.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_a6c3e440",
+      "label": "Mother Goose",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_55217880",
+      "png": "qr/mother-goose.png",
+      "svg": "qr/mother-goose.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_1e3e2d2e",
+      "label": "Pat Powell",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_c0651145",
+      "png": "qr/pat-powell.png",
+      "svg": "qr/pat-powell.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_4f6c2da8",
+      "label": "Peter Money",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_bed999f6",
+      "png": "qr/peter-money.png",
+      "svg": "qr/peter-money.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_f9a1726f",
+      "label": "Pray TV",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_09489b9e",
+      "png": "qr/pray-tv.png",
+      "svg": "qr/pray-tv.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_85b9306e",
+      "label": "Remora",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_f018f210",
+      "png": "qr/remora.png",
+      "svg": "qr/remora.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_e8248e08",
+      "label": "Seven Stories",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_1975d8ec",
+      "png": "qr/seven-stories.png",
+      "svg": "qr/seven-stories.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_7ad59425",
+      "label": "Shock Poets",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_6108d7df",
+      "png": "qr/shock-poets.png",
+      "svg": "qr/shock-poets.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_aefa3291",
+      "label": "SideShow Annie",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_b47dcd70",
+      "png": "qr/sideshow-annie.png",
+      "svg": "qr/sideshow-annie.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_afdd6efa",
+      "label": "Southbound Snake Charmers",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_0feade57",
+      "png": "qr/southbound-snake-charmers.png",
+      "svg": "qr/southbound-snake-charmers.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_0443ced3",
+      "label": "Spencer P. Jones",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_534c5b24",
+      "png": "qr/spencer-p--jones.png",
+      "svg": "qr/spencer-p--jones.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_6536cd57",
+      "label": "Stu Thomas",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_fee9122f",
+      "png": "qr/stu-thomas.png",
+      "svg": "qr/stu-thomas.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_b30b5e42",
+      "label": "The 31st",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_8589b049",
+      "png": "qr/the-31st.png",
+      "svg": "qr/the-31st.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_82d9ac4a",
+      "label": "The Mark of Cain",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_7b434be6",
+      "png": "qr/the-mark-of-cain.png",
+      "svg": "qr/the-mark-of-cain.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_d57ce9c9",
+      "label": "The Rockwells / Rockwell T James",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_64fd4a0b",
+      "png": "qr/the-rockwells---rockwell-t-james.png",
+      "svg": "qr/the-rockwells---rockwell-t-james.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_a6d02f89",
+      "label": "Toys Went Berserk",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_a17ffadc",
+      "png": "qr/toys-went-berserk.png",
+      "svg": "qr/toys-went-berserk.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_843fc7f6",
+      "label": "Uppercut",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_190fc03b",
+      "png": "qr/uppercut.png",
+      "svg": "qr/uppercut.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_1e86f0e4",
+      "label": "Ups and Downs",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_04de5147",
+      "png": "qr/ups-and-downs.png",
+      "svg": "qr/ups-and-downs.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_09ede191",
+      "label": "Virgin Soldiers",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_3635e9ea",
+      "png": "qr/virgin-soldiers.png",
+      "svg": "qr/virgin-soldiers.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_7c9e721a",
+      "label": "Zimmerman",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_86742983",
+      "png": "qr/zimmerman.png",
+      "svg": "qr/zimmerman.svg",
+      "verified": true,
+      "featured": false
+    },
+    {
+      "entityType": "artist",
+      "entityId": "rca_5b2a35d7",
+      "label": "Zorros",
+      "trackingUrl": "https://deep-cuts.andrewharris501.workers.dev/record-company/q/rcq_520328bf",
+      "png": "qr/zorros.png",
+      "svg": "qr/zorros.svg",
+      "verified": true,
+      "featured": false
+    }
+  ]
+}

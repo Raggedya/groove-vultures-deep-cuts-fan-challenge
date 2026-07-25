@@ -1,0 +1,219 @@
+﻿artist_id,checked_at,confidence_score,entity_id,entity_type,extracted_summary,field_name,record_company_id,source_id,source_title,source_url
+rca_01f22af2,2026-07-25T03:39:17.729Z,1,rca_01f22af2,artist,Official artist page with biography,biography,rc_b9181116,rcs_2032fec9,,https://www.lanewaymusic.com.au/fuzzrays
+rca_01f22af2,2026-07-25T03:39:17.729Z,1,rca_01f22af2,artist,Genres inferred from biography text,genres,rc_b9181116,rcs_0cd4eb3e,,https://www.lanewaymusic.com.au/fuzzrays
+rca_01f22af2,2026-07-25T03:39:17.729Z,1,rca_01f22af2,artist,Location mentioned in biography text,location,rc_b9181116,rcs_9df5940f,,https://www.lanewaymusic.com.au/fuzzrays
+rca_0443ced3,2026-07-25T03:57:29.464Z,1,rca_0443ced3,artist,"Biographical information about Spencer P. Jones, including his legacy and achievements.",biography,rc_b9181116,rcs_087a41b4,,https://www.lanewaymusic.com.au/spencerpjones
+rca_0443ced3,2026-07-25T03:57:29.464Z,1,rca_0443ced3,artist,"Genre information inferred from the biography, mentioning 'Australian rock legend'.",genres,rc_b9181116,rcs_4701c839,,https://www.lanewaymusic.com.au/spencerpjones
+rca_0443ced3,2026-07-25T03:57:29.464Z,1,rca_0443ced3,artist,No hero asset image URL found on the page.,heroAsset,rc_b9181116,rcs_56ff042d,,https://www.lanewaymusic.com.au/spencerpjones
+rca_0443ced3,2026-07-25T03:57:29.464Z,1,rca_0443ced3,artist,Location mentioned as Australia in the biography.,location,rc_b9181116,rcs_9e94728e,,https://www.lanewaymusic.com.au/spencerpjones
+rca_0443ced3,2026-07-25T03:57:29.464Z,1,rca_0443ced3,artist,No official website URL found on the page.,officialWebsiteUrl,rc_b9181116,rcs_61a7e6de,,https://www.lanewaymusic.com.au/spencerpjones
+rca_09ede191,2026-07-25T04:07:55.960Z,1,rca_09ede191,artist,Official biography of Virgin Soldiers from Laneway Music,biography,rc_b9181116,rcs_606e727c,,https://www.lanewaymusic.com.au/virgin-soldiers
+rca_09ede191,2026-07-25T04:07:55.960Z,0.8,rca_09ede191,artist,Genres inferred from biography text,genres,rc_b9181116,rcs_d846a0a9,,https://www.lanewaymusic.com.au/virgin-soldiers
+rca_09ede191,2026-07-25T04:07:55.960Z,1,rca_09ede191,artist,Location mentioned in biography text,location,rc_b9181116,rcs_db3edd1a,,https://www.lanewaymusic.com.au/virgin-soldiers
+rca_132f9f23,2026-07-25T03:32:50.203Z,1,rca_132f9f23,artist,The official Laneway Music page provides a detailed biography of The Chosen Few/Deathwish.,biography,rc_b9181116,rcs_1d70660e,,https://www.lanewaymusic.com.au/thechosenfew-deathwish
+rca_132f9f23,2026-07-25T03:32:50.203Z,1,rca_132f9f23,artist,"The page mentions influences from US punk rock bands like The Stooges and MC5, and harder-edged 60s rock tracks.",genres,rc_b9181116,rcs_7442e959,,https://www.lanewaymusic.com.au/thechosenfew-deathwish
+rca_132f9f23,2026-07-25T03:32:50.203Z,1,rca_132f9f23,artist,There is no hero asset image URL mentioned on the page.,heroAsset,rc_b9181116,rcs_f7e3c955,,https://www.lanewaymusic.com.au/thechosenfew-deathwish
+rca_132f9f23,2026-07-25T03:32:50.203Z,1,rca_132f9f23,artist,The page explicitly states that the band is from Australia's Mornington Peninsula.,location,rc_b9181116,rcs_d374d91c,,https://www.lanewaymusic.com.au/thechosenfew-deathwish
+rca_132f9f23,2026-07-25T03:32:50.203Z,1,rca_132f9f23,artist,There is no official website URL mentioned on the page.,officialWebsiteUrl,rc_b9181116,rcs_50461254,,https://www.lanewaymusic.com.au/thechosenfew-deathwish
+rca_1677cfec,2026-07-25T03:45:07.607Z,1,rca_1677cfec,artist,Biographical information about Kerryn Tolhurst's music career,biography,rc_b9181116,rcs_c5f88b75,,https://www.lanewaymusic.com.au/kerryntolhurst
+rca_1677cfec,2026-07-25T03:45:07.607Z,0.8,rca_1677cfec,artist,Genres inferred from Kerryn Tolhurst's band associations and music style,genres,rc_b9181116,rcs_2bc05302,,https://www.lanewaymusic.com.au/kerryntolhurst
+rca_1677cfec,2026-07-25T03:45:07.607Z,1,rca_1677cfec,artist,No hero asset image URL found on the page,heroAsset,rc_b9181116,rcs_e1ea1b26,,https://www.lanewaymusic.com.au/kerryntolhurst
+rca_1677cfec,2026-07-25T03:45:07.607Z,1,rca_1677cfec,artist,Kerryn Tolhurst's nationality and location,location,rc_b9181116,rcs_43439207,,https://www.lanewaymusic.com.au/kerryntolhurst
+rca_1677cfec,2026-07-25T03:45:07.607Z,1,rca_1677cfec,artist,No official website URL found on the page,officialWebsiteUrl,rc_b9181116,rcs_d58c7b87,,https://www.lanewaymusic.com.au/kerryntolhurst
+rca_1979d6e6,2026-07-25T03:44:32.269Z,1,rca_1979d6e6,artist,"Biographical information about Kerry Ian McKenna, including his involvement with Madder Lake and solo albums.",biography,rc_b9181116,rcs_88601522,,https://www.lanewaymusic.com.au/kerry-ian-mckenna
+rca_1979d6e6,2026-07-25T03:44:32.269Z,1,rca_1979d6e6,artist,"Genre information about Kerry Ian McKenna, specifically progressive rock.",genres,rc_b9181116,rcs_76b85ccd,,https://www.lanewaymusic.com.au/kerry-ian-mckenna
+rca_1e3e2d2e,2026-07-25T03:50:08.587Z,1,rca_1e3e2d2e,artist,Biographical information about Pat Powell's career and accomplishments,biography,rc_b9181116,rcs_d9383ef0,,https://www.lanewaymusic.com.au/patpowell
+rca_1e3e2d2e,2026-07-25T03:50:08.587Z,1,rca_1e3e2d2e,artist,Location mentioned as Australia,location,rc_b9181116,rcs_6770a50c,,https://www.lanewaymusic.com.au/patpowell
+rca_1e86f0e4,2026-07-25T04:07:09.736Z,1,rca_1e86f0e4,artist,Official biography of Ups and Downs on Laneway Music website,biography,rc_b9181116,rcs_774bc270,,https://www.lanewaymusic.com.au/ups-and-downs
+rca_1e86f0e4,2026-07-25T04:07:09.736Z,1,rca_1e86f0e4,artist,Genre information inferred from biography on Laneway Music website,genres,rc_b9181116,rcs_ab39ef17,,https://www.lanewaymusic.com.au/ups-and-downs
+rca_1e86f0e4,2026-07-25T04:07:09.736Z,1,rca_1e86f0e4,artist,Location mentioned in biography on Laneway Music website,location,rc_b9181116,rcs_3edc47d8,,https://www.lanewaymusic.com.au/ups-and-downs
+rca_2563e4ca,2026-07-25T03:40:46.217Z,1,rca_2563e4ca,artist,"The biography of Hot City Bump Band, including formation and debut album release.",biography,rc_b9181116,rcs_f5f7eaaa,,https://www.lanewaymusic.com.au/hot-city-bump-band
+rca_2563e4ca,2026-07-25T03:40:46.217Z,1,rca_2563e4ca,artist,The location where the band was formed and active.,location,rc_b9181116,rcs_3d213472,,https://www.lanewaymusic.com.au/hot-city-bump-band
+rca_26e83b0c,2026-07-25T03:29:45.988Z,1,rca_26e83b0c,artist,Biographical information about Billy Miller's music career,biography,rc_b9181116,rcs_8100bc86,,https://www.lanewaymusic.com.au/billy-miller
+rca_26e83b0c,2026-07-25T03:29:45.988Z,0.5,rca_26e83b0c,artist,Genre information inferred from the context of the biography,genres,rc_b9181116,rcs_a5f20bcf,,https://www.lanewaymusic.com.au/billy-miller
+rca_26e83b0c,2026-07-25T03:29:45.988Z,1,rca_26e83b0c,artist,No hero asset URL found on the page,heroAsset,rc_b9181116,rcs_c7b8b4b5,,https://www.lanewaymusic.com.au/billy-miller
+rca_26e83b0c,2026-07-25T03:29:45.988Z,1,rca_26e83b0c,artist,Location mentioned as Australia in the biography,location,rc_b9181116,rcs_df0bb912,,https://www.lanewaymusic.com.au/billy-miller
+rca_26e83b0c,2026-07-25T03:29:45.988Z,1,rca_26e83b0c,artist,No official website URL found on the page,officialWebsiteUrl,rc_b9181116,rcs_c61e970a,,https://www.lanewaymusic.com.au/billy-miller
+rca_33bd6ddc,2026-07-25T03:48:28.437Z,1,rca_33bd6ddc,artist,Biographical information about Mark Williams,biography,rc_b9181116,rcs_c3e5f700,,https://www.lanewaymusic.com.au/mark-williams
+rca_33bd6ddc,2026-07-25T03:48:28.437Z,1,rca_33bd6ddc,artist,Rock and soul genres mentioned in biography,genres,rc_b9181116,rcs_c23995f3,,https://www.lanewaymusic.com.au/mark-williams
+rca_33bd6ddc,2026-07-25T03:48:28.437Z,1,rca_33bd6ddc,artist,No hero asset image URL found,heroAsset,rc_b9181116,rcs_1b476f51,,https://www.lanewaymusic.com.au/mark-williams
+rca_33bd6ddc,2026-07-25T03:48:28.437Z,1,rca_33bd6ddc,artist,"Mark Williams originally from New Zealand, has lived in Australia since the late 70s",location,rc_b9181116,rcs_676e8298,,https://www.lanewaymusic.com.au/mark-williams
+rca_33bd6ddc,2026-07-25T03:48:28.437Z,1,rca_33bd6ddc,artist,No official website URL found,officialWebsiteUrl,rc_b9181116,rcs_0429b058,,https://www.lanewaymusic.com.au/mark-williams
+rca_36d058c0,2026-07-25T03:42:20.310Z,1,rca_36d058c0,artist,Biographical information about Jim Kelly and Crossfire,biography,rc_b9181116,rcs_75319bf8,,https://www.lanewaymusic.com.au/jimkelly-crossfire
+rca_36d058c0,2026-07-25T03:42:20.310Z,1,rca_36d058c0,artist,"Genres mentioned: jazz, blues, jazz fusion",genres,rc_b9181116,rcs_f16f4635,,https://www.lanewaymusic.com.au/jimkelly-crossfire
+rca_36d058c0,2026-07-25T03:42:20.310Z,1,rca_36d058c0,artist,Location mentioned: Australia,location,rc_b9181116,rcs_c5a8da30,,https://www.lanewaymusic.com.au/jimkelly-crossfire
+rca_371f6aa6,2026-07-25T03:36:22.788Z,1,rca_371f6aa6,artist,"The Deadly Hume were a ripping rock band from Sydney who formed in the early 80s. Their music was varied, from gentle acoustic numbers to crunchy guitars, with stunning melodies and great lyrics. Lead singer Greg Perano was in the Hunters & Collectors. The Deadly Hume's music is now available on all digital platforms through Laneway Music.",biography,rc_b9181116,rcs_80b0ab8e,,https://www.lanewaymusic.com.au/deadlyhume
+rca_371f6aa6,2026-07-25T03:36:22.788Z,1,rca_371f6aa6,artist,"The music of The Deadly Hume was somewhat varied, from gentle acoustic numbers to crunchy guitars - but always with stunning melodies and great lyrics.",genres,rc_b9181116,rcs_735e3bcb,,https://www.lanewaymusic.com.au/deadlyhume
+rca_371f6aa6,2026-07-25T03:36:22.788Z,1,rca_371f6aa6,artist,No hero asset image URL found,heroAsset,rc_b9181116,rcs_ad7c769d,,https://www.lanewaymusic.com.au/deadlyhume
+rca_371f6aa6,2026-07-25T03:36:22.788Z,1,rca_371f6aa6,artist,The Deadly Hume were a ripping rock band from Sydney,location,rc_b9181116,rcs_92789646,,https://www.lanewaymusic.com.au/deadlyhume
+rca_371f6aa6,2026-07-25T03:36:22.788Z,1,rca_371f6aa6,artist,No official website URL found,officialWebsiteUrl,rc_b9181116,rcs_6fbc329e,,https://www.lanewaymusic.com.au/deadlyhume
+rca_47f3c3da,2026-07-25T03:37:54.021Z,1,rca_47f3c3da,artist,"The Dropbears were a popular part of the Australian music scene in the early 1980s with minor national chart hits. Formed in Darlinghurst (Sydney) in 1981 with Johnny Batchelor, Simon Rudlin and Chris Toms (Chris Cross). They had successful singles, including 'Shall We Go' in 1985, and are available to download or stream on preferred platforms.",biography,rc_b9181116,rcs_5a2276c2,,https://www.lanewaymusic.com.au/dropbears
+rca_47f3c3da,2026-07-25T03:37:54.021Z,1,rca_47f3c3da,artist,The Dropbears formed in Darlinghurst (Sydney) in 1981,location,rc_b9181116,rcs_545616da,,https://www.lanewaymusic.com.au/dropbears
+rca_4f6c2da8,2026-07-25T03:50:29.230Z,1,rca_4f6c2da8,artist,The biography of Peter Money on the Laneway Music website.,biography,rc_b9181116,rcs_2e9c6c67,,https://www.lanewaymusic.com.au/petermoney
+rca_4f6c2da8,2026-07-25T03:50:29.230Z,1,rca_4f6c2da8,artist,The genres mentioned as inspirations for Peter Money's music on the Laneway Music website.,genres,rc_b9181116,rcs_6846992c,,https://www.lanewaymusic.com.au/petermoney
+rca_4f6c2da8,2026-07-25T03:50:29.230Z,1,rca_4f6c2da8,artist,Peter Money's hometown mentioned on the Laneway Music website.,location,rc_b9181116,rcs_f900a055,,https://www.lanewaymusic.com.au/petermoney
+rca_53aede90,2026-07-25T03:33:38.407Z,0,rca_53aede90,artist,,,rc_b9181116,rcs_df1dc236,,https://www.lanewaymusic.com.au/chris-turner
+rca_557605fc,2026-07-25T03:33:16.271Z,0,rca_557605fc,artist,,,rc_b9181116,rcs_64438b87,,https://www.lanewaymusic.com.au/chris-stockley
+rca_5b2a35d7,2026-07-25T04:11:06.261Z,1,rca_5b2a35d7,artist,Official biography of the artist Zorros from the Laneway Music website.,biography,rc_b9181116,rcs_078068db,,https://www.lanewaymusic.com.au/zorros
+rca_5b2a35d7,2026-07-25T04:11:06.261Z,1,rca_5b2a35d7,artist,Genres inferred from the text describing the band's sound and influences.,genres,rc_b9181116,rcs_ca70753a,,https://www.lanewaymusic.com.au/zorros
+rca_5b2a35d7,2026-07-25T04:11:06.261Z,1,rca_5b2a35d7,artist,No hero asset image URL found on the page.,heroAsset,rc_b9181116,rcs_82b2f55c,,https://www.lanewaymusic.com.au/zorros
+rca_5b2a35d7,2026-07-25T04:11:06.261Z,1,rca_5b2a35d7,artist,Location of the band's formation mentioned in the biography.,location,rc_b9181116,rcs_e112bb53,,https://www.lanewaymusic.com.au/zorros
+rca_5b2a35d7,2026-07-25T04:11:06.261Z,1,rca_5b2a35d7,artist,No official website URL found on the page.,officialWebsiteUrl,rc_b9181116,rcs_410d5d43,,https://www.lanewaymusic.com.au/zorros
+rca_5ce31262,2026-07-25T03:32:28.072Z,1,rca_5ce31262,artist,Official artist page with biography and project details,biography,rc_b9181116,rcs_dd4417da,,https://www.lanewaymusic.com.au/charliemarshall-curiousminds
+rca_5ce31262,2026-07-25T03:32:28.072Z,0.8,rca_5ce31262,artist,Inferred from description of band's sound and style,genres,rc_b9181116,rcs_b5dde977,,https://www.lanewaymusic.com.au/charliemarshall-curiousminds
+rca_5ce31262,2026-07-25T03:32:28.072Z,1,rca_5ce31262,artist,Not present on the official artist page,heroAsset,rc_b9181116,rcs_af863f71,,https://www.lanewaymusic.com.au/charliemarshall-curiousminds
+rca_5ce31262,2026-07-25T03:32:28.072Z,1,rca_5ce31262,artist,Explicitly mentioned as Melbourne,location,rc_b9181116,rcs_11311a42,,https://www.lanewaymusic.com.au/charliemarshall-curiousminds
+rca_5ce31262,2026-07-25T03:32:28.072Z,1,rca_5ce31262,artist,Not present on the official artist page,officialWebsiteUrl,rc_b9181116,rcs_397314aa,,https://www.lanewaymusic.com.au/charliemarshall-curiousminds
+rca_5fe1f13f,2026-07-25T03:31:45.695Z,1,rca_5fe1f13f,artist,Biographical information about Chain,biography,rc_b9181116,rcs_71be55f9,,https://www.lanewaymusic.com.au/chain
+rca_5fe1f13f,2026-07-25T03:31:45.695Z,1,rca_5fe1f13f,artist,Music genres associated with Chain,genres,rc_b9181116,rcs_25d9e4fa,,https://www.lanewaymusic.com.au/chain
+rca_5fe1f13f,2026-07-25T03:31:45.695Z,1,rca_5fe1f13f,artist,Location associated with Chain,location,rc_b9181116,rcs_09e2a09d,,https://www.lanewaymusic.com.au/chain
+rca_62970ef1,2026-07-25T03:46:46.989Z,1,rca_62970ef1,artist,"Official artist page providing information about the band's history, discography, and notable achievements.",biography,rc_b9181116,rcs_6c1673a0,,https://www.lanewaymusic.com.au/little-heroes
+rca_62970ef1,2026-07-25T03:46:46.989Z,1,rca_62970ef1,artist,Implicitly mentioned through the description of the band as a 'pop/rock music' group.,genres,rc_b9181116,rcs_d8021a71,,https://www.lanewaymusic.com.au/little-heroes
+rca_62970ef1,2026-07-25T03:46:46.989Z,1,rca_62970ef1,artist,No hero asset image URL provided.,heroAsset,rc_b9181116,rcs_9255feb9,,https://www.lanewaymusic.com.au/little-heroes
+rca_62970ef1,2026-07-25T03:46:46.989Z,1,rca_62970ef1,artist,Explicitly mentioned as 'Melbourne band'.,location,rc_b9181116,rcs_0a07a7aa,,https://www.lanewaymusic.com.au/little-heroes
+rca_62970ef1,2026-07-25T03:46:46.989Z,1,rca_62970ef1,artist,No official website URL provided.,officialWebsiteUrl,rc_b9181116,rcs_b34f782a,,https://www.lanewaymusic.com.au/little-heroes
+rca_65232d13,2026-07-25T03:37:22.791Z,1,rca_65232d13,artist,Official biography of DollSquad from Laneway Music website,biography,rc_b9181116,rcs_85d87318,,https://www.lanewaymusic.com.au/dollsquad
+rca_65232d13,2026-07-25T03:37:22.791Z,1,rca_65232d13,artist,Location mentioned as Melbourne,location,rc_b9181116,rcs_e6d38ab2,,https://www.lanewaymusic.com.au/dollsquad
+rca_6536cd57,2026-07-25T04:04:17.020Z,0,rca_6536cd57,artist,,,rc_b9181116,rcs_3c63512c,,https://www.lanewaymusic.com.au/stu-thomas
+rca_653de027,2026-07-25T03:35:51.198Z,1,rca_653de027,artist,Biographical information about Damien Lovelock,biography,rc_b9181116,rcs_cd38299e,,https://www.lanewaymusic.com.au/damienlovelock
+rca_653de027,2026-07-25T03:35:51.198Z,1,rca_653de027,artist,Overall confidence in the information provided,confidenceScore,rc_b9181116,rcs_516a3403,,https://www.lanewaymusic.com.au/damienlovelock
+rca_653de027,2026-07-25T03:35:51.198Z,1,rca_653de027,artist,Genre information about Damien Lovelock's music,genres,rc_b9181116,rcs_76681fc9,,https://www.lanewaymusic.com.au/damienlovelock
+rca_653de027,2026-07-25T03:35:51.198Z,1,rca_653de027,artist,Location information about Damien Lovelock,location,rc_b9181116,rcs_8230479c,,https://www.lanewaymusic.com.au/damienlovelock
+rca_692ae78f,2026-07-25T03:38:27.606Z,1,rca_692ae78f,artist,"Ekko Music is a specialist electronic label, operating as an indent label under the Laneway Music umbrella. Ekko oversees the catalogue of two artists: Puretone (Josh Abrahams) and Them Swoops.",biography,rc_b9181116,rcs_47e30526,,https://www.lanewaymusic.com.au/ekkomusic
+rca_692ae78f,2026-07-25T03:38:27.606Z,1,rca_692ae78f,artist,electronic music label,genres,rc_b9181116,rcs_b69c2dd7,,https://www.lanewaymusic.com.au/ekkomusic
+rca_692ae78f,2026-07-25T03:38:27.606Z,1,rca_692ae78f,artist,no hero asset image URL mentioned,heroAsset,rc_b9181116,rcs_57dde78f,,https://www.lanewaymusic.com.au/ekkomusic
+rca_692ae78f,2026-07-25T03:38:27.606Z,1,rca_692ae78f,artist,no location mentioned,location,rc_b9181116,rcs_f97142b0,,https://www.lanewaymusic.com.au/ekkomusic
+rca_692ae78f,2026-07-25T03:38:27.606Z,1,rca_692ae78f,artist,no official website URL mentioned,officialWebsiteUrl,rc_b9181116,rcs_cd5ba100,,https://www.lanewaymusic.com.au/ekkomusic
+rca_6c287f3b,2026-07-25T03:30:26.594Z,1,rca_6c287f3b,artist,Biographical information about Bitter Sweet Kicks,biography,rc_b9181116,rcs_0dab9bd9,,https://www.lanewaymusic.com.au/bittersweetkicks
+rca_6c287f3b,2026-07-25T03:30:26.594Z,1,rca_6c287f3b,artist,Genres played by Bitter Sweet Kicks,genres,rc_b9181116,rcs_d1869954,,https://www.lanewaymusic.com.au/bittersweetkicks
+rca_6c287f3b,2026-07-25T03:30:26.594Z,1,rca_6c287f3b,artist,No hero asset image URL found,heroAsset,rc_b9181116,rcs_c0a6aa92,,https://www.lanewaymusic.com.au/bittersweetkicks
+rca_6c287f3b,2026-07-25T03:30:26.594Z,1,rca_6c287f3b,artist,Location of Bitter Sweet Kicks,location,rc_b9181116,rcs_bdc56dc5,,https://www.lanewaymusic.com.au/bittersweetkicks
+rca_6c287f3b,2026-07-25T03:30:26.594Z,1,rca_6c287f3b,artist,No official website URL found,officialWebsiteUrl,rc_b9181116,rcs_f9d58e25,,https://www.lanewaymusic.com.au/bittersweetkicks
+rca_709fd8c1,2026-07-25T03:45:30.644Z,0,rca_709fd8c1,artist,,,rc_b9181116,rcs_a553ab07,,https://www.lanewaymusic.com.au/lafemme
+rca_7931959f,2026-07-25T03:43:52.820Z,1,rca_7931959f,artist,Official artist page with biography and career highlights,biography,rc_b9181116,rcs_424361a1,,https://www.lanewaymusic.com.au/joshabrahams
+rca_7931959f,2026-07-25T03:43:52.820Z,1,rca_7931959f,artist,Artist described as 'one of Australia's most respected producers',location,rc_b9181116,rcs_09f3cb65,,https://www.lanewaymusic.com.au/joshabrahams
+rca_7ad59425,2026-07-25T03:56:17.797Z,1,rca_7ad59425,artist,Biography of Shock Poets,biography,rc_b9181116,rcs_eb14ad21,,https://www.lanewaymusic.com.au/shockpoets
+rca_7ad59425,2026-07-25T03:56:17.797Z,1,rca_7ad59425,artist,No genres mentioned,genres,rc_b9181116,rcs_6b4e5d88,,https://www.lanewaymusic.com.au/shockpoets
+rca_7ad59425,2026-07-25T03:56:17.797Z,1,rca_7ad59425,artist,No hero asset mentioned,heroAsset,rc_b9181116,rcs_c55aca22,,https://www.lanewaymusic.com.au/shockpoets
+rca_7ad59425,2026-07-25T03:56:17.797Z,1,rca_7ad59425,artist,No location mentioned,location,rc_b9181116,rcs_c5519049,,https://www.lanewaymusic.com.au/shockpoets
+rca_7ad59425,2026-07-25T03:56:17.797Z,1,rca_7ad59425,artist,No official website URL mentioned,officialWebsiteUrl,rc_b9181116,rcs_ce870dc9,,https://www.lanewaymusic.com.au/shockpoets
+rca_7c9e721a,2026-07-25T04:10:15.419Z,1,rca_7c9e721a,artist,"The official Laneway Music page for Zimmerman, providing information about the band's history, formation, and discography.",biography,rc_b9181116,rcs_9e1a6842,,https://www.lanewaymusic.com.au/zimmerman
+rca_7c9e721a,2026-07-25T04:10:15.419Z,1,rca_7c9e721a,artist,The page describes The Zimmermen as an 'Australian country-rock outfit'.,genres,rc_b9181116,rcs_65dd3911,,https://www.lanewaymusic.com.au/zimmerman
+rca_7c9e721a,2026-07-25T04:10:15.419Z,1,rca_7c9e721a,artist,The page mentions that The Zimmermen are an 'Australian country-rock outfit'.,location,rc_b9181116,rcs_1afa376a,,https://www.lanewaymusic.com.au/zimmerman
+rca_7c9e721a,2026-07-25T04:10:15.419Z,1,rca_7c9e721a,artist,No official website URL is present on the page.,officialWebsiteUrl,rc_b9181116,rcs_7607a2d2,,https://www.lanewaymusic.com.au/zimmerman
+rca_7f5426e0,2026-07-25T03:48:46.134Z,1,rca_7f5426e0,artist,Biographical information about Matt Taylor's music career,biography,rc_b9181116,rcs_47252166,,https://www.lanewaymusic.com.au/matt-taylor
+rca_7f5426e0,2026-07-25T03:48:46.134Z,1,rca_7f5426e0,artist,Genres mentioned in Matt Taylor's biography,genres,rc_b9181116,rcs_af394831,,https://www.lanewaymusic.com.au/matt-taylor
+rca_7f5426e0,2026-07-25T03:48:46.134Z,1,rca_7f5426e0,artist,No location mentioned in Matt Taylor's biography,location,rc_b9181116,rcs_168e17da,,https://www.lanewaymusic.com.au/matt-taylor
+rca_82d9ac4a,2026-07-25T04:05:21.317Z,1,rca_82d9ac4a,artist,Biographical information about The Mark of Cain,biography,rc_b9181116,rcs_04931fbb,,https://www.lanewaymusic.com.au/themarkofcain
+rca_82d9ac4a,2026-07-25T04:05:21.317Z,1,rca_82d9ac4a,artist,Genres associated with The Mark of Cain,genres,rc_b9181116,rcs_96896d1e,,https://www.lanewaymusic.com.au/themarkofcain
+rca_82d9ac4a,2026-07-25T04:05:21.317Z,1,rca_82d9ac4a,artist,No hero asset image URL found,heroAsset,rc_b9181116,rcs_355e233e,,https://www.lanewaymusic.com.au/themarkofcain
+rca_82d9ac4a,2026-07-25T04:05:21.317Z,1,rca_82d9ac4a,artist,Location of The Mark of Cain,location,rc_b9181116,rcs_8fbbf739,,https://www.lanewaymusic.com.au/themarkofcain
+rca_82d9ac4a,2026-07-25T04:05:21.317Z,1,rca_82d9ac4a,artist,No official website URL found,officialWebsiteUrl,rc_b9181116,rcs_d96d1d81,,https://www.lanewaymusic.com.au/themarkofcain
+rca_8361f035,2026-07-25T03:34:59.378Z,1,rca_8361f035,artist,The biography of Christopher Marshall on the Laneway Music website.,biography,rc_b9181116,rcs_6559153c,,https://www.lanewaymusic.com.au/christophermarshall
+rca_8361f035,2026-07-25T03:34:59.378Z,1,rca_8361f035,artist,The genre of music associated with Christopher Marshall on the Laneway Music website.,genres,rc_b9181116,rcs_036f31bd,,https://www.lanewaymusic.com.au/christophermarshall
+rca_8361f035,2026-07-25T03:34:59.378Z,1,rca_8361f035,artist,The location associated with Christopher Marshall on the Laneway Music website.,location,rc_b9181116,rcs_28fbbd9e,,https://www.lanewaymusic.com.au/christophermarshall
+rca_843fc7f6,2026-07-25T04:06:50.139Z,1,rca_843fc7f6,artist,Official artist page with biography and description of sound and band members,biography,rc_b9181116,rcs_b3c97bd6,,https://www.lanewaymusic.com.au/uppercut
+rca_843fc7f6,2026-07-25T04:06:50.139Z,1,rca_843fc7f6,artist,"Genres mentioned in biography: rock n' roll, punk, and 90's metal sounds",genres,rc_b9181116,rcs_6c1c85ff,,https://www.lanewaymusic.com.au/uppercut
+rca_843fc7f6,2026-07-25T04:06:50.139Z,1,rca_843fc7f6,artist,Location mentioned in biography: Naarm (Melbourne),location,rc_b9181116,rcs_48f2e24e,,https://www.lanewaymusic.com.au/uppercut
+rca_85b9306e,2026-07-25T03:55:15.669Z,1,rca_85b9306e,artist,Official biography of Remora on Laneway Music website,biography,rc_b9181116,rcs_642cbaa3,,https://www.lanewaymusic.com.au/remora
+rca_85b9306e,2026-07-25T03:55:15.669Z,1,rca_85b9306e,artist,Genres inferred from biography on Laneway Music website,genres,rc_b9181116,rcs_dbfa6370,,https://www.lanewaymusic.com.au/remora
+rca_85b9306e,2026-07-25T03:55:15.669Z,1,rca_85b9306e,artist,Location mentioned in biography on Laneway Music website,location,rc_b9181116,rcs_19049d15,,https://www.lanewaymusic.com.au/remora
+rca_9255b66a,2026-07-25T03:43:04.340Z,1,rca_9255b66a,artist,Biographical information about John Kennedy's music career,biography,rc_b9181116,rcs_93caee27,,https://www.lanewaymusic.com.au/john-kennedy
+rca_9255b66a,2026-07-25T03:43:04.340Z,1,rca_9255b66a,artist,Genres associated with John Kennedy's music,genres,rc_b9181116,rcs_441258f8,,https://www.lanewaymusic.com.au/john-kennedy
+rca_9255b66a,2026-07-25T03:43:04.340Z,1,rca_9255b66a,artist,No hero asset image URL found,heroAsset,rc_b9181116,rcs_dc9178fc,,https://www.lanewaymusic.com.au/john-kennedy
+rca_9255b66a,2026-07-25T03:43:04.340Z,1,rca_9255b66a,artist,John Kennedy's current location,location,rc_b9181116,rcs_0143afc5,,https://www.lanewaymusic.com.au/john-kennedy
+rca_9255b66a,2026-07-25T03:43:04.340Z,1,rca_9255b66a,artist,No official website URL found,officialWebsiteUrl,rc_b9181116,rcs_7ee7790d,,https://www.lanewaymusic.com.au/john-kennedy
+rca_992a163c,2026-07-25T03:31:07.054Z,1,rca_992a163c,artist,The official Laneway Music page for Cattletruck provides a detailed biography of the artist.,biography,rc_b9181116,rcs_88c4d259,,https://www.lanewaymusic.com.au/cattletruck
+rca_992a163c,2026-07-25T03:31:07.054Z,1,rca_992a163c,artist,The page mentions 'punkabilly' and 'rock'n'roll' as genres associated with Cattletruck.,genres,rc_b9181116,rcs_abd92704,,https://www.lanewaymusic.com.au/cattletruck
+rca_992a163c,2026-07-25T03:31:07.054Z,1,rca_992a163c,artist,No hero asset image URL is present on the page.,heroAsset,rc_b9181116,rcs_bba998ec,,https://www.lanewaymusic.com.au/cattletruck
+rca_992a163c,2026-07-25T03:31:07.054Z,1,rca_992a163c,artist,The page mentions Melbourne's St Kilda scene as the origin of Cattletruck.,location,rc_b9181116,rcs_2fad3e9f,,https://www.lanewaymusic.com.au/cattletruck
+rca_992a163c,2026-07-25T03:31:07.054Z,1,rca_992a163c,artist,No official website URL is present on the page.,officialWebsiteUrl,rc_b9181116,rcs_a328f94f,,https://www.lanewaymusic.com.au/cattletruck
+rca_a6c3e440,2026-07-25T03:49:27.037Z,1,rca_a6c3e440,artist,Official biography of Mother Goose on Laneway Music website,biography,rc_b9181116,rcs_2daf5bfb,,https://www.lanewaymusic.com.au/mothergoose
+rca_a6c3e440,2026-07-25T03:49:27.037Z,1,rca_a6c3e440,artist,"Mother Goose formed in Dunedin, New Zealand",location,rc_b9181116,rcs_bc35a935,,https://www.lanewaymusic.com.au/mothergoose
+rca_a6d02f89,2026-07-25T04:06:29.924Z,1,rca_a6d02f89,artist,Official biography of Toys Went Berserk on Laneway Music website,biography,rc_b9181116,rcs_35ab89ba,,https://www.lanewaymusic.com.au/toyswentberserk
+rca_a6d02f89,2026-07-25T04:06:29.924Z,1,rca_a6d02f89,artist,Genre information inferred from biography on Laneway Music website,genres,rc_b9181116,rcs_af9fa2cb,,https://www.lanewaymusic.com.au/toyswentberserk
+rca_a6d02f89,2026-07-25T04:06:29.924Z,1,rca_a6d02f89,artist,No hero asset URL found on Laneway Music website,heroAsset,rc_b9181116,rcs_edf9c03f,,https://www.lanewaymusic.com.au/toyswentberserk
+rca_a6d02f89,2026-07-25T04:06:29.924Z,1,rca_a6d02f89,artist,Location mentioned in biography on Laneway Music website,location,rc_b9181116,rcs_ad946f80,,https://www.lanewaymusic.com.au/toyswentberserk
+rca_a6d02f89,2026-07-25T04:06:29.924Z,1,rca_a6d02f89,artist,No official website URL found on Laneway Music website,officialWebsiteUrl,rc_b9181116,rcs_44499c70,,https://www.lanewaymusic.com.au/toyswentberserk
+rca_a8764227,2026-07-25T03:47:17.789Z,1,rca_a8764227,artist,Official biography of Little Murders from Laneway Music website,biography,rc_b9181116,rcs_f2846445,,https://www.lanewaymusic.com.au/little-murders
+rca_a8764227,2026-07-25T03:47:17.789Z,1,rca_a8764227,artist,Genre description from official biography,genres,rc_b9181116,rcs_25c87b90,,https://www.lanewaymusic.com.au/little-murders
+rca_a8764227,2026-07-25T03:47:17.789Z,1,rca_a8764227,artist,No hero asset image URL found,heroAsset,rc_b9181116,rcs_a5ba9e4a,,https://www.lanewaymusic.com.au/little-murders
+rca_a8764227,2026-07-25T03:47:17.789Z,1,rca_a8764227,artist,Location mentioned in biography,location,rc_b9181116,rcs_2a04df99,,https://www.lanewaymusic.com.au/little-murders
+rca_a8764227,2026-07-25T03:47:17.789Z,1,rca_a8764227,artist,No official website URL found,officialWebsiteUrl,rc_b9181116,rcs_d9d70a41,,https://www.lanewaymusic.com.au/little-murders
+rca_ad51176e,2026-07-25T03:40:20.138Z,1,rca_ad51176e,artist,Official artist page with biography and music information,biography,rc_b9181116,rcs_6035fd6f,,https://www.lanewaymusic.com.au/harrycarman
+rca_ad51176e,2026-07-25T03:40:20.138Z,0.8,rca_ad51176e,artist,Genre can be inferred from biography and music descriptions,genres,rc_b9181116,rcs_2394ba0a,,https://www.lanewaymusic.com.au/harrycarman
+rca_ad51176e,2026-07-25T03:40:20.138Z,1,rca_ad51176e,artist,No hero asset image URL present on the page,heroAsset,rc_b9181116,rcs_8146a2ca,,https://www.lanewaymusic.com.au/harrycarman
+rca_ad51176e,2026-07-25T03:40:20.138Z,1,rca_ad51176e,artist,Artist is described as Australian,location,rc_b9181116,rcs_eac956a9,,https://www.lanewaymusic.com.au/harrycarman
+rca_ad51176e,2026-07-25T03:40:20.138Z,1,rca_ad51176e,artist,No official website URL present on the page,officialWebsiteUrl,rc_b9181116,rcs_19187301,,https://www.lanewaymusic.com.au/harrycarman
+rca_aecd3cc1,2026-07-25T03:41:22.697Z,1,rca_aecd3cc1,artist,"The official Laneway Music page for Jeff Duff, providing a detailed biography.",biography,rc_b9181116,rcs_d8236cc1,,https://www.lanewaymusic.com.au/jeff-duff
+rca_aecd3cc1,2026-07-25T03:41:22.697Z,1,rca_aecd3cc1,artist,The biography provides a comprehensive overview of Jeff Duff's career.,confidenceScore,rc_b9181116,rcs_b0a541ce,,https://www.lanewaymusic.com.au/jeff-duff
+rca_aecd3cc1,2026-07-25T03:41:22.697Z,1,rca_aecd3cc1,artist,"Genres mentioned in the biography, including rock, new wave, jazz funk, and orchestral.",genres,rc_b9181116,rcs_bdac317e,,https://www.lanewaymusic.com.au/jeff-duff
+rca_aecd3cc1,2026-07-25T03:41:22.697Z,1,rca_aecd3cc1,artist,Location mentioned as Australia.,location,rc_b9181116,rcs_0d0c7d49,,https://www.lanewaymusic.com.au/jeff-duff
+rca_aefa3291,2026-07-25T03:56:35.851Z,1,rca_aefa3291,artist,Biography of SideShow Annie,biography,rc_b9181116,rcs_0731326a,,https://www.lanewaymusic.com.au/sideshowannie
+rca_aefa3291,2026-07-25T03:56:35.851Z,1,rca_aefa3291,artist,Rock and blues influences mentioned,genres,rc_b9181116,rcs_30de4a1b,,https://www.lanewaymusic.com.au/sideshowannie
+rca_afdd6efa,2026-07-25T03:56:59.928Z,1,rca_afdd6efa,artist,Biographical information about Southbound Snake Charmers,biography,rc_b9181116,rcs_46bf00ba,,https://www.lanewaymusic.com.au/southboundsnakecharmers
+rca_afdd6efa,2026-07-25T03:56:59.928Z,0.5,rca_afdd6efa,artist,Genre implied by description of music style,genres,rc_b9181116,rcs_3b630a71,,https://www.lanewaymusic.com.au/southboundsnakecharmers
+rca_afdd6efa,2026-07-25T03:56:59.928Z,1,rca_afdd6efa,artist,No hero asset image URL found,heroAsset,rc_b9181116,rcs_72a48fcf,,https://www.lanewaymusic.com.au/southboundsnakecharmers
+rca_afdd6efa,2026-07-25T03:56:59.928Z,1,rca_afdd6efa,artist,Location of the band,location,rc_b9181116,rcs_b0c58b82,,https://www.lanewaymusic.com.au/southboundsnakecharmers
+rca_afdd6efa,2026-07-25T03:56:59.928Z,1,rca_afdd6efa,artist,No official website URL found,officialWebsiteUrl,rc_b9181116,rcs_25d47d9a,,https://www.lanewaymusic.com.au/southboundsnakecharmers
+rca_b30b5e42,2026-07-25T04:04:39.158Z,1,rca_b30b5e42,artist,The biography of The 31st was accurately extracted from the official Laneway Music page.,biography,rc_b9181116,rcs_61fb28ec,,https://www.lanewaymusic.com.au/the31st
+rca_b30b5e42,2026-07-25T04:04:39.158Z,0.8,rca_b30b5e42,artist,"The genres were inferred from the description of the band's style as 'pop, rock, light, dark'.",genres,rc_b9181116,rcs_8fcc163f,,https://www.lanewaymusic.com.au/the31st
+rca_b30b5e42,2026-07-25T04:04:39.158Z,1,rca_b30b5e42,artist,No hero asset image URL was found on the page.,heroAsset,rc_b9181116,rcs_57af5319,,https://www.lanewaymusic.com.au/the31st
+rca_b30b5e42,2026-07-25T04:04:39.158Z,1,rca_b30b5e42,artist,The location of The 31st was explicitly mentioned as Brisbane.,location,rc_b9181116,rcs_89193430,,https://www.lanewaymusic.com.au/the31st
+rca_b30b5e42,2026-07-25T04:04:39.158Z,1,rca_b30b5e42,artist,No official website URL was found on the page.,officialWebsiteUrl,rc_b9181116,rcs_ae2e7690,,https://www.lanewaymusic.com.au/the31st
+rca_b3746ae3,2026-07-25T03:36:52.831Z,1,rca_b3746ae3,artist,Official biography of Degenerates from Laneway Music,biography,rc_b9181116,rcs_86670019,,https://www.lanewaymusic.com.au/degenerates
+rca_b3746ae3,2026-07-25T03:36:52.831Z,1,rca_b3746ae3,artist,Genre inferred from biography,genres,rc_b9181116,rcs_104fd8ba,,https://www.lanewaymusic.com.au/degenerates
+rca_b3746ae3,2026-07-25T03:36:52.831Z,1,rca_b3746ae3,artist,No hero asset image URL found,heroAsset,rc_b9181116,rcs_f6a76104,,https://www.lanewaymusic.com.au/degenerates
+rca_b3746ae3,2026-07-25T03:36:52.831Z,1,rca_b3746ae3,artist,Location mentioned in biography,location,rc_b9181116,rcs_7d3de165,,https://www.lanewaymusic.com.au/degenerates
+rca_b3746ae3,2026-07-25T03:36:52.831Z,1,rca_b3746ae3,artist,No official website URL found,officialWebsiteUrl,rc_b9181116,rcs_ba9a180d,,https://www.lanewaymusic.com.au/degenerates
+rca_b6b4b492,2026-07-25T03:45:54.703Z,1,rca_b6b4b492,artist,The biography section on the official Laneway Music page for Lez Karski.,biography,rc_b9181116,rcs_ff390846,,https://www.lanewaymusic.com.au/les-karski
+rca_b6b4b492,2026-07-25T03:45:54.703Z,1,rca_b6b4b492,artist,The genres are inferred from the text mentioning 'rhythm and blues outfits' and 'blues' related information.,genres,rc_b9181116,rcs_70415ed3,,https://www.lanewaymusic.com.au/les-karski
+rca_b6b4b492,2026-07-25T03:45:54.703Z,1,rca_b6b4b492,artist,There is no hero asset image URL mentioned for Lez Karski on the page.,heroAsset,rc_b9181116,rcs_3d4059a9,,https://www.lanewaymusic.com.au/les-karski
+rca_b6b4b492,2026-07-25T03:45:54.703Z,1,rca_b6b4b492,artist,The location is mentioned as Perth in the context of Lez's current band 'The Nervous Investors'.,location,rc_b9181116,rcs_4ae070de,,https://www.lanewaymusic.com.au/les-karski
+rca_b6b4b492,2026-07-25T03:45:54.703Z,1,rca_b6b4b492,artist,There is no official website URL mentioned for Lez Karski on the page.,officialWebsiteUrl,rc_b9181116,rcs_d91a9a1e,,https://www.lanewaymusic.com.au/les-karski
+rca_c151fb41,2026-07-25T03:48:04.687Z,1,rca_c151fb41,artist,Official biography of Madder Lake from Laneway Music,biography,rc_b9181116,rcs_ededeaa7,,https://www.lanewaymusic.com.au/madder-lake
+rca_c151fb41,2026-07-25T03:48:04.687Z,1,rca_c151fb41,artist,Genre mentioned in the biography,genres,rc_b9181116,rcs_c5163f54,,https://www.lanewaymusic.com.au/madder-lake
+rca_c151fb41,2026-07-25T03:48:04.687Z,1,rca_c151fb41,artist,Location mentioned in the biography,location,rc_b9181116,rcs_5d6db89b,,https://www.lanewaymusic.com.au/madder-lake
+rca_c3961da1,2026-07-25T03:41:52.268Z,1,rca_c3961da1,artist,Official artist page with biography and music information,biography,rc_b9181116,rcs_af093792,,https://www.lanewaymusic.com.au/jeff-st-john
+rca_c3961da1,2026-07-25T03:41:52.268Z,1,rca_c3961da1,artist,Biography mentions 'rock music' and 'rock album',genres,rc_b9181116,rcs_cf131ced,,https://www.lanewaymusic.com.au/jeff-st-john
+rca_c3961da1,2026-07-25T03:41:52.268Z,1,rca_c3961da1,artist,No hero asset image URL found on the page,heroAsset,rc_b9181116,rcs_e7691ccd,,https://www.lanewaymusic.com.au/jeff-st-john
+rca_c3961da1,2026-07-25T03:41:52.268Z,1,rca_c3961da1,artist,Biography mentions 'Australian rock music' and 'Australian staple',location,rc_b9181116,rcs_13d083c0,,https://www.lanewaymusic.com.au/jeff-st-john
+rca_c3961da1,2026-07-25T03:41:52.268Z,1,rca_c3961da1,artist,No official website URL found on the page,officialWebsiteUrl,rc_b9181116,rcs_97dfa948,,https://www.lanewaymusic.com.au/jeff-st-john
+rca_d57ce9c9,2026-07-25T04:05:52.934Z,1,rca_d57ce9c9,artist,The Rockwells began as an acoustic country rock duo featuring Ronnie Peel (aka Rockwell T. James) and Bobby Fletcher.,biography,rc_b9181116,rcs_2ced105d,,https://www.lanewaymusic.com.au/therockwells
+rca_d57ce9c9,2026-07-25T04:05:52.934Z,1,rca_d57ce9c9,artist,"They created a spirited repertoire of country, blues and pop classics.",genres,rc_b9181116,rcs_439a8ffc,,https://www.lanewaymusic.com.au/therockwells
+rca_d57ce9c9,2026-07-25T04:05:52.934Z,1,rca_d57ce9c9,artist,No hero asset image URL mentioned.,heroAsset,rc_b9181116,rcs_807239f6,,https://www.lanewaymusic.com.au/therockwells
+rca_d57ce9c9,2026-07-25T04:05:52.934Z,1,rca_d57ce9c9,artist,No location mentioned.,location,rc_b9181116,rcs_f3b6a375,,https://www.lanewaymusic.com.au/therockwells
+rca_d57ce9c9,2026-07-25T04:05:52.934Z,1,rca_d57ce9c9,artist,No official website URL mentioned.,officialWebsiteUrl,rc_b9181116,rcs_fac87af5,,https://www.lanewaymusic.com.au/therockwells
+rca_e8248e08,2026-07-25T03:55:43.410Z,0,rca_e8248e08,artist,,,rc_b9181116,rcs_cff20c1e,,https://www.lanewaymusic.com.au/sevenstories
+rca_effd9d86,2026-07-25T03:30:07.537Z,1,rca_effd9d86,artist,"The biography of Billy T, including formation, members, and music style.",biography,rc_b9181116,rcs_d55782b9,,https://www.lanewaymusic.com.au/billyt
+rca_effd9d86,2026-07-25T03:30:07.537Z,1,rca_effd9d86,artist,"The genres of music played by Billy T, mentioned as Reggae, Soul, Funk, and Rock.",genres,rc_b9181116,rcs_db1e5c7e,,https://www.lanewaymusic.com.au/billyt
+rca_effd9d86,2026-07-25T03:30:07.537Z,1,rca_effd9d86,artist,There is no hero asset image URL mentioned for Billy T.,heroAsset,rc_b9181116,rcs_9fa88656,,https://www.lanewaymusic.com.au/billyt
+rca_effd9d86,2026-07-25T03:30:07.537Z,1,rca_effd9d86,artist,"The location where Billy T played, mentioned as Melbourne, and formed in Queensland.",location,rc_b9181116,rcs_8193f297,,https://www.lanewaymusic.com.au/billyt
+rca_effd9d86,2026-07-25T03:30:07.537Z,1,rca_effd9d86,artist,There is no official website URL mentioned for Billy T.,officialWebsiteUrl,rc_b9181116,rcs_f60a8947,,https://www.lanewaymusic.com.au/billyt
+rca_f0860652,2026-07-25T03:28:53.161Z,1,rca_f0860652,artist,Argus band history and members,biography,rc_b9181116,rcs_a1f604a0,,https://www.lanewaymusic.com.au/argus
+rca_f0860652,2026-07-25T03:28:53.161Z,1,rca_f0860652,artist,garage band,genres,rc_b9181116,rcs_b895d823,,https://www.lanewaymusic.com.au/argus
+rca_f0860652,2026-07-25T03:28:53.161Z,1,rca_f0860652,artist,no hero asset URL,heroAsset,rc_b9181116,rcs_0b8db0e1,,https://www.lanewaymusic.com.au/argus
+rca_f0860652,2026-07-25T03:28:53.161Z,1,rca_f0860652,artist,Melbourne,location,rc_b9181116,rcs_8b35b09c,,https://www.lanewaymusic.com.au/argus
+rca_f0860652,2026-07-25T03:28:53.161Z,1,rca_f0860652,artist,no official website URL,officialWebsiteUrl,rc_b9181116,rcs_0b9520fc,,https://www.lanewaymusic.com.au/argus
+rca_f3bd4eba,2026-07-25T03:32:07.900Z,1,rca_f3bd4eba,artist,Official artist page providing biographical information about Charlie Marshall & The Body Electric,biography,rc_b9181116,rcs_7ea2404a,,https://www.lanewaymusic.com.au/charliemarshall-bodyelectric
+rca_f3bd4eba,2026-07-25T03:32:07.900Z,0.8,rca_f3bd4eba,artist,Genres inferred from biographical text describing the band's sound,genres,rc_b9181116,rcs_01bd3eab,,https://www.lanewaymusic.com.au/charliemarshall-bodyelectric
+rca_f3bd4eba,2026-07-25T03:32:07.900Z,1,rca_f3bd4eba,artist,No hero asset image URL present on the page,heroAsset,rc_b9181116,rcs_8c783ff1,,https://www.lanewaymusic.com.au/charliemarshall-bodyelectric
+rca_f3bd4eba,2026-07-25T03:32:07.900Z,1,rca_f3bd4eba,artist,Location explicitly mentioned as Melbourne,location,rc_b9181116,rcs_7b7fe2e2,,https://www.lanewaymusic.com.au/charliemarshall-bodyelectric
+rca_f3bd4eba,2026-07-25T03:32:07.900Z,1,rca_f3bd4eba,artist,No official website URL present on the page,officialWebsiteUrl,rc_b9181116,rcs_0a4a950a,,https://www.lanewaymusic.com.au/charliemarshall-bodyelectric
+rca_f956beb0,2026-07-25T03:47:47.063Z,1,rca_f956beb0,artist,Biographical information about Love Child,biography,rc_b9181116,rcs_221f743e,,https://www.lanewaymusic.com.au/lovechild
+rca_f956beb0,2026-07-25T03:47:47.063Z,1,rca_f956beb0,artist,Music genres associated with Love Child,genres,rc_b9181116,rcs_39b9cd25,,https://www.lanewaymusic.com.au/lovechild
+rca_f956beb0,2026-07-25T03:47:47.063Z,1,rca_f956beb0,artist,No hero asset image URL found,heroAsset,rc_b9181116,rcs_00e3eaa3,,https://www.lanewaymusic.com.au/lovechild
+rca_f956beb0,2026-07-25T03:47:47.063Z,1,rca_f956beb0,artist,City of origin for Love Child,location,rc_b9181116,rcs_e04dc3ea,,https://www.lanewaymusic.com.au/lovechild
+rca_f956beb0,2026-07-25T03:47:47.063Z,1,rca_f956beb0,artist,No official website URL found,officialWebsiteUrl,rc_b9181116,rcs_bff7a74a,,https://www.lanewaymusic.com.au/lovechild
+rca_f9a1726f,2026-07-25T03:54:25.025Z,1,rca_f9a1726f,artist,Biographical information about Pray TV's history and members.,biography,rc_b9181116,rcs_de038f32,,https://www.lanewaymusic.com.au/pray-tv
+rca_f9a1726f,2026-07-25T03:54:25.025Z,0.5,rca_f9a1726f,artist,Genre information about Pray TV.,genres,rc_b9181116,rcs_162ed3ef,,https://www.lanewaymusic.com.au/pray-tv
+rca_f9a1726f,2026-07-25T03:54:25.025Z,1,rca_f9a1726f,artist,No hero asset image URL found.,heroAsset,rc_b9181116,rcs_84562057,,https://www.lanewaymusic.com.au/pray-tv
+rca_f9a1726f,2026-07-25T03:54:25.025Z,1,rca_f9a1726f,artist,Location information about Pray TV.,location,rc_b9181116,rcs_a856e300,,https://www.lanewaymusic.com.au/pray-tv
+rca_f9a1726f,2026-07-25T03:54:25.025Z,1,rca_f9a1726f,artist,No official website URL found.,officialWebsiteUrl,rc_b9181116,rcs_9a54a780,,https://www.lanewaymusic.com.au/pray-tv
+rca_fa034418,2026-07-25T03:46:15.191Z,1,rca_fa034418,artist,Biographical information about Lime Spiders' history and music,biography,rc_b9181116,rcs_cc534f72,,https://www.lanewaymusic.com.au/lime-spiders
+rca_fa034418,2026-07-25T03:46:15.191Z,1,rca_fa034418,artist,Genre information inferred from biography,genres,rc_b9181116,rcs_8f1a8fab,,https://www.lanewaymusic.com.au/lime-spiders
+rca_fa034418,2026-07-25T03:46:15.191Z,1,rca_fa034418,artist,No hero asset image URL found,heroAsset,rc_b9181116,rcs_c7246ecd,,https://www.lanewaymusic.com.au/lime-spiders
+rca_fa034418,2026-07-25T03:46:15.191Z,1,rca_fa034418,artist,Location mentioned in biography,location,rc_b9181116,rcs_9ea9fe86,,https://www.lanewaymusic.com.au/lime-spiders
+rca_fa034418,2026-07-25T03:46:15.191Z,1,rca_fa034418,artist,No official website URL found,officialWebsiteUrl,rc_b9181116,rcs_6b165f16,,https://www.lanewaymusic.com.au/lime-spiders
+,2026-07-25T03:27:56.799Z,0.98,rc_b9181116,record_company,Laneway Music distributes iconic artists catalogue digitally around the world.,description,rc_b9181116,rcs_bf31e6fa,,https://www.lanewaymusic.com.au/
+,2026-07-25T03:27:56.799Z,0.99,rc_b9181116,record_company,Official domain lanewaymusic.com.au identifies laneway-music.,identity,rc_b9181116,rcs_a325e4da,,https://www.lanewaymusic.com.au/
