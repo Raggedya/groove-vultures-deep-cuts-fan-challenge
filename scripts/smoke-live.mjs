@@ -5,6 +5,14 @@ for(const path of ['/api/health','/platform.json']){
   if(!response.ok)throw new Error(`${path} returned ${response.status}`);
 }
 const platform=await (await fetch(`${base}/platform.json`)).json();
+const recordCompanyTerms=await fetch(`${base}/record-company/terms.html`,{cache:"no-store"});
+const recordCompanyTermsBody=await recordCompanyTerms.text();
+if(!recordCompanyTerms.ok||!recordCompanyTermsBody.includes("Record Company Edition terms")){
+  throw new Error("/record-company/terms.html did not return the isolated legal page.");
+}
+if(!String(recordCompanyTerms.headers.get("content-security-policy")||"").includes("frame-ancestors 'none'")){
+  throw new Error("/record-company/terms.html did not pass through the Record Company security middleware.");
+}
 for(const edition of platform.editions.filter(item=>item.active)){
   const page=await fetch(`${base}${edition.canonicalPath}`);
   if(!page.ok)throw new Error(`${edition.canonicalPath} returned ${page.status}`);
