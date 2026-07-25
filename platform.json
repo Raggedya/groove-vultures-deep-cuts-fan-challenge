@@ -225,6 +225,14 @@
       "name": "Celibate Rifles",
       "config": "editions/celibate-rifles/edition.json",
       "active": true
+    },
+    {
+      "slug": "chain",
+      "editionId": "dc_fd1903ea9f",
+      "canonicalPath": "/e/dc_fd1903ea9f",
+      "name": "Chain",
+      "config": "editions/chain/edition.json",
+      "active": true
     }
   ]
 }
