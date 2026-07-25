@@ -4,7 +4,7 @@ import {
 } from "../record-company/schemas.js";
 
 const JSON_HEADERS={"content-type":"application/json; charset=utf-8","cache-control":"no-store"};
-const AI_MODEL="@cf/meta/llama-3.1-8b-instruct";
+const AI_MODEL="@cf/meta/llama-4-scout-17b-16e-instruct";
 const ROBOTS_CACHE=new Map();
 const ROSTER_TERMS=/\b(artists?|roster|bands?|acts?|talent|our\s+music|catalogue)\b/i;
 const NON_ARTIST_TERMS=/\b(news|release|album|single|shop|store|merch|contact|about|privacy|terms|licen[cs]|publish|distribution|playlist|event|tour|login|sign|cart|search|staff|team)\b/i;
