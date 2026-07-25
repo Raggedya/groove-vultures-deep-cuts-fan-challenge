@@ -8,6 +8,7 @@ import {__test} from "../worker/record-company.js";
 const fixtureRoot="scripts/fixtures/record-company";
 const home=await fs.readFile(`${fixtureRoot}/home.html`,"utf8");
 const roster=await fs.readFile(`${fixtureRoot}/artists.html`,"utf8");
+const wixRoster=await fs.readFile(`${fixtureRoot}/wix-artists.html`,"utf8");
 const neon=await fs.readFile(`${fixtureRoot}/neon-tide.html`,"utf8");
 const profile=__test.extractCompanyProfile(home,"https://midnightharbour.example/");
 assert.equal(profile.name,"Midnight Harbour Records");
@@ -22,6 +23,16 @@ const unique=__test.dedupeCandidates(candidates);
 assert.deepEqual(unique.map(item=>item.name),["Neon Tide","Paper Moons"]);
 assert.equal(new Set(unique.map(item=>item.url)).size,2);
 assert.ok(unique.every(item=>item.confidenceScore>=PUBLICATION_CONFIDENCE));
+
+const wixCandidates=__test.extractArtistCandidates(wixRoster,"https://midnightharbour.example/","https://midnightharbour.example/");
+assert.deepEqual(wixCandidates.map(item=>item.name),["Neon Tide","Paper Moons","Charlie Marshall / Curious Minds"]);
+assert.deepEqual(wixCandidates.map(item=>item.url),[
+  "https://midnightharbour.example/neon-tide",
+  "https://midnightharbour.example/paper-moons",
+  "https://midnightharbour.example/charlie-marshall-curious-minds"
+]);
+assert.ok(wixCandidates.every(item=>item.confidenceScore>=PUBLICATION_CONFIDENCE));
+assert.ok(!wixCandidates.some(item=>["Sync","Artists","Search Results"].includes(item.name)));
 
 const links=__test.extractLinks(neon,"https://midnightharbour.example/artists/neon-tide","artist");
 assert.deepEqual(links.map(item=>item.type).sort(),["instagram","spotify","youtube"]);
@@ -74,7 +85,7 @@ for(const securityMarker of ["content-security-policy","frame-ancestors 'none'",
 for(const legalMarker of ["recordCompanyLegalDocument","Record Company Edition terms","Record Company Edition privacy"])assert.ok(workerIndex.includes(legalMarker));
 for(const deliveryMarker of ['jobType==="record_company"',"notification_email_status='delivered'","email.bounced"])assert.ok(workerIndex.includes(deliveryMarker));
 for(const stage of ["discovering_company","discovering_roster","researching_artists","generating_quizzes","generating_pages","generating_qr_codes","validating_output","generating_reports","ready_for_delivery"])assert.ok(worker.includes(`"${stage}"`)||worker.includes(`'${stage}'`));
-for(const reliabilityMarker of ['["queued","validating"]',"settings.refreshExisting","removed_from_current_roster","while(queue.length&&seen.size<25)","robotsAllows","validateOfficialLinks","recordExternalStage","generating_master_qr_image","sending_completion_email"])assert.ok(worker.includes(reliabilityMarker));
+for(const reliabilityMarker of ['["queued","validating"]',"settings.refreshExisting","removed_from_current_roster","while(queue.length&&seen.size<25)","robotsAllows","validateOfficialLinks","extractWixPageCandidates","WIX_NON_ARTIST_PAGES","recordExternalStage","generating_master_qr_image","sending_completion_email"])assert.ok(worker.includes(reliabilityMarker));
 for(const required of ["Discover Our Bands &amp; Artists","Recommended For You","Back to","quiz_completed","quiz_abandoned","outbound_click","source_opened","response_seconds","completion_seconds"])assert.ok(frontend.includes(required));
 assert.match(frontend,/item\.id!==excludeId/);
 assert.match(frontend,/const unseen=eligible\.filter/);

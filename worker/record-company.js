@@ -8,6 +8,11 @@ const AI_MODEL="@cf/meta/llama-4-scout-17b-16e-instruct";
 const ROBOTS_CACHE=new Map();
 const ROSTER_TERMS=/\b(artists?|roster|bands?|acts?|talent|our\s+music|catalogue)\b/i;
 const NON_ARTIST_TERMS=/\b(news|release|album|single|shop|store|merch|contact|about|privacy|terms|licen[cs]|publish|distribution|playlist|event|tour|login|sign|cart|search|staff|team)\b/i;
+const WIX_NON_ARTIST_PAGES=new Set([
+  "about","artists","catalogue","contact","events","fullscreen-page","home","licensing","mailing-list",
+  "news","playlists","privacy","search","search-results","search-results-page","shop","store","submit-music",
+  "sync","terms"
+]);
 const PLATFORM_RULES=[
   ["spotify",/open\.spotify\.com\/artist\//i,"Listen on Spotify"],
   ["apple_music",/music\.apple\.com\/.+\/artist\//i,"Apple Music"],
@@ -523,12 +528,30 @@ function extractCompanyProfile(html,url){
 }
 
 function extractArtistCandidates(html,pageUrl,rootUrl){
-  return extractAnchors(html,pageUrl).filter(link=>{
+  const linked=extractAnchors(html,pageUrl).filter(link=>{
     if(!sameDomain(link.url,rootUrl)||link.url===pageUrl)return false;
     const name=cleanText(link.text,160),path=new URL(link.url).pathname;
     return name.length>=2&&name.length<=100&&!NON_ARTIST_TERMS.test(name)&&!/\.(jpg|png|svg|pdf|mp3|mp4)$/i.test(path)&&
       (/\/(artists?|roster|bands?|acts?|talent)\//i.test(path)||ROSTER_TERMS.test(new URL(pageUrl).pathname));
   }).map(link=>({name:link.text.trim(),url:link.url,sourceUrl:pageUrl,confidenceScore:0.99}));
+  return [...linked,...extractWixPageCandidates(html,pageUrl,rootUrl)];
+}
+function extractWixPageCandidates(html,pageUrl,rootUrl){
+  if(!sameDomain(pageUrl,rootUrl))return[];
+  const candidates=[];
+  const pagePattern=/"title":"((?:\\.|[^"\\])*)","pageUriSEO":"((?:\\.|[^"\\])*)"/g;
+  for(const match of String(html||"").matchAll(pagePattern)){
+    const name=cleanText(decodeJsonString(match[1]),160);
+    const uri=decodeJsonString(match[2]).replace(/^\/+|\/+$/g,"");
+    const pageKey=safeSlug(uri),nameKey=safeSlug(name);
+    if(!nameKey||name.length<2||name.length>100||!pageKey)continue;
+    if(WIX_NON_ARTIST_PAGES.has(pageKey)||WIX_NON_ARTIST_PAGES.has(nameKey)||NON_ARTIST_TERMS.test(name))continue;
+    if(/\.(jpg|png|svg|pdf|mp3|mp4)$/i.test(uri))continue;
+    const url=absoluteUrl(`/${uri}`,rootUrl);
+    if(!validHttpsUrl(url)||!sameDomain(url,rootUrl)||normalizeUrl(url)===normalizeUrl(pageUrl))continue;
+    candidates.push({name,url:normalizeUrl(url),sourceUrl:pageUrl,confidenceScore:0.99});
+  }
+  return candidates;
 }
 function dedupeCandidates(items){const seen=new Set();return items.filter(item=>{const key=`${safeSlug(item.name)}|${normalizeUrl(item.url)}`;if(!safeSlug(item.name)||seen.has(key))return false;seen.add(key);return true}).sort((a,b)=>a.name.localeCompare(b.name))}
 function extractAnchors(html,base){
@@ -607,12 +630,13 @@ function safeSettings(body){return{refreshExisting:Boolean(body?.refreshExisting
 function safeEventMetadata(value){if(!value||typeof value!=="object")return{};return Object.fromEntries(Object.entries(value).slice(0,12).map(([key,item])=>[cleanText(key,60),cleanText(item,200)]))}
 function safeError(error){return cleanText(error?.message||"Record-company processing failed.",800)}
 function decodeEntities(value){return String(value||"").replace(/&amp;/g,"&").replace(/&quot;/g,'"').replace(/&#39;|&apos;/g,"'").replace(/&lt;/g,"<").replace(/&gt;/g,">").replace(/&#(\d+);/g,(_,number)=>String.fromCharCode(Number(number)))}
+function decodeJsonString(value){try{return JSON.parse(`"${value}"`)}catch{return String(value||"").replaceAll("\\/","/")}}
 function authorized(request,env){return Boolean(env.ADMIN_TOKEN)&&request.headers.get("authorization")===`Bearer ${env.ADMIN_TOKEN}`}
 async function safeJson(request){try{return await request.json()}catch{return null}}
 function json(value,status=200){return new Response(JSON.stringify(value),{status,headers:JSON_HEADERS})}
 function toCsv(rows){const columns=[...new Set(rows.flatMap(row=>Object.keys(row)))];return[columns.join(","),...rows.map(row=>columns.map(key=>`"${String(row[key]??"").replaceAll('"','""')}"`).join(","))].join("\r\n")+"\r\n"}
 
 export const __test={
-  extractCompanyProfile,extractArtistCandidates,dedupeCandidates,extractLinks,extractPalette,
+  extractCompanyProfile,extractArtistCandidates,extractWixPageCandidates,dedupeCandidates,extractLinks,extractPalette,
   normalizeUrl,sameDomain,reconciliationReport,generateQuiz,hashId,destinationAllowed,robotsAllowsPath
 };
