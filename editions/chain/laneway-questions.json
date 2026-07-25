@@ -1,0 +1,82 @@
+[
+  {
+    "id": "chain-name",
+    "category": "Band Story",
+    "question": "Which singer gave the band the name Chain after the move to Melbourne?",
+    "options": [
+      "Wendy Saddington",
+      "Renée Geyer",
+      "Marcia Hines",
+      "Shirley Strachan"
+    ],
+    "correctAnswer": "Wendy Saddington",
+    "explanation": "Wendy Saddington became the group's lead singer after its move from Perth to Melbourne and chose the name Chain, helping shape an identity that has endured for decades.",
+    "sourceName": "Phil Manning — Chain history",
+    "sourceURL": "https://www.philmanning.com.au/chain.html",
+    "active": true
+  },
+  {
+    "id": "chain-landmark-album",
+    "category": "Landmark Release",
+    "question": "Which landmark Chain album became a double-gold Australian blues classic?",
+    "options": [
+      "Toward the Blues",
+      "The Captain Matchbox Whoopee Band",
+      "Living in the 70's",
+      "Aztec Music"
+    ],
+    "correctAnswer": "Toward the Blues",
+    "explanation": "Released in 1971, Toward the Blues became Chain's defining long-form statement and a double-gold landmark that helped establish a distinctly Australian blues sound.",
+    "sourceName": "Bluesfest — Chain",
+    "sourceURL": "https://www.bluesfest.com.au/artists-1/chain",
+    "active": true
+  },
+  {
+    "id": "chain-black-and-blue",
+    "category": "Song Story",
+    "question": "What kind of song did Matt Taylor want Black and Blue to become?",
+    "options": [
+      "A work song",
+      "A surf instrumental",
+      "A country waltz",
+      "A psychedelic lullaby"
+    ],
+    "correctAnswer": "A work song",
+    "explanation": "Phil Manning brought in the guitar riff, while Matt Taylor wanted to build a work song around it. Their collaboration connected the music to chain-gang imagery and the era's social mood.",
+    "sourceName": "BASEQ — Black and Blue with Chain",
+    "sourceURL": "https://www.baseq.org.au/black-and-blue-with-chain/",
+    "active": true
+  },
+  {
+    "id": "chain-gudinski",
+    "category": "Australian Music History",
+    "question": "Who later said Chain was the band that inspired him to start Mushroom Records?",
+    "options": [
+      "Michael Gudinski",
+      "Molly Meldrum",
+      "Glenn Wheatley",
+      "Michael Chugg"
+    ],
+    "correctAnswer": "Michael Gudinski",
+    "explanation": "Michael Gudinski worked with Chain early in his career and later described them as the band that inspired him to start Mushroom Records, placing Chain at a pivotal point in Australian music history.",
+    "sourceName": "The Music — Michael Gudinski's life story in 13 songs",
+    "sourceURL": "https://themusic.com.au/industry/how-could-you-play-music-that-loud-michael-gudinski-s-life-story-in-13-songs/eRbHbWxvbpE/23-11-23",
+    "active": true
+  },
+  {
+    "id": "chain-origin",
+    "category": "Origins",
+    "question": "In which Australian city did the group first form as The Chain in late 1968?",
+    "options": [
+      "Perth",
+      "Melbourne",
+      "Sydney",
+      "Adelaide"
+    ],
+    "correctAnswer": "Perth",
+    "explanation": "The group first formed as The Chain in Perth in late 1968 before moving east to Melbourne, where its classic Australian blues identity and national story took shape.",
+    "sourceName": "Beat — Australian hit-song history",
+    "sourceURL": "https://beat.com.au/the-most-obscure-hit-songs-in-australian-history-part-four/",
+    "active": true
+  }
+]

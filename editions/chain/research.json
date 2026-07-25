@@ -1,0 +1,77 @@
+{
+  "bandName": "Chain",
+  "slug": "chain",
+  "editionId": "dc_fd1903ea9f",
+  "verifiedAt": "2026-07-25T10:46:46.505Z",
+  "sources": [
+    {
+      "url": "https://www.lanewaymusic.com.au/chain",
+      "sourceType": "official record company artist profile",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-25T00:00:00.000Z",
+      "evidence": "Laneway Music's official Chain page identifies the Australian blues-rock band, describes its history and record-company relationship, and embeds the selected Black & Blue video."
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=MLkU-FjWx7U",
+      "destination": "featuredVideo",
+      "sourceType": "official-label-selected YouTube feature",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-25T00:00:00.000Z",
+      "evidence": "This exact YouTube video is embedded by Laneway Music on its official Chain artist page; YouTube identifies it as Chain - Black & Blue (Move) 1971."
+    },
+    {
+      "url": "https://music.apple.com/au/album/toward-the-blues-30th-anniversary-edition/213625235",
+      "destination": "buyMusic",
+      "sourceType": "official music platform",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-25T00:00:00.000Z",
+      "evidence": "Apple Music identifies the release as Toward the Blues (30th Anniversary Edition) by the Australian band Chain and provides a direct purchase/listening destination."
+    },
+    {
+      "url": "https://open.spotify.com/artist/2hnvTF9jhYWs6iEWdmJ50b",
+      "destination": "spotify",
+      "sourceType": "official music platform artist profile",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-25T00:00:00.000Z",
+      "evidence": "Spotify's artist page is the correct Australian Chain profile and includes Black and Blue, Snatch It Back and Hold It, and the band's catalogue."
+    },
+    {
+      "url": "https://www.philmanning.com.au/chain.html",
+      "destination": "website",
+      "sourceType": "authoritative artist website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-25T00:00:00.000Z",
+      "evidence": "Founding guitarist Phil Manning's official site provides Chain's history, personnel and current information, making it an authoritative artist destination."
+    },
+    {
+      "url": "https://www.baseq.org.au/black-and-blue-with-chain/",
+      "destination": "newsReviews",
+      "sourceType": "credible editorial interview",
+      "identityVerified": true,
+      "credibleEditorial": true,
+      "verifiedAt": "2026-07-25T00:00:00.000Z",
+      "evidence": "BASEQ publishes a detailed first-person interview with Phil Manning covering Chain's beginnings, the Black and Blue writing story and the band's continuing creative life."
+    },
+    {
+      "url": "https://www.bluesfest.com.au/artists-1/chain",
+      "sourceType": "authoritative festival artist profile",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-25T00:00:00.000Z",
+      "evidence": "Bluesfest's current official artist profile verifies Chain's 1968 origins, OzBlues legacy, current lineup and the double-gold status of Toward The Blues."
+    },
+    {
+      "url": "https://beat.com.au/the-most-obscure-hit-songs-in-australian-history-part-four/",
+      "sourceType": "credible music publication",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-25T00:00:00.000Z",
+      "evidence": "Beat's researched history records that the group formed as The Chain in Perth in late 1968 before moving to Melbourne and details the success of Black and Blue and Toward The Blues."
+    },
+    {
+      "url": "https://themusic.com.au/industry/how-could-you-play-music-that-loud-michael-gudinski-s-life-story-in-13-songs/eRbHbWxvbpE/23-11-23",
+      "sourceType": "credible music industry publication",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-25T00:00:00.000Z",
+      "evidence": "The Music's Michael Gudinski retrospective records his early work booking and managing Chain and his statement that Chain inspired him to start Mushroom Records."
+    }
+  ]
+}

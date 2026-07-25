@@ -1,0 +1,96 @@
+{
+  "brandName": "Laneway",
+  "editionType": "laneway",
+  "bandName": "Chain",
+  "editionTitle": "Chain",
+  "description": "Australian OzBlues pioneers whose harmonica, guitar and working-class spirit helped forge a distinctly local blues-rock language.",
+  "discovery": {
+    "bio": "Australian OzBlues pioneers whose harmonica, guitar and working-class spirit helped forge a distinctly local blues-rock language.",
+    "newsLabel": "Phil Manning on the story behind Chain"
+  },
+  "mode": "discovery",
+  "slug": "chain",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_fd1903ea9f",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/chain/instagram-discovery.png",
+    "qrImage": "output/chain/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#2f80ff",
+    "accentSecondary": "#8dbdff"
+  },
+  "links": {
+    "buyMusic": "https://music.apple.com/au/album/toward-the-blues-30th-anniversary-edition/213625235",
+    "spotify": "https://open.spotify.com/artist/2hnvTF9jhYWs6iEWdmJ50b",
+    "instagram": "",
+    "bandcamp": "",
+    "youtube": "",
+    "facebook": "",
+    "website": "https://www.philmanning.com.au/chain.html",
+    "merchandise": "",
+    "newsReviews": "https://www.baseq.org.au/black-and-blue-with-chain/"
+  },
+  "featuredVideo": {
+    "title": "Chain - Black & Blue (Move) 1971",
+    "youtubeURL": "https://www.youtube.com/watch?v=MLkU-FjWx7U",
+    "selectionBasis": "official-label-feature",
+    "verifiedAt": "2026-07-25T00:00:00.000Z"
+  },
+  "analytics": {
+    "editionId": "dc_fd1903ea9f",
+    "pageIdentifier": "dc_fd1903ea9f:laneway-v1"
+  },
+  "production": {
+    "jobId": "dcjob_d8604baa-cdac-4741-958b-22993e997c94",
+    "submittedAt": "2026-07-25T10:46:46.421Z",
+    "researchCompletedAt": "2026-07-25T10:46:46.505Z",
+    "editionCreatedAt": "2026-07-25T10:46:46.505Z"
+  },
+  "laneway": {
+    "logoArtwork": "assets/laneway-music-logo-reverse-transparent.png",
+    "logoTreatment": "reverse-white-transparent",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Discover",
+      "Buy"
+    ],
+    "recordCompanyHomeURL": "https://www.lanewaymusic.com.au/",
+    "recommendedArtistsURL": "https://www.lanewaymusic.com.au/"
+  },
+  "lanewayChallenge": {
+    "title": "How Well Do You Know Chain?",
+    "ctaLabel": "Take the Five-Question Quiz",
+    "numberOfQuestions": 5,
+    "questionFile": "editions/chain/laneway-questions.json",
+    "classifications": [
+      {
+        "min": 0,
+        "max": 1,
+        "label": "Laneway Listener",
+        "message": "You have started discovering {band}. Every answer reveals another good part of their story."
+      },
+      {
+        "min": 2,
+        "max": 3,
+        "label": "Backstage Regular",
+        "message": "A strong result. You already know plenty about what makes {band} worth discovering."
+      },
+      {
+        "min": 4,
+        "max": 4,
+        "label": "Laneway Insider",
+        "message": "Excellent work. You know the music, story and character of {band} exceptionally well."
+      },
+      {
+        "min": 5,
+        "max": 5,
+        "label": "Laneway Legend",
+        "message": "Five out of five. You are a true {band} Laneway legend."
+      }
+    ]
+  }
+}
