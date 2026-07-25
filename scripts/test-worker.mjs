@@ -25,6 +25,8 @@ for(const assetPath of ['/record-company/app.js','/record-company/styles.css','/
 assert.equal(__test.isRecordCompanyRootPath('/record-company'),true,'The Record Company entry route must recover a missing collection slug');
 assert.equal(__test.isRecordCompanyRootPath('/record-company/'),true,'The trailing-slash Record Company entry route must recover a missing collection slug');
 assert.equal(__test.isRecordCompanyRootPath('/record-company/laneway-music'),false,'A complete collection route must not be treated as the entry route');
+assert.ok(source.includes('new URL("/record-company/",url.origin)'),'Collection routes must fetch the directory asset without redirecting through index.html');
+assert.ok(!source.includes('new URL("/record-company/index.html",url.origin)'),'Collection routes must preserve the company slug in the browser address');
 
 const payload=JSON.stringify({type:'email.delivered',data:{email_id:'email_123'}});
 const webhookId='msg_test';

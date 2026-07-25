@@ -108,7 +108,7 @@ const wrangler=await fs.readFile("wrangler.jsonc","utf8");
 for(const table of ["record_companies","record_company_artists","record_company_links","record_company_quizzes","record_company_qr_codes","record_company_jobs","record_company_analytics","record_company_sources"])assert.match(migration,new RegExp(`CREATE TABLE IF NOT EXISTS ${table}`));
 assert.ok(worker.includes('@cf/meta/llama-4-scout-17b-16e-instruct'));
 assert.ok(!worker.includes('@cf/meta/llama-3.1-8b-instruct'));
-for(const route of ["/api/record-company/","/record-company/q/","/record-company/index.html"])assert.ok(workerIndex.includes(route));
+for(const route of ["/api/record-company/","/record-company/q/","/record-company/"])assert.ok(workerIndex.includes(route));
 for(const securityMarker of ["content-security-policy","frame-ancestors 'none'","x-content-type-options","permissions-policy"])assert.ok(workerIndex.includes(securityMarker));
 for(const legalMarker of ["recordCompanyLegalDocument","Record Company Edition terms","Record Company Edition privacy"])assert.ok(workerIndex.includes(legalMarker));
 for(const deliveryMarker of ['jobType==="record_company"',"notification_email_status='delivered'","email.bounced"])assert.ok(workerIndex.includes(deliveryMarker));
