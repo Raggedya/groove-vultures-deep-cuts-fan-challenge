@@ -94,11 +94,9 @@ jobs:
           DEEP_CUTS_ADMIN_TOKEN: ${{ secrets.DEEP_CUTS_ADMIN_TOKEN }}
       - name: Validate generated collection
         run: npm run validate
-      - name: Publish generated assets through a validated pull request
+      - name: Publish validated generated assets
         id: publish
         shell: bash
-        env:
-          GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
           slug="$(basename "$OUTPUT_DIR")"
@@ -108,12 +106,11 @@ jobs:
           git switch -c "$branch"
           git add "$OUTPUT_DIR"
           git commit -m "Publish ${slug} record-company collection"
-          git push -u origin "$branch"
-          pr_url="$(gh pr create --base main --head "$branch" --title "Publish ${slug} Record Company Deep Cuts" --body "Automated, scan-verified Record Company Edition output. Generated from official source evidence; failed artists remain isolated in the exception report.")"
-          sleep 10
-          gh pr checks "$pr_url" --watch --interval 10
-          gh pr merge "$pr_url" --squash --delete-branch
-          echo "pr_url=$pr_url" >> "$GITHUB_OUTPUT"
+          git fetch origin main
+          git rebase origin/main
+          npm run validate
+          git push origin HEAD:main
+          echo "published_sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
       - name: Send completion email with master QR and reports
         run: node scripts/record-company/send-completion.mjs "$OUTPUT_DIR"
         env:
