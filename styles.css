@@ -202,6 +202,47 @@ body{margin:0;min-height:100%;color:var(--ink);background:#000713;overflow-x:hid
 [data-edition-type="laneway_company"] .laneway-result-actions button{min-height:49px;border-radius:12px;font:inherit;font-weight:900;text-transform:uppercase;cursor:pointer}
 [data-edition-type="laneway_company"] .laneway-result-primary{border:1px solid #fff;color:#111;background:#f1f1f1}
 [data-edition-type="laneway_company"] .laneway-result-secondary{border:1px solid var(--laneway-line);color:#fff;background:#252525}
+
+/* Indie Wheel keeps the shared interaction model while each edition owns its visual identity. */
+[data-product-type="indie_wheel"]{--laneway-charcoal:#111;--laneway-surface:#f4f4ef;--laneway-line:rgba(17,17,17,.36);--laneway-muted:#555;color-scheme:light}
+[data-product-type="indie_wheel"],[data-product-type="indie_wheel"] body{background:#ecece6}
+[data-product-type="indie_wheel"] .discovery-shell{color:#111;background:radial-gradient(circle at 50% 5%,#fff 0,#f5f5ef 36%,#e7e7e0 100%)}
+[data-product-type="indie_wheel"] .edition-brand-logo{width:min(82%,350px);mix-blend-mode:multiply}
+[data-product-type="indie_wheel"] .sonic-signature{filter:drop-shadow(0 0 8px rgba(0,0,0,.15))}
+[data-product-type="indie_wheel"] .sonic-signature:before,[data-product-type="indie_wheel"] .sonic-signature:after{background:rgba(0,0,0,.42)}
+[data-product-type="indie_wheel"] .sonic-signature span{background:#111}
+[data-product-type="indie_wheel"] .laneway-artist-wheel,[data-product-type="indie_wheel"] .laneway-question-card{border-color:#111;background:#f8f8f3;box-shadow:8px 10px 0 #111}
+[data-product-type="indie_wheel"] .laneway-wheel-heading p,[data-product-type="indie_wheel"] .laneway-company-directory-heading p,[data-product-type="indie_wheel"] .laneway-company-directory-heading span,[data-product-type="indie_wheel"] .laneway-company-search span{color:#555}
+[data-product-type="indie_wheel"] .laneway-wheel-heading h2,[data-product-type="indie_wheel"] .laneway-company-directory-heading h2,[data-product-type="indie_wheel"] .laneway-company-artist h3,[data-product-type="indie_wheel"] .laneway-question-card h2{color:#111}
+[data-product-type="indie_wheel"] .laneway-wheel-pointer{border-top-color:#111}
+[data-product-type="indie_wheel"] .laneway-wheel-spin{border-color:#fff;color:#fff;background:#111;box-shadow:0 0 0 3px #111,0 5px 18px rgba(0,0,0,.45);font-family:"Courier New",monospace}
+[data-product-type="indie_wheel"] .laneway-wheel-spin:hover,[data-product-type="indie_wheel"] .laneway-wheel-spin:focus-visible{outline-color:#111;background:#3a3a3a}
+[data-product-type="indie_wheel"] .laneway-wheel-status{color:#222}
+[data-product-type="indie_wheel"] .laneway-wheel-winner{border:2px solid #111;color:#fff;background:#111;box-shadow:0 0 14px rgba(255,255,255,.98),0 0 34px rgba(255,255,255,.9),0 0 70px rgba(255,255,255,.75),0 0 0 3px #111;letter-spacing:.04em}
+[data-product-type="indie_wheel"] .laneway-wheel-winner:hover,[data-product-type="indie_wheel"] .laneway-wheel-winner:focus-visible{outline-color:#111;color:#111;background:#fff}
+[data-product-type="indie_wheel"] .laneway-company-search input{border:2px solid #111;color:#111;background:#fff}
+[data-product-type="indie_wheel"] .laneway-company-search input:focus{outline-color:#111}
+[data-product-type="indie_wheel"] .laneway-company-artist{border:2px solid #111;background:#f9f9f4;box-shadow:3px 3px 0 #111}
+[data-product-type="indie_wheel"] .laneway-company-artist-link{border:2px solid #111;color:#fff;background:#111}
+[data-product-type="indie_wheel"] .laneway-company-artist-link:hover,[data-product-type="indie_wheel"] .laneway-company-artist-link:focus-visible{border-color:#111;box-shadow:0 0 16px #fff,0 0 24px rgba(0,0,0,.35)}
+[data-product-type="indie_wheel"] .laneway-company-artist-link.attention{border-color:#111;color:#111;background:#fff;box-shadow:0 0 18px #fff,0 0 34px #fff,0 0 0 2px #111}
+[data-product-type="indie_wheel"] .laneway-challenge-card{border:2px solid #111;color:#fff;background:#111;box-shadow:5px 5px 0 #777}
+[data-product-type="indie_wheel"] .laneway-challenge-card .link-copy small,[data-product-type="indie_wheel"] .laneway-challenge-card .link-arrow{color:#ddd}
+[data-product-type="indie_wheel"] .utility-action{border:2px solid #111;color:#111;background:#f8f8f3}
+[data-product-type="indie_wheel"] .page-footer{color:#333}
+[data-product-type="indie_wheel"] .laneway-quiz-screen,[data-product-type="indie_wheel"] .laneway-result-screen{color:#111}
+[data-product-type="indie_wheel"] .laneway-home-button{border-color:#111;color:#fff;background:#111}
+[data-product-type="indie_wheel"] .laneway-quiz-progress,[data-product-type="indie_wheel"] .laneway-quiz-category{color:#444}
+[data-product-type="indie_wheel"] .laneway-answer-button{border:2px solid #111;color:#111;background:#fff}
+[data-product-type="indie_wheel"] .laneway-answer-button:hover,[data-product-type="indie_wheel"] .laneway-answer-button:focus-visible,[data-product-type="indie_wheel"] .laneway-answer-button.best-answer{border-color:#111;color:#fff;background:#111}
+[data-product-type="indie_wheel"] .laneway-answer-feedback{border-left-color:#111;color:#111;background:#e7e7df}
+[data-product-type="indie_wheel"] .laneway-answer-feedback p,[data-product-type="indie_wheel"] .laneway-answer-feedback a{color:#111}
+[data-product-type="indie_wheel"] .laneway-next-button,[data-product-type="indie_wheel"] .laneway-result-primary{border-color:#111;color:#fff;background:#111}
+[data-product-type="indie_wheel"] .laneway-result-logo{mix-blend-mode:multiply}
+[data-product-type="indie_wheel"] .laneway-result-kicker,[data-product-type="indie_wheel"] .laneway-result-card>p:not(.laneway-result-kicker){color:#333}
+[data-product-type="indie_wheel"] .laneway-result-card h1{color:#111}
+[data-product-type="indie_wheel"] .laneway-result-card h2{border:2px solid #111;color:#fff;background:#111}
+[data-product-type="indie_wheel"] .laneway-result-secondary{border-color:#111;color:#111;background:#fff}
 .error-screen{margin-top:25vh;padding:28px;border:1px solid #345;border-radius:18px;background:#07101f;text-align:center}
 .visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
 [hidden]{display:none!important}

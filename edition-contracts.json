@@ -38,6 +38,12 @@
       "renderedLinks": [],
       "exclusiveConfig": ["lanewayCompany", "lanewayCompanyChallenge"]
     },
+    "indie_wheel": {
+      "brandNames": ["Indie Wheel"],
+      "allowedLinks": [],
+      "renderedLinks": [],
+      "exclusiveConfig": ["indieWheel", "indieWheelChallenge"]
+    },
     "record_company": {
       "brandNames": ["Deep Cuts — Record Company Edition"],
       "allowedLinks": [],

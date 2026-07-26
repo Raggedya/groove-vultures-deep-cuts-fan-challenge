@@ -1,0 +1,62 @@
+{
+  "brandName": "Indie Wheel",
+  "editionType": "indie_wheel",
+  "bandName": "Cool Death Records",
+  "editionTitle": "Cool Death Records Indie Wheel",
+  "description": "The Only Rule Is Cool. Spin through the official Cool Death Records artist roster and open the winner directly on Bandcamp.",
+  "discovery": {
+    "bio": ""
+  },
+  "mode": "discovery",
+  "slug": "cool-death-records",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_b553e37627",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "Cool Death logo used from the official Cool Death Records Bandcamp",
+    "instagramImage": "",
+    "qrImage": ""
+  },
+  "theme": {
+    "accent": "#111111",
+    "accentSecondary": "#f8f8f3"
+  },
+  "links": {},
+  "featuredVideo": {},
+  "analytics": {
+    "editionId": "dc_b553e37627",
+    "pageIdentifier": "dc_b553e37627:indie-wheel-v1"
+  },
+  "production": {
+    "jobId": "dcjob_b553e376-272b-4b08-9770-f3ab9e93b24b",
+    "submittedAt": "2026-07-26T12:31:28.769Z",
+    "researchCompletedAt": "2026-07-26T12:31:28.769Z",
+    "editionCreatedAt": "2026-07-26T12:31:28.769Z"
+  },
+  "indieWheel": {
+    "logoArtwork": "assets/cool-death-records-official.jpg",
+    "logoTreatment": "official-black-on-white",
+    "recordCompanyHomeURL": "https://cooldeathrecords.bandcamp.com/",
+    "recommendedArtistsURL": "https://cooldeathrecords.bandcamp.com/artists",
+    "rosterFile": "editions/cool-death-records/roster.json",
+    "destinationKey": "bandcampURL",
+    "destinationLabel": "Bandcamp",
+    "wheelColours": ["#111111", "#f8f8f3", "#555555", "#deded7", "#2b2b2b", "#ffffff"],
+    "artistWheel": {
+      "enabled": true,
+      "replacesFeaturedVideo": true
+    }
+  },
+  "indieWheelChallenge": {
+    "title": "How Deep Is Your Cool Death Knowledge?",
+    "ctaLabel": "Take the 10-Question Artist Quiz",
+    "numberOfQuestions": 10,
+    "questionFile": "editions/cool-death-records/questions.json",
+    "classifications": [
+      {"min": 0, "max": 3, "label": "Cool Curious", "message": "You have cracked open the Cool Death catalogue. These were properly deep cuts."},
+      {"min": 4, "max": 6, "label": "Catalogue Crawler", "message": "You know your way around the label's stranger corners and limited runs."},
+      {"min": 7, "max": 9, "label": "Cool Death Insider", "message": "An alarming level of knowledge. The Only Rule Is Cool, and you clearly know it."},
+      {"min": 10, "max": 10, "label": "Deathly Cool", "message": "Ten out of ten on questions this obscure. How the hell did you know that?!"}
+    ]
+  }
+}

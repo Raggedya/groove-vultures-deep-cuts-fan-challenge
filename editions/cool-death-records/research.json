@@ -1,0 +1,40 @@
+{
+  "bandName": "Cool Death Records",
+  "slug": "cool-death-records",
+  "editionId": "dc_b553e37627",
+  "verifiedAt": "2026-07-26T12:31:28.769Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://cooldeathrecords.bandcamp.com/",
+      "sourceType": "official label Bandcamp",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-26T12:31:28.769Z",
+      "evidence": "The official label account identifies COOL DEATH in Melbourne and publishes the label statement The Only Rule Is Cool."
+    },
+    {
+      "destination": "roster",
+      "url": "https://cooldeathrecords.bandcamp.com/artists",
+      "sourceType": "official Bandcamp artist roster",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-26T12:31:28.769Z",
+      "evidence": "The live artist page publishes 19 direct Bandcamp artist destinations and is the sole roster authority for this edition."
+    },
+    {
+      "destination": "logo",
+      "url": "https://f4.bcbits.com/img/0017088787_10.jpg",
+      "sourceType": "official Bandcamp profile image",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-26T12:31:28.769Z",
+      "evidence": "The image is the profile artwork rendered by the official Cool Death Records Bandcamp page."
+    },
+    {
+      "destination": "questions",
+      "url": "https://cooldeathrecords.bandcamp.com/music",
+      "sourceType": "official label catalogue",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-26T12:31:28.769Z",
+      "evidence": "The official catalogue supplies the verified artist and release-title associations used in all 10 questions."
+    }
+  ]
+}
