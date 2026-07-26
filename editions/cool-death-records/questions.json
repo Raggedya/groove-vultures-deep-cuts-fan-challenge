@@ -1,0 +1,112 @@
+[
+  {
+    "id": "cool-death-shapes-and-forms",
+    "active": true,
+    "category": "Catalogue Deep Cut",
+    "question": "Which artist returned to the Cool Death catalogue with the 2025 release Shapes And Forms?",
+    "options": ["Eddy Current Suppression Ring", "Straightjacket Nation", "Power", "Rapid Dye"],
+    "correctAnswer": "Eddy Current Suppression Ring",
+    "explanation": "Cool Death's official catalogue lists Shapes And Forms under Eddy Current Suppression Ring, with the release arriving in July 2025.",
+    "sourceName": "Cool Death Records — Official Bandcamp Catalogue",
+    "sourceURL": "https://cooldeathrecords.bandcamp.com/music"
+  },
+  {
+    "id": "cool-death-doves",
+    "active": true,
+    "category": "Title Association",
+    "question": "Doves Of Peace And War is the title of a Cool Death release by which artist?",
+    "options": ["Romansy", "Romero", "Orion", "Velvet Whip"],
+    "correctAnswer": "Romansy",
+    "explanation": "The official Cool Death music page pairs the 2022 release Doves Of Peace And War with Melbourne artist Romansy.",
+    "sourceName": "Cool Death Records — Official Bandcamp Catalogue",
+    "sourceURL": "https://cooldeathrecords.bandcamp.com/music"
+  },
+  {
+    "id": "cool-death-left-to-rot",
+    "active": true,
+    "category": "Title Association",
+    "question": "Which band owns the wonderfully inviting Cool Death release title Left to Rot?",
+    "options": ["ERUPT", "Oily Boys", "Gutter Gods", "Soma Coma"],
+    "correctAnswer": "ERUPT",
+    "explanation": "Cool Death's official catalogue attributes Left to Rot to ERUPT and dates the release to March 2022.",
+    "sourceName": "Cool Death Records — Official Bandcamp Catalogue",
+    "sourceURL": "https://cooldeathrecords.bandcamp.com/music"
+  },
+  {
+    "id": "cool-death-cro-memory-grin",
+    "active": true,
+    "category": "Catalogue Deep Cut",
+    "question": "Who made the memorably titled Cro Memory Grin?",
+    "options": ["Oily Boys", "Leather Lickers", "Flesh World", "Dribble"],
+    "correctAnswer": "Oily Boys",
+    "explanation": "The label's official Bandcamp catalogue identifies Sydney band Oily Boys as the artist behind Cro Memory Grin.",
+    "sourceName": "Cool Death Records — Official Bandcamp Catalogue",
+    "sourceURL": "https://cooldeathrecords.bandcamp.com/music"
+  },
+  {
+    "id": "cool-death-eye-of-the-scared",
+    "active": true,
+    "category": "Seven-Inch Lore",
+    "question": "Eye Of The Scared belongs to which Cool Death artist?",
+    "options": ["Leather Lickers", "Low Life", "Tyrannamen", "Power"],
+    "correctAnswer": "Leather Lickers",
+    "explanation": "The official catalogue lists Eye Of The Scared under Leather Lickers, alongside the band's self-titled Cool Death release.",
+    "sourceName": "Cool Death Records — Official Bandcamp Catalogue",
+    "sourceURL": "https://cooldeathrecords.bandcamp.com/music"
+  },
+  {
+    "id": "cool-death-electric-glitter-boogie",
+    "active": true,
+    "category": "Catalogue Deep Cut",
+    "question": "Electric Glitter Boogie is buried in the catalogue of which band?",
+    "options": ["Power", "Orion", "Romero", "Straightjacket Nation"],
+    "correctAnswer": "Power",
+    "explanation": "Cool Death's Bandcamp catalogue credits Power with Electric Glitter Boogie, as well as Turned On and The Fool.",
+    "sourceName": "Cool Death Records — Official Bandcamp Catalogue",
+    "sourceURL": "https://cooldeathrecords.bandcamp.com/music"
+  },
+  {
+    "id": "cool-death-bmx-1865",
+    "active": true,
+    "category": "Title Association",
+    "question": "BMX 1865 — a title that makes almost no chronological sense — is by whom?",
+    "options": ["Tyrannamen", "Tommy T And The Classical Mishaps", "Gutter Gods", "Orion"],
+    "correctAnswer": "Tyrannamen",
+    "explanation": "The official Cool Death catalogue lists BMX 1865 as a Tyrannamen release, alongside the band's self-titled record.",
+    "sourceName": "Cool Death Records — Official Bandcamp Catalogue",
+    "sourceURL": "https://cooldeathrecords.bandcamp.com/music"
+  },
+  {
+    "id": "cool-death-bronze-medallion",
+    "active": true,
+    "category": "Catalogue Deep Cut",
+    "question": "Which Cool Death artist released Bronze Medallion?",
+    "options": ["Velvet Whip", "Flesh World", "Soma Coma", "Rapid Dye"],
+    "correctAnswer": "Velvet Whip",
+    "explanation": "Cool Death's official catalogue places Bronze Medallion under Velvet Whip, who also released Warm & Tough through the label.",
+    "sourceName": "Cool Death Records — Official Bandcamp Catalogue",
+    "sourceURL": "https://cooldeathrecords.bandcamp.com/music"
+  },
+  {
+    "id": "cool-death-idiot-convention",
+    "active": true,
+    "category": "Cassette Corner",
+    "question": "Idiot Convention appeared on cassette through Cool Death. Who made it?",
+    "options": ["Flesh World", "Dribble", "Romansy", "Rapid Dye"],
+    "correctAnswer": "Flesh World",
+    "explanation": "The official Cool Death music and merchandise pages identify Flesh World as the artist behind the cassette release Idiot Convention.",
+    "sourceName": "Cool Death Records — Official Bandcamp Catalogue",
+    "sourceURL": "https://cooldeathrecords.bandcamp.com/music"
+  },
+  {
+    "id": "cool-death-live-in-the-flesh",
+    "active": true,
+    "category": "Live Recording",
+    "question": "Live! In The Flesh... is hiding in which artist's Cool Death discography?",
+    "options": ["Dribble", "Straightjacket Nation", "Soma Coma", "Romero"],
+    "correctAnswer": "Dribble",
+    "explanation": "Cool Death's official Bandcamp catalogue credits Live! In The Flesh... to Dribble, alongside Lovers and the band's demo.",
+    "sourceName": "Cool Death Records — Official Bandcamp Catalogue",
+    "sourceURL": "https://cooldeathrecords.bandcamp.com/music"
+  }
+]

@@ -241,6 +241,14 @@
       "name": "Laneway Music",
       "config": "editions/laneway-music-one-off/edition.json",
       "active": true
+    },
+    {
+      "slug": "cool-death-records",
+      "editionId": "dc_b553e37627",
+      "canonicalPath": "/e/dc_b553e37627",
+      "name": "Cool Death Records",
+      "config": "editions/cool-death-records/edition.json",
+      "active": true
     }
   ]
 }

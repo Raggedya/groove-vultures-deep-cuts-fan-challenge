@@ -14,20 +14,29 @@
 
   async function configure(options){
     config=options.config;analytics=options.analytics;homeElement=options.homeElement;challengeButton=options.challengeButton;
-    if(config.editionType!=="laneway_company"||!config.lanewayCompanyChallenge)throw new Error("Laneway Music company challenge configuration is required.");
-    const response=await fetch(`/${config.lanewayCompanyChallenge.questionFile}`,{cache:"no-store"});
-    if(!response.ok)throw new Error(`Laneway Music company questions returned ${response.status}`);
+    const challenge=challengeConfig();
+    if(!challenge)throw new Error("Indie Wheel challenge configuration is required.");
+    const response=await fetch(`/${challenge.questionFile}`,{cache:"no-store"});
+    if(!response.ok)throw new Error(`Indie Wheel questions returned ${response.status}`);
     questionBank=await response.json();
     validateQuestions(questionBank);
+    const settings=config.editionType==="indie_wheel"?config.indieWheel:config.lanewayCompany;
+    els.home.textContent=`← ${config.bandName} Home`;
+    els.resultHome.textContent=`Back to ${config.bandName} Home`;
+    const logo=document.getElementById("lanewayCompanyResultLogo");
+    logo.src=`/${settings.logoArtwork}`;logo.alt=config.bandName;
+    document.getElementById("lanewayCompanyResultKicker").textContent=`Your ${config.bandName} Result`;
     challengeButton.disabled=false;
   }
 
+  function challengeConfig(){return config?.editionType==="indie_wheel"?config.indieWheelChallenge:config?.editionType==="laneway_company"?config.lanewayCompanyChallenge:null}
+
   function validateQuestions(value){
-    if(!Array.isArray(value)||value.length!==10)throw new Error("The Laneway Music company edition requires exactly 10 questions.");
+    if(!Array.isArray(value)||value.length!==10)throw new Error("The Indie Wheel edition requires exactly 10 questions.");
     const ids=new Set(),prompts=new Set();
     for(const question of value){
-      if(!question.active||!question.id||!question.question||!question.explanation||!question.sourceName||!validHttps(question.sourceURL))throw new Error(`Invalid Laneway Music company question: ${question.id||"unknown"}`);
-      if(ids.has(question.id)||prompts.has(question.question.toLowerCase())||!Array.isArray(question.options)||question.options.length!==4||new Set(question.options).size!==4||!question.options.includes(question.correctAnswer))throw new Error(`Invalid Laneway Music company answer set: ${question.id}`);
+      if(!question.active||!question.id||!question.question||!question.explanation||!question.sourceName||!validHttps(question.sourceURL))throw new Error(`Invalid Indie Wheel question: ${question.id||"unknown"}`);
+      if(ids.has(question.id)||prompts.has(question.question.toLowerCase())||!Array.isArray(question.options)||question.options.length!==4||new Set(question.options).size!==4||!question.options.includes(question.correctAnswer))throw new Error(`Invalid Indie Wheel answer set: ${question.id}`);
       ids.add(question.id);prompts.add(question.question.toLowerCase());
     }
     return true;
@@ -44,7 +53,7 @@
     questions=DeepCutsEngine.prepareQuestions(questionBank,10);
     answers=[];index=0;startedAt=performance.now();
     homeElement.hidden=true;els.result.hidden=true;els.quiz.hidden=false;
-    analytics.track("quiz_started",{quiz_identifier:config.analytics.pageIdentifier,question_count:10,edition_type:"laneway_company"});
+    analytics.track("quiz_started",{quiz_identifier:config.analytics.pageIdentifier,question_count:10,edition_type:config.editionType});
     renderQuestion();
   }
 
@@ -74,7 +83,7 @@
     els.feedbackExplanation.textContent=question.explanation;
     els.feedbackSource.textContent=`Source: ${question.sourceName}`;els.feedbackSource.href=question.sourceURL;
     els.feedback.hidden=false;
-    analytics.track("quiz_question_answered",{quiz_identifier:config.analytics.pageIdentifier,question_id:question.id,question_number:index+1,correct,edition_type:"laneway_company"});
+    analytics.track("quiz_question_answered",{quiz_identifier:config.analytics.pageIdentifier,question_id:question.id,question_number:index+1,correct,edition_type:config.editionType});
   }
 
   function next(){
@@ -85,10 +94,10 @@
 
   function showResults(){
     const stats=DeepCutsEngine.calculateStats(answers,10);
-    const result=DeepCutsEngine.classificationFor(stats.correct,config.lanewayCompanyChallenge.classifications,config.bandName);
+    const result=DeepCutsEngine.classificationFor(stats.correct,challengeConfig().classifications,config.bandName);
     els.resultScore.textContent=`${stats.correct} / 10`;els.resultTitle.textContent=result.label;els.resultMessage.textContent=result.message;
     els.quiz.hidden=true;els.result.hidden=false;window.scrollTo({top:0,behavior:"auto"});
-    analytics.track("quiz_completed",{quiz_identifier:config.analytics.pageIdentifier,final_score:stats.correct,question_count:10,completion_seconds:Math.round((performance.now()-startedAt)/1000),classification:result.label,edition_type:"laneway_company"});
+    analytics.track("quiz_completed",{quiz_identifier:config.analytics.pageIdentifier,final_score:stats.correct,question_count:10,completion_seconds:Math.round((performance.now()-startedAt)/1000),classification:result.label,edition_type:config.editionType});
   }
 
   function returnHome(fromPopState=false){
@@ -102,7 +111,7 @@
   els.next.addEventListener("click",next);
   els.home.addEventListener("click",()=>returnHome(false));
   els.resultHome.addEventListener("click",()=>returnHome(false));
-  els.replay.addEventListener("click",()=>{analytics.track("quiz_replayed",{quiz_identifier:config.analytics.pageIdentifier,edition_type:"laneway_company"});startRun()});
+  els.replay.addEventListener("click",()=>{analytics.track("quiz_replayed",{quiz_identifier:config.analytics.pageIdentifier,edition_type:config.editionType});startRun()});
   window.addEventListener("popstate",()=>returnHome(true));
 
   scope.LanewayCompanyQuiz={configure,open,returnHome,test:{validateQuestions,getState:()=>({opened,index,locked,questionCount:questions.length,answerCount:answers.length,quizVisible:!els.quiz.hidden,resultVisible:!els.result.hidden})}};

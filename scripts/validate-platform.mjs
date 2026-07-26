@@ -83,6 +83,21 @@ for(const edition of platform.editions){
       const roster=JSON.parse(await fs.readFile(rosterPath,'utf8'));
       validateLanewayCompanyRoster(roster,rosterPath,errors);
       await fs.access(config.lanewayCompany.logoArtwork);
+    }else if(config.editionType==='indie_wheel'){
+      if(config.characterArtwork)errors.push(`${edition.config} Indie Wheel must never configure character artwork.`);
+      if(!config.indieWheel?.logoArtwork||!config.indieWheel?.rosterFile||config.indieWheel?.destinationKey!=='bandcampURL'||config.indieWheel?.destinationLabel!=='Bandcamp')errors.push(`${edition.config} requires isolated Indie Wheel branding, roster and Bandcamp destination configuration.`);
+      if(config.indieWheelChallenge?.numberOfQuestions!==10||!config.indieWheelChallenge?.questionFile)errors.push(`${edition.config} requires an isolated 10-question Indie Wheel challenge.`);
+      else{
+        const questionPath=String(config.indieWheelChallenge.questionFile).replace(/^\//,'');
+        const questions=JSON.parse(await fs.readFile(questionPath,'utf8'));
+        validateIndieWheelQuestions(questions,questionPath,errors);
+        const research=JSON.parse(await fs.readFile(edition.config.replace(/edition\.json$/,'research.json'),'utf8'));
+        for(const question of questions)if(!research.sources.some(source=>source.identityVerified===true&&normalized(source.url)===normalized(question.sourceURL)))errors.push(`${questionPath} question ${question.id} lacks matching verified source evidence.`);
+      }
+      const rosterPath=String(config.indieWheel?.rosterFile||'').replace(/^\//,'');
+      const roster=JSON.parse(await fs.readFile(rosterPath,'utf8'));
+      validateIndieWheelRoster(roster,rosterPath,errors);
+      await fs.access(config.indieWheel.logoArtwork);
     }else await fs.access(config.characterArtwork);
     for(const[key,value]of Object.entries(config.links||{}))if(value&&(!/^https:\/\//.test(value)||authenticationWall(value)))errors.push(`${edition.config} links.${key} must be a direct HTTPS destination, never an authentication URL.`);
     if(config.featuredVideo?.youtubeURL&&!/^https:\/\/(?:www\.)?(?:youtube\.com|youtu\.be)\//i.test(config.featuredVideo.youtubeURL))errors.push(`${edition.config} featuredVideo.youtubeURL must be a verified YouTube URL.`);
@@ -140,6 +155,30 @@ function validateLanewayCompanyRoster(roster,file,errors){
     if(artist.websiteURL&&!/^https:\/\//i.test(artist.websiteURL))errors.push(`${file} artist ${name} has an invalid optional website.`);
     if(names.has(name.toLowerCase())||spotify.has(spotifyURL))errors.push(`${file} contains a duplicate artist or Spotify destination: ${name}.`);
     names.add(name.toLowerCase());spotify.add(spotifyURL);
+  }
+}
+
+function validateIndieWheelQuestions(questions,file,errors){
+  if(!Array.isArray(questions)||questions.length!==10){errors.push(`${file} must contain exactly 10 Indie Wheel questions.`);return}
+  const ids=new Set(),prompts=new Set();
+  for(const question of questions){
+    if(!question.active||!question.id||!question.question||String(question.explanation||'').length<50||!question.sourceName||!/^https:\/\//.test(question.sourceURL||''))errors.push(`${file} contains an incomplete Indie Wheel question.`);
+    if(ids.has(question.id)||prompts.has(String(question.question).toLowerCase()))errors.push(`${file} contains a duplicate question.`);
+    if(!Array.isArray(question.options)||question.options.length!==4||new Set(question.options).size!==4||!question.options.includes(question.correctAnswer))errors.push(`${file} question ${question.id||'unknown'} requires four unique choices including the correct answer.`);
+    ids.add(question.id);prompts.add(String(question.question).toLowerCase());
+  }
+}
+
+function validateIndieWheelRoster(roster,file,errors){
+  if(!Array.isArray(roster.artists)||roster.artists.length<1){errors.push(`${file} requires at least one verified Indie Wheel artist.`);return}
+  if(roster.pendingArtistCount!==0)errors.push(`${file} still has pending artists.`);
+  const names=new Set(),bandcamp=new Set();
+  for(const artist of roster.artists){
+    const name=String(artist.name||'').trim(),bandcampURL=normalized(artist.bandcampURL);
+    if(!name||!/^https:\/\/[^/]+\.bandcamp\.com$/i.test(bandcampURL))errors.push(`${file} contains an invalid direct Bandcamp artist destination for ${name||'unknown'}.`);
+    if(normalized(artist.sourceURL)!=='https://cooldeathrecords.bandcamp.com/artists')errors.push(`${file} artist ${name||'unknown'} lacks the official Cool Death roster source.`);
+    if(names.has(name.toLowerCase())||bandcamp.has(bandcampURL))errors.push(`${file} contains a duplicate artist or Bandcamp destination: ${name}.`);
+    names.add(name.toLowerCase());bandcamp.add(bandcampURL);
   }
 }
 
