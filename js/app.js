@@ -86,7 +86,7 @@ async function applyConfig(){
   document.documentElement.dataset.editionType=config.editionType||"music";
   document.title=`${name} | ${lanewayCompany?"Deep Cuts":laneway?"Laneway":schools?"School Discovery":clubs?"Deep Cuts Clubs":cars?"Deep Cuts Cars":"Deep Cuts"}`;
   const bio=config.discovery?.bio||config.description||`Discover ${name}.`;
-  els.description.content=lanewayCompany?`Spin to discover a verified Laneway Music artist on Spotify, search the catalogue and take the eight-question quiz.`:laneway?`Discover ${name} through Laneway's positive five-question band quiz and verified official links.`:schools?`Discover ${name} through verified official school information and video.`:clubs?`Verified club, membership, events, bowls and community links for ${name}.`:cars?`Verified history, specifications, buying, ownership and restoration links for ${name}.`:`Official music, video and social links for ${name}.`;
+  els.description.content=lanewayCompany?`Spin to discover a verified Laneway Music artist on Spotify, search the catalogue and take the 10-question artist quiz.`:laneway?`Discover ${name} through Laneway's positive five-question band quiz and verified official links.`:schools?`Discover ${name} through verified official school information and video.`:clubs?`Verified club, membership, events, bowls and community links for ${name}.`:cars?`Verified history, specifications, buying, ownership and restoration links for ${name}.`:`Official music, video and social links for ${name}.`;
   els.bandName.textContent=name;
   els.bio.textContent=bio;
   if(schools||laneway||lanewayCompany){els.artwork.hidden=true;els.artwork.removeAttribute("src");els.artwork.alt=""}else{els.artwork.hidden=false;els.artwork.src=`/${config.characterArtwork||"assets/aggits-original-cutout-v4.png"}`;els.artwork.alt=`Aggits presenting ${name}`}
@@ -205,7 +205,7 @@ function createLanewayCompanyChallengeCard(){
   button.id="lanewayCompanyChallengeButton";button.type="button";button.className="laneway-challenge-card wide";button.disabled=true;
   const copy=document.createElement("span");copy.className="link-copy";
   const title=document.createElement("strong");title.textContent=config.lanewayCompanyChallenge?.title||"How Well Do You Know Laneway Music?";
-  const subtitle=document.createElement("small");subtitle.textContent=config.lanewayCompanyChallenge?.ctaLabel||"Take the Eight-Question Quiz";
+  const subtitle=document.createElement("small");subtitle.textContent=config.lanewayCompanyChallenge?.ctaLabel||"Take the 10-Question Artist Quiz";
   const arrow=document.createElement("span");arrow.className="link-arrow";arrow.setAttribute("aria-hidden","true");arrow.textContent=">";
   copy.append(title,subtitle);button.append(copy,arrow);button.addEventListener("click",()=>LanewayCompanyQuiz.open());
   return button;
@@ -243,12 +243,15 @@ function buildLanewayArtistWheel(artists){
       context.beginPath();context.moveTo(0,0);context.arc(0,0,radius,start,end);context.closePath();
       context.fillStyle=colours[index%colours.length];context.fill();
       context.strokeStyle="rgba(0,0,0,.42)";context.lineWidth=2;context.stroke();
-      context.save();context.rotate(start+segmentAngle/2);context.translate(radius*.58,0);
-      context.rotate(Math.PI/2);
+      const middle=start+segmentAngle/2,normalised=((middle%(Math.PI*2))+Math.PI*2)%(Math.PI*2);
+      context.save();context.rotate(middle);
+      const inverted=normalised>Math.PI/2&&normalised<Math.PI*1.5;
+      if(inverted)context.rotate(Math.PI);
+      context.translate(inverted?-radius*.73:radius*.34,0);
       context.fillStyle=index%2===0?"#111":"#fff";
-      context.font="800 19px Arial, sans-serif";context.textAlign="center";context.textBaseline="middle";
-      const label=artist.name.length>17?`${artist.name.slice(0,15)}…`:artist.name;
-      context.fillText(label,0,0,radius*.48);
+      context.font="900 13px Arial, sans-serif";context.textAlign=inverted?"left":"left";context.textBaseline="middle";
+      const label=artist.name.length>22?`${artist.name.slice(0,20)}…`:artist.name;
+      context.fillText(label,0,0,radius*.39);
       context.restore();
     });
     context.restore();

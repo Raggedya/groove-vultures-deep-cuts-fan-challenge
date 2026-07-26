@@ -29,28 +29,84 @@
       "evidence": "The owner requested the featured video shown in the approved Celibate Rifles Laneway model; the same verified YouTube video is used here."
     },
     {
-      "destination": "question-about",
-      "url": "https://www.lanewaymusic.com.au/about",
-      "sourceType": "official company history",
+      "destination": "question-spencer-p-jones",
+      "url": "https://www.lanewaymusic.com.au/spencerpjones",
+      "sourceType": "official Laneway artist profile",
       "identityVerified": true,
-      "verifiedAt": "2026-07-26T00:00:00.000Z",
-      "evidence": "The official About page supports the questions concerning Laneway's foundation, purpose, directors, values and director histories."
+      "verifiedAt": "2026-07-26T11:45:00.000Z",
+      "evidence": "The official profile records Australian Guitar Magazine's 2012 Top 40 Australian guitarists accolade."
     },
     {
-      "destination": "question-sync",
-      "url": "https://www.lanewaymusic.com.au/sync",
-      "sourceType": "official service information",
+      "destination": "question-kerryn-tolhurst",
+      "url": "https://www.lanewaymusic.com.au/kerryntolhurst",
+      "sourceType": "official Laneway artist profile",
       "identityVerified": true,
-      "verifiedAt": "2026-07-26T00:00:00.000Z",
-      "evidence": "Laneway Music's official Sync page explains its one-stop clearance capability when it controls both masters and publishing."
+      "verifiedAt": "2026-07-26T11:45:00.000Z",
+      "evidence": "The official profile records Pat Benatar's worldwide-hit cover of The Rattling Sabres' All Fired Up."
     },
     {
-      "destination": "question-ekko",
-      "url": "https://www.lanewaymusic.com.au/ekkomusic",
-      "sourceType": "official label information",
+      "destination": "question-billy-miller",
+      "url": "https://www.lanewaymusic.com.au/billy-miller",
+      "sourceType": "official Laneway artist profile",
       "identityVerified": true,
-      "verifiedAt": "2026-07-26T00:00:00.000Z",
-      "evidence": "Laneway Music's official Ekko page identifies the specialist electronic label and catalogue connections."
+      "verifiedAt": "2026-07-26T11:45:00.000Z",
+      "evidence": "The official profile identifies Paul Kelly's two collaborations on Billy Miller's Australia album."
+    },
+    {
+      "destination": "question-dropbears",
+      "url": "https://www.lanewaymusic.com.au/dropbears",
+      "sourceType": "official Laneway artist profile",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-26T11:45:00.000Z",
+      "evidence": "The official profile identifies founding member Chris Toms, also known as Chris Cross, as the person who coined the band name."
+    },
+    {
+      "destination": "question-chris-turner",
+      "url": "https://www.lanewaymusic.com.au/chris-turner",
+      "sourceType": "official Laneway artist profile",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-26T11:45:00.000Z",
+      "evidence": "The official profile records Turner's Buffalo album and Australian tour with Ritchie Blackmore's Rainbow."
+    },
+    {
+      "destination": "question-damien-lovelock",
+      "url": "https://www.lanewaymusic.com.au/damienlovelock",
+      "sourceType": "official Laneway artist profile",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-26T11:45:00.000Z",
+      "evidence": "The official profile describes On a Blue Phone at the Green Iguana as a classic particularly in surfing circles."
+    },
+    {
+      "destination": "question-toys-went-berserk",
+      "url": "https://www.lanewaymusic.com.au/toyswentberserk",
+      "sourceType": "official Laneway artist profile",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-26T11:45:00.000Z",
+      "evidence": "The official profile records Gary Smith producing Sensory at Fort Apache Studios."
+    },
+    {
+      "destination": "question-lime-spiders",
+      "url": "https://www.lanewaymusic.com.au/lime-spiders",
+      "sourceType": "official Laneway artist profile",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-26T11:45:00.000Z",
+      "evidence": "The official profile records Weirdo Libido as the first music video played on ABC TV's Rage."
+    },
+    {
+      "destination": "question-harem-scarem",
+      "url": "https://www.lanewaymusic.com.au/haremscarem",
+      "sourceType": "official Laneway artist profile",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-26T11:45:00.000Z",
+      "evidence": "The official profile records Barry Palmer and Peter Jones later joining Hunters & Collectors and Crowded House respectively."
+    },
+    {
+      "destination": "question-crash-politics",
+      "url": "https://www.lanewaymusic.com.au/crashpolitics",
+      "sourceType": "official Laneway artist profile",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-26T11:45:00.000Z",
+      "evidence": "The official profile identifies Crash Politics as the first group signed to Chris Murphy's rooArt Records."
     }
   ]
 }

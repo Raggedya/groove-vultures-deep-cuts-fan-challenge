@@ -23,7 +23,7 @@
   }
 
   function validateQuestions(value){
-    if(!Array.isArray(value)||value.length!==8)throw new Error("The Laneway Music company edition requires exactly eight questions.");
+    if(!Array.isArray(value)||value.length!==10)throw new Error("The Laneway Music company edition requires exactly 10 questions.");
     const ids=new Set(),prompts=new Set();
     for(const question of value){
       if(!question.active||!question.id||!question.question||!question.explanation||!question.sourceName||!validHttps(question.sourceURL))throw new Error(`Invalid Laneway Music company question: ${question.id||"unknown"}`);
@@ -41,18 +41,18 @@
   }
 
   function startRun(){
-    questions=DeepCutsEngine.prepareQuestions(questionBank,8);
+    questions=DeepCutsEngine.prepareQuestions(questionBank,10);
     answers=[];index=0;startedAt=performance.now();
     homeElement.hidden=true;els.result.hidden=true;els.quiz.hidden=false;
-    analytics.track("quiz_started",{quiz_identifier:config.analytics.pageIdentifier,question_count:8,edition_type:"laneway_company"});
+    analytics.track("quiz_started",{quiz_identifier:config.analytics.pageIdentifier,question_count:10,edition_type:"laneway_company"});
     renderQuestion();
   }
 
   function renderQuestion(){
     locked=false;
     const question=questions[index];
-    els.progress.textContent=`Question ${index+1} of 8`;
-    els.category.textContent=question.category||"Laneway Story";
+    els.progress.textContent=`Question ${index+1} of 10`;
+    els.category.textContent=question.category||"Artist Deep Cut";
     els.question.textContent=question.question;
     els.answers.replaceChildren();els.feedback.hidden=true;
     question.options.forEach((option,optionIndex)=>{
@@ -60,7 +60,7 @@
       button.textContent=`${String.fromCharCode(65+optionIndex)}. ${option}`;button.dataset.answer=option;
       button.addEventListener("click",()=>selectAnswer(option,button));els.answers.append(button);
     });
-    els.next.textContent=index===7?"See My Result":"Next Question";
+    els.next.textContent=index===9?"See My Result":"Next Question";
     window.scrollTo({top:0,behavior:"auto"});els.question.focus({preventScroll:true});
   }
 
@@ -84,11 +84,11 @@
   }
 
   function showResults(){
-    const stats=DeepCutsEngine.calculateStats(answers,8);
+    const stats=DeepCutsEngine.calculateStats(answers,10);
     const result=DeepCutsEngine.classificationFor(stats.correct,config.lanewayCompanyChallenge.classifications,config.bandName);
-    els.resultScore.textContent=`${stats.correct} / 8`;els.resultTitle.textContent=result.label;els.resultMessage.textContent=result.message;
+    els.resultScore.textContent=`${stats.correct} / 10`;els.resultTitle.textContent=result.label;els.resultMessage.textContent=result.message;
     els.quiz.hidden=true;els.result.hidden=false;window.scrollTo({top:0,behavior:"auto"});
-    analytics.track("quiz_completed",{quiz_identifier:config.analytics.pageIdentifier,final_score:stats.correct,question_count:8,completion_seconds:Math.round((performance.now()-startedAt)/1000),classification:result.label,edition_type:"laneway_company"});
+    analytics.track("quiz_completed",{quiz_identifier:config.analytics.pageIdentifier,final_score:stats.correct,question_count:10,completion_seconds:Math.round((performance.now()-startedAt)/1000),classification:result.label,edition_type:"laneway_company"});
   }
 
   function returnHome(fromPopState=false){
