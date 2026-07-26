@@ -1,6 +1,6 @@
 "use strict";
 
-const VERSION="20260726-laneway-company-1";
+const VERSION="20260726-laneway-company-motion-1";
 const $=id=>document.getElementById(id);
 const els={page:$("discoveryPage"),error:$("errorScreen"),errorMessage:$("errorMessage"),bandName:$("bandName"),bio:$("artistBio"),artwork:$("heroArtwork"),brandLogo:$("editionBrandLogo"),waveform:$("sonicSignature"),features:$("featureList"),video:$("featuredVideo"),videoLabel:$("featuredVideoLabel"),videoTitle:$("featuredVideoTitle"),videoFrame:$("featuredVideoFrame"),links:$("platformLinks"),share:$("shareButton"),status:$("shareStatus"),description:$("pageDescription"),poweredBy:$("poweredByLabel"),copyright:$("coverCopyright"),lanewayHome:$("lanewayHomeLink"),lanewayRecommended:$("lanewayRecommendedLink"),companyDirectory:$("lanewayCompanyDirectory"),companyDirectoryCount:$("lanewayCompanyDirectoryCount"),companySearch:$("lanewayCompanySearch"),companyArtistList:$("lanewayCompanyArtistList"),companyEmpty:$("lanewayCompanyEmpty")};
 
@@ -298,6 +298,36 @@ function analyticsDestination(key){return({buyMusic:"buy_music",newsReviews:"new
 
 function startAttentionCycle(){
   if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+  if(isLanewayCompanyEdition()){
+    let controlIndex=0;
+    let waveTick=0;
+    const visibleCompanyControls=()=>[
+      ...els.links.querySelectorAll(".laneway-challenge-card:not(:disabled)"),
+      ...els.companyArtistList.querySelectorAll(".laneway-company-artist-link.is-active"),
+      ...document.querySelectorAll(".edition-utility-actions .utility-action:not([hidden])")
+    ].filter(control=>{
+      const bounds=control.getBoundingClientRect();
+      return bounds.width>0&&bounds.height>0&&bounds.bottom>0&&bounds.top<window.innerHeight;
+    });
+    const runLanewayCompanyAttention=()=>{
+      if(document.hidden)return;
+      const controls=visibleCompanyControls();
+      document.querySelectorAll('[data-edition-type="laneway_company"] .attention').forEach(control=>control.classList.remove("attention"));
+      if(controls.length){
+        const control=controls[controlIndex%controls.length];
+        controlIndex+=1;
+        control.classList.remove("attention");void control.offsetWidth;control.classList.add("attention");
+      }
+      if(waveTick%8===0){
+        els.waveform.classList.remove("pulse");void els.waveform.offsetWidth;els.waveform.classList.add("pulse");
+      }
+      waveTick+=1;
+    };
+    setTimeout(runLanewayCompanyAttention,350);
+    attentionTimer=window.setInterval(runLanewayCompanyAttention,560);
+    document.addEventListener("visibilitychange",()=>{if(!document.hidden)runLanewayCompanyAttention()},{passive:true});
+    return;
+  }
   const run=()=>{
     if(document.hidden)return;
     els.waveform.classList.remove("pulse");void els.waveform.offsetWidth;els.waveform.classList.add("pulse");

@@ -38,6 +38,11 @@ assert.match(quiz,/value\.length!==8/);
 assert.match(quiz,/prepareQuestions\(questionBank,8\)/);
 assert.match(css,/\[data-edition-type="laneway_company"\] \.artist-title-row/);
 assert.match(css,/\[data-edition-type="laneway_company"\] \.laneway-company-artist-list/);
+assert.match(css,/\[data-edition-type="laneway_company"\] \.sonic-signature\{display:flex/);
+assert.match(css,/@keyframes lanewayCompanyWave/);
+assert.match(css,/@keyframes lanewayCompanySweep/);
+assert.match(app,/runLanewayCompanyAttention/);
+assert.match(app,/setInterval\(runLanewayCompanyAttention,560\)/);
 assert.doesNotMatch(JSON.stringify(config),/aggits/i);
 assert.equal(JSON.parse(await fs.readFile("editions/celibate-rifles/edition.json","utf8")).lanewayChallenge.numberOfQuestions,5);
 
