@@ -51,34 +51,34 @@
     }
   },
   "lanewayCompanyChallenge": {
-    "title": "How Well Do You Know Laneway Music?",
-    "ctaLabel": "Take the Eight-Question Quiz",
-    "numberOfQuestions": 8,
+    "title": "How Deep Is Your Laneway Artist Knowledge?",
+    "ctaLabel": "Take the 10-Question Artist Quiz",
+    "numberOfQuestions": 10,
     "questionFile": "editions/laneway-music-one-off/laneway-company-questions.json",
     "classifications": [
       {
         "min": 0,
-        "max": 2,
+        "max": 3,
         "label": "Laneway Listener",
-        "message": "You have begun discovering Laneway Music. Every answer opens another part of its independent Australian music story."
+        "message": "You have opened the door to Laneway Music's extraordinary artist catalogue. These were seriously deep cuts."
       },
       {
-        "min": 3,
-        "max": 5,
+        "min": 4,
+        "max": 6,
         "label": "Catalogue Explorer",
-        "message": "A strong result. You understand the values and people behind Laneway Music and its remarkable catalogue."
+        "message": "A strong result. You know stories hiding well beneath the surface of Australian music."
       },
       {
-        "min": 6,
-        "max": 7,
+        "min": 7,
+        "max": 9,
         "label": "Laneway Insider",
-        "message": "Excellent work. You know how Laneway Music preserves, shares and supports Australian music."
+        "message": "Exceptional. You know the strange connections, lost records and side roads that make this catalogue special."
       },
       {
-        "min": 8,
-        "max": 8,
+        "min": 10,
+        "max": 10,
         "label": "Laneway Legend",
-        "message": "Eight out of eight. You are a true Laneway Music legend."
+        "message": "Ten out of ten on questions this obscure. How the hell did you know that?!"
       }
     ]
   }
