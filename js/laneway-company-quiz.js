@@ -79,7 +79,7 @@
     const question=questions[index],correct=selected===question.correctAnswer;
     answers.push({id:question.id,correct});
     for(const choice of els.answers.children){choice.disabled=true;if(choice.dataset.answer===question.correctAnswer)choice.classList.add("best-answer")}
-    els.feedbackTitle.textContent=correct?"Exactly right.":"Good choice — here is the story.";
+    els.feedbackTitle.textContent=correct?"Exactly right.":"Not quite — good try.";
     els.feedbackExplanation.textContent=question.explanation;
     els.feedbackSource.textContent=`Source: ${question.sourceName}`;els.feedbackSource.href=question.sourceURL;
     els.feedback.hidden=false;
