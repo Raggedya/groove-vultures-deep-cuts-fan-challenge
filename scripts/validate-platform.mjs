@@ -71,7 +71,7 @@ for(const edition of platform.editions){
       if(config.lanewayCompany?.logoArtwork!=='assets/laneway-music-logo-reverse-transparent.png'||config.lanewayCompany?.logoTreatment!=='reverse-white-transparent')errors.push(`${edition.config} must preserve the approved transparent reverse-white Laneway Music logo treatment.`);
       if(normalized(config.lanewayCompany?.recordCompanyHomeURL)!=='https://www.lanewaymusic.com.au/about'||normalized(config.lanewayCompany?.recommendedArtistsURL)!=='https://www.lanewaymusic.com.au')errors.push(`${edition.config} must preserve the verified Laneway Music company navigation.`);
       if(config.featuredVideo?.selectionBasis!=='owner-selected'||config.featuredVideo?.ownerSelected!==true||!config.featuredVideo?.youtubeURL)errors.push(`${edition.config} requires the explicit owner-selected featured video.`);
-      if(config.lanewayCompanyChallenge?.numberOfQuestions!==8||!config.lanewayCompanyChallenge?.questionFile)errors.push(`${edition.config} must preserve the isolated eight-question Laneway Music challenge.`);
+      if(config.lanewayCompanyChallenge?.numberOfQuestions!==10||!config.lanewayCompanyChallenge?.questionFile)errors.push(`${edition.config} must preserve the isolated 10-question Laneway Music artist challenge.`);
       else{
         const questionPath=String(config.lanewayCompanyChallenge.questionFile).replace(/^\//,'');
         const questions=JSON.parse(await fs.readFile(questionPath,'utf8'));
@@ -120,7 +120,7 @@ function validateLanewayQuestions(questions,file,errors){
   }
 }
 function validateLanewayCompanyQuestions(questions,file,errors){
-  if(!Array.isArray(questions)||questions.length!==8){errors.push(`${file} must contain exactly eight Laneway Music company questions.`);return}
+  if(!Array.isArray(questions)||questions.length!==10){errors.push(`${file} must contain exactly 10 Laneway Music artist questions.`);return}
   const ids=new Set(),prompts=new Set();
   for(const question of questions){
     if(!question.active||!question.id||!question.question||String(question.explanation||'').length<50||!question.sourceName||!/^https:\/\//.test(question.sourceURL||''))errors.push(`${file} contains an incomplete Laneway Music company question.`);
