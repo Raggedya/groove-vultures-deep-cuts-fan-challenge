@@ -246,6 +246,94 @@ def laneway_background() -> Image.Image:
     return Image.alpha_composite(canvas, glow.filter(ImageFilter.GaussianBlur(120)))
 
 
+def indie_wheel_logo(config: dict) -> Image.Image:
+    logo_path = config.get("indieWheel", {}).get("logoArtwork", "")
+    if not logo_path:
+        raise ValueError("Indie Wheel editions require their own configured logoArtwork.")
+    return Image.open(ROOT / logo_path).convert("RGBA")
+
+
+def indie_wheel_colour(config: dict, key: str, fallback: tuple[int, int, int]) -> tuple[int, int, int]:
+    value = str(config.get("theme", {}).get(key, "")).lstrip("#")
+    if len(value) == 6:
+        try:
+            return tuple(int(value[index:index + 2], 16) for index in (0, 2, 4))
+        except ValueError:
+            pass
+    return fallback
+
+
+def indie_wheel_background(config: dict) -> Image.Image:
+    paper = indie_wheel_colour(config, "accentSecondary", (242, 242, 236))
+    canvas = Image.new("RGBA", (SIZE, SIZE), (*paper, 255))
+    texture = Image.new("RGBA", (SIZE, SIZE), (0, 0, 0, 0))
+    draw = ImageDraw.Draw(texture)
+    draw.ellipse((100, -240, 980, 580), fill=(255, 255, 255, 180))
+    draw.ellipse((300, 670, 1180, 1340), fill=(0, 0, 0, 18))
+    return Image.alpha_composite(canvas, texture.filter(ImageFilter.GaussianBlur(105)))
+
+
+def create_indie_wheel_instagram(config: dict, destination: Path) -> None:
+    canvas = indie_wheel_background(config)
+    draw = ImageDraw.Draw(canvas)
+    ink = indie_wheel_colour(config, "accent", (17, 17, 17))
+    logo = contain(indie_wheel_logo(config), 610, 420)
+    canvas.alpha_composite(logo, ((SIZE - logo.width) // 2, 55))
+    name = config["bandName"].upper()
+    centred_text(draw, name, 500, fit_font(draw, name, 900, 78, 42), fill=ink, stroke=1)
+    draw.rounded_rectangle((110, 650, 970, 830), radius=22, outline=ink, width=5, fill=(250, 250, 246, 245))
+    centred_text(draw, "10 DEEP-CUT QUESTIONS", 685, fit_font(draw, "10 DEEP-CUT QUESTIONS", 760, 43, 32), fill=ink)
+    centred_text(draw, "ARTISTS • MUSIC • BANDCAMP", 760, fit_font(draw, "ARTISTS • MUSIC • BANDCAMP", 720, 29, 22), fill=(70, 70, 70))
+    centred_text(draw, "INDIE WHEEL", 930, fit_font(draw, "INDIE WHEEL", 520, 42, 32), fill=ink)
+    tagline = str(config.get("indieWheel", {}).get("tagline", "SPIN THE INDIE WHEEL")).upper()
+    centred_text(draw, tagline, 995, fit_font(draw, tagline, 650, 24, 18), fill=(75, 75, 75))
+    canvas.convert("RGB").save(destination, "PNG", optimize=True)
+
+
+def create_indie_wheel_qr(config: dict, destination: Path) -> str:
+    platform = json.loads((ROOT / "platform.json").read_text(encoding="utf-8"))
+    base_url = os.environ.get("DEEP_CUTS_BASE_URL", platform.get("publicBaseURL", "")).rstrip("/")
+    if not base_url.startswith("https://") or ".example" in base_url:
+        raise ValueError("A permanent HTTPS publicBaseURL is required before Indie Wheel QR artwork can be generated.")
+    edition_id = config.get("analytics", {}).get("editionId")
+    url = f"{base_url}/q/{edition_id}"
+    node = os.environ.get("DEEP_CUTS_NODE", "node")
+    result = subprocess.run([node, str(ROOT / "scripts" / "qr-matrix.cjs"), url], cwd=ROOT, check=True, capture_output=True, text=True)
+    matrix = json.loads(result.stdout)
+    border = 4
+    module = 520 // (len(matrix) + border * 2)
+    qr_size = module * (len(matrix) + border * 2)
+    qr_image = Image.new("RGBA", (qr_size, qr_size), (255, 255, 255, 255))
+    qr_draw = ImageDraw.Draw(qr_image)
+    for row, values in enumerate(matrix):
+        for column, dark in enumerate(values):
+            if dark:
+                x, y = (column + border) * module, (row + border) * module
+                qr_draw.rectangle((x, y, x + module - 1, y + module - 1), fill=(17, 17, 17, 255))
+    canvas = indie_wheel_background(config)
+    draw = ImageDraw.Draw(canvas)
+    ink = indie_wheel_colour(config, "accent", (17, 17, 17))
+    logo = contain(indie_wheel_logo(config), 410, 260)
+    canvas.alpha_composite(logo, ((SIZE - logo.width) // 2, 25))
+    name = config["bandName"].upper()
+    centred_text(draw, name, 275, fit_font(draw, name, 900, 66, 38), fill=ink, stroke=1)
+    card_size = qr_size + 42
+    card_x, card_y = (SIZE - card_size) // 2, 390
+    draw.rounded_rectangle((card_x, card_y, card_x + card_size, card_y + card_size), radius=24, fill=(255, 255, 255), outline=ink, width=5)
+    canvas.alpha_composite(qr_image, (card_x + 21, card_y + 21))
+    centred_text(draw, "SPIN • DISCOVER • LISTEN", 968, fit_font(draw, "SPIN • DISCOVER • LISTEN", 650, 29, 22), fill=ink)
+    centred_text(draw, "INDIE WHEEL", 1017, fit_font(draw, "INDIE WHEEL", 420, 25, 19), fill=(75, 75, 75))
+    canvas.convert("RGB").save(destination, "PNG", optimize=True)
+    if zxingcpp is not None:
+        scan = zxingcpp.read_barcode(Image.open(destination))
+        if scan is None or scan.text != url:
+            raise SystemExit(f"Rendered Indie Wheel QR scan-back failed for {destination}")
+        reduced_scan = zxingcpp.read_barcode(Image.open(destination).resize((540, 540), Image.Resampling.LANCZOS))
+        if reduced_scan is None or reduced_scan.text != url:
+            raise SystemExit(f"Reduced-size Indie Wheel QR scan-back failed for {destination}")
+    return url
+
+
 def create_laneway_instagram(config: dict, destination: Path) -> None:
     canvas = laneway_background()
     draw = ImageDraw.Draw(canvas)
@@ -434,6 +522,9 @@ def main() -> None:
     elif config.get("editionType") == "laneway_company":
         create_laneway_instagram(config, instagram)
         verified_url = create_laneway_qr(config, qr_path)
+    elif config.get("editionType") == "indie_wheel":
+        create_indie_wheel_instagram(config, instagram)
+        verified_url = create_indie_wheel_qr(config, qr_path)
     else:
         aggits = Image.open(ROOT / config["characterArtwork"]).convert("RGBA")
         create_instagram(config, aggits, instagram)
