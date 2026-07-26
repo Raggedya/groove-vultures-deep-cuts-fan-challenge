@@ -50,6 +50,8 @@ assert.match(app,/title\.replaceChildren\("Spin to discover"/);
 assert.match(app,/LanewayCompanyQuiz\.configure/);
 assert.match(quiz,/value\.length!==10/);
 assert.match(quiz,/prepareQuestions\(questionBank,10\)/);
+assert.match(quiz,/correct\?"Exactly right\.":"Not quite — good try\."/);
+assert.doesNotMatch(quiz,/Good choice/);
 assert.match(css,/\[data-edition-type="laneway_company"\] \.artist-title-row/);
 assert.match(css,/\[data-edition-type="laneway_company"\] \.laneway-company-artist-list/);
 assert.match(css,/\[data-edition-type="laneway_company"\] \.laneway-wheel-stage/);
