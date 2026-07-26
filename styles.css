@@ -243,6 +243,50 @@ body{margin:0;min-height:100%;color:var(--ink);background:#000713;overflow-x:hid
 [data-product-type="indie_wheel"] .laneway-result-card h1{color:#111}
 [data-product-type="indie_wheel"] .laneway-result-card h2{border:2px solid #111;color:#fff;background:#111}
 [data-product-type="indie_wheel"] .laneway-result-secondary{border-color:#111;color:#111;background:#fff}
+
+/* Laneway Music company edition owns this black/red reference treatment. */
+[data-product-type="laneway_company"] .discovery-shell{padding-inline:42px;background:radial-gradient(circle at 50% 27%,rgba(141,11,25,.09),transparent 31%),linear-gradient(180deg,#111 0,#090909 54%,#0d0d0d 100%)}
+[data-product-type="laneway_company"] .hero{padding-top:10px}
+[data-product-type="laneway_company"] .edition-brand-logo{width:min(38%,170px);margin:0 auto 1px}
+[data-product-type="laneway_company"] .sonic-signature{height:34px;margin:0 auto 8px;opacity:.72;filter:drop-shadow(0 0 5px rgba(255,255,255,.15))}
+[data-product-type="laneway_company"] .sonic-signature span{width:1px}
+[data-product-type="laneway_company"] .laneway-artist-wheel{margin-top:0;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none}
+[data-product-type="laneway_company"] .laneway-wheel-heading p{color:#aaa;font-size:.61rem;letter-spacing:.12em}
+[data-product-type="laneway_company"] .laneway-wheel-heading h2{margin:6px 0 4px;font-size:clamp(1.1rem,4.8vw,1.45rem);line-height:1.02;letter-spacing:.015em}
+[data-product-type="laneway_company"] .laneway-wheel-heading h2 span{display:inline-block;margin-top:4px;color:#ef233c}
+[data-product-type="laneway_company"] .laneway-wheel-stage{width:min(100%,455px);margin-top:8px}
+[data-product-type="laneway_company"] .laneway-wheel-stage canvas{filter:drop-shadow(0 0 2px rgba(255,255,255,.42)) drop-shadow(0 13px 22px rgba(0,0,0,.68))}
+[data-product-type="laneway_company"] .laneway-wheel-pointer{top:-1px;border-left-width:13px;border-right-width:13px;border-top-width:27px;border-top-color:#d51d31;filter:drop-shadow(0 0 3px #fff) drop-shadow(0 0 8px rgba(239,35,60,.95))}
+[data-product-type="laneway_company"] .laneway-wheel-spin{width:23%;min-width:72px;max-width:96px;border:3px solid #b4b4b4;color:#fff;background:radial-gradient(circle at 48% 42%,#171717,#050505 70%);box-shadow:0 0 0 4px #0a0a0a,0 0 0 6px #c51b2d,0 0 14px rgba(239,35,60,.86),0 6px 18px #000;font-size:clamp(.85rem,3.7vw,1.15rem)}
+[data-product-type="laneway_company"] .laneway-wheel-spin:hover,[data-product-type="laneway_company"] .laneway-wheel-spin:focus-visible{outline:2px solid #ef233c;outline-offset:7px;background:#111}
+[data-product-type="laneway_company"] .laneway-wheel-status{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+[data-product-type="laneway_company"] .laneway-wheel-winner{position:relative;overflow:hidden;isolation:isolate;min-height:50px;margin:12px 0 2px;padding:11px 18px;border:2px solid transparent;border-radius:12px;color:#fff;background:transparent;box-shadow:0 0 9px rgba(239,35,60,.25),0 0 24px rgba(239,35,60,.13);font-size:.76rem;letter-spacing:.025em;animation:none}
+[data-product-type="laneway_company"] .laneway-wheel-winner:before{content:"";position:absolute;z-index:-2;inset:-260%;background:conic-gradient(from 0deg,transparent 0 42%,rgba(239,35,60,.12) 47%,#ff3048 49.5%,#ff98a5 50%,#ff3048 50.5%,rgba(239,35,60,.12) 53%,transparent 58% 100%);animation:lanewayRedWinnerOrbit .72s linear infinite}
+[data-product-type="laneway_company"] .laneway-wheel-winner:after{content:"";position:absolute;z-index:-1;inset:2px;border-radius:9px;background:linear-gradient(145deg,#171717,#090909);animation:none}
+[data-product-type="laneway_company"] .laneway-wheel-winner:hover,[data-product-type="laneway_company"] .laneway-wheel-winner:focus-visible{outline:2px solid #fff;outline-offset:3px;color:#fff;background:transparent;box-shadow:0 0 13px rgba(239,35,60,.4),0 0 28px rgba(239,35,60,.2)}
+@keyframes lanewayRedWinnerOrbit{to{transform:rotate(1turn)}}
+[data-product-type="laneway_company"] .link-section{padding-top:15px}
+[data-product-type="laneway_company"] .laneway-challenge-card{min-height:72px;padding:10px 42px 10px 72px;border:1px solid rgba(239,35,60,.74);border-radius:11px;color:#fff;background:linear-gradient(145deg,#151515,#0c0c0c);box-shadow:0 0 17px rgba(239,35,60,.08);text-align:left}
+[data-product-type="laneway_company"] .laneway-challenge-card:before{content:"?";position:absolute;left:22px;display:grid;width:34px;height:42px;place-items:center;border:2px solid #d51d31;border-radius:48% 48% 42% 42%;color:#ef233c;font-size:1.25rem;font-weight:900;line-height:1}
+[data-product-type="laneway_company"] .laneway-challenge-card .link-copy{align-items:center}
+[data-product-type="laneway_company"] .laneway-challenge-card .link-copy strong{color:#fff;font-size:.76rem;line-height:1.12}
+[data-product-type="laneway_company"] .laneway-challenge-card .link-copy small{color:#aaa;font-size:.64rem}
+[data-product-type="laneway_company"] .laneway-challenge-card .link-arrow{color:#ddd}
+[data-product-type="laneway_company"] .laneway-challenge-card:not(:disabled):hover,[data-product-type="laneway_company"] .laneway-challenge-card:not(:disabled):focus-visible{border-color:#ff4055;box-shadow:0 0 18px rgba(239,35,60,.25)}
+[data-product-type="laneway_company"] .laneway-company-directory{margin-top:21px}
+[data-product-type="laneway_company"] .laneway-company-directory-heading{margin-bottom:9px}
+[data-product-type="laneway_company"] .laneway-company-directory-heading p{display:none}
+[data-product-type="laneway_company"] .laneway-company-directory-heading h2{font-size:1rem;letter-spacing:.02em}
+[data-product-type="laneway_company"] .laneway-company-directory-heading span{font-size:.64rem}
+[data-product-type="laneway_company"] .laneway-company-search span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+[data-product-type="laneway_company"] .laneway-company-search input{min-height:40px;padding:0 12px;border-color:rgba(255,255,255,.24);border-radius:8px;background:#151515;font-size:.76rem}
+[data-product-type="laneway_company"] .laneway-company-artist-list{gap:3px;margin-top:10px}
+[data-product-type="laneway_company"] .laneway-company-artist{min-height:36px;padding:3px 5px 3px 13px;border-color:rgba(255,255,255,.16);border-radius:7px;background:linear-gradient(145deg,#171717,#111)}
+[data-product-type="laneway_company"] .laneway-company-artist h3{font-size:.72rem}
+[data-product-type="laneway_company"] .laneway-company-artist-link{min-height:29px;padding:0 10px;border-color:rgba(255,255,255,.28);border-radius:6px;background:#202020;font-size:.52rem}
+[data-product-type="laneway_company"] .laneway-company-artist-link.attention{border-color:#d9f7ff;background:#344b55;box-shadow:0 0 13px rgba(217,247,255,.85),0 0 26px rgba(169,231,250,.45),inset 0 0 10px rgba(217,247,255,.14)}
+[data-product-type="laneway_company"] .share-section{margin-top:13px}
+[data-product-type="laneway_company"] .page-footer{padding-top:25px}
 .error-screen{margin-top:25vh;padding:28px;border:1px solid #345;border-radius:18px;background:#07101f;text-align:center}
 .visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
 [hidden]{display:none!important}
@@ -306,4 +350,4 @@ body{margin:0;min-height:100%;color:var(--ink);background:#000713;overflow-x:hid
 @media(max-width:400px){.discovery-shell{padding-inline:24px}.hero-artwork{width:60%}.artist-bio{margin-top:13px}.sonic-signature{height:39px}.feature-list li{font-size:.62rem}.featured-video{margin-top:18px;padding:9px;border-radius:15px}.video-heading{padding-bottom:7px}.link-section{padding-top:14px}.platform-links{gap:7px 10px}.platform-link{min-height:51px;border-radius:12px}.page-footer{padding-top:26px}}
 @media(max-height:760px) and (max-width:450px){.discovery-shell{padding-top:5px}.hero-artwork{width:53%;max-height:270px}.artist-title-row h1{font-size:1.45rem}.artist-bio{margin-top:9px;font-size:.7rem}.sonic-signature{height:32px}.feature-list li{font-size:.58rem}.featured-video{margin-top:13px}.link-section{padding-top:11px}.platform-links{gap:5px 9px}.platform-link{min-height:45px;padding-block:6px}.platform-link.primary{min-height:49px}.link-copy small{margin-top:3px}.share-section{margin-top:11px}.share-button{min-height:34px}.page-footer{padding-top:16px}}
 @media(max-height:760px) and (max-width:450px){[data-edition-type="school"] .school-quiz-screen,[data-edition-type="school"] .school-result-screen{padding-top:2px}[data-edition-type="school"] .school-quiz-topbar{margin-bottom:7px}[data-edition-type="school"] .school-question-card{padding:12px 14px;border-radius:17px}[data-edition-type="school"] .school-timer-ring{width:82px;height:82px;margin:7px auto;border-width:5px}[data-edition-type="school"] .school-timer-ring span{font-size:2.15rem}[data-edition-type="school"] .school-question-card h2{margin:5px auto 9px;font-size:1.02rem}[data-edition-type="school"] .school-answer-list{gap:6px}[data-edition-type="school"] .school-answer-button{min-height:42px;padding:7px 10px;font-size:.75rem}[data-edition-type="school"] .school-answer-feedback{margin-top:8px;padding:9px}[data-edition-type="school"] .school-answer-feedback p{margin:4px 0;font-size:.7rem}}
-@media(prefers-reduced-motion:reduce){.sonic-signature.pulse span{animation:none}.platform-link{transition:none}.platform-link.attention{border-color:var(--line);background:#041a35;box-shadow:inset 0 1px rgba(255,255,255,.06)}[data-edition-type="laneway_company"] .laneway-challenge-card.attention:after,[data-edition-type="laneway_company"] .laneway-company-artist-link.attention:after,[data-edition-type="laneway_company"] .utility-action.attention:after,[data-edition-type="laneway_company"] .laneway-wheel-winner:after{display:none}[data-edition-type="laneway_company"] .laneway-wheel-winner{animation:none}}
+@media(prefers-reduced-motion:reduce){.sonic-signature.pulse span{animation:none}.platform-link{transition:none}.platform-link.attention{border-color:var(--line);background:#041a35;box-shadow:inset 0 1px rgba(255,255,255,.06)}[data-edition-type="laneway_company"] .laneway-challenge-card.attention:after,[data-edition-type="laneway_company"] .laneway-company-artist-link.attention:after,[data-edition-type="laneway_company"] .utility-action.attention:after,[data-edition-type="laneway_company"] .laneway-wheel-winner:after{display:none}[data-edition-type="laneway_company"] .laneway-wheel-winner{animation:none}[data-product-type="laneway_company"] .laneway-wheel-winner:before{animation:none;background:#d51d31}[data-product-type="laneway_company"] .laneway-wheel-winner:after{display:block}}
