@@ -45,6 +45,19 @@
     "recordCompanyHomeURL": "https://www.lanewaymusic.com.au/about",
     "recommendedArtistsURL": "https://www.lanewaymusic.com.au/",
     "rosterFile": "editions/laneway-music-one-off/roster.json",
+    "destinationKey": "spotifyURL",
+    "destinationLabel": "Spotify",
+    "wheelColours": [
+      "#080808",
+      "#141414",
+      "#0c0c0c",
+      "#1b1b1b",
+      "#101010",
+      "#202020"
+    ],
+    "wheelTextColour": "#f4f4f4",
+    "wheelLineColour": "rgba(255,255,255,.2)",
+    "wheelRimColour": "#d8d8d8",
     "artistWheel": {
       "enabled": true,
       "replacesFeaturedVideo": true

@@ -69,6 +69,7 @@ for(const edition of platform.editions){
     }else if(config.editionType==='laneway_company'){
       if(config.characterArtwork)errors.push(`${edition.config} Laneway Music company edition must never configure character artwork.`);
       if(config.lanewayCompany?.logoArtwork!=='assets/laneway-music-logo-reverse-transparent.png'||config.lanewayCompany?.logoTreatment!=='reverse-white-transparent')errors.push(`${edition.config} must preserve the approved transparent reverse-white Laneway Music logo treatment.`);
+      if(config.lanewayCompany?.destinationKey!=='spotifyURL'||config.lanewayCompany?.destinationLabel!=='Spotify')errors.push(`${edition.config} must preserve its verified Spotify wheel destination contract.`);
       if(normalized(config.lanewayCompany?.recordCompanyHomeURL)!=='https://www.lanewaymusic.com.au/about'||normalized(config.lanewayCompany?.recommendedArtistsURL)!=='https://www.lanewaymusic.com.au')errors.push(`${edition.config} must preserve the verified Laneway Music company navigation.`);
       if(config.featuredVideo?.selectionBasis!=='owner-selected'||config.featuredVideo?.ownerSelected!==true||!config.featuredVideo?.youtubeURL)errors.push(`${edition.config} requires the explicit owner-selected featured video.`);
       if(config.lanewayCompanyChallenge?.numberOfQuestions!==10||!config.lanewayCompanyChallenge?.questionFile)errors.push(`${edition.config} must preserve the isolated 10-question Laneway Music artist challenge.`);

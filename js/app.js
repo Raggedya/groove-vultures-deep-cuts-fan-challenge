@@ -1,6 +1,6 @@
 "use strict";
 
-const VERSION="20260726-indie-wheel-1";
+const VERSION="20260727-laneway-red-wheel-1";
 const $=id=>document.getElementById(id);
 const els={page:$("discoveryPage"),error:$("errorScreen"),errorMessage:$("errorMessage"),bandName:$("bandName"),bio:$("artistBio"),artwork:$("heroArtwork"),brandLogo:$("editionBrandLogo"),waveform:$("sonicSignature"),features:$("featureList"),video:$("featuredVideo"),videoLabel:$("featuredVideoLabel"),videoTitle:$("featuredVideoTitle"),videoFrame:$("featuredVideoFrame"),links:$("platformLinks"),share:$("shareButton"),status:$("shareStatus"),description:$("pageDescription"),poweredBy:$("poweredByLabel"),copyright:$("coverCopyright"),lanewayHome:$("lanewayHomeLink"),lanewayRecommended:$("lanewayRecommendedLink"),companyDirectory:$("lanewayCompanyDirectory"),companyDirectoryCount:$("lanewayCompanyDirectoryCount"),companySearch:$("lanewayCompanySearch"),companyArtistList:$("lanewayCompanyArtistList"),companyEmpty:$("lanewayCompanyEmpty"),companyWheel:$("lanewayArtistWheel"),wheelCanvas:$("lanewayWheelCanvas"),wheelSpin:$("lanewayWheelSpin"),wheelStatus:$("lanewayWheelStatus"),wheelWinner:$("lanewayWheelWinner")};
 
@@ -117,7 +117,14 @@ function isLanewayEdition(){return config.editionType==="laneway"}
 function isLanewayCompanyEdition(){return config.editionType==="laneway_company"}
 function isIndieWheelEdition(){return config.editionType==="indie_wheel"}
 function isWheelEdition(){return isLanewayCompanyEdition()||isIndieWheelEdition()}
-function wheelSettings(){return isIndieWheelEdition()?config.indieWheel:config.lanewayCompany}
+function wheelSettings(){
+  if(isIndieWheelEdition())return config.indieWheel;
+  return{
+    destinationKey:"spotifyURL",
+    destinationLabel:"Spotify",
+    ...config.lanewayCompany
+  };
+}
 function wheelChallenge(){return isIndieWheelEdition()?config.indieWheelChallenge:config.lanewayCompanyChallenge}
 
 function configureLanewayUtilityLinks(){
@@ -227,6 +234,11 @@ async function buildLanewayCompanyDirectory(){
   document.getElementById("indieWheelCollectionLabel").textContent=`${config.bandName} artist collection`;
   document.getElementById("indieWheelDirectoryLabel").textContent=`${config.bandName} artist collection`;
   document.getElementById("lanewayCompanySearch").placeholder=`Search ${config.bandName} artists`;
+  if(isLanewayCompanyEdition()){
+    const title=document.getElementById("lanewayArtistWheelTitle");
+    title.replaceChildren("Spin to discover",document.createElement("br"));
+    const accent=document.createElement("span");accent.textContent="an artist";title.append(accent);
+  }
   if(settings.artistWheel?.enabled)buildLanewayArtistWheel(artists);
   const render=value=>{
     const needle=String(value||"").trim().toLocaleLowerCase("en-AU");
@@ -254,13 +266,13 @@ function buildLanewayArtistWheel(artists){
       const start=-Math.PI/2-segmentAngle/2+index*segmentAngle,end=start+segmentAngle;
       context.beginPath();context.moveTo(0,0);context.arc(0,0,radius,start,end);context.closePath();
       context.fillStyle=colours[index%colours.length];context.fill();
-      context.strokeStyle="rgba(0,0,0,.42)";context.lineWidth=2;context.stroke();
+      context.strokeStyle=settings.wheelLineColour||"rgba(0,0,0,.42)";context.lineWidth=2;context.stroke();
       const middle=start+segmentAngle/2,normalised=((middle%(Math.PI*2))+Math.PI*2)%(Math.PI*2);
       context.save();context.rotate(middle);
       const inverted=normalised>Math.PI/2&&normalised<Math.PI*1.5;
       if(inverted)context.rotate(Math.PI);
       context.translate(inverted?-radius*.73:radius*.34,0);
-      context.fillStyle=index%2===0?"#111":"#fff";
+      context.fillStyle=settings.wheelTextColour||(index%2===0?"#111":"#fff");
       context.font="900 13px Arial, sans-serif";context.textAlign=inverted?"left":"left";context.textBaseline="middle";
       const label=artist.name.length>22?`${artist.name.slice(0,20)}…`:artist.name;
       context.fillText(label,0,0,radius*.39);
@@ -268,7 +280,7 @@ function buildLanewayArtistWheel(artists){
     });
     context.restore();
     context.beginPath();context.arc(centre,centre,radius,0,Math.PI*2);
-    context.strokeStyle="#fff";context.lineWidth=8;context.stroke();
+    context.strokeStyle=settings.wheelRimColour||"#fff";context.lineWidth=8;context.stroke();
   };
   const randomIndex=()=>{
     if(globalThis.crypto?.getRandomValues){
