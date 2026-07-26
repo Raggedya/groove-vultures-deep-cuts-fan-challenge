@@ -379,9 +379,7 @@ function startAttentionCycle(){
     let controlIndex=0;
     let waveTick=0;
     const visibleCompanyControls=()=>[
-      ...els.links.querySelectorAll(".laneway-challenge-card:not(:disabled)"),
-      ...els.companyArtistList.querySelectorAll(".laneway-company-artist-link.is-active"),
-      ...document.querySelectorAll(".edition-utility-actions .utility-action:not([hidden])")
+      ...els.companyArtistList.querySelectorAll(".laneway-company-artist-link.is-active")
     ].filter(control=>{
       const bounds=control.getBoundingClientRect();
       return bounds.width>0&&bounds.height>0&&bounds.bottom>0&&bounds.top<window.innerHeight;
