@@ -76,6 +76,9 @@ assert.match(css,/\[data-product-type="laneway_company"\] \.laneway-challenge-ca
 assert.match(css,/\[data-product-type="laneway_company"\] \.laneway-company-quiz-screen \.laneway-question-card/);
 assert.match(css,/\[data-product-type="laneway_company"\] \.laneway-company-quiz-screen \.laneway-question-card h2:focus\{outline:none\}/);
 assert.match(css,/\[data-product-type="laneway_company"\] \.laneway-company-quiz-screen \.laneway-answer-button\.best-answer/);
+assert.match(css,/\.laneway-answer-button\.selected-choice\{border-color:#a5202f/);
+assert.match(css,/\.laneway-answer-button\.best-answer\{border-color:#43dc86/);
+assert.match(css,/\.laneway-answer-button\.best-answer:after\{color:#75f2ab/);
 assert.match(css,/\[data-product-type="laneway_company"\] \.laneway-company-result-screen \.laneway-result-card/);
 assert.match(css,/\[data-product-type="laneway_company"\] \.laneway-wheel-impact/);
 assert.match(css,/\[data-product-type="laneway_company"\] \.laneway-company-result-screen \.laneway-result-contact/);
