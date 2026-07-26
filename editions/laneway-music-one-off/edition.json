@@ -44,7 +44,9 @@
     "logoTreatment": "reverse-white-transparent",
     "recordCompanyHomeURL": "https://www.lanewaymusic.com.au/about",
     "recommendedArtistsURL": "https://www.lanewaymusic.com.au/",
+    "servicesURL": "https://www.lanewaymusic.com.au/sync",
     "rosterFile": "editions/laneway-music-one-off/roster.json",
+    "artistImpactFile": "editions/laneway-music-one-off/artist-impact.json",
     "destinationKey": "spotifyURL",
     "destinationLabel": "Spotify",
     "wheelColours": [

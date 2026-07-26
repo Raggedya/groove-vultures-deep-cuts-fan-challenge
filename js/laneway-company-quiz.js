@@ -7,7 +7,8 @@
     question:$("lanewayCompanyQuestionText"),answers:$("lanewayCompanyAnswerList"),feedback:$("lanewayCompanyAnswerFeedback"),
     feedbackTitle:$("lanewayCompanyFeedbackTitle"),feedbackExplanation:$("lanewayCompanyFeedbackExplanation"),feedbackSource:$("lanewayCompanyFeedbackSource"),
     next:$("lanewayCompanyNextButton"),home:$("lanewayCompanyQuizHomeButton"),resultHome:$("lanewayCompanyResultHomeButton"),replay:$("lanewayCompanyReplayButton"),
-    resultScore:$("lanewayCompanyResultScore"),resultTitle:$("lanewayCompanyResultTitle"),resultMessage:$("lanewayCompanyResultMessage")
+    resultScore:$("lanewayCompanyResultScore"),resultTitle:$("lanewayCompanyResultTitle"),resultMessage:$("lanewayCompanyResultMessage"),
+    resultContact:$("lanewayCompanyResultContact"),resultContactLink:$("lanewayCompanyResultContactLink")
   };
 
   let config=null,analytics=null,homeElement=null,challengeButton=null,questionBank=[],questions=[],answers=[],index=0,locked=false,opened=false,startedAt=0;
@@ -26,6 +27,13 @@
     const logo=document.getElementById("lanewayCompanyResultLogo");
     logo.src=`/${settings.logoArtwork}`;logo.alt=config.bandName;
     document.getElementById("lanewayCompanyResultKicker").textContent=`Your ${config.bandName} Result`;
+    const showServices=config.editionType==="laneway_company"&&validHttps(settings.servicesURL);
+    els.resultContact.hidden=!showServices;
+    if(showServices){
+      els.resultContactLink.href=settings.servicesURL;
+      els.resultContactLink.setAttribute("aria-label",`Contact ${config.bandName} about music services (opens in a new tab)`);
+      els.resultContactLink.addEventListener("click",()=>DeepCutsInteractions.trackOutbound(analytics,"laneway_sync",settings.servicesURL),{passive:true});
+    }
     challengeButton.disabled=false;
   }
 
