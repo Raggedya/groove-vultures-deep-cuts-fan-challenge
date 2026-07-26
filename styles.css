@@ -264,6 +264,7 @@ body{margin:0;min-height:100%;color:var(--ink);background:#000713;overflow-x:hid
 [data-product-type="laneway_company"] .laneway-wheel-winner:before{content:"";position:absolute;z-index:-2;inset:-260%;background:conic-gradient(from 0deg,transparent 0 42%,rgba(239,35,60,.12) 47%,#ff3048 49.5%,#ff98a5 50%,#ff3048 50.5%,rgba(239,35,60,.12) 53%,transparent 58% 100%);animation:lanewayRedWinnerOrbit .72s linear infinite}
 [data-product-type="laneway_company"] .laneway-wheel-winner:after{content:"";position:absolute;z-index:-1;inset:2px;border-radius:9px;background:linear-gradient(145deg,#171717,#090909);animation:none}
 [data-product-type="laneway_company"] .laneway-wheel-winner:hover,[data-product-type="laneway_company"] .laneway-wheel-winner:focus-visible{outline:2px solid #fff;outline-offset:3px;color:#fff;background:transparent;box-shadow:0 0 13px rgba(239,35,60,.4),0 0 28px rgba(239,35,60,.2)}
+[data-product-type="laneway_company"] .laneway-wheel-impact{max-width:38ch;margin:10px auto 2px;color:#bdbdbd;font-size:.68rem;line-height:1.45;text-align:center}
 @keyframes lanewayRedWinnerOrbit{to{transform:rotate(1turn)}}
 [data-product-type="laneway_company"] .link-section{padding-top:15px}
 [data-product-type="laneway_company"] .laneway-challenge-card{min-height:72px;padding:10px 42px 10px 72px;border:1px solid rgba(239,35,60,.74);border-radius:11px;color:#fff;background:linear-gradient(145deg,#151515,#0c0c0c);box-shadow:0 0 17px rgba(239,35,60,.08);text-align:left}
@@ -321,6 +322,10 @@ body{margin:0;min-height:100%;color:var(--ink);background:#000713;overflow-x:hid
 [data-product-type="laneway_company"] .laneway-company-result-screen .laneway-result-primary{border-color:#ef4054;color:#fff;background:linear-gradient(145deg,#a9162a,#5d0d18);box-shadow:0 0 15px rgba(239,35,60,.18)}
 [data-product-type="laneway_company"] .laneway-company-result-screen .laneway-result-secondary{border-color:rgba(255,255,255,.25);color:#fff;background:#151515}
 [data-product-type="laneway_company"] .laneway-company-result-screen .laneway-result-actions button:hover,[data-product-type="laneway_company"] .laneway-company-result-screen .laneway-result-actions button:focus-visible{outline:none;border-color:#fff;box-shadow:0 0 17px rgba(239,35,60,.28)}
+[data-product-type="laneway_company"] .laneway-company-result-screen .laneway-result-contact{margin-top:18px;padding-top:14px;border-top:1px solid rgba(255,255,255,.12);text-align:center}
+[data-product-type="laneway_company"] .laneway-company-result-screen .laneway-result-contact p{margin:0 0 8px;color:#8f8f8f;font-size:.64rem;line-height:1.4}
+[data-product-type="laneway_company"] .laneway-company-result-screen .laneway-result-contact a{display:inline-flex;min-height:34px;align-items:center;justify-content:center;padding:0 12px;border:1px solid rgba(255,255,255,.2);border-radius:7px;color:#cfcfcf;background:#111;font-size:.58rem;font-weight:800;letter-spacing:.04em;text-decoration:none;text-transform:uppercase}
+[data-product-type="laneway_company"] .laneway-company-result-screen .laneway-result-contact a:hover,[data-product-type="laneway_company"] .laneway-company-result-screen .laneway-result-contact a:focus-visible{outline:none;border-color:#ef4054;color:#fff;box-shadow:0 0 12px rgba(239,35,60,.16)}
 @keyframes lanewayQuizCardIn{from{opacity:.35;transform:translateY(8px)}to{opacity:1;transform:none}}
 @keyframes lanewayQuizFeedbackIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
 .error-screen{margin-top:25vh;padding:28px;border:1px solid #345;border-radius:18px;background:#07101f;text-align:center}

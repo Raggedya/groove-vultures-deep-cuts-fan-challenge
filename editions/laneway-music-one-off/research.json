@@ -21,6 +21,38 @@
       "evidence": "Laneway Music's official home page publishes the artist catalogue used as the source roster for this edition."
     },
     {
+      "destination": "services",
+      "url": "https://www.lanewaymusic.com.au/sync",
+      "sourceType": "official Laneway Music synchronisation service",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-27T00:00:00.000Z",
+      "evidence": "Laneway Music's official Sync page invites film, television, advertising and other music-use enquiries and explains its clearance support."
+    },
+    {
+      "destination": "question-bengal-tigers-digital-first",
+      "url": "https://www.lanewaymusic.com.au/bengaltigers",
+      "sourceType": "official Laneway artist profile",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-27T00:00:00.000Z",
+      "evidence": "The official profile states that Laneway made Bengal Tigers' music available digitally worldwide for the first time."
+    },
+    {
+      "destination": "question-do-re-mi-preservation",
+      "url": "https://www.lanewaymusic.com.au/do-re-mi",
+      "sourceType": "official Laneway artist profile",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-27T00:00:00.000Z",
+      "evidence": "The official profile states that Laneway made Do Re Mi's two albums available digitally for the first time."
+    },
+    {
+      "destination": "question-electric-pandas-digital-return",
+      "url": "https://www.lanewaymusic.com.au/electric-pandas",
+      "sourceType": "official Laneway artist profile",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-27T00:00:00.000Z",
+      "evidence": "The official profile states that Electric Pandas songs had been unavailable digitally before Laneway released Point Blank through iTunes."
+    },
+    {
       "destination": "featuredVideo",
       "url": "https://www.youtube.com/watch?v=GkZPRgnTOvg",
       "sourceType": "owner-selected YouTube video",

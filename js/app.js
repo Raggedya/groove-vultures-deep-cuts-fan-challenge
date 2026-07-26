@@ -1,8 +1,8 @@
 "use strict";
 
-const VERSION="20260727-laneway-red-wheel-1";
+const VERSION="20260727-laneway-purpose-1";
 const $=id=>document.getElementById(id);
-const els={page:$("discoveryPage"),error:$("errorScreen"),errorMessage:$("errorMessage"),bandName:$("bandName"),bio:$("artistBio"),artwork:$("heroArtwork"),brandLogo:$("editionBrandLogo"),waveform:$("sonicSignature"),features:$("featureList"),video:$("featuredVideo"),videoLabel:$("featuredVideoLabel"),videoTitle:$("featuredVideoTitle"),videoFrame:$("featuredVideoFrame"),links:$("platformLinks"),share:$("shareButton"),status:$("shareStatus"),description:$("pageDescription"),poweredBy:$("poweredByLabel"),copyright:$("coverCopyright"),lanewayHome:$("lanewayHomeLink"),lanewayRecommended:$("lanewayRecommendedLink"),companyDirectory:$("lanewayCompanyDirectory"),companyDirectoryCount:$("lanewayCompanyDirectoryCount"),companySearch:$("lanewayCompanySearch"),companyArtistList:$("lanewayCompanyArtistList"),companyEmpty:$("lanewayCompanyEmpty"),companyWheel:$("lanewayArtistWheel"),wheelCanvas:$("lanewayWheelCanvas"),wheelSpin:$("lanewayWheelSpin"),wheelStatus:$("lanewayWheelStatus"),wheelWinner:$("lanewayWheelWinner")};
+const els={page:$("discoveryPage"),error:$("errorScreen"),errorMessage:$("errorMessage"),bandName:$("bandName"),bio:$("artistBio"),artwork:$("heroArtwork"),brandLogo:$("editionBrandLogo"),waveform:$("sonicSignature"),features:$("featureList"),video:$("featuredVideo"),videoLabel:$("featuredVideoLabel"),videoTitle:$("featuredVideoTitle"),videoFrame:$("featuredVideoFrame"),links:$("platformLinks"),share:$("shareButton"),status:$("shareStatus"),description:$("pageDescription"),poweredBy:$("poweredByLabel"),copyright:$("coverCopyright"),lanewayHome:$("lanewayHomeLink"),lanewayRecommended:$("lanewayRecommendedLink"),companyDirectory:$("lanewayCompanyDirectory"),companyDirectoryCount:$("lanewayCompanyDirectoryCount"),companySearch:$("lanewayCompanySearch"),companyArtistList:$("lanewayCompanyArtistList"),companyEmpty:$("lanewayCompanyEmpty"),companyWheel:$("lanewayArtistWheel"),wheelCanvas:$("lanewayWheelCanvas"),wheelSpin:$("lanewayWheelSpin"),wheelStatus:$("lanewayWheelStatus"),wheelWinner:$("lanewayWheelWinner"),wheelImpact:$("lanewayWheelImpact")};
 
 const MUSIC_LINK_DEFINITIONS=[
   {key:"buyMusic",label:"Buy Music",subLabel:"Purchase music directly",priority:"primary",fallback:"bandcamp"},
@@ -136,6 +136,7 @@ function configureLanewayUtilityLinks(){
   const homeURL=validHttps(settings?.recordCompanyHomeURL);
   const recommendedURL=validHttps(settings?.recommendedArtistsURL);
   if(!homeURL||!recommendedURL)throw new Error("Record-company navigation is incomplete.");
+  els.lanewayHome.textContent=isLanewayCompanyEdition()?"Contact Us":"Home";
   for(const [element,url,destination] of [[els.lanewayHome,homeURL,"record_company_home"],[els.lanewayRecommended,recommendedURL,"recommended_artists"]]){
     element.href=url;element.hidden=false;
     element.setAttribute("aria-label",`${element.textContent}: ${config.bandName} (opens in a new tab)`);
@@ -227,9 +228,15 @@ function createLanewayCompanyChallengeCard(){
 
 async function buildLanewayCompanyDirectory(){
   const settings=wheelSettings(),destinationKey=settings.destinationKey,destinationLabel=settings.destinationLabel;
-  const roster=await fetchJson(`/${settings.rosterFile}?v=${VERSION}`);
+  const [roster,impactLines]=await Promise.all([
+    fetchJson(`/${settings.rosterFile}?v=${VERSION}`),
+    isLanewayCompanyEdition()?fetchJson(`/${settings.artistImpactFile}?v=${VERSION}`):Promise.resolve({})
+  ]);
   if(!Array.isArray(roster.artists)||!roster.artists.length)throw new Error(`${config.bandName} artist directory is empty.`);
-  const artists=roster.artists.filter(item=>item.name&&validWheelDestination(item[destinationKey],destinationKey)).sort((a,b)=>a.name.localeCompare(b.name,"en-AU"));
+  const artists=roster.artists
+    .filter(item=>item.name&&validWheelDestination(item[destinationKey],destinationKey))
+    .map(item=>({...item,impactLine:String(impactLines[item.name]||"").trim()}))
+    .sort((a,b)=>a.name.localeCompare(b.name,"en-AU"));
   if(!artists.length)throw new Error(`No verified ${config.bandName} ${destinationLabel} artists were available.`);
   document.getElementById("indieWheelCollectionLabel").textContent=`${config.bandName} artist collection`;
   document.getElementById("indieWheelDirectoryLabel").textContent=`${config.bandName} artist collection`;
@@ -295,13 +302,16 @@ function buildLanewayArtistWheel(artists){
     els.wheelStatus.textContent=`Winner: ${winner.name}`;
     els.wheelWinner.href=winner[destinationKey];els.wheelWinner.textContent=`Listen to ${winner.name} on ${destinationLabel}`;
     els.wheelWinner.setAttribute("aria-label",`Listen to ${winner.name} on ${destinationLabel} (opens in a new tab)`);
-    els.wheelWinner.hidden=false;els.wheelWinner.focus({preventScroll:true});
+    els.wheelWinner.hidden=false;
+    els.wheelImpact.textContent=winner.impactLine;
+    els.wheelImpact.hidden=!winner.impactLine;
+    els.wheelWinner.focus({preventScroll:true});
     analytics.track("laneway_wheel_winner",{artist_name:winner.name},{dedupeKey:`wheel:${winner.name}`,dedupeMs:500});
   };
   els.wheelSpin.addEventListener("click",()=>{
     if(spinning)return;
     spinning=true;els.wheelSpin.disabled=true;els.wheelSpin.textContent="Spinning";
-    els.wheelWinner.hidden=true;els.wheelStatus.textContent="The artist wheel is spinning…";
+    els.wheelWinner.hidden=true;els.wheelImpact.hidden=true;els.wheelImpact.textContent="";els.wheelStatus.textContent="The artist wheel is spinning…";
     const selected=randomIndex(),current=rotation%(Math.PI*2);
     const target=-selected*segmentAngle;
     const normalized=((target-current)%(Math.PI*2)+Math.PI*2)%(Math.PI*2);

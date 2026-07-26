@@ -70,7 +70,7 @@ for(const edition of platform.editions){
       if(config.characterArtwork)errors.push(`${edition.config} Laneway Music company edition must never configure character artwork.`);
       if(config.lanewayCompany?.logoArtwork!=='assets/laneway-music-logo-reverse-transparent.png'||config.lanewayCompany?.logoTreatment!=='reverse-white-transparent')errors.push(`${edition.config} must preserve the approved transparent reverse-white Laneway Music logo treatment.`);
       if(config.lanewayCompany?.destinationKey!=='spotifyURL'||config.lanewayCompany?.destinationLabel!=='Spotify')errors.push(`${edition.config} must preserve its verified Spotify wheel destination contract.`);
-      if(normalized(config.lanewayCompany?.recordCompanyHomeURL)!=='https://www.lanewaymusic.com.au/about'||normalized(config.lanewayCompany?.recommendedArtistsURL)!=='https://www.lanewaymusic.com.au')errors.push(`${edition.config} must preserve the verified Laneway Music company navigation.`);
+      if(normalized(config.lanewayCompany?.recordCompanyHomeURL)!=='https://www.lanewaymusic.com.au/about'||normalized(config.lanewayCompany?.recommendedArtistsURL)!=='https://www.lanewaymusic.com.au'||normalized(config.lanewayCompany?.servicesURL)!=='https://www.lanewaymusic.com.au/sync')errors.push(`${edition.config} must preserve the verified Laneway Music company navigation and services destinations.`);
       if(config.featuredVideo?.selectionBasis!=='owner-selected'||config.featuredVideo?.ownerSelected!==true||!config.featuredVideo?.youtubeURL)errors.push(`${edition.config} requires the explicit owner-selected featured video.`);
       if(config.lanewayCompanyChallenge?.numberOfQuestions!==10||!config.lanewayCompanyChallenge?.questionFile)errors.push(`${edition.config} must preserve the isolated 10-question Laneway Music artist challenge.`);
       else{
@@ -83,6 +83,9 @@ for(const edition of platform.editions){
       const rosterPath=String(config.lanewayCompany?.rosterFile||'').replace(/^\//,'');
       const roster=JSON.parse(await fs.readFile(rosterPath,'utf8'));
       validateLanewayCompanyRoster(roster,rosterPath,errors);
+      const impactPath=String(config.lanewayCompany?.artistImpactFile||'').replace(/^\//,'');
+      const impactLines=JSON.parse(await fs.readFile(impactPath,'utf8'));
+      validateLanewayCompanyImpact(impactLines,roster,impactPath,errors);
       await fs.access(config.lanewayCompany.logoArtwork);
     }else if(config.editionType==='indie_wheel'){
       if(config.characterArtwork)errors.push(`${edition.config} Indie Wheel must never configure character artwork.`);
@@ -157,6 +160,16 @@ function validateLanewayCompanyRoster(roster,file,errors){
     if(names.has(name.toLowerCase())||spotify.has(spotifyURL))errors.push(`${file} contains a duplicate artist or Spotify destination: ${name}.`);
     names.add(name.toLowerCase());spotify.add(spotifyURL);
   }
+}
+
+function validateLanewayCompanyImpact(impactLines,roster,file,errors){
+  if(!impactLines||Array.isArray(impactLines)||typeof impactLines!=='object'){errors.push(`${file} must contain a Laneway artist-impact map.`);return}
+  const rosterNames=new Set(roster.artists.map(artist=>String(artist.name||'').trim()));
+  for(const name of rosterNames){
+    const line=String(impactLines[name]||'').trim();
+    if(line.length<45||line.length>190)errors.push(`${file} requires one concise sourced impact line for ${name}.`);
+  }
+  for(const name of Object.keys(impactLines))if(!rosterNames.has(name))errors.push(`${file} contains an impact line for unknown roster artist ${name}.`);
 }
 
 function validateIndieWheelQuestions(questions,file,errors){
