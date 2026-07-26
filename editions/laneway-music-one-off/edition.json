@@ -44,7 +44,11 @@
     "logoTreatment": "reverse-white-transparent",
     "recordCompanyHomeURL": "https://www.lanewaymusic.com.au/about",
     "recommendedArtistsURL": "https://www.lanewaymusic.com.au/",
-    "rosterFile": "editions/laneway-music-one-off/roster.json"
+    "rosterFile": "editions/laneway-music-one-off/roster.json",
+    "artistWheel": {
+      "enabled": true,
+      "replacesFeaturedVideo": true
+    }
   },
   "lanewayCompanyChallenge": {
     "title": "How Well Do You Know Laneway Music?",

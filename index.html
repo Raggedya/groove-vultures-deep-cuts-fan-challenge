@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#000713">
   <meta id="pageDescription" name="description" content="Discover a verified Deep Cuts edition.">
   <title>Deep Cuts</title>
-  <link rel="stylesheet" href="/styles.css?v=20260726-laneway-company-1">
+  <link rel="stylesheet" href="/styles.css?v=20260726-laneway-wheel-1">
 </head>
 <body>
   <main id="app" class="discovery-shell">
@@ -31,6 +31,21 @@
         <div class="video-frame">
           <iframe id="featuredVideoFrame" title="Featured video" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
+      </section>
+
+      <section id="lanewayArtistWheel" class="laneway-artist-wheel" aria-labelledby="lanewayArtistWheelTitle" hidden>
+        <div class="laneway-wheel-heading">
+          <p>Laneway Music artist collection</p>
+          <h2 id="lanewayArtistWheelTitle">Spin to discover an artist</h2>
+          <span>Every verified artist has an equal chance</span>
+        </div>
+        <div class="laneway-wheel-stage">
+          <div class="laneway-wheel-pointer" aria-hidden="true"></div>
+          <canvas id="lanewayWheelCanvas" width="640" height="640" aria-hidden="true"></canvas>
+          <button id="lanewayWheelSpin" class="laneway-wheel-spin" type="button" aria-describedby="lanewayWheelStatus">Spin</button>
+        </div>
+        <p id="lanewayWheelStatus" class="laneway-wheel-status" aria-live="polite">Press Spin to choose an artist.</p>
+        <a id="lanewayWheelWinner" class="laneway-wheel-winner" target="_blank" rel="noopener noreferrer" hidden></a>
       </section>
 
       <section class="link-section" aria-labelledby="discoverTitle">
@@ -168,12 +183,12 @@
       </div>
     </section>
   </main>
-  <script src="/js/engine.js?v=20260726-laneway-company-1"></script>
-  <script src="/js/analytics.js?v=20260726-laneway-company-1"></script>
-  <script src="/js/interactions.js?v=20260726-laneway-company-1"></script>
-  <script src="/js/school-quiz.js?v=20260726-laneway-company-1"></script>
-  <script src="/js/laneway-quiz.js?v=20260726-laneway-company-1"></script>
-  <script src="/js/laneway-company-quiz.js?v=20260726-laneway-company-1"></script>
-  <script src="/js/app.js?v=20260726-laneway-company-1"></script>
+  <script src="/js/engine.js?v=20260726-laneway-wheel-1"></script>
+  <script src="/js/analytics.js?v=20260726-laneway-wheel-1"></script>
+  <script src="/js/interactions.js?v=20260726-laneway-wheel-1"></script>
+  <script src="/js/school-quiz.js?v=20260726-laneway-wheel-1"></script>
+  <script src="/js/laneway-quiz.js?v=20260726-laneway-wheel-1"></script>
+  <script src="/js/laneway-company-quiz.js?v=20260726-laneway-wheel-1"></script>
+  <script src="/js/app.js?v=20260726-laneway-wheel-1"></script>
 </body>
 </html>

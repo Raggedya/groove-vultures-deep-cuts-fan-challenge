@@ -27,17 +27,25 @@ for(const artist of roster.artists){
   assert.match(artist.spotifyURL,/^https:\/\/open\.spotify\.com\/artist\/[A-Za-z0-9]+$/);
   if(artist.websiteURL)assert.match(artist.websiteURL,/^https:\/\//);
 }
-for(const id of ["lanewayCompanyDirectory","lanewayCompanySearch","lanewayCompanyArtistList","lanewayCompanyQuizScreen","lanewayCompanyResultScreen"])assert.ok(html.includes(`id="${id}"`));
+for(const id of ["lanewayArtistWheel","lanewayWheelCanvas","lanewayWheelSpin","lanewayWheelWinner","lanewayCompanyDirectory","lanewayCompanySearch","lanewayCompanyArtistList","lanewayCompanyQuizScreen","lanewayCompanyResultScreen"])assert.ok(html.includes(`id="${id}"`));
+assert.equal(config.lanewayCompany.artistWheel.enabled,true);
+assert.equal(config.lanewayCompany.artistWheel.replacesFeaturedVideo,true);
 assert.ok(html.indexOf('id="featuredVideo"')<html.indexOf('id="platformLinks"'));
 assert.ok(html.indexOf('id="platformLinks"')<html.indexOf('id="lanewayCompanyDirectory"'));
 assert.match(app,/isLanewayCompanyEdition/);
 assert.match(app,/buildLanewayCompanyDirectory/);
+assert.match(app,/buildLanewayArtistWheel/);
+assert.match(app,/crypto\.getRandomValues/);
+assert.match(app,/laneway_wheel_winner/);
+assert.match(app,/laneway_wheel_spotify_opened/);
 assert.match(app,/validSpotifyArtist/);
 assert.match(app,/LanewayCompanyQuiz\.configure/);
 assert.match(quiz,/value\.length!==8/);
 assert.match(quiz,/prepareQuestions\(questionBank,8\)/);
 assert.match(css,/\[data-edition-type="laneway_company"\] \.artist-title-row/);
 assert.match(css,/\[data-edition-type="laneway_company"\] \.laneway-company-artist-list/);
+assert.match(css,/\[data-edition-type="laneway_company"\] \.laneway-wheel-stage/);
+assert.match(css,/\[data-edition-type="laneway_company"\] \.laneway-wheel-winner/);
 assert.match(css,/\[data-edition-type="laneway_company"\] \.sonic-signature\{display:flex/);
 assert.match(css,/@keyframes lanewayCompanyWave/);
 assert.match(css,/@keyframes lanewayCompanySweep/);
@@ -46,4 +54,4 @@ assert.match(app,/setInterval\(runLanewayCompanyAttention,560\)/);
 assert.doesNotMatch(JSON.stringify(config),/aggits/i);
 assert.equal(JSON.parse(await fs.readFile("editions/celibate-rifles/edition.json","utf8")).lanewayChallenge.numberOfQuestions,5);
 
-console.log(`Laneway Music one-off tests passed: logo-only heading, featured video, isolated eight-question quiz and ${roster.artists.length} verified Spotify artists.`);
+console.log(`Laneway Music one-off tests passed: isolated random artist wheel, searchable directory, eight-question quiz and ${roster.artists.length} verified Spotify artists.`);
