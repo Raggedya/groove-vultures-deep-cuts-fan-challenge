@@ -32,6 +32,12 @@ The only required input is an official record-company website URL. The permanent
 
 The edition uses its own public renderer, Worker API, D1 tables, job stages, analytics and generated-output directory. No Aggits asset or standard Music layout is imported. Failed artists never stop the batch and never enter discovery, recommendations or QR sheets. QR scan reliability takes priority over decoration.
 
+## Final Indie Label Model permanent rules
+
+`indie_label/1` is the final owner-approved label-wheel model. The reference is the restored Laneway Music company edition `dc_b9e7b66620`, not the later rejected catalogue-discovery overhaul. Preserve its wheel-led journey, in-circle spiral, winner destination, sourced artist-impact line, verified optional purchase links, searchable roster, delayed 10-question quiz, positive feedback, contact result and anonymous reporting.
+
+Future independent labels use isolated `indie_wheel` configuration on the shared engine. Change only the new edition's verified logo, colours, roster, destination platform, purchase links, impact copy, quiz, contact and copyright. Never change the Laneway reference or Cool Death Records to produce a future label. The full ownership boundary and rejected features are recorded in `INDIE_LABEL_MODEL.md` and enforced by `scripts/test-indie-label-model.mjs`.
+
 ## Unattended artist batches
 
 Deep Cuts accepts CSV batches through one permanent controller. Intake data is evidence to verify, not truth to copy. Every artist is normalized, duplicate-checked, range-checked, researched and independently gated. Publication requires at least 98% confidence in artist identity and every mandatory direct destination. Search pages, guesses and placeholders are forbidden. Rejections are recorded and isolated. Temporary failures receive bounded retries with exponential backoff; checkpoints allow safe resume. Accepted artists flow through the existing factory, immutable artwork checks, QR scan-back, shared Cloudflare deployment, live verification, analytics registration and email delivery.

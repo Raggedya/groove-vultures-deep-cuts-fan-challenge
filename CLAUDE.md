@@ -31,6 +31,8 @@ Treat Record Company Edition as a separately typed parent/child ecosystem. Prese
 
 Preserve Laneway's locked discovery order: `Listen / Watch / Discover / Buy`, official-label-selected YouTube feature, verified destinations, five-question challenge, then `Home / Share / Recommended`. Never replace the official Laneway Music navigation URLs with guesses.
 
+Treat `indie_label/1` as the final locked independent-label wheel model. Its reference is restored Laneway company edition `dc_b9e7b66620`; never reintroduce the rejected catalogue-discovery overhaul. Future label editions use isolated `indie_wheel` configuration and may change only their own verified brand, colours, roster, destination platform, links, copy, quiz, contact and copyright. Never modify the Laneway reference or Cool Death Records to create another label.
+
 Continually reduce manual work, GitHub interaction, PowerShell interaction, copy/paste and prompts. Automate research capture, configuration, link validation, artwork, scan-back testing, commits, deployment and delivery wherever credentials permit. Never ask the non-technical owner to perform repetitive engineering work that the system can safely perform.
 
 Use only verified official destinations. Omit unavailable buttons completely. When an official YouTube presence exists, verify and feature the most-viewed official music video; never invent one. The tipping feature is retired. Analytics must be best-effort and must never block a link.
