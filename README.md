@@ -37,7 +37,7 @@ Public URLs use opaque IDs and never expose the artist name:
 - Cloudflare Worker routing and APIs
 - Cloudflare D1 anonymous analytics and production timing
 - GitHub validation and deployment workflows
-- Automated Friday CSV report
+- Automated Friday client report with a one-page branded PDF, auditable Excel workbook and backward-compatible all-edition CSV
 - Automated completion delivery with QR PNG
 
 ## Validation

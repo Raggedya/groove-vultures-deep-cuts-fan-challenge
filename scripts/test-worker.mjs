@@ -1,15 +1,15 @@
 import assert from 'node:assert/strict';
 import crypto from 'node:crypto';
 import fs from 'node:fs';
-import {__test} from '../worker/index.js';
+import worker,{__test} from '../worker/index.js';
 
 const source=fs.readFileSync('worker/index.js','utf8');
 const schema=fs.readFileSync('migrations/0001_deep_cuts.sql','utf8');
 const config=JSON.parse(fs.readFileSync('wrangler.jsonc','utf8'));
 
-for(const route of ['/q/','/api/events','/api/editions','/api/builds','/api/builds/','/api/delivery','/api/webhooks/resend','/api/reports/weekly.csv','/api/sell/'])assert.ok(source.includes(route),`Worker route missing: ${route}`);
+for(const route of ['/q/','/api/events','/api/editions','/api/builds','/api/builds/','/api/delivery','/api/webhooks/resend','/api/reports/weekly.csv','/api/reports/laneway-weekly.pdf','/api/reports/laneway-weekly.xlsx','/api/sell/'])assert.ok(source.includes(route),`Worker route missing: ${route}`);
 for(const table of ['editions','analytics_events','production_jobs','delivery_events'])assert.match(schema,new RegExp(`CREATE TABLE IF NOT EXISTS ${table}`));
-for(const event of ['qr_scan','outbound_clicked','share_button_clicked'])assert.ok(source.includes(`"${event}"`),`Worker event missing: ${event}`);
+for(const event of ['qr_scan','outbound_clicked','share_button_clicked','wheel_spin_started','wheel_result_shown','artist_destination_clicked','artist_directory_searched','quiz_started','quiz_question_answered','quiz_completed','quiz_abandoned','services_contact_clicked'])assert.ok(source.includes(`"${event}"`),`Worker event missing: ${event}`);
 assert.equal(config.name,'deep-cuts');
 assert.ok(config.assets.run_worker_first===true||config.assets.run_worker_first.includes('/q/*'));
 assert.ok(config.assets.run_worker_first===true||config.assets.run_worker_first.includes('/api/*'));
@@ -17,6 +17,8 @@ assert.equal(config.d1_databases[0].binding,'DB');
 assert.equal(config.ai.binding,'AI','Workers AI binding must be configured for live Commercial Instinct research');
 assert.ok(source.includes('verifySvixWebhook(payload,request.headers,env.RESEND_WEBHOOK_SECRET)'),'Resend webhook signature verification is required');
 assert.ok(source.includes('duplicate:true'),'Resend webhook delivery must be idempotent');
+assert.ok(source.includes('deep-cuts-laneway-weekly-'),'Weekly report email must have a deterministic idempotency key');
+assert.ok(source.includes('if(!response.ok)throw new Error'),'Weekly report email failures must fail closed');
 assert.equal(__test.isRecordCompanyPagePath('/record-company/laneway-music'),true,'Company routes must load the Record Company application shell');
 assert.equal(__test.isRecordCompanyPagePath('/record-company/laneway-music/artists/cel-001'),true,'Artist routes must load the Record Company application shell');
 for(const assetPath of ['/record-company/app.js','/record-company/styles.css','/record-company/schemas.js','/record-company/index.html']){
@@ -33,6 +35,40 @@ assert.equal(__test.restoredLanewayEntryPath('/record-company/laneway-music/arti
 assert.equal(__test.restoredLanewayEntryPath('/record-company/another-label'),'','Other Record Company collections must remain available');
 assert.ok(source.includes('new URL("/record-company/",url.origin)'),'Collection routes must fetch the directory asset without redirecting through index.html');
 assert.ok(!source.includes('new URL("/record-company/index.html",url.origin)'),'Collection routes must preserve the company slug in the browser address');
+
+let eventBindings=[];
+const eventEnv={
+  DB:{prepare:()=>({bind:(...values)=>{eventBindings=values;return{run:async()=>({success:true})}}})}
+};
+const eventResponse=await worker.fetch(new Request('https://deep-cuts.test/api/events',{
+  method:'POST',
+  headers:{'content-type':'application/json'},
+  body:JSON.stringify({
+    event_id:'event-laneway-quiz-1',
+    edition_id:'dc_b9e7b66620',
+    event_name:'quiz_question_answered',
+    timestamp:'2026-07-24T00:00:00.000Z',
+    session_id:'anonymous-session',
+    quiz_identifier:'laneway-company-quiz',
+    quiz_run_id:'quiz-run-1',
+    question_id:'laneway-q1',
+    question_number:1,
+    correct:false,
+    tracking_version:'laneway-weekly-v1',
+    ignored_sensitive_value:'must-not-be-stored'
+  })
+}),eventEnv,{});
+assert.equal(eventResponse.status,200,'Enhanced Laneway events must be accepted');
+const storedMetadata=JSON.parse(eventBindings[12]);
+assert.deepEqual(
+  storedMetadata,
+  {tracking_version:'laneway-weekly-v1',quiz_identifier:'laneway-company-quiz',quiz_run_id:'quiz-run-1',question_id:'laneway-q1',question_number:1,correct:false},
+  'Only the typed reporting metadata allow-list may be stored'
+);
+for(const route of ['/api/reports/laneway-weekly.pdf','/api/reports/laneway-weekly.xlsx']){
+  const unauthorized=await worker.fetch(new Request(`https://deep-cuts.test${route}`),{},{});
+  assert.equal(unauthorized.status,401,`${route} must require administrator authentication`);
+}
 
 const payload=JSON.stringify({type:'email.delivered',data:{email_id:'email_123'}});
 const webhookId='msg_test';

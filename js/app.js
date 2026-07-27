@@ -1,6 +1,7 @@
 "use strict";
 
-const VERSION="20260727-laneway-purpose-1";
+const VERSION="20260727-laneway-reporting-1";
+const LANEWAY_REPORTING_VERSION="laneway-weekly-v1";
 const $=id=>document.getElementById(id);
 const els={page:$("discoveryPage"),error:$("errorScreen"),errorMessage:$("errorMessage"),bandName:$("bandName"),bio:$("artistBio"),artwork:$("heroArtwork"),brandLogo:$("editionBrandLogo"),waveform:$("sonicSignature"),features:$("featureList"),video:$("featuredVideo"),videoLabel:$("featuredVideoLabel"),videoTitle:$("featuredVideoTitle"),videoFrame:$("featuredVideoFrame"),links:$("platformLinks"),share:$("shareButton"),status:$("shareStatus"),description:$("pageDescription"),poweredBy:$("poweredByLabel"),copyright:$("coverCopyright"),lanewayHome:$("lanewayHomeLink"),lanewayRecommended:$("lanewayRecommendedLink"),companyDirectory:$("lanewayCompanyDirectory"),companyDirectoryCount:$("lanewayCompanyDirectoryCount"),companySearch:$("lanewayCompanySearch"),companyArtistList:$("lanewayCompanyArtistList"),companyEmpty:$("lanewayCompanyEmpty"),companyWheel:$("lanewayArtistWheel"),wheelCanvas:$("lanewayWheelCanvas"),wheelSpin:$("lanewayWheelSpin"),wheelStatus:$("lanewayWheelStatus"),wheelWinner:$("lanewayWheelWinner"),wheelImpact:$("lanewayWheelImpact")};
 
@@ -140,7 +141,10 @@ function configureLanewayUtilityLinks(){
   for(const [element,url,destination] of [[els.lanewayHome,homeURL,"record_company_home"],[els.lanewayRecommended,recommendedURL,"recommended_artists"]]){
     element.href=url;element.hidden=false;
     element.setAttribute("aria-label",`${element.textContent}: ${config.bandName} (opens in a new tab)`);
-    element.addEventListener("click",()=>DeepCutsInteractions.trackOutbound(analytics,destination,url),{passive:true});
+    element.addEventListener("click",()=>{
+      if(isLanewayCompanyEdition())analytics.track("utility_link_clicked",{button_name:destination,interaction_source:"main_footer",destination_url_origin:new URL(url).origin,edition_type:config.editionType,tracking_version:LANEWAY_REPORTING_VERSION});
+      else DeepCutsInteractions.trackOutbound(analytics,destination,url);
+    },{passive:true});
   }
 }
 
@@ -253,8 +257,16 @@ async function buildLanewayCompanyDirectory(){
     els.companyArtistList.replaceChildren(...matches.map(createLanewayCompanyArtistCard));
     els.companyEmpty.hidden=matches.length>0;
     els.companyDirectoryCount.textContent=`${matches.length} verified artist${matches.length===1?"":"s"}`;
+    return matches.length;
   };
-  els.companySearch.addEventListener("input",event=>render(event.currentTarget.value),{passive:true});
+  let searchTimer=0;
+  els.companySearch.addEventListener("input",event=>{
+    const value=event.currentTarget.value,resultCount=render(value);
+    if(isLanewayCompanyEdition()&&String(value).trim().length>=2){
+      clearTimeout(searchTimer);
+      searchTimer=setTimeout(()=>analytics.track("artist_directory_searched",{result_count:resultCount,edition_type:config.editionType,tracking_version:LANEWAY_REPORTING_VERSION},{dedupeKey:"laneway-directory-search",dedupeMs:750}),800);
+    }
+  },{passive:true});
   render("");els.companyDirectory.hidden=false;
 }
 
@@ -306,10 +318,11 @@ function buildLanewayArtistWheel(artists){
     els.wheelImpact.textContent=winner.impactLine;
     els.wheelImpact.hidden=!winner.impactLine;
     els.wheelWinner.focus({preventScroll:true});
-    analytics.track("laneway_wheel_winner",{artist_name:winner.name},{dedupeKey:`wheel:${winner.name}`,dedupeMs:500});
+    analytics.track("wheel_result_shown",{artist_name:winner.name,artist_count:artists.length,edition_type:config.editionType,tracking_version:LANEWAY_REPORTING_VERSION},{dedupeKey:`wheel:${winner.name}`,dedupeMs:500});
   };
   els.wheelSpin.addEventListener("click",()=>{
     if(spinning)return;
+    analytics.track("wheel_spin_started",{artist_count:artists.length,edition_type:config.editionType,tracking_version:LANEWAY_REPORTING_VERSION},{dedupeKey:"wheel-spin",dedupeMs:500});
     spinning=true;els.wheelSpin.disabled=true;els.wheelSpin.textContent="Spinning";
     els.wheelWinner.hidden=true;els.wheelImpact.hidden=true;els.wheelImpact.textContent="";els.wheelStatus.textContent="The artist wheel is spinning…";
     const selected=randomIndex(),current=rotation%(Math.PI*2);
@@ -329,9 +342,7 @@ function buildLanewayArtistWheel(artists){
   });
   els.wheelWinner.addEventListener("click",()=>{
     const winner=artists.find(item=>item[destinationKey]===els.wheelWinner.href);
-    DeepCutsInteractions.trackOutbound(analytics,destinationKey.replace(/URL$/,"").toLowerCase(),els.wheelWinner.href);
-    if(destinationKey==="spotifyURL")analytics.track("laneway_wheel_spotify_opened",{artist_name:winner?.name||""},{dedupeKey:`wheel-spotify:${winner?.name||""}`,dedupeMs:500});
-    analytics.track("indie_wheel_destination_opened",{artist_name:winner?.name||"",destination_platform:destinationLabel.toLowerCase()},{dedupeKey:`wheel-destination:${winner?.name||""}`,dedupeMs:500});
+    analytics.track("artist_destination_clicked",{artist_name:winner?.name||"",interaction_source:"wheel_winner",destination_platform:destinationKey.replace(/URL$/,"").toLowerCase(),destination_url_origin:new URL(els.wheelWinner.href).origin,edition_type:config.editionType,tracking_version:LANEWAY_REPORTING_VERSION},{dedupeKey:`wheel-destination:${winner?.name||""}`,dedupeMs:500});
   },{passive:true});
   draw();els.companyWheel.hidden=false;
   if(settings.artistWheel?.replacesFeaturedVideo){
@@ -353,7 +364,10 @@ function createLanewayCompanyArtistCard(artist){
 function createLanewayArtistLink(label,url,destination,artistName){
   const link=document.createElement("a");link.className="laneway-company-artist-link is-active";link.href=url;link.target="_blank";link.rel="noopener noreferrer";
   link.textContent=label;link.setAttribute("aria-label",`${label} for ${artistName} (opens in a new tab)`);
-  link.addEventListener("click",()=>{DeepCutsInteractions.trackOutbound(analytics,destination,url);analytics.track("laneway_artist_selected",{artist_name:artistName,destination_platform:destination},{dedupeKey:`artist:${artistName}:${destination}`,dedupeMs:500})},{passive:true});
+  link.addEventListener("click",()=>{
+    if(isLanewayCompanyEdition())analytics.track("artist_destination_clicked",{artist_name:artistName,interaction_source:"artist_directory",destination_platform:destination,destination_url_origin:new URL(url).origin,edition_type:config.editionType,tracking_version:LANEWAY_REPORTING_VERSION},{dedupeKey:`artist:${artistName}:${destination}`,dedupeMs:500});
+    else DeepCutsInteractions.trackOutbound(analytics,destination,url);
+  },{passive:true});
   return link;
 }
 

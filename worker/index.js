@@ -1,10 +1,20 @@
 import {handleSales} from "./sales.js";
 import {handleRecordCompany,handleRecordCompanyQr,processRecordCompanyJobs} from "./record-company.js";
+import {
+  binaryBase64,
+  buildLanewayEmailHtml,
+  buildLanewayPdf,
+  buildLanewayWeeklyReport,
+  buildLanewayXlsx
+} from "./laneway-report.js";
 
 const JSON_HEADERS={"content-type":"application/json; charset=utf-8","cache-control":"no-store"};
 const EVENT_NAMES=new Set([
   "qr_scan","discovery_page_viewed","share_button_clicked","share_method_selected",
-  "native_share_completed","copy_link_clicked","copy_link_completed","outbound_clicked"
+  "native_share_completed","copy_link_clicked","copy_link_completed","outbound_clicked",
+  "wheel_spin_started","wheel_result_shown","artist_destination_clicked","artist_directory_searched",
+  "utility_link_clicked","quiz_started","quiz_question_answered","quiz_completed",
+  "quiz_abandoned","quiz_replayed","services_contact_clicked"
 ]);
 const DESTINATIONS=new Set([
   "buy_music","spotify","instagram","bandcamp","youtube","facebook","website",
@@ -42,6 +52,8 @@ export default {
       if(url.pathname==="/api/delivery"&&request.method==="POST")return handleDelivery(request,env);
       if(url.pathname==="/api/webhooks/resend"&&request.method==="POST")return handleResendWebhook(request,env);
       if(url.pathname==="/api/reports/weekly.csv"&&request.method==="GET")return handleReport(request,env);
+      if(url.pathname==="/api/reports/laneway-weekly.pdf"&&request.method==="GET")return handleLanewayReport(request,env,"pdf");
+      if(url.pathname==="/api/reports/laneway-weekly.xlsx"&&request.method==="GET")return handleLanewayReport(request,env,"xlsx");
       if(url.pathname==="/api/health")return json({ok:true,service:"deep-cuts",timestamp:new Date().toISOString()});
       return env.ASSETS.fetch(request);
     }catch(error){
@@ -291,8 +303,22 @@ function constantTimeEqual(left,right){
 async function handleReport(request,env){
   if(!authorized(request,env))return json({ok:false,error:"Unauthorized"},401);
   const url=new URL(request.url);
-  const days=Math.min(366,Math.max(1,Number(url.searchParams.get("days")||7)));
+  const requestedDays=Number(url.searchParams.get("days")||7);
+  const days=Number.isFinite(requestedDays)?Math.min(366,Math.max(1,requestedDays)):7;
   return csvResponse(await weeklyRows(env,days),`deep-cuts-${days}-day-report.csv`);
+}
+
+async function handleLanewayReport(request,env,format){
+  if(!authorized(request,env))return json({ok:false,error:"Unauthorized"},401);
+  const url=new URL(request.url);
+  const requestedDays=Number(url.searchParams.get("days")||7);
+  const days=Number.isFinite(requestedDays)?Math.min(31,Math.max(1,requestedDays)):7;
+  const report=await buildLanewayWeeklyReport(env,new Date(),days);
+  const stamp=new Date(report.periodEnd).toISOString().slice(0,10);
+  if(format==="pdf"){
+    return binaryResponse(buildLanewayPdf(report),"application/pdf",`laneway-weekly-${stamp}.pdf`);
+  }
+  return binaryResponse(buildLanewayXlsx(report),"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",`laneway-weekly-${stamp}.xlsx`);
 }
 
 async function weeklyRows(env,days=7){
@@ -324,9 +350,26 @@ async function sendWeeklyReportIfDue(controller,env){
   const hour=Number(parts.find(item=>item.type==="hour")?.value);
   if(weekday!=="Fri"||hour!==9)return;
   if(!env.RESEND_API_KEY||!env.REPORT_RECIPIENT||!env.REPORT_FROM_EMAIL)return;
-  const rows=await weeklyRows(env,7);
-  const csv=toCsv(rows);
-  await fetch("https://api.resend.com/emails",{method:"POST",headers:{authorization:`Bearer ${env.RESEND_API_KEY}`,"content-type":"application/json","idempotency-key":`deep-cuts-weekly-${now.toISOString().slice(0,10)}`},body:JSON.stringify({from:env.REPORT_FROM_EMAIL,to:[env.REPORT_RECIPIENT],subject:`Deep Cuts weekly report - ${now.toISOString().slice(0,10)}`,html:"<p>Your weekly Deep Cuts analytics report is attached.</p>",attachments:[{content:base64(csv),filename:`deep-cuts-weekly-${now.toISOString().slice(0,10)}.csv`}]})});
+  const [rows,report]=await Promise.all([weeklyRows(env,7),buildLanewayWeeklyReport(env,now,7)]);
+  const csv=toCsv(rows),pdf=buildLanewayPdf(report),xlsx=buildLanewayXlsx(report);
+  const stamp=now.toISOString().slice(0,10);
+  const response=await fetch("https://api.resend.com/emails",{
+    method:"POST",
+    headers:{authorization:`Bearer ${env.RESEND_API_KEY}`,"content-type":"application/json","idempotency-key":`deep-cuts-laneway-weekly-${stamp}`},
+    body:JSON.stringify({
+      from:env.REPORT_FROM_EMAIL,
+      to:[env.REPORT_RECIPIENT],
+      subject:`Laneway Music weekly discovery report - ${report.periodLabel}`,
+      html:buildLanewayEmailHtml(report),
+      attachments:[
+        {content:binaryBase64(pdf),filename:`laneway-weekly-${stamp}.pdf`},
+        {content:binaryBase64(xlsx),filename:`laneway-weekly-${stamp}.xlsx`},
+        {content:base64(csv),filename:`deep-cuts-all-editions-${stamp}.csv`}
+      ],
+      tags:[{name:"report","value":"laneway-weekly"},{name:"report_date","value":stamp}]
+    })
+  });
+  if(!response.ok)throw new Error(`Laneway weekly report email was rejected (${response.status}): ${await response.text()}`);
 }
 
 function baseEvent(request,editionId,eventName,extra={}){
@@ -338,12 +381,25 @@ function cleanId(value){const text=String(value||"").trim();return /^[A-Za-z0-9_
 function cleanText(value,max=200){return String(value||"").trim().slice(0,max)}
 function validDate(value){const date=new Date(value||Date.now());return Number.isNaN(date.getTime())?new Date().toISOString():date.toISOString()}
 async function safeJson(request){try{return await request.json()}catch{return null}}
-function safeMetadata(body){const allowed=["page_identifier","action_id","video_id","trigger"];return Object.fromEntries(allowed.filter(key=>body?.[key]!==undefined).map(key=>[key,cleanText(body[key],200)]))}
+function safeMetadata(body){
+  const textFields=["page_identifier","action_id","video_id","trigger","artist_name","interaction_source","destination_url_origin","edition_type","tracking_version","button_name","quiz_identifier","quiz_run_id","question_id","classification"];
+  const numberFields=["artist_count","result_count","question_number","final_score","question_count","answered_count","completion_seconds"];
+  const metadata={};
+  textFields.forEach(key=>{if(body?.[key]!==undefined)metadata[key]=cleanText(body[key],key==="destination_url_origin"?300:200)});
+  numberFields.forEach(key=>{
+    if(body?.[key]===undefined)return;
+    const value=Number(body[key]);
+    if(Number.isFinite(value))metadata[key]=value;
+  });
+  if(typeof body?.correct==="boolean")metadata.correct=body.correct;
+  return metadata;
+}
 function json(body,status=200){return new Response(JSON.stringify(body),{status,headers:JSON_HEADERS})}
 function cors(response,request,env){const origin=request.headers.get("origin")||"";const allowed=String(env.ALLOWED_ORIGIN||"");if(allowed&&origin===allowed){response.headers.set("access-control-allow-origin",origin);response.headers.set("vary","origin")}response.headers.set("access-control-allow-methods","POST,OPTIONS");response.headers.set("access-control-allow-headers","content-type");return response}
 function escapeHtml(value){return String(value||"").replace(/[&<>"']/g,char=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[char]))}
 function toCsv(rows){const columns=["edition_id","band_name","deployed_at","qr_scans","unique_qr_sessions","page_views","outbound_clicks","spotify_clicks","bandcamp_clicks","instagram_clicks","youtube_clicks","facebook_clicks","website_clicks","merchandise_clicks","tip_clicks","news_reviews_clicks","share_actions"];return [columns.join(","),...rows.map(row=>columns.map(key=>`"${String(row[key]??"").replaceAll('"','""')}"`).join(","))].join("\r\n")+"\r\n"}
 function csvResponse(rows,filename){return new Response(toCsv(rows),{headers:{"content-type":"text/csv; charset=utf-8","content-disposition":`attachment; filename="${filename}"`,"cache-control":"no-store"}})}
+function binaryResponse(bytes,contentType,filename){return new Response(bytes,{headers:{"content-type":contentType,"content-disposition":`attachment; filename="${filename}"`,"cache-control":"no-store"}})}
 function base64(text){const bytes=new TextEncoder().encode(text);let binary="";for(const byte of bytes)binary+=String.fromCharCode(byte);return btoa(binary)}
 
 export const __test={verifySvixWebhook,isRecordCompanyPagePath,isRecordCompanyRootPath,restoredLanewayEntryPath};
