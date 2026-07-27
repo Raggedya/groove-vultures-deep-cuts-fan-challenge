@@ -157,6 +157,15 @@ function validateLanewayCompanyRoster(roster,file,errors){
     if(!name||!/^https:\/\/open\.spotify\.com\/artist\/[A-Za-z0-9]+$/i.test(spotifyURL))errors.push(`${file} contains an invalid direct Spotify artist destination for ${name||'unknown'}.`);
     if(!/^https:\/\/www\.lanewaymusic\.com\.au\//i.test(artist.sourceURL||''))errors.push(`${file} artist ${name||'unknown'} lacks an official Laneway source page.`);
     if(artist.websiteURL&&!/^https:\/\//i.test(artist.websiteURL))errors.push(`${file} artist ${name} has an invalid optional website.`);
+    for(const [key,evidenceKey] of [['buyMusicURL','buyMusic'],['buyMerchURL','buyMerch']]){
+      const value=String(artist[key]||'').trim(),evidence=String(artist.purchaseVerification?.[evidenceKey]||'').trim();
+      if(!value)continue;
+      if(!/^https:\/\/[^?#\s]+/i.test(value)||/\/search(?:[/?#]|$)/i.test(value))errors.push(`${file} artist ${name} has an invalid direct ${key} destination.`);
+      if(evidence.length<45)errors.push(`${file} artist ${name} requires purchase verification evidence for ${key}.`);
+      if(Number.isNaN(Date.parse(artist.purchaseVerification?.checkedAt||'')))errors.push(`${file} artist ${name} requires a valid purchase verification date for ${key}.`);
+    }
+    if(artist.buyMerchURL&&!/\/merch(?:[/?#]|$)/i.test(artist.buyMerchURL))errors.push(`${file} artist ${name} Buy Merch must link directly to a merch page.`);
+    if(artist.purchaseVerification&&!artist.buyMusicURL&&!artist.buyMerchURL)errors.push(`${file} artist ${name} has unused purchase verification evidence.`);
     if(names.has(name.toLowerCase())||spotify.has(spotifyURL))errors.push(`${file} contains a duplicate artist or Spotify destination: ${name}.`);
     names.add(name.toLowerCase());spotify.add(spotifyURL);
   }

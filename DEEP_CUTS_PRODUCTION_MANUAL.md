@@ -102,6 +102,8 @@ Clicks represent intent only. A Spotify click is not a stream, and a share actio
 
 The Laneway company edition additionally records intentional wheel spins, completed artist selections, winner-versus-directory Spotify clicks by verified artist, anonymous directory searches, quiz starts, answers, completions, abandonments and replays, and services-contact intent. The Worker accepts only a versioned allow-list of scalar metadata. Duplicate event IDs are ignored by D1, reports reconcile against the raw event audit, every verified roster artist is included even when the result is zero, and report generation fails closed instead of silently truncating data.
 
+After a Laneway company-wheel result, the sourced artist-impact line receives one brief visual attention flash. The winner may then expose `Buy Music` and `Buy Merch` independently. Each purchase destination must be a direct, identity-verified HTTPS artist or label-store page with dated evidence in the isolated roster; a search result, generic storefront, ambiguous identity, sold-out-only merch page or unavailable destination is omitted. Purchase clicks use the existing trusted `artist_destination_clicked` event with `wheel_winner` attribution. This rule is exclusive to the Laneway company edition and must not change artist-specific Laneway, Indie Wheel, Music, Cars, Clubs, Schools or Record Company editions.
+
 Collect only anonymous session IDs, source, device category and coarse country/region supplied at the network edge. Do not store raw IP addresses, precise coordinates, passwords, payment details or social logins.
 
 ## Production timing

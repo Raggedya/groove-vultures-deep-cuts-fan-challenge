@@ -1,9 +1,9 @@
 "use strict";
 
-const VERSION="20260727-laneway-reporting-1";
+const VERSION="20260727-laneway-purchase-links-1";
 const LANEWAY_REPORTING_VERSION="laneway-weekly-v1";
 const $=id=>document.getElementById(id);
-const els={page:$("discoveryPage"),error:$("errorScreen"),errorMessage:$("errorMessage"),bandName:$("bandName"),bio:$("artistBio"),artwork:$("heroArtwork"),brandLogo:$("editionBrandLogo"),waveform:$("sonicSignature"),features:$("featureList"),video:$("featuredVideo"),videoLabel:$("featuredVideoLabel"),videoTitle:$("featuredVideoTitle"),videoFrame:$("featuredVideoFrame"),links:$("platformLinks"),share:$("shareButton"),status:$("shareStatus"),description:$("pageDescription"),poweredBy:$("poweredByLabel"),copyright:$("coverCopyright"),lanewayHome:$("lanewayHomeLink"),lanewayRecommended:$("lanewayRecommendedLink"),companyDirectory:$("lanewayCompanyDirectory"),companyDirectoryCount:$("lanewayCompanyDirectoryCount"),companySearch:$("lanewayCompanySearch"),companyArtistList:$("lanewayCompanyArtistList"),companyEmpty:$("lanewayCompanyEmpty"),companyWheel:$("lanewayArtistWheel"),wheelCanvas:$("lanewayWheelCanvas"),wheelSpin:$("lanewayWheelSpin"),wheelStatus:$("lanewayWheelStatus"),wheelWinner:$("lanewayWheelWinner"),wheelImpact:$("lanewayWheelImpact")};
+const els={page:$("discoveryPage"),error:$("errorScreen"),errorMessage:$("errorMessage"),bandName:$("bandName"),bio:$("artistBio"),artwork:$("heroArtwork"),brandLogo:$("editionBrandLogo"),waveform:$("sonicSignature"),features:$("featureList"),video:$("featuredVideo"),videoLabel:$("featuredVideoLabel"),videoTitle:$("featuredVideoTitle"),videoFrame:$("featuredVideoFrame"),links:$("platformLinks"),share:$("shareButton"),status:$("shareStatus"),description:$("pageDescription"),poweredBy:$("poweredByLabel"),copyright:$("coverCopyright"),lanewayHome:$("lanewayHomeLink"),lanewayRecommended:$("lanewayRecommendedLink"),companyDirectory:$("lanewayCompanyDirectory"),companyDirectoryCount:$("lanewayCompanyDirectoryCount"),companySearch:$("lanewayCompanySearch"),companyArtistList:$("lanewayCompanyArtistList"),companyEmpty:$("lanewayCompanyEmpty"),companyWheel:$("lanewayArtistWheel"),wheelCanvas:$("lanewayWheelCanvas"),wheelSpin:$("lanewayWheelSpin"),wheelStatus:$("lanewayWheelStatus"),wheelWinner:$("lanewayWheelWinner"),wheelImpact:$("lanewayWheelImpact"),wheelPurchaseLinks:$("lanewayWheelPurchaseLinks"),wheelBuyMusic:$("lanewayWheelBuyMusic"),wheelBuyMerch:$("lanewayWheelBuyMerch")};
 
 const MUSIC_LINK_DEFINITIONS=[
   {key:"buyMusic",label:"Buy Music",subLabel:"Purchase music directly",priority:"primary",fallback:"bandcamp"},
@@ -309,6 +309,21 @@ function buildLanewayArtistWheel(artists){
     }
     return Math.floor(Math.random()*artists.length);
   };
+  const hidePurchaseLinks=()=>{
+    els.wheelPurchaseLinks.hidden=true;
+    els.wheelPurchaseLinks.classList.remove("is-revealed");
+    for(const link of [els.wheelBuyMusic,els.wheelBuyMerch]){
+      link.hidden=true;link.removeAttribute("href");link.removeAttribute("aria-label");delete link.dataset.artistName;delete link.dataset.destinationPlatform;
+    }
+  };
+  const configurePurchaseLink=(link,label,url,artistName,destinationPlatform)=>{
+    const destination=validHttps(url);
+    if(!isLanewayCompanyEdition()||!destination){link.hidden=true;return false}
+    link.href=destination;link.textContent=label;link.hidden=false;
+    link.dataset.artistName=artistName;link.dataset.destinationPlatform=destinationPlatform;
+    link.setAttribute("aria-label",`${label} from ${artistName} (opens in a new tab)`);
+    return true;
+  };
   const finish=winner=>{
     spinning=false;els.wheelSpin.disabled=false;els.wheelSpin.textContent="Spin again";
     els.wheelStatus.textContent=`Winner: ${winner.name}`;
@@ -317,6 +332,15 @@ function buildLanewayArtistWheel(artists){
     els.wheelWinner.hidden=false;
     els.wheelImpact.textContent=winner.impactLine;
     els.wheelImpact.hidden=!winner.impactLine;
+    els.wheelImpact.classList.remove("is-attention-flash");
+    if(winner.impactLine){
+      void els.wheelImpact.offsetWidth;
+      els.wheelImpact.classList.add("is-attention-flash");
+    }
+    const hasMusic=configurePurchaseLink(els.wheelBuyMusic,"Buy Music",winner.buyMusicURL,winner.name,"buy_music");
+    const hasMerch=configurePurchaseLink(els.wheelBuyMerch,"Buy Merch",winner.buyMerchURL,winner.name,"merchandise");
+    els.wheelPurchaseLinks.hidden=!(hasMusic||hasMerch);
+    els.wheelPurchaseLinks.classList.toggle("is-revealed",hasMusic||hasMerch);
     els.wheelWinner.focus({preventScroll:true});
     analytics.track("wheel_result_shown",{artist_name:winner.name,artist_count:artists.length,edition_type:config.editionType,tracking_version:LANEWAY_REPORTING_VERSION},{dedupeKey:`wheel:${winner.name}`,dedupeMs:500});
   };
@@ -325,6 +349,7 @@ function buildLanewayArtistWheel(artists){
     analytics.track("wheel_spin_started",{artist_count:artists.length,edition_type:config.editionType,tracking_version:LANEWAY_REPORTING_VERSION},{dedupeKey:"wheel-spin",dedupeMs:500});
     spinning=true;els.wheelSpin.disabled=true;els.wheelSpin.textContent="Spinning";
     els.wheelWinner.hidden=true;els.wheelImpact.hidden=true;els.wheelImpact.textContent="";els.wheelStatus.textContent="The artist wheel is spinning…";
+    els.wheelImpact.classList.remove("is-attention-flash");hidePurchaseLinks();
     const selected=randomIndex(),current=rotation%(Math.PI*2);
     const target=-selected*segmentAngle;
     const normalized=((target-current)%(Math.PI*2)+Math.PI*2)%(Math.PI*2);
@@ -344,6 +369,11 @@ function buildLanewayArtistWheel(artists){
     const winner=artists.find(item=>item[destinationKey]===els.wheelWinner.href);
     analytics.track("artist_destination_clicked",{artist_name:winner?.name||"",interaction_source:"wheel_winner",destination_platform:destinationKey.replace(/URL$/,"").toLowerCase(),destination_url_origin:new URL(els.wheelWinner.href).origin,edition_type:config.editionType,tracking_version:LANEWAY_REPORTING_VERSION},{dedupeKey:`wheel-destination:${winner?.name||""}`,dedupeMs:500});
   },{passive:true});
+  for(const link of [els.wheelBuyMusic,els.wheelBuyMerch])link.addEventListener("click",()=>{
+    if(link.hidden||!link.href)return;
+    analytics.track("artist_destination_clicked",{artist_name:link.dataset.artistName||"",interaction_source:"wheel_winner",destination_platform:link.dataset.destinationPlatform||"",destination_url_origin:new URL(link.href).origin,edition_type:config.editionType,tracking_version:LANEWAY_REPORTING_VERSION},{dedupeKey:`wheel-purchase:${link.dataset.artistName||""}:${link.dataset.destinationPlatform||""}`,dedupeMs:500});
+  },{passive:true});
+  hidePurchaseLinks();
   draw();els.companyWheel.hidden=false;
   if(settings.artistWheel?.replacesFeaturedVideo){
     els.video.hidden=true;els.videoFrame.removeAttribute("src");

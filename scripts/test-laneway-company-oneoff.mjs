@@ -37,9 +37,18 @@ for(const artist of roster.artists){
   assert.match(artist.spotifyURL,/^https:\/\/open\.spotify\.com\/artist\/[A-Za-z0-9]+$/);
   assert.ok(impactLines[artist.name]?.length>=45,`${artist.name} requires a concise official-profile impact line`);
   if(artist.websiteURL)assert.match(artist.websiteURL,/^https:\/\//);
+  for(const [key,evidenceKey] of [["buyMusicURL","buyMusic"],["buyMerchURL","buyMerch"]]){
+    if(!artist[key])continue;
+    assert.match(artist[key],/^https:\/\/[^?#\s]+/);
+    assert.ok(artist.purchaseVerification?.[evidenceKey]?.length>=45,`${artist.name} ${key} requires verification evidence`);
+    assert.ok(!Number.isNaN(Date.parse(artist.purchaseVerification.checkedAt)),`${artist.name} ${key} requires a verification date`);
+  }
 }
+assert.ok(roster.artists.some(artist=>artist.buyMusicURL),"at least one artist should expose Buy Music");
+assert.ok(roster.artists.some(artist=>artist.buyMerchURL),"at least one artist should expose Buy Merch");
+assert.ok(roster.artists.some(artist=>!artist.buyMusicURL&&!artist.buyMerchURL),"artists without verified purchase links must remain button-free");
 assert.equal(Object.keys(impactLines).length,roster.artists.length);
-for(const id of ["lanewayArtistWheel","lanewayWheelCanvas","lanewayWheelSpin","lanewayWheelWinner","lanewayWheelImpact","lanewayCompanyDirectory","lanewayCompanySearch","lanewayCompanyArtistList","lanewayCompanyQuizScreen","lanewayCompanyResultScreen","lanewayCompanyResultContact","lanewayCompanyResultContactLink"])assert.ok(html.includes(`id="${id}"`));
+for(const id of ["lanewayArtistWheel","lanewayWheelCanvas","lanewayWheelSpin","lanewayWheelWinner","lanewayWheelImpact","lanewayWheelPurchaseLinks","lanewayWheelBuyMusic","lanewayWheelBuyMerch","lanewayCompanyDirectory","lanewayCompanySearch","lanewayCompanyArtistList","lanewayCompanyQuizScreen","lanewayCompanyResultScreen","lanewayCompanyResultContact","lanewayCompanyResultContactLink"])assert.ok(html.includes(`id="${id}"`));
 assert.equal(config.lanewayCompany.artistWheel.enabled,true);
 assert.equal(config.lanewayCompany.artistWheel.replacesFeaturedVideo,true);
 assert.ok(html.indexOf('id="featuredVideo"')<html.indexOf('id="platformLinks"'));
@@ -61,6 +70,10 @@ assert.match(app,/LanewayCompanyQuiz\.configure/);
 assert.match(app,/isLanewayCompanyEdition\(\)\?"Contact Us":"Home"/);
 assert.match(app,/artistImpactFile/);
 assert.match(app,/wheelImpact\.textContent=winner\.impactLine/);
+assert.match(app,/is-attention-flash/);
+assert.match(app,/configurePurchaseLink\(els\.wheelBuyMusic,"Buy Music",winner\.buyMusicURL/);
+assert.match(app,/configurePurchaseLink\(els\.wheelBuyMerch,"Buy Merch",winner\.buyMerchURL/);
+assert.match(app,/destination_platform:link\.dataset\.destinationPlatform/);
 assert.match(html,/id="lanewayHomeLink"[^>]*>Home<\/a>/);
 assert.match(quiz,/value\.length!==10/);
 assert.match(quiz,/prepareQuestions\(questionBank,10\)/);
@@ -88,6 +101,9 @@ assert.match(css,/\.laneway-answer-button\.best-answer\{border-color:#43dc86/);
 assert.match(css,/\.laneway-answer-button\.best-answer:after\{color:#75f2ab/);
 assert.match(css,/\[data-product-type="laneway_company"\] \.laneway-company-result-screen \.laneway-result-card/);
 assert.match(css,/\[data-product-type="laneway_company"\] \.laneway-wheel-impact/);
+assert.match(css,/@keyframes lanewayImpactAttention/);
+assert.match(css,/@keyframes lanewayPurchaseReveal/);
+assert.match(css,/\[data-product-type="laneway_company"\] \.laneway-wheel-purchase-link/);
 assert.match(css,/\[data-product-type="laneway_company"\] \.laneway-company-result-screen \.laneway-result-contact/);
 assert.match(css,/@keyframes lanewayQuizFeedbackIn/);
 assert.match(css,/\.laneway-company-artist-link\.attention/);
