@@ -3,14 +3,13 @@ import fs from "node:fs/promises";
 
 const config=JSON.parse(await fs.readFile("editions/laneway-music-one-off/edition.json","utf8"));
 const roster=JSON.parse(await fs.readFile(config.lanewayCompany.rosterFile,"utf8"));
-const discovery=JSON.parse(await fs.readFile(config.lanewayCompany.artistImpactFile,"utf8"));
+const impactLines=JSON.parse(await fs.readFile(config.lanewayCompany.artistImpactFile,"utf8"));
 const questions=JSON.parse(await fs.readFile(config.lanewayCompanyChallenge.questionFile,"utf8"));
 const contracts=JSON.parse(await fs.readFile("edition-contracts.json","utf8"));
 const html=await fs.readFile("index.html","utf8");
 const app=await fs.readFile("js/app.js","utf8");
 const quiz=await fs.readFile("js/laneway-company-quiz.js","utf8");
 const css=await fs.readFile("styles.css","utf8");
-const worker=await fs.readFile("worker/index.js","utf8");
 
 assert.equal(config.editionType,"laneway_company");
 assert.equal(config.bandName,"Laneway Music");
@@ -19,82 +18,131 @@ assert.deepEqual(contracts.editionTypes.laneway_company.exclusiveConfig,["lanewa
 assert.equal(config.lanewayCompany.logoArtwork,"assets/laneway-music-logo-reverse-transparent.png");
 assert.equal(config.lanewayCompany.destinationKey,"spotifyURL");
 assert.equal(config.lanewayCompany.destinationLabel,"Spotify");
+assert.equal(config.lanewayCompany.recordCompanyHomeURL,"https://www.lanewaymusic.com.au/about");
 assert.equal(config.lanewayCompany.servicesURL,"https://www.lanewaymusic.com.au/sync");
+assert.deepEqual(config.lanewayCompany.wheelColours,["#080808","#141414","#0c0c0c","#1b1b1b","#101010","#202020"]);
+assert.equal(config.lanewayCompany.wheelTextColour,"#f4f4f4");
+assert.equal(config.featuredVideo.youtubeURL,"https://www.youtube.com/watch?v=GkZPRgnTOvg");
 assert.equal(config.lanewayCompanyChallenge.numberOfQuestions,10);
-assert.equal(config.lanewayCompanyChallenge.title,"How Well Do You Know the Laneway Catalogue?");
-assert.equal(config.lanewayCompanyChallenge.ctaLabel,"Ten questions from across Laneway Music history.");
-assert.equal(config.lanewayCompanyChallenge.buttonLabel,"Take the Quiz");
+assert.equal(config.lanewayCompanyChallenge.invitationRevealAfterFirstResultMs,10000);
+assert.equal(config.lanewayCompanyChallenge.title,"Meet the Artists. Discover Laneway.");
+assert.equal(config.lanewayCompanyChallenge.ctaLabel,"Take the 10-Question Laneway Artist Quiz");
 assert.equal(questions.length,10);
 assert.equal(new Set(questions.map(question=>question.category)).size,10);
+assert.equal(questions.filter(question=>question.id.startsWith("laneway-mission-")).length,3);
 for(const question of questions)assert.ok(roster.artists.some(artist=>artist.name===question.category),`${question.category} must be a verified wheel artist`);
-
 assert.equal(roster.pendingArtistCount,0);
-assert.equal(roster.artists.length,35);
+assert.ok(roster.artists.length>0);
 assert.equal(new Set(roster.artists.map(artist=>artist.name.toLowerCase())).size,roster.artists.length);
 assert.equal(new Set(roster.artists.map(artist=>artist.spotifyURL)).size,roster.artists.length);
-assert.equal(Object.keys(discovery).length,roster.artists.length);
 for(const artist of roster.artists){
   assert.match(artist.sourceURL,/^https:\/\/www\.lanewaymusic\.com\.au\//);
   assert.match(artist.spotifyURL,/^https:\/\/open\.spotify\.com\/artist\/[A-Za-z0-9]+$/);
-  const record=discovery[artist.name];
-  assert.ok(record?.description?.length>=45,`${artist.name} requires a sourced discovery statement`);
-  assert.ok(record?.reasonToListen?.length>=30,`${artist.name} requires a concise reason to listen`);
-  assert.ok(record.related.length>=2&&record.related.length<=3,`${artist.name} requires two or three curated recommendations`);
-  for(const recommendation of record.related){
-    assert.ok(roster.artists.some(candidate=>candidate.name===recommendation.artist),`${artist.name} recommendation must be in the verified roster`);
-    assert.notEqual(recommendation.artist,artist.name);
-    assert.ok(recommendation.reason.length>=20);
-  }
+  assert.ok(impactLines[artist.name]?.length>=45,`${artist.name} requires a concise official-profile impact line`);
+  if(artist.websiteURL)assert.match(artist.websiteURL,/^https:\/\//);
   for(const [key,evidenceKey] of [["buyMusicURL","buyMusic"],["buyMerchURL","buyMerch"]]){
     if(!artist[key])continue;
     assert.match(artist[key],/^https:\/\/[^?#\s]+/);
-    assert.ok(artist.purchaseVerification?.[evidenceKey]?.length>=45);
+    assert.ok(artist.purchaseVerification?.[evidenceKey]?.length>=45,`${artist.name} ${key} requires verification evidence`);
+    assert.ok(!Number.isNaN(Date.parse(artist.purchaseVerification.checkedAt)),`${artist.name} ${key} requires a verification date`);
   }
 }
-assert.ok(roster.artists.some(artist=>artist.buyMusicURL));
-assert.ok(roster.artists.some(artist=>artist.buyMerchURL));
-assert.ok(roster.artists.some(artist=>!artist.buyMusicURL&&!artist.buyMerchURL));
-
-for(const id of [
-  "lanewayArtistWheel","lanewayWheelCanvas","lanewayWheelSpin","lanewayWheelIntroduction",
-  "lanewayArtistDiscovery","lanewayDiscoveryArtistName","lanewayDiscoveryDestinations",
-  "lanewaySurpriseButton","lanewayRecommendations","lanewayRecommendationList",
-  "lanewayCompanyDirectory","lanewayCompanySearch","lanewayCompanyArtistList",
-  "lanewayCompanyQuizScreen","lanewayCompanyResultScreen","lanewayCompanyResultDiscoveries",
-  "lanewayCompanyResultDiscoveryList","lanewayCompanyResultContact","lanewayLicensing","lanewayLicensingLink"
-])assert.ok(html.includes(`id="${id}"`),`Missing ${id}`);
-
-for(const pattern of [
-  /createLanewayCompanyDiscovery/,/surprise_me_clicked/,/artist_selected/,/artist_roster_selected/,
-  /recommendation_shown/,/recommendation_selected/,/session_summary/,/quizRecommendations/,
-  /const restingLabel=hasSelection\?"Spin again":"Discover"/,/crypto\.getRandomValues/,
-  /matchMedia\("\(prefers-reduced-motion: reduce\)"\)/,/LANEWAY_REPORTING_VERSION="laneway-weekly-v2"/
-])assert.match(app,pattern);
-assert.match(app,/els\.companyDirectory\.after\(linkSection\)/,"Quiz must be moved below the roster for this edition");
-assert.match(app,/links\.filter\(Boolean\)/,"Missing optional destinations must be hidden");
+assert.ok(roster.artists.some(artist=>artist.buyMusicURL),"at least one artist should expose Buy Music");
+assert.ok(roster.artists.some(artist=>artist.buyMerchURL),"at least one artist should expose Buy Merch");
+assert.ok(roster.artists.some(artist=>!artist.buyMusicURL&&!artist.buyMerchURL),"artists without verified purchase links must remain button-free");
+assert.equal(Object.keys(impactLines).length,roster.artists.length);
+for(const id of ["lanewayArtistWheel","lanewayWheelCanvas","lanewayWheelSpin","lanewayWheelWinner","lanewayWheelImpact","lanewayWheelPurchaseLinks","lanewayWheelBuyMusic","lanewayWheelBuyMerch","lanewayCompanyDirectory","lanewayCompanySearch","lanewayCompanyArtistList","lanewayCompanyQuizScreen","lanewayCompanyResultScreen","lanewayCompanyResultContact","lanewayCompanyResultContactLink"])assert.ok(html.includes(`id="${id}"`));
+assert.equal(config.lanewayCompany.artistWheel.enabled,true);
+assert.equal(config.lanewayCompany.artistWheel.replacesFeaturedVideo,true);
+assert.ok(html.indexOf('id="featuredVideo"')<html.indexOf('id="platformLinks"'));
+assert.ok(html.indexOf('id="platformLinks"')<html.indexOf('id="lanewayCompanyDirectory"'));
+assert.match(app,/isLanewayCompanyEdition/);
+assert.match(app,/buildLanewayCompanyDirectory/);
+assert.match(app,/buildLanewayArtistWheel/);
+assert.match(app,/crypto\.getRandomValues/);
+assert.match(app,/wheel_spin_started/);
+assert.match(app,/wheel_result_shown/);
+assert.match(app,/artist_destination_clicked/);
+assert.match(app,/interaction_source:"wheel_winner"/);
 assert.match(app,/interaction_source:"artist_directory"/);
-assert.match(app,/discovery_source:source/);
-assert.doesNotMatch(app,/createLanewayCompanyChallengeRevealController/);
-
+assert.match(app,/artist_directory_searched/);
+assert.match(app,/validSpotifyArtist/);
+assert.match(app,/destinationKey:"spotifyURL"/);
+assert.match(app,/title\.replaceChildren\("Spin to discover"/);
+assert.match(app,/LanewayCompanyQuiz\.configure/);
+assert.match(app,/isLanewayCompanyEdition\(\)\?"Contact Us":"Home"/);
+assert.match(app,/artistImpactFile/);
+assert.match(app,/wheelImpact\.textContent=winner\.impactLine/);
+assert.match(app,/is-attention-flash/);
+assert.match(app,/configurePurchaseLink\(els\.wheelBuyMusic,"Buy Music",winner\.buyMusicURL/);
+assert.match(app,/configurePurchaseLink\(els\.wheelBuyMerch,"Buy Merch",winner\.buyMerchURL/);
+assert.match(app,/destination_platform:link\.dataset\.destinationPlatform/);
+assert.match(app,/createLanewayCompanyChallengeRevealController/);
+assert.match(app,/invitationRevealAfterFirstResultMs/);
+assert.match(app,/createLanewayCompanyChallengeRevealController\(\(\)=>!spinning\)/);
+assert.match(app,/challengeReveal\?\.afterResult\(\)/);
+assert.doesNotMatch(app,/if\(lanewayCompany\)scheduleLanewayCompanyChallengeReveal/);
+assert.match(app,/new IntersectionObserver/);
+assert.match(app,/quiz_invitation_revealed/);
+assert.match(app,/interaction_source:"first_spin_result"/);
+assert.match(app,/button\.hidden=true/);
+assert.match(app,/function setLanewayCompanyWheelSpinState\(isSpinning\)/);
+assert.match(app,/classList\.toggle\("is-spinning",isSpinning\)/);
+assert.match(app,/createElementNS\("http:\/\/www\.w3\.org\/2000\/svg","svg"\)/);
+assert.match(app,/setAttribute\("aria-label",isSpinning\?"Spinning":"Spin"\)/);
+assert.match(app,/if\(isLanewayCompanyEdition\(\)\)setLanewayCompanyWheelSpinState\(true\);else els\.wheelSpin\.textContent="Spinning"/);
+assert.match(app,/if\(isLanewayCompanyEdition\(\)\)setLanewayCompanyWheelSpinState\(false\);else els\.wheelSpin\.textContent="Spin again"/);
+assert.match(html,/id="lanewayHomeLink"[^>]*>Home<\/a>/);
+assert.match(quiz,/value\.length!==10/);
 assert.match(quiz,/prepareQuestions\(questionBank,10\)/);
 assert.match(quiz,/correct\?"Exactly right\.":"Not quite/);
 assert.doesNotMatch(quiz,/Good choice/);
-assert.match(quiz,/renderResultDiscoveries/);
-assert.match(quiz,/quiz_recommendation_selected/);
+assert.match(quiz,/config\.editionType==="laneway_company"&&validHttps\(settings\.servicesURL\)/);
 assert.match(quiz,/services_contact_clicked/);
 assert.match(quiz,/quiz_abandoned/);
+assert.match(quiz,/analytics\.setRun\?\.\(\)/);
+assert.match(quiz,/window\.addEventListener\("pagehide",trackAbandonment\)/);
 assert.match(quiz,/els\.resultHome\.addEventListener\("click",\(\)=>returnHome\(false\)\)/);
-
-for(const pattern of [
-  /\[data-product-type="laneway_company"\] \.laneway-discovery-card/,
-  /\[data-product-type="laneway_company"\] \.laneway-recommendation/,
-  /\[data-product-type="laneway_company"\] \.laneway-result-discoveries/,
-  /\[data-product-type="laneway_company"\] \.laneway-wheel-spin-spiral/,
-  /@media\(prefers-reduced-motion:reduce\)/
-])assert.match(css,pattern);
-for(const event of ["wheel_spin_completed","artist_selected","surprise_me_clicked","artist_roster_selected","recommendation_shown","recommendation_selected","quiz_recommendation_selected","session_summary"])assert.ok(worker.includes(`"${event}"`));
-assert.ok(worker.includes('"laneway_profile"'));
+assert.match(css,/\[data-edition-type="laneway_company"\] \.artist-title-row/);
+assert.match(css,/\[data-edition-type="laneway_company"\] \.laneway-company-artist-list/);
+assert.match(css,/\[data-edition-type="laneway_company"\] \.laneway-wheel-stage/);
+assert.match(css,/\[data-edition-type="laneway_company"\] \.laneway-wheel-winner/);
+assert.match(css,/@keyframes lanewayWinnerPulse/);
+assert.match(css,/@keyframes lanewayRedWinnerOrbit/);
+assert.match(css,/\[data-product-type="laneway_company"\] \.laneway-wheel-winner:before/);
+assert.match(css,/\[data-product-type="laneway_company"\] \.laneway-challenge-card:before/);
+assert.match(css,/\[data-product-type="laneway_company"\] \.laneway-company-quiz-screen \.laneway-question-card/);
+assert.match(css,/\[data-product-type="laneway_company"\] \.laneway-company-quiz-screen \.laneway-question-card h2:focus\{outline:none\}/);
+assert.match(css,/\[data-product-type="laneway_company"\] \.laneway-company-quiz-screen \.laneway-answer-button\.best-answer/);
+assert.match(css,/\.laneway-answer-button\.selected-choice\{border-color:#a5202f/);
+assert.match(css,/\.laneway-answer-button\.best-answer\{border-color:#43dc86/);
+assert.match(css,/\.laneway-answer-button\.best-answer:after\{color:#75f2ab/);
+assert.match(css,/\[data-product-type="laneway_company"\] \.laneway-company-result-screen \.laneway-result-card/);
+assert.match(css,/\[data-product-type="laneway_company"\] \.laneway-wheel-impact/);
+assert.match(css,/@keyframes lanewayImpactAttention/);
+assert.match(css,/@keyframes lanewayPurchaseReveal/);
+assert.match(css,/@keyframes lanewayPurchaseHeartbeat/);
+assert.match(css,/@keyframes lanewayQuizInvitationArrival/);
+assert.match(css,/@keyframes lanewayQuizInvitationBlueBurst/);
+assert.match(css,/@keyframes lanewayQuizInvitationIconPop/);
+assert.match(css,/@keyframes lanewayQuizInvitationSweep/);
+assert.match(css,/\.laneway-challenge-card\.is-delayed-reveal\{[^}]*border-color:#d9f7ff/);
+assert.match(css,/\[data-product-type="laneway_company"\] \.laneway-wheel-spin-spiral/);
+assert.match(css,/@keyframes lanewaySpinSpiral/);
+assert.match(css,/\.laneway-wheel-spin-spiral path\{[^}]*stroke:#d9f7ff/);
+assert.match(css,/\.laneway-wheel-purchase-link\{[^}]*animation:lanewayPurchaseHeartbeat/);
+assert.match(css,/\[data-product-type="laneway_company"\] \.laneway-wheel-purchase-link/);
+assert.match(css,/\[data-product-type="laneway_company"\] \.laneway-company-result-screen \.laneway-result-contact/);
+assert.match(css,/@keyframes lanewayQuizFeedbackIn/);
+assert.match(css,/\.laneway-company-artist-link\.attention/);
+assert.doesNotMatch(html,/Every verified artist has an equal chance/);
+assert.match(css,/\[data-edition-type="laneway_company"\] \.sonic-signature\{display:flex/);
+assert.match(css,/@keyframes lanewayCompanyWave/);
+assert.match(css,/@keyframes lanewayCompanySweep/);
+assert.match(app,/runLanewayCompanyAttention/);
+assert.match(app,/companyArtistList\.querySelectorAll\("\.laneway-company-artist-link\.is-active"\)/);
+assert.match(app,/setInterval\(runLanewayCompanyAttention,560\)/);
 assert.doesNotMatch(JSON.stringify(config),/aggits/i);
 assert.equal(JSON.parse(await fs.readFile("editions/celibate-rifles/edition.json","utf8")).lanewayChallenge.numberOfQuestions,5);
 
-console.log(`Laneway Music one-off tests passed: endless catalogue discovery, rich cards, deterministic recommendations, reporting events and ${roster.artists.length} verified artists.`);
+console.log(`Laneway Music one-off tests passed: isolated random artist wheel, searchable directory, 10-question artist quiz and ${roster.artists.length} verified Spotify artists.`);

@@ -74,6 +74,7 @@ for(const edition of platform.editions){
       if(config.featuredVideo?.selectionBasis!=='owner-selected'||config.featuredVideo?.ownerSelected!==true||!config.featuredVideo?.youtubeURL)errors.push(`${edition.config} requires the explicit owner-selected featured video.`);
       if(config.lanewayCompanyChallenge?.numberOfQuestions!==10||!config.lanewayCompanyChallenge?.questionFile)errors.push(`${edition.config} must preserve the isolated 10-question Laneway Music artist challenge.`);
       else{
+        if(config.lanewayCompanyChallenge.invitationRevealAfterFirstResultMs!==10000)errors.push(`${edition.config} must preserve the 10-second Laneway Music quiz invitation reveal after the first wheel result.`);
         const questionPath=String(config.lanewayCompanyChallenge.questionFile).replace(/^\//,'');
         const questions=JSON.parse(await fs.readFile(questionPath,'utf8'));
         validateLanewayCompanyQuestions(questions,questionPath,errors);
@@ -157,8 +158,6 @@ function validateLanewayCompanyRoster(roster,file,errors){
     if(!name||!/^https:\/\/open\.spotify\.com\/artist\/[A-Za-z0-9]+$/i.test(spotifyURL))errors.push(`${file} contains an invalid direct Spotify artist destination for ${name||'unknown'}.`);
     if(!/^https:\/\/www\.lanewaymusic\.com\.au\//i.test(artist.sourceURL||''))errors.push(`${file} artist ${name||'unknown'} lacks an official Laneway source page.`);
     if(artist.websiteURL&&!/^https:\/\//i.test(artist.websiteURL))errors.push(`${file} artist ${name} has an invalid optional website.`);
-    if(artist.youtubeURL&&!/^https:\/\/(?:www\.)?(?:youtube\.com|youtu\.be)\//i.test(artist.youtubeURL))errors.push(`${file} artist ${name} has an invalid optional YouTube destination.`);
-    if(artist.instagramURL&&(!/^https:\/\/(?:www\.)?instagram\.com\/[^/?#]+\/?$/i.test(artist.instagramURL)||authenticationWall(artist.instagramURL)))errors.push(`${file} artist ${name} has an invalid optional Instagram destination.`);
     for(const [key,evidenceKey] of [['buyMusicURL','buyMusic'],['buyMerchURL','buyMerch']]){
       const value=String(artist[key]||'').trim(),evidence=String(artist.purchaseVerification?.[evidenceKey]||'').trim();
       if(!value)continue;
@@ -177,16 +176,8 @@ function validateLanewayCompanyImpact(impactLines,roster,file,errors){
   if(!impactLines||Array.isArray(impactLines)||typeof impactLines!=='object'){errors.push(`${file} must contain a Laneway artist-impact map.`);return}
   const rosterNames=new Set(roster.artists.map(artist=>String(artist.name||'').trim()));
   for(const name of rosterNames){
-    const record=impactLines[name],line=String(typeof record==='string'?record:record?.description||'').trim();
+    const line=String(impactLines[name]||'').trim();
     if(line.length<45||line.length>190)errors.push(`${file} requires one concise sourced impact line for ${name}.`);
-    if(record&&typeof record==='object'){
-      if(String(record.reasonToListen||'').trim().length<30)errors.push(`${file} requires a concise reason to listen for ${name}.`);
-      if(!Array.isArray(record.related)||record.related.length<2||record.related.length>3)errors.push(`${file} requires two or three curated related artists for ${name}.`);
-      for(const related of record.related||[]){
-        if(!rosterNames.has(String(related.artist||'').trim())||related.artist===name)errors.push(`${file} has an invalid related artist for ${name}.`);
-        if(String(related.reason||'').trim().length<20)errors.push(`${file} requires a recommendation reason from ${name} to ${related.artist||'unknown'}.`);
-      }
-    }
   }
   for(const name of Object.keys(impactLines))if(!rosterNames.has(name))errors.push(`${file} contains an impact line for unknown roster artist ${name}.`);
 }

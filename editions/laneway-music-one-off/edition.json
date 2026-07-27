@@ -66,9 +66,9 @@
     }
   },
   "lanewayCompanyChallenge": {
-    "title": "How Well Do You Know the Laneway Catalogue?",
-    "ctaLabel": "Ten questions from across Laneway Music history.",
-    "buttonLabel": "Take the Quiz",
+    "title": "Meet the Artists. Discover Laneway.",
+    "ctaLabel": "Take the 10-Question Laneway Artist Quiz",
+    "invitationRevealAfterFirstResultMs": 10000,
     "numberOfQuestions": 10,
     "questionFile": "editions/laneway-music-one-off/laneway-company-questions.json",
     "classifications": [

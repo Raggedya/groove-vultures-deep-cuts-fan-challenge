@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#000713">
   <meta id="pageDescription" name="description" content="Discover a verified Deep Cuts edition.">
   <title>Deep Cuts</title>
-  <link rel="stylesheet" href="/styles.css?v=20260727-laneway-discovery-engine-1">
+  <link rel="stylesheet" href="/styles.css?v=20260727-laneway-spin-spiral-1">
 </head>
 <body>
   <main id="app" class="discovery-shell">
@@ -37,14 +37,13 @@
         <div class="laneway-wheel-heading">
           <p id="indieWheelCollectionLabel">Laneway Music artist collection</p>
           <h2 id="lanewayArtistWheelTitle">Spin to discover an artist</h2>
-          <p id="lanewayWheelIntroduction" class="laneway-wheel-introduction" hidden>Discover music from across the Laneway catalogue.</p>
         </div>
         <div class="laneway-wheel-stage">
           <div class="laneway-wheel-pointer" aria-hidden="true"></div>
           <canvas id="lanewayWheelCanvas" width="640" height="640" aria-hidden="true"></canvas>
-          <button id="lanewayWheelSpin" class="laneway-wheel-spin" type="button" aria-describedby="lanewayWheelStatus">Discover</button>
+          <button id="lanewayWheelSpin" class="laneway-wheel-spin" type="button" aria-describedby="lanewayWheelStatus">Spin</button>
         </div>
-        <p id="lanewayWheelStatus" class="laneway-wheel-status" aria-live="polite">Press Discover to choose an artist.</p>
+        <p id="lanewayWheelStatus" class="laneway-wheel-status" aria-live="polite">Press Spin to choose an artist.</p>
         <a id="lanewayWheelWinner" class="laneway-wheel-winner" target="_blank" rel="noopener noreferrer" hidden></a>
         <p id="lanewayWheelImpact" class="laneway-wheel-impact" aria-live="polite" hidden></p>
         <div id="lanewayWheelPurchaseLinks" class="laneway-wheel-purchase-links" aria-label="Purchase from the selected artist" hidden>
@@ -53,46 +52,9 @@
         </div>
       </section>
 
-      <section id="lanewayArtistDiscovery" class="laneway-artist-discovery" aria-labelledby="lanewayDiscoveryArtistName" hidden>
-        <article class="laneway-discovery-card">
-          <p class="laneway-discovery-kicker">You discovered</p>
-          <h2 id="lanewayDiscoveryArtistName">Laneway artist</h2>
-          <p id="lanewayDiscoveryDescription" class="laneway-discovery-description"></p>
-          <p id="lanewayDiscoveryReason" class="laneway-discovery-reason"></p>
-          <p id="lanewayDiscoveryStartWith" class="laneway-discovery-start" hidden></p>
-          <div id="lanewayDiscoveryDestinations" class="laneway-discovery-destinations" aria-label="Artist destinations"></div>
-          <div class="laneway-discovery-next">
-            <p>Discover another Laneway artist</p>
-            <button id="lanewayDiscoverAnother" type="button">Surprise me</button>
-            <button id="lanewayReturnToWheel" type="button">Return to wheel</button>
-            <button id="lanewayReturnToRoster" type="button">Artist list</button>
-          </div>
-        </article>
-      </section>
-
-      <section id="lanewaySurpriseSection" class="laneway-surprise-section" aria-labelledby="lanewaySurpriseTitle" hidden>
-        <p class="laneway-section-kicker">Catalogue discovery</p>
-        <h2 id="lanewaySurpriseTitle">Not sure where to start?</h2>
-        <p>Let Laneway choose something for you.</p>
-        <button id="lanewaySurpriseButton" type="button">Surprise me</button>
-      </section>
-
-      <section id="lanewayRecommendations" class="laneway-recommendations" aria-labelledby="lanewayRecommendationsTitle" hidden>
-        <p class="laneway-section-kicker">Keep discovering</p>
-        <h2 id="lanewayRecommendationsTitle">Recommended Laneway artists</h2>
-        <div id="lanewayRecommendationList" class="laneway-recommendation-list"></div>
-      </section>
-
       <section class="link-section" aria-labelledby="discoverTitle">
         <h2 id="discoverTitle" class="visually-hidden">Verified destinations</h2>
         <div id="platformLinks" class="platform-links"></div>
-      </section>
-
-      <section id="lanewayLicensing" class="laneway-licensing" aria-labelledby="lanewayLicensingTitle" hidden>
-        <p class="laneway-section-kicker">Laneway Music services</p>
-        <h2 id="lanewayLicensingTitle">Looking for music for film, television or advertising?</h2>
-        <p>Explore licensing opportunities across the Laneway Music catalogue.</p>
-        <a id="lanewayLicensingLink" target="_blank" rel="noopener noreferrer">Contact Laneway Music</a>
       </section>
 
       <section id="lanewayCompanyDirectory" class="laneway-company-directory" aria-labelledby="lanewayCompanyDirectoryTitle" hidden>
@@ -218,11 +180,6 @@
         <h1 id="lanewayCompanyResultScore">0 / 10</h1>
         <h2 id="lanewayCompanyResultTitle">Laneway Listener</h2>
         <p id="lanewayCompanyResultMessage"></p>
-        <section id="lanewayCompanyResultDiscoveries" class="laneway-result-discoveries" aria-labelledby="lanewayCompanyResultDiscoveriesTitle" hidden>
-          <p class="laneway-result-discoveries-kicker">Keep exploring</p>
-          <h3 id="lanewayCompanyResultDiscoveriesTitle">Your next Laneway discoveries</h3>
-          <div id="lanewayCompanyResultDiscoveryList" class="laneway-result-discovery-list"></div>
-        </section>
         <div class="laneway-result-actions">
           <button id="lanewayCompanyReplayButton" class="laneway-result-primary" type="button">Play Again</button>
           <button id="lanewayCompanyResultHomeButton" class="laneway-result-secondary" type="button">Back to Laneway Home</button>
@@ -239,7 +196,7 @@
   <script src="/js/interactions.js?v=20260726-indie-wheel-1"></script>
   <script src="/js/school-quiz.js?v=20260726-indie-wheel-1"></script>
   <script src="/js/laneway-quiz.js?v=20260726-indie-wheel-1"></script>
-  <script src="/js/laneway-company-quiz.js?v=20260727-laneway-discovery-engine-1"></script>
-  <script src="/js/app.js?v=20260727-laneway-discovery-engine-1"></script>
+  <script src="/js/laneway-company-quiz.js?v=20260727-laneway-reporting-1"></script>
+  <script src="/js/app.js?v=20260727-laneway-spin-spiral-1"></script>
 </body>
 </html>
