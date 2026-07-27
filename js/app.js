@@ -1,6 +1,6 @@
 "use strict";
 
-const VERSION="20260727-indie-label-3";
+const VERSION="20260728-global-footer-1";
 const LANEWAY_REPORTING_VERSION="laneway-weekly-v1";
 const $=id=>document.getElementById(id);
 const els={page:$("discoveryPage"),error:$("errorScreen"),errorMessage:$("errorMessage"),bandName:$("bandName"),bio:$("artistBio"),artwork:$("heroArtwork"),brandLogo:$("editionBrandLogo"),waveform:$("sonicSignature"),features:$("featureList"),video:$("featuredVideo"),videoLabel:$("featuredVideoLabel"),videoTitle:$("featuredVideoTitle"),videoFrame:$("featuredVideoFrame"),links:$("platformLinks"),share:$("shareButton"),status:$("shareStatus"),description:$("pageDescription"),poweredBy:$("poweredByLabel"),copyright:$("coverCopyright"),lanewayHome:$("lanewayHomeLink"),lanewayRecommended:$("lanewayRecommendedLink"),companyDirectory:$("lanewayCompanyDirectory"),companyDirectoryCount:$("lanewayCompanyDirectoryCount"),companySearch:$("lanewayCompanySearch"),companyArtistList:$("lanewayCompanyArtistList"),companyEmpty:$("lanewayCompanyEmpty"),companyWheel:$("lanewayArtistWheel"),wheelCanvas:$("lanewayWheelCanvas"),wheelSpin:$("lanewayWheelSpin"),wheelStatus:$("lanewayWheelStatus"),wheelWinner:$("lanewayWheelWinner"),wheelImpact:$("lanewayWheelImpact"),wheelPurchaseLinks:$("lanewayWheelPurchaseLinks"),wheelBuyMusic:$("lanewayWheelBuyMusic"),wheelBuyMerch:$("lanewayWheelBuyMerch"),wheelVideo:$("lanewayWheelVideo"),wheelVideoTitle:$("lanewayWheelVideoTitle"),wheelVideoFrame:$("lanewayWheelVideoFrame")};
@@ -94,9 +94,6 @@ async function applyConfig(){
   els.bio.textContent=bio;
   if(schools||laneway||wheelEdition){els.artwork.hidden=true;els.artwork.removeAttribute("src");els.artwork.alt=""}else{els.artwork.hidden=false;els.artwork.src=`/${config.characterArtwork||"assets/aggits-original-cutout-v4.png"}`;els.artwork.alt=`Aggits presenting ${name}`}
   if(laneway||wheelEdition){const branding=wheelEdition?wheelSettings():config.laneway;els.brandLogo.hidden=false;els.brandLogo.src=`/${branding?.logoArtwork||"assets/laneway-music-logo-reverse-transparent.png"}`;els.brandLogo.alt=name}else{els.brandLogo.hidden=true;els.brandLogo.removeAttribute("src");els.brandLogo.alt=""}
-  els.copyright.textContent=config.social?.copyright||"copyright Clearlight Creative";
-  els.poweredBy.textContent=laneway?"Deep Cuts":lanewayCompany?"Deep Cuts":schools?"School Discovery":clubs?"Powered by Deep Cuts Clubs":cars?"Powered by Deep Cuts Cars":"Powered by Deep Cuts";
-  if(indieWheel)els.poweredBy.textContent="Indie Wheel";
   els.videoLabel.textContent=laneway||wheelEdition?"Featured video":schools?"Discover our school":clubs?"Featured club video":cars?"Featured automotive video":"Featured video";
   buildFeatures(laneway?config.laneway?.heroLabels:schools?config.school?.heroLabels:clubs?config.club?.heroLabels:cars?config.automotive?.heroLabels:["Listen","Watch","Follow","Buy Stuff"]);
   document.documentElement.style.setProperty("--accent",config.theme?.accent||"#2f80ff");

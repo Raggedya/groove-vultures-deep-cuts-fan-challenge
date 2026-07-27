@@ -117,7 +117,10 @@ function header(company,artist=null){
 }
 function tags(genres=[],location=""){const values=[...(genres||[]),location].filter(Boolean).slice(0,5);return values.length?`<ul class="rc-tags">${values.map(item=>`<li>${escapeHtml(item)}</li>`).join("")}</ul>`:""}
 function linksMarkup(links=[]){return (links||[]).map((link,index)=>`<a class="rc-button ${(links.length%2===1&&index===0)?"rc-wide":""}" href="${escapeAttr(link.url)}" target="_blank" rel="noopener noreferrer" data-outbound="${escapeAttr(link.type)}"><span><strong>${escapeHtml(link.label)}</strong><small>${escapeHtml(link.description||"Open official destination")}</small></span></a>`).join("")}
-function footer(company){return `<footer class="rc-footer"><strong>Powered by Deep Cuts</strong><br><span>Independent discovery collection — no endorsement implied</span><br><a href="/record-company/terms.html">Terms</a><a href="/record-company/privacy.html">Privacy</a><span>Updated ${escapeHtml(formatDate(company.updatedAt))}</span></footer>`}
+function footer(company){
+  const updated=company?.updatedAt?`<span>Updated ${escapeHtml(formatDate(company.updatedAt))}</span>`:"";
+  return `<footer class="rc-footer" aria-label="Deep Cuts platform"><strong>Deep Cuts</strong><br><span>Copyright Clearlight Creative</span><br><span>Independent discovery collection — no endorsement implied</span><br><a href="/record-company/terms.html">Terms</a><a href="/record-company/privacy.html">Privacy</a>${updated}</footer>`;
+}
 
 function discoverArtist(artists){const selected=selectFair(artists,null);if(!selected)return;track("discover_artist",{artist_id:selected.id});location.href=`/record-company/${encodeURIComponent(state.company.slug)}/artists/${encodeURIComponent(selected.slug)}`}
 function recommendArtist(artists,current){const selected=selectFair(artists,current.id);if(!selected){document.getElementById("recommendedArtist").disabled=true;return}track("recommended_artist",{artist_id:selected.id,from_artist_id:current.id});location.href=`/record-company/${encodeURIComponent(state.company.slug)}/artists/${encodeURIComponent(selected.slug)}`}
@@ -246,6 +249,6 @@ function compactBio(value){
   if(firstSentence)return firstSentence.trim();
   return `${text.slice(0,227).replace(/\s+\S*$/,"")}…`;
 }
-function renderError(message){app.innerHTML=`<section class="rc-error"><span class="rc-mark">Deep Cuts</span><h1>Discovery paused.</h1><p>${escapeHtml(message)}</p><a class="rc-button" href="/record-company/">Return to the collection</a></section>`}
+function renderError(message){app.innerHTML=`<section class="rc-error"><span class="rc-mark">Deep Cuts</span><h1>Discovery paused.</h1><p>${escapeHtml(message)}</p><a class="rc-button" href="/record-company/">Return to the collection</a></section>${footer(null)}`}
 function escapeHtml(value){return String(value||"").replace(/[&<>"']/g,char=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[char]))}
 function escapeAttr(value){return escapeHtml(value).replace(/`/g,"&#96;")}

@@ -4,6 +4,10 @@
 
 `PLATFORM_ARCHITECTURE_DIRECTIVE.md` governs this manual. Every completed edition is an isolated commercial product. Edition preservation and backward compatibility are mandatory and take priority over new features.
 
+## Global live-footer rule
+
+Every public Deep Cuts screen across every current and future product uses the same final two lines: `Deep Cuts`, then `Copyright Clearlight Creative`. This includes discovery pages, quizzes, results, errors, legal pages, Record Company Edition and Commercial Instinct. The shared renderer owns this footer; edition data cannot override or hide it.
+
 ## School Discovery permanent rules
 
 School Discovery is a separate product contract. Research begins with the official school website, from which the engine records the primary, secondary, accent, surface and content-background colours. These values may be used for the School Discovery interface and QR artwork; the school logo, crest and emblem must not be copied or displayed. Aggits is never used. Every edition requires a verified, authoritative featured YouTube video and direct official school links. Existing Music, Cars and Clubs output remains unchanged.
@@ -36,7 +40,7 @@ The edition uses its own public renderer, Worker API, D1 tables, job stages, ana
 
 `indie_label/1` is the final owner-approved label-wheel model. The reference is the restored Laneway Music company edition `dc_b9e7b66620`, not the later rejected catalogue-discovery overhaul. Preserve its wheel-led journey, in-circle spiral, winner destination, sourced artist-impact line, verified optional purchase links, conditional verified winner video, searchable roster, delayed 10-question quiz, positive feedback, contact result and anonymous reporting.
 
-Future independent labels use isolated `indie_wheel` configuration on the shared engine. Change only the new edition's verified logo, colours, roster, destination platform, purchase links, impact copy, quiz, contact and copyright. Never change the Laneway reference or Cool Death Records to produce a future label. The full ownership boundary and rejected features are recorded in `INDIE_LABEL_MODEL.md` and enforced by `scripts/test-indie-label-model.mjs`.
+Future independent labels use isolated `indie_wheel` configuration on the shared engine. Change only the new edition's verified logo, colours, roster, destination platform, purchase links, impact copy, quiz, contact and source-credit metadata. The live footer remains the global `Deep Cuts` / `Copyright Clearlight Creative` invariant. Never change the Laneway reference or Cool Death Records to produce a future label. The full ownership boundary and rejected features are recorded in `INDIE_LABEL_MODEL.md` and enforced by `scripts/test-indie-label-model.mjs`.
 
 ## Unattended artist batches
 

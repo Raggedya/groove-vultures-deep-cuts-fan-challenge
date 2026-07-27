@@ -26,7 +26,7 @@ assert.match(app,/if\(isLanewayEdition\(\)\)els\.links\.append\(createLanewayCha
 assert.doesNotMatch(app,/if\(isLanewayEdition\(\)\)els\.links\.append\(createLanewayChallengeCard\(\)\);\s*for\(const definition/);
 assert.match(app,/record_company_home/);
 assert.match(app,/recommended_artists/);
-assert.match(app,/els\.poweredBy\.textContent=laneway\?"Deep Cuts"/);
+assert.match(html,/<span id="poweredByLabel">Deep Cuts<\/span>\s*<small id="coverCopyright">Copyright Clearlight Creative<\/small>/);
 assert.match(app,/els\.artwork\.removeAttribute\("src"\)/);
 assert.match(quiz,/value\.length!==5/);
 assert.match(quiz,/prepareQuestions\(questionBank,5\)/);

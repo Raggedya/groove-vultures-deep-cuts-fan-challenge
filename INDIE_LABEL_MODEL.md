@@ -31,7 +31,7 @@ The discarded catalogue-discovery overhaul is not part of this model. `Surprise 
 
 Each new indie label edition owns its:
 
-- name, logo, colours and copyright
+- name, logo, colours and source-credit metadata
 - verified artist roster
 - primary outbound platform and button wording
 - verified music and merchandise purchase links
@@ -41,6 +41,8 @@ Each new indie label edition owns its:
 - official contact and catalogue destinations
 
 Missing or unverified destinations are omitted. A future edition may use Spotify, Bandcamp or another verified direct platform without changing the model or any completed edition.
+
+The live footer is not edition-owned. Every label uses the global Core Engine footer `Deep Cuts` followed by `Copyright Clearlight Creative`.
 
 ## Change control
 
