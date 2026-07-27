@@ -8,6 +8,8 @@ Validated reports can also produce an editable, two-minute **Banjo Strategy Brie
 
 All development is governed by `PLATFORM_ARCHITECTURE_DIRECTIVE.md`: completed editions are isolated commercial products, backward compatibility is mandatory, and new editions extend rather than modify existing products. `edition-contracts.json` and the CI isolation test enforce the current Music, Cars and Clubs boundaries.
 
+The final independent-label wheel model is locked as `indie_label/1`. Its reference is the restored Laneway Music company edition, while every future label supplies its own verified branding, roster, platform links and quiz through isolated `indie_wheel` configuration. See `INDIE_LABEL_MODEL.md`.
+
 Deep Cuts is one permanent artist-discovery platform. A fan scans an artist-specific QR and opens a calm page containing the artist's verified featured YouTube video and only the music, social, website, merchandise and editorial destinations that are genuinely available.
 
 The same permanent engine also supports separately typed `Deep Cuts Cars` and `Deep Cuts Clubs` editions. Clubs present verified official information, membership, events, participation, venue, history, contact and relevant governing-body links. Music, Cars and Clubs keep independent locked definitions without duplicating the application.
@@ -42,6 +44,7 @@ Public URLs use opaque IDs and never expose the artist name:
 - Laneway company-wheel winner summaries with a one-shot attention flash and independently omitted, verified Buy Music / Buy Merch destinations
 - A spectacular pale-blue Laneway quiz invitation 10 seconds after the first completed wheel result, plus accessible light-blue heartbeats for verified winner purchase buttons
 - A compact generated spiral inside the standalone Laneway wheel control while it spins, returning to `Spin` after every result
+- A fail-closed final Indie Label model contract that protects the restored experience from feature creep
 
 ## Validation
 

@@ -9,6 +9,7 @@
 - [x] Add fail-closed Laneway winner purchase links and an accessible one-shot artist-summary reveal without changing any other edition.
 - [x] Sequence the Laneway company journey with light-blue purchase heartbeats and a spectacular, visibility-aware quiz invitation 10 seconds after the first completed result.
 - [x] Replace the standalone Laneway wheel's overflowing spinning text with an accessible in-circle animated spiral.
+- [x] Lock the restored Laneway company experience as final `indie_label/1`, with isolated label-owned configuration and a fail-closed rejected-overhaul regression guard.
 
 ## Batch-production time savings
 

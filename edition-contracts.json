@@ -1,6 +1,39 @@
 {
   "version": 1,
   "defaultPolicy": "preserve-existing-editions",
+  "productModels": {
+    "indie_label": {
+      "version": 1,
+      "status": "final-locked",
+      "referenceEditionType": "laneway_company",
+      "referenceEditionId": "dc_b9e7b66620",
+      "approvedState": "restored-pre-catalogue-overhaul",
+      "compatibleEditionTypes": ["laneway_company", "indie_wheel"],
+      "lockedCapabilities": [
+        "equal-chance-artist-wheel",
+        "in-circle-spinning-spiral",
+        "winner-destination-call-to-action",
+        "sourced-artist-impact-line",
+        "verified-optional-purchase-links",
+        "searchable-artist-roster",
+        "delayed-ten-question-catalogue-quiz",
+        "positive-sourced-answer-feedback",
+        "quiz-score-and-contact-result",
+        "anonymous-event-reporting"
+      ],
+      "editionOwnedFields": [
+        "brand-and-logo",
+        "colour-palette",
+        "artist-roster",
+        "primary-destination-platform",
+        "verified-purchase-destinations",
+        "artist-impact-copy",
+        "quiz-content",
+        "contact-destination",
+        "footer-and-copyright"
+      ]
+    }
+  },
   "editionTypes": {
     "music": {
       "brandNames": ["Deep Cuts", "Fan Challenge"],

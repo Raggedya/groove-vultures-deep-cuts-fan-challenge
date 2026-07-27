@@ -88,3 +88,12 @@ Treat every completed edition as a finished commercial product that must remain 
 - The company page provides fair random discovery. Artist pages provide same-roster recommendations and a direct company-home route.
 - Every QR is decoded individually and from the Ultra HD master grid before delivery.
 - D1 is the reporting source of truth. Completion delivery uses the existing encrypted Resend integration.
+
+## Final Indie Label Model contract
+
+- `indie_label/1` is final and locked. Its reference is the restored Laneway Music company edition `dc_b9e7b66620` in the production state restored by PR #102.
+- The locked journey is the label-branded waveform, equal-chance artist wheel, in-circle spinning spiral, winner destination and sourced impact line, optional verified purchase links, searchable roster, delayed 10-question catalogue quiz, positive sourced feedback, contact result and anonymous reporting.
+- The discarded catalogue-discovery overhaul is not part of the model. Surprise Me, rich related-artist cards, recommendation panels and quiz-result artist recommendations must not be restored without explicit owner authority.
+- A new independent-label product uses isolated `indie_wheel` configuration. Its logo, colours, roster, platform, verified links, impact copy, questions, contact and copyright belong only to that edition.
+- The reference Laneway edition and completed Cool Death Records edition are immutable commercial products. A future label edition must never overwrite either one.
+- The machine-readable contract is `edition-contracts.json`; `scripts/test-indie-label-model.mjs` is the fail-closed regression guard.
