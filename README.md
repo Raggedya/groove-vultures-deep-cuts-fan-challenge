@@ -39,6 +39,7 @@ Public URLs use opaque IDs and never expose the artist name:
 - GitHub validation and deployment workflows
 - Automated Friday client report with a one-page branded PDF, auditable Excel workbook and backward-compatible all-edition CSV
 - Automated completion delivery with QR PNG
+- Laneway company-wheel winner summaries with a one-shot attention flash and independently omitted, verified Buy Music / Buy Merch destinations
 
 ## Validation
 

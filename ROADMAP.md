@@ -6,6 +6,7 @@
 - [x] Lock Laneway's official featured-video placement and record-company Home / Share / Recommended navigation into the reusable factory.
 - [x] Add a one-URL unattended Record Company Edition with roster isolation, checkpointed builds, verified quizzes, QR/report production and completion delivery.
 - [x] Add trusted Laneway wheel, artist, Spotify-source and quiz analytics with a branded Friday landscape PDF and complete Excel workbook.
+- [x] Add fail-closed Laneway winner purchase links and an accessible one-shot artist-summary reveal without changing any other edition.
 
 ## Batch-production time savings
 

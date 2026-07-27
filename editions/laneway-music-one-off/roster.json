@@ -20,6 +20,13 @@
       "name": "Big Heavy Stuff",
       "sourceURL": "https://www.lanewaymusic.com.au/big-heavy-stuff",
       "spotifyURL": "https://open.spotify.com/artist/5Vsonl53fPvUs3VL4YLKKg",
+      "buyMusicURL": "https://bigheavystuff.bandcamp.com/music",
+      "buyMerchURL": "https://bigheavystuff.bandcamp.com/merch",
+      "purchaseVerification": {
+        "buyMusic": "Direct Big Heavy Stuff Bandcamp catalogue with purchasable releases.",
+        "buyMerch": "Direct Big Heavy Stuff Bandcamp merch page with currently purchasable CDs, vinyl and cassettes.",
+        "checkedAt": "2026-07-27T00:40:09.114Z"
+      },
       "verification": {
         "association": "official Laneway Music artist profile",
         "spotify": "direct artist-profile link published by Laneway Music",
@@ -86,6 +93,11 @@
       "name": "Christopher Marshall",
       "sourceURL": "https://www.lanewaymusic.com.au/christophermarshall",
       "spotifyURL": "https://open.spotify.com/artist/0rMX8DKHTipEvig3DU9AO2",
+      "buyMusicURL": "https://christophermarshallpredestination.bandcamp.com/music",
+      "purchaseVerification": {
+        "buyMusic": "Direct Christopher Marshall Predestination Bandcamp catalogue, identifying the former Harem Scarem singer and his releases.",
+        "checkedAt": "2026-07-27T00:40:09.114Z"
+      },
       "verification": {
         "association": "official Laneway Music artist profile",
         "spotify": "direct artist-profile link published by Laneway Music",
@@ -130,6 +142,11 @@
       "name": "Deckchairs Overboard",
       "sourceURL": "https://www.lanewaymusic.com.au/deckchairs-overboard",
       "spotifyURL": "https://open.spotify.com/artist/1lWVBgt4Ly5ZX0eca2sxJW",
+      "buyMusicURL": "https://johnclifforth.bandcamp.com/album/deckchairs-overboard-compilation",
+      "purchaseVerification": {
+        "buyMusic": "Direct purchasable Deckchairs Overboard compilation published by band member John Clifforth.",
+        "checkedAt": "2026-07-27T00:40:09.114Z"
+      },
       "verification": {
         "association": "official Laneway Music artist profile",
         "spotify": "direct artist-profile link published by Laneway Music",
@@ -218,6 +235,11 @@
       "name": "Harem Scarem",
       "sourceURL": "https://www.lanewaymusic.com.au/haremscarem",
       "spotifyURL": "https://open.spotify.com/artist/6q72NwO3LCZ2WNKkDKy5va",
+      "buyMusicURL": "https://haremscarem1.bandcamp.com/album/pilgrims-progress",
+      "purchaseVerification": {
+        "buyMusic": "Direct Harem Scarem Bandcamp album page with the matching Melbourne lineup and purchasable release.",
+        "checkedAt": "2026-07-27T00:40:09.114Z"
+      },
       "verification": {
         "association": "official Laneway Music artist profile",
         "spotify": "direct artist-profile link published by Laneway Music",
@@ -240,6 +262,11 @@
       "name": "James McCann",
       "sourceURL": "https://www.lanewaymusic.com.au/jamesmccann",
       "spotifyURL": "https://open.spotify.com/artist/4j7NBJIbr0i49hakDFeYOt",
+      "buyMusicURL": "https://jamesmccann.bandcamp.com/music",
+      "purchaseVerification": {
+        "buyMusic": "Direct James McCann Bandcamp catalogue with matching Melbourne artist identity and purchasable releases.",
+        "checkedAt": "2026-07-27T00:40:09.114Z"
+      },
       "verification": {
         "association": "official Laneway Music artist profile",
         "spotify": "direct artist-profile link published by Laneway Music",
@@ -251,6 +278,11 @@
       "name": "John Kennedy",
       "sourceURL": "https://www.lanewaymusic.com.au/john-kennedy",
       "spotifyURL": "https://open.spotify.com/artist/3uYygorkaPtI4LTFQaSXVD",
+      "buyMusicURL": "https://johnkennedymusic.bandcamp.com/music",
+      "purchaseVerification": {
+        "buyMusic": "Direct John Kennedy Music Bandcamp catalogue with the matching Sydney artist and JFK releases.",
+        "checkedAt": "2026-07-27T00:40:09.114Z"
+      },
       "verification": {
         "association": "official Laneway Music artist profile",
         "spotify": "direct artist-profile link published by Laneway Music",
@@ -317,6 +349,11 @@
       "name": "Mississippi Shakedown",
       "sourceURL": "https://www.lanewaymusic.com.au/mississippishakedown",
       "spotifyURL": "https://open.spotify.com/artist/2xSGNaspLvYhduWv3kumBt",
+      "buyMusicURL": "https://mississippishakedownmusic.bandcamp.com/music",
+      "purchaseVerification": {
+        "buyMusic": "Direct Mississippi Shakedown Bandcamp catalogue whose Jeff Cripps-led band identity matches the official Laneway profile.",
+        "checkedAt": "2026-07-27T00:40:09.114Z"
+      },
       "verification": {
         "association": "official Laneway Music artist profile",
         "spotify": "direct artist-profile link published by Laneway Music",
@@ -328,6 +365,11 @@
       "name": "Radio KSG",
       "sourceURL": "https://www.lanewaymusic.com.au/radioksg",
       "spotifyURL": "https://open.spotify.com/artist/0PZNSM3ISctdLfpG85V4tP",
+      "buyMusicURL": "https://radioksg.bandcamp.com/music",
+      "purchaseVerification": {
+        "buyMusic": "Direct Radio KSG Bandcamp catalogue whose Sydney and Kent Steedman identity matches the official Laneway profile.",
+        "checkedAt": "2026-07-27T00:40:09.114Z"
+      },
       "verification": {
         "association": "official Laneway Music artist profile",
         "spotify": "direct artist-profile link published by Laneway Music",
@@ -372,6 +414,11 @@
       "name": "Vanilla Chainsaws",
       "sourceURL": "https://www.lanewaymusic.com.au/vanillachainsaws",
       "spotifyURL": "https://open.spotify.com/artist/3INwbsdBV6ZJBIT06szl1M",
+      "buyMusicURL": "https://simonchainsaw.bandcamp.com/album/living-down-the-hype-emi-studio-301-sessions-1986",
+      "purchaseVerification": {
+        "buyMusic": "Direct purchasable Vanilla Chainsaws archive release published by lead singer Simon Chainsaw and mastered for release by Laneway Music.",
+        "checkedAt": "2026-07-27T00:40:09.114Z"
+      },
       "verification": {
         "association": "official Laneway Music artist profile",
         "spotify": "direct artist-profile link published by Laneway Music",
@@ -383,6 +430,11 @@
       "name": "Violetine",
       "sourceURL": "https://www.lanewaymusic.com.au/violetine",
       "spotifyURL": "https://open.spotify.com/artist/2E8nahNHZ4h0WWCcBHDEWD",
+      "buyMusicURL": "https://violetine.bandcamp.com/music",
+      "purchaseVerification": {
+        "buyMusic": "Direct Violetine Bandcamp catalogue with matching Melbourne artist identity and purchasable releases.",
+        "checkedAt": "2026-07-27T00:40:09.114Z"
+      },
       "verification": {
         "association": "official Laneway Music artist profile",
         "spotify": "direct artist-profile link published by Laneway Music",
