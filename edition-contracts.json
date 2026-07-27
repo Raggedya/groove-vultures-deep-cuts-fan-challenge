@@ -1,6 +1,12 @@
 {
   "version": 1,
   "defaultPolicy": "preserve-existing-editions",
+  "globalFooter": {
+    "status": "permanent-locked",
+    "line1": "Deep Cuts",
+    "line2": "Copyright Clearlight Creative",
+    "scope": ["all-products", "all-editions", "all-screen-states"]
+  },
   "productModels": {
     "indie_label": {
       "version": 1,
@@ -32,7 +38,7 @@
         "artist-impact-copy",
         "quiz-content",
         "contact-destination",
-        "footer-and-copyright"
+        "source-credit-metadata"
       ]
     }
   },

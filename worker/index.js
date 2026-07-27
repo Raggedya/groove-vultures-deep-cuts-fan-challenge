@@ -97,7 +97,7 @@ function recordCompanyLegalDocument(pathname){
     "Profiles and quizzes are produced from publicly accessible sources and may become outdated. Do not rely on this service as an authoritative catalogue or legal record.",
     "Automated access, interference, misuse of QR tracking routes, or attempts to compromise the service are prohibited."
   ];
-  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${title} | Deep Cuts</title><link rel="stylesheet" href="/record-company/styles.css?v=1"></head><body><main class="rc-app"><article class="rc-legal"><span class="rc-mark">Deep Cuts</span><h1>${title}</h1>${paragraphs.map(text=>`<p>${text}</p>`).join("")}<a class="rc-button rc-wide" href="/">Return to Deep Cuts</a></article></main></body></html>`;
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${title} | Deep Cuts</title><link rel="stylesheet" href="/record-company/styles.css?v=1"></head><body><main class="rc-app"><article class="rc-legal"><span class="rc-mark">Deep Cuts</span><h1>${title}</h1>${paragraphs.map(text=>`<p>${text}</p>`).join("")}<a class="rc-button rc-wide" href="/">Return to Deep Cuts</a></article><footer class="rc-footer" aria-label="Deep Cuts platform"><strong>Deep Cuts</strong><br><span>Copyright Clearlight Creative</span></footer></main></body></html>`;
 }
 
 function isRecordCompanyPagePath(pathname){

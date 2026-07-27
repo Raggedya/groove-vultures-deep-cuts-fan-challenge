@@ -8,6 +8,8 @@ Validated reports can also produce an editable, two-minute **Banjo Strategy Brie
 
 All development is governed by `PLATFORM_ARCHITECTURE_DIRECTIVE.md`: completed editions are isolated commercial products, backward compatibility is mandatory, and new editions extend rather than modify existing products. `edition-contracts.json` and the CI isolation test enforce the current Music, Cars and Clubs boundaries.
 
+Every public screen in every product and edition ends with the locked platform footer `Deep Cuts` above `Copyright Clearlight Creative`. Edition configuration cannot override it.
+
 The final independent-label wheel model is locked as `indie_label/1`. Its reference is the restored Laneway Music company edition, while every future label supplies its own verified branding, roster, platform links and quiz through isolated `indie_wheel` configuration. See `INDIE_LABEL_MODEL.md`.
 
 Deep Cuts is one permanent artist-discovery platform. A fan scans an artist-specific QR and opens a calm page containing the artist's verified featured YouTube video and only the music, social, website, merchandise and editorial destinations that are genuinely available.

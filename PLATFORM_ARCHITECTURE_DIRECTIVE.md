@@ -21,6 +21,14 @@ Unless the owner explicitly overrides this directive in writing, preserving ever
 11. **Treat the platform as a long-term commercial product.** Favour scalability, maintainability, modularity, reliability, performance, backward compatibility, easy addition of new editions, minimal manual effort and maximum safe automation.
 12. **Preservation is the default.** Ambiguous changes must be resolved in favour of leaving completed editions unchanged.
 
+## Global footer contract
+
+- Every public Deep Cuts product, version, edition, quiz, result, error and legal screen ends with the same two-line platform footer.
+- The first line is exactly `Deep Cuts`.
+- The second line is exactly `Copyright Clearlight Creative`.
+- The footer is a Core Engine invariant. Edition configuration may not rename, replace, suppress or claim ownership of it.
+- Edition-specific identity, copyright evidence and source credits remain available in their own configuration and delivery metadata, but they never replace this live platform footer.
+
 ## Mandatory change protocol
 
 Every pull request must:
