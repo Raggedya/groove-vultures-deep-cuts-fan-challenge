@@ -40,7 +40,7 @@ Public URLs use opaque IDs and never expose the artist name:
 - Automated Friday client report with a one-page branded PDF, auditable Excel workbook and backward-compatible all-edition CSV
 - Automated completion delivery with QR PNG
 - Laneway company-wheel winner summaries with a one-shot attention flash and independently omitted, verified Buy Music / Buy Merch destinations
-- A five-second, visibility-aware Laneway quiz invitation and accessible light-blue heartbeat for verified winner purchase buttons
+- A spectacular pale-blue Laneway quiz invitation 10 seconds after the first completed wheel result, plus accessible light-blue heartbeats for verified winner purchase buttons
 
 ## Validation
 
