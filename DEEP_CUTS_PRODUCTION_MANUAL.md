@@ -106,6 +106,8 @@ After a Laneway company-wheel result, the sourced artist-impact line receives on
 
 Verified Laneway company-wheel purchase buttons use a light-blue double-beat animation related to the directory Spotify glow. The quiz invitation is initially absent. The first completed wheel result arms one locked 10-second delay; later spins do not restart it, and if the wheel is spinning when the delay expires the invitation waits for that result. Its one-time, visibility-aware pale-blue burst, sweep and settled glow do not spend attention below the fold. Its permanent copy is `Meet the Artists. Discover Laneway.` and `Take the 10-Question Laneway Artist Quiz`. Reduced-motion visitors receive static highlighted controls without pulsing. The accepted `quiz_invitation_revealed` event records the configured delay and first-result source in the weekly event audit.
 
+While the standalone Laneway company wheel is moving, its centre control replaces text with a compact generated pale-blue spiral that rotates entirely inside the circle. The control retains an accessible `Spinning` label, returns to the single word `Spin` after every result, and becomes a static spiral for reduced-motion visitors. This treatment is exclusive to `laneway_company`; Indie Wheel retains its existing text state.
+
 Collect only anonymous session IDs, source, device category and coarse country/region supplied at the network edge. Do not store raw IP addresses, precise coordinates, passwords, payment details or social logins.
 
 ## Production timing

@@ -1,6 +1,6 @@
 "use strict";
 
-const VERSION="20260727-laneway-first-result-quiz-1";
+const VERSION="20260727-laneway-spin-spiral-1";
 const LANEWAY_REPORTING_VERSION="laneway-weekly-v1";
 const $=id=>document.getElementById(id);
 const els={page:$("discoveryPage"),error:$("errorScreen"),errorMessage:$("errorMessage"),bandName:$("bandName"),bio:$("artistBio"),artwork:$("heroArtwork"),brandLogo:$("editionBrandLogo"),waveform:$("sonicSignature"),features:$("featureList"),video:$("featuredVideo"),videoLabel:$("featuredVideoLabel"),videoTitle:$("featuredVideoTitle"),videoFrame:$("featuredVideoFrame"),links:$("platformLinks"),share:$("shareButton"),status:$("shareStatus"),description:$("pageDescription"),poweredBy:$("poweredByLabel"),copyright:$("coverCopyright"),lanewayHome:$("lanewayHomeLink"),lanewayRecommended:$("lanewayRecommendedLink"),companyDirectory:$("lanewayCompanyDirectory"),companyDirectoryCount:$("lanewayCompanyDirectoryCount"),companySearch:$("lanewayCompanySearch"),companyArtistList:$("lanewayCompanyArtistList"),companyEmpty:$("lanewayCompanyEmpty"),companyWheel:$("lanewayArtistWheel"),wheelCanvas:$("lanewayWheelCanvas"),wheelSpin:$("lanewayWheelSpin"),wheelStatus:$("lanewayWheelStatus"),wheelWinner:$("lanewayWheelWinner"),wheelImpact:$("lanewayWheelImpact"),wheelPurchaseLinks:$("lanewayWheelPurchaseLinks"),wheelBuyMusic:$("lanewayWheelBuyMusic"),wheelBuyMerch:$("lanewayWheelBuyMerch")};
@@ -265,6 +265,20 @@ function createLanewayCompanyChallengeRevealController(isWheelIdle){
   };
 }
 
+function setLanewayCompanyWheelSpinState(isSpinning){
+  els.wheelSpin.classList.toggle("is-spinning",isSpinning);
+  els.wheelSpin.setAttribute("aria-label",isSpinning?"Spinning":"Spin");
+  if(!isSpinning){els.wheelSpin.textContent="Spin";return}
+  const svg=document.createElementNS("http://www.w3.org/2000/svg","svg");
+  svg.classList.add("laneway-wheel-spin-spiral");svg.setAttribute("viewBox","0 0 64 64");svg.setAttribute("aria-hidden","true");
+  const path=document.createElementNS("http://www.w3.org/2000/svg","path");
+  const points=Array.from({length:96},(_,index)=>{
+    const progress=index/95,angle=progress*Math.PI*4.75,radius=2+progress*25;
+    return`${index?"L":"M"} ${(32+Math.cos(angle)*radius).toFixed(2)} ${(32+Math.sin(angle)*radius).toFixed(2)}`;
+  });
+  path.setAttribute("d",points.join(" "));svg.append(path);els.wheelSpin.replaceChildren(svg);
+}
+
 async function buildLanewayCompanyDirectory(){
   const settings=wheelSettings(),destinationKey=settings.destinationKey,destinationLabel=settings.destinationLabel;
   const [roster,impactLines]=await Promise.all([
@@ -361,7 +375,8 @@ function buildLanewayArtistWheel(artists){
     return true;
   };
   const finish=winner=>{
-    spinning=false;els.wheelSpin.disabled=false;els.wheelSpin.textContent="Spin again";
+    spinning=false;els.wheelSpin.disabled=false;
+    if(isLanewayCompanyEdition())setLanewayCompanyWheelSpinState(false);else els.wheelSpin.textContent="Spin again";
     els.wheelStatus.textContent=`Winner: ${winner.name}`;
     els.wheelWinner.href=winner[destinationKey];els.wheelWinner.textContent=`Listen to ${winner.name} on ${destinationLabel}`;
     els.wheelWinner.setAttribute("aria-label",`Listen to ${winner.name} on ${destinationLabel} (opens in a new tab)`);
@@ -384,7 +399,8 @@ function buildLanewayArtistWheel(artists){
   els.wheelSpin.addEventListener("click",()=>{
     if(spinning)return;
     analytics.track("wheel_spin_started",{artist_count:artists.length,edition_type:config.editionType,tracking_version:LANEWAY_REPORTING_VERSION},{dedupeKey:"wheel-spin",dedupeMs:500});
-    spinning=true;els.wheelSpin.disabled=true;els.wheelSpin.textContent="Spinning";
+    spinning=true;els.wheelSpin.disabled=true;
+    if(isLanewayCompanyEdition())setLanewayCompanyWheelSpinState(true);else els.wheelSpin.textContent="Spinning";
     els.wheelWinner.hidden=true;els.wheelImpact.hidden=true;els.wheelImpact.textContent="";els.wheelStatus.textContent="The artist wheel is spinning…";
     els.wheelImpact.classList.remove("is-attention-flash");hidePurchaseLinks();
     const selected=randomIndex(),current=rotation%(Math.PI*2);
