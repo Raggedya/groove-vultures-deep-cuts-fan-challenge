@@ -19,6 +19,7 @@ The model preserves:
 - the equal-chance artist wheel with illuminated pointer
 - the compact in-circle spiral while the wheel spins
 - the winner destination button, sourced artist-impact line, verified optional purchase buttons and conditional verified artist video
+- the Laneway reference's unified pale-teal accent system, with red reserved exclusively for the wheel pointer
 - the searchable complete artist roster with direct platform buttons
 - the delayed 10-question catalogue quiz with positive sourced feedback
 - score, replay, wheel return and label-contact result actions

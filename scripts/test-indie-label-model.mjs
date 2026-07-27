@@ -47,6 +47,8 @@ assert.match(css,/\[data-edition-type="laneway_company"\] \.laneway-wheel-pointe
 assert.match(css,/border-top:31px solid #ef233c/);
 assert.match(css,/background:linear-gradient\(135deg,#a9e7fa,#d9f7ff,#8fdcf5\)/);
 assert.match(css,/\[data-product-type="laneway_company"\] \.laneway-wheel-video/);
+assert.match(css,/\[data-product-type="laneway_company"\] \.laneway-challenge-card\{[^}]*rgba\(169,231,250/);
+assert.match(css,/\[data-product-type="laneway_company"\] \.laneway-wheel-pointer\{[^}]*#d51d31/);
 
 const rejectedOverhaul=[html,app,quiz,css].join("\n");
 for(const rejected of [
