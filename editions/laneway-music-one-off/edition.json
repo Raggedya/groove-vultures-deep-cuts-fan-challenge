@@ -47,6 +47,7 @@
     "servicesURL": "https://www.lanewaymusic.com.au/sync",
     "rosterFile": "editions/laneway-music-one-off/roster.json",
     "artistImpactFile": "editions/laneway-music-one-off/artist-impact.json",
+    "artistVideoFile": "editions/laneway-music-one-off/artist-videos.json",
     "destinationKey": "spotifyURL",
     "destinationLabel": "Spotify",
     "wheelColours": [
