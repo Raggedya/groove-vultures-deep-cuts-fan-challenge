@@ -100,6 +100,8 @@ The Cloudflare Worker and D1 database are the authoritative analytics backend. T
 
 Clicks represent intent only. A Spotify click is not a stream, and a share action is not proof of publication. Analytics failure must never delay or prevent navigation. Historical Tip-click fields may remain in reporting solely to preserve old analytics records; no current page displays or records a new Tip action.
 
+The Laneway company edition additionally records intentional wheel spins, completed artist selections, winner-versus-directory Spotify clicks by verified artist, anonymous directory searches, quiz starts, answers, completions, abandonments and replays, and services-contact intent. The Worker accepts only a versioned allow-list of scalar metadata. Duplicate event IDs are ignored by D1, reports reconcile against the raw event audit, every verified roster artist is included even when the result is zero, and report generation fails closed instead of silently truncating data.
+
 Collect only anonymous session IDs, source, device category and coarse country/region supplied at the network edge. Do not store raw IP addresses, precise coordinates, passwords, payment details or social logins.
 
 ## Production timing
@@ -116,7 +118,9 @@ GitHub installs delivery artwork dependencies once into the exact Python environ
 
 The deployment workflow installs the encrypted administration, Resend API, report-recipient and sender values into the Cloudflare Worker on every release. Missing required runtime secrets block deployment before edition synchronisation. The Resend webhook signing secret is installed automatically when configured.
 
-Completion email goes automatically to `andrewharris501@gmail.com` and contains the verified live URL plus scan-tested QR PNG. A scheduled Friday report contains band-level scans, views, destination clicks, shares, production timing and link health in CSV format.
+Completion email goes automatically to `andrewharris501@gmail.com` and contains the verified live URL plus scan-tested QR PNG. At 9:00 a.m. Australia/Sydney each Friday, the existing encrypted Resend integration sends one branded Laneway email containing a polished one-page A4 landscape PDF and a complete Excel workbook. The workbook includes an executive dashboard, all 35 verified artists including zero rows, wheel-versus-directory Spotify attribution, quiz intelligence, audience/source summaries, an event audit and metric definitions. The backward-compatible all-edition CSV remains attached and available from its authenticated endpoint.
+
+The PDF and email state that Spotify clicks indicate outbound intent only, not confirmed streams, follows, saves or purchases. Reports use anonymous session identifiers and coarse region data; they do not identify individual visitors. An authenticated administrator can also download the current Laneway PDF or workbook from `/api/reports/laneway-weekly.pdf` and `/api/reports/laneway-weekly.xlsx`.
 
 The delivery service refuses to send if the deployed PNG cannot be retrieved as an image. Resend webhook signatures are verified before delivery confirmation is recorded; only `email.delivered` completes the measured production job.
 
