@@ -41,6 +41,7 @@ Public URLs use opaque IDs and never expose the artist name:
 - Automated completion delivery with QR PNG
 - Laneway company-wheel winner summaries with a one-shot attention flash and independently omitted, verified Buy Music / Buy Merch destinations
 - A spectacular pale-blue Laneway quiz invitation 10 seconds after the first completed wheel result, plus accessible light-blue heartbeats for verified winner purchase buttons
+- A compact generated spiral inside the standalone Laneway wheel control while it spins, returning to `Spin` after every result
 
 ## Validation
 

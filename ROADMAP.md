@@ -8,6 +8,7 @@
 - [x] Add trusted Laneway wheel, artist, Spotify-source and quiz analytics with a branded Friday landscape PDF and complete Excel workbook.
 - [x] Add fail-closed Laneway winner purchase links and an accessible one-shot artist-summary reveal without changing any other edition.
 - [x] Sequence the Laneway company journey with light-blue purchase heartbeats and a spectacular, visibility-aware quiz invitation 10 seconds after the first completed result.
+- [x] Replace the standalone Laneway wheel's overflowing spinning text with an accessible in-circle animated spiral.
 
 ## Batch-production time savings
 
