@@ -66,8 +66,9 @@
     }
   },
   "lanewayCompanyChallenge": {
-    "title": "How Deep Is Your Laneway Artist Knowledge?",
-    "ctaLabel": "Take the 10-Question Artist Quiz",
+    "title": "Meet the Artists. Discover Laneway.",
+    "ctaLabel": "Take the 10-Question Laneway Artist Quiz",
+    "invitationRevealDelayMs": 5000,
     "numberOfQuestions": 10,
     "questionFile": "editions/laneway-music-one-off/laneway-company-questions.json",
     "classifications": [

@@ -1,6 +1,6 @@
 "use strict";
 
-const VERSION="20260727-laneway-purchase-links-1";
+const VERSION="20260727-laneway-heartbeat-quiz-reveal-1";
 const LANEWAY_REPORTING_VERSION="laneway-weekly-v1";
 const $=id=>document.getElementById(id);
 const els={page:$("discoveryPage"),error:$("errorScreen"),errorMessage:$("errorMessage"),bandName:$("bandName"),bio:$("artistBio"),artwork:$("heroArtwork"),brandLogo:$("editionBrandLogo"),waveform:$("sonicSignature"),features:$("featureList"),video:$("featuredVideo"),videoLabel:$("featuredVideoLabel"),videoTitle:$("featuredVideoTitle"),videoFrame:$("featuredVideoFrame"),links:$("platformLinks"),share:$("shareButton"),status:$("shareStatus"),description:$("pageDescription"),poweredBy:$("poweredByLabel"),copyright:$("coverCopyright"),lanewayHome:$("lanewayHomeLink"),lanewayRecommended:$("lanewayRecommendedLink"),companyDirectory:$("lanewayCompanyDirectory"),companyDirectoryCount:$("lanewayCompanyDirectoryCount"),companySearch:$("lanewayCompanySearch"),companyArtistList:$("lanewayCompanyArtistList"),companyEmpty:$("lanewayCompanyEmpty"),companyWheel:$("lanewayArtistWheel"),wheelCanvas:$("lanewayWheelCanvas"),wheelSpin:$("lanewayWheelSpin"),wheelStatus:$("lanewayWheelStatus"),wheelWinner:$("lanewayWheelWinner"),wheelImpact:$("lanewayWheelImpact"),wheelPurchaseLinks:$("lanewayWheelPurchaseLinks"),wheelBuyMusic:$("lanewayWheelBuyMusic"),wheelBuyMerch:$("lanewayWheelBuyMerch")};
@@ -108,6 +108,7 @@ async function applyConfig(){
   if(schools)await SchoolDiscoveryQuiz.configure({config,analytics,homeElement:els.page,challengeButton:$("schoolChallengeButton")});
   if(laneway)await LanewayQuiz.configure({config,analytics,homeElement:els.page,challengeButton:$("lanewayChallengeButton")});
   if(wheelEdition)await LanewayCompanyQuiz.configure({config,analytics,homeElement:els.page,challengeButton:$("lanewayCompanyChallengeButton")});
+  if(lanewayCompany)scheduleLanewayCompanyChallengeReveal();
   startAttentionCycle();
 }
 
@@ -221,6 +222,7 @@ function buildLinks(){
 function createLanewayCompanyChallengeCard(){
   const button=document.createElement("button");
   button.id="lanewayCompanyChallengeButton";button.type="button";button.className="laneway-challenge-card wide";button.disabled=true;
+  if(isLanewayCompanyEdition())button.hidden=true;
   const copy=document.createElement("span");copy.className="link-copy";
   const challenge=wheelChallenge();
   const title=document.createElement("strong");title.textContent=challenge?.title||`How Well Do You Know ${config.bandName}?`;
@@ -228,6 +230,28 @@ function createLanewayCompanyChallengeCard(){
   const arrow=document.createElement("span");arrow.className="link-arrow";arrow.setAttribute("aria-hidden","true");arrow.textContent=">";
   copy.append(title,subtitle);button.append(copy,arrow);button.addEventListener("click",()=>LanewayCompanyQuiz.open());
   return button;
+}
+
+function scheduleLanewayCompanyChallengeReveal(){
+  const button=$("lanewayCompanyChallengeButton");
+  if(!button)return;
+  const configured=Number(config.lanewayCompanyChallenge?.invitationRevealDelayMs);
+  const delay=Math.min(8000,Math.max(3000,Number.isFinite(configured)?configured:5000));
+  const animate=()=>{
+    if(button.classList.contains("is-delayed-reveal")||document.hidden)return;
+    button.classList.add("is-delayed-reveal");
+    analytics.track("quiz_invitation_revealed",{quiz_identifier:config.analytics?.pageIdentifier||"",reveal_delay_ms:delay,edition_type:config.editionType,tracking_version:LANEWAY_REPORTING_VERSION},{onceKey:"laneway-quiz-invitation"});
+  };
+  window.setTimeout(()=>{
+    button.hidden=false;
+    if(!("IntersectionObserver" in window)){animate();return}
+    const observer=new IntersectionObserver(entries=>{
+      if(!entries.some(entry=>entry.isIntersecting))return;
+      observer.disconnect();animate();
+    },{threshold:.35});
+    observer.observe(button);
+    document.addEventListener("visibilitychange",()=>{if(!document.hidden&&button.getBoundingClientRect().top<window.innerHeight)animate()},{once:true,passive:true});
+  },delay);
 }
 
 async function buildLanewayCompanyDirectory(){
