@@ -28,9 +28,12 @@
     const logo=document.getElementById("lanewayCompanyResultLogo");
     logo.src=`/${settings.logoArtwork}`;logo.alt=config.bandName;
     document.getElementById("lanewayCompanyResultKicker").textContent=`Your ${config.bandName} Result`;
-    const showServices=config.editionType==="laneway_company"&&validHttps(settings.servicesURL);
+    const showServices=(config.editionType==="laneway_company"||settings.modelVersion==="indie_label/1")&&validHttps(settings.servicesURL);
     els.resultContact.hidden=!showServices;
     if(showServices){
+      const contactPrompt=els.resultContact.querySelector("p");
+      contactPrompt.textContent=config.editionType==="laneway_company"?"Looking for music for film, television or advertising?":`Want to connect with ${config.bandName}?`;
+      els.resultContactLink.textContent=`Contact ${config.bandName}`;
       els.resultContactLink.href=settings.servicesURL;
       els.resultContactLink.setAttribute("aria-label",`Contact ${config.bandName} about music services (opens in a new tab)`);
       els.resultContactLink.addEventListener("click",()=>analytics.track("services_contact_clicked",{button_name:"laneway_sync",interaction_source:"quiz_result",destination_url_origin:new URL(settings.servicesURL).origin,edition_type:config.editionType,tracking_version:REPORTING_VERSION}),{passive:true});

@@ -283,7 +283,9 @@ def create_indie_wheel_instagram(config: dict, destination: Path) -> None:
     centred_text(draw, name, 500, fit_font(draw, name, 900, 78, 42), fill=ink, stroke=1)
     draw.rounded_rectangle((110, 650, 970, 830), radius=22, outline=ink, width=5, fill=(250, 250, 246, 245))
     centred_text(draw, "10 DEEP-CUT QUESTIONS", 685, fit_font(draw, "10 DEEP-CUT QUESTIONS", 760, 43, 32), fill=ink)
-    centred_text(draw, "ARTISTS • MUSIC • BANDCAMP", 760, fit_font(draw, "ARTISTS • MUSIC • BANDCAMP", 720, 29, 22), fill=(70, 70, 70))
+    destination_label = str(config.get("indieWheel", {}).get("destination", {}).get("label", "MUSIC")).upper()
+    descriptor = f"ARTISTS • MUSIC • {destination_label}"
+    centred_text(draw, descriptor, 760, fit_font(draw, descriptor, 720, 29, 22), fill=(70, 70, 70))
     centred_text(draw, "INDIE WHEEL", 930, fit_font(draw, "INDIE WHEEL", 520, 42, 32), fill=ink)
     tagline = str(config.get("indieWheel", {}).get("tagline", "SPIN THE INDIE WHEEL")).upper()
     centred_text(draw, tagline, 995, fit_font(draw, tagline, 650, 24, 18), fill=(75, 75, 75))

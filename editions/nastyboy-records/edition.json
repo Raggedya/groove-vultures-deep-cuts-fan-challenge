@@ -1,0 +1,100 @@
+{
+  "brandName": "Indie Wheel",
+  "editionType": "indie_wheel",
+  "bandName": "Nastyboy Records",
+  "editionTitle": "Nastyboy Records Indie Wheel",
+  "description": "Spin through the verified Nastyboy Records catalogue, meet an artist and listen on Spotify.",
+  "discovery": {
+    "bio": ""
+  },
+  "mode": "discovery",
+  "slug": "nastyboy-records",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_42e5242568",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "Nastyboy Records logo used from the official Nastyboy Records website",
+    "instagramImage": "output/nastyboy-records/instagram-discovery.png",
+    "qrImage": "output/nastyboy-records/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#D6AA2D",
+    "accentSecondary": "#F3D77A",
+    "accentRgb": "214,170,45"
+  },
+  "links": {},
+  "featuredVideo": {},
+  "analytics": {
+    "editionId": "dc_42e5242568",
+    "pageIdentifier": "dc_42e5242568:indie-wheel-v1"
+  },
+  "production": {
+    "jobId": "dcjob_30ffa433-b0cd-4fc8-a673-1d4e45a7d787",
+    "submittedAt": "2026-07-27T12:04:11.570Z",
+    "researchCompletedAt": "2026-07-27T12:06:25.296Z",
+    "editionCreatedAt": "2026-07-27T12:06:25.296Z"
+  },
+  "indieWheel": {
+    "modelVersion": "indie_label/1",
+    "logoArtwork": "assets/nastyboy-records-official.png",
+    "logoTreatment": "official-black-gold-white",
+    "recordCompanyHomeURL": "https://nastyboyrecords.com/pages/about-us",
+    "recommendedArtistsURL": "https://nastyboyrecords.com/",
+    "servicesURL": "https://nastyboyrecords.com/pages/about-us",
+    "rosterSourceURL": "https://nastyboyrecords.com/pages/about-us",
+    "rosterFile": "editions/nastyboy-records/roster.json",
+    "artistImpactFile": "editions/nastyboy-records/artist-impact.json",
+    "artistVideoFile": "editions/nastyboy-records/artist-videos.json",
+    "destinationKey": "spotifyURL",
+    "destinationLabel": "Spotify",
+    "tagline": "The Little Record Label That Could",
+    "wheelColours": [
+      "#090909",
+      "#17140b",
+      "#111111",
+      "#211b0c",
+      "#0d0d0d",
+      "#2b2109"
+    ],
+    "wheelTextColour": "#F7F2E4",
+    "wheelLineColour": "rgba(214,170,45,.34)",
+    "wheelRimColour": "#D6AA2D",
+    "artistWheel": {
+      "enabled": true,
+      "replacesFeaturedVideo": true
+    }
+  },
+  "indieWheelChallenge": {
+    "title": "How Deep Is Your Nastyboy Knowledge?",
+    "ctaLabel": "Take the 10-Question Catalogue Quiz",
+    "invitationRevealAfterFirstResultMs": 10000,
+    "numberOfQuestions": 10,
+    "questionFile": "editions/nastyboy-records/questions.json",
+    "classifications": [
+      {
+        "min": 0,
+        "max": 3,
+        "label": "Nastyboy Newcomer",
+        "message": "You have opened the door to the Nastyboy catalogue. These were genuine deep cuts."
+      },
+      {
+        "min": 4,
+        "max": 6,
+        "label": "Magic City Explorer",
+        "message": "A strong start. You know some of the records and stories that built this independent label."
+      },
+      {
+        "min": 7,
+        "max": 9,
+        "label": "Nastyboy Insider",
+        "message": "Excellent work. You know the artists, albums and connections running through the catalogue."
+      },
+      {
+        "min": 10,
+        "max": 10,
+        "label": "Nastyboy Legend",
+        "message": "Ten out of ten on questions this deep. How the hell did you know that?!"
+      }
+    ]
+  }
+}

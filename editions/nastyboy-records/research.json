@@ -1,0 +1,104 @@
+{
+  "bandName": "Nastyboy Records",
+  "slug": "nastyboy-records",
+  "editionId": "dc_42e5242568",
+  "verifiedAt": "2026-07-27T12:06:25.296Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://nastyboyrecords.com/",
+      "sourceType": "official label website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-27T12:06:25.296Z",
+      "evidence": "The official storefront identifies Nastyboy Records, its artists, founder, store, contact details and official social destinations."
+    },
+    {
+      "destination": "roster",
+      "url": "https://nastyboyrecords.com/pages/about-us",
+      "sourceType": "official label About page",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-27T12:06:25.296Z",
+      "evidence": "The current About section explicitly names NBK, NB Ridaz, Jay Roxxx, El Terricola and MC Magic as the artists whose music the label directs visitors to find."
+    },
+    {
+      "destination": "logo",
+      "url": "https://nastyboyrecords.com/cdn/shop/t/2/assets/logo.png?v=163300387384255288941762297831",
+      "sourceType": "official website logo asset",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-27T12:06:25.296Z",
+      "evidence": "The image is the 577 by 200 Nastyboy Records logo rendered in the header of the current official website."
+    },
+    {
+      "destination": "questionSource",
+      "url": "https://nastyboyrecords.com/products/dont-worry-by-mc-magic-cd",
+      "sourceType": "official label store catalogue",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-27T12:06:25.296Z",
+      "evidence": "The official product page publishes the Don't Worry CD title and complete track list."
+    },
+    {
+      "destination": "questionSource",
+      "url": "https://open.spotify.com/album/3ClBdEkgkSUHdS0gtuX1oi",
+      "sourceType": "verified Spotify album",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-27T12:06:25.296Z",
+      "evidence": "Spotify attributes Million Dollar Mexican directly to the identity-matched MC Magic artist profile."
+    },
+    {
+      "destination": "questionSource",
+      "url": "https://open.spotify.com/album/03F4EMbZORD0sdsFFfFAp2",
+      "sourceType": "verified Spotify album",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-27T12:06:25.296Z",
+      "evidence": "Spotify attributes Invasion directly to the identity-matched NB Ridaz artist profile."
+    },
+    {
+      "destination": "questionSource",
+      "url": "https://open.spotify.com/album/7g1PiT3vAj51L3r90kwHxc",
+      "sourceType": "verified Spotify album",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-27T12:06:25.296Z",
+      "evidence": "Spotify attributes Tha Second Coming directly to the identity-matched Nastyboy Klick artist profile."
+    },
+    {
+      "destination": "questionSource",
+      "url": "https://open.spotify.com/album/1V8HjqrVYf4UrdNMRmxb5r",
+      "sourceType": "verified Spotify album",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-27T12:06:25.296Z",
+      "evidence": "Spotify identifies PRINCESA as a 2021 Jay Roxxx album and displays the Nastyboy Records release credit."
+    },
+    {
+      "destination": "questionSource",
+      "url": "https://music.apple.com/mx/album/porque-yo-te-amo-single/1603937478",
+      "sourceType": "Apple Music release page",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-27T12:06:25.296Z",
+      "evidence": "Apple Music identifies Porque Yo Te Amo as a 2022 El Terricola single released by Nastyboy Records."
+    },
+    {
+      "destination": "questionSource",
+      "url": "https://nastyboyrecords.com/products/the-rewire-mc-magic-cd",
+      "sourceType": "official label store catalogue",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-27T12:06:25.296Z",
+      "evidence": "The official product page publishes The Rewire track list, including The Only Kiss with NB Ridaz and D. Salas."
+    },
+    {
+      "destination": "artistVideo",
+      "url": "https://www.youtube.com/watch?v=mHYnmGKAcoE",
+      "sourceType": "official MC MAGIC / Nastyboy Records YouTube channel",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-27T12:06:25.296Z",
+      "evidence": "LOCO appears first under Popular on the official channel at 25M displayed public views and loads as a normal public video."
+    },
+    {
+      "destination": "artistVideo",
+      "url": "https://www.youtube.com/watch?v=KpueHaWg8hw",
+      "sourceType": "official MC MAGIC / Nastyboy Records YouTube channel",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-27T12:06:25.296Z",
+      "evidence": "SOLA y TRISTE names El Terricola in its official-channel title and displays 3.9M public views under the channel's Popular sort."
+    }
+  ]
+}

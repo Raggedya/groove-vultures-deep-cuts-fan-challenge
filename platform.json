@@ -249,6 +249,14 @@
       "name": "Cool Death Records",
       "config": "editions/cool-death-records/edition.json",
       "active": true
+    },
+    {
+      "slug": "nastyboy-records",
+      "editionId": "dc_42e5242568",
+      "canonicalPath": "/e/dc_42e5242568",
+      "name": "Nastyboy Records",
+      "config": "editions/nastyboy-records/edition.json",
+      "active": true
     }
   ]
 }
