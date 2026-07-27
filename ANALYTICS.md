@@ -10,8 +10,6 @@ Deep Cuts uses the platform Worker and Cloudflare D1 as its permanent, first-par
 - native share completed, only when the browser confirms it
 - copy-link selected and successfully copied
 - outbound destination clicked, recorded separately for Buy Music, Spotify, Instagram, Bandcamp, YouTube, Facebook, band website, merchandise, Tip the Band and News & Reviews
-- Laneway wheel starts and completions, Surprise Me, roster selections, artist selections and their discovery source
-- Laneway recommendation impressions and selections, quiz-result recommendation selections and catalogue depth per anonymous session
 
 Every event includes an event ID, edition ID, timestamp, anonymous browser-session ID, referring source and device category. Cloudflare may add country and region codes from the incoming request. Deep Cuts does not store raw IP addresses, precise location, account credentials or payment details.
 
@@ -19,7 +17,7 @@ Analytics is best-effort and never delays or blocks a destination. A click recor
 
 ## Reporting
 
-The protected `/api/reports/weekly.csv` endpoint produces band-level totals. A scheduled Worker sends the same CSV to the configured owner every Friday at 9:00am Australia/Sydney time. The standalone Laneway company edition also produces a one-page landscape PDF and auditable Excel workbook with catalogue selections by source, artist coverage, Spotify and Bandcamp intent, recommendation conversion, quiz-to-discovery activity and average artists discovered per anonymous session.
+The protected `/api/reports/weekly.csv` endpoint produces band-level totals. A scheduled Worker sends the same CSV to the configured owner every Friday at 9:00am Australia/Sydney time. The report includes QR scans, page views, outbound totals, every platform total, Tip clicks and share actions.
 
 ## Delivery integrity
 

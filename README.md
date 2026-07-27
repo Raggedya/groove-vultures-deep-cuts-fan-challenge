@@ -39,10 +39,9 @@ Public URLs use opaque IDs and never expose the artist name:
 - GitHub validation and deployment workflows
 - Automated Friday client report with a one-page branded PDF, auditable Excel workbook and backward-compatible all-edition CSV
 - Automated completion delivery with QR PNG
-- A Laneway catalogue-discovery loop with the 35-artist wheel, Surprise Me, rich verified artist cards, curated related artists, roster-to-card discovery and quiz-result recommendations
-- Conditional Spotify, Bandcamp, merchandise, YouTube, website and Instagram destinations; missing or unverified buttons remain absent
-- A compact generated spiral inside the standalone Laneway wheel control while it spins, changing from `Discover` to `Spin Again` after a result
-- Versioned, privacy-conscious Laneway selection, recommendation, platform-click and session-depth analytics feeding the protected Friday PDF and Excel report
+- Laneway company-wheel winner summaries with a one-shot attention flash and independently omitted, verified Buy Music / Buy Merch destinations
+- A spectacular pale-blue Laneway quiz invitation 10 seconds after the first completed wheel result, plus accessible light-blue heartbeats for verified winner purchase buttons
+- A compact generated spiral inside the standalone Laneway wheel control while it spins, returning to `Spin` after every result
 
 ## Validation
 
