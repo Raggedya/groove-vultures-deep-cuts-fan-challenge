@@ -1,0 +1,23 @@
+{
+  "verifiedAt": "2026-07-27T12:06:25.296Z",
+  "artists": {
+    "El Terricola": {
+      "title": "SOLA y TRISTE — MC Magic, Los Terricolas, Bo Bundy, El Terricola",
+      "youtubeURL": "https://www.youtube.com/watch?v=KpueHaWg8hw",
+      "sourceURL": "https://www.youtube.com/magic602/videos",
+      "playableInEmbed": true,
+      "viewCountAtVerification": 3900000,
+      "selectionBasis": "official-label-channel-popular-sort",
+      "evidence": "The official MC MAGIC / Nastyboy Records YouTube channel's Popular view showed this El Terricola collaboration at 3.9M public views on 27 July 2026."
+    },
+    "MC Magic": {
+      "title": "LOCO — MC Magic x C-Kan",
+      "youtubeURL": "https://www.youtube.com/watch?v=mHYnmGKAcoE",
+      "sourceURL": "https://www.youtube.com/magic602/videos",
+      "playableInEmbed": true,
+      "viewCountAtVerification": 25000000,
+      "selectionBasis": "official-label-channel-popular-sort",
+      "evidence": "The official MC MAGIC / Nastyboy Records YouTube channel's Popular view placed LOCO first at 25M public views on 27 July 2026."
+    }
+  }
+}

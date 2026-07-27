@@ -356,6 +356,41 @@ body{margin:0;min-height:100%;color:var(--ink);background:#000713;overflow-x:hid
 [data-product-type="laneway_company"] .laneway-company-result-screen .laneway-result-contact p{margin:0 0 8px;color:#8f8f8f;font-size:.64rem;line-height:1.4}
 [data-product-type="laneway_company"] .laneway-company-result-screen .laneway-result-contact a{display:inline-flex;min-height:34px;align-items:center;justify-content:center;padding:0 12px;border:1px solid rgba(255,255,255,.2);border-radius:7px;color:#cfcfcf;background:#111;font-size:.58rem;font-weight:800;letter-spacing:.04em;text-decoration:none;text-transform:uppercase}
 [data-product-type="laneway_company"] .laneway-company-result-screen .laneway-result-contact a:hover,[data-product-type="laneway_company"] .laneway-company-result-screen .laneway-result-contact a:focus-visible{outline:none;border-color:#a9e7fa;color:#fff;box-shadow:0 0 12px rgba(169,231,250,.22)}
+[data-label-style="nastyboy-records"] .laneway-wheel-heading h2 span,
+[data-label-style="nastyboy-records"] .laneway-wheel-video-heading span,
+[data-label-style="nastyboy-records"] .laneway-company-quiz-screen .laneway-quiz-category,
+[data-label-style="nastyboy-records"] .laneway-company-quiz-screen .laneway-answer-feedback a,
+[data-label-style="nastyboy-records"] .laneway-company-result-screen .laneway-result-card h1{color:var(--label-accent-secondary)}
+[data-label-style="nastyboy-records"] .laneway-wheel-spin{box-shadow:0 0 0 4px #0a0a0a,0 0 0 6px var(--label-accent),0 0 14px rgba(var(--label-accent-rgb),.7),0 6px 18px #000}
+[data-label-style="nastyboy-records"] .laneway-wheel-spin:hover,[data-label-style="nastyboy-records"] .laneway-wheel-spin:focus-visible{outline-color:var(--label-accent)}
+[data-label-style="nastyboy-records"] .laneway-wheel-spin-spiral{filter:drop-shadow(0 0 4px rgba(var(--label-accent-rgb),.9)) drop-shadow(0 0 9px rgba(var(--label-accent-rgb),.46))}
+[data-label-style="nastyboy-records"] .laneway-wheel-spin-spiral path{stroke:var(--label-accent-secondary)}
+[data-label-style="nastyboy-records"] .laneway-wheel-winner{box-shadow:0 0 9px rgba(var(--label-accent-rgb),.34),0 0 24px rgba(var(--label-accent-rgb),.18)}
+[data-label-style="nastyboy-records"] .laneway-wheel-winner:before{background:conic-gradient(from 0deg,transparent 0 42%,rgba(var(--label-accent-rgb),.12) 47%,var(--label-accent) 49.5%,var(--label-accent-secondary) 50%,var(--label-accent) 50.5%,rgba(var(--label-accent-rgb),.12) 53%,transparent 58% 100%)}
+[data-label-style="nastyboy-records"] .laneway-wheel-purchase-link{border-color:rgba(var(--label-accent-rgb),.8);background:linear-gradient(145deg,#241f12,#0d0b08);box-shadow:0 0 10px rgba(var(--label-accent-rgb),.22),inset 0 1px rgba(255,255,255,.08);animation-name:nastyboyPurchaseHeartbeat}
+[data-label-style="nastyboy-records"] .laneway-wheel-purchase-link:hover,[data-label-style="nastyboy-records"] .laneway-wheel-purchase-link:focus-visible{border-color:var(--label-accent-secondary);box-shadow:0 0 16px rgba(var(--label-accent-rgb),.5),inset 0 1px rgba(255,255,255,.08)}
+[data-label-style="nastyboy-records"] .laneway-wheel-video{border-color:rgba(var(--label-accent-rgb),.52);box-shadow:0 14px 28px rgba(0,0,0,.42),0 0 18px rgba(var(--label-accent-rgb),.12)}
+[data-label-style="nastyboy-records"] .laneway-wheel-video:before,[data-label-style="nastyboy-records"] .laneway-company-quiz-screen .laneway-question-card:before{background:linear-gradient(90deg,transparent,var(--label-accent),transparent);box-shadow:0 0 10px rgba(var(--label-accent-rgb),.8)}
+[data-label-style="nastyboy-records"] .laneway-challenge-card{border-color:rgba(var(--label-accent-rgb),.76);box-shadow:0 0 17px rgba(var(--label-accent-rgb),.14)}
+[data-label-style="nastyboy-records"] .laneway-challenge-card:before{border-color:var(--label-accent);color:var(--label-accent-secondary)}
+[data-label-style="nastyboy-records"] .laneway-challenge-card.is-delayed-reveal{border-color:var(--label-accent-secondary);box-shadow:0 0 14px rgba(var(--label-accent-rgb),.68),0 0 34px rgba(var(--label-accent-rgb),.34),inset 0 1px rgba(255,255,255,.16)}
+[data-label-style="nastyboy-records"] .laneway-challenge-card.is-delayed-reveal:before{border-color:var(--label-accent-secondary);color:var(--label-accent-secondary);text-shadow:0 0 9px rgba(var(--label-accent-rgb),.9)}
+[data-label-style="nastyboy-records"] .laneway-challenge-card.is-delayed-reveal:after{background:linear-gradient(108deg,transparent 39%,rgba(var(--label-accent-rgb),.12) 44%,rgba(255,255,255,.96) 50%,rgba(var(--label-accent-rgb),.16) 56%,transparent 61%)}
+[data-label-style="nastyboy-records"] .laneway-company-artist-link.attention{border-color:var(--label-accent-secondary);background:#4a3b13;box-shadow:0 0 13px rgba(var(--label-accent-rgb),.85),0 0 26px rgba(var(--label-accent-rgb),.45),inset 0 0 10px rgba(var(--label-accent-rgb),.14)}
+[data-label-style="nastyboy-records"] .laneway-company-quiz-screen,[data-label-style="nastyboy-records"] .laneway-company-result-screen{background:radial-gradient(circle at 50% 24%,rgba(var(--label-accent-rgb),.09),transparent 40%)}
+[data-label-style="nastyboy-records"] .laneway-company-quiz-screen .laneway-home-button,
+[data-label-style="nastyboy-records"] .laneway-company-quiz-screen .laneway-question-card,
+[data-label-style="nastyboy-records"] .laneway-company-quiz-screen .laneway-answer-feedback,
+[data-label-style="nastyboy-records"] .laneway-company-result-screen .laneway-result-card{border-color:rgba(var(--label-accent-rgb),.48)}
+[data-label-style="nastyboy-records"] .laneway-company-quiz-screen .laneway-home-button:hover,[data-label-style="nastyboy-records"] .laneway-company-quiz-screen .laneway-home-button:focus-visible,
+[data-label-style="nastyboy-records"] .laneway-company-quiz-screen .laneway-answer-button:hover,[data-label-style="nastyboy-records"] .laneway-company-quiz-screen .laneway-answer-button:focus-visible{border-color:var(--label-accent);box-shadow:0 0 14px rgba(var(--label-accent-rgb),.28),inset 3px 0 var(--label-accent)}
+[data-label-style="nastyboy-records"] .laneway-company-quiz-screen .laneway-answer-button.selected-choice{border-color:var(--label-accent);background:#2b2412;box-shadow:inset 4px 0 var(--label-accent)}
+[data-label-style="nastyboy-records"] .laneway-company-quiz-screen .laneway-answer-feedback{border-left-color:var(--label-accent)}
+[data-label-style="nastyboy-records"] .laneway-company-quiz-screen .laneway-next-button,
+[data-label-style="nastyboy-records"] .laneway-company-result-screen .laneway-result-primary{border-color:var(--label-accent);color:#171004;background:linear-gradient(145deg,var(--label-accent-secondary),var(--label-accent));box-shadow:0 0 15px rgba(var(--label-accent-rgb),.3)}
+[data-label-style="nastyboy-records"] .laneway-company-result-screen .laneway-result-card h2{border-color:var(--label-accent);background:linear-gradient(145deg,#34290d,#171306);box-shadow:0 0 15px rgba(var(--label-accent-rgb),.22)}
+[data-label-style="nastyboy-records"] .laneway-company-result-screen .laneway-result-contact a:hover,[data-label-style="nastyboy-records"] .laneway-company-result-screen .laneway-result-contact a:focus-visible{border-color:var(--label-accent);box-shadow:0 0 12px rgba(var(--label-accent-rgb),.25)}
+@keyframes nastyboyPurchaseHeartbeat{0%,100%{transform:scale(1);box-shadow:0 0 9px rgba(var(--label-accent-rgb),.2),inset 0 1px rgba(255,255,255,.08)}12%{transform:scale(1.045);box-shadow:0 0 12px var(--label-accent-secondary),0 0 25px rgba(var(--label-accent-rgb),.85),0 0 42px rgba(var(--label-accent-rgb),.45),inset 0 0 11px rgba(var(--label-accent-rgb),.2)}24%,48%{transform:scale(1)}36%{transform:scale(1.025);box-shadow:0 0 10px var(--label-accent-secondary),0 0 20px rgba(var(--label-accent-rgb),.68),0 0 34px rgba(var(--label-accent-rgb),.32),inset 0 0 8px rgba(var(--label-accent-rgb),.16)}}
 @keyframes lanewayQuizCardIn{from{opacity:.35;transform:translateY(8px)}to{opacity:1;transform:none}}
 @keyframes lanewayQuizFeedbackIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
 .error-screen{margin-top:25vh;padding:28px;border:1px solid #345;border-radius:18px;background:#07101f;text-align:center}

@@ -1,6 +1,6 @@
 "use strict";
 
-const VERSION="20260727-laneway-winner-video-1";
+const VERSION="20260727-indie-label-3";
 const LANEWAY_REPORTING_VERSION="laneway-weekly-v1";
 const $=id=>document.getElementById(id);
 const els={page:$("discoveryPage"),error:$("errorScreen"),errorMessage:$("errorMessage"),bandName:$("bandName"),bio:$("artistBio"),artwork:$("heroArtwork"),brandLogo:$("editionBrandLogo"),waveform:$("sonicSignature"),features:$("featureList"),video:$("featuredVideo"),videoLabel:$("featuredVideoLabel"),videoTitle:$("featuredVideoTitle"),videoFrame:$("featuredVideoFrame"),links:$("platformLinks"),share:$("shareButton"),status:$("shareStatus"),description:$("pageDescription"),poweredBy:$("poweredByLabel"),copyright:$("coverCopyright"),lanewayHome:$("lanewayHomeLink"),lanewayRecommended:$("lanewayRecommendedLink"),companyDirectory:$("lanewayCompanyDirectory"),companyDirectoryCount:$("lanewayCompanyDirectoryCount"),companySearch:$("lanewayCompanySearch"),companyArtistList:$("lanewayCompanyArtistList"),companyEmpty:$("lanewayCompanyEmpty"),companyWheel:$("lanewayArtistWheel"),wheelCanvas:$("lanewayWheelCanvas"),wheelSpin:$("lanewayWheelSpin"),wheelStatus:$("lanewayWheelStatus"),wheelWinner:$("lanewayWheelWinner"),wheelImpact:$("lanewayWheelImpact"),wheelPurchaseLinks:$("lanewayWheelPurchaseLinks"),wheelBuyMusic:$("lanewayWheelBuyMusic"),wheelBuyMerch:$("lanewayWheelBuyMerch"),wheelVideo:$("lanewayWheelVideo"),wheelVideoTitle:$("lanewayWheelVideoTitle"),wheelVideoFrame:$("lanewayWheelVideoFrame")};
@@ -85,7 +85,8 @@ async function applyConfig(){
   const name=config.bandName||editionEntry.name;
   const cars=isCarEdition(),clubs=isClubEdition(),schools=isSchoolEdition(),laneway=isLanewayEdition(),lanewayCompany=isLanewayCompanyEdition(),indieWheel=isIndieWheelEdition(),wheelEdition=lanewayCompany||indieWheel;
   document.documentElement.dataset.editionType=indieWheel?"laneway_company":config.editionType||"music";
-  document.documentElement.dataset.productType=config.editionType||"music";
+  document.documentElement.dataset.productType=usesFinalIndieLabelModel()?"laneway_company":config.editionType||"music";
+  if(usesFinalIndieLabelModel())document.documentElement.dataset.labelStyle=config.slug||"indie-label";
   document.title=`${name} | ${wheelEdition?"Indie Wheel":laneway?"Laneway":schools?"School Discovery":clubs?"Deep Cuts Clubs":cars?"Deep Cuts Cars":"Deep Cuts"}`;
   const bio=config.discovery?.bio||config.description||`Discover ${name}.`;
   els.description.content=wheelEdition?`Spin to discover a verified ${name} artist on ${wheelSettings().destinationLabel}, search the catalogue and take the 10-question artist quiz.`:laneway?`Discover ${name} through Laneway's positive five-question band quiz and verified official links.`:schools?`Discover ${name} through verified official school information and video.`:clubs?`Verified club, membership, events, bowls and community links for ${name}.`:cars?`Verified history, specifications, buying, ownership and restoration links for ${name}.`:`Official music, video and social links for ${name}.`;
@@ -99,6 +100,11 @@ async function applyConfig(){
   els.videoLabel.textContent=laneway||wheelEdition?"Featured video":schools?"Discover our school":clubs?"Featured club video":cars?"Featured automotive video":"Featured video";
   buildFeatures(laneway?config.laneway?.heroLabels:schools?config.school?.heroLabels:clubs?config.club?.heroLabels:cars?config.automotive?.heroLabels:["Listen","Watch","Follow","Buy Stuff"]);
   document.documentElement.style.setProperty("--accent",config.theme?.accent||"#2f80ff");
+  if(usesFinalIndieLabelModel()){
+    document.documentElement.style.setProperty("--label-accent",config.theme?.accent||"#a9e7fa");
+    document.documentElement.style.setProperty("--label-accent-secondary",config.theme?.accentSecondary||"#d9f7ff");
+    document.documentElement.style.setProperty("--label-accent-rgb",config.theme?.accentRgb||"169,231,250");
+  }
   if(schools){document.documentElement.style.setProperty("--school-secondary",config.theme?.accentSecondary||"#00C4B4");document.documentElement.style.setProperty("--school-navy",config.theme?.navy||"#0A2342");document.documentElement.style.setProperty("--school-surface",config.theme?.surface||"#FFFFFF");document.documentElement.style.setProperty("--school-content",config.theme?.contentBackground||"#F8FAFC")}
   buildWaveform(name);
   buildFeaturedVideo();
@@ -118,6 +124,8 @@ function isLanewayEdition(){return config.editionType==="laneway"}
 function isLanewayCompanyEdition(){return config.editionType==="laneway_company"}
 function isIndieWheelEdition(){return config.editionType==="indie_wheel"}
 function isWheelEdition(){return isLanewayCompanyEdition()||isIndieWheelEdition()}
+function usesFinalIndieLabelModel(){return isIndieWheelEdition()&&config.indieWheel?.modelVersion==="indie_label/1"}
+function usesEnhancedIndieLabelExperience(){return isLanewayCompanyEdition()||usesFinalIndieLabelModel()}
 function wheelSettings(){
   if(isIndieWheelEdition())return config.indieWheel;
   return{
@@ -137,7 +145,7 @@ function configureLanewayUtilityLinks(){
   const homeURL=validHttps(settings?.recordCompanyHomeURL);
   const recommendedURL=validHttps(settings?.recommendedArtistsURL);
   if(!homeURL||!recommendedURL)throw new Error("Record-company navigation is incomplete.");
-  els.lanewayHome.textContent=isLanewayCompanyEdition()?"Contact Us":"Home";
+  els.lanewayHome.textContent=usesEnhancedIndieLabelExperience()?"Contact Us":"Home";
   for(const [element,url,destination] of [[els.lanewayHome,homeURL,"record_company_home"],[els.lanewayRecommended,recommendedURL,"recommended_artists"]]){
     element.href=url;element.hidden=false;
     element.setAttribute("aria-label",`${element.textContent}: ${config.bandName} (opens in a new tab)`);
@@ -221,7 +229,7 @@ function buildLinks(){
 function createLanewayCompanyChallengeCard(){
   const button=document.createElement("button");
   button.id="lanewayCompanyChallengeButton";button.type="button";button.className="laneway-challenge-card wide";button.disabled=true;
-  if(isLanewayCompanyEdition())button.hidden=true;
+  if(usesEnhancedIndieLabelExperience())button.hidden=true;
   const copy=document.createElement("span");copy.className="link-copy";
   const challenge=wheelChallenge();
   const title=document.createElement("strong");title.textContent=challenge?.title||`How Well Do You Know ${config.bandName}?`;
@@ -234,7 +242,8 @@ function createLanewayCompanyChallengeCard(){
 function createLanewayCompanyChallengeRevealController(isWheelIdle){
   const button=$("lanewayCompanyChallengeButton");
   if(!button)return null;
-  const configured=Number(config.lanewayCompanyChallenge?.invitationRevealAfterFirstResultMs??config.lanewayCompanyChallenge?.invitationRevealDelayMs);
+  const challenge=wheelChallenge();
+  const configured=Number(challenge?.invitationRevealAfterFirstResultMs??challenge?.invitationRevealDelayMs);
   const delay=Math.min(15000,Math.max(5000,Number.isFinite(configured)?configured:10000));
   let armed=false,due=false,presented=false,animated=false,observer=null;
   const animate=()=>{
@@ -283,8 +292,8 @@ async function buildLanewayCompanyDirectory(){
   const settings=wheelSettings(),destinationKey=settings.destinationKey,destinationLabel=settings.destinationLabel;
   const [roster,impactLines,videoData]=await Promise.all([
     fetchJson(`/${settings.rosterFile}?v=${VERSION}`),
-    isLanewayCompanyEdition()?fetchJson(`/${settings.artistImpactFile}?v=${VERSION}`):Promise.resolve({}),
-    isLanewayCompanyEdition()&&settings.artistVideoFile?fetchJson(`/${settings.artistVideoFile}?v=${VERSION}`):Promise.resolve({artists:{}})
+    usesEnhancedIndieLabelExperience()&&settings.artistImpactFile?fetchJson(`/${settings.artistImpactFile}?v=${VERSION}`):Promise.resolve({}),
+    usesEnhancedIndieLabelExperience()&&settings.artistVideoFile?fetchJson(`/${settings.artistVideoFile}?v=${VERSION}`):Promise.resolve({artists:{}})
   ]);
   if(!Array.isArray(roster.artists)||!roster.artists.length)throw new Error(`${config.bandName} artist directory is empty.`);
   const artists=roster.artists
@@ -295,7 +304,7 @@ async function buildLanewayCompanyDirectory(){
   document.getElementById("indieWheelCollectionLabel").textContent=`${config.bandName} artist collection`;
   document.getElementById("indieWheelDirectoryLabel").textContent=`${config.bandName} artist collection`;
   document.getElementById("lanewayCompanySearch").placeholder=`Search ${config.bandName} artists`;
-  if(isLanewayCompanyEdition()){
+  if(usesEnhancedIndieLabelExperience()){
     const title=document.getElementById("lanewayArtistWheelTitle");
     title.replaceChildren("Spin to discover",document.createElement("br"));
     const accent=document.createElement("span");accent.textContent="an artist";title.append(accent);
@@ -325,7 +334,7 @@ function buildLanewayArtistWheel(artists){
   if(!context)throw new Error("Artist wheel canvas is unavailable.");
   const segmentAngle=Math.PI*2/artists.length;
   let rotation=0,spinning=false,frame=0;
-  const challengeReveal=isLanewayCompanyEdition()?createLanewayCompanyChallengeRevealController(()=>!spinning):null;
+  const challengeReveal=usesEnhancedIndieLabelExperience()?createLanewayCompanyChallengeRevealController(()=>!spinning):null;
   const settings=wheelSettings(),destinationKey=settings.destinationKey,destinationLabel=settings.destinationLabel;
   const colours=settings.wheelColours||["#f4f4f4","#3a3a3a","#d8d8d8","#202020","#bcbcbc","#505050"];
   const draw=()=>{
@@ -376,7 +385,7 @@ function buildLanewayArtistWheel(artists){
   };
   const showWinnerVideo=winner=>{
     const video=winner.featuredVideo,videoId=youtubeVideoId(video?.youtubeURL);
-    if(!isLanewayCompanyEdition()||!videoId||video?.playableInEmbed!==true){hideWinnerVideo();return}
+    if(!usesEnhancedIndieLabelExperience()||!videoId||video?.playableInEmbed!==true){hideWinnerVideo();return}
     els.wheelVideoTitle.textContent=video.title;
     els.wheelVideoFrame.title=`${video.title} — ${winner.name}`;
     els.wheelVideoFrame.src=`https://www.youtube-nocookie.com/embed/${videoId}?rel=0&playsinline=1`;
@@ -388,7 +397,7 @@ function buildLanewayArtistWheel(artists){
   };
   const configurePurchaseLink=(link,label,url,artistName,destinationPlatform)=>{
     const destination=validHttps(url);
-    if(!isLanewayCompanyEdition()||!destination){link.hidden=true;return false}
+    if(!usesEnhancedIndieLabelExperience()||!destination){link.hidden=true;return false}
     link.href=destination;link.textContent=label;link.hidden=false;
     link.dataset.artistName=artistName;link.dataset.destinationPlatform=destinationPlatform;
     link.setAttribute("aria-label",`${label} from ${artistName} (opens in a new tab)`);
@@ -396,7 +405,7 @@ function buildLanewayArtistWheel(artists){
   };
   const finish=winner=>{
     spinning=false;els.wheelSpin.disabled=false;
-    if(isLanewayCompanyEdition())setLanewayCompanyWheelSpinState(false);else els.wheelSpin.textContent="Spin again";
+    if(usesEnhancedIndieLabelExperience())setLanewayCompanyWheelSpinState(false);else els.wheelSpin.textContent="Spin again";
     els.wheelStatus.textContent=`Winner: ${winner.name}`;
     els.wheelWinner.href=winner[destinationKey];els.wheelWinner.textContent=`Listen to ${winner.name} on ${destinationLabel}`;
     els.wheelWinner.setAttribute("aria-label",`Listen to ${winner.name} on ${destinationLabel} (opens in a new tab)`);
@@ -421,7 +430,7 @@ function buildLanewayArtistWheel(artists){
     if(spinning)return;
     analytics.track("wheel_spin_started",{artist_count:artists.length,edition_type:config.editionType,tracking_version:LANEWAY_REPORTING_VERSION},{dedupeKey:"wheel-spin",dedupeMs:500});
     spinning=true;els.wheelSpin.disabled=true;
-    if(isLanewayCompanyEdition())setLanewayCompanyWheelSpinState(true);else els.wheelSpin.textContent="Spinning";
+    if(usesEnhancedIndieLabelExperience())setLanewayCompanyWheelSpinState(true);else els.wheelSpin.textContent="Spinning";
     els.wheelWinner.hidden=true;els.wheelImpact.hidden=true;els.wheelImpact.textContent="";els.wheelStatus.textContent="The artist wheel is spinning…";
     els.wheelImpact.classList.remove("is-attention-flash");hidePurchaseLinks();hideWinnerVideo();
     const selected=randomIndex(),current=rotation%(Math.PI*2);
@@ -448,7 +457,7 @@ function buildLanewayArtistWheel(artists){
     analytics.track("artist_destination_clicked",{artist_name:link.dataset.artistName||"",interaction_source:"wheel_winner",destination_platform:link.dataset.destinationPlatform||"",destination_url_origin:new URL(link.href).origin,edition_type:config.editionType,tracking_version:LANEWAY_REPORTING_VERSION},{dedupeKey:`wheel-purchase:${link.dataset.artistName||""}:${link.dataset.destinationPlatform||""}`,dedupeMs:500});
   },{passive:true});
   hidePurchaseLinks();hideWinnerVideo();
-  draw();els.companyWheel.hidden=false;
+  els.companyWheel.hidden=false;draw();
   if(settings.artistWheel?.replacesFeaturedVideo){
     els.video.hidden=true;els.videoFrame.removeAttribute("src");
   }

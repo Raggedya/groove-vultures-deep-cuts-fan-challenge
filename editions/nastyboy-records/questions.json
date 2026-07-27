@@ -1,0 +1,112 @@
+[
+  {
+    "id": "nastyboy-founder",
+    "active": true,
+    "category": "Label Origins",
+    "question": "Who founded Nastyboy Records to release music made in a home studio?",
+    "options": ["MC Magic", "Jay Roxxx", "El Terricola", "NB Ridaz"],
+    "correctAnswer": "MC Magic",
+    "explanation": "On the official About page, MC Magic personally explains that he founded the company to release music he was producing in his home studio.",
+    "sourceName": "Nastyboy Records — Official About",
+    "sourceURL": "https://nastyboyrecords.com/pages/about-us"
+  },
+  {
+    "id": "nastyboy-founded-year",
+    "active": true,
+    "category": "Label Origins",
+    "question": "According to the official label site, in which year was Nastyboy Records founded?",
+    "options": ["1985", "1990", "1995", "2003"],
+    "correctAnswer": "1990",
+    "explanation": "The official Nastyboy Records site dates the company's founding to 1990, before its first full CD arrived in the middle of the decade.",
+    "sourceName": "Nastyboy Records — Official About",
+    "sourceURL": "https://nastyboyrecords.com/pages/about-us"
+  },
+  {
+    "id": "nastyboy-first-full-cd",
+    "active": true,
+    "category": "Catalogue History",
+    "question": "What was the first full CD named in Nastyboy Records' official origin story?",
+    "options": ["Don't Worry", "Invasion", "PRINCESA", "Tha Second Coming"],
+    "correctAnswer": "Don't Worry",
+    "explanation": "The label's official history identifies MC Magic's Don't Worry as its first full CD, released in 1995 and featuring Lost In Love.",
+    "sourceName": "Nastyboy Records — Official About",
+    "sourceURL": "https://nastyboyrecords.com/pages/about-us"
+  },
+  {
+    "id": "nastyboy-dont-worry-track",
+    "active": true,
+    "category": "Track List",
+    "question": "Which enduring song appears on the official Don't Worry by MC Magic CD track list?",
+    "options": ["Lost In Love", "Mi Amor", "Where You Are", "Porque Yo Te Amo"],
+    "correctAnswer": "Lost In Love",
+    "explanation": "The official store's Don't Worry CD page places Lost In Love fourth in the album's 13-track running order.",
+    "sourceName": "Nastyboy Records — Don't Worry CD",
+    "sourceURL": "https://nastyboyrecords.com/products/dont-worry-by-mc-magic-cd"
+  },
+  {
+    "id": "nastyboy-mc-magic-album",
+    "active": true,
+    "category": "Album Match",
+    "question": "Which of these is an MC Magic album in the verified Spotify catalogue?",
+    "options": ["Million Dollar Mexican", "NB Ridaz.com", "PRINCESA", "Tha Second Coming"],
+    "correctAnswer": "Million Dollar Mexican",
+    "explanation": "Spotify's verified MC Magic catalogue lists Million Dollar Mexican alongside albums including DON'T WORRY, The Rewire and God Bless Chicanos.",
+    "sourceName": "Spotify — MC Magic: Million Dollar Mexican",
+    "sourceURL": "https://open.spotify.com/album/3ClBdEkgkSUHdS0gtuX1oi"
+  },
+  {
+    "id": "nastyboy-nb-ridaz-album",
+    "active": true,
+    "category": "Album Match",
+    "question": "Invasion is an album by which Nastyboy Records group?",
+    "options": ["NB Ridaz", "Nastyboy Klick", "Jay Roxxx", "El Terricola"],
+    "correctAnswer": "NB Ridaz",
+    "explanation": "The verified Spotify album page credits Invasion to NB Ridaz, one of the five acts named in the label's current official artist line-up.",
+    "sourceName": "Spotify — NB Ridaz: Invasion",
+    "sourceURL": "https://open.spotify.com/album/03F4EMbZORD0sdsFFfFAp2"
+  },
+  {
+    "id": "nastyboy-klick-album",
+    "active": true,
+    "category": "Album Match",
+    "question": "Tha Second Coming belongs to which catalogue identity?",
+    "options": ["Nastyboy Klick", "NB Ridaz", "MC Magic", "Jay Roxxx"],
+    "correctAnswer": "Nastyboy Klick",
+    "explanation": "The verified Spotify catalogue attributes Tha Second Coming to Nastyboy Klick, the NBK name preserved in Nastyboy Records' official line-up.",
+    "sourceName": "Spotify — Nastyboy Klick: Tha Second Coming",
+    "sourceURL": "https://open.spotify.com/album/7g1PiT3vAj51L3r90kwHxc"
+  },
+  {
+    "id": "nastyboy-princesa",
+    "active": true,
+    "category": "Album Match",
+    "question": "Which artist released the 2021 album PRINCESA?",
+    "options": ["Jay Roxxx", "MC Magic", "El Terricola", "NB Ridaz"],
+    "correctAnswer": "Jay Roxxx",
+    "explanation": "The verified Spotify album page identifies PRINCESA as Jay Roxxx's 2021 album and credits the release to Nastyboy Records.",
+    "sourceName": "Spotify — Jay Roxxx: PRINCESA",
+    "sourceURL": "https://open.spotify.com/album/1V8HjqrVYf4UrdNMRmxb5r"
+  },
+  {
+    "id": "nastyboy-terricola-single",
+    "active": true,
+    "category": "Single Match",
+    "question": "Porque Yo Te Amo is a 2022 Nastyboy Records single by which artist?",
+    "options": ["El Terricola", "Jay Roxxx", "MC Magic", "Nastyboy Klick"],
+    "correctAnswer": "El Terricola",
+    "explanation": "Apple Music lists Porque Yo Te Amo as a 2022 El Terricola single and identifies Nastyboy Records in the release copyright.",
+    "sourceName": "Apple Music — El Terricola: Porque Yo Te Amo",
+    "sourceURL": "https://music.apple.com/mx/album/porque-yo-te-amo-single/1603937478"
+  },
+  {
+    "id": "nastyboy-only-kiss",
+    "active": true,
+    "category": "Catalogue Connection",
+    "question": "Which group appears on The Only Kiss in the official track list for MC Magic's The Rewire?",
+    "options": ["NB Ridaz", "Nastyboy Klick", "Jay Roxxx", "Los Terricolas"],
+    "correctAnswer": "NB Ridaz",
+    "explanation": "The official Nastyboy Records product page lists The Only Kiss with NB Ridaz and D. Salas as track eight on The Rewire.",
+    "sourceName": "Nastyboy Records — The Rewire CD",
+    "sourceURL": "https://nastyboyrecords.com/products/the-rewire-mc-magic-cd"
+  }
+]

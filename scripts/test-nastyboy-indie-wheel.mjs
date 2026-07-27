@@ -1,0 +1,43 @@
+import assert from "node:assert/strict";
+import fs from "node:fs/promises";
+
+const config=JSON.parse(await fs.readFile("editions/nastyboy-records/edition.json","utf8"));
+const roster=JSON.parse(await fs.readFile(config.indieWheel.rosterFile,"utf8"));
+const impact=JSON.parse(await fs.readFile(config.indieWheel.artistImpactFile,"utf8"));
+const videos=JSON.parse(await fs.readFile(config.indieWheel.artistVideoFile,"utf8"));
+const questions=JSON.parse(await fs.readFile(config.indieWheelChallenge.questionFile,"utf8"));
+const platform=JSON.parse(await fs.readFile("platform.json","utf8"));
+const app=await fs.readFile("js/app.js","utf8");
+const quiz=await fs.readFile("js/laneway-company-quiz.js","utf8");
+const css=await fs.readFile("styles.css","utf8");
+
+assert.equal(config.editionType,"indie_wheel");
+assert.equal(config.indieWheel.modelVersion,"indie_label/1");
+assert.equal(config.analytics.editionId,"dc_42e5242568");
+assert.equal(config.indieWheel.destinationKey,"spotifyURL");
+assert.equal(config.indieWheel.destinationLabel,"Spotify");
+assert.equal(config.theme.accent,"#D6AA2D");
+assert.equal(config.indieWheelChallenge.invitationRevealAfterFirstResultMs,10000);
+assert.equal(roster.artists.length,5);
+assert.equal(roster.pendingArtistCount,0);
+assert.ok(roster.artists.every(artist=>/^https:\/\/open\.spotify\.com\/artist\/[A-Za-z0-9]+$/.test(artist.spotifyURL)));
+assert.ok(roster.artists.every(artist=>artist.sourceURL==="https://nastyboyrecords.com/pages/about-us"));
+assert.equal(roster.omissions.length,1);
+assert.equal(roster.omissions[0].name,"Antonio Cardenas");
+assert.deepEqual(Object.keys(impact).sort(),roster.artists.map(artist=>artist.name).sort());
+assert.equal(Object.keys(videos.artists).length,2);
+assert.ok(Object.values(videos.artists).every(video=>video.playableInEmbed===true));
+assert.equal(questions.length,10);
+assert.ok(questions.every(question=>question.options.length===4&&question.options.includes(question.correctAnswer)));
+assert.ok(platform.editions.some(edition=>edition.slug==="nastyboy-records"&&edition.editionId==="dc_42e5242568"&&edition.active===true));
+assert.match(app,/function usesFinalIndieLabelModel/);
+assert.match(app,/function usesEnhancedIndieLabelExperience/);
+assert.match(app,/usesFinalIndieLabelModel\(\)\?"laneway_company"/);
+assert.match(app,/settings\.artistImpactFile/);
+assert.match(app,/settings\.artistVideoFile/);
+assert.match(quiz,/settings\.modelVersion==="indie_label\/1"/);
+assert.match(css,/\[data-label-style="nastyboy-records"\] \.laneway-wheel-winner/);
+assert.match(css,/@keyframes nastyboyPurchaseHeartbeat/);
+await fs.access(config.indieWheel.logoArtwork);
+
+console.log("Nastyboy Records Indie Wheel tests passed: isolated final model, five verified Spotify artists, gold branding, optional commerce/video and sourced 10-question quiz.");

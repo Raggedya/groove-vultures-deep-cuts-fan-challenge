@@ -1,0 +1,79 @@
+{
+  "generatedAt": "2026-07-27T12:06:25.296Z",
+  "sourceURL": "https://nastyboyrecords.com/pages/about-us",
+  "sourceArtistCount": 5,
+  "verifiedArtistCount": 5,
+  "pendingArtistCount": 0,
+  "artists": [
+    {
+      "name": "El Terricola",
+      "sourceURL": "https://nastyboyrecords.com/pages/about-us",
+      "spotifyURL": "https://open.spotify.com/artist/3r2h4x93mTpzcKROwzIyNx",
+      "websiteURL": "https://linktr.ee/ElTerricola",
+      "verification": {
+        "association": "Named in the current official Nastyboy Records artist line-up.",
+        "spotify": "Exact El Terricola Official Spotify artist identity, cross-checked against the label-linked official artist website and the Nastyboy Records release Porque Yo Te Amo.",
+        "checkedAt": "2026-07-27T12:06:25.296Z"
+      }
+    },
+    {
+      "name": "Jay Roxxx",
+      "sourceURL": "https://nastyboyrecords.com/pages/about-us",
+      "spotifyURL": "https://open.spotify.com/artist/7jIEDP5VQzhBrWsEK3nmWo",
+      "websiteURL": "https://jayroxxx.com/",
+      "buyMusicURL": "https://nastyboyrecords.com/products/jay-roxxx-cd-with-signed-poster-fan-pack",
+      "purchaseVerification": {
+        "buyMusic": "The official Nastyboy Records store lists the available Jay Roxxx CD and signed poster fan pack as a direct artist product.",
+        "checkedAt": "2026-07-27T12:06:25.296Z"
+      },
+      "verification": {
+        "association": "Named in the current official Nastyboy Records artist line-up and linked from the label website.",
+        "spotify": "Exact Jay Roxxx Spotify artist identity, cross-checked against the verified PRINCESA album credited to Nastyboy Records.",
+        "checkedAt": "2026-07-27T12:06:25.296Z"
+      }
+    },
+    {
+      "name": "MC Magic",
+      "sourceURL": "https://nastyboyrecords.com/pages/about-us",
+      "spotifyURL": "https://open.spotify.com/artist/3cuVSUrq0yoSSP7gpvI6q1",
+      "buyMusicURL": "https://nastyboyrecords.com/products/dont-worry-by-mc-magic-cd",
+      "buyMerchURL": "https://nastyboyrecords.com/products/mc-magic-gold-leaf-t-shirt",
+      "purchaseVerification": {
+        "buyMusic": "The official Nastyboy Records store lists the available Don't Worry by MC Magic CD as a direct music product.",
+        "buyMerch": "The official Nastyboy Records navigation links directly to the available MC Magic Gold Leaf T-shirt product.",
+        "checkedAt": "2026-07-27T12:06:25.296Z"
+      },
+      "verification": {
+        "association": "The official label About page identifies MC Magic as Nastyboy Records' founder and a current artist.",
+        "spotify": "Exact MC Magic Spotify artist identity, cross-checked against the verified DON'T WORRY, Magic City and God Bless Chicanos catalogue.",
+        "checkedAt": "2026-07-27T12:06:25.296Z"
+      }
+    },
+    {
+      "name": "Nastyboy Klick",
+      "sourceURL": "https://nastyboyrecords.com/pages/about-us",
+      "spotifyURL": "https://open.spotify.com/artist/2kZ6dVdEkEs8YjlLy2dsky",
+      "verification": {
+        "association": "The current official label line-up names NBK, the Nastyboy Klick catalogue identity.",
+        "spotify": "Exact Nastyboy Klick Spotify artist identity, cross-checked against the verified album Tha Second Coming.",
+        "checkedAt": "2026-07-27T12:06:25.296Z"
+      }
+    },
+    {
+      "name": "NB Ridaz",
+      "sourceURL": "https://nastyboyrecords.com/pages/about-us",
+      "spotifyURL": "https://open.spotify.com/artist/2KNDYRKdCzuKzCCUyjAcF4",
+      "verification": {
+        "association": "Named in the current official Nastyboy Records artist line-up.",
+        "spotify": "Exact NB Ridaz Spotify artist identity, cross-checked against the verified albums Invasion and NB Ridaz.com.",
+        "checkedAt": "2026-07-27T12:06:25.296Z"
+      }
+    }
+  ],
+  "omissions": [
+    {
+      "name": "Antonio Cardenas",
+      "reason": "The official homepage title and catalogue name Antonio Cardenas, but no unambiguous direct Spotify artist profile could be identity-verified. The artist is omitted rather than guessed."
+    }
+  ]
+}

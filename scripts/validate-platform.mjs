@@ -93,9 +93,11 @@ for(const edition of platform.editions){
       await fs.access(config.lanewayCompany.logoArtwork);
     }else if(config.editionType==='indie_wheel'){
       if(config.characterArtwork)errors.push(`${edition.config} Indie Wheel must never configure character artwork.`);
-      if(!config.indieWheel?.logoArtwork||!config.indieWheel?.rosterFile||config.indieWheel?.destinationKey!=='bandcampURL'||config.indieWheel?.destinationLabel!=='Bandcamp')errors.push(`${edition.config} requires isolated Indie Wheel branding, roster and Bandcamp destination configuration.`);
+      const destinationPairs={bandcampURL:'Bandcamp',spotifyURL:'Spotify'};
+      if(!config.indieWheel?.logoArtwork||!config.indieWheel?.rosterFile||destinationPairs[config.indieWheel?.destinationKey]!==config.indieWheel?.destinationLabel)errors.push(`${edition.config} requires isolated Indie Wheel branding, roster and a supported verified destination configuration.`);
       if(config.indieWheelChallenge?.numberOfQuestions!==10||!config.indieWheelChallenge?.questionFile)errors.push(`${edition.config} requires an isolated 10-question Indie Wheel challenge.`);
       else{
+        if(config.indieWheel?.modelVersion==='indie_label/1'&&config.indieWheelChallenge.invitationRevealAfterFirstResultMs!==10000)errors.push(`${edition.config} must preserve the 10-second final Indie Label quiz invitation reveal after the first wheel result.`);
         const questionPath=String(config.indieWheelChallenge.questionFile).replace(/^\//,'');
         const questions=JSON.parse(await fs.readFile(questionPath,'utf8'));
         validateIndieWheelQuestions(questions,questionPath,errors);
@@ -104,7 +106,20 @@ for(const edition of platform.editions){
       }
       const rosterPath=String(config.indieWheel?.rosterFile||'').replace(/^\//,'');
       const roster=JSON.parse(await fs.readFile(rosterPath,'utf8'));
-      validateIndieWheelRoster(roster,rosterPath,errors);
+      validateIndieWheelRoster(roster,rosterPath,errors,config.indieWheel);
+      if(config.indieWheel?.modelVersion==='indie_label/1'){
+        if(!config.indieWheel.artistImpactFile||!config.indieWheel.artistVideoFile||!/^https:\/\//.test(config.indieWheel.servicesURL||''))errors.push(`${edition.config} requires final Indie Label impact, video and contact configuration.`);
+        else{
+          const impactPath=String(config.indieWheel.artistImpactFile).replace(/^\//,'');
+          const impactLines=JSON.parse(await fs.readFile(impactPath,'utf8'));
+          validateLanewayCompanyImpact(impactLines,roster,impactPath,errors);
+          const videoPath=String(config.indieWheel.artistVideoFile).replace(/^\//,'');
+          const videos=JSON.parse(await fs.readFile(videoPath,'utf8'));
+          validateIndieLabelVideos(videos,roster,videoPath,errors);
+          const research=JSON.parse(await fs.readFile(edition.config.replace(/edition\.json$/,'research.json'),'utf8'));
+          for(const video of Object.values(videos.artists||{}))if(!research.sources.some(source=>source.identityVerified===true&&normalized(source.url)===normalized(video.youtubeURL)))errors.push(`${videoPath} video ${video.youtubeURL||'unknown'} lacks matching verified source evidence.`);
+        }
+      }
       await fs.access(config.indieWheel.logoArtwork);
     }else await fs.access(config.characterArtwork);
     for(const[key,value]of Object.entries(config.links||{}))if(value&&(!/^https:\/\//.test(value)||authenticationWall(value)))errors.push(`${edition.config} links.${key} must be a direct HTTPS destination, never an authentication URL.`);
@@ -222,16 +237,46 @@ function validateIndieWheelQuestions(questions,file,errors){
   }
 }
 
-function validateIndieWheelRoster(roster,file,errors){
+function validateIndieWheelRoster(roster,file,errors,settings){
   if(!Array.isArray(roster.artists)||roster.artists.length<1){errors.push(`${file} requires at least one verified Indie Wheel artist.`);return}
   if(roster.pendingArtistCount!==0)errors.push(`${file} still has pending artists.`);
-  const names=new Set(),bandcamp=new Set();
+  const names=new Set(),destinations=new Set(),sourceURL=normalized(settings?.rosterSourceURL||roster.sourceURL),destinationKey=settings?.destinationKey;
   for(const artist of roster.artists){
-    const name=String(artist.name||'').trim(),bandcampURL=normalized(artist.bandcampURL);
-    if(!name||!/^https:\/\/[^/]+\.bandcamp\.com$/i.test(bandcampURL))errors.push(`${file} contains an invalid direct Bandcamp artist destination for ${name||'unknown'}.`);
-    if(normalized(artist.sourceURL)!=='https://cooldeathrecords.bandcamp.com/artists')errors.push(`${file} artist ${name||'unknown'} lacks the official Cool Death roster source.`);
-    if(names.has(name.toLowerCase())||bandcamp.has(bandcampURL))errors.push(`${file} contains a duplicate artist or Bandcamp destination: ${name}.`);
-    names.add(name.toLowerCase());bandcamp.add(bandcampURL);
+    const name=String(artist.name||'').trim(),destination=normalized(artist[destinationKey]);
+    const destinationValid=destinationKey==='spotifyURL'?/^https:\/\/open\.spotify\.com\/artist\/[A-Za-z0-9]+$/i.test(destination):destinationKey==='bandcampURL'?/^https:\/\/[^/]+\.bandcamp\.com$/i.test(destination):false;
+    if(!name||!destinationValid)errors.push(`${file} contains an invalid direct ${settings?.destinationLabel||'artist'} destination for ${name||'unknown'}.`);
+    if(!sourceURL||normalized(artist.sourceURL)!==sourceURL)errors.push(`${file} artist ${name||'unknown'} lacks the edition's official roster source.`);
+    if(artist.websiteURL&&!/^https:\/\//i.test(artist.websiteURL))errors.push(`${file} artist ${name} has an invalid optional website.`);
+    for(const [key,evidenceKey] of [['buyMusicURL','buyMusic'],['buyMerchURL','buyMerch']]){
+      const value=String(artist[key]||'').trim(),evidence=String(artist.purchaseVerification?.[evidenceKey]||'').trim();
+      if(!value)continue;
+      if(!/^https:\/\/[^?#\s]+/i.test(value)||/\/search(?:[/?#]|$)/i.test(value))errors.push(`${file} artist ${name} has an invalid direct ${key} destination.`);
+      if(evidence.length<45)errors.push(`${file} artist ${name} requires purchase verification evidence for ${key}.`);
+      if(Number.isNaN(Date.parse(artist.purchaseVerification?.checkedAt||'')))errors.push(`${file} artist ${name} requires a valid purchase verification date for ${key}.`);
+    }
+    if(artist.purchaseVerification&&!artist.buyMusicURL&&!artist.buyMerchURL)errors.push(`${file} artist ${name} has unused purchase verification evidence.`);
+    if(names.has(name.toLowerCase())||destinations.has(destination))errors.push(`${file} contains a duplicate artist or ${settings?.destinationLabel||'destination'}: ${name}.`);
+    names.add(name.toLowerCase());destinations.add(destination);
   }
+}
+
+function validateIndieLabelVideos(videoData,roster,file,errors){
+  if(!videoData||Array.isArray(videoData)||typeof videoData!=='object'||!videoData.artists||Array.isArray(videoData.artists)||typeof videoData.artists!=='object'){errors.push(`${file} must contain an Indie Label artist-video map.`);return}
+  if(Number.isNaN(Date.parse(videoData.verifiedAt||'')))errors.push(`${file} requires a valid verification timestamp.`);
+  const rosterNames=new Set(roster.artists.map(artist=>String(artist.name||'').trim())),ids=new Set();
+  for(const [name,video] of Object.entries(videoData.artists)){
+    const match=String(video?.youtubeURL||'').match(/^https:\/\/(?:www\.)?youtube\.com\/watch\?v=([A-Za-z0-9_-]{11})$/);
+    if(!rosterNames.has(name))errors.push(`${file} contains a video for unknown roster artist ${name}.`);
+    if(!match||!/^https:\/\//.test(video?.sourceURL||''))errors.push(`${file} ${name} requires direct YouTube and authoritative source URLs.`);
+    if(video?.playableInEmbed!==true)errors.push(`${file} ${name} video must be verified as playable in an embed.`);
+    if(!Number.isSafeInteger(video?.viewCountAtVerification)||video.viewCountAtVerification<0)errors.push(`${file} ${name} video requires its public view count at verification.`);
+    if(video?.selectionBasis!=='official-label-channel-popular-sort')errors.push(`${file} ${name} video has an unsupported selection basis.`);
+    if(String(video?.evidence||'').trim().length<80)errors.push(`${file} ${name} video requires verification evidence.`);
+    if(match&&ids.has(match[1]))errors.push(`${file} reuses YouTube video ${match[1]} for more than one artist.`);
+    if(match)ids.add(match[1]);
+  }
+  const count=Object.keys(videoData.artists).length;
+  if(count<1)errors.push(`${file} requires at least one verified artist video.`);
+  if(count>=roster.artists.length)errors.push(`${file} must preserve conditional omission rather than imply every roster artist has a verified video.`);
 }
 
