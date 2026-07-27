@@ -415,3 +415,98 @@ body{margin:0;min-height:100%;color:var(--ink);background:#000713;overflow-x:hid
 @media(prefers-reduced-motion:reduce){.sonic-signature.pulse span{animation:none}.platform-link{transition:none}.platform-link.attention{border-color:var(--line);background:#041a35;box-shadow:inset 0 1px rgba(255,255,255,.06)}[data-edition-type="laneway_company"] .laneway-challenge-card.attention:after,[data-edition-type="laneway_company"] .laneway-company-artist-link.attention:after,[data-edition-type="laneway_company"] .utility-action.attention:after,[data-edition-type="laneway_company"] .laneway-wheel-winner:after{display:none}[data-edition-type="laneway_company"] .laneway-wheel-winner{animation:none}[data-product-type="laneway_company"] .laneway-wheel-winner:before{animation:none;background:#d51d31}[data-product-type="laneway_company"] .laneway-wheel-winner:after{display:block}[data-product-type="laneway_company"] .laneway-wheel-purchase-link{animation:none;box-shadow:0 0 13px rgba(169,231,250,.48),inset 0 1px rgba(255,255,255,.08)}[data-product-type="laneway_company"] .laneway-wheel-impact.is-attention-flash,[data-product-type="laneway_company"] .laneway-wheel-purchase-links.is-revealed,[data-product-type="laneway_company"] .laneway-challenge-card.is-delayed-reveal,[data-product-type="laneway_company"] .laneway-company-quiz-screen .laneway-question-card,[data-product-type="laneway_company"] .laneway-company-quiz-screen .laneway-answer-feedback,[data-product-type="laneway_company"] .laneway-company-result-screen .laneway-result-card{animation:none}}
 @media(prefers-reduced-motion:reduce){[data-product-type="laneway_company"] .laneway-challenge-card.is-delayed-reveal:before{animation:none}[data-product-type="laneway_company"] .laneway-challenge-card.is-delayed-reveal:after{display:none}}
 @media(prefers-reduced-motion:reduce){[data-product-type="laneway_company"] .laneway-wheel-spin-spiral{animation:none}}
+
+/* Laneway Music catalogue-discovery engine. Kept behind the one-off product type. */
+[data-product-type="laneway_company"] .laneway-wheel-introduction{max-width:410px;margin:8px auto 0;color:#a9a9ad;font-size:.74rem;line-height:1.45;text-align:center}
+[data-product-type="laneway_company"] .laneway-artist-discovery,
+[data-product-type="laneway_company"] .laneway-surprise-section,
+[data-product-type="laneway_company"] .laneway-recommendations,
+[data-product-type="laneway_company"] .laneway-licensing{margin-top:22px}
+[data-product-type="laneway_company"] .laneway-discovery-card,
+[data-product-type="laneway_company"] .laneway-surprise-section,
+[data-product-type="laneway_company"] .laneway-recommendations,
+[data-product-type="laneway_company"] .laneway-licensing{border:1px solid #3a3a3d;border-radius:18px;background:linear-gradient(145deg,#171719,#0c0c0d);box-shadow:0 15px 38px rgba(0,0,0,.35)}
+[data-product-type="laneway_company"] .laneway-discovery-card{position:relative;padding:22px 18px;overflow:hidden}
+[data-product-type="laneway_company"] .laneway-discovery-card:before{content:"";position:absolute;inset:0 auto 0 0;width:3px;background:#ef233c;box-shadow:0 0 16px rgba(239,35,60,.55)}
+[data-product-type="laneway_company"] .laneway-artist-discovery.is-entering .laneway-discovery-card{animation:lanewayDiscoveryIn .42s cubic-bezier(.2,.8,.2,1)}
+[data-product-type="laneway_company"] .laneway-discovery-kicker,
+[data-product-type="laneway_company"] .laneway-section-kicker,
+[data-product-type="laneway_company"] .laneway-result-discoveries-kicker{margin:0 0 7px;color:#ef4054;font-size:.62rem;font-weight:900;letter-spacing:.18em;text-transform:uppercase}
+[data-product-type="laneway_company"] .laneway-discovery-card h2{margin:0;color:#fff;font-size:clamp(1.65rem,8vw,2.35rem);line-height:1.02;text-transform:uppercase;text-wrap:balance}
+[data-product-type="laneway_company"] .laneway-discovery-description{margin:14px 0 0;color:#f1f1f1;font-size:.9rem;font-weight:650;line-height:1.5}
+[data-product-type="laneway_company"] .laneway-discovery-reason{margin:10px 0 0;padding-left:11px;border-left:2px solid #ef233c;color:#bcbcc0;font-size:.76rem;line-height:1.48}
+[data-product-type="laneway_company"] .laneway-discovery-start{margin:12px 0 0;color:#fff;font-size:.69rem;font-weight:900;letter-spacing:.07em;text-transform:uppercase}
+[data-product-type="laneway_company"] .laneway-discovery-destinations{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:18px}
+[data-product-type="laneway_company"] .laneway-discovery-link{display:flex;min-height:46px;align-items:center;justify-content:center;padding:8px 10px;border:1px solid #57575b;border-radius:10px;color:#fff;background:#121214;font-size:.68rem;font-weight:900;letter-spacing:.04em;text-align:center;text-decoration:none;text-transform:uppercase}
+[data-product-type="laneway_company"] .laneway-discovery-link.primary{grid-column:1/-1;border-color:#ef4054;background:linear-gradient(145deg,#941326,#4e0a13);box-shadow:0 0 17px rgba(239,35,60,.18)}
+[data-product-type="laneway_company"] .laneway-discovery-link:hover,
+[data-product-type="laneway_company"] .laneway-discovery-link:focus-visible{outline:2px solid #fff;outline-offset:2px;border-color:#fff}
+[data-product-type="laneway_company"] .laneway-discovery-next{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:18px;padding-top:15px;border-top:1px solid rgba(255,255,255,.12)}
+[data-product-type="laneway_company"] .laneway-discovery-next p{grid-column:1/-1;margin:0 0 3px;color:#d5d5d8;font-size:.65rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+[data-product-type="laneway_company"] .laneway-discovery-next button,
+[data-product-type="laneway_company"] .laneway-surprise-section button,
+[data-product-type="laneway_company"] .laneway-recommendation button{min-height:43px;border:1px solid #55555a;border-radius:9px;color:#fff;background:#111113;font:inherit;font-size:.64rem;font-weight:900;text-transform:uppercase;cursor:pointer}
+[data-product-type="laneway_company"] .laneway-discovery-next button:first-of-type,
+[data-product-type="laneway_company"] .laneway-surprise-section button{border-color:#ef4054;background:#ef233c;color:#fff}
+[data-product-type="laneway_company"] .laneway-discovery-next button:hover,
+[data-product-type="laneway_company"] .laneway-discovery-next button:focus-visible,
+[data-product-type="laneway_company"] .laneway-surprise-section button:hover,
+[data-product-type="laneway_company"] .laneway-surprise-section button:focus-visible,
+[data-product-type="laneway_company"] .laneway-recommendation button:hover,
+[data-product-type="laneway_company"] .laneway-recommendation button:focus-visible{outline:2px solid #fff;outline-offset:2px}
+[data-product-type="laneway_company"] .laneway-surprise-section,
+[data-product-type="laneway_company"] .laneway-licensing{padding:19px 18px;text-align:center}
+[data-product-type="laneway_company"] .laneway-surprise-section h2,
+[data-product-type="laneway_company"] .laneway-recommendations h2,
+[data-product-type="laneway_company"] .laneway-licensing h2{margin:0;color:#fff;font-size:1.05rem;line-height:1.2;text-transform:uppercase;text-wrap:balance}
+[data-product-type="laneway_company"] .laneway-surprise-section>p:not(.laneway-section-kicker),
+[data-product-type="laneway_company"] .laneway-licensing>p:not(.laneway-section-kicker){margin:8px 0 14px;color:#a9a9ad;font-size:.75rem;line-height:1.45}
+[data-product-type="laneway_company"] .laneway-surprise-section button{width:100%;max-width:260px}
+[data-product-type="laneway_company"] .laneway-recommendations{padding:19px 16px}
+[data-product-type="laneway_company"] .laneway-recommendation-list,
+[data-product-type="laneway_company"] .laneway-result-discovery-list{display:grid;gap:9px;margin-top:14px}
+[data-product-type="laneway_company"] .laneway-recommendation{display:grid;grid-template-columns:1fr auto;align-items:center;gap:11px;padding:13px;border:1px solid #39393d;border-radius:12px;background:#111113}
+[data-product-type="laneway_company"] .laneway-recommendation h3{margin:0;color:#fff;font-size:.82rem}
+[data-product-type="laneway_company"] .laneway-recommendation p{margin:4px 0 0;color:#9f9fa3;font-size:.66rem;line-height:1.38}
+[data-product-type="laneway_company"] .laneway-recommendation button{min-width:90px;padding-inline:10px;border-color:#ef4054}
+[data-product-type="laneway_company"] .laneway-company-directory{margin-top:24px}
+[data-product-type="laneway_company"] .laneway-company-artist{grid-template-columns:minmax(0,1fr) auto;min-height:56px;padding-block:5px}
+[data-product-type="laneway_company"] .laneway-company-artist-name{appearance:none;display:flex;min-height:44px;align-items:center;padding:0;border:0;color:#fff;background:none;font:inherit;font-size:.76rem;font-weight:850;text-align:left;cursor:pointer}
+[data-product-type="laneway_company"] .laneway-company-artist-name:hover,
+[data-product-type="laneway_company"] .laneway-company-artist-name:focus-visible{outline:none;color:#ef4054;text-decoration:underline;text-underline-offset:3px}
+[data-product-type="laneway_company"] .laneway-company-artist-actions{display:flex;align-items:center;gap:6px}
+[data-product-type="laneway_company"] .laneway-company-artist-link{min-height:44px;padding-inline:13px}
+[data-product-type="laneway_company"] .laneway-company-artist-discover{min-height:36px;padding:0 10px;border:1px solid #4d4d51;border-radius:8px;color:#fff;background:#141416;font:inherit;font-size:.55rem;font-weight:900;text-transform:uppercase;cursor:pointer}
+[data-product-type="laneway_company"] .laneway-company-artist-discover:hover,
+[data-product-type="laneway_company"] .laneway-company-artist-discover:focus-visible{outline:2px solid #fff;outline-offset:2px;border-color:#ef4054}
+[data-product-type="laneway_company"] .link-section{margin-top:24px;padding-top:0}
+[data-product-type="laneway_company"] .laneway-challenge-card{min-height:112px;border-color:#ef4054;background:linear-gradient(145deg,#171719,#0b0b0c);box-shadow:0 14px 34px rgba(0,0,0,.36)}
+[data-product-type="laneway_company"] .laneway-challenge-card:before{background:#ef233c}
+[data-product-type="laneway_company"] .laneway-challenge-card .link-copy{gap:6px}
+[data-product-type="laneway_company"] .laneway-challenge-card .link-copy strong{font-size:.86rem}
+[data-product-type="laneway_company"] .laneway-challenge-card .link-copy small{font-size:.66rem}
+[data-product-type="laneway_company"] .laneway-challenge-action{display:inline-flex;min-height:31px;align-items:center;justify-content:center;margin-top:4px;padding:0 13px;border-radius:7px;color:#fff;background:#ef233c;font-size:.59rem;font-weight:900;letter-spacing:.05em;text-transform:uppercase}
+[data-product-type="laneway_company"] .laneway-licensing a{display:inline-flex;min-height:43px;align-items:center;justify-content:center;padding:0 16px;border:1px solid #ef4054;border-radius:9px;color:#fff;background:#111113;font-size:.64rem;font-weight:900;text-decoration:none;text-transform:uppercase}
+[data-product-type="laneway_company"] .laneway-licensing a:hover,
+[data-product-type="laneway_company"] .laneway-licensing a:focus-visible{outline:2px solid #fff;outline-offset:2px;background:#ef233c}
+[data-product-type="laneway_company"] .laneway-result-discoveries{margin:19px 0 3px;padding:17px 13px;border:1px solid #3d3d41;border-radius:14px;background:#111113;text-align:left}
+[data-product-type="laneway_company"] .laneway-result-discoveries h3{margin:0;color:#fff;font-size:.95rem;text-transform:uppercase}
+[data-product-type="laneway_company"] .laneway-result-discovery-list .laneway-recommendation{padding:11px}
+[data-product-type="laneway_company"] .laneway-result-listen{display:inline-flex;margin-top:7px;color:#fff;font-size:.6rem;font-weight:800;text-underline-offset:3px}
+[data-product-type="laneway_company"] .laneway-wheel-spin-spiral path{stroke:#fff}
+[data-product-type="laneway_company"] .laneway-company-artist-link.attention{border-color:#6b6b70;box-shadow:none}
+[data-product-type="laneway_company"] .laneway-wheel-purchase-link{animation:none;border-color:#ef4054;box-shadow:0 0 12px rgba(239,35,60,.15)}
+@keyframes lanewayDiscoveryIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media(max-width:390px){
+  [data-product-type="laneway_company"] .laneway-discovery-destinations{grid-template-columns:1fr}
+  [data-product-type="laneway_company"] .laneway-discovery-link.primary{grid-column:auto}
+  [data-product-type="laneway_company"] .laneway-discovery-next{grid-template-columns:1fr}
+  [data-product-type="laneway_company"] .laneway-discovery-next p{grid-column:auto}
+  [data-product-type="laneway_company"] .laneway-recommendation{grid-template-columns:1fr}
+  [data-product-type="laneway_company"] .laneway-recommendation button{width:100%}
+}
+@media(prefers-reduced-motion:reduce){
+  [data-product-type="laneway_company"] .laneway-artist-discovery.is-entering .laneway-discovery-card{animation:none}
+  [data-product-type="laneway_company"] .laneway-discovery-link,
+  [data-product-type="laneway_company"] .laneway-recommendation button{transition:none}
+}

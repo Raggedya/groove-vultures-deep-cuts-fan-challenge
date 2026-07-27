@@ -1,9 +1,9 @@
 "use strict";
 
-const VERSION="20260727-laneway-spin-spiral-1";
-const LANEWAY_REPORTING_VERSION="laneway-weekly-v1";
+const VERSION="20260727-laneway-discovery-engine-1";
+const LANEWAY_REPORTING_VERSION="laneway-weekly-v2";
 const $=id=>document.getElementById(id);
-const els={page:$("discoveryPage"),error:$("errorScreen"),errorMessage:$("errorMessage"),bandName:$("bandName"),bio:$("artistBio"),artwork:$("heroArtwork"),brandLogo:$("editionBrandLogo"),waveform:$("sonicSignature"),features:$("featureList"),video:$("featuredVideo"),videoLabel:$("featuredVideoLabel"),videoTitle:$("featuredVideoTitle"),videoFrame:$("featuredVideoFrame"),links:$("platformLinks"),share:$("shareButton"),status:$("shareStatus"),description:$("pageDescription"),poweredBy:$("poweredByLabel"),copyright:$("coverCopyright"),lanewayHome:$("lanewayHomeLink"),lanewayRecommended:$("lanewayRecommendedLink"),companyDirectory:$("lanewayCompanyDirectory"),companyDirectoryCount:$("lanewayCompanyDirectoryCount"),companySearch:$("lanewayCompanySearch"),companyArtistList:$("lanewayCompanyArtistList"),companyEmpty:$("lanewayCompanyEmpty"),companyWheel:$("lanewayArtistWheel"),wheelCanvas:$("lanewayWheelCanvas"),wheelSpin:$("lanewayWheelSpin"),wheelStatus:$("lanewayWheelStatus"),wheelWinner:$("lanewayWheelWinner"),wheelImpact:$("lanewayWheelImpact"),wheelPurchaseLinks:$("lanewayWheelPurchaseLinks"),wheelBuyMusic:$("lanewayWheelBuyMusic"),wheelBuyMerch:$("lanewayWheelBuyMerch")};
+const els={page:$("discoveryPage"),error:$("errorScreen"),errorMessage:$("errorMessage"),bandName:$("bandName"),bio:$("artistBio"),artwork:$("heroArtwork"),brandLogo:$("editionBrandLogo"),waveform:$("sonicSignature"),features:$("featureList"),video:$("featuredVideo"),videoLabel:$("featuredVideoLabel"),videoTitle:$("featuredVideoTitle"),videoFrame:$("featuredVideoFrame"),links:$("platformLinks"),share:$("shareButton"),status:$("shareStatus"),description:$("pageDescription"),poweredBy:$("poweredByLabel"),copyright:$("coverCopyright"),lanewayHome:$("lanewayHomeLink"),lanewayRecommended:$("lanewayRecommendedLink"),companyDirectory:$("lanewayCompanyDirectory"),companyDirectoryCount:$("lanewayCompanyDirectoryCount"),companySearch:$("lanewayCompanySearch"),companyArtistList:$("lanewayCompanyArtistList"),companyEmpty:$("lanewayCompanyEmpty"),companyWheel:$("lanewayArtistWheel"),wheelCanvas:$("lanewayWheelCanvas"),wheelSpin:$("lanewayWheelSpin"),wheelStatus:$("lanewayWheelStatus"),wheelWinner:$("lanewayWheelWinner"),wheelImpact:$("lanewayWheelImpact"),wheelPurchaseLinks:$("lanewayWheelPurchaseLinks"),wheelBuyMusic:$("lanewayWheelBuyMusic"),wheelBuyMerch:$("lanewayWheelBuyMerch"),wheelIntroduction:$("lanewayWheelIntroduction"),artistDiscovery:$("lanewayArtistDiscovery"),discoveryName:$("lanewayDiscoveryArtistName"),discoveryDescription:$("lanewayDiscoveryDescription"),discoveryReason:$("lanewayDiscoveryReason"),discoveryStartWith:$("lanewayDiscoveryStartWith"),discoveryDestinations:$("lanewayDiscoveryDestinations"),discoverAnother:$("lanewayDiscoverAnother"),returnToWheel:$("lanewayReturnToWheel"),returnToRoster:$("lanewayReturnToRoster"),surpriseSection:$("lanewaySurpriseSection"),surpriseButton:$("lanewaySurpriseButton"),recommendations:$("lanewayRecommendations"),recommendationsTitle:$("lanewayRecommendationsTitle"),recommendationList:$("lanewayRecommendationList"),licensing:$("lanewayLicensing"),licensingLink:$("lanewayLicensingLink")};
 
 const MUSIC_LINK_DEFINITIONS=[
   {key:"buyMusic",label:"Buy Music",subLabel:"Purchase music directly",priority:"primary",fallback:"bandcamp"},
@@ -62,6 +62,8 @@ const SCHOOL_LINK_DEFINITIONS=[
 let platform,editionEntry,config;
 let analytics={device:"desktop",track(){return null}};
 let attentionTimer=0;
+let lanewayDiscovery=null;
+const lanewaySession={startedAt:performance.now(),artists:new Set(),summarySent:false};
 init();
 
 async function init(){
@@ -75,7 +77,8 @@ async function init(){
     config=await fetchJson(`/${editionEntry.config}?v=${VERSION}`);
     analytics=new DeepCutsAnalytics.Tracker({platformConfig:platform,editionEntry,editionConfig:config});
     await applyConfig();
-    analytics.track("discovery_page_viewed",{page_location:location.origin+location.pathname,page_identifier:pageIdentifier()},{onceKey:`page:${editionEntry.editionId||editionEntry.slug}`});
+    if(isLanewayCompanyEdition())trackLanewayEvent("discovery_page_viewed",{page_location:location.origin+location.pathname,page_identifier:pageIdentifier()},{onceKey:`page:${editionEntry.editionId||editionEntry.slug}`});
+    else analytics.track("discovery_page_viewed",{page_location:location.origin+location.pathname,page_identifier:pageIdentifier()},{onceKey:`page:${editionEntry.editionId||editionEntry.slug}`});
   }catch(error){console.error(error);showError("This Deep Cuts page could not be loaded. Please refresh and try again.")}
 }
 
@@ -86,7 +89,7 @@ async function applyConfig(){
   const cars=isCarEdition(),clubs=isClubEdition(),schools=isSchoolEdition(),laneway=isLanewayEdition(),lanewayCompany=isLanewayCompanyEdition(),indieWheel=isIndieWheelEdition(),wheelEdition=lanewayCompany||indieWheel;
   document.documentElement.dataset.editionType=indieWheel?"laneway_company":config.editionType||"music";
   document.documentElement.dataset.productType=config.editionType||"music";
-  document.title=`${name} | ${wheelEdition?"Indie Wheel":laneway?"Laneway":schools?"School Discovery":clubs?"Deep Cuts Clubs":cars?"Deep Cuts Cars":"Deep Cuts"}`;
+  document.title=`${name} | ${lanewayCompany?"Catalogue Discovery":indieWheel?"Indie Wheel":laneway?"Laneway":schools?"School Discovery":clubs?"Deep Cuts Clubs":cars?"Deep Cuts Cars":"Deep Cuts"}`;
   const bio=config.discovery?.bio||config.description||`Discover ${name}.`;
   els.description.content=wheelEdition?`Spin to discover a verified ${name} artist on ${wheelSettings().destinationLabel}, search the catalogue and take the 10-question artist quiz.`:laneway?`Discover ${name} through Laneway's positive five-question band quiz and verified official links.`:schools?`Discover ${name} through verified official school information and video.`:clubs?`Verified club, membership, events, bowls and community links for ${name}.`:cars?`Verified history, specifications, buying, ownership and restoration links for ${name}.`:`Official music, video and social links for ${name}.`;
   els.bandName.textContent=name;
@@ -105,9 +108,15 @@ async function applyConfig(){
   buildLinks();
   if(wheelEdition)await buildLanewayCompanyDirectory();
   configureLanewayUtilityLinks();
+  if(lanewayCompany)configureLanewayCompanyJourney();
   if(schools)await SchoolDiscoveryQuiz.configure({config,analytics,homeElement:els.page,challengeButton:$("schoolChallengeButton")});
   if(laneway)await LanewayQuiz.configure({config,analytics,homeElement:els.page,challengeButton:$("lanewayChallengeButton")});
-  if(wheelEdition)await LanewayCompanyQuiz.configure({config,analytics,homeElement:els.page,challengeButton:$("lanewayCompanyChallengeButton")});
+  if(wheelEdition)await LanewayCompanyQuiz.configure({
+    config,analytics,homeElement:els.page,challengeButton:$("lanewayCompanyChallengeButton"),
+    recommendationProvider:isLanewayCompanyEdition()?answerRecords=>lanewayDiscovery?.quizRecommendations(answerRecords)||[]:null,
+    onDiscoverArtist:isLanewayCompanyEdition()?(artistName,source)=>lanewayDiscovery?.selectByName(artistName,source,{scroll:true}):null,
+    trackEvent:isLanewayCompanyEdition()?trackLanewayEvent:null
+  });
   startAttentionCycle();
 }
 
@@ -128,13 +137,59 @@ function wheelSettings(){
 }
 function wheelChallenge(){return isIndieWheelEdition()?config.indieWheelChallenge:config.lanewayCompanyChallenge}
 
+function trackLanewayEvent(eventName,properties={},options={}){
+  if(!isLanewayCompanyEdition())return analytics.track(eventName,properties,options);
+  return analytics.track(eventName,{
+    ...properties,
+    edition_type:config.editionType,
+    tracking_version:LANEWAY_REPORTING_VERSION
+  },options);
+}
+
+function trackLanewaySessionSummary(){
+  if(!isLanewayCompanyEdition()||lanewaySession.summarySent)return;
+  lanewaySession.summarySent=true;
+  trackLanewayEvent("session_summary",{
+    session_duration_seconds:Math.max(1,Math.round((performance.now()-lanewaySession.startedAt)/1000)),
+    discovered_artist_count:lanewaySession.artists.size
+  },{onceKey:"laneway-session-summary"});
+}
+
+function configureLanewayCompanyJourney(){
+  els.wheelIntroduction.hidden=false;
+  els.surpriseSection.hidden=false;
+  const linkSection=els.links.closest(".link-section");
+  els.companyDirectory.after(linkSection);
+  linkSection.after(els.licensing);
+  const servicesURL=validHttps(config.lanewayCompany?.servicesURL);
+  if(servicesURL){
+    els.licensingLink.href=servicesURL;
+    els.licensingLink.setAttribute("aria-label","Contact Laneway Music about licensing opportunities (opens in a new tab)");
+    els.licensingLink.addEventListener("click",()=>trackLanewayEvent("services_contact_clicked",{
+      button_name:"laneway_sync",interaction_source:"main_page",destination_url_origin:new URL(servicesURL).origin
+    }),{passive:true});
+    els.licensing.hidden=false;
+  }
+  els.surpriseButton.addEventListener("click",()=>lanewayDiscovery?.surprise("surprise_me"),{passive:true});
+  els.discoverAnother.addEventListener("click",()=>lanewayDiscovery?.surprise("selected_artist_card"),{passive:true});
+  els.returnToWheel.addEventListener("click",()=>{
+    els.companyWheel.scrollIntoView({behavior:preferredScrollBehavior(),block:"start"});
+    els.wheelSpin.focus({preventScroll:true});
+  });
+  els.returnToRoster.addEventListener("click",()=>{
+    els.companyDirectory.scrollIntoView({behavior:preferredScrollBehavior(),block:"start"});
+    els.companySearch.focus({preventScroll:true});
+  });
+  window.addEventListener("pagehide",trackLanewaySessionSummary,{passive:true});
+}
+
 function configureLanewayUtilityLinks(){
   if(!isLanewayEdition()&&!isWheelEdition()){
     els.lanewayHome.hidden=true;els.lanewayRecommended.hidden=true;
     return;
   }
   const settings=isWheelEdition()?wheelSettings():config.laneway;
-  const homeURL=validHttps(settings?.recordCompanyHomeURL);
+  const homeURL=validHttps(isLanewayCompanyEdition()?settings?.servicesURL:settings?.recordCompanyHomeURL);
   const recommendedURL=validHttps(settings?.recommendedArtistsURL);
   if(!homeURL||!recommendedURL)throw new Error("Record-company navigation is incomplete.");
   els.lanewayHome.textContent=isLanewayCompanyEdition()?"Contact Us":"Home";
@@ -221,54 +276,21 @@ function buildLinks(){
 function createLanewayCompanyChallengeCard(){
   const button=document.createElement("button");
   button.id="lanewayCompanyChallengeButton";button.type="button";button.className="laneway-challenge-card wide";button.disabled=true;
-  if(isLanewayCompanyEdition())button.hidden=true;
   const copy=document.createElement("span");copy.className="link-copy";
   const challenge=wheelChallenge();
   const title=document.createElement("strong");title.textContent=challenge?.title||`How Well Do You Know ${config.bandName}?`;
   const subtitle=document.createElement("small");subtitle.textContent=challenge?.ctaLabel||"Take the 10-Question Artist Quiz";
+  const action=document.createElement("span");action.className="laneway-challenge-action";action.textContent=challenge?.buttonLabel||"Take the quiz";
   const arrow=document.createElement("span");arrow.className="link-arrow";arrow.setAttribute("aria-hidden","true");arrow.textContent=">";
-  copy.append(title,subtitle);button.append(copy,arrow);button.addEventListener("click",()=>LanewayCompanyQuiz.open());
+  copy.append(title,subtitle,action);button.append(copy,arrow);button.addEventListener("click",()=>LanewayCompanyQuiz.open());
   return button;
 }
 
-function createLanewayCompanyChallengeRevealController(isWheelIdle){
-  const button=$("lanewayCompanyChallengeButton");
-  if(!button)return null;
-  const configured=Number(config.lanewayCompanyChallenge?.invitationRevealAfterFirstResultMs??config.lanewayCompanyChallenge?.invitationRevealDelayMs);
-  const delay=Math.min(15000,Math.max(5000,Number.isFinite(configured)?configured:10000));
-  let armed=false,due=false,presented=false,animated=false,observer=null;
-  const animate=()=>{
-    if(animated||document.hidden)return;
-    animated=true;
-    observer?.disconnect();
-    button.classList.add("is-delayed-reveal");
-    analytics.track("quiz_invitation_revealed",{quiz_identifier:config.analytics?.pageIdentifier||"",reveal_delay_ms:delay,interaction_source:"first_spin_result",edition_type:config.editionType,tracking_version:LANEWAY_REPORTING_VERSION},{onceKey:"laneway-quiz-invitation"});
-  };
-  const revealWhenReady=()=>{
-    if(!due||presented||!isWheelIdle())return;
-    presented=true;
-    button.hidden=false;
-    if(!("IntersectionObserver" in window)){animate();return}
-    observer=new IntersectionObserver(entries=>{
-      if(!entries.some(entry=>entry.isIntersecting))return;
-      observer.disconnect();animate();
-    },{threshold:.35});
-    observer.observe(button);
-    document.addEventListener("visibilitychange",()=>{if(!document.hidden&&button.getBoundingClientRect().top<window.innerHeight)animate()},{passive:true});
-  };
-  return{
-    afterResult(){
-      if(armed){revealWhenReady();return}
-      armed=true;
-      window.setTimeout(()=>{due=true;revealWhenReady()},delay);
-    }
-  };
-}
-
-function setLanewayCompanyWheelSpinState(isSpinning){
+function setLanewayCompanyWheelSpinState(isSpinning,hasSelection=false){
   els.wheelSpin.classList.toggle("is-spinning",isSpinning);
-  els.wheelSpin.setAttribute("aria-label",isSpinning?"Spinning":"Spin");
-  if(!isSpinning){els.wheelSpin.textContent="Spin";return}
+  const restingLabel=hasSelection?"Spin again":"Discover";
+  els.wheelSpin.setAttribute("aria-label",isSpinning?"Selecting an artist":restingLabel);
+  if(!isSpinning){els.wheelSpin.textContent=restingLabel;return}
   const svg=document.createElementNS("http://www.w3.org/2000/svg","svg");
   svg.classList.add("laneway-wheel-spin-spiral");svg.setAttribute("viewBox","0 0 64 64");svg.setAttribute("aria-hidden","true");
   const path=document.createElementNS("http://www.w3.org/2000/svg","path");
@@ -281,14 +303,25 @@ function setLanewayCompanyWheelSpinState(isSpinning){
 
 async function buildLanewayCompanyDirectory(){
   const settings=wheelSettings(),destinationKey=settings.destinationKey,destinationLabel=settings.destinationLabel;
-  const [roster,impactLines]=await Promise.all([
+  const [roster,discoveryMetadata]=await Promise.all([
     fetchJson(`/${settings.rosterFile}?v=${VERSION}`),
     isLanewayCompanyEdition()?fetchJson(`/${settings.artistImpactFile}?v=${VERSION}`):Promise.resolve({})
   ]);
   if(!Array.isArray(roster.artists)||!roster.artists.length)throw new Error(`${config.bandName} artist directory is empty.`);
   const artists=roster.artists
     .filter(item=>item.name&&validWheelDestination(item[destinationKey],destinationKey))
-    .map(item=>({...item,impactLine:String(impactLines[item.name]||"").trim()}))
+    .map(item=>{
+      const stored=discoveryMetadata[item.name];
+      const metadata=typeof stored==="string"?{description:stored}:stored&&typeof stored==="object"?stored:{};
+      return{
+        ...item,
+        impactLine:String(metadata.description||"").trim(),
+        description:String(metadata.description||"").trim(),
+        reasonToListen:String(metadata.reasonToListen||"").trim(),
+        startWith:String(metadata.startWith||"").trim(),
+        related:Array.isArray(metadata.related)?metadata.related.filter(recommendation=>recommendation?.artist&&recommendation?.reason):[]
+      };
+    })
     .sort((a,b)=>a.name.localeCompare(b.name,"en-AU"));
   if(!artists.length)throw new Error(`No verified ${config.bandName} ${destinationLabel} artists were available.`);
   document.getElementById("indieWheelCollectionLabel").textContent=`${config.bandName} artist collection`;
@@ -298,14 +331,17 @@ async function buildLanewayCompanyDirectory(){
     const title=document.getElementById("lanewayArtistWheelTitle");
     title.replaceChildren("Spin to discover",document.createElement("br"));
     const accent=document.createElement("span");accent.textContent="an artist";title.append(accent);
+    lanewayDiscovery=createLanewayCompanyDiscovery(artists);
   }
-  if(settings.artistWheel?.enabled)buildLanewayArtistWheel(artists);
+  if(settings.artistWheel?.enabled)buildLanewayArtistWheel(artists,artist=>{
+    if(isLanewayCompanyEdition())lanewayDiscovery.select(artist,"wheel",{scroll:true});
+  });
   const render=value=>{
     const needle=String(value||"").trim().toLocaleLowerCase("en-AU");
     const matches=artists.filter(item=>item.name.toLocaleLowerCase("en-AU").includes(needle));
-    els.companyArtistList.replaceChildren(...matches.map(createLanewayCompanyArtistCard));
+    els.companyArtistList.replaceChildren(...matches.map(artist=>createLanewayCompanyArtistCard(artist)));
     els.companyEmpty.hidden=matches.length>0;
-    els.companyDirectoryCount.textContent=`${matches.length} verified artist${matches.length===1?"":"s"}`;
+    els.companyDirectoryCount.textContent=needle?`${matches.length} of ${artists.length} verified artists`:`${artists.length} verified artists`;
     return matches.length;
   };
   let searchTimer=0;
@@ -313,18 +349,17 @@ async function buildLanewayCompanyDirectory(){
     const value=event.currentTarget.value,resultCount=render(value);
     if(isLanewayCompanyEdition()&&String(value).trim().length>=2){
       clearTimeout(searchTimer);
-      searchTimer=setTimeout(()=>analytics.track("artist_directory_searched",{result_count:resultCount,edition_type:config.editionType,tracking_version:LANEWAY_REPORTING_VERSION},{dedupeKey:"laneway-directory-search",dedupeMs:750}),800);
+      searchTimer=setTimeout(()=>trackLanewayEvent("artist_directory_searched",{result_count:resultCount,interaction_source:"search"},{dedupeKey:"laneway-directory-search",dedupeMs:750}),800);
     }
   },{passive:true});
   render("");els.companyDirectory.hidden=false;
 }
 
-function buildLanewayArtistWheel(artists){
+function buildLanewayArtistWheel(artists,onArtistSelected=()=>{}){
   const canvas=els.wheelCanvas,context=canvas.getContext("2d");
   if(!context)throw new Error("Artist wheel canvas is unavailable.");
   const segmentAngle=Math.PI*2/artists.length;
-  let rotation=0,spinning=false,frame=0;
-  const challengeReveal=isLanewayCompanyEdition()?createLanewayCompanyChallengeRevealController(()=>!spinning):null;
+  let rotation=0,spinning=false,frame=0,lastSelectedName="";
   const settings=wheelSettings(),destinationKey=settings.destinationKey,destinationLabel=settings.destinationLabel;
   const colours=settings.wheelColours||["#f4f4f4","#3a3a3a","#d8d8d8","#202020","#bcbcbc","#505050"];
   const draw=()=>{
@@ -352,12 +387,14 @@ function buildLanewayArtistWheel(artists){
     context.strokeStyle=settings.wheelRimColour||"#fff";context.lineWidth=8;context.stroke();
   };
   const randomIndex=()=>{
+    const eligible=artists.map((artist,index)=>({artist,index})).filter(entry=>artists.length<2||entry.artist.name!==lastSelectedName);
+    const count=eligible.length;
     if(globalThis.crypto?.getRandomValues){
-      const values=new Uint32Array(1),limit=Math.floor(0x100000000/artists.length)*artists.length;
+      const values=new Uint32Array(1),limit=Math.floor(0x100000000/count)*count;
       do{crypto.getRandomValues(values)}while(values[0]>=limit);
-      return values[0]%artists.length;
+      return eligible[values[0]%count].index;
     }
-    return Math.floor(Math.random()*artists.length);
+    return eligible[Math.floor(Math.random()*count)].index;
   };
   const hidePurchaseLinks=()=>{
     els.wheelPurchaseLinks.hidden=true;
@@ -375,30 +412,27 @@ function buildLanewayArtistWheel(artists){
     return true;
   };
   const finish=winner=>{
-    spinning=false;els.wheelSpin.disabled=false;
-    if(isLanewayCompanyEdition())setLanewayCompanyWheelSpinState(false);else els.wheelSpin.textContent="Spin again";
-    els.wheelStatus.textContent=`Winner: ${winner.name}`;
-    els.wheelWinner.href=winner[destinationKey];els.wheelWinner.textContent=`Listen to ${winner.name} on ${destinationLabel}`;
-    els.wheelWinner.setAttribute("aria-label",`Listen to ${winner.name} on ${destinationLabel} (opens in a new tab)`);
-    els.wheelWinner.hidden=false;
-    els.wheelImpact.textContent=winner.impactLine;
-    els.wheelImpact.hidden=!winner.impactLine;
-    els.wheelImpact.classList.remove("is-attention-flash");
-    if(winner.impactLine){
-      void els.wheelImpact.offsetWidth;
-      els.wheelImpact.classList.add("is-attention-flash");
+    spinning=false;lastSelectedName=winner.name;els.wheelSpin.disabled=false;
+    if(isLanewayCompanyEdition()){
+      setLanewayCompanyWheelSpinState(false,true);
+      els.wheelStatus.textContent=`Selected artist: ${winner.name}.`;
+      els.wheelWinner.hidden=true;els.wheelImpact.hidden=true;hidePurchaseLinks();
+      trackLanewayEvent("wheel_spin_completed",{artist_name:winner.name,artist_count:artists.length,discovery_source:"wheel"},{dedupeKey:`wheel-complete:${winner.name}`,dedupeMs:500});
+      trackLanewayEvent("wheel_result_shown",{artist_name:winner.name,artist_count:artists.length,discovery_source:"wheel"},{dedupeKey:`wheel:${winner.name}`,dedupeMs:500});
+      onArtistSelected(winner);
+    }else{
+      els.wheelSpin.textContent="Spin again";
+      els.wheelStatus.textContent=`Winner: ${winner.name}`;
+      els.wheelWinner.href=winner[destinationKey];els.wheelWinner.textContent=`Listen to ${winner.name} on ${destinationLabel}`;
+      els.wheelWinner.setAttribute("aria-label",`Listen to ${winner.name} on ${destinationLabel} (opens in a new tab)`);
+      els.wheelWinner.hidden=false;els.wheelWinner.focus({preventScroll:true});
+      analytics.track("wheel_result_shown",{artist_name:winner.name,artist_count:artists.length},{dedupeKey:`wheel:${winner.name}`,dedupeMs:500});
     }
-    const hasMusic=configurePurchaseLink(els.wheelBuyMusic,"Buy Music",winner.buyMusicURL,winner.name,"buy_music");
-    const hasMerch=configurePurchaseLink(els.wheelBuyMerch,"Buy Merch",winner.buyMerchURL,winner.name,"merchandise");
-    els.wheelPurchaseLinks.hidden=!(hasMusic||hasMerch);
-    els.wheelPurchaseLinks.classList.toggle("is-revealed",hasMusic||hasMerch);
-    els.wheelWinner.focus({preventScroll:true});
-    analytics.track("wheel_result_shown",{artist_name:winner.name,artist_count:artists.length,edition_type:config.editionType,tracking_version:LANEWAY_REPORTING_VERSION},{dedupeKey:`wheel:${winner.name}`,dedupeMs:500});
-    challengeReveal?.afterResult();
   };
   els.wheelSpin.addEventListener("click",()=>{
     if(spinning)return;
-    analytics.track("wheel_spin_started",{artist_count:artists.length,edition_type:config.editionType,tracking_version:LANEWAY_REPORTING_VERSION},{dedupeKey:"wheel-spin",dedupeMs:500});
+    if(isLanewayCompanyEdition())trackLanewayEvent("wheel_spin_started",{artist_count:artists.length,discovery_source:"wheel"},{dedupeKey:"wheel-spin",dedupeMs:500});
+    else analytics.track("wheel_spin_started",{artist_count:artists.length},{dedupeKey:"wheel-spin",dedupeMs:500});
     spinning=true;els.wheelSpin.disabled=true;
     if(isLanewayCompanyEdition())setLanewayCompanyWheelSpinState(true);else els.wheelSpin.textContent="Spinning";
     els.wheelWinner.hidden=true;els.wheelImpact.hidden=true;els.wheelImpact.textContent="";els.wheelStatus.textContent="The artist wheel is spinning…";
@@ -407,7 +441,7 @@ function buildLanewayArtistWheel(artists){
     const target=-selected*segmentAngle;
     const normalized=((target-current)%(Math.PI*2)+Math.PI*2)%(Math.PI*2);
     const total=normalized+Math.PI*2*7,start=performance.now();
-    const reduced=matchMedia("(prefers-reduced-motion: reduce)").matches,duration=reduced?250:4800;
+    const reduced=matchMedia("(prefers-reduced-motion: reduce)").matches,duration=reduced?180:4800;
     const initial=rotation;
     cancelAnimationFrame(frame);
     const animate=now=>{
@@ -420,14 +454,16 @@ function buildLanewayArtistWheel(artists){
   });
   els.wheelWinner.addEventListener("click",()=>{
     const winner=artists.find(item=>item[destinationKey]===els.wheelWinner.href);
-    analytics.track("artist_destination_clicked",{artist_name:winner?.name||"",interaction_source:"wheel_winner",destination_platform:destinationKey.replace(/URL$/,"").toLowerCase(),destination_url_origin:new URL(els.wheelWinner.href).origin,edition_type:config.editionType,tracking_version:LANEWAY_REPORTING_VERSION},{dedupeKey:`wheel-destination:${winner?.name||""}`,dedupeMs:500});
+    if(isLanewayCompanyEdition())trackLanewayEvent("artist_destination_clicked",{artist_name:winner?.name||"",interaction_source:"wheel_winner",discovery_source:"wheel",destination_platform:destinationKey.replace(/URL$/,"").toLowerCase(),destination_url_origin:new URL(els.wheelWinner.href).origin},{dedupeKey:`wheel-destination:${winner?.name||""}`,dedupeMs:500});
+    else DeepCutsInteractions.trackOutbound(analytics,destinationKey.replace(/URL$/,"").toLowerCase(),els.wheelWinner.href);
   },{passive:true});
   for(const link of [els.wheelBuyMusic,els.wheelBuyMerch])link.addEventListener("click",()=>{
     if(link.hidden||!link.href)return;
-    analytics.track("artist_destination_clicked",{artist_name:link.dataset.artistName||"",interaction_source:"wheel_winner",destination_platform:link.dataset.destinationPlatform||"",destination_url_origin:new URL(link.href).origin,edition_type:config.editionType,tracking_version:LANEWAY_REPORTING_VERSION},{dedupeKey:`wheel-purchase:${link.dataset.artistName||""}:${link.dataset.destinationPlatform||""}`,dedupeMs:500});
+    trackLanewayEvent("artist_destination_clicked",{artist_name:link.dataset.artistName||"",interaction_source:"wheel_winner",discovery_source:"wheel",destination_platform:link.dataset.destinationPlatform||"",destination_url_origin:new URL(link.href).origin},{dedupeKey:`wheel-purchase:${link.dataset.artistName||""}:${link.dataset.destinationPlatform||""}`,dedupeMs:500});
   },{passive:true});
   hidePurchaseLinks();
   draw();els.companyWheel.hidden=false;
+  if(isLanewayCompanyEdition())setLanewayCompanyWheelSpinState(false,false);else els.wheelSpin.textContent="Spin";
   if(settings.artistWheel?.replacesFeaturedVideo){
     els.video.hidden=true;els.videoFrame.removeAttribute("src");
   }
@@ -435,7 +471,9 @@ function buildLanewayArtistWheel(artists){
 
 function createLanewayCompanyArtistCard(artist){
   const card=document.createElement("article");card.className="laneway-company-artist";
-  const name=document.createElement("h3");name.textContent=artist.name;
+  const name=document.createElement("button");name.type="button";name.className="laneway-company-artist-name";name.textContent=artist.name;
+  name.setAttribute("aria-label",`Discover ${artist.name}`);
+  name.addEventListener("click",()=>lanewayDiscovery?.select(artist,"roster",{scroll:true}));
   const actions=document.createElement("div");actions.className="laneway-company-artist-actions";
   const settings=wheelSettings(),destinationKey=settings.destinationKey,destinationLabel=settings.destinationLabel;
   actions.append(createLanewayArtistLink(destinationLabel,artist[destinationKey],destinationKey.replace(/URL$/,"").toLowerCase(),artist.name));
@@ -448,10 +486,122 @@ function createLanewayArtistLink(label,url,destination,artistName){
   const link=document.createElement("a");link.className="laneway-company-artist-link is-active";link.href=url;link.target="_blank";link.rel="noopener noreferrer";
   link.textContent=label;link.setAttribute("aria-label",`${label} for ${artistName} (opens in a new tab)`);
   link.addEventListener("click",()=>{
-    if(isLanewayCompanyEdition())analytics.track("artist_destination_clicked",{artist_name:artistName,interaction_source:"artist_directory",destination_platform:destination,destination_url_origin:new URL(url).origin,edition_type:config.editionType,tracking_version:LANEWAY_REPORTING_VERSION},{dedupeKey:`artist:${artistName}:${destination}`,dedupeMs:500});
+    if(isLanewayCompanyEdition())trackLanewayEvent("artist_destination_clicked",{artist_name:artistName,interaction_source:"artist_directory",discovery_source:"roster",destination_platform:destination,destination_url_origin:new URL(url).origin},{dedupeKey:`artist:${artistName}:${destination}`,dedupeMs:500});
     else DeepCutsInteractions.trackOutbound(analytics,destination,url);
   },{passive:true});
   return link;
+}
+
+function createLanewayCompanyDiscovery(artists){
+  const byName=new Map(artists.map(artist=>[artist.name,artist]));
+  let selected=null;
+  const randomArtist=()=>{
+    const eligible=artists.filter(artist=>artists.length<2||artist.name!==selected?.name);
+    return eligible[secureRandomIndex(eligible.length)];
+  };
+  const createDestination=(artist,label,url,platform,source,primary=false)=>{
+    const destination=validHttps(url);if(!destination)return null;
+    const link=document.createElement("a");link.className=`laneway-discovery-link${primary?" primary":""}`;
+    link.href=destination;link.target="_blank";link.rel="noopener noreferrer";link.textContent=label;
+    link.setAttribute("aria-label",`${label} for ${artist.name} (opens in a new tab)`);
+    link.addEventListener("click",()=>trackLanewayEvent("artist_destination_clicked",{
+      artist_name:artist.name,interaction_source:"selected_artist_card",discovery_source:source,
+      destination_platform:platform,destination_url_origin:new URL(destination).origin
+    },{dedupeKey:`discovery-link:${artist.name}:${platform}`,dedupeMs:500}),{passive:true});
+    return link;
+  };
+  const renderRecommendations=(artist,source)=>{
+    const recommendations=artist.related.map(item=>({...item,record:byName.get(item.artist)})).filter(item=>item.record).slice(0,3);
+    els.recommendationsTitle.textContent=`If you like ${artist.name}, try these`;
+    els.recommendationList.replaceChildren(...recommendations.map(item=>{
+      const card=document.createElement("article");card.className="laneway-recommendation";
+      const copy=document.createElement("div"),title=document.createElement("h3"),reason=document.createElement("p"),button=document.createElement("button");
+      title.textContent=item.record.name;reason.textContent=item.reason;button.type="button";button.textContent="Discover";
+      button.addEventListener("click",()=>{
+        trackLanewayEvent("recommendation_selected",{artist_name:item.record.name,recommending_artist_name:artist.name,discovery_source:"recommendation",interaction_source:source});
+        select(item.record,"recommendation",{scroll:true});
+      });
+      copy.append(title,reason);card.append(copy,button);
+      trackLanewayEvent("recommendation_shown",{artist_name:item.record.name,recommending_artist_name:artist.name,discovery_source:"recommendation",interaction_source:source},{dedupeKey:`recommendation-shown:${artist.name}:${item.record.name}`,dedupeMs:30000});
+      return card;
+    }));
+    els.recommendations.hidden=recommendations.length===0;
+  };
+  const renderArtist=(artist,source)=>{
+    els.discoveryName.textContent=artist.name;
+    els.discoveryDescription.textContent=artist.description||"Explore this artist through Laneway Music.";
+    els.discoveryReason.textContent=artist.reasonToListen?`Why listen: ${artist.reasonToListen}`:"";
+    els.discoveryReason.hidden=!artist.reasonToListen;
+    els.discoveryStartWith.textContent=artist.startWith?`Start with: ${artist.startWith}`:"";
+    els.discoveryStartWith.hidden=!artist.startWith;
+    const links=[];
+    links.push(createDestination(artist,"Listen on Spotify",artist.spotifyURL,"spotify",source,true));
+    if(artist.buyMusicURL){
+      const isBandcamp=new URL(artist.buyMusicURL).hostname.endsWith(".bandcamp.com");
+      links.push(createDestination(artist,isBandcamp?"Bandcamp":"Buy Music",artist.buyMusicURL,isBandcamp?"bandcamp":"buy_music",source));
+    }
+    links.push(createDestination(artist,"Buy Merch",artist.buyMerchURL,"merchandise",source));
+    links.push(createDestination(artist,"YouTube",artist.youtubeURL,"youtube",source));
+    links.push(createDestination(artist,"Website",artist.websiteURL,"website",source));
+    links.push(createDestination(artist,"Instagram",artist.instagramURL,"instagram",source));
+    links.push(createDestination(artist,"Laneway Profile",artist.sourceURL,"laneway_profile",source));
+    els.discoveryDestinations.replaceChildren(...links.filter(Boolean));
+    els.artistDiscovery.hidden=false;
+    els.artistDiscovery.classList.remove("is-entering");void els.artistDiscovery.offsetWidth;els.artistDiscovery.classList.add("is-entering");
+    renderRecommendations(artist,source);
+  };
+  const select=(artist,source,{scroll=false}={})=>{
+    if(!artist||!byName.has(artist.name))return;
+    selected=artist;lanewaySession.artists.add(artist.name);renderArtist(artist,source);
+    trackLanewayEvent("artist_selected",{
+      artist_name:artist.name,discovery_source:source,interaction_source:source,discovered_artist_count:lanewaySession.artists.size
+    },{dedupeKey:`artist-selected:${artist.name}:${source}`,dedupeMs:400});
+    if(source==="roster")trackLanewayEvent("artist_roster_selected",{artist_name:artist.name,discovery_source:"roster"});
+    if(scroll)els.artistDiscovery.scrollIntoView({behavior:preferredScrollBehavior(),block:"start"});
+  };
+  const surprise=source=>{
+    const artist=randomArtist();
+    trackLanewayEvent("surprise_me_clicked",{artist_name:artist.name,discovery_source:"surprise_me",interaction_source:source});
+    select(artist,"surprise_me",{scroll:true});
+  };
+  const quizRecommendations=answerRecords=>{
+    const ordered=[...answerRecords].sort((a,b)=>String(a.id).localeCompare(String(b.id)));
+    const signature=ordered.map(answer=>`${answer.id}:${answer.correct?1:0}`).join("|");
+    const picks=[];
+    const add=(artist,reason)=>{
+      if(!artist||picks.some(item=>item.artist===artist.name))return;
+      picks.push({artist:artist.name,reason,spotifyURL:artist.spotifyURL});
+    };
+    for(const answer of ordered.filter(item=>!item.correct)){
+      const artist=byName.get(answer.category);add(artist,`Meet the artist behind a catalogue story that caught you out.`);
+      if(picks.length===3)break;
+    }
+    for(const answer of ordered.filter(item=>item.correct)){
+      const known=byName.get(answer.category),related=known?.related?.[0],artist=related?byName.get(related.artist):known;
+      add(artist,related?.reason||`Follow a catalogue thread you already recognised.`);
+      if(picks.length===3)break;
+    }
+    let cursor=stableHash(signature)%artists.length;
+    while(picks.length<3){add(artists[cursor%artists.length],"A different entry point into the breadth of the Laneway catalogue.");cursor+=11}
+    return picks;
+  };
+  return{select,surprise,selectByName:(name,source,options)=>select(byName.get(name),source,options),quizRecommendations,getSelected:()=>selected};
+}
+
+function secureRandomIndex(length){
+  if(length<=1)return 0;
+  if(globalThis.crypto?.getRandomValues){
+    const values=new Uint32Array(1),limit=Math.floor(0x100000000/length)*length;
+    do{crypto.getRandomValues(values)}while(values[0]>=limit);
+    return values[0]%length;
+  }
+  return Math.floor(Math.random()*length);
+}
+
+function stableHash(value){
+  let hash=2166136261;
+  for(const char of String(value)){hash^=char.charCodeAt(0);hash=Math.imul(hash,16777619)}
+  return hash>>>0;
 }
 
 function validSpotifyArtist(value){
@@ -514,6 +664,11 @@ function analyticsDestination(key){return({buyMusic:"buy_music",newsReviews:"new
 
 function startAttentionCycle(){
   if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+  if(isLanewayCompanyEdition()){
+    const pulseWaveform=()=>{if(!document.hidden){els.waveform.classList.remove("pulse");void els.waveform.offsetWidth;els.waveform.classList.add("pulse")}};
+    setTimeout(pulseWaveform,500);attentionTimer=window.setInterval(pulseWaveform,10000);
+    return;
+  }
   if(isWheelEdition()){
     let controlIndex=0;
     let waveTick=0;
@@ -553,9 +708,10 @@ function startAttentionCycle(){
 }
 
 function validHttps(value){try{const url=new URL(String(value||""));return url.protocol==="https:"?url.href:""}catch{return""}}
+function preferredScrollBehavior(){return matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"}
 function pageIdentifier(){return config.analytics?.pageIdentifier||`${editionEntry.editionId}:discovery-v1`}
 function canonicalURL(){return new URL(editionEntry.canonicalPath||`/e/${editionEntry.editionId}`,location.origin).href}
-function sharePayload(){return isWheelEdition()?{title:`${config.bandName} | Indie Wheel`,text:`Spin to discover ${config.bandName} artists, take the 10-question quiz and explore the catalogue on ${wheelSettings().destinationLabel}.`,url:canonicalURL()}:isLanewayEdition()?{title:`${config.bandName} | Laneway`,text:`Discover ${config.bandName} and take the positive five-question Laneway quiz.`,url:canonicalURL()}:isSchoolEdition()?{title:`${config.bandName} | School Discovery`,text:`Discover ${config.bandName}: official school information, programs and video.`,url:canonicalURL()}:isClubEdition()?{title:`${config.bandName} | Deep Cuts Clubs`,text:`Explore ${config.bandName}: verified club, membership, events and community links.`,url:canonicalURL()}:isCarEdition()?{title:`${config.bandName} | Deep Cuts Cars`,text:`Explore ${config.bandName}: verified history, specifications, buying and restoration links.`,url:canonicalURL()}:{title:`${config.bandName} | Deep Cuts`,text:`Discover ${config.bandName}: official music, video and social links.`,url:canonicalURL()}}
+function sharePayload(){return isLanewayCompanyEdition()?{title:"Laneway Music | Catalogue Discovery",text:"Discover artists from across the Laneway Music catalogue.",url:canonicalURL()}:isWheelEdition()?{title:`${config.bandName} | Indie Wheel`,text:`Spin to discover ${config.bandName} artists, take the 10-question quiz and explore the catalogue on ${wheelSettings().destinationLabel}.`,url:canonicalURL()}:isLanewayEdition()?{title:`${config.bandName} | Laneway`,text:`Discover ${config.bandName} and take the positive five-question Laneway quiz.`,url:canonicalURL()}:isSchoolEdition()?{title:`${config.bandName} | School Discovery`,text:`Discover ${config.bandName}: official school information, programs and video.`,url:canonicalURL()}:isClubEdition()?{title:`${config.bandName} | Deep Cuts Clubs`,text:`Explore ${config.bandName}: verified club, membership, events and community links.`,url:canonicalURL()}:isCarEdition()?{title:`${config.bandName} | Deep Cuts Cars`,text:`Explore ${config.bandName}: verified history, specifications, buying and restoration links.`,url:canonicalURL()}:{title:`${config.bandName} | Deep Cuts`,text:`Discover ${config.bandName}: official music, video and social links.`,url:canonicalURL()}}
 
 async function sharePage(){
   analytics.track("share_button_clicked",{page_identifier:pageIdentifier()},{dedupeKey:"main-share",dedupeMs:500});

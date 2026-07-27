@@ -9,7 +9,7 @@ const config=JSON.parse(fs.readFileSync('wrangler.jsonc','utf8'));
 
 for(const route of ['/q/','/api/events','/api/editions','/api/builds','/api/builds/','/api/delivery','/api/webhooks/resend','/api/reports/weekly.csv','/api/reports/laneway-weekly.pdf','/api/reports/laneway-weekly.xlsx','/api/sell/'])assert.ok(source.includes(route),`Worker route missing: ${route}`);
 for(const table of ['editions','analytics_events','production_jobs','delivery_events'])assert.match(schema,new RegExp(`CREATE TABLE IF NOT EXISTS ${table}`));
-for(const event of ['qr_scan','outbound_clicked','share_button_clicked','wheel_spin_started','wheel_result_shown','artist_destination_clicked','artist_directory_searched','quiz_started','quiz_question_answered','quiz_completed','quiz_abandoned','quiz_invitation_revealed','services_contact_clicked'])assert.ok(source.includes(`"${event}"`),`Worker event missing: ${event}`);
+for(const event of ['qr_scan','outbound_clicked','share_button_clicked','wheel_spin_started','wheel_spin_completed','wheel_result_shown','artist_selected','surprise_me_clicked','artist_roster_selected','recommendation_shown','recommendation_selected','quiz_recommendation_selected','session_summary','artist_destination_clicked','artist_directory_searched','quiz_started','quiz_question_answered','quiz_completed','quiz_abandoned','services_contact_clicked'])assert.ok(source.includes(`"${event}"`),`Worker event missing: ${event}`);
 assert.ok(source.includes('"reveal_delay_ms"'),"Worker must retain the trusted quiz invitation delay metadata.");
 assert.equal(config.name,'deep-cuts');
 assert.ok(config.assets.run_worker_first===true||config.assets.run_worker_first.includes('/q/*'));
