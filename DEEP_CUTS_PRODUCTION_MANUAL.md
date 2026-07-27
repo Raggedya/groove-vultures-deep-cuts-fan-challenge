@@ -104,6 +104,8 @@ The Laneway company edition additionally records intentional wheel spins, comple
 
 After a Laneway company-wheel result, the sourced artist-impact line receives one brief visual attention flash. The winner may then expose `Buy Music` and `Buy Merch` independently. Each purchase destination must be a direct, identity-verified HTTPS artist or label-store page with dated evidence in the isolated roster; a search result, generic storefront, ambiguous identity, sold-out-only merch page or unavailable destination is omitted. Purchase clicks use the existing trusted `artist_destination_clicked` event with `wheel_winner` attribution. This rule is exclusive to the Laneway company edition and must not change artist-specific Laneway, Indie Wheel, Music, Cars, Clubs, Schools or Record Company editions.
 
+Verified Laneway company-wheel purchase buttons use a light-blue double-beat animation related to the directory Spotify glow. The quiz invitation is initially absent, becomes available after a locked five-second delay, and performs its one-time arrival treatment only when it is visible so attention is not spent below the fold. Its permanent copy is `Meet the Artists. Discover Laneway.` and `Take the 10-Question Laneway Artist Quiz`. Reduced-motion visitors receive static highlighted controls without pulsing. The accepted `quiz_invitation_revealed` event records the configured delay in the weekly event audit.
+
 Collect only anonymous session IDs, source, device category and coarse country/region supplied at the network edge. Do not store raw IP addresses, precise coordinates, passwords, payment details or social logins.
 
 ## Production timing

@@ -14,7 +14,7 @@ const EVENT_NAMES=new Set([
   "native_share_completed","copy_link_clicked","copy_link_completed","outbound_clicked",
   "wheel_spin_started","wheel_result_shown","artist_destination_clicked","artist_directory_searched",
   "utility_link_clicked","quiz_started","quiz_question_answered","quiz_completed",
-  "quiz_abandoned","quiz_replayed","services_contact_clicked"
+  "quiz_abandoned","quiz_replayed","quiz_invitation_revealed","services_contact_clicked"
 ]);
 const DESTINATIONS=new Set([
   "buy_music","spotify","instagram","bandcamp","youtube","facebook","website",
@@ -383,7 +383,7 @@ function validDate(value){const date=new Date(value||Date.now());return Number.i
 async function safeJson(request){try{return await request.json()}catch{return null}}
 function safeMetadata(body){
   const textFields=["page_identifier","action_id","video_id","trigger","artist_name","interaction_source","destination_url_origin","edition_type","tracking_version","button_name","quiz_identifier","quiz_run_id","question_id","classification"];
-  const numberFields=["artist_count","result_count","question_number","final_score","question_count","answered_count","completion_seconds"];
+  const numberFields=["artist_count","result_count","question_number","final_score","question_count","answered_count","completion_seconds","reveal_delay_ms"];
   const metadata={};
   textFields.forEach(key=>{if(body?.[key]!==undefined)metadata[key]=cleanText(body[key],key==="destination_url_origin"?300:200)});
   numberFields.forEach(key=>{
