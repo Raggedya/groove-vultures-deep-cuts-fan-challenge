@@ -12,13 +12,15 @@ const JSON_HEADERS={"content-type":"application/json; charset=utf-8","cache-cont
 const EVENT_NAMES=new Set([
   "qr_scan","discovery_page_viewed","share_button_clicked","share_method_selected",
   "native_share_completed","copy_link_clicked","copy_link_completed","outbound_clicked",
-  "wheel_spin_started","wheel_result_shown","artist_destination_clicked","artist_directory_searched",
+  "wheel_spin_started","wheel_spin_completed","wheel_result_shown","artist_selected",
+  "surprise_me_clicked","artist_roster_selected","recommendation_shown","recommendation_selected",
+  "quiz_recommendation_selected","session_summary","artist_destination_clicked","artist_directory_searched",
   "utility_link_clicked","quiz_started","quiz_question_answered","quiz_completed",
   "quiz_abandoned","quiz_replayed","quiz_invitation_revealed","services_contact_clicked"
 ]);
 const DESTINATIONS=new Set([
   "buy_music","spotify","instagram","bandcamp","youtube","facebook","website",
-  "merchandise","tip","news_reviews","share"
+  "merchandise","tip","news_reviews","share","laneway_profile"
 ]);
 const BUILD_STAGES=new Set([
   "submitted","research_started","research_completed","artwork_completed",
@@ -382,8 +384,8 @@ function cleanText(value,max=200){return String(value||"").trim().slice(0,max)}
 function validDate(value){const date=new Date(value||Date.now());return Number.isNaN(date.getTime())?new Date().toISOString():date.toISOString()}
 async function safeJson(request){try{return await request.json()}catch{return null}}
 function safeMetadata(body){
-  const textFields=["page_identifier","action_id","video_id","trigger","artist_name","interaction_source","destination_url_origin","edition_type","tracking_version","button_name","quiz_identifier","quiz_run_id","question_id","classification"];
-  const numberFields=["artist_count","result_count","question_number","final_score","question_count","answered_count","completion_seconds","reveal_delay_ms"];
+  const textFields=["page_identifier","action_id","video_id","trigger","artist_name","recommending_artist_name","interaction_source","discovery_source","destination_url_origin","edition_type","tracking_version","button_name","quiz_identifier","quiz_run_id","question_id","classification"];
+  const numberFields=["artist_count","result_count","question_number","final_score","question_count","answered_count","completion_seconds","reveal_delay_ms","session_duration_seconds","discovered_artist_count"];
   const metadata={};
   textFields.forEach(key=>{if(body?.[key]!==undefined)metadata[key]=cleanText(body[key],key==="destination_url_origin"?300:200)});
   numberFields.forEach(key=>{

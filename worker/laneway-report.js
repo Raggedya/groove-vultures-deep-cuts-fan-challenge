@@ -1,6 +1,6 @@
 const LANEWAY_EDITION_ID="dc_b9e7b66620";
 const LANEWAY_ROSTER_PATH="/editions/laneway-music-one-off/roster.json";
-const REPORTING_VERSION="laneway-weekly-v1";
+const REPORTING_VERSION="laneway-weekly-v2";
 const MAX_REPORT_EVENTS=50000;
 const encoder=new TextEncoder();
 
@@ -15,9 +15,13 @@ export async function buildLanewayWeeklyReport(env,now=new Date(),days=7){
     const active=current.artists.get(name)||emptyArtist(name),prior=previous.artists.get(name)||emptyArtist(name);
     return{artist:name,wheelResults:active.wheelResults,wheelSpotifyClicks:active.wheelSpotifyClicks,directorySpotifyClicks:active.directorySpotifyClicks,
       totalSpotifyClicks:active.totalSpotifyClicks,uniqueSpotifyClickers:active.uniqueSpotifyClickers.size,previousSpotifyClicks:prior.totalSpotifyClicks,
-      wheelConversion:active.wheelResults?active.wheelSpotifyClicks/active.wheelResults:0};
+      wheelConversion:active.wheelResults?active.wheelSpotifyClicks/active.wheelResults:0,totalSelections:active.totalSelections,
+      wheelSelections:active.wheelSelections,surpriseSelections:active.surpriseSelections,rosterSelections:active.rosterSelections,
+      recommendationSelections:active.recommendationSelections,quizSelections:active.quizSelections,totalOutboundClicks:active.totalOutboundClicks,
+      bandcampClicks:active.bandcampClicks,youtubeClicks:active.youtubeClicks,websiteClicks:active.websiteClicks,instagramClicks:active.instagramClicks,
+      previousSelections:prior.totalSelections};
   });
-  const topArtists=[...artists].sort((a,b)=>b.totalSpotifyClicks-a.totalSpotifyClicks||b.wheelResults-a.wheelResults||a.artist.localeCompare(b.artist)).slice(0,7);
+  const topArtists=[...artists].sort((a,b)=>b.totalSelections-a.totalSelections||b.totalOutboundClicks-a.totalOutboundClicks||b.totalSpotifyClicks-a.totalSpotifyClicks||a.artist.localeCompare(b.artist)).slice(0,7);
   return{
     editionId:LANEWAY_EDITION_ID,brandName:"Laneway Music",reportingVersion:REPORTING_VERSION,generatedAt:end.toISOString(),
     periodStart:start.toISOString(),periodEnd:end.toISOString(),previousStart:previousStart.toISOString(),days,
@@ -65,10 +69,15 @@ function normalizeEvent(event){
 function aggregatePeriod(events,roster){
   const artistSet=new Set(roster),artists=new Map(roster.map(name=>[name,emptyArtist(name)])),scores=[],questions=new Map(),eventAudit=new Map();
   const visitSessions=new Set(),qrSessions=new Set(),spotifySessions=new Set(),quizStartSessions=new Set(),quizCompleteSessions=new Set();
+  const sessionArtists=new Map();
   const acquisition=new Map(),devices=new Map(),regions=new Map();
   const summary={siteVisits:0,uniqueVisitors:0,qrScans:0,uniqueQrSessions:0,spinButtonPushes:0,wheelResults:0,spotifyClicks:0,uniqueSpotifyClickers:0,
     wheelSpotifyClicks:0,directorySpotifyClicks:0,quizStarts:0,quizCompletions:0,quizAbandonments:0,quizReplays:0,averageQuizScore:0,
-    shareButtonPushes:0,completedShares:0,servicesContactClicks:0,contactClicks:0,recommendedClicks:0,directorySearches:0};
+    shareButtonPushes:0,completedShares:0,servicesContactClicks:0,contactClicks:0,recommendedClicks:0,directorySearches:0,
+    surpriseMeClicks:0,artistSelections:0,uniqueArtistsSelected:0,rosterSelections:0,recommendationImpressions:0,recommendationSelections:0,
+    quizRecommendationSelections:0,bandcampClicks:0,youtubeClicks:0,websiteClicks:0,instagramClicks:0,totalArtistOutboundClicks:0,
+    averageArtistsPerSession:0,recommendationClickThroughRate:0,averageSessionDurationSeconds:0};
+  const sessionDurations=[];
   for(const event of events){
     eventAudit.set(event.eventName,(eventAudit.get(event.eventName)||0)+1);
     const meta=event.metadata||{},artist=String(meta.artist_name||"").trim();
@@ -80,16 +89,45 @@ function aggregatePeriod(events,roster){
     else if(event.eventName==="wheel_spin_started")summary.spinButtonPushes++;
     else if(event.eventName==="wheel_result_shown"){
       summary.wheelResults++;if(artistSet.has(artist))artists.get(artist).wheelResults++;
-    }else if(event.eventName==="artist_destination_clicked"&&event.destinationPlatform==="spotify"){
-      summary.spotifyClicks++;if(event.sessionId)spotifySessions.add(event.sessionId);
-      if(meta.interaction_source==="wheel_winner")summary.wheelSpotifyClicks++;
-      if(meta.interaction_source==="artist_directory")summary.directorySpotifyClicks++;
+    }else if(event.eventName==="artist_selected"){
+      summary.artistSelections++;
       if(artistSet.has(artist)){
-        const row=artists.get(artist);row.totalSpotifyClicks++;
-        if(meta.interaction_source==="wheel_winner")row.wheelSpotifyClicks++;
-        if(meta.interaction_source==="artist_directory")row.directorySpotifyClicks++;
-        if(event.sessionId)row.uniqueSpotifyClickers.add(event.sessionId);
+        const row=artists.get(artist),source=String(meta.discovery_source||meta.interaction_source||"");
+        row.totalSelections++;
+        if(source==="wheel")row.wheelSelections++;
+        else if(source==="surprise_me")row.surpriseSelections++;
+        else if(source==="roster"||source==="search")row.rosterSelections++;
+        else if(source==="recommendation")row.recommendationSelections++;
+        else if(source==="quiz_result")row.quizSelections++;
+        if(event.sessionId){
+          const discovered=sessionArtists.get(event.sessionId)||new Set();discovered.add(artist);sessionArtists.set(event.sessionId,discovered);
+        }
       }
+    }else if(event.eventName==="surprise_me_clicked")summary.surpriseMeClicks++;
+    else if(event.eventName==="artist_roster_selected")summary.rosterSelections++;
+    else if(event.eventName==="recommendation_shown")summary.recommendationImpressions++;
+    else if(event.eventName==="recommendation_selected")summary.recommendationSelections++;
+    else if(event.eventName==="quiz_recommendation_selected")summary.quizRecommendationSelections++;
+    else if(event.eventName==="session_summary"){
+      const duration=Number(meta.session_duration_seconds);if(Number.isFinite(duration)&&duration>=0)sessionDurations.push(duration);
+    }else if(event.eventName==="artist_destination_clicked"){
+      summary.totalArtistOutboundClicks++;
+      const row=artistSet.has(artist)?artists.get(artist):null;
+      if(row)row.totalOutboundClicks++;
+      if(event.destinationPlatform==="spotify"){
+        summary.spotifyClicks++;if(event.sessionId)spotifySessions.add(event.sessionId);
+        if(meta.interaction_source==="wheel_winner"||meta.discovery_source==="wheel")summary.wheelSpotifyClicks++;
+        if(meta.interaction_source==="artist_directory")summary.directorySpotifyClicks++;
+        if(row){
+          row.totalSpotifyClicks++;
+          if(meta.interaction_source==="wheel_winner"||meta.discovery_source==="wheel")row.wheelSpotifyClicks++;
+          if(meta.interaction_source==="artist_directory")row.directorySpotifyClicks++;
+          if(event.sessionId)row.uniqueSpotifyClickers.add(event.sessionId);
+        }
+      }else if(event.destinationPlatform==="bandcamp"){summary.bandcampClicks++;if(row)row.bandcampClicks++}
+      else if(event.destinationPlatform==="youtube"){summary.youtubeClicks++;if(row)row.youtubeClicks++}
+      else if(event.destinationPlatform==="website"||event.destinationPlatform==="laneway_profile"){summary.websiteClicks++;if(row)row.websiteClicks++}
+      else if(event.destinationPlatform==="instagram"){summary.instagramClicks++;if(row)row.instagramClicks++}
     }else if(event.eventName==="quiz_started"){summary.quizStarts++;if(event.sessionId)quizStartSessions.add(event.sessionId)}
     else if(event.eventName==="quiz_completed"){
       summary.quizCompletions++;if(event.sessionId)quizCompleteSessions.add(event.sessionId);
@@ -113,11 +151,18 @@ function aggregatePeriod(events,roster){
   summary.spinEngagementRate=summary.siteVisits?summary.spinButtonPushes/summary.siteVisits:0;
   summary.spotifyClickThroughRate=summary.wheelResults?summary.wheelSpotifyClicks/summary.wheelResults:0;
   summary.averageQuizScore=scores.length?scores.reduce((sum,value)=>sum+value,0)/scores.length:0;
+  summary.uniqueArtistsSelected=[...artists.values()].filter(row=>row.totalSelections>0).length;
+  const sessionDenominator=visitSessions.size||sessionArtists.size;
+  summary.averageArtistsPerSession=sessionDenominator?[...sessionArtists.values()].reduce((sum,set)=>sum+set.size,0)/sessionDenominator:0;
+  summary.recommendationClickThroughRate=summary.recommendationImpressions?summary.recommendationSelections/summary.recommendationImpressions:0;
+  summary.averageSessionDurationSeconds=sessionDurations.length?sessionDurations.reduce((sum,value)=>sum+value,0)/sessionDurations.length:0;
   return{summary,artists,quizQuestions:[...questions.values()].map(row=>({...row,accuracy:row.answers?row.correct/row.answers:0})).sort((a,b)=>a.questionId.localeCompare(b.questionId)),
     acquisition:mapRows(acquisition,"source"),devices:mapRows(devices,"device"),regions:mapRows(regions,"region"),eventAudit};
 }
 
-function emptyArtist(name){return{artist:name,wheelResults:0,wheelSpotifyClicks:0,directorySpotifyClicks:0,totalSpotifyClicks:0,uniqueSpotifyClickers:new Set()}}
+function emptyArtist(name){return{artist:name,wheelResults:0,wheelSpotifyClicks:0,directorySpotifyClicks:0,totalSpotifyClicks:0,uniqueSpotifyClickers:new Set(),
+  totalSelections:0,wheelSelections:0,surpriseSelections:0,rosterSelections:0,recommendationSelections:0,quizSelections:0,totalOutboundClicks:0,
+  bandcampClicks:0,youtubeClicks:0,websiteClicks:0,instagramClicks:0}}
 function increment(map,key){map.set(key,(map.get(key)||0)+1)}
 function mapRows(map,label){return[...map.entries()].map(([name,count])=>({[label]:name,count})).sort((a,b)=>b.count-a.count||String(a[label]).localeCompare(String(b[label])))}
 function mergeEventAudit(current,previous){
@@ -152,7 +197,12 @@ function dashboardSheet(report){
     ["Anonymous unique visitors",report.current.uniqueVisitors,report.previous.uniqueVisitors,"Distinct weekly browser sessions"],
     ["Spin button pushes",report.current.spinButtonPushes,report.previous.spinButtonPushes,"Intentional wheel spins"],
     ["Wheel results shown",report.current.wheelResults,report.previous.wheelResults,"Completed artist selections"],
+    ["All artist discoveries",report.current.artistSelections,report.previous.artistSelections,"Wheel, surprise, roster, recommendation and quiz selections"],
+    ["Unique artists discovered",report.current.uniqueArtistsSelected,report.previous.uniqueArtistsSelected,"Distinct catalogue artists selected"],
+    ["Average artists per session",report.current.averageArtistsPerSession,report.previous.averageArtistsPerSession,"Distinct discoveries per anonymous visit"],
     ["Spotify clicks",report.current.spotifyClicks,report.previous.spotifyClicks,"Wheel and directory click intent"],
+    ["Bandcamp clicks",report.current.bandcampClicks,report.previous.bandcampClicks,"Verified Bandcamp outbound intent"],
+    ["Recommendation clicks",report.current.recommendationSelections,report.previous.recommendationSelections,"Related-artist discoveries selected"],
     ["Quiz starts",report.current.quizStarts,report.previous.quizStarts,"Quiz sessions opened"],
     ["Quiz completions",report.current.quizCompletions,report.previous.quizCompletions,"Completed ten-question runs"],
     ["Services contact clicks",report.current.servicesContactClicks,report.previous.servicesContactClicks,"Film, TV or advertising interest"],
@@ -167,23 +217,28 @@ function dashboardSheet(report){
   rows.push([], [s("Key rates",3),blank(),blank(),blank(),blank()],
     [s("Spin engagement",7),n(report.current.spinEngagementRate,6),s("Spins / visits",9),blank(),blank()],
     [s("Wheel-to-Spotify conversion",7),n(report.current.spotifyClickThroughRate,6),s("Winner Spotify clicks / wheel results",9),blank(),blank()],
+    [s("Recommendation click-through",7),n(report.current.recommendationClickThroughRate,6),s("Recommendation selections / impressions",9),blank(),blank()],
     [s("Quiz completion",7),n(report.current.quizCompletionRate,6),s("Completions / starts",9),blank(),blank()],
     [s("Average quiz score",7),n(report.current.averageQuizScore,10),s("Out of 10",9),blank(),blank()],
     [],[s("Important: Spotify clicks measure outbound intent, not confirmed streams. Visitor counts are anonymous sessions, not identified people.",9),blank(),blank(),blank(),blank()]);
-  return{rows,widths:[31,16,18,14,44],merges:["A1:E1","A2:E2","A4:E4","A17:E17","A23:E23"],freezeRows:5};
+  const keyHeaderRow=metrics.length+7,noteRow=rows.length;
+  return{rows,widths:[31,16,18,14,44],merges:["A1:E1","A2:E2","A4:E4",`A${keyHeaderRow}:E${keyHeaderRow}`,`A${noteRow}:E${noteRow}`],freezeRows:5};
 }
 
 function artistSheet(report){
-  const rows=[[s("ARTIST PERFORMANCE - COMPLETE VERIFIED ROSTER",1),blank(),blank(),blank(),blank(),blank(),blank(),blank(),blank()],
-    [s(report.periodLabel,2),blank(),blank(),blank(),blank(),blank(),blank(),blank(),blank()],
-    [s("Artist",4),s("Wheel results",4),s("Wheel Spotify",4),s("Directory Spotify",4),s("Total Spotify",4),s("Unique clickers",4),s("Wheel conversion",4),s("Previous total",4),s("WoW",4)]];
+  const rows=[[s("ARTIST PERFORMANCE - COMPLETE VERIFIED ROSTER",1),...Array(16).fill(blank())],
+    [s(report.periodLabel,2),...Array(16).fill(blank())],
+    [s("Artist",4),s("Wheel results",4),s("Wheel Spotify",4),s("Directory Spotify",4),s("Total Spotify",4),s("Unique clickers",4),s("Wheel conversion",4),s("Previous Spotify",4),s("Spotify WoW",4),
+      s("All selections",4),s("Wheel",4),s("Surprise",4),s("Roster",4),s("Related",4),s("Quiz",4),s("Bandcamp",4),s("All outbound",4)]];
   report.artists.forEach((artist,index)=>{
     const row=index+4;
     rows.push([s(artist.artist,7),n(artist.wheelResults,5),n(artist.wheelSpotifyClicks,5),n(artist.directorySpotifyClicks,5),
       f(`C${row}+D${row}`,artist.totalSpotifyClicks,5),n(artist.uniqueSpotifyClickers,5),f(`IF(B${row}=0,0,C${row}/B${row})`,artist.wheelConversion,6),
-      n(artist.previousSpotifyClicks,5),f(`IF(H${row}=0,IF(E${row}=0,0,1),(E${row}-H${row})/H${row})`,change(artist.totalSpotifyClicks,artist.previousSpotifyClicks),6)]);
+      n(artist.previousSpotifyClicks,5),f(`IF(H${row}=0,IF(E${row}=0,0,1),(E${row}-H${row})/H${row})`,change(artist.totalSpotifyClicks,artist.previousSpotifyClicks),6),
+      n(artist.totalSelections,5),n(artist.wheelSelections,5),n(artist.surpriseSelections,5),n(artist.rosterSelections,5),n(artist.recommendationSelections,5),
+      n(artist.quizSelections,5),n(artist.bandcampClicks,5),n(artist.totalOutboundClicks,5)]);
   });
-  return{rows,widths:[28,14,16,18,15,16,18,16,13],merges:["A1:I1","A2:I2"],freezeRows:3,autoFilter:`A3:I${rows.length}`};
+  return{rows,widths:[28,14,16,18,15,16,18,16,13,15,11,12,11,11,11,13,15],merges:["A1:Q1","A2:Q2"],freezeRows:3,autoFilter:`A3:Q${rows.length}`};
 }
 
 function quizSheet(report){
@@ -194,11 +249,12 @@ function quizSheet(report){
     [s("Quiz completions",7),n(report.current.quizCompletions,5),n(report.previous.quizCompletions,5),n(report.current.quizCompletionRate,6)],
     [s("Quiz abandonments",7),n(report.current.quizAbandonments,5),n(report.previous.quizAbandonments,5),blank()],
     [s("Quiz replays",7),n(report.current.quizReplays,5),n(report.previous.quizReplays,5),blank()],
+    [s("Quiz recommendations selected",7),n(report.current.quizRecommendationSelections,5),n(report.previous.quizRecommendationSelections,5),blank()],
     [s("Average score",7),n(report.current.averageQuizScore,10),n(report.previous.averageQuizScore,10),s("Out of 10",9)],
     [],[s("Question-level response",3),blank(),blank(),blank()],
     [s("Question ID",4),s("Answers",4),s("Correct",4),s("Accuracy",4)]];
   report.quizQuestions.forEach(question=>rows.push([s(question.questionId,7),n(question.answers,5),n(question.correct,5),n(question.accuracy,6)]));
-  return{rows,widths:[43,16,18,18],merges:["A1:D1","A2:D2","A10:D10"],freezeRows:3};
+  return{rows,widths:[43,16,18,18],merges:["A1:D1","A2:D2","A11:D11"],freezeRows:3};
 }
 
 function audienceSheet(report){
@@ -227,6 +283,9 @@ function definitionsSheet(report){
   const definitions=[
     ["Site visit","A recorded opening of the Laneway discovery page."],["Anonymous unique visitor","A distinct browser session during the reporting period; no person is identified."],
     ["Spin button push","A user-initiated wheel spin."],["Wheel result","An artist selection shown after a completed spin."],
+    ["Artist discovery","An artist selected from the wheel, Surprise Me, roster, a related recommendation or quiz result."],
+    ["Average artists per session","Distinct artists selected divided by anonymous page-view sessions, including sessions with no selection."],
+    ["Recommendation click-through","Related-artist selections divided by recommendation cards shown."],
     ["Wheel Spotify click","A Spotify artist button clicked from the wheel winner result."],["Directory Spotify click","A Spotify artist button clicked from the full artist directory."],
     ["Spotify click","Outbound intent only; it is not evidence of a stream, follow, save or purchase."],["Quiz completion rate","Completed quiz runs divided by quiz starts."],
     ["Services contact click","A click from the quiz result to Laneway's film, television or advertising services page."],["WoW","Change versus the immediately preceding reporting period."],
@@ -306,26 +365,26 @@ export function buildLanewayPdf(report){
   text(commands,"THE WEEK AT A GLANCE",45,473,8,"F2",muted);
   const cards=[
     ["SITE VISITS",report.current.siteVisits,"anonymous sessions"],["SPINS",report.current.spinButtonPushes,percent(report.current.spinEngagementRate)+" of visits"],
-    ["SPOTIFY CLICKS",report.current.spotifyClicks,`${report.current.wheelSpotifyClicks} wheel / ${report.current.directorySpotifyClicks} list`],
+    ["SPOTIFY CLICKS",report.current.spotifyClicks,`${report.current.uniqueArtistsSelected} artists discovered`],
     ["QUIZ COMPLETIONS",report.current.quizCompletions,percent(report.current.quizCompletionRate)+" completion"],["SERVICES INTEREST",report.current.servicesContactClicks,"film / TV / advertising"]
   ];
   cards.forEach((card,index)=>{const x=44+index*151;rect(commands,x,391,139,66,panel,index===4?red:border,1);text(commands,card[0],x+11,439,6.5,"F2",muted);text(commands,formatNumber(card[1]),x+11,414,22,"F2",index===4?red:white);text(commands,card[2],x+11,400,6.5,"F1",muted)});
   text(commands,"DISCOVERY FUNNEL",45,359,8,"F2",muted);
-  const funnel=[["VISITS",report.current.siteVisits],["SPINS",report.current.spinButtonPushes],["ARTISTS SHOWN",report.current.wheelResults],["WINNER SPOTIFY",report.current.wheelSpotifyClicks]];
+  const funnel=[["VISITS",report.current.siteVisits],["SPINS",report.current.spinButtonPushes],["ARTISTS SELECTED",report.current.artistSelections],["OUTBOUND CLICKS",report.current.totalArtistOutboundClicks]];
   const max=Math.max(1,...funnel.map(item=>item[1]));
   funnel.forEach((item,index)=>{const y=326-index*34,width=285*(item[1]/max);text(commands,item[0],45,y+8,7,"F2",white);rect(commands,126,y,285,19,[.09,.09,.1]);rect(commands,126,y,Math.max(2,width),19,index===3?green:red);text(commands,formatNumber(item[1]),420,y+6,8,"F2",white)});
   text(commands,"TOP ARTIST DISCOVERY",475,359,8,"F2",muted);
-  text(commands,"ARTIST",475,337,6.5,"F2",muted);text(commands,"WHEEL",680,337,6.5,"F2",muted);text(commands,"SPOTIFY",747,337,6.5,"F2",muted);
+  text(commands,"ARTIST",475,337,6.5,"F2",muted);text(commands,"SELECTED",680,337,6.5,"F2",muted);text(commands,"SPOTIFY",747,337,6.5,"F2",muted);
   line(commands,475,329,792,329,border,1);
-  report.topArtists.slice(0,5).forEach((artist,index)=>{const y=310-index*28;text(commands,fit(artist.artist,28),475,y,8,"F2",white);text(commands,formatNumber(artist.wheelResults),692,y,8,"F1",white);text(commands,formatNumber(artist.totalSpotifyClicks),762,y,8,"F2",artist.totalSpotifyClicks?green:muted);line(commands,475,y-9,792,y-9,[.13,.13,.15],.6)});
+  report.topArtists.slice(0,5).forEach((artist,index)=>{const y=310-index*28;text(commands,fit(artist.artist,28),475,y,8,"F2",white);text(commands,formatNumber(artist.totalSelections),692,y,8,"F1",white);text(commands,formatNumber(artist.totalSpotifyClicks),762,y,8,"F2",artist.totalSpotifyClicks?green:muted);line(commands,475,y-9,792,y-9,[.13,.13,.15],.6)});
   rect(commands,44,71,367,96,panel,border,1);text(commands,"ENGAGEMENT SIGNALS",57,148,7,"F2",muted);
-  metricLine(commands,"Wheel to Spotify conversion",percent(report.current.spotifyClickThroughRate),57,124,red);
-  metricLine(commands,"Average quiz score",`${report.current.averageQuizScore.toFixed(1)} / 10`,57,101,white);
-  metricLine(commands,"Catalogue wheel coverage",`${report.artists.filter(a=>a.wheelResults>0).length} / ${report.artists.length} artists`,57,78,green);
+  metricLine(commands,"Artists discovered per session",report.current.averageArtistsPerSession.toFixed(1),57,124,red);
+  metricLine(commands,"Recommendation click-through",percent(report.current.recommendationClickThroughRate),57,101,white);
+  metricLine(commands,"Catalogue coverage",`${report.current.uniqueArtistsSelected} / ${report.artists.length} artists`,57,78,green);
   rect(commands,428,71,364,96,panel,border,1);text(commands,"CLIENT-READY READ",441,148,7,"F2",muted);
   const leader=report.topArtists[0];
-  text(commands,leader&&leader.totalSpotifyClicks?`${fit(leader.artist,28)} led Spotify interest this week.`:"No Spotify artist clicks were recorded this week.",441,123,9,"F2",white);
-  text(commands,`${formatNumber(report.current.uniqueVisitors)} anonymous visitors generated ${formatNumber(report.current.spinButtonPushes)} spins and ${formatNumber(report.current.quizStarts)} quiz starts.`,441,101,7.3,"F1",muted);
+  text(commands,leader&&leader.totalSelections?`${fit(leader.artist,28)} led catalogue discovery this week.`:"No artist selections were recorded this week.",441,123,9,"F2",white);
+  text(commands,`${formatNumber(report.current.uniqueVisitors)} anonymous visitors discovered ${formatNumber(report.current.uniqueArtistsSelected)} artists and generated ${formatNumber(report.current.spotifyClicks)} Spotify clicks.`,441,101,7.3,"F1",muted);
   text(commands,report.current.servicesContactClicks?`${report.current.servicesContactClicks} visitor${report.current.servicesContactClicks===1?"":"s"} opened Laneway's services page from the quiz result.`:"The services link received no recorded clicks this week.",441,81,7.3,"F1",muted);
   text(commands,"Clicks indicate outbound intent only - not confirmed Spotify streams, follows, saves or purchases.",45,48,6.7,"F1",muted);
   text(commands,"Anonymous, privacy-conscious reporting | Detailed artist, quiz, source and audit data is attached in Excel.",45,36,6.5,"F1",muted);
@@ -359,7 +418,7 @@ function pdfDocument(content,width,height){
 
 export function buildLanewayEmailHtml(report){
   const top=report.topArtists.slice(0,5),metric=(label,value,accent="#ffffff")=>`<td style="width:20%;padding:12px 8px;border:1px solid #3b3b3d;background:#141416;text-align:center"><div style="font:700 10px Arial;color:#9e9ea2;letter-spacing:1px">${html(label)}</div><div style="font:800 25px Arial;color:${accent};margin-top:6px">${html(value)}</div></td>`;
-  return`<!doctype html><html><body style="margin:0;background:#09090a;color:#f5f5f5;font-family:Arial,sans-serif"><table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#09090a"><tr><td align="center" style="padding:24px 12px"><table role="presentation" width="760" cellspacing="0" cellpadding="0" style="max-width:760px;border:1px solid #343438;background:#0e0e10"><tr><td style="padding:28px 30px 18px;border-bottom:2px solid #ef233c"><div style="font-size:14px;font-weight:800;letter-spacing:3px;color:#ef233c">LANEWAY MUSIC</div><h1 style="margin:7px 0 4px;font-size:30px;line-height:1.1">Weekly Discovery Report</h1><div style="font-size:12px;color:#a9a9ad">${html(report.periodLabel)}</div></td></tr><tr><td style="padding:22px 24px"><table role="presentation" width="100%" cellspacing="8" cellpadding="0"><tr>${metric("SITE VISITS",formatNumber(report.current.siteVisits))}${metric("SPINS",formatNumber(report.current.spinButtonPushes))}${metric("SPOTIFY",formatNumber(report.current.spotifyClicks),"#43dc86")}${metric("QUIZ COMPLETE",formatNumber(report.current.quizCompletions))}${metric("SERVICES",formatNumber(report.current.servicesContactClicks),"#ef4054")}</tr></table><table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="margin-top:16px"><tr><td style="width:52%;padding:18px;background:#151517;border-left:4px solid #ef233c;vertical-align:top"><div style="font-size:11px;font-weight:800;color:#ef4054;letter-spacing:1px">THE WEEK AT A GLANCE</div><p style="font-size:15px;line-height:1.55;color:#e8e8ea">${formatNumber(report.current.uniqueVisitors)} anonymous visitors generated ${formatNumber(report.current.spinButtonPushes)} spins. ${formatNumber(report.current.wheelSpotifyClicks)} Spotify clicks came directly from wheel winners and ${formatNumber(report.current.directorySpotifyClicks)} came from the artist directory.</p><p style="font-size:13px;color:#a9a9ad">Quiz completion: <strong style="color:#fff">${percent(report.current.quizCompletionRate)}</strong> &nbsp; | &nbsp; Wheel-to-Spotify: <strong style="color:#43dc86">${percent(report.current.spotifyClickThroughRate)}</strong></p></td><td style="width:48%;padding:18px 0 18px 22px;vertical-align:top"><div style="font-size:11px;font-weight:800;color:#a9a9ad;letter-spacing:1px">TOP ARTIST INTEREST</div>${top.map((artist,index)=>`<div style="padding:8px 0;border-bottom:1px solid #28282b;font-size:13px"><span style="display:inline-block;width:22px;color:#ef4054">${index+1}</span><strong>${html(artist.artist)}</strong><span style="float:right;color:#43dc86">${artist.totalSpotifyClicks} Spotify</span></div>`).join("")||'<p style="color:#a9a9ad">No artist Spotify clicks were recorded this week.</p>'}</td></tr></table></td></tr><tr><td style="padding:18px 30px 26px;border-top:1px solid #303034"><p style="margin:0 0 8px;font-size:13px;color:#d8d8da"><strong>Your client-ready landscape PDF</strong> is attached, with the complete auditable Excel workbook behind it.</p><p style="margin:0;font-size:11px;line-height:1.5;color:#85858a">Spotify clicks indicate outbound intent only, not confirmed streams, follows, saves or purchases. Reporting is anonymous and privacy-conscious.</p></td></tr></table></td></tr></table></body></html>`;
+  return`<!doctype html><html><body style="margin:0;background:#09090a;color:#f5f5f5;font-family:Arial,sans-serif"><table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#09090a"><tr><td align="center" style="padding:24px 12px"><table role="presentation" width="760" cellspacing="0" cellpadding="0" style="max-width:760px;border:1px solid #343438;background:#0e0e10"><tr><td style="padding:28px 30px 18px;border-bottom:2px solid #ef233c"><div style="font-size:14px;font-weight:800;letter-spacing:3px;color:#ef233c">LANEWAY MUSIC</div><h1 style="margin:7px 0 4px;font-size:30px;line-height:1.1">Weekly Discovery Report</h1><div style="font-size:12px;color:#a9a9ad">${html(report.periodLabel)}</div></td></tr><tr><td style="padding:22px 24px"><table role="presentation" width="100%" cellspacing="8" cellpadding="0"><tr>${metric("SITE VISITS",formatNumber(report.current.siteVisits))}${metric("DISCOVERIES",formatNumber(report.current.artistSelections))}${metric("SPOTIFY",formatNumber(report.current.spotifyClicks),"#43dc86")}${metric("QUIZ COMPLETE",formatNumber(report.current.quizCompletions))}${metric("SERVICES",formatNumber(report.current.servicesContactClicks),"#ef4054")}</tr></table><table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="margin-top:16px"><tr><td style="width:52%;padding:18px;background:#151517;border-left:4px solid #ef233c;vertical-align:top"><div style="font-size:11px;font-weight:800;color:#ef4054;letter-spacing:1px">THE WEEK AT A GLANCE</div><p style="font-size:15px;line-height:1.55;color:#e8e8ea">${formatNumber(report.current.uniqueVisitors)} anonymous visitors discovered ${formatNumber(report.current.uniqueArtistsSelected)} of ${report.artists.length} artists. They generated ${formatNumber(report.current.spotifyClicks)} Spotify and ${formatNumber(report.current.bandcampClicks)} Bandcamp clicks.</p><p style="font-size:13px;color:#a9a9ad">Artists per session: <strong style="color:#fff">${report.current.averageArtistsPerSession.toFixed(1)}</strong> &nbsp; | &nbsp; Related-artist CTR: <strong style="color:#43dc86">${percent(report.current.recommendationClickThroughRate)}</strong></p></td><td style="width:48%;padding:18px 0 18px 22px;vertical-align:top"><div style="font-size:11px;font-weight:800;color:#a9a9ad;letter-spacing:1px">TOP ARTIST DISCOVERY</div>${top.map((artist,index)=>`<div style="padding:8px 0;border-bottom:1px solid #28282b;font-size:13px"><span style="display:inline-block;width:22px;color:#ef4054">${index+1}</span><strong>${html(artist.artist)}</strong><span style="float:right;color:#43dc86">${artist.totalSelections} selected / ${artist.totalSpotifyClicks} Spotify</span></div>`).join("")||'<p style="color:#a9a9ad">No artist discoveries were recorded this week.</p>'}</td></tr></table></td></tr><tr><td style="padding:18px 30px 26px;border-top:1px solid #303034"><p style="margin:0 0 8px;font-size:13px;color:#d8d8da"><strong>Your client-ready landscape PDF</strong> is attached, with the complete auditable Excel workbook behind it.</p><p style="margin:0;font-size:11px;line-height:1.5;color:#85858a">Platform clicks indicate outbound intent only, not confirmed streams, follows, saves or purchases. Reporting is anonymous and privacy-conscious.</p></td></tr></table></td></tr></table></body></html>`;
 }
 
 export function binaryBase64(bytes){let binary="";for(let index=0;index<bytes.length;index+=0x8000)binary+=String.fromCharCode(...bytes.subarray(index,index+0x8000));return btoa(binary)}
