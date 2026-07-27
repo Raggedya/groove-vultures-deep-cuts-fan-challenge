@@ -93,6 +93,7 @@ Treat every completed edition as a finished commercial product that must remain 
 
 - `indie_label/1` is final and locked. Its reference is the restored Laneway Music company edition `dc_b9e7b66620` in the production state restored by PR #102.
 - The locked journey is the label-branded waveform, equal-chance artist wheel, in-circle spinning spiral, winner destination and sourced impact line, optional verified purchase links, a conditional verified winner-video panel, searchable roster, delayed 10-question catalogue quiz, positive sourced feedback, contact result and anonymous reporting.
+- In the Laneway reference, pale teal/light blue is the unified decorative accent for headings, buttons, borders, glows, video and quiz surfaces. The illuminated wheel pointer is the sole red interface element.
 - The discarded catalogue-discovery overhaul is not part of the model. Surprise Me, rich related-artist cards, recommendation panels and quiz-result artist recommendations must not be restored without explicit owner authority.
 - A new independent-label product uses isolated `indie_wheel` configuration. Its logo, colours, roster, platform, verified links, impact copy, questions, contact and copyright belong only to that edition.
 - The reference Laneway edition and completed Cool Death Records edition are immutable commercial products. A future label edition must never overwrite either one.

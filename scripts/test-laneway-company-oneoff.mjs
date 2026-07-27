@@ -130,13 +130,13 @@ assert.match(css,/\[data-edition-type="laneway_company"\] \.laneway-company-arti
 assert.match(css,/\[data-edition-type="laneway_company"\] \.laneway-wheel-stage/);
 assert.match(css,/\[data-edition-type="laneway_company"\] \.laneway-wheel-winner/);
 assert.match(css,/@keyframes lanewayWinnerPulse/);
-assert.match(css,/@keyframes lanewayRedWinnerOrbit/);
+assert.match(css,/@keyframes lanewayWinnerOrbit/);
 assert.match(css,/\[data-product-type="laneway_company"\] \.laneway-wheel-winner:before/);
 assert.match(css,/\[data-product-type="laneway_company"\] \.laneway-challenge-card:before/);
 assert.match(css,/\[data-product-type="laneway_company"\] \.laneway-company-quiz-screen \.laneway-question-card/);
 assert.match(css,/\[data-product-type="laneway_company"\] \.laneway-company-quiz-screen \.laneway-question-card h2:focus\{outline:none\}/);
 assert.match(css,/\[data-product-type="laneway_company"\] \.laneway-company-quiz-screen \.laneway-answer-button\.best-answer/);
-assert.match(css,/\.laneway-answer-button\.selected-choice\{border-color:#a5202f/);
+assert.match(css,/\[data-product-type="laneway_company"\] \.laneway-company-quiz-screen \.laneway-answer-button\.selected-choice\{border-color:#6fc9e4/);
 assert.match(css,/\.laneway-answer-button\.best-answer\{border-color:#43dc86/);
 assert.match(css,/\.laneway-answer-button\.best-answer:after\{color:#75f2ab/);
 assert.match(css,/\[data-product-type="laneway_company"\] \.laneway-company-result-screen \.laneway-result-card/);
@@ -156,6 +156,13 @@ assert.match(css,/\.laneway-wheel-purchase-link\{[^}]*animation:lanewayPurchaseH
 assert.match(css,/\[data-product-type="laneway_company"\] \.laneway-wheel-purchase-link/);
 assert.match(css,/\[data-product-type="laneway_company"\] \.laneway-wheel-video/);
 assert.match(css,/@keyframes lanewayWinnerVideoReveal/);
+const lanewayPointerLine=css.split(/\r?\n/).find(line=>line.startsWith('[data-product-type="laneway_company"] .laneway-wheel-pointer'));
+assert.match(lanewayPointerLine,/#d51d31/);
+const lanewayDecorativeCss=css.split(/\r?\n/).filter(line=>
+  (line.includes('[data-product-type="laneway_company"]')||/^@keyframes laneway(?:ImpactAttention|WinnerOrbit)/.test(line))&&
+  !line.startsWith('[data-product-type="laneway_company"] .laneway-wheel-pointer')
+).join("\n");
+assert.doesNotMatch(lanewayDecorativeCss,/#(?:ef233c|ef4054|ef3045|d51d31|c51b2d|ff3048|ff98a5|ff4055|a5202f|a9162a|5d0d18)|rgba\((?:239,35,60|141,11,25)/i);
 assert.match(css,/\[data-product-type="laneway_company"\] \.laneway-company-result-screen \.laneway-result-contact/);
 assert.match(css,/@keyframes lanewayQuizFeedbackIn/);
 assert.match(css,/\.laneway-company-artist-link\.attention/);
