@@ -87,6 +87,9 @@ for(const edition of platform.editions){
       const impactPath=String(config.lanewayCompany?.artistImpactFile||'').replace(/^\//,'');
       const impactLines=JSON.parse(await fs.readFile(impactPath,'utf8'));
       validateLanewayCompanyImpact(impactLines,roster,impactPath,errors);
+      const videoPath=String(config.lanewayCompany?.artistVideoFile||'').replace(/^\//,'');
+      const videos=JSON.parse(await fs.readFile(videoPath,'utf8'));
+      validateLanewayCompanyVideos(videos,roster,videoPath,errors);
       await fs.access(config.lanewayCompany.logoArtwork);
     }else if(config.editionType==='indie_wheel'){
       if(config.characterArtwork)errors.push(`${edition.config} Indie Wheel must never configure character artwork.`);
@@ -180,6 +183,32 @@ function validateLanewayCompanyImpact(impactLines,roster,file,errors){
     if(line.length<45||line.length>190)errors.push(`${file} requires one concise sourced impact line for ${name}.`);
   }
   for(const name of Object.keys(impactLines))if(!rosterNames.has(name))errors.push(`${file} contains an impact line for unknown roster artist ${name}.`);
+}
+
+function validateLanewayCompanyVideos(videoData,roster,file,errors){
+  if(!videoData||Array.isArray(videoData)||typeof videoData!=='object'||!videoData.artists||Array.isArray(videoData.artists)||typeof videoData.artists!=='object'){errors.push(`${file} must contain a Laneway artist-video map.`);return}
+  if(Number.isNaN(Date.parse(videoData.verifiedAt||'')))errors.push(`${file} requires a valid verification timestamp.`);
+  if(String(videoData.selectionPolicy||'').trim().length<80)errors.push(`${file} requires a clear video-selection policy.`);
+  const rosterByName=new Map(roster.artists.map(artist=>[String(artist.name||'').trim(),artist]));
+  const allowedBases=new Set(['only-playable-profile-music-video','highest-viewed-playable-profile-music-video','profile-music-video-preferred-over-interview','existing-owner-selected-edition-video']);
+  const ids=new Set();
+  for(const [name,video] of Object.entries(videoData.artists)){
+    const artist=rosterByName.get(name);
+    if(!artist){errors.push(`${file} contains a video for unknown roster artist ${name}.`);continue}
+    const youtubeURL=String(video?.youtubeURL||'').trim();
+    const match=youtubeURL.match(/^https:\/\/www\.youtube\.com\/watch\?v=([A-Za-z0-9_-]{11})$/);
+    if(!String(video?.title||'').trim()||!match)errors.push(`${file} contains incomplete YouTube data for ${name}.`);
+    if(normalized(video?.sourceURL)!==normalized(artist.sourceURL))errors.push(`${file} ${name} video must cite that artist's official Laneway profile.`);
+    if(video?.playableInEmbed!==true)errors.push(`${file} ${name} video must be verified as playable in an embed.`);
+    if(!Number.isSafeInteger(video?.viewCountAtVerification)||video.viewCountAtVerification<0)errors.push(`${file} ${name} video requires its public view count at verification.`);
+    if(!allowedBases.has(video?.selectionBasis))errors.push(`${file} ${name} video has an unsupported selection basis.`);
+    if(String(video?.evidence||'').trim().length<80)errors.push(`${file} ${name} video requires verification evidence.`);
+    if(match&&ids.has(match[1]))errors.push(`${file} reuses YouTube video ${match[1]} for more than one artist.`);
+    if(match)ids.add(match[1]);
+  }
+  const count=Object.keys(videoData.artists).length;
+  if(count<1)errors.push(`${file} requires at least one verified artist video.`);
+  if(count>=roster.artists.length)errors.push(`${file} must preserve conditional omission rather than imply every roster artist has a verified video.`);
 }
 
 function validateIndieWheelQuestions(questions,file,errors){

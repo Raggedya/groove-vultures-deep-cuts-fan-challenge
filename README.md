@@ -44,6 +44,7 @@ Public URLs use opaque IDs and never expose the artist name:
 - Laneway company-wheel winner summaries with a one-shot attention flash and independently omitted, verified Buy Music / Buy Merch destinations
 - A spectacular pale-blue Laneway quiz invitation 10 seconds after the first completed wheel result, plus accessible light-blue heartbeats for verified winner purchase buttons
 - A compact generated spiral inside the standalone Laneway wheel control while it spins, returning to `Spin` after every result
+- A conditional privacy-enhanced winner video beneath the selected artist details, sourced from a central verified map and omitted when unavailable
 - A fail-closed final Indie Label model contract that protects the restored experience from feature creep
 
 ## Validation

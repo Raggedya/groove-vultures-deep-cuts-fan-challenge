@@ -18,7 +18,7 @@ The model preserves:
 - the mobile-first label-branded header and waveform
 - the equal-chance artist wheel with illuminated pointer
 - the compact in-circle spiral while the wheel spins
-- the winner destination button, sourced artist-impact line and verified optional purchase buttons
+- the winner destination button, sourced artist-impact line, verified optional purchase buttons and conditional verified artist video
 - the searchable complete artist roster with direct platform buttons
 - the delayed 10-question catalogue quiz with positive sourced feedback
 - score, replay, wheel return and label-contact result actions
@@ -34,6 +34,7 @@ Each new indie label edition owns its:
 - verified artist roster
 - primary outbound platform and button wording
 - verified music and merchandise purchase links
+- verified artist-video data, with unavailable videos omitted
 - sourced artist-impact copy
 - 10 sourced quiz questions and classifications
 - official contact and catalogue destinations

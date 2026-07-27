@@ -13,6 +13,7 @@ const EVENT_NAMES=new Set([
   "qr_scan","discovery_page_viewed","share_button_clicked","share_method_selected",
   "native_share_completed","copy_link_clicked","copy_link_completed","outbound_clicked",
   "wheel_spin_started","wheel_result_shown","artist_destination_clicked","artist_directory_searched",
+  "artist_video_shown",
   "utility_link_clicked","quiz_started","quiz_question_answered","quiz_completed",
   "quiz_abandoned","quiz_replayed","quiz_invitation_revealed","services_contact_clicked"
 ]);
