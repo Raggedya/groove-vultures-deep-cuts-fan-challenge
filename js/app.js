@@ -1,6 +1,6 @@
 "use strict";
 
-const VERSION="20260727-laneway-heartbeat-quiz-reveal-1";
+const VERSION="20260727-laneway-first-result-quiz-1";
 const LANEWAY_REPORTING_VERSION="laneway-weekly-v1";
 const $=id=>document.getElementById(id);
 const els={page:$("discoveryPage"),error:$("errorScreen"),errorMessage:$("errorMessage"),bandName:$("bandName"),bio:$("artistBio"),artwork:$("heroArtwork"),brandLogo:$("editionBrandLogo"),waveform:$("sonicSignature"),features:$("featureList"),video:$("featuredVideo"),videoLabel:$("featuredVideoLabel"),videoTitle:$("featuredVideoTitle"),videoFrame:$("featuredVideoFrame"),links:$("platformLinks"),share:$("shareButton"),status:$("shareStatus"),description:$("pageDescription"),poweredBy:$("poweredByLabel"),copyright:$("coverCopyright"),lanewayHome:$("lanewayHomeLink"),lanewayRecommended:$("lanewayRecommendedLink"),companyDirectory:$("lanewayCompanyDirectory"),companyDirectoryCount:$("lanewayCompanyDirectoryCount"),companySearch:$("lanewayCompanySearch"),companyArtistList:$("lanewayCompanyArtistList"),companyEmpty:$("lanewayCompanyEmpty"),companyWheel:$("lanewayArtistWheel"),wheelCanvas:$("lanewayWheelCanvas"),wheelSpin:$("lanewayWheelSpin"),wheelStatus:$("lanewayWheelStatus"),wheelWinner:$("lanewayWheelWinner"),wheelImpact:$("lanewayWheelImpact"),wheelPurchaseLinks:$("lanewayWheelPurchaseLinks"),wheelBuyMusic:$("lanewayWheelBuyMusic"),wheelBuyMerch:$("lanewayWheelBuyMerch")};
@@ -108,7 +108,6 @@ async function applyConfig(){
   if(schools)await SchoolDiscoveryQuiz.configure({config,analytics,homeElement:els.page,challengeButton:$("schoolChallengeButton")});
   if(laneway)await LanewayQuiz.configure({config,analytics,homeElement:els.page,challengeButton:$("lanewayChallengeButton")});
   if(wheelEdition)await LanewayCompanyQuiz.configure({config,analytics,homeElement:els.page,challengeButton:$("lanewayCompanyChallengeButton")});
-  if(lanewayCompany)scheduleLanewayCompanyChallengeReveal();
   startAttentionCycle();
 }
 
@@ -232,26 +231,38 @@ function createLanewayCompanyChallengeCard(){
   return button;
 }
 
-function scheduleLanewayCompanyChallengeReveal(){
+function createLanewayCompanyChallengeRevealController(isWheelIdle){
   const button=$("lanewayCompanyChallengeButton");
-  if(!button)return;
-  const configured=Number(config.lanewayCompanyChallenge?.invitationRevealDelayMs);
-  const delay=Math.min(8000,Math.max(3000,Number.isFinite(configured)?configured:5000));
+  if(!button)return null;
+  const configured=Number(config.lanewayCompanyChallenge?.invitationRevealAfterFirstResultMs??config.lanewayCompanyChallenge?.invitationRevealDelayMs);
+  const delay=Math.min(15000,Math.max(5000,Number.isFinite(configured)?configured:10000));
+  let armed=false,due=false,presented=false,animated=false,observer=null;
   const animate=()=>{
-    if(button.classList.contains("is-delayed-reveal")||document.hidden)return;
+    if(animated||document.hidden)return;
+    animated=true;
+    observer?.disconnect();
     button.classList.add("is-delayed-reveal");
-    analytics.track("quiz_invitation_revealed",{quiz_identifier:config.analytics?.pageIdentifier||"",reveal_delay_ms:delay,edition_type:config.editionType,tracking_version:LANEWAY_REPORTING_VERSION},{onceKey:"laneway-quiz-invitation"});
+    analytics.track("quiz_invitation_revealed",{quiz_identifier:config.analytics?.pageIdentifier||"",reveal_delay_ms:delay,interaction_source:"first_spin_result",edition_type:config.editionType,tracking_version:LANEWAY_REPORTING_VERSION},{onceKey:"laneway-quiz-invitation"});
   };
-  window.setTimeout(()=>{
+  const revealWhenReady=()=>{
+    if(!due||presented||!isWheelIdle())return;
+    presented=true;
     button.hidden=false;
     if(!("IntersectionObserver" in window)){animate();return}
-    const observer=new IntersectionObserver(entries=>{
+    observer=new IntersectionObserver(entries=>{
       if(!entries.some(entry=>entry.isIntersecting))return;
       observer.disconnect();animate();
     },{threshold:.35});
     observer.observe(button);
-    document.addEventListener("visibilitychange",()=>{if(!document.hidden&&button.getBoundingClientRect().top<window.innerHeight)animate()},{once:true,passive:true});
-  },delay);
+    document.addEventListener("visibilitychange",()=>{if(!document.hidden&&button.getBoundingClientRect().top<window.innerHeight)animate()},{passive:true});
+  };
+  return{
+    afterResult(){
+      if(armed){revealWhenReady();return}
+      armed=true;
+      window.setTimeout(()=>{due=true;revealWhenReady()},delay);
+    }
+  };
 }
 
 async function buildLanewayCompanyDirectory(){
@@ -299,6 +310,7 @@ function buildLanewayArtistWheel(artists){
   if(!context)throw new Error("Artist wheel canvas is unavailable.");
   const segmentAngle=Math.PI*2/artists.length;
   let rotation=0,spinning=false,frame=0;
+  const challengeReveal=isLanewayCompanyEdition()?createLanewayCompanyChallengeRevealController(()=>!spinning):null;
   const settings=wheelSettings(),destinationKey=settings.destinationKey,destinationLabel=settings.destinationLabel;
   const colours=settings.wheelColours||["#f4f4f4","#3a3a3a","#d8d8d8","#202020","#bcbcbc","#505050"];
   const draw=()=>{
@@ -367,6 +379,7 @@ function buildLanewayArtistWheel(artists){
     els.wheelPurchaseLinks.classList.toggle("is-revealed",hasMusic||hasMerch);
     els.wheelWinner.focus({preventScroll:true});
     analytics.track("wheel_result_shown",{artist_name:winner.name,artist_count:artists.length,edition_type:config.editionType,tracking_version:LANEWAY_REPORTING_VERSION},{dedupeKey:`wheel:${winner.name}`,dedupeMs:500});
+    challengeReveal?.afterResult();
   };
   els.wheelSpin.addEventListener("click",()=>{
     if(spinning)return;

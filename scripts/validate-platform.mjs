@@ -74,7 +74,7 @@ for(const edition of platform.editions){
       if(config.featuredVideo?.selectionBasis!=='owner-selected'||config.featuredVideo?.ownerSelected!==true||!config.featuredVideo?.youtubeURL)errors.push(`${edition.config} requires the explicit owner-selected featured video.`);
       if(config.lanewayCompanyChallenge?.numberOfQuestions!==10||!config.lanewayCompanyChallenge?.questionFile)errors.push(`${edition.config} must preserve the isolated 10-question Laneway Music artist challenge.`);
       else{
-        if(config.lanewayCompanyChallenge.invitationRevealDelayMs!==5000)errors.push(`${edition.config} must preserve the five-second Laneway Music quiz invitation reveal.`);
+        if(config.lanewayCompanyChallenge.invitationRevealAfterFirstResultMs!==10000)errors.push(`${edition.config} must preserve the 10-second Laneway Music quiz invitation reveal after the first wheel result.`);
         const questionPath=String(config.lanewayCompanyChallenge.questionFile).replace(/^\//,'');
         const questions=JSON.parse(await fs.readFile(questionPath,'utf8'));
         validateLanewayCompanyQuestions(questions,questionPath,errors);

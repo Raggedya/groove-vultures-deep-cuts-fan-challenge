@@ -68,7 +68,7 @@
   "lanewayCompanyChallenge": {
     "title": "Meet the Artists. Discover Laneway.",
     "ctaLabel": "Take the 10-Question Laneway Artist Quiz",
-    "invitationRevealDelayMs": 5000,
+    "invitationRevealAfterFirstResultMs": 10000,
     "numberOfQuestions": 10,
     "questionFile": "editions/laneway-music-one-off/laneway-company-questions.json",
     "classifications": [

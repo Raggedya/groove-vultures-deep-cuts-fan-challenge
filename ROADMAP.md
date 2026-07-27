@@ -7,7 +7,7 @@
 - [x] Add a one-URL unattended Record Company Edition with roster isolation, checkpointed builds, verified quizzes, QR/report production and completion delivery.
 - [x] Add trusted Laneway wheel, artist, Spotify-source and quiz analytics with a branded Friday landscape PDF and complete Excel workbook.
 - [x] Add fail-closed Laneway winner purchase links and an accessible one-shot artist-summary reveal without changing any other edition.
-- [x] Sequence the Laneway company journey with light-blue purchase heartbeats and a five-second, visibility-aware quiz invitation.
+- [x] Sequence the Laneway company journey with light-blue purchase heartbeats and a spectacular, visibility-aware quiz invitation 10 seconds after the first completed result.
 
 ## Batch-production time savings
 
