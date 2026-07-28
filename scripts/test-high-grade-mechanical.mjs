@@ -32,8 +32,6 @@ assert.equal(config.featuredVideo.selectionBasis,'owner-selected');
 assert.equal(config.featuredVideo.ownerSelected,true);
 assert.equal(config.business.jobs.length,8);
 assert.equal(new Set(config.business.jobs.map(job=>job.id)).size,8);
-assert.equal(config.business.locationWheel.options.length,7,'The HGM service map must retain all seven verified options.');
-assert.equal(new Set(config.business.locationWheel.options.map(option=>option.id)).size,7,'HGM service-map option IDs must be unique.');
 assert.deepEqual(config.business.rolePaths.map(item=>[item.label,item.detail]),[
   ['Short Term Roles','Contact Jade'],
   ['Longer Term Roles','Contact Katie']
@@ -45,11 +43,6 @@ for(const rolePath of config.business.rolePaths){
 for(const job of config.business.jobs){
   assert.match(job.url,/^https:\/\/www\.hgmechanical\.com\.au\/available-jobs\/[^/?#]+\/$/);
   assert.ok(research.sources.some(source=>source.destination===`job:${job.id}`&&source.url===job.url&&source.identityVerified===true),`${job.id} lacks verified official evidence.`);
-}
-for(const option of config.business.locationWheel.options){
-  assert.ok(option.label&&option.type&&option.description&&option.sourceLabel,`${option.id} is missing required service-map copy.`);
-  assert.match(option.sourceURL,/^https:\/\/www\.hgmechanical\.com\.au\//,`${option.id} must use an official HGM source.`);
-  assert.ok(research.sources.some(source=>source.destination===`locationWheel:${option.id}`&&source.url===option.sourceURL&&source.identityVerified===true),`${option.id} lacks verified official location evidence.`);
 }
 assert.equal(questions.length,10);
 for(const question of questions){
@@ -69,16 +62,11 @@ assert.ok(app.indexOf('for(const rolePath of config.business?.rolePaths||[])')<a
 assert.ok(app.includes("interaction_source:source"));
 assert.ok(app.includes("role_path"));
 assert.ok(app.includes("function sequenceBusinessButtons()"));
-assert.ok(app.includes("function buildBusinessLocationWheel()"));
-assert.ok(app.includes('interaction_source:"business_location_wheel"'));
-assert.ok(app.includes('duration=reduced?180:3900'),'The HGM wheel must use a brief reduced-motion selection.');
-assert.ok(app.includes('selected===lastSelected'),'The HGM wheel must avoid an immediate repeated result.');
 const businessRendererStart=app.indexOf('function buildBusinessLinks(){');
 const businessRendererEnd=app.indexOf('function trackBusinessOutbound',businessRendererStart);
 assert.ok(businessRendererStart>=0&&businessRendererEnd>businessRendererStart);
 const businessRenderer=app.slice(businessRendererStart,businessRendererEnd);
 assert.equal((businessRenderer.match(/class="link-arrow"/g)||[]).length,1,'Only the HGM quiz CTA may retain its chevron; job cards must omit theirs.');
-assert.ok(businessRenderer.indexOf('els.links.append(challenge)')<businessRenderer.indexOf('buildBusinessLocationWheel()'),'The service-map wheel must render directly below the HGM quiz button.');
 assert.ok(quiz.includes('Not quite — now you know.'));
 assert.ok(quiz.includes('wrong-answer'));
 assert.ok(quiz.includes('best-answer'));
@@ -86,11 +74,7 @@ assert.ok(css.includes('[data-edition-type="business"] .business-job-link'));
 assert.ok(css.includes('[data-edition-type="business"] .business-role-path-link'));
 assert.ok(css.includes('@keyframes businessCarnivalLight'));
 assert.ok(css.includes('@keyframes businessCarnivalMark'));
-assert.ok(css.includes('.business-location-wheel'));
-assert.ok(css.includes('@keyframes businessLocationSpin'));
-assert.ok(css.includes('@keyframes businessLocationReveal'));
 assert.match(css,/@media\(prefers-reduced-motion:reduce\)\{.*business-carnival-light.*animation:none/s,'The carnival-light sequence must stop for reduced-motion visitors.');
-assert.match(css,/@media\(prefers-reduced-motion:reduce\)\{.*business-location-spin-spiral.*animation:none/s,'The HGM wheel spinner must stop for reduced-motion visitors.');
 assert.match(css,/\[data-edition-type="business"\] \.business-jobs-heading\{grid-column:1\/-1/,'The jobs introduction must span the grid above every role.');
 assert.ok(html.includes('<span id="poweredByLabel">Deep Cuts</span>'));
 assert.ok(html.includes('<small id="coverCopyright">Copyright Clearlight Creative</small>'));
