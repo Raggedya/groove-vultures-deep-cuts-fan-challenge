@@ -20,6 +20,10 @@ Business Recruitment uses `editionType: business` on the shared engine. It combi
 
 The High Grade Mechanical edition permanently uses the exact owner-supplied `assets/hgm-aggits-owner-supplied.jpg`; its HGM-specific hash test must fail if the file changes. This does not replace either standard immutable Aggits asset and does not alter any other edition. HGM alone may opt into its edition-owned sequential carnival-light treatment. Its `rolePaths` render before individual vacancies, route only through verified official contact destinations and never infer unpublished personal contact details.
 
+Each Business edition records `business.jobURLPrefix`; every vacancy must be a direct current official page beneath that prefix and have matching dated research evidence. Brand assets may opt into an edition-owned wide, square or light-surface treatment without altering other Business editions.
+
+Hays is the second isolated Business Recruitment edition at `dc_3481f25897`. It uses the immutable standard Aggits artwork, the official Hays brand mark, current direct Hays Resources & Mining vacancy pages and ten sourced questions. The owner-selected HGM video is included only for demonstration and is visibly labelled as such; it must never be presented as official or endorsed Hays content.
+
 ## Laneway permanent rules
 
 `Laneway [Band or Artist]` creates an isolated Laneway edition on the permanent platform. It preserves the exact supplied Laneway Music source logo and displays a deterministic transparent reverse-white rendition, preventing a rectangular image background on every browser. It uses a charcoal/black interface and no Aggits character or Aggits artwork. Its QR and social delivery images show `DEEP CUTS` immediately above `copyright Clearlight Creative`, never `Laneway` in that footer position. It must never change the standard Deep Cuts Music edition.

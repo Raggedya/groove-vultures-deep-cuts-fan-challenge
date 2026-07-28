@@ -53,9 +53,13 @@ if(editionType==='business'){
   if(!business.characterArtwork||!business.logoArtwork||!jobs.length)throw new Error('Business editions require owner-approved character artwork, verified logo artwork and direct job destinations.');
   config.business={
     shortName:clean(business.shortName||bandName,40),videoLabel:clean(business.videoLabel||'Meet the team',50),
+    showHeroArtwork:business.showHeroArtwork!==false,showTitle:business.showTitle!==false,buttonLightSequence:business.buttonLightSequence===true,
+    logoSurface:business.logoSurface==='light'?'light':'transparent',logoShape:business.logoShape==='square'?'square':'wide',
     logoArtwork:clean(business.logoArtwork,180),logoSourceURL:https(business.logoSourceURL),artworkPolicy:clean(business.artworkPolicy,240),
     websiteURL:links.website,careersURL:links.careers,benefitsURL:links.benefits,contactURL:links.contact,
-    heroLabels:['Meet Us','Watch','Find Jobs','Apply'],jobsEyebrow:'CURRENT OPPORTUNITIES',jobsTitle:clean(business.jobsTitle||'Find your next job',100),
+    heroLabels:Array.isArray(business.heroLabels)&&business.heroLabels.length===4?business.heroLabels.map(label=>clean(label,30)):['Meet Us','Watch','Find Jobs','Apply'],
+    socialRoleLabels:Array.isArray(business.socialRoleLabels)?business.socialRoleLabels.slice(0,4).map(label=>clean(label,30)).filter(Boolean):[],
+    jobURLPrefix:https(business.jobURLPrefix||links.careers),jobsEyebrow:'CURRENT OPPORTUNITIES',jobsTitle:clean(business.jobsTitle||'Find your next job',100),
     jobsIntro:clean(business.jobsIntro||'Choose a role to view the current verified opportunity.',180),jobs
   };
   config.businessChallenge=businessChallengeConfig(slug,bandName);
@@ -168,12 +172,12 @@ function schoolChallengeConfig(slug){
 }
 function businessChallengeConfig(slug,bandName){
   return{
-    title:`LEARN ABOUT ${bandName}`,ctaLabel:'Take the 10-question quiz',numberOfQuestions:10,questionFile:`editions/${slug}/questions.json`,
+    title:`LEARN ABOUT ${bandName.toUpperCase()}`,ctaLabel:`Take the 10-question ${bandName} quiz`,numberOfQuestions:10,questionFile:`editions/${slug}/questions.json`,
     classifications:[
       {min:0,max:3,label:'Business Explorer',message:'You have started discovering what makes {band} different.'},
-      {min:4,max:6,label:'High Grade Prospect',message:'A strong result. You understand plenty about {band}.'},
+      {min:4,max:6,label:'Opportunity Ready',message:'A strong result. You understand plenty about {band}.'},
       {min:7,max:9,label:'Business Insider',message:'Excellent work. You know the people, work and values behind {band}.'},
-      {min:10,max:10,label:'The Whole Package',message:'Ten out of ten. You know the complete {band} story.'}
+      {min:10,max:10,label:'Business Expert',message:'Ten out of ten. You know the complete {band} story.'}
     ]
   };
 }

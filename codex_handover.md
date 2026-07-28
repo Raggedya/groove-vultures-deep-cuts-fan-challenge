@@ -111,6 +111,8 @@ The renderer loads the selected record from `platform.json`, then loads that edi
 
 Business Recruitment is now an isolated shared-engine type. `js/business-quiz.js` owns its ten-question quiz, while `config.business.jobs` contains direct verified vacancies. High Grade Mechanical is the first edition at opaque ID `dc_4a71b2c8e9`; its exact owner-supplied `assets/hgm-aggits-owner-supplied.jpg` and official `assets/hgm-logo-official.png` are protected by `scripts/test-high-grade-mechanical.mjs`. HGM keeps that exact Aggits artwork in its QR and delivery assets but intentionally omits the large artwork and duplicated company-name title from the live page through edition-owned display flags. Its two `business.rolePaths` appear before the eight vacancy cards and share HGM's verified public contact page; `business.buttonLightSequence` opts only this edition into the accessible top-to-bottom carnival-light sequence across role, vacancy, quiz and utility controls.
 
+Hays is the second isolated Business Recruitment edition at `dc_3481f25897`. It uses `assets/aggits-original-cutout-v4.png`, the official square Hays brand mark, direct current Resources & Mining vacancy URLs beneath its locked `business.jobURLPrefix`, and ten sourced Hays questions. The HGM YouTube video is included solely because the owner requested it for this demo; the page labels it as owner-selected demo content and the evidence expressly disclaims official Hays association. `scripts/test-hays.mjs` protects this boundary. Business delivery artwork now derives its colours, short name, role labels and logo shape from edition configuration instead of hard-coding HGM.
+
 ### 4.2 Edition registry and contracts
 
 - `platform.json` is the canonical public edition registry and permanent base URL.
@@ -125,7 +127,7 @@ Business Recruitment is now an isolated shared-engine type. `js/business-quiz.js
   - `artist-impact.json`
   - `artist-videos.json`
 
-At this handover there are 32 active registered editions. Do not maintain that number manually; `platform.json` is authoritative.
+At this handover there are 33 active registered editions. Do not maintain that number manually; `platform.json` is authoritative.
 
 Useful registry check:
 
@@ -707,7 +709,7 @@ The later broad catalogue-discovery overhaul was explicitly rejected and reverte
 
 ### Other completed platform capabilities
 
-- 32 active opaque-routed editions.
+- 33 active opaque-routed editions.
 - One reusable engine with separately typed Music, Cars, Clubs, Schools, Business Recruitment, Laneway, Indie Wheel, Record Company, and Commercial Instinct contracts.
 - Immutable Aggits artwork verification.
 - Verified featured-video selection with privacy-enhanced YouTube embeds.

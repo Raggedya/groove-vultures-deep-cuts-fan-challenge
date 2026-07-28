@@ -55,6 +55,7 @@
       "Find Jobs",
       "Apply"
     ],
+    "jobURLPrefix": "https://www.hgmechanical.com.au/available-jobs/",
     "jobsEyebrow": "CURRENT OPPORTUNITIES",
     "jobsTitle": "Find your next HGM job",
     "jobsIntro": "Choose a work pathway or role to connect with the HGM team.",

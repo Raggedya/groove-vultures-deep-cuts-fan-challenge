@@ -1,0 +1,162 @@
+[
+  {
+    "id": "hays-01",
+    "category": "Resources & Mining",
+    "question": "Which industries does Hays connect with through its Resources & Mining recruitment expertise?",
+    "options": [
+      "Mining, heavy industrial, bulk chemical, power and primary industries",
+      "Only metropolitan retail businesses",
+      "Film production and live theatre only",
+      "Residential property sales exclusively"
+    ],
+    "correctAnswer": "Mining, heavy industrial, bulk chemical, power and primary industries",
+    "explanation": "Hays says its Resources & Mining specialists work across mining, heavy industrial, bulk chemical production, power and primary industries.",
+    "sourceName": "Hays - Resources & Mining jobs",
+    "sourceURL": "https://www.hays.com.au/jobs/resources-mining",
+    "active": true
+  },
+  {
+    "id": "hays-02",
+    "category": "National Reach",
+    "question": "Which group contains locations specifically named in Hays' Australian mining coverage?",
+    "options": [
+      "Pilbara, Goldfields, Bowen Basin and Townsville",
+      "Manhattan, Dublin, Paris and Rome",
+      "Only Sydney's central business district",
+      "No regional locations"
+    ],
+    "correctAnswer": "Pilbara, Goldfields, Bowen Basin and Townsville",
+    "explanation": "Hays identifies mining recruitment coverage across locations including the Pilbara, Goldfields, Bowen Basin and Townsville.",
+    "sourceName": "Hays - Resources & Mining employers",
+    "sourceURL": "https://www.hays.com.au/employers/resources-mining",
+    "active": true
+  },
+  {
+    "id": "hays-03",
+    "category": "Career Range",
+    "question": "How broad is the range of resources and mining roles Hays recruits for?",
+    "options": [
+      "From trades and technical services through to executive positions",
+      "Executive positions only",
+      "Entry-level office roles only",
+      "One occupation in one city"
+    ],
+    "correctAnswer": "From trades and technical services through to executive positions",
+    "explanation": "Hays describes a broad recruitment scope, spanning trades and technical services through to senior executive positions.",
+    "sourceName": "Hays - Resources & Mining employers",
+    "sourceURL": "https://www.hays.com.au/employers/resources-mining",
+    "active": true
+  },
+  {
+    "id": "hays-04",
+    "category": "Recruitment Approach",
+    "question": "What combination does Hays say supports its Resources & Mining recruitment?",
+    "options": [
+      "A national candidate database, local knowledge and a fast, accurate response",
+      "Random selection without local knowledge",
+      "Paper notices at one office",
+      "An annual application window"
+    ],
+    "correctAnswer": "A national candidate database, local knowledge and a fast, accurate response",
+    "explanation": "Hays combines a national candidate database with local market knowledge and a focus on responding quickly and accurately.",
+    "sourceName": "Hays - Resources & Mining employers",
+    "sourceURL": "https://www.hays.com.au/employers/resources-mining",
+    "active": true
+  },
+  {
+    "id": "hays-05",
+    "category": "Mining Careers",
+    "question": "Which group is included among the mining disciplines listed by Hays?",
+    "options": [
+      "Production, fixed plant, safety, mobile plant and exploration",
+      "Fashion styling, choreography and catering",
+      "Marine tourism and hotel reception",
+      "Only payroll administration"
+    ],
+    "correctAnswer": "Production, fixed plant, safety, mobile plant and exploration",
+    "explanation": "Hays lists opportunities across production, process and laboratory work, fixed plant, safety, mobile plant and exploration disciplines.",
+    "sourceName": "Hays - Resources & Mining jobs",
+    "sourceURL": "https://www.hays.com.au/jobs/resources-mining",
+    "active": true
+  },
+  {
+    "id": "hays-06",
+    "category": "Candidate Support",
+    "question": "What career support does Hays make available to mining jobseekers?",
+    "options": [
+      "CV, interview and salary advice",
+      "Only a map to the nearest mine",
+      "Equipment repair certification",
+      "A compulsory paid social network"
+    ],
+    "correctAnswer": "CV, interview and salary advice",
+    "explanation": "The Hays mining jobs page points candidates to practical career support including CV guidance, interview advice and salary information.",
+    "sourceName": "Hays - Resources & Mining jobs",
+    "sourceURL": "https://www.hays.com.au/jobs/resources-mining",
+    "active": true
+  },
+  {
+    "id": "hays-07",
+    "category": "Hays in Australia",
+    "question": "How much recruitment success in Australia does Hays highlight for employers?",
+    "options": [
+      "50 years",
+      "Five months",
+      "Nine weeks",
+      "One year"
+    ],
+    "correctAnswer": "50 years",
+    "explanation": "Hays highlights 50 years of recruitment success in Australia and specialist expertise across a wide range of industries.",
+    "sourceName": "Hays - Employer recruitment services",
+    "sourceURL": "https://www.hays.com.au/employers",
+    "active": true
+  },
+  {
+    "id": "hays-08",
+    "category": "Recruitment Services",
+    "question": "Which hiring needs can Hays support for Australian employers?",
+    "options": [
+      "Permanent, temporary, contract, executive and interim recruitment",
+      "Permanent hiring only",
+      "Weekend volunteering only",
+      "Unpaid placements only"
+    ],
+    "correctAnswer": "Permanent, temporary, contract, executive and interim recruitment",
+    "explanation": "Hays presents services covering permanent recruitment, temporary and contract hiring, executive search and interim appointments.",
+    "sourceName": "Hays - Employer recruitment services",
+    "sourceURL": "https://www.hays.com.au/employers",
+    "active": true
+  },
+  {
+    "id": "hays-09",
+    "category": "Job Alerts",
+    "question": "What happens when a candidate creates a Hays job alert?",
+    "options": [
+      "Matching vacancies can be sent by email",
+      "Their application is sent to every employer",
+      "They must visit an office each morning",
+      "Their profile becomes public automatically"
+    ],
+    "correctAnswer": "Matching vacancies can be sent by email",
+    "explanation": "Hays job alerts allow candidates to save relevant search criteria and receive new matching vacancies directly by email.",
+    "sourceName": "Hays - Job Alerts",
+    "sourceURL": "https://www.hays.com.au/job-alerts",
+    "active": true
+  },
+  {
+    "id": "hays-10",
+    "category": "Salary Insights",
+    "question": "The Hays Salary Guide is informed by feedback from more than how many professionals?",
+    "options": [
+      "7,000 professionals",
+      "70 professionals",
+      "700 professionals",
+      "700,000 professionals"
+    ],
+    "correctAnswer": "7,000 professionals",
+    "explanation": "Hays says its FY26/27 Salary Guide draws on feedback from more than 7,000 professionals alongside salary data and market insights.",
+    "sourceName": "Hays - Salary Guide",
+    "sourceURL": "https://www.hays.com.au/salary-guide",
+    "active": true
+  }
+]

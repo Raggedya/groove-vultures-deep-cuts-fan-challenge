@@ -1,0 +1,145 @@
+{
+  "brandName": "Deep Cuts Business",
+  "editionType": "business",
+  "bandName": "Hays",
+  "editionTitle": "Hays",
+  "description": "Hays connects people and employers across Australia's resources and mining sector, from operational and technical roles through to leadership.",
+  "discovery": {
+    "bio": "Hays connects people and employers across Australia's resources and mining sector, from operational and technical roles through to leadership.",
+    "newsLabel": "Hays Resources & Mining opportunities and employer services"
+  },
+  "mode": "discovery",
+  "slug": "hays",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_3481f25897",
+  "characterArtwork": "assets/aggits-original-cutout-v4.png",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "Copyright Clearlight Creative",
+    "instagramImage": "output/hays/instagram-discovery.png",
+    "qrImage": "output/hays/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#002776",
+    "accentSecondary": "#00A3E0",
+    "surface": "#0B172A"
+  },
+  "links": {
+    "website": "https://www.hays.com.au/employers/resources-mining",
+    "careers": "https://www.hays.com.au/jobs/resources-mining",
+    "benefits": "https://www.hays.com.au/salary-guide",
+    "contact": "https://www.hays.com.au/offices"
+  },
+  "featuredVideo": {
+    "title": "Calling All HD Sparkies!!! - HGM (Demo Video)",
+    "youtubeURL": "https://www.youtube.com/watch?v=TgKUyWn0Nf8",
+    "selectionBasis": "owner-selected",
+    "ownerSelected": true,
+    "verifiedAt": "2026-07-28T11:14:00.000Z"
+  },
+  "analytics": {
+    "editionId": "dc_3481f25897",
+    "pageIdentifier": "dc_3481f25897:business-recruitment-v1"
+  },
+  "production": {
+    "jobId": "dcjob_970ea3c3-4d68-4a2a-b46b-8d267ea98eae",
+    "submittedAt": "2026-07-28T11:06:53.583Z",
+    "researchCompletedAt": "2026-07-28T11:18:39.701Z",
+    "editionCreatedAt": "2026-07-28T11:18:39.701Z"
+  },
+  "business": {
+    "shortName": "Hays",
+    "videoLabel": "Owner-selected demo video",
+    "showHeroArtwork": true,
+    "showTitle": true,
+    "buttonLightSequence": false,
+    "logoSurface": "transparent",
+    "logoShape": "square",
+    "logoArtwork": "assets/hays-logo-official.webp",
+    "logoSourceURL": "https://www.hays.com.au/o/hays-desktop-branding-theme/images/hays-og-logo.webp",
+    "artworkPolicy": "Use the standard immutable Deep Cuts Aggits artwork. Do not use, alter or imply ownership of the HGM-only character asset.",
+    "websiteURL": "https://www.hays.com.au/employers/resources-mining",
+    "careersURL": "https://www.hays.com.au/jobs/resources-mining",
+    "benefitsURL": "https://www.hays.com.au/salary-guide",
+    "contactURL": "https://www.hays.com.au/offices",
+    "heroLabels": [
+      "Mining",
+      "Watch",
+      "Find Jobs",
+      "Employers"
+    ],
+    "jobURLPrefix": "https://www.hays.com.au/job-detail/",
+    "jobsEyebrow": "CURRENT OPPORTUNITIES",
+    "jobsTitle": "Find your next mining role",
+    "jobsIntro": "Explore current Resources & Mining opportunities published directly by Hays.",
+    "socialRoleLabels": [
+      "MINING OPERATIONS",
+      "TRADES & TECHNICAL",
+      "PROCESS & LAB",
+      "LEADERSHIP"
+    ],
+    "jobs": [
+      {
+        "id": "agi-truck-driver",
+        "label": "Agi Truck Driver",
+        "detail": "WA Regional",
+        "url": "https://www.hays.com.au/job-detail/JOB_5174337?jobSource=HaysGCJ"
+      },
+      {
+        "id": "mobile-operators",
+        "label": "Mobile Operators",
+        "detail": "Perth, Western Australia",
+        "url": "https://www.hays.com.au/job-detail/JOB_5173206?jobSource=HaysGCJ"
+      },
+      {
+        "id": "process-technician",
+        "label": "Process Technician",
+        "detail": "Queensland Regional",
+        "url": "https://www.hays.com.au/job-detail/JOB_5174864?jobSource=HaysGCJ"
+      },
+      {
+        "id": "mechanical-fitter",
+        "label": "Mechanical Fitter",
+        "detail": "Queensland Regional",
+        "url": "https://www.hays.com.au/job-detail/JOB_5171396?jobSource=HaysGCJ"
+      },
+      {
+        "id": "electrical-supervisor",
+        "label": "Electrical Supervisor",
+        "detail": "Mackay Basin, Queensland",
+        "url": "https://www.hays.com.au/job-detail/JOB_5173548?jobSource=HaysGCJ"
+      }
+    ]
+  },
+  "businessChallenge": {
+    "title": "LEARN ABOUT HAYS",
+    "ctaLabel": "Take the 10-question Hays quiz",
+    "numberOfQuestions": 10,
+    "questionFile": "editions/hays/questions.json",
+    "classifications": [
+      {
+        "min": 0,
+        "max": 3,
+        "label": "Business Explorer",
+        "message": "You have started discovering what makes {band} different."
+      },
+      {
+        "min": 4,
+        "max": 6,
+        "label": "Opportunity Ready",
+        "message": "A strong result. You understand plenty about {band} and its Resources & Mining expertise."
+      },
+      {
+        "min": 7,
+        "max": 9,
+        "label": "Business Insider",
+        "message": "Excellent work. You know the people, work and values behind {band}."
+      },
+      {
+        "min": 10,
+        "max": 10,
+        "label": "Hays Expert",
+        "message": "Ten out of ten. You know the complete {band} Resources & Mining story."
+      }
+    ]
+  }
+}

@@ -467,6 +467,8 @@ body{margin:0;min-height:100%;color:var(--ink);background:#000713;overflow-x:hid
 [data-edition-type="business"] .discovery-shell{width:min(100%,620px);padding-top:16px;background:radial-gradient(ellipse 85% 28% at 50% 13%,rgba(42,119,178,.34),transparent 72%),linear-gradient(180deg,#0e1624 0,#080d15 44%,#090d13 100%)}
 [data-edition-type="business"] .hero-stage{top:84px;width:440px;height:520px;background:radial-gradient(ellipse,rgba(247,103,30,.2),rgba(36,118,180,.2) 44%,transparent 72%);filter:blur(28px)}
 [data-edition-type="business"] .edition-brand-logo{display:block;width:min(84%,430px);max-height:108px;margin:2px auto 14px;object-fit:contain;filter:drop-shadow(0 0 16px rgba(88,160,213,.23))}
+[data-edition-type="business"] .business-logo-on-light{box-sizing:border-box;height:auto;max-height:none;padding:18px 24px;border:1px solid rgba(255,255,255,.28);border-radius:18px;background:#fff;box-shadow:0 16px 38px rgba(0,0,0,.32),0 0 24px color-mix(in srgb,var(--business-accent) 18%,transparent);filter:none}
+[data-edition-type="business"] .edition-brand-logo.business-logo-square{width:112px;height:112px;max-height:none;margin-bottom:12px;border:1px solid rgba(255,255,255,.16);border-radius:18px;object-fit:cover;box-shadow:0 14px 34px rgba(0,0,0,.32),0 0 22px color-mix(in srgb,var(--business-accent) 20%,transparent);filter:none}
 [data-edition-type="business"] .hero-artwork{width:min(84%,392px);max-height:none;border:1px solid rgba(156,175,193,.32);border-radius:22px;box-shadow:0 22px 58px rgba(0,0,0,.62),0 0 0 1px rgba(255,255,255,.03);filter:none}
 [data-edition-type="business"] .artist-title-row{margin:20px 0 0}
 [data-edition-type="business"] .artist-title-row span{background:linear-gradient(90deg,transparent,var(--business-accent))}
@@ -517,6 +519,8 @@ body{margin:0;min-height:100%;color:var(--ink);background:#000713;overflow-x:hid
 [data-edition-type="business"] .business-quiz-progress{margin:0;text-align:right;color:#aebdcb;font-size:.7rem;font-weight:900;letter-spacing:.13em;text-transform:uppercase}
 [data-edition-type="business"] .business-question-card,[data-edition-type="business"] .business-result-card{padding:20px;border:1px solid rgba(117,141,165,.45);border-radius:22px;background:linear-gradient(145deg,#182332,#0d141e);box-shadow:0 22px 58px rgba(0,0,0,.48),inset 0 1px rgba(255,255,255,.05)}
 [data-edition-type="business"] .business-quiz-logo,[data-edition-type="business"] .business-result-logo{display:block;width:min(100%,350px);max-height:94px;margin:0 auto 18px;object-fit:contain}
+[data-edition-type="business"] .business-quiz-logo.business-logo-on-light,[data-edition-type="business"] .business-result-logo.business-logo-on-light{box-sizing:border-box;height:auto;max-height:none;padding:14px 20px;border:1px solid rgba(255,255,255,.28);border-radius:14px;background:#fff}
+[data-edition-type="business"] .business-quiz-logo.business-logo-square,[data-edition-type="business"] .business-result-logo.business-logo-square{width:92px;height:92px;max-height:none;border:1px solid rgba(255,255,255,.16);border-radius:14px;object-fit:cover}
 [data-edition-type="business"] .business-quiz-category,[data-edition-type="business"] .business-result-kicker{margin:0;color:#f47a34;font-size:.67rem;font-weight:900;letter-spacing:.18em;text-transform:uppercase}
 [data-edition-type="business"] .business-question-card h2{margin:13px 0 19px;color:#fff;font-size:clamp(1.3rem,5.8vw,1.86rem);line-height:1.18;text-wrap:balance}
 [data-edition-type="business"] .business-question-card h2:focus{outline:none}
