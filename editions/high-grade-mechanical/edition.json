@@ -121,7 +121,70 @@
         "detail": "Western Australia",
         "url": "https://www.hgmechanical.com.au/available-jobs/field-service-hd-fitter/"
       }
-    ]
+    ],
+    "locationWheel": {
+      "eyebrow": "HGM SERVICE MAP",
+      "title": "Spin to explore HGM",
+      "intro": "Discover verified HGM service regions and mining work settings across Western Australia.",
+      "options": [
+        {
+          "id": "rockingham-workshop",
+          "label": "Rockingham Workshop",
+          "type": "HGM location",
+          "description": "HGM's head office and dedicated maintenance workshop are in Rockingham, Western Australia. The workshop supports off-site maintenance for heavy earthmoving equipment, with field and onsite breakdown capability also available.",
+          "sourceURL": "https://www.hgmechanical.com.au/services/",
+          "sourceLabel": "Verified HGM services source"
+        },
+        {
+          "id": "south-west-wa",
+          "label": "South West WA",
+          "type": "HGM service region",
+          "description": "HGM publicly lists South West WA among its service locations. Across Western Australia, its mining and civil maintenance work includes rostered personnel, heavy-equipment maintenance, field service and shutdown support.",
+          "sourceURL": "https://www.hgmechanical.com.au/",
+          "sourceLabel": "Verified HGM location source"
+        },
+        {
+          "id": "denham-gascoyne",
+          "label": "Denham / Gascoyne",
+          "type": "HGM service region",
+          "description": "HGM publicly lists Denham in the Gascoyne among its service locations. HGM describes its wider Western Australian work as heavy mobile maintenance support for mining and civil operations.",
+          "sourceURL": "https://www.hgmechanical.com.au/",
+          "sourceLabel": "Verified HGM location source"
+        },
+        {
+          "id": "perth-metro",
+          "label": "Perth Metro",
+          "type": "Advertised work setting",
+          "description": "HGM advertises ongoing Perth Metro work alongside FIFO opportunities. Its metro roles include maintaining light vehicles and mine-support equipment used across mobile-maintenance operations.",
+          "sourceURL": "https://www.hgmechanical.com.au/available-jobs/lv-fitters-lv-mechanics-fifo-perth-metro/",
+          "sourceLabel": "Verified HGM role source"
+        },
+        {
+          "id": "fifo-western-australia",
+          "label": "FIFO Western Australia",
+          "type": "Advertised work setting",
+          "description": "HGM advertises FIFO opportunities across Western Australia for mobile-maintenance trades. Current role information covers mine-site work, varied rosters and movement between different sites.",
+          "sourceURL": "https://www.hgmechanical.com.au/available-jobs/hd-fitters-heavy-duty-mechanics-fifo-dido/",
+          "sourceLabel": "Verified HGM role source"
+        },
+        {
+          "id": "dido-western-australia",
+          "label": "DIDO Western Australia",
+          "type": "Advertised work setting",
+          "description": "HGM advertises DIDO work across Western Australia for heavy-duty fitters, mechanics and boilermakers, alongside FIFO and metro options. The work centres on mobile-equipment maintenance.",
+          "sourceURL": "https://www.hgmechanical.com.au/available-jobs/boilermaker-mem/",
+          "sourceLabel": "Verified HGM role source"
+        },
+        {
+          "id": "surface-underground",
+          "label": "Surface & Underground",
+          "type": "Advertised mining work",
+          "description": "HGM advertises surface and underground FIFO work in Western Australia for drill fitters. The role requires mine-site experience and focuses on inspection, servicing, adjustment and repair of drilling equipment.",
+          "sourceURL": "https://www.hgmechanical.com.au/available-jobs/drill-fitters-surface-and-underground/",
+          "sourceLabel": "Verified HGM role source"
+        }
+      ]
+    }
   },
   "businessChallenge": {
     "title": "LEARN ABOUT HGM",
