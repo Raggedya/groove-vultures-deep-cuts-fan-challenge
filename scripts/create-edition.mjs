@@ -8,7 +8,7 @@ if(!inputPath)throw new Error('Usage: node scripts/create-edition.mjs <verified-
 const input=JSON.parse(await fs.readFile(path.resolve(inputPath),'utf8'));
 const bandName=clean(input.bandName,120);
 const bio=clean(input.bio,190);
-const editionType=['car','club','school','laneway'].includes(input.editionType)?input.editionType:'music';
+const editionType=['car','club','school','business','laneway'].includes(input.editionType)?input.editionType:'music';
 if(!bandName||!bio)throw new Error('Verified research requires bandName and a concise bio.');
 const slug=slugify(bandName);
 const jobPath=path.join(root,'.deep-cuts','jobs',`${slug}.json`);
@@ -21,6 +21,7 @@ if(platform.editions.some(item=>item.slug===slug||String(item.name).toLowerCase(
 const links=validateResearch(input);
 const featuredVideo=validateFeaturedVideo(input,links);
 const schoolQuestions=editionType==='school'?validateSchoolChallenge(input):null;
+const businessQuestions=editionType==='business'?validateBusinessChallenge(input):null;
 const lanewayQuestions=editionType==='laneway'?validateLanewayChallenge(input):null;
 const editionId=uniqueEditionId(platform);
 const canonicalPath=`/e/${editionId}`;
@@ -28,14 +29,14 @@ const now=new Date().toISOString();
 const directory=path.join(root,'editions',slug);
 await fs.mkdir(directory,{recursive:true});
 const config={
-  brandName:editionType==='laneway'?'Laneway':editionType==='school'?'School Discovery':editionType==='club'?'Deep Cuts Clubs':editionType==='car'?'Deep Cuts Cars':'Deep Cuts',editionType,bandName,editionTitle:bandName,description:bio,
+  brandName:editionType==='laneway'?'Laneway':editionType==='school'?'School Discovery':editionType==='business'?'Deep Cuts Business':editionType==='club'?'Deep Cuts Clubs':editionType==='car'?'Deep Cuts Cars':'Deep Cuts',editionType,bandName,editionTitle:bandName,description:bio,
   discovery:{bio,newsLabel:clean(input.newsLabel||'',90)},mode:'discovery',slug,
   publicURL:`${String(platform.publicBaseURL).replace(/\/$/,'')}${canonicalPath}`,
-  characterArtwork:editionType==='school'||editionType==='laneway'?'':'assets/aggits-original-cutout-v4.png',backgroundArtwork:'',
+  characterArtwork:editionType==='school'||editionType==='laneway'?'':editionType==='business'?clean(input.business?.characterArtwork,180):'assets/aggits-original-cutout-v4.png',backgroundArtwork:'',
   social:{copyright:'copyright Clearlight Creative',instagramImage:`output/${slug}/instagram-discovery.png`,qrImage:`output/${slug}/instagram-qr.png`},
-  theme:editionType==='school'?schoolTheme(input):{accent:'#2f80ff',accentSecondary:'#8dbdff'},links,
+  theme:editionType==='school'?schoolTheme(input):editionType==='business'?businessTheme(input):{accent:'#2f80ff',accentSecondary:'#8dbdff'},links,
   featuredVideo,
-  analytics:{editionId,pageIdentifier:`${editionId}:${editionType==='laneway'?'laneway-v1':editionType==='school'?'school-discovery-v1':editionType==='club'?'club-v1':editionType==='car'?'automotive-v1':'discovery-v1'}`},
+  analytics:{editionId,pageIdentifier:`${editionId}:${editionType==='laneway'?'laneway-v1':editionType==='school'?'school-discovery-v1':editionType==='business'?'business-recruitment-v1':editionType==='club'?'club-v1':editionType==='car'?'automotive-v1':'discovery-v1'}`},
   production:{jobId:job.jobId,submittedAt:job.submittedAt,researchCompletedAt:now,editionCreatedAt:now}
 };
 if(editionType==='car')config.automotive={make:clean(input.automotive?.make,60),model:clean(input.automotive?.model,60),productionYears:clean(input.automotive?.productionYears,30),heroLabels:['Discover','Watch','Connect','Own & Restore']};
@@ -43,6 +44,21 @@ if(editionType==='club')config.club={location:clean(input.club?.location,120),fo
 if(editionType==='school'){
   config.school={officialWebsite:https(input.school?.officialWebsite||''),paletteSource:https(input.school?.paletteSource||input.school?.officialWebsite||''),logoPolicy:'colour-reference-only; no logo or emblem displayed',heroLabels:['Discover','Learn','Connect','Enrol']};
   config.schoolChallenge=schoolChallengeConfig(slug);
+}
+if(editionType==='business'){
+  const business=input.business||{};
+  const jobs=Array.isArray(business.jobs)?business.jobs.map((job,index)=>({
+    id:clean(job.id,80),label:clean(job.label,100),detail:clean(job.detail,120),url:https(job.url)
+  })).filter(job=>job.id&&job.label&&job.url):[];
+  if(!business.characterArtwork||!business.logoArtwork||!jobs.length)throw new Error('Business editions require owner-approved character artwork, verified logo artwork and direct job destinations.');
+  config.business={
+    shortName:clean(business.shortName||bandName,40),videoLabel:clean(business.videoLabel||'Meet the team',50),
+    logoArtwork:clean(business.logoArtwork,180),logoSourceURL:https(business.logoSourceURL),artworkPolicy:clean(business.artworkPolicy,240),
+    websiteURL:links.website,careersURL:links.careers,benefitsURL:links.benefits,contactURL:links.contact,
+    heroLabels:['Meet Us','Watch','Find Jobs','Apply'],jobsEyebrow:'CURRENT OPPORTUNITIES',jobsTitle:clean(business.jobsTitle||'Find your next job',100),
+    jobsIntro:clean(business.jobsIntro||'Choose a role to view the current verified opportunity.',180),jobs
+  };
+  config.businessChallenge=businessChallengeConfig(slug,bandName);
 }
 if(editionType==='laneway'){
   config.laneway={
@@ -58,6 +74,7 @@ const research={bandName,slug,editionId,verifiedAt:now,sources:input.sources};
 await fs.writeFile(path.join(directory,'edition.json'),JSON.stringify(config,null,2)+'\n');
 await fs.writeFile(path.join(directory,'research.json'),JSON.stringify(research,null,2)+'\n');
 if(schoolQuestions)await fs.writeFile(path.join(directory,'school-questions.json'),JSON.stringify(schoolQuestions,null,2)+'\n');
+if(businessQuestions)await fs.writeFile(path.join(directory,'questions.json'),JSON.stringify(businessQuestions,null,2)+'\n');
 if(lanewayQuestions)await fs.writeFile(path.join(directory,'laneway-questions.json'),JSON.stringify(lanewayQuestions,null,2)+'\n');
 platform.editions.push({slug,editionId,canonicalPath,name:bandName,config:`editions/${slug}/edition.json`,active:true});
 await fs.writeFile(platformPath,JSON.stringify(platform,null,2)+'\n');
@@ -69,7 +86,8 @@ function validateResearch(value){
   const car=value.editionType==='car';
   const club=value.editionType==='club';
   const school=value.editionType==='school';
-  const keys=school?['website','enrolment','virtualTour','principalMessage','visionValues','curriculum','studentLife','newsletter','termDates','policies','contact','schoolProject','youtube']:club?['website','calendar','news','events','membership','barefootBowls','pennant','venueHire','history','contact','facebook','bowlsVictoria']:car?['history','specifications','buyerGuide','youtube','ownersClub','partsRestoration','carsForSale','newsReviews']:['buyMusic','spotify','instagram','bandcamp','youtube','facebook','website','merchandise','newsReviews'];
+  const business=value.editionType==='business';
+  const keys=school?['website','enrolment','virtualTour','principalMessage','visionValues','curriculum','studentLife','newsletter','termDates','policies','contact','schoolProject','youtube']:business?['website','careers','benefits','contact']:club?['website','calendar','news','events','membership','barefootBowls','pennant','venueHire','history','contact','facebook','bowlsVictoria']:car?['history','specifications','buyerGuide','youtube','ownersClub','partsRestoration','carsForSale','newsReviews']:['buyMusic','spotify','instagram','bandcamp','youtube','facebook','website','merchandise','newsReviews'];
   const links=Object.fromEntries(keys.map(key=>[key,https(value.links?.[key]||'')]));
   const sources=Array.isArray(value.sources)?value.sources:[];
   if(sources.length<2||!sources.some(source=>source.identityVerified===true&&/official|authoritative/i.test(String(source.sourceType||''))))throw new Error('Research requires two identity-checked sources including one official or authoritative source.');
@@ -84,7 +102,7 @@ function validateResearch(value){
 function validateFeaturedVideo(value,links){
   const youtubeURL=https(value.featuredVideo?.youtubeURL||'');
   const title=clean(value.featuredVideo?.title||'',120);
-  const expectedBasis=value.editionType==='laneway'?'official-label-feature':value.editionType==='music'?'most-viewed-official':'best-authoritative';
+  const expectedBasis=value.editionType==='business'?'owner-selected':value.editionType==='laneway'?'official-label-feature':value.editionType==='music'?'most-viewed-official':'best-authoritative';
   if(value.editionType==='school'&&!youtubeURL)throw new Error('School Discovery requires a verified authoritative featured YouTube video.');
   if(value.editionType==='laneway'&&!youtubeURL)throw new Error('Laneway requires the verified YouTube video selected on the official Laneway Music artist page.');
   if(links.youtube&&!youtubeURL)throw new Error(value.editionType==='music'?'An official YouTube presence requires a verified most-viewed official featured video.':'A non-music YouTube destination requires a verified authoritative featured video.');
@@ -93,7 +111,12 @@ function validateFeaturedVideo(value,links){
   if(value.featuredVideo?.selectionBasis!==expectedBasis)throw new Error(`Featured video selectionBasis must be ${expectedBasis}.`);
   const evidence=(value.sources||[]).find(source=>source.destination==='featuredVideo'&&normalize(source.url)===normalize(youtubeURL)&&source.identityVerified===true&&validDate(source.verifiedAt)&&clean(source.evidence,300));
   if(!evidence)throw new Error('The featured YouTube video requires dated, identity-verified selection evidence.');
-  return{title,youtubeURL,selectionBasis:expectedBasis,verifiedAt:new Date(evidence.verifiedAt).toISOString()};
+  return{title,youtubeURL,selectionBasis:expectedBasis,...(value.editionType==='business'?{ownerSelected:true}:{}),verifiedAt:new Date(evidence.verifiedAt).toISOString()};
+}
+function validateBusinessChallenge(value){
+  const questions=value.businessChallenge?.questions;
+  if(!Array.isArray(questions)||questions.length!==10)throw new Error('Business editions require exactly ten positive, sourced questions.');
+  return validatePositiveQuestions(questions,value.sources,'Business');
 }
 function validateLanewayChallenge(value){
   const questions=value.lanewayChallenge?.questions;
@@ -143,6 +166,17 @@ function schoolChallengeConfig(slug){
     ]
   };
 }
+function businessChallengeConfig(slug,bandName){
+  return{
+    title:`LEARN ABOUT ${bandName}`,ctaLabel:'Take the 10-question quiz',numberOfQuestions:10,questionFile:`editions/${slug}/questions.json`,
+    classifications:[
+      {min:0,max:3,label:'Business Explorer',message:'You have started discovering what makes {band} different.'},
+      {min:4,max:6,label:'High Grade Prospect',message:'A strong result. You understand plenty about {band}.'},
+      {min:7,max:9,label:'Business Insider',message:'Excellent work. You know the people, work and values behind {band}.'},
+      {min:10,max:10,label:'The Whole Package',message:'Ten out of ten. You know the complete {band} story.'}
+    ]
+  };
+}
 function uniqueEditionId(platform){let id;do{id=`dc_${crypto.randomBytes(5).toString('hex')}`}while(platform.editions.some(item=>item.editionId===id));return id}
 function slugify(value){return value.normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')}
 function clean(value,max){return String(value||'').trim().replace(/\s+/g,' ').slice(0,max)}
@@ -156,6 +190,10 @@ function schoolTheme(value){
   const evidence=(value.sources||[]).find(item=>item.destination==='themePalette'&&item.identityVerified===true&&validDate(item.verifiedAt)&&/official school website/i.test(String(item.sourceType||'')));
   if(!evidence)throw new Error('School colours require dated evidence from the official school website.');
   return{...palette,paletteSource:https(value.school?.paletteSource||value.school?.officialWebsite||''),logoPolicy:'colour-reference-only; no logo or emblem displayed'};
+}
+function businessTheme(value){
+  const source=value.theme||{};
+  return{accent:hex(source.accent)||'#2F80C3',accentSecondary:hex(source.accentSecondary)||'#F47A34',surface:hex(source.surface)||'#111A29'};
 }
 function hex(value){const result=String(value||'').trim().toUpperCase();return /^#[0-9A-F]{6}$/.test(result)?result:''}
 

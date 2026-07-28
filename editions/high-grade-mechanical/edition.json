@@ -1,0 +1,151 @@
+{
+  "brandName": "Deep Cuts Business",
+  "editionType": "business",
+  "bandName": "High Grade Mechanical",
+  "editionTitle": "High Grade Mechanical Careers",
+  "description": "Meet High Grade Mechanical, explore current Western Australian trade opportunities and discover what the HGM team stands for.",
+  "discovery": {
+    "bio": "High Grade Mechanical connects high-grade people with heavy mobile equipment maintenance work across Western Australia.",
+    "newsLabel": "HGM careers and company information"
+  },
+  "mode": "discovery",
+  "slug": "high-grade-mechanical",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_4a71b2c8e9",
+  "characterArtwork": "assets/hgm-aggits-owner-supplied.jpg",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "Copyright Clearlight Creative",
+    "instagramImage": "output/high-grade-mechanical/instagram-discovery.png",
+    "qrImage": "output/high-grade-mechanical/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#2F80C3",
+    "accentSecondary": "#F47A34",
+    "surface": "#111A29"
+  },
+  "links": {
+    "website": "https://www.hgmechanical.com.au/",
+    "careers": "https://www.hgmechanical.com.au/available-jobs/",
+    "benefits": "https://www.hgmechanical.com.au/benefits-requirements/",
+    "contact": "https://www.hgmechanical.com.au/contact/"
+  },
+  "featuredVideo": {
+    "title": "Calling All HD Sparkies!!! - HGM",
+    "youtubeURL": "https://www.youtube.com/watch?v=TgKUyWn0Nf8",
+    "selectionBasis": "owner-selected",
+    "ownerSelected": true,
+    "verifiedAt": "2026-07-28T07:40:00.000Z"
+  },
+  "business": {
+    "shortName": "HGM",
+    "videoLabel": "Meet HGM",
+    "logoArtwork": "assets/hgm-logo-official.png",
+    "logoSourceURL": "https://www.hgmechanical.com.au/wp-content/uploads/HGM-Logo-Version-B.png",
+    "artworkPolicy": "Use the exact owner-supplied HGM Aggits image without alteration or substitution.",
+    "websiteURL": "https://www.hgmechanical.com.au/",
+    "careersURL": "https://www.hgmechanical.com.au/available-jobs/",
+    "benefitsURL": "https://www.hgmechanical.com.au/benefits-requirements/",
+    "contactURL": "https://www.hgmechanical.com.au/contact/",
+    "heroLabels": [
+      "Meet HGM",
+      "Watch",
+      "Find Jobs",
+      "Apply"
+    ],
+    "jobsEyebrow": "CURRENT OPPORTUNITIES",
+    "jobsTitle": "Find your next HGM job",
+    "jobsIntro": "Choose a role to view the current verified opportunity on the HGM website.",
+    "jobs": [
+      {
+        "id": "auto-electricians",
+        "label": "Auto Electricians",
+        "detail": "FIFO & Metro, Western Australia",
+        "url": "https://www.hgmechanical.com.au/available-jobs/auto-electricians-fifo-wa-2/"
+      },
+      {
+        "id": "hv-electrician",
+        "label": "HV Electrician",
+        "detail": "FIFO & DIDO, Western Australia",
+        "url": "https://www.hgmechanical.com.au/available-jobs/hv-electrician-heavy-vehicle/"
+      },
+      {
+        "id": "heavy-duty-fitters",
+        "label": "Heavy Duty Fitters / HD Mechanics",
+        "detail": "FIFO & DIDO",
+        "url": "https://www.hgmechanical.com.au/available-jobs/hd-fitters-heavy-duty-mechanics-fifo-dido/"
+      },
+      {
+        "id": "boilermaker",
+        "label": "Boilermaker",
+        "detail": "Mobile equipment maintenance, FIFO & DIDO",
+        "url": "https://www.hgmechanical.com.au/available-jobs/boilermaker-mem/"
+      },
+      {
+        "id": "drill-fitters",
+        "label": "Drill Fitters",
+        "detail": "Surface & underground, FIFO",
+        "url": "https://www.hgmechanical.com.au/available-jobs/drill-fitters-surface-and-underground/"
+      },
+      {
+        "id": "servicepersons",
+        "label": "Servicepersons",
+        "detail": "FIFO, Western Australia",
+        "url": "https://www.hgmechanical.com.au/available-jobs/servicepersons-fifo-wa/"
+      },
+      {
+        "id": "lv-fitters",
+        "label": "LV Fitters / LV Mechanics",
+        "detail": "FIFO & DIDO, Western Australia",
+        "url": "https://www.hgmechanical.com.au/available-jobs/lv-fitters-lv-mechanics-fifo-perth-metro/"
+      },
+      {
+        "id": "field-service-hd-fitter",
+        "label": "Field Service HD Fitter",
+        "detail": "Western Australia",
+        "url": "https://www.hgmechanical.com.au/available-jobs/field-service-hd-fitter/"
+      }
+    ]
+  },
+  "businessChallenge": {
+    "title": "LEARN ABOUT HGM",
+    "ctaLabel": "Take the 10-question HGM quiz",
+    "numberOfQuestions": 10,
+    "questionFile": "editions/high-grade-mechanical/questions.json",
+    "classifications": [
+      {
+        "min": 0,
+        "max": 3,
+        "label": "HGM Explorer",
+        "message": "You have started discovering what makes High Grade Mechanical different. Explore the current jobs and keep learning about the team."
+      },
+      {
+        "min": 4,
+        "max": 6,
+        "label": "High Grade Prospect",
+        "message": "A strong result. You already understand plenty about HGM people, work and values."
+      },
+      {
+        "min": 7,
+        "max": 9,
+        "label": "HGM Insider",
+        "message": "Excellent work. You know the HGM story, its services and what the team values."
+      },
+      {
+        "min": 10,
+        "max": 10,
+        "label": "The Whole Package",
+        "message": "Ten out of ten. You know the HGM story from the workshop to the whole-package Kwan."
+      }
+    ]
+  },
+  "analytics": {
+    "editionId": "dc_4a71b2c8e9",
+    "pageIdentifier": "dc_4a71b2c8e9:business-recruitment-v1"
+  },
+  "production": {
+    "jobId": "dcjob_6d6a3ebb-800f-48cb-af0f-cf658fe51a89",
+    "submittedAt": "2026-07-28T07:44:21.277Z",
+    "researchCompletedAt": "2026-07-28T08:15:00.000Z",
+    "editionCreatedAt": "2026-07-28T08:15:00.000Z"
+  }
+}

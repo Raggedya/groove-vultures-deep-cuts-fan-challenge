@@ -67,6 +67,12 @@
       "renderedLinks": ["website", "enrolment", "virtualTour", "principalMessage", "visionValues", "curriculum", "studentLife", "newsletter", "termDates", "policies", "contact", "schoolProject", "youtube"],
       "exclusiveConfig": ["school"]
     },
+    "business": {
+      "brandNames": ["Deep Cuts Business"],
+      "allowedLinks": ["website", "careers", "benefits", "contact"],
+      "renderedLinks": [],
+      "exclusiveConfig": ["business", "businessChallenge"]
+    },
     "laneway": {
       "brandNames": ["Laneway"],
       "allowedLinks": ["buyMusic", "spotify", "instagram", "bandcamp", "youtube", "facebook", "website", "merchandise", "newsReviews"],

@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#000713">
   <meta id="pageDescription" name="description" content="Discover a verified Deep Cuts edition.">
   <title>Deep Cuts</title>
-  <link rel="stylesheet" href="/styles.css?v=20260727-indie-label-3">
+  <link rel="stylesheet" href="/styles.css?v=20260728-hgm-1">
 </head>
 <body>
   <main id="app" class="discovery-shell">
@@ -196,6 +196,40 @@
       </div>
     </section>
 
+    <section id="businessQuizScreen" class="business-quiz-screen" aria-labelledby="businessQuestionText" hidden>
+      <div class="business-quiz-topbar">
+        <button id="businessQuizHomeButton" class="business-home-button" type="button">&larr; HGM Jobs</button>
+        <p id="businessQuizProgress" class="business-quiz-progress">Question 1 of 10</p>
+      </div>
+      <div class="business-question-card">
+        <img id="businessQuizLogo" class="business-quiz-logo" alt="">
+        <p id="businessQuizCategory" class="business-quiz-category">HGM Story</p>
+        <h2 id="businessQuestionText" tabindex="-1">Loading question...</h2>
+        <div id="businessAnswerList" class="business-answer-list" role="group" aria-label="Answer choices"></div>
+        <div id="businessAnswerFeedback" class="business-answer-feedback" aria-live="polite" hidden>
+          <strong id="businessFeedbackTitle"></strong>
+          <p id="businessFeedbackExplanation"></p>
+          <a id="businessFeedbackSource" target="_blank" rel="noopener noreferrer">Read the source</a>
+          <button id="businessNextButton" class="business-next-button" type="button">Next Question</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="businessResultScreen" class="business-result-screen" aria-labelledby="businessResultTitle" hidden>
+      <div class="business-result-card">
+        <img id="businessResultLogo" class="business-result-logo" alt="">
+        <p class="business-result-kicker">Your HGM Result</p>
+        <h1 id="businessResultScore">0 / 10</h1>
+        <h2 id="businessResultTitle">HGM Explorer</h2>
+        <p id="businessResultMessage"></p>
+        <div class="business-result-actions">
+          <button id="businessReplayButton" class="business-result-primary" type="button">Play Again</button>
+          <button id="businessResultHomeButton" class="business-result-secondary" type="button">Back to HGM Jobs</button>
+          <a id="businessResultCareersLink" class="business-result-careers" target="_blank" rel="noopener noreferrer">Explore HGM Careers</a>
+        </div>
+      </div>
+    </section>
+
     <footer class="page-footer" aria-label="Deep Cuts platform">
       <span id="poweredByLabel">Deep Cuts</span>
       <small id="coverCopyright">Copyright Clearlight Creative</small>
@@ -207,6 +241,7 @@
   <script src="/js/school-quiz.js?v=20260726-indie-wheel-1"></script>
   <script src="/js/laneway-quiz.js?v=20260726-indie-wheel-1"></script>
   <script src="/js/laneway-company-quiz.js?v=20260727-indie-label-3"></script>
-  <script src="/js/app.js?v=20260728-global-footer-1"></script>
+  <script src="/js/business-quiz.js?v=20260728-hgm-1"></script>
+  <script src="/js/app.js?v=20260728-hgm-1"></script>
 </body>
 </html>

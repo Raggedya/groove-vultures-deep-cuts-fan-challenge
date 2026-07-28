@@ -238,6 +238,86 @@ def laneway_logo() -> Image.Image:
     return white_logo
 
 
+def business_background() -> Image.Image:
+    canvas = Image.new("RGBA", (SIZE, SIZE), (8, 13, 21, 255))
+    glow = Image.new("RGBA", (SIZE, SIZE), (0, 0, 0, 0))
+    draw = ImageDraw.Draw(glow)
+    draw.ellipse((-120, -180, 880, 820), fill=(47, 128, 195, 72))
+    draw.ellipse((480, 420, 1260, 1250), fill=(244, 122, 52, 42))
+    return Image.alpha_composite(canvas, glow.filter(ImageFilter.GaussianBlur(120)))
+
+
+def business_logo(config: dict) -> Image.Image:
+    logo_path = config.get("business", {}).get("logoArtwork", "")
+    if not logo_path:
+        raise ValueError("Business editions require a verified logoArtwork.")
+    return Image.open(ROOT / logo_path).convert("RGBA")
+
+
+def create_business_instagram(config: dict, aggits: Image.Image, destination: Path) -> None:
+    canvas = business_background()
+    draw = ImageDraw.Draw(canvas)
+    logo = contain(business_logo(config), 790, 190)
+    canvas.alpha_composite(logo, ((SIZE - logo.width) // 2, 38))
+    draw.rounded_rectangle((60, 225, 1020, 232), radius=3, fill=(47, 128, 195, 255))
+    portrait = contain(aggits, 520, 710)
+    canvas.alpha_composite(portrait, (45 + (500 - portrait.width) // 2, 250))
+    draw.rounded_rectangle((535, 322, 1025, 765), radius=30, fill=(14, 24, 37, 238), outline=(97, 127, 151, 180), width=3)
+    draw.text((585, 370), "FIND YOUR", font=font(54), fill=(245, 249, 255))
+    draw.text((585, 430), "NEXT JOB", font=font(73), fill=(244, 122, 52))
+    draw.text((585, 530), "AUTO ELECTRICAL", font=font(27), fill=(190, 207, 221))
+    draw.text((585, 575), "HEAVY DUTY FITTING", font=font(27), fill=(190, 207, 221))
+    draw.text((585, 620), "BOILERMAKING", font=font(27), fill=(190, 207, 221))
+    draw.text((585, 665), "FIELD SERVICE", font=font(27), fill=(190, 207, 221))
+    centred_text(draw, "DEEP CUTS", 960, font(32), fill=(225, 234, 242))
+    centred_text(draw, "Copyright Clearlight Creative", 1010, font(20), fill=(139, 159, 177))
+    canvas.convert("RGB").save(destination, "PNG", optimize=True)
+
+
+def create_business_qr(config: dict, aggits: Image.Image, destination: Path) -> str:
+    platform = json.loads((ROOT / "platform.json").read_text(encoding="utf-8"))
+    base_url = os.environ.get("DEEP_CUTS_BASE_URL", platform.get("publicBaseURL", "")).rstrip("/")
+    if not base_url.startswith("https://") or ".example" in base_url:
+        raise ValueError("A permanent HTTPS publicBaseURL is required before Business QR artwork can be generated.")
+    edition_id = config.get("analytics", {}).get("editionId")
+    url = f"{base_url}/q/{edition_id}"
+    node = os.environ.get("DEEP_CUTS_NODE", "node")
+    result = subprocess.run([node, str(ROOT / "scripts" / "qr-matrix.cjs"), url], cwd=ROOT, check=True, capture_output=True, text=True)
+    matrix = json.loads(result.stdout)
+    border = 4
+    module = 490 // (len(matrix) + border * 2)
+    qr_size = module * (len(matrix) + border * 2)
+    qr_image = Image.new("RGBA", (qr_size, qr_size), (255, 255, 255, 255))
+    qr_draw = ImageDraw.Draw(qr_image)
+    for row, values in enumerate(matrix):
+        for column, dark in enumerate(values):
+            if dark:
+                x, y = (column + border) * module, (row + border) * module
+                qr_draw.rectangle((x, y, x + module - 1, y + module - 1), fill=(8, 13, 21, 255))
+    canvas = business_background()
+    draw = ImageDraw.Draw(canvas)
+    logo = contain(business_logo(config), 730, 175)
+    canvas.alpha_composite(logo, ((SIZE - logo.width) // 2, 28))
+    centred_text(draw, "SCAN TO EXPLORE HGM JOBS", 206, fit_font(draw, "SCAN TO EXPLORE HGM JOBS", 900, 48, 34), fill=(245, 249, 255))
+    portrait = contain(aggits, 360, 690)
+    canvas.alpha_composite(portrait, (42 + (320 - portrait.width) // 2, 300))
+    card_size = qr_size + 34
+    card_x, card_y = 482, 350
+    draw.rounded_rectangle((card_x, card_y, card_x + card_size, card_y + card_size), radius=26, fill=(255, 255, 255), outline=(244, 122, 52), width=5)
+    canvas.alpha_composite(qr_image, (card_x + 17, card_y + 17))
+    centred_text(draw, "DEEP CUTS", 965, font(30), fill=(225, 234, 242))
+    centred_text(draw, "Copyright Clearlight Creative", 1012, font(19), fill=(139, 159, 177))
+    canvas.convert("RGB").save(destination, "PNG", optimize=True)
+    if zxingcpp is not None:
+        scan = zxingcpp.read_barcode(Image.open(destination))
+        if scan is None or scan.text != url:
+            raise SystemExit(f"Rendered Business QR scan-back failed for {destination}")
+        reduced_scan = zxingcpp.read_barcode(Image.open(destination).resize((540, 540), Image.Resampling.LANCZOS))
+        if reduced_scan is None or reduced_scan.text != url:
+            raise SystemExit(f"Reduced-size Business QR scan-back failed for {destination}")
+    return url
+
+
 def laneway_background() -> Image.Image:
     canvas = Image.new("RGBA", (SIZE, SIZE), (14, 14, 14, 255))
     glow = Image.new("RGBA", (SIZE, SIZE), (0, 0, 0, 0))
@@ -527,6 +607,10 @@ def main() -> None:
     elif config.get("editionType") == "indie_wheel":
         create_indie_wheel_instagram(config, instagram)
         verified_url = create_indie_wheel_qr(config, qr_path)
+    elif config.get("editionType") == "business":
+        aggits = Image.open(ROOT / config["characterArtwork"]).convert("RGBA")
+        create_business_instagram(config, aggits, instagram)
+        verified_url = create_business_qr(config, aggits, qr_path)
     else:
         aggits = Image.open(ROOT / config["characterArtwork"]).convert("RGBA")
         create_instagram(config, aggits, instagram)

@@ -49,6 +49,30 @@ for(const edition of platform.editions){
         const research=JSON.parse(await fs.readFile(edition.config.replace(/edition\.json$/,'research.json'),'utf8'));
         for(const question of questions)if(!research.sources.some(source=>source.identityVerified===true&&normalized(source.url)===normalized(question.sourceURL)))errors.push(`${questionPath} question ${question.id} lacks matching verified source evidence.`);
       }
+    }else if(config.editionType==='business'){
+      if(config.brandName!=='Deep Cuts Business'||!config.characterArtwork)errors.push(`${edition.config} must preserve the isolated Deep Cuts Business artwork contract.`);
+      if(!config.business?.logoArtwork)errors.push(`${edition.config} must use a verified official business logo asset.`);
+      if(config.featuredVideo?.selectionBasis!=='owner-selected'||config.featuredVideo?.ownerSelected!==true||!config.featuredVideo?.youtubeURL)errors.push(`${edition.config} requires the explicit owner-selected HGM recruitment video.`);
+      if(config.businessChallenge?.numberOfQuestions!==10||!config.businessChallenge?.questionFile)errors.push(`${edition.config} requires the isolated 10-question Learn About HGM challenge.`);
+      else{
+        const questionPath=String(config.businessChallenge.questionFile).replace(/^\//,'');
+        const questions=JSON.parse(await fs.readFile(questionPath,'utf8'));
+        validateBusinessQuestions(questions,questionPath,errors);
+        const research=JSON.parse(await fs.readFile(edition.config.replace(/edition\.json$/,'research.json'),'utf8'));
+        for(const question of questions)if(!research.sources.some(source=>source.identityVerified===true&&normalized(source.url)===normalized(question.sourceURL)))errors.push(`${questionPath} question ${question.id} lacks matching verified source evidence.`);
+      }
+      const jobs=Array.isArray(config.business?.jobs)?config.business.jobs:[];
+      if(jobs.length<1)errors.push(`${edition.config} requires at least one verified current job.`);
+      const jobIds=new Set(),jobURLs=new Set();
+      const research=JSON.parse(await fs.readFile(edition.config.replace(/edition\.json$/,'research.json'),'utf8'));
+      for(const job of jobs){
+        const url=normalized(job.url);
+        if(!job.id||!job.label||!/^https:\/\/www\.hgmechanical\.com\.au\/available-jobs\/[^/?#]+$/i.test(url))errors.push(`${edition.config} contains an incomplete or non-direct HGM job destination.`);
+        if(jobIds.has(job.id)||jobURLs.has(url))errors.push(`${edition.config} contains a duplicate HGM job.`);
+        if(!research.sources.some(source=>source.destination===`job:${job.id}`&&source.identityVerified===true&&normalized(source.url)===url))errors.push(`${edition.config} job ${job.id||'unknown'} lacks matching official source evidence.`);
+        jobIds.add(job.id);jobURLs.add(url);
+      }
+      for(const asset of [config.characterArtwork,config.business?.logoArtwork])await fs.access(asset);
     }else if(config.editionType==='laneway'){
       if(config.characterArtwork)errors.push(`${edition.config} Laneway must never configure Aggits or other character artwork.`);
       if(config.laneway?.logoArtwork!=='assets/laneway-music-logo-reverse-transparent.png'||config.laneway?.logoTreatment!=='reverse-white-transparent')errors.push(`${edition.config} must preserve the approved transparent reverse-white Laneway Music logo treatment.`);
@@ -142,6 +166,16 @@ function validateSchoolQuestions(questions,file,errors){
   const ids=new Set(),prompts=new Set();
   for(const question of questions){
     if(!question.active||!question.id||!question.question||!question.explanation||!question.sourceName||!/^https:\/\//.test(question.sourceURL||''))errors.push(`${file} contains an incomplete School Discovery question.`);
+    if(ids.has(question.id)||prompts.has(String(question.question).toLowerCase()))errors.push(`${file} contains a duplicate question.`);
+    if(!Array.isArray(question.options)||question.options.length!==4||new Set(question.options).size!==4||!question.options.includes(question.correctAnswer))errors.push(`${file} question ${question.id||'unknown'} requires four unique choices including the correct answer.`);
+    ids.add(question.id);prompts.add(String(question.question).toLowerCase());
+  }
+}
+function validateBusinessQuestions(questions,file,errors){
+  if(!Array.isArray(questions)||questions.length!==10){errors.push(`${file} must contain exactly 10 Business questions.`);return}
+  const ids=new Set(),prompts=new Set();
+  for(const question of questions){
+    if(!question.active||!question.id||!question.question||String(question.explanation||'').length<50||!question.sourceName||!/^https:\/\//.test(question.sourceURL||''))errors.push(`${file} contains an incomplete Business question.`);
     if(ids.has(question.id)||prompts.has(String(question.question).toLowerCase()))errors.push(`${file} contains a duplicate question.`);
     if(!Array.isArray(question.options)||question.options.length!==4||new Set(question.options).size!==4||!question.options.includes(question.correctAnswer))errors.push(`${file} question ${question.id||'unknown'} requires four unique choices including the correct answer.`);
     ids.add(question.id);prompts.add(String(question.question).toLowerCase());

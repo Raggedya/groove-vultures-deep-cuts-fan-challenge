@@ -257,6 +257,14 @@
       "name": "Nastyboy Records",
       "config": "editions/nastyboy-records/edition.json",
       "active": true
+    },
+    {
+      "slug": "high-grade-mechanical",
+      "editionId": "dc_4a71b2c8e9",
+      "canonicalPath": "/e/dc_4a71b2c8e9",
+      "name": "High Grade Mechanical",
+      "config": "editions/high-grade-mechanical/edition.json",
+      "active": true
     }
   ]
 }

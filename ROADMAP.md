@@ -13,6 +13,7 @@
 - [x] Lock the restored Laneway company experience as final `indie_label/1`, with isolated label-owned configuration and a fail-closed rejected-overhaul regression guard.
 - [x] Add a conditional, privacy-enhanced winner-video panel backed by 28 verified playable artist videos, with fail-closed omission for the remaining roster.
 - [x] Unify the Laneway company reference around pale-teal decorative accents while preserving the wheel pointer as its sole red focal marker.
+- [x] Add the isolated Business Recruitment contract with verified job cards, owner-approved branding/Aggits, featured video and a sourced 10-question company quiz; deliver High Grade Mechanical as its first edition.
 
 ## Batch-production time savings
 
