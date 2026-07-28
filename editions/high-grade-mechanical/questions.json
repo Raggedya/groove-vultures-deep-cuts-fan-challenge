@@ -1,0 +1,112 @@
+[
+  {
+    "id": "hgm-01",
+    "category": "HGM History",
+    "question": "In what year was High Grade Mechanical established?",
+    "options": ["2007", "2011", "2015", "2019"],
+    "correctAnswer": "2011",
+    "explanation": "High Grade Mechanical was established in 2011 by heavy diesel mechanic Mark Olszewski and his wife, Jennie.",
+    "sourceName": "High Grade Mechanical — About Us",
+    "sourceURL": "https://www.hgmechanical.com.au/about-us/",
+    "active": true
+  },
+  {
+    "id": "hgm-02",
+    "category": "HGM People",
+    "question": "Who established HGM together?",
+    "options": ["Mark and Jennie Olszewski", "A national mining consortium", "A group of equipment manufacturers", "A government training agency"],
+    "correctAnswer": "Mark and Jennie Olszewski",
+    "explanation": "The HGM story began with heavy diesel mechanic Mark Olszewski and his wife Jennie, who built the company together.",
+    "sourceName": "High Grade Mechanical — About Us",
+    "sourceURL": "https://www.hgmechanical.com.au/about-us/",
+    "active": true
+  },
+  {
+    "id": "hgm-03",
+    "category": "What HGM Does",
+    "question": "Which sectors are at the heart of HGM's heavy mobile maintenance work?",
+    "options": ["Mining and civil", "Hospitality and retail", "Film and television", "Banking and insurance"],
+    "correctAnswer": "Mining and civil",
+    "explanation": "HGM provides heavy mobile maintenance solutions to mining and civil clients across Western Australia.",
+    "sourceName": "High Grade Mechanical — Home",
+    "sourceURL": "https://www.hgmechanical.com.au/",
+    "active": true
+  },
+  {
+    "id": "hgm-04",
+    "category": "Equipment",
+    "question": "Which group contains only major machinery brands HGM says its team works with?",
+    "options": ["Caterpillar, Liebherr, Hitachi, Komatsu and O&K", "Volvo, Tesla, Saab and Mini", "Boeing, Airbus, Cessna and Piper", "Yamaha, Fender, Gibson and Marshall"],
+    "correctAnswer": "Caterpillar, Liebherr, Hitachi, Komatsu and O&K",
+    "explanation": "HGM lists Caterpillar, Liebherr, Hitachi, Komatsu and O&K among the major heavy machinery brands its experienced team works with.",
+    "sourceName": "High Grade Mechanical — Services",
+    "sourceURL": "https://www.hgmechanical.com.au/services/",
+    "active": true
+  },
+  {
+    "id": "hgm-05",
+    "category": "HGM Values",
+    "question": "What comes first in one of HGM's four stated values?",
+    "options": ["You and your family", "Office furniture", "Advertising awards", "Quarterly paperwork"],
+    "correctAnswer": "You and your family",
+    "explanation": "One of HGM's defining values is 'You & Your Family Come First', reflecting its people-first approach.",
+    "sourceName": "High Grade Mechanical — About Us",
+    "sourceURL": "https://www.hgmechanical.com.au/about-us/",
+    "active": true
+  },
+  {
+    "id": "hgm-06",
+    "category": "The HGM Way",
+    "question": "At HGM, what does 'The Kwan' mean?",
+    "options": ["We're the whole package", "A monthly toolbox meeting", "A type of service vehicle", "A machinery inspection form"],
+    "correctAnswer": "We're the whole package",
+    "explanation": "HGM explains 'The Kwan' as 'We're The Whole Package' — one of the values shaping how the team works.",
+    "sourceName": "High Grade Mechanical — About Us",
+    "sourceURL": "https://www.hgmechanical.com.au/about-us/",
+    "active": true
+  },
+  {
+    "id": "hgm-07",
+    "category": "Team Benefits",
+    "question": "What is the name of HGM's employee wellness program?",
+    "options": ["Healthy, Wealthy & Wise", "Tools, Trucks & Travel", "Fitters First", "The Blue Gear Program"],
+    "correctAnswer": "Healthy, Wealthy & Wise",
+    "explanation": "HGM's Healthy, Wealthy & Wise program is part of the practical support and benefits offered to its people.",
+    "sourceName": "High Grade Mechanical — Benefits & Requirements",
+    "sourceURL": "https://www.hgmechanical.com.au/benefits-requirements/",
+    "active": true
+  },
+  {
+    "id": "hgm-08",
+    "category": "Ways of Working",
+    "question": "Which roster examples does HGM list for its people?",
+    "options": ["7:7, 8:6 and 2:1", "Monday mornings only", "One annual shift", "Weekend retail hours"],
+    "correctAnswer": "7:7, 8:6 and 2:1",
+    "explanation": "HGM lists a variety of roster options, including 7:7, 8:6 and 2:1, alongside shutdown and field-service opportunities.",
+    "sourceName": "High Grade Mechanical — Benefits & Requirements",
+    "sourceURL": "https://www.hgmechanical.com.au/benefits-requirements/",
+    "active": true
+  },
+  {
+    "id": "hgm-09",
+    "category": "HGM Trades",
+    "question": "Which of these is one of the trade groups HGM recruits?",
+    "options": ["Auto electricians", "Marine biologists", "Pastry chefs", "Court reporters"],
+    "correctAnswer": "Auto electricians",
+    "explanation": "Auto electricians are among the trade groups HGM recruits, together with fitters, boilermakers, servicepersons and trade assistants.",
+    "sourceName": "High Grade Mechanical — Careers",
+    "sourceURL": "https://www.hgmechanical.com.au/available-jobs/",
+    "active": true
+  },
+  {
+    "id": "hgm-10",
+    "category": "HGM Services",
+    "question": "Where does HGM operate its principal maintenance workshop?",
+    "options": ["Rockingham", "Broome", "Albany", "Geraldton"],
+    "correctAnswer": "Rockingham",
+    "explanation": "HGM's principal maintenance workshop and head office are in Rockingham, with additional Western Australian service locations.",
+    "sourceName": "High Grade Mechanical — Services",
+    "sourceURL": "https://www.hgmechanical.com.au/services/",
+    "active": true
+  }
+]

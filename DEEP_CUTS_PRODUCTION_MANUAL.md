@@ -14,6 +14,12 @@ School Discovery is a separate product contract. Research begins with the offici
 
 Every Schools Edition also includes exactly six positive, factual multiple-choice questions in a separate `school-questions.json` file. Questions draw on official school pages, annual reports, government project pages and other authoritative evidence. Each question has four unique choices, a verified answer, a useful positive explanation and a direct HTTPS source. The locked experience is a 15-second countdown, the existing ding only at zero, ten seconds to read the explanation, automatic progression, an encouraging final rating, replay and School Home return. The red challenge card appears immediately before School Upgrade. No other edition receives this feature.
 
+## Business Recruitment permanent rules
+
+Business Recruitment uses `editionType: business` on the shared engine. It combines an owner-approved Aggits treatment, verified company logo and palette, owner-selected or verified featured video, direct current vacancy cards and exactly ten positive sourced company questions. Every role must resolve to a direct official vacancy page and must be omitted when no longer verifiable. The quiz uses green for the correct answer, red only for the selected incorrect answer, encouraging feedback, replay, job-directory return and a verified careers action.
+
+The High Grade Mechanical edition permanently uses the exact owner-supplied `assets/hgm-aggits-owner-supplied.jpg`; its HGM-specific hash test must fail if the file changes. This does not replace either standard immutable Aggits asset and does not alter any other edition.
+
 ## Laneway permanent rules
 
 `Laneway [Band or Artist]` creates an isolated Laneway edition on the permanent platform. It preserves the exact supplied Laneway Music source logo and displays a deterministic transparent reverse-white rendition, preventing a rectangular image background on every browser. It uses a charcoal/black interface and no Aggits character or Aggits artwork. Its QR and social delivery images show `DEEP CUTS` immediately above `copyright Clearlight Creative`, never `Laneway` in that footer position. It must never change the standard Deep Cuts Music edition.
@@ -46,7 +52,7 @@ Future independent labels use isolated `indie_wheel` configuration on the shared
 
 Deep Cuts accepts CSV batches through one permanent controller. Intake data is evidence to verify, not truth to copy. Every artist is normalized, duplicate-checked, range-checked, researched and independently gated. Publication requires at least 98% confidence in artist identity and every mandatory direct destination. Search pages, guesses and placeholders are forbidden. Rejections are recorded and isolated. Temporary failures receive bounded retries with exponential backoff; checkpoints allow safe resume. Accepted artists flow through the existing factory, immutable artwork checks, QR scan-back, shared Cloudflare deployment, live verification, analytics registration and email delivery.
 
-Music, Cars and Clubs are discovery products, not quizzes; their legacy question count remains zero. School Discovery and Laneway are explicit, separately isolated exceptions with six-question and five-question positive challenge contracts respectively.
+Music, Cars and Clubs are discovery products, not quizzes; their legacy question count remains zero. School Discovery, Business Recruitment and Laneway are explicit, separately isolated exceptions with six-question, ten-question and five-question positive challenge contracts respectively.
 
 Version 3.0 â€” Permanent Artist Discovery Platform
 

@@ -57,6 +57,14 @@ Treat every completed edition as a finished commercial product that must remain 
 - Each question has four choices, a 15-second countdown, a time-up bell at zero, a ten-second positive fact explanation and a verified authoritative source. Exactly six questions are required.
 - Results use encouraging, non-punitive ratings. The challenge always provides an explicit School Home control, and browser Back also restores the school discovery page without requiring another QR scan.
 
+## Business Recruitment contract
+
+- `business` is an isolated recruitment and company-discovery product. It never changes Music, Cars, Clubs, Schools, Laneway or Indie Label output.
+- The business logo, palette, character artwork, current job destinations, featured video and quiz belong only to that edition and require dated source evidence or explicit owner approval.
+- Job cards open direct current vacancy pages. Search results, generic recruitment listings and guessed roles are forbidden.
+- Business editions contain exactly ten positive, factual, sourced questions and always return to the job directory after the quiz.
+- High Grade Mechanical `dc_4a71b2c8e9` alone uses `assets/hgm-aggits-owner-supplied.jpg`. Its SHA-256 identity is fail-closed; it must never be replaced by another Aggits version.
+
 ## Commercial Instinct contract
 
 - Commercial Instinct is isolated at `/sell/` with API routes under `/api/sell/*`; it never enters or changes the edition registry.

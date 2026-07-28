@@ -109,6 +109,8 @@ The main experience is a configuration-driven static application:
 
 The renderer loads the selected record from `platform.json`, then loads that edition's structured files from `editions/<slug>/`.
 
+Business Recruitment is now an isolated shared-engine type. `js/business-quiz.js` owns its ten-question quiz, while `config.business.jobs` contains direct verified vacancies. High Grade Mechanical is the first edition at opaque ID `dc_4a71b2c8e9`; its exact owner-supplied `assets/hgm-aggits-owner-supplied.jpg` and official `assets/hgm-logo-official.png` are protected by `scripts/test-high-grade-mechanical.mjs`.
+
 ### 4.2 Edition registry and contracts
 
 - `platform.json` is the canonical public edition registry and permanent base URL.
@@ -123,7 +125,7 @@ The renderer loads the selected record from `platform.json`, then loads that edi
   - `artist-impact.json`
   - `artist-videos.json`
 
-At this handover there are 31 active registered editions. Do not maintain that number manually; `platform.json` is authoritative.
+At this handover there are 32 active registered editions. Do not maintain that number manually; `platform.json` is authoritative.
 
 Useful registry check:
 
@@ -705,8 +707,8 @@ The later broad catalogue-discovery overhaul was explicitly rejected and reverte
 
 ### Other completed platform capabilities
 
-- 31 active opaque-routed editions.
-- One reusable engine with separately typed Music, Cars, Clubs, Schools, Laneway, Indie Wheel, Record Company, and Commercial Instinct contracts.
+- 32 active opaque-routed editions.
+- One reusable engine with separately typed Music, Cars, Clubs, Schools, Business Recruitment, Laneway, Indie Wheel, Record Company, and Commercial Instinct contracts.
 - Immutable Aggits artwork verification.
 - Verified featured-video selection with privacy-enhanced YouTube embeds.
 - Automatic omission/rebalancing of unavailable destinations.

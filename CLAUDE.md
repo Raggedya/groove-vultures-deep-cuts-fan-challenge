@@ -27,6 +27,8 @@ Treat `Deep Cuts Cars [Make and Model]` as a separately typed automotive edition
 
 Treat `Deep Cuts Clubs [Club name and location]` as a separately typed club edition. Preserve Music and Cars. Club content belongs only in `editionType: club` configuration and identity-checked direct club, membership, events, participation, venue, history, contact and governing-body evidence. Fail closed on generic or login-only social pages.
 
+Treat a Business Recruitment build as `editionType: business`. Preserve every existing product. Require direct current official job pages, a verified company logo and palette, an owner-selected or verified video, and exactly ten sourced positive questions. Edition-specific owner-supplied Aggits artwork must have a locked hash and must never replace the standard Aggits masters.
+
 Treat `Laneway [Band or Artist]` as a separately typed Laneway edition. Preserve Music, Cars, Clubs and Schools. Laneway alone uses the approved reverse-white Laneway Music logo, charcoal/black styling, no Aggits, and exactly five positive sourced questions in its isolated quiz engine.
 
 Treat Record Company Edition as a separately typed parent/child ecosystem. Preserve all other products. One official URL starts the whole accessible roster; do not ask for per-artist approval. Enforce 98% identity and question evidence, isolate failures, verify every QR twice, reconcile reporting and complete email delivery before reporting success.

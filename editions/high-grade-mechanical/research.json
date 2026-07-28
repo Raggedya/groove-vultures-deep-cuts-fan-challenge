@@ -1,0 +1,136 @@
+{
+  "bandName": "High Grade Mechanical",
+  "slug": "high-grade-mechanical",
+  "editionId": "dc_4a71b2c8e9",
+  "verifiedAt": "2026-07-28T08:15:00.000Z",
+  "sources": [
+    {
+      "destination": "website",
+      "url": "https://www.hgmechanical.com.au/",
+      "sourceType": "official company website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-28T07:35:00.000Z",
+      "evidence": "The official High Grade Mechanical homepage identifies HGM, its Western Australian heavy mobile maintenance work, contact details and official navigation."
+    },
+    {
+      "destination": "careers",
+      "url": "https://www.hgmechanical.com.au/available-jobs/",
+      "sourceType": "official company careers page",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-28T07:36:00.000Z",
+      "evidence": "The official HGM careers page directly lists current vacancies and links to each role page."
+    },
+    {
+      "destination": "benefits",
+      "url": "https://www.hgmechanical.com.au/benefits-requirements/",
+      "sourceType": "official company benefits page",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-28T07:37:00.000Z",
+      "evidence": "The official HGM benefits page documents employee benefits, the Healthy Wealthy & Wise program and roster options."
+    },
+    {
+      "destination": "contact",
+      "url": "https://www.hgmechanical.com.au/contact/",
+      "sourceType": "official company contact page",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-28T07:38:00.000Z",
+      "evidence": "The official HGM contact page provides its Rockingham address, telephone details and an HGM enquiry form."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=TgKUyWn0Nf8",
+      "sourceType": "owner-supplied YouTube recruitment video",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-28T07:40:00.000Z",
+      "evidence": "The owner explicitly supplied this video for the HGM edition. YouTube identifies it as 'Calling All HD Sparkies!!! - HGM'; it is embeddable, and no claim of official channel ownership is made."
+    },
+    {
+      "destination": "logo",
+      "url": "https://www.hgmechanical.com.au/wp-content/uploads/HGM-Logo-Version-B.png",
+      "sourceType": "official company website asset",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-28T07:42:00.000Z",
+      "evidence": "The official HGM website serves this High Grade Mechanical logo asset in its own WordPress uploads directory."
+    },
+    {
+      "destination": "about",
+      "url": "https://www.hgmechanical.com.au/about-us/",
+      "sourceType": "official company about page",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-28T07:35:00.000Z",
+      "evidence": "The official HGM About page documents the company foundation, founders and four company values."
+    },
+    {
+      "destination": "services",
+      "url": "https://www.hgmechanical.com.au/services/",
+      "sourceType": "official company services page",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-28T07:36:00.000Z",
+      "evidence": "The official HGM Services page documents maintenance services, machinery brands, trades and the Rockingham workshop."
+    },
+    {
+      "destination": "job:auto-electricians",
+      "url": "https://www.hgmechanical.com.au/available-jobs/auto-electricians-fifo-wa-2/",
+      "sourceType": "official HGM vacancy",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-28T08:00:00.000Z",
+      "evidence": "Direct current HGM vacancy page linked from the official careers listing for Auto Electricians in FIFO and metro work."
+    },
+    {
+      "destination": "job:hv-electrician",
+      "url": "https://www.hgmechanical.com.au/available-jobs/hv-electrician-heavy-vehicle/",
+      "sourceType": "official HGM vacancy",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-28T08:00:00.000Z",
+      "evidence": "Direct current HGM vacancy page linked from the official careers listing for an HV Electrician."
+    },
+    {
+      "destination": "job:heavy-duty-fitters",
+      "url": "https://www.hgmechanical.com.au/available-jobs/hd-fitters-heavy-duty-mechanics-fifo-dido/",
+      "sourceType": "official HGM vacancy",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-28T08:00:00.000Z",
+      "evidence": "Direct current HGM vacancy page linked from the official careers listing for Heavy Duty Fitters and HD Mechanics."
+    },
+    {
+      "destination": "job:boilermaker",
+      "url": "https://www.hgmechanical.com.au/available-jobs/boilermaker-mem/",
+      "sourceType": "official HGM vacancy",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-28T08:00:00.000Z",
+      "evidence": "Direct current HGM vacancy page linked from the official careers listing for a mobile equipment maintenance Boilermaker."
+    },
+    {
+      "destination": "job:drill-fitters",
+      "url": "https://www.hgmechanical.com.au/available-jobs/drill-fitters-surface-and-underground/",
+      "sourceType": "official HGM vacancy",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-28T08:00:00.000Z",
+      "evidence": "Direct current HGM vacancy page linked from the official careers listing for surface and underground Drill Fitters."
+    },
+    {
+      "destination": "job:servicepersons",
+      "url": "https://www.hgmechanical.com.au/available-jobs/servicepersons-fifo-wa/",
+      "sourceType": "official HGM vacancy",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-28T08:00:00.000Z",
+      "evidence": "Direct current HGM vacancy page linked from the official careers listing for FIFO Servicepersons."
+    },
+    {
+      "destination": "job:lv-fitters",
+      "url": "https://www.hgmechanical.com.au/available-jobs/lv-fitters-lv-mechanics-fifo-perth-metro/",
+      "sourceType": "official HGM vacancy",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-28T08:00:00.000Z",
+      "evidence": "Direct current HGM vacancy page linked from the official careers listing for LV Fitters and LV Mechanics."
+    },
+    {
+      "destination": "job:field-service-hd-fitter",
+      "url": "https://www.hgmechanical.com.au/available-jobs/field-service-hd-fitter/",
+      "sourceType": "official HGM vacancy",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-28T08:00:00.000Z",
+      "evidence": "Direct current HGM vacancy page linked from the official careers listing for a Field Service HD Fitter."
+    }
+  ]
+}

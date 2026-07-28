@@ -6,7 +6,7 @@ The isolated mobile product **Commercial Instinct** is available at `/sell/`. It
 
 Validated reports can also produce an editable, two-minute **Banjo Strategy Brief** download for Andy's Lip Sync Engine. This optional handoff is isolated to `/sell/`, excludes the full evidence register and uses an explicitly consented owner recording in its first version.
 
-All development is governed by `PLATFORM_ARCHITECTURE_DIRECTIVE.md`: completed editions are isolated commercial products, backward compatibility is mandatory, and new editions extend rather than modify existing products. `edition-contracts.json` and the CI isolation test enforce the current Music, Cars and Clubs boundaries.
+All development is governed by `PLATFORM_ARCHITECTURE_DIRECTIVE.md`: completed editions are isolated commercial products, backward compatibility is mandatory, and new editions extend rather than modify existing products. `edition-contracts.json` and the CI isolation test enforce the current Music, Cars, Clubs, Schools, Business Recruitment, Laneway and Indie Label boundaries.
 
 Every public screen in every product and edition ends with the locked platform footer `Deep Cuts` above `Copyright Clearlight Creative`. Edition configuration cannot override it.
 
@@ -15,6 +15,8 @@ The final independent-label wheel model is locked as `indie_label/1`. Its refere
 Deep Cuts is one permanent artist-discovery platform. A fan scans an artist-specific QR and opens a calm page containing the artist's verified featured YouTube video and only the music, social, website, merchandise and editorial destinations that are genuinely available.
 
 The same permanent engine also supports separately typed `Deep Cuts Cars` and `Deep Cuts Clubs` editions. Clubs present verified official information, membership, events, participation, venue, history, contact and relevant governing-body links. Music, Cars and Clubs keep independent locked definitions without duplicating the application.
+
+The isolated `business` product type supports verified recruitment experiences: company branding, an owner-approved Aggits asset, featured video, direct current job cards and a sourced ten-question “Learn About” quiz. High Grade Mechanical is the first locked Business Recruitment edition.
 
 ## Standard owner request
 
@@ -49,6 +51,7 @@ Public URLs use opaque IDs and never expose the artist name:
 - A conditional privacy-enhanced winner video beneath the selected artist details, sourced from a central verified map and omitted when unavailable
 - A cohesive pale-teal Laneway reference palette with red reserved for the illuminated wheel pointer
 - A fail-closed final Indie Label model contract that protects the restored experience from feature creep
+- An isolated Business Recruitment renderer with verified direct vacancy cards and a positive sourced 10-question company quiz
 
 ## Validation
 
