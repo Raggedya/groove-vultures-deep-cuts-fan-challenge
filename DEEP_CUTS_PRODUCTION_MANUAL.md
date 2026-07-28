@@ -18,7 +18,7 @@ Every Schools Edition also includes exactly six positive, factual multiple-choic
 
 Business Recruitment uses `editionType: business` on the shared engine. It combines an owner-approved Aggits treatment, verified company logo and palette, owner-selected or verified featured video, direct current vacancy cards and exactly ten positive sourced company questions. Every role must resolve to a direct official vacancy page and must be omitted when no longer verifiable. The quiz uses green for the correct answer, red only for the selected incorrect answer, encouraging feedback, replay, job-directory return and a verified careers action.
 
-The High Grade Mechanical edition permanently uses the exact owner-supplied `assets/hgm-aggits-owner-supplied.jpg`; its HGM-specific hash test must fail if the file changes. This does not replace either standard immutable Aggits asset and does not alter any other edition.
+The High Grade Mechanical edition permanently uses the exact owner-supplied `assets/hgm-aggits-owner-supplied.jpg`; its HGM-specific hash test must fail if the file changes. This does not replace either standard immutable Aggits asset and does not alter any other edition. HGM alone may opt into its edition-owned sequential carnival-light treatment. Its `rolePaths` render before individual vacancies, route only through verified official contact destinations and never infer unpublished personal contact details.
 
 ## Laneway permanent rules
 

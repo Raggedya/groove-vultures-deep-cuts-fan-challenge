@@ -1,6 +1,6 @@
 "use strict";
 
-const VERSION="20260728-hgm-2";
+const VERSION="20260728-hgm-3";
 const LANEWAY_REPORTING_VERSION="laneway-weekly-v1";
 const $=id=>document.getElementById(id);
 const els={page:$("discoveryPage"),error:$("errorScreen"),errorMessage:$("errorMessage"),bandName:$("bandName"),bio:$("artistBio"),artwork:$("heroArtwork"),brandLogo:$("editionBrandLogo"),waveform:$("sonicSignature"),features:$("featureList"),video:$("featuredVideo"),videoLabel:$("featuredVideoLabel"),videoTitle:$("featuredVideoTitle"),videoFrame:$("featuredVideoFrame"),links:$("platformLinks"),share:$("shareButton"),status:$("shareStatus"),description:$("pageDescription"),poweredBy:$("poweredByLabel"),copyright:$("coverCopyright"),lanewayHome:$("lanewayHomeLink"),lanewayRecommended:$("lanewayRecommendedLink"),companyDirectory:$("lanewayCompanyDirectory"),companyDirectoryCount:$("lanewayCompanyDirectoryCount"),companySearch:$("lanewayCompanySearch"),companyArtistList:$("lanewayCompanyArtistList"),companyEmpty:$("lanewayCompanyEmpty"),companyWheel:$("lanewayArtistWheel"),wheelCanvas:$("lanewayWheelCanvas"),wheelSpin:$("lanewayWheelSpin"),wheelStatus:$("lanewayWheelStatus"),wheelWinner:$("lanewayWheelWinner"),wheelImpact:$("lanewayWheelImpact"),wheelPurchaseLinks:$("lanewayWheelPurchaseLinks"),wheelBuyMusic:$("lanewayWheelBuyMusic"),wheelBuyMerch:$("lanewayWheelBuyMerch"),wheelVideo:$("lanewayWheelVideo"),wheelVideoTitle:$("lanewayWheelVideoTitle"),wheelVideoFrame:$("lanewayWheelVideoFrame")};
@@ -114,7 +114,10 @@ async function applyConfig(){
   if(wheelEdition)await buildLanewayCompanyDirectory();
   configureLanewayUtilityLinks();
   if(schools)await SchoolDiscoveryQuiz.configure({config,analytics,homeElement:els.page,challengeButton:$("schoolChallengeButton")});
-  if(business)await BusinessQuiz.configure({config,analytics,homeElement:els.page,challengeButton:$("businessChallengeButton")});
+  if(business){
+    await BusinessQuiz.configure({config,analytics,homeElement:els.page,challengeButton:$("businessChallengeButton")});
+    if(config.business?.buttonLightSequence===true)sequenceBusinessButtons();
+  }
   if(laneway)await LanewayQuiz.configure({config,analytics,homeElement:els.page,challengeButton:$("lanewayChallengeButton")});
   if(wheelEdition)await LanewayCompanyQuiz.configure({config,analytics,homeElement:els.page,challengeButton:$("lanewayCompanyChallengeButton")});
   startAttentionCycle();
@@ -247,6 +250,17 @@ function buildBusinessLinks(){
   introduction.className="business-jobs-heading wide";
   introduction.innerHTML=`<p>${escapeHtml(config.business?.jobsEyebrow||"CURRENT OPPORTUNITIES")}</p><h2>${escapeHtml(config.business?.jobsTitle||"Find your next HGM job")}</h2><span>${escapeHtml(config.business?.jobsIntro||"Explore current roles with High Grade Mechanical.")}</span>`;
   els.links.append(introduction);
+  for(const rolePath of config.business?.rolePaths||[]){
+    const url=validHttps(rolePath.url);if(!url)continue;
+    const element=document.createElement("a");
+    element.className="platform-link business-job-link business-role-path-link is-active";
+    element.href=url;element.target="_blank";element.rel="noopener noreferrer";
+    element.dataset.destination="website";
+    element.innerHTML=`<span class="business-job-mark" aria-hidden="true"></span><span class="link-copy"><strong>${escapeHtml(rolePath.label)}</strong><small>${escapeHtml(rolePath.detail||"Contact HGM")}</small></span>`;
+    element.setAttribute("aria-label",`${rolePath.label} — ${rolePath.detail||"Contact HGM"} (opens in a new tab)`);
+    element.addEventListener("click",()=>trackBusinessOutbound(rolePath.id,url,"role_path"),{passive:true});
+    els.links.append(element);
+  }
   for(const job of config.business?.jobs||[]){
     const url=validHttps(job.url);if(!url)continue;
     const element=document.createElement("a");
@@ -263,6 +277,17 @@ function buildBusinessLinks(){
   challenge.innerHTML=`<span class="business-challenge-icon" aria-hidden="true">?</span><span class="link-copy"><strong>${escapeHtml(config.businessChallenge?.title||"LEARN ABOUT HGM")}</strong><small>${escapeHtml(config.businessChallenge?.ctaLabel||"Take the 10-question quiz")}</small></span><span class="link-arrow" aria-hidden="true">&gt;</span>`;
   challenge.addEventListener("click",()=>BusinessQuiz.open());
   els.links.append(challenge);
+}
+
+function sequenceBusinessButtons(){
+  const buttons=[...document.querySelectorAll('.business-job-link,.business-challenge-card,#editionUtilityActions .utility-action:not([hidden])')];
+  const lightStep=.52;
+  const lightDuration=Math.max(buttons.length*lightStep,4.2);
+  buttons.forEach((element,index)=>{
+    element.classList.add("business-carnival-light");
+    element.style.setProperty("--business-light-duration",`${lightDuration}s`);
+    element.style.setProperty("--business-light-delay",`${-(buttons.length-index)*lightStep}s`);
+  });
 }
 
 function trackBusinessOutbound(buttonName,url,source){

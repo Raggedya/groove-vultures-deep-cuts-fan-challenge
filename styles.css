@@ -493,6 +493,13 @@ body{margin:0;min-height:100%;color:var(--ink);background:#000713;overflow-x:hid
 [data-edition-type="business"] .business-job-mark:after{content:"";position:absolute;inset:3px;background:var(--business-secondary)}
 [data-edition-type="business"] .business-job-link .link-copy strong{font-size:.78rem;line-height:1.2}
 [data-edition-type="business"] .business-job-link .link-copy small{color:#9fb0c0;font-size:.6rem;line-height:1.25}
+[data-edition-type="business"] .business-role-path-link{min-height:86px;border-color:rgba(244,122,52,.62);background:linear-gradient(145deg,#203249,#101a29)}
+[data-edition-type="business"] .business-role-path-link .link-copy strong{font-size:.86rem;letter-spacing:.035em}
+[data-edition-type="business"] .business-role-path-link .link-copy small{color:#f6a371;font-size:.66rem;font-weight:800}
+[data-edition-type="business"] .business-carnival-light{animation:businessCarnivalLight var(--business-light-duration,5.8s) linear infinite;animation-delay:var(--business-light-delay,0s);will-change:border-color,box-shadow,filter}
+[data-edition-type="business"] .business-carnival-light .business-job-mark:after{animation:businessCarnivalMark var(--business-light-duration,5.8s) linear infinite;animation-delay:var(--business-light-delay,0s)}
+@keyframes businessCarnivalLight{0%,8%{border-color:#8ed8ff;box-shadow:0 0 0 1px rgba(142,216,255,.8),0 0 18px rgba(47,128,195,.72),0 0 32px rgba(244,122,52,.22),inset 0 1px rgba(255,255,255,.13);filter:brightness(1.13)}13%,100%{border-color:rgba(117,141,165,.4);box-shadow:0 12px 28px rgba(0,0,0,.28),inset 0 1px rgba(255,255,255,.05);filter:none}}
+@keyframes businessCarnivalMark{0%,8%{background:#8ed8ff;box-shadow:0 0 9px #8ed8ff}13%,100%{background:var(--business-secondary);box-shadow:none}}
 [data-edition-type="business"] .business-challenge-card{position:relative;grid-column:1/-1;display:flex;align-items:center;justify-content:center;min-height:88px;margin-top:7px;padding:12px 50px;border:1px solid var(--business-accent);border-radius:16px;color:#fff;background:linear-gradient(145deg,rgba(31,93,139,.98),rgba(12,35,55,.98));box-shadow:0 0 26px rgba(47,128,195,.17),inset 0 1px rgba(255,255,255,.13);font:inherit;cursor:pointer}
 [data-edition-type="business"] .business-challenge-card:disabled{cursor:wait;opacity:.7}
 [data-edition-type="business"] .business-challenge-card:not(:disabled):hover,[data-edition-type="business"] .business-challenge-card:not(:disabled):focus-visible{outline:none;transform:translateY(-1px);box-shadow:0 0 34px rgba(47,128,195,.42),inset 0 1px rgba(255,255,255,.18)}
@@ -537,4 +544,4 @@ body{margin:0;min-height:100%;color:var(--ink);background:#000713;overflow-x:hid
 [data-edition-type="business"] .business-result-secondary{border:1px solid rgba(117,141,165,.5);color:#e7eef4;background:#131d29}
 [data-edition-type="business"] .business-result-careers{border:1px solid #f47a34;color:#fff;background:#a94618}
 @media(max-width:400px){[data-edition-type="business"] .edition-brand-logo{width:92%;max-height:82px}[data-edition-type="business"] .hero-artwork{width:91%}[data-edition-type="business"] .platform-links{grid-template-columns:1fr}[data-edition-type="business"] .business-job-link{min-height:72px}[data-edition-type="business"] .business-question-card,[data-edition-type="business"] .business-result-card{padding:16px}}
-@media(prefers-reduced-motion:reduce){[data-edition-type="business"] .business-job-link,[data-edition-type="business"] .business-challenge-card{transition:none}}
+@media(prefers-reduced-motion:reduce){[data-edition-type="business"] .business-job-link,[data-edition-type="business"] .business-challenge-card{transition:none}[data-edition-type="business"] .business-carnival-light,[data-edition-type="business"] .business-carnival-light .business-job-mark:after{animation:none}}

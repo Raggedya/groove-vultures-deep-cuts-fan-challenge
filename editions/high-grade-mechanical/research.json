@@ -69,6 +69,22 @@
       "evidence": "The official HGM Services page documents maintenance services, machinery brands, trades and the Rockingham workshop."
     },
     {
+      "destination": "rolePath:short-term-roles",
+      "url": "https://www.hgmechanical.com.au/contact/",
+      "sourceType": "owner-requested recruitment pathway using verified official contact page",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-28T09:15:00.000Z",
+      "evidence": "The owner explicitly requested a Short Term Roles pathway labelled Contact Jade. HGM's official contact page is the verified public enquiry destination; no personal email or phone number is inferred."
+    },
+    {
+      "destination": "rolePath:longer-term-roles",
+      "url": "https://www.hgmechanical.com.au/contact/",
+      "sourceType": "owner-requested recruitment pathway using verified official contact page",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-28T09:15:00.000Z",
+      "evidence": "The owner explicitly requested a Longer Term Roles pathway labelled Contact Katie. HGM's official contact page is the verified public enquiry destination; no personal email or phone number is inferred."
+    },
+    {
       "destination": "job:auto-electricians",
       "url": "https://www.hgmechanical.com.au/available-jobs/auto-electricians-fifo-wa-2/",
       "sourceType": "official HGM vacancy",
