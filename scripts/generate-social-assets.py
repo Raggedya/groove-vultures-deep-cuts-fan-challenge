@@ -238,12 +238,25 @@ def laneway_logo() -> Image.Image:
     return white_logo
 
 
-def business_background() -> Image.Image:
-    canvas = Image.new("RGBA", (SIZE, SIZE), (8, 13, 21, 255))
+def business_colour(config: dict, key: str, fallback: tuple[int, int, int]) -> tuple[int, int, int]:
+    value = str(config.get("theme", {}).get(key, "")).lstrip("#")
+    if len(value) == 6:
+        try:
+            return tuple(int(value[index:index + 2], 16) for index in (0, 2, 4))
+        except ValueError:
+            pass
+    return fallback
+
+
+def business_background(config: dict) -> Image.Image:
+    accent = business_colour(config, "accent", (47, 128, 195))
+    secondary = business_colour(config, "accentSecondary", (244, 122, 52))
+    surface = business_colour(config, "surface", (8, 13, 21))
+    canvas = Image.new("RGBA", (SIZE, SIZE), (*surface, 255))
     glow = Image.new("RGBA", (SIZE, SIZE), (0, 0, 0, 0))
     draw = ImageDraw.Draw(glow)
-    draw.ellipse((-120, -180, 880, 820), fill=(47, 128, 195, 72))
-    draw.ellipse((480, 420, 1260, 1250), fill=(244, 122, 52, 42))
+    draw.ellipse((-120, -180, 880, 820), fill=accent + (72,))
+    draw.ellipse((480, 420, 1260, 1250), fill=secondary + (42,))
     return Image.alpha_composite(canvas, glow.filter(ImageFilter.GaussianBlur(120)))
 
 
@@ -254,21 +267,38 @@ def business_logo(config: dict) -> Image.Image:
     return Image.open(ROOT / logo_path).convert("RGBA")
 
 
+def business_delivery_logo(config: dict, max_width: int, max_height: int, preferred_width: int = 0) -> Image.Image:
+    logo = contain(business_logo(config), max_width, max_height)
+    if preferred_width and logo.width < preferred_width:
+        scale = preferred_width / logo.width
+        target_height = round(logo.height * scale)
+        if target_height <= max_height:
+            logo = logo.resize((preferred_width, target_height), Image.Resampling.LANCZOS)
+    return logo
+
+
 def create_business_instagram(config: dict, aggits: Image.Image, destination: Path) -> None:
-    canvas = business_background()
+    accent = business_colour(config, "accent", (47, 128, 195))
+    secondary = business_colour(config, "accentSecondary", (244, 122, 52))
+    canvas = business_background(config)
     draw = ImageDraw.Draw(canvas)
-    logo = contain(business_logo(config), 790, 190)
-    canvas.alpha_composite(logo, ((SIZE - logo.width) // 2, 38))
-    draw.rounded_rectangle((60, 225, 1020, 232), radius=3, fill=(47, 128, 195, 255))
+    square_logo = config.get("business", {}).get("logoShape") == "square"
+    logo = business_delivery_logo(config, 140 if square_logo else 790, 140 if square_logo else 190, 0 if square_logo else 360)
+    logo_x, logo_y = (SIZE - logo.width) // 2, 18 if square_logo else 38
+    if config.get("business", {}).get("logoSurface") == "light":
+        draw.rounded_rectangle((logo_x - 30, logo_y - 15, logo_x + logo.width + 30, logo_y + logo.height + 15), radius=22, fill=(255, 255, 255, 255))
+    canvas.alpha_composite(logo, (logo_x, logo_y))
+    if square_logo:
+        centred_text(draw, config["bandName"].upper(), 169, fit_font(draw, config["bandName"].upper(), 500, 38, 28), fill=WHITE)
+    draw.rounded_rectangle((60, 225, 1020, 232), radius=3, fill=accent + (255,))
     portrait = contain(aggits, 520, 710)
     canvas.alpha_composite(portrait, (45 + (500 - portrait.width) // 2, 250))
     draw.rounded_rectangle((535, 322, 1025, 765), radius=30, fill=(14, 24, 37, 238), outline=(97, 127, 151, 180), width=3)
     draw.text((585, 370), "FIND YOUR", font=font(54), fill=(245, 249, 255))
-    draw.text((585, 430), "NEXT JOB", font=font(73), fill=(244, 122, 52))
-    draw.text((585, 530), "AUTO ELECTRICAL", font=font(27), fill=(190, 207, 221))
-    draw.text((585, 575), "HEAVY DUTY FITTING", font=font(27), fill=(190, 207, 221))
-    draw.text((585, 620), "BOILERMAKING", font=font(27), fill=(190, 207, 221))
-    draw.text((585, 665), "FIELD SERVICE", font=font(27), fill=(190, 207, 221))
+    draw.text((585, 430), "NEXT JOB", font=font(73), fill=secondary)
+    role_labels = config.get("business", {}).get("socialRoleLabels") or ["AUTO ELECTRICAL", "HEAVY DUTY FITTING", "BOILERMAKING", "FIELD SERVICE"]
+    for index, label in enumerate(role_labels[:4]):
+        draw.text((585, 530 + index * 45), str(label).upper(), font=fit_font(draw, str(label).upper(), 390, 27, 20), fill=(190, 207, 221))
     centred_text(draw, "DEEP CUTS", 960, font(32), fill=(225, 234, 242))
     centred_text(draw, "Copyright Clearlight Creative", 1010, font(20), fill=(139, 159, 177))
     canvas.convert("RGB").save(destination, "PNG", optimize=True)
@@ -294,16 +324,24 @@ def create_business_qr(config: dict, aggits: Image.Image, destination: Path) -> 
             if dark:
                 x, y = (column + border) * module, (row + border) * module
                 qr_draw.rectangle((x, y, x + module - 1, y + module - 1), fill=(8, 13, 21, 255))
-    canvas = business_background()
+    accent = business_colour(config, "accent", (47, 128, 195))
+    secondary = business_colour(config, "accentSecondary", (244, 122, 52))
+    canvas = business_background(config)
     draw = ImageDraw.Draw(canvas)
-    logo = contain(business_logo(config), 730, 175)
-    canvas.alpha_composite(logo, ((SIZE - logo.width) // 2, 28))
-    centred_text(draw, "SCAN TO EXPLORE HGM JOBS", 206, fit_font(draw, "SCAN TO EXPLORE HGM JOBS", 900, 48, 34), fill=(245, 249, 255))
+    square_logo = config.get("business", {}).get("logoShape") == "square"
+    logo = business_delivery_logo(config, 150 if square_logo else 730, 150 if square_logo else 175, 0 if square_logo else 340)
+    logo_x, logo_y = (SIZE - logo.width) // 2, 22 if square_logo else 28
+    if config.get("business", {}).get("logoSurface") == "light":
+        draw.rounded_rectangle((logo_x - 26, logo_y - 12, logo_x + logo.width + 26, logo_y + logo.height + 12), radius=20, fill=(255, 255, 255, 255))
+    canvas.alpha_composite(logo, (logo_x, logo_y))
+    short_name = str(config.get("business", {}).get("shortName") or config["bandName"]).upper()
+    qr_heading = f"SCAN TO EXPLORE {short_name} JOBS"
+    centred_text(draw, qr_heading, 206, fit_font(draw, qr_heading, 900, 48, 34), fill=(245, 249, 255))
     portrait = contain(aggits, 360, 690)
     canvas.alpha_composite(portrait, (42 + (320 - portrait.width) // 2, 300))
     card_size = qr_size + 34
     card_x, card_y = 482, 350
-    draw.rounded_rectangle((card_x, card_y, card_x + card_size, card_y + card_size), radius=26, fill=(255, 255, 255), outline=(244, 122, 52), width=5)
+    draw.rounded_rectangle((card_x, card_y, card_x + card_size, card_y + card_size), radius=26, fill=(255, 255, 255), outline=secondary, width=5)
     canvas.alpha_composite(qr_image, (card_x + 17, card_y + 17))
     centred_text(draw, "DEEP CUTS", 965, font(30), fill=(225, 234, 242))
     centred_text(draw, "Copyright Clearlight Creative", 1012, font(19), fill=(139, 159, 177))

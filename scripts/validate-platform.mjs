@@ -52,8 +52,8 @@ for(const edition of platform.editions){
     }else if(config.editionType==='business'){
       if(config.brandName!=='Deep Cuts Business'||!config.characterArtwork)errors.push(`${edition.config} must preserve the isolated Deep Cuts Business artwork contract.`);
       if(!config.business?.logoArtwork)errors.push(`${edition.config} must use a verified official business logo asset.`);
-      if(config.featuredVideo?.selectionBasis!=='owner-selected'||config.featuredVideo?.ownerSelected!==true||!config.featuredVideo?.youtubeURL)errors.push(`${edition.config} requires the explicit owner-selected HGM recruitment video.`);
-      if(config.businessChallenge?.numberOfQuestions!==10||!config.businessChallenge?.questionFile)errors.push(`${edition.config} requires the isolated 10-question Learn About HGM challenge.`);
+      if(config.featuredVideo?.selectionBasis!=='owner-selected'||config.featuredVideo?.ownerSelected!==true||!config.featuredVideo?.youtubeURL)errors.push(`${edition.config} requires an explicit owner-selected Business Recruitment video.`);
+      if(config.businessChallenge?.numberOfQuestions!==10||!config.businessChallenge?.questionFile)errors.push(`${edition.config} requires an isolated 10-question Business challenge.`);
       else{
         const questionPath=String(config.businessChallenge.questionFile).replace(/^\//,'');
         const questions=JSON.parse(await fs.readFile(questionPath,'utf8'));
@@ -65,10 +65,11 @@ for(const edition of platform.editions){
       if(jobs.length<1)errors.push(`${edition.config} requires at least one verified current job.`);
       const jobIds=new Set(),jobURLs=new Set();
       const research=JSON.parse(await fs.readFile(edition.config.replace(/edition\.json$/,'research.json'),'utf8'));
+      const jobPrefix=normalized(config.business?.jobURLPrefix);
       for(const job of jobs){
         const url=normalized(job.url);
-        if(!job.id||!job.label||!/^https:\/\/www\.hgmechanical\.com\.au\/available-jobs\/[^/?#]+$/i.test(url))errors.push(`${edition.config} contains an incomplete or non-direct HGM job destination.`);
-        if(jobIds.has(job.id)||jobURLs.has(url))errors.push(`${edition.config} contains a duplicate HGM job.`);
+        if(!job.id||!job.label||!jobPrefix||!url.startsWith(jobPrefix)||url===jobPrefix)errors.push(`${edition.config} contains an incomplete or non-direct official job destination.`);
+        if(jobIds.has(job.id)||jobURLs.has(url))errors.push(`${edition.config} contains a duplicate Business job.`);
         if(!research.sources.some(source=>source.destination===`job:${job.id}`&&source.identityVerified===true&&normalized(source.url)===url))errors.push(`${edition.config} job ${job.id||'unknown'} lacks matching official source evidence.`);
         jobIds.add(job.id);jobURLs.add(url);
       }

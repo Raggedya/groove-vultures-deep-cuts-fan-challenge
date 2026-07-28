@@ -62,8 +62,10 @@ Treat every completed edition as a finished commercial product that must remain 
 - `business` is an isolated recruitment and company-discovery product. It never changes Music, Cars, Clubs, Schools, Laneway or Indie Label output.
 - The business logo, palette, character artwork, current job destinations, featured video and quiz belong only to that edition and require dated source evidence or explicit owner approval.
 - Job cards open direct current vacancy pages. Search results, generic recruitment listings and guessed roles are forbidden.
+- Each Business edition declares the direct official vacancy URL prefix for its employer. Validation requires every job card to remain beneath that prefix and to have matching dated evidence.
 - Business editions contain exactly ten positive, factual, sourced questions and always return to the job directory after the quiz.
 - High Grade Mechanical `dc_4a71b2c8e9` alone uses `assets/hgm-aggits-owner-supplied.jpg`. Its SHA-256 identity is fail-closed; it must never be replaced by another Aggits version.
+- Hays `dc_3481f25897` uses the standard immutable Aggits artwork and a separate official Hays brand asset. Its owner-selected HGM video is demo material only and must always be labelled so no official Hays association is implied.
 
 ## Commercial Instinct contract
 

@@ -19,7 +19,7 @@
     const response=await fetch(`/${challenge.questionFile}`,{cache:"no-store"});
     if(!response.ok)throw new Error(`Business questions returned ${response.status}`);
     questionBank=await response.json();validateQuestions(questionBank);
-    for(const logo of [els.quizLogo,els.resultLogo]){logo.src=`/${config.business.logoArtwork}`;logo.alt=config.bandName}
+    for(const logo of [els.quizLogo,els.resultLogo]){logo.src=`/${config.business.logoArtwork}`;logo.alt=config.bandName;logo.classList.toggle("business-logo-on-light",config.business.logoSurface==="light");logo.classList.toggle("business-logo-square",config.business.logoShape==="square")}
     els.home.textContent=`← ${config.bandName} Jobs`;els.resultHome.textContent=`Back to ${config.bandName} Jobs`;
     els.careers.href=config.business.careersURL;els.careers.textContent=`Explore ${config.bandName} Careers`;
     els.careers.addEventListener("click",()=>analytics.track("outbound_clicked",{destination_platform:"website",button_name:"careers",interaction_source:"quiz_result",destination_url_origin:new URL(config.business.careersURL).origin,edition_type:config.editionType}),{passive:true});

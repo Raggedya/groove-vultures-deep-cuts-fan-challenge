@@ -14,6 +14,7 @@
 - [x] Add a conditional, privacy-enhanced winner-video panel backed by 28 verified playable artist videos, with fail-closed omission for the remaining roster.
 - [x] Unify the Laneway company reference around pale-teal decorative accents while preserving the wheel pointer as its sole red focal marker.
 - [x] Add the isolated Business Recruitment contract with verified job cards, owner-approved branding/Aggits, featured video and a sourced 10-question company quiz; deliver High Grade Mechanical as its first edition.
+- [x] Generalise direct-job validation and business-brand treatments without changing HGM; deliver Hays as the second isolated Business Recruitment edition with verified mining resources, direct vacancies and an explicitly labelled owner-selected demo video.
 
 ## Batch-production time savings
 

@@ -1,0 +1,112 @@
+{
+  "bandName": "Hays",
+  "slug": "hays",
+  "editionId": "dc_3481f25897",
+  "verifiedAt": "2026-07-28T11:18:39.701Z",
+  "sources": [
+    {
+      "destination": "website",
+      "url": "https://www.hays.com.au/employers/resources-mining",
+      "sourceType": "official Hays employer industry page",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-28T11:10:00.000Z",
+      "evidence": "The official Hays Australia Resources & Mining employer page describes its sector expertise, geographic coverage, roles, candidate network and recruitment approach."
+    },
+    {
+      "destination": "careers",
+      "url": "https://www.hays.com.au/jobs/resources-mining",
+      "sourceType": "official Hays candidate industry page",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-28T11:11:00.000Z",
+      "evidence": "The official Hays Australia Resources & Mining jobs page lists mining disciplines, locations, candidate support and current vacancy links."
+    },
+    {
+      "destination": "benefits",
+      "url": "https://www.hays.com.au/salary-guide",
+      "sourceType": "official Hays salary guide",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-28T11:12:00.000Z",
+      "evidence": "The official Hays Australia Salary Guide page provides current salary benchmarking and states its research includes feedback from more than 7,000 professionals."
+    },
+    {
+      "destination": "contact",
+      "url": "https://www.hays.com.au/offices",
+      "sourceType": "official Hays offices page",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-28T11:13:00.000Z",
+      "evidence": "The official Hays Australia offices page provides current office locations and direct contact pathways across Australia."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=TgKUyWn0Nf8",
+      "sourceType": "owner-selected demonstration video",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-28T11:14:00.000Z",
+      "evidence": "The owner explicitly requested reuse of the HGM Aggits video for this Hays demonstration. It is labelled Demo Video and no Hays ownership, endorsement or official association is claimed."
+    },
+    {
+      "destination": "logo",
+      "url": "https://www.hays.com.au/o/hays-desktop-branding-theme/images/hays-og-logo.webp",
+      "sourceType": "official Hays website asset",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-28T11:15:00.000Z",
+      "evidence": "The official Hays Australia website serves this high-resolution Hays brand mark from its own desktop-branding theme."
+    },
+    {
+      "destination": "employers",
+      "url": "https://www.hays.com.au/employers",
+      "sourceType": "official Hays employer services page",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-28T11:16:00.000Z",
+      "evidence": "The official Hays employer page documents its Australian history and permanent, temporary, contract, executive and workforce recruitment services."
+    },
+    {
+      "destination": "jobAlerts",
+      "url": "https://www.hays.com.au/job-alerts",
+      "sourceType": "official Hays job alerts page",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-28T11:17:00.000Z",
+      "evidence": "The official Hays job alerts page explains that candidates can save search criteria and receive matching vacancies by email."
+    },
+    {
+      "destination": "job:agi-truck-driver",
+      "url": "https://www.hays.com.au/job-detail/JOB_5174337?jobSource=HaysGCJ",
+      "sourceType": "official Hays vacancy linked from official mining jobs page",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-28T11:18:00.000Z",
+      "evidence": "The official Hays Resources & Mining jobs page publishes this direct current Agi Truck Driver vacancy URL for WA Regional."
+    },
+    {
+      "destination": "job:mobile-operators",
+      "url": "https://www.hays.com.au/job-detail/JOB_5173206?jobSource=HaysGCJ",
+      "sourceType": "official Hays vacancy linked from official mining jobs page",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-28T11:18:00.000Z",
+      "evidence": "The official Hays Resources & Mining jobs page publishes this direct current Mobile Operators vacancy URL for Perth, Western Australia."
+    },
+    {
+      "destination": "job:process-technician",
+      "url": "https://www.hays.com.au/job-detail/JOB_5174864?jobSource=HaysGCJ",
+      "sourceType": "official Hays vacancy linked from official mining jobs page",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-28T11:18:00.000Z",
+      "evidence": "The official Hays Resources & Mining jobs page publishes this direct current Process Technician vacancy URL for Queensland Regional."
+    },
+    {
+      "destination": "job:mechanical-fitter",
+      "url": "https://www.hays.com.au/job-detail/JOB_5171396?jobSource=HaysGCJ",
+      "sourceType": "official Hays vacancy linked from official mining jobs page",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-28T11:18:00.000Z",
+      "evidence": "The official Hays Resources & Mining jobs page publishes this direct current Mechanical Fitter vacancy URL for Queensland Regional."
+    },
+    {
+      "destination": "job:electrical-supervisor",
+      "url": "https://www.hays.com.au/job-detail/JOB_5173548?jobSource=HaysGCJ",
+      "sourceType": "official Hays vacancy linked from official mining jobs page",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-28T11:18:00.000Z",
+      "evidence": "The official Hays Resources & Mining jobs page publishes this direct current Electrical Supervisor vacancy URL for the Mackay Basin."
+    }
+  ]
+}

@@ -265,6 +265,14 @@
       "name": "High Grade Mechanical",
       "config": "editions/high-grade-mechanical/edition.json",
       "active": true
+    },
+    {
+      "slug": "hays",
+      "editionId": "dc_3481f25897",
+      "canonicalPath": "/e/dc_3481f25897",
+      "name": "Hays",
+      "config": "editions/hays/edition.json",
+      "active": true
     }
   ]
 }
