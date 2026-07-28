@@ -41,6 +41,7 @@
     "videoLabel": "Meet HGM",
     "showHeroArtwork": false,
     "showTitle": false,
+    "buttonLightSequence": true,
     "logoArtwork": "assets/hgm-logo-official.png",
     "logoSourceURL": "https://www.hgmechanical.com.au/wp-content/uploads/HGM-Logo-Version-B.png",
     "artworkPolicy": "Use the exact owner-supplied HGM Aggits image without alteration or substitution.",
@@ -56,7 +57,21 @@
     ],
     "jobsEyebrow": "CURRENT OPPORTUNITIES",
     "jobsTitle": "Find your next HGM job",
-    "jobsIntro": "Choose a role to view the current verified opportunity on the HGM website.",
+    "jobsIntro": "Choose a work pathway or role to connect with the HGM team.",
+    "rolePaths": [
+      {
+        "id": "short-term-roles",
+        "label": "Short Term Roles",
+        "detail": "Contact Jade",
+        "url": "https://www.hgmechanical.com.au/contact/"
+      },
+      {
+        "id": "longer-term-roles",
+        "label": "Longer Term Roles",
+        "detail": "Contact Katie",
+        "url": "https://www.hgmechanical.com.au/contact/"
+      }
+    ],
     "jobs": [
       {
         "id": "auto-electricians",
