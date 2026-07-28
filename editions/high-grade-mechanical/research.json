@@ -147,6 +147,62 @@
       "identityVerified": true,
       "verifiedAt": "2026-07-28T08:00:00.000Z",
       "evidence": "Direct current HGM vacancy page linked from the official careers listing for a Field Service HD Fitter."
+    },
+    {
+      "destination": "locationWheel:rockingham-workshop",
+      "url": "https://www.hgmechanical.com.au/services/",
+      "sourceType": "official HGM services page",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-28T10:00:00.000Z",
+      "evidence": "The official HGM Services page identifies its dedicated Rockingham workshop, off-site maintenance capability, licensed heavy-earthmoving repair work, field service and onsite breakdown support."
+    },
+    {
+      "destination": "locationWheel:south-west-wa",
+      "url": "https://www.hgmechanical.com.au/",
+      "sourceType": "official HGM homepage",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-28T10:00:00.000Z",
+      "evidence": "The official HGM homepage publicly lists South West WA as a service location and describes its Western Australian mining and civil maintenance services."
+    },
+    {
+      "destination": "locationWheel:denham-gascoyne",
+      "url": "https://www.hgmechanical.com.au/",
+      "sourceType": "official HGM homepage",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-28T10:00:00.000Z",
+      "evidence": "The official HGM homepage publicly lists Denham Gascoyne as a service location and describes HGM's heavy mobile maintenance work across Western Australia."
+    },
+    {
+      "destination": "locationWheel:perth-metro",
+      "url": "https://www.hgmechanical.com.au/available-jobs/lv-fitters-lv-mechanics-fifo-perth-metro/",
+      "sourceType": "official HGM vacancy",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-28T10:00:00.000Z",
+      "evidence": "The official HGM LV Fitters and LV Mechanics vacancy documents ongoing FIFO and Perth Metro opportunities maintaining light vehicles and mine-support equipment."
+    },
+    {
+      "destination": "locationWheel:fifo-western-australia",
+      "url": "https://www.hgmechanical.com.au/available-jobs/hd-fitters-heavy-duty-mechanics-fifo-dido/",
+      "sourceType": "official HGM vacancy",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-28T10:00:00.000Z",
+      "evidence": "The official HGM Heavy Duty Fitters and Mechanics vacancy documents Western Australian FIFO work, varied rosters, mine-site maintenance and work across different sites."
+    },
+    {
+      "destination": "locationWheel:dido-western-australia",
+      "url": "https://www.hgmechanical.com.au/available-jobs/boilermaker-mem/",
+      "sourceType": "official HGM vacancy",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-28T10:00:00.000Z",
+      "evidence": "The official HGM Boilermaker vacancy documents DIDO, FIFO and Perth Metro mobile-equipment maintenance work in Western Australia."
+    },
+    {
+      "destination": "locationWheel:surface-underground",
+      "url": "https://www.hgmechanical.com.au/available-jobs/drill-fitters-surface-and-underground/",
+      "sourceType": "official HGM vacancy",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-28T10:00:00.000Z",
+      "evidence": "The official HGM Drill Fitters vacancy documents surface and underground FIFO work in Western Australia, mine-site experience and drill-equipment inspection, servicing, adjustment and repair."
     }
   ]
 }

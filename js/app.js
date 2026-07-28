@@ -1,6 +1,6 @@
 "use strict";
 
-const VERSION="20260728-hgm-3";
+const VERSION="20260728-hgm-4";
 const LANEWAY_REPORTING_VERSION="laneway-weekly-v1";
 const $=id=>document.getElementById(id);
 const els={page:$("discoveryPage"),error:$("errorScreen"),errorMessage:$("errorMessage"),bandName:$("bandName"),bio:$("artistBio"),artwork:$("heroArtwork"),brandLogo:$("editionBrandLogo"),waveform:$("sonicSignature"),features:$("featureList"),video:$("featuredVideo"),videoLabel:$("featuredVideoLabel"),videoTitle:$("featuredVideoTitle"),videoFrame:$("featuredVideoFrame"),links:$("platformLinks"),share:$("shareButton"),status:$("shareStatus"),description:$("pageDescription"),poweredBy:$("poweredByLabel"),copyright:$("coverCopyright"),lanewayHome:$("lanewayHomeLink"),lanewayRecommended:$("lanewayRecommendedLink"),companyDirectory:$("lanewayCompanyDirectory"),companyDirectoryCount:$("lanewayCompanyDirectoryCount"),companySearch:$("lanewayCompanySearch"),companyArtistList:$("lanewayCompanyArtistList"),companyEmpty:$("lanewayCompanyEmpty"),companyWheel:$("lanewayArtistWheel"),wheelCanvas:$("lanewayWheelCanvas"),wheelSpin:$("lanewayWheelSpin"),wheelStatus:$("lanewayWheelStatus"),wheelWinner:$("lanewayWheelWinner"),wheelImpact:$("lanewayWheelImpact"),wheelPurchaseLinks:$("lanewayWheelPurchaseLinks"),wheelBuyMusic:$("lanewayWheelBuyMusic"),wheelBuyMerch:$("lanewayWheelBuyMerch"),wheelVideo:$("lanewayWheelVideo"),wheelVideoTitle:$("lanewayWheelVideoTitle"),wheelVideoFrame:$("lanewayWheelVideoFrame")};
@@ -277,10 +277,137 @@ function buildBusinessLinks(){
   challenge.innerHTML=`<span class="business-challenge-icon" aria-hidden="true">?</span><span class="link-copy"><strong>${escapeHtml(config.businessChallenge?.title||"LEARN ABOUT HGM")}</strong><small>${escapeHtml(config.businessChallenge?.ctaLabel||"Take the 10-question quiz")}</small></span><span class="link-arrow" aria-hidden="true">&gt;</span>`;
   challenge.addEventListener("click",()=>BusinessQuiz.open());
   els.links.append(challenge);
+  buildBusinessLocationWheel();
+}
+
+function buildBusinessLocationWheel(){
+  const wheel=config.business?.locationWheel;
+  const options=(wheel?.options||[]).filter(option=>option?.id&&option?.label&&option?.description&&validHttps(option?.sourceURL));
+  if(options.length<2)return;
+  const section=document.createElement("section");
+  section.className="business-location-wheel wide";
+  section.setAttribute("aria-labelledby","businessLocationWheelTitle");
+  section.innerHTML=`
+    <header class="business-location-wheel-heading">
+      <p>${escapeHtml(wheel.eyebrow||"HGM SERVICE MAP")}</p>
+      <h2 id="businessLocationWheelTitle">${escapeHtml(wheel.title||"Spin to explore HGM")}</h2>
+      <span>${escapeHtml(wheel.intro||"Discover verified HGM service regions and mining work settings.")}</span>
+    </header>
+    <div class="business-location-wheel-stage">
+      <span class="business-location-pointer" aria-hidden="true"></span>
+      <canvas class="business-location-canvas" width="640" height="640" aria-hidden="true"></canvas>
+      <button class="business-location-spin" type="button" aria-label="Spin the HGM service map">SPIN</button>
+    </div>
+    <p class="business-location-status" role="status" aria-live="polite">Press Spin to explore a verified HGM location or work setting.</p>
+    <article class="business-location-result" tabindex="-1" hidden>
+      <p class="business-location-result-type"></p>
+      <h3></h3>
+      <p class="business-location-result-copy"></p>
+      <a class="business-location-source" target="_blank" rel="noopener noreferrer"></a>
+    </article>`;
+  els.links.append(section);
+  const canvas=section.querySelector(".business-location-canvas");
+  const context=canvas.getContext("2d");
+  const button=section.querySelector(".business-location-spin");
+  const status=section.querySelector(".business-location-status");
+  const result=section.querySelector(".business-location-result");
+  const resultType=section.querySelector(".business-location-result-type");
+  const resultTitle=result.querySelector("h3");
+  const resultCopy=section.querySelector(".business-location-result-copy");
+  const source=section.querySelector(".business-location-source");
+  if(!context){section.remove();return}
+  const segmentAngle=Math.PI*2/options.length;
+  const colours=["#101a28","#1d3045","#132337","#25445d","#172b40","#20384e","#0d1926"];
+  let rotation=0,spinning=false,frame=0,lastSelected=-1;
+  const splitLabel=label=>{
+    const words=String(label).split(/\s+/),lines=[];
+    for(const word of words){
+      const current=lines.at(-1)||"";
+      if(!current||`${current} ${word}`.length>15)lines.push(word);
+      else lines[lines.length-1]=`${current} ${word}`;
+    }
+    return lines.slice(0,3);
+  };
+  const draw=()=>{
+    const size=canvas.width,centre=size/2,radius=centre-12;
+    context.clearRect(0,0,size,size);
+    context.save();context.translate(centre,centre);context.rotate(rotation);
+    options.forEach((option,index)=>{
+      const start=-Math.PI/2-segmentAngle/2+index*segmentAngle,end=start+segmentAngle,middle=start+segmentAngle/2;
+      context.beginPath();context.moveTo(0,0);context.arc(0,0,radius,start,end);context.closePath();
+      context.fillStyle=colours[index%colours.length];context.fill();
+      context.strokeStyle="rgba(142,216,255,.42)";context.lineWidth=2;context.stroke();
+      context.save();context.rotate(middle);context.translate(radius*.48,0);
+      const normalised=((middle%(Math.PI*2))+Math.PI*2)%(Math.PI*2);
+      const inverted=normalised>Math.PI/2&&normalised<Math.PI*1.5;
+      if(inverted)context.rotate(Math.PI);
+      context.fillStyle="#f4f8fb";context.font="800 22px Arial, sans-serif";
+      context.textAlign="center";context.textBaseline="middle";
+      splitLabel(option.label).forEach((line,lineIndex,lines)=>context.fillText(line,0,(lineIndex-(lines.length-1)/2)*25,radius*.38));
+      context.restore();
+    });
+    context.restore();
+    context.beginPath();context.arc(centre,centre,radius,0,Math.PI*2);
+    context.strokeStyle="#9bdcff";context.lineWidth=9;context.stroke();
+    context.beginPath();context.arc(centre,centre,radius-8,0,Math.PI*2);
+    context.strokeStyle="rgba(244,122,52,.7)";context.lineWidth=2;context.stroke();
+  };
+  const randomIndex=()=>{
+    let selected;
+    if(globalThis.crypto?.getRandomValues){
+      const values=new Uint32Array(1),limit=Math.floor(0x100000000/options.length)*options.length;
+      do{crypto.getRandomValues(values)}while(values[0]>=limit);
+      selected=values[0]%options.length;
+    }else selected=Math.floor(Math.random()*options.length);
+    if(options.length>1&&selected===lastSelected)selected=(selected+1+Math.floor(Math.random()*(options.length-1)))%options.length;
+    return selected;
+  };
+  const setSpinState=value=>{
+    button.classList.toggle("is-spinning",value);
+    button.setAttribute("aria-label",value?"HGM service map spinning":"Spin the HGM service map again");
+    button.replaceChildren();
+    if(value){
+      const spiral=document.createElement("span");spiral.className="business-location-spin-spiral";spiral.setAttribute("aria-hidden","true");
+      button.append(spiral);
+    }else button.textContent=lastSelected<0?"SPIN":"SPIN AGAIN";
+  };
+  const finish=selected=>{
+    const option=options[selected];
+    spinning=false;lastSelected=selected;button.disabled=false;setSpinState(false);
+    status.textContent=`Selected: ${option.label}.`;
+    resultType.textContent=option.type||"Verified HGM information";
+    resultTitle.textContent=option.label;
+    resultCopy.textContent=option.description;
+    source.href=option.sourceURL;source.textContent=option.sourceLabel||"Read the verified HGM source";
+    source.setAttribute("aria-label",`${source.textContent} for ${option.label} (opens in a new tab)`);
+    result.hidden=false;result.classList.remove("is-revealed");void result.offsetWidth;result.classList.add("is-revealed");
+    result.focus({preventScroll:true});
+    analytics.track("wheel_result_shown",{action_id:option.id,button_name:option.label,result_count:options.length,interaction_source:"business_location_wheel",edition_type:config.editionType},{dedupeKey:`business-location:${option.id}`,dedupeMs:500});
+  };
+  button.addEventListener("click",()=>{
+    if(spinning)return;
+    spinning=true;button.disabled=true;setSpinState(true);
+    result.hidden=true;result.classList.remove("is-revealed");
+    status.textContent="The HGM service map is spinning...";
+    analytics.track("wheel_spin_started",{result_count:options.length,interaction_source:"business_location_wheel",edition_type:config.editionType},{dedupeKey:"business-location-spin",dedupeMs:500});
+    const selected=randomIndex(),current=rotation%(Math.PI*2),target=-selected*segmentAngle;
+    const normalised=((target-current)%(Math.PI*2)+Math.PI*2)%(Math.PI*2);
+    const total=normalised+Math.PI*2*6,initial=rotation,start=performance.now();
+    const reduced=matchMedia("(prefers-reduced-motion: reduce)").matches,duration=reduced?180:3900;
+    cancelAnimationFrame(frame);
+    const animate=now=>{
+      const progress=Math.min(1,(now-start)/duration),eased=1-Math.pow(1-progress,4);
+      rotation=initial+total*eased;draw();
+      if(progress<1)frame=requestAnimationFrame(animate);else finish(selected);
+    };
+    frame=requestAnimationFrame(animate);
+  });
+  source.addEventListener("click",()=>trackBusinessOutbound(`location-wheel-source:${lastSelected<0?"unknown":options[lastSelected].id}`,source.href,"business_location_wheel"),{passive:true});
+  draw();
 }
 
 function sequenceBusinessButtons(){
-  const buttons=[...document.querySelectorAll('.business-job-link,.business-challenge-card,#editionUtilityActions .utility-action:not([hidden])')];
+  const buttons=[...document.querySelectorAll('.business-job-link,.business-challenge-card,.business-location-spin,#editionUtilityActions .utility-action:not([hidden])')];
   const lightStep=.52;
   const lightDuration=Math.max(buttons.length*lightStep,4.2);
   buttons.forEach((element,index)=>{

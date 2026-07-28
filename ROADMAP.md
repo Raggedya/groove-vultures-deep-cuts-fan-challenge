@@ -14,6 +14,7 @@
 - [x] Add a conditional, privacy-enhanced winner-video panel backed by 28 verified playable artist videos, with fail-closed omission for the remaining roster.
 - [x] Unify the Laneway company reference around pale-teal decorative accents while preserving the wheel pointer as its sole red focal marker.
 - [x] Add the isolated Business Recruitment contract with verified job cards, owner-approved branding/Aggits, featured video and a sourced 10-question company quiz; deliver High Grade Mechanical as its first edition.
+- [x] Add an HGM-only service-map wheel beneath the quiz, using seven officially sourced service regions and advertised mining work settings without implying unverified client mine relationships.
 
 ## Batch-production time savings
 
