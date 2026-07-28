@@ -39,6 +39,8 @@
   "business": {
     "shortName": "HGM",
     "videoLabel": "Meet HGM",
+    "showHeroArtwork": false,
+    "showTitle": false,
     "logoArtwork": "assets/hgm-logo-official.png",
     "logoSourceURL": "https://www.hgmechanical.com.au/wp-content/uploads/HGM-Logo-Version-B.png",
     "artworkPolicy": "Use the exact owner-supplied HGM Aggits image without alteration or substitution.",

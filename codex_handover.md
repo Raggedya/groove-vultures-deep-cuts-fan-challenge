@@ -109,7 +109,7 @@ The main experience is a configuration-driven static application:
 
 The renderer loads the selected record from `platform.json`, then loads that edition's structured files from `editions/<slug>/`.
 
-Business Recruitment is now an isolated shared-engine type. `js/business-quiz.js` owns its ten-question quiz, while `config.business.jobs` contains direct verified vacancies. High Grade Mechanical is the first edition at opaque ID `dc_4a71b2c8e9`; its exact owner-supplied `assets/hgm-aggits-owner-supplied.jpg` and official `assets/hgm-logo-official.png` are protected by `scripts/test-high-grade-mechanical.mjs`.
+Business Recruitment is now an isolated shared-engine type. `js/business-quiz.js` owns its ten-question quiz, while `config.business.jobs` contains direct verified vacancies. High Grade Mechanical is the first edition at opaque ID `dc_4a71b2c8e9`; its exact owner-supplied `assets/hgm-aggits-owner-supplied.jpg` and official `assets/hgm-logo-official.png` are protected by `scripts/test-high-grade-mechanical.mjs`. HGM keeps that exact Aggits artwork in its QR and delivery assets but intentionally omits the large artwork and duplicated company-name title from the live page through edition-owned display flags.
 
 ### 4.2 Edition registry and contracts
 

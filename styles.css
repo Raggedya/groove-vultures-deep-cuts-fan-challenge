@@ -483,7 +483,7 @@ body{margin:0;min-height:100%;color:var(--ink);background:#000713;overflow-x:hid
 [data-edition-type="business"] .video-frame{border-color:rgba(95,151,194,.48);box-shadow:0 0 25px rgba(47,128,195,.12)}
 [data-edition-type="business"] .link-section{padding-top:26px}
 [data-edition-type="business"] .platform-links{gap:10px}
-[data-edition-type="business"] .business-jobs-heading{padding:2px 2px 12px;text-align:left}
+[data-edition-type="business"] .business-jobs-heading{grid-column:1/-1;padding:2px 2px 12px;text-align:left}
 [data-edition-type="business"] .business-jobs-heading p{margin:0 0 5px;color:#f47a34;font-size:.68rem;font-weight:900;letter-spacing:.18em}
 [data-edition-type="business"] .business-jobs-heading h2{margin:0;color:#fff;font-size:clamp(1.45rem,6vw,2rem);line-height:1.05;text-transform:uppercase}
 [data-edition-type="business"] .business-jobs-heading span{display:block;margin-top:8px;color:#aebdcb;font-size:.79rem;line-height:1.35}
@@ -493,7 +493,6 @@ body{margin:0;min-height:100%;color:var(--ink);background:#000713;overflow-x:hid
 [data-edition-type="business"] .business-job-mark:after{content:"";position:absolute;inset:3px;background:var(--business-secondary)}
 [data-edition-type="business"] .business-job-link .link-copy strong{font-size:.78rem;line-height:1.2}
 [data-edition-type="business"] .business-job-link .link-copy small{color:#9fb0c0;font-size:.6rem;line-height:1.25}
-[data-edition-type="business"] .business-job-link .link-arrow{color:#f47a34}
 [data-edition-type="business"] .business-challenge-card{position:relative;grid-column:1/-1;display:flex;align-items:center;justify-content:center;min-height:88px;margin-top:7px;padding:12px 50px;border:1px solid var(--business-accent);border-radius:16px;color:#fff;background:linear-gradient(145deg,rgba(31,93,139,.98),rgba(12,35,55,.98));box-shadow:0 0 26px rgba(47,128,195,.17),inset 0 1px rgba(255,255,255,.13);font:inherit;cursor:pointer}
 [data-edition-type="business"] .business-challenge-card:disabled{cursor:wait;opacity:.7}
 [data-edition-type="business"] .business-challenge-card:not(:disabled):hover,[data-edition-type="business"] .business-challenge-card:not(:disabled):focus-visible{outline:none;transform:translateY(-1px);box-shadow:0 0 34px rgba(47,128,195,.42),inset 0 1px rgba(255,255,255,.18)}

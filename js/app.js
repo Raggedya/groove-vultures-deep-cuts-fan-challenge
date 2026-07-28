@@ -1,6 +1,6 @@
 "use strict";
 
-const VERSION="20260728-hgm-1";
+const VERSION="20260728-hgm-2";
 const LANEWAY_REPORTING_VERSION="laneway-weekly-v1";
 const $=id=>document.getElementById(id);
 const els={page:$("discoveryPage"),error:$("errorScreen"),errorMessage:$("errorMessage"),bandName:$("bandName"),bio:$("artistBio"),artwork:$("heroArtwork"),brandLogo:$("editionBrandLogo"),waveform:$("sonicSignature"),features:$("featureList"),video:$("featuredVideo"),videoLabel:$("featuredVideoLabel"),videoTitle:$("featuredVideoTitle"),videoFrame:$("featuredVideoFrame"),links:$("platformLinks"),share:$("shareButton"),status:$("shareStatus"),description:$("pageDescription"),poweredBy:$("poweredByLabel"),copyright:$("coverCopyright"),lanewayHome:$("lanewayHomeLink"),lanewayRecommended:$("lanewayRecommendedLink"),companyDirectory:$("lanewayCompanyDirectory"),companyDirectoryCount:$("lanewayCompanyDirectoryCount"),companySearch:$("lanewayCompanySearch"),companyArtistList:$("lanewayCompanyArtistList"),companyEmpty:$("lanewayCompanyEmpty"),companyWheel:$("lanewayArtistWheel"),wheelCanvas:$("lanewayWheelCanvas"),wheelSpin:$("lanewayWheelSpin"),wheelStatus:$("lanewayWheelStatus"),wheelWinner:$("lanewayWheelWinner"),wheelImpact:$("lanewayWheelImpact"),wheelPurchaseLinks:$("lanewayWheelPurchaseLinks"),wheelBuyMusic:$("lanewayWheelBuyMusic"),wheelBuyMerch:$("lanewayWheelBuyMerch"),wheelVideo:$("lanewayWheelVideo"),wheelVideoTitle:$("lanewayWheelVideoTitle"),wheelVideoFrame:$("lanewayWheelVideoFrame")};
@@ -92,7 +92,11 @@ async function applyConfig(){
   els.description.content=wheelEdition?`Spin to discover a verified ${name} artist on ${wheelSettings().destinationLabel}, search the catalogue and take the 10-question artist quiz.`:laneway?`Discover ${name} through Laneway's positive five-question band quiz and verified official links.`:schools?`Discover ${name} through verified official school information and video.`:business?`Explore verified ${name} job opportunities and learn about the business.`:clubs?`Verified club, membership, events, bowls and community links for ${name}.`:cars?`Verified history, specifications, buying, ownership and restoration links for ${name}.`:`Official music, video and social links for ${name}.`;
   els.bandName.textContent=name;
   els.bio.textContent=bio;
-  if(schools||laneway||wheelEdition){els.artwork.hidden=true;els.artwork.removeAttribute("src");els.artwork.alt=""}else{els.artwork.hidden=false;els.artwork.src=`/${config.characterArtwork||"assets/aggits-original-cutout-v4.png"}`;els.artwork.alt=business?`Aggits presenting ${name}`:`Aggits presenting ${name}`}
+  const hideArtwork=schools||laneway||wheelEdition||(business&&config.business?.showHeroArtwork===false);
+  if(hideArtwork){els.artwork.hidden=true;els.artwork.removeAttribute("src");els.artwork.alt=""}else{els.artwork.hidden=false;els.artwork.src=`/${config.characterArtwork||"assets/aggits-original-cutout-v4.png"}`;els.artwork.alt=`Aggits presenting ${name}`}
+  const titleRow=els.bandName.closest(".artist-title-row");
+  titleRow.hidden=false;
+  titleRow.classList.toggle("visually-hidden",business&&config.business?.showTitle===false);
   if(laneway||wheelEdition||business){const branding=business?config.business:wheelEdition?wheelSettings():config.laneway;els.brandLogo.hidden=false;els.brandLogo.src=`/${branding?.logoArtwork||"assets/laneway-music-logo-reverse-transparent.png"}`;els.brandLogo.alt=name}else{els.brandLogo.hidden=true;els.brandLogo.removeAttribute("src");els.brandLogo.alt=""}
   els.videoLabel.textContent=laneway||wheelEdition?"Featured video":schools?"Discover our school":business?(config.business?.videoLabel||"Meet the team"):clubs?"Featured club video":cars?"Featured automotive video":"Featured video";
   buildFeatures(laneway?config.laneway?.heroLabels:schools?config.school?.heroLabels:business?config.business?.heroLabels:clubs?config.club?.heroLabels:cars?config.automotive?.heroLabels:["Listen","Watch","Follow","Buy Stuff"]);
@@ -249,7 +253,7 @@ function buildBusinessLinks(){
     element.className="platform-link business-job-link is-active";
     element.href=url;element.target="_blank";element.rel="noopener noreferrer";
     element.dataset.destination="website";
-    element.innerHTML=`<span class="business-job-mark" aria-hidden="true"></span><span class="link-copy"><strong>${escapeHtml(job.label)}</strong><small>${escapeHtml(job.detail||"View current opportunity")}</small></span><span class="link-arrow" aria-hidden="true">&gt;</span>`;
+    element.innerHTML=`<span class="business-job-mark" aria-hidden="true"></span><span class="link-copy"><strong>${escapeHtml(job.label)}</strong><small>${escapeHtml(job.detail||"View current opportunity")}</small></span>`;
     element.setAttribute("aria-label",`${job.label} at ${config.bandName} (opens in a new tab)`);
     element.addEventListener("click",()=>trackBusinessOutbound(job.id,url,"job_directory"),{passive:true});
     els.links.append(element);
