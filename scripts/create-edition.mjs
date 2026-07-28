@@ -197,7 +197,7 @@ function schoolTheme(value){
 }
 function businessTheme(value){
   const source=value.theme||{};
-  return{accent:hex(source.accent)||'#2F80C3',accentSecondary:hex(source.accentSecondary)||'#F47A34',surface:hex(source.surface)||'#111A29'};
+  return{accent:hex(source.accent)||'#2F80C3',accentSecondary:hex(source.accentSecondary)||'#F47A34',secondaryStrong:hex(source.secondaryStrong)||'#A94618',surface:hex(source.surface)||'#111A29'};
 }
 function hex(value){const result=String(value||'').trim().toUpperCase();return /^#[0-9A-F]{6}$/.test(result)?result:''}
 

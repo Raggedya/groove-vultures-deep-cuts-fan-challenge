@@ -21,6 +21,7 @@
   "theme": {
     "accent": "#002776",
     "accentSecondary": "#00A3E0",
+    "secondaryStrong": "#006A9F",
     "surface": "#0B172A"
   },
   "links": {

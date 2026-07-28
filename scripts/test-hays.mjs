@@ -54,10 +54,12 @@ for(const question of questions){
 
 assert.ok(app.includes('branding?.logoSurface==="light"'));
 assert.ok(app.includes('branding?.logoShape==="square"'));
+assert.ok(app.includes('--business-secondary-strong'));
 assert.ok(quiz.includes('config.business.logoSurface==="light"'));
 assert.ok(quiz.includes('config.business.logoShape==="square"'));
 assert.ok(css.includes('.business-logo-on-light'));
 assert.ok(css.includes('.business-logo-square'));
+assert.ok(css.includes('.business-quiz-category,[data-edition-type="business"] .business-result-kicker{margin:0;color:var(--business-secondary)'));
 assert.ok(html.includes('<span id="poweredByLabel">Deep Cuts</span>'));
 assert.ok(html.includes('<small id="coverCopyright">Copyright Clearlight Creative</small>'));
 

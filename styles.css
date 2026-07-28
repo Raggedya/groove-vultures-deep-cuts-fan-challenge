@@ -465,7 +465,7 @@ body{margin:0;min-height:100%;color:var(--ink);background:#000713;overflow-x:hid
 [data-edition-type="business"]{--ink:#f5f8fc;--line:rgba(155,174,194,.33)}
 [data-edition-type="business"] body{color:#f5f8fc;background:#080d15}
 [data-edition-type="business"] .discovery-shell{width:min(100%,620px);padding-top:16px;background:radial-gradient(ellipse 85% 28% at 50% 13%,rgba(42,119,178,.34),transparent 72%),linear-gradient(180deg,#0e1624 0,#080d15 44%,#090d13 100%)}
-[data-edition-type="business"] .hero-stage{top:84px;width:440px;height:520px;background:radial-gradient(ellipse,rgba(247,103,30,.2),rgba(36,118,180,.2) 44%,transparent 72%);filter:blur(28px)}
+[data-edition-type="business"] .hero-stage{top:84px;width:440px;height:520px;background:radial-gradient(ellipse,color-mix(in srgb,var(--business-secondary) 20%,transparent),color-mix(in srgb,var(--business-accent) 20%,transparent) 44%,transparent 72%);filter:blur(28px)}
 [data-edition-type="business"] .edition-brand-logo{display:block;width:min(84%,430px);max-height:108px;margin:2px auto 14px;object-fit:contain;filter:drop-shadow(0 0 16px rgba(88,160,213,.23))}
 [data-edition-type="business"] .business-logo-on-light{box-sizing:border-box;height:auto;max-height:none;padding:18px 24px;border:1px solid rgba(255,255,255,.28);border-radius:18px;background:#fff;box-shadow:0 16px 38px rgba(0,0,0,.32),0 0 24px color-mix(in srgb,var(--business-accent) 18%,transparent);filter:none}
 [data-edition-type="business"] .edition-brand-logo.business-logo-square{width:112px;height:112px;max-height:none;margin-bottom:12px;border:1px solid rgba(255,255,255,.16);border-radius:18px;object-fit:cover;box-shadow:0 14px 34px rgba(0,0,0,.32),0 0 22px color-mix(in srgb,var(--business-accent) 20%,transparent);filter:none}
@@ -480,13 +480,13 @@ body{margin:0;min-height:100%;color:var(--ink);background:#000713;overflow-x:hid
 [data-edition-type="business"] .feature-list{margin-top:4px;color:#f5f8fc}
 [data-edition-type="business"] .feature-list li+li{border-color:rgba(47,128,195,.66)}
 [data-edition-type="business"] .featured-video{border-color:rgba(70,139,194,.55);background:linear-gradient(145deg,rgba(20,31,47,.98),rgba(7,12,20,.98));box-shadow:0 18px 45px rgba(0,0,0,.44),inset 0 1px rgba(255,255,255,.06)}
-[data-edition-type="business"] .video-heading span{color:#f47a34}
+[data-edition-type="business"] .video-heading span{color:var(--business-secondary)}
 [data-edition-type="business"] .video-heading h2{color:#f3f7fc}
 [data-edition-type="business"] .video-frame{border-color:rgba(95,151,194,.48);box-shadow:0 0 25px rgba(47,128,195,.12)}
 [data-edition-type="business"] .link-section{padding-top:26px}
 [data-edition-type="business"] .platform-links{gap:10px}
 [data-edition-type="business"] .business-jobs-heading{grid-column:1/-1;padding:2px 2px 12px;text-align:left}
-[data-edition-type="business"] .business-jobs-heading p{margin:0 0 5px;color:#f47a34;font-size:.68rem;font-weight:900;letter-spacing:.18em}
+[data-edition-type="business"] .business-jobs-heading p{margin:0 0 5px;color:var(--business-secondary);font-size:.68rem;font-weight:900;letter-spacing:.18em}
 [data-edition-type="business"] .business-jobs-heading h2{margin:0;color:#fff;font-size:clamp(1.45rem,6vw,2rem);line-height:1.05;text-transform:uppercase}
 [data-edition-type="business"] .business-jobs-heading span{display:block;margin-top:8px;color:#aebdcb;font-size:.79rem;line-height:1.35}
 [data-edition-type="business"] .business-job-link{position:relative;min-height:82px;padding:13px 13px 13px 44px;border-color:rgba(117,141,165,.4);background:linear-gradient(145deg,#172233,#0d1521);box-shadow:0 12px 28px rgba(0,0,0,.28),inset 0 1px rgba(255,255,255,.05)}
@@ -505,10 +505,10 @@ body{margin:0;min-height:100%;color:var(--ink);background:#000713;overflow-x:hid
 [data-edition-type="business"] .business-challenge-card{position:relative;grid-column:1/-1;display:flex;align-items:center;justify-content:center;min-height:88px;margin-top:7px;padding:12px 50px;border:1px solid var(--business-accent);border-radius:16px;color:#fff;background:linear-gradient(145deg,rgba(31,93,139,.98),rgba(12,35,55,.98));box-shadow:0 0 26px rgba(47,128,195,.17),inset 0 1px rgba(255,255,255,.13);font:inherit;cursor:pointer}
 [data-edition-type="business"] .business-challenge-card:disabled{cursor:wait;opacity:.7}
 [data-edition-type="business"] .business-challenge-card:not(:disabled):hover,[data-edition-type="business"] .business-challenge-card:not(:disabled):focus-visible{outline:none;transform:translateY(-1px);box-shadow:0 0 34px rgba(47,128,195,.42),inset 0 1px rgba(255,255,255,.18)}
-[data-edition-type="business"] .business-challenge-icon{position:absolute;left:17px;display:grid;width:34px;height:34px;place-items:center;border:2px solid #f47a34;border-radius:50%;color:#f47a34;font-size:1.05rem;font-weight:900}
+[data-edition-type="business"] .business-challenge-icon{position:absolute;left:17px;display:grid;width:34px;height:34px;place-items:center;border:2px solid var(--business-secondary);border-radius:50%;color:var(--business-secondary);font-size:1.05rem;font-weight:900}
 [data-edition-type="business"] .business-challenge-card .link-copy strong{font-size:.88rem;letter-spacing:.06em}
 [data-edition-type="business"] .business-challenge-card .link-copy small{color:#c3d7e6}
-[data-edition-type="business"] .business-challenge-card .link-arrow{color:#f47a34}
+[data-edition-type="business"] .business-challenge-card .link-arrow{color:var(--business-secondary)}
 [data-edition-type="business"] .utility-action{border-color:rgba(92,136,171,.48);color:#dbe7f0;background:#111b29}
 [data-edition-type="business"] .utility-action:hover,[data-edition-type="business"] .utility-action:focus-visible{border-color:var(--business-accent);box-shadow:0 0 16px rgba(47,128,195,.25)}
 [data-edition-type="business"] .page-footer{color:#8fa1b2}
@@ -521,7 +521,7 @@ body{margin:0;min-height:100%;color:var(--ink);background:#000713;overflow-x:hid
 [data-edition-type="business"] .business-quiz-logo,[data-edition-type="business"] .business-result-logo{display:block;width:min(100%,350px);max-height:94px;margin:0 auto 18px;object-fit:contain}
 [data-edition-type="business"] .business-quiz-logo.business-logo-on-light,[data-edition-type="business"] .business-result-logo.business-logo-on-light{box-sizing:border-box;height:auto;max-height:none;padding:14px 20px;border:1px solid rgba(255,255,255,.28);border-radius:14px;background:#fff}
 [data-edition-type="business"] .business-quiz-logo.business-logo-square,[data-edition-type="business"] .business-result-logo.business-logo-square{width:92px;height:92px;max-height:none;border:1px solid rgba(255,255,255,.16);border-radius:14px;object-fit:cover}
-[data-edition-type="business"] .business-quiz-category,[data-edition-type="business"] .business-result-kicker{margin:0;color:#f47a34;font-size:.67rem;font-weight:900;letter-spacing:.18em;text-transform:uppercase}
+[data-edition-type="business"] .business-quiz-category,[data-edition-type="business"] .business-result-kicker{margin:0;color:var(--business-secondary);font-size:.67rem;font-weight:900;letter-spacing:.18em;text-transform:uppercase}
 [data-edition-type="business"] .business-question-card h2{margin:13px 0 19px;color:#fff;font-size:clamp(1.3rem,5.8vw,1.86rem);line-height:1.18;text-wrap:balance}
 [data-edition-type="business"] .business-question-card h2:focus{outline:none}
 [data-edition-type="business"] .business-answer-list{display:grid;gap:9px}
@@ -539,13 +539,13 @@ body{margin:0;min-height:100%;color:var(--ink);background:#000713;overflow-x:hid
 [data-edition-type="business"] .business-next-button{width:100%;min-height:49px;margin-top:14px;border:1px solid var(--business-accent);border-radius:12px;color:#fff;background:#246a9f;font:inherit;font-weight:900;text-transform:uppercase;cursor:pointer}
 [data-edition-type="business"] .business-result-screen{display:grid;place-items:center}
 [data-edition-type="business"] .business-result-card{text-align:center}
-[data-edition-type="business"] .business-result-card h1{margin:20px 0 7px;color:#f47a34;font-size:clamp(4rem,18vw,6rem);line-height:.9}
+[data-edition-type="business"] .business-result-card h1{margin:20px 0 7px;color:var(--business-secondary);font-size:clamp(4rem,18vw,6rem);line-height:.9}
 [data-edition-type="business"] .business-result-card h2{margin:14px 0;padding:13px;border:1px solid var(--business-accent);border-radius:13px;color:#fff;background:#14283a;font-size:clamp(1.1rem,5vw,1.5rem);text-transform:uppercase}
 [data-edition-type="business"] .business-result-card>p:not(.business-result-kicker){color:#b8c7d4;line-height:1.46}
 [data-edition-type="business"] .business-result-actions{display:grid;gap:9px;margin-top:20px}
 [data-edition-type="business"] .business-result-actions button,[data-edition-type="business"] .business-result-careers{display:grid;min-height:51px;padding:0 14px;place-items:center;border-radius:12px;font:inherit;font-weight:900;text-decoration:none;text-transform:uppercase;cursor:pointer}
 [data-edition-type="business"] .business-result-primary{border:1px solid var(--business-accent);color:#fff;background:#246a9f}
 [data-edition-type="business"] .business-result-secondary{border:1px solid rgba(117,141,165,.5);color:#e7eef4;background:#131d29}
-[data-edition-type="business"] .business-result-careers{border:1px solid #f47a34;color:#fff;background:#a94618}
+[data-edition-type="business"] .business-result-careers{border:1px solid var(--business-secondary);color:#fff;background:var(--business-secondary-strong)}
 @media(max-width:400px){[data-edition-type="business"] .edition-brand-logo{width:92%;max-height:82px}[data-edition-type="business"] .hero-artwork{width:91%}[data-edition-type="business"] .platform-links{grid-template-columns:1fr}[data-edition-type="business"] .business-job-link{min-height:72px}[data-edition-type="business"] .business-question-card,[data-edition-type="business"] .business-result-card{padding:16px}}
 @media(prefers-reduced-motion:reduce){[data-edition-type="business"] .business-job-link,[data-edition-type="business"] .business-challenge-card{transition:none}[data-edition-type="business"] .business-carnival-light,[data-edition-type="business"] .business-carnival-light .business-job-mark:after{animation:none}}
