@@ -11,6 +11,8 @@ const config = JSON.parse(await fs.readFile(entry.config, "utf8"));
 assert.equal(config.brandName, "JookBox");
 assert.equal(config.editionType, "jukebox");
 assert.equal(config.jookBox?.modelVersion, "jookbox/2");
+assert.equal(config.jookBox?.cabinetArtwork, "assets/jookbox-cabinet-photoreal-v1.webp");
+await fs.access(config.jookBox.cabinetArtwork);
 assert.deepEqual(config.jookBox?.heroLabels, ["Listen", "Watch", "Follow", "Shop"]);
 assert.equal(config.jookBox?.lightSequence, true);
 assert.equal(config.jookBox?.coinStart, true);
@@ -58,6 +60,10 @@ assert.match(app, /function powerJookBox\(\)/);
 assert.match(app, /function playJookBoxCoinSound\(\)/);
 assert.match(app, /autoplay=1&playsinline=1/);
 assert.match(app, /function sequenceJookBoxButtons\(\)/);
+assert.match(app, /const JOOKBOX_VISIBLE_SELECTIONS=8/);
+assert.match(app, /function showJookBoxSelectionGroup\(buttons,start\)/);
+assert.match(app, /function startJookBoxSelectionRotation\(\)/);
+assert.match(app, /jookBoxSelectionStart=nextStart>=buttons\.length\?0:nextStart/);
 assert.match(styles, /\[data-edition-type="jukebox"\] \.jookbox-machine/);
 assert.match(styles, /\[data-edition-type="jukebox"\] \.hero\{display:none\}/);
 assert.match(styles, /\.jookbox-selection-bay/);
@@ -65,4 +71,4 @@ assert.match(styles, /\.jookbox-selection-slot \.platform-links\{grid-template-c
 assert.match(styles, /@keyframes jookBoxCoinDrop/);
 assert.match(styles, /@media\(prefers-reduced-motion:reduce\)\{[\s\S]*\[data-edition-type="jukebox"\]/);
 
-console.log("JookBox model passed: verified Linktree keys, coin-start video, lights and sourced biography remain isolated from every other edition.");
+console.log("JookBox model passed: photoreal full-screen cabinet, rotating eight-key bank, coin-start video and sourced biography remain isolated from every other edition.");
