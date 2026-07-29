@@ -10,9 +10,11 @@ assert.equal(entry.canonicalPath, "/e/dc_a3c049e4bc");
 const config = JSON.parse(await fs.readFile(entry.config, "utf8"));
 assert.equal(config.brandName, "JookBox");
 assert.equal(config.editionType, "jukebox");
-assert.equal(config.jookBox?.modelVersion, "jookbox/1");
+assert.equal(config.jookBox?.modelVersion, "jookbox/2");
 assert.deepEqual(config.jookBox?.heroLabels, ["Listen", "Watch", "Follow", "Shop"]);
 assert.equal(config.jookBox?.lightSequence, true);
+assert.equal(config.jookBox?.coinStart, true);
+assert.equal(config.jookBox?.syncMode, "verified-build-time");
 assert.equal(config.characterArtwork, "", "JookBox must never render Aggits.");
 assert.equal(config.businessChallenge, undefined, "JookBox must not inherit a Business quiz.");
 assert.equal(config.lanewayCompanyChallenge, undefined, "JookBox must not inherit an Indie Label quiz.");
@@ -20,13 +22,20 @@ assert.equal(config.indieWheel, undefined, "JookBox must not inherit a spinning 
 
 assert.equal(config.featuredVideo?.selectionBasis, "most-viewed-official");
 assert.equal(config.featuredVideo?.youtubeURL, "https://www.youtube.com/watch?v=Yarspws7fDA");
-assert.match(config.links?.spotify || "", /^https:\/\/open\.spotify\.com\/artist\//);
-assert.match(config.links?.youtube || "", /^https:\/\/www\.youtube\.com\/channel\//);
-assert.match(config.links?.merchandise || "", /^https:\/\/filthyanimals\.com\.au\/shop\//);
+assert.equal(config.jookBox?.selections?.length, 18, "Every current visible Linktree button must render as one JookBox selection.");
+assert.equal(new Set(config.jookBox.selections.map((selection) => selection.id)).size, config.jookBox.selections.length);
+assert.equal(config.jookBox.selections.some((selection) => selection.id === "merch-shop"), true);
+assert.equal(config.jookBox.selections.some((selection) => selection.id === "youtube-channel"), true);
+assert.equal(config.jookBox.selections.some((selection) => selection.id === "tickets-moorabbin"), true);
+assert.equal(config.jookBox.selections.some((selection) => selection.id === "furzey-podcast"), true);
+assert.equal(config.jookBox?.biography?.paragraphs?.length, 3);
 
 const research = JSON.parse(await fs.readFile("editions/filthy-animals/research.json", "utf8"));
 for (const [destination, url] of Object.entries(config.links)) {
   assert.ok(research.sources.some((source) => source.destination === destination && source.url.replace(/\/$/, "") === url.replace(/\/$/, "") && source.identityVerified === true), `${destination} requires matching verified research.`);
+}
+for (const selection of config.jookBox.selections) {
+  assert.ok(research.sources.some((source) => source.destination === `selection:${selection.id}` && source.url.replace(/\/$/, "") === selection.url.replace(/\/$/, "") && source.identityVerified === true), `${selection.id} requires matching verified Linktree research.`);
 }
 assert.ok(research.sources.some((source) => source.destination === "featuredVideo" && source.url === config.featuredVideo.youtubeURL && /380K views/.test(source.evidence)), "The featured video must retain official Popular-order evidence.");
 
@@ -37,10 +46,16 @@ const [html, app, styles] = await Promise.all([
 ]);
 assert.match(html, /id="jookBoxCabinet"/);
 assert.match(html, /id="jookBoxVideoSlot"/);
+assert.match(html, /id="jookBoxCoinButton"/);
+assert.match(html, /id="jookBoxBioScreen"/);
 assert.match(app, /function isJookBoxEdition\(\)/);
-assert.match(app, /const JOOKBOX_LINK_DEFINITIONS=/);
+assert.match(app, /function jookBoxLinkDefinitions\(\)/);
+assert.match(app, /function powerJookBox\(\)/);
+assert.match(app, /function playJookBoxCoinSound\(\)/);
+assert.match(app, /autoplay=1&playsinline=1/);
 assert.match(app, /function sequenceJookBoxButtons\(\)/);
 assert.match(styles, /\[data-edition-type="jukebox"\] \.jookbox-machine/);
+assert.match(styles, /@keyframes jookBoxCoinDrop/);
 assert.match(styles, /@media\(prefers-reduced-motion:reduce\)\{[\s\S]*\[data-edition-type="jukebox"\]/);
 
-console.log("JookBox model passed: Filthy Animals remains a no-quiz, no-wheel, no-Aggits band edition.");
+console.log("JookBox model passed: verified Linktree keys, coin-start video, lights and sourced biography remain isolated from every other edition.");

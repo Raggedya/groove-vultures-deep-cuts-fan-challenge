@@ -634,14 +634,15 @@ def jookbox_colour(config: dict, key: str, fallback: tuple[int, int, int]) -> tu
 
 
 def jookbox_background(config: dict) -> Image.Image:
-    surface = jookbox_colour(config, "surface", (9, 19, 33))
-    cyan = jookbox_colour(config, "accent", (85, 217, 255))
-    orange = jookbox_colour(config, "accentSecondary", (255, 102, 64))
+    surface = jookbox_colour(config, "surface", (22, 7, 13))
+    cyan = jookbox_colour(config, "accent", (56, 229, 255))
+    orange = jookbox_colour(config, "accentSecondary", (255, 40, 89))
     canvas = Image.new("RGBA", (SIZE, SIZE), (*surface, 255))
     glow = Image.new("RGBA", (SIZE, SIZE), (0, 0, 0, 0))
     glow_draw = ImageDraw.Draw(glow)
-    glow_draw.ellipse((-80, -180, 1160, 780), fill=cyan + (62,))
-    glow_draw.ellipse((470, 570, 1250, 1280), fill=orange + (44,))
+    glow_draw.ellipse((-80, -180, 1160, 780), fill=(255, 54, 186, 70))
+    glow_draw.ellipse((470, 570, 1250, 1280), fill=orange + (54,))
+    glow_draw.ellipse((-300, 510, 580, 1310), fill=cyan + (37,))
     return Image.alpha_composite(canvas, glow.filter(ImageFilter.GaussianBlur(125)))
 
 
@@ -651,9 +652,9 @@ def draw_jookbox(draw: ImageDraw.ImageDraw, box: tuple[int, int, int, int], conf
     cyan = jookbox_colour(config, "accent", (85, 217, 255))
     orange = jookbox_colour(config, "accentSecondary", (255, 102, 64))
     gold = jookbox_colour(config, "gold", (255, 214, 107))
-    draw.rounded_rectangle(box, radius=width // 2, fill=(16, 27, 41, 255), outline=gold, width=12)
+    draw.rounded_rectangle(box, radius=width // 2, fill=(57, 13, 9, 255), outline=gold, width=12)
     draw.rounded_rectangle((left + 18, top + 18, right - 18, bottom - 18), radius=max(28, width // 2 - 18), outline=(225, 236, 244, 225), width=5)
-    draw.rounded_rectangle((left + 34, top + 34, right - 34, bottom - 34), radius=max(24, width // 2 - 34), outline=orange, width=7)
+    draw.rounded_rectangle((left + 34, top + 34, right - 34, bottom - 34), radius=max(24, width // 2 - 34), outline=(255, 54, 186), width=7)
     centre_x = (left + right) // 2
     radius_x = width * 0.42
     radius_y = width * 0.37
@@ -661,7 +662,7 @@ def draw_jookbox(draw: ImageDraw.ImageDraw, box: tuple[int, int, int, int], conf
         angle = math.radians(198 + index * (144 / 17))
         x = int(centre_x + math.cos(angle) * radius_x)
         y = int(top + width * 0.46 + math.sin(angle) * radius_y)
-        colour = cyan if index % 2 else orange
+        colour = cyan if index % 3 == 0 else gold if index % 3 == 1 else (255, 54, 186)
         draw.ellipse((x - 7, y - 7, x + 7, y + 7), fill=colour, outline=(255, 255, 255), width=2)
     screen = (left + 74, top + int(width * 0.51), right - 74, top + int(width * 0.91))
     draw.rounded_rectangle(screen, radius=16, fill=(3, 7, 12, 255), outline=cyan, width=4)
@@ -682,8 +683,8 @@ def create_jookbox_instagram(config: dict, destination: Path) -> None:
     centred_text(draw, "JOOKBOX", 54, fit_font(draw, "JOOKBOX", 760, 74, 50), fill=orange, stroke=1)
     name = str(config["bandName"]).upper()
     centred_text(draw, name, 142, fit_font(draw, name, 910, 76, 44), fill=WHITE, stroke=2)
-    draw_jookbox(draw, (252, 250, 828, 865), config, "PLAY")
-    centred_text(draw, "WATCH • LISTEN • FOLLOW • SHOP", 897, fit_font(draw, "WATCH • LISTEN • FOLLOW • SHOP", 780, 32, 23), fill=gold)
+    draw_jookbox(draw, (252, 250, 828, 865), config, "PUSH COIN")
+    centred_text(draw, "PUSH THE COIN • LIGHT UP THE BAND", 897, fit_font(draw, "PUSH THE COIN • LIGHT UP THE BAND", 800, 32, 23), fill=gold)
     centred_text(draw, "Deep Cuts", 970, font(31), fill=(225, 234, 242))
     centred_text(draw, "Copyright Clearlight Creative", 1016, font(20), fill=(139, 159, 177))
     canvas.convert("RGB").save(destination, "PNG", optimize=True)
@@ -713,14 +714,15 @@ def create_jookbox_qr(config: dict, destination: Path) -> str:
     draw = ImageDraw.Draw(canvas)
     orange = jookbox_colour(config, "accentSecondary", (255, 102, 64))
     gold = jookbox_colour(config, "gold", (255, 214, 107))
-    centred_text(draw, "SCAN TO PLAY THE JOOKBOX", 42, fit_font(draw, "SCAN TO PLAY THE JOOKBOX", 920, 60, 42), fill=WHITE, stroke=1)
+    centred_text(draw, "SCAN • PUSH THE COIN • PLAY", 42, fit_font(draw, "SCAN • PUSH THE COIN • PLAY", 920, 60, 42), fill=WHITE, stroke=1)
     name = str(config["bandName"]).upper()
     centred_text(draw, name, 120, fit_font(draw, name, 920, 68, 40), fill=orange, stroke=1)
     card_size = qr_size + 42
     card_x, card_y = (SIZE - card_size) // 2, 245
     draw.rounded_rectangle((card_x, card_y, card_x + card_size, card_y + card_size), radius=30, fill=(255, 255, 255), outline=gold, width=6)
     canvas.alpha_composite(qr_image, (card_x + 21, card_y + 21))
-    centred_text(draw, "WATCH • LISTEN • FOLLOW • SHOP", 868, fit_font(draw, "WATCH • LISTEN • FOLLOW • SHOP", 780, 31, 22), fill=gold)
+    footer_label = f"{name} JOOKBOX"
+    centred_text(draw, footer_label, 868, fit_font(draw, footer_label, 780, 31, 22), fill=gold)
     centred_text(draw, "Deep Cuts", 948, font(31), fill=(225, 234, 242))
     centred_text(draw, "Copyright Clearlight Creative", 998, font(20), fill=(139, 159, 177))
     canvas.convert("RGB").save(destination, "PNG", optimize=True)

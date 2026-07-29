@@ -70,8 +70,11 @@ Treat every completed edition as a finished commercial product that must remain 
 ## JookBox contract
 
 - `jukebox` is an isolated band-discovery product. It never changes Music, Cars, Clubs, Schools, Business Recruitment, Laneway or Indie Label output.
-- The reusable model name and version are exactly `JookBox` and `jookbox/1`.
-- JookBox uses an HGM-related deep-navy foundation with its own old-school illuminated jukebox cabinet, warm chrome/gold and red-orange detail, sequential selection-key lights and privacy-enhanced featured-video screen.
+- The reusable model name and version are exactly `JookBox` and `jookbox/2`.
+- JookBox uses an authentic old-school illuminated cabinet with polished wood, chrome/gold trim, vivid period neon, sequential selection-key lights and a privacy-enhanced featured-video screen.
+- The cabinet starts dormant. One accessible coin control synthesises the coin-drop sound, initiates the short light-up sequence, enables the verified selection keys and requests YouTube autoplay from the user gesture. Reduced motion skips the theatrical sequence.
+- Selection keys are a dated, verified build-time snapshot of the artist-controlled Linktree. Every key retains its source title and evidence; runtime scraping never publishes unverified destinations.
+- `Learn More` opens a second in-page screen containing only sourced band biography copy and a verified official source.
 - JookBox never displays Aggits, a quiz or a spinning wheel.
 - The featured video is the most-viewed embeddable official video visible through the artist-controlled YouTube channel at verification time.
 - Only dated, identity-verified Spotify, YouTube, website, social, merchandise and contact destinations may appear. Missing destinations are omitted.

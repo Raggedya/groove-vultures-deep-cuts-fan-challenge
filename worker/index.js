@@ -17,7 +17,8 @@ const EVENT_NAMES=new Set([
   "utility_link_clicked","quiz_started","quiz_question_answered","quiz_completed",
   "quiz_abandoned","quiz_replayed","quiz_invitation_revealed","services_contact_clicked",
   "candidate_profile_started","candidate_profile_answer_selected","candidate_profile_completed",
-  "candidate_profile_sms_opened","candidate_profile_restarted"
+  "candidate_profile_sms_opened","candidate_profile_restarted",
+  "jookbox_coin_inserted","jookbox_bio_opened"
 ]);
 const DESTINATIONS=new Set([
   "buy_music","spotify","instagram","bandcamp","youtube","facebook","website",

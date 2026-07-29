@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#000713">
   <meta id="pageDescription" name="description" content="Discover a verified Deep Cuts edition.">
   <title>Deep Cuts</title>
-  <link rel="stylesheet" href="/styles.css?v=20260729-jookbox-1">
+  <link rel="stylesheet" href="/styles.css?v=20260729-jookbox-2">
 </head>
 <body>
   <main id="app" class="discovery-shell">
@@ -24,18 +24,31 @@
       </header>
 
       <section id="jookBoxCabinet" class="jookbox-cabinet" aria-labelledby="jookBoxTitle" hidden>
-        <div class="jookbox-machine">
+        <div class="jookbox-machine" data-power-state="off">
           <div class="jookbox-bulb-rail" aria-hidden="true"></div>
           <div class="jookbox-chrome-arch" aria-hidden="true"></div>
           <div class="jookbox-marquee">
             <p>JookBox</p>
             <h2 id="jookBoxTitle">Now playing</h2>
           </div>
-          <div id="jookBoxVideoSlot" class="jookbox-video-slot"></div>
+          <div id="jookBoxVideoSlot" class="jookbox-video-slot">
+            <div id="jookBoxVideoLock" class="jookbox-video-lock" aria-hidden="true">
+              <span class="jookbox-record"></span>
+              <strong>Insert coin to play</strong>
+            </div>
+          </div>
           <div class="jookbox-speaker" aria-hidden="true">
             <span></span><span></span><span></span><span></span><span></span>
           </div>
-          <p class="jookbox-selection-prompt">Make your selection below</p>
+          <div class="jookbox-coin-bank">
+            <button id="jookBoxCoinButton" class="jookbox-coin-button" type="button" aria-describedby="jookBoxCoinPrompt">
+              <span class="jookbox-coin-slot" aria-hidden="true"></span>
+              <span class="jookbox-coin" aria-hidden="true"><b>$1</b></span>
+              <span class="jookbox-coin-plate">Push coin</span>
+            </button>
+            <p id="jookBoxCoinPrompt" class="jookbox-selection-prompt">Push the coin to start</p>
+            <p id="jookBoxPowerStatus" class="visually-hidden" aria-live="polite"></p>
+          </div>
         </div>
       </section>
 
@@ -99,12 +112,23 @@
       <section class="share-section" aria-label="Share this edition">
         <div id="editionUtilityActions" class="edition-utility-actions">
           <a id="lanewayHomeLink" class="utility-action" target="_blank" rel="noopener noreferrer" hidden>Home</a>
+          <button id="jookBoxLearnMore" class="utility-action jookbox-learn-more" type="button" hidden>Learn More</button>
           <button id="shareButton" class="share-button utility-action" type="button">Share</button>
           <a id="lanewayRecommendedLink" class="utility-action" target="_blank" rel="noopener noreferrer" hidden>Recommended</a>
         </div>
         <p id="shareStatus" class="status" aria-live="polite"></p>
       </section>
 
+    </section>
+
+    <section id="jookBoxBioScreen" class="jookbox-bio-screen" aria-labelledby="jookBoxBioTitle" hidden>
+      <button id="jookBoxBioBack" class="jookbox-bio-back" type="button">&larr; Back to JookBox</button>
+      <article class="jookbox-bio-card">
+        <p class="jookbox-bio-kicker">Behind the band</p>
+        <h1 id="jookBoxBioTitle" tabindex="-1">Filthy Animals</h1>
+        <div id="jookBoxBioCopy" class="jookbox-bio-copy"></div>
+        <a id="jookBoxBioSource" class="jookbox-bio-source" target="_blank" rel="noopener noreferrer">Read the official band story</a>
+      </article>
     </section>
 
     <section id="errorScreen" class="error-screen" hidden>
@@ -296,6 +320,6 @@
   <script src="/js/laneway-company-quiz.js?v=20260727-indie-label-3"></script>
   <script src="/js/business-quiz.js?v=20260728-hgm-1"></script>
   <script src="/js/business-profile.js?v=20260729-hgm-profile-1"></script>
-  <script src="/js/app.js?v=20260729-jookbox-1"></script>
+  <script src="/js/app.js?v=20260729-jookbox-2"></script>
 </body>
 </html>

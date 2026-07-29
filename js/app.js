@@ -1,9 +1,9 @@
 "use strict";
 
-const VERSION="20260729-jookbox-1";
+const VERSION="20260729-jookbox-2";
 const LANEWAY_REPORTING_VERSION="laneway-weekly-v1";
 const $=id=>document.getElementById(id);
-const els={page:$("discoveryPage"),error:$("errorScreen"),errorMessage:$("errorMessage"),bandName:$("bandName"),bio:$("artistBio"),artwork:$("heroArtwork"),brandLogo:$("editionBrandLogo"),waveform:$("sonicSignature"),features:$("featureList"),video:$("featuredVideo"),videoLabel:$("featuredVideoLabel"),videoTitle:$("featuredVideoTitle"),videoFrame:$("featuredVideoFrame"),jookBox:$("jookBoxCabinet"),jookBoxTitle:$("jookBoxTitle"),jookBoxVideoSlot:$("jookBoxVideoSlot"),links:$("platformLinks"),share:$("shareButton"),status:$("shareStatus"),description:$("pageDescription"),poweredBy:$("poweredByLabel"),copyright:$("coverCopyright"),lanewayHome:$("lanewayHomeLink"),lanewayRecommended:$("lanewayRecommendedLink"),companyDirectory:$("lanewayCompanyDirectory"),companyDirectoryCount:$("lanewayCompanyDirectoryCount"),companySearch:$("lanewayCompanySearch"),companyArtistList:$("lanewayCompanyArtistList"),companyEmpty:$("lanewayCompanyEmpty"),companyWheel:$("lanewayArtistWheel"),wheelCanvas:$("lanewayWheelCanvas"),wheelSpin:$("lanewayWheelSpin"),wheelStatus:$("lanewayWheelStatus"),wheelWinner:$("lanewayWheelWinner"),wheelImpact:$("lanewayWheelImpact"),wheelPurchaseLinks:$("lanewayWheelPurchaseLinks"),wheelBuyMusic:$("lanewayWheelBuyMusic"),wheelBuyMerch:$("lanewayWheelBuyMerch"),wheelVideo:$("lanewayWheelVideo"),wheelVideoTitle:$("lanewayWheelVideoTitle"),wheelVideoFrame:$("lanewayWheelVideoFrame")};
+const els={page:$("discoveryPage"),error:$("errorScreen"),errorMessage:$("errorMessage"),bandName:$("bandName"),bio:$("artistBio"),artwork:$("heroArtwork"),brandLogo:$("editionBrandLogo"),waveform:$("sonicSignature"),features:$("featureList"),video:$("featuredVideo"),videoLabel:$("featuredVideoLabel"),videoTitle:$("featuredVideoTitle"),videoFrame:$("featuredVideoFrame"),jookBox:$("jookBoxCabinet"),jookBoxTitle:$("jookBoxTitle"),jookBoxVideoSlot:$("jookBoxVideoSlot"),jookBoxVideoLock:$("jookBoxVideoLock"),jookBoxCoin:$("jookBoxCoinButton"),jookBoxCoinPrompt:$("jookBoxCoinPrompt"),jookBoxPowerStatus:$("jookBoxPowerStatus"),jookBoxLearnMore:$("jookBoxLearnMore"),jookBoxBioScreen:$("jookBoxBioScreen"),jookBoxBioBack:$("jookBoxBioBack"),jookBoxBioTitle:$("jookBoxBioTitle"),jookBoxBioCopy:$("jookBoxBioCopy"),jookBoxBioSource:$("jookBoxBioSource"),links:$("platformLinks"),share:$("shareButton"),status:$("shareStatus"),description:$("pageDescription"),poweredBy:$("poweredByLabel"),copyright:$("coverCopyright"),lanewayHome:$("lanewayHomeLink"),lanewayRecommended:$("lanewayRecommendedLink"),companyDirectory:$("lanewayCompanyDirectory"),companyDirectoryCount:$("lanewayCompanyDirectoryCount"),companySearch:$("lanewayCompanySearch"),companyArtistList:$("lanewayCompanyArtistList"),companyEmpty:$("lanewayCompanyEmpty"),companyWheel:$("lanewayArtistWheel"),wheelCanvas:$("lanewayWheelCanvas"),wheelSpin:$("lanewayWheelSpin"),wheelStatus:$("lanewayWheelStatus"),wheelWinner:$("lanewayWheelWinner"),wheelImpact:$("lanewayWheelImpact"),wheelPurchaseLinks:$("lanewayWheelPurchaseLinks"),wheelBuyMusic:$("lanewayWheelBuyMusic"),wheelBuyMerch:$("lanewayWheelBuyMerch"),wheelVideo:$("lanewayWheelVideo"),wheelVideoTitle:$("lanewayWheelVideoTitle"),wheelVideoFrame:$("lanewayWheelVideoFrame")};
 
 const MUSIC_LINK_DEFINITIONS=[
   {key:"buyMusic",label:"Buy Music",subLabel:"Purchase music directly",priority:"primary",fallback:"bandcamp"},
@@ -73,6 +73,7 @@ const SCHOOL_LINK_DEFINITIONS=[
 let platform,editionEntry,config;
 let analytics={device:"desktop",track(){return null}};
 let attentionTimer=0;
+let jookBoxPowered=false;
 init();
 
 async function init(){
@@ -212,6 +213,7 @@ function buildWaveform(name){
 }
 
 function linkValue(definition){
+  if(definition.url)return validHttps(definition.url);
   if(definition.key==="buyMusic")return validHttps(config.links?.buyMusic)||validHttps(config.links?.[definition.fallback]);
   return validHttps(config.links?.[definition.key]);
 }
@@ -235,7 +237,9 @@ function buildFeaturedVideo(){
   const title=config.featuredVideo?.title||`${config.bandName} featured video`;
   els.videoTitle.textContent=title;
   els.videoFrame.title=`${title} — ${config.bandName}`;
-  els.videoFrame.src=`https://www.youtube-nocookie.com/embed/${id}?rel=0&modestbranding=1`;
+  els.videoFrame.dataset.videoId=id;
+  if(isJookBoxEdition())els.videoFrame.removeAttribute("src");
+  else els.videoFrame.src=`https://www.youtube-nocookie.com/embed/${id}?rel=0&modestbranding=1`;
   els.video.hidden=false;
 }
 
@@ -247,25 +251,41 @@ function buildJookBox(){
     els.video.classList.add("jookbox-featured-video");
     els.jookBoxVideoSlot.append(els.video);
   }
+  els.jookBoxCoin.addEventListener("click",powerJookBox);
+  els.jookBoxLearnMore.hidden=false;
+  els.jookBoxLearnMore.addEventListener("click",openJookBoxBio);
+  els.jookBoxBioBack.addEventListener("click",closeJookBoxBio);
+  configureJookBoxBio();
 }
 
 function buildLinks(){
   els.links.innerHTML="";
   if(isBusinessEdition()){buildBusinessLinks();balanceLinkGrid();return}
-  const definitions=isWheelEdition()?[]:isJookBoxEdition()?JOOKBOX_LINK_DEFINITIONS:isSchoolEdition()?SCHOOL_LINK_DEFINITIONS:isClubEdition()?CLUB_LINK_DEFINITIONS:isCarEdition()?CAR_LINK_DEFINITIONS:MUSIC_LINK_DEFINITIONS;
+  const definitions=isWheelEdition()?[]:isJookBoxEdition()?jookBoxLinkDefinitions():isSchoolEdition()?SCHOOL_LINK_DEFINITIONS:isClubEdition()?CLUB_LINK_DEFINITIONS:isCarEdition()?CAR_LINK_DEFINITIONS:MUSIC_LINK_DEFINITIONS;
   let schoolChallengeAdded=false;
-  for(const [index,definition] of definitions.entries()){
+  let renderedIndex=0;
+  for(const definition of definitions){
     if(isSchoolEdition()&&definition.key==="schoolProject"&&!schoolChallengeAdded){els.links.append(createSchoolChallengeCard());schoolChallengeAdded=true}
     const url=linkValue(definition);
     if(!url)continue;
+    const index=renderedIndex++;
     const element=document.createElement("a");
     element.className=`platform-link is-active${definition.priority?` ${definition.priority}`:""}${isJookBoxEdition()?" jookbox-selection":""}`;
     element.dataset.destination=definition.key;
     const selectionCode=isJookBoxEdition()?`<span class="jookbox-selection-code" aria-hidden="true">${String.fromCharCode(65+Math.floor(index/2))}${index%2+1}</span>`:"";
     element.innerHTML=`${selectionCode}<span class="link-copy"><strong>${definition.label}</strong><small>${activeSubtitle(definition)}</small></span><span class="link-arrow" aria-hidden="true">&gt;</span>`;
-    element.href=url;element.target="_blank";element.rel="noopener noreferrer";
+    if(isJookBoxEdition()){
+      element.dataset.href=url;
+      element.setAttribute("aria-disabled","true");
+      element.tabIndex=-1;
+    }else element.href=url;
+    element.target="_blank";element.rel="noopener noreferrer";
     element.setAttribute("aria-label",`${definition.label} for ${config.bandName} (opens in a new tab)`);
-    element.addEventListener("click",()=>DeepCutsInteractions.trackOutbound(analytics,analyticsDestination(definition.key),url),{passive:true});
+    element.addEventListener("click",event=>{
+      if(isJookBoxEdition()&&!jookBoxPowered){event.preventDefault();els.jookBoxCoin.focus();return}
+      if(isJookBoxEdition())trackJookBoxOutbound(definition,url);
+      else DeepCutsInteractions.trackOutbound(analytics,analyticsDestination(definition.key),url);
+    });
     els.links.append(element);
   }
   if(isSchoolEdition()&&!schoolChallengeAdded)els.links.append(createSchoolChallengeCard());
@@ -276,7 +296,7 @@ function buildLinks(){
 }
 
 function sequenceJookBoxButtons(){
-  const buttons=[...els.links.querySelectorAll(".jookbox-selection"),els.share].filter(element=>!element.hidden);
+  const buttons=[...els.links.querySelectorAll(".jookbox-selection")].filter(element=>!element.hidden);
   const step=.55;
   const duration=Math.max(buttons.length*step,5);
   buttons.forEach((element,index)=>{
@@ -284,6 +304,104 @@ function sequenceJookBoxButtons(){
     element.style.setProperty("--jookbox-light-duration",`${duration}s`);
     element.style.setProperty("--jookbox-light-delay",`${index*step}s`);
   });
+}
+
+function jookBoxLinkDefinitions(){
+  const selections=Array.isArray(config.jookBox?.selections)?config.jookBox.selections:[];
+  if(!selections.length)return JOOKBOX_LINK_DEFINITIONS;
+  return selections.map(selection=>({
+    key:String(selection.id||"").trim(),
+    label:String(selection.label||selection.sourceTitle||"").trim(),
+    subLabel:String(selection.detail||"Open verified link").trim(),
+    url:selection.url,
+    platform:String(selection.platform||"website").trim()
+  })).filter(selection=>selection.key&&selection.label&&validHttps(selection.url));
+}
+
+function powerJookBox(){
+  if(jookBoxPowered)return;
+  jookBoxPowered=true;
+  const machine=els.jookBox.querySelector(".jookbox-machine");
+  machine.dataset.powerState="starting";
+  els.jookBox.classList.add("is-starting");
+  els.jookBoxCoin.disabled=true;
+  els.jookBoxCoin.querySelector(".jookbox-coin-plate").textContent="Playing";
+  els.jookBoxCoinPrompt.textContent="Coin accepted — now playing";
+  els.jookBoxPowerStatus.textContent=`Coin accepted. ${config.bandName} is now playing and all selection keys are available.`;
+  playJookBoxCoinSound();
+  for(const link of els.links.querySelectorAll(".jookbox-selection")){
+    link.href=link.dataset.href;
+    link.removeAttribute("aria-disabled");
+    link.removeAttribute("tabindex");
+  }
+  const id=els.videoFrame.dataset.videoId;
+  if(id)els.videoFrame.src=`https://www.youtube-nocookie.com/embed/${id}?rel=0&modestbranding=1&autoplay=1&playsinline=1`;
+  analytics.track("jookbox_coin_inserted",{interaction_source:"jookbox_coin",video_id:id||"",edition_type:config.editionType},{onceKey:`jookbox-coin:${editionEntry.editionId}`});
+  window.setTimeout(()=>{
+    machine.dataset.powerState="on";
+    els.jookBox.classList.remove("is-starting");
+    els.jookBox.classList.add("is-powered");
+  },matchMedia("(prefers-reduced-motion: reduce)").matches?0:1450);
+}
+
+function playJookBoxCoinSound(){
+  const AudioContext=window.AudioContext||window.webkitAudioContext;
+  if(!AudioContext)return;
+  try{
+    const context=new AudioContext();
+    const master=context.createGain();
+    master.gain.setValueAtTime(.0001,context.currentTime);
+    master.gain.exponentialRampToValueAtTime(.18,context.currentTime+.015);
+    master.gain.exponentialRampToValueAtTime(.0001,context.currentTime+.62);
+    master.connect(context.destination);
+    [1320,1760,980].forEach((frequency,index)=>{
+      const oscillator=context.createOscillator();
+      const gain=context.createGain();
+      const start=context.currentTime+index*.105;
+      oscillator.type=index===2?"triangle":"sine";
+      oscillator.frequency.setValueAtTime(frequency,start);
+      oscillator.frequency.exponentialRampToValueAtTime(frequency*.72,start+.14);
+      gain.gain.setValueAtTime(.0001,start);
+      gain.gain.exponentialRampToValueAtTime(index===2?.38:.22,start+.006);
+      gain.gain.exponentialRampToValueAtTime(.0001,start+.16);
+      oscillator.connect(gain);gain.connect(master);
+      oscillator.start(start);oscillator.stop(start+.18);
+    });
+    window.setTimeout(()=>context.close(),900);
+  }catch{}
+}
+
+function configureJookBoxBio(){
+  const biography=config.jookBox?.biography||{};
+  els.jookBoxBioTitle.textContent=config.bandName;
+  els.jookBoxBioCopy.replaceChildren();
+  for(const paragraph of Array.isArray(biography.paragraphs)?biography.paragraphs:[]){
+    const element=document.createElement("p");
+    element.textContent=paragraph;
+    els.jookBoxBioCopy.append(element);
+  }
+  const source=validHttps(biography.sourceURL);
+  els.jookBoxBioSource.hidden=!source;
+  if(source)els.jookBoxBioSource.href=source;
+}
+
+function openJookBoxBio(){
+  els.page.hidden=true;
+  els.jookBoxBioScreen.hidden=false;
+  els.jookBoxBioTitle.focus();
+  analytics.track("jookbox_bio_opened",{interaction_source:"jookbox_learn_more",edition_type:config.editionType},{dedupeKey:"jookbox-bio",dedupeMs:500});
+  window.scrollTo({top:0,behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});
+}
+
+function closeJookBoxBio(){
+  els.jookBoxBioScreen.hidden=true;
+  els.page.hidden=false;
+  els.jookBoxLearnMore.focus();
+}
+
+function trackJookBoxOutbound(definition,url){
+  const platform=["youtube","facebook","instagram","merchandise"].includes(definition.platform)?definition.platform:"website";
+  analytics.track("outbound_clicked",{destination_platform:platform,button_name:definition.key,interaction_source:"jookbox_linktree",destination_url_origin:new URL(url).origin,edition_type:config.editionType},{dedupeKey:`jookbox:${definition.key}`,dedupeMs:500});
 }
 
 function buildBusinessLinks(){
@@ -679,7 +797,7 @@ function startAttentionCycle(){
   if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;
   if(isJookBoxEdition()){
     const pulseWaveform=()=>{
-      if(document.hidden)return;
+      if(document.hidden||!jookBoxPowered)return;
       els.waveform.classList.remove("pulse");void els.waveform.offsetWidth;els.waveform.classList.add("pulse");
     };
     setTimeout(pulseWaveform,600);
@@ -726,7 +844,7 @@ function startAttentionCycle(){
 }
 
 function validHttps(value){try{const url=new URL(String(value||""));return url.protocol==="https:"?url.href:""}catch{return""}}
-function pageIdentifier(){return config.analytics?.pageIdentifier||`${editionEntry.editionId}:${isJookBoxEdition()?"jookbox-v1":"discovery-v1"}`}
+function pageIdentifier(){return config.analytics?.pageIdentifier||`${editionEntry.editionId}:${isJookBoxEdition()?"jookbox-v2":"discovery-v1"}`}
 function canonicalURL(){return new URL(editionEntry.canonicalPath||`/e/${editionEntry.editionId}`,location.origin).href}
 function sharePayload(){return isWheelEdition()?{title:`${config.bandName} | Indie Wheel`,text:`Spin to discover ${config.bandName} artists, take the 10-question quiz and explore the catalogue on ${wheelSettings().destinationLabel}.`,url:canonicalURL()}:isJookBoxEdition()?{title:`${config.bandName} | JookBox`,text:`Play ${config.bandName} in the Deep Cuts JookBox and explore the band's official links.`,url:canonicalURL()}:isLanewayEdition()?{title:`${config.bandName} | Laneway`,text:`Discover ${config.bandName} and take the positive five-question Laneway quiz.`,url:canonicalURL()}:isSchoolEdition()?{title:`${config.bandName} | School Discovery`,text:`Discover ${config.bandName}: official school information, programs and video.`,url:canonicalURL()}:isBusinessEdition()?{title:`${config.bandName} | Careers`,text:`Explore current jobs and learn about working with ${config.bandName}.`,url:canonicalURL()}:isClubEdition()?{title:`${config.bandName} | Deep Cuts Clubs`,text:`Explore ${config.bandName}: verified club, membership, events and community links.`,url:canonicalURL()}:isCarEdition()?{title:`${config.bandName} | Deep Cuts Cars`,text:`Explore ${config.bandName}: verified history, specifications, buying and restoration links.`,url:canonicalURL()}:{title:`${config.bandName} | Deep Cuts`,text:`Discover ${config.bandName}: official music, video and social links.`,url:canonicalURL()}}
 
@@ -746,4 +864,4 @@ async function sharePage(){
 function escapeHtml(value){return String(value).replace(/[&<>'"]/g,char=>({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"})[char])}
 function showError(message){els.page.hidden=true;els.errorMessage.textContent=message;els.error.hidden=false}
 els.share.addEventListener("click",sharePage);
-window.__deepCutsDiscoveryTest={validHttps,youtubeVideoId,getConfig:()=>config,getRenderedLinks:()=>[...els.links.children].map(link=>({destination:link.dataset.destination,wide:link.classList.contains("wide")}))};
+window.__deepCutsDiscoveryTest={validHttps,youtubeVideoId,getConfig:()=>config,getRenderedLinks:()=>[...els.links.children].map(link=>({destination:link.dataset.destination,wide:link.classList.contains("wide")})),powerJookBox};

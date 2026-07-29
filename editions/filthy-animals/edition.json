@@ -19,10 +19,10 @@
     "qrImage": "output/filthy-animals/instagram-qr.png"
   },
   "theme": {
-    "accent": "#55D9FF",
-    "accentSecondary": "#FF6640",
-    "gold": "#FFD66B",
-    "surface": "#091321"
+    "accent": "#38E5FF",
+    "accentSecondary": "#FF2859",
+    "gold": "#FFD437",
+    "surface": "#16070D"
   },
   "links": {
     "spotify": "https://open.spotify.com/artist/2kO9UMIDqQWPheJpacwBZI",
@@ -42,7 +42,7 @@
   },
   "analytics": {
     "editionId": "dc_a3c049e4bc",
-    "pageIdentifier": "dc_a3c049e4bc:jookbox-v1"
+    "pageIdentifier": "dc_a3c049e4bc:jookbox-v2"
   },
   "production": {
     "jobId": "dcjob_0ca20f8c-0449-4264-8771-551fdfe660d5",
@@ -51,7 +51,7 @@
     "editionCreatedAt": "2026-07-29T08:15:16.445Z"
   },
   "jookBox": {
-    "modelVersion": "jookbox/1",
+    "modelVersion": "jookbox/2",
     "marquee": "Filthy Animals",
     "videoLabel": "Now playing",
     "heroLabels": [
@@ -60,6 +60,164 @@
       "Follow",
       "Shop"
     ],
-    "lightSequence": true
+    "lightSequence": true,
+    "coinStart": true,
+    "linkSourceURL": "https://linktr.ee/filthyanimalsband",
+    "linkSourceVerifiedAt": "2026-07-29T10:19:00.000Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "tickets-moorabbin",
+        "sourceTitle": "TIX - Sat 5 Dec Lucky13Garage, Moorabbin VIC",
+        "label": "Moorabbin Tickets",
+        "detail": "Sat 5 Dec · Lucky 13 Garage",
+        "url": "https://www.trybooking.com/events/landing/1624202",
+        "platform": "website"
+      },
+      {
+        "id": "newsletter",
+        "sourceTitle": "Subscribe to Our Newsletter",
+        "label": "Newsletter",
+        "detail": "Join the official mailing list",
+        "url": "https://eepurl.com/idJNJj",
+        "platform": "website"
+      },
+      {
+        "id": "youtube-channel",
+        "sourceTitle": "Our YouTube Channel",
+        "label": "YouTube Channel",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/channel/UCKxWp8Uqst1s--EMYSi7AgQ/videos?sub_confirmation=1",
+        "platform": "youtube"
+      },
+      {
+        "id": "tickets-rozelle",
+        "sourceTitle": "TIX- Sat 15 Aug The Bridge Hotel, Rozelle Sydney",
+        "label": "Rozelle Tickets",
+        "detail": "Sat 15 Aug · Bridge Hotel",
+        "url": "https://moshtix.com.au/v2/event/the-filthy-animals/196113",
+        "platform": "website"
+      },
+      {
+        "id": "tickets-southport",
+        "sourceTitle": "TIX - Fri 21 Aug. SOPO-Southport",
+        "label": "Southport Tickets",
+        "detail": "Fri 21 Aug · SOPO",
+        "url": "https://www.eventbrite.com.au/e/filthy-animals-tickets-1989626221588",
+        "platform": "website"
+      },
+      {
+        "id": "airlie-beach",
+        "sourceTitle": "Book- Sept 5+6 Airlie Beach Hotel",
+        "label": "Airlie Beach",
+        "detail": "5–6 Sept · Airlie Beach Hotel",
+        "url": "https://airliebeachhotel.com.au/events/filthy-animals",
+        "platform": "website"
+      },
+      {
+        "id": "tickets-ipswich",
+        "sourceTitle": "TIX- Fri 11 Sept - Club CSI, Ipswich",
+        "label": "Ipswich Tickets",
+        "detail": "Fri 11 Sept · Club CSI",
+        "url": "https://tickets.oztix.com.au/outlet/event/c941156d-d165-4973-bf74-3d513222ac71",
+        "platform": "website"
+      },
+      {
+        "id": "tickets-bundaberg",
+        "sourceTitle": "TIX - Fri 25 Sept Sugarland Tavern, Bundaberg",
+        "label": "Bundaberg Tickets",
+        "detail": "Fri 25 Sept · Sugarland Tavern",
+        "url": "https://tickets.oztix.com.au/outlet/event/738fcd1f-268a-42b9-a6ba-db1aef088a17",
+        "platform": "website"
+      },
+      {
+        "id": "tickets-hervey-bay",
+        "sourceTitle": "TIX- Sat 26 Sept Hervey Bay RSL",
+        "label": "Hervey Bay",
+        "detail": "Sat 26 Sept · Hervey Bay RSL",
+        "url": "https://www.herveybayrsl.com.au/entertainment/whats-on/filthy-animals",
+        "platform": "website"
+      },
+      {
+        "id": "tickets-adelaide",
+        "sourceTitle": "TIX - Fri 4 December- The Clovey, Adelaide",
+        "label": "Adelaide Tickets",
+        "detail": "Fri 4 Dec · The Clovey",
+        "url": "https://tickets.oztix.com.au/outlet/event/18a2d051-ff13-47ce-952f-a706668c0517",
+        "platform": "website"
+      },
+      {
+        "id": "tiktok",
+        "sourceTitle": "TikTok - Filthy Animals",
+        "label": "TikTok",
+        "detail": "Official band clips",
+        "url": "https://www.tiktok.com/@filthy.animals.band",
+        "platform": "website"
+      },
+      {
+        "id": "facebook",
+        "sourceTitle": "Facebook - Filthy Animals",
+        "label": "Facebook",
+        "detail": "Shows and announcements",
+        "url": "https://www.facebook.com/filthyanimalsoz",
+        "platform": "facebook"
+      },
+      {
+        "id": "instagram",
+        "sourceTitle": "Instagram - Filthy Animals",
+        "label": "Instagram",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/filthyanimalsband_official/",
+        "platform": "instagram"
+      },
+      {
+        "id": "merch-shop",
+        "sourceTitle": "Merch Shop",
+        "label": "Merch Shop",
+        "detail": "Official Filthy Animals gear",
+        "url": "https://filthyanimals.com.au/shop/",
+        "platform": "merchandise"
+      },
+      {
+        "id": "website",
+        "sourceTitle": "Website",
+        "label": "Band Website",
+        "detail": "Visit the official website",
+        "url": "https://filthyanimals.com.au/",
+        "platform": "website"
+      },
+      {
+        "id": "contact",
+        "sourceTitle": "Contact Us",
+        "label": "Contact Us",
+        "detail": "Official booking enquiries",
+        "url": "https://filthyanimals.com.au/contact/",
+        "platform": "website"
+      },
+      {
+        "id": "reaction-video",
+        "sourceTitle": "Reaction Video- Sweet Child O Mine",
+        "label": "Reaction Video",
+        "detail": "Sweet Child O’ Mine",
+        "url": "https://www.youtube.com/watch?v=ygaozWgeHyE",
+        "platform": "youtube"
+      },
+      {
+        "id": "furzey-podcast",
+        "sourceTitle": "Furzey’s podcast with Kerry Jacobson",
+        "label": "Furzey’s Podcast",
+        "detail": "With Kerry Jacobson",
+        "url": "https://www.youtube.com/watch?v=t2KCk-D8beU",
+        "platform": "youtube"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://filthyanimals.com.au/",
+      "paragraphs": [
+        "Formed during the COVID lockdowns from a desire to perform while members were separated from their primary acts, The Filthy Animals grew from five players into a rotating collective of more than 30 performers.",
+        "The fluid five-piece lineup draws current, original and former members associated with Dragon, Mondo Rock, John Butler Trio, Savage Garden, Wolfmother, Choirboys, The Vines, The Superjesus and other Australian acts.",
+        "Built for festivals, corporate events and private functions, the set spans classic rock hits the audience knows, forgotten favourites and songs the musicians have performed or recorded across their individual careers."
+      ]
+    }
   }
 }
