@@ -51,7 +51,7 @@ if(editionType==='jukebox'){
     cabinetArtwork:clean(input.jookBox?.cabinetArtwork||'assets/jookbox-cabinet-photoreal-v1.webp',180),
     marquee:clean(input.jookBox?.marquee||bandName,80),
     videoLabel:clean(input.jookBox?.videoLabel||'Now playing',40),
-    primaryActionLabel:clean(input.jookBox?.primaryActionLabel||'View Upcoming Shows',60),
+    primaryActionLabel:clean(input.jookBox?.primaryActionLabel||'Open verified destination',60),
     heroLabels:['Listen','Watch','Follow','Shop'],
     lightSequence:true,
     coinStart:true,

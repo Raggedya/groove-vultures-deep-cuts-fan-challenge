@@ -18,7 +18,7 @@ The same permanent engine also supports separately typed `Deep Cuts Cars` and `D
 
 The isolated `business` product type supports verified recruitment experiences: company branding, an owner-approved Aggits asset, featured video, direct current job cards and a sourced ten-question “Learn About” quiz. High Grade Mechanical is the first locked Business Recruitment edition; Hays is the second and demonstrates reusable official-job-prefix validation and edition-owned logo treatments without changing HGM.
 
-The isolated `jukebox` product type provides the reusable `jookbox/2` band model: no Aggits, quiz or spinning wheel; a subtly weathered old cabinet; an auto-fitting illuminated band-name sign above the small JookBox mark; a top-mounted coin-and-slot start; user-initiated playback of a verified 16:9 YouTube hero; a cabinet-style Share control beside one-line metadata; a sourced Learn More screen; and a fixed verified destination deck limited to Bandcamp, Spotify, Instagram, Band Website, Buy Music, Buy Merch and Facebook. Linktree remains dated research evidence but cannot introduce any other public button. Filthy Animals is the first completed JookBox edition.
+The isolated `jukebox` product type provides the reusable `jookbox/2` band model: no Aggits, quiz or spinning wheel; a subtly weathered old cabinet; an auto-fitting illuminated band-name sign above the small JookBox mark; a top-mounted coin-and-slot start; user-initiated playback of a verified 16:9 YouTube hero; a cabinet-style Share control beside one-line metadata; an inline sourced Learn More selection with no sticky bottom bar; and a fixed verified destination deck limited to Bandcamp, Spotify, Instagram, Band Website, Buy Music, Buy Merch and Facebook. Linktree remains dated research evidence but cannot introduce any other public button. Filthy Animals is the first completed JookBox edition.
 
 ## Standard owner request
 
@@ -56,7 +56,7 @@ Public URLs use opaque IDs and never expose the artist name:
 - A cohesive pale-teal Laneway reference palette with red reserved for the illuminated wheel pointer
 - A fail-closed final Indie Label model contract that protects the restored experience from feature creep
 - An isolated Business Recruitment renderer with verified direct vacancy cards and a positive sourced 10-question company quiz
-- An isolated JookBox renderer with a privacy-enhanced video-first cabinet, verified tactile destinations, accessible Upcoming Shows, reduced-motion lighting and no quiz, wheel or Aggits
+- An isolated JookBox renderer with a privacy-enhanced video-first cabinet, a fixed verified destination set, an inline sourced biography control, reduced-motion lighting and no quiz, wheel, sticky navigation or Aggits
 
 ## Validation
 
