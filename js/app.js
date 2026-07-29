@@ -1,6 +1,6 @@
 "use strict";
 
-const VERSION="20260729-jookbox-5";
+const VERSION="20260730-jookbox-6";
 const LANEWAY_REPORTING_VERSION="laneway-weekly-v1";
 const $=id=>document.getElementById(id);
 const els={
@@ -274,6 +274,7 @@ function buildJookBox(){
   if(els.jookBoxPlaqueName)els.jookBoxPlaqueName.textContent=config.bandName;
   els.jookBoxTrackTitle.textContent=config.featuredVideo?.title||`${config.bandName} featured video`;
   els.jookBoxTrackArtist.textContent=config.bandName;
+  els.jookBoxBottomShare.setAttribute("aria-label",`Share the ${config.bandName} JookBox`);
   els.jookBoxStatusLabel.textContent="Ready to play";
   els.page.setAttribute("aria-labelledby","jookBoxTitle");
   els.jookBox.hidden=false;
@@ -297,7 +298,7 @@ function buildJookBox(){
 function toggleJookBoxSound(){
   jookBoxSoundMuted=!jookBoxSoundMuted;
   els.jookBoxSoundToggle.setAttribute("aria-pressed",String(jookBoxSoundMuted));
-  els.jookBoxSoundToggle.textContent=jookBoxSoundMuted?"Sound off":"Sound on";
+  els.jookBoxSoundToggle.textContent="Sound";
   els.jookBoxSoundToggle.setAttribute("aria-label",jookBoxSoundMuted?"Enable JookBox coin sound":"Mute JookBox coin sound");
 }
 

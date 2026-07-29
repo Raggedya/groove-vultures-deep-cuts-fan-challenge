@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#000713">
   <meta id="pageDescription" name="description" content="Discover a verified Deep Cuts edition.">
   <title>Deep Cuts</title>
-  <link rel="stylesheet" href="/styles.css?v=20260729-jookbox-5">
+  <link rel="stylesheet" href="/styles.css?v=20260730-jookbox-6">
 </head>
 <body>
   <main id="app" class="discovery-shell">
@@ -37,6 +37,23 @@
               </span>
             </header>
 
+            <div class="jookbox-coin-bank">
+              <div class="jookbox-coin-console">
+                <button id="jookBoxCoinButton" class="jookbox-coin-button" type="button" aria-describedby="jookBoxCoinPrompt">
+                  <span class="jookbox-coin-slot" aria-hidden="true"></span>
+                  <span class="jookbox-coin" aria-hidden="true"><b>$1</b></span>
+                  <span class="jookbox-coin-plate">Push coin to start</span>
+                </button>
+                <button id="jookBoxSoundToggle" class="jookbox-sound-toggle" type="button" aria-pressed="false" aria-label="Mute JookBox coin sound">Sound</button>
+                <div class="jookbox-band-plaque" aria-hidden="true">
+                  <span id="jookBoxPlaqueName">Featured artist</span>
+                  <strong>JookBox</strong>
+                  <small>Deep Cuts Edition</small>
+                </div>
+              </div>
+              <p id="jookBoxCoinPrompt" class="jookbox-selection-prompt visually-hidden">Push the coin to bring the JookBox to life</p>
+            </div>
+
             <div class="jookbox-screen-frame">
               <div id="jookBoxVideoSlot" class="jookbox-video-slot">
                 <div id="jookBoxVideoLock" class="jookbox-video-lock" aria-hidden="true">
@@ -47,9 +64,15 @@
             </div>
 
             <section class="jookbox-track-metadata" aria-labelledby="jookBoxTrackTitle">
-              <p><span aria-hidden="true"></span> Now playing</p>
-              <h2 id="jookBoxTrackTitle">Featured video</h2>
-              <span id="jookBoxTrackArtist">Featured artist</span>
+              <div class="jookbox-track-copy">
+                <p><span aria-hidden="true"></span> Now playing</p>
+                <h2 id="jookBoxTrackTitle">Featured video</h2>
+                <span id="jookBoxTrackArtist">Featured artist</span>
+              </div>
+              <button id="jookBoxBottomShare" class="jookbox-metadata-share" type="button" aria-label="Share this JookBox">
+                <span aria-hidden="true">&#8599;</span>
+                <strong>Share</strong>
+              </button>
             </section>
 
             <nav class="jookbox-transport" aria-label="JookBox video and discovery controls">
@@ -66,25 +89,6 @@
                 <strong>Channel</strong>
               </a>
             </nav>
-
-            <div class="jookbox-coin-bank">
-              <div class="jookbox-coin-console">
-                <button id="jookBoxCoinButton" class="jookbox-coin-button" type="button" aria-describedby="jookBoxCoinPrompt">
-                  <span class="jookbox-coin-slot" aria-hidden="true"></span>
-                  <span class="jookbox-coin" aria-hidden="true"><b>$1</b></span>
-                  <span class="jookbox-coin-plate">Push coin to start</span>
-                </button>
-                <div class="jookbox-band-plaque" aria-hidden="true">
-                  <span id="jookBoxPlaqueName">Featured artist</span>
-                  <strong>JookBox</strong>
-                  <small>Deep Cuts Edition</small>
-                </div>
-              </div>
-              <div class="jookbox-coin-helper">
-                <p id="jookBoxCoinPrompt" class="jookbox-selection-prompt">One tap brings the JookBox to life</p>
-                <button id="jookBoxSoundToggle" type="button" aria-pressed="false" aria-label="Mute JookBox coin sound">Sound on</button>
-              </div>
-            </div>
 
             <a id="jookBoxPrimaryAction" class="jookbox-primary-action" hidden>
               <span aria-hidden="true">★</span>
@@ -120,7 +124,6 @@
           <nav id="jookBoxActionBar" class="jookbox-action-bar" aria-label="JookBox quick actions">
             <button id="jookBoxBottomDeepCut" type="button" disabled><span aria-hidden="true">★</span><strong>Deep Cut</strong></button>
             <button id="jookBoxBottomShows" type="button" disabled><span aria-hidden="true">▤</span><strong>Shows</strong></button>
-            <button id="jookBoxBottomShare" type="button"><span aria-hidden="true">↗</span><strong>Share</strong></button>
             <button id="jookBoxLearnMore" class="jookbox-learn-more" type="button" hidden><span aria-hidden="true">i</span><strong>Learn More</strong></button>
           </nav>
         </div>
@@ -393,6 +396,6 @@
   <script src="/js/laneway-company-quiz.js?v=20260727-indie-label-3"></script>
   <script src="/js/business-quiz.js?v=20260728-hgm-1"></script>
   <script src="/js/business-profile.js?v=20260729-hgm-profile-1"></script>
-  <script src="/js/app.js?v=20260729-jookbox-5"></script>
+  <script src="/js/app.js?v=20260730-jookbox-6"></script>
 </body>
 </html>

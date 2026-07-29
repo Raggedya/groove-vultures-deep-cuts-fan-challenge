@@ -18,7 +18,7 @@ The same permanent engine also supports separately typed `Deep Cuts Cars` and `D
 
 The isolated `business` product type supports verified recruitment experiences: company branding, an owner-approved Aggits asset, featured video, direct current job cards and a sourced ten-question “Learn About” quiz. High Grade Mechanical is the first locked Business Recruitment edition; Hays is the second and demonstrates reusable official-job-prefix validation and edition-owned logo treatments without changing HGM.
 
-The isolated `jukebox` product type provides the reusable `jookbox/2` band model: no Aggits, quiz or spinning wheel; a push-coin, sound-and-light start; user-initiated playback of a verified 16:9 featured YouTube hero; one dominant verified action; an accessible Upcoming Shows module; large tactile controls generated from a dated, verified Linktree snapshot; working-only transport/discovery controls; and a sourced Learn More biography screen. Filthy Animals is the first completed JookBox edition.
+The isolated `jukebox` product type provides the reusable `jookbox/2` band model: no Aggits, quiz or spinning wheel; a subtly weathered old-cabinet treatment; a prominent dynamic band marquee above the small JookBox mark; top-mounted coin-and-slot sound-and-light start; user-initiated playback of a verified 16:9 featured YouTube hero; a cabinet-style Share control beside its metadata; one dominant verified action; an accessible Upcoming Shows module; large tactile controls generated from a dated, verified Linktree snapshot; working-only transport/discovery controls; and a sourced Learn More biography screen. Filthy Animals is the first completed JookBox edition.
 
 ## Standard owner request
 
