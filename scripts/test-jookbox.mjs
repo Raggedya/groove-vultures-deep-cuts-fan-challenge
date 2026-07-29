@@ -17,7 +17,7 @@ assert.deepEqual(config.jookBox?.heroLabels, ["Listen", "Watch", "Follow", "Shop
 assert.equal(config.jookBox?.lightSequence, true);
 assert.equal(config.jookBox?.coinStart, true);
 assert.equal(config.jookBox?.syncMode, "verified-build-time");
-assert.equal(config.jookBox?.primaryActionLabel, "View Upcoming Shows");
+assert.equal(config.jookBox?.primaryActionLabel, "Open verified destination");
 assert.equal(config.characterArtwork, "", "JookBox must never render Aggits.");
 assert.equal(config.businessChallenge, undefined, "JookBox must not inherit a Business quiz.");
 assert.equal(config.lanewayCompanyChallenge, undefined, "JookBox must not inherit an Indie Label quiz.");
@@ -33,7 +33,7 @@ assert.equal(config.jookBox.selections.some((selection) => selection.id === "tic
 assert.equal(config.jookBox.selections.some((selection) => selection.id === "furzey-podcast"), true);
 assert.equal(config.jookBox?.biography?.paragraphs?.length, 3);
 const showSelections = config.jookBox.selections.filter((selection) => selection.kind === "show");
-assert.equal(showSelections.length, 8, "Verified ticket destinations must be separated into the Upcoming Shows module.");
+assert.equal(showSelections.length, 8, "Verified ticket destinations must remain in the dated research snapshot without becoming public JookBox controls.");
 for (const show of showSelections) {
   assert.ok(show.dateLabel && show.venue && show.location, `${show.id} requires verified display metadata.`);
 }
@@ -68,18 +68,15 @@ assert.doesNotMatch(html, /id="jookBoxSoundToggle"|class="jookbox-band-plaque"|i
 assert.match(html, /id="jookBoxTrackTitle"/);
 assert.match(html, /id="jookBoxPrimaryAction"/);
 assert.match(html, /id="jookBoxSecondaryActions"/);
-assert.match(html, /id="jookBoxActionBar"/);
 assert.match(html, /id="jookBoxBottomShare"/);
+assert.match(html, /id="jookBoxLearnMore" class="jookbox-learn-more jookbox-inline-learn-more"/);
 assert.match(html, /id="jookBoxBioScreen"/);
-assert.doesNotMatch(html, /id="jookBoxOpenVideo"|id="jookBoxDeepCutButton"|id="jookBoxYouTubeControl"|id="jookBoxShows"|id="jookBoxBottomDeepCut"|id="jookBoxBottomShows"/, "Non-approved transport, Deep Cut and show buttons must not render.");
+assert.doesNotMatch(html, /id="jookBoxOpenVideo"|id="jookBoxDeepCutButton"|id="jookBoxYouTubeControl"|id="jookBoxShows"|id="jookBoxBottomDeepCut"|id="jookBoxBottomShows"|id="jookBoxActionBar"/, "Non-approved transport, Deep Cut, show and fixed bottom-bar controls must not render.");
 assert.ok(html.indexOf('id="jookBoxCoinButton"') < html.indexOf('id="jookBoxVideoSlot"'), "Coin and coin-slot hardware must appear above the video.");
 const trackMetadataStart = html.indexOf('class="jookbox-track-metadata"');
 const trackMetadataEnd = html.indexOf("</section>", trackMetadataStart);
 const shareControlIndex = html.indexOf('id="jookBoxBottomShare"');
 assert.ok(shareControlIndex > trackMetadataStart && shareControlIndex < trackMetadataEnd, "Share must be mounted beside the video metadata.");
-const actionBarStart = html.indexOf('id="jookBoxActionBar"');
-const actionBarEnd = html.indexOf("</nav>", actionBarStart);
-assert.equal(html.slice(actionBarStart, actionBarEnd).includes('id="jookBoxBottomShare"'), false, "Share must not remain in the fixed action bar.");
 assert.doesNotMatch(html, /Filthy Animals/, "The reusable renderer must never hard-code one band.");
 assert.match(app, /function isJookBoxEdition\(\)/);
 assert.match(app, /function jookBoxLinkDefinitions\(\)/);
@@ -93,7 +90,7 @@ assert.match(app, /function powerJookBox\(\)/);
 assert.match(app, /function playJookBoxCoinSound\(\)/);
 assert.match(app, /function fitJookBoxMarqueeTitle\(\)/);
 assert.match(app, /title\.scrollWidth>title\.clientWidth/);
-assert.doesNotMatch(app, /toggleJookBoxSound|jookBoxSoundMuted|openRandomJookBoxDeepCut|buildJookBoxShows|configureJookBoxTransport/, "Removed controls must not retain live behaviour.");
+assert.doesNotMatch(app, /toggleJookBoxSound|jookBoxSoundMuted|openRandomJookBoxDeepCut|buildJookBoxShows|configureJookBoxTransport|updateJookBoxActionBarLayout/, "Removed controls must not retain live behaviour.");
 assert.match(app, /Share the \$\{config\.bandName\} JookBox/);
 assert.match(app, /autoplay=1&playsinline=1/);
 assert.match(app, /function trackJookBoxOutbound\(definition,url,source="jookbox_linktree"\)/);
@@ -109,7 +106,8 @@ assert.match(styles, /\[data-edition-type="jukebox"\] \.hero\{display:none\}/);
 assert.match(styles, /\.jookbox-video-slot\{[\s\S]*aspect-ratio:16\/9/);
 assert.match(styles, /\.jookbox-secondary-actions\{[\s\S]*grid-template-columns:repeat\(2/);
 assert.match(styles, /\.jookbox-primary-action\{[\s\S]*min-height:64px/);
-assert.match(styles, /\.jookbox-action-bar\{[\s\S]*position:fixed/);
+assert.match(styles, /\.jookbox-inline-learn-more\{[\s\S]*min-height:64px/);
+assert.doesNotMatch(styles, /\.jookbox-action-bar\{[\s\S]*position:fixed/, "The marked fixed JookBox navigation strip must remain removed.");
 assert.match(styles, /\.jookbox-coin-slot\{[\s\S]*display:block/);
 assert.match(styles, /\.jookbox-metadata-share\{/);
 assert.match(styles, /font-size:clamp\(\.48rem,2vw,.62rem\)/, "The JookBox model label must remain subordinate to the band name.");

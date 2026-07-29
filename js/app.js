@@ -1,6 +1,6 @@
 "use strict";
 
-const VERSION="20260730-jookbox-7";
+const VERSION="20260730-jookbox-8";
 const LANEWAY_REPORTING_VERSION="laneway-weekly-v1";
 const $=id=>document.getElementById(id);
 const els={
@@ -395,13 +395,6 @@ function buildJookBoxProductNavigation(){
   els.jookBoxSecondaryActions.replaceChildren(...secondary.map(definition=>createJookBoxDestinationLink(definition,"jookbox-action-key","jookbox_action_grid")));
   els.jookBoxSecondaryActions.closest(".jookbox-action-panel").hidden=!secondary.length;
   configureJookBoxPrimaryAction(primary);
-  updateJookBoxActionBarLayout();
-}
-
-function updateJookBoxActionBarLayout(){
-  const bar=$("jookBoxActionBar");
-  const visible=[...bar.querySelectorAll("button")].filter(button=>!button.hidden).length;
-  bar.style.gridTemplateColumns=`repeat(${Math.max(visible,1)},minmax(0,1fr))`;
 }
 
 function configureJookBoxPrimaryAction(definition){
