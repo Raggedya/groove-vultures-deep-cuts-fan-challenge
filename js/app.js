@@ -1,9 +1,9 @@
 "use strict";
 
-const VERSION="20260729-jookbox-2";
+const VERSION="20260729-jookbox-3";
 const LANEWAY_REPORTING_VERSION="laneway-weekly-v1";
 const $=id=>document.getElementById(id);
-const els={page:$("discoveryPage"),error:$("errorScreen"),errorMessage:$("errorMessage"),bandName:$("bandName"),bio:$("artistBio"),artwork:$("heroArtwork"),brandLogo:$("editionBrandLogo"),waveform:$("sonicSignature"),features:$("featureList"),video:$("featuredVideo"),videoLabel:$("featuredVideoLabel"),videoTitle:$("featuredVideoTitle"),videoFrame:$("featuredVideoFrame"),jookBox:$("jookBoxCabinet"),jookBoxTitle:$("jookBoxTitle"),jookBoxVideoSlot:$("jookBoxVideoSlot"),jookBoxVideoLock:$("jookBoxVideoLock"),jookBoxCoin:$("jookBoxCoinButton"),jookBoxCoinPrompt:$("jookBoxCoinPrompt"),jookBoxPowerStatus:$("jookBoxPowerStatus"),jookBoxLearnMore:$("jookBoxLearnMore"),jookBoxBioScreen:$("jookBoxBioScreen"),jookBoxBioBack:$("jookBoxBioBack"),jookBoxBioTitle:$("jookBoxBioTitle"),jookBoxBioCopy:$("jookBoxBioCopy"),jookBoxBioSource:$("jookBoxBioSource"),links:$("platformLinks"),share:$("shareButton"),status:$("shareStatus"),description:$("pageDescription"),poweredBy:$("poweredByLabel"),copyright:$("coverCopyright"),lanewayHome:$("lanewayHomeLink"),lanewayRecommended:$("lanewayRecommendedLink"),companyDirectory:$("lanewayCompanyDirectory"),companyDirectoryCount:$("lanewayCompanyDirectoryCount"),companySearch:$("lanewayCompanySearch"),companyArtistList:$("lanewayCompanyArtistList"),companyEmpty:$("lanewayCompanyEmpty"),companyWheel:$("lanewayArtistWheel"),wheelCanvas:$("lanewayWheelCanvas"),wheelSpin:$("lanewayWheelSpin"),wheelStatus:$("lanewayWheelStatus"),wheelWinner:$("lanewayWheelWinner"),wheelImpact:$("lanewayWheelImpact"),wheelPurchaseLinks:$("lanewayWheelPurchaseLinks"),wheelBuyMusic:$("lanewayWheelBuyMusic"),wheelBuyMerch:$("lanewayWheelBuyMerch"),wheelVideo:$("lanewayWheelVideo"),wheelVideoTitle:$("lanewayWheelVideoTitle"),wheelVideoFrame:$("lanewayWheelVideoFrame")};
+const els={page:$("discoveryPage"),error:$("errorScreen"),errorMessage:$("errorMessage"),bandName:$("bandName"),bio:$("artistBio"),artwork:$("heroArtwork"),brandLogo:$("editionBrandLogo"),waveform:$("sonicSignature"),features:$("featureList"),video:$("featuredVideo"),videoLabel:$("featuredVideoLabel"),videoTitle:$("featuredVideoTitle"),videoFrame:$("featuredVideoFrame"),jookBox:$("jookBoxCabinet"),jookBoxTitle:$("jookBoxTitle"),jookBoxVideoSlot:$("jookBoxVideoSlot"),jookBoxVideoLock:$("jookBoxVideoLock"),jookBoxSelectionSlot:$("jookBoxSelectionSlot"),jookBoxPlaqueName:$("jookBoxPlaqueName"),jookBoxCoin:$("jookBoxCoinButton"),jookBoxCoinPrompt:$("jookBoxCoinPrompt"),jookBoxPowerStatus:$("jookBoxPowerStatus"),jookBoxLearnMore:$("jookBoxLearnMore"),jookBoxBioScreen:$("jookBoxBioScreen"),jookBoxBioBack:$("jookBoxBioBack"),jookBoxBioTitle:$("jookBoxBioTitle"),jookBoxBioCopy:$("jookBoxBioCopy"),jookBoxBioSource:$("jookBoxBioSource"),links:$("platformLinks"),share:$("shareButton"),status:$("shareStatus"),description:$("pageDescription"),poweredBy:$("poweredByLabel"),copyright:$("coverCopyright"),lanewayHome:$("lanewayHomeLink"),lanewayRecommended:$("lanewayRecommendedLink"),companyDirectory:$("lanewayCompanyDirectory"),companyDirectoryCount:$("lanewayCompanyDirectoryCount"),companySearch:$("lanewayCompanySearch"),companyArtistList:$("lanewayCompanyArtistList"),companyEmpty:$("lanewayCompanyEmpty"),companyWheel:$("lanewayArtistWheel"),wheelCanvas:$("lanewayWheelCanvas"),wheelSpin:$("lanewayWheelSpin"),wheelStatus:$("lanewayWheelStatus"),wheelWinner:$("lanewayWheelWinner"),wheelImpact:$("lanewayWheelImpact"),wheelPurchaseLinks:$("lanewayWheelPurchaseLinks"),wheelBuyMusic:$("lanewayWheelBuyMusic"),wheelBuyMerch:$("lanewayWheelBuyMerch"),wheelVideo:$("lanewayWheelVideo"),wheelVideoTitle:$("lanewayWheelVideoTitle"),wheelVideoFrame:$("lanewayWheelVideoFrame")};
 
 const MUSIC_LINK_DEFINITIONS=[
   {key:"buyMusic",label:"Buy Music",subLabel:"Purchase music directly",priority:"primary",fallback:"bandcamp"},
@@ -246,11 +246,14 @@ function buildFeaturedVideo(){
 function buildJookBox(){
   if(!isJookBoxEdition())return;
   els.jookBoxTitle.textContent=config.jookBox?.marquee||config.bandName;
+  if(els.jookBoxPlaqueName)els.jookBoxPlaqueName.textContent=config.bandName;
+  els.page.setAttribute("aria-labelledby","jookBoxTitle");
   els.jookBox.hidden=false;
   if(!els.video.hidden){
     els.video.classList.add("jookbox-featured-video");
     els.jookBoxVideoSlot.append(els.video);
   }
+  if(els.jookBoxSelectionSlot)els.jookBoxSelectionSlot.append(els.links);
   els.jookBoxCoin.addEventListener("click",powerJookBox);
   els.jookBoxLearnMore.hidden=false;
   els.jookBoxLearnMore.addEventListener("click",openJookBoxBio);
