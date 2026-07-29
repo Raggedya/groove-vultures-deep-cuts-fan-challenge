@@ -55,6 +55,7 @@
     "cabinetArtwork": "assets/jookbox-cabinet-photoreal-v1.webp",
     "marquee": "Filthy Animals",
     "videoLabel": "Now playing",
+    "primaryActionLabel": "View Upcoming Shows",
     "heroLabels": [
       "Listen",
       "Watch",
@@ -72,6 +73,10 @@
         "sourceTitle": "TIX - Sat 5 Dec Lucky13Garage, Moorabbin VIC",
         "label": "Moorabbin Tickets",
         "detail": "Sat 5 Dec · Lucky 13 Garage",
+        "kind": "show",
+        "dateLabel": "Sat 5 Dec",
+        "venue": "Lucky 13 Garage",
+        "location": "Moorabbin, VIC",
         "url": "https://www.trybooking.com/events/landing/1624202",
         "platform": "website"
       },
@@ -80,6 +85,7 @@
         "sourceTitle": "Subscribe to Our Newsletter",
         "label": "Newsletter",
         "detail": "Join the official mailing list",
+        "kind": "newsletter",
         "url": "https://eepurl.com/idJNJj",
         "platform": "website"
       },
@@ -88,6 +94,7 @@
         "sourceTitle": "Our YouTube Channel",
         "label": "YouTube Channel",
         "detail": "Watch and subscribe",
+        "kind": "youtube",
         "url": "https://www.youtube.com/channel/UCKxWp8Uqst1s--EMYSi7AgQ/videos?sub_confirmation=1",
         "platform": "youtube"
       },
@@ -96,6 +103,10 @@
         "sourceTitle": "TIX- Sat 15 Aug The Bridge Hotel, Rozelle Sydney",
         "label": "Rozelle Tickets",
         "detail": "Sat 15 Aug · Bridge Hotel",
+        "kind": "show",
+        "dateLabel": "Sat 15 Aug",
+        "venue": "Bridge Hotel",
+        "location": "Rozelle, Sydney",
         "url": "https://moshtix.com.au/v2/event/the-filthy-animals/196113",
         "platform": "website"
       },
@@ -104,6 +115,10 @@
         "sourceTitle": "TIX - Fri 21 Aug. SOPO-Southport",
         "label": "Southport Tickets",
         "detail": "Fri 21 Aug · SOPO",
+        "kind": "show",
+        "dateLabel": "Fri 21 Aug",
+        "venue": "SOPO",
+        "location": "Southport",
         "url": "https://www.eventbrite.com.au/e/filthy-animals-tickets-1989626221588",
         "platform": "website"
       },
@@ -112,6 +127,10 @@
         "sourceTitle": "Book- Sept 5+6 Airlie Beach Hotel",
         "label": "Airlie Beach",
         "detail": "5–6 Sept · Airlie Beach Hotel",
+        "kind": "show",
+        "dateLabel": "5–6 Sept",
+        "venue": "Airlie Beach Hotel",
+        "location": "Airlie Beach",
         "url": "https://airliebeachhotel.com.au/events/filthy-animals",
         "platform": "website"
       },
@@ -120,6 +139,10 @@
         "sourceTitle": "TIX- Fri 11 Sept - Club CSI, Ipswich",
         "label": "Ipswich Tickets",
         "detail": "Fri 11 Sept · Club CSI",
+        "kind": "show",
+        "dateLabel": "Fri 11 Sept",
+        "venue": "Club CSI",
+        "location": "Ipswich",
         "url": "https://tickets.oztix.com.au/outlet/event/c941156d-d165-4973-bf74-3d513222ac71",
         "platform": "website"
       },
@@ -128,6 +151,10 @@
         "sourceTitle": "TIX - Fri 25 Sept Sugarland Tavern, Bundaberg",
         "label": "Bundaberg Tickets",
         "detail": "Fri 25 Sept · Sugarland Tavern",
+        "kind": "show",
+        "dateLabel": "Fri 25 Sept",
+        "venue": "Sugarland Tavern",
+        "location": "Bundaberg",
         "url": "https://tickets.oztix.com.au/outlet/event/738fcd1f-268a-42b9-a6ba-db1aef088a17",
         "platform": "website"
       },
@@ -136,6 +163,10 @@
         "sourceTitle": "TIX- Sat 26 Sept Hervey Bay RSL",
         "label": "Hervey Bay",
         "detail": "Sat 26 Sept · Hervey Bay RSL",
+        "kind": "show",
+        "dateLabel": "Sat 26 Sept",
+        "venue": "Hervey Bay RSL",
+        "location": "Hervey Bay",
         "url": "https://www.herveybayrsl.com.au/entertainment/whats-on/filthy-animals",
         "platform": "website"
       },
@@ -144,6 +175,10 @@
         "sourceTitle": "TIX - Fri 4 December- The Clovey, Adelaide",
         "label": "Adelaide Tickets",
         "detail": "Fri 4 Dec · The Clovey",
+        "kind": "show",
+        "dateLabel": "Fri 4 Dec",
+        "venue": "The Clovey",
+        "location": "Adelaide",
         "url": "https://tickets.oztix.com.au/outlet/event/18a2d051-ff13-47ce-952f-a706668c0517",
         "platform": "website"
       },
@@ -152,6 +187,7 @@
         "sourceTitle": "TikTok - Filthy Animals",
         "label": "TikTok",
         "detail": "Official band clips",
+        "kind": "tiktok",
         "url": "https://www.tiktok.com/@filthy.animals.band",
         "platform": "website"
       },
@@ -160,6 +196,7 @@
         "sourceTitle": "Facebook - Filthy Animals",
         "label": "Facebook",
         "detail": "Shows and announcements",
+        "kind": "facebook",
         "url": "https://www.facebook.com/filthyanimalsoz",
         "platform": "facebook"
       },
@@ -168,6 +205,7 @@
         "sourceTitle": "Instagram - Filthy Animals",
         "label": "Instagram",
         "detail": "Latest band updates",
+        "kind": "instagram",
         "url": "https://www.instagram.com/filthyanimalsband_official/",
         "platform": "instagram"
       },
@@ -176,6 +214,7 @@
         "sourceTitle": "Merch Shop",
         "label": "Merch Shop",
         "detail": "Official Filthy Animals gear",
+        "kind": "merchandise",
         "url": "https://filthyanimals.com.au/shop/",
         "platform": "merchandise"
       },
@@ -184,6 +223,7 @@
         "sourceTitle": "Website",
         "label": "Band Website",
         "detail": "Visit the official website",
+        "kind": "website",
         "url": "https://filthyanimals.com.au/",
         "platform": "website"
       },
@@ -192,6 +232,7 @@
         "sourceTitle": "Contact Us",
         "label": "Contact Us",
         "detail": "Official booking enquiries",
+        "kind": "contact",
         "url": "https://filthyanimals.com.au/contact/",
         "platform": "website"
       },
@@ -200,6 +241,7 @@
         "sourceTitle": "Reaction Video- Sweet Child O Mine",
         "label": "Reaction Video",
         "detail": "Sweet Child O’ Mine",
+        "kind": "deep_cut",
         "url": "https://www.youtube.com/watch?v=ygaozWgeHyE",
         "platform": "youtube"
       },
@@ -208,6 +250,7 @@
         "sourceTitle": "Furzey’s podcast with Kerry Jacobson",
         "label": "Furzey’s Podcast",
         "detail": "With Kerry Jacobson",
+        "kind": "deep_cut",
         "url": "https://www.youtube.com/watch?v=t2KCk-D8beU",
         "platform": "youtube"
       }
