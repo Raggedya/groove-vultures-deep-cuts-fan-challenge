@@ -1,6 +1,6 @@
 "use strict";
 
-const VERSION="20260730-jookbox-8";
+const VERSION="20260730-jookbox-9";
 const LANEWAY_REPORTING_VERSION="laneway-weekly-v1";
 const $=id=>document.getElementById(id);
 const els={
@@ -10,7 +10,8 @@ const els={
   jookBox:$("jookBoxCabinet"),jookBoxTitle:$("jookBoxTitle"),jookBoxStatusLabel:$("jookBoxStatusLabel"),
   jookBoxVideoSlot:$("jookBoxVideoSlot"),jookBoxVideoLock:$("jookBoxVideoLock"),jookBoxTrackTitle:$("jookBoxTrackTitle"),
   jookBoxTrackArtist:$("jookBoxTrackArtist"),jookBoxCoin:$("jookBoxCoinButton"),jookBoxCoinPrompt:$("jookBoxCoinPrompt"),
-  jookBoxPowerStatus:$("jookBoxPowerStatus"),jookBoxPrimaryAction:$("jookBoxPrimaryAction"),
+  jookBoxPowerStatus:$("jookBoxPowerStatus"),jookBoxPrimaryAction:$("jookBoxPrimaryAction"),jookBoxTicker:$("jookBoxTicker"),
+  jookBoxTickerText:$("jookBoxTickerText"),jookBoxStatePlaque:$("jookBoxStatePlaque"),
   jookBoxSecondaryActions:$("jookBoxSecondaryActions"),jookBoxBottomShare:$("jookBoxBottomShare"),
   jookBoxLearnMore:$("jookBoxLearnMore"),jookBoxBioScreen:$("jookBoxBioScreen"),jookBoxBioBack:$("jookBoxBioBack"),
   jookBoxBioTitle:$("jookBoxBioTitle"),jookBoxBioCopy:$("jookBoxBioCopy"),jookBoxBioSource:$("jookBoxBioSource"),
@@ -92,6 +93,9 @@ let platform,editionEntry,config;
 let analytics={device:"desktop",track(){return null}};
 let attentionTimer=0;
 let jookBoxPowered=false;
+let jookBoxState="sleeping";
+let jookBoxAudio=null;
+const jookBoxStartupTimers=new Set();
 init();
 
 async function init(){
@@ -138,12 +142,24 @@ async function applyConfig(){
   }
   if(schools){document.documentElement.style.setProperty("--school-secondary",config.theme?.accentSecondary||"#00C4B4");document.documentElement.style.setProperty("--school-navy",config.theme?.navy||"#0A2342");document.documentElement.style.setProperty("--school-surface",config.theme?.surface||"#FFFFFF");document.documentElement.style.setProperty("--school-content",config.theme?.contentBackground||"#F8FAFC")}
   if(business){document.documentElement.style.setProperty("--business-accent",config.theme?.accent||"#2f80c3");document.documentElement.style.setProperty("--business-secondary",config.theme?.accentSecondary||"#ff6a1a");document.documentElement.style.setProperty("--business-secondary-strong",config.theme?.secondaryStrong||"#a94618");document.documentElement.style.setProperty("--business-surface",config.theme?.surface||"#111a29")}
-  if(jookBox){document.documentElement.style.setProperty("--jookbox-cyan",config.theme?.accent||"#55d9ff");document.documentElement.style.setProperty("--jookbox-orange",config.theme?.accentSecondary||"#ff6640");document.documentElement.style.setProperty("--jookbox-gold",config.theme?.gold||"#ffd66b");document.documentElement.style.setProperty("--jookbox-surface",config.theme?.surface||"#091321");document.documentElement.style.setProperty("--jookbox-cabinet-artwork",`url("/${config.jookBox?.cabinetArtwork||"assets/jookbox-cabinet-photoreal-v1.webp"}")`)}
+  if(jookBox){
+    document.documentElement.dataset.jookboxLayout=config.jookBox?.layoutVersion||"classic";
+    document.documentElement.style.setProperty("--jookbox-cyan",config.theme?.accent||"#55d9ff");
+    document.documentElement.style.setProperty("--jookbox-orange",config.theme?.accentSecondary||"#ff6640");
+    document.documentElement.style.setProperty("--jookbox-gold",config.theme?.gold||"#ffd66b");
+    document.documentElement.style.setProperty("--jookbox-surface",config.theme?.surface||"#091321");
+    document.documentElement.style.setProperty("--jookbox-cabinet-artwork",`url("/${config.jookBox?.cabinetArtwork||"assets/jookbox-cabinet-photoreal-v1.webp"}")`);
+    document.documentElement.style.setProperty("--jookbox-ticker-duration",`${Math.max(12,Number(config.jookBox?.tickerDurationSeconds)||28)}s`);
+    document.documentElement.style.setProperty("--jookbox-row-duration",`${Math.max(600,Number(config.jookBox?.buttonRowDurationMs)||800)}ms`);
+  }
   buildWaveform(name);
   buildFeaturedVideo();
   if(jookBox)buildJookBox();
   buildLinks();
-  if(jookBox)buildJookBoxProductNavigation();
+  if(jookBox){
+    buildJookBoxProductNavigation();
+    restoreJookBoxSessionState();
+  }
   if(wheelEdition)await buildLanewayCompanyDirectory();
   configureLanewayUtilityLinks();
   if(schools)await SchoolDiscoveryQuiz.configure({config,analytics,homeElement:els.page,challengeButton:$("schoolChallengeButton")});
@@ -258,7 +274,7 @@ function buildFeaturedVideo(){
   els.videoFrame.title=`${title} — ${config.bandName}`;
   els.videoFrame.dataset.videoId=id;
   if(isJookBoxEdition())els.videoFrame.removeAttribute("src");
-  else els.videoFrame.src=`https://www.youtube-nocookie.com/embed/${id}?rel=0&modestbranding=1`;
+  else els.videoFrame.src=`https://www.youtube-nocookie.com/embed/${id}?rel=0&modestbranding=1&playsinline=1`;
   els.video.hidden=false;
 }
 
@@ -268,7 +284,9 @@ function buildJookBox(){
   els.jookBoxTrackTitle.textContent=config.featuredVideo?.title||`${config.bandName} featured video`;
   els.jookBoxTrackTitle.title=els.jookBoxTrackTitle.textContent;
   els.jookBoxTrackArtist.textContent=config.bandName;
+  els.jookBoxTickerText.textContent=String(config.jookBox?.tickerBio||config.discovery?.bio||config.description||"").toUpperCase();
   els.jookBoxBottomShare.setAttribute("aria-label",`Share the ${config.bandName} JookBox`);
+  els.jookBoxLearnMore.setAttribute("aria-label",`Learn more about ${config.bandName}`);
   els.jookBoxStatusLabel.textContent="Ready to play";
   els.page.setAttribute("aria-labelledby","jookBoxTitle");
   els.jookBox.hidden=false;
@@ -277,13 +295,21 @@ function buildJookBox(){
     els.jookBoxVideoSlot.append(els.video);
   }
   els.jookBoxCoin.addEventListener("click",powerJookBox);
-  els.jookBoxBottomShare.addEventListener("click",sharePage);
-  els.jookBoxLearnMore.hidden=false;
-  els.jookBoxLearnMore.addEventListener("click",openJookBoxBio);
+  els.jookBoxBottomShare.addEventListener("click",()=>jookBoxPowered?sharePage():focusJookBoxCoin());
+  els.jookBoxLearnMore.hidden=!(config.jookBox?.biography?.paragraphs?.length);
+  els.jookBoxLearnMore.addEventListener("click",()=>jookBoxPowered?openJookBoxBio():focusJookBoxCoin());
   els.jookBoxBioBack.addEventListener("click",closeJookBoxBio);
+  document.addEventListener("visibilitychange",handleJookBoxVisibility,{passive:true});
+  window.addEventListener("pagehide",clearJookBoxStartupTimers,{passive:true});
+  window.addEventListener("pageshow",handleJookBoxPageShow,{passive:true});
+  handleJookBoxVisibility();
   configureJookBoxBio();
-  fitJookBoxMarqueeTitle();
-  window.addEventListener("resize",fitJookBoxMarqueeTitle,{passive:true});
+  if(config.jookBox?.layoutVersion!=="coin-awakening/1"){
+    fitJookBoxMarqueeTitle();
+    window.addEventListener("resize",fitJookBoxMarqueeTitle,{passive:true});
+  }
+  prepareJookBoxCoinAudio();
+  setJookBoxState("sleeping");
 }
 
 function fitJookBoxMarqueeTitle(){
@@ -300,27 +326,22 @@ function fitJookBoxMarqueeTitle(){
 function buildLinks(){
   els.links.innerHTML="";
   if(isBusinessEdition()){buildBusinessLinks();balanceLinkGrid();return}
-  const definitions=isWheelEdition()?[]:isJookBoxEdition()?jookBoxDestinationDefinitions():isSchoolEdition()?SCHOOL_LINK_DEFINITIONS:isClubEdition()?CLUB_LINK_DEFINITIONS:isCarEdition()?CAR_LINK_DEFINITIONS:MUSIC_LINK_DEFINITIONS;
+  if(isJookBoxEdition()){balanceLinkGrid();return}
+  const definitions=isWheelEdition()?[]:isSchoolEdition()?SCHOOL_LINK_DEFINITIONS:isClubEdition()?CLUB_LINK_DEFINITIONS:isCarEdition()?CAR_LINK_DEFINITIONS:MUSIC_LINK_DEFINITIONS;
   let schoolChallengeAdded=false;
   for(const definition of definitions){
     if(isSchoolEdition()&&definition.key==="schoolProject"&&!schoolChallengeAdded){els.links.append(createSchoolChallengeCard());schoolChallengeAdded=true}
     const url=linkValue(definition);
     if(!url)continue;
     const element=document.createElement("a");
-    element.className=`platform-link is-active${definition.priority?` ${definition.priority}`:""}${isJookBoxEdition()?" jookbox-selection":""}`;
+    element.className=`platform-link is-active${definition.priority?` ${definition.priority}`:""}`;
     element.dataset.destination=definition.key;
     element.innerHTML=`<span class="link-copy"><strong>${definition.label}</strong><small>${activeSubtitle(definition)}</small></span><span class="link-arrow" aria-hidden="true">&gt;</span>`;
-    if(isJookBoxEdition()){
-      element.dataset.href=url;
-      element.setAttribute("aria-disabled","true");
-      element.tabIndex=-1;
-    }else element.href=url;
+    element.href=url;
     element.target="_blank";element.rel="noopener noreferrer";
     element.setAttribute("aria-label",`${definition.label} for ${config.bandName} (opens in a new tab)`);
     element.addEventListener("click",event=>{
-      if(isJookBoxEdition()&&!jookBoxPowered){event.preventDefault();els.jookBoxCoin.focus();return}
-      if(isJookBoxEdition())trackJookBoxOutbound(definition,url);
-      else DeepCutsInteractions.trackOutbound(analytics,analyticsDestination(definition.key),url);
+      DeepCutsInteractions.trackOutbound(analytics,analyticsDestination(definition.key),url);
     });
     els.links.append(element);
   }
@@ -374,6 +395,10 @@ function jookBoxSelectionKind(definition){
 
 function jookBoxDestinationDefinitions(){
   const snapshot=jookBoxLinkDefinitions().map(definition=>({...definition,kind:jookBoxSelectionKind(definition)}));
+  const displayIds=Array.isArray(config.jookBox?.displaySelectionIds)?config.jookBox.displaySelectionIds.map(String):[];
+  if(displayIds.length){
+    return displayIds.map(id=>snapshot.find(definition=>definition.key===id)).filter(Boolean);
+  }
   return JOOKBOX_LINK_DEFINITIONS.flatMap(contract=>{
     const selection=snapshot.find(definition=>definition.kind===contract.kind);
     const url=validHttps(selection?.url)||linkValue(contract);
@@ -390,11 +415,18 @@ function jookBoxDestinationDefinitions(){
 
 function buildJookBoxProductNavigation(){
   const destinations=jookBoxDestinationDefinitions();
-  const primary=destinations[0]||null;
-  const secondary=primary?destinations.slice(1):destinations;
-  els.jookBoxSecondaryActions.replaceChildren(...secondary.map(definition=>createJookBoxDestinationLink(definition,"jookbox-action-key","jookbox_action_grid")));
-  els.jookBoxSecondaryActions.closest(".jookbox-action-panel").hidden=!secondary.length;
-  configureJookBoxPrimaryAction(primary);
+  const rowDuration=Math.max(600,Number(config.jookBox?.buttonRowDurationMs)||800);
+  const controls=destinations.map((definition,index)=>{
+    const link=createJookBoxDestinationLink(definition,"jookbox-action-key","jookbox_selection_bank");
+    const row=Math.floor(index/2);
+    link.dataset.row=String(row+1);
+    link.style.setProperty("--jookbox-row-delay",`${row*rowDuration}ms`);
+    link.style.setProperty("--jookbox-row-cycle",`${Math.max(1,Math.ceil(destinations.length/2))*rowDuration}ms`);
+    return link;
+  });
+  els.jookBoxSecondaryActions.replaceChildren(...controls);
+  els.jookBoxSecondaryActions.closest(".jookbox-action-panel").hidden=!controls.length;
+  els.jookBoxPrimaryAction.hidden=true;
 }
 
 function configureJookBoxPrimaryAction(definition){
@@ -466,30 +498,146 @@ function unlockJookBoxDestinations(){
   els.jookBoxPrimaryAction.hidden=!els.jookBoxPrimaryAction.dataset.jookboxHref;
 }
 
-function powerJookBox(){
-  if(jookBoxPowered)return;
-  jookBoxPowered=true;
-  const machine=els.jookBox.querySelector(".jookbox-machine");
-  machine.dataset.powerState="starting";
-  els.jookBox.classList.add("is-starting");
-  els.jookBoxCoin.disabled=true;
-  els.jookBoxCoin.querySelector(".jookbox-coin-plate").textContent="Playing";
-  els.jookBoxCoinPrompt.textContent="Coin accepted — the JookBox is live";
-  els.jookBoxStatusLabel.textContent="Now playing";
-  els.jookBoxPowerStatus.textContent=`Coin accepted. ${config.bandName} is now playing and all selection keys are available.`;
-  playJookBoxCoinSound();
-  unlockJookBoxDestinations();
+function jookBoxSessionKey(){
+  return String(config.jookBox?.sessionStorageKey||`deepCutsJookBoxActivated:${editionEntry.editionId}`);
+}
+
+function activateJookBoxVideo(){
   const id=els.videoFrame.dataset.videoId;
-  if(id)els.videoFrame.src=`https://www.youtube-nocookie.com/embed/${id}?rel=0&modestbranding=1&autoplay=1&playsinline=1`;
+  if(id&&!els.videoFrame.getAttribute("src"))els.videoFrame.src=`https://www.youtube-nocookie.com/embed/${id}?rel=0&modestbranding=1&playsinline=1`;
+}
+
+function setJookBoxState(nextState){
+  if(!["sleeping","acceptingCoin","poweringUp","awake"].includes(nextState))return;
+  jookBoxState=nextState;
+  jookBoxPowered=nextState==="awake";
+  const machine=els.jookBox.querySelector(".jookbox-machine");
+  machine.dataset.powerState=nextState;
+  els.jookBox.dataset.jookboxState=nextState;
+  els.jookBox.classList.toggle("is-sleeping",nextState==="sleeping");
+  els.jookBox.classList.toggle("is-accepting-coin",nextState==="acceptingCoin");
+  els.jookBox.classList.toggle("is-powering-up",nextState==="poweringUp");
+  els.jookBox.classList.toggle("is-starting",nextState==="acceptingCoin"||nextState==="poweringUp");
+  els.jookBox.classList.toggle("is-awake",nextState==="awake");
+  els.jookBox.classList.toggle("is-powered",nextState==="awake");
+  if(nextState==="sleeping"){
+    els.jookBoxCoin.disabled=false;
+    els.jookBoxCoin.querySelector(".jookbox-coin-plate").textContent="Insert coin to play";
+    els.jookBoxCoinPrompt.textContent="Insert the visible coin to wake the JookBox.";
+    els.jookBoxStatusLabel.textContent="Ready to play";
+    els.jookBoxStatePlaque.textContent="Insert coin to play";
+    els.jookBoxTicker.setAttribute("aria-hidden","true");
+    els.videoFrame.tabIndex=-1;
+    els.videoFrame.setAttribute("aria-hidden","true");
+  }
+  if(nextState==="awake"){
+    activateJookBoxVideo();
+    els.jookBoxCoin.disabled=true;
+    els.jookBoxCoin.querySelector(".jookbox-coin-plate").textContent="Now playing";
+    els.jookBoxCoinPrompt.textContent="Coin accepted — the JookBox is awake.";
+    els.jookBoxStatusLabel.textContent="Now playing";
+    els.jookBoxStatePlaque.textContent="Coin accepted — now playing";
+    els.jookBoxTicker.removeAttribute("aria-hidden");
+    els.videoFrame.tabIndex=0;
+    els.videoFrame.removeAttribute("aria-hidden");
+    els.jookBoxPowerStatus.textContent=`Coin accepted. ${config.bandName} is now playing and all eight selection keys are available.`;
+    unlockJookBoxDestinations();
+  }
+}
+
+function scheduleJookBoxStartup(callback,delay){
+  const timer=window.setTimeout(()=>{
+    jookBoxStartupTimers.delete(timer);
+    callback();
+  },delay);
+  jookBoxStartupTimers.add(timer);
+}
+
+function clearJookBoxStartupTimers(){
+  for(const timer of jookBoxStartupTimers)window.clearTimeout(timer);
+  jookBoxStartupTimers.clear();
+}
+
+function restoreJookBoxSessionState(){
+  let active=false;
+  try{active=sessionStorage.getItem(jookBoxSessionKey())==="true"}catch{}
+  if(!active){setJookBoxState("sleeping");return}
+  els.jookBox.classList.add("is-neon-on","is-screen-on","is-buttons-running","is-ticker-running");
+  setJookBoxState("awake");
+}
+
+function powerJookBox(){
+  if(jookBoxState!=="sleeping")return;
+  clearJookBoxStartupTimers();
+  setJookBoxState("acceptingCoin");
+  els.jookBoxCoin.disabled=true;
+  els.jookBoxCoinPrompt.textContent="Coin accepted. The JookBox is powering up.";
+  els.jookBoxPowerStatus.textContent="Coin accepted. The JookBox is powering up.";
+  playJookBoxCoinSound();
+  activateJookBoxVideo();
+  try{sessionStorage.setItem(jookBoxSessionKey(),"true")}catch{}
+  const id=els.videoFrame.dataset.videoId;
   analytics.track("jookbox_coin_inserted",{interaction_source:"jookbox_coin",video_id:id||"",edition_type:config.editionType},{onceKey:`jookbox-coin:${editionEntry.editionId}`});
-  window.setTimeout(()=>{
-    machine.dataset.powerState="on";
-    els.jookBox.classList.remove("is-starting");
-    els.jookBox.classList.add("is-powered");
-  },matchMedia("(prefers-reduced-motion: reduce)").matches?0:1450);
+
+  const reducedMotion=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if(reducedMotion){
+    els.jookBox.classList.add("is-neon-on","is-screen-on","is-buttons-running","is-ticker-running");
+    scheduleJookBoxStartup(()=>setJookBoxState("awake"),180);
+    return;
+  }
+  const timings={
+    mechanism:120,neonOn:800,screenOn:1200,buttonsOn:1600,tickerOn:2000,
+    ...(config.jookBox?.startupTimingsMs||{})
+  };
+  scheduleJookBoxStartup(()=>setJookBoxState("poweringUp"),timings.mechanism);
+  scheduleJookBoxStartup(()=>els.jookBox.classList.add("is-neon-on"),timings.neonOn);
+  scheduleJookBoxStartup(()=>els.jookBox.classList.add("is-screen-on"),timings.screenOn);
+  scheduleJookBoxStartup(()=>els.jookBox.classList.add("is-buttons-running"),timings.buttonsOn);
+  scheduleJookBoxStartup(()=>{
+    els.jookBox.classList.add("is-ticker-running");
+    setJookBoxState("awake");
+  },timings.tickerOn);
+}
+
+function prepareJookBoxCoinAudio(){
+  const source=String(config.jookBox?.coinSound||"").trim();
+  if(!source)return;
+  try{
+    jookBoxAudio=new Audio(source.startsWith("/")?source:`/${source}`);
+    jookBoxAudio.preload="auto";
+    jookBoxAudio.volume=.46;
+    jookBoxAudio.addEventListener("error",()=>console.warn(`JookBox coin sound could not be loaded: ${source}`),{once:true});
+  }catch(error){
+    console.warn("JookBox coin sound could not be prepared.",error);
+    jookBoxAudio=null;
+  }
 }
 
 function playJookBoxCoinSound(){
+  if(jookBoxAudio){
+    try{
+      jookBoxAudio.currentTime=0;
+      const playback=jookBoxAudio.play();
+      if(playback&&typeof playback.catch==="function")playback.catch(error=>{
+        console.warn("JookBox coin sound playback failed; using the mechanical fallback.",error);
+        playJookBoxCoinFallback();
+      });
+      return;
+    }catch(error){console.warn("JookBox coin sound playback failed; using the mechanical fallback.",error)}
+  }
+  playJookBoxCoinFallback();
+}
+
+function handleJookBoxVisibility(){
+  if(!isJookBoxEdition())return;
+  els.jookBox.classList.toggle("is-animation-paused",document.hidden);
+}
+
+function handleJookBoxPageShow(event){
+  if(event.persisted&&jookBoxState!=="awake")restoreJookBoxSessionState();
+}
+
+function playJookBoxCoinFallback(){
   const AudioContext=window.AudioContext||window.webkitAudioContext;
   if(!AudioContext)return;
   try{
@@ -513,7 +661,7 @@ function playJookBoxCoinSound(){
       oscillator.start(start);oscillator.stop(start+.18);
     });
     window.setTimeout(()=>context.close(),900);
-  }catch{}
+  }catch(error){console.warn("JookBox fallback coin sound could not be played.",error)}
 }
 
 function configureJookBoxBio(){
