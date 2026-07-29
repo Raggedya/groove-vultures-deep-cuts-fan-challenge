@@ -48,8 +48,10 @@ if(editionType==='jukebox'){
   if(!paragraphs.length||!biographySource)throw new Error('JookBox requires verified biography paragraphs and an official HTTPS source.');
   config.jookBox={
     modelVersion:'jookbox/2',
+    cabinetArtwork:clean(input.jookBox?.cabinetArtwork||'assets/jookbox-cabinet-photoreal-v1.webp',180),
     marquee:clean(input.jookBox?.marquee||bandName,80),
     videoLabel:clean(input.jookBox?.videoLabel||'Now playing',40),
+    primaryActionLabel:clean(input.jookBox?.primaryActionLabel||'View Upcoming Shows',60),
     heroLabels:['Listen','Watch','Follow','Shop'],
     lightSequence:true,
     coinStart:true,
@@ -225,6 +227,8 @@ function validateJookBoxSelections(value){
   const sources=Array.isArray(value.sources)?value.sources:[];
   const ids=new Set(),urls=new Set();
   return selections.map(selection=>{
+    const allowedKinds=new Set(['show','spotify','youtube','instagram','facebook','tiktok','merchandise','newsletter','website','contact','deep_cut']);
+    const suppliedKind=clean(selection.kind,30).toLowerCase();
     const item={
       id:clean(selection.id,80),
       sourceTitle:clean(selection.sourceTitle,160),
@@ -233,6 +237,16 @@ function validateJookBoxSelections(value){
       url:https(selection.url),
       platform:['youtube','facebook','instagram','merchandise','website'].includes(selection.platform)?selection.platform:'website'
     };
+    if(suppliedKind){
+      if(!allowedKinds.has(suppliedKind))throw new Error(`Unsupported JookBox selection kind: ${suppliedKind}.`);
+      item.kind=suppliedKind;
+    }
+    for(const [key,limit] of [['dateLabel',40],['venue',100],['location',100],['availability',40]]){
+      const field=clean(selection[key],limit);
+      if(field)item[key]=field;
+    }
+    if(selection.soldOut===true)item.soldOut=true;
+    if(item.kind==='show'&&(!item.dateLabel||!item.venue))throw new Error(`JookBox show ${item.id||'unknown'} requires a verified date label and venue.`);
     if(!item.id||!item.sourceTitle||!item.label||!item.url)throw new Error('Every JookBox selection requires id, sourceTitle, label and an HTTPS URL.');
     if(ids.has(item.id)||urls.has(normalize(item.url)))throw new Error(`Duplicate JookBox selection: ${item.id}.`);
     if(!sources.some(source=>source.destination===`selection:${item.id}`&&source.identityVerified===true&&normalize(source.url)===normalize(item.url)&&validDate(source.verifiedAt)&&clean(source.evidence,300)))throw new Error(`JookBox selection ${item.id} requires matching verified source evidence.`);

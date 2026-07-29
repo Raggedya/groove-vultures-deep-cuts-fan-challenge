@@ -18,7 +18,7 @@ The same permanent engine also supports separately typed `Deep Cuts Cars` and `D
 
 The isolated `business` product type supports verified recruitment experiences: company branding, an owner-approved Aggits asset, featured video, direct current job cards and a sourced ten-question “Learn About” quiz. High Grade Mechanical is the first locked Business Recruitment edition; Hays is the second and demonstrates reusable official-job-prefix validation and edition-owned logo treatments without changing HGM.
 
-The isolated `jukebox` product type provides the reusable `jookbox/2` band model: no Aggits, quiz or spinning wheel; a push-coin, sound-and-light start; user-initiated playback of the verified featured YouTube video; self-balancing physical keys generated from a dated, verified Linktree snapshot; and a sourced Learn More biography screen. Filthy Animals is the first completed JookBox edition.
+The isolated `jukebox` product type provides the reusable `jookbox/2` band model: no Aggits, quiz or spinning wheel; a push-coin, sound-and-light start; user-initiated playback of a verified 16:9 featured YouTube hero; one dominant verified action; an accessible Upcoming Shows module; large tactile controls generated from a dated, verified Linktree snapshot; working-only transport/discovery controls; and a sourced Learn More biography screen. Filthy Animals is the first completed JookBox edition.
 
 ## Standard owner request
 
@@ -56,7 +56,7 @@ Public URLs use opaque IDs and never expose the artist name:
 - A cohesive pale-teal Laneway reference palette with red reserved for the illuminated wheel pointer
 - A fail-closed final Indie Label model contract that protects the restored experience from feature creep
 - An isolated Business Recruitment renderer with verified direct vacancy cards and a positive sourced 10-question company quiz
-- An isolated JookBox renderer with a privacy-enhanced featured-video cabinet, verified selection-key destinations, reduced-motion lighting and no quiz, wheel or Aggits
+- An isolated JookBox renderer with a privacy-enhanced video-first cabinet, verified tactile destinations, accessible Upcoming Shows, reduced-motion lighting and no quiz, wheel or Aggits
 
 ## Validation
 

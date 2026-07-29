@@ -71,9 +71,10 @@ Treat every completed edition as a finished commercial product that must remain 
 
 - `jukebox` is an isolated band-discovery product. It never changes Music, Cars, Clubs, Schools, Business Recruitment, Laneway or Indie Label output.
 - The reusable model name and version are exactly `JookBox` and `jookbox/2`.
-- JookBox uses a full-screen photoreal old-school illuminated cabinet with polished wood, chrome/gold trim, vivid period neon, sequential selection-key lights and a privacy-enhanced featured-video screen.
+- JookBox uses a full-screen photoreal old-school illuminated cabinet with polished wood, chrome/gold trim, restrained period lighting and a privacy-enhanced 16:9 featured-video hero.
 - The cabinet starts dormant. One accessible coin control synthesises the coin-drop sound, initiates the short light-up sequence, enables the verified selection keys and requests YouTube autoplay from the user gesture. Reduced motion skips the theatrical sequence.
-- Selection keys are a dated, verified build-time snapshot of the artist-controlled Linktree. No more than eight keys are visible at once; after each complete light cycle the next verified group replaces them, returning to the first group after the full snapshot has appeared. Every key retains its source title and evidence; runtime scraping never publishes unverified destinations.
+- Selection keys are a dated, verified build-time snapshot of the artist-controlled Linktree. Verified show destinations are organised into one keyboard-accessible expandable `Upcoming Shows` module; non-show destinations render as large self-balancing tactile controls. One dominant primary action promotes shows first, then falls back to Spotify, YouTube, the official website or newsletter when the preceding destination is unavailable.
+- JookBox transport and quick-action controls may expose only working behaviour backed by current verified data. Fake playback controls are forbidden. Every action retains its source title and evidence, missing actions are omitted, and runtime scraping never publishes unverified destinations.
 - `Learn More` opens a second in-page screen containing only sourced band biography copy and a verified official source.
 - JookBox never displays Aggits, a quiz or a spinning wheel.
 - The featured video is the most-viewed embeddable official video visible through the artist-controlled YouTube channel at verification time.

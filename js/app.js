@@ -1,9 +1,31 @@
 "use strict";
 
-const VERSION="20260729-jookbox-4";
+const VERSION="20260729-jookbox-5";
 const LANEWAY_REPORTING_VERSION="laneway-weekly-v1";
 const $=id=>document.getElementById(id);
-const els={page:$("discoveryPage"),error:$("errorScreen"),errorMessage:$("errorMessage"),bandName:$("bandName"),bio:$("artistBio"),artwork:$("heroArtwork"),brandLogo:$("editionBrandLogo"),waveform:$("sonicSignature"),features:$("featureList"),video:$("featuredVideo"),videoLabel:$("featuredVideoLabel"),videoTitle:$("featuredVideoTitle"),videoFrame:$("featuredVideoFrame"),jookBox:$("jookBoxCabinet"),jookBoxTitle:$("jookBoxTitle"),jookBoxVideoSlot:$("jookBoxVideoSlot"),jookBoxVideoLock:$("jookBoxVideoLock"),jookBoxSelectionSlot:$("jookBoxSelectionSlot"),jookBoxSelectionTitle:$("jookBoxSelectionTitle"),jookBoxPlaqueName:$("jookBoxPlaqueName"),jookBoxCoin:$("jookBoxCoinButton"),jookBoxCoinPrompt:$("jookBoxCoinPrompt"),jookBoxPowerStatus:$("jookBoxPowerStatus"),jookBoxLearnMore:$("jookBoxLearnMore"),jookBoxBioScreen:$("jookBoxBioScreen"),jookBoxBioBack:$("jookBoxBioBack"),jookBoxBioTitle:$("jookBoxBioTitle"),jookBoxBioCopy:$("jookBoxBioCopy"),jookBoxBioSource:$("jookBoxBioSource"),links:$("platformLinks"),share:$("shareButton"),status:$("shareStatus"),description:$("pageDescription"),poweredBy:$("poweredByLabel"),copyright:$("coverCopyright"),lanewayHome:$("lanewayHomeLink"),lanewayRecommended:$("lanewayRecommendedLink"),companyDirectory:$("lanewayCompanyDirectory"),companyDirectoryCount:$("lanewayCompanyDirectoryCount"),companySearch:$("lanewayCompanySearch"),companyArtistList:$("lanewayCompanyArtistList"),companyEmpty:$("lanewayCompanyEmpty"),companyWheel:$("lanewayArtistWheel"),wheelCanvas:$("lanewayWheelCanvas"),wheelSpin:$("lanewayWheelSpin"),wheelStatus:$("lanewayWheelStatus"),wheelWinner:$("lanewayWheelWinner"),wheelImpact:$("lanewayWheelImpact"),wheelPurchaseLinks:$("lanewayWheelPurchaseLinks"),wheelBuyMusic:$("lanewayWheelBuyMusic"),wheelBuyMerch:$("lanewayWheelBuyMerch"),wheelVideo:$("lanewayWheelVideo"),wheelVideoTitle:$("lanewayWheelVideoTitle"),wheelVideoFrame:$("lanewayWheelVideoFrame")};
+const els={
+  page:$("discoveryPage"),error:$("errorScreen"),errorMessage:$("errorMessage"),bandName:$("bandName"),bio:$("artistBio"),
+  artwork:$("heroArtwork"),brandLogo:$("editionBrandLogo"),waveform:$("sonicSignature"),features:$("featureList"),
+  video:$("featuredVideo"),videoLabel:$("featuredVideoLabel"),videoTitle:$("featuredVideoTitle"),videoFrame:$("featuredVideoFrame"),
+  jookBox:$("jookBoxCabinet"),jookBoxTitle:$("jookBoxTitle"),jookBoxStatusLabel:$("jookBoxStatusLabel"),
+  jookBoxVideoSlot:$("jookBoxVideoSlot"),jookBoxVideoLock:$("jookBoxVideoLock"),jookBoxTrackTitle:$("jookBoxTrackTitle"),
+  jookBoxTrackArtist:$("jookBoxTrackArtist"),jookBoxOpenVideo:$("jookBoxOpenVideo"),jookBoxDeepCut:$("jookBoxDeepCutButton"),
+  jookBoxYouTube:$("jookBoxYouTubeControl"),jookBoxPlaqueName:$("jookBoxPlaqueName"),jookBoxCoin:$("jookBoxCoinButton"),
+  jookBoxCoinPrompt:$("jookBoxCoinPrompt"),jookBoxSoundToggle:$("jookBoxSoundToggle"),jookBoxPowerStatus:$("jookBoxPowerStatus"),jookBoxPrimaryAction:$("jookBoxPrimaryAction"),
+  jookBoxSecondaryActions:$("jookBoxSecondaryActions"),jookBoxShows:$("jookBoxShows"),jookBoxShowsCount:$("jookBoxShowsCount"),
+  jookBoxFeaturedShow:$("jookBoxFeaturedShow"),jookBoxShowsToggle:$("jookBoxShowsToggle"),jookBoxAllShows:$("jookBoxAllShows"),
+  jookBoxBottomDeepCut:$("jookBoxBottomDeepCut"),jookBoxBottomShows:$("jookBoxBottomShows"),jookBoxBottomShare:$("jookBoxBottomShare"),
+  jookBoxLearnMore:$("jookBoxLearnMore"),jookBoxBioScreen:$("jookBoxBioScreen"),jookBoxBioBack:$("jookBoxBioBack"),
+  jookBoxBioTitle:$("jookBoxBioTitle"),jookBoxBioCopy:$("jookBoxBioCopy"),jookBoxBioSource:$("jookBoxBioSource"),
+  links:$("platformLinks"),share:$("shareButton"),status:$("shareStatus"),description:$("pageDescription"),poweredBy:$("poweredByLabel"),
+  copyright:$("coverCopyright"),lanewayHome:$("lanewayHomeLink"),lanewayRecommended:$("lanewayRecommendedLink"),
+  companyDirectory:$("lanewayCompanyDirectory"),companyDirectoryCount:$("lanewayCompanyDirectoryCount"),companySearch:$("lanewayCompanySearch"),
+  companyArtistList:$("lanewayCompanyArtistList"),companyEmpty:$("lanewayCompanyEmpty"),companyWheel:$("lanewayArtistWheel"),
+  wheelCanvas:$("lanewayWheelCanvas"),wheelSpin:$("lanewayWheelSpin"),wheelStatus:$("lanewayWheelStatus"),
+  wheelWinner:$("lanewayWheelWinner"),wheelImpact:$("lanewayWheelImpact"),wheelPurchaseLinks:$("lanewayWheelPurchaseLinks"),
+  wheelBuyMusic:$("lanewayWheelBuyMusic"),wheelBuyMerch:$("lanewayWheelBuyMerch"),wheelVideo:$("lanewayWheelVideo"),
+  wheelVideoTitle:$("lanewayWheelVideoTitle"),wheelVideoFrame:$("lanewayWheelVideoFrame")
+};
 
 const MUSIC_LINK_DEFINITIONS=[
   {key:"buyMusic",label:"Buy Music",subLabel:"Purchase music directly",priority:"primary",fallback:"bandcamp"},
@@ -74,9 +96,8 @@ let platform,editionEntry,config;
 let analytics={device:"desktop",track(){return null}};
 let attentionTimer=0;
 let jookBoxPowered=false;
-let jookBoxSelectionTimer=0;
-let jookBoxSelectionStart=0;
-const JOOKBOX_VISIBLE_SELECTIONS=8;
+let jookBoxSoundMuted=false;
+let lastJookBoxDeepCutId="";
 init();
 
 async function init(){
@@ -128,6 +149,7 @@ async function applyConfig(){
   buildFeaturedVideo();
   if(jookBox)buildJookBox();
   buildLinks();
+  if(jookBox)buildJookBoxProductNavigation();
   if(wheelEdition)await buildLanewayCompanyDirectory();
   configureLanewayUtilityLinks();
   if(schools)await SchoolDiscoveryQuiz.configure({config,analytics,homeElement:els.page,challengeButton:$("schoolChallengeButton")});
@@ -250,18 +272,33 @@ function buildJookBox(){
   if(!isJookBoxEdition())return;
   els.jookBoxTitle.textContent=config.jookBox?.marquee||config.bandName;
   if(els.jookBoxPlaqueName)els.jookBoxPlaqueName.textContent=config.bandName;
+  els.jookBoxTrackTitle.textContent=config.featuredVideo?.title||`${config.bandName} featured video`;
+  els.jookBoxTrackArtist.textContent=config.bandName;
+  els.jookBoxStatusLabel.textContent="Ready to play";
   els.page.setAttribute("aria-labelledby","jookBoxTitle");
   els.jookBox.hidden=false;
   if(!els.video.hidden){
     els.video.classList.add("jookbox-featured-video");
     els.jookBoxVideoSlot.append(els.video);
   }
-  if(els.jookBoxSelectionSlot)els.jookBoxSelectionSlot.append(els.links);
   els.jookBoxCoin.addEventListener("click",powerJookBox);
+  els.jookBoxSoundToggle.addEventListener("click",toggleJookBoxSound);
+  els.jookBoxDeepCut.addEventListener("click",openRandomJookBoxDeepCut);
+  els.jookBoxBottomDeepCut.addEventListener("click",openRandomJookBoxDeepCut);
+  els.jookBoxBottomShows.addEventListener("click",()=>openJookBoxShows(true));
+  els.jookBoxBottomShare.addEventListener("click",sharePage);
+  els.jookBoxShowsToggle.addEventListener("click",()=>setJookBoxShowsExpanded(els.jookBoxShowsToggle.getAttribute("aria-expanded")!=="true"));
   els.jookBoxLearnMore.hidden=false;
   els.jookBoxLearnMore.addEventListener("click",openJookBoxBio);
   els.jookBoxBioBack.addEventListener("click",closeJookBoxBio);
   configureJookBoxBio();
+}
+
+function toggleJookBoxSound(){
+  jookBoxSoundMuted=!jookBoxSoundMuted;
+  els.jookBoxSoundToggle.setAttribute("aria-pressed",String(jookBoxSoundMuted));
+  els.jookBoxSoundToggle.textContent=jookBoxSoundMuted?"Sound off":"Sound on";
+  els.jookBoxSoundToggle.setAttribute("aria-label",jookBoxSoundMuted?"Enable JookBox coin sound":"Mute JookBox coin sound");
 }
 
 function buildLinks(){
@@ -269,17 +306,14 @@ function buildLinks(){
   if(isBusinessEdition()){buildBusinessLinks();balanceLinkGrid();return}
   const definitions=isWheelEdition()?[]:isJookBoxEdition()?jookBoxLinkDefinitions():isSchoolEdition()?SCHOOL_LINK_DEFINITIONS:isClubEdition()?CLUB_LINK_DEFINITIONS:isCarEdition()?CAR_LINK_DEFINITIONS:MUSIC_LINK_DEFINITIONS;
   let schoolChallengeAdded=false;
-  let renderedIndex=0;
   for(const definition of definitions){
     if(isSchoolEdition()&&definition.key==="schoolProject"&&!schoolChallengeAdded){els.links.append(createSchoolChallengeCard());schoolChallengeAdded=true}
     const url=linkValue(definition);
     if(!url)continue;
-    const index=renderedIndex++;
     const element=document.createElement("a");
     element.className=`platform-link is-active${definition.priority?` ${definition.priority}`:""}${isJookBoxEdition()?" jookbox-selection":""}`;
     element.dataset.destination=definition.key;
-    const selectionCode=isJookBoxEdition()?`<span class="jookbox-selection-code" aria-hidden="true">${String.fromCharCode(65+Math.floor(index/2))}${index%2+1}</span>`:"";
-    element.innerHTML=`${selectionCode}<span class="link-copy"><strong>${definition.label}</strong><small>${activeSubtitle(definition)}</small></span><span class="link-arrow" aria-hidden="true">&gt;</span>`;
+    element.innerHTML=`<span class="link-copy"><strong>${definition.label}</strong><small>${activeSubtitle(definition)}</small></span><span class="link-arrow" aria-hidden="true">&gt;</span>`;
     if(isJookBoxEdition()){
       element.dataset.href=url;
       element.setAttribute("aria-disabled","true");
@@ -298,65 +332,260 @@ function buildLinks(){
   if(isLanewayEdition())els.links.append(createLanewayChallengeCard());
   if(isWheelEdition())els.links.append(createLanewayCompanyChallengeCard());
   balanceLinkGrid();
-  if(isJookBoxEdition())sequenceJookBoxButtons();
-}
-
-function sequenceJookBoxButtons(){
-  const buttons=[...els.links.querySelectorAll(".jookbox-selection")];
-  buttons.forEach((element,index)=>element.dataset.jookboxIndex=String(index));
-  showJookBoxSelectionGroup(buttons,0);
-}
-
-function showJookBoxSelectionGroup(buttons,start){
-  if(!buttons.length)return;
-  const step=.55;
-  const duration=Math.max(JOOKBOX_VISIBLE_SELECTIONS*step,5);
-  const visibleIndexes=new Map();
-  const safeStart=start<buttons.length?start:0;
-  const visibleCount=Math.min(JOOKBOX_VISIBLE_SELECTIONS,buttons.length-safeStart);
-  for(let slot=0;slot<visibleCount;slot++)visibleIndexes.set(safeStart+slot,slot);
-  buttons.forEach((element,index)=>{
-    const slot=visibleIndexes.get(index);
-    const visible=slot!==undefined;
-    element.hidden=!visible;
-    element.style.order=visible?String(slot):"";
-    element.classList.remove("jookbox-carnival-light");
-    if(!visible){element.tabIndex=-1;return}
-    const code=element.querySelector(".jookbox-selection-code");
-    if(code)code.textContent=`${String.fromCharCode(65+Math.floor(slot/2))}${slot%2+1}`;
-    element.tabIndex=jookBoxPowered?0:-1;
-    element.style.setProperty("--jookbox-light-duration",`${duration}s`);
-    element.style.setProperty("--jookbox-light-delay",`${slot*step}s`);
-    void element.offsetWidth;
-    element.classList.add("jookbox-carnival-light");
-  });
-  if(els.jookBoxSelectionTitle)els.jookBoxSelectionTitle.textContent=`Make your selection. Showing ${visibleCount} of ${buttons.length} verified destinations.`;
-}
-
-function startJookBoxSelectionRotation(){
-  window.clearTimeout(jookBoxSelectionTimer);
-  const buttons=[...els.links.querySelectorAll(".jookbox-selection")];
-  if(buttons.length<=JOOKBOX_VISIBLE_SELECTIONS)return;
-  const rotate=()=>{
-    if(document.hidden||els.links.contains(document.activeElement)){jookBoxSelectionTimer=window.setTimeout(rotate,1000);return}
-    const nextStart=jookBoxSelectionStart+JOOKBOX_VISIBLE_SELECTIONS;
-    jookBoxSelectionStart=nextStart>=buttons.length?0:nextStart;
-    showJookBoxSelectionGroup(buttons,jookBoxSelectionStart);
-    jookBoxSelectionTimer=window.setTimeout(rotate,5000);
-  };
-  jookBoxSelectionTimer=window.setTimeout(rotate,5000);
 }
 
 function jookBoxLinkDefinitions(){
   const selections=Array.isArray(config.jookBox?.selections)?config.jookBox.selections:[];
-  if(!selections.length)return JOOKBOX_LINK_DEFINITIONS;
+  if(!selections.length)return JOOKBOX_LINK_DEFINITIONS.map(definition=>({
+    ...definition,
+    url:linkValue(definition),
+    platform:definition.key
+  })).filter(definition=>validHttps(definition.url));
   return selections.map(selection=>({
     key:String(selection.id||"").trim(),
     label:String(selection.label||selection.sourceTitle||"").trim(),
     subLabel:String(selection.detail||"Open verified link").trim(),
     url:selection.url,
-    platform:String(selection.platform||"website").trim()
+    platform:String(selection.platform||"website").trim(),
+    kind:String(selection.kind||"").trim(),
+    sourceTitle:String(selection.sourceTitle||"").trim(),
+    dateLabel:String(selection.dateLabel||"").trim(),
+    venue:String(selection.venue||"").trim(),
+    location:String(selection.location||"").trim(),
+    availability:String(selection.availability||"").trim(),
+    soldOut:selection.soldOut===true
   })).filter(selection=>selection.key&&selection.label&&validHttps(selection.url));
+}
+
+function jookBoxSelectionKind(definition){
+  const explicit=String(definition.kind||"").trim().toLowerCase();
+  if(explicit)return explicit;
+  const identity=`${definition.key||""} ${definition.sourceTitle||""} ${definition.label||""}`.toLowerCase();
+  if(/(^|\s)(tickets?|tix)([-\s:]|$)/.test(identity)||/^book[-\s]/.test(String(definition.sourceTitle||"").toLowerCase()))return"show";
+  if(/newsletter|mailing list|subscribe/.test(identity))return"newsletter";
+  if(/reaction|podcast|deep cut/.test(identity))return"deep_cut";
+  if(definition.platform==="youtube"||/youtube/.test(identity))return"youtube";
+  if(definition.platform==="instagram"||/instagram/.test(identity))return"instagram";
+  if(definition.platform==="facebook"||/facebook/.test(identity))return"facebook";
+  if(definition.platform==="merchandise"||/merch|shop/.test(identity))return"merchandise";
+  if(/tiktok/.test(identity))return"tiktok";
+  if(/contact|book the band/.test(identity))return"contact";
+  if(/spotify|listen/.test(identity))return"spotify";
+  return"website";
+}
+
+function jookBoxDestinationDefinitions(){
+  const snapshot=jookBoxLinkDefinitions().map(definition=>({...definition,kind:jookBoxSelectionKind(definition)}));
+  const seen=new Set(snapshot.map(definition=>validHttps(definition.url)));
+  const seenKeys=new Set(snapshot.map(definition=>definition.key));
+  const seenKinds=new Set(snapshot.map(definition=>definition.kind));
+  for(const definition of JOOKBOX_LINK_DEFINITIONS){
+    const url=linkValue(definition);
+    const fallback={...definition,url,platform:definition.key,sourceTitle:"",kind:jookBoxSelectionKind(definition)};
+    if(!url||seen.has(url)||seenKeys.has(definition.key)||(fallback.kind!=="website"&&seenKinds.has(fallback.kind)))continue;
+    snapshot.push(fallback);
+    seen.add(url);
+    seenKeys.add(definition.key);
+    seenKinds.add(fallback.kind);
+  }
+  return snapshot;
+}
+
+function buildJookBoxProductNavigation(){
+  const destinations=jookBoxDestinationDefinitions();
+  const shows=destinations.filter(definition=>definition.kind==="show");
+  const secondary=destinations.filter(definition=>definition.kind!=="show");
+  els.jookBoxSecondaryActions.replaceChildren(...secondary.map(definition=>createJookBoxDestinationLink(definition,"jookbox-action-key","jookbox_action_grid")));
+  els.jookBoxSecondaryActions.closest(".jookbox-action-panel").hidden=!secondary.length;
+  buildJookBoxShows(shows);
+  configureJookBoxTransport(destinations);
+  configureJookBoxPrimaryAction(shows,destinations);
+  updateJookBoxActionBarLayout();
+}
+
+function updateJookBoxActionBarLayout(){
+  const bar=$("jookBoxActionBar");
+  const visible=[...bar.querySelectorAll("button")].filter(button=>!button.hidden).length;
+  bar.style.gridTemplateColumns=`repeat(${Math.max(visible,1)},minmax(0,1fr))`;
+}
+
+function configureJookBoxTransport(destinations){
+  const featuredURL=validHttps(config.featuredVideo?.youtubeURL);
+  configureJookBoxDestinationAnchor(els.jookBoxOpenVideo,featuredURL,{
+    key:"featured_video",label:config.featuredVideo?.title||"Featured video",platform:"youtube"
+  },"jookbox_transport");
+  const channelURL=validHttps(config.links?.youtube)||destinations.find(definition=>definition.kind==="youtube")?.url;
+  configureJookBoxDestinationAnchor(els.jookBoxYouTube,channelURL,{
+    key:"youtube_channel",label:"YouTube channel",platform:"youtube"
+  },"jookbox_transport");
+  const hasDeepCuts=destinations.some(definition=>definition.kind==="deep_cut");
+  els.jookBoxDeepCut.hidden=!hasDeepCuts;
+  els.jookBoxBottomDeepCut.hidden=!hasDeepCuts;
+}
+
+function configureJookBoxPrimaryAction(shows,destinations){
+  const title=els.jookBoxPrimaryAction.querySelector("strong");
+  const detail=els.jookBoxPrimaryAction.querySelector("small");
+  els.jookBoxPrimaryAction.hidden=true;
+  if(shows.length){
+    title.textContent=config.jookBox?.primaryActionLabel||"View upcoming shows";
+    detail.textContent=shows.length===1?"Open the verified ticket link":`Explore ${shows.length} verified show links`;
+    els.jookBoxPrimaryAction.dataset.jookboxHref="#jookBoxShows";
+    els.jookBoxPrimaryAction.dataset.jookboxMode="shows";
+    els.jookBoxPrimaryAction.removeAttribute("href");
+    els.jookBoxPrimaryAction.removeAttribute("target");
+    els.jookBoxPrimaryAction.removeAttribute("rel");
+    els.jookBoxPrimaryAction.setAttribute("aria-disabled","true");
+    els.jookBoxPrimaryAction.tabIndex=-1;
+    els.jookBoxPrimaryAction.onclick=event=>{
+      event.preventDefault();
+      if(!jookBoxPowered){focusJookBoxCoin();return}
+      openJookBoxShows(true);
+    };
+    return;
+  }
+  const priorities=["spotify","youtube","website","newsletter"];
+  const fallback=priorities.map(kind=>destinations.find(definition=>definition.kind===kind)).find(Boolean);
+  if(!fallback)return;
+  const labels={
+    spotify:["Listen on Spotify","Open the verified artist profile"],
+    youtube:["Watch on YouTube","Open the verified video destination"],
+    website:["Visit the official website","Continue with the band"],
+    newsletter:["Join the newsletter","Keep up with the band"]
+  };
+  const copy=labels[fallback.kind]||[fallback.label,fallback.subLabel];
+  title.textContent=copy[0];
+  detail.textContent=copy[1];
+  configureJookBoxDestinationAnchor(els.jookBoxPrimaryAction,fallback.url,fallback,"jookbox_primary_action");
+  els.jookBoxPrimaryAction.hidden=true;
+}
+
+function buildJookBoxShows(shows){
+  els.jookBoxFeaturedShow.replaceChildren();
+  els.jookBoxAllShows.replaceChildren();
+  els.jookBoxShows.hidden=!shows.length;
+  els.jookBoxBottomShows.hidden=!shows.length;
+  if(!shows.length)return;
+  els.jookBoxShowsCount.textContent=`${shows.length} verified ${shows.length===1?"show":"shows"}`;
+  els.jookBoxFeaturedShow.append(createJookBoxShowRow(shows[0],true));
+  for(const show of shows.slice(1))els.jookBoxAllShows.append(createJookBoxShowRow(show,false));
+  els.jookBoxShowsToggle.hidden=shows.length<2;
+  els.jookBoxShowsToggle.textContent=`View all ${shows.length} shows`;
+  setJookBoxShowsExpanded(false);
+}
+
+function createJookBoxShowRow(definition,featured){
+  const row=document.createElement("article");
+  row.className=`jookbox-show-row${featured?" is-featured":""}`;
+  const detail=String(definition.subLabel||"").split(/\s*[·•]\s*/).filter(Boolean);
+  const date=definition.dateLabel||detail[0]||"";
+  const venue=definition.venue||detail[1]||definition.label;
+  const location=definition.location||"";
+  const copy=document.createElement("div");
+  copy.className="jookbox-show-copy";
+  copy.innerHTML=`${date?`<time>${escapeHtml(date)}</time>`:""}<strong>${escapeHtml(venue)}</strong>${location?`<span>${escapeHtml(location)}</span>`:""}`;
+  row.append(copy);
+  if(definition.soldOut){
+    const soldOut=document.createElement("span");
+    soldOut.className="jookbox-ticket-link is-sold-out";
+    soldOut.textContent="Sold out";
+    row.append(soldOut);
+    return row;
+  }
+  const link=createJookBoxDestinationLink(definition,"jookbox-ticket-link","jookbox_upcoming_shows");
+  link.querySelector(".jookbox-action-icon")?.remove();
+  link.querySelector(".jookbox-action-copy").innerHTML=`<strong>${escapeHtml(definition.availability||"Tickets")}</strong><small>Opens externally</small>`;
+  row.append(link);
+  return row;
+}
+
+function createJookBoxDestinationLink(definition,className,source){
+  const link=document.createElement("a");
+  link.className=`jookbox-destination ${className}`;
+  link.target="_blank";
+  link.rel="noopener noreferrer";
+  link.dataset.kind=jookBoxSelectionKind(definition);
+  link.innerHTML=`<span class="jookbox-action-icon" aria-hidden="true">${jookBoxActionIcon(definition)}</span><span class="jookbox-action-copy"><strong>${escapeHtml(definition.label)}</strong><small>${escapeHtml(definition.subLabel||"Open verified destination")}</small></span><span class="jookbox-external-mark" aria-hidden="true">↗</span>`;
+  configureJookBoxDestinationAnchor(link,definition.url,definition,source);
+  return link;
+}
+
+function configureJookBoxDestinationAnchor(element,url,definition,source){
+  const safeURL=validHttps(url);
+  element.hidden=!safeURL;
+  if(!safeURL)return;
+  if(element instanceof HTMLAnchorElement){
+    element.target="_blank";
+    element.rel="noopener noreferrer";
+  }
+  element.dataset.jookboxHref=safeURL;
+  element.removeAttribute("href");
+  element.setAttribute("aria-disabled","true");
+  element.tabIndex=-1;
+  element.setAttribute("aria-label",`${definition.label} for ${config.bandName} (opens in a new tab)`);
+  element.onclick=event=>{
+    if(!jookBoxPowered){event.preventDefault();focusJookBoxCoin();return}
+    trackJookBoxOutbound(definition,safeURL,source);
+  };
+}
+
+function jookBoxActionIcon(definition){
+  return({
+    show:"▤",spotify:"♫",youtube:"▶",instagram:"◎",facebook:"f",tiktok:"♪",
+    merchandise:"◆",newsletter:"✉",contact:"✦",deep_cut:"★",website:"⌂"
+  })[jookBoxSelectionKind(definition)]||"◆";
+}
+
+function setJookBoxShowsExpanded(expanded){
+  if(els.jookBoxShowsToggle.hidden)return;
+  els.jookBoxShowsToggle.setAttribute("aria-expanded",String(expanded));
+  els.jookBoxShowsToggle.textContent=expanded?"Show fewer dates":`View all ${1+els.jookBoxAllShows.children.length} shows`;
+  els.jookBoxAllShows.hidden=!expanded;
+}
+
+function openJookBoxShows(expandAll){
+  if(els.jookBoxShows.hidden)return;
+  if(!jookBoxPowered){focusJookBoxCoin();return}
+  if(expandAll)setJookBoxShowsExpanded(true);
+  els.jookBoxShows.scrollIntoView({block:"start",behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});
+}
+
+function focusJookBoxCoin(){
+  els.jookBoxPowerStatus.textContent="Push the coin to start the JookBox before choosing a destination.";
+  els.jookBoxCoin.focus();
+}
+
+function openRandomJookBoxDeepCut(){
+  if(!jookBoxPowered){focusJookBoxCoin();return}
+  const choices=jookBoxDestinationDefinitions().filter(definition=>definition.kind==="deep_cut");
+  if(!choices.length)return;
+  const available=choices.length>1?choices.filter(definition=>definition.key!==lastJookBoxDeepCutId):choices;
+  const choice=available[Math.floor(Math.random()*available.length)];
+  lastJookBoxDeepCutId=choice.key;
+  const url=validHttps(choice.url);
+  if(!url)return;
+  trackJookBoxOutbound(choice,url,"jookbox_deep_cut");
+  els.jookBoxPowerStatus.textContent=`Opening ${choice.label} in a new tab.`;
+  const opened=window.open(url,"_blank","noopener,noreferrer");
+  if(opened)opened.opener=null;
+}
+
+function unlockJookBoxDestinations(){
+  for(const link of document.querySelectorAll("[data-jookbox-href]")){
+    link.href=link.dataset.jookboxHref;
+    link.removeAttribute("aria-disabled");
+    link.tabIndex=0;
+  }
+  for(const link of els.links.querySelectorAll(".jookbox-selection")){
+    link.href=link.dataset.href;
+    link.removeAttribute("aria-disabled");
+    link.tabIndex=0;
+  }
+  const hasDeepCuts=jookBoxDestinationDefinitions().some(definition=>definition.kind==="deep_cut");
+  els.jookBoxDeepCut.disabled=!hasDeepCuts;
+  els.jookBoxBottomDeepCut.disabled=!hasDeepCuts;
+  els.jookBoxBottomShows.disabled=els.jookBoxShows.hidden;
+  els.jookBoxPrimaryAction.hidden=!els.jookBoxPrimaryAction.dataset.jookboxHref;
 }
 
 function powerJookBox(){
@@ -367,14 +596,11 @@ function powerJookBox(){
   els.jookBox.classList.add("is-starting");
   els.jookBoxCoin.disabled=true;
   els.jookBoxCoin.querySelector(".jookbox-coin-plate").textContent="Playing";
-  els.jookBoxCoinPrompt.textContent="Coin accepted — now playing";
+  els.jookBoxCoinPrompt.textContent="Coin accepted — the JookBox is live";
+  els.jookBoxStatusLabel.textContent="Now playing";
   els.jookBoxPowerStatus.textContent=`Coin accepted. ${config.bandName} is now playing and all selection keys are available.`;
   playJookBoxCoinSound();
-  for(const link of els.links.querySelectorAll(".jookbox-selection")){
-    link.href=link.dataset.href;
-    link.removeAttribute("aria-disabled");
-  }
-  showJookBoxSelectionGroup([...els.links.querySelectorAll(".jookbox-selection")],jookBoxSelectionStart);
+  unlockJookBoxDestinations();
   const id=els.videoFrame.dataset.videoId;
   if(id)els.videoFrame.src=`https://www.youtube-nocookie.com/embed/${id}?rel=0&modestbranding=1&autoplay=1&playsinline=1`;
   analytics.track("jookbox_coin_inserted",{interaction_source:"jookbox_coin",video_id:id||"",edition_type:config.editionType},{onceKey:`jookbox-coin:${editionEntry.editionId}`});
@@ -382,11 +608,11 @@ function powerJookBox(){
     machine.dataset.powerState="on";
     els.jookBox.classList.remove("is-starting");
     els.jookBox.classList.add("is-powered");
-    startJookBoxSelectionRotation();
   },matchMedia("(prefers-reduced-motion: reduce)").matches?0:1450);
 }
 
 function playJookBoxCoinSound(){
+  if(jookBoxSoundMuted)return;
   const AudioContext=window.AudioContext||window.webkitAudioContext;
   if(!AudioContext)return;
   try{
@@ -441,9 +667,11 @@ function closeJookBoxBio(){
   els.jookBoxLearnMore.focus();
 }
 
-function trackJookBoxOutbound(definition,url){
-  const platform=["youtube","facebook","instagram","merchandise"].includes(definition.platform)?definition.platform:"website";
-  analytics.track("outbound_clicked",{destination_platform:platform,button_name:definition.key,interaction_source:"jookbox_linktree",destination_url_origin:new URL(url).origin,edition_type:config.editionType},{dedupeKey:`jookbox:${definition.key}`,dedupeMs:500});
+function trackJookBoxOutbound(definition,url,source="jookbox_linktree"){
+  const kind=jookBoxSelectionKind(definition);
+  const declared=["spotify","youtube","facebook","instagram","tiktok","merchandise"].includes(definition.platform)?definition.platform:"";
+  const platform=["spotify","youtube","facebook","instagram","tiktok","merchandise"].includes(kind)?kind:declared||"website";
+  analytics.track("outbound_clicked",{destination_platform:platform,button_name:definition.key,interaction_source:source,destination_url_origin:new URL(url).origin,edition_type:config.editionType},{dedupeKey:`jookbox:${source}:${definition.key}`,dedupeMs:500});
 }
 
 function buildBusinessLinks(){
@@ -837,16 +1065,7 @@ function analyticsDestination(key){return({buyMusic:"buy_music",newsReviews:"new
 
 function startAttentionCycle(){
   if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;
-  if(isJookBoxEdition()){
-    const pulseWaveform=()=>{
-      if(document.hidden||!jookBoxPowered)return;
-      els.waveform.classList.remove("pulse");void els.waveform.offsetWidth;els.waveform.classList.add("pulse");
-    };
-    setTimeout(pulseWaveform,600);
-    attentionTimer=window.setInterval(pulseWaveform,8000);
-    document.addEventListener("visibilitychange",()=>{if(!document.hidden)pulseWaveform()},{passive:true});
-    return;
-  }
+  if(isJookBoxEdition())return;
   if(isWheelEdition()){
     let controlIndex=0;
     let waveTick=0;
