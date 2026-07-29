@@ -76,11 +76,21 @@ for(const edition of platform.editions){
       for(const asset of [config.characterArtwork,config.business?.logoArtwork])await fs.access(asset);
     }else if(config.editionType==='jukebox'){
       if(config.brandName!=='JookBox'||config.characterArtwork)errors.push(`${edition.config} must preserve the isolated no-Aggits JookBox contract.`);
-      if(config.jookBox?.modelVersion!=='jookbox/1'||JSON.stringify(config.jookBox?.heroLabels)!==JSON.stringify(['Listen','Watch','Follow','Shop'])||config.jookBox?.lightSequence!==true)errors.push(`${edition.config} must preserve the JookBox model, four-part navigation and sequential-light treatment.`);
+      if(config.jookBox?.modelVersion!=='jookbox/2'||JSON.stringify(config.jookBox?.heroLabels)!==JSON.stringify(['Listen','Watch','Follow','Shop'])||config.jookBox?.lightSequence!==true||config.jookBox?.coinStart!==true||config.jookBox?.syncMode!=='verified-build-time')errors.push(`${edition.config} must preserve the coin-started JookBox model, four-part navigation and sequential-light treatment.`);
       if(config.featuredVideo?.selectionBasis!=='most-viewed-official'||!config.featuredVideo?.youtubeURL)errors.push(`${edition.config} requires the verified most-viewed official YouTube feature.`);
-      if(!/^https:\/\/open\.spotify\.com\/artist\/[A-Za-z0-9]+\/?$/.test(config.links?.spotify||''))errors.push(`${edition.config} requires a direct verified Spotify artist destination.`);
-      if(!/^https:\/\/(?:www\.)?youtube\.com\/(?:channel\/|@)/.test(config.links?.youtube||''))errors.push(`${edition.config} requires a direct verified official YouTube channel.`);
-      if(!/^https:\/\//.test(config.links?.website||''))errors.push(`${edition.config} requires the verified official band website.`);
+      const selections=Array.isArray(config.jookBox?.selections)?config.jookBox.selections:[];
+      if(!selections.length)errors.push(`${edition.config} requires verified Linktree selection keys.`);
+      const ids=new Set(),selectionURLs=new Set();
+      const research=JSON.parse(await fs.readFile(edition.config.replace(/edition\.json$/,'research.json'),'utf8'));
+      for(const selection of selections){
+        const url=normalized(selection.url);
+        if(!selection.id||!selection.sourceTitle||!selection.label||!url||!['youtube','facebook','instagram','merchandise','website'].includes(selection.platform))errors.push(`${edition.config} contains an incomplete JookBox selection.`);
+        if(ids.has(selection.id)||selectionURLs.has(url))errors.push(`${edition.config} contains a duplicate JookBox selection.`);
+        if(!research.sources.some(source=>source.destination===`selection:${selection.id}`&&source.identityVerified===true&&normalized(source.url)===url))errors.push(`${edition.config} JookBox selection ${selection.id||'unknown'} lacks matching source evidence.`);
+        ids.add(selection.id);selectionURLs.add(url);
+      }
+      if(!normalized(config.jookBox?.linkSourceURL)||!Number.isFinite(new Date(config.jookBox?.linkSourceVerifiedAt).getTime())||!research.sources.some(source=>source.destination==='jookBoxSource'&&source.identityVerified===true&&normalized(source.url)===normalized(config.jookBox?.linkSourceURL)))errors.push(`${edition.config} requires a dated, verified Linktree source snapshot.`);
+      if(!Array.isArray(config.jookBox?.biography?.paragraphs)||!config.jookBox.biography.paragraphs.length||!research.sources.some(source=>source.destination==='biography'&&source.identityVerified===true&&normalized(source.url)===normalized(config.jookBox?.biography?.sourceURL)))errors.push(`${edition.config} requires a sourced Learn More biography.`);
     }else if(config.editionType==='laneway'){
       if(config.characterArtwork)errors.push(`${edition.config} Laneway must never configure Aggits or other character artwork.`);
       if(config.laneway?.logoArtwork!=='assets/laneway-music-logo-reverse-transparent.png'||config.laneway?.logoTreatment!=='reverse-white-transparent')errors.push(`${edition.config} must preserve the approved transparent reverse-white Laneway Music logo treatment.`);

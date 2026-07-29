@@ -6,7 +6,7 @@ The isolated mobile product **Commercial Instinct** is available at `/sell/`. It
 
 Validated reports can also produce an editable, two-minute **Banjo Strategy Brief** download for Andy's Lip Sync Engine. This optional handoff is isolated to `/sell/`, excludes the full evidence register and uses an explicitly consented owner recording in its first version.
 
-All development is governed by `PLATFORM_ARCHITECTURE_DIRECTIVE.md`: completed editions are isolated commercial products, backward compatibility is mandatory, and new editions extend rather than modify existing products. `edition-contracts.json` and the CI isolation test enforce the current Music, Cars, Clubs, Schools, Business Recruitment, Laneway and Indie Label boundaries.
+All development is governed by `PLATFORM_ARCHITECTURE_DIRECTIVE.md`: completed editions are isolated commercial products, backward compatibility is mandatory, and new editions extend rather than modify existing products. `edition-contracts.json` and the CI isolation test enforce the current Music, JookBox, Cars, Clubs, Schools, Business Recruitment, Laneway and Indie Label boundaries.
 
 Every public screen in every product and edition ends with the locked platform footer `Deep Cuts` above `Copyright Clearlight Creative`. Edition configuration cannot override it.
 
@@ -18,6 +18,8 @@ The same permanent engine also supports separately typed `Deep Cuts Cars` and `D
 
 The isolated `business` product type supports verified recruitment experiences: company branding, an owner-approved Aggits asset, featured video, direct current job cards and a sourced ten-question “Learn About” quiz. High Grade Mechanical is the first locked Business Recruitment edition; Hays is the second and demonstrates reusable official-job-prefix validation and edition-owned logo treatments without changing HGM.
 
+The isolated `jukebox` product type provides the reusable `jookbox/2` band model: no Aggits, quiz or spinning wheel; a push-coin, sound-and-light start; user-initiated playback of the verified featured YouTube video; self-balancing physical keys generated from a dated, verified Linktree snapshot; and a sourced Learn More biography screen. Filthy Animals is the first completed JookBox edition.
+
 ## Standard owner request
 
 `Deep Cuts [Band or Artist]`
@@ -27,6 +29,8 @@ The isolated `business` product type supports verified recruitment experiences: 
 `Deep Cuts Clubs [Club name and location]`
 
 `Laneway [Band or Artist]`
+
+`JookBox [Band]`
 
 Laneway is a separate charcoal-and-white music edition using the approved Laneway Music logo, no Aggits, and exactly five positive sourced questions about the nominated artist. It does not change the standard Deep Cuts music model.
 
@@ -52,6 +56,7 @@ Public URLs use opaque IDs and never expose the artist name:
 - A cohesive pale-teal Laneway reference palette with red reserved for the illuminated wheel pointer
 - A fail-closed final Indie Label model contract that protects the restored experience from feature creep
 - An isolated Business Recruitment renderer with verified direct vacancy cards and a positive sourced 10-question company quiz
+- An isolated JookBox renderer with a privacy-enhanced featured-video cabinet, verified selection-key destinations, reduced-motion lighting and no quiz, wheel or Aggits
 
 ## Validation
 

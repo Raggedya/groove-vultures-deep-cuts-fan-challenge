@@ -36,18 +36,28 @@ const config={
   social:{copyright:'copyright Clearlight Creative',instagramImage:`output/${slug}/instagram-discovery.png`,qrImage:`output/${slug}/instagram-qr.png`},
   theme:editionType==='school'?schoolTheme(input):editionType==='business'?businessTheme(input):editionType==='jukebox'?jookBoxTheme(input):{accent:'#2f80ff',accentSecondary:'#8dbdff'},links,
   featuredVideo,
-  analytics:{editionId,pageIdentifier:`${editionId}:${editionType==='jukebox'?'jookbox-v1':editionType==='laneway'?'laneway-v1':editionType==='school'?'school-discovery-v1':editionType==='business'?'business-recruitment-v1':editionType==='club'?'club-v1':editionType==='car'?'automotive-v1':'discovery-v1'}`},
+  analytics:{editionId,pageIdentifier:`${editionId}:${editionType==='jukebox'?'jookbox-v2':editionType==='laneway'?'laneway-v1':editionType==='school'?'school-discovery-v1':editionType==='business'?'business-recruitment-v1':editionType==='club'?'club-v1':editionType==='car'?'automotive-v1':'discovery-v1'}`},
   production:{jobId:job.jobId,submittedAt:job.submittedAt,researchCompletedAt:now,editionCreatedAt:now}
 };
 if(editionType==='car')config.automotive={make:clean(input.automotive?.make,60),model:clean(input.automotive?.model,60),productionYears:clean(input.automotive?.productionYears,30),heroLabels:['Discover','Watch','Connect','Own & Restore']};
 if(editionType==='club')config.club={location:clean(input.club?.location,120),formed:clean(input.club?.formed,30),heroLabels:['Visit','Play','Join','Connect']};
 if(editionType==='jukebox'){
+  const selections=validateJookBoxSelections(input);
+  const paragraphs=(Array.isArray(input.jookBox?.biography?.paragraphs)?input.jookBox.biography.paragraphs:[]).map(paragraph=>clean(paragraph,520)).filter(Boolean);
+  const biographySource=https(input.jookBox?.biography?.sourceURL||'');
+  if(!paragraphs.length||!biographySource)throw new Error('JookBox requires verified biography paragraphs and an official HTTPS source.');
   config.jookBox={
-    modelVersion:'jookbox/1',
+    modelVersion:'jookbox/2',
     marquee:clean(input.jookBox?.marquee||bandName,80),
     videoLabel:clean(input.jookBox?.videoLabel||'Now playing',40),
     heroLabels:['Listen','Watch','Follow','Shop'],
-    lightSequence:true
+    lightSequence:true,
+    coinStart:true,
+    linkSourceURL:https(input.jookBox?.linkSourceURL||''),
+    linkSourceVerifiedAt:String(input.jookBox?.linkSourceVerifiedAt||''),
+    syncMode:'verified-build-time',
+    selections,
+    biography:{sourceURL:biographySource,paragraphs}
   };
 }
 if(editionType==='school'){
@@ -208,6 +218,27 @@ function schoolTheme(value){
 function businessTheme(value){
   const source=value.theme||{};
   return{accent:hex(source.accent)||'#2F80C3',accentSecondary:hex(source.accentSecondary)||'#F47A34',secondaryStrong:hex(source.secondaryStrong)||'#A94618',surface:hex(source.surface)||'#111A29'};
+}
+function validateJookBoxSelections(value){
+  const selections=Array.isArray(value.jookBox?.selections)?value.jookBox.selections:[];
+  if(!selections.length)throw new Error('JookBox requires at least one verified Linktree selection.');
+  const sources=Array.isArray(value.sources)?value.sources:[];
+  const ids=new Set(),urls=new Set();
+  return selections.map(selection=>{
+    const item={
+      id:clean(selection.id,80),
+      sourceTitle:clean(selection.sourceTitle,160),
+      label:clean(selection.label||selection.sourceTitle,80),
+      detail:clean(selection.detail||'Open verified link',120),
+      url:https(selection.url),
+      platform:['youtube','facebook','instagram','merchandise','website'].includes(selection.platform)?selection.platform:'website'
+    };
+    if(!item.id||!item.sourceTitle||!item.label||!item.url)throw new Error('Every JookBox selection requires id, sourceTitle, label and an HTTPS URL.');
+    if(ids.has(item.id)||urls.has(normalize(item.url)))throw new Error(`Duplicate JookBox selection: ${item.id}.`);
+    if(!sources.some(source=>source.destination===`selection:${item.id}`&&source.identityVerified===true&&normalize(source.url)===normalize(item.url)&&validDate(source.verifiedAt)&&clean(source.evidence,300)))throw new Error(`JookBox selection ${item.id} requires matching verified source evidence.`);
+    ids.add(item.id);urls.add(normalize(item.url));
+    return item;
+  });
 }
 function jookBoxTheme(value){
   const source=value.theme||{};

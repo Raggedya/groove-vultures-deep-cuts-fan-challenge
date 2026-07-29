@@ -2,7 +2,7 @@
   "bandName": "Filthy Animals",
   "slug": "filthy-animals",
   "editionId": "dc_a3c049e4bc",
-  "verifiedAt": "2026-07-29T08:15:16.445Z",
+  "verifiedAt": "2026-07-29T10:19:00.000Z",
   "sources": [
     {
       "destination": "identity",
@@ -75,6 +75,166 @@
       "identityVerified": true,
       "verifiedAt": "2026-07-29T08:05:50.000Z",
       "evidence": "The band's official website provides this direct contact page for booking and band enquiries."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://linktr.ee/filthyanimalsband",
+      "sourceType": "official artist-controlled Linktree live snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-29T10:19:00.000Z",
+      "evidence": "The artist-controlled Linktree exposed 18 current visible buttons. JookBox selections are a verified build-time snapshot so removed or uncertain destinations cannot appear automatically."
+    },
+    {
+      "destination": "selection:tickets-moorabbin",
+      "url": "https://www.trybooking.com/events/landing/1624202",
+      "sourceType": "official artist-controlled Linktree destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-29T10:19:00.000Z",
+      "evidence": "Current Linktree button: TIX - Sat 5 Dec Lucky13Garage, Moorabbin VIC. The direct event destination returned HTTP 200."
+    },
+    {
+      "destination": "selection:newsletter",
+      "url": "https://eepurl.com/idJNJj",
+      "sourceType": "official artist-controlled Linktree destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-29T10:19:00.000Z",
+      "evidence": "Current Linktree button: Subscribe to Our Newsletter. The direct eepurl destination is retained; automated requests are bot-restricted."
+    },
+    {
+      "destination": "selection:youtube-channel",
+      "url": "https://www.youtube.com/channel/UCKxWp8Uqst1s--EMYSi7AgQ/videos?sub_confirmation=1",
+      "sourceType": "official artist-controlled Linktree destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-29T10:19:00.000Z",
+      "evidence": "Current Linktree button: Our YouTube Channel. It resolves to the verified Filthy Animals channel and returned HTTP 200."
+    },
+    {
+      "destination": "selection:tickets-rozelle",
+      "url": "https://moshtix.com.au/v2/event/the-filthy-animals/196113",
+      "sourceType": "official artist-controlled Linktree destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-29T10:19:00.000Z",
+      "evidence": "Current Linktree button: TIX- Sat 15 Aug The Bridge Hotel, Rozelle Sydney. The direct Moshtix event destination returned HTTP 200."
+    },
+    {
+      "destination": "selection:tickets-southport",
+      "url": "https://www.eventbrite.com.au/e/filthy-animals-tickets-1989626221588",
+      "sourceType": "official artist-controlled Linktree destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-29T10:19:00.000Z",
+      "evidence": "Current Linktree button: TIX - Fri 21 Aug. SOPO-Southport. The direct Eventbrite destination returned HTTP 200."
+    },
+    {
+      "destination": "selection:airlie-beach",
+      "url": "https://airliebeachhotel.com.au/events/filthy-animals",
+      "sourceType": "official artist-controlled Linktree destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-29T10:19:00.000Z",
+      "evidence": "Current Linktree button: Book- Sept 5+6 Airlie Beach Hotel. The direct venue event destination returned HTTP 200."
+    },
+    {
+      "destination": "selection:tickets-ipswich",
+      "url": "https://tickets.oztix.com.au/outlet/event/c941156d-d165-4973-bf74-3d513222ac71",
+      "sourceType": "official artist-controlled Linktree destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-29T10:19:00.000Z",
+      "evidence": "Current Linktree button: TIX- Fri 11 Sept - Club CSI, Ipswich. The direct Oztix event destination returned HTTP 200."
+    },
+    {
+      "destination": "selection:tickets-bundaberg",
+      "url": "https://tickets.oztix.com.au/outlet/event/738fcd1f-268a-42b9-a6ba-db1aef088a17",
+      "sourceType": "official artist-controlled Linktree destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-29T10:19:00.000Z",
+      "evidence": "Current Linktree button: TIX - Fri 25 Sept Sugarland Tavern, Bundaberg. The direct Oztix event destination returned HTTP 200."
+    },
+    {
+      "destination": "selection:tickets-hervey-bay",
+      "url": "https://www.herveybayrsl.com.au/entertainment/whats-on/filthy-animals",
+      "sourceType": "official artist-controlled Linktree destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-29T10:19:00.000Z",
+      "evidence": "Current Linktree button: TIX- Sat 26 Sept Hervey Bay RSL. The direct venue event destination returned HTTP 200."
+    },
+    {
+      "destination": "selection:tickets-adelaide",
+      "url": "https://tickets.oztix.com.au/outlet/event/18a2d051-ff13-47ce-952f-a706668c0517",
+      "sourceType": "official artist-controlled Linktree destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-29T10:19:00.000Z",
+      "evidence": "Current Linktree button: TIX - Fri 4 December- The Clovey, Adelaide. The direct Oztix event destination returned HTTP 200."
+    },
+    {
+      "destination": "selection:tiktok",
+      "url": "https://www.tiktok.com/@filthy.animals.band",
+      "sourceType": "official artist-controlled Linktree destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-29T10:19:00.000Z",
+      "evidence": "Current Linktree button: TikTok - Filthy Animals. It resolves to the verified direct band profile."
+    },
+    {
+      "destination": "selection:facebook",
+      "url": "https://www.facebook.com/filthyanimalsoz",
+      "sourceType": "official artist-controlled Linktree and website destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-29T10:19:00.000Z",
+      "evidence": "Current Linktree button: Facebook - Filthy Animals. The direct profile is also linked by the official band website."
+    },
+    {
+      "destination": "selection:instagram",
+      "url": "https://www.instagram.com/filthyanimalsband_official/",
+      "sourceType": "official artist-controlled Linktree and website destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-29T10:19:00.000Z",
+      "evidence": "Current Linktree button: Instagram - Filthy Animals. The handle is also verified by the official website."
+    },
+    {
+      "destination": "selection:merch-shop",
+      "url": "https://filthyanimals.com.au/shop/",
+      "sourceType": "official artist-controlled Linktree destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-29T10:19:00.000Z",
+      "evidence": "Current Linktree button: Merch Shop. It opens the official Filthy Animals store and returned HTTP 200."
+    },
+    {
+      "destination": "selection:website",
+      "url": "https://filthyanimals.com.au/",
+      "sourceType": "official artist-controlled Linktree destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-29T10:19:00.000Z",
+      "evidence": "Current Linktree button: Website. It opens the verified official Filthy Animals site and returned HTTP 200."
+    },
+    {
+      "destination": "selection:contact",
+      "url": "https://filthyanimals.com.au/contact/",
+      "sourceType": "official artist-controlled website destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-29T10:19:00.000Z",
+      "evidence": "Current Linktree Contact Us action is represented by the verified HTTPS contact page on the band's official website."
+    },
+    {
+      "destination": "selection:reaction-video",
+      "url": "https://www.youtube.com/watch?v=ygaozWgeHyE",
+      "sourceType": "official artist-controlled Linktree destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-29T10:19:00.000Z",
+      "evidence": "Current Linktree button: Reaction Video- Sweet Child O Mine. The direct YouTube destination returned HTTP 200."
+    },
+    {
+      "destination": "selection:furzey-podcast",
+      "url": "https://www.youtube.com/watch?v=t2KCk-D8beU",
+      "sourceType": "official artist-controlled Linktree destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-29T10:19:00.000Z",
+      "evidence": "Current Linktree button: Furzey’s podcast with Kerry Jacobson. The direct YouTube destination returned HTTP 200."
+    },
+    {
+      "destination": "biography",
+      "url": "https://filthyanimals.com.au/",
+      "sourceType": "official artist-controlled website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-29T10:19:00.000Z",
+      "evidence": "The official website verifies the band's COVID-lockdown origin, growth to more than 30 performers, fluid five-piece format, associated Australian acts and event repertoire."
     },
     {
       "destination": "featuredVideo",
