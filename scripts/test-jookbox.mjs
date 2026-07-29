@@ -46,15 +46,22 @@ const [html, app, styles] = await Promise.all([
 ]);
 assert.match(html, /id="jookBoxCabinet"/);
 assert.match(html, /id="jookBoxVideoSlot"/);
+assert.match(html, /id="jookBoxSelectionSlot"/);
 assert.match(html, /id="jookBoxCoinButton"/);
+assert.match(html, /class="jookbox-band-plaque"/);
+assert.match(html, /id="jookBoxPlaqueName"/);
 assert.match(html, /id="jookBoxBioScreen"/);
 assert.match(app, /function isJookBoxEdition\(\)/);
 assert.match(app, /function jookBoxLinkDefinitions\(\)/);
+assert.match(app, /jookBoxSelectionSlot\.append\(els\.links\)/);
 assert.match(app, /function powerJookBox\(\)/);
 assert.match(app, /function playJookBoxCoinSound\(\)/);
 assert.match(app, /autoplay=1&playsinline=1/);
 assert.match(app, /function sequenceJookBoxButtons\(\)/);
 assert.match(styles, /\[data-edition-type="jukebox"\] \.jookbox-machine/);
+assert.match(styles, /\[data-edition-type="jukebox"\] \.hero\{display:none\}/);
+assert.match(styles, /\.jookbox-selection-bay/);
+assert.match(styles, /\.jookbox-selection-slot \.platform-links\{grid-template-columns:repeat\(2/);
 assert.match(styles, /@keyframes jookBoxCoinDrop/);
 assert.match(styles, /@media\(prefers-reduced-motion:reduce\)\{[\s\S]*\[data-edition-type="jukebox"\]/);
 

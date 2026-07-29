@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#000713">
   <meta id="pageDescription" name="description" content="Discover a verified Deep Cuts edition.">
   <title>Deep Cuts</title>
-  <link rel="stylesheet" href="/styles.css?v=20260729-jookbox-2">
+  <link rel="stylesheet" href="/styles.css?v=20260729-jookbox-3">
 </head>
 <body>
   <main id="app" class="discovery-shell">
@@ -40,12 +40,28 @@
           <div class="jookbox-speaker" aria-hidden="true">
             <span></span><span></span><span></span><span></span><span></span>
           </div>
+          <section class="jookbox-selection-bay" aria-labelledby="jookBoxSelectionTitle">
+            <div class="jookbox-selection-heading">
+              <span aria-hidden="true"></span>
+              <h3 id="jookBoxSelectionTitle">Make your selection</h3>
+              <span aria-hidden="true"></span>
+            </div>
+            <div id="jookBoxSelectionSlot" class="jookbox-selection-slot"></div>
+            <div class="jookbox-selection-star" aria-hidden="true"></div>
+          </section>
           <div class="jookbox-coin-bank">
-            <button id="jookBoxCoinButton" class="jookbox-coin-button" type="button" aria-describedby="jookBoxCoinPrompt">
-              <span class="jookbox-coin-slot" aria-hidden="true"></span>
-              <span class="jookbox-coin" aria-hidden="true"><b>$1</b></span>
-              <span class="jookbox-coin-plate">Push coin</span>
-            </button>
+            <div class="jookbox-coin-console">
+              <button id="jookBoxCoinButton" class="jookbox-coin-button" type="button" aria-describedby="jookBoxCoinPrompt">
+                <span class="jookbox-coin-slot" aria-hidden="true"></span>
+                <span class="jookbox-coin" aria-hidden="true"><b>$1</b></span>
+                <span class="jookbox-coin-plate">Push coin</span>
+              </button>
+              <div class="jookbox-band-plaque" aria-hidden="true">
+                <span id="jookBoxPlaqueName">Featured artist</span>
+                <strong>JookBox</strong>
+                <small>Deep Cuts Edition</small>
+              </div>
+            </div>
             <p id="jookBoxCoinPrompt" class="jookbox-selection-prompt">Push the coin to start</p>
             <p id="jookBoxPowerStatus" class="visually-hidden" aria-live="polite"></p>
           </div>
@@ -320,6 +336,6 @@
   <script src="/js/laneway-company-quiz.js?v=20260727-indie-label-3"></script>
   <script src="/js/business-quiz.js?v=20260728-hgm-1"></script>
   <script src="/js/business-profile.js?v=20260729-hgm-profile-1"></script>
-  <script src="/js/app.js?v=20260729-jookbox-2"></script>
+  <script src="/js/app.js?v=20260729-jookbox-3"></script>
 </body>
 </html>
