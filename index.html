@@ -230,6 +230,43 @@
       </div>
     </section>
 
+    <section id="businessProfileScreen" class="business-profile-screen" aria-labelledby="businessProfileQuestion" hidden>
+      <div class="business-profile-topbar">
+        <button id="businessProfileHomeButton" class="business-home-button" type="button">&larr; HGM Jobs</button>
+        <p id="businessProfileProgressText" class="business-quiz-progress">Question 1 of 5</p>
+      </div>
+      <div class="business-profile-progress" role="progressbar" aria-label="Profile progress" aria-valuemin="1" aria-valuemax="5" aria-valuenow="1">
+        <span id="businessProfileProgressBar"></span>
+      </div>
+      <div class="business-profile-card">
+        <img id="businessProfileLogo" class="business-quiz-logo" alt="">
+        <p class="business-profile-kicker">Tell us what you want</p>
+        <h2 id="businessProfileQuestion" tabindex="-1">Loading question...</h2>
+        <div id="businessProfileAnswers" class="business-profile-answers" role="group" aria-label="Answer choices"></div>
+        <p id="businessProfileFeedback" class="business-profile-feedback" aria-live="polite" hidden></p>
+        <div class="business-profile-navigation">
+          <button id="businessProfileBackButton" class="business-profile-back" type="button">Back</button>
+          <button id="businessProfileNextButton" class="business-profile-next" type="button" disabled>Continue</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="businessProfileResultScreen" class="business-profile-result-screen" aria-labelledby="businessProfileResultTitle" hidden>
+      <div class="business-profile-result-card">
+        <img id="businessProfileResultLogo" class="business-result-logo" alt="">
+        <p class="business-profile-kicker">Here’s what we’re hearing</p>
+        <h1 id="businessProfileResultTitle" tabindex="-1">YOUR IDEAL ROLE PROFILE</h1>
+        <div id="businessProfileResultRows" class="business-profile-result-rows"></div>
+        <p id="businessProfileSummary" class="business-profile-summary"></p>
+        <p id="businessProfileResponse" class="business-profile-response"></p>
+        <div class="business-profile-result-actions">
+          <a id="businessProfileSmsButton" class="business-profile-sms">TEXT MY PROFILE TO KATIE</a>
+          <button id="businessProfileRestartButton" class="business-profile-restart" type="button">START AGAIN</button>
+          <button id="businessProfileResultHomeButton" class="business-profile-home" type="button">BACK TO HGM JOBS</button>
+        </div>
+      </div>
+    </section>
+
     <footer class="page-footer" aria-label="Deep Cuts platform">
       <span id="poweredByLabel">Deep Cuts</span>
       <small id="coverCopyright">Copyright Clearlight Creative</small>
@@ -242,6 +279,7 @@
   <script src="/js/laneway-quiz.js?v=20260726-indie-wheel-1"></script>
   <script src="/js/laneway-company-quiz.js?v=20260727-indie-label-3"></script>
   <script src="/js/business-quiz.js?v=20260728-hgm-1"></script>
-  <script src="/js/app.js?v=20260728-hgm-3"></script>
+  <script src="/js/business-profile.js?v=20260729-hgm-profile-1"></script>
+  <script src="/js/app.js?v=20260729-hgm-profile-1"></script>
 </body>
 </html>

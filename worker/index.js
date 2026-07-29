@@ -15,7 +15,9 @@ const EVENT_NAMES=new Set([
   "wheel_spin_started","wheel_result_shown","artist_destination_clicked","artist_directory_searched",
   "artist_video_shown",
   "utility_link_clicked","quiz_started","quiz_question_answered","quiz_completed",
-  "quiz_abandoned","quiz_replayed","quiz_invitation_revealed","services_contact_clicked"
+  "quiz_abandoned","quiz_replayed","quiz_invitation_revealed","services_contact_clicked",
+  "candidate_profile_started","candidate_profile_answer_selected","candidate_profile_completed",
+  "candidate_profile_sms_opened","candidate_profile_restarted"
 ]);
 const DESTINATIONS=new Set([
   "buy_music","spotify","instagram","bandcamp","youtube","facebook","website",

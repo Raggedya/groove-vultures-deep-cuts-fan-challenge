@@ -124,6 +124,90 @@
       }
     ]
   },
+  "businessProfile": {
+    "title": "TELL US WHAT YOU WANT",
+    "supportingText": "Five quick questions. Takes less than a minute.",
+    "buttonLabel": "TELL US WHAT YOU WANT",
+    "resultTitle": "YOUR IDEAL ROLE PROFILE",
+    "resultResponse": "That’s the kind of profile HGM regularly works with. We should definitely have a conversation.",
+    "smsButtonLabel": "TEXT MY PROFILE TO KATIE",
+    "restartLabel": "START AGAIN",
+    "recruiter": {
+      "name": "Katie",
+      "mobileNumber": ""
+    },
+    "questions": [
+      {
+        "id": "trade",
+        "profileLabel": "Trade",
+        "question": "What’s your trade?",
+        "feedback": "Great — that’s right in HGM’s wheelhouse.",
+        "options": [
+          "Heavy Diesel Mechanic",
+          "HV Electrician",
+          "Auto Electrician",
+          "Boilermaker",
+          "Drill Fitter",
+          "Serviceperson",
+          "Other"
+        ]
+      },
+      {
+        "id": "workType",
+        "profileLabel": "Work Style",
+        "question": "What type of work are you looking for?",
+        "feedback": "Good choice — HGM regularly works across those opportunities.",
+        "options": [
+          "FIFO",
+          "DIDO",
+          "Metro",
+          "Shutdowns",
+          "Open to options"
+        ]
+      },
+      {
+        "id": "roster",
+        "profileLabel": "Preferred Roster",
+        "question": "What roster would suit you?",
+        "feedback": "Got it — we’ll keep that preference front and centre.",
+        "options": [
+          "2 weeks on, 1 week off",
+          "2 weeks on, 2 weeks off",
+          "8 days on, 6 days off",
+          "Even-time roster",
+          "Short-term or shutdown work",
+          "Flexible"
+        ]
+      },
+      {
+        "id": "pay",
+        "profileLabel": "Pay Preference",
+        "question": "What pay range are you looking for?",
+        "feedback": "Thanks — we’ll treat that as your preference, not a guaranteed rate.",
+        "options": [
+          "Under $60 per hour",
+          "$60–$69 per hour",
+          "$70–$79 per hour",
+          "$80+ per hour",
+          "Open to the right opportunity"
+        ]
+      },
+      {
+        "id": "opportunity",
+        "profileLabel": "Opportunity",
+        "question": "What kind of opportunity do you want?",
+        "feedback": "Perfect — that gives the HGM team a clear place to start.",
+        "options": [
+          "Permanent",
+          "Long-term contract",
+          "Short-term contract",
+          "Shutdown work",
+          "Casual",
+          "Open to options"
+        ]
+      }
+    ]
+  },
   "businessChallenge": {
     "title": "LEARN ABOUT HGM",
     "ctaLabel": "Take the 10-question HGM quiz",
