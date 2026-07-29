@@ -115,7 +115,11 @@ async function applyConfig(){
   configureLanewayUtilityLinks();
   if(schools)await SchoolDiscoveryQuiz.configure({config,analytics,homeElement:els.page,challengeButton:$("schoolChallengeButton")});
   if(business){
-    await BusinessQuiz.configure({config,analytics,homeElement:els.page,challengeButton:$("businessChallengeButton")});
+    if(config.businessProfile){
+      BusinessProfile.configure({config,analytics,homeElement:els.page,invitationButton:$("businessProfileInvitationButton")});
+    }else{
+      await BusinessQuiz.configure({config,analytics,homeElement:els.page,challengeButton:$("businessChallengeButton")});
+    }
     if(config.business?.buttonLightSequence===true)sequenceBusinessButtons();
   }
   if(laneway)await LanewayQuiz.configure({config,analytics,homeElement:els.page,challengeButton:$("lanewayChallengeButton")});
@@ -246,6 +250,7 @@ function buildLinks(){
 }
 
 function buildBusinessLinks(){
+  if(config.businessProfile)els.links.append(createBusinessProfileInvitation());
   const introduction=document.createElement("div");
   introduction.className="business-jobs-heading wide";
   introduction.innerHTML=`<p>${escapeHtml(config.business?.jobsEyebrow||"CURRENT OPPORTUNITIES")}</p><h2>${escapeHtml(config.business?.jobsTitle||"Find your next HGM job")}</h2><span>${escapeHtml(config.business?.jobsIntro||"Explore current roles with High Grade Mechanical.")}</span>`;
@@ -272,15 +277,37 @@ function buildBusinessLinks(){
     element.addEventListener("click",()=>trackBusinessOutbound(job.id,url,"job_directory"),{passive:true});
     els.links.append(element);
   }
-  const challenge=document.createElement("button");
-  challenge.id="businessChallengeButton";challenge.type="button";challenge.className="business-challenge-card wide";challenge.disabled=true;
-  challenge.innerHTML=`<span class="business-challenge-icon" aria-hidden="true">?</span><span class="link-copy"><strong>${escapeHtml(config.businessChallenge?.title||"LEARN ABOUT HGM")}</strong><small>${escapeHtml(config.businessChallenge?.ctaLabel||"Take the 10-question quiz")}</small></span><span class="link-arrow" aria-hidden="true">&gt;</span>`;
-  challenge.addEventListener("click",()=>BusinessQuiz.open());
-  els.links.append(challenge);
+  if(!config.businessProfile){
+    const challenge=document.createElement("button");
+    challenge.id="businessChallengeButton";challenge.type="button";challenge.className="business-challenge-card wide";challenge.disabled=true;
+    challenge.innerHTML=`<span class="business-challenge-icon" aria-hidden="true">?</span><span class="link-copy"><strong>${escapeHtml(config.businessChallenge?.title||"LEARN ABOUT HGM")}</strong><small>${escapeHtml(config.businessChallenge?.ctaLabel||"Take the 10-question quiz")}</small></span><span class="link-arrow" aria-hidden="true">&gt;</span>`;
+    challenge.addEventListener("click",()=>BusinessQuiz.open());
+    els.links.append(challenge);
+  }
+}
+
+function createBusinessProfileInvitation(){
+  const invitation=document.createElement("section");
+  invitation.className="business-profile-invitation wide";
+  invitation.setAttribute("aria-labelledby","businessProfileInvitationTitle");
+  const heading=document.createElement("h2");
+  heading.id="businessProfileInvitationTitle";
+  heading.textContent=config.businessProfile.title;
+  const supporting=document.createElement("p");
+  supporting.textContent=config.businessProfile.supportingText;
+  const button=document.createElement("button");
+  button.id="businessProfileInvitationButton";
+  button.type="button";
+  button.className="business-profile-invitation-button";
+  button.disabled=true;
+  button.innerHTML=`<span>${escapeHtml(config.businessProfile.buttonLabel)}</span><span aria-hidden="true">&gt;</span>`;
+  button.addEventListener("click",()=>BusinessProfile.open());
+  invitation.append(heading,supporting,button);
+  return invitation;
 }
 
 function sequenceBusinessButtons(){
-  const buttons=[...document.querySelectorAll('.business-job-link,.business-challenge-card,#editionUtilityActions .utility-action:not([hidden])')];
+  const buttons=[...document.querySelectorAll('.business-profile-invitation-button,.business-job-link,.business-challenge-card,#editionUtilityActions .utility-action:not([hidden])')];
   const lightStep=.52;
   const lightDuration=Math.max(buttons.length*lightStep,4.2);
   buttons.forEach((element,index)=>{
