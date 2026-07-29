@@ -15,7 +15,7 @@
 - [x] Unify the Laneway company reference around pale-teal decorative accents while preserving the wheel pointer as its sole red focal marker.
 - [x] Add the isolated Business Recruitment contract with verified job cards, owner-approved branding/Aggits, featured video and a sourced 10-question company quiz; deliver High Grade Mechanical as its first edition.
 - [x] Generalise direct-job validation and business-brand treatments without changing HGM; deliver Hays as the second isolated Business Recruitment edition with verified mining resources, direct vacancies and an explicitly labelled owner-selected demo video.
-- [x] Upgrade the isolated no-Aggits, no-quiz, no-wheel band model to `jookbox/2`: a subtly weathered old cabinet, prominent dynamic band marquee, top-mounted push-coin start, audible coin drop, short cabinet wake-up, user-initiated video autoplay, cabinet-mounted Share, self-balancing verified Linktree keys, sequential lights and sourced Learn More screen; preserve Filthy Animals as its first edition.
+- [x] Upgrade the isolated no-Aggits, no-quiz, no-wheel band model to `jookbox/2`: a subtly weathered old cabinet, auto-fitting illuminated band-name sign, top-mounted push-coin start, audible coin drop, user-initiated video autoplay, cabinet-mounted Share, one-line track metadata, a fixed verified Bandcamp/Spotify/Instagram/Website/Buy Music/Buy Merch/Facebook deck and sourced Learn More screen; preserve Filthy Animals as its first edition.
 
 ## Batch-production time savings
 

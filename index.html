@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#000713">
   <meta id="pageDescription" name="description" content="Discover a verified Deep Cuts edition.">
   <title>Deep Cuts</title>
-  <link rel="stylesheet" href="/styles.css?v=20260730-jookbox-6">
+  <link rel="stylesheet" href="/styles.css?v=20260730-jookbox-7">
 </head>
 <body>
   <main id="app" class="discovery-shell">
@@ -29,7 +29,7 @@
           <div class="jookbox-chrome-arch" aria-hidden="true"></div>
           <div class="jookbox-product-deck">
             <header class="jookbox-marquee">
-              <p>JookBox</p>
+              <p class="jookbox-model-mark">JookBox</p>
               <h1 id="jookBoxTitle">Featured artist</h1>
               <span class="jookbox-playing-status">
                 <i aria-hidden="true"></i>
@@ -44,12 +44,6 @@
                   <span class="jookbox-coin" aria-hidden="true"><b>$1</b></span>
                   <span class="jookbox-coin-plate">Push coin to start</span>
                 </button>
-                <button id="jookBoxSoundToggle" class="jookbox-sound-toggle" type="button" aria-pressed="false" aria-label="Mute JookBox coin sound">Sound</button>
-                <div class="jookbox-band-plaque" aria-hidden="true">
-                  <span id="jookBoxPlaqueName">Featured artist</span>
-                  <strong>JookBox</strong>
-                  <small>Deep Cuts Edition</small>
-                </div>
               </div>
               <p id="jookBoxCoinPrompt" class="jookbox-selection-prompt visually-hidden">Push the coin to bring the JookBox to life</p>
             </div>
@@ -75,25 +69,10 @@
               </button>
             </section>
 
-            <nav class="jookbox-transport" aria-label="JookBox video and discovery controls">
-              <a id="jookBoxOpenVideo" class="jookbox-transport-control" target="_blank" rel="noopener noreferrer">
-                <span aria-hidden="true">▶</span>
-                <strong>Featured</strong>
-              </a>
-              <button id="jookBoxDeepCutButton" class="jookbox-transport-control" type="button" disabled>
-                <span aria-hidden="true">★</span>
-                <strong>Deep Cut</strong>
-              </button>
-              <a id="jookBoxYouTubeControl" class="jookbox-transport-control" target="_blank" rel="noopener noreferrer">
-                <span aria-hidden="true">▰</span>
-                <strong>Channel</strong>
-              </a>
-            </nav>
-
             <a id="jookBoxPrimaryAction" class="jookbox-primary-action" hidden>
               <span aria-hidden="true">★</span>
-              <strong>View upcoming shows</strong>
-              <small>Open the verified ticket list</small>
+              <strong>Open verified destination</strong>
+              <small>Continue with the band</small>
             </a>
             <p id="jookBoxPowerStatus" class="visually-hidden" aria-live="polite"></p>
 
@@ -106,24 +85,10 @@
                 <div id="jookBoxSecondaryActions" class="jookbox-secondary-actions"></div>
               </section>
 
-              <section id="jookBoxShows" class="jookbox-shows" aria-labelledby="jookBoxShowsTitle" hidden>
-                <div class="jookbox-section-heading">
-                  <p>On the road</p>
-                  <h2 id="jookBoxShowsTitle">Upcoming shows</h2>
-                  <span id="jookBoxShowsCount"></span>
-                </div>
-                <div id="jookBoxFeaturedShow" class="jookbox-featured-show"></div>
-                <button id="jookBoxShowsToggle" class="jookbox-shows-toggle" type="button" aria-expanded="false" aria-controls="jookBoxAllShows" hidden>
-                  View all shows
-                </button>
-                <div id="jookBoxAllShows" class="jookbox-all-shows" hidden></div>
-              </section>
             </div>
           </div>
 
           <nav id="jookBoxActionBar" class="jookbox-action-bar" aria-label="JookBox quick actions">
-            <button id="jookBoxBottomDeepCut" type="button" disabled><span aria-hidden="true">★</span><strong>Deep Cut</strong></button>
-            <button id="jookBoxBottomShows" type="button" disabled><span aria-hidden="true">▤</span><strong>Shows</strong></button>
             <button id="jookBoxLearnMore" class="jookbox-learn-more" type="button" hidden><span aria-hidden="true">i</span><strong>Learn More</strong></button>
           </nav>
         </div>
@@ -396,6 +361,6 @@
   <script src="/js/laneway-company-quiz.js?v=20260727-indie-label-3"></script>
   <script src="/js/business-quiz.js?v=20260728-hgm-1"></script>
   <script src="/js/business-profile.js?v=20260729-hgm-profile-1"></script>
-  <script src="/js/app.js?v=20260730-jookbox-6"></script>
+  <script src="/js/app.js?v=20260730-jookbox-7"></script>
 </body>
 </html>

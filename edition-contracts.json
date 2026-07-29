@@ -59,11 +59,10 @@
         "in-cabinet-privacy-enhanced-video",
         "video-first-16-by-9-hierarchy",
         "dominant-verified-primary-action",
-        "verified-linktree-selection-key-destinations",
-        "verified-upcoming-shows-module",
+        "verified-linktree-snapshot-with-fixed-destination-allow-list",
+        "seven-category-destination-deck",
         "large-two-column-tactile-controls",
         "self-balancing-selection-grid",
-        "working-only-transport-controls",
         "integrated-mobile-quick-action-bar",
         "restrained-ambient-illumination",
         "sourced-second-screen-band-biography",
@@ -88,8 +87,8 @@
     },
     "jukebox": {
       "brandNames": ["JookBox"],
-      "allowedLinks": ["spotify", "youtube", "instagram", "facebook", "tiktok", "website", "merchandise", "contact"],
-      "renderedLinks": ["spotify", "youtube", "instagram", "facebook", "tiktok", "website", "merchandise", "contact"],
+      "allowedLinks": ["bandcamp", "spotify", "instagram", "website", "buyMusic", "merchandise", "facebook", "youtube", "tiktok", "contact"],
+      "renderedLinks": ["bandcamp", "spotify", "instagram", "website", "buyMusic", "merchandise", "facebook"],
       "exclusiveConfig": ["jookBox"]
     },
     "car": {

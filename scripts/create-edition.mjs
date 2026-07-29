@@ -113,7 +113,7 @@ function validateResearch(value){
   const school=value.editionType==='school';
   const business=value.editionType==='business';
   const jookBox=value.editionType==='jukebox';
-  const keys=school?['website','enrolment','virtualTour','principalMessage','visionValues','curriculum','studentLife','newsletter','termDates','policies','contact','schoolProject','youtube']:business?['website','careers','benefits','contact']:jookBox?['spotify','youtube','instagram','facebook','tiktok','website','merchandise','contact']:club?['website','calendar','news','events','membership','barefootBowls','pennant','venueHire','history','contact','facebook','bowlsVictoria']:car?['history','specifications','buyerGuide','youtube','ownersClub','partsRestoration','carsForSale','newsReviews']:['buyMusic','spotify','instagram','bandcamp','youtube','facebook','website','merchandise','newsReviews'];
+  const keys=school?['website','enrolment','virtualTour','principalMessage','visionValues','curriculum','studentLife','newsletter','termDates','policies','contact','schoolProject','youtube']:business?['website','careers','benefits','contact']:jookBox?['bandcamp','spotify','instagram','website','buyMusic','merchandise','facebook','youtube']:club?['website','calendar','news','events','membership','barefootBowls','pennant','venueHire','history','contact','facebook','bowlsVictoria']:car?['history','specifications','buyerGuide','youtube','ownersClub','partsRestoration','carsForSale','newsReviews']:['buyMusic','spotify','instagram','bandcamp','youtube','facebook','website','merchandise','newsReviews'];
   const links=Object.fromEntries(keys.map(key=>[key,https(value.links?.[key]||'')]));
   const sources=Array.isArray(value.sources)?value.sources:[];
   if(sources.length<2||!sources.some(source=>source.identityVerified===true&&/official|authoritative/i.test(String(source.sourceType||''))))throw new Error('Research requires two identity-checked sources including one official or authoritative source.');
@@ -227,7 +227,7 @@ function validateJookBoxSelections(value){
   const sources=Array.isArray(value.sources)?value.sources:[];
   const ids=new Set(),urls=new Set();
   return selections.map(selection=>{
-    const allowedKinds=new Set(['show','spotify','youtube','instagram','facebook','tiktok','merchandise','newsletter','website','contact','deep_cut']);
+    const allowedKinds=new Set(['show','bandcamp','spotify','youtube','instagram','facebook','tiktok','buy_music','merchandise','newsletter','website','contact','deep_cut']);
     const suppliedKind=clean(selection.kind,30).toLowerCase();
     const item={
       id:clean(selection.id,80),
