@@ -74,6 +74,13 @@ for(const edition of platform.editions){
         jobIds.add(job.id);jobURLs.add(url);
       }
       for(const asset of [config.characterArtwork,config.business?.logoArtwork])await fs.access(asset);
+    }else if(config.editionType==='jukebox'){
+      if(config.brandName!=='JookBox'||config.characterArtwork)errors.push(`${edition.config} must preserve the isolated no-Aggits JookBox contract.`);
+      if(config.jookBox?.modelVersion!=='jookbox/1'||JSON.stringify(config.jookBox?.heroLabels)!==JSON.stringify(['Listen','Watch','Follow','Shop'])||config.jookBox?.lightSequence!==true)errors.push(`${edition.config} must preserve the JookBox model, four-part navigation and sequential-light treatment.`);
+      if(config.featuredVideo?.selectionBasis!=='most-viewed-official'||!config.featuredVideo?.youtubeURL)errors.push(`${edition.config} requires the verified most-viewed official YouTube feature.`);
+      if(!/^https:\/\/open\.spotify\.com\/artist\/[A-Za-z0-9]+\/?$/.test(config.links?.spotify||''))errors.push(`${edition.config} requires a direct verified Spotify artist destination.`);
+      if(!/^https:\/\/(?:www\.)?youtube\.com\/(?:channel\/|@)/.test(config.links?.youtube||''))errors.push(`${edition.config} requires a direct verified official YouTube channel.`);
+      if(!/^https:\/\//.test(config.links?.website||''))errors.push(`${edition.config} requires the verified official band website.`);
     }else if(config.editionType==='laneway'){
       if(config.characterArtwork)errors.push(`${edition.config} Laneway must never configure Aggits or other character artwork.`);
       if(config.laneway?.logoArtwork!=='assets/laneway-music-logo-reverse-transparent.png'||config.laneway?.logoTreatment!=='reverse-white-transparent')errors.push(`${edition.config} must preserve the approved transparent reverse-white Laneway Music logo treatment.`);

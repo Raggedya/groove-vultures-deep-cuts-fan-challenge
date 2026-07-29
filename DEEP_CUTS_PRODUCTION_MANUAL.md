@@ -24,6 +24,14 @@ Each Business edition records `business.jobURLPrefix`; every vacancy must be a d
 
 Hays is the second isolated Business Recruitment edition at `dc_3481f25897`. It uses the immutable standard Aggits artwork, the official Hays brand mark, current direct Hays Resources & Mining vacancy pages and ten sourced questions. The owner-selected HGM video is included only for demonstration and is visibly labelled as such; it must never be presented as official or endorsed Hays content.
 
+## JookBox permanent rules
+
+JookBox uses `editionType: jukebox` and model `jookbox/1` on the shared engine. It is a band-only discovery model with no Aggits, quiz or spinning wheel. Its HGM-related deep-navy foundation supports an isolated old-school jukebox cabinet, warm chrome/gold and red-orange illumination, the verified featured YouTube video inside the cabinet and a set of physical selection-key links below it.
+
+Each JookBox edition starts from one artist-controlled identity source such as the supplied Linktree, then independently verifies every published destination. Spotify, official YouTube, website, social, merchandise and booking links are optional and omitted when unavailable. If an official YouTube channel exists, the embedded feature is its most-viewed embeddable official video at verification time. Sequential lights are decorative only, respect reduced motion and never interfere with keyboard focus or outbound navigation.
+
+Filthy Animals is the first completed JookBox edition at `dc_a3c049e4bc`. Its exact destinations, copy, colours and featured video belong only to that edition. Future JookBox bands reuse the renderer and model contract while supplying separately verified configuration and evidence.
+
 ## Laneway permanent rules
 
 `Laneway [Band or Artist]` creates an isolated Laneway edition on the permanent platform. It preserves the exact supplied Laneway Music source logo and displays a deterministic transparent reverse-white rendition, preventing a rectangular image background on every browser. It uses a charcoal/black interface and no Aggits character or Aggits artwork. Its QR and social delivery images show `DEEP CUTS` immediately above `copyright Clearlight Creative`, never `Laneway` in that footer position. It must never change the standard Deep Cuts Music edition.
@@ -56,7 +64,7 @@ Future independent labels use isolated `indie_wheel` configuration on the shared
 
 Deep Cuts accepts CSV batches through one permanent controller. Intake data is evidence to verify, not truth to copy. Every artist is normalized, duplicate-checked, range-checked, researched and independently gated. Publication requires at least 98% confidence in artist identity and every mandatory direct destination. Search pages, guesses and placeholders are forbidden. Rejections are recorded and isolated. Temporary failures receive bounded retries with exponential backoff; checkpoints allow safe resume. Accepted artists flow through the existing factory, immutable artwork checks, QR scan-back, shared Cloudflare deployment, live verification, analytics registration and email delivery.
 
-Music, Cars and Clubs are discovery products, not quizzes; their legacy question count remains zero. School Discovery, Business Recruitment and Laneway are explicit, separately isolated exceptions with six-question, ten-question and five-question positive challenge contracts respectively.
+Music, Cars, Clubs and JookBox are discovery products, not quizzes; their question count remains zero. School Discovery, Business Recruitment and Laneway are explicit, separately isolated exceptions with six-question, ten-question and five-question positive challenge contracts respectively.
 
 Version 3.0 â€” Permanent Artist Discovery Platform
 

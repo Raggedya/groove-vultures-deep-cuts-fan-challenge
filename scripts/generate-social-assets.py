@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import math
 import os
 import subprocess
 import sys
@@ -622,6 +623,119 @@ def create_qr(config: dict, aggits: Image.Image, destination: Path) -> str:
     return url
 
 
+def jookbox_colour(config: dict, key: str, fallback: tuple[int, int, int]) -> tuple[int, int, int]:
+    value = str(config.get("theme", {}).get(key, "")).lstrip("#")
+    if len(value) == 6:
+        try:
+            return tuple(int(value[index:index + 2], 16) for index in (0, 2, 4))
+        except ValueError:
+            pass
+    return fallback
+
+
+def jookbox_background(config: dict) -> Image.Image:
+    surface = jookbox_colour(config, "surface", (9, 19, 33))
+    cyan = jookbox_colour(config, "accent", (85, 217, 255))
+    orange = jookbox_colour(config, "accentSecondary", (255, 102, 64))
+    canvas = Image.new("RGBA", (SIZE, SIZE), (*surface, 255))
+    glow = Image.new("RGBA", (SIZE, SIZE), (0, 0, 0, 0))
+    glow_draw = ImageDraw.Draw(glow)
+    glow_draw.ellipse((-80, -180, 1160, 780), fill=cyan + (62,))
+    glow_draw.ellipse((470, 570, 1250, 1280), fill=orange + (44,))
+    return Image.alpha_composite(canvas, glow.filter(ImageFilter.GaussianBlur(125)))
+
+
+def draw_jookbox(draw: ImageDraw.ImageDraw, box: tuple[int, int, int, int], config: dict, screen_text: str = "") -> None:
+    left, top, right, bottom = box
+    width = right - left
+    cyan = jookbox_colour(config, "accent", (85, 217, 255))
+    orange = jookbox_colour(config, "accentSecondary", (255, 102, 64))
+    gold = jookbox_colour(config, "gold", (255, 214, 107))
+    draw.rounded_rectangle(box, radius=width // 2, fill=(16, 27, 41, 255), outline=gold, width=12)
+    draw.rounded_rectangle((left + 18, top + 18, right - 18, bottom - 18), radius=max(28, width // 2 - 18), outline=(225, 236, 244, 225), width=5)
+    draw.rounded_rectangle((left + 34, top + 34, right - 34, bottom - 34), radius=max(24, width // 2 - 34), outline=orange, width=7)
+    centre_x = (left + right) // 2
+    radius_x = width * 0.42
+    radius_y = width * 0.37
+    for index in range(18):
+        angle = math.radians(198 + index * (144 / 17))
+        x = int(centre_x + math.cos(angle) * radius_x)
+        y = int(top + width * 0.46 + math.sin(angle) * radius_y)
+        colour = cyan if index % 2 else orange
+        draw.ellipse((x - 7, y - 7, x + 7, y + 7), fill=colour, outline=(255, 255, 255), width=2)
+    screen = (left + 74, top + int(width * 0.51), right - 74, top + int(width * 0.91))
+    draw.rounded_rectangle(screen, radius=16, fill=(3, 7, 12, 255), outline=cyan, width=4)
+    if screen_text:
+        selected = fit_font(draw, screen_text, screen[2] - screen[0] - 34, 35, 22)
+        centred_text(draw, screen_text, screen[1] + 52, selected, fill=WHITE, canvas_width=left + right)
+    grille_top = screen[3] + 24
+    draw.rounded_rectangle((left + 66, grille_top, right - 66, bottom - 48), radius=16, fill=(5, 8, 12, 255), outline=orange, width=4)
+    for x in range(left + 87, right - 72, 22):
+        draw.line((x, grille_top + 18, x, bottom - 66), fill=(73, 89, 102), width=5)
+
+
+def create_jookbox_instagram(config: dict, destination: Path) -> None:
+    canvas = jookbox_background(config)
+    draw = ImageDraw.Draw(canvas)
+    orange = jookbox_colour(config, "accentSecondary", (255, 102, 64))
+    gold = jookbox_colour(config, "gold", (255, 214, 107))
+    centred_text(draw, "JOOKBOX", 54, fit_font(draw, "JOOKBOX", 760, 74, 50), fill=orange, stroke=1)
+    name = str(config["bandName"]).upper()
+    centred_text(draw, name, 142, fit_font(draw, name, 910, 76, 44), fill=WHITE, stroke=2)
+    draw_jookbox(draw, (252, 250, 828, 865), config, "PLAY")
+    centred_text(draw, "WATCH • LISTEN • FOLLOW • SHOP", 897, fit_font(draw, "WATCH • LISTEN • FOLLOW • SHOP", 780, 32, 23), fill=gold)
+    centred_text(draw, "Deep Cuts", 970, font(31), fill=(225, 234, 242))
+    centred_text(draw, "Copyright Clearlight Creative", 1016, font(20), fill=(139, 159, 177))
+    canvas.convert("RGB").save(destination, "PNG", optimize=True)
+
+
+def create_jookbox_qr(config: dict, destination: Path) -> str:
+    platform = json.loads((ROOT / "platform.json").read_text(encoding="utf-8"))
+    base_url = os.environ.get("DEEP_CUTS_BASE_URL", platform.get("publicBaseURL", "")).rstrip("/")
+    if not base_url.startswith("https://") or ".example" in base_url:
+        raise ValueError("A permanent HTTPS publicBaseURL is required before JookBox QR artwork can be generated.")
+    edition_id = config.get("analytics", {}).get("editionId")
+    url = f"{base_url}/q/{edition_id}"
+    node = os.environ.get("DEEP_CUTS_NODE", "node")
+    result = subprocess.run([node, str(ROOT / "scripts" / "qr-matrix.cjs"), url], cwd=ROOT, check=True, capture_output=True, text=True)
+    matrix = json.loads(result.stdout)
+    border = 4
+    module = 500 // (len(matrix) + border * 2)
+    qr_size = module * (len(matrix) + border * 2)
+    qr_image = Image.new("RGBA", (qr_size, qr_size), (255, 255, 255, 255))
+    qr_draw = ImageDraw.Draw(qr_image)
+    for row, values in enumerate(matrix):
+        for column, dark in enumerate(values):
+            if dark:
+                x, y = (column + border) * module, (row + border) * module
+                qr_draw.rectangle((x, y, x + module - 1, y + module - 1), fill=(5, 11, 19, 255))
+    canvas = jookbox_background(config)
+    draw = ImageDraw.Draw(canvas)
+    orange = jookbox_colour(config, "accentSecondary", (255, 102, 64))
+    gold = jookbox_colour(config, "gold", (255, 214, 107))
+    centred_text(draw, "SCAN TO PLAY THE JOOKBOX", 42, fit_font(draw, "SCAN TO PLAY THE JOOKBOX", 920, 60, 42), fill=WHITE, stroke=1)
+    name = str(config["bandName"]).upper()
+    centred_text(draw, name, 120, fit_font(draw, name, 920, 68, 40), fill=orange, stroke=1)
+    card_size = qr_size + 42
+    card_x, card_y = (SIZE - card_size) // 2, 245
+    draw.rounded_rectangle((card_x, card_y, card_x + card_size, card_y + card_size), radius=30, fill=(255, 255, 255), outline=gold, width=6)
+    canvas.alpha_composite(qr_image, (card_x + 21, card_y + 21))
+    centred_text(draw, "WATCH • LISTEN • FOLLOW • SHOP", 868, fit_font(draw, "WATCH • LISTEN • FOLLOW • SHOP", 780, 31, 22), fill=gold)
+    centred_text(draw, "Deep Cuts", 948, font(31), fill=(225, 234, 242))
+    centred_text(draw, "Copyright Clearlight Creative", 998, font(20), fill=(139, 159, 177))
+    canvas.convert("RGB").save(destination, "PNG", optimize=True)
+    if not matrix or len(matrix) != len(matrix[0]):
+        raise SystemExit(f"JookBox QR matrix validation failed for {destination}")
+    if zxingcpp is not None:
+        scan = zxingcpp.read_barcode(Image.open(destination))
+        if scan is None or scan.text != url:
+            raise SystemExit(f"Rendered JookBox QR scan-back failed for {destination}")
+        reduced_scan = zxingcpp.read_barcode(Image.open(destination).resize((540, 540), Image.Resampling.LANCZOS))
+        if reduced_scan is None or reduced_scan.text != url:
+            raise SystemExit(f"Reduced-size JookBox QR scan-back failed for {destination}")
+    return url
+
+
 def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
@@ -636,6 +750,9 @@ def main() -> None:
     if config.get("editionType") == "school":
         create_school_instagram(config, instagram)
         verified_url = create_school_qr(config, qr_path)
+    elif config.get("editionType") == "jukebox":
+        create_jookbox_instagram(config, instagram)
+        verified_url = create_jookbox_qr(config, qr_path)
     elif config.get("editionType") == "laneway":
         create_laneway_instagram(config, instagram)
         verified_url = create_laneway_qr(config, qr_path)

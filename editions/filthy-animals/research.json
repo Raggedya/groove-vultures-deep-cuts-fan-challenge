@@ -1,0 +1,88 @@
+{
+  "bandName": "Filthy Animals",
+  "slug": "filthy-animals",
+  "editionId": "dc_a3c049e4bc",
+  "verifiedAt": "2026-07-29T08:15:16.445Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://linktr.ee/filthyanimalsband",
+      "sourceType": "official artist-controlled Linktree",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-29T08:03:00.000Z",
+      "evidence": "The supplied artist-controlled Linktree identifies @filthyanimalsband as legends of rock, stage and TV and links the same official website, YouTube channel and social profiles used by this edition."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/2kO9UMIDqQWPheJpacwBZI",
+      "sourceType": "official music platform artist page",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-29T08:04:00.000Z",
+      "evidence": "The direct Spotify artist page is THE FILTHY ANIMALS and lists the band's releases plus current tour dates matching events promoted through the supplied Linktree."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/channel/UCKxWp8Uqst1s--EMYSi7AgQ",
+      "sourceType": "official artist-controlled Linktree destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-29T08:04:30.000Z",
+      "evidence": "The supplied Linktree's Our YouTube Channel control resolves directly to channel UCKxWp8Uqst1s--EMYSi7AgQ, titled The Filthy Animals."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/filthyanimalsband_official/",
+      "sourceType": "official artist-controlled Linktree destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-29T08:05:00.000Z",
+      "evidence": "The supplied Linktree and the band's official website both identify @filthyanimalsband_official as the band's Instagram profile."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/filthyanimalsoz",
+      "sourceType": "official band website destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-29T08:05:10.000Z",
+      "evidence": "The official Filthy Animals website links directly to the Facebook profile and identifies its handle as @filthyanimalsoz."
+    },
+    {
+      "destination": "tiktok",
+      "url": "https://www.tiktok.com/@filthy.animals.band",
+      "sourceType": "official artist-controlled Linktree destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-29T08:05:20.000Z",
+      "evidence": "The supplied artist-controlled Linktree's TikTok control resolves to the direct @filthy.animals.band profile."
+    },
+    {
+      "destination": "website",
+      "url": "https://filthyanimals.com.au/",
+      "sourceType": "official artist-controlled website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-29T08:05:30.000Z",
+      "evidence": "The supplied Linktree links this domain as Website; the site identifies The Filthy Animals as an Australian party supergroup and describes its rotating lineup."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://filthyanimals.com.au/shop/",
+      "sourceType": "official artist-controlled shop",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-29T08:05:40.000Z",
+      "evidence": "The Linktree Merch Shop control resolves to the official website shop, which displayed six Filthy Animals merchandise products at verification time."
+    },
+    {
+      "destination": "contact",
+      "url": "https://filthyanimals.com.au/contact/",
+      "sourceType": "official artist-controlled contact page",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-29T08:05:50.000Z",
+      "evidence": "The band's official website provides this direct contact page for booking and band enquiries."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=Yarspws7fDA",
+      "sourceType": "official YouTube channel popular listing",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-29T08:07:15.000Z",
+      "evidence": "The official channel's Popular ordering placed Fox On The Run first at 380K views. The privacy-enhanced embed endpoint returned HTTP 200 during verification."
+    }
+  ]
+}

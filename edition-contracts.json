@@ -40,6 +40,31 @@
         "contact-destination",
         "source-credit-metadata"
       ]
+    },
+    "jookbox": {
+      "version": 1,
+      "status": "locked",
+      "referenceEditionType": "jukebox",
+      "referenceEditionId": "dc_a3c049e4bc",
+      "compatibleEditionTypes": ["jukebox"],
+      "lockedCapabilities": [
+        "no-aggits",
+        "no-quiz",
+        "no-spinning-wheel",
+        "old-school-illuminated-jukebox",
+        "in-cabinet-privacy-enhanced-video",
+        "verified-selection-key-destinations",
+        "sequential-carnival-lights",
+        "reduced-motion-static-treatment"
+      ],
+      "editionOwnedFields": [
+        "band-identity",
+        "verified-destinations",
+        "verified-featured-video",
+        "band-description",
+        "colour-palette",
+        "source-evidence"
+      ]
     }
   },
   "editionTypes": {
@@ -48,6 +73,12 @@
       "allowedLinks": ["buyMusic", "spotify", "instagram", "bandcamp", "youtube", "facebook", "website", "merchandise", "newsReviews", "mailingList", "tickets", "tiktok", "tip"],
       "renderedLinks": ["buyMusic", "spotify", "instagram", "bandcamp", "youtube", "facebook", "website", "merchandise", "newsReviews"],
       "exclusiveConfig": []
+    },
+    "jukebox": {
+      "brandNames": ["JookBox"],
+      "allowedLinks": ["spotify", "youtube", "instagram", "facebook", "tiktok", "website", "merchandise", "contact"],
+      "renderedLinks": ["spotify", "youtube", "instagram", "facebook", "tiktok", "website", "merchandise", "contact"],
+      "exclusiveConfig": ["jookBox"]
     },
     "car": {
       "brandNames": ["Deep Cuts Cars"],

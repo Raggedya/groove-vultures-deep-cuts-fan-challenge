@@ -273,6 +273,14 @@
       "name": "Hays",
       "config": "editions/hays/edition.json",
       "active": true
+    },
+    {
+      "slug": "filthy-animals",
+      "editionId": "dc_a3c049e4bc",
+      "canonicalPath": "/e/dc_a3c049e4bc",
+      "name": "Filthy Animals",
+      "config": "editions/filthy-animals/edition.json",
+      "active": true
     }
   ]
 }
