@@ -52,6 +52,7 @@
   },
   "jookBox": {
     "modelVersion": "jookbox/2",
+    "cabinetArtwork": "assets/jookbox-cabinet-photoreal-v1.webp",
     "marquee": "Filthy Animals",
     "videoLabel": "Now playing",
     "heroLabels": [

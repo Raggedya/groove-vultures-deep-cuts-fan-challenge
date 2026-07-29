@@ -1,9 +1,9 @@
 "use strict";
 
-const VERSION="20260729-jookbox-3";
+const VERSION="20260729-jookbox-4";
 const LANEWAY_REPORTING_VERSION="laneway-weekly-v1";
 const $=id=>document.getElementById(id);
-const els={page:$("discoveryPage"),error:$("errorScreen"),errorMessage:$("errorMessage"),bandName:$("bandName"),bio:$("artistBio"),artwork:$("heroArtwork"),brandLogo:$("editionBrandLogo"),waveform:$("sonicSignature"),features:$("featureList"),video:$("featuredVideo"),videoLabel:$("featuredVideoLabel"),videoTitle:$("featuredVideoTitle"),videoFrame:$("featuredVideoFrame"),jookBox:$("jookBoxCabinet"),jookBoxTitle:$("jookBoxTitle"),jookBoxVideoSlot:$("jookBoxVideoSlot"),jookBoxVideoLock:$("jookBoxVideoLock"),jookBoxSelectionSlot:$("jookBoxSelectionSlot"),jookBoxPlaqueName:$("jookBoxPlaqueName"),jookBoxCoin:$("jookBoxCoinButton"),jookBoxCoinPrompt:$("jookBoxCoinPrompt"),jookBoxPowerStatus:$("jookBoxPowerStatus"),jookBoxLearnMore:$("jookBoxLearnMore"),jookBoxBioScreen:$("jookBoxBioScreen"),jookBoxBioBack:$("jookBoxBioBack"),jookBoxBioTitle:$("jookBoxBioTitle"),jookBoxBioCopy:$("jookBoxBioCopy"),jookBoxBioSource:$("jookBoxBioSource"),links:$("platformLinks"),share:$("shareButton"),status:$("shareStatus"),description:$("pageDescription"),poweredBy:$("poweredByLabel"),copyright:$("coverCopyright"),lanewayHome:$("lanewayHomeLink"),lanewayRecommended:$("lanewayRecommendedLink"),companyDirectory:$("lanewayCompanyDirectory"),companyDirectoryCount:$("lanewayCompanyDirectoryCount"),companySearch:$("lanewayCompanySearch"),companyArtistList:$("lanewayCompanyArtistList"),companyEmpty:$("lanewayCompanyEmpty"),companyWheel:$("lanewayArtistWheel"),wheelCanvas:$("lanewayWheelCanvas"),wheelSpin:$("lanewayWheelSpin"),wheelStatus:$("lanewayWheelStatus"),wheelWinner:$("lanewayWheelWinner"),wheelImpact:$("lanewayWheelImpact"),wheelPurchaseLinks:$("lanewayWheelPurchaseLinks"),wheelBuyMusic:$("lanewayWheelBuyMusic"),wheelBuyMerch:$("lanewayWheelBuyMerch"),wheelVideo:$("lanewayWheelVideo"),wheelVideoTitle:$("lanewayWheelVideoTitle"),wheelVideoFrame:$("lanewayWheelVideoFrame")};
+const els={page:$("discoveryPage"),error:$("errorScreen"),errorMessage:$("errorMessage"),bandName:$("bandName"),bio:$("artistBio"),artwork:$("heroArtwork"),brandLogo:$("editionBrandLogo"),waveform:$("sonicSignature"),features:$("featureList"),video:$("featuredVideo"),videoLabel:$("featuredVideoLabel"),videoTitle:$("featuredVideoTitle"),videoFrame:$("featuredVideoFrame"),jookBox:$("jookBoxCabinet"),jookBoxTitle:$("jookBoxTitle"),jookBoxVideoSlot:$("jookBoxVideoSlot"),jookBoxVideoLock:$("jookBoxVideoLock"),jookBoxSelectionSlot:$("jookBoxSelectionSlot"),jookBoxSelectionTitle:$("jookBoxSelectionTitle"),jookBoxPlaqueName:$("jookBoxPlaqueName"),jookBoxCoin:$("jookBoxCoinButton"),jookBoxCoinPrompt:$("jookBoxCoinPrompt"),jookBoxPowerStatus:$("jookBoxPowerStatus"),jookBoxLearnMore:$("jookBoxLearnMore"),jookBoxBioScreen:$("jookBoxBioScreen"),jookBoxBioBack:$("jookBoxBioBack"),jookBoxBioTitle:$("jookBoxBioTitle"),jookBoxBioCopy:$("jookBoxBioCopy"),jookBoxBioSource:$("jookBoxBioSource"),links:$("platformLinks"),share:$("shareButton"),status:$("shareStatus"),description:$("pageDescription"),poweredBy:$("poweredByLabel"),copyright:$("coverCopyright"),lanewayHome:$("lanewayHomeLink"),lanewayRecommended:$("lanewayRecommendedLink"),companyDirectory:$("lanewayCompanyDirectory"),companyDirectoryCount:$("lanewayCompanyDirectoryCount"),companySearch:$("lanewayCompanySearch"),companyArtistList:$("lanewayCompanyArtistList"),companyEmpty:$("lanewayCompanyEmpty"),companyWheel:$("lanewayArtistWheel"),wheelCanvas:$("lanewayWheelCanvas"),wheelSpin:$("lanewayWheelSpin"),wheelStatus:$("lanewayWheelStatus"),wheelWinner:$("lanewayWheelWinner"),wheelImpact:$("lanewayWheelImpact"),wheelPurchaseLinks:$("lanewayWheelPurchaseLinks"),wheelBuyMusic:$("lanewayWheelBuyMusic"),wheelBuyMerch:$("lanewayWheelBuyMerch"),wheelVideo:$("lanewayWheelVideo"),wheelVideoTitle:$("lanewayWheelVideoTitle"),wheelVideoFrame:$("lanewayWheelVideoFrame")};
 
 const MUSIC_LINK_DEFINITIONS=[
   {key:"buyMusic",label:"Buy Music",subLabel:"Purchase music directly",priority:"primary",fallback:"bandcamp"},
@@ -74,6 +74,9 @@ let platform,editionEntry,config;
 let analytics={device:"desktop",track(){return null}};
 let attentionTimer=0;
 let jookBoxPowered=false;
+let jookBoxSelectionTimer=0;
+let jookBoxSelectionStart=0;
+const JOOKBOX_VISIBLE_SELECTIONS=8;
 init();
 
 async function init(){
@@ -120,7 +123,7 @@ async function applyConfig(){
   }
   if(schools){document.documentElement.style.setProperty("--school-secondary",config.theme?.accentSecondary||"#00C4B4");document.documentElement.style.setProperty("--school-navy",config.theme?.navy||"#0A2342");document.documentElement.style.setProperty("--school-surface",config.theme?.surface||"#FFFFFF");document.documentElement.style.setProperty("--school-content",config.theme?.contentBackground||"#F8FAFC")}
   if(business){document.documentElement.style.setProperty("--business-accent",config.theme?.accent||"#2f80c3");document.documentElement.style.setProperty("--business-secondary",config.theme?.accentSecondary||"#ff6a1a");document.documentElement.style.setProperty("--business-secondary-strong",config.theme?.secondaryStrong||"#a94618");document.documentElement.style.setProperty("--business-surface",config.theme?.surface||"#111a29")}
-  if(jookBox){document.documentElement.style.setProperty("--jookbox-cyan",config.theme?.accent||"#55d9ff");document.documentElement.style.setProperty("--jookbox-orange",config.theme?.accentSecondary||"#ff6640");document.documentElement.style.setProperty("--jookbox-gold",config.theme?.gold||"#ffd66b");document.documentElement.style.setProperty("--jookbox-surface",config.theme?.surface||"#091321")}
+  if(jookBox){document.documentElement.style.setProperty("--jookbox-cyan",config.theme?.accent||"#55d9ff");document.documentElement.style.setProperty("--jookbox-orange",config.theme?.accentSecondary||"#ff6640");document.documentElement.style.setProperty("--jookbox-gold",config.theme?.gold||"#ffd66b");document.documentElement.style.setProperty("--jookbox-surface",config.theme?.surface||"#091321");document.documentElement.style.setProperty("--jookbox-cabinet-artwork",`url("/${config.jookBox?.cabinetArtwork||"assets/jookbox-cabinet-photoreal-v1.webp"}")`)}
   buildWaveform(name);
   buildFeaturedVideo();
   if(jookBox)buildJookBox();
@@ -299,14 +302,49 @@ function buildLinks(){
 }
 
 function sequenceJookBoxButtons(){
-  const buttons=[...els.links.querySelectorAll(".jookbox-selection")].filter(element=>!element.hidden);
+  const buttons=[...els.links.querySelectorAll(".jookbox-selection")];
+  buttons.forEach((element,index)=>element.dataset.jookboxIndex=String(index));
+  showJookBoxSelectionGroup(buttons,0);
+}
+
+function showJookBoxSelectionGroup(buttons,start){
+  if(!buttons.length)return;
   const step=.55;
-  const duration=Math.max(buttons.length*step,5);
+  const duration=Math.max(JOOKBOX_VISIBLE_SELECTIONS*step,5);
+  const visibleIndexes=new Map();
+  const safeStart=start<buttons.length?start:0;
+  const visibleCount=Math.min(JOOKBOX_VISIBLE_SELECTIONS,buttons.length-safeStart);
+  for(let slot=0;slot<visibleCount;slot++)visibleIndexes.set(safeStart+slot,slot);
   buttons.forEach((element,index)=>{
-    element.classList.add("jookbox-carnival-light");
+    const slot=visibleIndexes.get(index);
+    const visible=slot!==undefined;
+    element.hidden=!visible;
+    element.style.order=visible?String(slot):"";
+    element.classList.remove("jookbox-carnival-light");
+    if(!visible){element.tabIndex=-1;return}
+    const code=element.querySelector(".jookbox-selection-code");
+    if(code)code.textContent=`${String.fromCharCode(65+Math.floor(slot/2))}${slot%2+1}`;
+    element.tabIndex=jookBoxPowered?0:-1;
     element.style.setProperty("--jookbox-light-duration",`${duration}s`);
-    element.style.setProperty("--jookbox-light-delay",`${index*step}s`);
+    element.style.setProperty("--jookbox-light-delay",`${slot*step}s`);
+    void element.offsetWidth;
+    element.classList.add("jookbox-carnival-light");
   });
+  if(els.jookBoxSelectionTitle)els.jookBoxSelectionTitle.textContent=`Make your selection. Showing ${visibleCount} of ${buttons.length} verified destinations.`;
+}
+
+function startJookBoxSelectionRotation(){
+  window.clearTimeout(jookBoxSelectionTimer);
+  const buttons=[...els.links.querySelectorAll(".jookbox-selection")];
+  if(buttons.length<=JOOKBOX_VISIBLE_SELECTIONS)return;
+  const rotate=()=>{
+    if(document.hidden||els.links.contains(document.activeElement)){jookBoxSelectionTimer=window.setTimeout(rotate,1000);return}
+    const nextStart=jookBoxSelectionStart+JOOKBOX_VISIBLE_SELECTIONS;
+    jookBoxSelectionStart=nextStart>=buttons.length?0:nextStart;
+    showJookBoxSelectionGroup(buttons,jookBoxSelectionStart);
+    jookBoxSelectionTimer=window.setTimeout(rotate,5000);
+  };
+  jookBoxSelectionTimer=window.setTimeout(rotate,5000);
 }
 
 function jookBoxLinkDefinitions(){
@@ -335,8 +373,8 @@ function powerJookBox(){
   for(const link of els.links.querySelectorAll(".jookbox-selection")){
     link.href=link.dataset.href;
     link.removeAttribute("aria-disabled");
-    link.removeAttribute("tabindex");
   }
+  showJookBoxSelectionGroup([...els.links.querySelectorAll(".jookbox-selection")],jookBoxSelectionStart);
   const id=els.videoFrame.dataset.videoId;
   if(id)els.videoFrame.src=`https://www.youtube-nocookie.com/embed/${id}?rel=0&modestbranding=1&autoplay=1&playsinline=1`;
   analytics.track("jookbox_coin_inserted",{interaction_source:"jookbox_coin",video_id:id||"",edition_type:config.editionType},{onceKey:`jookbox-coin:${editionEntry.editionId}`});
@@ -344,6 +382,7 @@ function powerJookBox(){
     machine.dataset.powerState="on";
     els.jookBox.classList.remove("is-starting");
     els.jookBox.classList.add("is-powered");
+    startJookBoxSelectionRotation();
   },matchMedia("(prefers-reduced-motion: reduce)").matches?0:1450);
 }
 
