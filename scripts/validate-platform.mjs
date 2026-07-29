@@ -85,8 +85,8 @@ for(const edition of platform.editions){
       const research=JSON.parse(await fs.readFile(edition.config.replace(/edition\.json$/,'research.json'),'utf8'));
       for(const selection of selections){
         const url=normalized(selection.url);
-        if(!selection.id||!selection.sourceTitle||!selection.label||!url||!['youtube','facebook','instagram','merchandise','website'].includes(selection.platform))errors.push(`${edition.config} contains an incomplete JookBox selection.`);
-        if(selection.kind&& !['show','spotify','youtube','instagram','facebook','tiktok','merchandise','newsletter','website','contact','deep_cut'].includes(selection.kind))errors.push(`${edition.config} contains an unsupported JookBox selection kind.`);
+        if(!selection.id||!selection.sourceTitle||!selection.label||!url||!['bandcamp','spotify','youtube','facebook','instagram','merchandise','website'].includes(selection.platform))errors.push(`${edition.config} contains an incomplete JookBox selection.`);
+        if(selection.kind&& !['show','bandcamp','spotify','youtube','instagram','facebook','tiktok','buy_music','merchandise','newsletter','website','contact','deep_cut'].includes(selection.kind))errors.push(`${edition.config} contains an unsupported JookBox selection kind.`);
         if(selection.kind==='show'&&(!selection.dateLabel||!selection.venue))errors.push(`${edition.config} JookBox show ${selection.id||'unknown'} requires verified date and venue display data.`);
         if(ids.has(selection.id)||selectionURLs.has(url))errors.push(`${edition.config} contains a duplicate JookBox selection.`);
         if(!research.sources.some(source=>source.destination===`selection:${selection.id}`&&source.identityVerified===true&&normalized(source.url)===url))errors.push(`${edition.config} JookBox selection ${selection.id||'unknown'} lacks matching source evidence.`);

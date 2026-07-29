@@ -1,6 +1,6 @@
 "use strict";
 
-const VERSION="20260730-jookbox-6";
+const VERSION="20260730-jookbox-7";
 const LANEWAY_REPORTING_VERSION="laneway-weekly-v1";
 const $=id=>document.getElementById(id);
 const els={
@@ -9,12 +9,9 @@ const els={
   video:$("featuredVideo"),videoLabel:$("featuredVideoLabel"),videoTitle:$("featuredVideoTitle"),videoFrame:$("featuredVideoFrame"),
   jookBox:$("jookBoxCabinet"),jookBoxTitle:$("jookBoxTitle"),jookBoxStatusLabel:$("jookBoxStatusLabel"),
   jookBoxVideoSlot:$("jookBoxVideoSlot"),jookBoxVideoLock:$("jookBoxVideoLock"),jookBoxTrackTitle:$("jookBoxTrackTitle"),
-  jookBoxTrackArtist:$("jookBoxTrackArtist"),jookBoxOpenVideo:$("jookBoxOpenVideo"),jookBoxDeepCut:$("jookBoxDeepCutButton"),
-  jookBoxYouTube:$("jookBoxYouTubeControl"),jookBoxPlaqueName:$("jookBoxPlaqueName"),jookBoxCoin:$("jookBoxCoinButton"),
-  jookBoxCoinPrompt:$("jookBoxCoinPrompt"),jookBoxSoundToggle:$("jookBoxSoundToggle"),jookBoxPowerStatus:$("jookBoxPowerStatus"),jookBoxPrimaryAction:$("jookBoxPrimaryAction"),
-  jookBoxSecondaryActions:$("jookBoxSecondaryActions"),jookBoxShows:$("jookBoxShows"),jookBoxShowsCount:$("jookBoxShowsCount"),
-  jookBoxFeaturedShow:$("jookBoxFeaturedShow"),jookBoxShowsToggle:$("jookBoxShowsToggle"),jookBoxAllShows:$("jookBoxAllShows"),
-  jookBoxBottomDeepCut:$("jookBoxBottomDeepCut"),jookBoxBottomShows:$("jookBoxBottomShows"),jookBoxBottomShare:$("jookBoxBottomShare"),
+  jookBoxTrackArtist:$("jookBoxTrackArtist"),jookBoxCoin:$("jookBoxCoinButton"),jookBoxCoinPrompt:$("jookBoxCoinPrompt"),
+  jookBoxPowerStatus:$("jookBoxPowerStatus"),jookBoxPrimaryAction:$("jookBoxPrimaryAction"),
+  jookBoxSecondaryActions:$("jookBoxSecondaryActions"),jookBoxBottomShare:$("jookBoxBottomShare"),
   jookBoxLearnMore:$("jookBoxLearnMore"),jookBoxBioScreen:$("jookBoxBioScreen"),jookBoxBioBack:$("jookBoxBioBack"),
   jookBoxBioTitle:$("jookBoxBioTitle"),jookBoxBioCopy:$("jookBoxBioCopy"),jookBoxBioSource:$("jookBoxBioSource"),
   links:$("platformLinks"),share:$("shareButton"),status:$("shareStatus"),description:$("pageDescription"),poweredBy:$("poweredByLabel"),
@@ -40,14 +37,13 @@ const MUSIC_LINK_DEFINITIONS=[
 ];
 
 const JOOKBOX_LINK_DEFINITIONS=[
-  {key:"spotify",label:"Spotify",subLabel:"Play the band"},
-  {key:"youtube",label:"YouTube",subLabel:"Official band channel"},
-  {key:"merchandise",label:"Merch Shop",subLabel:"Wear the band"},
-  {key:"website",label:"Band Website",subLabel:"Meet the full supergroup"},
-  {key:"instagram",label:"Instagram",subLabel:"Latest band updates"},
-  {key:"facebook",label:"Facebook",subLabel:"Shows and announcements"},
-  {key:"tiktok",label:"TikTok",subLabel:"Clips from the band"},
-  {key:"contact",label:"Book the Band",subLabel:"Official enquiries"}
+  {key:"bandcamp",kind:"bandcamp",label:"Bandcamp",subLabel:"Music from the band"},
+  {key:"spotify",kind:"spotify",label:"Spotify",subLabel:"Listen on Spotify"},
+  {key:"instagram",kind:"instagram",label:"Instagram",subLabel:"Latest band updates"},
+  {key:"website",kind:"website",label:"Band Website",subLabel:"Visit the official website"},
+  {key:"buyMusic",kind:"buy_music",label:"Buy Music",subLabel:"Purchase music online"},
+  {key:"merchandise",kind:"merchandise",label:"Buy Merch",subLabel:"Official band merchandise"},
+  {key:"facebook",kind:"facebook",label:"Facebook",subLabel:"Follow the band"}
 ];
 
 const CAR_LINK_DEFINITIONS=[
@@ -96,8 +92,6 @@ let platform,editionEntry,config;
 let analytics={device:"desktop",track(){return null}};
 let attentionTimer=0;
 let jookBoxPowered=false;
-let jookBoxSoundMuted=false;
-let lastJookBoxDeepCutId="";
 init();
 
 async function init(){
@@ -271,8 +265,8 @@ function buildFeaturedVideo(){
 function buildJookBox(){
   if(!isJookBoxEdition())return;
   els.jookBoxTitle.textContent=config.jookBox?.marquee||config.bandName;
-  if(els.jookBoxPlaqueName)els.jookBoxPlaqueName.textContent=config.bandName;
   els.jookBoxTrackTitle.textContent=config.featuredVideo?.title||`${config.bandName} featured video`;
+  els.jookBoxTrackTitle.title=els.jookBoxTrackTitle.textContent;
   els.jookBoxTrackArtist.textContent=config.bandName;
   els.jookBoxBottomShare.setAttribute("aria-label",`Share the ${config.bandName} JookBox`);
   els.jookBoxStatusLabel.textContent="Ready to play";
@@ -283,29 +277,30 @@ function buildJookBox(){
     els.jookBoxVideoSlot.append(els.video);
   }
   els.jookBoxCoin.addEventListener("click",powerJookBox);
-  els.jookBoxSoundToggle.addEventListener("click",toggleJookBoxSound);
-  els.jookBoxDeepCut.addEventListener("click",openRandomJookBoxDeepCut);
-  els.jookBoxBottomDeepCut.addEventListener("click",openRandomJookBoxDeepCut);
-  els.jookBoxBottomShows.addEventListener("click",()=>openJookBoxShows(true));
   els.jookBoxBottomShare.addEventListener("click",sharePage);
-  els.jookBoxShowsToggle.addEventListener("click",()=>setJookBoxShowsExpanded(els.jookBoxShowsToggle.getAttribute("aria-expanded")!=="true"));
   els.jookBoxLearnMore.hidden=false;
   els.jookBoxLearnMore.addEventListener("click",openJookBoxBio);
   els.jookBoxBioBack.addEventListener("click",closeJookBoxBio);
   configureJookBoxBio();
+  fitJookBoxMarqueeTitle();
+  window.addEventListener("resize",fitJookBoxMarqueeTitle,{passive:true});
 }
 
-function toggleJookBoxSound(){
-  jookBoxSoundMuted=!jookBoxSoundMuted;
-  els.jookBoxSoundToggle.setAttribute("aria-pressed",String(jookBoxSoundMuted));
-  els.jookBoxSoundToggle.textContent="Sound";
-  els.jookBoxSoundToggle.setAttribute("aria-label",jookBoxSoundMuted?"Enable JookBox coin sound":"Mute JookBox coin sound");
+function fitJookBoxMarqueeTitle(){
+  if(!isJookBoxEdition()||!els.jookBoxTitle)return;
+  const title=els.jookBoxTitle;
+  title.style.removeProperty("font-size");
+  let size=Number.parseFloat(getComputedStyle(title).fontSize);
+  while(title.scrollWidth>title.clientWidth&&size>16){
+    size-=1;
+    title.style.fontSize=`${size}px`;
+  }
 }
 
 function buildLinks(){
   els.links.innerHTML="";
   if(isBusinessEdition()){buildBusinessLinks();balanceLinkGrid();return}
-  const definitions=isWheelEdition()?[]:isJookBoxEdition()?jookBoxLinkDefinitions():isSchoolEdition()?SCHOOL_LINK_DEFINITIONS:isClubEdition()?CLUB_LINK_DEFINITIONS:isCarEdition()?CAR_LINK_DEFINITIONS:MUSIC_LINK_DEFINITIONS;
+  const definitions=isWheelEdition()?[]:isJookBoxEdition()?jookBoxDestinationDefinitions():isSchoolEdition()?SCHOOL_LINK_DEFINITIONS:isClubEdition()?CLUB_LINK_DEFINITIONS:isCarEdition()?CAR_LINK_DEFINITIONS:MUSIC_LINK_DEFINITIONS;
   let schoolChallengeAdded=false;
   for(const definition of definitions){
     if(isSchoolEdition()&&definition.key==="schoolProject"&&!schoolChallengeAdded){els.links.append(createSchoolChallengeCard());schoolChallengeAdded=true}
@@ -362,6 +357,8 @@ function jookBoxSelectionKind(definition){
   const explicit=String(definition.kind||"").trim().toLowerCase();
   if(explicit)return explicit;
   const identity=`${definition.key||""} ${definition.sourceTitle||""} ${definition.label||""}`.toLowerCase();
+  if(/bandcamp/.test(identity))return"bandcamp";
+  if(/buy[\s_-]*music|music[\s_-]*store/.test(identity))return"buy_music";
   if(/(^|\s)(tickets?|tix)([-\s:]|$)/.test(identity)||/^book[-\s]/.test(String(definition.sourceTitle||"").toLowerCase()))return"show";
   if(/newsletter|mailing list|subscribe/.test(identity))return"newsletter";
   if(/reaction|podcast|deep cut/.test(identity))return"deep_cut";
@@ -377,30 +374,27 @@ function jookBoxSelectionKind(definition){
 
 function jookBoxDestinationDefinitions(){
   const snapshot=jookBoxLinkDefinitions().map(definition=>({...definition,kind:jookBoxSelectionKind(definition)}));
-  const seen=new Set(snapshot.map(definition=>validHttps(definition.url)));
-  const seenKeys=new Set(snapshot.map(definition=>definition.key));
-  const seenKinds=new Set(snapshot.map(definition=>definition.kind));
-  for(const definition of JOOKBOX_LINK_DEFINITIONS){
-    const url=linkValue(definition);
-    const fallback={...definition,url,platform:definition.key,sourceTitle:"",kind:jookBoxSelectionKind(definition)};
-    if(!url||seen.has(url)||seenKeys.has(definition.key)||(fallback.kind!=="website"&&seenKinds.has(fallback.kind)))continue;
-    snapshot.push(fallback);
-    seen.add(url);
-    seenKeys.add(definition.key);
-    seenKinds.add(fallback.kind);
-  }
-  return snapshot;
+  return JOOKBOX_LINK_DEFINITIONS.flatMap(contract=>{
+    const selection=snapshot.find(definition=>definition.kind===contract.kind);
+    const url=validHttps(selection?.url)||linkValue(contract);
+    if(!url)return[];
+    return[{
+      ...(selection||{}),
+      ...contract,
+      url,
+      platform:String(selection?.platform||contract.key).trim(),
+      sourceTitle:String(selection?.sourceTitle||"").trim()
+    }];
+  });
 }
 
 function buildJookBoxProductNavigation(){
   const destinations=jookBoxDestinationDefinitions();
-  const shows=destinations.filter(definition=>definition.kind==="show");
-  const secondary=destinations.filter(definition=>definition.kind!=="show");
+  const primary=destinations[0]||null;
+  const secondary=primary?destinations.slice(1):destinations;
   els.jookBoxSecondaryActions.replaceChildren(...secondary.map(definition=>createJookBoxDestinationLink(definition,"jookbox-action-key","jookbox_action_grid")));
   els.jookBoxSecondaryActions.closest(".jookbox-action-panel").hidden=!secondary.length;
-  buildJookBoxShows(shows);
-  configureJookBoxTransport(destinations);
-  configureJookBoxPrimaryAction(shows,destinations);
+  configureJookBoxPrimaryAction(primary);
   updateJookBoxActionBarLayout();
 }
 
@@ -410,94 +404,17 @@ function updateJookBoxActionBarLayout(){
   bar.style.gridTemplateColumns=`repeat(${Math.max(visible,1)},minmax(0,1fr))`;
 }
 
-function configureJookBoxTransport(destinations){
-  const featuredURL=validHttps(config.featuredVideo?.youtubeURL);
-  configureJookBoxDestinationAnchor(els.jookBoxOpenVideo,featuredURL,{
-    key:"featured_video",label:config.featuredVideo?.title||"Featured video",platform:"youtube"
-  },"jookbox_transport");
-  const channelURL=validHttps(config.links?.youtube)||destinations.find(definition=>definition.kind==="youtube")?.url;
-  configureJookBoxDestinationAnchor(els.jookBoxYouTube,channelURL,{
-    key:"youtube_channel",label:"YouTube channel",platform:"youtube"
-  },"jookbox_transport");
-  const hasDeepCuts=destinations.some(definition=>definition.kind==="deep_cut");
-  els.jookBoxDeepCut.hidden=!hasDeepCuts;
-  els.jookBoxBottomDeepCut.hidden=!hasDeepCuts;
-}
-
-function configureJookBoxPrimaryAction(shows,destinations){
+function configureJookBoxPrimaryAction(definition){
+  const icon=els.jookBoxPrimaryAction.querySelector("span");
   const title=els.jookBoxPrimaryAction.querySelector("strong");
   const detail=els.jookBoxPrimaryAction.querySelector("small");
   els.jookBoxPrimaryAction.hidden=true;
-  if(shows.length){
-    title.textContent=config.jookBox?.primaryActionLabel||"View upcoming shows";
-    detail.textContent=shows.length===1?"Open the verified ticket link":`Explore ${shows.length} verified show links`;
-    els.jookBoxPrimaryAction.dataset.jookboxHref="#jookBoxShows";
-    els.jookBoxPrimaryAction.dataset.jookboxMode="shows";
-    els.jookBoxPrimaryAction.removeAttribute("href");
-    els.jookBoxPrimaryAction.removeAttribute("target");
-    els.jookBoxPrimaryAction.removeAttribute("rel");
-    els.jookBoxPrimaryAction.setAttribute("aria-disabled","true");
-    els.jookBoxPrimaryAction.tabIndex=-1;
-    els.jookBoxPrimaryAction.onclick=event=>{
-      event.preventDefault();
-      if(!jookBoxPowered){focusJookBoxCoin();return}
-      openJookBoxShows(true);
-    };
-    return;
-  }
-  const priorities=["spotify","youtube","website","newsletter"];
-  const fallback=priorities.map(kind=>destinations.find(definition=>definition.kind===kind)).find(Boolean);
-  if(!fallback)return;
-  const labels={
-    spotify:["Listen on Spotify","Open the verified artist profile"],
-    youtube:["Watch on YouTube","Open the verified video destination"],
-    website:["Visit the official website","Continue with the band"],
-    newsletter:["Join the newsletter","Keep up with the band"]
-  };
-  const copy=labels[fallback.kind]||[fallback.label,fallback.subLabel];
-  title.textContent=copy[0];
-  detail.textContent=copy[1];
-  configureJookBoxDestinationAnchor(els.jookBoxPrimaryAction,fallback.url,fallback,"jookbox_primary_action");
+  if(!definition)return;
+  icon.textContent=jookBoxActionIcon(definition);
+  title.textContent=definition.label;
+  detail.textContent=definition.subLabel;
+  configureJookBoxDestinationAnchor(els.jookBoxPrimaryAction,definition.url,definition,"jookbox_primary_action");
   els.jookBoxPrimaryAction.hidden=true;
-}
-
-function buildJookBoxShows(shows){
-  els.jookBoxFeaturedShow.replaceChildren();
-  els.jookBoxAllShows.replaceChildren();
-  els.jookBoxShows.hidden=!shows.length;
-  els.jookBoxBottomShows.hidden=!shows.length;
-  if(!shows.length)return;
-  els.jookBoxShowsCount.textContent=`${shows.length} verified ${shows.length===1?"show":"shows"}`;
-  els.jookBoxFeaturedShow.append(createJookBoxShowRow(shows[0],true));
-  for(const show of shows.slice(1))els.jookBoxAllShows.append(createJookBoxShowRow(show,false));
-  els.jookBoxShowsToggle.hidden=shows.length<2;
-  els.jookBoxShowsToggle.textContent=`View all ${shows.length} shows`;
-  setJookBoxShowsExpanded(false);
-}
-
-function createJookBoxShowRow(definition,featured){
-  const row=document.createElement("article");
-  row.className=`jookbox-show-row${featured?" is-featured":""}`;
-  const detail=String(definition.subLabel||"").split(/\s*[·•]\s*/).filter(Boolean);
-  const date=definition.dateLabel||detail[0]||"";
-  const venue=definition.venue||detail[1]||definition.label;
-  const location=definition.location||"";
-  const copy=document.createElement("div");
-  copy.className="jookbox-show-copy";
-  copy.innerHTML=`${date?`<time>${escapeHtml(date)}</time>`:""}<strong>${escapeHtml(venue)}</strong>${location?`<span>${escapeHtml(location)}</span>`:""}`;
-  row.append(copy);
-  if(definition.soldOut){
-    const soldOut=document.createElement("span");
-    soldOut.className="jookbox-ticket-link is-sold-out";
-    soldOut.textContent="Sold out";
-    row.append(soldOut);
-    return row;
-  }
-  const link=createJookBoxDestinationLink(definition,"jookbox-ticket-link","jookbox_upcoming_shows");
-  link.querySelector(".jookbox-action-icon")?.remove();
-  link.querySelector(".jookbox-action-copy").innerHTML=`<strong>${escapeHtml(definition.availability||"Tickets")}</strong><small>Opens externally</small>`;
-  row.append(link);
-  return row;
 }
 
 function createJookBoxDestinationLink(definition,className,source){
@@ -532,43 +449,14 @@ function configureJookBoxDestinationAnchor(element,url,definition,source){
 
 function jookBoxActionIcon(definition){
   return({
-    show:"▤",spotify:"♫",youtube:"▶",instagram:"◎",facebook:"f",tiktok:"♪",
-    merchandise:"◆",newsletter:"✉",contact:"✦",deep_cut:"★",website:"⌂"
+    bandcamp:"B",spotify:"♫",instagram:"◎",website:"⌂",
+    buy_music:"♪",merchandise:"◆",facebook:"f"
   })[jookBoxSelectionKind(definition)]||"◆";
-}
-
-function setJookBoxShowsExpanded(expanded){
-  if(els.jookBoxShowsToggle.hidden)return;
-  els.jookBoxShowsToggle.setAttribute("aria-expanded",String(expanded));
-  els.jookBoxShowsToggle.textContent=expanded?"Show fewer dates":`View all ${1+els.jookBoxAllShows.children.length} shows`;
-  els.jookBoxAllShows.hidden=!expanded;
-}
-
-function openJookBoxShows(expandAll){
-  if(els.jookBoxShows.hidden)return;
-  if(!jookBoxPowered){focusJookBoxCoin();return}
-  if(expandAll)setJookBoxShowsExpanded(true);
-  els.jookBoxShows.scrollIntoView({block:"start",behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});
 }
 
 function focusJookBoxCoin(){
   els.jookBoxPowerStatus.textContent="Push the coin to start the JookBox before choosing a destination.";
   els.jookBoxCoin.focus();
-}
-
-function openRandomJookBoxDeepCut(){
-  if(!jookBoxPowered){focusJookBoxCoin();return}
-  const choices=jookBoxDestinationDefinitions().filter(definition=>definition.kind==="deep_cut");
-  if(!choices.length)return;
-  const available=choices.length>1?choices.filter(definition=>definition.key!==lastJookBoxDeepCutId):choices;
-  const choice=available[Math.floor(Math.random()*available.length)];
-  lastJookBoxDeepCutId=choice.key;
-  const url=validHttps(choice.url);
-  if(!url)return;
-  trackJookBoxOutbound(choice,url,"jookbox_deep_cut");
-  els.jookBoxPowerStatus.textContent=`Opening ${choice.label} in a new tab.`;
-  const opened=window.open(url,"_blank","noopener,noreferrer");
-  if(opened)opened.opener=null;
 }
 
 function unlockJookBoxDestinations(){
@@ -582,10 +470,6 @@ function unlockJookBoxDestinations(){
     link.removeAttribute("aria-disabled");
     link.tabIndex=0;
   }
-  const hasDeepCuts=jookBoxDestinationDefinitions().some(definition=>definition.kind==="deep_cut");
-  els.jookBoxDeepCut.disabled=!hasDeepCuts;
-  els.jookBoxBottomDeepCut.disabled=!hasDeepCuts;
-  els.jookBoxBottomShows.disabled=els.jookBoxShows.hidden;
   els.jookBoxPrimaryAction.hidden=!els.jookBoxPrimaryAction.dataset.jookboxHref;
 }
 
@@ -613,7 +497,6 @@ function powerJookBox(){
 }
 
 function playJookBoxCoinSound(){
-  if(jookBoxSoundMuted)return;
   const AudioContext=window.AudioContext||window.webkitAudioContext;
   if(!AudioContext)return;
   try{
