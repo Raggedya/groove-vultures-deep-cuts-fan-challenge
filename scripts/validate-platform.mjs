@@ -76,8 +76,8 @@ for(const edition of platform.editions){
       for(const asset of [config.characterArtwork,config.business?.logoArtwork])await fs.access(asset);
     }else if(config.editionType==='jukebox'){
       if(config.brandName!=='JookBox'||config.characterArtwork)errors.push(`${edition.config} must preserve the isolated no-Aggits JookBox contract.`);
-      if(config.jookBox?.modelVersion!=='jookbox/2'||JSON.stringify(config.jookBox?.heroLabels)!==JSON.stringify(['Listen','Watch','Follow','Shop'])||config.jookBox?.lightSequence!==true||config.jookBox?.coinStart!==true||config.jookBox?.syncMode!=='verified-build-time')errors.push(`${edition.config} must preserve the coin-started JookBox model and four-part discovery contract.`);
-      if(!config.jookBox?.primaryActionLabel)errors.push(`${edition.config} requires a JookBox primary-action label.`);
+      if(config.jookBox?.modelVersion!=='jookbox/3'||config.jookBox?.layoutVersion!=='coin-awakening/1'||JSON.stringify(config.jookBox?.heroLabels)!==JSON.stringify(['Listen','Watch','Follow','Shop'])||config.jookBox?.lightSequence!==true||config.jookBox?.coinStart!==true||config.jookBox?.syncMode!=='verified-build-time')errors.push(`${edition.config} must preserve the locked coin-awakening JookBox model.`);
+      if(!config.jookBox?.tickerBio||!config.jookBox?.coinSound||!config.jookBox?.sessionStorageKey)errors.push(`${edition.config} requires configured ticker copy, local coin audio and session restoration.`);
       if(config.featuredVideo?.selectionBasis!=='most-viewed-official'||!config.featuredVideo?.youtubeURL)errors.push(`${edition.config} requires the verified most-viewed official YouTube feature.`);
       const selections=Array.isArray(config.jookBox?.selections)?config.jookBox.selections:[];
       if(!selections.length)errors.push(`${edition.config} requires verified Linktree selection keys.`);
@@ -92,9 +92,17 @@ for(const edition of platform.editions){
         if(!research.sources.some(source=>source.destination===`selection:${selection.id}`&&source.identityVerified===true&&normalized(source.url)===url))errors.push(`${edition.config} JookBox selection ${selection.id||'unknown'} lacks matching source evidence.`);
         ids.add(selection.id);selectionURLs.add(url);
       }
+      const displayIds=Array.isArray(config.jookBox?.displaySelectionIds)?config.jookBox.displaySelectionIds:[];
+      if(!displayIds.length||displayIds.length>8||new Set(displayIds).size!==displayIds.length||displayIds.some(id=>!ids.has(id)))errors.push(`${edition.config} requires one to eight unique display selection IDs backed by verified snapshot entries.`);
+      const timings=config.jookBox?.startupTimingsMs||{};
+      if(!(timings.mechanism>=0&&timings.neonOn>=300&&timings.screenOn>=timings.neonOn&&timings.buttonsOn>=timings.screenOn&&timings.tickerOn>=timings.buttonsOn))errors.push(`${edition.config} contains an invalid JookBox start-up timeline.`);
       if(!normalized(config.jookBox?.linkSourceURL)||!Number.isFinite(new Date(config.jookBox?.linkSourceVerifiedAt).getTime())||!research.sources.some(source=>source.destination==='jookBoxSource'&&source.identityVerified===true&&normalized(source.url)===normalized(config.jookBox?.linkSourceURL)))errors.push(`${edition.config} requires a dated, verified Linktree source snapshot.`);
       if(!Array.isArray(config.jookBox?.biography?.paragraphs)||!config.jookBox.biography.paragraphs.length||!research.sources.some(source=>source.destination==='biography'&&source.identityVerified===true&&normalized(source.url)===normalized(config.jookBox?.biography?.sourceURL)))errors.push(`${edition.config} requires a sourced Learn More biography.`);
-      if(config.jookBox?.cabinetArtwork)await fs.access(config.jookBox.cabinetArtwork);
+      if(config.jookBox?.cabinetArtwork){
+        const cabinet=await fs.readFile(config.jookBox.cabinetArtwork);
+        if(config.jookBox.cabinetArtworkSha256&&crypto.createHash('sha256').update(cabinet).digest('hex')!==config.jookBox.cabinetArtworkSha256)errors.push(`${edition.config} locked JookBox cabinet artwork failed its SHA-256 identity check.`);
+      }
+      if(config.jookBox?.coinSound)await fs.access(config.jookBox.coinSound);
     }else if(config.editionType==='laneway'){
       if(config.characterArtwork)errors.push(`${edition.config} Laneway must never configure Aggits or other character artwork.`);
       if(config.laneway?.logoArtwork!=='assets/laneway-music-logo-reverse-transparent.png'||config.laneway?.logoTreatment!=='reverse-white-transparent')errors.push(`${edition.config} must preserve the approved transparent reverse-white Laneway Music logo treatment.`);

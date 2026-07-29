@@ -51,8 +51,32 @@
     "editionCreatedAt": "2026-07-29T08:15:16.445Z"
   },
   "jookBox": {
-    "modelVersion": "jookbox/2",
-    "cabinetArtwork": "assets/jookbox-cabinet-photoreal-v1.webp",
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-filthy-animals-locked-v1.jpg",
+    "cabinetArtworkSha256": "1b115766ff3be884a187c46c58c5e761676abefbacde2fee671006ff2709a089",
+    "coinSound": "assets/audio/jukebox-coin-drop.wav",
+    "sessionStorageKey": "filthyAnimalsJukeboxActivated",
+    "tickerBio": "THE FILTHY ANIMALS — AN AUSTRALIAN PARTY SUPERGROUP DRAWING ON A ROTATING COLLECTIVE OF SEASONED PERFORMERS TO DELIVER CLASSIC ROCK SONGS CONNECTED TO DECADES OF TOURING AND RECORDING.",
+    "tickerDurationSeconds": 28,
+    "buttonRowDurationMs": 800,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "tickets-moorabbin",
+      "newsletter",
+      "youtube-channel",
+      "tickets-rozelle",
+      "tickets-southport",
+      "airlie-beach",
+      "tickets-ipswich",
+      "tickets-bundaberg"
+    ],
     "marquee": "Filthy Animals",
     "videoLabel": "Now playing",
     "primaryActionLabel": "Open verified destination",

@@ -36,19 +36,29 @@ const config={
   social:{copyright:'copyright Clearlight Creative',instagramImage:`output/${slug}/instagram-discovery.png`,qrImage:`output/${slug}/instagram-qr.png`},
   theme:editionType==='school'?schoolTheme(input):editionType==='business'?businessTheme(input):editionType==='jukebox'?jookBoxTheme(input):{accent:'#2f80ff',accentSecondary:'#8dbdff'},links,
   featuredVideo,
-  analytics:{editionId,pageIdentifier:`${editionId}:${editionType==='jukebox'?'jookbox-v2':editionType==='laneway'?'laneway-v1':editionType==='school'?'school-discovery-v1':editionType==='business'?'business-recruitment-v1':editionType==='club'?'club-v1':editionType==='car'?'automotive-v1':'discovery-v1'}`},
+  analytics:{editionId,pageIdentifier:`${editionId}:${editionType==='jukebox'?'jookbox-v3':editionType==='laneway'?'laneway-v1':editionType==='school'?'school-discovery-v1':editionType==='business'?'business-recruitment-v1':editionType==='club'?'club-v1':editionType==='car'?'automotive-v1':'discovery-v1'}`},
   production:{jobId:job.jobId,submittedAt:job.submittedAt,researchCompletedAt:now,editionCreatedAt:now}
 };
 if(editionType==='car')config.automotive={make:clean(input.automotive?.make,60),model:clean(input.automotive?.model,60),productionYears:clean(input.automotive?.productionYears,30),heroLabels:['Discover','Watch','Connect','Own & Restore']};
 if(editionType==='club')config.club={location:clean(input.club?.location,120),formed:clean(input.club?.formed,30),heroLabels:['Visit','Play','Join','Connect']};
 if(editionType==='jukebox'){
   const selections=validateJookBoxSelections(input);
+  const requestedDisplayIds=Array.isArray(input.jookBox?.displaySelectionIds)?input.jookBox.displaySelectionIds.map(value=>clean(value,80)).filter(Boolean):selections.slice(0,8).map(selection=>selection.id);
+  if(!requestedDisplayIds.length||requestedDisplayIds.length>8||new Set(requestedDisplayIds).size!==requestedDisplayIds.length||requestedDisplayIds.some(id=>!selections.some(selection=>selection.id===id)))throw new Error('JookBox requires one to eight unique displaySelectionIds that match verified Linktree selections.');
   const paragraphs=(Array.isArray(input.jookBox?.biography?.paragraphs)?input.jookBox.biography.paragraphs:[]).map(paragraph=>clean(paragraph,520)).filter(Boolean);
   const biographySource=https(input.jookBox?.biography?.sourceURL||'');
   if(!paragraphs.length||!biographySource)throw new Error('JookBox requires verified biography paragraphs and an official HTTPS source.');
   config.jookBox={
-    modelVersion:'jookbox/2',
+    modelVersion:'jookbox/3',
+    layoutVersion:'coin-awakening/1',
     cabinetArtwork:clean(input.jookBox?.cabinetArtwork||'assets/jookbox-cabinet-photoreal-v1.webp',180),
+    coinSound:clean(input.jookBox?.coinSound||'assets/audio/jukebox-coin-drop.wav',180),
+    sessionStorageKey:`jookBoxActivated:${editionId}`,
+    tickerBio:clean(input.jookBox?.tickerBio||bio,420).toUpperCase(),
+    tickerDurationSeconds:Math.max(12,Math.min(60,Number(input.jookBox?.tickerDurationSeconds)||28)),
+    buttonRowDurationMs:Math.max(600,Math.min(1200,Number(input.jookBox?.buttonRowDurationMs)||800)),
+    startupTimingsMs:{mechanism:120,neonOn:800,screenOn:1200,buttonsOn:1600,tickerOn:2000},
+    displaySelectionIds:requestedDisplayIds,
     marquee:clean(input.jookBox?.marquee||bandName,80),
     videoLabel:clean(input.jookBox?.videoLabel||'Now playing',40),
     primaryActionLabel:clean(input.jookBox?.primaryActionLabel||'Open verified destination',60),

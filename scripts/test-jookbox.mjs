@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import crypto from "node:crypto";
 import fs from "node:fs/promises";
 
 const platform = JSON.parse(await fs.readFile("platform.json", "utf8"));
@@ -10,36 +11,60 @@ assert.equal(entry.canonicalPath, "/e/dc_a3c049e4bc");
 const config = JSON.parse(await fs.readFile(entry.config, "utf8"));
 assert.equal(config.brandName, "JookBox");
 assert.equal(config.editionType, "jukebox");
-assert.equal(config.jookBox?.modelVersion, "jookbox/2");
-assert.equal(config.jookBox?.cabinetArtwork, "assets/jookbox-cabinet-photoreal-v1.webp");
-await fs.access(config.jookBox.cabinetArtwork);
+assert.equal(config.jookBox?.modelVersion, "jookbox/3");
+assert.equal(config.jookBox?.layoutVersion, "coin-awakening/1");
+assert.equal(config.jookBox?.cabinetArtwork, "assets/jookbox-filthy-animals-locked-v1.jpg");
+assert.equal(config.jookBox?.coinSound, "assets/audio/jukebox-coin-drop.wav");
+assert.equal(config.jookBox?.sessionStorageKey, "filthyAnimalsJukeboxActivated");
+assert.equal(config.jookBox?.tickerDurationSeconds, 28);
+assert.equal(config.jookBox?.buttonRowDurationMs, 800);
+assert.deepEqual(config.jookBox?.startupTimingsMs, {
+  mechanism: 120,
+  neonOn: 800,
+  screenOn: 1200,
+  buttonsOn: 1600,
+  tickerOn: 2000,
+});
+assert.match(config.jookBox?.tickerBio || "", /THE FILTHY ANIMALS/);
 assert.deepEqual(config.jookBox?.heroLabels, ["Listen", "Watch", "Follow", "Shop"]);
 assert.equal(config.jookBox?.lightSequence, true);
 assert.equal(config.jookBox?.coinStart, true);
 assert.equal(config.jookBox?.syncMode, "verified-build-time");
-assert.equal(config.jookBox?.primaryActionLabel, "Open verified destination");
 assert.equal(config.characterArtwork, "", "JookBox must never render Aggits.");
 assert.equal(config.businessChallenge, undefined, "JookBox must not inherit a Business quiz.");
 assert.equal(config.lanewayCompanyChallenge, undefined, "JookBox must not inherit an Indie Label quiz.");
 assert.equal(config.indieWheel, undefined, "JookBox must not inherit a spinning wheel.");
 
+const cabinet = await fs.readFile(config.jookBox.cabinetArtwork);
+assert.equal(
+  crypto.createHash("sha256").update(cabinet).digest("hex"),
+  config.jookBox.cabinetArtworkSha256,
+  "The owner-approved 762 × 1280 cabinet reference must remain byte-for-byte locked.",
+);
+
+const coinSound = await fs.readFile(config.jookBox.coinSound);
+assert.equal(coinSound.subarray(0, 4).toString("ascii"), "RIFF");
+assert.equal(coinSound.subarray(8, 12).toString("ascii"), "WAVE");
+assert.ok(coinSound.byteLength > 40000, "The local coin mechanism sound must not be an empty placeholder.");
+
 assert.equal(config.featuredVideo?.selectionBasis, "most-viewed-official");
 assert.equal(config.featuredVideo?.youtubeURL, "https://www.youtube.com/watch?v=Yarspws7fDA");
-assert.equal(config.jookBox?.selections?.length, 18, "The dated Linktree research snapshot must remain complete even though it no longer defines the public buttons.");
+assert.equal(config.jookBox?.selections?.length, 18, "The dated Linktree research snapshot must remain complete.");
 assert.equal(new Set(config.jookBox.selections.map((selection) => selection.id)).size, config.jookBox.selections.length);
-assert.equal(config.jookBox.selections.some((selection) => selection.id === "merch-shop"), true);
-assert.equal(config.jookBox.selections.some((selection) => selection.id === "youtube-channel"), true);
-assert.equal(config.jookBox.selections.some((selection) => selection.id === "tickets-moorabbin"), true);
-assert.equal(config.jookBox.selections.some((selection) => selection.id === "furzey-podcast"), true);
 assert.equal(config.jookBox?.biography?.paragraphs?.length, 3);
-const showSelections = config.jookBox.selections.filter((selection) => selection.kind === "show");
-assert.equal(showSelections.length, 8, "Verified ticket destinations must remain in the dated research snapshot without becoming public JookBox controls.");
-for (const show of showSelections) {
-  assert.ok(show.dateLabel && show.venue && show.location, `${show.id} requires verified display metadata.`);
+assert.deepEqual(config.jookBox.displaySelectionIds, [
+  "tickets-moorabbin",
+  "newsletter",
+  "youtube-channel",
+  "tickets-rozelle",
+  "tickets-southport",
+  "airlie-beach",
+  "tickets-ipswich",
+  "tickets-bundaberg",
+]);
+for (const id of config.jookBox.displaySelectionIds) {
+  assert.ok(config.jookBox.selections.some((selection) => selection.id === id), `${id} must resolve to a verified Linktree snapshot entry.`);
 }
-assert.equal(config.jookBox.selections.filter((selection) => selection.kind === "deep_cut").length, 2);
-const publicDestinationKeys = ["bandcamp", "spotify", "instagram", "website", "buyMusic", "merchandise", "facebook"];
-assert.deepEqual(publicDestinationKeys.filter((key) => config.links[key]), ["spotify", "instagram", "website", "merchandise", "facebook"], "Only verified available categories may appear for Filthy Animals.");
 
 const research = JSON.parse(await fs.readFile("editions/filthy-animals/research.json", "utf8"));
 for (const [destination, url] of Object.entries(config.links)) {
@@ -59,70 +84,64 @@ const [html, app, styles, creator, validator, contractsText] = await Promise.all
   fs.readFile("edition-contracts.json", "utf8"),
 ]);
 const contracts = JSON.parse(contractsText);
-assert.deepEqual(contracts.editionTypes.jukebox.renderedLinks, publicDestinationKeys);
+assert.equal(contracts.productModels.jookbox.version, 3);
+assert.deepEqual(contracts.editionTypes.jukebox.renderedLinks, []);
 assert.match(html, /id="jookBoxCabinet"/);
 assert.match(html, /id="jookBoxVideoSlot"/);
-assert.match(html, /id="jookBoxCoinButton"/);
-assert.match(html, /class="jookbox-model-mark">JookBox</);
-assert.doesNotMatch(html, /id="jookBoxSoundToggle"|class="jookbox-band-plaque"|id="jookBoxPlaqueName"/, "Marked sound and duplicate-plaque controls must remain removed.");
-assert.match(html, /id="jookBoxTrackTitle"/);
-assert.match(html, /id="jookBoxPrimaryAction"/);
-assert.match(html, /id="jookBoxSecondaryActions"/);
+assert.match(html, /id="jookBoxCoinButton"[\s\S]*aria-label="Insert coin and start the jukebox"/);
+assert.match(html, /id="jookBoxTickerText"/);
 assert.match(html, /id="jookBoxBottomShare"/);
-assert.match(html, /id="jookBoxLearnMore" class="jookbox-learn-more jookbox-inline-learn-more"/);
-assert.match(html, /id="jookBoxBioScreen"/);
-assert.doesNotMatch(html, /id="jookBoxOpenVideo"|id="jookBoxDeepCutButton"|id="jookBoxYouTubeControl"|id="jookBoxShows"|id="jookBoxBottomDeepCut"|id="jookBoxBottomShows"|id="jookBoxActionBar"/, "Non-approved transport, Deep Cut, show and fixed bottom-bar controls must not render.");
-assert.ok(html.indexOf('id="jookBoxCoinButton"') < html.indexOf('id="jookBoxVideoSlot"'), "Coin and coin-slot hardware must appear above the video.");
-const trackMetadataStart = html.indexOf('class="jookbox-track-metadata"');
-const trackMetadataEnd = html.indexOf("</section>", trackMetadataStart);
-const shareControlIndex = html.indexOf('id="jookBoxBottomShare"');
-assert.ok(shareControlIndex > trackMetadataStart && shareControlIndex < trackMetadataEnd, "Share must be mounted beside the video metadata.");
-assert.doesNotMatch(html, /Filthy Animals/, "The reusable renderer must never hard-code one band.");
-assert.match(app, /function isJookBoxEdition\(\)/);
-assert.match(app, /function jookBoxLinkDefinitions\(\)/);
-assert.match(app, /function jookBoxDestinationDefinitions\(\)/);
-assert.match(app, /function buildJookBoxProductNavigation\(\)/);
-assert.match(app, /function configureJookBoxPrimaryAction\(definition\)/);
-assert.match(app, /function createJookBoxDestinationLink\(definition,className,source\)/);
-assert.match(app, /function unlockJookBoxDestinations\(\)/);
-assert.match(app, /element\.hidden=!safeURL;[\s\S]*if\(!safeURL\)return;/, "Unavailable destinations must be omitted.");
-assert.match(app, /function powerJookBox\(\)/);
-assert.match(app, /function playJookBoxCoinSound\(\)/);
-assert.match(app, /function fitJookBoxMarqueeTitle\(\)/);
-assert.match(app, /title\.scrollWidth>title\.clientWidth/);
-assert.doesNotMatch(app, /toggleJookBoxSound|jookBoxSoundMuted|openRandomJookBoxDeepCut|buildJookBoxShows|configureJookBoxTransport|updateJookBoxActionBarLayout/, "Removed controls must not retain live behaviour.");
-assert.match(app, /Share the \$\{config\.bandName\} JookBox/);
-assert.match(app, /autoplay=1&playsinline=1/);
-assert.match(app, /function trackJookBoxOutbound\(definition,url,source="jookbox_linktree"\)/);
-const destinationContractStart = app.indexOf("const JOOKBOX_LINK_DEFINITIONS=");
-const destinationContractEnd = app.indexOf("];", destinationContractStart) + 2;
-const destinationContract = app.slice(destinationContractStart, destinationContractEnd);
-assert.deepEqual([...destinationContract.matchAll(/key:"([^"]+)"/g)].map((match) => match[1]), publicDestinationKeys);
-assert.doesNotMatch(destinationContract, /youtube|newsletter|tiktok|contact|show|deep_cut/i);
-assert.match(app, /return JOOKBOX_LINK_DEFINITIONS\.flatMap\(contract=>/);
-assert.doesNotMatch(app, /JOOKBOX_VISIBLE_SELECTIONS|startJookBoxSelectionRotation|showJookBoxSelectionGroup/, "The cramped rotating key bank must not return.");
-assert.match(styles, /\[data-edition-type="jukebox"\] \.jookbox-machine/);
-assert.match(styles, /\[data-edition-type="jukebox"\] \.hero\{display:none\}/);
-assert.match(styles, /\.jookbox-video-slot\{[\s\S]*aspect-ratio:16\/9/);
-assert.match(styles, /\.jookbox-secondary-actions\{[\s\S]*grid-template-columns:repeat\(2/);
-assert.match(styles, /\.jookbox-primary-action\{[\s\S]*min-height:64px/);
-assert.match(styles, /\.jookbox-inline-learn-more\{[\s\S]*min-height:64px/);
-assert.doesNotMatch(styles, /\.jookbox-action-bar\{[\s\S]*position:fixed/, "The marked fixed JookBox navigation strip must remain removed.");
-assert.match(styles, /\.jookbox-coin-slot\{[\s\S]*display:block/);
-assert.match(styles, /\.jookbox-metadata-share\{/);
-assert.match(styles, /font-size:clamp\(\.48rem,2vw,.62rem\)/, "The JookBox model label must remain subordinate to the band name.");
-assert.match(styles, /\.jookbox-marquee h1\{[\s\S]*font-size:clamp\(1\.25rem,6\.2vw,2rem\)[\s\S]*text-overflow:ellipsis[\s\S]*white-space:nowrap/, "The illuminated dynamic band name must fit on one line inside the marquee.");
-assert.match(styles, /\.jookbox-track-metadata h2\{[\s\S]*font-size:clamp\(\.72rem,3vw,.92rem\)[\s\S]*text-overflow:ellipsis[\s\S]*white-space:nowrap/, "The track title must remain a smaller single line.");
-assert.match(styles, /repeating-linear-gradient\(97deg,transparent 0 17px/, "The cabinet must retain its subtle static wear texture.");
-assert.match(styles, /env\(safe-area-inset-bottom\)/);
-assert.match(styles, /\.jookbox-action-key:active[\s\S]*translateY\(2px\)/);
-assert.match(styles, /@keyframes jookBoxPremiumCoinDrop/);
-assert.match(styles, /@media\(max-width:359px\)/);
-assert.match(styles, /@media\(prefers-reduced-motion:reduce\)\{[\s\S]*\[data-edition-type="jukebox"\]/);
-assert.match(creator, /jookBox\?\['bandcamp','spotify','instagram','website','buyMusic','merchandise','facebook','youtube'\]/);
-assert.match(creator, /'bandcamp','spotify','youtube','instagram','facebook','tiktok','buy_music','merchandise'/);
-assert.match(creator, /\['dateLabel',40\],\['venue',100\],\['location',100\],\['availability',40\]/);
-assert.match(creator, /if\(item\.kind==='show'&&\(!item\.dateLabel\|\|!item\.venue\)\)/);
-assert.match(validator, /selection\.kind==='show'&&\(!selection\.dateLabel\|\|!selection\.venue\)/);
+assert.match(html, /id="jookBoxLearnMore" class="jookbox-learn-more jookbox-brass-dial"/);
+assert.match(html, /id="jookBoxSecondaryActions"/);
+assert.match(html, /id="jookBoxStatePlaque"/);
+assert.doesNotMatch(html, /Filthy Animals/, "The reusable HTML renderer must never hard-code one band.");
+assert.doesNotMatch(html, /id="jookBoxSoundToggle"|class="jookbox-band-plaque"|id="jookBoxActionBar"/);
 
-console.log("JookBox model passed: the illuminated band marquee fits its cabinet, track metadata remains one line, marked controls stay removed, and only the seven approved verified destination categories can render.");
+assert.match(app, /function setJookBoxState\(nextState\)/);
+assert.match(app, /\["sleeping","acceptingCoin","poweringUp","awake"\]/);
+assert.match(app, /function restoreJookBoxSessionState\(\)/);
+assert.match(app, /sessionStorage\.getItem\(jookBoxSessionKey\(\)\)/);
+assert.match(app, /sessionStorage\.setItem\(jookBoxSessionKey\(\),"true"\)/);
+assert.match(app, /function clearJookBoxStartupTimers\(\)/);
+assert.match(app, /function prepareJookBoxCoinAudio\(\)/);
+assert.match(app, /new Audio\(source\.startsWith/);
+assert.match(app, /function playJookBoxCoinFallback\(\)/);
+assert.match(app, /function handleJookBoxVisibility\(\)/);
+assert.match(app, /window\.addEventListener\("pagehide",clearJookBoxStartupTimers/);
+assert.match(app, /window\.addEventListener\("pageshow",handleJookBoxPageShow/);
+assert.match(app, /event\.persisted&&jookBoxState!=="awake"/);
+assert.match(app, /is-animation-paused/);
+assert.match(app, /startupTimingsMs/);
+assert.match(app, /displaySelectionIds/);
+assert.match(app, /--jookbox-row-delay/);
+assert.doesNotMatch(app, /autoplay=1/, "Coin insertion must power the screen on without automatically starting YouTube.");
+assert.match(app, /www\.youtube-nocookie\.com\/embed/);
+assert.match(app, /function trackJookBoxOutbound\(definition,url,source="jookbox_linktree"\)/);
+
+assert.match(styles, /\[data-jookbox-layout="coin-awakening\/1"\] \.jookbox-machine\{[\s\S]*aspect-ratio:762\/1280/);
+assert.match(styles, /\.jookbox-coin-button\{[\s\S]*min-height:44px/);
+assert.match(styles, /@keyframes jookBoxLockedCoinAttention/);
+assert.match(styles, /@keyframes jookBoxLockedCoinInsert/);
+assert.match(styles, /@keyframes jookBoxLockedNeonFlicker/);
+assert.match(styles, /@keyframes jookBoxLockedScreenOn/);
+assert.match(styles, /@keyframes jookBoxLockedRowLight/);
+assert.match(styles, /@keyframes jookBoxLockedTickerLTR/);
+assert.match(styles, /\.jookbox-secondary-actions\{[\s\S]*grid-template-rows:repeat\(4/);
+assert.match(styles, /\.is-animation-paused \.jookbox-ticker-text/);
+assert.match(styles, /@media\(prefers-reduced-motion:reduce\)\{[\s\S]*data-jookbox-layout="coin-awakening\/1"/);
+assert.match(styles, /env\(safe-area-inset-bottom\)/);
+
+assert.match(creator, /modelVersion:'jookbox\/3'/);
+assert.match(creator, /layoutVersion:'coin-awakening\/1'/);
+assert.match(creator, /displaySelectionIds:requestedDisplayIds/);
+assert.match(creator, /assets\/audio\/jukebox-coin-drop\.wav/);
+assert.match(validator, /locked JookBox cabinet artwork failed its SHA-256 identity check/);
+assert.match(validator, /one to eight unique display selection IDs/);
+
+for (const other of platform.editions.filter((item) => item.editionId !== entry.editionId)) {
+  const otherConfig = JSON.parse(await fs.readFile(other.config, "utf8"));
+  assert.notEqual(otherConfig.jookBox?.cabinetArtwork, config.jookBox.cabinetArtwork, `${other.slug} must not inherit the Filthy Animals locked artwork.`);
+  assert.notEqual(otherConfig.jookBox?.sessionStorageKey, config.jookBox.sessionStorageKey, `${other.slug} must not share the Filthy Animals session key.`);
+}
+
+console.log("JookBox v3 passed: the owner-locked cabinet, local coin sound, four-state wake-up, CRT screen, left-to-right biography ticker and four-row light sequence are isolated to Filthy Animals.");

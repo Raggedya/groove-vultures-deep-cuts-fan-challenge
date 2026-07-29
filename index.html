@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#000713">
   <meta id="pageDescription" name="description" content="Discover a verified Deep Cuts edition.">
   <title>Deep Cuts</title>
-  <link rel="stylesheet" href="/styles.css?v=20260730-jookbox-8">
+  <link rel="stylesheet" href="/styles.css?v=20260730-jookbox-9">
 </head>
 <body>
   <main id="app" class="discovery-shell">
@@ -27,8 +27,10 @@
         <div class="jookbox-machine" data-power-state="off">
           <div class="jookbox-bulb-rail" aria-hidden="true"></div>
           <div class="jookbox-chrome-arch" aria-hidden="true"></div>
+          <div class="jookbox-neon-overlay" aria-hidden="true"></div>
+          <div class="jookbox-reflected-light" aria-hidden="true"></div>
           <div class="jookbox-product-deck">
-            <header class="jookbox-marquee">
+            <header class="jookbox-marquee visually-hidden">
               <p class="jookbox-model-mark">JookBox</p>
               <h1 id="jookBoxTitle">Featured artist</h1>
               <span class="jookbox-playing-status">
@@ -39,35 +41,39 @@
 
             <div class="jookbox-coin-bank">
               <div class="jookbox-coin-console">
-                <button id="jookBoxCoinButton" class="jookbox-coin-button" type="button" aria-describedby="jookBoxCoinPrompt">
+                <button id="jookBoxCoinButton" class="jookbox-coin-button" type="button" aria-label="Insert coin and start the jukebox" aria-describedby="jookBoxCoinPrompt">
                   <span class="jookbox-coin-slot" aria-hidden="true"></span>
                   <span class="jookbox-coin" aria-hidden="true"><b>$1</b></span>
-                  <span class="jookbox-coin-plate">Push coin to start</span>
+                  <span class="jookbox-coin-plate">Insert coin to play</span>
                 </button>
               </div>
-              <p id="jookBoxCoinPrompt" class="jookbox-selection-prompt visually-hidden">Push the coin to bring the JookBox to life</p>
+              <p id="jookBoxCoinPrompt" class="jookbox-selection-prompt visually-hidden">Insert the visible coin to wake the JookBox.</p>
             </div>
 
             <div class="jookbox-screen-frame">
               <div id="jookBoxVideoSlot" class="jookbox-video-slot">
                 <div id="jookBoxVideoLock" class="jookbox-video-lock" aria-hidden="true">
-                  <span class="jookbox-record"></span>
-                  <strong>Push the coin to start</strong>
+                  <span class="jookbox-crt-beam"></span>
                 </div>
               </div>
             </div>
 
-            <section class="jookbox-track-metadata" aria-labelledby="jookBoxTrackTitle">
-              <div class="jookbox-track-copy">
-                <p><span aria-hidden="true"></span> Now playing</p>
-                <h2 id="jookBoxTrackTitle">Featured video</h2>
-                <span id="jookBoxTrackArtist">Featured artist</span>
-              </div>
+            <section class="jookbox-ticker-console" aria-label="JookBox controls and band biography">
               <button id="jookBoxBottomShare" class="jookbox-metadata-share" type="button" aria-label="Share this JookBox">
-                <span aria-hidden="true">&#8599;</span>
-                <strong>Share</strong>
+                <span class="visually-hidden">Share</span>
+              </button>
+              <div id="jookBoxTicker" class="jookbox-biography-ticker" role="status" aria-label="Band biography ticker">
+                <span id="jookBoxTickerText" class="jookbox-ticker-text"></span>
+              </div>
+              <button id="jookBoxLearnMore" class="jookbox-learn-more jookbox-brass-dial" type="button" aria-label="Learn more about this band" hidden>
+                <span class="visually-hidden">Learn More</span>
               </button>
             </section>
+
+            <div class="visually-hidden" aria-live="polite">
+              <span id="jookBoxTrackTitle">Featured video</span>
+              <span id="jookBoxTrackArtist">Featured artist</span>
+            </div>
 
             <a id="jookBoxPrimaryAction" class="jookbox-primary-action" hidden>
               <span aria-hidden="true">★</span>
@@ -78,19 +84,11 @@
 
             <div class="jookbox-lower-deck">
               <section class="jookbox-action-panel" aria-labelledby="jookBoxActionTitle">
-                <div class="jookbox-section-heading">
-                  <p>Make a selection</p>
-                  <h2 id="jookBoxActionTitle">Listen, follow and explore</h2>
-                </div>
+                <h2 id="jookBoxActionTitle" class="visually-hidden">JookBox selections</h2>
                 <div id="jookBoxSecondaryActions" class="jookbox-secondary-actions"></div>
               </section>
-
-              <button id="jookBoxLearnMore" class="jookbox-learn-more jookbox-inline-learn-more" type="button" hidden>
-                <span aria-hidden="true">i</span>
-                <strong>Learn More</strong>
-                <small>Read the band story</small>
-              </button>
             </div>
+            <p id="jookBoxStatePlaque" class="jookbox-state-plaque" aria-hidden="true">Insert coin to play</p>
           </div>
         </div>
       </section>
@@ -362,6 +360,6 @@
   <script src="/js/laneway-company-quiz.js?v=20260727-indie-label-3"></script>
   <script src="/js/business-quiz.js?v=20260728-hgm-1"></script>
   <script src="/js/business-profile.js?v=20260729-hgm-profile-1"></script>
-  <script src="/js/app.js?v=20260730-jookbox-8"></script>
+  <script src="/js/app.js?v=20260730-jookbox-9"></script>
 </body>
 </html>
