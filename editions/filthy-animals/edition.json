@@ -1,0 +1,65 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Filthy Animals",
+  "editionTitle": "Filthy Animals",
+  "description": "An Australian party supergroup drawing on a rotating collective of seasoned performers to deliver classic rock songs connected to decades of touring and recording.",
+  "discovery": {
+    "bio": "An Australian party supergroup drawing on a rotating collective of seasoned performers to deliver classic rock songs connected to decades of touring and recording.",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "filthy-animals",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_a3c049e4bc",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/filthy-animals/instagram-discovery.png",
+    "qrImage": "output/filthy-animals/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "spotify": "https://open.spotify.com/artist/2kO9UMIDqQWPheJpacwBZI",
+    "youtube": "https://www.youtube.com/channel/UCKxWp8Uqst1s--EMYSi7AgQ",
+    "instagram": "https://www.instagram.com/filthyanimalsband_official/",
+    "facebook": "https://www.facebook.com/filthyanimalsoz",
+    "tiktok": "https://www.tiktok.com/@filthy.animals.band",
+    "website": "https://filthyanimals.com.au/",
+    "merchandise": "https://filthyanimals.com.au/shop/",
+    "contact": "https://filthyanimals.com.au/contact/"
+  },
+  "featuredVideo": {
+    "title": "Fox On The Run — The Filthy Animals",
+    "youtubeURL": "https://www.youtube.com/watch?v=Yarspws7fDA",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-07-29T08:07:15.000Z"
+  },
+  "analytics": {
+    "editionId": "dc_a3c049e4bc",
+    "pageIdentifier": "dc_a3c049e4bc:jookbox-v1"
+  },
+  "production": {
+    "jobId": "dcjob_0ca20f8c-0449-4264-8771-551fdfe660d5",
+    "submittedAt": "2026-07-29T08:00:29.063Z",
+    "researchCompletedAt": "2026-07-29T08:15:16.445Z",
+    "editionCreatedAt": "2026-07-29T08:15:16.445Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/1",
+    "marquee": "Filthy Animals",
+    "videoLabel": "Now playing",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true
+  }
+}

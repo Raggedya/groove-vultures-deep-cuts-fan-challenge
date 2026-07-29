@@ -1,0 +1,21 @@
+{
+  "slug": "filthy-animals",
+  "bandName": "Filthy Animals",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/q/dc_a3c049e4bc",
+  "generatedAt": "2026-07-29T08:31:27.998517+00:00",
+  "files": {
+    "instagramImage": {
+      "path": "output/filthy-animals/instagram-discovery.png",
+      "width": 1080,
+      "height": 1080,
+      "sha256": "30c171f607f8140d76d9cf9b87480f64795db4dc8c5866a3c117baf61e3c6515"
+    },
+    "qrImage": {
+      "path": "output/filthy-animals/instagram-qr.png",
+      "width": 1080,
+      "height": 1080,
+      "sha256": "31fa0952fd8901093d4d3644fb4621aba7ceb5bb6a1250a5fc4098232065fb2a",
+      "verifiedDestination": "https://deep-cuts.andrewharris501.workers.dev/q/dc_a3c049e4bc"
+    }
+  }
+}

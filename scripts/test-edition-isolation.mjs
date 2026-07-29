@@ -31,3 +31,5 @@ for(const[type,contract]of Object.entries(contracts.editionTypes)){
 }
 
 console.log(`Edition isolation passed: ${platform.editions.length} completed editions remain within ${knownTypes.size} independent contracts.`);
+
+await import("./test-jookbox.mjs");

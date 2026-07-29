@@ -1,9 +1,9 @@
 "use strict";
 
-const VERSION="20260728-hays-1";
+const VERSION="20260729-jookbox-1";
 const LANEWAY_REPORTING_VERSION="laneway-weekly-v1";
 const $=id=>document.getElementById(id);
-const els={page:$("discoveryPage"),error:$("errorScreen"),errorMessage:$("errorMessage"),bandName:$("bandName"),bio:$("artistBio"),artwork:$("heroArtwork"),brandLogo:$("editionBrandLogo"),waveform:$("sonicSignature"),features:$("featureList"),video:$("featuredVideo"),videoLabel:$("featuredVideoLabel"),videoTitle:$("featuredVideoTitle"),videoFrame:$("featuredVideoFrame"),links:$("platformLinks"),share:$("shareButton"),status:$("shareStatus"),description:$("pageDescription"),poweredBy:$("poweredByLabel"),copyright:$("coverCopyright"),lanewayHome:$("lanewayHomeLink"),lanewayRecommended:$("lanewayRecommendedLink"),companyDirectory:$("lanewayCompanyDirectory"),companyDirectoryCount:$("lanewayCompanyDirectoryCount"),companySearch:$("lanewayCompanySearch"),companyArtistList:$("lanewayCompanyArtistList"),companyEmpty:$("lanewayCompanyEmpty"),companyWheel:$("lanewayArtistWheel"),wheelCanvas:$("lanewayWheelCanvas"),wheelSpin:$("lanewayWheelSpin"),wheelStatus:$("lanewayWheelStatus"),wheelWinner:$("lanewayWheelWinner"),wheelImpact:$("lanewayWheelImpact"),wheelPurchaseLinks:$("lanewayWheelPurchaseLinks"),wheelBuyMusic:$("lanewayWheelBuyMusic"),wheelBuyMerch:$("lanewayWheelBuyMerch"),wheelVideo:$("lanewayWheelVideo"),wheelVideoTitle:$("lanewayWheelVideoTitle"),wheelVideoFrame:$("lanewayWheelVideoFrame")};
+const els={page:$("discoveryPage"),error:$("errorScreen"),errorMessage:$("errorMessage"),bandName:$("bandName"),bio:$("artistBio"),artwork:$("heroArtwork"),brandLogo:$("editionBrandLogo"),waveform:$("sonicSignature"),features:$("featureList"),video:$("featuredVideo"),videoLabel:$("featuredVideoLabel"),videoTitle:$("featuredVideoTitle"),videoFrame:$("featuredVideoFrame"),jookBox:$("jookBoxCabinet"),jookBoxTitle:$("jookBoxTitle"),jookBoxVideoSlot:$("jookBoxVideoSlot"),links:$("platformLinks"),share:$("shareButton"),status:$("shareStatus"),description:$("pageDescription"),poweredBy:$("poweredByLabel"),copyright:$("coverCopyright"),lanewayHome:$("lanewayHomeLink"),lanewayRecommended:$("lanewayRecommendedLink"),companyDirectory:$("lanewayCompanyDirectory"),companyDirectoryCount:$("lanewayCompanyDirectoryCount"),companySearch:$("lanewayCompanySearch"),companyArtistList:$("lanewayCompanyArtistList"),companyEmpty:$("lanewayCompanyEmpty"),companyWheel:$("lanewayArtistWheel"),wheelCanvas:$("lanewayWheelCanvas"),wheelSpin:$("lanewayWheelSpin"),wheelStatus:$("lanewayWheelStatus"),wheelWinner:$("lanewayWheelWinner"),wheelImpact:$("lanewayWheelImpact"),wheelPurchaseLinks:$("lanewayWheelPurchaseLinks"),wheelBuyMusic:$("lanewayWheelBuyMusic"),wheelBuyMerch:$("lanewayWheelBuyMerch"),wheelVideo:$("lanewayWheelVideo"),wheelVideoTitle:$("lanewayWheelVideoTitle"),wheelVideoFrame:$("lanewayWheelVideoFrame")};
 
 const MUSIC_LINK_DEFINITIONS=[
   {key:"buyMusic",label:"Buy Music",subLabel:"Purchase music directly",priority:"primary",fallback:"bandcamp"},
@@ -15,6 +15,17 @@ const MUSIC_LINK_DEFINITIONS=[
   {key:"website",label:"Band Website",subLabel:"Official website"},
   {key:"merchandise",label:"Buy Merch",subLabel:"Official merchandise"},
   {key:"newsReviews",label:"News & Reviews",subLabel:"Latest verified coverage",priority:"editorial"}
+];
+
+const JOOKBOX_LINK_DEFINITIONS=[
+  {key:"spotify",label:"Spotify",subLabel:"Play the band"},
+  {key:"youtube",label:"YouTube",subLabel:"Official band channel"},
+  {key:"merchandise",label:"Merch Shop",subLabel:"Wear the band"},
+  {key:"website",label:"Band Website",subLabel:"Meet the full supergroup"},
+  {key:"instagram",label:"Instagram",subLabel:"Latest band updates"},
+  {key:"facebook",label:"Facebook",subLabel:"Shows and announcements"},
+  {key:"tiktok",label:"TikTok",subLabel:"Clips from the band"},
+  {key:"contact",label:"Book the Band",subLabel:"Official enquiries"}
 ];
 
 const CAR_LINK_DEFINITIONS=[
@@ -83,23 +94,23 @@ async function fetchJson(url){const response=await fetch(url,{cache:"no-store"})
 
 async function applyConfig(){
   const name=config.bandName||editionEntry.name;
-  const cars=isCarEdition(),clubs=isClubEdition(),schools=isSchoolEdition(),business=isBusinessEdition(),laneway=isLanewayEdition(),lanewayCompany=isLanewayCompanyEdition(),indieWheel=isIndieWheelEdition(),wheelEdition=lanewayCompany||indieWheel;
+  const cars=isCarEdition(),clubs=isClubEdition(),schools=isSchoolEdition(),business=isBusinessEdition(),laneway=isLanewayEdition(),jookBox=isJookBoxEdition(),lanewayCompany=isLanewayCompanyEdition(),indieWheel=isIndieWheelEdition(),wheelEdition=lanewayCompany||indieWheel;
   document.documentElement.dataset.editionType=indieWheel?"laneway_company":config.editionType||"music";
   document.documentElement.dataset.productType=usesFinalIndieLabelModel()?"laneway_company":config.editionType||"music";
   if(usesFinalIndieLabelModel())document.documentElement.dataset.labelStyle=config.slug||"indie-label";
-  document.title=`${name} | ${wheelEdition?"Indie Wheel":laneway?"Laneway":schools?"School Discovery":business?"Deep Cuts Business":clubs?"Deep Cuts Clubs":cars?"Deep Cuts Cars":"Deep Cuts"}`;
+  document.title=`${name} | ${wheelEdition?"Indie Wheel":jookBox?"JookBox":laneway?"Laneway":schools?"School Discovery":business?"Deep Cuts Business":clubs?"Deep Cuts Clubs":cars?"Deep Cuts Cars":"Deep Cuts"}`;
   const bio=config.discovery?.bio||config.description||`Discover ${name}.`;
-  els.description.content=wheelEdition?`Spin to discover a verified ${name} artist on ${wheelSettings().destinationLabel}, search the catalogue and take the 10-question artist quiz.`:laneway?`Discover ${name} through Laneway's positive five-question band quiz and verified official links.`:schools?`Discover ${name} through verified official school information and video.`:business?`Explore verified ${name} job opportunities and learn about the business.`:clubs?`Verified club, membership, events, bowls and community links for ${name}.`:cars?`Verified history, specifications, buying, ownership and restoration links for ${name}.`:`Official music, video and social links for ${name}.`;
+  els.description.content=wheelEdition?`Spin to discover a verified ${name} artist on ${wheelSettings().destinationLabel}, search the catalogue and take the 10-question artist quiz.`:jookBox?`Play ${name} through the JookBox and open the band's verified music, video, social and merchandise links.`:laneway?`Discover ${name} through Laneway's positive five-question band quiz and verified official links.`:schools?`Discover ${name} through verified official school information and video.`:business?`Explore verified ${name} job opportunities and learn about the business.`:clubs?`Verified club, membership, events, bowls and community links for ${name}.`:cars?`Verified history, specifications, buying, ownership and restoration links for ${name}.`:`Official music, video and social links for ${name}.`;
   els.bandName.textContent=name;
   els.bio.textContent=bio;
-  const hideArtwork=schools||laneway||wheelEdition||(business&&config.business?.showHeroArtwork===false);
+  const hideArtwork=schools||laneway||jookBox||wheelEdition||(business&&config.business?.showHeroArtwork===false);
   if(hideArtwork){els.artwork.hidden=true;els.artwork.removeAttribute("src");els.artwork.alt=""}else{els.artwork.hidden=false;els.artwork.src=`/${config.characterArtwork||"assets/aggits-original-cutout-v4.png"}`;els.artwork.alt=`Aggits presenting ${name}`}
   const titleRow=els.bandName.closest(".artist-title-row");
   titleRow.hidden=false;
   titleRow.classList.toggle("visually-hidden",business&&config.business?.showTitle===false);
   if(laneway||wheelEdition||business){const branding=business?config.business:wheelEdition?wheelSettings():config.laneway;els.brandLogo.hidden=false;els.brandLogo.src=`/${branding?.logoArtwork||"assets/laneway-music-logo-reverse-transparent.png"}`;els.brandLogo.alt=name;els.brandLogo.classList.toggle("business-logo-on-light",business&&branding?.logoSurface==="light");els.brandLogo.classList.toggle("business-logo-square",business&&branding?.logoShape==="square")}else{els.brandLogo.hidden=true;els.brandLogo.removeAttribute("src");els.brandLogo.alt="";els.brandLogo.classList.remove("business-logo-on-light","business-logo-square")}
-  els.videoLabel.textContent=laneway||wheelEdition?"Featured video":schools?"Discover our school":business?(config.business?.videoLabel||"Meet the team"):clubs?"Featured club video":cars?"Featured automotive video":"Featured video";
-  buildFeatures(laneway?config.laneway?.heroLabels:schools?config.school?.heroLabels:business?config.business?.heroLabels:clubs?config.club?.heroLabels:cars?config.automotive?.heroLabels:["Listen","Watch","Follow","Buy Stuff"]);
+  els.videoLabel.textContent=jookBox?(config.jookBox?.videoLabel||"Now playing"):laneway||wheelEdition?"Featured video":schools?"Discover our school":business?(config.business?.videoLabel||"Meet the team"):clubs?"Featured club video":cars?"Featured automotive video":"Featured video";
+  buildFeatures(jookBox?config.jookBox?.heroLabels:laneway?config.laneway?.heroLabels:schools?config.school?.heroLabels:business?config.business?.heroLabels:clubs?config.club?.heroLabels:cars?config.automotive?.heroLabels:["Listen","Watch","Follow","Buy Stuff"]);
   document.documentElement.style.setProperty("--accent",config.theme?.accent||"#2f80ff");
   if(usesFinalIndieLabelModel()){
     document.documentElement.style.setProperty("--label-accent",config.theme?.accent||"#a9e7fa");
@@ -108,8 +119,10 @@ async function applyConfig(){
   }
   if(schools){document.documentElement.style.setProperty("--school-secondary",config.theme?.accentSecondary||"#00C4B4");document.documentElement.style.setProperty("--school-navy",config.theme?.navy||"#0A2342");document.documentElement.style.setProperty("--school-surface",config.theme?.surface||"#FFFFFF");document.documentElement.style.setProperty("--school-content",config.theme?.contentBackground||"#F8FAFC")}
   if(business){document.documentElement.style.setProperty("--business-accent",config.theme?.accent||"#2f80c3");document.documentElement.style.setProperty("--business-secondary",config.theme?.accentSecondary||"#ff6a1a");document.documentElement.style.setProperty("--business-secondary-strong",config.theme?.secondaryStrong||"#a94618");document.documentElement.style.setProperty("--business-surface",config.theme?.surface||"#111a29")}
+  if(jookBox){document.documentElement.style.setProperty("--jookbox-cyan",config.theme?.accent||"#55d9ff");document.documentElement.style.setProperty("--jookbox-orange",config.theme?.accentSecondary||"#ff6640");document.documentElement.style.setProperty("--jookbox-gold",config.theme?.gold||"#ffd66b");document.documentElement.style.setProperty("--jookbox-surface",config.theme?.surface||"#091321")}
   buildWaveform(name);
   buildFeaturedVideo();
+  if(jookBox)buildJookBox();
   buildLinks();
   if(wheelEdition)await buildLanewayCompanyDirectory();
   configureLanewayUtilityLinks();
@@ -132,6 +145,7 @@ function isClubEdition(){return config.editionType==="club"}
 function isSchoolEdition(){return config.editionType==="school"}
 function isBusinessEdition(){return config.editionType==="business"}
 function isLanewayEdition(){return config.editionType==="laneway"}
+function isJookBoxEdition(){return config.editionType==="jukebox"}
 function isLanewayCompanyEdition(){return config.editionType==="laneway_company"}
 function isIndieWheelEdition(){return config.editionType==="indie_wheel"}
 function isWheelEdition(){return isLanewayCompanyEdition()||isIndieWheelEdition()}
@@ -225,19 +239,30 @@ function buildFeaturedVideo(){
   els.video.hidden=false;
 }
 
+function buildJookBox(){
+  if(!isJookBoxEdition())return;
+  els.jookBoxTitle.textContent=config.jookBox?.marquee||config.bandName;
+  els.jookBox.hidden=false;
+  if(!els.video.hidden){
+    els.video.classList.add("jookbox-featured-video");
+    els.jookBoxVideoSlot.append(els.video);
+  }
+}
+
 function buildLinks(){
   els.links.innerHTML="";
   if(isBusinessEdition()){buildBusinessLinks();balanceLinkGrid();return}
-  const definitions=isWheelEdition()?[]:isSchoolEdition()?SCHOOL_LINK_DEFINITIONS:isClubEdition()?CLUB_LINK_DEFINITIONS:isCarEdition()?CAR_LINK_DEFINITIONS:MUSIC_LINK_DEFINITIONS;
+  const definitions=isWheelEdition()?[]:isJookBoxEdition()?JOOKBOX_LINK_DEFINITIONS:isSchoolEdition()?SCHOOL_LINK_DEFINITIONS:isClubEdition()?CLUB_LINK_DEFINITIONS:isCarEdition()?CAR_LINK_DEFINITIONS:MUSIC_LINK_DEFINITIONS;
   let schoolChallengeAdded=false;
-  for(const definition of definitions){
+  for(const [index,definition] of definitions.entries()){
     if(isSchoolEdition()&&definition.key==="schoolProject"&&!schoolChallengeAdded){els.links.append(createSchoolChallengeCard());schoolChallengeAdded=true}
     const url=linkValue(definition);
     if(!url)continue;
     const element=document.createElement("a");
-    element.className=`platform-link is-active${definition.priority?` ${definition.priority}`:""}`;
+    element.className=`platform-link is-active${definition.priority?` ${definition.priority}`:""}${isJookBoxEdition()?" jookbox-selection":""}`;
     element.dataset.destination=definition.key;
-    element.innerHTML=`<span class="link-copy"><strong>${definition.label}</strong><small>${activeSubtitle(definition)}</small></span><span class="link-arrow" aria-hidden="true">&gt;</span>`;
+    const selectionCode=isJookBoxEdition()?`<span class="jookbox-selection-code" aria-hidden="true">${String.fromCharCode(65+Math.floor(index/2))}${index%2+1}</span>`:"";
+    element.innerHTML=`${selectionCode}<span class="link-copy"><strong>${definition.label}</strong><small>${activeSubtitle(definition)}</small></span><span class="link-arrow" aria-hidden="true">&gt;</span>`;
     element.href=url;element.target="_blank";element.rel="noopener noreferrer";
     element.setAttribute("aria-label",`${definition.label} for ${config.bandName} (opens in a new tab)`);
     element.addEventListener("click",()=>DeepCutsInteractions.trackOutbound(analytics,analyticsDestination(definition.key),url),{passive:true});
@@ -247,6 +272,18 @@ function buildLinks(){
   if(isLanewayEdition())els.links.append(createLanewayChallengeCard());
   if(isWheelEdition())els.links.append(createLanewayCompanyChallengeCard());
   balanceLinkGrid();
+  if(isJookBoxEdition())sequenceJookBoxButtons();
+}
+
+function sequenceJookBoxButtons(){
+  const buttons=[...els.links.querySelectorAll(".jookbox-selection"),els.share].filter(element=>!element.hidden);
+  const step=.55;
+  const duration=Math.max(buttons.length*step,5);
+  buttons.forEach((element,index)=>{
+    element.classList.add("jookbox-carnival-light");
+    element.style.setProperty("--jookbox-light-duration",`${duration}s`);
+    element.style.setProperty("--jookbox-light-delay",`${index*step}s`);
+  });
 }
 
 function buildBusinessLinks(){
@@ -630,6 +667,7 @@ function balanceLinkGrid(){
 }
 
 function activeSubtitle(definition){
+  if(isJookBoxEdition()&&definition.key==="spotify")return `Play ${config.bandName}`;
   if(definition.key==="newsReviews")return config.discovery?.newsLabel||definition.subLabel;
   if(definition.key==="buyMusic"&&config.links?.bandcamp&&!config.links?.buyMusic)return "Purchase music via Bandcamp";
   return definition.subLabel;
@@ -639,6 +677,16 @@ function analyticsDestination(key){return({buyMusic:"buy_music",newsReviews:"new
 
 function startAttentionCycle(){
   if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+  if(isJookBoxEdition()){
+    const pulseWaveform=()=>{
+      if(document.hidden)return;
+      els.waveform.classList.remove("pulse");void els.waveform.offsetWidth;els.waveform.classList.add("pulse");
+    };
+    setTimeout(pulseWaveform,600);
+    attentionTimer=window.setInterval(pulseWaveform,8000);
+    document.addEventListener("visibilitychange",()=>{if(!document.hidden)pulseWaveform()},{passive:true});
+    return;
+  }
   if(isWheelEdition()){
     let controlIndex=0;
     let waveTick=0;
@@ -678,9 +726,9 @@ function startAttentionCycle(){
 }
 
 function validHttps(value){try{const url=new URL(String(value||""));return url.protocol==="https:"?url.href:""}catch{return""}}
-function pageIdentifier(){return config.analytics?.pageIdentifier||`${editionEntry.editionId}:discovery-v1`}
+function pageIdentifier(){return config.analytics?.pageIdentifier||`${editionEntry.editionId}:${isJookBoxEdition()?"jookbox-v1":"discovery-v1"}`}
 function canonicalURL(){return new URL(editionEntry.canonicalPath||`/e/${editionEntry.editionId}`,location.origin).href}
-function sharePayload(){return isWheelEdition()?{title:`${config.bandName} | Indie Wheel`,text:`Spin to discover ${config.bandName} artists, take the 10-question quiz and explore the catalogue on ${wheelSettings().destinationLabel}.`,url:canonicalURL()}:isLanewayEdition()?{title:`${config.bandName} | Laneway`,text:`Discover ${config.bandName} and take the positive five-question Laneway quiz.`,url:canonicalURL()}:isSchoolEdition()?{title:`${config.bandName} | School Discovery`,text:`Discover ${config.bandName}: official school information, programs and video.`,url:canonicalURL()}:isBusinessEdition()?{title:`${config.bandName} | Careers`,text:`Explore current jobs and learn about working with ${config.bandName}.`,url:canonicalURL()}:isClubEdition()?{title:`${config.bandName} | Deep Cuts Clubs`,text:`Explore ${config.bandName}: verified club, membership, events and community links.`,url:canonicalURL()}:isCarEdition()?{title:`${config.bandName} | Deep Cuts Cars`,text:`Explore ${config.bandName}: verified history, specifications, buying and restoration links.`,url:canonicalURL()}:{title:`${config.bandName} | Deep Cuts`,text:`Discover ${config.bandName}: official music, video and social links.`,url:canonicalURL()}}
+function sharePayload(){return isWheelEdition()?{title:`${config.bandName} | Indie Wheel`,text:`Spin to discover ${config.bandName} artists, take the 10-question quiz and explore the catalogue on ${wheelSettings().destinationLabel}.`,url:canonicalURL()}:isJookBoxEdition()?{title:`${config.bandName} | JookBox`,text:`Play ${config.bandName} in the Deep Cuts JookBox and explore the band's official links.`,url:canonicalURL()}:isLanewayEdition()?{title:`${config.bandName} | Laneway`,text:`Discover ${config.bandName} and take the positive five-question Laneway quiz.`,url:canonicalURL()}:isSchoolEdition()?{title:`${config.bandName} | School Discovery`,text:`Discover ${config.bandName}: official school information, programs and video.`,url:canonicalURL()}:isBusinessEdition()?{title:`${config.bandName} | Careers`,text:`Explore current jobs and learn about working with ${config.bandName}.`,url:canonicalURL()}:isClubEdition()?{title:`${config.bandName} | Deep Cuts Clubs`,text:`Explore ${config.bandName}: verified club, membership, events and community links.`,url:canonicalURL()}:isCarEdition()?{title:`${config.bandName} | Deep Cuts Cars`,text:`Explore ${config.bandName}: verified history, specifications, buying and restoration links.`,url:canonicalURL()}:{title:`${config.bandName} | Deep Cuts`,text:`Discover ${config.bandName}: official music, video and social links.`,url:canonicalURL()}}
 
 async function sharePage(){
   analytics.track("share_button_clicked",{page_identifier:pageIdentifier()},{dedupeKey:"main-share",dedupeMs:500});

@@ -8,7 +8,7 @@ if(!inputPath)throw new Error('Usage: node scripts/create-edition.mjs <verified-
 const input=JSON.parse(await fs.readFile(path.resolve(inputPath),'utf8'));
 const bandName=clean(input.bandName,120);
 const bio=clean(input.bio,190);
-const editionType=['car','club','school','business','laneway'].includes(input.editionType)?input.editionType:'music';
+const editionType=['car','club','school','business','laneway','jukebox'].includes(input.editionType)?input.editionType:'music';
 if(!bandName||!bio)throw new Error('Verified research requires bandName and a concise bio.');
 const slug=slugify(bandName);
 const jobPath=path.join(root,'.deep-cuts','jobs',`${slug}.json`);
@@ -29,18 +29,27 @@ const now=new Date().toISOString();
 const directory=path.join(root,'editions',slug);
 await fs.mkdir(directory,{recursive:true});
 const config={
-  brandName:editionType==='laneway'?'Laneway':editionType==='school'?'School Discovery':editionType==='business'?'Deep Cuts Business':editionType==='club'?'Deep Cuts Clubs':editionType==='car'?'Deep Cuts Cars':'Deep Cuts',editionType,bandName,editionTitle:bandName,description:bio,
+  brandName:editionType==='jukebox'?'JookBox':editionType==='laneway'?'Laneway':editionType==='school'?'School Discovery':editionType==='business'?'Deep Cuts Business':editionType==='club'?'Deep Cuts Clubs':editionType==='car'?'Deep Cuts Cars':'Deep Cuts',editionType,bandName,editionTitle:bandName,description:bio,
   discovery:{bio,newsLabel:clean(input.newsLabel||'',90)},mode:'discovery',slug,
   publicURL:`${String(platform.publicBaseURL).replace(/\/$/,'')}${canonicalPath}`,
-  characterArtwork:editionType==='school'||editionType==='laneway'?'':editionType==='business'?clean(input.business?.characterArtwork,180):'assets/aggits-original-cutout-v4.png',backgroundArtwork:'',
+  characterArtwork:editionType==='school'||editionType==='laneway'||editionType==='jukebox'?'':editionType==='business'?clean(input.business?.characterArtwork,180):'assets/aggits-original-cutout-v4.png',backgroundArtwork:'',
   social:{copyright:'copyright Clearlight Creative',instagramImage:`output/${slug}/instagram-discovery.png`,qrImage:`output/${slug}/instagram-qr.png`},
-  theme:editionType==='school'?schoolTheme(input):editionType==='business'?businessTheme(input):{accent:'#2f80ff',accentSecondary:'#8dbdff'},links,
+  theme:editionType==='school'?schoolTheme(input):editionType==='business'?businessTheme(input):editionType==='jukebox'?jookBoxTheme(input):{accent:'#2f80ff',accentSecondary:'#8dbdff'},links,
   featuredVideo,
-  analytics:{editionId,pageIdentifier:`${editionId}:${editionType==='laneway'?'laneway-v1':editionType==='school'?'school-discovery-v1':editionType==='business'?'business-recruitment-v1':editionType==='club'?'club-v1':editionType==='car'?'automotive-v1':'discovery-v1'}`},
+  analytics:{editionId,pageIdentifier:`${editionId}:${editionType==='jukebox'?'jookbox-v1':editionType==='laneway'?'laneway-v1':editionType==='school'?'school-discovery-v1':editionType==='business'?'business-recruitment-v1':editionType==='club'?'club-v1':editionType==='car'?'automotive-v1':'discovery-v1'}`},
   production:{jobId:job.jobId,submittedAt:job.submittedAt,researchCompletedAt:now,editionCreatedAt:now}
 };
 if(editionType==='car')config.automotive={make:clean(input.automotive?.make,60),model:clean(input.automotive?.model,60),productionYears:clean(input.automotive?.productionYears,30),heroLabels:['Discover','Watch','Connect','Own & Restore']};
 if(editionType==='club')config.club={location:clean(input.club?.location,120),formed:clean(input.club?.formed,30),heroLabels:['Visit','Play','Join','Connect']};
+if(editionType==='jukebox'){
+  config.jookBox={
+    modelVersion:'jookbox/1',
+    marquee:clean(input.jookBox?.marquee||bandName,80),
+    videoLabel:clean(input.jookBox?.videoLabel||'Now playing',40),
+    heroLabels:['Listen','Watch','Follow','Shop'],
+    lightSequence:true
+  };
+}
 if(editionType==='school'){
   config.school={officialWebsite:https(input.school?.officialWebsite||''),paletteSource:https(input.school?.paletteSource||input.school?.officialWebsite||''),logoPolicy:'colour-reference-only; no logo or emblem displayed',heroLabels:['Discover','Learn','Connect','Enrol']};
   config.schoolChallenge=schoolChallengeConfig(slug);
@@ -91,7 +100,8 @@ function validateResearch(value){
   const club=value.editionType==='club';
   const school=value.editionType==='school';
   const business=value.editionType==='business';
-  const keys=school?['website','enrolment','virtualTour','principalMessage','visionValues','curriculum','studentLife','newsletter','termDates','policies','contact','schoolProject','youtube']:business?['website','careers','benefits','contact']:club?['website','calendar','news','events','membership','barefootBowls','pennant','venueHire','history','contact','facebook','bowlsVictoria']:car?['history','specifications','buyerGuide','youtube','ownersClub','partsRestoration','carsForSale','newsReviews']:['buyMusic','spotify','instagram','bandcamp','youtube','facebook','website','merchandise','newsReviews'];
+  const jookBox=value.editionType==='jukebox';
+  const keys=school?['website','enrolment','virtualTour','principalMessage','visionValues','curriculum','studentLife','newsletter','termDates','policies','contact','schoolProject','youtube']:business?['website','careers','benefits','contact']:jookBox?['spotify','youtube','instagram','facebook','tiktok','website','merchandise','contact']:club?['website','calendar','news','events','membership','barefootBowls','pennant','venueHire','history','contact','facebook','bowlsVictoria']:car?['history','specifications','buyerGuide','youtube','ownersClub','partsRestoration','carsForSale','newsReviews']:['buyMusic','spotify','instagram','bandcamp','youtube','facebook','website','merchandise','newsReviews'];
   const links=Object.fromEntries(keys.map(key=>[key,https(value.links?.[key]||'')]));
   const sources=Array.isArray(value.sources)?value.sources:[];
   if(sources.length<2||!sources.some(source=>source.identityVerified===true&&/official|authoritative/i.test(String(source.sourceType||''))))throw new Error('Research requires two identity-checked sources including one official or authoritative source.');
@@ -106,10 +116,10 @@ function validateResearch(value){
 function validateFeaturedVideo(value,links){
   const youtubeURL=https(value.featuredVideo?.youtubeURL||'');
   const title=clean(value.featuredVideo?.title||'',120);
-  const expectedBasis=value.editionType==='business'?'owner-selected':value.editionType==='laneway'?'official-label-feature':value.editionType==='music'?'most-viewed-official':'best-authoritative';
+  const expectedBasis=value.editionType==='business'?'owner-selected':value.editionType==='laneway'?'official-label-feature':value.editionType==='music'||value.editionType==='jukebox'?'most-viewed-official':'best-authoritative';
   if(value.editionType==='school'&&!youtubeURL)throw new Error('School Discovery requires a verified authoritative featured YouTube video.');
   if(value.editionType==='laneway'&&!youtubeURL)throw new Error('Laneway requires the verified YouTube video selected on the official Laneway Music artist page.');
-  if(links.youtube&&!youtubeURL)throw new Error(value.editionType==='music'?'An official YouTube presence requires a verified most-viewed official featured video.':'A non-music YouTube destination requires a verified authoritative featured video.');
+  if(links.youtube&&!youtubeURL)throw new Error(value.editionType==='music'||value.editionType==='jukebox'?'An official YouTube presence requires a verified most-viewed official featured video.':'A non-music YouTube destination requires a verified authoritative featured video.');
   if(!youtubeURL)return{title:'',youtubeURL:'',selectionBasis:'',verifiedAt:''};
   if(!title)throw new Error('The featured YouTube video requires a title.');
   if(value.featuredVideo?.selectionBasis!==expectedBasis)throw new Error(`Featured video selectionBasis must be ${expectedBasis}.`);
@@ -198,6 +208,15 @@ function schoolTheme(value){
 function businessTheme(value){
   const source=value.theme||{};
   return{accent:hex(source.accent)||'#2F80C3',accentSecondary:hex(source.accentSecondary)||'#F47A34',secondaryStrong:hex(source.secondaryStrong)||'#A94618',surface:hex(source.surface)||'#111A29'};
+}
+function jookBoxTheme(value){
+  const source=value.theme||{};
+  return{
+    accent:hex(source.accent)||'#55D9FF',
+    accentSecondary:hex(source.accentSecondary)||'#FF6640',
+    gold:hex(source.gold)||'#FFD66B',
+    surface:hex(source.surface)||'#091321'
+  };
 }
 function hex(value){const result=String(value||'').trim().toUpperCase();return /^#[0-9A-F]{6}$/.test(result)?result:''}
 

@@ -29,6 +29,8 @@ Treat `Deep Cuts Clubs [Club name and location]` as a separately typed club edit
 
 Treat a Business Recruitment build as `editionType: business`. Preserve every existing product. Require direct current official job pages, a verified company logo and palette, an owner-selected or verified video, and exactly ten sourced positive questions. Edition-specific owner-supplied Aggits artwork must have a locked hash and must never replace the standard Aggits masters.
 
+Treat `JookBox [Band]` as the separately typed `jukebox` band model. Preserve every existing product. Never configure Aggits, a quiz or a wheel. Verify the supplied artist-controlled identity source, every displayed destination and the most-viewed embeddable official YouTube video. Render the video inside the isolated old-school jukebox cabinet and verified destinations as sequentially lit selection keys. Reduced motion must make every light static.
+
 Treat `Laneway [Band or Artist]` as a separately typed Laneway edition. Preserve Music, Cars, Clubs and Schools. Laneway alone uses the approved reverse-white Laneway Music logo, charcoal/black styling, no Aggits, and exactly five positive sourced questions in its isolated quiz engine.
 
 Treat Record Company Edition as a separately typed parent/child ecosystem. Preserve all other products. One official URL starts the whole accessible roster; do not ask for per-artist approval. Enforce 98% identity and question evidence, isolate failures, verify every QR twice, reconcile reporting and complete email delivery before reporting success.

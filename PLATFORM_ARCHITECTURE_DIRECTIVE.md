@@ -67,6 +67,17 @@ Treat every completed edition as a finished commercial product that must remain 
 - High Grade Mechanical `dc_4a71b2c8e9` alone uses `assets/hgm-aggits-owner-supplied.jpg`. Its SHA-256 identity is fail-closed; it must never be replaced by another Aggits version.
 - Hays `dc_3481f25897` uses the standard immutable Aggits artwork and a separate official Hays brand asset. Its owner-selected HGM video is demo material only and must always be labelled so no official Hays association is implied.
 
+## JookBox contract
+
+- `jukebox` is an isolated band-discovery product. It never changes Music, Cars, Clubs, Schools, Business Recruitment, Laneway or Indie Label output.
+- The reusable model name and version are exactly `JookBox` and `jookbox/1`.
+- JookBox uses an HGM-related deep-navy foundation with its own old-school illuminated jukebox cabinet, warm chrome/gold and red-orange detail, sequential selection-key lights and privacy-enhanced featured-video screen.
+- JookBox never displays Aggits, a quiz or a spinning wheel.
+- The featured video is the most-viewed embeddable official video visible through the artist-controlled YouTube channel at verification time.
+- Only dated, identity-verified Spotify, YouTube, website, social, merchandise and contact destinations may appear. Missing destinations are omitted.
+- Its bright lights become static when reduced motion is requested and stop spending attention in hidden tabs.
+- Filthy Animals `dc_a3c049e4bc` is the first completed JookBox edition. Its configuration and evidence remain isolated from every future band.
+
 ## Commercial Instinct contract
 
 - Commercial Instinct is isolated at `/sell/` with API routes under `/api/sell/*`; it never enters or changes the edition registry.
