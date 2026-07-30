@@ -105,7 +105,7 @@ assert.equal(contracts.productModels.jookbox.version, 3);
 assert.deepEqual(contracts.editionTypes.jukebox.renderedLinks, []);
 assert.match(html, /id="jookBoxCabinet"/);
 assert.match(html, /styles\.css\?v=20260731-jookbox-18/);
-assert.match(html, /app\.js\?v=20260731-jookbox-18/);
+assert.match(html, /app\.js\?v=20260731-jookbox-19/);
 assert.match(html, /id="jookBoxVideoSlot"/);
 assert.match(html, /id="jookBoxCoinButton"[\s\S]*aria-label="Insert coin and start the jukebox"/);
 assert.match(html, /id="jookBoxTickerText"/);
@@ -119,7 +119,7 @@ assert.doesNotMatch(html, /Filthy Animals/, "The reusable HTML renderer must nev
 assert.doesNotMatch(html, /id="jookBoxSoundToggle"|class="jookbox-band-plaque"|id="jookBoxActionBar"/);
 
 assert.match(app, /function setJookBoxState\(nextState\)/);
-assert.match(app, /const VERSION="20260731-jookbox-18"/);
+assert.match(app, /const VERSION="20260731-jookbox-19"/);
 assert.match(app, /dataset\.jookboxEmbeddedMarquee=embeddedMarquee\?"true":"false"/);
 assert.match(app, /dataset\.jookboxAppearance=config\.jookBox\?\.appearanceVariant\|\|"reference"/);
 assert.match(app, /dataset\.jookboxLightSequence=config\.jookBox\?\.lightSequenceMode\|\|"single-key"/);
@@ -255,6 +255,7 @@ assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("six-key-l
 assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("six-key-single-key-reading-order-illumination"));
 assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("hero-biography-ticker-above-video"));
 assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("centered-post-video-coin-control"));
+assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("origin-aware-secure-external-tabs"));
 
 assert.equal(atlasConfig.jookBox?.appearanceVariant, "atlas-reference-cabinet/1");
 assert.equal(atlasConfig.jookBox?.keyBankFormat, "six-key/1");

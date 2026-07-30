@@ -1,6 +1,36 @@
 (function exposeDeepCutsInteractions(scope){
   "use strict";
   function safeOrigin(url){try{return new URL(url).origin}catch{return ""}}
+  function resolvedHttpUrl(value,baseHref=scope.location?.href||""){
+    try{
+      const url=baseHref?new URL(String(value||""),baseHref):new URL(String(value||""));
+      return url.protocol==="http:"||url.protocol==="https:"?url:null;
+    }catch{return null}
+  }
+  function isExternalDomain(value,baseHref=scope.location?.href||""){
+    const destination=resolvedHttpUrl(value,baseHref);
+    const current=resolvedHttpUrl(baseHref,baseHref);
+    return Boolean(destination&&current&&destination.origin!==current.origin);
+  }
+  function secureExternalLink(anchor,value,baseHref=scope.location?.href||""){
+    if(!anchor||typeof anchor.setAttribute!=="function")return false;
+    const destination=value===undefined?anchor.getAttribute?.("href"):value;
+    if(!isExternalDomain(destination,baseHref))return false;
+    anchor.setAttribute("target","_blank");
+    anchor.setAttribute("rel","noopener noreferrer");
+    if(!anchor.getAttribute?.("aria-label")){
+      const label=String(anchor.textContent||"").replace(/\s+/g," ").trim();
+      if(label)anchor.setAttribute("aria-label",`${label} (opens in a new tab)`);
+    }
+    return true;
+  }
+  function applyExternalLinkPolicy(root=scope.document,baseHref=scope.location?.href||""){
+    if(!root)return 0;
+    const anchors=[];
+    if(typeof root.matches==="function"&&root.matches("a[href]"))anchors.push(root);
+    if(typeof root.querySelectorAll==="function")anchors.push(...root.querySelectorAll("a[href]"));
+    return anchors.reduce((count,anchor)=>count+(secureExternalLink(anchor,undefined,baseHref)?1:0),0);
+  }
   function shareMethodUrl(method,payload){
     const url=encodeURIComponent(payload.url);
     const text=encodeURIComponent(`${payload.text} ${payload.url}`);
@@ -27,5 +57,5 @@
   function trackOutbound(tracker,platform,url,finalScore){
     try{return tracker.track(`${platform==="mailingList"?"mailing_list":platform}_clicked`,{destination_platform:platform,destination_url_origin:safeOrigin(url),final_score:finalScore},{dedupeKey:`outbound:${platform}`,dedupeMs:500})}catch{return null}
   }
-  scope.DeepCutsInteractions={safeOrigin,shareMethodUrl,supportsNativeShare,nativeShare,copyLink,trackOutbound};
+  scope.DeepCutsInteractions={safeOrigin,isExternalDomain,secureExternalLink,applyExternalLinkPolicy,shareMethodUrl,supportsNativeShare,nativeShare,copyLink,trackOutbound};
 })(typeof window!=="undefined"?window:globalThis);
