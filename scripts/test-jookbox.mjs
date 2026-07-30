@@ -104,8 +104,8 @@ const contracts = JSON.parse(contractsText);
 assert.equal(contracts.productModels.jookbox.version, 3);
 assert.deepEqual(contracts.editionTypes.jukebox.renderedLinks, []);
 assert.match(html, /id="jookBoxCabinet"/);
-assert.match(html, /styles\.css\?v=20260730-jookbox-16/);
-assert.match(html, /app\.js\?v=20260730-jookbox-16/);
+assert.match(html, /styles\.css\?v=20260731-jookbox-17/);
+assert.match(html, /app\.js\?v=20260731-jookbox-17/);
 assert.match(html, /id="jookBoxVideoSlot"/);
 assert.match(html, /id="jookBoxCoinButton"[\s\S]*aria-label="Insert coin and start the jukebox"/);
 assert.match(html, /id="jookBoxTickerText"/);
@@ -118,10 +118,11 @@ assert.doesNotMatch(html, /Filthy Animals/, "The reusable HTML renderer must nev
 assert.doesNotMatch(html, /id="jookBoxSoundToggle"|class="jookbox-band-plaque"|id="jookBoxActionBar"/);
 
 assert.match(app, /function setJookBoxState\(nextState\)/);
-assert.match(app, /const VERSION="20260730-jookbox-16"/);
+assert.match(app, /const VERSION="20260731-jookbox-17"/);
 assert.match(app, /dataset\.jookboxEmbeddedMarquee=embeddedMarquee\?"true":"false"/);
 assert.match(app, /dataset\.jookboxAppearance=config\.jookBox\?\.appearanceVariant\|\|"reference"/);
 assert.match(app, /dataset\.jookboxLightSequence=config\.jookBox\?\.lightSequenceMode\|\|"single-key"/);
+assert.match(app, /dataset\.jookboxKeyFormat=config\.jookBox\?\.keyBankFormat\|\|"classic-eight-key\/1"/);
 assert.match(app, /marquee\?\.classList\.toggle\("visually-hidden",embeddedMarquee\)/);
 assert.match(app, /availableKeyCount===1\?"key is":"keys are"/);
 assert.match(app, /\["sleeping","acceptingCoin","poweringUp","awake"\]/);
@@ -145,6 +146,18 @@ assert.match(app, /if\(!event\.persisted\)return;[\s\S]*startJookBoxKeyLightSequ
 assert.match(app, /is-animation-paused/);
 assert.match(app, /startupTimingsMs/);
 assert.match(app, /displaySelectionIds/);
+assert.match(app, /function jookBoxUsesSixKeyFormat\(\)/);
+assert.match(app, /function jookBoxUtilityFallbackKinds\(destinationCount,hasBiography\)/);
+assert.match(app, /function createJookBoxUtilityKey\(kind,index\)/);
+const fallbackFunctionSource = app.match(/function jookBoxUtilityFallbackKinds\(destinationCount,hasBiography\)\{[\s\S]*?\n\}/)?.[0];
+assert.ok(fallbackFunctionSource, "The six-key utility fallback function must be present.");
+const utilityFallbackKinds = Function(`return (${fallbackFunctionSource})`)();
+assert.deepEqual(utilityFallbackKinds(6, true), []);
+assert.deepEqual(utilityFallbackKinds(5, true), ["learn_more"]);
+assert.deepEqual(utilityFallbackKinds(4, true), ["learn_more", "share"]);
+assert.match(app, /utilityKinds\.has\("learn_more"\)/);
+assert.match(app, /utilityKinds\.has\("share"\)/);
+assert.match(app, /querySelectorAll\("\[data-jookbox-utility\]"\)/);
 assert.match(app, /link\.dataset\.keyIndex=String\(index\)/);
 assert.match(app, /const groupCount=Math\.ceil\(keys\.length\/groupSize\)/);
 assert.match(app, /classList\.toggle\("is-current-key",index>=groupStart&&index<groupStart\+groupSize\)/);
@@ -161,6 +174,21 @@ assert.match(styles, /data-jookbox-appearance="atlas-reference-cabinet\/1"[\s\S]
 assert.match(styles, /data-jookbox-appearance="atlas-reference-cabinet\/1"[\s\S]*\.jookbox-ticker-console\{[\s\S]*top:17\.35%/);
 assert.match(styles, /data-jookbox-appearance="atlas-reference-cabinet\/1"[\s\S]*\.jookbox-screen-frame\{[\s\S]*left:27\.3%/);
 assert.match(styles, /data-jookbox-appearance="atlas-reference-cabinet\/1"[\s\S]*\.jookbox-secondary-actions\{[\s\S]*grid-template-columns:repeat\(3/);
+assert.match(styles, /ATLAS_SIX_KEY_VISUAL_CONTRACT_START/);
+assert.match(styles, /ATLAS_SIX_KEY_VISUAL_CONTRACT_END/);
+const atlasVisualStart = styles.indexOf("/* ATLAS_SIX_KEY_VISUAL_CONTRACT_START */");
+const atlasVisualEnd = styles.indexOf("/* ATLAS_SIX_KEY_VISUAL_CONTRACT_END */");
+assert.ok(atlasVisualStart >= 0 && atlasVisualEnd > atlasVisualStart, "The ATLAS key visual contract markers must remain intact.");
+const atlasVisualContract = styles
+  .slice(atlasVisualStart + "/* ATLAS_SIX_KEY_VISUAL_CONTRACT_START */".length, atlasVisualEnd)
+  .trim()
+  .replace(/\r\n/g, "\n");
+assert.equal(
+  crypto.createHash("sha256").update(atlasVisualContract).digest("hex"),
+  "640c66368e94a588b7639af8e4ca29cb921ee5a45963a20ef062df4c918f631d",
+  "The owner-approved ATLAS key shape, typography, spacing, colours, borders, dimensions and glow must remain unchanged.",
+);
+assert.match(styles, /\[data-jookbox-key-format="six-key\/1"\] \.jookbox-utility-key\{[\s\S]*appearance:none;[\s\S]*font:inherit/);
 assert.match(styles, /data-jookbox-appearance="atlas-reference-cabinet\/1"[\s\S]*\.jookbox-primary-action\{[\s\S]*top:79\.55%/);
 assert.match(styles, /@keyframes atlasReferenceKeyPulse/);
 assert.match(styles, /@keyframes atlasReferenceCoinInsert/);
@@ -192,6 +220,10 @@ assert.match(styles, /env\(safe-area-inset-bottom\)/);
 
 assert.match(creator, /modelVersion:'jookbox\/3'/);
 assert.match(creator, /layoutVersion:'coin-awakening\/1'/);
+assert.match(creator, /keyBankFormat=clean\(input\.jookBox\?\.keyBankFormat\|\|'classic-eight-key\/1'/);
+assert.match(creator, /minimumDisplayIds=keyBankFormat==='six-key\/1'\?4:1/);
+assert.match(creator, /maximumDisplayIds=keyBankFormat==='six-key\/1'\?6:8/);
+assert.match(creator, /keyBankFormat,/);
 assert.match(creator, /displaySelectionIds:requestedDisplayIds/);
 assert.match(creator, /assets\/audio\/jukebox-real-coin-insert-cc0\.mp3/);
 assert.match(creator, /coinSoundLicense:clean\(input\.jookBox\?\.coinSoundLicense\|\|'CC0-1\.0'/);
@@ -204,16 +236,27 @@ assert.match(validator, /JookBox coin recording failed its SHA-256 identity chec
 assert.match(validator, /request JookBox video playback immediately within the direct coin interaction/);
 assert.match(validator, /const atlasReferenceCabinet=edition\.editionId==='dc_e22f1cb651'/);
 assert.match(validator, /valid JookBox light duration/);
-assert.match(validator, /one to eight unique display selection IDs/);
+assert.match(validator, /six-key format requires four to six unique display selection IDs/);
+assert.match(validator, /keyBankFormat!=='six-key\/1'/);
 assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("immediate-coin-interaction-autoplay-request-with-manual-fallback"));
 assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("pre-coin-dimmed-locked-selection-keys"));
 assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("single-key-sequential-illumination"));
+assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("six-key-fixed-uniform-bank"));
+assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("six-key-learn-more-then-share-gap-fill"));
+assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("six-key-single-key-reading-order-illumination"));
 assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("hero-biography-ticker-above-video"));
 assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("centered-post-video-coin-control"));
 
 assert.equal(atlasConfig.jookBox?.appearanceVariant, "atlas-reference-cabinet/1");
-assert.equal(atlasConfig.jookBox?.lightSequenceMode, "row-pair");
+assert.equal(atlasConfig.jookBox?.keyBankFormat, "six-key/1");
+assert.equal(atlasConfig.jookBox?.lightSequenceMode, "single-key");
 assert.equal(atlasConfig.jookBox?.buttonLightDurationMs, 1100);
+assert.equal(atlasConfig.jookBox?.displaySelectionIds?.length, 5);
+assert.deepEqual(
+  [...atlasConfig.jookBox.displaySelectionIds, "learn_more"],
+  ["spotify", "bandcamp", "youtube-channel", "instagram", "dusk-til-dawn-ep", "learn_more"],
+  "ATLAS must retain its five verified destinations in order, with Learn More filling the sixth physical key.",
+);
 assert.equal(atlasConfig.jookBox?.cabinetArtwork, "assets/jookbox-atlas-reference-v1.webp");
 assert.equal(atlasConfig.jookBox?.supportAction?.linkKey, "buyMusic");
 assert.equal(atlasConfig.links?.website, "");
@@ -233,4 +276,4 @@ for (const other of platform.editions.filter((item) => item.editionId !== entry.
   assert.notEqual(otherConfig.jookBox?.sessionStorageKey, config.jookBox.sessionStorageKey, `${other.slug} must not share the Filthy Animals session key.`);
 }
 
-console.log("JookBox v3 passed: the locked Filthy Animals reference is unchanged and ATLAS alone uses its locked reference cabinet, verified support action and soft row-pair key treatment.");
+console.log("JookBox v3 passed: Filthy Animals is unchanged, while ATLAS keeps its byte-locked key visuals and uses the permanent six-key population and single-key reading-order light contract.");

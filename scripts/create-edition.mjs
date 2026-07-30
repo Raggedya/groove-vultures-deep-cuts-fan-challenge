@@ -43,8 +43,12 @@ if(editionType==='car')config.automotive={make:clean(input.automotive?.make,60),
 if(editionType==='club')config.club={location:clean(input.club?.location,120),formed:clean(input.club?.formed,30),heroLabels:['Visit','Play','Join','Connect']};
 if(editionType==='jukebox'){
   const selections=validateJookBoxSelections(input);
-  const requestedDisplayIds=Array.isArray(input.jookBox?.displaySelectionIds)?input.jookBox.displaySelectionIds.map(value=>clean(value,80)).filter(Boolean):selections.slice(0,8).map(selection=>selection.id);
-  if(!requestedDisplayIds.length||requestedDisplayIds.length>8||new Set(requestedDisplayIds).size!==requestedDisplayIds.length||requestedDisplayIds.some(id=>!selections.some(selection=>selection.id===id)))throw new Error('JookBox requires one to eight unique displaySelectionIds that match verified Linktree selections.');
+  const keyBankFormat=clean(input.jookBox?.keyBankFormat||'classic-eight-key/1',40);
+  if(!['classic-eight-key/1','six-key/1'].includes(keyBankFormat))throw new Error('JookBox keyBankFormat must be classic-eight-key/1 or six-key/1.');
+  const minimumDisplayIds=keyBankFormat==='six-key/1'?4:1;
+  const maximumDisplayIds=keyBankFormat==='six-key/1'?6:8;
+  const requestedDisplayIds=Array.isArray(input.jookBox?.displaySelectionIds)?input.jookBox.displaySelectionIds.map(value=>clean(value,80)).filter(Boolean):selections.slice(0,maximumDisplayIds).map(selection=>selection.id);
+  if(requestedDisplayIds.length<minimumDisplayIds||requestedDisplayIds.length>maximumDisplayIds||new Set(requestedDisplayIds).size!==requestedDisplayIds.length||requestedDisplayIds.some(id=>!selections.some(selection=>selection.id===id)))throw new Error(keyBankFormat==='six-key/1'?'The six-key JookBox format requires four to six unique displaySelectionIds backed by verified Linktree selections; Learn More and then Share fill the remaining positions.':'JookBox requires one to eight unique displaySelectionIds that match verified Linktree selections.');
   const paragraphs=(Array.isArray(input.jookBox?.biography?.paragraphs)?input.jookBox.biography.paragraphs:[]).map(paragraph=>clean(paragraph,520)).filter(Boolean);
   const biographySource=https(input.jookBox?.biography?.sourceURL||'');
   if(!paragraphs.length||!biographySource)throw new Error('JookBox requires verified biography paragraphs and an official HTTPS source.');
@@ -60,6 +64,7 @@ if(editionType==='jukebox'){
     tickerBio:clean(input.jookBox?.tickerBio||bio,420).toUpperCase(),
     tickerDurationSeconds:Math.max(12,Math.min(60,Number(input.jookBox?.tickerDurationSeconds)||36)),
     buttonLightDurationMs:Math.max(450,Math.min(1200,Number(input.jookBox?.buttonLightDurationMs)||Number(input.jookBox?.buttonRowDurationMs)||650)),
+    keyBankFormat,
     autoplayDelayMs:0,
     startupTimingsMs:{mechanism:120,neonOn:800,screenOn:1200,buttonsOn:1600,tickerOn:2000},
     displaySelectionIds:requestedDisplayIds,
