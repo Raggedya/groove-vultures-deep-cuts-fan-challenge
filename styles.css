@@ -2609,7 +2609,7 @@ body{margin:0;min-height:100%;color:var(--ink);background:#000713;overflow-x:hid
 [data-jookbox-layout="coin-awakening/1"]{
   --jb-stage-width:762;
   --jb-stage-height:1280;
-  --jb-led:#ffad28;
+  --jb-led:#ffd45f;
   --jb-row-glow:#ffc044
 }
 [data-jookbox-layout="coin-awakening/1"] .jookbox-cabinet{
@@ -2943,20 +2943,20 @@ body{margin:0;min-height:100%;color:var(--ink);background:#000713;overflow-x:hid
   max-width:none;
   color:var(--jb-led);
   font-family:"Courier New",monospace;
-  font-size:clamp(.34rem,1.48vw,.7rem);
+  font-size:clamp(.4rem,1.68vw,.78rem);
   font-weight:900;
-  letter-spacing:.055em;
+  letter-spacing:.045em;
   line-height:1;
   text-transform:uppercase;
-  text-shadow:0 0 4px rgba(255,148,19,.9);
+  text-shadow:0 0 3px #ff9f14,0 0 7px rgba(255,192,65,.95);
   white-space:nowrap;
   opacity:0;
-  transform:translate(-100%,-50%);
+  transform:translate(min(100vw,762px),-50%);
   will-change:transform
 }
 [data-jookbox-layout="coin-awakening/1"] .is-ticker-running .jookbox-ticker-text{
   opacity:1;
-  animation:jookBoxLockedTickerLTR var(--jookbox-ticker-duration,28s) linear infinite
+  animation:jookBoxLockedTickerRTL var(--jookbox-ticker-duration,28s) linear infinite
 }
 [data-jookbox-layout="coin-awakening/1"] .jookbox-metadata-share,
 [data-jookbox-layout="coin-awakening/1"] .jookbox-brass-dial{
@@ -3174,9 +3174,9 @@ body{margin:0;min-height:100%;color:var(--ink);background:#000713;overflow-x:hid
     filter:brightness(.82) saturate(.9)
   }
 }
-@keyframes jookBoxLockedTickerLTR{
-  from{transform:translate(-100%,-50%)}
-  to{transform:translate(min(100vw,762px),-50%)}
+@keyframes jookBoxLockedTickerRTL{
+  from{transform:translate(min(100vw,762px),-50%)}
+  to{transform:translate(-100%,-50%)}
 }
 
 @media(max-width:420px){

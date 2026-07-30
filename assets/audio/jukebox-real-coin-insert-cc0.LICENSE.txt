@@ -1,0 +1,12 @@
+Asset: jukebox-real-coin-insert-cc0.mp3
+Source title: vending_machine_coin_insert.wav
+Creator: Krokulator
+Source page: https://freesound.org/s/696745/
+Source description: A coin being inserted into a vending machine.
+Recorded duration: 1.785 seconds
+License: Creative Commons CC0 1.0 Universal
+License URL: https://creativecommons.org/publicdomain/zero/1.0/
+Downloaded: 2026-07-30
+
+The local MP3 is Freesound's high-quality preview of the CC0 recording.
+SHA-256: 3fd636fe3763b95a09bc8f6be470361ddf0a49e7772464d1a5292fa7c7674e8a

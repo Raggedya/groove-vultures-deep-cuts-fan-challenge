@@ -15,7 +15,7 @@
 - [x] Unify the Laneway company reference around pale-teal decorative accents while preserving the wheel pointer as its sole red focal marker.
 - [x] Add the isolated Business Recruitment contract with verified job cards, owner-approved branding/Aggits, featured video and a sourced 10-question company quiz; deliver High Grade Mechanical as its first edition.
 - [x] Generalise direct-job validation and business-brand treatments without changing HGM; deliver Hays as the second isolated Business Recruitment edition with verified mining resources, direct vacancies and an explicitly labelled owner-selected demo video.
-- [x] Lock `jookbox/3` to the owner-approved Filthy Animals full-height cabinet: local coin mechanism audio, four-state session restoration, restrained neon/CRT start-up, deliberate YouTube play, red Share hardware, brass sourced-biography dial, left-to-right amber ticker and eight curated verified keys lighting two at a time by row.
+- [x] Lock `jookbox/3` to the owner-approved Filthy Animals full-height cabinet: a sourced/licensed local real coin-slot recording, four-state session restoration, restrained neon/CRT start-up, a four-second post-coin YouTube autoplay request with manual browser fallback, red Share hardware, brass sourced-biography dial, a brighter right-to-left amber ticker and eight curated verified keys lighting two at a time by row.
 
 ## Batch-production time savings
 
