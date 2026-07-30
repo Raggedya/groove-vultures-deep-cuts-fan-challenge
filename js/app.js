@@ -1,6 +1,6 @@
 "use strict";
 
-const VERSION="20260730-jookbox-16";
+const VERSION="20260731-jookbox-17";
 const LANEWAY_REPORTING_VERSION="laneway-weekly-v1";
 const $=id=>document.getElementById(id);
 const els={
@@ -97,6 +97,7 @@ let jookBoxState="sleeping";
 let jookBoxAudio=null;
 let jookBoxKeyLightTimer=0;
 let jookBoxActiveKeyIndex=-1;
+let jookBoxBioReturnFocus=null;
 const jookBoxStartupTimers=new Set();
 init();
 
@@ -151,6 +152,7 @@ async function applyConfig(){
     document.documentElement.dataset.jookboxEmbeddedMarquee=embeddedMarquee?"true":"false";
     document.documentElement.dataset.jookboxAppearance=config.jookBox?.appearanceVariant||"reference";
     document.documentElement.dataset.jookboxLightSequence=config.jookBox?.lightSequenceMode||"single-key";
+    document.documentElement.dataset.jookboxKeyFormat=config.jookBox?.keyBankFormat||"classic-eight-key/1";
     document.documentElement.style.setProperty("--jookbox-cyan",config.theme?.accent||"#55d9ff");
     document.documentElement.style.setProperty("--jookbox-orange",config.theme?.accentSecondary||"#ff6640");
     document.documentElement.style.setProperty("--jookbox-gold",config.theme?.gold||"#ffd66b");
@@ -307,7 +309,11 @@ function buildJookBox(){
   els.jookBoxCoin.addEventListener("click",powerJookBox);
   els.jookBoxBottomShare.addEventListener("click",()=>jookBoxPowered?sharePage():focusJookBoxCoin());
   els.jookBoxLearnMore.hidden=!(config.jookBox?.biography?.paragraphs?.length);
-  els.jookBoxLearnMore.addEventListener("click",()=>jookBoxPowered?openJookBoxBio():focusJookBoxCoin());
+  els.jookBoxLearnMore.addEventListener("click",()=>{
+    if(!jookBoxPowered){focusJookBoxCoin();return}
+    jookBoxBioReturnFocus=els.jookBoxLearnMore;
+    openJookBoxBio();
+  });
   els.jookBoxBioBack.addEventListener("click",closeJookBoxBio);
   document.addEventListener("visibilitychange",handleJookBoxVisibility,{passive:true});
   window.addEventListener("pagehide",cleanupJookBoxLifecycle,{passive:true});
@@ -423,13 +429,63 @@ function jookBoxDestinationDefinitions(){
   });
 }
 
+function jookBoxUsesSixKeyFormat(){
+  return config.jookBox?.keyBankFormat==="six-key/1";
+}
+
+function jookBoxHasBiography(){
+  return Array.isArray(config.jookBox?.biography?.paragraphs)&&config.jookBox.biography.paragraphs.length>0;
+}
+
+function jookBoxUtilityFallbackKinds(destinationCount,hasBiography){
+  const kinds=[];
+  if(destinationCount<6&&hasBiography)kinds.push("learn_more");
+  if(destinationCount+kinds.length<6)kinds.push("share");
+  return kinds;
+}
+
+function createJookBoxUtilityKey(kind,index){
+  const definition=kind==="learn_more"
+    ?{kind,label:"Learn More",subLabel:"Band biography",icon:"i"}
+    :{kind:"share",label:"Share",subLabel:"Share this JookBox",icon:"↗"};
+  const button=document.createElement("button");
+  button.type="button";
+  button.className="jookbox-destination jookbox-action-key jookbox-utility-key";
+  button.dataset.kind=definition.kind;
+  button.dataset.jookboxUtility=definition.kind;
+  button.dataset.keyIndex=String(index);
+  button.disabled=true;
+  button.tabIndex=-1;
+  button.setAttribute("aria-disabled","true");
+  button.setAttribute("aria-label",definition.kind==="learn_more"?`Learn more about ${config.bandName}`:`Share the ${config.bandName} JookBox`);
+  button.innerHTML=`<span class="jookbox-action-icon" aria-hidden="true">${definition.icon}</span><span class="jookbox-action-copy"><strong>${definition.label}</strong><small>${definition.subLabel}</small></span><span class="jookbox-external-mark" aria-hidden="true">↗</span>`;
+  button.addEventListener("click",()=>{
+    if(!jookBoxPowered){focusJookBoxCoin();return}
+    if(definition.kind==="learn_more"){
+      jookBoxBioReturnFocus=button;
+      openJookBoxBio();
+      return;
+    }
+    sharePage();
+  });
+  return button;
+}
+
 function buildJookBoxProductNavigation(){
-  const destinations=jookBoxDestinationDefinitions();
+  const sixKeyFormat=jookBoxUsesSixKeyFormat();
+  const destinations=jookBoxDestinationDefinitions().slice(0,sixKeyFormat?6:8);
   const controls=destinations.map((definition,index)=>{
     const link=createJookBoxDestinationLink(definition,"jookbox-action-key","jookbox_selection_bank");
     link.dataset.keyIndex=String(index);
     return link;
   });
+  if(sixKeyFormat){
+    for(const kind of jookBoxUtilityFallbackKinds(controls.length,jookBoxHasBiography()))controls.push(createJookBoxUtilityKey(kind,controls.length));
+  }
+  if(sixKeyFormat&&controls.length!==6)console.warn("The six-key JookBox contract requires four to six verified destinations so Learn More and Share can preserve all six positions.");
+  const utilityKinds=new Set(controls.map(control=>control.dataset.jookboxUtility).filter(Boolean));
+  els.jookBoxLearnMore.hidden=!jookBoxHasBiography()||utilityKinds.has("learn_more");
+  els.jookBoxBottomShare.hidden=utilityKinds.has("share");
   clearJookBoxKeyLightTimer(true);
   els.jookBoxSecondaryActions.replaceChildren(...controls);
   els.jookBoxSecondaryActions.closest(".jookbox-action-panel").hidden=!controls.length;
@@ -514,6 +570,11 @@ function unlockJookBoxDestinations(){
     link.removeAttribute("aria-disabled");
     link.tabIndex=0;
   }
+  for(const button of els.jookBoxSecondaryActions.querySelectorAll("[data-jookbox-utility]")){
+    button.disabled=false;
+    button.removeAttribute("aria-disabled");
+    button.tabIndex=0;
+  }
   els.jookBoxPrimaryAction.hidden=!els.jookBoxPrimaryAction.dataset.jookboxHref;
 }
 
@@ -581,6 +642,11 @@ function setJookBoxState(nextState){
   els.jookBox.classList.toggle("is-powered",nextState==="awake");
   if(nextState==="sleeping"){
     clearJookBoxKeyLightTimer(true);
+    for(const button of els.jookBoxSecondaryActions.querySelectorAll("[data-jookbox-utility]")){
+      button.disabled=true;
+      button.setAttribute("aria-disabled","true");
+      button.tabIndex=-1;
+    }
     els.jookBoxCoin.disabled=false;
     els.jookBoxCoin.querySelector(".jookbox-coin-plate").textContent=String(config.jookBox?.sleepingStateLabel||"Insert coin to play");
     els.jookBoxCoinPrompt.textContent="Insert the visible coin to wake the JookBox.";
@@ -601,7 +667,7 @@ function setJookBoxState(nextState){
     els.videoFrame.tabIndex=0;
     els.videoFrame.removeAttribute("aria-hidden");
     const availableKeyCount=jookBoxActionKeys().length;
-    els.jookBoxPowerStatus.textContent=`Coin accepted. ${config.bandName} is now playing and ${availableKeyCount} verified selection ${availableKeyCount===1?"key is":"keys are"} available.`;
+    els.jookBoxPowerStatus.textContent=`Coin accepted. ${config.bandName} is now playing and ${availableKeyCount} selection ${availableKeyCount===1?"key is":"keys are"} available.`;
     unlockJookBoxDestinations();
     startJookBoxKeyLightSequence();
   }
@@ -763,7 +829,9 @@ function openJookBoxBio(){
 function closeJookBoxBio(){
   els.jookBoxBioScreen.hidden=true;
   els.page.hidden=false;
-  els.jookBoxLearnMore.focus();
+  const returnTarget=jookBoxBioReturnFocus?.isConnected&&!jookBoxBioReturnFocus.hidden?jookBoxBioReturnFocus:els.jookBoxLearnMore;
+  jookBoxBioReturnFocus=null;
+  returnTarget.focus();
 }
 
 function trackJookBoxOutbound(definition,url,source="jookbox_linktree"){

@@ -77,8 +77,11 @@ for(const edition of platform.editions){
     }else if(config.editionType==='jukebox'){
       if(config.brandName!=='JookBox'||config.characterArtwork)errors.push(`${edition.config} must preserve the isolated no-Aggits JookBox contract.`);
       const atlasReferenceCabinet=edition.editionId==='dc_e22f1cb651'&&config.jookBox?.appearanceVariant==='atlas-reference-cabinet/1';
-      const validLightSequence=atlasReferenceCabinet?config.jookBox?.lightSequenceMode==='row-pair':config.jookBox?.lightSequenceMode==='single-key';
-      if(config.jookBox?.modelVersion!=='jookbox/3'||config.jookBox?.layoutVersion!=='coin-awakening/1'||JSON.stringify(config.jookBox?.heroLabels)!==JSON.stringify(['Listen','Watch','Follow','Shop'])||config.jookBox?.lightSequence!==true||!validLightSequence||config.jookBox?.coinStart!==true||config.jookBox?.syncMode!=='verified-build-time')errors.push(`${edition.config} must preserve the locked coin-awakening JookBox model and its isolated light sequence.`);
+      const keyBankFormat=config.jookBox?.keyBankFormat||'classic-eight-key/1';
+      const sixKeyFormat=keyBankFormat==='six-key/1';
+      const validKeyBankFormat=['classic-eight-key/1','six-key/1'].includes(keyBankFormat);
+      const validLightSequence=config.jookBox?.lightSequenceMode==='single-key';
+      if(config.jookBox?.modelVersion!=='jookbox/3'||config.jookBox?.layoutVersion!=='coin-awakening/1'||JSON.stringify(config.jookBox?.heroLabels)!==JSON.stringify(['Listen','Watch','Follow','Shop'])||config.jookBox?.lightSequence!==true||!validKeyBankFormat||!validLightSequence||config.jookBox?.coinStart!==true||config.jookBox?.syncMode!=='verified-build-time')errors.push(`${edition.config} must preserve the locked coin-awakening JookBox model, key-bank format and single-key light sequence.`);
       if(!config.jookBox?.tickerBio||!config.jookBox?.coinSound||!config.jookBox?.coinSoundSha256||!/^https:\/\//.test(config.jookBox?.coinSoundSource||'')||!config.jookBox?.coinSoundLicense||!config.jookBox?.sessionStorageKey)errors.push(`${edition.config} requires configured ticker copy, sourced local coin audio with an integrity hash and licence, and session restoration.`);
       if(config.jookBox?.autoplayDelayMs!==0)errors.push(`${edition.config} must request JookBox video playback immediately within the direct coin interaction.`);
       if(!(config.jookBox?.buttonLightDurationMs>=450&&config.jookBox?.buttonLightDurationMs<=1200))errors.push(`${edition.config} must use a valid JookBox light duration.`);
@@ -97,7 +100,8 @@ for(const edition of platform.editions){
         ids.add(selection.id);selectionURLs.add(url);
       }
       const displayIds=Array.isArray(config.jookBox?.displaySelectionIds)?config.jookBox.displaySelectionIds:[];
-      if(!displayIds.length||displayIds.length>8||new Set(displayIds).size!==displayIds.length||displayIds.some(id=>!ids.has(id)))errors.push(`${edition.config} requires one to eight unique display selection IDs backed by verified snapshot entries.`);
+      const validDisplayCount=sixKeyFormat?displayIds.length>=4&&displayIds.length<=6:displayIds.length>=1&&displayIds.length<=8;
+      if(!validDisplayCount||new Set(displayIds).size!==displayIds.length||displayIds.some(id=>!ids.has(id)))errors.push(sixKeyFormat?`${edition.config} six-key format requires four to six unique display selection IDs backed by verified snapshot entries; Learn More and then Share fill the remaining positions.`:`${edition.config} requires one to eight unique display selection IDs backed by verified snapshot entries.`);
       const timings=config.jookBox?.startupTimingsMs||{};
       if(!(timings.mechanism>=0&&timings.neonOn>=300&&timings.screenOn>=timings.neonOn&&timings.buttonsOn>=timings.screenOn&&timings.tickerOn>=timings.buttonsOn))errors.push(`${edition.config} contains an invalid JookBox start-up timeline.`);
       if(!normalized(config.jookBox?.linkSourceURL)||!Number.isFinite(new Date(config.jookBox?.linkSourceVerifiedAt).getTime())||!research.sources.some(source=>source.destination==='jookBoxSource'&&source.identityVerified===true&&normalized(source.url)===normalized(config.jookBox?.linkSourceURL)))errors.push(`${edition.config} requires a dated, verified Linktree source snapshot.`);
@@ -106,7 +110,7 @@ for(const edition of platform.editions){
         const cabinet=await fs.readFile(config.jookBox.cabinetArtwork);
         if(config.jookBox.cabinetArtworkSha256&&crypto.createHash('sha256').update(cabinet).digest('hex')!==config.jookBox.cabinetArtworkSha256)errors.push(`${edition.config} locked JookBox cabinet artwork failed its SHA-256 identity check.`);
       }
-      if(atlasReferenceCabinet&&(!config.jookBox?.cabinetArtworkSha256||config.jookBox?.cabinetArtwork!=='assets/jookbox-atlas-reference-v1.webp'||config.jookBox?.supportAction?.linkKey!=='buyMusic'))errors.push(`${edition.config} must preserve the locked ATLAS reference cabinet and verified support action.`);
+      if(atlasReferenceCabinet&&(!config.jookBox?.cabinetArtworkSha256||config.jookBox?.cabinetArtwork!=='assets/jookbox-atlas-reference-v1.webp'||config.jookBox?.supportAction?.linkKey!=='buyMusic'||keyBankFormat!=='six-key/1'||config.jookBox?.lightSequenceMode!=='single-key'))errors.push(`${edition.config} must preserve the locked ATLAS reference cabinet, verified support action, exact six-key bank and single-key reading-order light sequence.`);
       if(config.jookBox?.coinSound){
         const coinSound=await fs.readFile(config.jookBox.coinSound);
         if(config.jookBox.coinSoundSha256&&crypto.createHash('sha256').update(coinSound).digest('hex')!==config.jookBox.coinSoundSha256)errors.push(`${edition.config} JookBox coin recording failed its SHA-256 identity check.`);

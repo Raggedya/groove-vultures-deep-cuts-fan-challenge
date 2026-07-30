@@ -63,6 +63,7 @@
     "tickerBio": "ATLAS — A FOUR-PIECE NORTH VANCOUVER ROCK BAND MADE UP OF CAPILANO UNIVERSITY JAZZ STUDENTS. DISCOVER THEIR 2023 EP DUSK 'TIL DAWN, OFFICIAL MUSIC PAGES AND BAND CHANNEL.",
     "tickerDurationSeconds": 40,
     "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
     "autoplayDelayMs": 0,
     "startupTimingsMs": {
       "mechanism": 120,
@@ -88,7 +89,7 @@
       "Shop"
     ],
     "lightSequence": true,
-    "lightSequenceMode": "row-pair",
+    "lightSequenceMode": "single-key",
     "appearanceVariant": "atlas-reference-cabinet/1",
     "supportAction": {
       "label": "Support the Band",
