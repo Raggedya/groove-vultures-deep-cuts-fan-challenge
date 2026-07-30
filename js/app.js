@@ -1,6 +1,6 @@
 "use strict";
 
-const VERSION="20260730-jookbox-13";
+const VERSION="20260730-jookbox-14";
 const LANEWAY_REPORTING_VERSION="laneway-weekly-v1";
 const $=id=>document.getElementById(id);
 const els={
@@ -145,12 +145,15 @@ async function applyConfig(){
   if(schools){document.documentElement.style.setProperty("--school-secondary",config.theme?.accentSecondary||"#00C4B4");document.documentElement.style.setProperty("--school-navy",config.theme?.navy||"#0A2342");document.documentElement.style.setProperty("--school-surface",config.theme?.surface||"#FFFFFF");document.documentElement.style.setProperty("--school-content",config.theme?.contentBackground||"#F8FAFC")}
   if(business){document.documentElement.style.setProperty("--business-accent",config.theme?.accent||"#2f80c3");document.documentElement.style.setProperty("--business-secondary",config.theme?.accentSecondary||"#ff6a1a");document.documentElement.style.setProperty("--business-secondary-strong",config.theme?.secondaryStrong||"#a94618");document.documentElement.style.setProperty("--business-surface",config.theme?.surface||"#111a29")}
   if(jookBox){
+    const cabinetArtwork=config.jookBox?.cabinetArtwork||"assets/jookbox-cabinet-photoreal-v1.webp";
+    const embeddedMarquee=cabinetArtwork==="assets/jookbox-filthy-animals-locked-v1.jpg";
     document.documentElement.dataset.jookboxLayout=config.jookBox?.layoutVersion||"classic";
+    document.documentElement.dataset.jookboxEmbeddedMarquee=embeddedMarquee?"true":"false";
     document.documentElement.style.setProperty("--jookbox-cyan",config.theme?.accent||"#55d9ff");
     document.documentElement.style.setProperty("--jookbox-orange",config.theme?.accentSecondary||"#ff6640");
     document.documentElement.style.setProperty("--jookbox-gold",config.theme?.gold||"#ffd66b");
     document.documentElement.style.setProperty("--jookbox-surface",config.theme?.surface||"#091321");
-    document.documentElement.style.setProperty("--jookbox-cabinet-artwork",`url("/${config.jookBox?.cabinetArtwork||"assets/jookbox-cabinet-photoreal-v1.webp"}")`);
+    document.documentElement.style.setProperty("--jookbox-cabinet-artwork",`url("/${cabinetArtwork}")`);
     document.documentElement.style.setProperty("--jookbox-ticker-duration",`${Math.max(12,Number(config.jookBox?.tickerDurationSeconds)||28)}s`);
     document.documentElement.style.setProperty("--jookbox-key-duration",`${jookBoxKeyLightDuration()}ms`);
   }
@@ -283,6 +286,9 @@ function buildFeaturedVideo(){
 function buildJookBox(){
   if(!isJookBoxEdition())return;
   els.jookBoxTitle.textContent=config.jookBox?.marquee||config.bandName;
+  const marquee=els.jookBoxTitle.closest(".jookbox-marquee");
+  const embeddedMarquee=document.documentElement.dataset.jookboxEmbeddedMarquee==="true";
+  marquee?.classList.toggle("visually-hidden",embeddedMarquee);
   els.jookBoxTrackTitle.textContent=config.featuredVideo?.title||`${config.bandName} featured video`;
   els.jookBoxTrackTitle.title=els.jookBoxTrackTitle.textContent;
   els.jookBoxTrackArtist.textContent=config.bandName;
@@ -306,7 +312,7 @@ function buildJookBox(){
   window.addEventListener("pageshow",handleJookBoxPageShow,{passive:true});
   handleJookBoxVisibility();
   configureJookBoxBio();
-  if(config.jookBox?.layoutVersion!=="coin-awakening/1"){
+  if(config.jookBox?.layoutVersion!=="coin-awakening/1"||!embeddedMarquee){
     fitJookBoxMarqueeTitle();
     window.addEventListener("resize",fitJookBoxMarqueeTitle,{passive:true});
   }
@@ -573,7 +579,8 @@ function setJookBoxState(nextState){
     els.jookBoxTicker.removeAttribute("aria-hidden");
     els.videoFrame.tabIndex=0;
     els.videoFrame.removeAttribute("aria-hidden");
-    els.jookBoxPowerStatus.textContent=`Coin accepted. ${config.bandName} is now playing and all eight selection keys are available.`;
+    const availableKeyCount=jookBoxActionKeys().length;
+    els.jookBoxPowerStatus.textContent=`Coin accepted. ${config.bandName} is now playing and ${availableKeyCount} verified selection ${availableKeyCount===1?"key is":"keys are"} available.`;
     unlockJookBoxDestinations();
     startJookBoxKeyLightSequence();
   }

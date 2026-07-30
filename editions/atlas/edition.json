@@ -1,0 +1,150 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "ATLAS",
+  "editionTitle": "ATLAS",
+  "description": "A four-piece North Vancouver rock band formed by Capilano University jazz students, documented through the independently verified ATLAS catalogue.",
+  "discovery": {
+    "bio": "A four-piece North Vancouver rock band formed by Capilano University jazz students, documented through the independently verified ATLAS catalogue.",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "atlas",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_e22f1cb651",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/atlas/instagram-discovery.png",
+    "qrImage": "output/atlas/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "https://theatlasband.bandcamp.com/",
+    "spotify": "https://open.spotify.com/artist/1x8PRy1lLOkmNnBrojp7nX",
+    "instagram": "https://www.instagram.com/atlas.band_/",
+    "website": "",
+    "buyMusic": "https://theatlasband.bandcamp.com/album/dusk-til-dawn",
+    "merchandise": "",
+    "facebook": "",
+    "youtube": "https://www.youtube.com/channel/UCu9a6CCxBq9pPYke63wfk4g"
+  },
+  "featuredVideo": {
+    "title": "WELCOME TO OUR YOUTUBE CHANNEL",
+    "youtubeURL": "https://www.youtube.com/watch?v=pWyoMXm71yA",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-07-30T11:27:00.000Z"
+  },
+  "analytics": {
+    "editionId": "dc_e22f1cb651",
+    "pageIdentifier": "dc_e22f1cb651:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_8310ffa0-4427-4d8e-ba17-9142f151f5f3",
+    "submittedAt": "2026-07-30T11:15:36.302Z",
+    "researchCompletedAt": "2026-07-30T11:31:08.416Z",
+    "editionCreatedAt": "2026-07-30T11:31:08.416Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-cabinet-photoreal-v1.webp",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "3fd636fe3763b95a09bc8f6be470361ddf0a49e7772464d1a5292fa7c7674e8a",
+    "coinSoundSource": "https://freesound.org/s/696745/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_e22f1cb651",
+    "tickerBio": "ATLAS — A FOUR-PIECE NORTH VANCOUVER ROCK BAND MADE UP OF CAPILANO UNIVERSITY JAZZ STUDENTS. DISCOVER THEIR 2023 EP DUSK 'TIL DAWN, OFFICIAL MUSIC PAGES AND BAND CHANNEL.",
+    "tickerDurationSeconds": 40,
+    "buttonLightDurationMs": 650,
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "dusk-til-dawn-ep",
+      "spotify",
+      "bandcamp",
+      "instagram",
+      "youtube-channel"
+    ],
+    "marquee": "ATLAS",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "coinStart": true,
+    "linkSourceURL": "https://linktr.ee/theatlasband",
+    "linkSourceVerifiedAt": "2026-07-30T11:27:00.000Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "dusk-til-dawn-ep",
+        "sourceTitle": "STREAM \"Dusk 'Til Dawn\" EP",
+        "label": "Dusk 'Til Dawn EP",
+        "detail": "Stream the 2023 EP",
+        "url": "https://atlas.hearnow.com/dusk-til-dawn",
+        "platform": "website",
+        "kind": "deep_cut"
+      },
+      {
+        "id": "spotify",
+        "sourceTitle": "Stream Atlas on Spotify",
+        "label": "Spotify",
+        "detail": "Listen to ATLAS",
+        "url": "https://open.spotify.com/artist/1x8PRy1lLOkmNnBrojp7nX",
+        "platform": "website",
+        "kind": "spotify"
+      },
+      {
+        "id": "bandcamp",
+        "sourceTitle": "Bandcamp",
+        "label": "Bandcamp",
+        "detail": "Listen and buy direct",
+        "url": "https://theatlasband.bandcamp.com/",
+        "platform": "website",
+        "kind": "bandcamp"
+      },
+      {
+        "id": "instagram",
+        "sourceTitle": "Follow us on Instagram",
+        "label": "Instagram",
+        "detail": "Follow official band updates",
+        "url": "https://www.instagram.com/atlas.band_/",
+        "platform": "instagram",
+        "kind": "instagram"
+      },
+      {
+        "id": "youtube-channel",
+        "sourceTitle": "Check us out on Youtube",
+        "label": "YouTube Channel",
+        "detail": "Watch the official channel",
+        "url": "https://www.youtube.com/channel/UCu9a6CCxBq9pPYke63wfk4g",
+        "platform": "youtube",
+        "kind": "youtube"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://theatlasband.bandcamp.com/album/dusk-til-dawn",
+      "paragraphs": [
+        "ATLAS is a four-piece rock band based in North Vancouver, made up of Capilano University jazz students Austin Leitch, Steve Atlas, Calvin Dumont and Jackson Hutton.",
+        "Their Dusk 'Til Dawn EP was released on 30 June 2023 and includes Queen Sized Lover, Cold-Hearted Woman, Summertime, Dusk 'Til Dawn and Flying Free."
+      ]
+    }
+  }
+}

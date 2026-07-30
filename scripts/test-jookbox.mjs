@@ -101,8 +101,8 @@ const contracts = JSON.parse(contractsText);
 assert.equal(contracts.productModels.jookbox.version, 3);
 assert.deepEqual(contracts.editionTypes.jukebox.renderedLinks, []);
 assert.match(html, /id="jookBoxCabinet"/);
-assert.match(html, /styles\.css\?v=20260730-jookbox-13/);
-assert.match(html, /app\.js\?v=20260730-jookbox-13/);
+assert.match(html, /styles\.css\?v=20260730-jookbox-14/);
+assert.match(html, /app\.js\?v=20260730-jookbox-14/);
 assert.match(html, /id="jookBoxVideoSlot"/);
 assert.match(html, /id="jookBoxCoinButton"[\s\S]*aria-label="Insert coin and start the jukebox"/);
 assert.match(html, /id="jookBoxTickerText"/);
@@ -115,7 +115,10 @@ assert.doesNotMatch(html, /Filthy Animals/, "The reusable HTML renderer must nev
 assert.doesNotMatch(html, /id="jookBoxSoundToggle"|class="jookbox-band-plaque"|id="jookBoxActionBar"/);
 
 assert.match(app, /function setJookBoxState\(nextState\)/);
-assert.match(app, /const VERSION="20260730-jookbox-13"/);
+assert.match(app, /const VERSION="20260730-jookbox-14"/);
+assert.match(app, /dataset\.jookboxEmbeddedMarquee=embeddedMarquee\?"true":"false"/);
+assert.match(app, /marquee\?\.classList\.toggle\("visually-hidden",embeddedMarquee\)/);
+assert.match(app, /availableKeyCount===1\?"key is":"keys are"/);
 assert.match(app, /\["sleeping","acceptingCoin","poweringUp","awake"\]/);
 assert.match(app, /function restoreJookBoxSessionState\(\)/);
 assert.match(app, /sessionStorage\.getItem\(jookBoxSessionKey\(\)\)/);
@@ -146,6 +149,7 @@ assert.match(app, /www\.youtube-nocookie\.com\/embed/);
 assert.match(app, /function trackJookBoxOutbound\(definition,url,source="jookbox_linktree"\)/);
 
 assert.match(styles, /\[data-jookbox-layout="coin-awakening\/1"\] \.jookbox-machine\{[\s\S]*aspect-ratio:762\/1280/);
+assert.match(styles, /data-jookbox-embedded-marquee="false"[\s\S]*\.jookbox-marquee h1\{[\s\S]*text-transform:uppercase/);
 assert.match(styles, /\.jookbox-coin-button\{[\s\S]*min-height:44px/);
 assert.match(styles, /@keyframes jookBoxLockedCoinAttention/);
 assert.match(styles, /@keyframes jookBoxLockedCoinInsert/);

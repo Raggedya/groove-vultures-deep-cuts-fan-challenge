@@ -3176,6 +3176,74 @@ body{margin:0;min-height:100%;color:var(--ink);background:#000713;overflow-x:hid
   animation-play-state:paused!important
 }
 
+[data-jookbox-layout="coin-awakening/1"][data-jookbox-embedded-marquee="false"] .jookbox-marquee{
+  position:absolute;
+  z-index:12;
+  top:7%;
+  left:16.1%;
+  display:flex;
+  width:67.8%;
+  height:9.6%;
+  margin:0;
+  padding:0 4%;
+  clip:auto;
+  clip-path:none;
+  align-items:center;
+  flex-direction:column;
+  justify-content:center;
+  overflow:hidden;
+  border:0;
+  border-radius:0;
+  white-space:normal;
+  background:transparent;
+  box-shadow:none
+}
+[data-jookbox-layout="coin-awakening/1"][data-jookbox-embedded-marquee="false"] .jookbox-marquee h1{
+  order:1;
+  width:100%;
+  margin:0;
+  overflow:hidden;
+  color:#fff0a8;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(1.35rem,7vw,3rem);
+  font-weight:900;
+  letter-spacing:.08em;
+  line-height:.92;
+  text-align:center;
+  text-overflow:ellipsis;
+  text-transform:uppercase;
+  white-space:nowrap;
+  text-shadow:0 0 3px #fff8d8,0 0 9px #ffc34b,0 0 18px rgba(255,96,35,.92)
+}
+[data-jookbox-layout="coin-awakening/1"][data-jookbox-embedded-marquee="false"] .jookbox-marquee .jookbox-model-mark{
+  order:2;
+  margin:.25em 0 0;
+  color:#fff0c2;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(.42rem,1.8vw,.78rem);
+  font-style:normal;
+  font-weight:700;
+  letter-spacing:.32em;
+  line-height:1;
+  text-transform:uppercase;
+  text-shadow:0 0 7px rgba(255,191,70,.72)
+}
+[data-jookbox-layout="coin-awakening/1"][data-jookbox-embedded-marquee="false"] .jookbox-playing-status{
+  order:3;
+  margin:.28em 0 0;
+  color:#f4dca5;
+  font-size:clamp(.34rem,1.35vw,.62rem);
+  letter-spacing:.18em;
+  line-height:1;
+  text-transform:uppercase;
+  text-shadow:0 0 5px rgba(255,168,47,.48)
+}
+[data-jookbox-layout="coin-awakening/1"][data-jookbox-embedded-marquee="false"] .jookbox-playing-status i{
+  width:.45em;
+  height:.45em;
+  box-shadow:0 0 7px #ff4c35
+}
+
 @keyframes jookBoxLockedCoinAttention{
   0%,58%,100%{filter:brightness(.78);box-shadow:inset 0 0 0 2px rgba(44,22,11,.86),inset 0 1px rgba(255,238,195,.18),0 2px 7px rgba(0,0,0,.7)}
   74%{filter:brightness(1.12);box-shadow:inset 0 0 0 2px rgba(68,34,13,.86),inset 0 1px rgba(255,247,207,.31),0 0 13px rgba(255,190,58,.54),0 2px 7px rgba(0,0,0,.7)}

@@ -281,6 +281,14 @@
       "name": "Filthy Animals",
       "config": "editions/filthy-animals/edition.json",
       "active": true
+    },
+    {
+      "slug": "atlas",
+      "editionId": "dc_e22f1cb651",
+      "canonicalPath": "/e/dc_e22f1cb651",
+      "name": "ATLAS",
+      "config": "editions/atlas/edition.json",
+      "active": true
     }
   ]
 }

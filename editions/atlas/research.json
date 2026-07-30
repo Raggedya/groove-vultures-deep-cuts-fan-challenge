@@ -1,0 +1,128 @@
+{
+  "bandName": "ATLAS",
+  "slug": "atlas",
+  "editionId": "dc_e22f1cb651",
+  "verifiedAt": "2026-07-30T11:31:08.416Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://linktr.ee/theatlasband",
+      "sourceType": "official artist-controlled Linktree",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-30T11:27:00.000Z",
+      "evidence": "The supplied Linktree identifies ATLAS as a four-piece rock band from North Vancouver and links the same Spotify, Instagram, YouTube and Bandcamp destinations independently corroborated below."
+    },
+    {
+      "destination": "identity",
+      "url": "https://theatlasband.bandcamp.com/",
+      "sourceType": "official artist-controlled Bandcamp",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-30T11:27:00.000Z",
+      "evidence": "The official Bandcamp identifies Atlas in North Vancouver, names the four members and describes the band as Capilano University jazz students; it links the same Instagram and YouTube profiles."
+    },
+    {
+      "destination": "bandcamp",
+      "url": "https://theatlasband.bandcamp.com/",
+      "sourceType": "official artist-controlled Bandcamp",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-30T11:27:00.000Z",
+      "evidence": "The Linktree Bandcamp control resolves to the direct ATLAS Bandcamp page, which returned HTTP 200 and lists the band's matching North Vancouver identity and catalogue."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/1x8PRy1lLOkmNnBrojp7nX",
+      "sourceType": "official music platform artist page",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-30T11:27:00.000Z",
+      "evidence": "The supplied Linktree resolves directly to this Spotify artist ID. Its ATLAS biography and Dusk 'Til Dawn catalogue match the independently verified Bandcamp and YouTube identity."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/atlas.band_/",
+      "sourceType": "official artist-controlled Linktree and Bandcamp destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-30T11:27:00.000Z",
+      "evidence": "Both the supplied Linktree and official Bandcamp point to @atlas.band_. The direct HTTPS profile returned HTTP 200 during verification."
+    },
+    {
+      "destination": "buyMusic",
+      "url": "https://theatlasband.bandcamp.com/album/dusk-til-dawn",
+      "sourceType": "official artist-controlled Bandcamp release page",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-30T11:27:00.000Z",
+      "evidence": "The direct official Bandcamp release page offers the five-track Dusk 'Til Dawn digital album for purchase and returned HTTP 200."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/channel/UCu9a6CCxBq9pPYke63wfk4g",
+      "sourceType": "official artist-controlled YouTube channel",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-30T11:27:00.000Z",
+      "evidence": "The Linktree and Bandcamp both link @theatlasbandyvr. YouTube resolves it to this channel ID, titled Atlas, with the matching North Vancouver four-piece biography."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://linktr.ee/theatlasband",
+      "sourceType": "official artist-controlled Linktree live snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-30T11:27:00.000Z",
+      "evidence": "The dated Linktree snapshot exposed the Dusk 'Til Dawn smart link, Spotify, Apple Music, Instagram, TikTok, YouTube, Twitter, Bandcamp and contact controls. Only independently verified supported controls are published."
+    },
+    {
+      "destination": "selection:dusk-til-dawn-ep",
+      "url": "https://atlas.hearnow.com/dusk-til-dawn",
+      "sourceType": "official artist-controlled Linktree destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-30T11:27:00.000Z",
+      "evidence": "Current Linktree button: STREAM \"Dusk 'Til Dawn\" EP. It resolves to the ATLAS HearNow release page matching the independently verified 2023 Bandcamp EP."
+    },
+    {
+      "destination": "selection:spotify",
+      "url": "https://open.spotify.com/artist/1x8PRy1lLOkmNnBrojp7nX",
+      "sourceType": "official artist-controlled Linktree destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-30T11:27:00.000Z",
+      "evidence": "Current Linktree button: Stream Atlas on Spotify. It resolves to the direct verified ATLAS Spotify artist ID and returned HTTP 200."
+    },
+    {
+      "destination": "selection:bandcamp",
+      "url": "https://theatlasband.bandcamp.com/",
+      "sourceType": "official artist-controlled Linktree destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-30T11:27:00.000Z",
+      "evidence": "Current Linktree button: Bandcamp. It resolves to the direct verified North Vancouver ATLAS Bandcamp and returned HTTP 200."
+    },
+    {
+      "destination": "selection:instagram",
+      "url": "https://www.instagram.com/atlas.band_/",
+      "sourceType": "official artist-controlled Linktree and Bandcamp destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-30T11:27:00.000Z",
+      "evidence": "Current Linktree button: Follow us on Instagram. The same @atlas.band_ profile is linked by the official Bandcamp and returned HTTP 200."
+    },
+    {
+      "destination": "selection:youtube-channel",
+      "url": "https://www.youtube.com/channel/UCu9a6CCxBq9pPYke63wfk4g",
+      "sourceType": "official artist-controlled Linktree and Bandcamp destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-30T11:27:00.000Z",
+      "evidence": "Current Linktree button: Check us out on Youtube. The same official channel is linked from Bandcamp and displays the matching ATLAS biography."
+    },
+    {
+      "destination": "biography",
+      "url": "https://theatlasband.bandcamp.com/album/dusk-til-dawn",
+      "sourceType": "official artist-controlled Bandcamp release page",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-30T11:27:00.000Z",
+      "evidence": "The official release page verifies the members, North Vancouver identity, Capilano University connection, five-song track list and 30 June 2023 release date used in the biography."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=pWyoMXm71yA",
+      "sourceType": "official YouTube channel videos listing and player",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-30T11:27:00.000Z",
+      "evidence": "The verified Atlas channel showed three uploads. WELCOME TO OUR YOUTUBE CHANNEL led with 70 views versus 52 and 49; its YouTube player loaded with an available Play control."
+    }
+  ]
+}
