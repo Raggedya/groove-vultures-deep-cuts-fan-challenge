@@ -19,8 +19,9 @@ assert.equal(config.jookBox?.coinSoundSha256, "3fd636fe3763b95a09bc8f6be470361dd
 assert.equal(config.jookBox?.coinSoundSource, "https://freesound.org/s/696745/");
 assert.equal(config.jookBox?.coinSoundLicense, "CC0-1.0");
 assert.equal(config.jookBox?.sessionStorageKey, "filthyAnimalsJukeboxActivated");
-assert.equal(config.jookBox?.tickerDurationSeconds, 28);
-assert.equal(config.jookBox?.buttonRowDurationMs, 800);
+assert.equal(config.jookBox?.tickerDurationSeconds, 36);
+assert.equal(config.jookBox?.buttonLightDurationMs, 650);
+assert.equal(config.jookBox?.buttonRowDurationMs, undefined);
 assert.equal(config.jookBox?.autoplayDelayMs, 0);
 assert.deepEqual(config.jookBox?.startupTimingsMs, {
   mechanism: 120,
@@ -32,6 +33,7 @@ assert.deepEqual(config.jookBox?.startupTimingsMs, {
 assert.match(config.jookBox?.tickerBio || "", /THE FILTHY ANIMALS/);
 assert.deepEqual(config.jookBox?.heroLabels, ["Listen", "Watch", "Follow", "Shop"]);
 assert.equal(config.jookBox?.lightSequence, true);
+assert.equal(config.jookBox?.lightSequenceMode, "single-key");
 assert.equal(config.jookBox?.coinStart, true);
 assert.equal(config.jookBox?.syncMode, "verified-build-time");
 assert.equal(config.characterArtwork, "", "JookBox must never render Aggits.");
@@ -106,6 +108,7 @@ assert.match(html, /id="jookBoxBottomShare"/);
 assert.match(html, /id="jookBoxLearnMore" class="jookbox-learn-more jookbox-brass-dial"/);
 assert.match(html, /id="jookBoxSecondaryActions"/);
 assert.match(html, /id="jookBoxStatePlaque"/);
+assert.match(html, /class="jookbox-ticker-console"[\s\S]*id="jookBoxTicker"[\s\S]*id="jookBoxVideoSlot"[\s\S]*class="jookbox-control-console"[\s\S]*id="jookBoxCoinButton"/);
 assert.doesNotMatch(html, /Filthy Animals/, "The reusable HTML renderer must never hard-code one band.");
 assert.doesNotMatch(html, /id="jookBoxSoundToggle"|class="jookbox-band-plaque"|id="jookBoxActionBar"/);
 
@@ -115,18 +118,25 @@ assert.match(app, /function restoreJookBoxSessionState\(\)/);
 assert.match(app, /sessionStorage\.getItem\(jookBoxSessionKey\(\)\)/);
 assert.match(app, /sessionStorage\.setItem\(jookBoxSessionKey\(\),"true"\)/);
 assert.match(app, /function clearJookBoxStartupTimers\(\)/);
+assert.match(app, /function clearJookBoxKeyLightTimer\(reset=false\)/);
+assert.match(app, /function advanceJookBoxKeyLight\(\)/);
+assert.match(app, /function startJookBoxKeyLightSequence\(\)/);
+assert.match(app, /function cleanupJookBoxLifecycle\(\)/);
 assert.doesNotMatch(app, /jookBoxAutoplayTimer|scheduleJookBoxAutoplay|clearJookBoxAutoplayTimer/);
 assert.match(app, /function prepareJookBoxCoinAudio\(\)/);
 assert.match(app, /new Audio\(source\.startsWith/);
 assert.match(app, /function playJookBoxCoinFallback\(\)/);
 assert.match(app, /function handleJookBoxVisibility\(\)/);
-assert.match(app, /window\.addEventListener\("pagehide",clearJookBoxStartupTimers/);
+assert.match(app, /window\.addEventListener\("pagehide",cleanupJookBoxLifecycle/);
 assert.match(app, /window\.addEventListener\("pageshow",handleJookBoxPageShow/);
-assert.match(app, /event\.persisted&&jookBoxState!=="awake"/);
+assert.match(app, /if\(!event\.persisted\)return;[\s\S]*startJookBoxKeyLightSequence\(\)/);
 assert.match(app, /is-animation-paused/);
 assert.match(app, /startupTimingsMs/);
 assert.match(app, /displaySelectionIds/);
-assert.match(app, /--jookbox-row-delay/);
+assert.match(app, /link\.dataset\.keyIndex=String\(index\)/);
+assert.match(app, /classList\.toggle\("is-current-key",index===jookBoxActiveKeyIndex\)/);
+assert.match(app, /jookBoxKeyLightTimer=window\.setTimeout\(advanceJookBoxKeyLight,jookBoxKeyLightDuration\(\)\)/);
+assert.doesNotMatch(app, /--jookbox-row-delay|--jookbox-row-cycle/);
 assert.match(app, /autoplay=\$\{autoplay\?1:0\}/);
 assert.match(app, /function powerJookBox\(\)\{[\s\S]*?playJookBoxCoinSound\(\);\s*activateJookBoxVideo\(true\);[\s\S]*?const reducedMotion/);
 assert.match(app, /www\.youtube-nocookie\.com\/embed/);
@@ -138,12 +148,18 @@ assert.match(styles, /@keyframes jookBoxLockedCoinAttention/);
 assert.match(styles, /@keyframes jookBoxLockedCoinInsert/);
 assert.match(styles, /@keyframes jookBoxLockedNeonFlicker/);
 assert.match(styles, /@keyframes jookBoxLockedScreenOn/);
-assert.match(styles, /@keyframes jookBoxLockedRowLight/);
+assert.doesNotMatch(styles, /@keyframes jookBoxLockedRowLight/);
 assert.match(styles, /@keyframes jookBoxLockedTickerRTL/);
 assert.match(styles, /--jb-led:#ffd45f/);
-assert.match(styles, /font-size:clamp\(\.4rem,1\.68vw,\.78rem\)/);
+assert.match(styles, /\.jookbox-ticker-console\{[\s\S]*top:17\.25%;[\s\S]*width:67\.8%;[\s\S]*height:10\.55%/);
+assert.match(styles, /\.jookbox-control-console\{[\s\S]*top:51\.02%;[\s\S]*width:67\.8%;[\s\S]*height:6\.7%/);
+assert.match(styles, /\.jookbox-coin-bank\{[\s\S]*top:6%;[\s\S]*left:38%;[\s\S]*width:24%;[\s\S]*height:88%/);
+assert.match(styles, /font-size:clamp\(\.56rem,2\.6vw,1\.18rem\)/);
 assert.match(styles, /from\{transform:translate\(min\(100vw,762px\),-50%\)\}[\s\S]*to\{transform:translate\(-100%,-50%\)\}/);
 assert.match(styles, /\.jookbox-secondary-actions\{[\s\S]*grid-template-rows:repeat\(4/);
+assert.match(styles, /\.jookbox-lower-deck\{[\s\S]*left:30\.5%;[\s\S]*width:39%/);
+assert.match(styles, /\.jookbox-action-panel:before\{[\s\S]*background:rgba\(7,4,3,\.88\)/);
+assert.match(styles, /\.is-buttons-running \.jookbox-action-key\.is-current-key\{[\s\S]*filter:brightness\(1\.42\) saturate\(1\.34\)/);
 assert.match(styles, /\.jookbox-action-key\[aria-disabled="true"\]\{[\s\S]*opacity:\.68;[\s\S]*pointer-events:none;[\s\S]*filter:brightness\(\.3\) saturate\(\.24\)/);
 assert.match(styles, /\.is-awake \.jookbox-action-key:hover/);
 assert.match(styles, /\.is-awake \.jookbox-action-key:focus-visible/);
@@ -157,13 +173,20 @@ assert.match(creator, /layoutVersion:'coin-awakening\/1'/);
 assert.match(creator, /displaySelectionIds:requestedDisplayIds/);
 assert.match(creator, /assets\/audio\/jukebox-real-coin-insert-cc0\.mp3/);
 assert.match(creator, /coinSoundLicense:clean\(input\.jookBox\?\.coinSoundLicense\|\|'CC0-1\.0'/);
+assert.match(creator, /tickerDurationSeconds:Math\.max\(12,Math\.min\(60,Number\(input\.jookBox\?\.tickerDurationSeconds\)\|\|36\)\)/);
+assert.match(creator, /buttonLightDurationMs:Math\.max\(450,Math\.min\(1200,Number\(input\.jookBox\?\.buttonLightDurationMs\)\|\|Number\(input\.jookBox\?\.buttonRowDurationMs\)\|\|650\)\)/);
+assert.match(creator, /lightSequenceMode:'single-key'/);
 assert.match(creator, /autoplayDelayMs:0/);
 assert.match(validator, /locked JookBox cabinet artwork failed its SHA-256 identity check/);
 assert.match(validator, /JookBox coin recording failed its SHA-256 identity check/);
 assert.match(validator, /request JookBox video playback immediately within the direct coin interaction/);
+assert.match(validator, /valid single-key JookBox light duration/);
 assert.match(validator, /one to eight unique display selection IDs/);
 assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("immediate-coin-interaction-autoplay-request-with-manual-fallback"));
 assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("pre-coin-dimmed-locked-selection-keys"));
+assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("single-key-sequential-illumination"));
+assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("hero-biography-ticker-above-video"));
+assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("centered-post-video-coin-control"));
 
 for (const other of platform.editions.filter((item) => item.editionId !== entry.editionId)) {
   const otherConfig = JSON.parse(await fs.readFile(other.config, "utf8"));
@@ -171,4 +194,4 @@ for (const other of platform.editions.filter((item) => item.editionId !== entry.
   assert.notEqual(otherConfig.jookBox?.sessionStorageKey, config.jookBox.sessionStorageKey, `${other.slug} must not share the Filthy Animals session key.`);
 }
 
-console.log("JookBox v3 passed: the owner-locked cabinet, real coin-slot recording, immediate coin-interaction YouTube playback request, pre-coin dimmed selection keys, brighter right-to-left ticker and four-row light sequence are isolated to Filthy Animals.");
+console.log("JookBox v3 passed: the hero biography ticker, centred post-video coin, wider keys, single-key light sequence, real coin sound and browser-safe YouTube playback request are isolated to Filthy Animals.");
