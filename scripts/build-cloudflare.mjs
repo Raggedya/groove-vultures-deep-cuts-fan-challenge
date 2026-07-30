@@ -8,13 +8,19 @@ const directories=['js','assets','editions','output','sell','record-company','re
 
 await fs.rm(dist,{recursive:true,force:true});
 await fs.mkdir(dist,{recursive:true});
-for(const file of files){
+await Promise.all([
+  ...files.map(file=>copyOptionalFile(file)),
+  ...directories.map(directory=>copyOptionalDirectory(directory))
+]);
+console.log(`Deep Cuts static bundle created at ${dist}.`);
+
+async function copyOptionalFile(file){
   try{await fs.copyFile(path.join(root,file),path.join(dist,file))}
   catch(error){if(error.code!=='ENOENT')throw error}
 }
-for(const directory of directories){
+
+async function copyOptionalDirectory(directory){
   try{await fs.cp(path.join(root,directory),path.join(dist,directory),{recursive:true,filter:source=>!source.includes(`${path.sep}.tools${path.sep}`)})}
   catch(error){if(error.code!=='ENOENT')throw error}
 }
-console.log(`Deep Cuts static bundle created at ${dist}.`);
 

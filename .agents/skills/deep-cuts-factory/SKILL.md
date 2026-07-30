@@ -16,6 +16,8 @@ For `Deep Cuts [Artist]`:
 3. Save the completed research input outside the edition folder, then run `node scripts/create-edition.mjs <input.json>`. This creates only edition configuration, evidence and the opaque route.
 4. Run the complete validation and the edition QR scan-back. Fix failures without involving the owner.
 
+The optimized Core Engine keeps these gates intact: `npm run validate` executes the complete plan through the bounded fail-closed runner, while the main deployment is the single automatic producer of the complete delivery-artwork package. Delivery artwork may be restored only from the exact-input cache and must still pass manifest SHA-256, dimensions and full-size plus 540-pixel QR scan-back before use. Use `npm run build:artwork` for an explicit complete local or manual rebuild; never restore the former repeated per-edition validation loop.
+
 For `Deep Cuts Cars [Make and Model]`, follow the same clock, validation, opaque-route, QR, deployment and delivery workflow with `editionType: car`. Verify the automotive identity and the model-specific history, specifications, buyer guidance, authoritative video, owners' community, restoration parts, live sales and editorial sources. Do not alter Music definitions.
 
 For `Deep Cuts Clubs [Club name and location]`, use `editionType: club` and the same unattended clock-to-delivery workflow. Verify the exact club and its direct official website, calendar, news, events, membership, public participation, competition, venue, history, contact, social and governing-body destinations. Omit login, share, search, generic and uncertain links. Do not alter Music or Cars definitions.

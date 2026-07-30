@@ -1,8 +1,6 @@
 name: Deep Cuts validation
 
 on:
-  push:
-    branches: [main]
   pull_request:
   workflow_dispatch:
   workflow_call:
@@ -27,3 +25,8 @@ jobs:
       - name: Verify Record Company delivery production
         run: python scripts/test-record-company-deliverables.py
       - run: python scripts/generate-social-assets.py
+      - name: Verify the generated default-edition artwork
+        shell: bash
+        run: |
+          slug="$(node -p "require('./platform.json').defaultEdition")"
+          python scripts/verify-delivery-assets.py --slug "$slug"

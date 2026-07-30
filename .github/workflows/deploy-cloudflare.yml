@@ -36,14 +36,30 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
-      - name: Generate scan-tested delivery artwork
-        shell: bash
+      - name: Install and verify image dependencies
         run: |
           python -m pip install --disable-pip-version-check -r requirements.txt
-          node -e "const p=require('./platform.json'); for(const e of p.editions.filter(e=>e.active)) console.log(e.slug)" |
-          while read slug; do
-            node scripts/build-edition.mjs "$slug"
-          done
+          python -c "import PIL, qrcode, zxingcpp; print('Deep Cuts image dependencies verified.')"
+      - name: Restore unchanged scan-tested artwork
+        id: artwork_cache
+        uses: actions/cache@v4
+        with:
+          path: output
+          key: deep-cuts-artwork-v1-${{ runner.os }}-${{ hashFiles('platform.json', 'editions/**', 'assets/**', 'scripts/build-delivery-assets.mjs', 'scripts/generate-social-assets.py', 'scripts/verify-delivery-assets.py', 'scripts/qr-matrix.cjs', 'scripts/vendor/qrcode.min.js', 'requirements.txt') }}
+      - name: Generate scan-tested delivery artwork
+        if: steps.artwork_cache.outputs.cache-hit != 'true'
+        run: node scripts/build-delivery-assets.mjs --validated --dependencies-ready --jobs 2 --profile .deep-cuts/artwork-profile.json
+      - name: Re-verify restored delivery artwork
+        if: steps.artwork_cache.outputs.cache-hit == 'true'
+        run: python scripts/verify-delivery-assets.py
+      - name: Preserve scan-tested delivery package
+        uses: actions/upload-artifact@v4
+        with:
+          name: deep-cuts-delivery-assets
+          path: output/**
+          if-no-files-found: error
+          retention-days: 30
+          compression-level: 0
       - run: npm run build
       - name: Apply analytics database migrations
         run: npx --yes wrangler@4 d1 migrations apply deep-cuts-production --remote
