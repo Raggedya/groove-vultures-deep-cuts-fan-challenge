@@ -1,6 +1,6 @@
 "use strict";
 
-const VERSION="20260730-jookbox-14";
+const VERSION="20260730-jookbox-16";
 const LANEWAY_REPORTING_VERSION="laneway-weekly-v1";
 const $=id=>document.getElementById(id);
 const els={
@@ -149,6 +149,8 @@ async function applyConfig(){
     const embeddedMarquee=cabinetArtwork==="assets/jookbox-filthy-animals-locked-v1.jpg";
     document.documentElement.dataset.jookboxLayout=config.jookBox?.layoutVersion||"classic";
     document.documentElement.dataset.jookboxEmbeddedMarquee=embeddedMarquee?"true":"false";
+    document.documentElement.dataset.jookboxAppearance=config.jookBox?.appearanceVariant||"reference";
+    document.documentElement.dataset.jookboxLightSequence=config.jookBox?.lightSequenceMode||"single-key";
     document.documentElement.style.setProperty("--jookbox-cyan",config.theme?.accent||"#55d9ff");
     document.documentElement.style.setProperty("--jookbox-orange",config.theme?.accentSecondary||"#ff6640");
     document.documentElement.style.setProperty("--jookbox-gold",config.theme?.gold||"#ffd66b");
@@ -431,7 +433,17 @@ function buildJookBoxProductNavigation(){
   clearJookBoxKeyLightTimer(true);
   els.jookBoxSecondaryActions.replaceChildren(...controls);
   els.jookBoxSecondaryActions.closest(".jookbox-action-panel").hidden=!controls.length;
-  els.jookBoxPrimaryAction.hidden=true;
+  const support=config.jookBox?.supportAction;
+  const supportURL=validHttps(config.links?.[String(support?.linkKey||"")]);
+  configureJookBoxPrimaryAction(support&&supportURL?{
+    key:String(support.linkKey||"buyMusic"),
+    kind:String(support.kind||"buy_music"),
+    label:String(support.label||"Support the Band"),
+    subLabel:String(support.detail||"Love our music?"),
+    icon:String(support.icon||"♡"),
+    platform:String(support.linkKey||"buyMusic"),
+    url:supportURL
+  }:null);
 }
 
 function configureJookBoxPrimaryAction(definition){
@@ -444,7 +456,7 @@ function configureJookBoxPrimaryAction(definition){
   title.textContent=definition.label;
   detail.textContent=definition.subLabel;
   configureJookBoxDestinationAnchor(els.jookBoxPrimaryAction,definition.url,definition,"jookbox_primary_action");
-  els.jookBoxPrimaryAction.hidden=true;
+  els.jookBoxPrimaryAction.hidden=false;
 }
 
 function createJookBoxDestinationLink(definition,className,source){
@@ -478,9 +490,11 @@ function configureJookBoxDestinationAnchor(element,url,definition,source){
 }
 
 function jookBoxActionIcon(definition){
+  const configured=String(definition.icon||"").trim();
+  if(configured)return configured;
   return({
-    bandcamp:"B",spotify:"♫",instagram:"◎",website:"⌂",
-    buy_music:"♪",merchandise:"◆",facebook:"f"
+    bandcamp:"B",spotify:"♫",youtube:"▶",instagram:"◎",website:"⌂",
+    buy_music:"♪",deep_cut:"★",merchandise:"◆",facebook:"f"
   })[jookBoxSelectionKind(definition)]||"◆";
 }
 
@@ -515,6 +529,10 @@ function jookBoxActionKeys(){
   return [...els.jookBoxSecondaryActions.querySelectorAll(".jookbox-action-key")];
 }
 
+function jookBoxKeyLightGroupSize(){
+  return config.jookBox?.lightSequenceMode==="row-pair"?2:1;
+}
+
 function clearJookBoxKeyLightTimer(reset=false){
   if(jookBoxKeyLightTimer)window.clearTimeout(jookBoxKeyLightTimer);
   jookBoxKeyLightTimer=0;
@@ -528,8 +546,11 @@ function advanceJookBoxKeyLight(){
   if(document.hidden||!els.jookBox.classList.contains("is-buttons-running")||matchMedia("(prefers-reduced-motion: reduce)").matches)return;
   const keys=jookBoxActionKeys();
   if(!keys.length)return;
-  jookBoxActiveKeyIndex=(jookBoxActiveKeyIndex+1)%keys.length;
-  keys.forEach((key,index)=>key.classList.toggle("is-current-key",index===jookBoxActiveKeyIndex));
+  const groupSize=jookBoxKeyLightGroupSize();
+  const groupCount=Math.ceil(keys.length/groupSize);
+  jookBoxActiveKeyIndex=(jookBoxActiveKeyIndex+1)%groupCount;
+  const groupStart=jookBoxActiveKeyIndex*groupSize;
+  keys.forEach((key,index)=>key.classList.toggle("is-current-key",index>=groupStart&&index<groupStart+groupSize));
   jookBoxKeyLightTimer=window.setTimeout(advanceJookBoxKeyLight,jookBoxKeyLightDuration());
 }
 
@@ -561,10 +582,10 @@ function setJookBoxState(nextState){
   if(nextState==="sleeping"){
     clearJookBoxKeyLightTimer(true);
     els.jookBoxCoin.disabled=false;
-    els.jookBoxCoin.querySelector(".jookbox-coin-plate").textContent="Insert coin to play";
+    els.jookBoxCoin.querySelector(".jookbox-coin-plate").textContent=String(config.jookBox?.sleepingStateLabel||"Insert coin to play");
     els.jookBoxCoinPrompt.textContent="Insert the visible coin to wake the JookBox.";
     els.jookBoxStatusLabel.textContent="Ready to play";
-    els.jookBoxStatePlaque.textContent="Insert coin to play";
+    els.jookBoxStatePlaque.textContent=String(config.jookBox?.sleepingStateLabel||"Insert coin to play");
     els.jookBoxTicker.setAttribute("aria-hidden","true");
     els.videoFrame.tabIndex=-1;
     els.videoFrame.setAttribute("aria-hidden","true");
@@ -575,7 +596,7 @@ function setJookBoxState(nextState){
     els.jookBoxCoin.querySelector(".jookbox-coin-plate").textContent="Now playing";
     els.jookBoxCoinPrompt.textContent="Coin accepted — the JookBox is awake.";
     els.jookBoxStatusLabel.textContent="Now playing";
-    els.jookBoxStatePlaque.textContent="Coin accepted — now playing";
+    els.jookBoxStatePlaque.textContent=String(config.jookBox?.awakeStateLabel||"Coin accepted — now playing");
     els.jookBoxTicker.removeAttribute("aria-hidden");
     els.videoFrame.tabIndex=0;
     els.videoFrame.removeAttribute("aria-hidden");

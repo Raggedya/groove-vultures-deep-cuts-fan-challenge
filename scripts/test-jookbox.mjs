@@ -9,6 +9,9 @@ assert.equal(entry.editionId, "dc_a3c049e4bc");
 assert.equal(entry.canonicalPath, "/e/dc_a3c049e4bc");
 
 const config = JSON.parse(await fs.readFile(entry.config, "utf8"));
+const atlasEntry = platform.editions.find((item) => item.editionId === "dc_e22f1cb651");
+assert.ok(atlasEntry?.active, "ATLAS JookBox must remain active.");
+const atlasConfig = JSON.parse(await fs.readFile(atlasEntry.config, "utf8"));
 assert.equal(config.brandName, "JookBox");
 assert.equal(config.editionType, "jukebox");
 assert.equal(config.jookBox?.modelVersion, "jookbox/3");
@@ -101,8 +104,8 @@ const contracts = JSON.parse(contractsText);
 assert.equal(contracts.productModels.jookbox.version, 3);
 assert.deepEqual(contracts.editionTypes.jukebox.renderedLinks, []);
 assert.match(html, /id="jookBoxCabinet"/);
-assert.match(html, /styles\.css\?v=20260730-jookbox-14/);
-assert.match(html, /app\.js\?v=20260730-jookbox-14/);
+assert.match(html, /styles\.css\?v=20260730-jookbox-16/);
+assert.match(html, /app\.js\?v=20260730-jookbox-16/);
 assert.match(html, /id="jookBoxVideoSlot"/);
 assert.match(html, /id="jookBoxCoinButton"[\s\S]*aria-label="Insert coin and start the jukebox"/);
 assert.match(html, /id="jookBoxTickerText"/);
@@ -115,8 +118,10 @@ assert.doesNotMatch(html, /Filthy Animals/, "The reusable HTML renderer must nev
 assert.doesNotMatch(html, /id="jookBoxSoundToggle"|class="jookbox-band-plaque"|id="jookBoxActionBar"/);
 
 assert.match(app, /function setJookBoxState\(nextState\)/);
-assert.match(app, /const VERSION="20260730-jookbox-14"/);
+assert.match(app, /const VERSION="20260730-jookbox-16"/);
 assert.match(app, /dataset\.jookboxEmbeddedMarquee=embeddedMarquee\?"true":"false"/);
+assert.match(app, /dataset\.jookboxAppearance=config\.jookBox\?\.appearanceVariant\|\|"reference"/);
+assert.match(app, /dataset\.jookboxLightSequence=config\.jookBox\?\.lightSequenceMode\|\|"single-key"/);
 assert.match(app, /marquee\?\.classList\.toggle\("visually-hidden",embeddedMarquee\)/);
 assert.match(app, /availableKeyCount===1\?"key is":"keys are"/);
 assert.match(app, /\["sleeping","acceptingCoin","poweringUp","awake"\]/);
@@ -125,6 +130,7 @@ assert.match(app, /sessionStorage\.getItem\(jookBoxSessionKey\(\)\)/);
 assert.match(app, /sessionStorage\.setItem\(jookBoxSessionKey\(\),"true"\)/);
 assert.match(app, /function clearJookBoxStartupTimers\(\)/);
 assert.match(app, /function clearJookBoxKeyLightTimer\(reset=false\)/);
+assert.match(app, /function jookBoxKeyLightGroupSize\(\)\{[\s\S]*lightSequenceMode==="row-pair"\?2:1/);
 assert.match(app, /function advanceJookBoxKeyLight\(\)/);
 assert.match(app, /function startJookBoxKeyLightSequence\(\)/);
 assert.match(app, /function cleanupJookBoxLifecycle\(\)/);
@@ -140,7 +146,8 @@ assert.match(app, /is-animation-paused/);
 assert.match(app, /startupTimingsMs/);
 assert.match(app, /displaySelectionIds/);
 assert.match(app, /link\.dataset\.keyIndex=String\(index\)/);
-assert.match(app, /classList\.toggle\("is-current-key",index===jookBoxActiveKeyIndex\)/);
+assert.match(app, /const groupCount=Math\.ceil\(keys\.length\/groupSize\)/);
+assert.match(app, /classList\.toggle\("is-current-key",index>=groupStart&&index<groupStart\+groupSize\)/);
 assert.match(app, /jookBoxKeyLightTimer=window\.setTimeout\(advanceJookBoxKeyLight,jookBoxKeyLightDuration\(\)\)/);
 assert.doesNotMatch(app, /--jookbox-row-delay|--jookbox-row-cycle/);
 assert.match(app, /autoplay=\$\{autoplay\?1:0\}/);
@@ -150,6 +157,13 @@ assert.match(app, /function trackJookBoxOutbound\(definition,url,source="jookbox
 
 assert.match(styles, /\[data-jookbox-layout="coin-awakening\/1"\] \.jookbox-machine\{[\s\S]*aspect-ratio:762\/1280/);
 assert.match(styles, /data-jookbox-embedded-marquee="false"[\s\S]*\.jookbox-marquee h1\{[\s\S]*text-transform:uppercase/);
+assert.match(styles, /data-jookbox-appearance="atlas-reference-cabinet\/1"[\s\S]*\.jookbox-machine\{[\s\S]*aspect-ratio:887\/1774/);
+assert.match(styles, /data-jookbox-appearance="atlas-reference-cabinet\/1"[\s\S]*\.jookbox-ticker-console\{[\s\S]*top:17\.35%/);
+assert.match(styles, /data-jookbox-appearance="atlas-reference-cabinet\/1"[\s\S]*\.jookbox-screen-frame\{[\s\S]*left:27\.3%/);
+assert.match(styles, /data-jookbox-appearance="atlas-reference-cabinet\/1"[\s\S]*\.jookbox-secondary-actions\{[\s\S]*grid-template-columns:repeat\(3/);
+assert.match(styles, /data-jookbox-appearance="atlas-reference-cabinet\/1"[\s\S]*\.jookbox-primary-action\{[\s\S]*top:79\.55%/);
+assert.match(styles, /@keyframes atlasReferenceKeyPulse/);
+assert.match(styles, /@keyframes atlasReferenceCoinInsert/);
 assert.match(styles, /\.jookbox-coin-button\{[\s\S]*min-height:44px/);
 assert.match(styles, /@keyframes jookBoxLockedCoinAttention/);
 assert.match(styles, /@keyframes jookBoxLockedCoinInsert/);
@@ -188,7 +202,8 @@ assert.match(creator, /autoplayDelayMs:0/);
 assert.match(validator, /locked JookBox cabinet artwork failed its SHA-256 identity check/);
 assert.match(validator, /JookBox coin recording failed its SHA-256 identity check/);
 assert.match(validator, /request JookBox video playback immediately within the direct coin interaction/);
-assert.match(validator, /valid single-key JookBox light duration/);
+assert.match(validator, /const atlasReferenceCabinet=edition\.editionId==='dc_e22f1cb651'/);
+assert.match(validator, /valid JookBox light duration/);
 assert.match(validator, /one to eight unique display selection IDs/);
 assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("immediate-coin-interaction-autoplay-request-with-manual-fallback"));
 assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("pre-coin-dimmed-locked-selection-keys"));
@@ -196,10 +211,26 @@ assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("single-ke
 assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("hero-biography-ticker-above-video"));
 assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("centered-post-video-coin-control"));
 
+assert.equal(atlasConfig.jookBox?.appearanceVariant, "atlas-reference-cabinet/1");
+assert.equal(atlasConfig.jookBox?.lightSequenceMode, "row-pair");
+assert.equal(atlasConfig.jookBox?.buttonLightDurationMs, 1100);
+assert.equal(atlasConfig.jookBox?.cabinetArtwork, "assets/jookbox-atlas-reference-v1.webp");
+assert.equal(atlasConfig.jookBox?.supportAction?.linkKey, "buyMusic");
+assert.equal(atlasConfig.links?.website, "");
+assert.equal(atlasConfig.links?.merchandise, "");
+const atlasCabinet = await fs.readFile(atlasConfig.jookBox.cabinetArtwork);
+assert.equal(
+  crypto.createHash("sha256").update(atlasCabinet).digest("hex"),
+  atlasConfig.jookBox.cabinetArtworkSha256,
+  "The owner-approved ATLAS reference cabinet must remain byte-for-byte locked.",
+);
+assert.equal(config.jookBox?.lightSequenceMode, "single-key", "The Filthy Animals reference must keep its single-key sequence.");
+assert.equal(config.jookBox?.buttonLightDurationMs, 650, "The Filthy Animals reference timing must remain unchanged.");
+
 for (const other of platform.editions.filter((item) => item.editionId !== entry.editionId)) {
   const otherConfig = JSON.parse(await fs.readFile(other.config, "utf8"));
   assert.notEqual(otherConfig.jookBox?.cabinetArtwork, config.jookBox.cabinetArtwork, `${other.slug} must not inherit the Filthy Animals locked artwork.`);
   assert.notEqual(otherConfig.jookBox?.sessionStorageKey, config.jookBox.sessionStorageKey, `${other.slug} must not share the Filthy Animals session key.`);
 }
 
-console.log("JookBox v3 passed: the hero biography ticker, centred post-video coin, wider keys, single-key light sequence, real coin sound and browser-safe YouTube playback request are isolated to Filthy Animals.");
+console.log("JookBox v3 passed: the locked Filthy Animals reference is unchanged and ATLAS alone uses its locked reference cabinet, verified support action and soft row-pair key treatment.");
