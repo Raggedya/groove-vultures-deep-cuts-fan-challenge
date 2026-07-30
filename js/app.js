@@ -1,6 +1,6 @@
 "use strict";
 
-const VERSION="20260731-jookbox-18";
+const VERSION="20260731-jookbox-19";
 const LANEWAY_REPORTING_VERSION="laneway-weekly-v1";
 const $=id=>document.getElementById(id);
 const els={
@@ -169,6 +169,7 @@ async function applyConfig(){
   if(jookBox){
     buildJookBoxProductNavigation();
     restoreJookBoxSessionState();
+    DeepCutsInteractions.applyExternalLinkPolicy(document,location.href);
   }
   if(wheelEdition)await buildLanewayCompanyDirectory();
   configureLanewayUtilityLinks();
@@ -524,6 +525,8 @@ function configureJookBoxPrimaryAction(definition){
   els.jookBoxPrimaryAction.hidden=true;
   els.jookBoxPrimaryAction.classList.remove("is-share-action");
   els.jookBoxPrimaryAction.removeAttribute("href");
+  els.jookBoxPrimaryAction.removeAttribute("target");
+  els.jookBoxPrimaryAction.removeAttribute("rel");
   els.jookBoxPrimaryAction.removeAttribute("role");
   els.jookBoxPrimaryAction.removeAttribute("aria-label");
   els.jookBoxPrimaryAction.removeAttribute("aria-disabled");
@@ -567,8 +570,6 @@ function configureJookBoxPrimaryAction(definition){
 function createJookBoxDestinationLink(definition,className,source){
   const link=document.createElement("a");
   link.className=`jookbox-destination ${className}`;
-  link.target="_blank";
-  link.rel="noopener noreferrer";
   link.dataset.kind=jookBoxSelectionKind(definition);
   link.innerHTML=`<span class="jookbox-action-icon" aria-hidden="true">${jookBoxActionIcon(definition)}</span><span class="jookbox-action-copy"><strong>${escapeHtml(definition.label)}</strong><small>${escapeHtml(definition.subLabel||"Open verified destination")}</small></span><span class="jookbox-external-mark" aria-hidden="true">↗</span>`;
   configureJookBoxDestinationAnchor(link,definition.url,definition,source);
@@ -579,15 +580,12 @@ function configureJookBoxDestinationAnchor(element,url,definition,source){
   const safeURL=validHttps(url);
   element.hidden=!safeURL;
   if(!safeURL)return;
-  if(element instanceof HTMLAnchorElement){
-    element.target="_blank";
-    element.rel="noopener noreferrer";
-  }
+  const opensNewTab=DeepCutsInteractions.secureExternalLink(element,safeURL,location.href);
   element.dataset.jookboxHref=safeURL;
   element.removeAttribute("href");
   element.setAttribute("aria-disabled","true");
   element.tabIndex=-1;
-  element.setAttribute("aria-label",`${definition.label} for ${config.bandName} (opens in a new tab)`);
+  element.setAttribute("aria-label",`${definition.label} for ${config.bandName}${opensNewTab?" (opens in a new tab)":""}`);
   element.onclick=event=>{
     if(!jookBoxPowered){event.preventDefault();focusJookBoxCoin();return}
     trackJookBoxOutbound(definition,safeURL,source);
@@ -874,7 +872,14 @@ function configureJookBoxBio(){
   }
   const source=validHttps(biography.sourceURL);
   els.jookBoxBioSource.hidden=!source;
-  if(source)els.jookBoxBioSource.href=source;
+  if(source){
+    els.jookBoxBioSource.href=source;
+    DeepCutsInteractions.secureExternalLink(els.jookBoxBioSource,source,location.href);
+  }else{
+    els.jookBoxBioSource.removeAttribute("href");
+    els.jookBoxBioSource.removeAttribute("target");
+    els.jookBoxBioSource.removeAttribute("rel");
+  }
 }
 
 function openJookBoxBio(){
