@@ -1,11 +1,14 @@
 {
   "name": "deep-cuts-platform",
+  "productName": "Deep Cuts Studio",
   "type": "module",
   "private": true,
   "version": "3.0.0",
   "description": "Permanent Deep Cuts artist discovery, analytics and publishing platform.",
+  "main": "studio/desktop-main.mjs",
+  "author": "Clearlight Creative",
   "scripts": {
-    "validate": "node scripts/validate-platform.mjs && node scripts/test-edition-isolation.mjs && node scripts/test-global-footer.mjs && node scripts/test-discovery.mjs && node scripts/test-school-challenge.mjs && node scripts/test-laneway-edition.mjs && node scripts/test-laneway-company-oneoff.mjs && node scripts/test-indie-label-model.mjs && node scripts/test-laneway-reporting.mjs && node scripts/test-indie-wheel-edition.mjs && node scripts/test-nastyboy-indie-wheel.mjs && node scripts/test-high-grade-mechanical.mjs && node scripts/test-hays.mjs && node scripts/test-record-company.mjs && node scripts/test-analytics.mjs && node scripts/test-build-tracking.mjs && node scripts/test-worker.mjs && node scripts/test-sales-intelligence.mjs && node scripts/test-sync-editions.mjs && node scripts/test-runtime-secrets.mjs && node scripts/test-live-delivery.mjs && node scripts/test-factory.mjs && node scripts/test-batch.mjs && node --check scripts/deep-cuts-batch.mjs && node --check scripts/record-company/start.mjs && node --check scripts/record-company/send-completion.mjs && node --check scripts/resolve-laneway-company-roster.mjs && node --check scripts/audit-laneway-company-videos.mjs && node --check js/app.js && node --check js/school-quiz.js && node --check js/laneway-quiz.js && node --check js/laneway-company-quiz.js && node --check js/business-quiz.js && node --check js/analytics.js && node --check js/interactions.js && node --check js/reporting.js && node --check js/report.js && node --check sell/app.js && node --check sell/schemas.js && node --check sell/demo-data.js && node --check record-company/app.js && node --check record-company/schemas.js && node --check worker/record-company.js && node --check worker/sales.js && node --check worker/laneway-report.js && node --check worker/index.js",
+    "validate": "node scripts/validate-platform.mjs && node scripts/test-edition-isolation.mjs && node scripts/test-global-footer.mjs && node scripts/test-discovery.mjs && node scripts/test-school-challenge.mjs && node scripts/test-laneway-edition.mjs && node scripts/test-laneway-company-oneoff.mjs && node scripts/test-indie-label-model.mjs && node scripts/test-laneway-reporting.mjs && node scripts/test-indie-wheel-edition.mjs && node scripts/test-nastyboy-indie-wheel.mjs && node scripts/test-high-grade-mechanical.mjs && node scripts/test-hays.mjs && node scripts/test-record-company.mjs && node scripts/test-analytics.mjs && node scripts/test-build-tracking.mjs && node scripts/test-worker.mjs && node scripts/test-sales-intelligence.mjs && node scripts/test-sync-editions.mjs && node scripts/test-runtime-secrets.mjs && node scripts/test-live-delivery.mjs && node scripts/test-factory.mjs && node scripts/test-batch.mjs && node scripts/test-studio-jookbox-research.mjs && node scripts/test-studio.mjs && node --check scripts/deep-cuts-batch.mjs && node --check scripts/record-company/start.mjs && node --check scripts/record-company/send-completion.mjs && node --check scripts/resolve-laneway-company-roster.mjs && node --check scripts/audit-laneway-company-videos.mjs && node --check scripts/studio-jookbox-research.mjs && node --check scripts/studio-server.mjs && node --check scripts/studio-model.mjs && node --check studio/app.js && node --check studio/desktop-main.mjs && node --check forge.config.cjs && node --check js/app.js && node --check js/school-quiz.js && node --check js/laneway-quiz.js && node --check js/laneway-company-quiz.js && node --check js/business-quiz.js && node --check js/analytics.js && node --check js/interactions.js && node --check js/reporting.js && node --check js/report.js && node --check sell/app.js && node --check sell/schemas.js && node --check sell/demo-data.js && node --check record-company/app.js && node --check record-company/schemas.js && node --check worker/record-company.js && node --check worker/sales.js && node --check worker/laneway-report.js && node --check worker/index.js",
     "build": "node scripts/build-cloudflare.mjs",
     "build:edition": "node scripts/build-edition.mjs",
     "register": "node scripts/register-edition.mjs",
@@ -28,9 +31,24 @@
     "deepcuts:batch": "node scripts/deep-cuts-batch.mjs",
     "deepcuts:batch:test": "node scripts/test-batch.mjs",
     "record-company:start": "node scripts/record-company/start.mjs",
-    "record-company:test": "node scripts/test-record-company.mjs"
+    "record-company:test": "node scripts/test-record-company.mjs",
+    "studio": "node scripts/studio-server.mjs",
+    "studio:desktop": "electron-forge start",
+    "studio:package": "electron-forge package",
+    "studio:make": "electron-forge make",
+    "studio:test": "node scripts/test-studio-jookbox-research.mjs && node scripts/test-studio.mjs",
+    "studio:make:mac:arm64": "electron-forge make --platform=darwin --arch=arm64",
+    "studio:make:mac:x64": "electron-forge make --platform=darwin --arch=x64"
+  },
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.1"
   },
   "devDependencies": {
+    "@electron-forge/cli": "^7.11.2",
+    "@electron-forge/maker-dmg": "^7.11.2",
+    "@electron-forge/maker-squirrel": "^7.11.2",
+    "@electron-forge/maker-zip": "^7.11.2",
+    "electron": "^43.2.0",
     "wrangler": "^4.0.0"
   }
 }

@@ -16,6 +16,9 @@
 - [x] Add the isolated Business Recruitment contract with verified job cards, owner-approved branding/Aggits, featured video and a sourced 10-question company quiz; deliver High Grade Mechanical as its first edition.
 - [x] Generalise direct-job validation and business-brand treatments without changing HGM; deliver Hays as the second isolated Business Recruitment edition with verified mining resources, direct vacancies and an explicitly labelled owner-selected demo video.
 - [x] Lock `jookbox/3` to the owner-approved Filthy Animals full-height cabinet: a sourced/licensed local real coin-slot recording, centred post-video coin, four-state session restoration, restrained neon/CRT start-up, an immediate direct-coin YouTube playback request with manual browser fallback, red Share hardware, brass sourced-biography dial, a large bright upper right-to-left amber hero ticker and eight wider curated verified keys that remain dimmed/unavailable before the coin and light brightly one at a time after activation.
+- [x] Begin Deep Cuts Studio as a local-only, one-screen production control surface with structured intake, contract-safe Aggits selection, logo/MP3 support, labelled destinations, HGM-reference mobile preview, local QR and 1080-pixel poster output, typed/dictated revisions and an explicit verified-factory handoff boundary.
+- [x] Package the proven Deep Cuts Studio workflow as a sandboxed Windows and macOS desktop application without exposing private authoring routes publicly; keep signing/notarisation as the final distribution-credential step.
+- [x] Add the JookBox Studio workflow: band name plus an optional artist-controlled URL, independent identity/source/destination/video checks, factual ticker-biography selection, a mandatory fail-closed 98% gate, verified eight-key population and automated Apple Silicon/Intel Mac packaging.
 
 ## Batch-production time savings
 

@@ -10,6 +10,7 @@ const [
   recordCompanyApp,
   recordCompanyTerms,
   recordCompanyPrivacy,
+  studioHtml,
   worker
 ]=await Promise.all([
   fs.readFile("edition-contracts.json","utf8").then(JSON.parse),
@@ -20,6 +21,7 @@ const [
   fs.readFile("record-company/app.js","utf8"),
   fs.readFile("record-company/terms.html","utf8"),
   fs.readFile("record-company/privacy.html","utf8"),
+  fs.readFile("studio/index.html","utf8"),
   fs.readFile("worker/index.js","utf8")
 ]);
 
@@ -41,13 +43,14 @@ assert.doesNotMatch(discoveryApp,/config\.social\?\.copyright/,"Edition copyrigh
 assert.match(commercialHtml,/<footer aria-label="Deep Cuts platform"><strong>Deep Cuts<\/strong><br>Copyright Clearlight Creative<\/footer>/);
 assert.match(recordCompanyHtml,/<footer class="rc-footer" aria-label="Deep Cuts platform"><strong>Deep Cuts<\/strong><br><span>Copyright Clearlight Creative<\/span><\/footer>/);
 assert.match(recordCompanyApp,/aria-label="Deep Cuts platform"><strong>Deep Cuts<\/strong><br><span>Copyright Clearlight Creative<\/span>/);
+assert.match(studioHtml,/<footer class="studio-footer" aria-label="Deep Cuts platform"><strong>Deep Cuts<\/strong><br>Copyright Clearlight Creative<\/footer>/);
 assert.match(recordCompanyApp,/renderError\(message\).*footer\(null\)/s,"Record Company errors must retain the global footer.");
 for(const legalHtml of [recordCompanyTerms,recordCompanyPrivacy]){
   assert.match(legalHtml,/<footer class="rc-footer" aria-label="Deep Cuts platform"><strong>Deep Cuts<\/strong><br><span>Copyright Clearlight Creative<\/span><\/footer>/);
 }
 assert.match(worker,/aria-label="Deep Cuts platform"><strong>Deep Cuts<\/strong><br><span>Copyright Clearlight Creative<\/span>/,"Worker-rendered legal screens must retain the global footer.");
 
-for(const publicSurface of [discoveryHtml,commercialHtml,recordCompanyHtml,recordCompanyApp,recordCompanyTerms,recordCompanyPrivacy]){
+for(const publicSurface of [discoveryHtml,commercialHtml,recordCompanyHtml,recordCompanyApp,recordCompanyTerms,recordCompanyPrivacy,studioHtml]){
   assert.doesNotMatch(publicSurface,/Powered by Deep Cuts/i,"The locked footer wording is Deep Cuts, not Powered by Deep Cuts.");
 }
 

@@ -9,6 +9,7 @@ data/research-cache/
 .env
 node_modules/
 dist/
+out/
 __pycache__/
 *.pyc
 .chrome-*/
