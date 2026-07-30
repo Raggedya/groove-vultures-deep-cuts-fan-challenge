@@ -110,7 +110,20 @@ for(const edition of platform.editions){
         const cabinet=await fs.readFile(config.jookBox.cabinetArtwork);
         if(config.jookBox.cabinetArtworkSha256&&crypto.createHash('sha256').update(cabinet).digest('hex')!==config.jookBox.cabinetArtworkSha256)errors.push(`${edition.config} locked JookBox cabinet artwork failed its SHA-256 identity check.`);
       }
-      if(atlasReferenceCabinet&&(!config.jookBox?.cabinetArtworkSha256||config.jookBox?.cabinetArtwork!=='assets/jookbox-atlas-reference-v1.webp'||config.jookBox?.supportAction?.linkKey!=='buyMusic'||keyBankFormat!=='six-key/1'||config.jookBox?.lightSequenceMode!=='single-key'))errors.push(`${edition.config} must preserve the locked ATLAS reference cabinet, verified support action, exact six-key bank and single-key reading-order light sequence.`);
+      const atlasSupportAction=config.jookBox?.supportAction;
+      if(atlasReferenceCabinet&&(
+        !config.jookBox?.cabinetArtworkSha256||
+        config.jookBox?.cabinetArtwork!=='assets/jookbox-atlas-reference-v1.webp'||
+        atlasSupportAction?.action!=='share'||
+        atlasSupportAction?.label!=='Support Our Band'||
+        atlasSupportAction?.detail!=='Please share our JookBox'||
+        atlasSupportAction?.kind!=='share'||
+        atlasSupportAction?.icon!=='\u2661'||
+        atlasSupportAction?.detailIcon!=='\u2197'||
+        config.jookBox?.cabinetCopyright!=='Copyright Clearlight Creative 2026.'||
+        keyBankFormat!=='six-key/1'||
+        config.jookBox?.lightSequenceMode!=='single-key'
+      ))errors.push(`${edition.config} must preserve the locked ATLAS reference cabinet, Support Our Band share action with both icons, cabinet copyright, exact six-key bank and single-key reading-order light sequence.`);
       if(config.jookBox?.coinSound){
         const coinSound=await fs.readFile(config.jookBox.coinSound);
         if(config.jookBox.coinSoundSha256&&crypto.createHash('sha256').update(coinSound).digest('hex')!==config.jookBox.coinSoundSha256)errors.push(`${edition.config} JookBox coin recording failed its SHA-256 identity check.`);
