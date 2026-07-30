@@ -21,7 +21,7 @@ assert.equal(config.jookBox?.coinSoundLicense, "CC0-1.0");
 assert.equal(config.jookBox?.sessionStorageKey, "filthyAnimalsJukeboxActivated");
 assert.equal(config.jookBox?.tickerDurationSeconds, 28);
 assert.equal(config.jookBox?.buttonRowDurationMs, 800);
-assert.equal(config.jookBox?.autoplayDelayMs, 4000);
+assert.equal(config.jookBox?.autoplayDelayMs, 0);
 assert.deepEqual(config.jookBox?.startupTimingsMs, {
   mechanism: 120,
   neonOn: 800,
@@ -115,14 +115,12 @@ assert.match(app, /function restoreJookBoxSessionState\(\)/);
 assert.match(app, /sessionStorage\.getItem\(jookBoxSessionKey\(\)\)/);
 assert.match(app, /sessionStorage\.setItem\(jookBoxSessionKey\(\),"true"\)/);
 assert.match(app, /function clearJookBoxStartupTimers\(\)/);
-assert.match(app, /function clearJookBoxAutoplayTimer\(\)/);
-assert.match(app, /function cleanupJookBoxLifecycle\(\)/);
-assert.match(app, /function scheduleJookBoxAutoplay\(\)/);
+assert.doesNotMatch(app, /jookBoxAutoplayTimer|scheduleJookBoxAutoplay|clearJookBoxAutoplayTimer/);
 assert.match(app, /function prepareJookBoxCoinAudio\(\)/);
 assert.match(app, /new Audio\(source\.startsWith/);
 assert.match(app, /function playJookBoxCoinFallback\(\)/);
 assert.match(app, /function handleJookBoxVisibility\(\)/);
-assert.match(app, /window\.addEventListener\("pagehide",cleanupJookBoxLifecycle/);
+assert.match(app, /window\.addEventListener\("pagehide",clearJookBoxStartupTimers/);
 assert.match(app, /window\.addEventListener\("pageshow",handleJookBoxPageShow/);
 assert.match(app, /event\.persisted&&jookBoxState!=="awake"/);
 assert.match(app, /is-animation-paused/);
@@ -130,8 +128,7 @@ assert.match(app, /startupTimingsMs/);
 assert.match(app, /displaySelectionIds/);
 assert.match(app, /--jookbox-row-delay/);
 assert.match(app, /autoplay=\$\{autoplay\?1:0\}/);
-assert.match(app, /autoplayDelayMs\)\|\|4000/);
-assert.match(app, /scheduleJookBoxAutoplay\(\)/);
+assert.match(app, /function powerJookBox\(\)\{[\s\S]*?playJookBoxCoinSound\(\);\s*activateJookBoxVideo\(true\);[\s\S]*?const reducedMotion/);
 assert.match(app, /www\.youtube-nocookie\.com\/embed/);
 assert.match(app, /function trackJookBoxOutbound\(definition,url,source="jookbox_linktree"\)/);
 
@@ -147,6 +144,10 @@ assert.match(styles, /--jb-led:#ffd45f/);
 assert.match(styles, /font-size:clamp\(\.4rem,1\.68vw,\.78rem\)/);
 assert.match(styles, /from\{transform:translate\(min\(100vw,762px\),-50%\)\}[\s\S]*to\{transform:translate\(-100%,-50%\)\}/);
 assert.match(styles, /\.jookbox-secondary-actions\{[\s\S]*grid-template-rows:repeat\(4/);
+assert.match(styles, /\.jookbox-action-key\[aria-disabled="true"\]\{[\s\S]*opacity:\.68;[\s\S]*pointer-events:none;[\s\S]*filter:brightness\(\.3\) saturate\(\.24\)/);
+assert.match(styles, /\.is-awake \.jookbox-action-key:hover/);
+assert.match(styles, /\.is-awake \.jookbox-action-key:focus-visible/);
+assert.match(styles, /\.is-awake \.jookbox-action-key:active/);
 assert.match(styles, /\.is-animation-paused \.jookbox-ticker-text/);
 assert.match(styles, /@media\(prefers-reduced-motion:reduce\)\{[\s\S]*data-jookbox-layout="coin-awakening\/1"/);
 assert.match(styles, /env\(safe-area-inset-bottom\)/);
@@ -156,11 +157,13 @@ assert.match(creator, /layoutVersion:'coin-awakening\/1'/);
 assert.match(creator, /displaySelectionIds:requestedDisplayIds/);
 assert.match(creator, /assets\/audio\/jukebox-real-coin-insert-cc0\.mp3/);
 assert.match(creator, /coinSoundLicense:clean\(input\.jookBox\?\.coinSoundLicense\|\|'CC0-1\.0'/);
-assert.match(creator, /autoplayDelayMs:4000/);
+assert.match(creator, /autoplayDelayMs:0/);
 assert.match(validator, /locked JookBox cabinet artwork failed its SHA-256 identity check/);
 assert.match(validator, /JookBox coin recording failed its SHA-256 identity check/);
-assert.match(validator, /request JookBox video autoplay exactly four seconds after coin activation/);
+assert.match(validator, /request JookBox video playback immediately within the direct coin interaction/);
 assert.match(validator, /one to eight unique display selection IDs/);
+assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("immediate-coin-interaction-autoplay-request-with-manual-fallback"));
+assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("pre-coin-dimmed-locked-selection-keys"));
 
 for (const other of platform.editions.filter((item) => item.editionId !== entry.editionId)) {
   const otherConfig = JSON.parse(await fs.readFile(other.config, "utf8"));
@@ -168,4 +171,4 @@ for (const other of platform.editions.filter((item) => item.editionId !== entry.
   assert.notEqual(otherConfig.jookBox?.sessionStorageKey, config.jookBox.sessionStorageKey, `${other.slug} must not share the Filthy Animals session key.`);
 }
 
-console.log("JookBox v3 passed: the owner-locked cabinet, licensed real coin-slot recording, four-state wake-up, four-second YouTube autoplay request, brighter right-to-left biography ticker and four-row light sequence are isolated to Filthy Animals.");
+console.log("JookBox v3 passed: the owner-locked cabinet, real coin-slot recording, immediate coin-interaction YouTube playback request, pre-coin dimmed selection keys, brighter right-to-left ticker and four-row light sequence are isolated to Filthy Animals.");

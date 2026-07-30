@@ -60,7 +60,7 @@ if(editionType==='jukebox'){
     tickerBio:clean(input.jookBox?.tickerBio||bio,420).toUpperCase(),
     tickerDurationSeconds:Math.max(12,Math.min(60,Number(input.jookBox?.tickerDurationSeconds)||28)),
     buttonRowDurationMs:Math.max(600,Math.min(1200,Number(input.jookBox?.buttonRowDurationMs)||800)),
-    autoplayDelayMs:4000,
+    autoplayDelayMs:0,
     startupTimingsMs:{mechanism:120,neonOn:800,screenOn:1200,buttonsOn:1600,tickerOn:2000},
     displaySelectionIds:requestedDisplayIds,
     marquee:clean(input.jookBox?.marquee||bandName,80),

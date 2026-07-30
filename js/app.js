@@ -1,6 +1,6 @@
 "use strict";
 
-const VERSION="20260730-jookbox-10";
+const VERSION="20260730-jookbox-11";
 const LANEWAY_REPORTING_VERSION="laneway-weekly-v1";
 const $=id=>document.getElementById(id);
 const els={
@@ -95,7 +95,6 @@ let attentionTimer=0;
 let jookBoxPowered=false;
 let jookBoxState="sleeping";
 let jookBoxAudio=null;
-let jookBoxAutoplayTimer=0;
 const jookBoxStartupTimers=new Set();
 init();
 
@@ -301,7 +300,7 @@ function buildJookBox(){
   els.jookBoxLearnMore.addEventListener("click",()=>jookBoxPowered?openJookBoxBio():focusJookBoxCoin());
   els.jookBoxBioBack.addEventListener("click",closeJookBoxBio);
   document.addEventListener("visibilitychange",handleJookBoxVisibility,{passive:true});
-  window.addEventListener("pagehide",cleanupJookBoxLifecycle,{passive:true});
+  window.addEventListener("pagehide",clearJookBoxStartupTimers,{passive:true});
   window.addEventListener("pageshow",handleJookBoxPageShow,{passive:true});
   handleJookBoxVisibility();
   configureJookBoxBio();
@@ -534,7 +533,7 @@ function setJookBoxState(nextState){
     els.videoFrame.setAttribute("aria-hidden","true");
   }
   if(nextState==="awake"){
-    if(!jookBoxAutoplayTimer)activateJookBoxVideo();
+    activateJookBoxVideo();
     els.jookBoxCoin.disabled=true;
     els.jookBoxCoin.querySelector(".jookbox-coin-plate").textContent="Now playing";
     els.jookBoxCoinPrompt.textContent="Coin accepted — the JookBox is awake.";
@@ -561,25 +560,6 @@ function clearJookBoxStartupTimers(){
   jookBoxStartupTimers.clear();
 }
 
-function clearJookBoxAutoplayTimer(){
-  if(jookBoxAutoplayTimer)window.clearTimeout(jookBoxAutoplayTimer);
-  jookBoxAutoplayTimer=0;
-}
-
-function cleanupJookBoxLifecycle(){
-  clearJookBoxStartupTimers();
-  clearJookBoxAutoplayTimer();
-}
-
-function scheduleJookBoxAutoplay(){
-  clearJookBoxAutoplayTimer();
-  const delay=Math.max(0,Number(config.jookBox?.autoplayDelayMs)||4000);
-  jookBoxAutoplayTimer=window.setTimeout(()=>{
-    jookBoxAutoplayTimer=0;
-    activateJookBoxVideo(true);
-  },delay);
-}
-
 function restoreJookBoxSessionState(){
   let active=false;
   try{active=sessionStorage.getItem(jookBoxSessionKey())==="true"}catch{}
@@ -596,7 +576,7 @@ function powerJookBox(){
   els.jookBoxCoinPrompt.textContent="Coin accepted. The JookBox is powering up.";
   els.jookBoxPowerStatus.textContent="Coin accepted. The JookBox is powering up.";
   playJookBoxCoinSound();
-  scheduleJookBoxAutoplay();
+  activateJookBoxVideo(true);
   try{sessionStorage.setItem(jookBoxSessionKey(),"true")}catch{}
   const id=els.videoFrame.dataset.videoId;
   analytics.track("jookbox_coin_inserted",{interaction_source:"jookbox_coin",video_id:id||"",edition_type:config.editionType},{onceKey:`jookbox-coin:${editionEntry.editionId}`});

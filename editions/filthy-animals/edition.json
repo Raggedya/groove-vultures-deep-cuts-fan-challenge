@@ -63,7 +63,7 @@
     "tickerBio": "THE FILTHY ANIMALS — AN AUSTRALIAN PARTY SUPERGROUP DRAWING ON A ROTATING COLLECTIVE OF SEASONED PERFORMERS TO DELIVER CLASSIC ROCK SONGS CONNECTED TO DECADES OF TOURING AND RECORDING.",
     "tickerDurationSeconds": 28,
     "buttonRowDurationMs": 800,
-    "autoplayDelayMs": 4000,
+    "autoplayDelayMs": 0,
     "startupTimingsMs": {
       "mechanism": 120,
       "neonOn": 800,
