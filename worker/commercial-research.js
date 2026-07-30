@@ -3,6 +3,9 @@ import {SALES_SECTION_ORDER} from "../sell/schemas.js";
 const MODEL="@cf/meta/llama-4-scout-17b-16e-instruct";
 const MAX_PAGES=12;
 const MAX_SOURCE_CHARS=4200;
+const MAX_CRAWL_MS=30000;
+const MAX_HTML_BYTES=600000;
+const MAX_REDIRECTS=3;
 const PAGE_HINT=/(about|company|who-we-are|services|solutions|capabilities|industr|customer|case-stud|project|news|media|insight|career|leadership|team|supplier|procurement|sustainab|contact|product|shop|catalog|workwear|safety|ppe|uniform|location|delivery|quality|certif|testimonial|review|operation|report)/i;
 const SKIP_HINT=/\.(?:pdf|jpe?g|png|gif|svg|webp|zip|docx?|xlsx?|pptx?|mp4|mp3)(?:$|[?#])/i;
 
@@ -75,26 +78,28 @@ export async function buildCommercialReport({business,offering,request=""},env){
 
 async function crawlWebsite(input,limit){
   const start=validPublicHttps(input);if(!start)return [];
-  const root=new URL(start);const queue=[root.toString()];const seen=new Set();const pages=[];
-  while(queue.length&&pages.length<limit){
+  const root=new URL(start);const queue=[root.toString()];const seen=new Set();const pages=[];const deadline=Date.now()+MAX_CRAWL_MS;
+  while(queue.length&&pages.length<limit&&Date.now()<deadline){
     const url=queue.shift();if(seen.has(url))continue;seen.add(url);
-    const page=await fetchPage(url,root.hostname).catch(()=>null);if(!page)continue;
+    const page=await fetchPage(url,root.hostname,0,deadline).catch(()=>null);if(!page)continue;
     pages.push(page);
     for(const link of page.links){if(queue.length+pages.length>=limit*4)break;if(!seen.has(link))queue.push(link)}
   }
   return pages;
 }
 
-async function fetchPage(input,expectedHost){
+async function fetchPage(input,expectedHost,redirectCount=0,deadline=Date.now()+MAX_CRAWL_MS){
+  if(redirectCount>MAX_REDIRECTS||Date.now()>=deadline)return null;
   const url=new URL(input);if(!safeHost(url.hostname)||registrableHost(url.hostname)!==registrableHost(expectedHost))return null;
-  const response=await fetch(url.toString(),{headers:{accept:"text/html,application/xhtml+xml","user-agent":"Mozilla/5.0 (compatible; DeepCutsCommercialInstinct/1.0; public-business-research)"},redirect:"manual",signal:AbortSignal.timeout(12000)});
+  const timeout=Math.max(500,Math.min(10000,deadline-Date.now()));
+  const response=await fetch(url.toString(),{headers:{accept:"text/html,application/xhtml+xml","user-agent":"Mozilla/5.0 (compatible; DeepCutsCommercialInstinct/1.0; public-business-research)"},redirect:"manual",signal:AbortSignal.timeout(timeout)});
   if(response.status>=300&&response.status<400){
     const next=new URL(response.headers.get("location")||"",url);if(!safeHost(next.hostname)||registrableHost(next.hostname)!==registrableHost(expectedHost))return null;
-    return fetchPage(next.toString(),next.hostname);
+    return fetchPage(next.toString(),expectedHost,redirectCount+1,deadline);
   }
   const type=response.headers.get("content-type")||"";if(!response.ok||!type.includes("text/html"))return null;
-  if(Number(response.headers.get("content-length")||0)>2500000)return null;
-  const html=(await response.text()).slice(0,600000);
+  if(Number(response.headers.get("content-length")||0)>MAX_HTML_BYTES)return null;
+  const html=await responseTextWithinLimit(response,MAX_HTML_BYTES);
   const title=firstMatch(html,/<title[^>]*>([\s\S]*?)<\/title>/i)||firstMeta(html,"og:title")||url.hostname;
   const siteName=firstMeta(html,"og:site_name");
   const description=firstMeta(html,"description")||firstMeta(html,"og:description");
@@ -168,12 +173,45 @@ function htmlToText(html){return decode(html.replace(/<script\b[\s\S]*?<\/script
 function firstMeta(html,name){const escaped=name.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");return firstMatch(html,new RegExp(`<meta[^>]+(?:name|property)=["']${escaped}["'][^>]+content=["']([^"']*)["']|<meta[^>]+content=["']([^"']*)["'][^>]+(?:name|property)=["']${escaped}["']`,"i"))}
 function firstMatch(value,pattern){const match=String(value).match(pattern);return match?.[1]||match?.[2]||""}
 function decode(value){return String(value||"").replace(/&nbsp;/gi," ").replace(/&amp;/gi,"&").replace(/&quot;/gi,'"').replace(/&#39;|&apos;/gi,"'").replace(/&lt;/gi,"<").replace(/&gt;/gi,">")}
-function validPublicHttps(value){try{const url=new URL(String(value||""));if(url.protocol!=="https:"||url.username||url.password||url.port||!safeHost(url.hostname))return "";url.hash="";return url.toString()}catch{return ""}}
-function safeHost(host){const value=String(host||"").toLowerCase().replace(/\.$/,"");if(!value||value==="localhost"||value.endsWith(".local")||value.endsWith(".internal"))return false;if(/^\d+\.\d+\.\d+\.\d+$/.test(value)){const parts=value.split(".").map(Number);return !(parts[0]===10||parts[0]===127||parts[0]===0||parts[0]===169&&parts[1]===254||parts[0]===172&&parts[1]>=16&&parts[1]<=31||parts[0]===192&&parts[1]===168)}return !value.includes(":")}
+export function validPublicHttps(value){try{const url=new URL(String(value||""));if(url.protocol!=="https:"||url.username||url.password||url.port||!safeHost(url.hostname))return "";url.hash="";return url.toString()}catch{return ""}}
+function safeHost(host){
+  const value=String(host||"").toLowerCase().replace(/\.$/,"");
+  if(!value||!value.includes(".")||value==="localhost"||value.endsWith(".local")||value.endsWith(".internal")||value.endsWith(".localhost")||value.endsWith(".invalid")||value.endsWith(".test")||["metadata.google.internal","metadata.google"].includes(value))return false;
+  if(/^\d+\.\d+\.\d+\.\d+$/.test(value)){
+    const parts=value.split(".").map(Number);
+    if(parts.some(part=>!Number.isInteger(part)||part<0||part>255))return false;
+    return !(parts[0]===10||parts[0]===127||parts[0]===0
+      ||parts[0]===100&&parts[1]>=64&&parts[1]<=127
+      ||parts[0]===169&&parts[1]===254
+      ||parts[0]===172&&parts[1]>=16&&parts[1]<=31
+      ||parts[0]===192&&parts[1]===0&&parts[2]===0
+      ||parts[0]===192&&parts[1]===0&&parts[2]===2
+      ||parts[0]===192&&parts[1]===168
+      ||parts[0]===198&&[18,19,51].includes(parts[1])
+      ||parts[0]===203&&parts[1]===0&&parts[2]===113
+      ||parts[0]>=224);
+  }
+  return !value.includes(":");
+}
 function registrableHost(host){return String(host).toLowerCase().replace(/^www\./,"")}
 function slug(value){return String(value||"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,60)}
 function titleCase(value){return String(value||"").replace(/\b\w/g,char=>char.toUpperCase())}
 function clean(value,max=300){return String(value||"").replace(/\s+/g," ").trim().slice(0,max)}
+
+async function responseTextWithinLimit(response,maxBytes){
+  if(!response.body)return "";
+  const reader=response.body.getReader();
+  const decoder=new TextDecoder("utf-8",{fatal:false});
+  let total=0,text="";
+  while(true){
+    const {done,value}=await reader.read();
+    if(done)break;
+    total+=value.byteLength;
+    if(total>maxBytes){await reader.cancel().catch(()=>{});throw new ResearchError("WEBSITE_RESPONSE_TOO_LARGE","The website response exceeded the safe research limit.");}
+    text+=decoder.decode(value,{stream:true});
+  }
+  return text+decoder.decode();
+}
 
 export class ResearchError extends Error{constructor(code,message){super(message);this.code=code}}
 export const __test={validPublicHttps,safeHost,htmlToText,extractLinks,normalizeInsight};
