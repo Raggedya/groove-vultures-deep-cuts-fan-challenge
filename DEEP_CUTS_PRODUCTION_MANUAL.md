@@ -52,6 +52,16 @@ Commercial Instinct compares a seller and target from their two official public 
 
 Its optional Banjo Strategy Brief is a versioned, removable handoff containing an owner-reviewed script rather than the private report. It has an independent two-minute ceiling, requires explicit owner-voice consent and does not change any edition or the 40-second business-advertisement workflow.
 
+## Deep Cuts Studio permanent rules
+
+Deep Cuts Studio is the private authoring control surface for the existing platform, never a second edition engine. It runs only on `127.0.0.1`, stores drafts and supplied logo/MP3 files outside the public build, and is absent from the public Cloudflare bundle and Worker routes. It may collect a project type, approved Aggits choice, version name, brand logo, up to three labelled research-source URLs, a YouTube link, an MP3, a brief and QR-poster copy.
+
+For JookBox Band projects, Studio may use the band name alone or, preferably, the band name plus an artist-controlled URL to perform deterministic live research. Search pages are leads only. Direct destinations, sourced biography copy, official-channel Popular ordering and video embeddability must be independently checked; only destinations reaching the 98% confidence gate may populate the JookBox, and uncertainty is omitted. Changing an identity input invalidates the result. Name-only discovery fails closed when an artist-controlled source cannot be established.
+
+Studio previews, QR codes and 1080 × 1080 posters are drafts. They never write directly to `platform.json`, `editions/`, production output or completed products. A permanent edition still uses the appropriate existing factory, Record Company, Indie Label or JookBox workflow and must pass isolation, configuration, QR, deployment and live-verification gates. Studio automatically enforces no-Aggits contracts. The owner-supplied orange hi-vis HGM Aggits is selectable only for the exact `High Grade Mechanical` Business or Recruitment project and is rejected for every other name. JookBox projects never use Aggits or a wheel.
+
+The packaged desktop app uses the same local server and model, bound to an ephemeral `127.0.0.1` port. Its Electron renderer is sandboxed with context isolation and no Node.js integration; navigation is restricted to Studio, and verified HTTPS destinations open in the system browser. Desktop drafts live in the operating system's private application-data directory so application upgrades do not overwrite them. Windows and macOS packages remain platform-specific. Development Mac builds are produced on GitHub-hosted macOS hardware; public distribution still requires Clearlight Creative signing/notarisation credentials.
+
 ## Record Company Edition permanent rules
 
 The only required input is an official record-company website URL. The permanent workflow discovers the official roster, processes each artist independently, publishes only identities and questions that pass the 98% evidence gate, generates stable tracked QR codes, reconciles reports, publishes generated assets and sends the master QR/report package without repeated owner interaction.

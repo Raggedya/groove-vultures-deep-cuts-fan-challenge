@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#020914">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Deep Cuts Studio</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="studio-header">
+    <a class="studio-wordmark" href="/studio/" aria-label="Deep Cuts Studio home"><span>DEEP CUTS</span><strong>STUDIO</strong></a>
+    <div class="header-centre">
+      <span class="status-light" aria-hidden="true"></span>
+      <span>LOCAL &amp; PRIVATE</span>
+      <span class="header-divider"></span>
+      <label for="recent-projects">RECENT DRAFTS</label>
+      <select id="recent-projects" aria-label="Open a recent Studio draft">
+        <option value="">No saved drafts</option>
+      </select>
+    </div>
+    <button class="header-button" id="new-project" type="button"><span aria-hidden="true">＋</span> CREATE NEW</button>
+  </header>
+
+  <main class="studio-workspace">
+    <section class="studio-panel builder-panel" aria-labelledby="builder-title">
+      <div class="panel-heading">
+        <div>
+          <p class="eyebrow">NEW PROJECT</p>
+          <h1 id="builder-title">Create version</h1>
+        </div>
+        <span id="project-version" class="version-badge">NEW</span>
+      </div>
+
+      <form id="studio-form">
+        <fieldset class="aggits-step" id="aggits-step">
+          <legend>Aggits</legend>
+          <div class="aggits-selector">
+            <div class="aggits-thumbnail" id="aggits-thumbnail" aria-hidden="true"></div>
+            <div>
+              <label class="field-label" for="aggits-option">Approved artwork</label>
+              <select id="aggits-option" name="aggitsOption"></select>
+              <p id="aggits-policy" class="field-note"></p>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="project-core">
+          <legend>Project</legend>
+          <div class="project-core-grid">
+            <div>
+              <label class="field-label" id="project-name-label" for="project-name">Name</label>
+              <input id="project-name" name="name" maxlength="120" autocomplete="organization" placeholder="Company, band or place" required>
+            </div>
+            <div>
+              <label class="field-label" for="project-type">Category</label>
+              <select id="project-type" name="type" required></select>
+            </div>
+          </div>
+          <p id="type-description" class="field-note"></p>
+          <div class="wheel-choice" id="wheel-choice" role="group" aria-labelledby="wheel-choice-label">
+            <span id="wheel-choice-label">Add a spinning wheel?</span>
+            <label><input type="radio" name="addWheel" value="yes"><b>YES</b></label>
+            <label><input type="radio" name="addWheel" value="no" checked><b>NO</b></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Content</legend>
+          <p class="field-note field-intro" id="content-intro">Add up to three official pages. Studio treats these as research leads—not verified facts.</p>
+          <div class="url-stack">
+            <label><span>01</span><input id="source-label-1" aria-label="Button label 1" maxlength="42" placeholder="Button label"><input id="source-url-1" aria-label="URL 1" inputmode="url" autocomplete="url" placeholder="https://official-website.com"></label>
+            <label><span>02</span><input id="source-label-2" aria-label="Button label 2" maxlength="42" placeholder="Button label"><input id="source-url-2" aria-label="URL 2" inputmode="url" autocomplete="url" placeholder="https://careers-or-artist-page.com"></label>
+            <label><span>03</span><input id="source-label-3" aria-label="Button label 3" maxlength="42" placeholder="Button label"><input id="source-url-3" aria-label="URL 3" inputmode="url" autocomplete="url" placeholder="https://another-official-source.com"></label>
+          </div>
+          <label class="field-label spaced" for="project-brief">Brief</label>
+          <textarea id="project-brief" rows="3" maxlength="1200" placeholder="What should this version help people discover or do?"></textarea>
+          <details class="optional-fields" id="optional-fields">
+            <summary><span>Optional media &amp; poster</span><b aria-hidden="true">＋</b></summary>
+            <div class="optional-fields-body">
+          <label class="field-label spaced" for="youtube-url">YouTube link</label>
+          <input id="youtube-url" inputmode="url" autocomplete="url" placeholder="https://youtu.be/...">
+          <label class="field-label spaced" for="poster-heading">QR poster heading</label>
+          <input id="poster-heading" maxlength="90" placeholder="e.g. Scan to explore HGM jobs">
+          <div class="audio-field">
+            <div>
+              <span class="field-label">Brand logo</span>
+              <p id="logo-state" class="field-note">PNG, JPEG or WebP · maximum 6 MB</p>
+            </div>
+            <label class="file-button" for="logo-file">SELECT LOGO<input id="logo-file" type="file" accept=".png,.jpg,.jpeg,.webp,image/png,image/jpeg,image/webp"></label>
+            <button id="remove-logo" class="icon-button hidden" type="button" aria-label="Remove supplied logo">×</button>
+          </div>
+          <div class="audio-field">
+            <div>
+              <span class="field-label">MP3</span>
+              <p id="audio-state" class="field-note">Optional · maximum 25 MB</p>
+            </div>
+            <label class="file-button" for="mp3-file">SELECT MP3<input id="mp3-file" type="file" accept=".mp3,audio/mpeg"></label>
+            <button id="remove-audio" class="icon-button hidden" type="button" aria-label="Remove supplied MP3">×</button>
+          </div>
+            </div>
+          </details>
+        </fieldset>
+
+        <button class="run-button" type="submit">
+          <span class="run-icon" aria-hidden="true">▶</span>
+          <span><strong id="run-label">RUN DEEP CUTS</strong><small id="run-description">Create the preview and QR output</small></span>
+          <b aria-hidden="true">&gt;</b>
+        </button>
+      </form>
+      <p class="local-note"><span aria-hidden="true">●</span> Drafts and MP3 files remain in this computer’s ignored <code>.deep-cuts/studio</code> workspace.</p>
+    </section>
+
+    <section class="preview-stage" aria-labelledby="preview-title">
+      <div class="stage-heading">
+        <div><p class="eyebrow">ON-SCREEN DISPLAY</p><h2 id="preview-title">Mobile preview</h2></div>
+        <div class="device-size"><span></span> 390 × 844</div>
+      </div>
+      <div class="phone-shell">
+        <div class="phone-speaker" aria-hidden="true"></div>
+        <iframe id="mobile-preview" title="Deep Cuts mobile preview"></iframe>
+        <div class="phone-home" aria-hidden="true"></div>
+      </div>
+      <div class="preview-toolbar">
+        <button id="refresh-preview" type="button" disabled>↻ REFRESH</button>
+        <button id="open-preview" type="button" disabled>↗ OPEN PREVIEW</button>
+      </div>
+    </section>
+
+    <aside class="output-column">
+      <section class="studio-panel output-panel" aria-labelledby="output-title">
+        <div class="panel-heading compact">
+          <div><p class="eyebrow">OUTPUT</p><h2 id="output-title">Version &amp; QR</h2></div>
+          <span id="output-status" class="output-status waiting">WAITING</span>
+        </div>
+        <div id="empty-output" class="empty-output">
+          <div class="empty-orbit" aria-hidden="true"><span></span></div>
+          <strong>Ready when you are.</strong>
+          <p>Complete the project input and press Run Deep Cuts.</p>
+        </div>
+        <div id="ready-output" class="ready-output hidden">
+          <div class="poster-frame"><canvas id="poster-canvas" width="1080" height="1080" aria-label="Deep Cuts QR poster preview"></canvas></div>
+          <div id="qr-code" class="qr-source" aria-hidden="true"></div>
+          <p class="qr-label"><strong>1080 × 1080 QR POSTER</strong><span id="qr-project-name"></span></p>
+          <p class="qr-warning">This QR opens the preview on this computer. The permanent QR is created only after the verified production gate.</p>
+          <div class="output-actions">
+            <button id="download-poster" type="button">DOWNLOAD POSTER</button>
+            <button id="download-qr" type="button">DOWNLOAD QR</button>
+            <button id="download-handoff" type="button">EXPORT HANDOFF</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="studio-panel revision-panel" aria-labelledby="revision-title">
+        <div class="panel-heading compact">
+          <div><p class="eyebrow">REVIEW &amp; ADJUST</p><h2 id="revision-title">Tell Studio what to change</h2></div>
+          <button id="dictate" class="dictate-button" type="button" aria-label="Dictate a revision"><span aria-hidden="true">●</span> DICTATE</button>
+        </div>
+        <label class="sr-only" for="revision-text">Revision instruction</label>
+        <textarea id="revision-text" rows="5" maxlength="1600" placeholder="e.g. Change the name to Acme Mining. Replace URL 2 with https://..."></textarea>
+        <button id="apply-revision" class="update-button" type="button" disabled>
+          <span>APPLY EDITS &amp; RE-CREATE</span><b aria-hidden="true">↻</b>
+        </button>
+        <p id="revision-message" class="revision-message" role="status" aria-live="polite">Typed and dictated changes are kept in the project revision history.</p>
+      </section>
+
+      <section class="studio-panel gate-panel" aria-labelledby="gate-title">
+        <div class="panel-heading compact">
+          <div><p class="eyebrow">PRODUCTION SAFETY</p><h2 id="gate-title">98% verification gate</h2></div>
+          <span class="lock-mark" aria-hidden="true">◆</span>
+        </div>
+        <div id="research-result" class="research-result waiting">
+          <strong>RESEARCH NOT RUN</strong>
+          <span>Studio will show the confidence result here.</span>
+        </div>
+        <ul id="gate-list">
+          <li>Run a preview to see production requirements.</li>
+        </ul>
+        <p>Studio never overwrites a completed edition. A permanent version still passes the existing factory, evidence, link and QR checks.</p>
+      </section>
+    </aside>
+  </main>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+  <footer class="studio-footer" aria-label="Deep Cuts platform"><strong>Deep Cuts</strong><br>Copyright Clearlight Creative</footer>
+  <script src="/vendor/qrcode.min.js"></script>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

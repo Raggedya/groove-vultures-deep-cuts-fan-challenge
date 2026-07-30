@@ -101,6 +101,8 @@ const contracts = JSON.parse(contractsText);
 assert.equal(contracts.productModels.jookbox.version, 3);
 assert.deepEqual(contracts.editionTypes.jukebox.renderedLinks, []);
 assert.match(html, /id="jookBoxCabinet"/);
+assert.match(html, /styles\.css\?v=20260730-jookbox-13/);
+assert.match(html, /app\.js\?v=20260730-jookbox-13/);
 assert.match(html, /id="jookBoxVideoSlot"/);
 assert.match(html, /id="jookBoxCoinButton"[\s\S]*aria-label="Insert coin and start the jukebox"/);
 assert.match(html, /id="jookBoxTickerText"/);
@@ -113,6 +115,7 @@ assert.doesNotMatch(html, /Filthy Animals/, "The reusable HTML renderer must nev
 assert.doesNotMatch(html, /id="jookBoxSoundToggle"|class="jookbox-band-plaque"|id="jookBoxActionBar"/);
 
 assert.match(app, /function setJookBoxState\(nextState\)/);
+assert.match(app, /const VERSION="20260730-jookbox-13"/);
 assert.match(app, /\["sleeping","acceptingCoin","poweringUp","awake"\]/);
 assert.match(app, /function restoreJookBoxSessionState\(\)/);
 assert.match(app, /sessionStorage\.getItem\(jookBoxSessionKey\(\)\)/);
@@ -154,7 +157,8 @@ assert.match(styles, /--jb-led:#ffd45f/);
 assert.match(styles, /\.jookbox-ticker-console\{[\s\S]*top:17\.25%;[\s\S]*width:67\.8%;[\s\S]*height:10\.55%/);
 assert.match(styles, /\.jookbox-control-console\{[\s\S]*top:51\.02%;[\s\S]*width:67\.8%;[\s\S]*height:6\.7%/);
 assert.match(styles, /\.jookbox-coin-bank\{[\s\S]*top:6%;[\s\S]*left:38%;[\s\S]*width:24%;[\s\S]*height:88%/);
-assert.match(styles, /font-size:clamp\(\.56rem,2\.6vw,1\.18rem\)/);
+assert.match(styles, /font-size:clamp\(\.68rem,3vw,1\.32rem\)/);
+assert.match(styles, /text-shadow:0 0 3px #fff7c2,0 0 8px #ffbd37,0 0 15px rgba\(255,198,76,1\)/);
 assert.match(styles, /from\{transform:translate\(min\(100vw,762px\),-50%\)\}[\s\S]*to\{transform:translate\(-100%,-50%\)\}/);
 assert.match(styles, /\.jookbox-secondary-actions\{[\s\S]*grid-template-rows:repeat\(4/);
 assert.match(styles, /\.jookbox-lower-deck\{[\s\S]*left:30\.5%;[\s\S]*width:39%/);

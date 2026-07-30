@@ -1,0 +1,48 @@
+name: Build Deep Cuts Studio for macOS
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: macOS ${{ matrix.arch }}
+    runs-on: macos-14
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        arch:
+          - arm64
+          - x64
+
+    steps:
+      - name: Check out the Studio source
+        uses: actions/checkout@v4
+
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install locked dependencies
+        run: npm ci
+
+      - name: Verify Studio and the JookBox research gate
+        run: npm run studio:test
+
+      - name: Build the macOS application
+        run: npm run studio:make:mac:${{ matrix.arch }}
+
+      - name: Upload the Mac download
+        uses: actions/upload-artifact@v4
+        with:
+          name: Deep-Cuts-Studio-macOS-${{ matrix.arch }}
+          path: |
+            out/make/**/*.dmg
+            out/make/**/*.zip
+          if-no-files-found: error
+          retention-days: 30

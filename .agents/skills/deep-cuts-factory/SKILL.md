@@ -41,3 +41,5 @@ For an explicit owner-selected Laneway video replacement, verify the supplied Yo
 
 Never create another repository, expose a band name in a public URL, invent a link or video, redraw Aggits, bypass QR scan-back, or ask the owner to perform repeatable engineering work. Analytics is best effort and must never interrupt navigation. Every repeated manual step is an automation opportunity.
 
+Deep Cuts Studio is an optional local intake, verified-research and preview layer, not a publication authority. For JookBox projects, only a passed `deep-cuts-studio-jookbox-research/1` record at the mandatory 98% gate may populate preview destinations; raw names, URLs, YouTube leads, briefs and MP3s remain research leads. A `deep-cuts-studio-project/1` draft or `deep-cuts-studio-handoff/1` export must still follow the isolation, configuration, QR, deployment and live-verification stages above. Studio remains local-only inside its sandboxed desktop application and must never expose a public administrative Worker route.
+

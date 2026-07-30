@@ -1,6 +1,6 @@
 # Deep Cuts — Codex Mac Handover
 
-Snapshot date: 28 July 2026 (Australia/Sydney)
+Snapshot date: 29 July 2026 (Australia/Sydney)
 
 This document is the practical handover for continuing Deep Cuts in a new Codex session on macOS. It records the current purpose, architecture, locked product rules, repository structure, dependencies, completed work, known limitations, exact commands, deployment model, and recommended next steps.
 
@@ -22,14 +22,14 @@ git clone https://github.com/Raggedya/groove-vultures-deep-cuts-fan-challenge.gi
 cd groove-vultures-deep-cuts-fan-challenge
 git switch main
 git pull --ff-only origin main
-npm install --ignore-scripts --no-audit --no-fund
+npm ci
 python3 -m pip install --upgrade pip
 python3 scripts/ensure-python-deps.py
 npm run validate
 npm run build
 ```
 
-The validated CI toolchain is Node.js 22 and Python 3.12. The repository does not currently contain a package lock, so use `npm install`, not `npm ci`.
+The validated CI toolchain is Node.js 22 and Python 3.12. The repository now contains `package-lock.json`; use `npm ci` on a fresh checkout. Electron's install script is required to fetch the platform-specific desktop runtime.
 
 Before doing any work, the new Codex session must read these files completely and in this order:
 
@@ -41,6 +41,31 @@ Before doing any work, the new Codex session must read these files completely an
 6. `.agents/skills/deep-cuts-factory/SKILL.md`
 
 For independent-label work, also read `INDIE_LABEL_MODEL.md`. For Record Company Edition work, read `RECORD_COMPANY_EDITION.md` and `HOW_TO_CREATE_A_RECORD_COMPANY_DEEP_CUTS_ECOSYSTEM.md`. For Commercial Instinct work, read `SALES_INTELLIGENCE.md`.
+
+### Deep Cuts Studio desktop application
+
+Studio is a private one-screen desktop authoring workspace, documented in `DEEP_CUTS_STUDIO.md`, and starts with:
+
+```bash
+npm run studio:desktop
+```
+
+Its JookBox Band workflow accepts a band name and preferably an artist-controlled URL. It independently verifies identity, direct destinations, sourced ticker copy, official-channel Popular ordering and embeddability, then populates up to eight buttons only when the fail-closed 98% gate passes. Name-only discovery remains best effort. It also supports Business, Recruitment, Individual Band, Restaurants, Tourist Attractions and Towns, plus their existing wheel/Aggits contracts, logo, YouTube, MP3, brief, poster, saved draft, preview, QR, handoff and typed/browser-dictated revision functions. Desktop drafts stay in the operating system's private application-data folder; Studio does not expose a public authoring route or publish an edition directly.
+
+Create a Windows installer on Windows with `npm run studio:make`. Create Apple Silicon or Intel macOS ZIP/DMG outputs on macOS with:
+
+```text
+npm run studio:make:mac:arm64
+npm run studio:make:mac:x64
+```
+
+The GitHub workflow `.github/workflows/build-deep-cuts-studio-macos.yml` builds both Mac architectures on genuine macOS hardware. The desktop window has context isolation, renderer sandboxing and no Node.js integration. External navigation is restricted to HTTPS and opens in the system browser. Public distribution still requires Clearlight Creative's Windows signing certificate and Apple Developer signing/notarisation credentials; no credential is stored in Git.
+
+`npm audit --omit=dev` reports zero runtime vulnerabilities. The complete development tree currently reports 35 transitive advisories inside the current Electron Forge packaging toolchain (3 low, 31 high and 1 critical); npm does not offer a complete non-breaking fix for the selected official makers. These packages are not shipped in the renderer or public Worker, but this must be rechecked before signed public distribution and Electron/Forge should be upgraded when upstream fixes are available.
+
+The interface reference is the approved HGM Deep Cuts mobile design: deep navy, fine blue borders, orange detail accents, strong white typography and paired-card geometry. Do not infer Studio branding from unrelated legacy asset filenames.
+
+All registered editions remain isolated. Run `npm run validate`, `npm run build` and `npm run studio:test` before merging Studio changes or producing downloads.
 
 ## 2. Project purpose
 

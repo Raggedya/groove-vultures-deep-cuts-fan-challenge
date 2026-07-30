@@ -1,5 +1,23 @@
 # Deep Cuts
 
+## Deep Cuts Studio
+
+The private desktop production interface can be opened with:
+
+```powershell
+npm run studio:desktop
+```
+
+Create a platform-specific installer with:
+
+```powershell
+npm run studio:make
+```
+
+See `DEEP_CUTS_STUDIO.md` for the local browser mode, project contract, verification boundary and packaging notes.
+
+The private one-screen authoring workspace starts with `npm run studio` and opens at `http://127.0.0.1:4380/studio/`. Its JookBox Band workflow accepts a band name and preferably an artist-controlled URL, independently verifies identity, biography, direct platforms and the official featured video, and populates no more than eight keys only after the mandatory 98% gate passes. Name-only discovery is supported but fails closed when identity cannot be established. Business, Recruitment, Individual Band, Restaurants, Tourist Attractions and Towns retain their existing contracts, including the optional-wheel and artwork rules. Studio creates a live phone preview, local QR, 1080 × 1080 poster and factory handoff without directly altering or publishing an edition. See [DEEP_CUTS_STUDIO.md](DEEP_CUTS_STUDIO.md).
+
 ## Decision intelligence
 
 The isolated mobile product **Commercial Instinct** is available at `/sell/`. It accepts the official URLs for **My Company** and **Target Company**, securely researches their public official pages, confirms the target identity and produces a layered, evidence-led briefing through individual Deep Cuts blue buttons, with private saving and PDF export. See [SALES_INTELLIGENCE.md](SALES_INTELLIGENCE.md) for setup, schemas, provider configuration, privacy rules and testing.
