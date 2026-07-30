@@ -1,6 +1,6 @@
 "use strict";
 
-const VERSION="20260731-jookbox-17";
+const VERSION="20260731-jookbox-18";
 const LANEWAY_REPORTING_VERSION="laneway-weekly-v1";
 const $=id=>document.getElementById(id);
 const els={
@@ -13,6 +13,7 @@ const els={
   jookBoxPowerStatus:$("jookBoxPowerStatus"),jookBoxPrimaryAction:$("jookBoxPrimaryAction"),jookBoxTicker:$("jookBoxTicker"),
   jookBoxTickerText:$("jookBoxTickerText"),jookBoxStatePlaque:$("jookBoxStatePlaque"),
   jookBoxSecondaryActions:$("jookBoxSecondaryActions"),jookBoxBottomShare:$("jookBoxBottomShare"),
+  jookBoxCabinetCopyright:$("jookBoxCabinetCopyright"),
   jookBoxLearnMore:$("jookBoxLearnMore"),jookBoxBioScreen:$("jookBoxBioScreen"),jookBoxBioBack:$("jookBoxBioBack"),
   jookBoxBioTitle:$("jookBoxBioTitle"),jookBoxBioCopy:$("jookBoxBioCopy"),jookBoxBioSource:$("jookBoxBioSource"),
   links:$("platformLinks"),share:$("shareButton"),status:$("shareStatus"),description:$("pageDescription"),poweredBy:$("poweredByLabel"),
@@ -485,21 +486,35 @@ function buildJookBoxProductNavigation(){
   if(sixKeyFormat&&controls.length!==6)console.warn("The six-key JookBox contract requires four to six verified destinations so Learn More and Share can preserve all six positions.");
   const utilityKinds=new Set(controls.map(control=>control.dataset.jookboxUtility).filter(Boolean));
   els.jookBoxLearnMore.hidden=!jookBoxHasBiography()||utilityKinds.has("learn_more");
-  els.jookBoxBottomShare.hidden=utilityKinds.has("share");
   clearJookBoxKeyLightTimer(true);
   els.jookBoxSecondaryActions.replaceChildren(...controls);
   els.jookBoxSecondaryActions.closest(".jookbox-action-panel").hidden=!controls.length;
   const support=config.jookBox?.supportAction;
+  const supportAction=String(support?.action||"").trim().toLowerCase();
   const supportURL=validHttps(config.links?.[String(support?.linkKey||"")]);
-  configureJookBoxPrimaryAction(support&&supportURL?{
+  const supportDefinition=supportAction==="share"?{
+    action:"share",
+    key:"share",
+    kind:"share",
+    label:String(support?.label||"Support Our Band"),
+    subLabel:String(support?.detail||"Please share our JookBox"),
+    icon:String(support?.icon||"\u2661"),
+    detailIcon:String(support?.detailIcon||"\u2197"),
+    platform:"share"
+  }:support&&supportURL?{
     key:String(support.linkKey||"buyMusic"),
     kind:String(support.kind||"buy_music"),
     label:String(support.label||"Support the Band"),
     subLabel:String(support.detail||"Love our music?"),
-    icon:String(support.icon||"♡"),
+    icon:String(support.icon||"\u2661"),
     platform:String(support.linkKey||"buyMusic"),
     url:supportURL
-  }:null);
+  }:null;
+  configureJookBoxPrimaryAction(supportDefinition);
+  const cabinetCopyright=String(config.jookBox?.cabinetCopyright||"").trim();
+  els.jookBoxCabinetCopyright.textContent=cabinetCopyright;
+  els.jookBoxCabinetCopyright.hidden=!cabinetCopyright;
+  els.jookBoxBottomShare.hidden=Boolean(cabinetCopyright)||utilityKinds.has("share")||supportAction==="share";
 }
 
 function configureJookBoxPrimaryAction(definition){
@@ -507,10 +522,44 @@ function configureJookBoxPrimaryAction(definition){
   const title=els.jookBoxPrimaryAction.querySelector("strong");
   const detail=els.jookBoxPrimaryAction.querySelector("small");
   els.jookBoxPrimaryAction.hidden=true;
+  els.jookBoxPrimaryAction.classList.remove("is-share-action");
+  els.jookBoxPrimaryAction.removeAttribute("href");
+  els.jookBoxPrimaryAction.removeAttribute("role");
+  els.jookBoxPrimaryAction.removeAttribute("aria-label");
+  els.jookBoxPrimaryAction.removeAttribute("aria-disabled");
+  els.jookBoxPrimaryAction.removeAttribute("data-jookbox-action");
+  delete els.jookBoxPrimaryAction.dataset.jookboxHref;
+  els.jookBoxPrimaryAction.onclick=null;
+  els.jookBoxPrimaryAction.onkeydown=null;
   if(!definition)return;
   icon.textContent=jookBoxActionIcon(definition);
   title.textContent=definition.label;
-  detail.textContent=definition.subLabel;
+  detail.replaceChildren(document.createTextNode(definition.subLabel));
+  if(definition.action==="share"){
+    const shareIcon=document.createElement("span");
+    shareIcon.className="jookbox-primary-detail-icon";
+    shareIcon.setAttribute("aria-hidden","true");
+    shareIcon.textContent=definition.detailIcon||"\u2197";
+    detail.append(" ",shareIcon);
+    els.jookBoxPrimaryAction.classList.add("is-share-action");
+    els.jookBoxPrimaryAction.dataset.jookboxAction="share";
+    els.jookBoxPrimaryAction.setAttribute("role","button");
+    els.jookBoxPrimaryAction.setAttribute("aria-disabled","true");
+    els.jookBoxPrimaryAction.setAttribute("aria-label",`Share the ${config.bandName} JookBox`);
+    els.jookBoxPrimaryAction.tabIndex=-1;
+    const activateShare=event=>{
+      event.preventDefault();
+      if(!jookBoxPowered){focusJookBoxCoin();return}
+      sharePage();
+    };
+    els.jookBoxPrimaryAction.onclick=activateShare;
+    els.jookBoxPrimaryAction.onkeydown=event=>{
+      if(event.key!=="Enter"&&event.key!==" ")return;
+      activateShare(event);
+    };
+    els.jookBoxPrimaryAction.hidden=false;
+    return;
+  }
   configureJookBoxDestinationAnchor(els.jookBoxPrimaryAction,definition.url,definition,"jookbox_primary_action");
   els.jookBoxPrimaryAction.hidden=false;
 }
@@ -575,7 +624,13 @@ function unlockJookBoxDestinations(){
     button.removeAttribute("aria-disabled");
     button.tabIndex=0;
   }
-  els.jookBoxPrimaryAction.hidden=!els.jookBoxPrimaryAction.dataset.jookboxHref;
+  if(els.jookBoxPrimaryAction.dataset.jookboxAction==="share"){
+    els.jookBoxPrimaryAction.hidden=false;
+    els.jookBoxPrimaryAction.removeAttribute("aria-disabled");
+    els.jookBoxPrimaryAction.tabIndex=0;
+  }else{
+    els.jookBoxPrimaryAction.hidden=!els.jookBoxPrimaryAction.dataset.jookboxHref;
+  }
 }
 
 function jookBoxSessionKey(){
@@ -646,6 +701,10 @@ function setJookBoxState(nextState){
       button.disabled=true;
       button.setAttribute("aria-disabled","true");
       button.tabIndex=-1;
+    }
+    if(els.jookBoxPrimaryAction.dataset.jookboxAction==="share"){
+      els.jookBoxPrimaryAction.setAttribute("aria-disabled","true");
+      els.jookBoxPrimaryAction.tabIndex=-1;
     }
     els.jookBoxCoin.disabled=false;
     els.jookBoxCoin.querySelector(".jookbox-coin-plate").textContent=String(config.jookBox?.sleepingStateLabel||"Insert coin to play");

@@ -104,12 +104,13 @@ const contracts = JSON.parse(contractsText);
 assert.equal(contracts.productModels.jookbox.version, 3);
 assert.deepEqual(contracts.editionTypes.jukebox.renderedLinks, []);
 assert.match(html, /id="jookBoxCabinet"/);
-assert.match(html, /styles\.css\?v=20260731-jookbox-17/);
-assert.match(html, /app\.js\?v=20260731-jookbox-17/);
+assert.match(html, /styles\.css\?v=20260731-jookbox-18/);
+assert.match(html, /app\.js\?v=20260731-jookbox-18/);
 assert.match(html, /id="jookBoxVideoSlot"/);
 assert.match(html, /id="jookBoxCoinButton"[\s\S]*aria-label="Insert coin and start the jukebox"/);
 assert.match(html, /id="jookBoxTickerText"/);
 assert.match(html, /id="jookBoxBottomShare"/);
+assert.match(html, /id="jookBoxCabinetCopyright"/);
 assert.match(html, /id="jookBoxLearnMore" class="jookbox-learn-more jookbox-brass-dial"/);
 assert.match(html, /id="jookBoxSecondaryActions"/);
 assert.match(html, /id="jookBoxStatePlaque"/);
@@ -118,7 +119,7 @@ assert.doesNotMatch(html, /Filthy Animals/, "The reusable HTML renderer must nev
 assert.doesNotMatch(html, /id="jookBoxSoundToggle"|class="jookbox-band-plaque"|id="jookBoxActionBar"/);
 
 assert.match(app, /function setJookBoxState\(nextState\)/);
-assert.match(app, /const VERSION="20260731-jookbox-17"/);
+assert.match(app, /const VERSION="20260731-jookbox-18"/);
 assert.match(app, /dataset\.jookboxEmbeddedMarquee=embeddedMarquee\?"true":"false"/);
 assert.match(app, /dataset\.jookboxAppearance=config\.jookBox\?\.appearanceVariant\|\|"reference"/);
 assert.match(app, /dataset\.jookboxLightSequence=config\.jookBox\?\.lightSequenceMode\|\|"single-key"/);
@@ -157,6 +158,10 @@ assert.deepEqual(utilityFallbackKinds(5, true), ["learn_more"]);
 assert.deepEqual(utilityFallbackKinds(4, true), ["learn_more", "share"]);
 assert.match(app, /utilityKinds\.has\("learn_more"\)/);
 assert.match(app, /utilityKinds\.has\("share"\)/);
+assert.match(app, /supportAction==="share"/);
+assert.match(app, /dataset\.jookboxAction="share"/);
+assert.match(app, /jookBoxPrimaryAction\.onclick=activateShare/);
+assert.match(app, /jookBoxCabinetCopyright\.textContent=cabinetCopyright/);
 assert.match(app, /querySelectorAll\("\[data-jookbox-utility\]"\)/);
 assert.match(app, /link\.dataset\.keyIndex=String\(index\)/);
 assert.match(app, /const groupCount=Math\.ceil\(keys\.length\/groupSize\)/);
@@ -190,6 +195,10 @@ assert.equal(
 );
 assert.match(styles, /\[data-jookbox-key-format="six-key\/1"\] \.jookbox-utility-key\{[\s\S]*appearance:none;[\s\S]*font:inherit/);
 assert.match(styles, /data-jookbox-appearance="atlas-reference-cabinet\/1"[\s\S]*\.jookbox-primary-action\{[\s\S]*top:79\.55%/);
+assert.match(styles, /data-jookbox-appearance="atlas-reference-cabinet\/1"[\s\S]*\.jookbox-primary-detail-icon\{[\s\S]*border-radius:50%/);
+assert.match(styles, /\.jookbox-primary-action\.is-share-action strong\{[\s\S]*grid-row:1/);
+assert.match(styles, /\.jookbox-primary-action\.is-share-action small\{[\s\S]*grid-row:2/);
+assert.match(styles, /data-jookbox-appearance="atlas-reference-cabinet\/1"[\s\S]*\.jookbox-cabinet-copyright\{[\s\S]*top:91\.1%/);
 assert.match(styles, /@keyframes atlasReferenceKeyPulse/);
 assert.match(styles, /@keyframes atlasReferenceCoinInsert/);
 assert.match(styles, /\.jookbox-coin-button\{[\s\S]*min-height:44px/);
@@ -258,7 +267,16 @@ assert.deepEqual(
   "ATLAS must retain its five verified destinations in order, with Learn More filling the sixth physical key.",
 );
 assert.equal(atlasConfig.jookBox?.cabinetArtwork, "assets/jookbox-atlas-reference-v1.webp");
-assert.equal(atlasConfig.jookBox?.supportAction?.linkKey, "buyMusic");
+assert.deepEqual(atlasConfig.jookBox?.supportAction, {
+  action: "share",
+  label: "Support Our Band",
+  detail: "Please share our JookBox",
+  kind: "share",
+  icon: "\u2661",
+  detailIcon: "\u2197",
+});
+assert.equal(atlasConfig.jookBox?.cabinetCopyright, "Copyright Clearlight Creative 2026.");
+assert.doesNotMatch(JSON.stringify(atlasConfig.jookBox), /Love our music\?/i);
 assert.equal(atlasConfig.links?.website, "");
 assert.equal(atlasConfig.links?.merchandise, "");
 const atlasCabinet = await fs.readFile(atlasConfig.jookBox.cabinetArtwork);
@@ -276,4 +294,4 @@ for (const other of platform.editions.filter((item) => item.editionId !== entry.
   assert.notEqual(otherConfig.jookBox?.sessionStorageKey, config.jookBox.sessionStorageKey, `${other.slug} must not share the Filthy Animals session key.`);
 }
 
-console.log("JookBox v3 passed: Filthy Animals is unchanged, while ATLAS keeps its byte-locked key visuals and uses the permanent six-key population and single-key reading-order light contract.");
+console.log("JookBox v3 passed: Filthy Animals is unchanged, while ATLAS keeps its byte-locked six-key visuals, working Support Our Band share action and requested cabinet copyright.");

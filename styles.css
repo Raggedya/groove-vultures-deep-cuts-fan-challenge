@@ -3718,6 +3718,30 @@ body{margin:0;min-height:100%;color:var(--ink);background:#000713;overflow-x:hid
   text-align:center;
   text-transform:uppercase
 }
+[data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .jookbox-primary-detail-icon{
+  display:inline-grid;
+  width:1.35em;
+  height:1.35em;
+  margin-left:.32em;
+  place-items:center;
+  border:1px solid currentColor;
+  border-radius:50%;
+  font-size:.82em;
+  font-weight:900;
+  letter-spacing:0;
+  line-height:1;
+  vertical-align:.08em;
+  text-shadow:0 0 6px rgba(255,143,164,.72)
+}
+[data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .jookbox-primary-action.is-share-action strong{
+  grid-row:1;
+  align-self:end
+}
+[data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .jookbox-primary-action.is-share-action small{
+  grid-row:2;
+  align-self:start;
+  margin:.3em 0 0
+}
 [data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .is-awake .jookbox-primary-action{
   border-color:#ff667e;
   filter:brightness(.98) saturate(.9);
@@ -3783,6 +3807,28 @@ body{margin:0;min-height:100%;color:var(--ink);background:#000713;overflow-x:hid
   opacity:1;
   box-shadow:inset 0 1px rgba(255,255,255,.1),inset 0 -4px 8px #000,0 0 8px rgba(232,188,116,.22)
 }
+[data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .jookbox-cabinet-copyright{
+  position:absolute;
+  z-index:12;
+  top:91.1%;
+  left:61.5%;
+  display:grid;
+  width:27%;
+  height:5.1%;
+  margin:0;
+  padding:0 1.2%;
+  place-items:center;
+  color:#d7b887;
+  font-family:Arial,sans-serif;
+  font-size:clamp(.42rem,1.75vw,.82rem);
+  font-weight:700;
+  letter-spacing:.015em;
+  line-height:1.22;
+  text-align:center;
+  text-wrap:balance;
+  text-shadow:0 1px #190d05,0 0 6px rgba(216,171,98,.2)
+}
+[data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .jookbox-cabinet-copyright[hidden]{display:none}
 [data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .page-footer{
   width:min(100%,887px);
   background:#020202

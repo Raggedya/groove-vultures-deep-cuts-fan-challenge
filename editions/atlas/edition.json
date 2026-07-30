@@ -92,12 +92,14 @@
     "lightSequenceMode": "single-key",
     "appearanceVariant": "atlas-reference-cabinet/1",
     "supportAction": {
-      "label": "Support the Band",
-      "detail": "Love our music?",
-      "linkKey": "buyMusic",
-      "kind": "buy_music",
-      "icon": "♡"
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "\u2661",
+      "detailIcon": "\u2197"
     },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
     "sleepingStateLabel": "Insert coin to play",
     "awakeStateLabel": "Coin accepted — JookBox is live",
     "coinStart": true,
