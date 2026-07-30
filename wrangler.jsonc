@@ -12,6 +12,36 @@
   "ai": {
     "binding": "AI"
   },
+  "ratelimits": [
+    {
+      "name": "ANALYTICS_RATE_LIMITER",
+      "namespace_id": "1001",
+      "simple": {
+        "limit": 120,
+        "period": 60
+      }
+    },
+    {
+      "name": "SALES_RATE_LIMITER",
+      "namespace_id": "1002",
+      "simple": {
+        "limit": 30,
+        "period": 60
+      }
+    },
+    {
+      "name": "SALES_RESEARCH_RATE_LIMITER",
+      "namespace_id": "1003",
+      "simple": {
+        "limit": 4,
+        "period": 60
+      }
+    }
+  ],
+  "vars": {
+    "SALES_DAILY_REQUEST_LIMIT": "100",
+    "PRODUCTION_HOST": "deep-cuts.andrewharris501.workers.dev"
+  },
   "d1_databases": [
     {
       "binding": "DB",

@@ -39,7 +39,12 @@ assert.ok(!source.includes('new URL("/record-company/index.html",url.origin)'),'
 
 let eventBindings=[];
 const eventEnv={
-  DB:{prepare:()=>({bind:(...values)=>{eventBindings=values;return{run:async()=>({success:true})}}})}
+  ANALYTICS_RATE_LIMITER:{limit:async()=>({success:true})},
+  PRODUCTION_HOST:'deep-cuts.test',
+  DB:{prepare:sql=>({bind:(...values)=>({
+    first:async()=>({edition_id:values[0]}),
+    run:async()=>{if(sql.includes('INSERT OR IGNORE INTO analytics_events'))eventBindings=values;return{success:true}}
+  })})}
 };
 const eventResponse=await worker.fetch(new Request('https://deep-cuts.test/api/events',{
   method:'POST',
@@ -48,24 +53,35 @@ const eventResponse=await worker.fetch(new Request('https://deep-cuts.test/api/e
     event_id:'event-laneway-quiz-1',
     edition_id:'dc_b9e7b66620',
     event_name:'quiz_question_answered',
-    timestamp:'2026-07-24T00:00:00.000Z',
+    timestamp:new Date().toISOString(),
     session_id:'anonymous-session',
     quiz_identifier:'laneway-company-quiz',
     quiz_run_id:'quiz-run-1',
     question_id:'laneway-q1',
     question_number:1,
     correct:false,
-    tracking_version:'laneway-weekly-v1',
-    ignored_sensitive_value:'must-not-be-stored'
+    tracking_version:'laneway-weekly-v1'
   })
 }),eventEnv,{});
 assert.equal(eventResponse.status,200,'Enhanced Laneway events must be accepted');
 const storedMetadata=JSON.parse(eventBindings[12]);
 assert.deepEqual(
   storedMetadata,
-  {tracking_version:'laneway-weekly-v1',quiz_identifier:'laneway-company-quiz',quiz_run_id:'quiz-run-1',question_id:'laneway-q1',question_number:1,correct:false},
+  {tracking_version:'laneway-weekly-v1',quiz_identifier:'laneway-company-quiz',quiz_run_id:'quiz-run-1',question_id:'laneway-q1',question_number:1,correct:false,traffic_environment:'production'},
   'Only the typed reporting metadata allow-list may be stored'
 );
+const unexpectedEvent=await worker.fetch(new Request('https://deep-cuts.test/api/events',{
+  method:'POST',
+  headers:{'content-type':'application/json'},
+  body:JSON.stringify({
+    event_id:'event-laneway-quiz-2',
+    edition_id:'dc_b9e7b66620',
+    event_name:'quiz_started',
+    timestamp:new Date().toISOString(),
+    ignored_sensitive_value:'must-not-be-stored'
+  })
+}),eventEnv,{});
+assert.equal(unexpectedEvent.status,400,'Unexpected analytics properties must be rejected rather than silently accepted');
 for(const route of ['/api/reports/laneway-weekly.pdf','/api/reports/laneway-weekly.xlsx']){
   const unauthorized=await worker.fetch(new Request(`https://deep-cuts.test${route}`),{},{});
   assert.equal(unauthorized.status,401,`${route} must require administrator authentication`);

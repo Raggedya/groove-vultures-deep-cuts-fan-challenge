@@ -1,6 +1,14 @@
 import {handleSales} from "./sales.js";
 import {handleRecordCompany,handleRecordCompanyQr,processRecordCompanyJobs} from "./record-company.js";
 import {
+  enforceRateLimit,
+  isBlockedPublicPath,
+  protectionUnavailableResponse,
+  rateLimitResponse,
+  readJsonBody,
+  withSecurityHeaders
+} from "./security.js";
+import {
   binaryBase64,
   buildLanewayEmailHtml,
   buildLanewayPdf,
@@ -24,6 +32,36 @@ const DESTINATIONS=new Set([
   "buy_music","spotify","instagram","bandcamp","youtube","facebook","website",
   "merchandise","tip","news_reviews","share"
 ]);
+const DEVICE_CATEGORIES=new Set(["mobile","tablet","desktop","unknown"]);
+const SHARE_METHODS=new Set(["native_device","copy_link"]);
+const ANALYTICS_BODY_KEYS=new Set([
+  "event_id","event_name","timestamp","edition_id","band_name","session_id",
+  "referring_source","device_category","destination_platform","share_method",
+  "page_location","page_identifier","action_id","video_id","trigger","artist_name",
+  "interaction_source","destination_url_origin","edition_type","tracking_version",
+  "button_name","quiz_identifier","quiz_run_id","question_id","classification",
+  "profile_identifier","recruiter","share_action_id","copy_trigger",
+  "artist_count","result_count","question_number","final_score","question_count",
+  "answered_count","completion_seconds","reveal_delay_ms","response_seconds",
+  "correct","unanswered","muted","has_configured_recipient","answer","selections"
+]);
+const ANALYTICS_STRING_LIMITS=new Map([
+  ["event_id",100],["event_name",80],["timestamp",40],["edition_id",40],
+  ["band_name",300],["session_id",100],["referring_source",120],
+  ["device_category",20],["destination_platform",40],["share_method",40],
+  ["page_location",500],["page_identifier",200],["action_id",200],
+  ["video_id",200],["trigger",200],["artist_name",200],
+  ["interaction_source",200],["destination_url_origin",300],
+  ["edition_type",200],["tracking_version",200],["button_name",200],
+  ["quiz_identifier",200],["quiz_run_id",200],["question_id",200],
+  ["classification",200],["profile_identifier",200],["recruiter",200],
+  ["share_action_id",200],["copy_trigger",200],["answer",500]
+]);
+const ANALYTICS_NUMBER_FIELDS=new Set([
+  "artist_count","result_count","question_number","final_score","question_count",
+  "answered_count","completion_seconds","reveal_delay_ms","response_seconds"
+]);
+const ANALYTICS_BOOLEAN_FIELDS=new Set(["correct","unanswered","muted","has_configured_recipient"]);
 const BUILD_STAGES=new Set([
   "submitted","research_started","research_completed","artwork_completed",
   "validation_completed","deployed","email_accepted","email_delivered","failed"
@@ -32,43 +70,50 @@ const CELIBATE_RIFLES_LANEWAY_PATH="/e/dc_f63a383fac";
 
 export default {
   async fetch(request,env,ctx){
+    let response;
     try{
-      const url=new URL(request.url);
-      if(request.method==="OPTIONS")return cors(new Response(null,{status:204}),request,env);
-      if(url.pathname.startsWith("/api/record-company/"))return handleRecordCompany(request,env,ctx,url);
-      if(url.pathname.startsWith("/record-company/q/"))return handleRecordCompanyQr(request,env,ctx,url);
-      if(["/record-company/terms.html","/record-company/privacy.html"].includes(url.pathname))return recordCompanyAsset(request,env);
-      const restoredLanewayPath=restoredLanewayEntryPath(url.pathname);
-      if(restoredLanewayPath&&["GET","HEAD"].includes(request.method)){
-        return Response.redirect(new URL(restoredLanewayPath,url.origin).toString(),302);
-      }
-      if(isRecordCompanyRootPath(url.pathname))return recordCompanyHome(env,url);
-      if(isRecordCompanyPagePath(url.pathname)){
-        const assetUrl=new URL("/record-company/",url.origin);
-        return recordCompanyAsset(new Request(assetUrl,request),env);
-      }
-      if(url.pathname.startsWith("/api/sell/"))return handleSales(request,env,ctx,url);
-      if(url.pathname.startsWith("/q/"))return handleQr(request,env,ctx,url);
-      if(url.pathname==="/api/events"&&request.method==="POST")return handleEvent(request,env);
-      if(url.pathname==="/api/editions"&&request.method==="POST")return handleEdition(request,env);
-      if(url.pathname==="/api/builds"&&request.method==="POST")return handleBuild(request,env);
-      if(url.pathname.startsWith("/api/builds/")&&request.method==="GET")return handleBuildStatus(request,env,url);
-      if(url.pathname==="/api/delivery"&&request.method==="POST")return handleDelivery(request,env);
-      if(url.pathname==="/api/webhooks/resend"&&request.method==="POST")return handleResendWebhook(request,env);
-      if(url.pathname==="/api/reports/weekly.csv"&&request.method==="GET")return handleReport(request,env);
-      if(url.pathname==="/api/reports/laneway-weekly.pdf"&&request.method==="GET")return handleLanewayReport(request,env,"pdf");
-      if(url.pathname==="/api/reports/laneway-weekly.xlsx"&&request.method==="GET")return handleLanewayReport(request,env,"xlsx");
-      if(url.pathname==="/api/health")return json({ok:true,service:"deep-cuts",timestamp:new Date().toISOString()});
-      return env.ASSETS.fetch(request);
+      response=await routeRequest(request,env,ctx);
     }catch(error){
       console.error("deep-cuts-worker-error",error);
-      return json({ok:false,error:"Internal service error"},500);
+      response=json({ok:false,error:"Internal service error"},500);
     }
+    return withSecurityHeaders(response);
   },
   async scheduled(controller,env,ctx){
     ctx.waitUntil(Promise.all([sendWeeklyReportIfDue(controller,env),processRecordCompanyJobs(env)]));
   }
 };
+
+async function routeRequest(request,env,ctx){
+  const url=new URL(request.url);
+  if(isBlockedPublicPath(url.pathname))return new Response("Not found",{status:404,headers:{"cache-control":"no-store"}});
+  if(request.method==="OPTIONS")return cors(new Response(null,{status:204}),request,env);
+  if(url.pathname.startsWith("/api/record-company/"))return handleRecordCompany(request,env,ctx,url);
+  if(url.pathname.startsWith("/record-company/q/"))return handleRecordCompanyQr(request,env,ctx,url);
+  if(["/record-company/terms.html","/record-company/privacy.html"].includes(url.pathname))return recordCompanyAsset(request,env);
+  const restoredLanewayPath=restoredLanewayEntryPath(url.pathname);
+  if(restoredLanewayPath&&["GET","HEAD"].includes(request.method)){
+    return Response.redirect(new URL(restoredLanewayPath,url.origin).toString(),302);
+  }
+  if(isRecordCompanyRootPath(url.pathname))return recordCompanyHome(env,url);
+  if(isRecordCompanyPagePath(url.pathname)){
+    const assetUrl=new URL("/record-company/",url.origin);
+    return recordCompanyAsset(new Request(assetUrl,request),env);
+  }
+  if(url.pathname.startsWith("/api/sell/"))return handleSales(request,env,ctx,url);
+  if(url.pathname.startsWith("/q/"))return handleQr(request,env,ctx,url);
+  if(url.pathname==="/api/events"&&request.method==="POST")return handleEvent(request,env);
+  if(url.pathname==="/api/editions"&&request.method==="POST")return handleEdition(request,env);
+  if(url.pathname==="/api/builds"&&request.method==="POST")return handleBuild(request,env);
+  if(url.pathname.startsWith("/api/builds/")&&request.method==="GET")return handleBuildStatus(request,env,url);
+  if(url.pathname==="/api/delivery"&&request.method==="POST")return handleDelivery(request,env);
+  if(url.pathname==="/api/webhooks/resend"&&request.method==="POST")return handleResendWebhook(request,env);
+  if(url.pathname==="/api/reports/weekly.csv"&&request.method==="GET")return handleReport(request,env);
+  if(url.pathname==="/api/reports/laneway-weekly.pdf"&&request.method==="GET")return handleLanewayReport(request,env,"pdf");
+  if(url.pathname==="/api/reports/laneway-weekly.xlsx"&&request.method==="GET")return handleLanewayReport(request,env,"xlsx");
+  if(url.pathname==="/api/health")return json({ok:true,service:"deep-cuts",timestamp:new Date().toISOString()});
+  return env.ASSETS.fetch(request);
+}
 
 async function recordCompanyAsset(request,env){
   const pathname=new URL(request.url).pathname;
@@ -140,21 +185,42 @@ async function handleQr(request,env,ctx,url){
 }
 
 async function handleEvent(request,env){
-  const body=await safeJson(request);
+  const limited=await enforceRateLimit(env,"ANALYTICS_RATE_LIMITER",request,"analytics");
+  if(!limited.configured||limited.error)return cors(protectionUnavailableResponse(),request,env);
+  if(!limited.ok)return cors(rateLimitResponse(),request,env);
+  const parsed=await readJsonBody(request,{maxBytes:16384,allowedKeys:ANALYTICS_BODY_KEYS});
+  if(!parsed.ok)return cors(parsed.response,request,env);
+  const body=parsed.value;
+  if(!validAnalyticsShape(body))return json({ok:false,error:"Invalid analytics properties"},400);
   const editionId=cleanId(body?.edition_id);
   const eventName=String(body?.event_name||"");
   if(!editionId||!EVENT_NAMES.has(eventName))return json({ok:false,error:"Invalid analytics event"},400);
+  const edition=await env.DB.prepare("SELECT edition_id FROM editions WHERE edition_id=?1 AND status='active'").bind(editionId).first();
+  if(!edition)return json({ok:false,error:"Invalid analytics event"},400);
   const destination=String(body?.destination_platform||"");
   if(destination&&!DESTINATIONS.has(destination))return json({ok:false,error:"Invalid destination"},400);
+  const deviceCategory=String(body?.device_category||"");
+  if(deviceCategory&&!DEVICE_CATEGORIES.has(deviceCategory))return json({ok:false,error:"Invalid device category"},400);
+  const shareMethod=String(body?.share_method||"");
+  if(shareMethod&&!SHARE_METHODS.has(shareMethod))return json({ok:false,error:"Invalid share method"},400);
+  const referringSource=analyticsSource(body.referring_source);
+  if(body.referring_source!==undefined&&!referringSource)return json({ok:false,error:"Invalid discovery source"},400);
+  const eventId=analyticsIdentifier(body.event_id);
+  const sessionId=analyticsIdentifier(body.session_id);
+  if(!eventId||!sessionId)return json({ok:false,error:"Invalid analytics identifier"},400);
+  const occurredAt=analyticsDate(body.timestamp);
+  if(!occurredAt)return json({ok:false,error:"Invalid analytics timestamp"},400);
+  const metadata=safeMetadata(body);
+  metadata.traffic_environment=trafficEnvironment(request,env);
   const event=baseEvent(request,editionId,eventName,{
-    event_id:cleanText(body.event_id,100),
-    occurred_at:validDate(body.timestamp),
-    session_id:cleanText(body.session_id,100),
-    referring_source:cleanText(body.referring_source,120),
-    device_category:cleanText(body.device_category,20),
+    event_id:eventId,
+    occurred_at:occurredAt,
+    session_id:sessionId,
+    referring_source:referringSource,
+    device_category:deviceCategory,
     destination_platform:destination,
-    share_method:cleanText(body.share_method,40),
-    metadata_json:JSON.stringify(safeMetadata(body))
+    share_method:shareMethod,
+    metadata_json:JSON.stringify(metadata)
   });
   await insertEvent(env,event);
   return cors(json({ok:true}),request,env);
@@ -383,6 +449,48 @@ function baseEvent(request,editionId,eventName,extra={}){
 function authorized(request,env){const value=request.headers.get("authorization")||"";return Boolean(env.ADMIN_TOKEN)&&value===`Bearer ${env.ADMIN_TOKEN}`}
 function cleanId(value){const text=String(value||"").trim();return /^[A-Za-z0-9_-]{4,40}$/.test(text)?text:""}
 function cleanText(value,max=200){return String(value||"").trim().slice(0,max)}
+function cleanAnalyticsText(value,max=200){const text=cleanText(value,max);return /[\u0000-\u001f\u007f]/.test(text)?"":text}
+function analyticsSource(value){
+  if(value===undefined||value===null||value==="")return "";
+  const text=cleanAnalyticsText(value,120);
+  return text&&/^[A-Za-z0-9][A-Za-z0-9._:/?&=%+\- ]{0,119}$/.test(text)?text:"";
+}
+function analyticsIdentifier(value){
+  if(value===undefined||value===null||value==="")return "";
+  const text=String(value).trim();
+  return text.length>=8&&text.length<=100&&/^[A-Za-z0-9._:-]+$/.test(text)?text:"";
+}
+function analyticsDate(value){
+  if(value===undefined||value===null||value==="")return new Date().toISOString();
+  const date=new Date(value);
+  const time=date.getTime();
+  if(Number.isNaN(time)||time>Date.now()+10*60*1000||time<Date.now()-31*86400000)return "";
+  return date.toISOString();
+}
+function validAnalyticsShape(body){
+  for(const[key,max]of ANALYTICS_STRING_LIMITS){
+    if(body[key]===undefined)continue;
+    if(typeof body[key]!=="string"||body[key].length>max)return false;
+  }
+  for(const key of ANALYTICS_NUMBER_FIELDS){
+    if(body[key]===undefined)continue;
+    if(typeof body[key]!=="number"||!Number.isFinite(body[key])||Math.abs(body[key])>1000000000)return false;
+  }
+  for(const key of ANALYTICS_BOOLEAN_FIELDS){
+    if(body[key]!==undefined&&typeof body[key]!=="boolean")return false;
+  }
+  if(body.selections!==undefined){
+    if(!body.selections||typeof body.selections!=="object"||Array.isArray(body.selections))return false;
+    const entries=Object.entries(body.selections);
+    if(entries.length>30||entries.some(([key,value])=>key.length>100||typeof value!=="string"||value.length>200))return false;
+  }
+  return true;
+}
+function trafficEnvironment(request,env){
+  const host=new URL(request.url).hostname.toLowerCase();
+  const productionHost=String(env.PRODUCTION_HOST||"").trim().toLowerCase();
+  return productionHost&&host===productionHost?"production":"non_production";
+}
 function validDate(value){const date=new Date(value||Date.now());return Number.isNaN(date.getTime())?new Date().toISOString():date.toISOString()}
 async function safeJson(request){try{return await request.json()}catch{return null}}
 function safeMetadata(body){
@@ -406,5 +514,18 @@ function csvResponse(rows,filename){return new Response(toCsv(rows),{headers:{"c
 function binaryResponse(bytes,contentType,filename){return new Response(bytes,{headers:{"content-type":contentType,"content-disposition":`attachment; filename="${filename}"`,"cache-control":"no-store"}})}
 function base64(text){const bytes=new TextEncoder().encode(text);let binary="";for(const byte of bytes)binary+=String.fromCharCode(byte);return btoa(binary)}
 
-export const __test={verifySvixWebhook,isRecordCompanyPagePath,isRecordCompanyRootPath,restoredLanewayEntryPath};
+export const __test={
+  verifySvixWebhook,
+  isRecordCompanyPagePath,
+  isRecordCompanyRootPath,
+  restoredLanewayEntryPath,
+  analyticsDate,
+  analyticsIdentifier,
+  analyticsSource,
+  trafficEnvironment,
+  validAnalyticsShape,
+  ANALYTICS_BODY_KEYS,
+  DEVICE_CATEGORIES,
+  SHARE_METHODS
+};
 
