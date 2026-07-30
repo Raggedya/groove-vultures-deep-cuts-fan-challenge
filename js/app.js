@@ -1,6 +1,6 @@
 "use strict";
 
-const VERSION="20260730-jookbox-9";
+const VERSION="20260730-jookbox-10";
 const LANEWAY_REPORTING_VERSION="laneway-weekly-v1";
 const $=id=>document.getElementById(id);
 const els={
@@ -95,6 +95,7 @@ let attentionTimer=0;
 let jookBoxPowered=false;
 let jookBoxState="sleeping";
 let jookBoxAudio=null;
+let jookBoxAutoplayTimer=0;
 const jookBoxStartupTimers=new Set();
 init();
 
@@ -300,7 +301,7 @@ function buildJookBox(){
   els.jookBoxLearnMore.addEventListener("click",()=>jookBoxPowered?openJookBoxBio():focusJookBoxCoin());
   els.jookBoxBioBack.addEventListener("click",closeJookBoxBio);
   document.addEventListener("visibilitychange",handleJookBoxVisibility,{passive:true});
-  window.addEventListener("pagehide",clearJookBoxStartupTimers,{passive:true});
+  window.addEventListener("pagehide",cleanupJookBoxLifecycle,{passive:true});
   window.addEventListener("pageshow",handleJookBoxPageShow,{passive:true});
   handleJookBoxVisibility();
   configureJookBoxBio();
@@ -502,9 +503,11 @@ function jookBoxSessionKey(){
   return String(config.jookBox?.sessionStorageKey||`deepCutsJookBoxActivated:${editionEntry.editionId}`);
 }
 
-function activateJookBoxVideo(){
+function activateJookBoxVideo(autoplay=false){
   const id=els.videoFrame.dataset.videoId;
-  if(id&&!els.videoFrame.getAttribute("src"))els.videoFrame.src=`https://www.youtube-nocookie.com/embed/${id}?rel=0&modestbranding=1&playsinline=1`;
+  if(!id)return;
+  const source=`https://www.youtube-nocookie.com/embed/${id}?rel=0&modestbranding=1&playsinline=1&autoplay=${autoplay?1:0}`;
+  if(autoplay||!els.videoFrame.getAttribute("src"))els.videoFrame.src=source;
 }
 
 function setJookBoxState(nextState){
@@ -531,7 +534,7 @@ function setJookBoxState(nextState){
     els.videoFrame.setAttribute("aria-hidden","true");
   }
   if(nextState==="awake"){
-    activateJookBoxVideo();
+    if(!jookBoxAutoplayTimer)activateJookBoxVideo();
     els.jookBoxCoin.disabled=true;
     els.jookBoxCoin.querySelector(".jookbox-coin-plate").textContent="Now playing";
     els.jookBoxCoinPrompt.textContent="Coin accepted — the JookBox is awake.";
@@ -558,6 +561,25 @@ function clearJookBoxStartupTimers(){
   jookBoxStartupTimers.clear();
 }
 
+function clearJookBoxAutoplayTimer(){
+  if(jookBoxAutoplayTimer)window.clearTimeout(jookBoxAutoplayTimer);
+  jookBoxAutoplayTimer=0;
+}
+
+function cleanupJookBoxLifecycle(){
+  clearJookBoxStartupTimers();
+  clearJookBoxAutoplayTimer();
+}
+
+function scheduleJookBoxAutoplay(){
+  clearJookBoxAutoplayTimer();
+  const delay=Math.max(0,Number(config.jookBox?.autoplayDelayMs)||4000);
+  jookBoxAutoplayTimer=window.setTimeout(()=>{
+    jookBoxAutoplayTimer=0;
+    activateJookBoxVideo(true);
+  },delay);
+}
+
 function restoreJookBoxSessionState(){
   let active=false;
   try{active=sessionStorage.getItem(jookBoxSessionKey())==="true"}catch{}
@@ -574,7 +596,7 @@ function powerJookBox(){
   els.jookBoxCoinPrompt.textContent="Coin accepted. The JookBox is powering up.";
   els.jookBoxPowerStatus.textContent="Coin accepted. The JookBox is powering up.";
   playJookBoxCoinSound();
-  activateJookBoxVideo();
+  scheduleJookBoxAutoplay();
   try{sessionStorage.setItem(jookBoxSessionKey(),"true")}catch{}
   const id=els.videoFrame.dataset.videoId;
   analytics.track("jookbox_coin_inserted",{interaction_source:"jookbox_coin",video_id:id||"",edition_type:config.editionType},{onceKey:`jookbox-coin:${editionEntry.editionId}`});
@@ -605,7 +627,7 @@ function prepareJookBoxCoinAudio(){
   try{
     jookBoxAudio=new Audio(source.startsWith("/")?source:`/${source}`);
     jookBoxAudio.preload="auto";
-    jookBoxAudio.volume=.46;
+    jookBoxAudio.volume=.56;
     jookBoxAudio.addEventListener("error",()=>console.warn(`JookBox coin sound could not be loaded: ${source}`),{once:true});
   }catch(error){
     console.warn("JookBox coin sound could not be prepared.",error);
