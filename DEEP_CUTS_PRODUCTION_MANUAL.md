@@ -36,6 +36,8 @@ Share and the sourced second-screen biography remain available through the cabin
 
 Filthy Animals is the first completed JookBox edition at `dc_a3c049e4bc`. Its exact destinations, copy, colours and featured video belong only to that edition. Future JookBox bands reuse the renderer and model contract while supplying separately verified configuration and evidence.
 
+ATLAS `dc_e22f1cb651` has one isolated owner-approved presentation exception. Its `atlas-reference-cabinet/1` appearance uses a SHA-256-locked 887 × 1774 photoreal black-walnut, chrome and neon cabinet. Live HTML occupies its dedicated marquee, ticker, coin bay, YouTube screen, three-by-two key bank, support panel and lower status hardware. Only verified ATLAS destinations render; no website or merchandise key is invented. The external keys advance by physical two-key row, with Learn More occupying the remaining live key. The Filthy Animals reference, factory default and all other completed products retain their original presentation and single-key amber sequence.
+
 ## Laneway permanent rules
 
 `Laneway [Band or Artist]` creates an isolated Laneway edition on the permanent platform. It preserves the exact supplied Laneway Music source logo and displays a deterministic transparent reverse-white rendition, preventing a rectangular image background on every browser. It uses a charcoal/black interface and no Aggits character or Aggits artwork. Its QR and social delivery images show `DEEP CUTS` immediately above `copyright Clearlight Creative`, never `Laneway` in that footer position. It must never change the standard Deep Cuts Music edition.

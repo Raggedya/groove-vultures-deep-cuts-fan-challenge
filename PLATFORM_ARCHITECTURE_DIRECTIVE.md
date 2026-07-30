@@ -82,6 +82,7 @@ Treat every completed edition as a finished commercial product that must remain 
 - Only dated, identity-verified destinations named by the edition's explicit display-key list may appear. Missing or stale destinations are omitted.
 - Its bright lights become static when reduced motion is requested and stop spending attention in hidden tabs.
 - Filthy Animals `dc_a3c049e4bc` is the first completed JookBox edition. Its configuration and evidence remain isolated from every future band.
+- ATLAS `dc_e22f1cb651` alone uses the owner-approved `atlas-reference-cabinet/1`: a locked 887 × 1774 photoreal black-walnut and chrome cabinet maps the live marquee, biography ticker, left coin mechanism, YouTube screen, verified destination keys, Learn More control, verified Bandcamp support action, Share control and status display into dedicated physical recesses. Its verified keys advance by restrained two-key row. Missing website and merchandise destinations remain omitted. This exception must never alter the locked Filthy Animals composition or become the factory default.
 
 ## Commercial Instinct contract
 
