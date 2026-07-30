@@ -76,9 +76,10 @@ for(const edition of platform.editions){
       for(const asset of [config.characterArtwork,config.business?.logoArtwork])await fs.access(asset);
     }else if(config.editionType==='jukebox'){
       if(config.brandName!=='JookBox'||config.characterArtwork)errors.push(`${edition.config} must preserve the isolated no-Aggits JookBox contract.`);
-      if(config.jookBox?.modelVersion!=='jookbox/3'||config.jookBox?.layoutVersion!=='coin-awakening/1'||JSON.stringify(config.jookBox?.heroLabels)!==JSON.stringify(['Listen','Watch','Follow','Shop'])||config.jookBox?.lightSequence!==true||config.jookBox?.coinStart!==true||config.jookBox?.syncMode!=='verified-build-time')errors.push(`${edition.config} must preserve the locked coin-awakening JookBox model.`);
+      if(config.jookBox?.modelVersion!=='jookbox/3'||config.jookBox?.layoutVersion!=='coin-awakening/1'||JSON.stringify(config.jookBox?.heroLabels)!==JSON.stringify(['Listen','Watch','Follow','Shop'])||config.jookBox?.lightSequence!==true||config.jookBox?.lightSequenceMode!=='single-key'||config.jookBox?.coinStart!==true||config.jookBox?.syncMode!=='verified-build-time')errors.push(`${edition.config} must preserve the locked coin-awakening JookBox model.`);
       if(!config.jookBox?.tickerBio||!config.jookBox?.coinSound||!config.jookBox?.coinSoundSha256||!/^https:\/\//.test(config.jookBox?.coinSoundSource||'')||!config.jookBox?.coinSoundLicense||!config.jookBox?.sessionStorageKey)errors.push(`${edition.config} requires configured ticker copy, sourced local coin audio with an integrity hash and licence, and session restoration.`);
       if(config.jookBox?.autoplayDelayMs!==0)errors.push(`${edition.config} must request JookBox video playback immediately within the direct coin interaction.`);
+      if(!(config.jookBox?.buttonLightDurationMs>=450&&config.jookBox?.buttonLightDurationMs<=1200))errors.push(`${edition.config} must use a valid single-key JookBox light duration.`);
       if(config.featuredVideo?.selectionBasis!=='most-viewed-official'||!config.featuredVideo?.youtubeURL)errors.push(`${edition.config} requires the verified most-viewed official YouTube feature.`);
       const selections=Array.isArray(config.jookBox?.selections)?config.jookBox.selections:[];
       if(!selections.length)errors.push(`${edition.config} requires verified Linktree selection keys.`);

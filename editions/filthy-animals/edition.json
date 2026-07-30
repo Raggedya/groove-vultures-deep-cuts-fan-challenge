@@ -61,8 +61,8 @@
     "coinSoundLicense": "CC0-1.0",
     "sessionStorageKey": "filthyAnimalsJukeboxActivated",
     "tickerBio": "THE FILTHY ANIMALS — AN AUSTRALIAN PARTY SUPERGROUP DRAWING ON A ROTATING COLLECTIVE OF SEASONED PERFORMERS TO DELIVER CLASSIC ROCK SONGS CONNECTED TO DECADES OF TOURING AND RECORDING.",
-    "tickerDurationSeconds": 28,
-    "buttonRowDurationMs": 800,
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 650,
     "autoplayDelayMs": 0,
     "startupTimingsMs": {
       "mechanism": 120,
@@ -91,6 +91,7 @@
       "Shop"
     ],
     "lightSequence": true,
+    "lightSequenceMode": "single-key",
     "coinStart": true,
     "linkSourceURL": "https://linktr.ee/filthyanimalsband",
     "linkSourceVerifiedAt": "2026-07-29T10:19:00.000Z",
