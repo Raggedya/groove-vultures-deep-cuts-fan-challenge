@@ -1,6 +1,6 @@
 "use strict";
 
-const VERSION="20260731-bar-jookbox-2";
+const VERSION="20260731-bar-jookbox-3";
 const LANEWAY_REPORTING_VERSION="laneway-weekly-v1";
 const $=id=>document.getElementById(id);
 const els={
@@ -260,7 +260,7 @@ function barJookBoxRuntimeConfig(){
     heroLabels:["Visit","Events","Drinks","Connect"],
     cabinetCopyright:source.cabinetCopyright||"Copyright Clearlight Creative 2026.",
     coinStart:true,
-    sleepingStateLabel:"Drag coin to play",
+    sleepingStateLabel:"INSERT COIN",
     awakeStateLabel:"Coin accepted — Bar Edition is live",
     contentStatus:source.contentStatus||"awaiting-admin-assets",
     logoArtwork:source.logoArtwork||"",

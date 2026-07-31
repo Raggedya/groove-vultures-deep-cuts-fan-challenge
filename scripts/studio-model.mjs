@@ -483,7 +483,7 @@ function renderBarJookBoxStudioPreview(project,{videoUrl="",scriptNonce=""}={}){
       <div class="ticker" role="status" aria-label="Venue ticker"><span>${escapeHtml(ticker)}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
       <div class="coin-console">
         <button id="coinButton" class="coin-button" type="button" aria-label="Drag the coin upward into the slot, or press Enter, to start the Bar Edition">
-          <span class="coin-slot" aria-hidden="true"></span><span id="coin" class="coin" aria-hidden="true"><b>$1</b></span><span class="coin-label">Drag coin up to play</span>
+          <span class="coin-slot" aria-hidden="true"></span><span id="coin" class="coin" aria-hidden="true"><b>$1</b></span><span class="coin-label">INSERT COIN</span>
         </button>
       </div>
       <div class="screen">${video}</div>

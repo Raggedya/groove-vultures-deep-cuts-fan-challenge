@@ -32,6 +32,7 @@ assert.match(app,/Array\.isArray\(source\.actions\)\?source\.actions:\[\]\)\.sli
 assert.match(app,/keyBankFormat:"bar-six-key\/1"/);
 assert.match(app,/controls\.push\(createJookBoxUtilityKey\("share",controls\.length\)\)/);
 assert.match(app,/label:`Share \$\{source\.venueName\|\|config\.bandName\} with your mates`/);
+assert.match(app,/sleepingStateLabel:"INSERT COIN"/);
 assert.match(app,/activateBarJookBoxWelcomeVideo\(\{autoplay:true\}\)/);
 assert.match(app,/barJookBoxWelcomeVideo\.play\(\)/);
 assert.match(app,/localWelcomeVideo/);
@@ -95,6 +96,8 @@ const preview=renderStudioPreview(complete,{videoUrl:"/api/studio/projects/studi
 assert.equal((preview.match(/class="key(?:\s|")/g)||[]).length,6,"Bar Edition preview must always render five administrator keys plus Share.");
 assert.match(preview,/id="shareKey"/);
 assert.match(preview,/id="sharePanel"/);
+assert.match(preview,/class="coin-label">INSERT COIN</);
+assert.doesNotMatch(preview,/Drag coin up to play/);
 assert.match(preview,/Share Shotkickers with your mates/);
 assert.match(preview,/Public sharing activates after deployment/);
 assert.doesNotMatch(preview,/url:location\.href/);

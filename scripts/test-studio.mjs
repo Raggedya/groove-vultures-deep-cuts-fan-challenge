@@ -87,7 +87,8 @@ const barEdition=attachMp4(barEditionDraft,{fileName:"shotkickers-welcome.mp4",s
 assert.equal(barEdition.readiness.handoffReady,true);
 const barPreview=renderStudioPreview(barEdition,{videoUrl:"/api/studio/projects/studio_example/video"});
 assert.match(barPreview,/jookbox-atlas-reference-v1\.webp/);
-assert.match(barPreview,/Drag coin up to play/);
+assert.match(barPreview,/class="coin-label">INSERT COIN</);
+assert.doesNotMatch(barPreview,/Drag coin up to play/);
 assert.match(barPreview,/jukebox-real-coin-insert-cc0\.mp3/);
 assert.match(barPreview,/WELCOME VIDEO|welcomeVideo/);
 assert.match(barPreview,/Gigs/);

@@ -105,7 +105,7 @@ assert.match(app, /DeepCutsInteractions\.secureExternalLink\(element,safeURL,loc
 assert.match(app, /DeepCutsInteractions\.secureExternalLink\(els\.jookBoxBioSource,source,location\.href\)/);
 assert.match(app, /DeepCutsInteractions\.applyExternalLinkPolicy\(document,location\.href\)/);
 assert.match(html, /interactions\.js\?v=20260731-jookbox-19/);
-assert.match(html, /app\.js\?v=20260731-bar-jookbox-2/);
+assert.match(html, /app\.js\?v=20260731-bar-jookbox-3/);
 assert.doesNotMatch(html, /id="jookBoxBioSource"[^>]*target="_blank"/, "The biography link must use the same origin-aware helper as every other JookBox link.");
 
 console.log("External-link policy passed: every verified JookBox destination opens securely in a new tab, while internal links remain unchanged.");
