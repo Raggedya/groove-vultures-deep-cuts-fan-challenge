@@ -182,7 +182,17 @@ Delivery-output equivalence against the preserved pre-change artifact:
 - 35 of 35 manifests match on every stable field, file digest and destination;
 - only the intentionally variable `generatedAt` timestamp differs after a cold render.
 
-The end-to-end production deployment is measured after merge so that it includes the real Cloudflare synchronization and live smoke-test path.
+The first optimized main-branch production deployment was a cold-cache run:
+
+| Production path | Before | After | Improvement |
+|---|---:|---:|---:|
+| End-to-end deployment workflow | 220 s | 139 s | **36.8% faster** |
+| Deployment job | 194 s | 112 s | **42.3% faster** |
+| Generate and scan-verify all artwork | 135 s | 66 s | **51.1% faster** |
+| Synchronise all edition records | 7 s | 2 s | **71.4% faster** |
+| Live service and edition smoke tests | 8 s | 2 s | **75.0% faster** |
+
+Production run `30593001240` supplied the after figures. It completed D1 migrations, Worker deployment, runtime-secret installation, all 35 edition synchronizations, live page checks and every deployed QR check successfully. The same main push started one Deep Cuts workflow instead of the previous three: the standalone duplicate validation and duplicate automatic artwork workflow did not run.
 
 ## Behavior and quality guarantees
 
