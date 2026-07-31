@@ -1,6 +1,6 @@
 "use strict";
 
-const VERSION="20260731-bar-jookbox-1";
+const VERSION="20260731-bar-jookbox-2";
 const LANEWAY_REPORTING_VERSION="laneway-weekly-v1";
 const $=id=>document.getElementById(id);
 const els={
@@ -249,6 +249,13 @@ function barJookBoxRuntimeConfig(){
     startupTimingsMs:{mechanism:120,neonOn:800,screenOn:1200,buttonsOn:1600,tickerOn:2000,...(source.startupTimingsMs||{})},
     displaySelectionIds:selections.map(selection=>selection.id),
     marquee:source.venueName||config.bandName,
+    supportAction:{
+      action:"share",
+      label:`Share ${source.venueName||config.bandName} with your mates`,
+      detail:"",
+      icon:"",
+      detailIcon:""
+    },
     videoLabel:"Welcome video",
     heroLabels:["Visit","Events","Drinks","Connect"],
     cabinetCopyright:source.cabinetCopyright||"Copyright Clearlight Creative 2026.",

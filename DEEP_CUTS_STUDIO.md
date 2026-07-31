@@ -13,12 +13,12 @@ Studio does not search the web or infer Bar Edition content. The supplied inform
 3. the real coin-slot recording plays;
 4. the local MP4 requests immediate audible playback from the direct gesture;
 5. the neon, screen, six keys and ticker wake in the established sequence;
-6. the five external actions unlock and Share occupies the sixth key;
+6. the five external actions unlock, Share occupies the sixth key, and the large `Share [Venue Name] with your mates` panel becomes active;
 7. one restrained light advances through all six keys.
 
 Native video controls stay available because Safari, Chrome or a device policy can still block audible autoplay. A refresh in the same browser session restores the awake cabinet without replaying the coin sound or forcing the video.
 
-The Studio readiness panel becomes **Static Handoff Ready** only after all five labelled destinations, ticker text and MP4 are present. The permanent public URL and QR still use the existing isolation, asset-integrity, deployment and live-verification workflow. See [BAR_EDITION_MODEL.md](BAR_EDITION_MODEL.md).
+The Studio readiness panel becomes **Static Handoff Ready** only after all five labelled destinations, ticker text and MP4 are present. The desktop preview is served from a private ephemeral `127.0.0.1` address that is intentionally accessible only on that computer. Studio therefore does not display or download a Bar Edition preview QR; a phone would treat `127.0.0.1` as the phone itself and could not connect. Instead, Studio displays **Public QR Created After Deployment** and exports the handoff. Production generates and scan-tests the permanent QR only after the public HTTPS edition is deployed. See [BAR_EDITION_MODEL.md](BAR_EDITION_MODEL.md).
 
 ## JookBox workflow
 
@@ -67,9 +67,9 @@ Studio accepts:
 - QR-poster wording;
 - typed or supported browser dictation revisions.
 
-Bar Edition additionally accepts five labelled destinations, administrator ticker copy and one local MP4. It excludes automatic research, YouTube, Aggits and the optional wheel.
+Bar Edition additionally accepts five labelled destinations, administrator ticker copy and one local MP4. It excludes automatic research, YouTube, Aggits and the optional wheel. It creates a live mobile preview, a publication-pending output panel and a structured handoff manifest; its permanent QR and QR poster are created after deployment.
 
-It creates a live mobile preview, a local preview QR, a 1080 × 1080 draft poster and a structured handoff manifest.
+Other Studio project types retain their existing live mobile preview, local preview QR, 1080 × 1080 draft poster and structured handoff manifest.
 
 ## Mac desktop application
 

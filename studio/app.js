@@ -55,9 +55,11 @@ const els={
   openPreview:$("#open-preview"),
   emptyOutput:$("#empty-output"),
   readyOutput:$("#ready-output"),
+  outputTitle:$("#output-title"),
   outputStatus:$("#output-status"),
   qr:$("#qr-code"),
   poster:$("#poster-canvas"),
+  qrOutputTitle:$("#qr-output-title"),
   qrName:$("#qr-project-name"),
   downloadPoster:$("#download-poster"),
   downloadQr:$("#download-qr"),
@@ -155,11 +157,12 @@ function updateTypePolicy(){
     ?'<span aria-hidden="true">●</span> The MP4, ticker and venue links remain local and private until you export the handoff.'
     :'<span aria-hidden="true">●</span> Drafts and supplied media remain in this computer’s private Studio workspace.';
   els.gateTitle.textContent=bar?"Static content gate":"98% verification gate";
+  els.outputTitle.textContent=bar?"Version & Publishing":"Version & QR";
   els.gateCopy.textContent=bar
     ?"Studio never overwrites a completed edition. A permanent Bar Edition still passes isolation, asset, link, deployment and live-verification checks."
     :"Studio never overwrites a completed edition. A permanent version still passes the existing factory, evidence, link and QR checks.";
   els.qrWarning.textContent=bar
-    ?"This QR opens the private preview on this computer. The permanent QR is created after the Bar Edition production checks."
+    ?"This private preview has no public QR. Export the handoff; production creates the permanent live URL and scan-tested QR after deployment."
     :"This QR opens the preview on this computer. The permanent QR is created only after the verified production gate.";
   updateRunCopy();
   const forbidden=type?.aggitsPolicy==="forbidden";
@@ -235,7 +238,9 @@ async function runProject(event){
       ?`JookBox research passed at ${state.project.research.confidence}% confidence.`
       :state.project.input.type==="jookbox"
         ?"Studio stopped safely below 98%. Review the listed evidence gaps."
-        :"Deep Cuts preview and local QR created.");
+        :state.project.input.type==="bar_jukebox"
+          ?"Bar Edition preview created. Export the handoff when ready for its permanent live URL and QR."
+          :"Deep Cuts preview and local QR created.");
   }catch(error){showError(error.message)}
   finally{setBusy(false)}
 }
@@ -332,6 +337,7 @@ function setProject(result){
 
 function renderProject(){
   if(!state.project)return;
+  const bar=state.project.input.type==="bar_jukebox";
   els.projectVersion.textContent=`REV ${state.project.revision}`;
   els.projectVersion.classList.add("live");
   updateRunCopy();
@@ -344,8 +350,19 @@ function renderProject(){
   els.applyRevision.disabled=!els.revision.value.trim();
   els.preview.removeAttribute("srcdoc");
   els.preview.src=`${state.previewUrl}?revision=${state.project.revision}`;
-  renderQr();
-  renderPoster().catch(error=>showError(`Poster preview: ${error.message}`));
+  els.qr.hidden=bar;
+  els.downloadPoster.hidden=bar;
+  els.downloadQr.hidden=bar;
+  els.downloadHandoff.textContent=bar?"EXPORT FOR PUBLISHING":"EXPORT HANDOFF";
+  els.qrOutputTitle.textContent=bar?"PUBLIC QR CREATED AFTER DEPLOYMENT":"1080 × 1080 QR POSTER";
+  els.poster.setAttribute("aria-label",bar?"Bar Edition publication status":"Deep Cuts QR poster preview");
+  if(bar){
+    els.qr.replaceChildren();
+    renderPublicationPendingPoster();
+  }else{
+    renderQr();
+    renderPoster().catch(error=>showError(`Poster preview: ${error.message}`));
+  }
   renderLogo();
   renderAudio();
   renderVideo();
@@ -361,6 +378,57 @@ function refreshPreview(){
 function renderQr(){
   els.qr.replaceChildren();
   new QRCode(els.qr,{text:state.previewUrl,width:460,height:460,colorDark:"#02070d",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.H});
+}
+
+function renderPublicationPendingPoster(){
+  const project=state.project;
+  if(!project||project.input.type!=="bar_jukebox")return;
+  const canvas=els.poster,context=canvas.getContext("2d");
+  const width=canvas.width,height=canvas.height;
+  const background=context.createLinearGradient(0,0,width,height);
+  background.addColorStop(0,"#132f48");
+  background.addColorStop(.5,"#07131f");
+  background.addColorStop(1,"#25130d");
+  context.fillStyle=background;
+  context.fillRect(0,0,width,height);
+  const glow=context.createRadialGradient(width/2,430,10,width/2,430,430);
+  glow.addColorStop(0,"rgba(37,150,213,.22)");
+  glow.addColorStop(1,"rgba(0,0,0,0)");
+  context.fillStyle=glow;
+  context.fillRect(0,0,width,height);
+  context.textAlign="center";
+  context.fillStyle="#ffffff";
+  context.font="900 82px Arial";
+  context.fillText((project.input.name||"BAR EDITION").toUpperCase(),width/2,160,920);
+  context.fillStyle="#f39a61";
+  context.font="900 22px Arial";
+  context.fillText("D E E P   C U T S   S T U D I O",width/2,215);
+  roundedRect(context,205,305,670,430,34);
+  context.fillStyle="rgba(2,8,14,.8)";
+  context.fill();
+  context.lineWidth=5;
+  context.strokeStyle="#69cfff";
+  context.stroke();
+  context.fillStyle="#9de7ff";
+  context.font="900 86px Arial";
+  context.fillText("PRIVATE",width/2,430);
+  context.fillStyle="#ffffff";
+  context.font="900 46px Arial";
+  context.fillText("STUDIO PREVIEW",width/2,505);
+  context.fillStyle="#f3a76f";
+  context.font="900 34px Arial";
+  context.fillText("PUBLIC QR CREATED",width/2,605);
+  context.fillText("AFTER DEPLOYMENT",width/2,654);
+  context.fillStyle="#adc4d5";
+  context.font="700 25px Arial";
+  context.fillText("Export for publishing to create the live URL",width/2,805);
+  context.fillText("and permanent scan-tested QR code.",width/2,842);
+  context.fillStyle="#ffffff";
+  context.font="900 39px Arial";
+  context.fillText("DEEP CUTS",width/2,970);
+  context.fillStyle="#a8bdcf";
+  context.font="700 23px Arial";
+  context.fillText("Copyright Clearlight Creative",width/2,1012);
 }
 
 function renderLogo(){
@@ -507,6 +575,7 @@ function configureDictation(){
 }
 
 function downloadQr(){
+  if(state.project?.input.type==="bar_jukebox")return showError("The permanent Bar Edition QR is created only after deployment.");
   const canvas=els.qr.querySelector("canvas");
   if(!canvas)return showError("The QR image is not ready yet.");
   const link=document.createElement("a");
@@ -517,6 +586,7 @@ function downloadQr(){
 
 function downloadPoster(){
   if(!state.project)return;
+  if(state.project.input.type==="bar_jukebox")return showError("The permanent Bar Edition QR poster is created only after deployment.");
   const link=document.createElement("a");
   link.download=`${slugify(state.project.input.name||"deep-cuts")}-studio-preview-poster.png`;
   link.href=els.poster.toDataURL("image/png");

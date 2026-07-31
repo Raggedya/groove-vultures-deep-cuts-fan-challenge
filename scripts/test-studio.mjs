@@ -93,6 +93,10 @@ assert.match(barPreview,/WELCOME VIDEO|welcomeVideo/);
 assert.match(barPreview,/Gigs/);
 assert.match(barPreview,/Contact Us/);
 assert.match(barPreview,/id="shareKey"/);
+assert.match(barPreview,/id="sharePanel"/);
+assert.match(barPreview,/Share Shotkickers with your mates/);
+assert.match(barPreview,/Public sharing activates after deployment/);
+assert.doesNotMatch(barPreview,/url:location\.href/);
 assert.match(barPreview,/target="_blank" rel="noopener noreferrer"/);
 assert.match(barPreview,/setTimeout\(\(\)=>machine\.classList\.add\("is-neon-on"\),800\)/);
 assert.match(barPreview,/video\.play\(\)/);
@@ -181,6 +185,7 @@ assert.match(html,/id="source-label-5"/);
 assert.match(html,/id="source-url-5"/);
 assert.match(html,/id="aggits-step"/);
 assert.match(html,/id="project-name-label"/);
+assert.match(html,/id="qr-output-title"/);
 assert.match(html,/name="addWheel" value="yes"/);
 assert.ok(html.indexOf('id="aggits-option"')<html.indexOf('id="project-name"'),"Aggits selection must be the first project input.");
 assert.match(html,/<details class="optional-fields" id="optional-fields">/);
@@ -192,6 +197,12 @@ assert.match(app,/els\.aggitsStep\.hidden=jukeboxProduct/,"Both JookBox products
 assert.match(app,/field\.hidden=jookBox/,"The JookBox intake must not ask the owner to label research URLs manually.");
 assert.match(app,/type\?\.id==="bar_jukebox"/);
 assert.match(app,/Build the local MP4 JookBox with five keys plus Share/);
+assert.match(app,/renderPublicationPendingPoster\(\)/);
+assert.match(app,/PUBLIC QR CREATED AFTER DEPLOYMENT/);
+assert.match(app,/els\.qr\.hidden=bar/);
+assert.match(app,/els\.downloadPoster\.hidden=bar/);
+assert.match(app,/els\.downloadQr\.hidden=bar/);
+assert.doesNotMatch(app,/This QR opens the private preview on this computer/);
 assert.match(css,/--orange:#f38a45/);
 assert.match(css,/\.bar-jukebox-mode/);
 assert.match(css,/Compact top-left production intake/);
@@ -355,6 +366,10 @@ try{
   assert.match(renderedBarPreview,/SHOTKICKERS/);
   assert.match(renderedBarPreview,/id="welcomeVideo"/);
   assert.match(renderedBarPreview,/id="shareKey"/);
+  assert.match(renderedBarPreview,/id="sharePanel"/);
+  assert.match(renderedBarPreview,/Share Shotkickers with your mates/);
+  assert.match(renderedBarPreview,/Public sharing activates after deployment/);
+  assert.doesNotMatch(renderedBarPreview,/url:location\.href/);
   assert.match(renderedBarPreview,/<script nonce="[^"]+">/);
   const rangedVideo=await fetch(`${origin}/api/studio/projects/${barCreated.project.id}/video`,{headers:{range:"bytes=0-7"}});
   assert.equal(rangedVideo.status,206);
@@ -374,7 +389,7 @@ try{
   await fs.rm(temporary,{recursive:true,force:true});
 }
 
-console.log("Deep Cuts Studio tests passed: local isolation, Bar Edition MP4/coin preview, HGM-only artwork, logo/MP3, labelled preview, 1080 poster, revisions, QR handoff and production gate are intact.");
+console.log("Deep Cuts Studio tests passed: local isolation, Bar Edition MP4/coin/share preview, publication-safe QR boundary, HGM-only artwork, logo/MP3, labelled preview, 1080 poster, revisions and production gate are intact.");
 
 function verifiedResearch(input){
   const verifiedAt="2026-07-30T01:00:00.000Z";

@@ -2686,7 +2686,31 @@ body{margin:0;min-height:100%;color:var(--ink);background:#000713;overflow-x:hid
 [data-product-type="bar_jukebox"][data-jookbox-key-format="bar-six-key/1"] .jookbox-action-key{
   --jb-key-color:#dff8ff
 }
-[data-product-type="bar_jukebox"] .jookbox-primary-action{display:none!important}
+[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .jookbox-primary-action{
+  display:grid!important;
+  grid-template-columns:1fr;
+  grid-template-rows:1fr;
+  place-items:center;
+  padding:3% 6%
+}
+[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .jookbox-primary-action[hidden]{
+  display:none!important
+}
+[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .jookbox-primary-action>span,
+[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .jookbox-primary-action small{
+  display:none
+}
+[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .jookbox-primary-action strong,
+[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .jookbox-primary-action.is-share-action strong{
+  grid-column:1;
+  grid-row:1;
+  align-self:center;
+  color:#ff9eab;
+  font-size:clamp(.68rem,3.35vw,1.68rem);
+  letter-spacing:.035em;
+  line-height:1.05;
+  text-transform:uppercase
+}
 [data-product-type="bar_jukebox"] .jookbox-state-plaque{
   color:#d8ad61
 }
