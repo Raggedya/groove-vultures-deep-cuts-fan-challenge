@@ -166,6 +166,10 @@ Collect only anonymous session IDs, source, device category and coarse country/r
 
 Every build records: submitted, research started, research completed, artwork completed, validation completed, deployed, email accepted, email delivered and completed. The definitive total is `submitted_at` to `email_delivered_at`. Failed jobs retain their stage and error for process improvement.
 
+The Core Engine validation plan runs independent checks through one bounded parallel controller and retains fail-closed exit behavior. It emits live per-check durations and may write a machine-readable profile. Delivery artwork uses one bounded parallel renderer after validation rather than repeating platform checks for every edition. GitHub may restore artwork only from an exact-input content-addressed cache covering the registry, edition data, artwork sources, generator, QR engine and locked image dependencies. Every cache hit remains untrusted until all expected files and manifest hashes pass and every QR decodes to the exact opaque route at both 1080 and 540 pixels.
+
+Unattended research keeps independent network destinations in flight while remaining polite per origin. Identical concurrent URL checks share one request, successful batch checks retain the existing durable cache plus an in-memory session cache, and Studio research deduplicates checks for the current project. These optimisations never lower the 98% confidence gate, reuse stale search results as destinations, skip a required retry or cache an invalid AI draft.
+
 ## Deployment and delivery
 
 GitHub is the source of truth. All work occurs on a branch and passes automated validation before main. Cloudflare deployment occurs only after validation. Runtime credentials are encrypted secrets and never committed.
@@ -173,6 +177,8 @@ GitHub is the source of truth. All work occurs on a branch and passes automated 
 Every deployment synchronises and smoke-tests against the exact Cloudflare URL returned by that deployment. The workflow must verify `/api/health` before writing edition data; saved legacy URLs must never override a fresh deployment address.
 
 GitHub installs delivery artwork dependencies once into the exact Python environment used by the generator and verifies Pillow, QR and scan-back imports before rendering. Local production may use the repository's private Python tools directory, which the generator must add to its import path and verify before rendering any edition.
+
+The main deployment is the single automatic owner of the complete `deep-cuts-delivery-assets` package. The separate Delivery Assets workflow remains available for an explicit manual rebuild, but ordinary main-branch changes never render the same 35-edition package twice. Pull requests run the standalone validation workflow; main deployment calls that same reusable validation once.
 
 The deployment workflow installs the encrypted administration, Resend API, report-recipient and sender values into the Cloudflare Worker on every release. Missing required runtime secrets block deployment before edition synchronisation. The Resend webhook signing secret is installed automatically when configured.
 

@@ -45,10 +45,19 @@ export class StudioResearchNetwork{
     this.retries=retries;
     this.maxBytes=maxBytes;
     this.userAgent=userAgent;
+    this.inflight=new Map();
   }
 
   async inspect(value){
     const url=await assertPublicHttps(value);
+    if(this.inflight.has(url))return this.inflight.get(url);
+    const pending=this.inspectFresh(url);
+    this.inflight.set(url,pending);
+    try{return await pending}
+    finally{if(this.inflight.get(url)===pending)this.inflight.delete(url)}
+  }
+
+  async inspectFresh(url){
     let lastError;
     for(let attempt=1;attempt<=this.retries;attempt++){
       try{
@@ -107,13 +116,14 @@ export class StudioResearchNetwork{
       `"${name}" band music official`,
       `"${name}" band Linktree`
     ];
+    const urls=queries.map(query=>`https://www.bing.com/search?format=rss&q=${encodeURIComponent(query)}`);
+    const youtubeURL=`https://www.youtube.com/results?search_query=${encodeURIComponent(`${name} band official`)}`;
+    const pages=await Promise.all([...urls,youtubeURL].map(url=>this.inspect(url)));
     const results=[];
-    for(const query of queries){
-      const url=`https://www.bing.com/search?format=rss&q=${encodeURIComponent(query)}`;
-      const page=await this.inspect(url);
+    for(const page of pages.slice(0,queries.length)){
       if(page.ok)results.push(...extractSearchResults(page.body));
     }
-    const youtubeSearch=await this.inspect(`https://www.youtube.com/results?search_query=${encodeURIComponent(`${name} band official`)}`);
+    const youtubeSearch=pages.at(-1);
     if(youtubeSearch.ok)results.unshift(...extractYouTubeSearchSeeds(youtubeSearch.body));
     return unique(results).slice(0,30);
   }
@@ -149,12 +159,11 @@ export async function researchStudioJookBox(input,{network=new StudioResearchNet
     return promise;
   };
 
-  const rootPages=[];
-  for(const url of seedURLs.slice(0,7)){
+  const rootPages=await mapWithConcurrency(seedURLs.slice(0,7),4,async url=>{
     const page=await inspect(url);
     const identity=page.ok&&pageIdentityMatch(page,bandName);
-    rootPages.push({...page,identity,entries:page.ok?extractPageEntries(page.body,page.finalURL):[]});
-  }
+    return{...page,identity,entries:page.ok?extractPageEntries(page.body,page.finalURL):[]};
+  });
 
   let verifiedRoots=rootPages.filter(page=>page.identity);
   const rootLinks=verifiedRoots.flatMap(page=>page.entries.map(entry=>({...entry,sourceURL:page.finalURL,sourceIdentity:true})));
@@ -170,12 +179,14 @@ export async function researchStudioJookBox(input,{network=new StudioResearchNet
     .slice(0,3);
 
   onProgress({stage:"cross_checking",message:"Cross-checking official pages and direct destinations."});
-  for(const url of likelyOfficialWebsites){
+  const additionalRoots=await mapWithConcurrency(likelyOfficialWebsites,3,async url=>{
     const page=await inspect(url);
     if(page.ok&&pageIdentityMatch(page,bandName)){
-      verifiedRoots.push({...page,identity:true,entries:extractPageEntries(page.body,page.finalURL)});
+      return{...page,identity:true,entries:extractPageEntries(page.body,page.finalURL)};
     }
-  }
+    return null;
+  });
+  verifiedRoots.push(...additionalRoots.filter(Boolean));
   verifiedRoots=[...new Map(verifiedRoots.map(page=>[normalizeComparable(page.finalURL),page])).values()];
 
   const sourceEntries=uniqueEntries(verifiedRoots.flatMap(page=>

@@ -73,7 +73,7 @@ function shouldProcess(item,mode){if(mode==='retry')return item.buildStatus==='t
 function counts(items){return{total:items.length,valid:items.filter(item=>!item.inputErrors?.length).length,completed:items.filter(item=>['configured','validated'].includes(item.buildStatus)).length,deployed:items.filter(item=>item.deploymentStatus==='deployed').length,rejected:items.filter(item=>item.buildStatus==='rejected').length,technicalFailures:items.filter(item=>item.buildStatus==='technical_failure').length,skippedCompleted:items.filter(item=>item.buildStatus==='skipped_completed').length}}
 function checkpoint(value){
   value.counts=counts(value.artists);const snapshot=JSON.stringify(value,null,2)+'\n';
-  checkpointQueue=checkpointQueue.then(async()=>{await fs.mkdir(path.join(stateDir,value.batchId),{recursive:true});const file=path.join(stateDir,value.batchId,'state.json');await fs.writeFile(file,snapshot);await fs.writeFile(latestFile,snapshot)});
+  checkpointQueue=checkpointQueue.then(async()=>{await fs.mkdir(path.join(stateDir,value.batchId),{recursive:true});const file=path.join(stateDir,value.batchId,'state.json');await Promise.all([fs.writeFile(file,snapshot),fs.writeFile(latestFile,snapshot)])});
   return checkpointQueue;
 }
 async function readLatest(){return JSON.parse(await fs.readFile(latestFile,'utf8').catch(()=>{throw new Error('No resumable batch exists.')}))}

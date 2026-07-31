@@ -3,9 +3,13 @@ import {extractLinks} from './network.mjs';
 
 export async function verifyArtist(row,network,{offline=false}={}){
   const evidence={};const errors=[...row.inputErrors];const pages=[];
-  for(const key of ['website','bandcamp','buyMusic','merchandise','newsReviews']){
-    if(!row[key]||!isDirectDestination(key,row[key]))continue;
-    const page=offline?synthetic(row[key]):await network.inspect(row[key]);pages.push({key,...page});
+  const sourceKeys=['website','bandcamp','buyMusic','merchandise','newsReviews'].filter(key=>row[key]&&isDirectDestination(key,row[key]));
+  const sourcePages=await Promise.all(sourceKeys.map(async key=>{
+    const page=offline?synthetic(row[key]):await network.inspect(row[key]);
+    return{key,...page};
+  }));
+  for(const page of sourcePages){
+    pages.push(page);
   }
   const discovered=pages.flatMap(page=>extractLinks(page.body,page.finalURL));
   const officialDiscovered=pages.filter(page=>page.key!=='newsReviews').flatMap(page=>extractLinks(page.body,page.finalURL));
@@ -16,15 +20,25 @@ export async function verifyArtist(row,network,{offline=false}={}){
       if(candidate)resolved[key]=candidate;
     }
   }
-  let popularSelection=null;
-  if(isDirectDestination('youtube',resolved.youtube)){
-    popularSelection=offline?{url:resolved.featuredVideo,verified:false}:await resolvePopularVideo(resolved.youtube,network);
-    if(popularSelection?.url)resolved.featuredVideo=popularSelection.url;
+  const popularSelectionPromise=isDirectDestination('youtube',resolved.youtube)
+    ?Promise.resolve(offline?{url:resolved.featuredVideo,verified:false}:resolvePopularVideo(resolved.youtube,network))
+    :Promise.resolve(null);
+  const nonFeaturedKeys=DESTINATIONS.filter(key=>key!=='featuredVideo');
+  const inspectedPagesPromise=Promise.all(nonFeaturedKeys.map(async key=>{
+    const url=resolved[key];
+    if(!isDirectDestination(key,url))return[key,null];
+    return[key,offline?synthetic(url):await network.inspect(url)];
+  }));
+  const popularSelection=await popularSelectionPromise;
+  if(popularSelection?.url)resolved.featuredVideo=popularSelection.url;
+  const inspectedPages=new Map(await inspectedPagesPromise);
+  if(isDirectDestination('featuredVideo',resolved.featuredVideo)){
+    inspectedPages.set('featuredVideo',offline?synthetic(resolved.featuredVideo):await network.inspect(resolved.featuredVideo));
   }
   for(const key of DESTINATIONS){
     const url=resolved[key];
     if(!isDirectDestination(key,url)){errors.push(reason('DIRECT_DESTINATION_UNRESOLVED',`${key} did not resolve to a direct destination.`));continue;}
-    const page=offline?synthetic(url):await network.inspect(url);
+    const page=inspectedPages.get(key);
     if(!page.ok){errors.push(reason('DESTINATION_UNREACHABLE',`${key} failed after automatic retries (${page.status||page.error}).`));continue;}
     const inspectedURL=page.finalURL||url;
     const evidenceURL=['instagram','facebook'].includes(key)&&isAuthenticationWall(inspectedURL)?url:inspectedURL;

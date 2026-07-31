@@ -22,6 +22,7 @@
 - [x] Begin Deep Cuts Studio as a local-only, one-screen production control surface with structured intake, contract-safe Aggits selection, logo/MP3 support, labelled destinations, HGM-reference mobile preview, local QR and 1080-pixel poster output, typed/dictated revisions and an explicit verified-factory handoff boundary.
 - [x] Package the proven Deep Cuts Studio workflow as a sandboxed Windows and macOS desktop application without exposing private authoring routes publicly; keep signing/notarisation as the final distribution-credential step.
 - [x] Add the JookBox Studio workflow: band name plus an optional artist-controlled URL, independent identity/source/destination/video checks, factual ticker-biography selection, a mandatory fail-closed 98% gate, verified eight-key population and automated Apple Silicon/Intel Mac packaging.
+- [x] Profile and optimise the Core Engine without changing edition output: parallel validation with live timings, exact-input scan-tested artwork caching, one automatic delivery package, bounded parallel artwork rendering, concurrent verified research and byte-identical static builds.
 
 ## Batch-production time savings
 
