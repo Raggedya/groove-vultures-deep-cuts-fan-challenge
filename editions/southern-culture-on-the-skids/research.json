@@ -165,12 +165,20 @@
       "evidence": "The official media page documents the Chapel Hill trio, Rick Miller, Mary Huff and Dave Hartman, their more-than-30-year history and their rockabilly, surf, country, R&B and garage-rock blend."
     },
     {
-      "destination": "featuredVideo",
+      "destination": "featuredVideoRejected",
       "url": "https://www.youtube.com/watch?v=T9NLgyEFzOo",
-      "sourceType": "official YouTube channel Popular ordering and privacy-enhanced embed",
+      "sourceType": "official YouTube video rejected by production embed verification",
       "identityVerified": true,
-      "verifiedAt": "2026-07-31T01:33:06.095Z",
-      "evidence": "The verified official channel's Popular ordering placed Camel Walk first at 674K views, ahead of the next uploads at 82K. The direct watch page and privacy-enhanced embed endpoint returned HTTP 200."
+      "verifiedAt": "2026-07-31T02:52:47.151Z",
+      "evidence": "Camel Walk is the channel's most-viewed upload, but the live Deep Cuts player returned the YouTube rights-holder message that UMG blocks this video from display on this website or application. It is retained here as rejected audit evidence and is not rendered."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=GNl0u3Bbs04",
+      "sourceType": "official artist website video and verified production embed replacement",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-31T02:52:47.151Z",
+      "evidence": "The official SCOTS media page embeds Run Baby Run as its lead video. The matching official watch page reported approximately 82K views and playableInEmbed=true, making it the highest-viewed verified official replacement after the rights-blocked Camel Walk player was rejected in production."
     }
   ]
 }

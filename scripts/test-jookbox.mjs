@@ -320,7 +320,7 @@ assert.equal(scotsConfig.jookBox?.cabinetArtworkSha256, atlasConfig.jookBox?.cab
 assert.deepEqual(scotsConfig.jookBox?.supportAction, atlasConfig.jookBox?.supportAction);
 assert.equal(scotsConfig.jookBox?.cabinetCopyright, "Copyright Clearlight Creative 2026.");
 assert.equal(scotsConfig.jookBox?.linkSourceURL, "https://www.scots.com/");
-assert.equal(scotsConfig.featuredVideo?.youtubeURL, "https://www.youtube.com/watch?v=T9NLgyEFzOo");
+assert.equal(scotsConfig.featuredVideo?.youtubeURL, "https://www.youtube.com/watch?v=GNl0u3Bbs04");
 assert.equal(scotsConfig.featuredVideo?.selectionBasis, "most-viewed-official");
 assert.deepEqual(scotsConfig.jookBox?.displaySelectionIds, [
   "spotify",
@@ -338,9 +338,10 @@ assert.ok(
     (source) =>
       source.destination === "featuredVideo" &&
       source.url === scotsConfig.featuredVideo.youtubeURL &&
-      /674K views/.test(source.evidence),
+      /82K views/.test(source.evidence) &&
+      /rights-blocked Camel Walk/.test(source.evidence),
   ),
-  "Southern Culture on the Skids must retain official Popular-order evidence for Camel Walk.",
+  "Southern Culture on the Skids must retain verified official replacement-video evidence after rejecting the blocked Camel Walk embed.",
 );
 for (const selection of scotsConfig.jookBox.selections) {
   assert.ok(
