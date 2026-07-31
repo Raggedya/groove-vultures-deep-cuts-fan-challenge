@@ -2,6 +2,24 @@
 
 Deep Cuts Studio is the private desktop control surface for creating and reviewing Deep Cuts products. It uses the permanent shared platform and never creates a separate application or repository for an edition.
 
+## Bar Edition workflow
+
+Choose **Bar Edition**. Enter the venue name, exactly five short button labels and five HTTPS destinations, the scrolling ticker copy, and a local MP4 welcome video up to 500 MB. Share is the permanent sixth key.
+
+Studio does not search the web or infer Bar Edition content. The supplied information remains local and private. The phone preview uses the locked ATLAS cabinet and reproduces the production interaction:
+
+1. the cabinet begins asleep;
+2. the visitor drags the coin upward, clicks it, or presses Enter/Space;
+3. the real coin-slot recording plays;
+4. the local MP4 requests immediate audible playback from the direct gesture;
+5. the neon, screen, six keys and ticker wake in the established sequence;
+6. the five external actions unlock and Share occupies the sixth key;
+7. one restrained light advances through all six keys.
+
+Native video controls stay available because Safari, Chrome or a device policy can still block audible autoplay. A refresh in the same browser session restores the awake cabinet without replaying the coin sound or forcing the video.
+
+The Studio readiness panel becomes **Static Handoff Ready** only after all five labelled destinations, ticker text and MP4 are present. The permanent public URL and QR still use the existing isolation, asset-integrity, deployment and live-verification workflow. See [BAR_EDITION_MODEL.md](BAR_EDITION_MODEL.md).
+
 ## JookBox workflow
 
 Choose **JookBox Band**, enter the band name and press **Research & Create JookBox**.
@@ -48,6 +66,8 @@ Studio accepts:
 - a project brief;
 - QR-poster wording;
 - typed or supported browser dictation revisions.
+
+Bar Edition additionally accepts five labelled destinations, administrator ticker copy and one local MP4. It excludes automatic research, YouTube, Aggits and the optional wheel.
 
 It creates a live mobile preview, a local preview QR, a 1080 × 1080 draft poster and a structured handoff manifest.
 

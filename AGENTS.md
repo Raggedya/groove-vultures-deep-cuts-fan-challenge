@@ -14,4 +14,6 @@ This is the one permanent Deep Cuts artist-discovery platform. Never create or c
 
 `Deep Cuts Clubs [Club name and location]` uses a third separately locked configuration. Verify the exact club identity and direct official website, calendar, news, events, membership, participation, competition, venue, history, contact, social and governing-body destinations. Omit unavailable or uncertain links, especially social links that lead only to login or generic pages. Never change the Music or Cars definitions.
 
+`Bar Edition` uses the separately locked static `bar-jukebox/1` configuration. It reuses the ATLAS cabinet engine without altering Band Edition and accepts only administrator-supplied venue name, ticker, local MP4 and exactly five labelled HTTPS actions; Share is the sixth key. Never run web lookup, infer missing content, add Aggits, add YouTube, add a quiz or add a wheel.
+
 Never invent destinations. Unavailable destinations are omitted. Preserve the approved Aggits assets and their integrity checks. Public artist routes use opaque edition IDs, never band names. Optimise every change for less production time and less owner interaction.

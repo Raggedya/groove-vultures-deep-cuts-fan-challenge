@@ -3,7 +3,7 @@
   "productName": "Deep Cuts Studio",
   "type": "module",
   "private": true,
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "Permanent Deep Cuts artist discovery, analytics and publishing platform.",
   "main": "studio/desktop-main.mjs",
   "author": "Clearlight Creative",
@@ -37,7 +37,7 @@
     "studio:desktop": "electron-forge start",
     "studio:package": "electron-forge package",
     "studio:make": "electron-forge make",
-    "studio:test": "node scripts/test-studio-jookbox-research.mjs && node scripts/test-studio.mjs",
+    "studio:test": "node scripts/test-studio-jookbox-research.mjs && node scripts/test-bar-jukebox.mjs && node scripts/test-studio.mjs",
     "studio:make:mac:arm64": "electron-forge make --platform=darwin --arch=arm64",
     "studio:make:mac:x64": "electron-forge make --platform=darwin --arch=x64"
   },

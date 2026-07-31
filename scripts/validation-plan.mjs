@@ -14,6 +14,7 @@ export const validationCommands = [
   test("Hays", "scripts/test-hays.mjs"),
   test("External-link policy", "scripts/test-external-links.mjs"),
   test("JookBox", "scripts/test-jookbox.mjs"),
+  test("Bar Edition JookBox", "scripts/test-bar-jukebox.mjs"),
   test("Record Company", "scripts/test-record-company.mjs", 950),
   test("Analytics", "scripts/test-analytics.mjs"),
   test("Build tracking", "scripts/test-build-tracking.mjs", 135),

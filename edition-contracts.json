@@ -93,6 +93,43 @@
         "colour-palette",
         "source-evidence"
       ]
+    },
+    "bar_jukebox": {
+      "version": 1,
+      "status": "locked",
+      "referenceEditionType": "bar_jukebox",
+      "defaultAppearanceVariant": "atlas-reference-cabinet/1",
+      "defaultKeyBankFormat": "bar-six-key/1",
+      "compatibleEditionTypes": ["bar_jukebox"],
+      "lockedCapabilities": [
+        "isolated-from-band-jookbox",
+        "administrator-static-content-only",
+        "no-web-lookup",
+        "no-aggits",
+        "no-quiz",
+        "no-spinning-wheel",
+        "locked-atlas-reference-cabinet",
+        "responsive-marquee-title-fit",
+        "drag-click-or-keyboard-coin-start",
+        "sourced-local-real-coin-slot-recording",
+        "four-state-session-restored-power-model",
+        "cinematic-neon-and-crt-startup",
+        "direct-coin-gesture-local-mp4-autoplay-request-with-controls-fallback",
+        "administrator-supplied-ticker",
+        "five-administrator-labelled-https-actions",
+        "permanent-sixth-share-key",
+        "single-key-sequential-illumination",
+        "origin-aware-secure-external-tabs",
+        "reduced-motion-static-treatment",
+        "in-cabinet-clearlight-2026-copyright"
+      ],
+      "editionOwnedFields": [
+        "venue-name",
+        "administrator-supplied-ticker",
+        "administrator-supplied-local-mp4",
+        "five-button-labels",
+        "five-button-destinations"
+      ]
     }
   },
   "editionTypes": {
@@ -107,6 +144,12 @@
       "allowedLinks": ["bandcamp", "spotify", "instagram", "website", "buyMusic", "merchandise", "facebook", "youtube", "tiktok", "contact"],
       "renderedLinks": [],
       "exclusiveConfig": ["jookBox"]
+    },
+    "bar_jukebox": {
+      "brandNames": ["Bar Edition"],
+      "allowedLinks": [],
+      "renderedLinks": [],
+      "exclusiveConfig": ["barJookBox"]
     },
     "car": {
       "brandNames": ["Deep Cuts Cars"],

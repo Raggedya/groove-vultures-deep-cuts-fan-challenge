@@ -31,10 +31,12 @@ for(const edition of platform.editions){
     if(!config.bandName||!/^https:\/\//.test(config.publicURL||''))errors.push(`${edition.config} requires bandName and an HTTPS publicURL.`);
     if(config.production){
       if(!config.production.jobId||!Number.isFinite(new Date(config.production.submittedAt).getTime()))errors.push(`${edition.config} requires factory job identity and submission time.`);
-      const researchPath=edition.config.replace(/edition\.json$/,'research.json');
-      const research=JSON.parse(await fs.readFile(researchPath,'utf8'));
-      if(research.editionId!==edition.editionId||!Array.isArray(research.sources)||research.sources.length<2)errors.push(`${researchPath} requires matching edition identity and at least two sources.`);
-      for(const[key,value]of Object.entries(config.links||{}))if(value&&!research.sources.some(source=>source.destination===key&&source.identityVerified===true&&normalized(source.url)===normalized(value)))errors.push(`${researchPath} lacks matching verified evidence for links.${key}.`);
+      if(config.editionType!=='bar_jukebox'){
+        const researchPath=edition.config.replace(/edition\.json$/,'research.json');
+        const research=JSON.parse(await fs.readFile(researchPath,'utf8'));
+        if(research.editionId!==edition.editionId||!Array.isArray(research.sources)||research.sources.length<2)errors.push(`${researchPath} requires matching edition identity and at least two sources.`);
+        for(const[key,value]of Object.entries(config.links||{}))if(value&&!research.sources.some(source=>source.destination===key&&source.identityVerified===true&&normalized(source.url)===normalized(value)))errors.push(`${researchPath} lacks matching verified evidence for links.${key}.`);
+      }
     }
     if(config.editionType==='school'){
       if(config.characterArtwork)errors.push(`${edition.config} School Discovery must not configure character artwork.`);
@@ -75,6 +77,58 @@ for(const edition of platform.editions){
         jobIds.add(job.id);jobURLs.add(url);
       }
       for(const asset of [config.characterArtwork,config.business?.logoArtwork])await fs.access(asset);
+    }else if(config.editionType==='bar_jukebox'){
+      if(config.brandName!=='Bar Edition'||config.characterArtwork||config.jookBox)errors.push(`${edition.config} must preserve the isolated no-Aggits Bar Edition contract without persisting Band Edition configuration.`);
+      const bar=config.barJookBox||{};
+      const actions=Array.isArray(bar.actions)?bar.actions:[];
+      const timings=bar.startupTimingsMs||{};
+      if(
+        bar.modelVersion!=='bar-jukebox/1'||
+        bar.layoutVersion!=='coin-awakening/1'||
+        bar.appearanceVariant!=='atlas-reference-cabinet/1'||
+        bar.keyBankFormat!=='bar-six-key/1'||
+        bar.contentMode!=='administrator-static'||
+        bar.webLookupAllowed!==false||
+        bar.lightSequence!==true||
+        bar.lightSequenceMode!=='single-key'||
+        bar.coinStart!==true
+      )errors.push(`${edition.config} must preserve the locked static Bar Edition model, ATLAS cabinet, five-plus-Share key bank and single-key light sequence.`);
+      if(config.featuredVideo||config.quiz||Object.values(config.links||{}).some(Boolean))errors.push(`${edition.config} Bar Edition must use only its administrator-supplied local MP4 and action list.`);
+      if(!config.bandName||bar.venueName!==config.bandName||!bar.tickerText||bar.tickerText.length>500)errors.push(`${edition.config} requires the exact venue name and administrator-supplied ticker copy.`);
+      if(actions.length!==5)errors.push(`${edition.config} requires exactly five administrator-supplied actions; Share is the permanent sixth key.`);
+      const actionIds=new Set(),actionURLs=new Set();
+      for(const action of actions){
+        const url=normalized(action?.url);
+        if(!/^[a-z0-9][a-z0-9_-]{0,39}$/i.test(action?.id||'')||!String(action?.label||'').trim()||String(action?.label||'').length>42||!url||authenticationWall(url))errors.push(`${edition.config} contains an incomplete or unsafe Bar Edition action.`);
+        if(actionIds.has(action?.id)||actionURLs.has(url))errors.push(`${edition.config} contains a duplicate Bar Edition action.`);
+        actionIds.add(action?.id);actionURLs.add(url);
+      }
+      if(
+        !bar.localWelcomeVideo||
+        !/^assets\/editions\/[A-Za-z0-9_-]+\/[^/]+\.mp4$/i.test(bar.localWelcomeVideo)||
+        !bar.localWelcomeVideoSha256||
+        !/^[a-f0-9]{64}$/i.test(bar.localWelcomeVideoSha256)
+      )errors.push(`${edition.config} requires a local MP4 welcome video and SHA-256 identity.`);
+      else{
+        const video=await fs.readFile(bar.localWelcomeVideo);
+        if(crypto.createHash('sha256').update(video).digest('hex')!==bar.localWelcomeVideoSha256)errors.push(`${edition.config} Bar Edition welcome video failed its SHA-256 identity check.`);
+      }
+      if(
+        bar.cabinetArtwork!=='assets/jookbox-atlas-reference-v1.webp'||
+        bar.cabinetArtworkSha256!=='ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3'||
+        bar.coinSound!=='assets/audio/jukebox-real-coin-insert-cc0.mp3'||
+        bar.coinSoundSha256!=='3fd636fe3763b95a09bc8f6be470361ddf0a49e7772464d1a5292fa7c7674e8a'||
+        !/^https:\/\//.test(bar.coinSoundSource||'')||
+        !bar.coinSoundLicense||
+        !bar.sessionStorageKey||
+        bar.cabinetCopyright!=='Copyright Clearlight Creative 2026.'
+      )errors.push(`${edition.config} must preserve the locked cabinet, sourced real coin sound, session key and Clearlight copyright.`);
+      if(!(bar.buttonLightDurationMs>=450&&bar.buttonLightDurationMs<=1200)||bar.autoplayDelayMs!==0)errors.push(`${edition.config} must preserve direct-gesture autoplay and a valid single-key light duration.`);
+      if(!(timings.mechanism>=0&&timings.neonOn>=300&&timings.screenOn>=timings.neonOn&&timings.buttonsOn>=timings.screenOn&&timings.tickerOn>=timings.buttonsOn))errors.push(`${edition.config} contains an invalid Bar Edition start-up timeline.`);
+      const cabinet=await fs.readFile(bar.cabinetArtwork||'');
+      if(crypto.createHash('sha256').update(cabinet).digest('hex')!==bar.cabinetArtworkSha256)errors.push(`${edition.config} locked Bar Edition cabinet artwork failed its SHA-256 identity check.`);
+      const coinSound=await fs.readFile(bar.coinSound||'');
+      if(crypto.createHash('sha256').update(coinSound).digest('hex')!==bar.coinSoundSha256)errors.push(`${edition.config} Bar Edition coin recording failed its SHA-256 identity check.`);
     }else if(config.editionType==='jukebox'){
       if(config.brandName!=='JookBox'||config.characterArtwork)errors.push(`${edition.config} must preserve the isolated no-Aggits JookBox contract.`);
       const appearanceVariant=config.jookBox?.appearanceVariant||'reference';

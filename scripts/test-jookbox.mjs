@@ -108,8 +108,8 @@ const contracts = JSON.parse(contractsText);
 assert.equal(contracts.productModels.jookbox.version, 3);
 assert.deepEqual(contracts.editionTypes.jukebox.renderedLinks, []);
 assert.match(html, /id="jookBoxCabinet"/);
-assert.match(html, /styles\.css\?v=20260731-jookbox-20/);
-assert.match(html, /app\.js\?v=20260731-jookbox-21/);
+assert.match(html, /styles\.css\?v=20260731-bar-jookbox-1/);
+assert.match(html, /app\.js\?v=20260731-bar-jookbox-1/);
 assert.match(html, /id="jookBoxVideoSlot"/);
 assert.match(html, /id="jookBoxCoinButton"[\s\S]*aria-label="Insert coin and start the jukebox"/);
 assert.match(html, /id="jookBoxTickerText"/);
@@ -123,7 +123,7 @@ assert.doesNotMatch(html, /Filthy Animals/, "The reusable HTML renderer must nev
 assert.doesNotMatch(html, /id="jookBoxSoundToggle"|class="jookbox-band-plaque"|id="jookBoxActionBar"/);
 
 assert.match(app, /function setJookBoxState\(nextState\)/);
-assert.match(app, /const VERSION="20260731-jookbox-21"/);
+assert.match(app, /const VERSION="20260731-bar-jookbox-1"/);
 assert.match(app, /dataset\.jookboxEmbeddedMarquee=embeddedMarquee\?"true":"false"/);
 assert.match(app, /dataset\.jookboxAppearance=config\.jookBox\?\.appearanceVariant\|\|"reference"/);
 assert.match(app, /dataset\.jookboxLightSequence=config\.jookBox\?\.lightSequenceMode\|\|"single-key"/);
@@ -182,7 +182,7 @@ assert.match(app, /classList\.toggle\("is-current-key",index>=groupStart&&index<
 assert.match(app, /jookBoxKeyLightTimer=window\.setTimeout\(advanceJookBoxKeyLight,jookBoxKeyLightDuration\(\)\)/);
 assert.doesNotMatch(app, /--jookbox-row-delay|--jookbox-row-cycle/);
 assert.match(app, /autoplay=\$\{autoplay\?1:0\}/);
-assert.match(app, /function powerJookBox\(\)\{[\s\S]*?playJookBoxCoinSound\(\);\s*activateJookBoxVideo\(true\);[\s\S]*?const reducedMotion/);
+assert.match(app, /function powerJookBox\(\)\{[\s\S]*?playJookBoxCoinSound\(\);[\s\S]*?else activateJookBoxVideo\(true\);[\s\S]*?const reducedMotion/);
 assert.match(app, /www\.youtube-nocookie\.com\/embed/);
 assert.match(app, /function trackJookBoxOutbound\(definition,url,source="jookbox_linktree"\)/);
 

@@ -23,11 +23,19 @@ const els={
   aggits:$("#aggits-option"),
   aggitsPolicy:$("#aggits-policy"),
   aggitsThumbnail:$("#aggits-thumbnail"),
-  sourceLabels:[$("#source-label-1"),$("#source-label-2"),$("#source-label-3")],
-  sources:[$("#source-url-1"),$("#source-url-2"),$("#source-url-3")],
+  sourceLabels:[$("#source-label-1"),$("#source-label-2"),$("#source-label-3"),$("#source-label-4"),$("#source-label-5")],
+  sources:[$("#source-url-1"),$("#source-url-2"),$("#source-url-3"),$("#source-url-4"),$("#source-url-5")],
+  barRows:[...document.querySelectorAll(".bar-only-row")],
   contentIntro:$("#content-intro"),
   youtube:$("#youtube-url"),
   brief:$("#project-brief"),
+  briefField:$("#brief-field"),
+  barTickerField:$("#bar-ticker-field"),
+  barTicker:$("#bar-ticker"),
+  barVideoField:$("#bar-video-field"),
+  mp4:$("#mp4-file"),
+  videoState:$("#video-state"),
+  removeVideo:$("#remove-video"),
   posterHeading:$("#poster-heading"),
   optionalFields:$("#optional-fields"),
   logo:$("#logo-file"),
@@ -36,6 +44,7 @@ const els={
   mp3:$("#mp3-file"),
   audioState:$("#audio-state"),
   removeAudio:$("#remove-audio"),
+  localNote:$("#local-note"),
   runLabel:$("#run-label"),
   runDescription:$("#run-description"),
   runButton:$("#studio-form .run-button"),
@@ -59,6 +68,9 @@ const els={
   dictate:$("#dictate"),
   gateList:$("#gate-list"),
   researchResult:$("#research-result"),
+  gateTitle:$("#gate-title"),
+  gateCopy:$("#gate-copy"),
+  qrWarning:$("#qr-warning"),
   toast:$("#toast")
 };
 
@@ -92,6 +104,7 @@ function bindEvents(){
   els.revision.addEventListener("input",()=>{els.applyRevision.disabled=!state.project||!els.revision.value.trim()});
   els.removeLogo.addEventListener("click",removeLogo);
   els.removeAudio.addEventListener("click",removeAudio);
+  els.removeVideo.addEventListener("click",removeVideo);
   els.recent.addEventListener("change",()=>els.recent.value&&loadProject(els.recent.value));
   $("#new-project").addEventListener("click",resetProject);
 }
@@ -104,22 +117,50 @@ function renderTypeOptions(){
 function updateTypePolicy(){
   const type=typeConfig(els.type.value)||state.productTypes[0];
   const jookBox=type?.id==="jookbox";
-  document.body.classList.toggle("jookbox-mode",jookBox);
-  els.nameLabel.textContent=jookBox?"Band name":"Name";
-  els.name.placeholder=jookBox?"Enter the exact band name":"Company, band or place";
-  els.aggitsStep.hidden=jookBox;
+  const bar=type?.id==="bar_jukebox";
+  const jukeboxProduct=jookBox||bar;
+  document.body.classList.toggle("jookbox-mode",jukeboxProduct);
+  document.body.classList.toggle("bar-jukebox-mode",bar);
+  els.nameLabel.textContent=bar?"Venue name":jookBox?"Band name":"Name";
+  els.name.placeholder=bar?"e.g. Shotkickers":jookBox?"Enter the exact band name":"Company, band or place";
+  els.aggitsStep.hidden=jukeboxProduct;
   els.typeDescription.textContent=type?.description||"";
-  els.wheelChoice.hidden=jookBox;
-  if(jookBox)els.wheelChoices.forEach(field=>{field.checked=field.value==="no"});
+  els.wheelChoice.hidden=jukeboxProduct;
+  if(jukeboxProduct)els.wheelChoices.forEach(field=>{field.checked=field.value==="no"});
+  els.barRows.forEach(row=>{row.hidden=!bar});
+  els.barTickerField.hidden=!bar;
+  els.barTicker.required=bar;
+  els.barVideoField.hidden=!bar;
+  els.briefField.hidden=bar;
+  els.optionalFields.hidden=bar;
   els.sourceLabels.forEach(field=>{
     field.hidden=jookBox;
+    field.required=bar;
     field.closest("label")?.classList.toggle("jookbox-source",jookBox);
   });
-  els.contentIntro.textContent=jookBox
+  els.sources.forEach((field,index)=>{
+    field.required=bar;
+    if(bar){
+      field.placeholder=["https://venue.com/gigs","https://venue.com/menu","https://venue.com/contact","https://instagram.com/venue","https://facebook.com/venue"][index];
+    }
+  });
+  els.contentIntro.textContent=bar
+    ?"Add exactly five button labels and HTTPS destinations. Share is the permanent sixth key. Nothing is searched or inferred."
+    :jookBox
     ?"Enter the band name and preferably one artist-controlled website, Linktree or social URL. Studio will find other destinations, independently verify them and omit anything below 98% confidence."
     :"Add up to three official pages. Studio treats these as research leads—not verified facts.";
-  els.sources[0].placeholder=jookBox?"https://official-site-or-linktr.ee/band":"https://official-website.com";
+  if(!bar)els.sources[0].placeholder=jookBox?"https://official-site-or-linktr.ee/band":"https://official-website.com";
   els.sourceLabels[0].placeholder=jookBox?"Optional source note":"Button label";
+  els.localNote.innerHTML=bar
+    ?'<span aria-hidden="true">●</span> The MP4, ticker and venue links remain local and private until you export the handoff.'
+    :'<span aria-hidden="true">●</span> Drafts and supplied media remain in this computer’s private Studio workspace.';
+  els.gateTitle.textContent=bar?"Static content gate":"98% verification gate";
+  els.gateCopy.textContent=bar
+    ?"Studio never overwrites a completed edition. A permanent Bar Edition still passes isolation, asset, link, deployment and live-verification checks."
+    :"Studio never overwrites a completed edition. A permanent version still passes the existing factory, evidence, link and QR checks.";
+  els.qrWarning.textContent=bar
+    ?"This QR opens the private preview on this computer. The permanent QR is created after the Bar Edition production checks."
+    :"This QR opens the preview on this computer. The permanent QR is created only after the verified production gate.";
   updateRunCopy();
   const forbidden=type?.aggitsPolicy==="forbidden";
   const previous=els.aggits.value;
@@ -173,6 +214,11 @@ async function runProject(event){
       els.mp3.value="";
     }
     setProject(result);
+    if(els.mp4.files[0]){
+      result=await uploadVideo(els.mp4.files[0]);
+      els.mp4.value="";
+    }
+    setProject(result);
     renderProject();
     if(state.project.input.type==="jookbox"){
       setBusy(true,"RESEARCHING & VERIFYING");
@@ -212,6 +258,15 @@ async function uploadAudio(file){
   });
 }
 
+async function uploadVideo(file){
+  if(file.size>500*1024*1024)throw new Error("The selected MP4 exceeds the 500 MB Studio limit.");
+  return api(`/api/studio/projects/${state.project.id}/video`,file,{
+    method:"POST",
+    headers:{"content-type":"video/mp4","x-studio-file-name":encodeURIComponent(file.name)},
+    raw:true
+  });
+}
+
 async function removeLogo(){
   if(!state.project)return;
   try{
@@ -225,6 +280,14 @@ async function removeAudio(){
   try{
     const result=await api(`/api/studio/projects/${state.project.id}/audio`,null,{method:"DELETE"});
     setProject(result);els.mp3.value="";renderProject();showToast("MP3 removed from this local Studio draft.");
+  }catch(error){showError(error.message)}
+}
+
+async function removeVideo(){
+  if(!state.project)return;
+  try{
+    const result=await api(`/api/studio/projects/${state.project.id}/video`,null,{method:"DELETE"});
+    setProject(result);els.mp4.value="";renderProject();showToast("Welcome video removed from this local Bar Edition draft.");
   }catch(error){showError(error.message)}
 }
 
@@ -285,6 +348,7 @@ function renderProject(){
   renderPoster().catch(error=>showError(`Poster preview: ${error.message}`));
   renderLogo();
   renderAudio();
+  renderVideo();
   renderGate();
 }
 
@@ -311,12 +375,25 @@ function renderAudio(){
   els.removeAudio.classList.toggle("hidden",!mp3);
 }
 
+function renderVideo(){
+  const mp4=state.project?.mp4;
+  els.videoState.textContent=mp4?`${mp4.fileName} · ${formatBytes(mp4.sizeBytes)}`:"Local MP4 · maximum 500 MB";
+  els.removeVideo.classList.toggle("hidden",!mp4);
+}
+
 function renderGate(){
   const readiness=state.project.readiness;
   els.gateList.replaceChildren(...readiness.blockers.map(message=>{
     const item=document.createElement("li");item.textContent=message;return item;
   }));
   const research=state.project.research;
+  if(state.project.input.type==="bar_jukebox"){
+    els.researchResult.className=`research-result ${state.project.readiness.handoffReady?"passed":"waiting"}`;
+    els.researchResult.innerHTML=state.project.readiness.handoffReady
+      ?"<strong>STATIC HANDOFF READY</strong><span>Five labelled URLs, ticker copy and the local MP4 are present. No web lookup was performed.</span>"
+      :"<strong>ADMINISTRATOR INPUT ONLY</strong><span>Complete the five labelled destinations, ticker and local MP4. Bar Edition never performs automatic research.</span>";
+    return;
+  }
   if(state.project.input.type!=="jookbox"){
     els.researchResult.className="research-result waiting";
     els.researchResult.innerHTML="<strong>FACTORY VERIFICATION REQUIRED</strong><span>Inputs remain research leads until the matching production workflow verifies them.</span>";
@@ -345,10 +422,11 @@ function fillForm(input){
   renderAggitsThumbnail();
   els.sources.forEach((field,index)=>field.value=input.sourceUrls[index]||"");
   els.sourceLabels.forEach((field,index)=>field.value=input.sourceLabels?.[index]||"");
+  els.barTicker.value=input.tickerText||"";
   els.youtube.value=input.youtubeUrl||"";
   els.brief.value=input.brief||"";
   els.posterHeading.value=input.posterHeading||"";
-  els.optionalFields.open=Boolean(input.youtubeUrl||input.posterHeading||state.project?.logo||state.project?.mp3);
+  els.optionalFields.open=input.type!=="bar_jukebox"&&Boolean(input.youtubeUrl||input.posterHeading||state.project?.logo||state.project?.mp3);
   const wheelValue=input.addWheel?"yes":"no";
   els.wheelChoices.forEach(field=>{field.checked=field.value===wheelValue});
 }
@@ -362,6 +440,7 @@ function formInput(){
     sourceUrls:sourceEntries.map(item=>item.url),
     sourceLabels:sourceEntries.map(item=>item.label),
     youtubeUrl:els.youtube.value,
+    tickerText:els.barTicker.value,
     brief:els.brief.value,
     posterHeading:els.posterHeading.value,
     addWheel:els.wheelChoices.find(field=>field.checked)?.value==="yes"
@@ -382,11 +461,14 @@ function resetProject(){
   els.refresh.disabled=true;els.openPreview.disabled=true;els.applyRevision.disabled=true;
   els.logoState.textContent="PNG, JPEG or WebP · maximum 6 MB";els.removeLogo.classList.add("hidden");
   els.audioState.textContent="Optional · maximum 25 MB";els.removeAudio.classList.add("hidden");
+  els.videoState.textContent="Local MP4 · maximum 500 MB";els.removeVideo.classList.add("hidden");els.mp4.value="";
   els.revision.value="";els.revisionMessage.className="revision-message";
   els.revisionMessage.textContent="Typed and dictated changes are kept in the project revision history.";
   els.gateList.replaceChildren(listItem("Run a preview to see production requirements."));
   els.researchResult.className="research-result waiting";
-  els.researchResult.innerHTML="<strong>RESEARCH NOT RUN</strong><span>Studio will show the confidence result here.</span>";
+  els.researchResult.innerHTML=els.type.value==="bar_jukebox"
+    ?"<strong>ADMINISTRATOR INPUT ONLY</strong><span>Bar Edition performs no web lookup.</span>"
+    :"<strong>RESEARCH NOT RUN</strong><span>Studio will show the confidence result here.</span>";
   els.recent.value="";
   setEmptyPreview();
   els.name.focus();
@@ -567,8 +649,9 @@ function setBusy(busy,label=""){
 }
 function updateRunCopy(){
   const jookBox=els.type.value==="jookbox";
-  els.runLabel.textContent=jookBox?"RESEARCH & CREATE JOOKBOX":state.project?"UPDATE DEEP CUTS":"RUN DEEP CUTS";
-  els.runDescription.textContent=jookBox?"Find, cross-check and populate verified band destinations":"Create the preview and QR output";
+  const bar=els.type.value==="bar_jukebox";
+  els.runLabel.textContent=bar?(state.project?"UPDATE BAR EDITION":"CREATE BAR EDITION"):jookBox?"RESEARCH & CREATE JOOKBOX":state.project?"UPDATE DEEP CUTS":"RUN DEEP CUTS";
+  els.runDescription.textContent=bar?"Build the local MP4 JookBox with five keys plus Share":jookBox?"Find, cross-check and populate verified band destinations":"Create the preview and QR output";
 }
 function showError(message){
   els.outputStatus.textContent="CHECK INPUT";els.outputStatus.className="output-status error";showToast(message);

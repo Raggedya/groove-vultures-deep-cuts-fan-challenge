@@ -85,6 +85,14 @@ Treat every completed edition as a finished commercial product that must remain 
 - Only dated, identity-verified destinations named by the edition's explicit display-key list may appear. Missing or stale destinations are omitted.
 - Its bright lights become static when reduced motion is requested and stop spending attention in hidden tabs.
 - Filthy Animals `dc_a3c049e4bc` is the first completed JookBox edition. Its configuration and evidence remain isolated from every future band.
+
+## Bar Edition JookBox contract
+
+- `bar_jukebox` is an isolated static venue product on the shared engine. It must never change, import from or weaken the locked Band Edition `jukebox` contract.
+- Its model is `bar-jukebox/1`, appearance is `atlas-reference-cabinet/1`, and key bank is `bar-six-key/1`.
+- The venue administrator supplies the venue name, scrolling ticker, local MP4 and exactly five labelled HTTPS destinations. Share is the permanent sixth key. No web lookup, inference or runtime scraping is permitted.
+- The drag/click/keyboard coin interaction, sourced real coin sound, four-state session model, neon/CRT start-up, title fitting, reduced-motion behavior and single-key sequence reuse the shared JookBox engine. The MP4 playback request occurs synchronously inside the coin gesture and retains native controls when browser autoplay is blocked.
+- Bar Edition has no Aggits, YouTube, quiz or spinning wheel. Its five external destinations use the shared secure external-tab policy. Its cabinet and global Clearlight copyright treatments are immutable.
 - ATLAS `dc_e22f1cb651` remains the first completed visual reference for `atlas-reference-cabinet/1`; Southern Culture on the Skids `dc_f3f4750b1b` is the first factory edition corrected to the permanent default. Both own their band data and evidence independently. Promoting this shared appearance never changes Filthy Animals or any other completed edition.
 
 ## Commercial Instinct contract

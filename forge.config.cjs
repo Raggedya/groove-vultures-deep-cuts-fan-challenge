@@ -11,7 +11,9 @@ const packagedFiles=new Set([
   "/assets/aggits-original-cutout-v4.png",
   "/assets/hgm-aggits-owner-supplied.jpg",
   "/assets/jookbox-cabinet-photoreal-v1.webp",
-  "/assets/jookbox-atlas-reference-v1.webp"
+  "/assets/jookbox-atlas-reference-v1.webp",
+  "/assets/audio/jukebox-real-coin-insert-cc0.mp3",
+  "/assets/audio/jukebox-real-coin-insert-cc0.LICENSE.txt"
 ]);
 
 function shouldIgnore(filePath){

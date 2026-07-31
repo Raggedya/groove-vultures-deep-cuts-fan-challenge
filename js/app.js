@@ -1,6 +1,6 @@
 "use strict";
 
-const VERSION="20260731-jookbox-21";
+const VERSION="20260731-bar-jookbox-1";
 const LANEWAY_REPORTING_VERSION="laneway-weekly-v1";
 const $=id=>document.getElementById(id);
 const els={
@@ -16,6 +16,10 @@ const els={
   jookBoxCabinetCopyright:$("jookBoxCabinetCopyright"),
   jookBoxLearnMore:$("jookBoxLearnMore"),jookBoxBioScreen:$("jookBoxBioScreen"),jookBoxBioBack:$("jookBoxBioBack"),
   jookBoxBioTitle:$("jookBoxBioTitle"),jookBoxBioCopy:$("jookBoxBioCopy"),jookBoxBioSource:$("jookBoxBioSource"),
+  barJookBoxIntro:$("barJookBoxIntro"),barJookBoxHero:$("barJookBoxHero"),barJookBoxLogo:$("barJookBoxLogo"),
+  barJookBoxVenueName:$("barJookBoxVenueName"),barJookBoxDescription:$("barJookBoxDescription"),
+  barJookBoxAddress:$("barJookBoxAddress"),barJookBoxMediaStatus:$("barJookBoxMediaStatus"),
+  barJookBoxWelcomeVideo:$("barJookBoxWelcomeVideo"),
   links:$("platformLinks"),share:$("shareButton"),status:$("shareStatus"),description:$("pageDescription"),poweredBy:$("poweredByLabel"),
   copyright:$("coverCopyright"),lanewayHome:$("lanewayHomeLink"),lanewayRecommended:$("lanewayRecommendedLink"),
   companyDirectory:$("lanewayCompanyDirectory"),companyDirectoryCount:$("lanewayCompanyDirectoryCount"),companySearch:$("lanewayCompanySearch"),
@@ -101,6 +105,8 @@ let jookBoxActiveKeyIndex=-1;
 let jookBoxBioReturnFocus=null;
 let jookBoxMarqueeFitFrame=0;
 let jookBoxMarqueeResizeObserver=null;
+let barJookBoxCoinDragController=null;
+let barJookBoxCoinDragState=null;
 const jookBoxStartupTimers=new Set();
 init();
 
@@ -123,13 +129,16 @@ async function fetchJson(url){const response=await fetch(url,{cache:"no-store"})
 
 async function applyConfig(){
   const name=config.bandName||editionEntry.name;
+  const barJookBox=isBarJookBoxEdition();
+  if(barJookBox)config.jookBox=barJookBoxRuntimeConfig();
   const cars=isCarEdition(),clubs=isClubEdition(),schools=isSchoolEdition(),business=isBusinessEdition(),laneway=isLanewayEdition(),jookBox=isJookBoxEdition(),lanewayCompany=isLanewayCompanyEdition(),indieWheel=isIndieWheelEdition(),wheelEdition=lanewayCompany||indieWheel;
-  document.documentElement.dataset.editionType=indieWheel?"laneway_company":config.editionType||"music";
-  document.documentElement.dataset.productType=usesFinalIndieLabelModel()?"laneway_company":config.editionType||"music";
+  document.documentElement.dataset.editionType=jookBox?"jukebox":indieWheel?"laneway_company":config.editionType||"music";
+  document.documentElement.dataset.productType=barJookBox?"bar_jukebox":usesFinalIndieLabelModel()?"laneway_company":config.editionType||"music";
+  if(jookBox)document.documentElement.dataset.jookboxMode=barJookBox?"bar":"band";
   if(usesFinalIndieLabelModel())document.documentElement.dataset.labelStyle=config.slug||"indie-label";
-  document.title=`${name} | ${wheelEdition?"Indie Wheel":jookBox?"JookBox":laneway?"Laneway":schools?"School Discovery":business?"Deep Cuts Business":clubs?"Deep Cuts Clubs":cars?"Deep Cuts Cars":"Deep Cuts"}`;
+  document.title=`${name} | ${wheelEdition?"Indie Wheel":barJookBox?"Bar Edition":jookBox?"JookBox":laneway?"Laneway":schools?"School Discovery":business?"Deep Cuts Business":clubs?"Deep Cuts Clubs":cars?"Deep Cuts Cars":"Deep Cuts"}`;
   const bio=config.discovery?.bio||config.description||`Discover ${name}.`;
-  els.description.content=wheelEdition?`Spin to discover a verified ${name} artist on ${wheelSettings().destinationLabel}, search the catalogue and take the 10-question artist quiz.`:jookBox?`Play ${name} through the JookBox and open the band's verified music, video, social and merchandise links.`:laneway?`Discover ${name} through Laneway's positive five-question band quiz and verified official links.`:schools?`Discover ${name} through verified official school information and video.`:business?`Explore verified ${name} job opportunities and learn about the business.`:clubs?`Verified club, membership, events, bowls and community links for ${name}.`:cars?`Verified history, specifications, buying, ownership and restoration links for ${name}.`:`Official music, video and social links for ${name}.`;
+  els.description.content=wheelEdition?`Spin to discover a verified ${name} artist on ${wheelSettings().destinationLabel}, search the catalogue and take the 10-question artist quiz.`:barJookBox?`Insert the coin to explore the administrator-supplied welcome video, events, venue information and official links for ${name}.`:jookBox?`Play ${name} through the JookBox and open the band's verified music, video, social and merchandise links.`:laneway?`Discover ${name} through Laneway's positive five-question band quiz and verified official links.`:schools?`Discover ${name} through verified official school information and video.`:business?`Explore verified ${name} job opportunities and learn about the business.`:clubs?`Verified club, membership, events, bowls and community links for ${name}.`:cars?`Verified history, specifications, buying, ownership and restoration links for ${name}.`:`Official music, video and social links for ${name}.`;
   els.bandName.textContent=name;
   els.bio.textContent=bio;
   const hideArtwork=schools||laneway||jookBox||wheelEdition||(business&&config.business?.showHeroArtwork===false);
@@ -156,6 +165,7 @@ async function applyConfig(){
     document.documentElement.dataset.jookboxAppearance=config.jookBox?.appearanceVariant||"reference";
     document.documentElement.dataset.jookboxLightSequence=config.jookBox?.lightSequenceMode||"single-key";
     document.documentElement.dataset.jookboxKeyFormat=config.jookBox?.keyBankFormat||"classic-eight-key/1";
+    document.documentElement.dataset.jookboxContentStatus=String(config.jookBox?.contentStatus||"complete");
     document.documentElement.dataset.jookboxLongMarquee=String((config.jookBox?.marquee||name).length>18);
     document.documentElement.style.setProperty("--jookbox-cyan",config.theme?.accent||"#55d9ff");
     document.documentElement.style.setProperty("--jookbox-orange",config.theme?.accentSecondary||"#ff6640");
@@ -195,12 +205,68 @@ function isClubEdition(){return config.editionType==="club"}
 function isSchoolEdition(){return config.editionType==="school"}
 function isBusinessEdition(){return config.editionType==="business"}
 function isLanewayEdition(){return config.editionType==="laneway"}
-function isJookBoxEdition(){return config.editionType==="jukebox"}
+function isBandJookBoxEdition(){return config.editionType==="jukebox"}
+function isBarJookBoxEdition(){return config.editionType==="bar_jukebox"}
+function isJookBoxEdition(){return isBandJookBoxEdition()||isBarJookBoxEdition()}
 function isLanewayCompanyEdition(){return config.editionType==="laneway_company"}
 function isIndieWheelEdition(){return config.editionType==="indie_wheel"}
 function isWheelEdition(){return isLanewayCompanyEdition()||isIndieWheelEdition()}
 function usesFinalIndieLabelModel(){return isIndieWheelEdition()&&config.indieWheel?.modelVersion==="indie_label/1"}
 function usesEnhancedIndieLabelExperience(){return isLanewayCompanyEdition()||usesFinalIndieLabelModel()}
+function barJookBoxRuntimeConfig(){
+  const source=config.barJookBox||{};
+  const selections=(Array.isArray(source.actions)?source.actions:[]).slice(0,5).flatMap((action,index)=>{
+    const url=validHttps(action?.url);
+    const label=String(action?.label||"").trim();
+    if(!url||!label)return[];
+    const suppliedId=String(action?.id||"").trim().toLowerCase().replace(/[^a-z0-9_-]+/g,"-").replace(/^-|-$/g,"");
+    return[{
+      id:suppliedId||`venue-action-${index+1}`,
+      sourceTitle:label,
+      label,
+      detail:String(action?.detail||`Open ${label}`).trim(),
+      url,
+      platform:"website",
+      kind:"venue_action"
+    }];
+  });
+  return{
+    modelVersion:"bar-jukebox/1",
+    layoutVersion:"coin-awakening/1",
+    cabinetArtwork:"assets/jookbox-atlas-reference-v1.webp",
+    cabinetArtworkSha256:"ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    appearanceVariant:"atlas-reference-cabinet/1",
+    keyBankFormat:"bar-six-key/1",
+    lightSequence:true,
+    lightSequenceMode:"single-key",
+    buttonLightDurationMs:Math.max(650,Math.min(1400,Number(source.buttonLightDurationMs)||1000)),
+    coinSound:source.coinSound||"assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    coinSoundSha256:source.coinSoundSha256||"3fd636fe3763b95a09bc8f6be470361ddf0a49e7772464d1a5292fa7c7674e8a",
+    sessionStorageKey:source.sessionStorageKey||`barJookBoxActivated:${editionEntry.editionId}`,
+    tickerBio:String(source.tickerText||"ADMINISTRATOR TICKER TEXT TO BE SUPPLIED.").toUpperCase(),
+    tickerDurationSeconds:Math.max(12,Math.min(60,Number(source.tickerDurationSeconds)||34)),
+    autoplayDelayMs:0,
+    startupTimingsMs:{mechanism:120,neonOn:800,screenOn:1200,buttonsOn:1600,tickerOn:2000,...(source.startupTimingsMs||{})},
+    displaySelectionIds:selections.map(selection=>selection.id),
+    marquee:source.venueName||config.bandName,
+    videoLabel:"Welcome video",
+    heroLabels:["Visit","Events","Drinks","Connect"],
+    cabinetCopyright:source.cabinetCopyright||"Copyright Clearlight Creative 2026.",
+    coinStart:true,
+    sleepingStateLabel:"Drag coin to play",
+    awakeStateLabel:"Coin accepted — Bar Edition is live",
+    contentStatus:source.contentStatus||"awaiting-admin-assets",
+    logoArtwork:source.logoArtwork||"",
+    heroArtwork:source.heroArtwork||"",
+    localWelcomeVideo:source.localWelcomeVideo||"",
+    venueDescription:source.venueDescription||"",
+    address:source.address||"",
+    contentMode:"administrator-static",
+    webLookupAllowed:false,
+    syncMode:"administrator-static",
+    selections
+  };
+}
 function wheelSettings(){
   if(isIndieWheelEdition())return config.indieWheel;
   return{
@@ -305,6 +371,7 @@ function buildJookBox(){
   els.jookBoxBottomShare.setAttribute("aria-label",`Share the ${config.bandName} JookBox`);
   els.jookBoxLearnMore.setAttribute("aria-label",`Learn more about ${config.bandName}`);
   els.jookBoxStatusLabel.textContent="Ready to play";
+  configureBarJookBoxMedia();
   els.page.setAttribute("aria-labelledby","jookBoxTitle");
   els.jookBox.hidden=false;
   if(!els.video.hidden){
@@ -312,8 +379,9 @@ function buildJookBox(){
     els.jookBoxVideoSlot.append(els.video);
   }
   els.jookBoxCoin.addEventListener("click",powerJookBox);
+  if(isBarJookBoxEdition())configureBarJookBoxCoinDrag();
   els.jookBoxBottomShare.addEventListener("click",()=>jookBoxPowered?sharePage():focusJookBoxCoin());
-  els.jookBoxLearnMore.hidden=!(config.jookBox?.biography?.paragraphs?.length);
+  els.jookBoxLearnMore.hidden=isBarJookBoxEdition()||!(config.jookBox?.biography?.paragraphs?.length);
   els.jookBoxLearnMore.addEventListener("click",()=>{
     if(!jookBoxPowered){focusJookBoxCoin();return}
     jookBoxBioReturnFocus=els.jookBoxLearnMore;
@@ -336,6 +404,111 @@ function buildJookBox(){
   }
   prepareJookBoxCoinAudio();
   setJookBoxState("sleeping");
+}
+
+function configureBarJookBoxMedia(){
+  const bar=isBarJookBoxEdition();
+  els.barJookBoxIntro.hidden=true;
+  els.barJookBoxWelcomeVideo.hidden=true;
+  els.barJookBoxWelcomeVideo.pause();
+  els.barJookBoxWelcomeVideo.removeAttribute("src");
+  els.barJookBoxWelcomeVideo.removeAttribute("poster");
+  els.barJookBoxHero.hidden=true;
+  els.barJookBoxHero.removeAttribute("src");
+  els.barJookBoxLogo.hidden=true;
+  els.barJookBoxLogo.removeAttribute("src");
+  if(!bar)return;
+  const source=config.barJookBox||{};
+  const hero=localJookBoxAsset(source.heroArtwork,/\.(?:avif|jpe?g|png|webp)$/i);
+  const logo=localJookBoxAsset(source.logoArtwork,/\.(?:avif|jpe?g|png|svg|webp)$/i);
+  const video=localJookBoxAsset(source.localWelcomeVideo,/\.mp4$/i);
+  els.barJookBoxVenueName.textContent=config.bandName;
+  els.barJookBoxDescription.textContent=String(source.venueDescription||"").trim();
+  els.barJookBoxDescription.hidden=!els.barJookBoxDescription.textContent;
+  els.barJookBoxAddress.textContent=String(source.address||"").trim();
+  els.barJookBoxAddress.hidden=!els.barJookBoxAddress.textContent;
+  if(hero){
+    els.barJookBoxHero.src=hero;
+    els.barJookBoxHero.alt=`${config.bandName} venue`;
+    els.barJookBoxHero.hidden=false;
+  }
+  if(logo){
+    els.barJookBoxLogo.src=logo;
+    els.barJookBoxLogo.alt=`${config.bandName} logo`;
+    els.barJookBoxLogo.hidden=false;
+  }
+  els.jookBox.classList.toggle("has-bar-welcome-video",Boolean(video));
+  els.barJookBoxMediaStatus.textContent=video?"Drag the coin upward to play the venue welcome video.":"Welcome video awaiting administrator MP4.";
+  if(video){
+    els.barJookBoxWelcomeVideo.src=video;
+    if(hero)els.barJookBoxWelcomeVideo.poster=hero;
+    els.barJookBoxWelcomeVideo.setAttribute("aria-label",`${config.bandName} welcome video`);
+    els.barJookBoxWelcomeVideo.hidden=false;
+    els.barJookBoxWelcomeVideo.load();
+  }else{
+    els.barJookBoxIntro.hidden=false;
+  }
+}
+
+function activateBarJookBoxWelcomeVideo({autoplay=false,restore=false}={}){
+  if(!isBarJookBoxEdition()||els.barJookBoxWelcomeVideo.hidden||!els.barJookBoxWelcomeVideo.currentSrc&&!els.barJookBoxWelcomeVideo.getAttribute("src"))return;
+  if(restore){
+    els.barJookBoxWelcomeVideo.pause();
+    els.barJookBoxWelcomeVideo.currentTime=0;
+    return;
+  }
+  if(!autoplay)return;
+  els.barJookBoxWelcomeVideo.currentTime=0;
+  els.barJookBoxWelcomeVideo.muted=false;
+  const playback=els.barJookBoxWelcomeVideo.play();
+  if(playback&&typeof playback.catch==="function"){
+    playback.catch(error=>{
+      console.warn("Bar Edition welcome video autoplay was blocked; the visitor can press Play.",error);
+      els.barJookBoxMediaStatus.textContent="Coin accepted — press Play to watch the welcome video.";
+      els.jookBoxPowerStatus.textContent="Coin accepted. The Bar Edition is awake; press Play to start the welcome video.";
+    });
+  }
+}
+
+function localJookBoxAsset(value,extensionPattern){
+  const path=String(value||"").trim().replace(/^\/+/,"");
+  if(!path||path.includes("..")||!/^assets\/[A-Za-z0-9_./-]+$/.test(path)||!extensionPattern.test(path))return"";
+  return`/${path}`;
+}
+
+function configureBarJookBoxCoinDrag(){
+  barJookBoxCoinDragController?.abort();
+  barJookBoxCoinDragController=new AbortController();
+  const options={signal:barJookBoxCoinDragController.signal};
+  const coin=els.jookBoxCoin.querySelector(".jookbox-coin");
+  if(!coin)return;
+  els.jookBoxCoin.setAttribute("aria-label",`Drag the coin upward into the slot, or press Enter, to start the ${config.bandName} Bar Edition`);
+  els.jookBoxCoinPrompt.textContent="Drag the coin upward into the slot, or press Enter, to wake the Bar Edition.";
+  coin.addEventListener("pointerdown",event=>{
+    if(jookBoxState!=="sleeping"||event.button!==0)return;
+    event.preventDefault();
+    coin.setPointerCapture?.(event.pointerId);
+    barJookBoxCoinDragState={pointerId:event.pointerId,startY:event.clientY,progress:0};
+    els.jookBox.classList.add("is-coin-dragging");
+  },options);
+  coin.addEventListener("pointermove",event=>{
+    if(!barJookBoxCoinDragState||event.pointerId!==barJookBoxCoinDragState.pointerId)return;
+    event.preventDefault();
+    const progress=Math.max(0,Math.min(1,(barJookBoxCoinDragState.startY-event.clientY)/72));
+    barJookBoxCoinDragState.progress=progress;
+    coin.style.transform=`translate(-50%,calc(-50% - ${Math.round(progress*118)}%)) rotate(${Math.round(progress*12)}deg)`;
+  },options);
+  const finish=event=>{
+    if(!barJookBoxCoinDragState||event.pointerId!==barJookBoxCoinDragState.pointerId)return;
+    const accepted=barJookBoxCoinDragState.progress>=.56;
+    barJookBoxCoinDragState=null;
+    coin.releasePointerCapture?.(event.pointerId);
+    els.jookBox.classList.remove("is-coin-dragging");
+    coin.style.removeProperty("transform");
+    if(accepted)powerJookBox();
+  };
+  coin.addEventListener("pointerup",finish,options);
+  coin.addEventListener("pointercancel",finish,options);
 }
 
 function scheduleJookBoxMarqueeTitleFit(){
@@ -497,7 +670,7 @@ function jookBoxUtilityFallbackKinds(destinationCount,hasBiography){
 function createJookBoxUtilityKey(kind,index){
   const definition=kind==="learn_more"
     ?{kind,label:"Learn More",subLabel:"Band biography",icon:"i"}
-    :{kind:"share",label:"Share",subLabel:"Share this JookBox",icon:"↗"};
+    :{kind:"share",label:"Share",subLabel:`Share this ${isBarJookBoxEdition()?"Bar Edition":"JookBox"}`,icon:"↗"};
   const button=document.createElement("button");
   button.type="button";
   button.className="jookbox-destination jookbox-action-key jookbox-utility-key";
@@ -507,7 +680,7 @@ function createJookBoxUtilityKey(kind,index){
   button.disabled=true;
   button.tabIndex=-1;
   button.setAttribute("aria-disabled","true");
-  button.setAttribute("aria-label",definition.kind==="learn_more"?`Learn more about ${config.bandName}`:`Share the ${config.bandName} JookBox`);
+  button.setAttribute("aria-label",definition.kind==="learn_more"?`Learn more about ${config.bandName}`:`Share the ${config.bandName} ${isBarJookBoxEdition()?"Bar Edition":"JookBox"}`);
   button.innerHTML=`<span class="jookbox-action-icon" aria-hidden="true">${definition.icon}</span><span class="jookbox-action-copy"><strong>${definition.label}</strong><small>${definition.subLabel}</small></span><span class="jookbox-external-mark" aria-hidden="true">↗</span>`;
   button.addEventListener("click",()=>{
     if(!jookBoxPowered){focusJookBoxCoin();return}
@@ -523,15 +696,19 @@ function createJookBoxUtilityKey(kind,index){
 
 function buildJookBoxProductNavigation(){
   const sixKeyFormat=jookBoxUsesSixKeyFormat();
-  const destinations=jookBoxDestinationDefinitions().slice(0,sixKeyFormat?6:8);
+  const barSixKeyFormat=isBarJookBoxEdition()&&config.jookBox?.keyBankFormat==="bar-six-key/1";
+  const destinations=jookBoxDestinationDefinitions().slice(0,barSixKeyFormat?5:sixKeyFormat?6:8);
   const controls=destinations.map((definition,index)=>{
     const link=createJookBoxDestinationLink(definition,"jookbox-action-key","jookbox_selection_bank");
     link.dataset.keyIndex=String(index);
     return link;
   });
-  if(sixKeyFormat){
+  if(barSixKeyFormat){
+    controls.push(createJookBoxUtilityKey("share",controls.length));
+  }else if(sixKeyFormat){
     for(const kind of jookBoxUtilityFallbackKinds(controls.length,jookBoxHasBiography()))controls.push(createJookBoxUtilityKey(kind,controls.length));
   }
+  if(barSixKeyFormat&&controls.length!==6)console.warn("The Bar Edition contract requires exactly five administrator-supplied destinations plus Share.");
   if(sixKeyFormat&&controls.length!==6)console.warn("The six-key JookBox contract requires four to six verified destinations so Learn More and Share can preserve all six positions.");
   const utilityKinds=new Set(controls.map(control=>control.dataset.jookboxUtility).filter(Boolean));
   const atlasReferenceCabinet=config.jookBox?.appearanceVariant==="atlas-reference-cabinet/1";
@@ -761,17 +938,31 @@ function setJookBoxState(nextState){
     els.jookBoxTicker.setAttribute("aria-hidden","true");
     els.videoFrame.tabIndex=-1;
     els.videoFrame.setAttribute("aria-hidden","true");
+    if(isBarJookBoxEdition()){
+      els.barJookBoxWelcomeVideo.pause();
+      els.barJookBoxWelcomeVideo.tabIndex=-1;
+      els.barJookBoxWelcomeVideo.setAttribute("aria-hidden","true");
+    }
   }
   if(nextState==="awake"){
-    activateJookBoxVideo();
+    if(isBarJookBoxEdition())activateBarJookBoxWelcomeVideo();
+    else activateJookBoxVideo();
     els.jookBoxCoin.disabled=true;
     els.jookBoxCoin.querySelector(".jookbox-coin-plate").textContent="Now playing";
     els.jookBoxCoinPrompt.textContent="Coin accepted — the JookBox is awake.";
     els.jookBoxStatusLabel.textContent="Now playing";
     els.jookBoxStatePlaque.textContent=String(config.jookBox?.awakeStateLabel||"Coin accepted — now playing");
     els.jookBoxTicker.removeAttribute("aria-hidden");
-    els.videoFrame.tabIndex=0;
-    els.videoFrame.removeAttribute("aria-hidden");
+    if(isBarJookBoxEdition()){
+      els.videoFrame.tabIndex=-1;
+      els.videoFrame.setAttribute("aria-hidden","true");
+      els.barJookBoxWelcomeVideo.tabIndex=0;
+      els.barJookBoxWelcomeVideo.removeAttribute("aria-hidden");
+      els.barJookBoxMediaStatus.textContent="Coin accepted — welcome video ready.";
+    }else{
+      els.videoFrame.tabIndex=0;
+      els.videoFrame.removeAttribute("aria-hidden");
+    }
     const availableKeyCount=jookBoxActionKeys().length;
     els.jookBoxPowerStatus.textContent=`Coin accepted. ${config.bandName} is now playing and ${availableKeyCount} selection ${availableKeyCount===1?"key is":"keys are"} available.`;
     unlockJookBoxDestinations();
@@ -800,6 +991,10 @@ function cleanupJookBoxLifecycle(){
   jookBoxMarqueeResizeObserver?.disconnect();
   jookBoxMarqueeResizeObserver=null;
   window.removeEventListener("resize",scheduleJookBoxMarqueeTitleFit);
+  barJookBoxCoinDragController?.abort();
+  barJookBoxCoinDragController=null;
+  barJookBoxCoinDragState=null;
+  if(isBarJookBoxEdition())els.barJookBoxWelcomeVideo.pause();
 }
 
 function restoreJookBoxSessionState(){
@@ -808,6 +1003,7 @@ function restoreJookBoxSessionState(){
   if(!active){setJookBoxState("sleeping");return}
   els.jookBox.classList.add("is-neon-on","is-screen-on","is-buttons-running","is-ticker-running");
   setJookBoxState("awake");
+  if(isBarJookBoxEdition())activateBarJookBoxWelcomeVideo({restore:true});
 }
 
 function powerJookBox(){
@@ -818,9 +1014,10 @@ function powerJookBox(){
   els.jookBoxCoinPrompt.textContent="Coin accepted. The JookBox is powering up.";
   els.jookBoxPowerStatus.textContent="Coin accepted. The JookBox is powering up.";
   playJookBoxCoinSound();
-  activateJookBoxVideo(true);
+  if(isBarJookBoxEdition())activateBarJookBoxWelcomeVideo({autoplay:true});
+  else activateJookBoxVideo(true);
   try{sessionStorage.setItem(jookBoxSessionKey(),"true")}catch{}
-  const id=els.videoFrame.dataset.videoId;
+  const id=isBarJookBoxEdition()?"local-mp4":els.videoFrame.dataset.videoId;
   analytics.track("jookbox_coin_inserted",{interaction_source:"jookbox_coin",video_id:id||"",edition_type:config.editionType},{onceKey:`jookbox-coin:${editionEntry.editionId}`});
 
   const reducedMotion=matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -1392,7 +1589,7 @@ function startAttentionCycle(){
 function validHttps(value){try{const url=new URL(String(value||""));return url.protocol==="https:"?url.href:""}catch{return""}}
 function pageIdentifier(){return config.analytics?.pageIdentifier||`${editionEntry.editionId}:${isJookBoxEdition()?"jookbox-v2":"discovery-v1"}`}
 function canonicalURL(){return new URL(editionEntry.canonicalPath||`/e/${editionEntry.editionId}`,location.origin).href}
-function sharePayload(){return isWheelEdition()?{title:`${config.bandName} | Indie Wheel`,text:`Spin to discover ${config.bandName} artists, take the 10-question quiz and explore the catalogue on ${wheelSettings().destinationLabel}.`,url:canonicalURL()}:isJookBoxEdition()?{title:`${config.bandName} | JookBox`,text:`Play ${config.bandName} in the Deep Cuts JookBox and explore the band's official links.`,url:canonicalURL()}:isLanewayEdition()?{title:`${config.bandName} | Laneway`,text:`Discover ${config.bandName} and take the positive five-question Laneway quiz.`,url:canonicalURL()}:isSchoolEdition()?{title:`${config.bandName} | School Discovery`,text:`Discover ${config.bandName}: official school information, programs and video.`,url:canonicalURL()}:isBusinessEdition()?{title:`${config.bandName} | Careers`,text:`Explore current jobs and learn about working with ${config.bandName}.`,url:canonicalURL()}:isClubEdition()?{title:`${config.bandName} | Deep Cuts Clubs`,text:`Explore ${config.bandName}: verified club, membership, events and community links.`,url:canonicalURL()}:isCarEdition()?{title:`${config.bandName} | Deep Cuts Cars`,text:`Explore ${config.bandName}: verified history, specifications, buying and restoration links.`,url:canonicalURL()}:{title:`${config.bandName} | Deep Cuts`,text:`Discover ${config.bandName}: official music, video and social links.`,url:canonicalURL()}}
+function sharePayload(){return isWheelEdition()?{title:`${config.bandName} | Indie Wheel`,text:`Spin to discover ${config.bandName} artists, take the 10-question quiz and explore the catalogue on ${wheelSettings().destinationLabel}.`,url:canonicalURL()}:isBarJookBoxEdition()?{title:`${config.bandName} | Bar Edition`,text:`Explore ${config.bandName} in the Deep Cuts Bar Edition.`,url:canonicalURL()}:isJookBoxEdition()?{title:`${config.bandName} | JookBox`,text:`Play ${config.bandName} in the Deep Cuts JookBox and explore the band's official links.`,url:canonicalURL()}:isLanewayEdition()?{title:`${config.bandName} | Laneway`,text:`Discover ${config.bandName} and take the positive five-question Laneway quiz.`,url:canonicalURL()}:isSchoolEdition()?{title:`${config.bandName} | School Discovery`,text:`Discover ${config.bandName}: official school information, programs and video.`,url:canonicalURL()}:isBusinessEdition()?{title:`${config.bandName} | Careers`,text:`Explore current jobs and learn about working with ${config.bandName}.`,url:canonicalURL()}:isClubEdition()?{title:`${config.bandName} | Deep Cuts Clubs`,text:`Explore ${config.bandName}: verified club, membership, events and community links.`,url:canonicalURL()}:isCarEdition()?{title:`${config.bandName} | Deep Cuts Cars`,text:`Explore ${config.bandName}: verified history, specifications, buying and restoration links.`,url:canonicalURL()}:{title:`${config.bandName} | Deep Cuts`,text:`Discover ${config.bandName}: official music, video and social links.`,url:canonicalURL()}}
 
 async function sharePage(){
   analytics.track("share_button_clicked",{page_identifier:pageIdentifier()},{dedupeKey:"main-share",dedupeMs:500});

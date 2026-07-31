@@ -5,6 +5,7 @@ import path from "node:path";
 import {
   StudioValidationError,
   applyRevision,
+  attachMp4,
   createProject,
   renderStudioPreview,
   updateProject
@@ -61,6 +62,41 @@ assert.equal(jookBox.input.aggitsOption,"none","JookBox must never inherit Aggit
 assert.equal(jookBox.input.addWheel,false,"JookBox must never inherit a spinning wheel.");
 assert.match(renderStudioPreview(jookBox),/jookbox-atlas-reference-v1\.webp/);
 assert.match(renderStudioPreview(jookBox),/RESEARCH NOT RUN/);
+
+const barEditionDraft=createProject({
+  name:"Shotkickers",
+  type:"bar_jukebox",
+  aggitsOption:"aggits-original",
+  addWheel:true,
+  sourceUrls:[
+    "https://venue.example.com/gigs",
+    "https://venue.example.com/menu",
+    "https://venue.example.com/contact",
+    "https://instagram.com/example.venue",
+    "https://facebook.com/example.venue"
+  ],
+  sourceLabels:["Gigs","Menu","Contact Us","Instagram","Facebook"],
+  youtubeUrl:"https://youtu.be/dQw4w9WgXcQ",
+  tickerText:"SHOTKICKERS — LIVE MUSIC, GIGS, DRINKS AND GOOD TIMES IN MELBOURNE."
+},fixedDate);
+assert.equal(barEditionDraft.input.aggitsOption,"none","Bar Edition must never inherit Aggits.");
+assert.equal(barEditionDraft.input.addWheel,false,"Bar Edition must never inherit a spinning wheel.");
+assert.equal(barEditionDraft.input.youtubeUrl,"","Bar Edition uses the administrator's local MP4 rather than YouTube.");
+assert.equal(barEditionDraft.readiness.handoffReady,false,"The static handoff must wait for the local MP4.");
+const barEdition=attachMp4(barEditionDraft,{fileName:"shotkickers-welcome.mp4",sizeBytes:1024,sha256:"a".repeat(64)},fixedDate);
+assert.equal(barEdition.readiness.handoffReady,true);
+const barPreview=renderStudioPreview(barEdition,{videoUrl:"/api/studio/projects/studio_example/video"});
+assert.match(barPreview,/jookbox-atlas-reference-v1\.webp/);
+assert.match(barPreview,/Drag coin up to play/);
+assert.match(barPreview,/jukebox-real-coin-insert-cc0\.mp3/);
+assert.match(barPreview,/WELCOME VIDEO|welcomeVideo/);
+assert.match(barPreview,/Gigs/);
+assert.match(barPreview,/Contact Us/);
+assert.match(barPreview,/id="shareKey"/);
+assert.match(barPreview,/target="_blank" rel="noopener noreferrer"/);
+assert.match(barPreview,/setTimeout\(\(\)=>machine\.classList\.add\("is-neon-on"\),800\)/);
+assert.match(barPreview,/video\.play\(\)/);
+assert.match(barPreview,/No web lookup runs for Bar Edition/);
 
 const school=createProject({
   name:"Test School",
@@ -139,6 +175,10 @@ assert.match(html,/id="logo-file"/);
 assert.match(html,/Add a spinning wheel\?/);
 assert.match(html,/id="research-result"/);
 assert.match(html,/id="run-description"/);
+assert.match(html,/id="bar-ticker"/);
+assert.match(html,/id="mp4-file"/);
+assert.match(html,/id="source-label-5"/);
+assert.match(html,/id="source-url-5"/);
 assert.match(html,/id="aggits-step"/);
 assert.match(html,/id="project-name-label"/);
 assert.match(html,/name="addWheel" value="yes"/);
@@ -148,9 +188,12 @@ assert.match(html,/Optional media &amp; poster/);
 assert.match(app,/SpeechRecognition/);
 assert.match(app,/DOWNLOAD POSTER|downloadPoster/);
 assert.match(app,/owner-supplied HGM orange hi-vis artwork/);
-assert.match(app,/els\.aggitsStep\.hidden=jookBox/,"The JookBox intake must hide irrelevant Aggits controls.");
+assert.match(app,/els\.aggitsStep\.hidden=jukeboxProduct/,"Both JookBox products must hide irrelevant Aggits controls.");
 assert.match(app,/field\.hidden=jookBox/,"The JookBox intake must not ask the owner to label research URLs manually.");
+assert.match(app,/type\?\.id==="bar_jukebox"/);
+assert.match(app,/Build the local MP4 JookBox with five keys plus Share/);
 assert.match(css,/--orange:#f38a45/);
+assert.match(css,/\.bar-jukebox-mode/);
 assert.match(css,/Compact top-left production intake/);
 assert.match(css,/Minimalist project controls/);
 assert.match(desktopMain,/app\.getPath\("userData"\)/,"Desktop drafts must live outside the packaged application.");
@@ -165,6 +208,7 @@ assert.match(forgeConfig,/@electron-forge\/maker-squirrel/);
 assert.match(forgeConfig,/@electron-forge\/maker-dmg/);
 assert.match(forgeConfig,/studio-jookbox-research\.mjs/);
 assert.match(forgeConfig,/jookbox-atlas-reference-v1\.webp/);
+assert.match(forgeConfig,/jukebox-real-coin-insert-cc0\.mp3/);
 assert.match(packageSource,/"studio:desktop": "electron-forge start"/);
 assert.match(packageSource,/"studio:make": "electron-forge make"/);
 assert.match(macWorkflow,/arch:\s*\n\s*- arm64\s*\n\s*- x64/);
@@ -188,7 +232,7 @@ try{
   const bootstrap=await fetch(`${origin}/api/studio/bootstrap`).then(response=>response.json());
   assert.equal(bootstrap.ok,true);
   assert.equal(bootstrap.token,token);
-  assert.deepEqual(bootstrap.productTypes.map(item=>item.id),["jookbox","business","recruitment","individual_band","restaurant","tourist_attraction","town"]);
+  assert.deepEqual(bootstrap.productTypes.map(item=>item.id),["bar_jukebox","jookbox","business","recruitment","individual_band","restaurant","tourist_attraction","town"]);
   assert.ok(bootstrap.legacyProductTypes.some(item=>item.id==="music"),"Legacy Studio drafts must remain loadable.");
 
   const missing=await fetch(`${origin}/studio/favicon.ico`);
@@ -273,12 +317,64 @@ try{
   const researchedHandoff=await fetch(researched.handoffUrl).then(response=>response.json());
   assert.equal(researchedHandoff.publication.automatedResearchPassed,true);
   assert.equal(researchedHandoff.publication.verificationRequired,false);
+
+  const barResponse=await fetch(`${origin}/api/studio/projects`,{
+    method:"POST",
+    headers:{"content-type":"application/json","origin":origin,"x-deep-cuts-studio-token":token},
+    body:JSON.stringify({input:{
+      name:"Shotkickers",
+      type:"bar_jukebox",
+      sourceUrls:[
+        "https://bar.example.com/gigs",
+        "https://bar.example.com/menu",
+        "https://bar.example.com/contact",
+        "https://bar.example.com/instagram",
+        "https://bar.example.com/facebook"
+      ],
+      sourceLabels:["Gigs","Menu","Contact Us","Instagram","Facebook"],
+      tickerText:"SHOTKICKERS — LIVE MUSIC, GIGS, DRINKS AND GOOD TIMES."
+    }})
+  });
+  assert.equal(barResponse.status,201);
+  const barCreated=await barResponse.json();
+  assert.equal(barCreated.project.readiness.handoffReady,false);
+  const fakeMp4=Buffer.concat([Buffer.from([0,0,0,20]),Buffer.from("ftyp"),Buffer.from("isom"),Buffer.alloc(12)]);
+  const videoResponse=await fetch(`${origin}/api/studio/projects/${barCreated.project.id}/video`,{
+    method:"POST",
+    headers:{"content-type":"video/mp4","origin":origin,"x-deep-cuts-studio-token":token,"x-studio-file-name":"shotkickers-welcome.mp4"},
+    body:fakeMp4
+  });
+  assert.equal(videoResponse.status,200);
+  const barWithVideo=await videoResponse.json();
+  assert.equal(barWithVideo.project.mp4.fileName,"shotkickers-welcome.mp4");
+  assert.equal(barWithVideo.project.readiness.handoffReady,true);
+  const barPreviewResponse=await fetch(barWithVideo.previewUrl);
+  const renderedBarPreview=await barPreviewResponse.text();
+  assert.equal(barPreviewResponse.status,200);
+  assert.match(barPreviewResponse.headers.get("content-security-policy")||"",/script-src 'self' 'nonce-[^']+'/);
+  assert.match(renderedBarPreview,/SHOTKICKERS/);
+  assert.match(renderedBarPreview,/id="welcomeVideo"/);
+  assert.match(renderedBarPreview,/id="shareKey"/);
+  assert.match(renderedBarPreview,/<script nonce="[^"]+">/);
+  const rangedVideo=await fetch(`${origin}/api/studio/projects/${barCreated.project.id}/video`,{headers:{range:"bytes=0-7"}});
+  assert.equal(rangedVideo.status,206);
+  assert.equal(rangedVideo.headers.get("content-range"),`bytes 0-7/${fakeMp4.length}`);
+  assert.equal((await rangedVideo.arrayBuffer()).byteLength,8);
+  const barHandoff=await fetch(barWithVideo.handoffUrl).then(response=>response.json());
+  assert.equal(barHandoff.publication.verificationRequired,false);
+  assert.equal(barHandoff.project.input.sourceUrls.length,5);
+  const removedVideo=await fetch(`${origin}/api/studio/projects/${barCreated.project.id}/video`,{
+    method:"DELETE",
+    headers:{"origin":origin,"x-deep-cuts-studio-token":token}
+  }).then(response=>response.json());
+  assert.equal(removedVideo.project.mp4,null);
+  assert.equal(removedVideo.project.readiness.handoffReady,false);
 }finally{
   await new Promise(resolve=>server.close(resolve));
   await fs.rm(temporary,{recursive:true,force:true});
 }
 
-console.log("Deep Cuts Studio tests passed: local isolation, HGM-only artwork, logo/MP3, labelled preview, 1080 poster, revisions, QR handoff and production gate are intact.");
+console.log("Deep Cuts Studio tests passed: local isolation, Bar Edition MP4/coin preview, HGM-only artwork, logo/MP3, labelled preview, 1080 poster, revisions, QR handoff and production gate are intact.");
 
 function verifiedResearch(input){
   const verifiedAt="2026-07-30T01:00:00.000Z";
