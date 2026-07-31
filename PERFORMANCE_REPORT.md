@@ -165,7 +165,24 @@ Static-output equivalence:
 - baseline aggregate tree SHA-256: `e59b6b088500463b5f210cef90e64bd985a8e1b7986d299acfd7d2c1ec4ac635`;
 - optimized aggregate tree SHA-256: `e59b6b088500463b5f210cef90e64bd985a8e1b7986d299acfd7d2c1ec4ac635`.
 
-The production before/after artwork and end-to-end deployment figures are completed from the first green main deployment of this change so that reported improvement reflects the real GitHub runner, Python renderer, cache and Cloudflare path rather than an estimate.
+## Verified GitHub runner after measurements
+
+| Delivery-artwork path | Before | After | Improvement |
+|---|---:|---:|---:|
+| Cold full job | 145 s | 82 s | **43.4% faster** |
+| Generate and scan-verify all 35 editions | 135 s | 64 s | **52.6% faster** |
+| Exact-input cache-hit full job | 145 s | 23 s | **84.1% faster** |
+| Cache-hit full integrity and QR verification | not available | 1 s | verified, fail-closed reuse |
+
+GitHub Actions runs `30590641904` and `30592490136` supplied the after figures. The second run restored only the exact input hash and still rechecked every expected file, SHA-256 digest, dimension, manifest destination and QR decode before accepting the cache.
+
+Delivery-output equivalence against the preserved pre-change artifact:
+
+- 70 of 70 generated PNG files are byte-identical;
+- 35 of 35 manifests match on every stable field, file digest and destination;
+- only the intentionally variable `generatedAt` timestamp differs after a cold render.
+
+The end-to-end production deployment is measured after merge so that it includes the real Cloudflare synchronization and live smoke-test path.
 
 ## Behavior and quality guarantees
 
