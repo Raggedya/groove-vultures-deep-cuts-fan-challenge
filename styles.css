@@ -3431,6 +3431,17 @@ body{margin:0;min-height:100%;color:var(--ink);background:#000713;overflow-x:hid
   text-shadow:0 0 7px rgba(255,67,135,.72)
 }
 
+/* Bar Edition keeps the ATLAS cabinet but uses a lower, two-part venue
+   identity block immediately above the ticker. Band JookBox geometry is
+   intentionally unchanged. */
+[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"][data-jookbox-embedded-marquee="false"] .jookbox-marquee{
+  top:8.45%;
+  height:7.75%
+}
+[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"][data-jookbox-embedded-marquee="false"] .jookbox-playing-status{
+  display:none
+}
+
 [data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .jookbox-ticker-console{
   top:17.35%;
   left:7.2%;

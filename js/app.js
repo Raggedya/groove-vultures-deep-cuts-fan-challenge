@@ -1,6 +1,6 @@
 "use strict";
 
-const VERSION="20260731-bar-jookbox-3";
+const VERSION="20260731-bar-jookbox-4";
 const LANEWAY_REPORTING_VERSION="laneway-weekly-v1";
 const $=id=>document.getElementById(id);
 const els={

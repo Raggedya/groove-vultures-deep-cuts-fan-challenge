@@ -89,6 +89,8 @@ const barPreview=renderStudioPreview(barEdition,{videoUrl:"/api/studio/projects/
 assert.match(barPreview,/jookbox-atlas-reference-v1\.webp/);
 assert.match(barPreview,/class="coin-label">INSERT COIN</);
 assert.doesNotMatch(barPreview,/Drag coin up to play/);
+assert.match(barPreview,/\.title\{[^}]*top:8\.45%;[^}]*height:7\.75%/);
+assert.doesNotMatch(barPreview,/\.title small:after\{[^}]*content:"BAR EDITION"/);
 assert.match(barPreview,/jukebox-real-coin-insert-cc0\.mp3/);
 assert.match(barPreview,/WELCOME VIDEO|welcomeVideo/);
 assert.match(barPreview,/Gigs/);

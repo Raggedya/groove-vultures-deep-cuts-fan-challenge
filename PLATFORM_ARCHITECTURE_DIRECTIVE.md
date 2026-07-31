@@ -90,6 +90,7 @@ Treat every completed edition as a finished commercial product that must remain 
 
 - `bar_jukebox` is an isolated static venue product on the shared engine. It must never change, import from or weaken the locked Band Edition `jukebox` contract.
 - Its model is `bar-jukebox/1`, appearance is `atlas-reference-cabinet/1`, and key bank is `bar-six-key/1`.
+- Its cabinet marquee shows only the fitted venue name and `JOOKBOX` tagline in a compact lower arch position immediately above the ticker; `BAR EDITION` never appears inside the cabinet.
 - The venue administrator supplies the venue name, scrolling ticker, local MP4 and exactly five labelled HTTPS destinations. Share is the permanent sixth key. No web lookup, inference or runtime scraping is permitted.
 - The blank support strip below the six keys is a second working Share control labelled `Share [Venue Name] with your mates`; it remains locked until the coin wakes the cabinet and shares the canonical public edition URL.
 - The drag/click/keyboard coin interaction, sourced real coin sound, four-state session model, neon/CRT start-up, title fitting, reduced-motion behavior and single-key sequence reuse the shared JookBox engine. The MP4 playback request occurs synchronously inside the coin gesture and retains native controls when browser autoplay is blocked.
