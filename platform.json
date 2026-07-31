@@ -289,6 +289,14 @@
       "name": "ATLAS",
       "config": "editions/atlas/edition.json",
       "active": true
+    },
+    {
+      "slug": "southern-culture-on-the-skids",
+      "editionId": "dc_f3f4750b1b",
+      "canonicalPath": "/e/dc_f3f4750b1b",
+      "name": "Southern Culture on the Skids",
+      "config": "editions/southern-culture-on-the-skids/edition.json",
+      "active": true
     }
   ]
 }
