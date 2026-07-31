@@ -107,8 +107,8 @@ const contracts = JSON.parse(contractsText);
 assert.equal(contracts.productModels.jookbox.version, 3);
 assert.deepEqual(contracts.editionTypes.jukebox.renderedLinks, []);
 assert.match(html, /id="jookBoxCabinet"/);
-assert.match(html, /styles\.css\?v=20260731-jookbox-18/);
-assert.match(html, /app\.js\?v=20260731-jookbox-19/);
+assert.match(html, /styles\.css\?v=20260731-jookbox-19/);
+assert.match(html, /app\.js\?v=20260731-jookbox-20/);
 assert.match(html, /id="jookBoxVideoSlot"/);
 assert.match(html, /id="jookBoxCoinButton"[\s\S]*aria-label="Insert coin and start the jukebox"/);
 assert.match(html, /id="jookBoxTickerText"/);
@@ -122,11 +122,12 @@ assert.doesNotMatch(html, /Filthy Animals/, "The reusable HTML renderer must nev
 assert.doesNotMatch(html, /id="jookBoxSoundToggle"|class="jookbox-band-plaque"|id="jookBoxActionBar"/);
 
 assert.match(app, /function setJookBoxState\(nextState\)/);
-assert.match(app, /const VERSION="20260731-jookbox-19"/);
+assert.match(app, /const VERSION="20260731-jookbox-20"/);
 assert.match(app, /dataset\.jookboxEmbeddedMarquee=embeddedMarquee\?"true":"false"/);
 assert.match(app, /dataset\.jookboxAppearance=config\.jookBox\?\.appearanceVariant\|\|"reference"/);
 assert.match(app, /dataset\.jookboxLightSequence=config\.jookBox\?\.lightSequenceMode\|\|"single-key"/);
 assert.match(app, /dataset\.jookboxKeyFormat=config\.jookBox\?\.keyBankFormat\|\|"classic-eight-key\/1"/);
+assert.match(app, /dataset\.jookboxLongMarquee=String\(\(config\.jookBox\?\.marquee\|\|name\)\.length>18\)/);
 assert.match(app, /marquee\?\.classList\.toggle\("visually-hidden",embeddedMarquee\)/);
 assert.match(app, /availableKeyCount===1\?"key is":"keys are"/);
 assert.match(app, /\["sleeping","acceptingCoin","poweringUp","awake"\]/);
@@ -160,6 +161,7 @@ assert.deepEqual(utilityFallbackKinds(6, true), []);
 assert.deepEqual(utilityFallbackKinds(5, true), ["learn_more"]);
 assert.deepEqual(utilityFallbackKinds(4, true), ["learn_more", "share"]);
 assert.match(app, /utilityKinds\.has\("learn_more"\)/);
+assert.match(app, /utilityKinds\.has\("learn_more"\)\|\|atlasReferenceCabinet/);
 assert.match(app, /utilityKinds\.has\("share"\)/);
 assert.match(app, /supportAction==="share"/);
 assert.match(app, /dataset\.jookboxAction="share"/);
@@ -179,6 +181,7 @@ assert.match(app, /function trackJookBoxOutbound\(definition,url,source="jookbox
 assert.match(styles, /\[data-jookbox-layout="coin-awakening\/1"\] \.jookbox-machine\{[\s\S]*aspect-ratio:762\/1280/);
 assert.match(styles, /data-jookbox-embedded-marquee="false"[\s\S]*\.jookbox-marquee h1\{[\s\S]*text-transform:uppercase/);
 assert.match(styles, /data-jookbox-appearance="atlas-reference-cabinet\/1"[\s\S]*\.jookbox-machine\{[\s\S]*aspect-ratio:887\/1774/);
+assert.match(styles, /data-jookbox-long-marquee="true"[\s\S]*\.jookbox-marquee h1\{[\s\S]*font-size:clamp\(\.58rem,2\.65vw,2rem\)/);
 assert.match(styles, /data-jookbox-appearance="atlas-reference-cabinet\/1"[\s\S]*\.jookbox-ticker-console\{[\s\S]*top:17\.35%/);
 assert.match(styles, /data-jookbox-appearance="atlas-reference-cabinet\/1"[\s\S]*\.jookbox-screen-frame\{[\s\S]*left:27\.3%/);
 assert.match(styles, /data-jookbox-appearance="atlas-reference-cabinet\/1"[\s\S]*\.jookbox-secondary-actions\{[\s\S]*grid-template-columns:repeat\(3/);
@@ -232,24 +235,34 @@ assert.match(styles, /env\(safe-area-inset-bottom\)/);
 
 assert.match(creator, /modelVersion:'jookbox\/3'/);
 assert.match(creator, /layoutVersion:'coin-awakening\/1'/);
-assert.match(creator, /keyBankFormat=clean\(input\.jookBox\?\.keyBankFormat\|\|'classic-eight-key\/1'/);
+assert.match(creator, /appearanceVariant=requestedAppearanceVariant\|\|\(legacyCabinetRequested\?'reference':'atlas-reference-cabinet\/1'\)/);
+assert.match(creator, /keyBankFormat=clean\(requestedKeyBankFormat\|\|\(atlasReferenceCabinet\?'six-key\/1':'classic-eight-key\/1'\)/);
 assert.match(creator, /minimumDisplayIds=keyBankFormat==='six-key\/1'\?4:1/);
 assert.match(creator, /maximumDisplayIds=keyBankFormat==='six-key\/1'\?6:8/);
 assert.match(creator, /keyBankFormat,/);
 assert.match(creator, /displaySelectionIds:requestedDisplayIds/);
+assert.match(creator, /cabinetArtwork:atlasReferenceCabinet\?'assets\/jookbox-atlas-reference-v1\.webp'/);
+assert.match(creator, /cabinetArtworkSha256:atlasReferenceCabinet\?'ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3'/);
+assert.match(creator, /supportAction:\{action:'share',label:'Support Our Band',detail:'Please share our JookBox'/);
+assert.match(creator, /cabinetCopyright:'Copyright Clearlight Creative 2026\.'/);
 assert.match(creator, /assets\/audio\/jukebox-real-coin-insert-cc0\.mp3/);
 assert.match(creator, /coinSoundLicense:clean\(input\.jookBox\?\.coinSoundLicense\|\|'CC0-1\.0'/);
 assert.match(creator, /tickerDurationSeconds:Math\.max\(12,Math\.min\(60,Number\(input\.jookBox\?\.tickerDurationSeconds\)\|\|36\)\)/);
-assert.match(creator, /buttonLightDurationMs:Math\.max\(450,Math\.min\(1200,Number\(input\.jookBox\?\.buttonLightDurationMs\)\|\|Number\(input\.jookBox\?\.buttonRowDurationMs\)\|\|650\)\)/);
+assert.match(creator, /buttonLightDurationMs:Math\.max\(450,Math\.min\(1200,Number\(input\.jookBox\?\.buttonLightDurationMs\)\|\|Number\(input\.jookBox\?\.buttonRowDurationMs\)\|\|\(atlasReferenceCabinet\?1100:650\)\)\)/);
 assert.match(creator, /lightSequenceMode:'single-key'/);
 assert.match(creator, /autoplayDelayMs:0/);
 assert.match(validator, /locked JookBox cabinet artwork failed its SHA-256 identity check/);
 assert.match(validator, /JookBox coin recording failed its SHA-256 identity check/);
 assert.match(validator, /request JookBox video playback immediately within the direct coin interaction/);
-assert.match(validator, /const atlasReferenceCabinet=edition\.editionId==='dc_e22f1cb651'/);
+assert.match(validator, /const atlasReferenceCabinet=appearanceVariant==='atlas-reference-cabinet\/1'/);
 assert.match(validator, /valid JookBox light duration/);
 assert.match(validator, /six-key format requires four to six unique display selection IDs/);
 assert.match(validator, /keyBankFormat!=='six-key\/1'/);
+assert.equal(contracts.productModels.jookbox.referenceEditionId, "dc_e22f1cb651");
+assert.equal(contracts.productModels.jookbox.legacyReferenceEditionId, "dc_a3c049e4bc");
+assert.equal(contracts.productModels.jookbox.defaultAppearanceVariant, "atlas-reference-cabinet/1");
+assert.equal(contracts.productModels.jookbox.defaultKeyBankFormat, "six-key/1");
+assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("atlas-reference-cabinet-permanent-new-edition-default"));
 assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("immediate-coin-interaction-autoplay-request-with-manual-fallback"));
 assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("pre-coin-dimmed-locked-selection-keys"));
 assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("single-key-sequential-illumination"));
@@ -298,20 +311,24 @@ assert.equal(scotsConfig.editionType, "jukebox");
 assert.equal(scotsConfig.brandName, "JookBox");
 assert.equal(scotsConfig.characterArtwork, "", "Southern Culture on the Skids must use the no-Aggits JookBox model.");
 assert.equal(scotsConfig.jookBox?.modelVersion, "jookbox/3");
-assert.equal(scotsConfig.jookBox?.keyBankFormat, "classic-eight-key/1");
+assert.equal(scotsConfig.jookBox?.appearanceVariant, "atlas-reference-cabinet/1");
+assert.equal(scotsConfig.jookBox?.keyBankFormat, "six-key/1");
 assert.equal(scotsConfig.jookBox?.lightSequenceMode, "single-key");
+assert.equal(scotsConfig.jookBox?.buttonLightDurationMs, 1100);
+assert.equal(scotsConfig.jookBox?.cabinetArtwork, "assets/jookbox-atlas-reference-v1.webp");
+assert.equal(scotsConfig.jookBox?.cabinetArtworkSha256, atlasConfig.jookBox?.cabinetArtworkSha256);
+assert.deepEqual(scotsConfig.jookBox?.supportAction, atlasConfig.jookBox?.supportAction);
+assert.equal(scotsConfig.jookBox?.cabinetCopyright, "Copyright Clearlight Creative 2026.");
 assert.equal(scotsConfig.jookBox?.linkSourceURL, "https://www.scots.com/");
 assert.equal(scotsConfig.featuredVideo?.youtubeURL, "https://www.youtube.com/watch?v=T9NLgyEFzOo");
 assert.equal(scotsConfig.featuredVideo?.selectionBasis, "most-viewed-official");
 assert.deepEqual(scotsConfig.jookBox?.displaySelectionIds, [
   "spotify",
   "bandcamp",
-  "instagram",
-  "website",
-  "buy-music",
-  "merchandise",
-  "facebook",
   "youtube-channel",
+  "instagram",
+  "merchandise",
+  "website",
 ]);
 assert.equal(scotsConfig.jookBox?.selections?.length, 8);
 assert.equal(scotsConfig.jookBox?.biography?.paragraphs?.length, 3);
@@ -343,4 +360,4 @@ for (const other of platform.editions.filter((item) => item.editionId !== entry.
   assert.notEqual(otherConfig.jookBox?.sessionStorageKey, config.jookBox.sessionStorageKey, `${other.slug} must not share the Filthy Animals session key.`);
 }
 
-console.log("JookBox v3 passed: Filthy Animals is unchanged, while ATLAS keeps its byte-locked six-key visuals, working Support Our Band share action and requested cabinet copyright.");
+console.log("JookBox v3 passed: Filthy Animals is unchanged, while the byte-locked ATLAS six-key cabinet is the permanent future default and Southern Culture uses it with independently verified content.");

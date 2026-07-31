@@ -1,6 +1,6 @@
 "use strict";
 
-const VERSION="20260731-jookbox-19";
+const VERSION="20260731-jookbox-20";
 const LANEWAY_REPORTING_VERSION="laneway-weekly-v1";
 const $=id=>document.getElementById(id);
 const els={
@@ -154,6 +154,7 @@ async function applyConfig(){
     document.documentElement.dataset.jookboxAppearance=config.jookBox?.appearanceVariant||"reference";
     document.documentElement.dataset.jookboxLightSequence=config.jookBox?.lightSequenceMode||"single-key";
     document.documentElement.dataset.jookboxKeyFormat=config.jookBox?.keyBankFormat||"classic-eight-key/1";
+    document.documentElement.dataset.jookboxLongMarquee=String((config.jookBox?.marquee||name).length>18);
     document.documentElement.style.setProperty("--jookbox-cyan",config.theme?.accent||"#55d9ff");
     document.documentElement.style.setProperty("--jookbox-orange",config.theme?.accentSecondary||"#ff6640");
     document.documentElement.style.setProperty("--jookbox-gold",config.theme?.gold||"#ffd66b");
@@ -486,7 +487,8 @@ function buildJookBoxProductNavigation(){
   }
   if(sixKeyFormat&&controls.length!==6)console.warn("The six-key JookBox contract requires four to six verified destinations so Learn More and Share can preserve all six positions.");
   const utilityKinds=new Set(controls.map(control=>control.dataset.jookboxUtility).filter(Boolean));
-  els.jookBoxLearnMore.hidden=!jookBoxHasBiography()||utilityKinds.has("learn_more");
+  const atlasReferenceCabinet=config.jookBox?.appearanceVariant==="atlas-reference-cabinet/1";
+  els.jookBoxLearnMore.hidden=!jookBoxHasBiography()||utilityKinds.has("learn_more")||atlasReferenceCabinet;
   clearJookBoxKeyLightTimer(true);
   els.jookBoxSecondaryActions.replaceChildren(...controls);
   els.jookBoxSecondaryActions.closest(".jookbox-action-panel").hidden=!controls.length;

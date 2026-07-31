@@ -10,7 +10,8 @@ const packagedFiles=new Set([
   "/scripts/vendor/qrcode.min.js",
   "/assets/aggits-original-cutout-v4.png",
   "/assets/hgm-aggits-owner-supplied.jpg",
-  "/assets/jookbox-cabinet-photoreal-v1.webp"
+  "/assets/jookbox-cabinet-photoreal-v1.webp",
+  "/assets/jookbox-atlas-reference-v1.webp"
 ]);
 
 function shouldIgnore(filePath){

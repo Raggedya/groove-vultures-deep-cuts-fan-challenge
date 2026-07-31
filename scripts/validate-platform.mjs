@@ -76,12 +76,14 @@ for(const edition of platform.editions){
       for(const asset of [config.characterArtwork,config.business?.logoArtwork])await fs.access(asset);
     }else if(config.editionType==='jukebox'){
       if(config.brandName!=='JookBox'||config.characterArtwork)errors.push(`${edition.config} must preserve the isolated no-Aggits JookBox contract.`);
-      const atlasReferenceCabinet=edition.editionId==='dc_e22f1cb651'&&config.jookBox?.appearanceVariant==='atlas-reference-cabinet/1';
+      const appearanceVariant=config.jookBox?.appearanceVariant||'reference';
+      const atlasReferenceCabinet=appearanceVariant==='atlas-reference-cabinet/1';
       const keyBankFormat=config.jookBox?.keyBankFormat||'classic-eight-key/1';
       const sixKeyFormat=keyBankFormat==='six-key/1';
       const validKeyBankFormat=['classic-eight-key/1','six-key/1'].includes(keyBankFormat);
+      const validAppearanceVariant=['reference','atlas-reference-cabinet/1'].includes(appearanceVariant);
       const validLightSequence=config.jookBox?.lightSequenceMode==='single-key';
-      if(config.jookBox?.modelVersion!=='jookbox/3'||config.jookBox?.layoutVersion!=='coin-awakening/1'||JSON.stringify(config.jookBox?.heroLabels)!==JSON.stringify(['Listen','Watch','Follow','Shop'])||config.jookBox?.lightSequence!==true||!validKeyBankFormat||!validLightSequence||config.jookBox?.coinStart!==true||config.jookBox?.syncMode!=='verified-build-time')errors.push(`${edition.config} must preserve the locked coin-awakening JookBox model, key-bank format and single-key light sequence.`);
+      if(config.jookBox?.modelVersion!=='jookbox/3'||config.jookBox?.layoutVersion!=='coin-awakening/1'||JSON.stringify(config.jookBox?.heroLabels)!==JSON.stringify(['Listen','Watch','Follow','Shop'])||config.jookBox?.lightSequence!==true||!validKeyBankFormat||!validAppearanceVariant||!validLightSequence||config.jookBox?.coinStart!==true||config.jookBox?.syncMode!=='verified-build-time')errors.push(`${edition.config} must preserve the locked coin-awakening JookBox model, appearance, key-bank format and single-key light sequence.`);
       if(!config.jookBox?.tickerBio||!config.jookBox?.coinSound||!config.jookBox?.coinSoundSha256||!/^https:\/\//.test(config.jookBox?.coinSoundSource||'')||!config.jookBox?.coinSoundLicense||!config.jookBox?.sessionStorageKey)errors.push(`${edition.config} requires configured ticker copy, sourced local coin audio with an integrity hash and licence, and session restoration.`);
       if(config.jookBox?.autoplayDelayMs!==0)errors.push(`${edition.config} must request JookBox video playback immediately within the direct coin interaction.`);
       if(!(config.jookBox?.buttonLightDurationMs>=450&&config.jookBox?.buttonLightDurationMs<=1200))errors.push(`${edition.config} must use a valid JookBox light duration.`);
@@ -112,7 +114,7 @@ for(const edition of platform.editions){
       }
       const atlasSupportAction=config.jookBox?.supportAction;
       if(atlasReferenceCabinet&&(
-        !config.jookBox?.cabinetArtworkSha256||
+        config.jookBox?.cabinetArtworkSha256!=='ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3'||
         config.jookBox?.cabinetArtwork!=='assets/jookbox-atlas-reference-v1.webp'||
         atlasSupportAction?.action!=='share'||
         atlasSupportAction?.label!=='Support Our Band'||

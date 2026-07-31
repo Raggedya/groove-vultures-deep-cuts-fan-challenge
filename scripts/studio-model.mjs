@@ -399,13 +399,17 @@ function renderJookBoxStudioPreview(project){
   const input=project.input;
   const research=project.research?.inputFingerprint===researchFingerprint(input)?project.research:null;
   const verified=Boolean(research?.passed&&research.confidence>=98);
-  const selections=(verified?research.selections:[]).filter(item=>research.displaySelectionIds.includes(item.id)).slice(0,8);
+  const selections=(verified?research.selections:[]).filter(item=>research.displaySelectionIds.includes(item.id)).slice(0,6);
   const videoId=youtubeId(verified?research.featuredVideo?.youtubeURL:"");
   const ticker=verified?research.biography?.tickerBio:"INSERT THE BAND NAME AND AN OFFICIAL URL, THEN RUN VERIFIED RESEARCH.";
   const video=videoId
     ?`<iframe title="${escapeAttribute(research.featuredVideo.title||`${input.name} featured video`)}" src="https://www.youtube-nocookie.com/embed/${videoId}?rel=0" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
     :`<div class="jb-screen-wait"><strong>${verified?"VIDEO OMITTED":"AWAITING VERIFIED VIDEO"}</strong><span>${verified?"No playable official video passed the gate.":"Research must prove the official channel and its Popular selection."}</span></div>`;
-  const keys=selections.map(item=>`<a href="${escapeAttribute(item.url)}" target="_blank" rel="noopener noreferrer"><strong>${escapeHtml(item.label)}</strong><small>${escapeHtml(item.detail)}</small></a>`).join("");
+  const destinationKeys=selections.map(item=>`<a href="${escapeAttribute(item.url)}" target="_blank" rel="noopener noreferrer" data-kind="${escapeAttribute(item.kind||"website")}"><strong>${escapeHtml(item.label)}</strong><small>${escapeHtml(item.detail)}</small></a>`);
+  const utilityKeys=[];
+  if(verified&&destinationKeys.length<6&&research.biography?.paragraphs?.length)utilityKeys.push('<button type="button" data-kind="learn_more"><strong>Learn More</strong><small>Band biography</small></button>');
+  if(verified&&destinationKeys.length+utilityKeys.length<6)utilityKeys.push('<button type="button" data-kind="share"><strong>Share</strong><small>Share this JookBox</small></button>');
+  const keys=[...destinationKeys,...utilityKeys].join("");
   const confidence=research?`${research.confidence}% ${research.passed?"VERIFIED":"NEEDS REVIEW"}`:"RESEARCH NOT RUN";
   return`<!doctype html>
 <html lang="en-AU">
@@ -417,15 +421,17 @@ function renderJookBoxStudioPreview(project){
   <style>
     *{box-sizing:border-box}html{background:#050201}body{margin:0;min-height:100vh;background:#050201;color:#fff;font-family:Arial,Helvetica,sans-serif}
     main{width:min(100%,430px);margin:auto;padding:0 0 38px}.draft-bar{display:flex;justify-content:space-between;gap:12px;padding:10px 14px;background:#0b0705;color:#d7a654;font-size:8px;font-weight:900;letter-spacing:.13em}.draft-bar b{color:${verified?"#9ff1bd":"#ffd37b"}}
-    .jb{position:relative;width:100%;aspect-ratio:762/1280;overflow:hidden;background:url("/assets/jookbox-cabinet-photoreal-v1.webp") center/100% 100% no-repeat;filter:${verified?"none":"brightness(.48) saturate(.58)"};transition:filter .4s ease}
-    .jb-title{position:absolute;z-index:2;top:7.8%;left:18%;width:64%;color:#ffe9a8;font-family:Georgia,serif;font-size:clamp(20px,7vw,34px);font-weight:900;line-height:.9;letter-spacing:.055em;text-align:center;text-shadow:0 0 5px #fff2b9,0 0 14px #ff9f22;text-transform:uppercase}
-    .jb-title small{display:block;margin-top:8px;color:#ffe0a0;font:800 clamp(7px,2.4vw,11px) Arial,sans-serif;letter-spacing:.28em}
-    .ticker{position:absolute;z-index:3;top:16.7%;left:16.5%;width:67%;height:5.7%;display:flex;align-items:center;overflow:hidden;border:1px solid #b77c35;border-radius:3px;background:#080402;box-shadow:inset 0 0 16px #000,0 0 9px rgba(255,169,47,.4)}
+    .jb{position:relative;width:100%;aspect-ratio:887/1774;overflow:hidden;background:url("/assets/jookbox-atlas-reference-v1.webp") center/100% 100% no-repeat;filter:${verified?"none":"brightness(.48) saturate(.58)"};transition:filter .4s ease}
+    .jb-title{position:absolute;z-index:2;top:4.15%;left:17%;width:66%;height:12.3%;display:grid;align-content:center;color:#ffe9a8;font-family:Georgia,serif;font-size:clamp(22px,8vw,42px);font-weight:900;line-height:.9;letter-spacing:.12em;text-align:center;text-shadow:0 0 3px #fff2b9,0 0 12px #ff9f22;text-transform:uppercase}
+    .jb-title small{display:block;margin-top:8px;color:#ffe0a0;font:800 clamp(7px,2.3vw,12px) Arial,sans-serif;letter-spacing:.34em}
+    .jb-title small:after{display:block;margin-top:5px;color:#ffb6cb;content:"NOW PLAYING";font-size:.82em;letter-spacing:.14em;text-shadow:0 0 7px rgba(255,67,135,.72)}
+    .ticker{position:absolute;z-index:3;top:17.35%;left:7.2%;width:85.6%;height:8.15%;display:flex;align-items:center;overflow:hidden;border:1px solid #b77c35;border-radius:7px;background:#080402;box-shadow:inset 0 0 16px #000,0 0 9px rgba(255,169,47,.4)}
     .ticker span{display:block;width:max-content;padding-left:100%;color:#ffc44b;font:900 clamp(10px,3vw,14px)/1.05 "Courier New",monospace;letter-spacing:.03em;text-shadow:0 0 5px #ffb530;white-space:nowrap;animation:scroll 25s linear infinite}
-    @keyframes scroll{to{transform:translateX(-100%)}}.screen{position:absolute;z-index:3;top:22.5%;left:17.1%;width:65.8%;aspect-ratio:16/9;overflow:hidden;border:2px solid #c9a16b;border-radius:5px;background:#020202;box-shadow:0 0 13px rgba(255,177,70,.25),inset 0 0 12px #000}.screen iframe{width:100%;height:100%;border:0}
+    @keyframes scroll{to{transform:translateX(-100%)}}.screen{position:absolute;z-index:3;top:27.55%;left:27.3%;width:64.55%;height:29.05%;padding:5.2% 2% 7%;overflow:hidden;border:1px solid #60462e;border-radius:5px;background:#020202;box-shadow:0 0 13px rgba(255,77,140,.17),inset 0 0 12px #000}.screen iframe{width:100%;aspect-ratio:16/9;border:0}
     .jb-screen-wait{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;color:#b99558;text-align:center}.jb-screen-wait strong{font-size:12px;letter-spacing:.08em}.jb-screen-wait span{max-width:230px;margin-top:7px;color:#806c52;font-size:8px;line-height:1.4}
-    .coin{position:absolute;z-index:4;top:45.1%;left:39%;width:22%;height:5.3%;display:grid;place-items:center;border:1px solid #caa56a;border-radius:7px;background:linear-gradient(#302219,#090604);color:#ffe6a8;font-size:8px;font-weight:900;letter-spacing:.08em;text-align:center;box-shadow:inset 0 0 10px #000,0 0 9px rgba(255,191,76,.28)}
-    .keys{position:absolute;z-index:4;top:58.1%;left:25.1%;width:49.8%;height:20.7%;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(4,1fr);gap:1.6% 2.6%}.keys a,.key-empty{min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:3px;border:1px solid #bd873c;border-radius:4px;background:linear-gradient(#402113,#130c08);color:#fff2d2;text-decoration:none;text-align:center;box-shadow:inset 0 0 8px #000,0 0 7px rgba(255,155,52,.25)}.keys strong{font-size:clamp(7px,2vw,10px);line-height:1.05;text-transform:uppercase}.keys small{display:none}.key-empty{opacity:.2}
+    .coin{position:absolute;z-index:4;top:27.55%;left:7.2%;width:18%;height:29.05%;display:grid;place-items:center;padding:18% 10%;border:1px solid #caa56a;border-radius:7px;background:linear-gradient(#21130d,#090604);color:#ffe6a8;font-size:clamp(7px,2vw,10px);font-weight:900;letter-spacing:.08em;text-align:center;box-shadow:inset 0 0 10px #000,0 0 9px rgba(255,191,76,.28)}
+    .keys{position:absolute;z-index:4;top:57.7%;left:7.15%;width:85.7%;height:20.8%;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:5.7% 3.05%}.keys a,.keys button,.key-empty{min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:4%;border:1px solid #65c9ff;border-radius:7%;background:linear-gradient(#101315,#020304);color:#75d6ff;font:inherit;text-decoration:none;text-align:center;box-shadow:inset 0 1px rgba(255,255,255,.04),inset 0 -4px 8px #000,0 0 8px rgba(101,201,255,.25)}.keys strong{font-size:clamp(8px,2.5vw,12px);line-height:1.05;text-transform:uppercase}.keys small{display:none}.key-empty{opacity:.2}
+    .support{position:absolute;z-index:4;top:79.55%;left:7.15%;width:85.7%;height:9.2%;display:grid;place-content:center;border:1px solid #ff5f78;border-radius:4%;background:rgba(20,1,5,.87);color:#ff9daf;text-align:center;box-shadow:inset 0 0 14px #000,0 0 10px rgba(255,45,89,.25)}.support strong{font-size:clamp(13px,4vw,21px);letter-spacing:.08em;text-transform:uppercase}.support small{margin-top:5px;font-size:clamp(7px,2vw,10px);letter-spacing:.1em;text-transform:uppercase}.copyright{position:absolute;z-index:4;top:91.1%;left:31%;width:38%;color:#d7a654;font-size:clamp(6px,1.8vw,9px);letter-spacing:.08em;text-align:center}
     .gate{padding:18px 20px 6px;color:#aa8b6c;text-align:center;font-size:9px;line-height:1.5;letter-spacing:.06em;text-transform:uppercase}.gate strong{display:block;margin-bottom:5px;color:${verified?"#9ff1bd":"#ffd37b"};font-size:11px}
     footer{padding:24px 0 0;color:#806b5d;font-size:9px;line-height:1.8;letter-spacing:.08em;text-align:center}footer strong{color:#b89a7d;letter-spacing:.15em}
     @media(prefers-reduced-motion:reduce){.ticker span{width:100%;padding:0 4%;overflow:hidden;text-overflow:ellipsis;animation:none}}
@@ -439,7 +445,9 @@ function renderJookBoxStudioPreview(project){
       <div class="ticker"><span>${escapeHtml(ticker)}</span></div>
       <div class="screen">${video}</div>
       <div class="coin">${verified?"INSERT COIN TO PLAY":"RESEARCH FIRST"}</div>
-      <nav class="keys" aria-label="Verified JookBox keys">${keys}${Array.from({length:Math.max(0,8-selections.length)},()=>'<span class="key-empty" aria-hidden="true"></span>').join("")}</nav>
+      <nav class="keys" aria-label="Verified JookBox keys">${keys}${Array.from({length:Math.max(0,6-destinationKeys.length-utilityKeys.length)},()=>'<span class="key-empty" aria-hidden="true"></span>').join("")}</nav>
+      <div class="support"><strong>Support Our Band</strong><small>Please share our JookBox ↗</small></div>
+      <div class="copyright">Copyright Clearlight Creative 2026.</div>
     </section>
     <div class="gate"><strong>${escapeHtml(confidence)}</strong>${verified?"Only the independently verified destinations shown above would enter the factory handoff.":"No destination will be published until identity, biography, video and every displayed key pass the 98% gate."}</div>
     <footer aria-label="Deep Cuts platform"><strong>Deep Cuts</strong><br>Copyright Clearlight Creative</footer>
