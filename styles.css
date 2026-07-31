@@ -2683,6 +2683,17 @@ body{margin:0;min-height:100%;color:var(--ink);background:#000713;overflow-x:hid
 [data-product-type="bar_jukebox"] .jookbox-coin{touch-action:none}
 [data-product-type="bar_jukebox"] .jookbox-coin{cursor:grab}
 [data-product-type="bar_jukebox"] .is-coin-dragging .jookbox-coin{cursor:grabbing;animation:none!important}
+[data-product-type="bar_jukebox"] .is-awake .jookbox-coin-button{
+  animation:none!important;
+  filter:brightness(.46) saturate(.58);
+  text-shadow:none
+}
+[data-product-type="bar_jukebox"] .is-awake .jookbox-coin{
+  animation:none!important;
+  opacity:0;
+  filter:none;
+  box-shadow:none
+}
 [data-product-type="bar_jukebox"][data-jookbox-key-format="bar-six-key/1"] .jookbox-action-key{
   --jb-key-color:#dff8ff
 }

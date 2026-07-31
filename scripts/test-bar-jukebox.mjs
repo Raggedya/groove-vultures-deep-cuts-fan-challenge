@@ -43,6 +43,8 @@ assert.match(styles,/\[data-product-type="bar_jukebox"\][\s\S]*\.jookbox-primary
 assert.doesNotMatch(styles,/\[data-product-type="bar_jukebox"\] \.jookbox-primary-action\{display:none!important\}/);
 assert.match(styles,/\[data-product-type="bar_jukebox"\][^\n]* \.jookbox-marquee\{\s*top:8\.45%;\s*height:7\.75%/);
 assert.match(styles,/\[data-product-type="bar_jukebox"\][^\n]* \.jookbox-playing-status\{\s*display:none/);
+assert.match(styles,/\[data-product-type="bar_jukebox"\] \.is-awake \.jookbox-coin-button\{[\s\S]*?animation:none!important;[\s\S]*?text-shadow:none/);
+assert.match(styles,/\[data-product-type="bar_jukebox"\] \.is-awake \.jookbox-coin\{[\s\S]*?animation:none!important;[\s\S]*?opacity:0;[\s\S]*?box-shadow:none/);
 assert.match(styles,/ATLAS_SIX_KEY_VISUAL_CONTRACT_START/);
 assert.match(styles,/ATLAS_SIX_KEY_VISUAL_CONTRACT_END/);
 const visualStart=styles.indexOf("/* ATLAS_SIX_KEY_VISUAL_CONTRACT_START */");
@@ -100,6 +102,8 @@ assert.match(preview,/id="shareKey"/);
 assert.match(preview,/id="sharePanel"/);
 assert.match(preview,/class="coin-label">INSERT COIN</);
 assert.doesNotMatch(preview,/Drag coin up to play/);
+assert.match(preview,/\.machine\.is-awake \.coin\{animation:none!important;opacity:0;filter:none;box-shadow:none\}/);
+assert.match(preview,/machine\.classList\.remove\("is-powering","is-accepting"\)/);
 assert.match(preview,/\.title\{[^}]*top:8\.45%;[^}]*height:7\.75%/);
 assert.doesNotMatch(preview,/\.title small:after\{[^}]*content:"BAR EDITION"/);
 assert.match(preview,/Share Shotkickers with your mates/);
