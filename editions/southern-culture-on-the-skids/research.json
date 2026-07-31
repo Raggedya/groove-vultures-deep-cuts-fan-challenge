@@ -1,0 +1,176 @@
+{
+  "bandName": "Southern Culture on the Skids",
+  "slug": "southern-culture-on-the-skids",
+  "editionId": "dc_f3f4750b1b",
+  "verifiedAt": "2026-07-31T01:34:43.576Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://www.scots.com/",
+      "sourceType": "official artist-controlled website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-31T01:33:06.095Z",
+      "evidence": "The supplied SCOTS website identifies Southern Culture on the Skids and links the matching official contact, media, store and social destinations used for this edition."
+    },
+    {
+      "destination": "identity",
+      "url": "https://southerncultureontheskids.bandcamp.com/music",
+      "sourceType": "official artist-controlled Bandcamp",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-31T01:33:06.095Z",
+      "evidence": "The official Bandcamp identifies Southern Culture on the Skids in Chapel Hill, North Carolina, names Rick Miller, Mary Huff and Dave Hartman, and links back to scots.com."
+    },
+    {
+      "destination": "bandcamp",
+      "url": "https://southerncultureontheskids.bandcamp.com/music",
+      "sourceType": "official artist-controlled Bandcamp",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-31T01:33:06.095Z",
+      "evidence": "The official Bandcamp page returned HTTP 200, displays the matching SCOTS identity and catalogue, and links directly to scots.com."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/1iJMsMDmedV0N4NZ2gAtcQ",
+      "sourceType": "official music platform artist page",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-31T01:33:06.095Z",
+      "evidence": "The direct Spotify artist page returned HTTP 200 and displays the matching Southern Culture on the Skids identity and catalogue."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/southern.culture.on.the.skids/",
+      "sourceType": "official artist-controlled website destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-31T01:33:06.095Z",
+      "evidence": "The official SCOTS contact page explicitly identifies @southern.culture.on.the.skids as the band's Instagram account; the direct profile returned HTTP 200."
+    },
+    {
+      "destination": "website",
+      "url": "https://www.scots.com/",
+      "sourceType": "official artist-controlled website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-31T01:33:06.095Z",
+      "evidence": "The supplied scots.com homepage returned HTTP 200 and is independently linked by the band's official Bandcamp, store and YouTube channel."
+    },
+    {
+      "destination": "buyMusic",
+      "url": "https://southerncultureontheskids.bandcamp.com/album/at-home-with-southern-culture-on-the-skids",
+      "sourceType": "official artist-controlled Bandcamp release page",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-31T01:33:06.095Z",
+      "evidence": "The official Bandcamp release page returned HTTP 200 and offers the 11-track At Home with Southern Culture on the Skids album for direct digital purchase."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://stores.portmerch.com/southerncultureontheskids/",
+      "sourceType": "official artist-controlled website store destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-31T01:33:06.095Z",
+      "evidence": "The official SCOTS website links this store as Skidmart. The store identifies Southern Culture on the Skids and offers official music, apparel and merchandise."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/southerncultureontheskids/",
+      "sourceType": "official artist-controlled website destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-31T01:33:06.095Z",
+      "evidence": "The official SCOTS contact page links this exact Facebook page as the band's official Facebook destination; the direct page returned HTTP 200."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/@SouthernCultureSkids",
+      "sourceType": "official artist-controlled YouTube channel",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-31T01:33:06.095Z",
+      "evidence": "The official SCOTS contact page links @SouthernCultureSkids, whose channel identifies itself as the official Southern Culture on the Skids channel and links back to scots.com."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://www.scots.com/",
+      "sourceType": "official artist-controlled website live snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-31T01:33:06.095Z",
+      "evidence": "The dated official-site snapshot and its contact, media and store pages supplied the artist-controlled identity and destinations; only independently verified supported controls are published."
+    },
+    {
+      "destination": "selection:spotify",
+      "url": "https://open.spotify.com/artist/1iJMsMDmedV0N4NZ2gAtcQ",
+      "sourceType": "verified official music platform destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-31T01:33:06.095Z",
+      "evidence": "The direct Spotify artist ID returned HTTP 200 and matches the SCOTS identity and catalogue corroborated by the official website and Bandcamp."
+    },
+    {
+      "destination": "selection:bandcamp",
+      "url": "https://southerncultureontheskids.bandcamp.com/music",
+      "sourceType": "official artist-controlled Bandcamp destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-31T01:33:06.095Z",
+      "evidence": "The direct Bandcamp page returned HTTP 200, identifies the Chapel Hill band and members, and links to the supplied official website."
+    },
+    {
+      "destination": "selection:instagram",
+      "url": "https://www.instagram.com/southern.culture.on.the.skids/",
+      "sourceType": "official artist-controlled website destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-31T01:33:06.095Z",
+      "evidence": "The official contact page names this exact Instagram handle, and the direct HTTPS profile returned HTTP 200."
+    },
+    {
+      "destination": "selection:website",
+      "url": "https://www.scots.com/",
+      "sourceType": "official artist-controlled website",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-31T01:33:06.095Z",
+      "evidence": "The supplied official website returned HTTP 200 and is cross-linked by the band's official Bandcamp, store and YouTube channel."
+    },
+    {
+      "destination": "selection:buy-music",
+      "url": "https://southerncultureontheskids.bandcamp.com/album/at-home-with-southern-culture-on-the-skids",
+      "sourceType": "official artist-controlled Bandcamp release destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-31T01:33:06.095Z",
+      "evidence": "The official Bandcamp album page returned HTTP 200 and provides a direct purchase option for At Home with Southern Culture on the Skids."
+    },
+    {
+      "destination": "selection:merchandise",
+      "url": "https://stores.portmerch.com/southerncultureontheskids/",
+      "sourceType": "official artist-controlled website store destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-31T01:33:06.095Z",
+      "evidence": "The official website points to this matching Southern Culture on the Skids store for music, apparel and merchandise."
+    },
+    {
+      "destination": "selection:facebook",
+      "url": "https://www.facebook.com/southerncultureontheskids/",
+      "sourceType": "official artist-controlled website destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-31T01:33:06.095Z",
+      "evidence": "The official contact page links this exact Facebook destination, which returned HTTP 200."
+    },
+    {
+      "destination": "selection:youtube-channel",
+      "url": "https://www.youtube.com/@SouthernCultureSkids",
+      "sourceType": "official artist-controlled YouTube channel",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-31T01:33:06.095Z",
+      "evidence": "The official contact page links this channel; the channel describes itself as official, shows the matching name and links back to scots.com."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.scots.com/media.html",
+      "sourceType": "official artist-controlled media and biography page",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-31T01:33:06.095Z",
+      "evidence": "The official media page documents the Chapel Hill trio, Rick Miller, Mary Huff and Dave Hartman, their more-than-30-year history and their rockabilly, surf, country, R&B and garage-rock blend."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=T9NLgyEFzOo",
+      "sourceType": "official YouTube channel Popular ordering and privacy-enhanced embed",
+      "identityVerified": true,
+      "verifiedAt": "2026-07-31T01:33:06.095Z",
+      "evidence": "The verified official channel's Popular ordering placed Camel Walk first at 674K views, ahead of the next uploads at 82K. The direct watch page and privacy-enhanced embed endpoint returned HTTP 200."
+    }
+  ]
+}

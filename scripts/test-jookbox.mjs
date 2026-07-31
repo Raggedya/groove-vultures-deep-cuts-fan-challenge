@@ -12,6 +12,9 @@ const config = JSON.parse(await fs.readFile(entry.config, "utf8"));
 const atlasEntry = platform.editions.find((item) => item.editionId === "dc_e22f1cb651");
 assert.ok(atlasEntry?.active, "ATLAS JookBox must remain active.");
 const atlasConfig = JSON.parse(await fs.readFile(atlasEntry.config, "utf8"));
+const scotsEntry = platform.editions.find((item) => item.slug === "southern-culture-on-the-skids");
+assert.ok(scotsEntry?.active, "Southern Culture on the Skids JookBox must remain active.");
+const scotsConfig = JSON.parse(await fs.readFile(scotsEntry.config, "utf8"));
 assert.equal(config.brandName, "JookBox");
 assert.equal(config.editionType, "jukebox");
 assert.equal(config.jookBox?.modelVersion, "jookbox/3");
@@ -288,6 +291,51 @@ assert.equal(
 );
 assert.equal(config.jookBox?.lightSequenceMode, "single-key", "The Filthy Animals reference must keep its single-key sequence.");
 assert.equal(config.jookBox?.buttonLightDurationMs, 650, "The Filthy Animals reference timing must remain unchanged.");
+
+assert.equal(scotsEntry.editionId, "dc_f3f4750b1b");
+assert.equal(scotsEntry.canonicalPath, "/e/dc_f3f4750b1b");
+assert.equal(scotsConfig.editionType, "jukebox");
+assert.equal(scotsConfig.brandName, "JookBox");
+assert.equal(scotsConfig.characterArtwork, "", "Southern Culture on the Skids must use the no-Aggits JookBox model.");
+assert.equal(scotsConfig.jookBox?.modelVersion, "jookbox/3");
+assert.equal(scotsConfig.jookBox?.keyBankFormat, "classic-eight-key/1");
+assert.equal(scotsConfig.jookBox?.lightSequenceMode, "single-key");
+assert.equal(scotsConfig.jookBox?.linkSourceURL, "https://www.scots.com/");
+assert.equal(scotsConfig.featuredVideo?.youtubeURL, "https://www.youtube.com/watch?v=T9NLgyEFzOo");
+assert.equal(scotsConfig.featuredVideo?.selectionBasis, "most-viewed-official");
+assert.deepEqual(scotsConfig.jookBox?.displaySelectionIds, [
+  "spotify",
+  "bandcamp",
+  "instagram",
+  "website",
+  "buy-music",
+  "merchandise",
+  "facebook",
+  "youtube-channel",
+]);
+assert.equal(scotsConfig.jookBox?.selections?.length, 8);
+assert.equal(scotsConfig.jookBox?.biography?.paragraphs?.length, 3);
+const scotsResearch = JSON.parse(await fs.readFile("editions/southern-culture-on-the-skids/research.json", "utf8"));
+assert.ok(
+  scotsResearch.sources.some(
+    (source) =>
+      source.destination === "featuredVideo" &&
+      source.url === scotsConfig.featuredVideo.youtubeURL &&
+      /674K views/.test(source.evidence),
+  ),
+  "Southern Culture on the Skids must retain official Popular-order evidence for Camel Walk.",
+);
+for (const selection of scotsConfig.jookBox.selections) {
+  assert.ok(
+    scotsResearch.sources.some(
+      (source) =>
+        source.destination === `selection:${selection.id}` &&
+        source.url.replace(/\/$/, "") === selection.url.replace(/\/$/, "") &&
+        source.identityVerified === true,
+    ),
+    `${selection.id} requires matching Southern Culture on the Skids source evidence.`,
+  );
+}
 
 for (const other of platform.editions.filter((item) => item.editionId !== entry.editionId)) {
   const otherConfig = JSON.parse(await fs.readFile(other.config, "utf8"));

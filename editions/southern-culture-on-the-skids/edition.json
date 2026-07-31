@@ -1,0 +1,182 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Southern Culture on the Skids",
+  "editionTitle": "Southern Culture on the Skids",
+  "description": "The Chapel Hill trio blend rockabilly, surf, country, R&B and garage rock with a punk edge, wry humour and a long-running, high-energy live show.",
+  "discovery": {
+    "bio": "The Chapel Hill trio blend rockabilly, surf, country, R&B and garage rock with a punk edge, wry humour and a long-running, high-energy live show.",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "southern-culture-on-the-skids",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_f3f4750b1b",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/southern-culture-on-the-skids/instagram-discovery.png",
+    "qrImage": "output/southern-culture-on-the-skids/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "https://southerncultureontheskids.bandcamp.com/music",
+    "spotify": "https://open.spotify.com/artist/1iJMsMDmedV0N4NZ2gAtcQ",
+    "instagram": "https://www.instagram.com/southern.culture.on.the.skids/",
+    "website": "https://www.scots.com/",
+    "buyMusic": "https://southerncultureontheskids.bandcamp.com/album/at-home-with-southern-culture-on-the-skids",
+    "merchandise": "https://stores.portmerch.com/southerncultureontheskids/",
+    "facebook": "https://www.facebook.com/southerncultureontheskids/",
+    "youtube": "https://www.youtube.com/@SouthernCultureSkids"
+  },
+  "featuredVideo": {
+    "title": "Southern Culture On The Skids - Camel Walk",
+    "youtubeURL": "https://www.youtube.com/watch?v=T9NLgyEFzOo",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-07-31T01:33:06.095Z"
+  },
+  "analytics": {
+    "editionId": "dc_f3f4750b1b",
+    "pageIdentifier": "dc_f3f4750b1b:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_d5759add-7ddd-486d-8ee6-28568fa905ac",
+    "submittedAt": "2026-07-31T01:24:08.716Z",
+    "researchCompletedAt": "2026-07-31T01:34:43.576Z",
+    "editionCreatedAt": "2026-07-31T01:34:43.576Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-cabinet-photoreal-v1.webp",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "3fd636fe3763b95a09bc8f6be470361ddf0a49e7772464d1a5292fa7c7674e8a",
+    "coinSoundSource": "https://freesound.org/s/696745/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_f3f4750b1b",
+    "tickerBio": "SOUTHERN CULTURE ON THE SKIDS — THE CHAPEL HILL TRIO MIX ROCKABILLY, SURF, COUNTRY, R&B AND GARAGE ROCK WITH A PUNK EDGE, WRY HUMOUR AND A HIGH-ENERGY LIVE SHOW.",
+    "tickerDurationSeconds": 44,
+    "buttonLightDurationMs": 650,
+    "keyBankFormat": "classic-eight-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "spotify",
+      "bandcamp",
+      "instagram",
+      "website",
+      "buy-music",
+      "merchandise",
+      "facebook",
+      "youtube-channel"
+    ],
+    "marquee": "Southern Culture on the Skids",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "coinStart": true,
+    "linkSourceURL": "https://www.scots.com/",
+    "linkSourceVerifiedAt": "2026-07-31T01:33:06.095Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "spotify",
+        "sourceTitle": "Southern Culture on the Skids on Spotify",
+        "label": "Spotify",
+        "detail": "Listen to the official catalogue",
+        "url": "https://open.spotify.com/artist/1iJMsMDmedV0N4NZ2gAtcQ",
+        "platform": "website",
+        "kind": "spotify"
+      },
+      {
+        "id": "bandcamp",
+        "sourceTitle": "Southern Culture on the Skids on Bandcamp",
+        "label": "Bandcamp",
+        "detail": "Listen and buy direct",
+        "url": "https://southerncultureontheskids.bandcamp.com/music",
+        "platform": "website",
+        "kind": "bandcamp"
+      },
+      {
+        "id": "instagram",
+        "sourceTitle": "Southern Culture on the Skids on Instagram",
+        "label": "Instagram",
+        "detail": "Follow official band updates",
+        "url": "https://www.instagram.com/southern.culture.on.the.skids/",
+        "platform": "instagram",
+        "kind": "instagram"
+      },
+      {
+        "id": "website",
+        "sourceTitle": "Southern Culture on the Skids Official Website",
+        "label": "Band Website",
+        "detail": "Visit the official website",
+        "url": "https://www.scots.com/",
+        "platform": "website",
+        "kind": "website"
+      },
+      {
+        "id": "buy-music",
+        "sourceTitle": "At Home with Southern Culture on the Skids",
+        "label": "Buy Music",
+        "detail": "Buy the official album",
+        "url": "https://southerncultureontheskids.bandcamp.com/album/at-home-with-southern-culture-on-the-skids",
+        "platform": "website",
+        "kind": "buy_music"
+      },
+      {
+        "id": "merchandise",
+        "sourceTitle": "Southern Culture on the Skids Online Merch",
+        "label": "Buy Merch",
+        "detail": "Shop the official Skidmart store",
+        "url": "https://stores.portmerch.com/southerncultureontheskids/",
+        "platform": "merchandise",
+        "kind": "merchandise"
+      },
+      {
+        "id": "facebook",
+        "sourceTitle": "Southern Culture on the Skids on Facebook",
+        "label": "Facebook",
+        "detail": "Follow official news and shows",
+        "url": "https://www.facebook.com/southerncultureontheskids/",
+        "platform": "facebook",
+        "kind": "facebook"
+      },
+      {
+        "id": "youtube-channel",
+        "sourceTitle": "Southern Culture on the Skids Official YouTube Channel",
+        "label": "YouTube Channel",
+        "detail": "Watch the official channel",
+        "url": "https://www.youtube.com/@SouthernCultureSkids",
+        "platform": "youtube",
+        "kind": "youtube"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://www.scots.com/media.html",
+      "paragraphs": [
+        "Southern Culture on the Skids are a Chapel Hill, North Carolina trio whose sound draws together rockabilly, surf, country, R&B and garage rock with a punk edge and wry humour.",
+        "Rick Miller, Mary Huff and Dave Hartman have played together for more than three decades, building a catalogue and live show around sharp musicianship, character and an unmistakably Southern point of view.",
+        "The official catalogue ranges from long-standing favourites such as Camel Walk to the independently released At Home with Southern Culture on the Skids."
+      ]
+    }
+  }
+}
