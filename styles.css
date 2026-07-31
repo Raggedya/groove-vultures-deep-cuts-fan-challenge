@@ -3288,11 +3288,17 @@ body{margin:0;min-height:100%;color:var(--ink);background:#000713;overflow-x:hid
   font-size:clamp(1.45rem,7.2vw,4rem);
   letter-spacing:.12em;
   line-height:.9;
+  text-overflow:clip;
   text-shadow:0 0 2px #fff8d7,0 0 7px #ffc056,0 0 17px rgba(255,99,25,.92)
 }
 [data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"][data-jookbox-long-marquee="true"][data-jookbox-embedded-marquee="false"] .jookbox-marquee h1{
   font-size:clamp(.58rem,2.65vw,2rem);
   letter-spacing:.04em
+}
+[data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"][data-jookbox-embedded-marquee="false"] .jookbox-marquee h1[data-fit-mode="multi-line"]{
+  overflow-wrap:anywhere;
+  text-wrap:balance;
+  white-space:normal
 }
 [data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"][data-jookbox-embedded-marquee="false"] .jookbox-marquee .jookbox-model-mark{
   margin:.32em 0 0;

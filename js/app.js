@@ -1,6 +1,6 @@
 "use strict";
 
-const VERSION="20260731-jookbox-20";
+const VERSION="20260731-jookbox-21";
 const LANEWAY_REPORTING_VERSION="laneway-weekly-v1";
 const $=id=>document.getElementById(id);
 const els={
@@ -99,6 +99,8 @@ let jookBoxAudio=null;
 let jookBoxKeyLightTimer=0;
 let jookBoxActiveKeyIndex=-1;
 let jookBoxBioReturnFocus=null;
+let jookBoxMarqueeFitFrame=0;
+let jookBoxMarqueeResizeObserver=null;
 const jookBoxStartupTimers=new Set();
 init();
 
@@ -324,22 +326,67 @@ function buildJookBox(){
   handleJookBoxVisibility();
   configureJookBoxBio();
   if(config.jookBox?.layoutVersion!=="coin-awakening/1"||!embeddedMarquee){
-    fitJookBoxMarqueeTitle();
-    window.addEventListener("resize",fitJookBoxMarqueeTitle,{passive:true});
+    scheduleJookBoxMarqueeTitleFit();
+    window.addEventListener("resize",scheduleJookBoxMarqueeTitleFit,{passive:true});
+    if(typeof ResizeObserver==="function"){
+      jookBoxMarqueeResizeObserver=new ResizeObserver(scheduleJookBoxMarqueeTitleFit);
+      if(marquee)jookBoxMarqueeResizeObserver.observe(marquee);
+    }
+    if(document.fonts?.ready)document.fonts.ready.then(scheduleJookBoxMarqueeTitleFit).catch(()=>{});
   }
   prepareJookBoxCoinAudio();
   setJookBoxState("sleeping");
 }
 
+function scheduleJookBoxMarqueeTitleFit(){
+  if(jookBoxMarqueeFitFrame)cancelAnimationFrame(jookBoxMarqueeFitFrame);
+  jookBoxMarqueeFitFrame=requestAnimationFrame(()=>{
+    jookBoxMarqueeFitFrame=0;
+    fitJookBoxMarqueeTitle();
+  });
+}
+
 function fitJookBoxMarqueeTitle(){
   if(!isJookBoxEdition()||!els.jookBoxTitle)return;
   const title=els.jookBoxTitle;
+  const marquee=title.closest(".jookbox-marquee");
+  if(!marquee||!title.clientWidth||!marquee.clientHeight)return;
+  title.dataset.fitMode="single-line";
   title.style.removeProperty("font-size");
-  let size=Number.parseFloat(getComputedStyle(title).fontSize);
-  while(title.scrollWidth>title.clientWidth&&size>16){
-    size-=1;
+  const maximumSize=Number.parseFloat(getComputedStyle(title).fontSize);
+  const fits=(size,multiline,availableHeight)=>{
     title.style.fontSize=`${size}px`;
+    return title.scrollWidth<=title.clientWidth+1&&(!multiline||title.scrollHeight<=availableHeight+1);
+  };
+  const largestFit=(minimum,maximum,multiline,availableHeight)=>{
+    let low=minimum;
+    let high=maximum;
+    for(let index=0;index<12;index+=1){
+      const candidate=(low+high)/2;
+      if(fits(candidate,multiline,availableHeight))low=candidate;
+      else high=candidate;
+    }
+    return low;
+  };
+  if(fits(maximumSize,false,Number.POSITIVE_INFINITY)){
+    title.style.removeProperty("font-size");
+    return;
   }
+  const minimumSingleLine=Math.min(maximumSize,12);
+  if(fits(minimumSingleLine,false,Number.POSITIVE_INFINITY)){
+    title.style.fontSize=`${largestFit(minimumSingleLine,maximumSize,false,Number.POSITIVE_INFINITY).toFixed(2)}px`;
+    return;
+  }
+  title.dataset.fitMode="multi-line";
+  const reservedHeight=[...marquee.children]
+    .filter(element=>element!==title)
+    .reduce((total,element)=>{
+      const style=getComputedStyle(element);
+      return total+element.offsetHeight+(Number.parseFloat(style.marginTop)||0)+(Number.parseFloat(style.marginBottom)||0);
+    },0);
+  const availableHeight=Math.max(24,marquee.clientHeight-reservedHeight-4);
+  const minimumMultiLine=Math.min(maximumSize,7);
+  title.style.fontSize=`${largestFit(minimumMultiLine,maximumSize,true,availableHeight).toFixed(2)}px`;
 }
 
 function buildLinks(){
@@ -748,6 +795,11 @@ function clearJookBoxStartupTimers(){
 function cleanupJookBoxLifecycle(){
   clearJookBoxStartupTimers();
   clearJookBoxKeyLightTimer(true);
+  if(jookBoxMarqueeFitFrame)cancelAnimationFrame(jookBoxMarqueeFitFrame);
+  jookBoxMarqueeFitFrame=0;
+  jookBoxMarqueeResizeObserver?.disconnect();
+  jookBoxMarqueeResizeObserver=null;
+  window.removeEventListener("resize",scheduleJookBoxMarqueeTitleFit);
 }
 
 function restoreJookBoxSessionState(){

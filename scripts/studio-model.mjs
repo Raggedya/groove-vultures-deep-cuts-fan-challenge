@@ -422,7 +422,8 @@ function renderJookBoxStudioPreview(project){
     *{box-sizing:border-box}html{background:#050201}body{margin:0;min-height:100vh;background:#050201;color:#fff;font-family:Arial,Helvetica,sans-serif}
     main{width:min(100%,430px);margin:auto;padding:0 0 38px}.draft-bar{display:flex;justify-content:space-between;gap:12px;padding:10px 14px;background:#0b0705;color:#d7a654;font-size:8px;font-weight:900;letter-spacing:.13em}.draft-bar b{color:${verified?"#9ff1bd":"#ffd37b"}}
     .jb{position:relative;width:100%;aspect-ratio:887/1774;overflow:hidden;background:url("/assets/jookbox-atlas-reference-v1.webp") center/100% 100% no-repeat;filter:${verified?"none":"brightness(.48) saturate(.58)"};transition:filter .4s ease}
-    .jb-title{position:absolute;z-index:2;top:4.15%;left:17%;width:66%;height:12.3%;display:grid;align-content:center;color:#ffe9a8;font-family:Georgia,serif;font-size:clamp(22px,8vw,42px);font-weight:900;line-height:.9;letter-spacing:.12em;text-align:center;text-shadow:0 0 3px #fff2b9,0 0 12px #ff9f22;text-transform:uppercase}
+    .jb-title{position:absolute;z-index:2;top:4.15%;left:17%;width:66%;height:12.3%;display:grid;align-content:center;color:#ffe9a8;font-family:Georgia,serif;font-weight:900;line-height:.9;letter-spacing:.12em;text-align:center;text-shadow:0 0 3px #fff2b9,0 0 12px #ff9f22;text-transform:uppercase}
+    .jb-title>strong{display:block;width:100%;overflow:hidden;font:inherit;font-size:clamp(22px,8vw,42px);line-height:.9;text-overflow:clip;white-space:nowrap}.jb-title>strong[data-fit-mode="multi-line"]{overflow-wrap:anywhere;text-wrap:balance;white-space:normal}
     .jb-title small{display:block;margin-top:8px;color:#ffe0a0;font:800 clamp(7px,2.3vw,12px) Arial,sans-serif;letter-spacing:.34em}
     .jb-title small:after{display:block;margin-top:5px;color:#ffb6cb;content:"NOW PLAYING";font-size:.82em;letter-spacing:.14em;text-shadow:0 0 7px rgba(255,67,135,.72)}
     .ticker{position:absolute;z-index:3;top:17.35%;left:7.2%;width:85.6%;height:8.15%;display:flex;align-items:center;overflow:hidden;border:1px solid #b77c35;border-radius:7px;background:#080402;box-shadow:inset 0 0 16px #000,0 0 9px rgba(255,169,47,.4)}
@@ -441,7 +442,7 @@ function renderJookBoxStudioPreview(project){
   <main>
     <div class="draft-bar"><span>DEEP CUTS STUDIO · JOOKBOX DRAFT</span><b>${escapeHtml(confidence)}</b></div>
     <section class="jb" aria-label="${escapeAttribute(input.name||"Band")} JookBox preview">
-      <div class="jb-title">${escapeHtml(input.name||"BAND NAME")}<small>JOOKBOX</small></div>
+      <div class="jb-title"><strong id="studioJookBoxTitle">${escapeHtml(input.name||"BAND NAME")}</strong><small>JOOKBOX</small></div>
       <div class="ticker"><span>${escapeHtml(ticker)}</span></div>
       <div class="screen">${video}</div>
       <div class="coin">${verified?"INSERT COIN TO PLAY":"RESEARCH FIRST"}</div>
@@ -452,6 +453,9 @@ function renderJookBoxStudioPreview(project){
     <div class="gate"><strong>${escapeHtml(confidence)}</strong>${verified?"Only the independently verified destinations shown above would enter the factory handoff.":"No destination will be published until identity, biography, video and every displayed key pass the 98% gate."}</div>
     <footer aria-label="Deep Cuts platform"><strong>Deep Cuts</strong><br>Copyright Clearlight Creative</footer>
   </main>
+  <script>
+    (()=>{const title=document.getElementById("studioJookBoxTitle");const frame=title?.parentElement;if(!title||!frame)return;let pending=0;const fit=()=>{pending=0;let multiline=false;title.dataset.fitMode="single-line";title.style.removeProperty("font-size");const maximum=parseFloat(getComputedStyle(title).fontSize);const available=Math.max(24,frame.clientHeight-(frame.querySelector("small")?.offsetHeight||0)-12);const apply=size=>{title.style.fontSize=size+"px";return title.scrollWidth<=title.clientWidth+1&&(!multiline||title.scrollHeight<=available+1)};if(apply(maximum)){title.style.removeProperty("font-size");return}let low=Math.min(maximum,12),high=maximum;if(!apply(low)){multiline=true;title.dataset.fitMode="multi-line";low=Math.min(maximum,7)}for(let index=0;index<12;index+=1){const candidate=(low+high)/2;if(apply(candidate))low=candidate;else high=candidate}title.style.fontSize=low.toFixed(2)+"px"};const schedule=()=>{cancelAnimationFrame(pending);pending=requestAnimationFrame(fit)};new ResizeObserver(schedule).observe(frame);if(document.fonts?.ready)document.fonts.ready.then(schedule).catch(()=>{});schedule()})();
+  </script>
 </body>
 </html>`;
 }

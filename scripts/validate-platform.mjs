@@ -2,6 +2,7 @@ import fs from 'node:fs/promises';
 import crypto from 'node:crypto';
 
 const requiredDocs=['PLATFORM_ARCHITECTURE_DIRECTIVE.md','DEEP_CUTS_PRODUCTION_MANUAL.md','CLAUDE.md','ROADMAP.md','AGENTS.md','.agents/skills/deep-cuts-factory/SKILL.md'];
+const LEGACY_JOOKBOX_EDITION_ID='dc_a3c049e4bc';
 const errors=[];
 for(const file of requiredDocs)try{const text=await fs.readFile(file,'utf8');if(text.trim().length<100)errors.push(`${file} is unexpectedly short.`)}catch{errors.push(`Missing ${file}.`)}
 try{
@@ -80,10 +81,13 @@ for(const edition of platform.editions){
       const atlasReferenceCabinet=appearanceVariant==='atlas-reference-cabinet/1';
       const keyBankFormat=config.jookBox?.keyBankFormat||'classic-eight-key/1';
       const sixKeyFormat=keyBankFormat==='six-key/1';
+      const legacyJookBox=edition.editionId===LEGACY_JOOKBOX_EDITION_ID;
       const validKeyBankFormat=['classic-eight-key/1','six-key/1'].includes(keyBankFormat);
       const validAppearanceVariant=['reference','atlas-reference-cabinet/1'].includes(appearanceVariant);
       const validLightSequence=config.jookBox?.lightSequenceMode==='single-key';
       if(config.jookBox?.modelVersion!=='jookbox/3'||config.jookBox?.layoutVersion!=='coin-awakening/1'||JSON.stringify(config.jookBox?.heroLabels)!==JSON.stringify(['Listen','Watch','Follow','Shop'])||config.jookBox?.lightSequence!==true||!validKeyBankFormat||!validAppearanceVariant||!validLightSequence||config.jookBox?.coinStart!==true||config.jookBox?.syncMode!=='verified-build-time')errors.push(`${edition.config} must preserve the locked coin-awakening JookBox model, appearance, key-bank format and single-key light sequence.`);
+      if(legacyJookBox&&(appearanceVariant!=='reference'||keyBankFormat!=='classic-eight-key/1'))errors.push(`${edition.config} must preserve the immutable Filthy Animals legacy JookBox presentation.`);
+      if(!legacyJookBox&&(!atlasReferenceCabinet||!sixKeyFormat))errors.push(`${edition.config} must use the locked ATLAS presentation and six-key bank; only the immutable Filthy Animals edition may use the legacy cabinet.`);
       if(!config.jookBox?.tickerBio||!config.jookBox?.coinSound||!config.jookBox?.coinSoundSha256||!/^https:\/\//.test(config.jookBox?.coinSoundSource||'')||!config.jookBox?.coinSoundLicense||!config.jookBox?.sessionStorageKey)errors.push(`${edition.config} requires configured ticker copy, sourced local coin audio with an integrity hash and licence, and session restoration.`);
       if(config.jookBox?.autoplayDelayMs!==0)errors.push(`${edition.config} must request JookBox video playback immediately within the direct coin interaction.`);
       if(!(config.jookBox?.buttonLightDurationMs>=450&&config.jookBox?.buttonLightDurationMs<=1200))errors.push(`${edition.config} must use a valid JookBox light duration.`);
