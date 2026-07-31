@@ -53,7 +53,7 @@ assert.equal(seeded.featuredVideo.youtubeURL,"https://www.youtube.com/watch?v=ab
 assert.equal(seeded.featuredVideo.selectionBasis,"most-viewed-official");
 assert.match(seeded.biography.tickerBio,/FORMED IN MELBOURNE/);
 assert.doesNotMatch(seeded.biography.tickerBio,/THANK YOU|AWARDS EVENT/,"Verified factual band information must outrank testimonials.");
-assert.ok(seeded.displaySelectionIds.length>=3);
+assert.ok(seeded.displaySelectionIds.length>=4&&seeded.displaySelectionIds.length<=6);
 assert.ok(seeded.selections.some(item=>item.kind==="spotify"&&item.confidence>=98));
 assert.ok(seeded.selections.some(item=>item.kind==="instagram"&&item.confidence>=98),"A direct profile linked by the verified official root may pass when the platform returns an access wall.");
 assert.ok(seeded.sources.some(item=>item.destination==="featuredVideo"&&item.identityVerified===true));
@@ -84,7 +84,7 @@ assert.equal(
   "Equivalent Studio identity inputs must retain the same research fingerprint."
 );
 
-console.log("Deep Cuts Studio JookBox research tests passed: name-plus-URL and name-only discovery verify independently, populate only 98% destinations, and fail closed on identity mismatch.");
+console.log("Deep Cuts Studio JookBox research tests passed: name-plus-URL and name-only discovery verify independently, populate four to six 98% destinations for the locked cabinet, and fail closed on identity mismatch.");
 
 function page(url,body,status=200){
   return{

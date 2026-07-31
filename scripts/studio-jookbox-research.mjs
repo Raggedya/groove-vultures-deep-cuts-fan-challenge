@@ -240,7 +240,7 @@ export async function researchStudioJookBox(input,{network=new StudioResearchNet
   const selections=dedupeVerifiedSelections(verifiedSelections);
   const displaySelections=KIND_PRIORITY
     .flatMap(kind=>selections.filter(item=>item.kind===kind))
-    .slice(0,8);
+    .slice(0,6);
 
   onProgress({stage:"video",message:"Verifying the official channel and featured video."});
   const featuredVideo=await resolveFeaturedVideo({
@@ -262,7 +262,7 @@ export async function researchStudioJookBox(input,{network=new StudioResearchNet
     independentSources:identityHosts.size>=2,
     sourcedBiography:Boolean(biography.text&&biography.sourceURL),
     officialFeaturedVideo:Boolean(featuredVideo?.url&&featuredVideo?.identityVerified),
-    verifiedDestinations:displaySelections.length>0,
+    verifiedDestinations:displaySelections.length>=4,
     everyDisplayedDestinationVerified:displaySelections.every(item=>item.confidence>=STUDIO_JOOKBOX_CONFIDENCE_GATE)
   };
   const confidence=confidenceForChecks(checks);
@@ -354,7 +354,7 @@ function blockersFor(checks,{suppliedSeeds,seedCount}){
   if(!checks.independentSources)blockers.push("A second independent destination must corroborate the band identity.");
   if(!checks.sourcedBiography)blockers.push("A concise biography could not be extracted from an identity-verified official source.");
   if(!checks.officialFeaturedVideo)blockers.push("The most-viewed embeddable video on the verified official YouTube channel could not be proved.");
-  if(!checks.verifiedDestinations)blockers.push("No direct destination reached the mandatory 98% confidence gate.");
+  if(!checks.verifiedDestinations)blockers.push("At least four direct destinations must reach the mandatory 98% confidence gate for the locked six-key JookBox.");
   if(!checks.everyDisplayedDestinationVerified)blockers.push("One or more proposed JookBox keys did not meet the 98% confidence gate.");
   return blockers;
 }

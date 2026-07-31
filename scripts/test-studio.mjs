@@ -59,7 +59,7 @@ const jookBox=createProject({
 },fixedDate);
 assert.equal(jookBox.input.aggitsOption,"none","JookBox must never inherit Aggits.");
 assert.equal(jookBox.input.addWheel,false,"JookBox must never inherit a spinning wheel.");
-assert.match(renderStudioPreview(jookBox),/jookbox-cabinet-photoreal-v1\.webp/);
+assert.match(renderStudioPreview(jookBox),/jookbox-atlas-reference-v1\.webp/);
 assert.match(renderStudioPreview(jookBox),/RESEARCH NOT RUN/);
 
 const school=createProject({
@@ -164,7 +164,7 @@ assert.match(forgeConfig,/asar:true/);
 assert.match(forgeConfig,/@electron-forge\/maker-squirrel/);
 assert.match(forgeConfig,/@electron-forge\/maker-dmg/);
 assert.match(forgeConfig,/studio-jookbox-research\.mjs/);
-assert.match(forgeConfig,/jookbox-cabinet-photoreal-v1\.webp/);
+assert.match(forgeConfig,/jookbox-atlas-reference-v1\.webp/);
 assert.match(packageSource,/"studio:desktop": "electron-forge start"/);
 assert.match(packageSource,/"studio:make": "electron-forge make"/);
 assert.match(macWorkflow,/arch:\s*\n\s*- arm64\s*\n\s*- x64/);
@@ -264,6 +264,11 @@ try{
   const researchedPreview=await fetch(researched.previewUrl).then(response=>response.text());
   assert.match(researchedPreview,/100% VERIFIED/);
   assert.match(researchedPreview,/Bandcamp/);
+  assert.match(researchedPreview,/jookbox-atlas-reference-v1\.webp/);
+  assert.match(researchedPreview,/aspect-ratio:887\/1774/);
+  assert.match(researchedPreview,/grid-template-columns:repeat\(3,1fr\)/);
+  assert.match(researchedPreview,/Support Our Band/);
+  assert.match(researchedPreview,/Copyright Clearlight Creative 2026\./);
   assert.doesNotMatch(researchedPreview,/preview-aggits/);
   const researchedHandoff=await fetch(researched.handoffUrl).then(response=>response.json());
   assert.equal(researchedHandoff.publication.automatedResearchPassed,true);
@@ -277,19 +282,16 @@ console.log("Deep Cuts Studio tests passed: local isolation, HGM-only artwork, l
 
 function verifiedResearch(input){
   const verifiedAt="2026-07-30T01:00:00.000Z";
-  const selection={
-    id:"bandcamp-verified",
-    sourceTitle:"Bandcamp",
-    label:"Bandcamp",
-    detail:"Listen and buy direct",
-    kind:"bandcamp",
-    url:"https://studio-research.bandcamp.com/",
-    platform:"website",
-    confidence:100,
-    verifiedAt,
+  const selections=[
+    ["bandcamp-verified","Bandcamp","Listen and buy direct","bandcamp","https://studio-research.bandcamp.com/","website"],
+    ["spotify-verified","Spotify","Listen on Spotify","spotify","https://open.spotify.com/artist/studioresearch","website"],
+    ["youtube-verified","YouTube","Watch the official channel","youtube","https://www.youtube.com/@studio-research-band","youtube"],
+    ["instagram-verified","Instagram","Follow official updates","instagram","https://www.instagram.com/studio.research.band/","instagram"]
+  ].map(([id,label,detail,kind,url,platform])=>({
+    id,sourceTitle:label,label,detail,kind,url,platform,confidence:100,verifiedAt,
     sourceURL:"https://studio-research.example.com",
-    evidence:"Bandcamp resolved directly from the identity-matched artist-controlled website."
-  };
+    evidence:`${label} resolved directly from the identity-matched artist-controlled website.`
+  }));
   return{
     schemaVersion:STUDIO_JOOKBOX_RESEARCH_SCHEMA,
     status:"passed",
@@ -323,9 +325,9 @@ function verifiedResearch(input){
       selectionBasis:"most-viewed-official",
       verifiedAt
     },
-    links:{bandcamp:selection.url},
-    selections:[selection],
-    displaySelectionIds:[selection.id],
+    links:{bandcamp:selections[0].url,spotify:selections[1].url,youtube:selections[2].url,instagram:selections[3].url},
+    selections,
+    displaySelectionIds:selections.map(selection=>selection.id),
     sources:[],
     omittedCandidates:[],
     blockers:[]

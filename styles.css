@@ -3244,10 +3244,10 @@ body{margin:0;min-height:100%;color:var(--ink);background:#000713;overflow-x:hid
   box-shadow:0 0 7px #ff4c35
 }
 
-/* ATLAS-only owner-approved reference cabinet. Every coordinate below maps
-   live, accessible controls into the corresponding recess in the 887 × 1774
-   artwork. The locked Filthy Animals edition and the factory default remain
-   byte-for-byte and visually isolated from this appearance. */
+/* Owner-approved ATLAS reference cabinet and permanent future JookBox default.
+   Every coordinate below maps live, accessible controls into the corresponding
+   recess in the 887 × 1774 artwork. Completed legacy editions such as Filthy
+   Animals remain byte-for-byte and visually isolated from this appearance. */
 [data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"]{
   --jb-stage-width:887;
   --jb-stage-height:1774;
@@ -3289,6 +3289,10 @@ body{margin:0;min-height:100%;color:var(--ink);background:#000713;overflow-x:hid
   letter-spacing:.12em;
   line-height:.9;
   text-shadow:0 0 2px #fff8d7,0 0 7px #ffc056,0 0 17px rgba(255,99,25,.92)
+}
+[data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"][data-jookbox-long-marquee="true"][data-jookbox-embedded-marquee="false"] .jookbox-marquee h1{
+  font-size:clamp(.58rem,2.65vw,2rem);
+  letter-spacing:.04em
 }
 [data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"][data-jookbox-embedded-marquee="false"] .jookbox-marquee .jookbox-model-mark{
   margin:.32em 0 0;
