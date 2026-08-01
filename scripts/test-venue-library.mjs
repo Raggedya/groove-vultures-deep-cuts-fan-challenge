@@ -76,6 +76,7 @@ assert.equal(qrBytes.readUInt32BE(16),1920);assert.equal(qrBytes.readUInt32BE(20
 const ui=await fs.readFile(path.join(root,"studio","venue-library.js"),"utf8");
 assert.match(ui,/new QRCode\(els\.qrSource/);assert.match(ui,/BarcodeDetector/);assert.match(ui,/jookbox-venue-qr-master-v1\.png/);
 assert.match(ui,/Secure publication started/);assert.match(ui,/venue-publications\/capabilities/);
+assert.match(ui,/if\(result\.authentication\?\.available\)state\.activationPending=false/,"A successful publisher refresh must clear a stale activation-code prompt.");
 const welcomeVideo=Buffer.from([0,0,0,24,0x66,0x74,0x79,0x70,0x69,0x73,0x6f,0x6d,0,0,0,0,0,0,0,0,0,0,0,0]);
 const publicationVenue=structuredClone(preserved);publicationVenue.admin.customVideo={fileName:"welcome.mp4",sizeBytes:welcomeVideo.length,sha256:crypto.createHash("sha256").update(welcomeVideo).digest("hex")};
 assert.equal(publicationReadiness(publicationVenue,{videoPath:"welcome.mp4",videoSizeBytes:welcomeVideo.length}).ready,true);

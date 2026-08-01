@@ -1,6 +1,6 @@
 "use strict";
 
-const VERSION="20260731-bar-jookbox-6";
+const VERSION="20260801-bar-jookbox-7";
 const LANEWAY_REPORTING_VERSION="laneway-weekly-v1";
 const $=id=>document.getElementById(id);
 const els={
@@ -118,7 +118,7 @@ async function init(){
     const requested=pathId||legacy||platform.defaultEdition;
     editionEntry=platform.editions.find(item=>(item.editionId===requested||item.slug===requested)&&item.active);
     if(!editionEntry)throw new Error(`Unknown edition: ${requested}`);
-    config=await fetchJson(`/${editionEntry.config}?v=${VERSION}`);
+    config=await fetchJson(`${rootPath(editionEntry.config)}?v=${VERSION}`);
     analytics=new DeepCutsAnalytics.Tracker({platformConfig:platform,editionEntry,editionConfig:config});
     await applyConfig();
     analytics.track("discovery_page_viewed",{page_location:location.origin+location.pathname,page_identifier:pageIdentifier()},{onceKey:`page:${editionEntry.editionId||editionEntry.slug}`});
@@ -126,6 +126,7 @@ async function init(){
 }
 
 async function fetchJson(url){const response=await fetch(url,{cache:"no-store"});if(!response.ok)throw new Error(`${url} returned ${response.status}`);return response.json()}
+function rootPath(value){return`/${String(value||"").replace(/^\/+/,"")}`}
 
 async function applyConfig(){
   const name=config.bandName||editionEntry.name;

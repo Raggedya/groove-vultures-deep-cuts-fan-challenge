@@ -86,5 +86,7 @@ const migration=await fs.readFile(path.join(root,"migrations","0004_bar_publishe
 for(const table of["bar_publisher_activations","bar_publisher_devices","bar_publication_jobs","bar_editions"])assert.match(migration,new RegExp(`CREATE TABLE IF NOT EXISTS ${table}`));
 const wrangler=JSON.parse((await fs.readFile(path.join(root,"wrangler.jsonc"),"utf8")).replace(/^\/\/.*$/gm,"").replace(/\/\*[\s\S]*?\*\//g,""));
 assert.ok(wrangler.r2_buckets?.some(binding=>binding.binding==="BAR_ASSETS"),"Cloudflare must bind the isolated Bar Edition asset bucket.");
+const publisherSource=await fs.readFile(path.join(root,"worker","bar-publisher.js"),"utf8");
+assert.match(publisherSource,/config:`api\/bar-editions\/\$\{row\.edition_id\}\/config`/,"Dynamic Bar Edition manifests must not emit a scheme-relative configuration URL.");
 
 console.log("Direct Bar publisher tests passed: manifest gate, locked Bar Edition config, 24 MiB ceiling, R2 binding and permanent 1920×1080 QR scan proof are intact.");

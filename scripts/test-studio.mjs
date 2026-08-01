@@ -184,9 +184,10 @@ const sourceFiles=await Promise.all([
   fs.readFile("package.json","utf8"),
   fs.readFile(".github/workflows/build-deep-cuts-studio-macos.yml","utf8"),
   fs.readFile("scripts/build-cloudflare.mjs","utf8"),
-  fs.readFile("worker/index.js","utf8")
+  fs.readFile("worker/index.js","utf8"),
+  fs.readFile("js/app.js","utf8")
 ]);
-const [html,css,app,venueHtml,venueCss,venueApp,desktopMain,serverSource,forgeConfig,packageSource,macWorkflow,cloudflareBuild,worker]=sourceFiles;
+const [html,css,app,venueHtml,venueCss,venueApp,desktopMain,serverSource,forgeConfig,packageSource,macWorkflow,cloudflareBuild,worker,discoveryApp]=sourceFiles;
 assert.match(html,/Deep Cuts Studio/);
 assert.match(html,/Copyright Clearlight Creative/);
 assert.match(html,/APPLY EDITS &amp; RE-CREATE/);
@@ -234,6 +235,8 @@ assert.match(venueHtml,/Requires hosted analytics/);
 assert.match(venueCss,/\.health-card\.red/);
 assert.match(venueApp,/\/api\/studio\/venues\/import\/preview/);
 assert.match(venueApp,/BarcodeDetector/);
+assert.match(discoveryApp,/rootPath\(editionEntry\.config\)/,"Dynamic edition configuration paths must tolerate an existing leading slash.");
+assert.match(discoveryApp,/function rootPath\(value\)/,"The public loader must normalize root-relative configuration paths.");
 assert.match(desktopMain,/app\.getPath\("userData"\)/,"Desktop drafts must live outside the packaged application.");
 assert.match(desktopMain,/boundedSmokeTestSwitch="deep-cuts-bounded-smoke-test"/,"Packaged verification must be able to run without disturbing an already-open installed Studio.");
 assert.match(desktopMain,/app\.commandLine\.hasSwitch\(boundedSmokeTestSwitch\)/,"Electron must recognise the bounded-test switch after Chromium command-line parsing.");
