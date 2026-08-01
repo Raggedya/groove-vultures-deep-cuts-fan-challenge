@@ -58,7 +58,7 @@ export async function augmentPlatformManifest(staticResponse,env){
   const existing=new Set((platform.editions||[]).map(item=>item.editionId));
   for(const row of rows.results||[])if(!existing.has(row.edition_id))platform.editions.push({
     slug:row.slug,editionId:row.edition_id,canonicalPath:`/e/${row.edition_id}`,name:row.venue_name,
-    config:`/api/bar-editions/${row.edition_id}/config`,active:true,dynamic:true
+    config:`api/bar-editions/${row.edition_id}/config`,active:true,dynamic:true
   });
   return json(platform,200,{"cache-control":"no-store"});
 }
@@ -179,7 +179,7 @@ async function commitPublication(env,inputJob){
     env.DB.prepare(`INSERT INTO editions (edition_id,band_name,config_path,canonical_path,status,deployed_at,commit_sha,created_at,updated_at)
       VALUES (?1,?2,?3,?4,'active',?5,NULL,?5,?5)
       ON CONFLICT(edition_id) DO UPDATE SET band_name=excluded.band_name,config_path=excluded.config_path,canonical_path=excluded.canonical_path,status='active',deployed_at=excluded.deployed_at,updated_at=excluded.updated_at`)
-      .bind(job.edition_id,job.venue_name,`/api/bar-editions/${job.edition_id}/config`,`/e/${job.edition_id}`,now),
+      .bind(job.edition_id,job.venue_name,`api/bar-editions/${job.edition_id}/config`,`/e/${job.edition_id}`,now),
     env.DB.prepare(`INSERT INTO production_jobs (job_id,edition_id,band_name,status,submitted_at,research_completed_at,validation_completed_at,deployed_at,updated_at)
       VALUES (?1,?2,?3,'deployed',?4,?4,?4,?4,?4)
       ON CONFLICT(job_id) DO UPDATE SET status='deployed',validation_completed_at=?4,deployed_at=?4,updated_at=?4`).bind(job.job_id,job.edition_id,job.venue_name,now),
@@ -211,7 +211,7 @@ async function rollbackPublication(env,job,code,message){
   const previous=job.previous_record_json?JSON.parse(job.previous_record_json):null,now=new Date().toISOString(),statements=[];
   if(previous){
     statements.push(env.DB.prepare("UPDATE bar_editions SET venue_name=?1,config_json=?2,video_key=?3,qr_key=?4,status=?5,current_job_id=?6,updated_at=?7 WHERE edition_id=?8").bind(previous.venue_name,previous.config_json,previous.video_key,previous.qr_key,previous.status,previous.current_job_id,now,job.edition_id));
-    statements.push(env.DB.prepare("UPDATE editions SET band_name=?1,config_path=?2,canonical_path=?3,status='active',updated_at=?4 WHERE edition_id=?5").bind(previous.venue_name,`/api/bar-editions/${job.edition_id}/config`,`/e/${job.edition_id}`,now,job.edition_id));
+    statements.push(env.DB.prepare("UPDATE editions SET band_name=?1,config_path=?2,canonical_path=?3,status='active',updated_at=?4 WHERE edition_id=?5").bind(previous.venue_name,`api/bar-editions/${job.edition_id}/config`,`/e/${job.edition_id}`,now,job.edition_id));
   }else{
     statements.push(env.DB.prepare("DELETE FROM bar_editions WHERE edition_id=?1 AND current_job_id=?2").bind(job.edition_id,job.job_id));
     statements.push(env.DB.prepare("UPDATE editions SET status='inactive',updated_at=?1 WHERE edition_id=?2").bind(now,job.edition_id));

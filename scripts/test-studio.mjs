@@ -91,12 +91,14 @@ const revisedBar=applyRevision(barEditionDraft,"Change About Us to Shotkickers v
 assert.equal(revisedBar.project.input.aboutText,"Shotkickers venue story supplied by the administrator");
 assert.match(revisedBar.entry.changes.join(" "),/About Us copy updated/);
 const barPreview=renderStudioPreview(barEdition,{videoUrl:"/api/studio/projects/studio_example/video"});
-assert.match(barPreview,/jookbox-atlas-reference-v1\.webp/);
+assert.match(barPreview,/jookbox-bar-heritage-brass-v1\.png/);
 assert.match(barPreview,/class="coin-label">INSERT COIN</);
 assert.doesNotMatch(barPreview,/Drag coin up to play/);
 assert.match(barPreview,/\.machine\.is-awake \.coin\{animation:none!important;opacity:0;filter:none;box-shadow:none\}/);
 assert.match(barPreview,/machine\.classList\.remove\("is-powering","is-accepting"\)/);
-assert.match(barPreview,/\.title\{[^}]*top:8\.45%;[^}]*height:7\.75%/);
+assert.match(barPreview,/\.title\{[^}]*top:6\.15%;[^}]*height:12\.7%/);
+assert.match(barPreview,/\.ticker span\{[^}]*white-space:nowrap/);
+assert.match(barPreview,/\.copyright\{[^}]*background:linear-gradient\([^}]*#c69d58/);
 assert.doesNotMatch(barPreview,/\.title small:after\{[^}]*content:"BAR EDITION"/);
 assert.match(barPreview,/jukebox-real-coin-insert-cc0\.mp3/);
 assert.match(barPreview,/WELCOME VIDEO|welcomeVideo/);
@@ -184,9 +186,10 @@ const sourceFiles=await Promise.all([
   fs.readFile("package.json","utf8"),
   fs.readFile(".github/workflows/build-deep-cuts-studio-macos.yml","utf8"),
   fs.readFile("scripts/build-cloudflare.mjs","utf8"),
-  fs.readFile("worker/index.js","utf8")
+  fs.readFile("worker/index.js","utf8"),
+  fs.readFile("js/app.js","utf8")
 ]);
-const [html,css,app,venueHtml,venueCss,venueApp,desktopMain,serverSource,forgeConfig,packageSource,macWorkflow,cloudflareBuild,worker]=sourceFiles;
+const [html,css,app,venueHtml,venueCss,venueApp,desktopMain,serverSource,forgeConfig,packageSource,macWorkflow,cloudflareBuild,worker,discoveryApp]=sourceFiles;
 assert.match(html,/Deep Cuts Studio/);
 assert.match(html,/Copyright Clearlight Creative/);
 assert.match(html,/APPLY EDITS &amp; RE-CREATE/);
@@ -234,6 +237,8 @@ assert.match(venueHtml,/Requires hosted analytics/);
 assert.match(venueCss,/\.health-card\.red/);
 assert.match(venueApp,/\/api\/studio\/venues\/import\/preview/);
 assert.match(venueApp,/BarcodeDetector/);
+assert.match(discoveryApp,/rootPath\(editionEntry\.config\)/,"Dynamic edition configuration paths must tolerate an existing leading slash.");
+assert.match(discoveryApp,/function rootPath\(value\)/,"The public loader must normalize root-relative configuration paths.");
 assert.match(desktopMain,/app\.getPath\("userData"\)/,"Desktop drafts must live outside the packaged application.");
 assert.match(desktopMain,/boundedSmokeTestSwitch="deep-cuts-bounded-smoke-test"/,"Packaged verification must be able to run without disturbing an already-open installed Studio.");
 assert.match(desktopMain,/app\.commandLine\.hasSwitch\(boundedSmokeTestSwitch\)/,"Electron must recognise the bounded-test switch after Chromium command-line parsing.");
@@ -257,6 +262,7 @@ assert.match(forgeConfig,/studio-jookbox-research\.mjs/);
 assert.match(forgeConfig,/venue-library-server\.mjs/);
 assert.match(forgeConfig,/jookbox-venue-qr-master-v1\.png/);
 assert.match(forgeConfig,/jookbox-atlas-reference-v1\.webp/);
+assert.match(forgeConfig,/jookbox-bar-heritage-brass-v1\.png/);
 assert.match(forgeConfig,/jukebox-real-coin-insert-cc0\.mp3/);
 assert.match(packageSource,/"studio:desktop": "electron-forge start"/);
 assert.match(packageSource,/"studio:make": "node scripts\/build-studio-windows\.mjs"/);

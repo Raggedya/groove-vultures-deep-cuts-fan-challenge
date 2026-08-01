@@ -1,12 +1,13 @@
 # Deep Cuts Bar Edition
 
-Bar Edition is the locked, static venue version of the ATLAS JookBox. It is an isolated product on the shared Deep Cuts engine and does not change Band Edition, Filthy Animals, ATLAS or any completed edition.
+Bar Edition is the locked, static venue JookBox. It is an isolated product on the shared Deep Cuts engine and does not change Band Edition, Filthy Animals, ATLAS or any completed edition. Its stored ATLAS appearance identifier is retained for data compatibility, while the Bar-only renderer uses the owner-approved heritage mahogany and aged-brass cabinet.
 
 ## Locked presentation and behaviour
 
 - Product type: `bar_jukebox`
 - Model: `bar-jukebox/1`
 - Cabinet: `atlas-reference-cabinet/1`
+- Bar visual surface: SHA-256-locked `assets/jookbox-bar-heritage-brass-v1.png`
 - Key bank: `bar-six-key/1`
 - Content mode: `administrator-static`
 - Automatic web lookup: forbidden
@@ -14,7 +15,7 @@ Bar Edition is the locked, static venue version of the ATLAS JookBox. It is an i
 - Global footer: `Deep Cuts` / `Copyright Clearlight Creative`
 - Cabinet copyright: `Copyright Clearlight Creative 2026.`
 
-The top marquee displays only the venue name and the `JOOKBOX` tagline; it never displays `BAR EDITION`. This compact illuminated identity block sits lower in the arch, immediately above the ticker, and uses the existing responsive title-fitting logic. The administrator supplies the ticker text, administrator-approved About Us copy, a local MP4 welcome video and exactly five button labels with five direct HTTPS destinations. About Us is always the internal sixth key. The cabinet support strip below the keys is the sole working Share control and its dynamic label reads `Share [Venue Name] with your mates`.
+The top marquee displays only the venue name and the `JOOKBOX` tagline; it never displays `BAR EDITION`. It is fitted into the engraved heritage arch using the existing responsive title-fitting logic. The broad cabinet ticker uses large, bright yellow type and remains one clipped scrolling line. The administrator supplies the ticker text, administrator-approved About Us copy, a local MP4 welcome video and exactly five button labels with five direct HTTPS destinations. About Us is always the internal sixth parchment/brass key. The cabinet support strip below the keys is the sole working Share control and its dynamic label reads `Share [Venue Name] with your mates`. `Copyright Clearlight Creative 2026.` is displayed on its own brass plate at the bottom of the cabinet.
 
 The visible cabinet instruction reads `INSERT COIN`. The visitor drags the visible coin upward, clicks it or activates it with Enter/Space. The yellow coin pulses gently only while the cabinet is sleeping; it inserts and disappears during activation, then remains non-glowing and non-pulsing for the entire awake session, including a restored session after refresh. The direct gesture starts the real local coin sound, requests immediate MP4 playback, then runs the established mechanical, neon, CRT, key and ticker sequence. If a browser blocks audible autoplay, the native video controls remain visible so the visitor can press Play. The five venue destinations open securely in a new tab, preserving the powered JookBox in the original tab. About Us opens an internal venue-information screen and returns to the still-powered JookBox. The long Share control remains dim and unavailable until the cabinet is awake, then shares the canonical public edition URL.
 

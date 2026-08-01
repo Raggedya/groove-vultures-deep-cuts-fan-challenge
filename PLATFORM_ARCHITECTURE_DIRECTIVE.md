@@ -90,6 +90,7 @@ Treat every completed edition as a finished commercial product that must remain 
 
 - `bar_jukebox` is an isolated static venue product on the shared engine. It must never change, import from or weaken the locked Band Edition `jukebox` contract.
 - Its model is `bar-jukebox/1`, appearance is `atlas-reference-cabinet/1`, and key bank is `bar-six-key/1`.
+- The owner-approved Bar presentation is the SHA-256-locked `jookbox-bar-heritage-brass-v1.png`: a full-height, well-used mahogany and aged-brass cabinet with a fitted arched venue name, broad single-line amber ticker, left coin mechanism, large welcome-video screen, six parchment/brass destination keys, one wide venue-share plate and a bottom brass `Copyright Clearlight Creative 2026.` plate. The legacy appearance identifier remains in stored Bar records for backward compatibility; the Bar-only renderer applies this surface and must never restyle Band Edition.
 - Its cabinet marquee shows only the fitted venue name and `JOOKBOX` tagline in a compact lower arch position immediately above the ticker; `BAR EDITION` never appears inside the cabinet.
 - The venue administrator supplies the venue name, scrolling ticker, About Us copy, local MP4 and exactly five labelled HTTPS destinations. `About Us` is the permanent internal sixth key. No web lookup, inference or runtime scraping is permitted.
 - The support strip below the six keys is the sole working Share control, labelled `Share [Venue Name] with your mates`; it remains locked until the coin wakes the cabinet and shares the canonical public edition URL.
