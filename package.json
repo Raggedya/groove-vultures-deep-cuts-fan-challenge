@@ -39,6 +39,7 @@
     "studio:make": "node scripts/build-studio-windows.mjs",
     "studio:test": "node scripts/test-studio-jookbox-research.mjs && node scripts/test-bar-jukebox.mjs && node scripts/test-bar-publisher.mjs && node scripts/test-venue-library.mjs && node scripts/test-studio.mjs",
     "studio:venue:test": "node scripts/test-venue-library.mjs",
+    "studio:venue:batch:test": "node scripts/test-venue-batch-publication.mjs",
     "studio:make:mac:arm64": "electron-forge make --platform=darwin --arch=arm64",
     "studio:make:mac:x64": "electron-forge make --platform=darwin --arch=x64"
   },

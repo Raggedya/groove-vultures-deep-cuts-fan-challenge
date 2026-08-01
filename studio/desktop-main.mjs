@@ -4,6 +4,7 @@ import fs from "node:fs/promises";
 import {createRequire} from "node:module";
 import {app,BrowserWindow,Menu,safeStorage,session,shell} from "electron";
 import {createStudioServer} from "../scripts/studio-server.mjs";
+import {publishVenueBatch} from "../scripts/venue-batch-publication.mjs";
 
 const require=createRequire(import.meta.url);
 const squirrelStartup=require("electron-squirrel-startup");
@@ -13,11 +14,18 @@ const isBoundedSmokeTest=
   process.argv.includes(`--${boundedSmokeTestSwitch}`)||
   app.commandLine.hasSwitch(boundedSmokeTestSwitch)||
   process.env.DEEP_CUTS_BOUNDED_SMOKE_TEST==="1";
+const venueBatchSwitch="deep-cuts-publish-venue-batch";
+const isVenueBatchPublish=process.argv.includes(`--${venueBatchSwitch}`)||app.commandLine.hasSwitch(venueBatchSwitch);
 let mainWindow=null;
 let studioServer=null;
 let studioOrigin="";
 
 if(isBoundedSmokeTest){
+  app.disableHardwareAcceleration();
+  app.commandLine.appendSwitch("disable-gpu");
+  app.commandLine.appendSwitch("disable-gpu-compositing");
+}
+if(isVenueBatchPublish){
   app.disableHardwareAcceleration();
   app.commandLine.appendSwitch("disable-gpu");
   app.commandLine.appendSwitch("disable-gpu-compositing");
@@ -159,7 +167,7 @@ async function stopStudioServer(){
 if(isSquirrelStartup){
   app.quit();
 }else{
-  const hasSingleInstanceLock=isBoundedSmokeTest||app.requestSingleInstanceLock();
+  const hasSingleInstanceLock=isVenueBatchPublish||(isBoundedSmokeTest||app.requestSingleInstanceLock());
   if(!hasSingleInstanceLock){
     app.quit();
   }else{
@@ -172,6 +180,15 @@ if(isSquirrelStartup){
 
     app.whenReady().then(async()=>{
       if(process.platform!=="darwin")Menu.setApplicationMenu(null);
+      if(isVenueBatchPublish){
+        const dataDir=path.join(app.getPath("userData"),"studio");
+        const venueCredentialStore=createPublisherCredentialStore(path.join(dataDir,"publisher-credential.json"));
+        const videoPath=commandValue("video");
+        const force=process.argv.includes("--force")||app.commandLine.hasSwitch("force");
+        const result=await publishVenueBatch({dataDir,workspaceRoot:app.getAppPath(),videoPath,credentialStore:venueCredentialStore,appVersion:app.getVersion(),force,onProgress:event=>console.log(`[Venue batch ${event.position||""}] ${event.masterId||""} ${event.venueName||""} — ${event.stage||event.status}: ${event.message||""}`)});
+        console.log(`VENUE_BATCH_RESULT=${JSON.stringify({batchId:result.batchId,total:result.total,published:result.published,failed:result.failed,reportPath:result.reportPath})}`);
+        app.exit(result.failed?1:0);return;
+      }
       session.defaultSession.setPermissionRequestHandler((webContents,permission,callback,details)=>{
         const requestingUrl=details.requestingUrl||webContents.getURL();
         callback(permission==="media"&&isStudioUrl(requestingUrl));
@@ -197,3 +214,5 @@ if(isSquirrelStartup){
     app.on("before-quit",()=>{void stopStudioServer()});
   }
 }
+
+function commandValue(name){const prefix=`--${name}=`;const inline=process.argv.find(value=>value.startsWith(prefix));if(inline)return inline.slice(prefix.length);const index=process.argv.indexOf(`--${name}`);return index>=0?String(process.argv[index+1]||""):""}

@@ -14,6 +14,7 @@ const packagedFiles=new Set([
   "/scripts/studio-server.mjs",
   "/scripts/venue-library.mjs",
   "/scripts/venue-library-server.mjs",
+  "/scripts/venue-batch-publication.mjs",
   "/scripts/bar-edition-publication.mjs",
   "/scripts/venue-qr-artwork.mjs",
   "/scripts/vendor/qrcode.min.js",
