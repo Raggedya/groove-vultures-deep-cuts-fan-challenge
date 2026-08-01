@@ -92,14 +92,17 @@ for(const edition of platform.editions){
         bar.lightSequence!==true||
         bar.lightSequenceMode!=='single-key'||
         bar.coinStart!==true
-      )errors.push(`${edition.config} must preserve the locked static Bar Edition model, ATLAS cabinet, five-plus-Share key bank and single-key light sequence.`);
+      )errors.push(`${edition.config} must preserve the locked static Bar Edition model, ATLAS cabinet, five-plus-About Us key bank and single-key light sequence.`);
       if(config.featuredVideo||config.quiz||Object.values(config.links||{}).some(Boolean))errors.push(`${edition.config} Bar Edition must use only its administrator-supplied local MP4 and action list.`);
+      if(!/^Aggits_\d{3,}$/i.test(String(bar.sourceMasterId||'')))errors.push(`${edition.config} Bar Edition requires its immutable Venue Library Master ID.`);
       if(!config.bandName||bar.venueName!==config.bandName||!bar.tickerText||bar.tickerText.length>500)errors.push(`${edition.config} requires the exact venue name and administrator-supplied ticker copy.`);
-      if(actions.length!==5)errors.push(`${edition.config} requires exactly five administrator-supplied actions; Share is the permanent sixth key.`);
+      if(!String(bar.aboutText||'').trim()||String(bar.aboutText||'').length>1200)errors.push(`${edition.config} requires administrator-approved About Us copy of no more than 1200 characters.`);
+      if(actions.length!==5)errors.push(`${edition.config} requires exactly five administrator-supplied actions; About Us is the permanent sixth key and the long support panel is the sole Share control.`);
       const actionIds=new Set(),actionURLs=new Set();
       for(const action of actions){
         const url=normalized(action?.url);
         if(!/^[a-z0-9][a-z0-9_-]{0,39}$/i.test(action?.id||'')||!String(action?.label||'').trim()||String(action?.label||'').length>42||!url||authenticationWall(url))errors.push(`${edition.config} contains an incomplete or unsafe Bar Edition action.`);
+        if(/^share$/i.test(String(action?.label||'').trim()))errors.push(`${edition.config} must reserve sharing for the long support panel; use another administrator-supplied external action label.`);
         if(actionIds.has(action?.id)||actionURLs.has(url))errors.push(`${edition.config} contains a duplicate Bar Edition action.`);
         actionIds.add(action?.id);actionURLs.add(url);
       }
@@ -111,6 +114,7 @@ for(const edition of platform.editions){
       )errors.push(`${edition.config} requires a local MP4 welcome video and SHA-256 identity.`);
       else{
         const video=await fs.readFile(bar.localWelcomeVideo);
+        if(video.length>24*1024*1024)errors.push(`${edition.config} Bar Edition welcome video exceeds the protected 24 MiB Cloudflare publication limit.`);
         if(crypto.createHash('sha256').update(video).digest('hex')!==bar.localWelcomeVideoSha256)errors.push(`${edition.config} Bar Edition welcome video failed its SHA-256 identity check.`);
       }
       if(

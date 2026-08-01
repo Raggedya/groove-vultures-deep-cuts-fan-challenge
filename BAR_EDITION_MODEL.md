@@ -14,9 +14,9 @@ Bar Edition is the locked, static venue version of the ATLAS JookBox. It is an i
 - Global footer: `Deep Cuts` / `Copyright Clearlight Creative`
 - Cabinet copyright: `Copyright Clearlight Creative 2026.`
 
-The top marquee displays only the venue name and the `JOOKBOX` tagline; it never displays `BAR EDITION`. This compact illuminated identity block sits lower in the arch, immediately above the ticker, and uses the existing responsive title-fitting logic. The administrator supplies the ticker text, a local MP4 welcome video and exactly five button labels with five direct HTTPS destinations. Share is always the sixth key. The cabinet support strip below the keys is a second working Share control whose dynamic label reads `Share [Venue Name] with your mates`.
+The top marquee displays only the venue name and the `JOOKBOX` tagline; it never displays `BAR EDITION`. This compact illuminated identity block sits lower in the arch, immediately above the ticker, and uses the existing responsive title-fitting logic. The administrator supplies the ticker text, administrator-approved About Us copy, a local MP4 welcome video and exactly five button labels with five direct HTTPS destinations. About Us is always the internal sixth key. The cabinet support strip below the keys is the sole working Share control and its dynamic label reads `Share [Venue Name] with your mates`.
 
-The visible cabinet instruction reads `INSERT COIN`. The visitor drags the visible coin upward, clicks it or activates it with Enter/Space. The yellow coin pulses gently only while the cabinet is sleeping; it inserts and disappears during activation, then remains non-glowing and non-pulsing for the entire awake session, including a restored session after refresh. The direct gesture starts the real local coin sound, requests immediate MP4 playback, then runs the established mechanical, neon, CRT, key and ticker sequence. If a browser blocks audible autoplay, the native video controls remain visible so the visitor can press Play. The five venue destinations open securely in a new tab, preserving the powered JookBox in the original tab. Both Share controls remain dim and unavailable until the cabinet is awake, then share the canonical public edition URL.
+The visible cabinet instruction reads `INSERT COIN`. The visitor drags the visible coin upward, clicks it or activates it with Enter/Space. The yellow coin pulses gently only while the cabinet is sleeping; it inserts and disappears during activation, then remains non-glowing and non-pulsing for the entire awake session, including a restored session after refresh. The direct gesture starts the real local coin sound, requests immediate MP4 playback, then runs the established mechanical, neon, CRT, key and ticker sequence. If a browser blocks audible autoplay, the native video controls remain visible so the visitor can press Play. The five venue destinations open securely in a new tab, preserving the powered JookBox in the original tab. About Us opens an internal venue-information screen and returns to the still-powered JookBox. The long Share control remains dim and unavailable until the cabinet is awake, then shares the canonical public edition URL.
 
 ## Create a Bar Edition in Deep Cuts Studio
 
@@ -25,14 +25,17 @@ The visible cabinet instruction reads `INSERT COIN`. The visitor drags the visib
 3. Enter the venue name.
 4. Enter exactly five short button labels and five HTTPS URLs.
 5. Enter the scrolling ticker text.
-6. select the local MP4 welcome video.
-7. Press **Create Bar Edition**.
-8. Test the coin, sound, video, ticker, all six keys and responsive title in the phone preview.
-9. Make changes directly or through the typed/dictated revision field.
-10. Confirm that the large venue Share panel unlocks after the coin.
-11. Export the handoff when **Static Handoff Ready** appears.
+6. Enter administrator-approved About Us copy containing the verified location, venue story and any optional approved review wording.
+7. Select the local MP4 welcome video. For live publication, export it at 24 MiB or smaller.
+8. Press **Create Bar Edition**.
+9. Test the coin, sound, video, ticker, all six keys, About Us return behavior and responsive title in the phone preview.
+10. Make changes directly or through the typed/dictated revision field.
+11. Confirm that the single large venue Share panel unlocks after the coin.
+12. On the first production use, press **Activate Publishing**, enter the six-digit code sent to the owner email, then press **Publish Venue**. Later venues require only **Publish Venue**. Keep Studio open until direct Cloudflare publication, live verification, permanent QR scan-back and completion email are confirmed.
 
 Studio performs no venue research and does not infer, add or validate missing destinations. It is bound to an ephemeral private `127.0.0.1` address and must not generate a scannable preview QR: on a phone, that address refers to the phone rather than the Mac. Studio displays a publication-pending panel instead. The permanent public URL and QR pass through the platform isolation, asset-integrity, deployment and live-verification steps; only the deployed HTTPS URL is encoded and scan-tested.
+
+The private publisher never exposes Cloudflare credentials to Studio and does not require GitHub. Email activation issues a device-scoped token that Electron encrypts with Windows `safeStorage`. Each publication validates exactly five HTTPS destinations, required copy and the 24 MiB MP4 ceiling; uploads versioned MP4 and permanent QR objects; activates only the venue's isolated D1 record; and sends the QR by email. Publication state changes only after email delivery and independent live page, QR and MP4 verification succeed. A failed update rolls back to the previous live record.
 
 ## Production configuration
 
@@ -50,6 +53,7 @@ The edition-owned configuration lives only under `barJookBox`:
     "webLookupAllowed": false,
     "venueName": "Venue Name",
     "tickerText": "ADMINISTRATOR-SUPPLIED TICKER TEXT.",
+    "aboutText": "ADMINISTRATOR-APPROVED VENUE DESCRIPTION, VERIFIED LOCATION AND OPTIONAL APPROVED REVIEW WORDING.",
     "localWelcomeVideo": "assets/editions/venue-slug/welcome.mp4",
     "localWelcomeVideoSha256": "64-character SHA-256",
     "actions": [

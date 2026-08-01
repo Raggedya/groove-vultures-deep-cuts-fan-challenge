@@ -1,6 +1,6 @@
 "use strict";
 
-const VERSION="20260731-bar-jookbox-5";
+const VERSION="20260731-bar-jookbox-6";
 const LANEWAY_REPORTING_VERSION="laneway-weekly-v1";
 const $=id=>document.getElementById(id);
 const els={
@@ -15,7 +15,7 @@ const els={
   jookBoxSecondaryActions:$("jookBoxSecondaryActions"),jookBoxBottomShare:$("jookBoxBottomShare"),
   jookBoxCabinetCopyright:$("jookBoxCabinetCopyright"),
   jookBoxLearnMore:$("jookBoxLearnMore"),jookBoxBioScreen:$("jookBoxBioScreen"),jookBoxBioBack:$("jookBoxBioBack"),
-  jookBoxBioTitle:$("jookBoxBioTitle"),jookBoxBioCopy:$("jookBoxBioCopy"),jookBoxBioSource:$("jookBoxBioSource"),
+  jookBoxBioKicker:$("jookBoxBioKicker"),jookBoxBioTitle:$("jookBoxBioTitle"),jookBoxBioCopy:$("jookBoxBioCopy"),jookBoxBioSource:$("jookBoxBioSource"),
   barJookBoxIntro:$("barJookBoxIntro"),barJookBoxHero:$("barJookBoxHero"),barJookBoxLogo:$("barJookBoxLogo"),
   barJookBoxVenueName:$("barJookBoxVenueName"),barJookBoxDescription:$("barJookBoxDescription"),
   barJookBoxAddress:$("barJookBoxAddress"),barJookBoxMediaStatus:$("barJookBoxMediaStatus"),
@@ -215,6 +215,9 @@ function usesFinalIndieLabelModel(){return isIndieWheelEdition()&&config.indieWh
 function usesEnhancedIndieLabelExperience(){return isLanewayCompanyEdition()||usesFinalIndieLabelModel()}
 function barJookBoxRuntimeConfig(){
   const source=config.barJookBox||{};
+  const aboutText=String(source.aboutText||source.venueDescription||"").trim();
+  const aboutParagraphs=aboutText.split(/\n+/).map(paragraph=>paragraph.trim()).filter(Boolean);
+  if(!aboutParagraphs.length)aboutParagraphs.push("Venue information has not yet been supplied.");
   const selections=(Array.isArray(source.actions)?source.actions:[]).slice(0,5).flatMap((action,index)=>{
     const url=validHttps(action?.url);
     const label=String(action?.label||"").trim();
@@ -249,6 +252,10 @@ function barJookBoxRuntimeConfig(){
     startupTimingsMs:{mechanism:120,neonOn:800,screenOn:1200,buttonsOn:1600,tickerOn:2000,...(source.startupTimingsMs||{})},
     displaySelectionIds:selections.map(selection=>selection.id),
     marquee:source.venueName||config.bandName,
+    biography:{
+      paragraphs:aboutParagraphs,
+      sourceURL:""
+    },
     supportAction:{
       action:"share",
       label:`Share ${source.venueName||config.bandName} with your mates`,
@@ -675,8 +682,9 @@ function jookBoxUtilityFallbackKinds(destinationCount,hasBiography){
 }
 
 function createJookBoxUtilityKey(kind,index){
+  const barAbout=isBarJookBoxEdition()&&kind==="learn_more";
   const definition=kind==="learn_more"
-    ?{kind,label:"Learn More",subLabel:"Band biography",icon:"i"}
+    ?{kind,label:barAbout?"About Us":"Learn More",subLabel:barAbout?"Venue information":"Band biography",icon:"i"}
     :{kind:"share",label:"Share",subLabel:`Share this ${isBarJookBoxEdition()?"Bar Edition":"JookBox"}`,icon:"↗"};
   const button=document.createElement("button");
   button.type="button";
@@ -687,8 +695,8 @@ function createJookBoxUtilityKey(kind,index){
   button.disabled=true;
   button.tabIndex=-1;
   button.setAttribute("aria-disabled","true");
-  button.setAttribute("aria-label",definition.kind==="learn_more"?`Learn more about ${config.bandName}`:`Share the ${config.bandName} ${isBarJookBoxEdition()?"Bar Edition":"JookBox"}`);
-  button.innerHTML=`<span class="jookbox-action-icon" aria-hidden="true">${definition.icon}</span><span class="jookbox-action-copy"><strong>${definition.label}</strong><small>${definition.subLabel}</small></span><span class="jookbox-external-mark" aria-hidden="true">↗</span>`;
+  button.setAttribute("aria-label",definition.kind==="learn_more"?`${barAbout?"About":"Learn more about"} ${config.bandName}`:`Share the ${config.bandName} ${isBarJookBoxEdition()?"Bar Edition":"JookBox"}`);
+  button.innerHTML=`<span class="jookbox-action-icon" aria-hidden="true">${definition.icon}</span><span class="jookbox-action-copy"><strong>${definition.label}</strong><small>${definition.subLabel}</small></span><span class="jookbox-external-mark" aria-hidden="true">${barAbout?"›":"↗"}</span>`;
   button.addEventListener("click",()=>{
     if(!jookBoxPowered){focusJookBoxCoin();return}
     if(definition.kind==="learn_more"){
@@ -711,11 +719,11 @@ function buildJookBoxProductNavigation(){
     return link;
   });
   if(barSixKeyFormat){
-    controls.push(createJookBoxUtilityKey("share",controls.length));
+    controls.push(createJookBoxUtilityKey("learn_more",controls.length));
   }else if(sixKeyFormat){
     for(const kind of jookBoxUtilityFallbackKinds(controls.length,jookBoxHasBiography()))controls.push(createJookBoxUtilityKey(kind,controls.length));
   }
-  if(barSixKeyFormat&&controls.length!==6)console.warn("The Bar Edition contract requires exactly five administrator-supplied destinations plus Share.");
+  if(barSixKeyFormat&&controls.length!==6)console.warn("The Bar Edition contract requires exactly five administrator-supplied destinations plus About Us.");
   if(sixKeyFormat&&controls.length!==6)console.warn("The six-key JookBox contract requires four to six verified destinations so Learn More and Share can preserve all six positions.");
   const utilityKinds=new Set(controls.map(control=>control.dataset.jookboxUtility).filter(Boolean));
   const atlasReferenceCabinet=config.jookBox?.appearanceVariant==="atlas-reference-cabinet/1";
@@ -1121,6 +1129,7 @@ function playJookBoxCoinFallback(){
 
 function configureJookBoxBio(){
   const biography=config.jookBox?.biography||{};
+  els.jookBoxBioKicker.textContent=isBarJookBoxEdition()?"About the venue":"Behind the band";
   els.jookBoxBioTitle.textContent=config.bandName;
   els.jookBoxBioCopy.replaceChildren();
   for(const paragraph of Array.isArray(biography.paragraphs)?biography.paragraphs:[]){
@@ -1144,7 +1153,7 @@ function openJookBoxBio(){
   els.page.hidden=true;
   els.jookBoxBioScreen.hidden=false;
   els.jookBoxBioTitle.focus();
-  analytics.track("jookbox_bio_opened",{interaction_source:"jookbox_learn_more",edition_type:config.editionType},{dedupeKey:"jookbox-bio",dedupeMs:500});
+  analytics.track("jookbox_bio_opened",{interaction_source:isBarJookBoxEdition()?"jookbox_about_us":"jookbox_learn_more",edition_type:config.editionType},{dedupeKey:"jookbox-bio",dedupeMs:500});
   window.scrollTo({top:0,behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});
 }
 

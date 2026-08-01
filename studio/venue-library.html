@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#020914">
+  <meta name="robots" content="noindex,nofollow">
+  <title>JookBox Venue Library</title>
+  <link rel="stylesheet" href="./venue-library.css">
+</head>
+<body>
+  <header class="library-header">
+    <a class="wordmark" href="/studio/"><span>DEEP CUTS</span><strong>STUDIO</strong></a>
+    <nav aria-label="Studio sections"><a href="/studio/">Create Version</a><a href="/studio/venue-library.html" aria-current="page">Venue Library</a></nav>
+    <div class="local-state"><span aria-hidden="true"></span> LOCAL &amp; PRIVATE</div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="page-title">
+      <div><p class="eyebrow">JOOKBOX OPERATIONS</p><h1 id="page-title">Venue Library</h1><p>Synchronise the master CSV, update venue information and prepare venue-specific JookBox editions from one private Windows workspace.</p></div>
+      <div class="hero-actions">
+        <label class="button primary" for="csv-file">Synchronise Master CSV<input id="csv-file" type="file" accept=".csv,text/csv"></label>
+        <button class="button warm" id="update-all" type="button" disabled>Update All Venues</button>
+      </div>
+    </section>
+
+    <section class="health-grid" aria-label="Venue network health">
+      <button class="health-card red" type="button" data-health-filter="red"><span></span><strong id="health-red">0</strong><small>Needs attention</small></button>
+      <button class="health-card amber" type="button" data-health-filter="amber"><span></span><strong id="health-amber">0</strong><small>Warnings</small></button>
+      <button class="health-card green" type="button" data-health-filter="green"><span></span><strong id="health-green">0</strong><small>Healthy</small></button>
+      <button class="health-card grey" type="button" data-health-filter="grey"><span></span><strong id="health-grey">0</strong><small>Not checked</small></button>
+      <div class="sync-card"><small>MASTER CSV</small><strong id="venue-count">0 venues</strong><span id="last-sync">Not synchronised</span></div>
+    </section>
+
+    <section class="workspace">
+      <div class="library-panel">
+        <div class="panel-head"><div><p class="eyebrow">NETWORK</p><h2>Find a venue</h2></div><div class="report-actions"><button class="button subtle" id="print-report" type="button">Print / Save PDF</button><button class="button subtle" id="export-report" type="button">Export operational CSV</button></div></div>
+        <div class="filters">
+          <label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Search venue name or Aggits reference" autocomplete="off"></label>
+          <select id="health-filter" aria-label="Filter by health"><option value="">All health states</option><option value="red">Red</option><option value="amber">Amber</option><option value="green">Green</option><option value="grey">Grey</option></select>
+          <select id="publication-filter" aria-label="Filter by publication"><option value="">All publication states</option><option value="draft">Draft</option><option value="published">Published</option><option value="archived">Archived</option></select>
+          <select id="video-filter" aria-label="Filter by video"><option value="">All videos</option><option value="present">Custom video added</option><option value="missing">Video missing</option></select>
+          <select id="gig-filter" aria-label="Filter by gig-data status"><option value="">All gig-data states</option><option value="current">Current gig data</option><option value="stale">Stale gig data</option><option value="review_required">Review required</option><option value="failed">Gig retrieval failed</option><option value="never_checked">Never checked</option></select>
+          <select id="type-filter" aria-label="Filter by venue type"><option value="">All venue types</option></select>
+          <select id="location-filter" aria-label="Filter by location"><option value="">All locations</option></select>
+          <select id="update-filter" aria-label="Filter by update state"><option value="">All update states</option><option value="updated">Updated</option><option value="not_updated">Never updated</option></select>
+          <select id="outcome-filter" aria-label="Filter by update outcome"><option value="">All update outcomes</option><option value="success">Successful</option><option value="warning">Completed with warnings</option><option value="failed">Failed</option></select>
+          <select id="sort" aria-label="Sort venues"><option value="health">Needs attention first</option><option value="name">Venue name</option><option value="master_id">Master ID</option><option value="updated">Last edited</option><option value="last_success">Last successful update</option><option value="gig_freshness">Gig freshness</option><option value="publication">Publication state</option></select>
+        </div>
+        <div class="batch-bar" id="batch-bar" hidden><strong><span id="selected-count">0</span> selected</strong><button type="button" id="update-selected">Update Selected</button><button type="button" id="check-selected">Check URLs</button><button type="button" id="clear-selected">Clear</button></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th><input id="select-all" type="checkbox" aria-label="Select all visible venues"></th><th>Venue</th><th>Status</th><th>Gig feed</th><th>Video</th><th>Last success</th><th></th></tr></thead>
+            <tbody id="venue-rows"><tr><td colspan="7" class="empty">Synchronise a venue CSV to begin.</td></tr></tbody>
+          </table>
+        </div>
+        <p class="analytics-note"><strong>Public activity:</strong> Requires hosted analytics. This local release does not invent page views, QR scans or visitor clicks.</p>
+      </div>
+
+      <aside class="activity-panel" aria-labelledby="activity-title">
+        <div class="panel-head"><div><p class="eyebrow">LATEST RUN</p><h2 id="activity-title">Update activity</h2></div><span class="run-state" id="run-state">IDLE</span></div>
+        <div class="run-empty" id="run-empty"><span aria-hidden="true">◎</span><strong>Ready when you are.</strong><p>Updates run only while this application is open and when you press an update button.</p></div>
+        <div class="run-progress" id="run-progress" hidden>
+          <div class="progress-track"><span id="progress-fill"></span></div>
+          <strong id="progress-title">Preparing update</strong><p id="progress-operation">Waiting</p>
+          <dl><div><dt>Completed</dt><dd id="progress-completed">0 / 0</dd></div><div><dt>Success</dt><dd id="progress-success">0</dd></div><div><dt>Warnings</dt><dd id="progress-warning">0</dd></div><div><dt>Failed</dt><dd id="progress-failed">0</dd></div></dl>
+          <div class="run-actions"><button id="cancel-run" type="button">Cancel update</button><button id="retry-run" type="button" hidden>Retry failures</button><button id="export-run" type="button" hidden>Export results</button></div>
+          <ul id="run-results"></ul>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <dialog id="import-dialog">
+    <form method="dialog" class="dialog-card">
+      <button class="dialog-close" value="cancel" aria-label="Close import preview">×</button>
+      <p class="eyebrow">CSV SYNCHRONISATION</p><h2>Review before importing</h2><p id="import-file"></p>
+      <div class="import-counts"><div><strong id="import-parsed">0</strong><span>Parsed</span></div><div><strong id="import-new">0</strong><span>New</span></div><div><strong id="import-updated">0</strong><span>Updated</span></div><div><strong id="import-unchanged">0</strong><span>Unchanged</span></div><div><strong id="import-rejected">0</strong><span>Rejected</span></div></div>
+      <div id="import-issues" class="import-issues"></div>
+      <p class="preservation"><strong>Protected:</strong> Custom videos, manual ticker/About Us overrides, QR destinations, publication state and update history are never replaced by CSV synchronisation.</p>
+      <div class="dialog-actions"><button value="cancel" class="button subtle">Cancel</button><button id="apply-import" value="default" type="button" class="button primary">Synchronise valid venues</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="update-dialog">
+    <form method="dialog" class="dialog-card compact">
+      <button class="dialog-close" value="cancel" aria-label="Close update options">×</button>
+      <p class="eyebrow">LOCAL UPDATE</p><h2 id="update-dialog-title">Update venues</h2><p id="update-dialog-count">0 venues selected</p>
+      <fieldset><legend>Operations</legend><label><input id="operation-urls" type="checkbox" checked> Check destination URLs</label><label><input id="operation-gigs" type="checkbox" checked> Retrieve current gig information</label><label><input id="operation-ticker" type="checkbox" checked> Regenerate event ticker</label><label><input id="operation-qr" type="checkbox"> Check QR readiness</label></fieldset>
+      <p class="preservation">Each venue is isolated. A failure preserves the last valid data and does not stop the remaining venues.</p>
+      <div class="dialog-actions"><button value="cancel" class="button subtle">Cancel</button><button id="start-update" value="default" type="button" class="button warm">Start update</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="venue-dialog" class="venue-dialog">
+    <form method="dialog" class="venue-card" id="venue-form">
+      <button class="dialog-close" value="cancel" aria-label="Close venue editor">×</button>
+      <div class="venue-title"><div><p class="eyebrow" id="venue-master-id">AGGITS_000</p><h2 id="venue-name">Venue name</h2><p id="venue-meta"></p></div><span class="venue-health grey" id="venue-health">NOT CHECKED</span></div>
+      <div class="venue-grid">
+        <div class="editor-column">
+          <section><h3>Overview &amp; publication</h3><div class="field-grid"><label>Publication state<select id="venue-publication" disabled><option value="draft">Draft</option><option value="published">Published</option><option value="archived">Archived</option></select></label><label>Public edition URL<input id="venue-public-url" type="url" placeholder="Created after secure publication" inputmode="url" readonly></label><label class="wide">QR destination<input id="venue-qr-url" type="url" placeholder="Created after secure publication" inputmode="url" readonly></label></div><p class="source-label">These fields are controlled by Secure Publish Venue and cannot be marked live manually.</p></section>
+          <section><h3>Verified CSV destinations</h3><div id="venue-links" class="venue-links"></div></section>
+          <section><h3>Ticker</h3><p class="source-label" id="ticker-source">Source: CSV facts</p><label>Manual override<textarea id="venue-ticker" rows="4" maxlength="1600" placeholder="Leave blank to use the generated event ticker"></textarea></label><label>Pinned notice<textarea id="venue-pinned" rows="2" maxlength="500" placeholder="Optional notice preserved above generated events"></textarea></label><p id="generated-ticker" class="generated-copy"></p></section>
+          <section><h3>About Us</h3><p class="source-label" id="about-source">Source: CSV facts</p><label>Manual override<textarea id="venue-about" rows="5" maxlength="3000" placeholder="Leave blank to use factual CSV information"></textarea></label><p id="effective-about" class="generated-copy"></p></section>
+          <section><h3>Custom welcome video</h3><p id="venue-video-state">Custom video not yet added</p><div class="inline-actions"><label class="button subtle" for="venue-video">Select MP4<input id="venue-video" type="file" accept=".mp4,video/mp4"></label><button id="remove-venue-video" class="button danger" type="button" hidden>Remove video</button></div></section>
+          <section class="publication-card" aria-labelledby="publication-title">
+            <p class="eyebrow">PROTECTED PRODUCTION</p><h3 id="publication-title">Secure Publish Venue</h3>
+            <p>Publishes the isolated Bar Edition directly to Cloudflare, scan-tests its permanent QR and confirms delivery by email.</p>
+            <div class="publication-security"><span aria-hidden="true">&#9670;</span><span>Activate this Windows installation once by email. Its publishing credential is encrypted by Windows; no GitHub account is required.</span></div>
+            <div class="publication-status" id="publication-status" role="status" aria-live="polite"><strong>Checking secure connection</strong><span>Please wait.</span></div>
+            <div class="publication-progress" id="publication-progress" hidden><span id="publication-progress-fill"></span></div>
+            <p class="publication-limit" id="publication-limit">Public welcome video limit: 24 MB. Larger MP4 files remain available for local preview.</p>
+            <div class="activation-form" id="activation-form" hidden><label for="activation-code">Six-digit email code</label><div class="inline-actions"><input id="activation-code" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]{6}" placeholder="000000"><button id="complete-activation" type="button" class="button warm">Confirm Code</button></div></div>
+            <div class="inline-actions"><button id="activate-publishing" type="button" class="button subtle">Activate Publishing</button><button id="publish-venue" type="button" class="button primary" disabled>Publish Venue</button></div>
+            <div class="publication-links" id="publication-links" hidden></div>
+          </section>
+          <section><h3>Notes</h3><label>Private administrator notes<textarea id="venue-notes" rows="3" maxlength="2000"></textarea></label></section>
+          <div class="editor-actions"><button id="save-venue" type="button" class="button primary">Save changes</button><button id="update-venue" type="button" class="button warm">Update this venue</button><button id="check-venue" type="button" class="button subtle">Check URLs now</button></div>
+        </div>
+        <div class="preview-column">
+          <section><h3>Edition preview</h3><div class="phone"><iframe id="venue-preview" title="Venue JookBox preview"></iframe></div><button id="refresh-venue-preview" type="button" class="button subtle">Refresh preview</button></section>
+          <section class="qr-section"><h3>Venue QR artwork</h3><p id="qr-state">Publication URL required.</p><canvas id="venue-qr-canvas" width="1920" height="1080" aria-label="Venue QR artwork preview"></canvas><div id="venue-qr-source" hidden></div><p id="qr-validation"></p><div class="inline-actions"><button id="generate-qr" type="button" class="button primary">Generate QR artwork</button><button id="download-qr" type="button" class="button subtle" disabled>Download PNG</button><button id="print-qr" type="button" class="button subtle" disabled>Print / Save PDF</button></div></section>
+          <section><h3>Health</h3><div id="venue-health-details" class="detail-list"></div></section>
+          <section><h3>Update history</h3><div id="venue-result" class="generated-copy">This venue has not been updated.</div><ol id="venue-history" class="history-list"></ol></section>
+          <section><h3>Audit history</h3><ol id="venue-audit" class="history-list"></ol></section>
+        </div>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+  <footer><strong>Deep Cuts</strong><br>Copyright Clearlight Creative</footer>
+  <script src="/vendor/qrcode.min.js"></script>
+  <script type="module" src="./venue-library.js"></script>
+</body>
+</html>

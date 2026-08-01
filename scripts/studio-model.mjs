@@ -7,7 +7,7 @@ import {
 export const STUDIO_SCHEMA_VERSION="deep-cuts-studio-project/1";
 
 export const PRODUCT_TYPES=Object.freeze([
-  {id:"bar_jukebox",label:"Bar Edition",description:"A static venue JookBox with a local welcome video, five administrator-supplied links and Share.",aggitsPolicy:"forbidden",workflow:"bar-jukebox-static",automaticResearch:false},
+  {id:"bar_jukebox",label:"Bar Edition",description:"A static venue JookBox with a local welcome video, five administrator-supplied links, About Us and one Share bar.",aggitsPolicy:"forbidden",workflow:"bar-jukebox-static",automaticResearch:false},
   {id:"jookbox",label:"JookBox Band",description:"A verified band JookBox built from a band name and artist-controlled URL.",aggitsPolicy:"forbidden",workflow:"jookbox-factory",automaticResearch:true},
   {id:"business",label:"Business",description:"Company discovery, services, story and verified customer actions.",aggitsPolicy:"required",workflow:"factory"},
   {id:"recruitment",label:"Recruitment",description:"Employer discovery, verified vacancies and candidate pathways.",aggitsPolicy:"required",workflow:"factory"},
@@ -237,6 +237,10 @@ export function applyRevision(project,instruction,now=new Date()){
       next.tickerText=cleanMultiline(match[1].replace(/[.!]?$/,""),500);
       changes.push("Ticker text updated.");continue;
     }
+    if((match=clause.match(/^(?:change|set|replace)\s+(?:the\s+)?(?:about(?:\s+us)?|about\s+venue|venue\s+(?:description|story)|about\s+(?:text|copy))\s+(?:to|with)\s+([\s\S]+)$/i))){
+      next.aboutText=cleanMultiline(match[1].replace(/[.!]?$/,""),1200);
+      changes.push("About Us copy updated.");continue;
+    }
     if((match=clause.match(/^(?:change|set|replace)\s+(?:the\s+)?(?:brief|description|information|copy)\s+(?:to|with)\s+([\s\S]+)$/i))){
       next.brief=cleanMultiline(match[1].replace(/[.!]?$/,""),1200);
       changes.push("Project brief updated.");continue;
@@ -295,6 +299,7 @@ export function normalizeProjectInput(input={},fallback={}){
     sourceLabels:pairs.map(item=>item.label),
     youtubeUrl,
     tickerText:cleanMultiline(input.tickerText??fallback.tickerText,500),
+    aboutText:cleanMultiline(input.aboutText??fallback.aboutText,1200),
     posterHeading:clean(input.posterHeading??fallback.posterHeading,90),
     addWheel
   };
@@ -316,16 +321,21 @@ export function readinessFor(project){
   const blockers=[];
   if(!project.input.name)blockers.push("Add a version or company name.");
   if(project.input.type==="bar_jukebox"){
-    if(project.input.sourceUrls.length!==5)blockers.push("Add all five venue destinations so the fixed six-key bank can include Share.");
+    if(project.input.sourceUrls.length!==5)blockers.push("Add all five venue destinations; About Us is the fixed sixth key.");
     if(project.input.sourceLabels.length!==5||project.input.sourceLabels.some(label=>!label))blockers.push("Give each of the five venue destinations a short button label.");
+    const hasReservedShareLabel=project.input.sourceLabels.some(label=>/^share$/i.test(label));
+    if(hasReservedShareLabel)blockers.push("Use the long Share bar for sharing; replace the external button labelled Share.");
     if(!project.input.tickerText)blockers.push("Add the administrator-supplied scrolling ticker text.");
+    if(!project.input.aboutText)blockers.push("Add the administrator-approved About Us copy.");
     if(!project.mp4)blockers.push("Select the local MP4 welcome video.");
     const handoffReady=Boolean(
       project.input.name
       &&project.input.sourceUrls.length===5
       &&project.input.sourceLabels.length===5
       &&project.input.sourceLabels.every(Boolean)
+      &&!hasReservedShareLabel
       &&project.input.tickerText
+      &&project.input.aboutText
       &&project.mp4
     );
     if(handoffReady)blockers.push("Export the Bar Edition handoff, then run the existing isolation, deployment and live-verification checks.");
@@ -433,6 +443,8 @@ export function renderStudioPreview(project,{audioUrl="",logoUrl="",videoUrl="",
 function renderBarJookBoxStudioPreview(project,{videoUrl="",scriptNonce=""}={}){
   const input=project.input;
   const ticker=input.tickerText||"ADD THE VENUE TICKER TEXT IN DEEP CUTS STUDIO.";
+  const aboutText=input.aboutText||"Add administrator-approved About Us copy in Studio, including the verified venue location, what visitors can expect and an optional approved review excerpt.";
+  const aboutParagraphs=aboutText.split(/\n+/).map(value=>value.trim()).filter(Boolean).map(paragraph=>`<p>${escapeHtml(paragraph)}</p>`).join("");
   const supplied=input.sourceUrls.map((url,index)=>({
     url,
     label:input.sourceLabels[index]||`BUTTON ${index+1}`
@@ -443,7 +455,7 @@ function renderBarJookBoxStudioPreview(project,{videoUrl="",scriptNonce=""}={}){
       ?`<a class="key" href="${escapeAttribute(item.url)}" target="_blank" rel="noopener noreferrer" aria-disabled="true" tabindex="-1"><strong>${escapeHtml(item.label)}</strong></a>`
       :`<span class="key is-placeholder" aria-hidden="true"><strong>BUTTON ${index+1}</strong></span>`;
   });
-  keys.push('<button id="shareKey" class="key is-share" type="button" aria-disabled="true" disabled><strong>SHARE</strong></button>');
+  keys.push('<button id="aboutKey" class="key is-about" type="button" aria-disabled="true" disabled><strong>ABOUT US</strong></button>');
   const video=project.mp4&&videoUrl
     ?`<video id="welcomeVideo" controls playsinline preload="metadata" src="${escapeAttribute(videoUrl)}"></video>`
     :`<div class="video-wait"><strong>LOCAL MP4 REQUIRED</strong><span>Select the venue welcome video in Studio.</span></div>`;
@@ -456,8 +468,8 @@ function renderBarJookBoxStudioPreview(project,{videoUrl="",scriptNonce=""}={}){
   <meta name="theme-color" content="#120705">
   <title>${escapeHtml(input.name||"Bar Edition")} Studio Preview</title>
   <style>
-    *{box-sizing:border-box}html{background:#050201}body{margin:0;min-height:100vh;background:#050201;color:#fff;font-family:Arial,Helvetica,sans-serif}
-    button,a{font:inherit}main{width:min(100%,430px);margin:auto;padding:0 0 34px}.draft-bar{display:flex;justify-content:space-between;gap:12px;padding:9px 13px;background:#0b0705;color:#d7a654;font-size:8px;font-weight:900;letter-spacing:.13em}.draft-bar b{color:${project.readiness.handoffReady?"#9ff1bd":"#ffd37b"}}
+    *{box-sizing:border-box}[hidden]{display:none!important}html{background:#050201}body{margin:0;min-height:100vh;background:#050201;color:#fff;font-family:Arial,Helvetica,sans-serif}
+    button,a{font:inherit}main{width:100%;max-width:430px;margin:auto;padding:0 0 34px}.draft-bar{display:flex;justify-content:space-between;gap:12px;padding:9px 13px;background:#0b0705;color:#d7a654;font-size:8px;font-weight:900;letter-spacing:.13em}.draft-bar b{color:${project.readiness.handoffReady?"#9ff1bd":"#ffd37b"}}
     .machine{position:relative;width:100%;aspect-ratio:887/1774;overflow:hidden;background:url("/assets/jookbox-atlas-reference-v1.webp") center/100% 100% no-repeat;filter:brightness(.38) saturate(.46);transition:filter .48s ease}
     .machine:after{position:absolute;z-index:1;inset:0;content:"";pointer-events:none;background:radial-gradient(ellipse 46% 18% at 50% 6%,rgba(255,57,23,.34),transparent 72%),linear-gradient(90deg,rgba(255,35,151,.2),transparent 9% 91%,rgba(255,35,151,.2)),radial-gradient(ellipse 75% 30% at 50% 12%,rgba(255,180,28,.19),transparent 66%);mix-blend-mode:screen;opacity:0}
     .machine.is-powering:after{animation:neonFlicker .52s steps(1,end) .16s both}.machine.is-neon-on{filter:brightness(.86) saturate(.92)}.machine.is-neon-on:after{opacity:.8}.machine.is-awake{filter:none}
@@ -470,7 +482,9 @@ function renderBarJookBoxStudioPreview(project,{videoUrl="",scriptNonce=""}={}){
     .keys{position:absolute;z-index:4;top:57.7%;left:7.15%;width:85.7%;height:20.8%;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:5.7% 3.05%}.key{min-width:0;display:grid;place-items:center;padding:4%;border:1px solid #305262;border-radius:7%;background:linear-gradient(#101315,#020304);color:#587987;text-decoration:none;text-align:center;box-shadow:inset 0 1px rgba(255,255,255,.03),inset 0 -4px 8px #000;filter:brightness(.42) saturate(.45);pointer-events:none;transition:filter .22s,border-color .22s,box-shadow .22s,transform .1s}.key strong{font-size:clamp(8px,2.5vw,12px);line-height:1.05;overflow-wrap:anywhere;text-transform:uppercase}.key.is-placeholder{opacity:.3}.machine.is-buttons-on .key:not(.is-placeholder){color:#90e4ff;border-color:#65c9ff;filter:brightness(.78) saturate(.82);pointer-events:auto}.machine.is-buttons-on .key.is-current{color:#e9fbff;border-color:#d8f7ff;filter:brightness(1.15) saturate(.95);box-shadow:inset 0 1px rgba(255,255,255,.17),inset 0 -4px 8px #000,0 0 10px rgba(167,232,255,.68),0 0 20px rgba(104,206,243,.36)}.machine.is-buttons-on .key:focus-visible{outline:2px solid #fff;outline-offset:2px}.machine.is-buttons-on .key:active{transform:translateY(2px)}
     .support{position:absolute;z-index:4;top:79.55%;left:7.15%;width:85.7%;height:9.2%;display:grid;place-content:center;padding:4%;border:1px solid #ff5f78;border-radius:4%;background:rgba(20,1,5,.87);color:#ff9daf;font:inherit;text-align:center;box-shadow:inset 0 0 14px #000,0 0 10px rgba(255,45,89,.25);filter:brightness(.24) saturate(.5);opacity:.78;pointer-events:none;transition:filter .3s,opacity .3s,border-color .3s,box-shadow .3s,transform .1s}.support strong{font-size:clamp(11px,3.5vw,18px);letter-spacing:.045em;line-height:1.05;text-transform:uppercase}.machine.is-buttons-on .support{border-color:#ff667e;filter:brightness(.98) saturate(.9);opacity:1;pointer-events:auto;cursor:pointer;box-shadow:inset 0 1px rgba(255,255,255,.14),inset 0 -6px 12px #000,0 0 10px rgba(255,60,92,.5)}.machine.is-buttons-on .support:focus-visible{outline:3px solid #fff3c9;outline-offset:2px;filter:brightness(1.16)}.machine.is-buttons-on .support:active{transform:translateY(2px)}
     .status{position:absolute;z-index:4;top:91.2%;left:26%;width:48%;color:#d7a654;font-size:clamp(6px,1.8vw,9px);font-weight:900;letter-spacing:.08em;text-align:center;text-transform:uppercase}.copyright{position:absolute;z-index:4;top:94.3%;left:22%;width:56%;color:#987756;font-size:clamp(5px,1.5vw,8px);letter-spacing:.06em;text-align:center}
-    .gate{padding:16px 20px 5px;color:#aa8b6c;text-align:center;font-size:9px;line-height:1.5;letter-spacing:.06em;text-transform:uppercase}.gate strong{display:block;margin-bottom:5px;color:${project.readiness.handoffReady?"#9ff1bd":"#ffd37b"};font-size:11px}footer{padding:22px 0 0;color:#806b5d;font-size:9px;line-height:1.8;letter-spacing:.08em;text-align:center}footer strong{color:#b89a7d;letter-spacing:.15em}
+    .gate{padding:16px 20px 5px;color:#aa8b6c;text-align:center;font-size:9px;line-height:1.5;letter-spacing:.06em;text-transform:uppercase}.gate strong{display:block;margin-bottom:5px;color:${project.readiness.handoffReady?"#9ff1bd":"#ffd37b"};font-size:11px}
+    .about-screen{width:100%;min-height:calc(100vh - 36px);padding:18px 16px 30px;background:radial-gradient(circle at 50% 0,rgba(125,47,17,.2),transparent 38%),linear-gradient(#080302,#030101)}.about-back{width:100%;min-height:48px;padding:11px 15px;border:1px solid #76583a;border-radius:8px;background:linear-gradient(#23150e,#0a0604);color:#ffe4ac;font-weight:900;letter-spacing:.05em;text-align:left;box-shadow:inset 0 1px rgba(255,255,255,.08),0 8px 20px rgba(0,0,0,.28)}.about-back:focus-visible{outline:3px solid #fff0a0;outline-offset:3px}.about-card{margin-top:16px;padding:24px 20px 26px;border:1px solid #8e6638;border-radius:12px;background:linear-gradient(145deg,rgba(39,20,13,.98),rgba(8,4,3,.99));box-shadow:inset 0 1px rgba(255,244,204,.1),inset 0 0 28px rgba(0,0,0,.72),0 18px 35px rgba(0,0,0,.38)}.about-kicker{margin:0 0 9px;color:#e2ad59;font-size:9px;font-weight:900;letter-spacing:.2em;text-transform:uppercase}.about-card h1{margin:0;color:#fff0bd;font:900 clamp(27px,8vw,39px)/.98 Georgia,serif;letter-spacing:.05em;text-shadow:0 0 12px rgba(255,169,54,.35);text-transform:uppercase}.about-copy{margin-top:19px;padding-top:17px;border-top:1px solid rgba(222,168,84,.3)}.about-copy p{margin:0 0 14px;color:#eadfce;font-size:15px;line-height:1.65}.about-copy p:last-child{margin-bottom:0}
+    footer{padding:22px 0 0;color:#806b5d;font-size:9px;line-height:1.8;letter-spacing:.08em;text-align:center}footer strong{color:#b89a7d;letter-spacing:.15em}
     @keyframes coinAttention{0%,58%,100%{filter:brightness(.65);box-shadow:0 3px 7px #000,0 0 5px rgba(255,207,76,.22)}74%{filter:brightness(1.12);box-shadow:0 3px 7px #000,0 0 16px rgba(255,207,76,.72)}}@keyframes coinInsert{0%{transform:translate(-50%,-50%) rotate(5deg);opacity:1}58%{transform:translate(-50%,-145%) rotate(12deg) scale(.84);opacity:1}100%{transform:translate(-50%,-235%) rotate(18deg) scale(.58);opacity:0}}@keyframes neonFlicker{0%{opacity:0}18%{opacity:.88}31%{opacity:.08}49%{opacity:.62}63%{opacity:.16}79%{opacity:.94}100%{opacity:.8}}@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-100%)}}
     @media(prefers-reduced-motion:reduce){.coin{animation:none}.machine.is-powering:after{animation:none}.ticker span{width:100%;padding:0 4%;overflow:hidden;text-overflow:ellipsis;animation:none}.machine.is-ticker-on .ticker span{animation:none}.key{transition:none}}
   </style>
@@ -492,17 +506,25 @@ function renderBarJookBoxStudioPreview(project,{videoUrl="",scriptNonce=""}={}){
       <div id="status" class="status" aria-live="polite">Waiting for coin</div>
       <div class="copyright">Copyright Clearlight Creative 2026.</div>
     </section>
-    <div class="gate"><strong>${project.readiness.handoffReady?"STATIC CONTENT COMPLETE":"ADMINISTRATOR INPUT REQUIRED"}</strong>No web lookup runs for Bar Edition. The five labels, five URLs, ticker and MP4 come only from this local Studio project.</div>
+    <section id="aboutScreen" class="about-screen" aria-labelledby="aboutTitle" hidden>
+      <button id="aboutBack" class="about-back" type="button">&larr; Back to JookBox</button>
+      <article class="about-card">
+        <p class="about-kicker">About the venue</p>
+        <h1 id="aboutTitle" tabindex="-1">${escapeHtml(input.name||"Venue")}</h1>
+        <div class="about-copy">${aboutParagraphs}</div>
+      </article>
+    </section>
+    <div id="previewGate" class="gate"><strong>${project.readiness.handoffReady?"STATIC CONTENT COMPLETE":"ADMINISTRATOR INPUT REQUIRED"}</strong>No web lookup runs for Bar Edition. The five labels, five URLs, ticker, About Us copy and MP4 come only from this local Studio project.</div>
     <footer aria-label="Deep Cuts platform"><strong>Deep Cuts</strong><br>Copyright Clearlight Creative</footer>
   </main>
   <audio id="coinSound" preload="auto" src="/assets/audio/jukebox-real-coin-insert-cc0.mp3"></audio>
   <script${scriptNonce?` nonce="${escapeAttribute(scriptNonce)}"`:""}>
-    (()=>{const machine=document.getElementById("machine"),coinButton=document.getElementById("coinButton"),coin=document.getElementById("coin"),video=document.getElementById("welcomeVideo"),status=document.getElementById("status"),keys=[...document.querySelectorAll(".key:not(.is-placeholder)")],share=document.getElementById("shareKey"),sharePanel=document.getElementById("sharePanel"),sound=document.getElementById("coinSound");let state="sleeping",drag=null,keyTimer=0,keyIndex=-1;
+    (()=>{const machine=document.getElementById("machine"),coinButton=document.getElementById("coinButton"),coin=document.getElementById("coin"),video=document.getElementById("welcomeVideo"),status=document.getElementById("status"),keys=[...document.querySelectorAll(".key:not(.is-placeholder)")],aboutKey=document.getElementById("aboutKey"),aboutScreen=document.getElementById("aboutScreen"),aboutBack=document.getElementById("aboutBack"),aboutTitle=document.getElementById("aboutTitle"),previewGate=document.getElementById("previewGate"),sharePanel=document.getElementById("sharePanel"),sound=document.getElementById("coinSound");let state="sleeping",drag=null,keyTimer=0,keyIndex=-1;
     const unlock=()=>{keys.forEach(key=>{if(key.tagName==="A"){key.removeAttribute("aria-disabled");key.tabIndex=0}else{key.disabled=false;key.removeAttribute("aria-disabled")}});sharePanel.disabled=false;sharePanel.removeAttribute("aria-disabled")};
     const sequence=()=>{clearTimeout(keyTimer);if(document.hidden||!machine.classList.contains("is-buttons-on")||matchMedia("(prefers-reduced-motion: reduce)").matches||!keys.length)return;keyIndex=(keyIndex+1)%keys.length;keys.forEach((key,index)=>key.classList.toggle("is-current",index===keyIndex));keyTimer=setTimeout(sequence,1000)};
     const awaken=(restore=false)=>{if(state!=="sleeping")return;state="starting";machine.classList.add("is-accepting");status.textContent="Coin accepted — Bar Edition is powering up";if(!restore){sound.volume=.56;sound.play().catch(()=>{});if(video){video.currentTime=0;video.play().catch(()=>{status.textContent="Coin accepted — press play for the welcome video"})}try{sessionStorage.setItem("${sessionKey}","true")}catch{}}setTimeout(()=>machine.classList.add("is-powering"),120);setTimeout(()=>machine.classList.add("is-neon-on"),800);setTimeout(()=>machine.classList.add("is-screen-on"),1200);setTimeout(()=>{machine.classList.add("is-buttons-on");unlock();sequence()},1600);setTimeout(()=>{machine.classList.add("is-ticker-on","is-awake");machine.classList.remove("is-powering","is-accepting");state="awake";status.textContent="Coin accepted — JookBox is live"},2000)};
     coinButton.addEventListener("click",event=>{if(state!=="sleeping")return;if(event.detail===0||!drag)awaken()});coinButton.addEventListener("pointerdown",event=>{if(state!=="sleeping"||event.button!==0)return;event.preventDefault();coinButton.setPointerCapture?.(event.pointerId);drag={id:event.pointerId,y:event.clientY,progress:0}});coinButton.addEventListener("pointermove",event=>{if(!drag||drag.id!==event.pointerId)return;event.preventDefault();drag.progress=Math.max(0,Math.min(1,(drag.y-event.clientY)/70));coin.style.transform="translate(-50%,calc(-50% - "+Math.round(drag.progress*118)+"%)) rotate("+Math.round(5+drag.progress*12)+"deg)"});const finish=event=>{if(!drag||drag.id!==event.pointerId)return;const accepted=drag.progress>=.5;drag=null;coin.style.removeProperty("transform");if(accepted)awaken()};coinButton.addEventListener("pointerup",finish);coinButton.addEventListener("pointercancel",finish);
-    document.querySelectorAll(".key").forEach(key=>key.addEventListener("click",event=>{if(state!=="awake"){event.preventDefault();coinButton.focus()}}));const previewShare=async()=>{if(state!=="awake"){coinButton.focus();return}status.textContent="Public sharing activates after deployment";};share?.addEventListener("click",previewShare);sharePanel.addEventListener("click",previewShare);
+    document.querySelectorAll(".key").forEach(key=>key.addEventListener("click",event=>{if(state!=="awake"){event.preventDefault();coinButton.focus()}}));aboutKey.addEventListener("click",()=>{if(state!=="awake"){coinButton.focus();return}machine.hidden=true;previewGate.hidden=true;aboutScreen.hidden=false;aboutTitle.focus();scrollTo({top:0,behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"})});aboutBack.addEventListener("click",()=>{aboutScreen.hidden=true;machine.hidden=false;previewGate.hidden=false;aboutKey.focus();scrollTo({top:0,behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"})});const previewShare=async()=>{if(state!=="awake"){coinButton.focus();return}status.textContent="Public sharing activates after deployment";};sharePanel.addEventListener("click",previewShare);
     document.addEventListener("visibilitychange",()=>{if(document.hidden)clearTimeout(keyTimer);else if(state==="awake")sequence()});try{if(sessionStorage.getItem("${sessionKey}")==="true"){machine.classList.add("is-neon-on","is-screen-on","is-buttons-on","is-ticker-on","is-awake");state="awake";status.textContent="Coin accepted — JookBox is live";unlock();sequence();if(video){video.pause();video.currentTime=0}}}catch{}
     const title=document.getElementById("barTitle"),frame=title?.parentElement;let pending=0;const fit=()=>{pending=0;let multiline=false;title.dataset.fitMode="single-line";title.style.removeProperty("font-size");const maximum=parseFloat(getComputedStyle(title).fontSize),available=Math.max(24,frame.clientHeight-(frame.querySelector("small")?.offsetHeight||0)-12),apply=size=>{title.style.fontSize=size+"px";return title.scrollWidth<=title.clientWidth+1&&(!multiline||title.scrollHeight<=available+1)};if(apply(maximum)){title.style.removeProperty("font-size");return}let low=Math.min(maximum,12),high=maximum;if(!apply(low)){multiline=true;title.dataset.fitMode="multi-line";low=Math.min(maximum,7)}for(let index=0;index<12;index+=1){const candidate=(low+high)/2;if(apply(candidate))low=candidate;else high=candidate}title.style.fontSize=low.toFixed(2)+"px"};const schedule=()=>{cancelAnimationFrame(pending);pending=requestAnimationFrame(fit)};new ResizeObserver(schedule).observe(frame);document.fonts?.ready?.then(schedule).catch(()=>{});schedule()})();
   </script>

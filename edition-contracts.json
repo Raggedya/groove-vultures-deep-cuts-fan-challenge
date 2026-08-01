@@ -117,8 +117,10 @@
         "direct-coin-gesture-local-mp4-autoplay-request-with-controls-fallback",
         "administrator-supplied-ticker",
         "five-administrator-labelled-https-actions",
-        "permanent-sixth-share-key",
+        "administrator-supplied-about-copy",
+        "permanent-sixth-about-us-key",
         "working-dynamic-venue-share-panel",
+        "single-long-share-control",
         "no-scannable-localhost-preview-qr",
         "single-key-sequential-illumination",
         "origin-aware-secure-external-tabs",
@@ -130,7 +132,8 @@
         "administrator-supplied-ticker",
         "administrator-supplied-local-mp4",
         "five-button-labels",
-        "five-button-destinations"
+        "five-button-destinations",
+        "about-us-copy"
       ]
     }
   },

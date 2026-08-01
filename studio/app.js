@@ -32,6 +32,8 @@ const els={
   briefField:$("#brief-field"),
   barTickerField:$("#bar-ticker-field"),
   barTicker:$("#bar-ticker"),
+  barAboutField:$("#bar-about-field"),
+  barAbout:$("#bar-about"),
   barVideoField:$("#bar-video-field"),
   mp4:$("#mp4-file"),
   videoState:$("#video-state"),
@@ -132,6 +134,8 @@ function updateTypePolicy(){
   els.barRows.forEach(row=>{row.hidden=!bar});
   els.barTickerField.hidden=!bar;
   els.barTicker.required=bar;
+  els.barAboutField.hidden=!bar;
+  els.barAbout.required=bar;
   els.barVideoField.hidden=!bar;
   els.briefField.hidden=bar;
   els.optionalFields.hidden=bar;
@@ -147,14 +151,14 @@ function updateTypePolicy(){
     }
   });
   els.contentIntro.textContent=bar
-    ?"Add exactly five button labels and HTTPS destinations. Share is the permanent sixth key. Nothing is searched or inferred."
+    ?"Add exactly five button labels and HTTPS destinations. About Us is the permanent sixth key; the long bar is the sole Share control. Nothing is searched or inferred."
     :jookBox
     ?"Enter the band name and preferably one artist-controlled website, Linktree or social URL. Studio will find other destinations, independently verify them and omit anything below 98% confidence."
     :"Add up to three official pages. Studio treats these as research leads—not verified facts.";
   if(!bar)els.sources[0].placeholder=jookBox?"https://official-site-or-linktr.ee/band":"https://official-website.com";
   els.sourceLabels[0].placeholder=jookBox?"Optional source note":"Button label";
   els.localNote.innerHTML=bar
-    ?'<span aria-hidden="true">●</span> The MP4, ticker and venue links remain local and private until you export the handoff.'
+    ?'<span aria-hidden="true">●</span> The MP4, ticker, About Us copy and venue links remain local and private until you export the handoff.'
     :'<span aria-hidden="true">●</span> Drafts and supplied media remain in this computer’s private Studio workspace.';
   els.gateTitle.textContent=bar?"Static content gate":"98% verification gate";
   els.outputTitle.textContent=bar?"Version & Publishing":"Version & QR";
@@ -458,8 +462,8 @@ function renderGate(){
   if(state.project.input.type==="bar_jukebox"){
     els.researchResult.className=`research-result ${state.project.readiness.handoffReady?"passed":"waiting"}`;
     els.researchResult.innerHTML=state.project.readiness.handoffReady
-      ?"<strong>STATIC HANDOFF READY</strong><span>Five labelled URLs, ticker copy and the local MP4 are present. No web lookup was performed.</span>"
-      :"<strong>ADMINISTRATOR INPUT ONLY</strong><span>Complete the five labelled destinations, ticker and local MP4. Bar Edition never performs automatic research.</span>";
+      ?"<strong>STATIC HANDOFF READY</strong><span>Five labelled URLs, ticker copy, About Us copy and the local MP4 are present. No web lookup was performed.</span>"
+      :"<strong>ADMINISTRATOR INPUT ONLY</strong><span>Complete the five labelled destinations, ticker, About Us copy and local MP4. Bar Edition never performs automatic research.</span>";
     return;
   }
   if(state.project.input.type!=="jookbox"){
@@ -491,6 +495,7 @@ function fillForm(input){
   els.sources.forEach((field,index)=>field.value=input.sourceUrls[index]||"");
   els.sourceLabels.forEach((field,index)=>field.value=input.sourceLabels?.[index]||"");
   els.barTicker.value=input.tickerText||"";
+  els.barAbout.value=input.aboutText||"";
   els.youtube.value=input.youtubeUrl||"";
   els.brief.value=input.brief||"";
   els.posterHeading.value=input.posterHeading||"";
@@ -509,6 +514,7 @@ function formInput(){
     sourceLabels:sourceEntries.map(item=>item.label),
     youtubeUrl:els.youtube.value,
     tickerText:els.barTicker.value,
+    aboutText:els.barAbout.value,
     brief:els.brief.value,
     posterHeading:els.posterHeading.value,
     addWheel:els.wheelChoices.find(field=>field.checked)?.value==="yes"
@@ -721,7 +727,7 @@ function updateRunCopy(){
   const jookBox=els.type.value==="jookbox";
   const bar=els.type.value==="bar_jukebox";
   els.runLabel.textContent=bar?(state.project?"UPDATE BAR EDITION":"CREATE BAR EDITION"):jookBox?"RESEARCH & CREATE JOOKBOX":state.project?"UPDATE DEEP CUTS":"RUN DEEP CUTS";
-  els.runDescription.textContent=bar?"Build the local MP4 JookBox with five keys plus Share":jookBox?"Find, cross-check and populate verified band destinations":"Create the preview and QR output";
+  els.runDescription.textContent=bar?"Build the local MP4 JookBox with five links, About Us and the Share bar":jookBox?"Find, cross-check and populate verified band destinations":"Create the preview and QR output";
 }
 function showError(message){
   els.outputStatus.textContent="CHECK INPUT";els.outputStatus.className="output-status error";showToast(message);

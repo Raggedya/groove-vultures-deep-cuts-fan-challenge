@@ -77,14 +77,19 @@ const barEditionDraft=createProject({
   ],
   sourceLabels:["Gigs","Menu","Contact Us","Instagram","Facebook"],
   youtubeUrl:"https://youtu.be/dQw4w9WgXcQ",
-  tickerText:"SHOTKICKERS — LIVE MUSIC, GIGS, DRINKS AND GOOD TIMES IN MELBOURNE."
+  tickerText:"SHOTKICKERS — LIVE MUSIC, GIGS, DRINKS AND GOOD TIMES IN MELBOURNE.",
+  aboutText:"Administrator-approved Shotkickers location and venue information."
 },fixedDate);
 assert.equal(barEditionDraft.input.aggitsOption,"none","Bar Edition must never inherit Aggits.");
 assert.equal(barEditionDraft.input.addWheel,false,"Bar Edition must never inherit a spinning wheel.");
 assert.equal(barEditionDraft.input.youtubeUrl,"","Bar Edition uses the administrator's local MP4 rather than YouTube.");
+assert.equal(barEditionDraft.input.aboutText,"Administrator-approved Shotkickers location and venue information.");
 assert.equal(barEditionDraft.readiness.handoffReady,false,"The static handoff must wait for the local MP4.");
 const barEdition=attachMp4(barEditionDraft,{fileName:"shotkickers-welcome.mp4",sizeBytes:1024,sha256:"a".repeat(64)},fixedDate);
 assert.equal(barEdition.readiness.handoffReady,true);
+const revisedBar=applyRevision(barEditionDraft,"Change About Us to Shotkickers venue story supplied by the administrator.",new Date("2026-07-29T00:00:30.000Z"));
+assert.equal(revisedBar.project.input.aboutText,"Shotkickers venue story supplied by the administrator");
+assert.match(revisedBar.entry.changes.join(" "),/About Us copy updated/);
 const barPreview=renderStudioPreview(barEdition,{videoUrl:"/api/studio/projects/studio_example/video"});
 assert.match(barPreview,/jookbox-atlas-reference-v1\.webp/);
 assert.match(barPreview,/class="coin-label">INSERT COIN</);
@@ -97,8 +102,11 @@ assert.match(barPreview,/jukebox-real-coin-insert-cc0\.mp3/);
 assert.match(barPreview,/WELCOME VIDEO|welcomeVideo/);
 assert.match(barPreview,/Gigs/);
 assert.match(barPreview,/Contact Us/);
-assert.match(barPreview,/id="shareKey"/);
+assert.match(barPreview,/id="aboutKey"/);
+assert.match(barPreview,/id="aboutScreen"/);
+assert.doesNotMatch(barPreview,/id="shareKey"/);
 assert.match(barPreview,/id="sharePanel"/);
+assert.match(barPreview,/Administrator-approved Shotkickers location and venue information/);
 assert.match(barPreview,/Share Shotkickers with your mates/);
 assert.match(barPreview,/Public sharing activates after deployment/);
 assert.doesNotMatch(barPreview,/url:location\.href/);
@@ -167,6 +175,9 @@ const sourceFiles=await Promise.all([
   fs.readFile("studio/index.html","utf8"),
   fs.readFile("studio/styles.css","utf8"),
   fs.readFile("studio/app.js","utf8"),
+  fs.readFile("studio/venue-library.html","utf8"),
+  fs.readFile("studio/venue-library.css","utf8"),
+  fs.readFile("studio/venue-library.js","utf8"),
   fs.readFile("studio/desktop-main.mjs","utf8"),
   fs.readFile("scripts/studio-server.mjs","utf8"),
   fs.readFile("forge.config.cjs","utf8"),
@@ -175,7 +186,7 @@ const sourceFiles=await Promise.all([
   fs.readFile("scripts/build-cloudflare.mjs","utf8"),
   fs.readFile("worker/index.js","utf8")
 ]);
-const [html,css,app,desktopMain,serverSource,forgeConfig,packageSource,macWorkflow,cloudflareBuild,worker]=sourceFiles;
+const [html,css,app,venueHtml,venueCss,venueApp,desktopMain,serverSource,forgeConfig,packageSource,macWorkflow,cloudflareBuild,worker]=sourceFiles;
 assert.match(html,/Deep Cuts Studio/);
 assert.match(html,/Copyright Clearlight Creative/);
 assert.match(html,/APPLY EDITS &amp; RE-CREATE/);
@@ -185,12 +196,15 @@ assert.match(html,/Add a spinning wheel\?/);
 assert.match(html,/id="research-result"/);
 assert.match(html,/id="run-description"/);
 assert.match(html,/id="bar-ticker"/);
+assert.match(html,/id="bar-about"/);
 assert.match(html,/id="mp4-file"/);
 assert.match(html,/id="source-label-5"/);
 assert.match(html,/id="source-url-5"/);
 assert.match(html,/id="aggits-step"/);
 assert.match(html,/id="project-name-label"/);
 assert.match(html,/id="qr-output-title"/);
+assert.match(html,/href="\/studio\/venue-library\.html"/);
+assert.match(html,/<aside class="output-column" hidden aria-hidden="true">/,"The retired right-hand Studio column must remain absent from the visible interface.");
 assert.match(html,/name="addWheel" value="yes"/);
 assert.ok(html.indexOf('id="aggits-option"')<html.indexOf('id="project-name"'),"Aggits selection must be the first project input.");
 assert.match(html,/<details class="optional-fields" id="optional-fields">/);
@@ -201,7 +215,7 @@ assert.match(app,/owner-supplied HGM orange hi-vis artwork/);
 assert.match(app,/els\.aggitsStep\.hidden=jukeboxProduct/,"Both JookBox products must hide irrelevant Aggits controls.");
 assert.match(app,/field\.hidden=jookBox/,"The JookBox intake must not ask the owner to label research URLs manually.");
 assert.match(app,/type\?\.id==="bar_jukebox"/);
-assert.match(app,/Build the local MP4 JookBox with five keys plus Share/);
+assert.match(app,/Build the local MP4 JookBox with five links, About Us and the Share bar/);
 assert.match(app,/renderPublicationPendingPoster\(\)/);
 assert.match(app,/PUBLIC QR CREATED AFTER DEPLOYMENT/);
 assert.match(app,/els\.qr\.hidden=bar/);
@@ -212,21 +226,49 @@ assert.match(css,/--orange:#f38a45/);
 assert.match(css,/\.bar-jukebox-mode/);
 assert.match(css,/Compact top-left production intake/);
 assert.match(css,/Minimalist project controls/);
+assert.match(css,/grid-template-columns:minmax\(500px,1fr\) 440px/,"Studio must use the simplified two-column builder and phone-preview layout.");
+assert.match(venueHtml,/Venue Library/);
+assert.match(venueHtml,/Synchronise Master CSV/);
+assert.match(venueHtml,/Update All Venues/);
+assert.match(venueHtml,/Requires hosted analytics/);
+assert.match(venueCss,/\.health-card\.red/);
+assert.match(venueApp,/\/api\/studio\/venues\/import\/preview/);
+assert.match(venueApp,/BarcodeDetector/);
 assert.match(desktopMain,/app\.getPath\("userData"\)/,"Desktop drafts must live outside the packaged application.");
+assert.match(desktopMain,/boundedSmokeTestSwitch="deep-cuts-bounded-smoke-test"/,"Packaged verification must be able to run without disturbing an already-open installed Studio.");
+assert.match(desktopMain,/app\.commandLine\.hasSwitch\(boundedSmokeTestSwitch\)/,"Electron must recognise the bounded-test switch after Chromium command-line parsing.");
+assert.match(desktopMain,/DEEP_CUTS_BOUNDED_SMOKE_TEST/,"Bounded verification must retain an environment fallback for packaged Windows tests.");
+assert.match(desktopMain,/if\(isBoundedSmokeTest\)\{\s*app\.disableHardwareAcceleration\(\);[\s\S]*?app\.enableSandbox\(\);/,"Restricted smoke tests must disable GPU rendering before sandbox initialisation without changing normal desktop rendering.");
+assert.match(desktopMain,/async function runBoundedPackageSmokeTest\(\)/,"The packaged smoke test must verify the local Studio server without requiring a sandbox GPU renderer.");
+assert.match(desktopMain,/html\.includes\('class="output-column" hidden'\)/,"The packaged smoke test must verify the simplified owner interface.");
+assert.match(desktopMain,/venueHtml\.includes\("Venue Library"\)/,"The packaged smoke test must verify the Venue Library surface.");
+assert.match(desktopMain,/if\(isBoundedSmokeTest\)\{\s*await runBoundedPackageSmokeTest\(\);\s*await stopStudioServer\(\);\s*app\.exit\(0\);\s*return;/,"Bounded verification must close its local server and exit without opening a hardware-rendered test window.");
+assert.match(desktopMain,/isBoundedSmokeTest\|\|app\.requestSingleInstanceLock\(\)/,"Normal desktop launches must retain the single-instance lock.");
 assert.match(desktopMain,/contextIsolation:true/);
 assert.match(desktopMain,/nodeIntegration:false/);
 assert.match(desktopMain,/sandbox:true/);
 assert.match(desktopMain,/listen\(0,"127\.0\.0\.1"/,"Desktop Studio must use a local ephemeral port.");
 assert.match(desktopMain,/url\.protocol==="https:"/,"Desktop external navigation must permit validated HTTPS only.");
 assert.match(serverSource,/listen\(port,"127\.0\.0\.1"/,"Studio must bind only to the local computer.");
-assert.match(forgeConfig,/asar:true/);
+assert.match(forgeConfig,/asar:\{unpack:/);
 assert.match(forgeConfig,/@electron-forge\/maker-squirrel/);
 assert.match(forgeConfig,/@electron-forge\/maker-dmg/);
 assert.match(forgeConfig,/studio-jookbox-research\.mjs/);
+assert.match(forgeConfig,/venue-library-server\.mjs/);
+assert.match(forgeConfig,/jookbox-venue-qr-master-v1\.png/);
 assert.match(forgeConfig,/jookbox-atlas-reference-v1\.webp/);
 assert.match(forgeConfig,/jukebox-real-coin-insert-cc0\.mp3/);
 assert.match(packageSource,/"studio:desktop": "electron-forge start"/);
-assert.match(packageSource,/"studio:make": "electron-forge make"/);
+assert.match(packageSource,/"studio:make": "node scripts\/build-studio-windows\.mjs"/);
+const windowsBuilder=await fs.readFile(path.join(process.cwd(),"scripts","build-studio-windows.mjs"),"utf8");
+assert.match(windowsBuilder,/electron-v\$\{electronVersion\}-win32-x64\.zip/);
+assert.match(windowsBuilder,/iexpress\.exe/);
+assert.match(windowsBuilder,/Deep-Cuts-Studio-\$\{version\}-Windows-x64\.zip/);
+assert.match(windowsBuilder,/SHA256SUMS\.txt/);
+assert.match(windowsBuilder,/INSTALL ON WINDOWS\.txt/);
+assert.match(windowsBuilder,/venue-qr-artwork\.mjs/);
+assert.match(windowsBuilder,/"sharp"/);
+assert.match(windowsBuilder,/asar:\{unpack:/);
 assert.match(macWorkflow,/arch:\s*\n\s*- arm64\s*\n\s*- x64/);
 assert.match(macWorkflow,/npm run studio:test/);
 assert.match(macWorkflow,/out\/make\/\*\*\/\*\.dmg/);
@@ -348,7 +390,8 @@ try{
         "https://bar.example.com/facebook"
       ],
       sourceLabels:["Gigs","Menu","Contact Us","Instagram","Facebook"],
-      tickerText:"SHOTKICKERS — LIVE MUSIC, GIGS, DRINKS AND GOOD TIMES."
+      tickerText:"SHOTKICKERS — LIVE MUSIC, GIGS, DRINKS AND GOOD TIMES.",
+      aboutText:"Administrator-approved Shotkickers location and venue information."
     }})
   });
   assert.equal(barResponse.status,201);
@@ -370,8 +413,11 @@ try{
   assert.match(barPreviewResponse.headers.get("content-security-policy")||"",/script-src 'self' 'nonce-[^']+'/);
   assert.match(renderedBarPreview,/SHOTKICKERS/);
   assert.match(renderedBarPreview,/id="welcomeVideo"/);
-  assert.match(renderedBarPreview,/id="shareKey"/);
+  assert.match(renderedBarPreview,/id="aboutKey"/);
+  assert.match(renderedBarPreview,/id="aboutScreen"/);
+  assert.doesNotMatch(renderedBarPreview,/id="shareKey"/);
   assert.match(renderedBarPreview,/id="sharePanel"/);
+  assert.match(renderedBarPreview,/Administrator-approved Shotkickers location and venue information/);
   assert.match(renderedBarPreview,/Share Shotkickers with your mates/);
   assert.match(renderedBarPreview,/Public sharing activates after deployment/);
   assert.doesNotMatch(renderedBarPreview,/url:location\.href/);
@@ -394,7 +440,7 @@ try{
   await fs.rm(temporary,{recursive:true,force:true});
 }
 
-console.log("Deep Cuts Studio tests passed: local isolation, Bar Edition MP4/coin/share preview, publication-safe QR boundary, HGM-only artwork, logo/MP3, labelled preview, 1080 poster, revisions and production gate are intact.");
+console.log("Deep Cuts Studio tests passed: local isolation, Bar Edition MP4/coin/About Us/share preview, publication-safe QR boundary, HGM-only artwork, logo/MP3, labelled preview, 1080 poster, revisions and production gate are intact.");
 
 function verifiedResearch(input){
   const verifiedAt="2026-07-30T01:00:00.000Z";

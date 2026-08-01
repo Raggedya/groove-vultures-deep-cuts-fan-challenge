@@ -1,5 +1,7 @@
 # Deep Cuts
 
+Private Windows Studio venue-library operations are documented in [VENUE_LIBRARY_ADMIN_GUIDE.md](VENUE_LIBRARY_ADMIN_GUIDE.md). The module is isolated from the locked public Band and Bar editions.
+
 ## Deep Cuts Studio
 
 The private desktop production interface can be opened with:
@@ -8,7 +10,7 @@ The private desktop production interface can be opened with:
 npm run studio:desktop
 ```
 
-Create a platform-specific installer with:
+Create the primary Windows installer with:
 
 ```powershell
 npm run studio:make
@@ -16,7 +18,7 @@ npm run studio:make
 
 See `DEEP_CUTS_STUDIO.md` for the local browser mode, project contract, verification boundary and packaging notes.
 
-The private one-screen authoring workspace starts with `npm run studio` and opens at `http://127.0.0.1:4380/studio/`. Its JookBox Band workflow accepts a band name and preferably an artist-controlled URL, independently verifies identity, biography, direct platforms and the official featured video, and populates no more than eight keys only after the mandatory 98% gate passes. Name-only discovery is supported but fails closed when identity cannot be established. The isolated Bar Edition accepts a venue name, administrator ticker, local MP4 and exactly five labelled HTTPS destinations, with Share fixed as the sixth key, a working dynamic venue Share panel and no web lookup. Because its secure preview is private localhost, Bar Edition displays publication pending instead of issuing an unusable preview QR; the permanent QR is generated from the deployed public HTTPS URL. Business, Recruitment, Individual Band, Restaurants, Tourist Attractions and Towns retain their existing contracts, including the optional-wheel and artwork rules. Studio creates a live phone preview and factory handoff without directly altering or publishing an edition; existing non-Bar Studio workflows retain their draft QR and poster outputs. See [DEEP_CUTS_STUDIO.md](DEEP_CUTS_STUDIO.md) and [BAR_EDITION_MODEL.md](BAR_EDITION_MODEL.md).
+The private one-screen authoring workspace starts with `npm run studio` and opens at `http://127.0.0.1:4380/studio/`. Its JookBox Band workflow accepts a band name and preferably an artist-controlled URL, independently verifies identity, biography, direct platforms and the official featured video, and populates no more than eight keys only after the mandatory 98% gate passes. Name-only discovery is supported but fails closed when identity cannot be established. The isolated Bar Edition accepts a venue name, administrator ticker, administrator-approved About Us copy, local MP4 and exactly five labelled HTTPS destinations. About Us is fixed as the sixth key, the long venue panel is the sole Share control, and no web lookup runs. Because its secure preview is private localhost, Bar Edition displays publication pending instead of issuing an unusable preview QR. Venue Library's **Secure Publish Venue** action is activated once by owner email, stores only a Windows-encrypted device credential, and publishes directly through the private Cloudflare service. It records the permanent URL and two-size scan-tested landscape QR only after email delivery plus live page, QR and MP4 verification succeed. The owner needs no GitHub or Cloudflare account and Studio stores no plaintext production credential. Business, Recruitment, Individual Band, Restaurants, Tourist Attractions and Towns retain their existing contracts, including the optional-wheel and artwork rules. See [DEEP_CUTS_STUDIO.md](DEEP_CUTS_STUDIO.md), [VENUE_LIBRARY_ADMIN_GUIDE.md](VENUE_LIBRARY_ADMIN_GUIDE.md) and [BAR_EDITION_MODEL.md](BAR_EDITION_MODEL.md).
 
 ## Decision intelligence
 

@@ -24,6 +24,8 @@ import {
   updateProject
 } from "./studio-model.mjs";
 import {researchStudioJookBox} from "./studio-jookbox-research.mjs";
+import {VenueLibraryError} from "./venue-library.mjs";
+import {createVenueLibraryController} from "./venue-library-server.mjs";
 
 const DEFAULT_ROOT=path.resolve(process.env.DEEP_CUTS_ROOT||process.cwd());
 const DEFAULT_DATA=path.resolve(process.env.DEEP_CUTS_STUDIO_DATA_DIR||path.join(DEFAULT_ROOT,".deep-cuts","studio"));
@@ -47,11 +49,24 @@ export function createStudioServer({
   root=DEFAULT_ROOT,
   dataDir=DEFAULT_DATA,
   token=crypto.randomBytes(24).toString("hex"),
-  researcher=researchStudioJookBox
+  researcher=researchStudioJookBox,
+  venueFetchImpl=fetch,
+  venueDnsLookup,
+  venuePublisher,
+  venueCredentialStore
 }={}){
   const studioRoot=path.join(root,"studio");
   const assetRoot=path.join(root,"assets");
   const projectRoot=path.join(dataDir,"projects");
+  const venueLibrary=createVenueLibraryController({
+    dataDir,
+    root,
+    applicationVersion:process.env.npm_package_version||"3.4.0",
+    fetchImpl:venueFetchImpl,
+    dnsLookup:venueDnsLookup,
+    publisher:venuePublisher,
+    credentialStore:venueCredentialStore
+  });
 
   return http.createServer(async(request,response)=>{
     addSecurityHeaders(response);
@@ -59,6 +74,7 @@ export function createStudioServer({
       const url=new URL(request.url,`http://${request.headers.host||"127.0.0.1"}`);
       if(url.pathname.startsWith("/api/studio/")){
         if(request.method!=="GET")authorizeMutation(request,token);
+        if(await venueLibrary.handle({request,response,url}))return;
         return await handleApi({request,response,url,projectRoot,token,researcher});
       }
       if(url.pathname==="/studio")return redirect(response,"/studio/");
@@ -67,7 +83,7 @@ export function createStudioServer({
       const requested=url.pathname==="/"||url.pathname==="/studio/"?"index.html":url.pathname.replace(/^\/studio\//,"");
       return await serveWithin(response,studioRoot,requested);
     }catch(error){
-      const status=error instanceof StudioValidationError?400:error.code==="ENOENT"?404:500;
+      const status=error instanceof StudioValidationError||error instanceof VenueLibraryError?400:error.code==="ENOENT"?404:500;
       if(status===500)console.error("[Deep Cuts Studio]",error);
       return sendJson(response,status,{ok:false,error:status===500?"Studio could not complete that request.":error.message,code:error.code||"studio_error"});
     }
