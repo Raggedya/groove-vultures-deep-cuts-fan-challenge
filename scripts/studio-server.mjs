@@ -1,4 +1,5 @@
 import crypto from "node:crypto";
+import {createReadStream} from "node:fs";
 import fs from "node:fs/promises";
 import http from "node:http";
 import path from "node:path";
@@ -13,19 +14,24 @@ import {
   attachJookBoxResearch,
   attachLogo,
   attachMp3,
+  attachMp4,
   createProject,
   projectSummary,
   removeLogo,
   removeMp3,
+  removeMp4,
   renderStudioPreview,
   updateProject
 } from "./studio-model.mjs";
 import {researchStudioJookBox} from "./studio-jookbox-research.mjs";
+import {VenueLibraryError} from "./venue-library.mjs";
+import {createVenueLibraryController} from "./venue-library-server.mjs";
 
 const DEFAULT_ROOT=path.resolve(process.env.DEEP_CUTS_ROOT||process.cwd());
 const DEFAULT_DATA=path.resolve(process.env.DEEP_CUTS_STUDIO_DATA_DIR||path.join(DEFAULT_ROOT,".deep-cuts","studio"));
 const MAX_JSON_BYTES=80*1024;
 const MAX_MP3_BYTES=25*1024*1024;
+const MAX_MP4_BYTES=500*1024*1024;
 const CONTENT_TYPES={
   ".css":"text/css; charset=utf-8",
   ".html":"text/html; charset=utf-8",
@@ -34,6 +40,7 @@ const CONTENT_TYPES={
   ".jpeg":"image/jpeg",
   ".json":"application/json; charset=utf-8",
   ".mp3":"audio/mpeg",
+  ".mp4":"video/mp4",
   ".png":"image/png",
   ".webp":"image/webp"
 };
@@ -42,11 +49,24 @@ export function createStudioServer({
   root=DEFAULT_ROOT,
   dataDir=DEFAULT_DATA,
   token=crypto.randomBytes(24).toString("hex"),
-  researcher=researchStudioJookBox
+  researcher=researchStudioJookBox,
+  venueFetchImpl=fetch,
+  venueDnsLookup,
+  venuePublisher,
+  venueCredentialStore
 }={}){
   const studioRoot=path.join(root,"studio");
   const assetRoot=path.join(root,"assets");
   const projectRoot=path.join(dataDir,"projects");
+  const venueLibrary=createVenueLibraryController({
+    dataDir,
+    root,
+    applicationVersion:process.env.npm_package_version||"3.4.0",
+    fetchImpl:venueFetchImpl,
+    dnsLookup:venueDnsLookup,
+    publisher:venuePublisher,
+    credentialStore:venueCredentialStore
+  });
 
   return http.createServer(async(request,response)=>{
     addSecurityHeaders(response);
@@ -54,6 +74,7 @@ export function createStudioServer({
       const url=new URL(request.url,`http://${request.headers.host||"127.0.0.1"}`);
       if(url.pathname.startsWith("/api/studio/")){
         if(request.method!=="GET")authorizeMutation(request,token);
+        if(await venueLibrary.handle({request,response,url}))return;
         return await handleApi({request,response,url,projectRoot,token,researcher});
       }
       if(url.pathname==="/studio")return redirect(response,"/studio/");
@@ -62,7 +83,7 @@ export function createStudioServer({
       const requested=url.pathname==="/"||url.pathname==="/studio/"?"index.html":url.pathname.replace(/^\/studio\//,"");
       return await serveWithin(response,studioRoot,requested);
     }catch(error){
-      const status=error instanceof StudioValidationError?400:error.code==="ENOENT"?404:500;
+      const status=error instanceof StudioValidationError||error instanceof VenueLibraryError?400:error.code==="ENOENT"?404:500;
       if(status===500)console.error("[Deep Cuts Studio]",error);
       return sendJson(response,status,{ok:false,error:status===500?"Studio could not complete that request.":error.message,code:error.code||"studio_error"});
     }
@@ -84,7 +105,7 @@ async function handleApi({request,response,url,projectRoot,token,researcher}){
     return sendProject(response,201,project,request);
   }
 
-  const match=url.pathname.match(/^\/api\/studio\/projects\/(studio_[a-f0-9]{12})(?:\/(preview|audio|logo|revise|research|handoff))?$/);
+  const match=url.pathname.match(/^\/api\/studio\/projects\/(studio_[a-f0-9]{12})(?:\/(preview|audio|video|logo|revise|research|handoff))?$/);
   if(!match)throw Object.assign(new Error("Studio route not found."),{code:"ENOENT"});
   const id=assertProjectId(match[1]),action=match[2]||"project";
   const project=await loadProject(projectRoot,id);
@@ -99,7 +120,9 @@ async function handleApi({request,response,url,projectRoot,token,researcher}){
   if(request.method==="GET"&&action==="preview"){
     const audioUrl=project.mp3?`/api/studio/projects/${id}/audio`:"";
     const logoUrl=project.logo?`/api/studio/projects/${id}/logo`:"";
-    return sendHtml(response,renderStudioPreview(project,{audioUrl,logoUrl}));
+    const videoUrl=project.mp4?`/api/studio/projects/${id}/video`:"";
+    const scriptNonce=crypto.randomBytes(18).toString("base64");
+    return sendHtml(response,renderStudioPreview(project,{audioUrl,logoUrl,videoUrl,scriptNonce}),{scriptNonce});
   }
   if(request.method==="POST"&&action==="revise"){
     const body=await readJson(request);
@@ -131,6 +154,27 @@ async function handleApi({request,response,url,projectRoot,token,researcher}){
     await saveProject(projectRoot,updated);
     return sendProject(response,200,updated,request);
   }
+  if(request.method==="POST"&&action==="video"){
+    if(project.input.type!=="bar_jukebox")throw new StudioValidationError("Choose Bar Edition before adding a local MP4 welcome video.","wrong_video_type");
+    const fileName=decodeURIComponent(String(request.headers["x-studio-file-name"]||"welcome.mp4"));
+    if(!/\.mp4$/i.test(fileName))throw new StudioValidationError("Bar Edition accepts MP4 welcome videos only.","invalid_video_type");
+    const directory=projectDirectory(projectRoot,id);
+    await fs.mkdir(directory,{recursive:true});
+    const temporary=path.join(directory,`welcome-${process.pid}.tmp`);
+    let uploaded;
+    try{
+      uploaded=await streamUpload(request,temporary,MAX_MP4_BYTES);
+      if(!looksLikeMp4(uploaded.header))throw new StudioValidationError("The selected file does not appear to be a valid MP4.","invalid_video_file");
+      await fs.rm(path.join(directory,"welcome.mp4"),{force:true});
+      await fs.rename(temporary,path.join(directory,"welcome.mp4"));
+    }catch(error){
+      await fs.rm(temporary,{force:true});
+      throw error;
+    }
+    const updated=attachMp4(project,{fileName,sizeBytes:uploaded.sizeBytes,sha256:uploaded.sha256});
+    await saveProject(projectRoot,updated);
+    return sendProject(response,200,updated,request);
+  }
   if(request.method==="POST"&&action==="logo"){
     const fileName=decodeURIComponent(String(request.headers["x-studio-file-name"]||"logo.png"));
     const bytes=await readBytes(request,6*1024*1024);
@@ -150,6 +194,12 @@ async function handleApi({request,response,url,projectRoot,token,researcher}){
     await saveProject(projectRoot,updated);
     return sendProject(response,200,updated,request);
   }
+  if(request.method==="DELETE"&&action==="video"){
+    await fs.rm(path.join(projectDirectory(projectRoot,id),"welcome.mp4"),{force:true});
+    const updated=removeMp4(project);
+    await saveProject(projectRoot,updated);
+    return sendProject(response,200,updated,request);
+  }
   if(request.method==="DELETE"&&action==="logo"){
     await removeLogoFiles(projectDirectory(projectRoot,id));
     const updated=removeLogo(project);
@@ -163,6 +213,10 @@ async function handleApi({request,response,url,projectRoot,token,researcher}){
       "content-disposition":`inline; filename="${safeDownloadName(project.mp3.fileName)}"`
     });
   }
+  if(request.method==="GET"&&action==="video"){
+    if(!project.mp4)throw Object.assign(new Error("Welcome video not found."),{code:"ENOENT"});
+    return serveMediaFile(request,response,path.join(projectDirectory(projectRoot,id),"welcome.mp4"),"video/mp4");
+  }
   if(request.method==="GET"&&action==="logo"){
     if(!project.logo)throw Object.assign(new Error("Logo not found."),{code:"ENOENT"});
     return serveFile(response,path.join(projectDirectory(projectRoot,id),`logo.${project.logo.extension}`),projectDirectory(projectRoot,id),{"content-type":project.logo.mimeType});
@@ -174,11 +228,13 @@ async function handleApi({request,response,url,projectRoot,token,researcher}){
       project,
       publication:{
         authorised:false,
-        verificationRequired:project.research?.passed!==true,
+        verificationRequired:project.input.type==="bar_jukebox"?false:project.research?.passed!==true,
         automatedResearchPassed:project.research?.passed===true,
         confidence:Number(project.research?.confidence||0),
         confidenceGate:98,
-        note:project.research?.passed===true
+        note:project.input.type==="bar_jukebox"
+          ?"Bar Edition uses static administrator-supplied content and performs no web lookup. Publication still requires the existing isolation, file, link, deployment and live-verification checks."
+          :project.research?.passed===true
           ?"Studio's automated JookBox research passed the 98% gate. Publication still requires the existing isolation, configuration, QR, deployment and live-verification factory stages."
           :"This Studio draft has not passed verified research and must complete the existing Deep Cuts production workflow before publication."
       }
@@ -259,8 +315,34 @@ async function readBytes(request,limit){
   }
   return Buffer.concat(chunks);
 }
+async function streamUpload(request,target,limit){
+  const handle=await fs.open(target,"w");
+  const hash=crypto.createHash("sha256");
+  const headerChunks=[];
+  let headerBytes=0;
+  let sizeBytes=0;
+  try{
+    for await(const chunk of request){
+      sizeBytes+=chunk.length;
+      if(sizeBytes>limit)throw new StudioValidationError(`Upload exceeds the ${Math.round(limit/1024/1024)} MB Studio limit.`,"payload_too_large");
+      if(headerBytes<32){
+        const slice=chunk.subarray(0,Math.min(chunk.length,32-headerBytes));
+        headerChunks.push(slice);
+        headerBytes+=slice.length;
+      }
+      hash.update(chunk);
+      await handle.write(chunk);
+    }
+  }finally{
+    await handle.close();
+  }
+  return{sizeBytes,sha256:hash.digest("hex"),header:Buffer.concat(headerChunks)};
+}
 function looksLikeMp3(bytes){
   return bytes.length>3&&(bytes.subarray(0,3).toString("ascii")==="ID3"||(bytes[0]===0xff&&(bytes[1]&0xe0)===0xe0));
+}
+function looksLikeMp4(bytes){
+  return bytes.length>=12&&bytes.subarray(4,8).toString("ascii")==="ftyp";
 }
 function detectLogoType(bytes){
   if(bytes.length>=8&&bytes.subarray(0,8).equals(Buffer.from([0x89,0x50,0x4e,0x47,0x0d,0x0a,0x1a,0x0a])))return{extension:"png",mimeType:"image/png"};
@@ -270,6 +352,41 @@ function detectLogoType(bytes){
 }
 async function removeLogoFiles(directory){
   await Promise.all(["png","jpg","webp"].map(extension=>fs.rm(path.join(directory,`logo.${extension}`),{force:true})));
+}
+async function serveMediaFile(request,response,file,contentType){
+  const stat=await fs.stat(file);
+  const range=String(request.headers.range||"");
+  if(!range){
+    response.writeHead(200,{
+      "content-type":contentType,
+      "content-length":stat.size,
+      "accept-ranges":"bytes",
+      "cache-control":"no-store"
+    });
+    createReadStream(file).pipe(response);
+    return;
+  }
+  const match=range.match(/^bytes=(\d*)-(\d*)$/);
+  if(!match){
+    response.writeHead(416,{"content-range":`bytes */${stat.size}`});
+    response.end();
+    return;
+  }
+  const start=match[1]?Number(match[1]):0;
+  const end=match[2]?Math.min(Number(match[2]),stat.size-1):stat.size-1;
+  if(!Number.isInteger(start)||!Number.isInteger(end)||start<0||end<start||start>=stat.size){
+    response.writeHead(416,{"content-range":`bytes */${stat.size}`});
+    response.end();
+    return;
+  }
+  response.writeHead(206,{
+    "content-type":contentType,
+    "content-length":end-start+1,
+    "content-range":`bytes ${start}-${end}/${stat.size}`,
+    "accept-ranges":"bytes",
+    "cache-control":"no-store"
+  });
+  createReadStream(file,{start,end}).pipe(response);
 }
 function authorizeMutation(request,token){
   const expectedOrigin=`http://${request.headers.host||"127.0.0.1"}`;
@@ -284,7 +401,11 @@ function addSecurityHeaders(response){
   response.setHeader("content-security-policy","default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; frame-src 'self' https://www.youtube-nocookie.com; connect-src 'self'");
 }
 function redirect(response,location){response.writeHead(302,{location});response.end()}
-function sendHtml(response,html){response.writeHead(200,{"content-type":"text/html; charset=utf-8","cache-control":"no-store"});response.end(html)}
+function sendHtml(response,html,{scriptNonce=""}={}){
+  if(scriptNonce)response.setHeader("content-security-policy",`default-src 'self'; script-src 'self' 'nonce-${scriptNonce}'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; frame-src 'self' https://www.youtube-nocookie.com; connect-src 'self'`);
+  response.writeHead(200,{"content-type":"text/html; charset=utf-8","cache-control":"no-store"});
+  response.end(html);
+}
 function sendJson(response,status,body){response.writeHead(status,{"content-type":"application/json; charset=utf-8","cache-control":"no-store"});response.end(JSON.stringify(body))}
 function safeDownloadName(value){return String(value||"deep-cuts").replace(/[^a-z0-9._-]+/gi,"-").replace(/^-|-$/g,"").slice(0,100)||"deep-cuts"}
 

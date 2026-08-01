@@ -23,11 +23,21 @@ const els={
   aggits:$("#aggits-option"),
   aggitsPolicy:$("#aggits-policy"),
   aggitsThumbnail:$("#aggits-thumbnail"),
-  sourceLabels:[$("#source-label-1"),$("#source-label-2"),$("#source-label-3")],
-  sources:[$("#source-url-1"),$("#source-url-2"),$("#source-url-3")],
+  sourceLabels:[$("#source-label-1"),$("#source-label-2"),$("#source-label-3"),$("#source-label-4"),$("#source-label-5")],
+  sources:[$("#source-url-1"),$("#source-url-2"),$("#source-url-3"),$("#source-url-4"),$("#source-url-5")],
+  barRows:[...document.querySelectorAll(".bar-only-row")],
   contentIntro:$("#content-intro"),
   youtube:$("#youtube-url"),
   brief:$("#project-brief"),
+  briefField:$("#brief-field"),
+  barTickerField:$("#bar-ticker-field"),
+  barTicker:$("#bar-ticker"),
+  barAboutField:$("#bar-about-field"),
+  barAbout:$("#bar-about"),
+  barVideoField:$("#bar-video-field"),
+  mp4:$("#mp4-file"),
+  videoState:$("#video-state"),
+  removeVideo:$("#remove-video"),
   posterHeading:$("#poster-heading"),
   optionalFields:$("#optional-fields"),
   logo:$("#logo-file"),
@@ -36,6 +46,7 @@ const els={
   mp3:$("#mp3-file"),
   audioState:$("#audio-state"),
   removeAudio:$("#remove-audio"),
+  localNote:$("#local-note"),
   runLabel:$("#run-label"),
   runDescription:$("#run-description"),
   runButton:$("#studio-form .run-button"),
@@ -46,9 +57,11 @@ const els={
   openPreview:$("#open-preview"),
   emptyOutput:$("#empty-output"),
   readyOutput:$("#ready-output"),
+  outputTitle:$("#output-title"),
   outputStatus:$("#output-status"),
   qr:$("#qr-code"),
   poster:$("#poster-canvas"),
+  qrOutputTitle:$("#qr-output-title"),
   qrName:$("#qr-project-name"),
   downloadPoster:$("#download-poster"),
   downloadQr:$("#download-qr"),
@@ -59,6 +72,9 @@ const els={
   dictate:$("#dictate"),
   gateList:$("#gate-list"),
   researchResult:$("#research-result"),
+  gateTitle:$("#gate-title"),
+  gateCopy:$("#gate-copy"),
+  qrWarning:$("#qr-warning"),
   toast:$("#toast")
 };
 
@@ -92,6 +108,7 @@ function bindEvents(){
   els.revision.addEventListener("input",()=>{els.applyRevision.disabled=!state.project||!els.revision.value.trim()});
   els.removeLogo.addEventListener("click",removeLogo);
   els.removeAudio.addEventListener("click",removeAudio);
+  els.removeVideo.addEventListener("click",removeVideo);
   els.recent.addEventListener("change",()=>els.recent.value&&loadProject(els.recent.value));
   $("#new-project").addEventListener("click",resetProject);
 }
@@ -104,22 +121,53 @@ function renderTypeOptions(){
 function updateTypePolicy(){
   const type=typeConfig(els.type.value)||state.productTypes[0];
   const jookBox=type?.id==="jookbox";
-  document.body.classList.toggle("jookbox-mode",jookBox);
-  els.nameLabel.textContent=jookBox?"Band name":"Name";
-  els.name.placeholder=jookBox?"Enter the exact band name":"Company, band or place";
-  els.aggitsStep.hidden=jookBox;
+  const bar=type?.id==="bar_jukebox";
+  const jukeboxProduct=jookBox||bar;
+  document.body.classList.toggle("jookbox-mode",jukeboxProduct);
+  document.body.classList.toggle("bar-jukebox-mode",bar);
+  els.nameLabel.textContent=bar?"Venue name":jookBox?"Band name":"Name";
+  els.name.placeholder=bar?"e.g. Shotkickers":jookBox?"Enter the exact band name":"Company, band or place";
+  els.aggitsStep.hidden=jukeboxProduct;
   els.typeDescription.textContent=type?.description||"";
-  els.wheelChoice.hidden=jookBox;
-  if(jookBox)els.wheelChoices.forEach(field=>{field.checked=field.value==="no"});
+  els.wheelChoice.hidden=jukeboxProduct;
+  if(jukeboxProduct)els.wheelChoices.forEach(field=>{field.checked=field.value==="no"});
+  els.barRows.forEach(row=>{row.hidden=!bar});
+  els.barTickerField.hidden=!bar;
+  els.barTicker.required=bar;
+  els.barAboutField.hidden=!bar;
+  els.barAbout.required=bar;
+  els.barVideoField.hidden=!bar;
+  els.briefField.hidden=bar;
+  els.optionalFields.hidden=bar;
   els.sourceLabels.forEach(field=>{
     field.hidden=jookBox;
+    field.required=bar;
     field.closest("label")?.classList.toggle("jookbox-source",jookBox);
   });
-  els.contentIntro.textContent=jookBox
+  els.sources.forEach((field,index)=>{
+    field.required=bar;
+    if(bar){
+      field.placeholder=["https://venue.com/gigs","https://venue.com/menu","https://venue.com/contact","https://instagram.com/venue","https://facebook.com/venue"][index];
+    }
+  });
+  els.contentIntro.textContent=bar
+    ?"Add exactly five button labels and HTTPS destinations. About Us is the permanent sixth key; the long bar is the sole Share control. Nothing is searched or inferred."
+    :jookBox
     ?"Enter the band name and preferably one artist-controlled website, Linktree or social URL. Studio will find other destinations, independently verify them and omit anything below 98% confidence."
     :"Add up to three official pages. Studio treats these as research leads—not verified facts.";
-  els.sources[0].placeholder=jookBox?"https://official-site-or-linktr.ee/band":"https://official-website.com";
+  if(!bar)els.sources[0].placeholder=jookBox?"https://official-site-or-linktr.ee/band":"https://official-website.com";
   els.sourceLabels[0].placeholder=jookBox?"Optional source note":"Button label";
+  els.localNote.innerHTML=bar
+    ?'<span aria-hidden="true">●</span> The MP4, ticker, About Us copy and venue links remain local and private until you export the handoff.'
+    :'<span aria-hidden="true">●</span> Drafts and supplied media remain in this computer’s private Studio workspace.';
+  els.gateTitle.textContent=bar?"Static content gate":"98% verification gate";
+  els.outputTitle.textContent=bar?"Version & Publishing":"Version & QR";
+  els.gateCopy.textContent=bar
+    ?"Studio never overwrites a completed edition. A permanent Bar Edition still passes isolation, asset, link, deployment and live-verification checks."
+    :"Studio never overwrites a completed edition. A permanent version still passes the existing factory, evidence, link and QR checks.";
+  els.qrWarning.textContent=bar
+    ?"This private preview has no public QR. Export the handoff; production creates the permanent live URL and scan-tested QR after deployment."
+    :"This QR opens the preview on this computer. The permanent QR is created only after the verified production gate.";
   updateRunCopy();
   const forbidden=type?.aggitsPolicy==="forbidden";
   const previous=els.aggits.value;
@@ -173,6 +221,11 @@ async function runProject(event){
       els.mp3.value="";
     }
     setProject(result);
+    if(els.mp4.files[0]){
+      result=await uploadVideo(els.mp4.files[0]);
+      els.mp4.value="";
+    }
+    setProject(result);
     renderProject();
     if(state.project.input.type==="jookbox"){
       setBusy(true,"RESEARCHING & VERIFYING");
@@ -189,7 +242,9 @@ async function runProject(event){
       ?`JookBox research passed at ${state.project.research.confidence}% confidence.`
       :state.project.input.type==="jookbox"
         ?"Studio stopped safely below 98%. Review the listed evidence gaps."
-        :"Deep Cuts preview and local QR created.");
+        :state.project.input.type==="bar_jukebox"
+          ?"Bar Edition preview created. Export the handoff when ready for its permanent live URL and QR."
+          :"Deep Cuts preview and local QR created.");
   }catch(error){showError(error.message)}
   finally{setBusy(false)}
 }
@@ -212,6 +267,15 @@ async function uploadAudio(file){
   });
 }
 
+async function uploadVideo(file){
+  if(file.size>500*1024*1024)throw new Error("The selected MP4 exceeds the 500 MB Studio limit.");
+  return api(`/api/studio/projects/${state.project.id}/video`,file,{
+    method:"POST",
+    headers:{"content-type":"video/mp4","x-studio-file-name":encodeURIComponent(file.name)},
+    raw:true
+  });
+}
+
 async function removeLogo(){
   if(!state.project)return;
   try{
@@ -225,6 +289,14 @@ async function removeAudio(){
   try{
     const result=await api(`/api/studio/projects/${state.project.id}/audio`,null,{method:"DELETE"});
     setProject(result);els.mp3.value="";renderProject();showToast("MP3 removed from this local Studio draft.");
+  }catch(error){showError(error.message)}
+}
+
+async function removeVideo(){
+  if(!state.project)return;
+  try{
+    const result=await api(`/api/studio/projects/${state.project.id}/video`,null,{method:"DELETE"});
+    setProject(result);els.mp4.value="";renderProject();showToast("Welcome video removed from this local Bar Edition draft.");
   }catch(error){showError(error.message)}
 }
 
@@ -269,6 +341,7 @@ function setProject(result){
 
 function renderProject(){
   if(!state.project)return;
+  const bar=state.project.input.type==="bar_jukebox";
   els.projectVersion.textContent=`REV ${state.project.revision}`;
   els.projectVersion.classList.add("live");
   updateRunCopy();
@@ -281,10 +354,22 @@ function renderProject(){
   els.applyRevision.disabled=!els.revision.value.trim();
   els.preview.removeAttribute("srcdoc");
   els.preview.src=`${state.previewUrl}?revision=${state.project.revision}`;
-  renderQr();
-  renderPoster().catch(error=>showError(`Poster preview: ${error.message}`));
+  els.qr.hidden=bar;
+  els.downloadPoster.hidden=bar;
+  els.downloadQr.hidden=bar;
+  els.downloadHandoff.textContent=bar?"EXPORT FOR PUBLISHING":"EXPORT HANDOFF";
+  els.qrOutputTitle.textContent=bar?"PUBLIC QR CREATED AFTER DEPLOYMENT":"1080 × 1080 QR POSTER";
+  els.poster.setAttribute("aria-label",bar?"Bar Edition publication status":"Deep Cuts QR poster preview");
+  if(bar){
+    els.qr.replaceChildren();
+    renderPublicationPendingPoster();
+  }else{
+    renderQr();
+    renderPoster().catch(error=>showError(`Poster preview: ${error.message}`));
+  }
   renderLogo();
   renderAudio();
+  renderVideo();
   renderGate();
 }
 
@@ -299,6 +384,57 @@ function renderQr(){
   new QRCode(els.qr,{text:state.previewUrl,width:460,height:460,colorDark:"#02070d",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.H});
 }
 
+function renderPublicationPendingPoster(){
+  const project=state.project;
+  if(!project||project.input.type!=="bar_jukebox")return;
+  const canvas=els.poster,context=canvas.getContext("2d");
+  const width=canvas.width,height=canvas.height;
+  const background=context.createLinearGradient(0,0,width,height);
+  background.addColorStop(0,"#132f48");
+  background.addColorStop(.5,"#07131f");
+  background.addColorStop(1,"#25130d");
+  context.fillStyle=background;
+  context.fillRect(0,0,width,height);
+  const glow=context.createRadialGradient(width/2,430,10,width/2,430,430);
+  glow.addColorStop(0,"rgba(37,150,213,.22)");
+  glow.addColorStop(1,"rgba(0,0,0,0)");
+  context.fillStyle=glow;
+  context.fillRect(0,0,width,height);
+  context.textAlign="center";
+  context.fillStyle="#ffffff";
+  context.font="900 82px Arial";
+  context.fillText((project.input.name||"BAR EDITION").toUpperCase(),width/2,160,920);
+  context.fillStyle="#f39a61";
+  context.font="900 22px Arial";
+  context.fillText("D E E P   C U T S   S T U D I O",width/2,215);
+  roundedRect(context,205,305,670,430,34);
+  context.fillStyle="rgba(2,8,14,.8)";
+  context.fill();
+  context.lineWidth=5;
+  context.strokeStyle="#69cfff";
+  context.stroke();
+  context.fillStyle="#9de7ff";
+  context.font="900 86px Arial";
+  context.fillText("PRIVATE",width/2,430);
+  context.fillStyle="#ffffff";
+  context.font="900 46px Arial";
+  context.fillText("STUDIO PREVIEW",width/2,505);
+  context.fillStyle="#f3a76f";
+  context.font="900 34px Arial";
+  context.fillText("PUBLIC QR CREATED",width/2,605);
+  context.fillText("AFTER DEPLOYMENT",width/2,654);
+  context.fillStyle="#adc4d5";
+  context.font="700 25px Arial";
+  context.fillText("Export for publishing to create the live URL",width/2,805);
+  context.fillText("and permanent scan-tested QR code.",width/2,842);
+  context.fillStyle="#ffffff";
+  context.font="900 39px Arial";
+  context.fillText("DEEP CUTS",width/2,970);
+  context.fillStyle="#a8bdcf";
+  context.font="700 23px Arial";
+  context.fillText("Copyright Clearlight Creative",width/2,1012);
+}
+
 function renderLogo(){
   const logo=state.project?.logo;
   els.logoState.textContent=logo?`${logo.fileName} · ${formatBytes(logo.sizeBytes)}`:"PNG, JPEG or WebP · maximum 6 MB";
@@ -311,12 +447,25 @@ function renderAudio(){
   els.removeAudio.classList.toggle("hidden",!mp3);
 }
 
+function renderVideo(){
+  const mp4=state.project?.mp4;
+  els.videoState.textContent=mp4?`${mp4.fileName} · ${formatBytes(mp4.sizeBytes)}`:"Local MP4 · maximum 500 MB";
+  els.removeVideo.classList.toggle("hidden",!mp4);
+}
+
 function renderGate(){
   const readiness=state.project.readiness;
   els.gateList.replaceChildren(...readiness.blockers.map(message=>{
     const item=document.createElement("li");item.textContent=message;return item;
   }));
   const research=state.project.research;
+  if(state.project.input.type==="bar_jukebox"){
+    els.researchResult.className=`research-result ${state.project.readiness.handoffReady?"passed":"waiting"}`;
+    els.researchResult.innerHTML=state.project.readiness.handoffReady
+      ?"<strong>STATIC HANDOFF READY</strong><span>Five labelled URLs, ticker copy, About Us copy and the local MP4 are present. No web lookup was performed.</span>"
+      :"<strong>ADMINISTRATOR INPUT ONLY</strong><span>Complete the five labelled destinations, ticker, About Us copy and local MP4. Bar Edition never performs automatic research.</span>";
+    return;
+  }
   if(state.project.input.type!=="jookbox"){
     els.researchResult.className="research-result waiting";
     els.researchResult.innerHTML="<strong>FACTORY VERIFICATION REQUIRED</strong><span>Inputs remain research leads until the matching production workflow verifies them.</span>";
@@ -345,10 +494,12 @@ function fillForm(input){
   renderAggitsThumbnail();
   els.sources.forEach((field,index)=>field.value=input.sourceUrls[index]||"");
   els.sourceLabels.forEach((field,index)=>field.value=input.sourceLabels?.[index]||"");
+  els.barTicker.value=input.tickerText||"";
+  els.barAbout.value=input.aboutText||"";
   els.youtube.value=input.youtubeUrl||"";
   els.brief.value=input.brief||"";
   els.posterHeading.value=input.posterHeading||"";
-  els.optionalFields.open=Boolean(input.youtubeUrl||input.posterHeading||state.project?.logo||state.project?.mp3);
+  els.optionalFields.open=input.type!=="bar_jukebox"&&Boolean(input.youtubeUrl||input.posterHeading||state.project?.logo||state.project?.mp3);
   const wheelValue=input.addWheel?"yes":"no";
   els.wheelChoices.forEach(field=>{field.checked=field.value===wheelValue});
 }
@@ -362,6 +513,8 @@ function formInput(){
     sourceUrls:sourceEntries.map(item=>item.url),
     sourceLabels:sourceEntries.map(item=>item.label),
     youtubeUrl:els.youtube.value,
+    tickerText:els.barTicker.value,
+    aboutText:els.barAbout.value,
     brief:els.brief.value,
     posterHeading:els.posterHeading.value,
     addWheel:els.wheelChoices.find(field=>field.checked)?.value==="yes"
@@ -382,11 +535,14 @@ function resetProject(){
   els.refresh.disabled=true;els.openPreview.disabled=true;els.applyRevision.disabled=true;
   els.logoState.textContent="PNG, JPEG or WebP · maximum 6 MB";els.removeLogo.classList.add("hidden");
   els.audioState.textContent="Optional · maximum 25 MB";els.removeAudio.classList.add("hidden");
+  els.videoState.textContent="Local MP4 · maximum 500 MB";els.removeVideo.classList.add("hidden");els.mp4.value="";
   els.revision.value="";els.revisionMessage.className="revision-message";
   els.revisionMessage.textContent="Typed and dictated changes are kept in the project revision history.";
   els.gateList.replaceChildren(listItem("Run a preview to see production requirements."));
   els.researchResult.className="research-result waiting";
-  els.researchResult.innerHTML="<strong>RESEARCH NOT RUN</strong><span>Studio will show the confidence result here.</span>";
+  els.researchResult.innerHTML=els.type.value==="bar_jukebox"
+    ?"<strong>ADMINISTRATOR INPUT ONLY</strong><span>Bar Edition performs no web lookup.</span>"
+    :"<strong>RESEARCH NOT RUN</strong><span>Studio will show the confidence result here.</span>";
   els.recent.value="";
   setEmptyPreview();
   els.name.focus();
@@ -425,6 +581,7 @@ function configureDictation(){
 }
 
 function downloadQr(){
+  if(state.project?.input.type==="bar_jukebox")return showError("The permanent Bar Edition QR is created only after deployment.");
   const canvas=els.qr.querySelector("canvas");
   if(!canvas)return showError("The QR image is not ready yet.");
   const link=document.createElement("a");
@@ -435,6 +592,7 @@ function downloadQr(){
 
 function downloadPoster(){
   if(!state.project)return;
+  if(state.project.input.type==="bar_jukebox")return showError("The permanent Bar Edition QR poster is created only after deployment.");
   const link=document.createElement("a");
   link.download=`${slugify(state.project.input.name||"deep-cuts")}-studio-preview-poster.png`;
   link.href=els.poster.toDataURL("image/png");
@@ -567,8 +725,9 @@ function setBusy(busy,label=""){
 }
 function updateRunCopy(){
   const jookBox=els.type.value==="jookbox";
-  els.runLabel.textContent=jookBox?"RESEARCH & CREATE JOOKBOX":state.project?"UPDATE DEEP CUTS":"RUN DEEP CUTS";
-  els.runDescription.textContent=jookBox?"Find, cross-check and populate verified band destinations":"Create the preview and QR output";
+  const bar=els.type.value==="bar_jukebox";
+  els.runLabel.textContent=bar?(state.project?"UPDATE BAR EDITION":"CREATE BAR EDITION"):jookBox?"RESEARCH & CREATE JOOKBOX":state.project?"UPDATE DEEP CUTS":"RUN DEEP CUTS";
+  els.runDescription.textContent=bar?"Build the local MP4 JookBox with five links, About Us and the Share bar":jookBox?"Find, cross-check and populate verified band destinations":"Create the preview and QR output";
 }
 function showError(message){
   els.outputStatus.textContent="CHECK INPUT";els.outputStatus.className="output-status error";showToast(message);

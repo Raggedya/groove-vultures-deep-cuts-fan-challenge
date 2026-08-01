@@ -1,5 +1,6 @@
 import {handleSales} from "./sales.js";
 import {handleRecordCompany,handleRecordCompanyQr,processRecordCompanyJobs} from "./record-company.js";
+import {augmentPlatformManifest,handleBarDeliveryEvent,handleBarPublicAsset,handleBarPublisher} from "./bar-publisher.js";
 import {
   binaryBase64,
   buildLanewayEmailHtml,
@@ -36,6 +37,9 @@ export default {
       const url=new URL(request.url);
       if(request.method==="OPTIONS")return cors(new Response(null,{status:204}),request,env);
       if(url.pathname.startsWith("/api/record-company/"))return handleRecordCompany(request,env,ctx,url);
+      if(url.pathname.startsWith("/api/bar-publisher/"))return handleBarPublisher(request,env,url);
+      const barAsset=await handleBarPublicAsset(request,env,url);
+      if(barAsset)return barAsset;
       if(url.pathname.startsWith("/record-company/q/"))return handleRecordCompanyQr(request,env,ctx,url);
       if(["/record-company/terms.html","/record-company/privacy.html"].includes(url.pathname))return recordCompanyAsset(request,env);
       const restoredLanewayPath=restoredLanewayEntryPath(url.pathname);
@@ -59,6 +63,10 @@ export default {
       if(url.pathname==="/api/reports/laneway-weekly.pdf"&&request.method==="GET")return handleLanewayReport(request,env,"pdf");
       if(url.pathname==="/api/reports/laneway-weekly.xlsx"&&request.method==="GET")return handleLanewayReport(request,env,"xlsx");
       if(url.pathname==="/api/health")return json({ok:true,service:"deep-cuts",timestamp:new Date().toISOString()});
+      if(url.pathname==="/platform.json"&&["GET","HEAD"].includes(request.method)){
+        const staticManifest=await env.ASSETS.fetch(request);
+        return request.method==="HEAD"?staticManifest:augmentPlatformManifest(staticManifest,env);
+      }
       return env.ASSETS.fetch(request);
     }catch(error){
       console.error("deep-cuts-worker-error",error);
@@ -260,6 +268,8 @@ async function handleResendWebhook(request,env){
   if(body.type==="email.delivered"&&jobId){
     if(jobType==="record_company"){
       await env.DB.prepare("UPDATE record_company_jobs SET notification_email_status='delivered',updated_at=?1 WHERE job_id=?2").bind(occurredAt,jobId).run();
+    }else if(jobType==="bar_edition"){
+      await handleBarDeliveryEvent(env,{body,tags,occurredAt});
     }else{
       await env.DB.prepare("UPDATE production_jobs SET email_delivered_at=?1,updated_at=?1 WHERE job_id=?2").bind(occurredAt,jobId).run();
       await completeJob(env,jobId,occurredAt);
@@ -267,6 +277,9 @@ async function handleResendWebhook(request,env){
   }
   if(["email.bounced","email.failed","email.complained"].includes(body.type)&&jobId&&jobType==="record_company"){
     await env.DB.prepare("UPDATE record_company_jobs SET notification_email_status=?1,updated_at=?2 WHERE job_id=?3").bind(body.type.replace("email.",""),occurredAt,jobId).run();
+  }
+  if(["email.bounced","email.failed","email.complained"].includes(body.type)&&jobId&&jobType==="bar_edition"){
+    await handleBarDeliveryEvent(env,{body,tags,occurredAt});
   }
   return json({ok:true});
 }

@@ -45,15 +45,14 @@ if(editionType==='jukebox'){
   const selections=validateJookBoxSelections(input);
   const requestedAppearanceVariant=clean(input.jookBox?.appearanceVariant||'',80);
   const requestedKeyBankFormat=clean(input.jookBox?.keyBankFormat||'',40);
-  const legacyCabinetRequested=requestedAppearanceVariant==='reference'||requestedKeyBankFormat==='classic-eight-key/1'||clean(input.jookBox?.cabinetArtwork||'',180)==='assets/jookbox-cabinet-photoreal-v1.webp';
-  const appearanceVariant=requestedAppearanceVariant||(legacyCabinetRequested?'reference':'atlas-reference-cabinet/1');
-  if(!['reference','atlas-reference-cabinet/1'].includes(appearanceVariant))throw new Error('JookBox appearanceVariant must be reference or atlas-reference-cabinet/1.');
-  const atlasReferenceCabinet=appearanceVariant==='atlas-reference-cabinet/1';
-  const keyBankFormat=clean(requestedKeyBankFormat||(atlasReferenceCabinet?'six-key/1':'classic-eight-key/1'),40);
-  if(!['classic-eight-key/1','six-key/1'].includes(keyBankFormat))throw new Error('JookBox keyBankFormat must be classic-eight-key/1 or six-key/1.');
-  if(atlasReferenceCabinet&&keyBankFormat!=='six-key/1')throw new Error('The locked ATLAS reference cabinet requires six-key/1.');
-  const minimumDisplayIds=keyBankFormat==='six-key/1'?4:1;
-  const maximumDisplayIds=keyBankFormat==='six-key/1'?6:8;
+  const requestedCabinetArtwork=clean(input.jookBox?.cabinetArtwork||'',180);
+  const appearanceVariant='atlas-reference-cabinet/1';
+  const keyBankFormat='six-key/1';
+  if(requestedAppearanceVariant&&requestedAppearanceVariant!==appearanceVariant)throw new Error('All new JookBox editions must use the locked ATLAS presentation (atlas-reference-cabinet/1).');
+  if(requestedKeyBankFormat&&requestedKeyBankFormat!==keyBankFormat)throw new Error('All new JookBox editions must use the locked ATLAS six-key presentation (six-key/1).');
+  if(requestedCabinetArtwork&&requestedCabinetArtwork!=='assets/jookbox-atlas-reference-v1.webp')throw new Error('All new JookBox editions must use the SHA-256-locked ATLAS cabinet artwork.');
+  const minimumDisplayIds=4;
+  const maximumDisplayIds=6;
   const requestedDisplayIds=Array.isArray(input.jookBox?.displaySelectionIds)?input.jookBox.displaySelectionIds.map(value=>clean(value,80)).filter(Boolean):selections.slice(0,maximumDisplayIds).map(selection=>selection.id);
   if(requestedDisplayIds.length<minimumDisplayIds||requestedDisplayIds.length>maximumDisplayIds||new Set(requestedDisplayIds).size!==requestedDisplayIds.length||requestedDisplayIds.some(id=>!selections.some(selection=>selection.id===id)))throw new Error(keyBankFormat==='six-key/1'?'The six-key JookBox format requires four to six unique displaySelectionIds backed by verified Linktree selections; Learn More and then Share fill the remaining positions.':'JookBox requires one to eight unique displaySelectionIds that match verified Linktree selections.');
   const paragraphs=(Array.isArray(input.jookBox?.biography?.paragraphs)?input.jookBox.biography.paragraphs:[]).map(paragraph=>clean(paragraph,520)).filter(Boolean);
@@ -62,8 +61,8 @@ if(editionType==='jukebox'){
   config.jookBox={
     modelVersion:'jookbox/3',
     layoutVersion:'coin-awakening/1',
-    cabinetArtwork:atlasReferenceCabinet?'assets/jookbox-atlas-reference-v1.webp':clean(input.jookBox?.cabinetArtwork||'assets/jookbox-cabinet-photoreal-v1.webp',180),
-    cabinetArtworkSha256:atlasReferenceCabinet?'ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3':clean(input.jookBox?.cabinetArtworkSha256||'',64),
+    cabinetArtwork:'assets/jookbox-atlas-reference-v1.webp',
+    cabinetArtworkSha256:'ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3',
     coinSound:clean(input.jookBox?.coinSound||'assets/audio/jukebox-real-coin-insert-cc0.mp3',180),
     coinSoundSha256:clean(input.jookBox?.coinSoundSha256||'3fd636fe3763b95a09bc8f6be470361ddf0a49e7772464d1a5292fa7c7674e8a',64),
     coinSoundSource:https(input.jookBox?.coinSoundSource||'https://freesound.org/s/696745/'),
@@ -71,7 +70,7 @@ if(editionType==='jukebox'){
     sessionStorageKey:`jookBoxActivated:${editionId}`,
     tickerBio:clean(input.jookBox?.tickerBio||bio,420).toUpperCase(),
     tickerDurationSeconds:Math.max(12,Math.min(60,Number(input.jookBox?.tickerDurationSeconds)||36)),
-    buttonLightDurationMs:Math.max(450,Math.min(1200,Number(input.jookBox?.buttonLightDurationMs)||Number(input.jookBox?.buttonRowDurationMs)||(atlasReferenceCabinet?1100:650))),
+    buttonLightDurationMs:Math.max(450,Math.min(1200,Number(input.jookBox?.buttonLightDurationMs)||Number(input.jookBox?.buttonRowDurationMs)||1100)),
     keyBankFormat,
     autoplayDelayMs:0,
     startupTimingsMs:{mechanism:120,neonOn:800,screenOn:1200,buttonsOn:1600,tickerOn:2000},
@@ -83,10 +82,8 @@ if(editionType==='jukebox'){
     lightSequence:true,
     lightSequenceMode:'single-key',
     appearanceVariant,
-    ...(atlasReferenceCabinet?{
-      supportAction:{action:'share',label:'Support Our Band',detail:'Please share our JookBox',kind:'share',icon:'\u2661',detailIcon:'\u2197'},
-      cabinetCopyright:'Copyright Clearlight Creative 2026.'
-    }:{}),
+    supportAction:{action:'share',label:'Support Our Band',detail:'Please share our JookBox',kind:'share',icon:'\u2661',detailIcon:'\u2197'},
+    cabinetCopyright:'Copyright Clearlight Creative 2026.',
     coinStart:true,
     linkSourceURL:https(input.jookBox?.linkSourceURL||''),
     linkSourceVerifiedAt:String(input.jookBox?.linkSourceVerifiedAt||''),

@@ -2,6 +2,7 @@ import fs from 'node:fs/promises';
 import crypto from 'node:crypto';
 
 const requiredDocs=['PLATFORM_ARCHITECTURE_DIRECTIVE.md','DEEP_CUTS_PRODUCTION_MANUAL.md','CLAUDE.md','ROADMAP.md','AGENTS.md','.agents/skills/deep-cuts-factory/SKILL.md'];
+const LEGACY_JOOKBOX_EDITION_ID='dc_a3c049e4bc';
 const errors=[];
 for(const file of requiredDocs)try{const text=await fs.readFile(file,'utf8');if(text.trim().length<100)errors.push(`${file} is unexpectedly short.`)}catch{errors.push(`Missing ${file}.`)}
 try{
@@ -30,10 +31,12 @@ for(const edition of platform.editions){
     if(!config.bandName||!/^https:\/\//.test(config.publicURL||''))errors.push(`${edition.config} requires bandName and an HTTPS publicURL.`);
     if(config.production){
       if(!config.production.jobId||!Number.isFinite(new Date(config.production.submittedAt).getTime()))errors.push(`${edition.config} requires factory job identity and submission time.`);
-      const researchPath=edition.config.replace(/edition\.json$/,'research.json');
-      const research=JSON.parse(await fs.readFile(researchPath,'utf8'));
-      if(research.editionId!==edition.editionId||!Array.isArray(research.sources)||research.sources.length<2)errors.push(`${researchPath} requires matching edition identity and at least two sources.`);
-      for(const[key,value]of Object.entries(config.links||{}))if(value&&!research.sources.some(source=>source.destination===key&&source.identityVerified===true&&normalized(source.url)===normalized(value)))errors.push(`${researchPath} lacks matching verified evidence for links.${key}.`);
+      if(config.editionType!=='bar_jukebox'){
+        const researchPath=edition.config.replace(/edition\.json$/,'research.json');
+        const research=JSON.parse(await fs.readFile(researchPath,'utf8'));
+        if(research.editionId!==edition.editionId||!Array.isArray(research.sources)||research.sources.length<2)errors.push(`${researchPath} requires matching edition identity and at least two sources.`);
+        for(const[key,value]of Object.entries(config.links||{}))if(value&&!research.sources.some(source=>source.destination===key&&source.identityVerified===true&&normalized(source.url)===normalized(value)))errors.push(`${researchPath} lacks matching verified evidence for links.${key}.`);
+      }
     }
     if(config.editionType==='school'){
       if(config.characterArtwork)errors.push(`${edition.config} School Discovery must not configure character artwork.`);
@@ -74,16 +77,75 @@ for(const edition of platform.editions){
         jobIds.add(job.id);jobURLs.add(url);
       }
       for(const asset of [config.characterArtwork,config.business?.logoArtwork])await fs.access(asset);
+    }else if(config.editionType==='bar_jukebox'){
+      if(config.brandName!=='Bar Edition'||config.characterArtwork||config.jookBox)errors.push(`${edition.config} must preserve the isolated no-Aggits Bar Edition contract without persisting Band Edition configuration.`);
+      const bar=config.barJookBox||{};
+      const actions=Array.isArray(bar.actions)?bar.actions:[];
+      const timings=bar.startupTimingsMs||{};
+      if(
+        bar.modelVersion!=='bar-jukebox/1'||
+        bar.layoutVersion!=='coin-awakening/1'||
+        bar.appearanceVariant!=='atlas-reference-cabinet/1'||
+        bar.keyBankFormat!=='bar-six-key/1'||
+        bar.contentMode!=='administrator-static'||
+        bar.webLookupAllowed!==false||
+        bar.lightSequence!==true||
+        bar.lightSequenceMode!=='single-key'||
+        bar.coinStart!==true
+      )errors.push(`${edition.config} must preserve the locked static Bar Edition model, ATLAS cabinet, five-plus-About Us key bank and single-key light sequence.`);
+      if(config.featuredVideo||config.quiz||Object.values(config.links||{}).some(Boolean))errors.push(`${edition.config} Bar Edition must use only its administrator-supplied local MP4 and action list.`);
+      if(!/^Aggits_\d{3,}$/i.test(String(bar.sourceMasterId||'')))errors.push(`${edition.config} Bar Edition requires its immutable Venue Library Master ID.`);
+      if(!config.bandName||bar.venueName!==config.bandName||!bar.tickerText||bar.tickerText.length>500)errors.push(`${edition.config} requires the exact venue name and administrator-supplied ticker copy.`);
+      if(!String(bar.aboutText||'').trim()||String(bar.aboutText||'').length>1200)errors.push(`${edition.config} requires administrator-approved About Us copy of no more than 1200 characters.`);
+      if(actions.length!==5)errors.push(`${edition.config} requires exactly five administrator-supplied actions; About Us is the permanent sixth key and the long support panel is the sole Share control.`);
+      const actionIds=new Set(),actionURLs=new Set();
+      for(const action of actions){
+        const url=normalized(action?.url);
+        if(!/^[a-z0-9][a-z0-9_-]{0,39}$/i.test(action?.id||'')||!String(action?.label||'').trim()||String(action?.label||'').length>42||!url||authenticationWall(url))errors.push(`${edition.config} contains an incomplete or unsafe Bar Edition action.`);
+        if(/^share$/i.test(String(action?.label||'').trim()))errors.push(`${edition.config} must reserve sharing for the long support panel; use another administrator-supplied external action label.`);
+        if(actionIds.has(action?.id)||actionURLs.has(url))errors.push(`${edition.config} contains a duplicate Bar Edition action.`);
+        actionIds.add(action?.id);actionURLs.add(url);
+      }
+      if(
+        !bar.localWelcomeVideo||
+        !/^assets\/editions\/[A-Za-z0-9_-]+\/[^/]+\.mp4$/i.test(bar.localWelcomeVideo)||
+        !bar.localWelcomeVideoSha256||
+        !/^[a-f0-9]{64}$/i.test(bar.localWelcomeVideoSha256)
+      )errors.push(`${edition.config} requires a local MP4 welcome video and SHA-256 identity.`);
+      else{
+        const video=await fs.readFile(bar.localWelcomeVideo);
+        if(video.length>24*1024*1024)errors.push(`${edition.config} Bar Edition welcome video exceeds the protected 24 MiB Cloudflare publication limit.`);
+        if(crypto.createHash('sha256').update(video).digest('hex')!==bar.localWelcomeVideoSha256)errors.push(`${edition.config} Bar Edition welcome video failed its SHA-256 identity check.`);
+      }
+      if(
+        bar.cabinetArtwork!=='assets/jookbox-atlas-reference-v1.webp'||
+        bar.cabinetArtworkSha256!=='ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3'||
+        bar.coinSound!=='assets/audio/jukebox-real-coin-insert-cc0.mp3'||
+        bar.coinSoundSha256!=='3fd636fe3763b95a09bc8f6be470361ddf0a49e7772464d1a5292fa7c7674e8a'||
+        !/^https:\/\//.test(bar.coinSoundSource||'')||
+        !bar.coinSoundLicense||
+        !bar.sessionStorageKey||
+        bar.cabinetCopyright!=='Copyright Clearlight Creative 2026.'
+      )errors.push(`${edition.config} must preserve the locked cabinet, sourced real coin sound, session key and Clearlight copyright.`);
+      if(!(bar.buttonLightDurationMs>=450&&bar.buttonLightDurationMs<=1200)||bar.autoplayDelayMs!==0)errors.push(`${edition.config} must preserve direct-gesture autoplay and a valid single-key light duration.`);
+      if(!(timings.mechanism>=0&&timings.neonOn>=300&&timings.screenOn>=timings.neonOn&&timings.buttonsOn>=timings.screenOn&&timings.tickerOn>=timings.buttonsOn))errors.push(`${edition.config} contains an invalid Bar Edition start-up timeline.`);
+      const cabinet=await fs.readFile(bar.cabinetArtwork||'');
+      if(crypto.createHash('sha256').update(cabinet).digest('hex')!==bar.cabinetArtworkSha256)errors.push(`${edition.config} locked Bar Edition cabinet artwork failed its SHA-256 identity check.`);
+      const coinSound=await fs.readFile(bar.coinSound||'');
+      if(crypto.createHash('sha256').update(coinSound).digest('hex')!==bar.coinSoundSha256)errors.push(`${edition.config} Bar Edition coin recording failed its SHA-256 identity check.`);
     }else if(config.editionType==='jukebox'){
       if(config.brandName!=='JookBox'||config.characterArtwork)errors.push(`${edition.config} must preserve the isolated no-Aggits JookBox contract.`);
       const appearanceVariant=config.jookBox?.appearanceVariant||'reference';
       const atlasReferenceCabinet=appearanceVariant==='atlas-reference-cabinet/1';
       const keyBankFormat=config.jookBox?.keyBankFormat||'classic-eight-key/1';
       const sixKeyFormat=keyBankFormat==='six-key/1';
+      const legacyJookBox=edition.editionId===LEGACY_JOOKBOX_EDITION_ID;
       const validKeyBankFormat=['classic-eight-key/1','six-key/1'].includes(keyBankFormat);
       const validAppearanceVariant=['reference','atlas-reference-cabinet/1'].includes(appearanceVariant);
       const validLightSequence=config.jookBox?.lightSequenceMode==='single-key';
       if(config.jookBox?.modelVersion!=='jookbox/3'||config.jookBox?.layoutVersion!=='coin-awakening/1'||JSON.stringify(config.jookBox?.heroLabels)!==JSON.stringify(['Listen','Watch','Follow','Shop'])||config.jookBox?.lightSequence!==true||!validKeyBankFormat||!validAppearanceVariant||!validLightSequence||config.jookBox?.coinStart!==true||config.jookBox?.syncMode!=='verified-build-time')errors.push(`${edition.config} must preserve the locked coin-awakening JookBox model, appearance, key-bank format and single-key light sequence.`);
+      if(legacyJookBox&&(appearanceVariant!=='reference'||keyBankFormat!=='classic-eight-key/1'))errors.push(`${edition.config} must preserve the immutable Filthy Animals legacy JookBox presentation.`);
+      if(!legacyJookBox&&(!atlasReferenceCabinet||!sixKeyFormat))errors.push(`${edition.config} must use the locked ATLAS presentation and six-key bank; only the immutable Filthy Animals edition may use the legacy cabinet.`);
       if(!config.jookBox?.tickerBio||!config.jookBox?.coinSound||!config.jookBox?.coinSoundSha256||!/^https:\/\//.test(config.jookBox?.coinSoundSource||'')||!config.jookBox?.coinSoundLicense||!config.jookBox?.sessionStorageKey)errors.push(`${edition.config} requires configured ticker copy, sourced local coin audio with an integrity hash and licence, and session restoration.`);
       if(config.jookBox?.autoplayDelayMs!==0)errors.push(`${edition.config} must request JookBox video playback immediately within the direct coin interaction.`);
       if(!(config.jookBox?.buttonLightDurationMs>=450&&config.jookBox?.buttonLightDurationMs<=1200))errors.push(`${edition.config} must use a valid JookBox light duration.`);

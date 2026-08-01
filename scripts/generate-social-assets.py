@@ -27,6 +27,8 @@ except ModuleNotFoundError:
 
 SIZE = 1080
 QR_HEIGHT = 1080
+BAR_QR_WIDTH = 1920
+BAR_QR_HEIGHT = 1080
 WHITE = (245, 249, 255)
 BLUE = (47, 128, 255)
 
@@ -738,6 +740,64 @@ def create_jookbox_qr(config: dict, destination: Path) -> str:
     return url
 
 
+def create_bar_jookbox_instagram(config: dict, destination: Path) -> None:
+    canvas = jookbox_background(config)
+    draw = ImageDraw.Draw(canvas)
+    orange = jookbox_colour(config, "accentSecondary", (255, 102, 64))
+    gold = jookbox_colour(config, "gold", (255, 214, 107))
+    centred_text(draw, "JOOKBOX", 54, fit_font(draw, "JOOKBOX", 760, 74, 50), fill=orange, stroke=1)
+    name = str(config["bandName"]).upper()
+    centred_text(draw, name, 142, fit_font(draw, name, 910, 76, 40), fill=WHITE, stroke=2)
+    draw_jookbox(draw, (252, 250, 828, 865), config, "INSERT COIN")
+    centred_text(draw, "PUSH THE COIN • EXPLORE THE VENUE", 897, fit_font(draw, "PUSH THE COIN • EXPLORE THE VENUE", 820, 32, 22), fill=gold)
+    centred_text(draw, "Deep Cuts", 970, font(31), fill=(225, 234, 242))
+    centred_text(draw, "Copyright Clearlight Creative", 1016, font(20), fill=(139, 159, 177))
+    canvas.convert("RGB").save(destination, "PNG", optimize=True)
+
+
+def create_bar_jookbox_qr(config: dict, destination: Path) -> str:
+    platform = json.loads((ROOT / "platform.json").read_text(encoding="utf-8"))
+    base_url = os.environ.get("DEEP_CUTS_BASE_URL", platform.get("publicBaseURL", "")).rstrip("/")
+    if not base_url.startswith("https://") or ".example" in base_url:
+        raise ValueError("A permanent HTTPS publicBaseURL is required before Bar Edition QR artwork can be generated.")
+    edition_id = config.get("analytics", {}).get("editionId")
+    url = f"{base_url}/q/{edition_id}"
+    node = os.environ.get("DEEP_CUTS_NODE", "node")
+    result = subprocess.run([node, str(ROOT / "scripts" / "qr-matrix.cjs"), url], cwd=ROOT, check=True, capture_output=True, text=True)
+    matrix = json.loads(result.stdout)
+    border = 4
+    module = 384 // (len(matrix) + border * 2)
+    qr_size = module * (len(matrix) + border * 2)
+    qr_image = Image.new("RGBA", (qr_size, qr_size), (255, 255, 255, 255))
+    qr_draw = ImageDraw.Draw(qr_image)
+    for row, values in enumerate(matrix):
+        for column, dark in enumerate(values):
+            if dark:
+                x, y = (column + border) * module, (row + border) * module
+                qr_draw.rectangle((x, y, x + module - 1, y + module - 1), fill=(2, 9, 20, 255))
+    master = Image.open(ROOT / "assets" / "jookbox-venue-qr-master-v1.png").convert("RGBA")
+    if master.size != (BAR_QR_WIDTH, BAR_QR_HEIGHT):
+        raise SystemExit("The locked JookBox venue QR master must remain 1920 × 1080.")
+    draw = ImageDraw.Draw(master)
+    draw.rectangle((919, 376, 1369, 826), fill=(255, 255, 255, 255))
+    master.alpha_composite(qr_image, (952 + (384 - qr_size) // 2, 409 + (384 - qr_size) // 2))
+    draw.rectangle((835, 903, 1484, 1002), fill=(7, 21, 45, 255), outline=(21, 118, 255, 255), width=3)
+    name = str(config["bandName"]).upper()
+    title_font = fit_qr_title_font(draw, name, 590, 64, 28)
+    draw.text((1160, 953), name, font=title_font, fill=(246, 248, 251, 255), anchor="mm")
+    master.convert("RGB").save(destination, "PNG", optimize=True)
+    if not matrix or len(matrix) != len(matrix[0]):
+        raise SystemExit(f"Bar Edition QR matrix validation failed for {destination}")
+    if zxingcpp is not None:
+        scan = zxingcpp.read_barcode(Image.open(destination))
+        if scan is None or scan.text != url:
+            raise SystemExit(f"Rendered Bar Edition QR scan-back failed for {destination}")
+        reduced_scan = zxingcpp.read_barcode(Image.open(destination).resize((960, 540), Image.Resampling.LANCZOS))
+        if reduced_scan is None or reduced_scan.text != url:
+            raise SystemExit(f"Reduced-size Bar Edition QR scan-back failed for {destination}")
+    return url
+
+
 def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
@@ -755,6 +815,9 @@ def main() -> None:
     elif config.get("editionType") == "jukebox":
         create_jookbox_instagram(config, instagram)
         verified_url = create_jookbox_qr(config, qr_path)
+    elif config.get("editionType") == "bar_jukebox":
+        create_bar_jookbox_instagram(config, instagram)
+        verified_url = create_bar_jookbox_qr(config, qr_path)
     elif config.get("editionType") == "laneway":
         create_laneway_instagram(config, instagram)
         verified_url = create_laneway_qr(config, qr_path)
@@ -772,6 +835,7 @@ def main() -> None:
         aggits = Image.open(ROOT / config["characterArtwork"]).convert("RGBA")
         create_instagram(config, aggits, instagram)
         verified_url = create_qr(config, aggits, qr_path)
+    qr_width, qr_height = (BAR_QR_WIDTH, BAR_QR_HEIGHT) if config.get("editionType") == "bar_jukebox" else (SIZE, QR_HEIGHT)
     manifest = {
         "slug": slug,
         "bandName": config["bandName"],
@@ -779,7 +843,7 @@ def main() -> None:
         "generatedAt": datetime.now(timezone.utc).isoformat(),
         "files": {
             "instagramImage": {"path": str(instagram.relative_to(ROOT)).replace("\\", "/"), "width": SIZE, "height": SIZE, "sha256": sha256(instagram)},
-            "qrImage": {"path": str(qr_path.relative_to(ROOT)).replace("\\", "/"), "width": SIZE, "height": QR_HEIGHT, "sha256": sha256(qr_path), "verifiedDestination": verified_url},
+            "qrImage": {"path": str(qr_path.relative_to(ROOT)).replace("\\", "/"), "width": qr_width, "height": qr_height, "sha256": sha256(qr_path), "verifiedDestination": verified_url},
         },
     }
     (output / "delivery-manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")

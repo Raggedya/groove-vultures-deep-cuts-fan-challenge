@@ -20,7 +20,10 @@
         <option value="">No saved drafts</option>
       </select>
     </div>
-    <button class="header-button" id="new-project" type="button"><span aria-hidden="true">＋</span> CREATE NEW</button>
+    <div class="header-actions">
+      <a class="header-button header-link" href="/studio/venue-library.html">VENUE LIBRARY</a>
+      <button class="header-button" id="new-project" type="button"><span aria-hidden="true">＋</span> CREATE NEW</button>
+    </div>
   </header>
 
   <main class="studio-workspace">
@@ -66,16 +69,38 @@
           </div>
         </fieldset>
 
-        <fieldset>
+        <fieldset id="content-fields">
           <legend>Content</legend>
           <p class="field-note field-intro" id="content-intro">Add up to three official pages. Studio treats these as research leads—not verified facts.</p>
           <div class="url-stack">
             <label><span>01</span><input id="source-label-1" aria-label="Button label 1" maxlength="42" placeholder="Button label"><input id="source-url-1" aria-label="URL 1" inputmode="url" autocomplete="url" placeholder="https://official-website.com"></label>
             <label><span>02</span><input id="source-label-2" aria-label="Button label 2" maxlength="42" placeholder="Button label"><input id="source-url-2" aria-label="URL 2" inputmode="url" autocomplete="url" placeholder="https://careers-or-artist-page.com"></label>
             <label><span>03</span><input id="source-label-3" aria-label="Button label 3" maxlength="42" placeholder="Button label"><input id="source-url-3" aria-label="URL 3" inputmode="url" autocomplete="url" placeholder="https://another-official-source.com"></label>
+            <label class="bar-only-row" hidden><span>04</span><input id="source-label-4" aria-label="Button label 4" maxlength="42" placeholder="Button label"><input id="source-url-4" aria-label="URL 4" inputmode="url" autocomplete="url" placeholder="https://venue-destination.com"></label>
+            <label class="bar-only-row" hidden><span>05</span><input id="source-label-5" aria-label="Button label 5" maxlength="42" placeholder="Button label"><input id="source-url-5" aria-label="URL 5" inputmode="url" autocomplete="url" placeholder="https://venue-destination.com"></label>
           </div>
-          <label class="field-label spaced" for="project-brief">Brief</label>
-          <textarea id="project-brief" rows="3" maxlength="1200" placeholder="What should this version help people discover or do?"></textarea>
+          <div id="bar-ticker-field" hidden>
+            <label class="field-label spaced" for="bar-ticker">Scrolling ticker</label>
+            <textarea id="bar-ticker" rows="3" maxlength="500" placeholder="SHOTKICKERS — LIVE MUSIC, GIGS, DRINKS AND GOOD TIMES IN MELBOURNE."></textarea>
+            <p class="field-note">Administrator-supplied wording only. Bar Edition performs no web lookup.</p>
+          </div>
+          <div id="bar-about-field" hidden>
+            <label class="field-label spaced" for="bar-about">About Us</label>
+            <textarea id="bar-about" rows="5" maxlength="1200" placeholder="SHOTKICKERS IS A LIVE-MUSIC VENUE IN [VERIFIED LOCATION]. ADD AN APPROVED DESCRIPTION, WHAT THE VENUE IS KNOWN FOR, AND AN OPTIONAL VERIFIED REVIEW EXCERPT."></textarea>
+            <p class="field-note">Administrator-approved content only. Add the verified location, venue story and optional approved review wording.</p>
+          </div>
+          <div id="brief-field">
+            <label class="field-label spaced" for="project-brief">Brief</label>
+            <textarea id="project-brief" rows="3" maxlength="1200" placeholder="What should this version help people discover or do?"></textarea>
+          </div>
+          <div id="bar-video-field" class="audio-field" hidden>
+            <div>
+              <span class="field-label">Welcome video</span>
+              <p id="video-state" class="field-note">Local MP4 · maximum 500 MB</p>
+            </div>
+            <label class="file-button" for="mp4-file">SELECT MP4<input id="mp4-file" type="file" accept=".mp4,video/mp4"></label>
+            <button id="remove-video" class="icon-button hidden" type="button" aria-label="Remove supplied welcome video">×</button>
+          </div>
           <details class="optional-fields" id="optional-fields">
             <summary><span>Optional media &amp; poster</span><b aria-hidden="true">＋</b></summary>
             <div class="optional-fields-body">
@@ -109,7 +134,7 @@
           <b aria-hidden="true">&gt;</b>
         </button>
       </form>
-      <p class="local-note"><span aria-hidden="true">●</span> Drafts and MP3 files remain in this computer’s ignored <code>.deep-cuts/studio</code> workspace.</p>
+      <p id="local-note" class="local-note"><span aria-hidden="true">●</span> Drafts and supplied media remain in this computer’s private Studio workspace.</p>
     </section>
 
     <section class="preview-stage" aria-labelledby="preview-title">
@@ -128,7 +153,7 @@
       </div>
     </section>
 
-    <aside class="output-column">
+    <aside class="output-column" hidden aria-hidden="true">
       <section class="studio-panel output-panel" aria-labelledby="output-title">
         <div class="panel-heading compact">
           <div><p class="eyebrow">OUTPUT</p><h2 id="output-title">Version &amp; QR</h2></div>
@@ -142,8 +167,8 @@
         <div id="ready-output" class="ready-output hidden">
           <div class="poster-frame"><canvas id="poster-canvas" width="1080" height="1080" aria-label="Deep Cuts QR poster preview"></canvas></div>
           <div id="qr-code" class="qr-source" aria-hidden="true"></div>
-          <p class="qr-label"><strong>1080 × 1080 QR POSTER</strong><span id="qr-project-name"></span></p>
-          <p class="qr-warning">This QR opens the preview on this computer. The permanent QR is created only after the verified production gate.</p>
+          <p class="qr-label"><strong id="qr-output-title">1080 × 1080 QR POSTER</strong><span id="qr-project-name"></span></p>
+          <p id="qr-warning" class="qr-warning">This QR opens the preview on this computer. The permanent QR is created only after the verified production gate.</p>
           <div class="output-actions">
             <button id="download-poster" type="button">DOWNLOAD POSTER</button>
             <button id="download-qr" type="button">DOWNLOAD QR</button>
@@ -177,7 +202,7 @@
         <ul id="gate-list">
           <li>Run a preview to see production requirements.</li>
         </ul>
-        <p>Studio never overwrites a completed edition. A permanent version still passes the existing factory, evidence, link and QR checks.</p>
+        <p id="gate-copy">Studio never overwrites a completed edition. A permanent version still passes the existing factory, evidence, link and QR checks.</p>
       </section>
     </aside>
   </main>

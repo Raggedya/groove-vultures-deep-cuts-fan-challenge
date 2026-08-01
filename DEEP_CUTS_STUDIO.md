@@ -2,6 +2,24 @@
 
 Deep Cuts Studio is the private desktop control surface for creating and reviewing Deep Cuts products. It uses the permanent shared platform and never creates a separate application or repository for an edition.
 
+## Bar Edition workflow
+
+Choose **Bar Edition**. Enter the venue name, exactly five short button labels and five HTTPS destinations, the scrolling ticker copy, administrator-approved About Us copy, and a local MP4 welcome video up to 500 MB. About Us is the permanent sixth key; the long venue panel is the sole Share control.
+
+Studio does not search the web or infer Bar Edition content. The supplied information remains local and private. The phone preview uses the locked ATLAS cabinet and reproduces the production interaction:
+
+1. the cabinet begins asleep;
+2. the visitor drags the coin upward, clicks it, or presses Enter/Space;
+3. the real coin-slot recording plays;
+4. the local MP4 requests immediate audible playback from the direct gesture;
+5. the neon, screen, six keys and ticker wake in the established sequence;
+6. the five external actions and internal About Us key unlock, and the large `Share [Venue Name] with your mates` panel becomes active;
+7. one restrained light advances through all six keys.
+
+Native video controls stay available because Safari, Chrome or a device policy can still block audible autoplay. A refresh in the same browser session restores the awake cabinet without replaying the coin sound or forcing the video.
+
+Studio's internal readiness state becomes **Static Handoff Ready** only after all five labelled destinations, ticker text, About Us copy and MP4 are present. The desktop preview is served from a private ephemeral `127.0.0.1` address that is intentionally accessible only on that computer. Studio therefore does not create a Bar Edition preview QR; a phone would treat `127.0.0.1` as the phone itself and could not connect. Production generates and scan-tests the permanent QR only after the public HTTPS edition is deployed. See [BAR_EDITION_MODEL.md](BAR_EDITION_MODEL.md).
+
 ## JookBox workflow
 
 Choose **JookBox Band**, enter the band name and press **Research & Create JookBox**.
@@ -49,9 +67,31 @@ Studio accepts:
 - QR-poster wording;
 - typed or supported browser dictation revisions.
 
-It creates a live mobile preview, a local preview QR, a 1080 × 1080 draft poster and a structured handoff manifest.
+Bar Edition additionally accepts five labelled destinations, administrator ticker copy, administrator-approved About Us copy and one local MP4. It excludes automatic research, YouTube, Aggits and the optional wheel. It creates a live mobile preview and structured handoff manifest; its permanent QR and QR poster are created after deployment.
 
-## Mac desktop application
+Other Studio project types retain their existing live mobile preview, local preview QR, 1080 × 1080 draft poster and structured handoff manifest.
+
+## Windows desktop application
+
+Windows x64 is the primary Deep Cuts Studio desktop target. It contains the complete current Studio, including the locked Band and Bar Edition workflows. Create the Windows installer on a Windows computer with:
+
+```powershell
+npm run studio:make
+```
+
+Desktop drafts live in the private Deep Cuts Studio application-data folder. They survive application updates and are not placed inside the public website.
+
+The active Windows interface uses two visible columns only: the compact project controls and the mobile preview. The former output, revision and production-safety column remains internal and is intentionally absent from the owner interface.
+
+## Venue Library
+
+Studio 3.4.0 includes a separate **Venue Library** for locally operating a large venue-edition catalogue. It parses the real CSV contents, synchronises by immutable Master ID, preserves administrator work, searches and filters venues, runs selected URL/gig/ticker/QR-readiness stages on demand, displays red/amber/green/grey health, retains update and audit history, exports CSV reports, prints PDF-ready summaries and generates venue-specific QR artwork from the supplied 1920 × 1080 master.
+
+An open venue includes **Secure Publish Venue**. On first use, **Activate Publishing** emails the owner a six-digit code. After the code is entered, Electron stores only a device-scoped token encrypted by Windows `safeStorage`; Studio never receives Cloudflare credentials and requires no GitHub account. **Publish Venue** then validates the isolated edition, uploads the SHA-256-verified MP4 and locally generated two-size scan-tested permanent QR, activates the venue record in Cloudflare, confirms completion-email delivery, verifies the live venue page, QR and MP4, then records the live URL. The public MP4 limit is 24 MiB; larger files remain usable in local preview but must be re-exported smaller. Failed verification restores the previous live version and leaves the attempt unpublished.
+
+The first supplied CSV contains 31 venues (`Aggits_001`–`Aggits_031`), regardless of the `210` in its filename. Updates run only while Studio is open. Public activity analytics remain explicitly unavailable until hosting is added. Full operating and backup instructions are in [VENUE_LIBRARY_ADMIN_GUIDE.md](VENUE_LIBRARY_ADMIN_GUIDE.md).
+
+## macOS packaging (paused)
 
 The macOS build is produced as both a DMG and ZIP for:
 
@@ -66,7 +106,7 @@ Automated macOS builds run on genuine GitHub-hosted macOS hardware through:
 
 The development build is not Apple-notarised. On first launch, macOS may require Control-clicking **Deep Cuts Studio**, choosing **Open**, then confirming **Open**. Production public distribution requires Clearlight Creative's Apple Developer signing and notarisation credentials; no credential is stored in the repository.
 
-Desktop drafts live in the operating system's private Deep Cuts Studio application-data folder. They survive application updates and are not placed inside the public website.
+macOS packaging remains available for future use, but Windows is the active production target.
 
 ## Run locally
 
@@ -98,7 +138,7 @@ Browser-development drafts are stored under ignored `.deep-cuts/studio/projects/
 
 ## Build packages
 
-Windows:
+Windows x64 (primary):
 
 ```powershell
 npm run studio:make

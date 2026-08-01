@@ -45,7 +45,7 @@ assert.match(artworkBuilder, /Deep Cuts delivery artwork:/);
 assert.match(artworkBuilder, /Complete artwork integrity and scan-back verification/);
 assert.match(artworkVerifier, /zxingcpp\.read_barcode/);
 assert.match(artworkVerifier, /hashlib\.sha256/);
-assert.match(artworkVerifier, /resize\(\(540, 540\)/);
+assert.match(artworkVerifier, /reduced_size = \(960, 540\) if image\.width > image\.height else \(540, 540\)/);
 assert.match(build, /Promise\.all/);
 for(const deploymentCheck of [sync,smoke,deployedQr]){
   assert.match(deploymentCheck, /mapLimit/);

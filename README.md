@@ -1,5 +1,7 @@
 # Deep Cuts
 
+Private Windows Studio venue-library operations are documented in [VENUE_LIBRARY_ADMIN_GUIDE.md](VENUE_LIBRARY_ADMIN_GUIDE.md). The module is isolated from the locked public Band and Bar editions.
+
 ## Deep Cuts Studio
 
 The private desktop production interface can be opened with:
@@ -8,7 +10,7 @@ The private desktop production interface can be opened with:
 npm run studio:desktop
 ```
 
-Create a platform-specific installer with:
+Create the primary Windows installer with:
 
 ```powershell
 npm run studio:make
@@ -16,7 +18,7 @@ npm run studio:make
 
 See `DEEP_CUTS_STUDIO.md` for the local browser mode, project contract, verification boundary and packaging notes.
 
-The private one-screen authoring workspace starts with `npm run studio` and opens at `http://127.0.0.1:4380/studio/`. Its JookBox Band workflow accepts a band name and preferably an artist-controlled URL, independently verifies identity, biography, direct platforms and the official featured video, and populates no more than eight keys only after the mandatory 98% gate passes. Name-only discovery is supported but fails closed when identity cannot be established. Business, Recruitment, Individual Band, Restaurants, Tourist Attractions and Towns retain their existing contracts, including the optional-wheel and artwork rules. Studio creates a live phone preview, local QR, 1080 × 1080 poster and factory handoff without directly altering or publishing an edition. See [DEEP_CUTS_STUDIO.md](DEEP_CUTS_STUDIO.md).
+The private one-screen authoring workspace starts with `npm run studio` and opens at `http://127.0.0.1:4380/studio/`. Its JookBox Band workflow accepts a band name and preferably an artist-controlled URL, independently verifies identity, biography, direct platforms and the official featured video, and populates no more than eight keys only after the mandatory 98% gate passes. Name-only discovery is supported but fails closed when identity cannot be established. The isolated Bar Edition accepts a venue name, administrator ticker, administrator-approved About Us copy, local MP4 and exactly five labelled HTTPS destinations. About Us is fixed as the sixth key, the long venue panel is the sole Share control, and no web lookup runs. Because its secure preview is private localhost, Bar Edition displays publication pending instead of issuing an unusable preview QR. Venue Library's **Secure Publish Venue** action is activated once by owner email, stores only a Windows-encrypted device credential, and publishes directly through the private Cloudflare service. It records the permanent URL and two-size scan-tested landscape QR only after email delivery plus live page, QR and MP4 verification succeed. The owner needs no GitHub or Cloudflare account and Studio stores no plaintext production credential. Business, Recruitment, Individual Band, Restaurants, Tourist Attractions and Towns retain their existing contracts, including the optional-wheel and artwork rules. See [DEEP_CUTS_STUDIO.md](DEEP_CUTS_STUDIO.md), [VENUE_LIBRARY_ADMIN_GUIDE.md](VENUE_LIBRARY_ADMIN_GUIDE.md) and [BAR_EDITION_MODEL.md](BAR_EDITION_MODEL.md).
 
 ## Decision intelligence
 
@@ -36,7 +38,7 @@ The same permanent engine also supports separately typed `Deep Cuts Cars` and `D
 
 The isolated `business` product type supports verified recruitment experiences: company branding, an owner-approved Aggits asset, featured video, direct current job cards and a sourced ten-question “Learn About” quiz. High Grade Mechanical is the first locked Business Recruitment edition; Hays is the second and demonstrates reusable official-job-prefix validation and edition-owned logo treatments without changing HGM.
 
-The isolated `jukebox` product type provides the reusable `jookbox/3` band model: no Aggits, quiz or spinning wheel; a four-state session-restored coin wake-up; a sourced and licensed local real coin-slot recording; restrained neon and screen activation; a verified YouTube feature with a browser-safe manual playback fallback; and only independently verified destinations. From 2026-07-31 onward, new editions use the permanent `atlas-reference-cabinet/1` visual and `six-key/1`: the SHA-256-locked 887 × 1774 black-walnut, chrome and neon cabinet first approved for ATLAS, a broad upper biography ticker, left coin bay, video hero, six uniform keys, working `Support Our Band` / `Please share our JookBox` panel and `Copyright Clearlight Creative 2026.` status hardware. Four to six verified destinations are followed by Learn More and then Share only when gaps exist; one gentle light moves through all six keys in reading order. Filthy Animals remains an immutable completed legacy composition.
+The isolated `jukebox` product type provides the reusable `jookbox/3` band model: no Aggits, quiz or spinning wheel; a four-state session-restored coin wake-up; a sourced and licensed local real coin-slot recording; restrained neon and screen activation; a verified YouTube feature with a browser-safe manual playback fallback; and only independently verified destinations. From 2026-07-31 onward, every new edition is required to use the permanent `atlas-reference-cabinet/1` visual and `six-key/1`; factory input cannot opt into the retired design. This is the SHA-256-locked 887 × 1774 black-walnut, chrome and neon cabinet first approved for ATLAS, with a broad upper biography ticker, left coin bay, video hero, six uniform keys, working `Support Our Band` / `Please share our JookBox` panel and `Copyright Clearlight Creative 2026.` status hardware. The top marquee automatically measures and fits each band name without clipping, using balanced multiple lines only when necessary. Four to six verified destinations are followed by Learn More and then Share only when gaps exist; one gentle light moves through all six keys in reading order. Filthy Animals remains the sole immutable legacy-cabinet composition.
 
 ## Standard owner request
 

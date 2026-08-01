@@ -66,6 +66,16 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      - name: Ensure private Bar Edition asset bucket exists
+        shell: bash
+        run: |
+          set -euo pipefail
+          if ! npx --yes wrangler@4 r2 bucket create deep-cuts-bar-assets; then
+            npx --yes wrangler@4 r2 bucket info deep-cuts-bar-assets >/dev/null
+          fi
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
       - name: Deploy permanent Deep Cuts platform
         id: deploy
         shell: bash

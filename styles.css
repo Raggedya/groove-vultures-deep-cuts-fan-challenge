@@ -2603,6 +2603,133 @@ body{margin:0;min-height:100%;color:var(--ink);background:#000713;overflow-x:hid
   }
 }
 
+/* Bar Edition is an isolated static-content product. It reuses the locked
+   ATLAS cabinet coordinates without changing the Band Edition contract. */
+[data-product-type="bar_jukebox"] .bar-jookbox-intro,
+[data-product-type="bar_jukebox"] .bar-jookbox-welcome-video{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  border:0;
+  border-radius:1%;
+  background:#020202
+}
+[data-product-type="bar_jukebox"] .bar-jookbox-welcome-video{
+  z-index:4;
+  display:block;
+  object-fit:contain;
+  opacity:.42;
+  filter:brightness(.3) saturate(.42);
+  pointer-events:none;
+  transition:opacity .34s ease,filter .42s ease
+}
+[data-product-type="bar_jukebox"] .is-screen-on .bar-jookbox-welcome-video{
+  opacity:1;
+  filter:none;
+  pointer-events:auto
+}
+[data-product-type="bar_jukebox"] .bar-jookbox-intro{
+  z-index:3;
+  display:grid;
+  overflow:hidden;
+  place-items:center;
+  color:#d9b977;
+  text-align:center
+}
+[data-product-type="bar_jukebox"] .bar-jookbox-hero{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:.3
+}
+[data-product-type="bar_jukebox"] .bar-jookbox-intro-copy{
+  position:relative;
+  z-index:2;
+  display:grid;
+  width:82%;
+  gap:3%;
+  place-items:center
+}
+[data-product-type="bar_jukebox"] .bar-jookbox-logo{
+  width:min(54%,150px);
+  max-height:35%;
+  object-fit:contain
+}
+[data-product-type="bar_jukebox"] .bar-jookbox-intro-copy strong{
+  color:#ffe9a8;
+  font:900 clamp(.62rem,3vw,1.45rem)/1 Georgia,serif;
+  letter-spacing:.07em;
+  text-shadow:0 0 8px rgba(255,169,47,.66);
+  text-transform:uppercase
+}
+[data-product-type="bar_jukebox"] .bar-jookbox-intro-copy p,
+[data-product-type="bar_jukebox"] .bar-jookbox-intro-copy address{
+  margin:0;
+  color:#bba889;
+  font-size:clamp(.4rem,1.7vw,.76rem);
+  line-height:1.25
+}
+[data-product-type="bar_jukebox"] .bar-jookbox-intro-copy address{font-style:normal}
+[data-product-type="bar_jukebox"] .bar-jookbox-media-status{
+  color:#d39e47;
+  font:800 clamp(.38rem,1.55vw,.7rem)/1.2 "Courier New",monospace;
+  letter-spacing:.05em;
+  text-transform:uppercase
+}
+[data-product-type="bar_jukebox"] .jookbox-coin-button,
+[data-product-type="bar_jukebox"] .jookbox-coin{touch-action:none}
+[data-product-type="bar_jukebox"] .jookbox-coin{cursor:grab}
+[data-product-type="bar_jukebox"] .is-coin-dragging .jookbox-coin{cursor:grabbing;animation:none!important}
+[data-product-type="bar_jukebox"] .is-awake .jookbox-coin-button{
+  animation:none!important;
+  filter:brightness(.46) saturate(.58);
+  text-shadow:none
+}
+[data-product-type="bar_jukebox"] .is-awake .jookbox-coin{
+  animation:none!important;
+  opacity:0;
+  filter:none;
+  box-shadow:none
+}
+[data-product-type="bar_jukebox"][data-jookbox-key-format="bar-six-key/1"] .jookbox-action-key{
+  --jb-key-color:#dff8ff
+}
+[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .jookbox-primary-action{
+  display:grid!important;
+  grid-template-columns:1fr;
+  grid-template-rows:1fr;
+  place-items:center;
+  padding:3% 6%
+}
+[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .jookbox-primary-action[hidden]{
+  display:none!important
+}
+[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .jookbox-primary-action>span,
+[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .jookbox-primary-action small{
+  display:none
+}
+[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .jookbox-primary-action strong,
+[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .jookbox-primary-action.is-share-action strong{
+  grid-column:1;
+  grid-row:1;
+  align-self:center;
+  color:#ff9eab;
+  font-size:clamp(.68rem,3.35vw,1.68rem);
+  letter-spacing:.035em;
+  line-height:1.05;
+  text-transform:uppercase
+}
+[data-product-type="bar_jukebox"] .jookbox-state-plaque{
+  color:#d8ad61
+}
+
+@media(prefers-reduced-motion:reduce){
+  [data-product-type="bar_jukebox"] .bar-jookbox-welcome-video{transition:none}
+}
+
 /* Locked owner-approved Filthy Animals coin-awakening cabinet.
    This layer is selected through edition configuration and cannot affect
    classic JookBox or any other Deep Cuts product. */
@@ -3288,11 +3415,17 @@ body{margin:0;min-height:100%;color:var(--ink);background:#000713;overflow-x:hid
   font-size:clamp(1.45rem,7.2vw,4rem);
   letter-spacing:.12em;
   line-height:.9;
+  text-overflow:clip;
   text-shadow:0 0 2px #fff8d7,0 0 7px #ffc056,0 0 17px rgba(255,99,25,.92)
 }
 [data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"][data-jookbox-long-marquee="true"][data-jookbox-embedded-marquee="false"] .jookbox-marquee h1{
   font-size:clamp(.58rem,2.65vw,2rem);
   letter-spacing:.04em
+}
+[data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"][data-jookbox-embedded-marquee="false"] .jookbox-marquee h1[data-fit-mode="multi-line"]{
+  overflow-wrap:anywhere;
+  text-wrap:balance;
+  white-space:normal
 }
 [data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"][data-jookbox-embedded-marquee="false"] .jookbox-marquee .jookbox-model-mark{
   margin:.32em 0 0;
@@ -3307,6 +3440,17 @@ body{margin:0;min-height:100%;color:var(--ink);background:#000713;overflow-x:hid
   font-weight:900;
   letter-spacing:.14em;
   text-shadow:0 0 7px rgba(255,67,135,.72)
+}
+
+/* Bar Edition keeps the ATLAS cabinet but uses a lower, two-part venue
+   identity block immediately above the ticker. Band JookBox geometry is
+   intentionally unchanged. */
+[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"][data-jookbox-embedded-marquee="false"] .jookbox-marquee{
+  top:8.45%;
+  height:7.75%
+}
+[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"][data-jookbox-embedded-marquee="false"] .jookbox-playing-status{
+  display:none
 }
 
 [data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .jookbox-ticker-console{

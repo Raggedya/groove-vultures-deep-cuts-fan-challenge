@@ -54,7 +54,8 @@ def verify_edition(platform: dict, edition: dict) -> None:
         fail(slug, f"manifest destination must be {expected_url}")
 
     instagram = verify_image(slug, manifest, "instagramImage", (1080, 1080))
-    qr_image = verify_image(slug, manifest, "qrImage", (1080, 1080))
+    qr_size = (1920, 1080) if config.get("editionType") == "bar_jukebox" else (1080, 1080)
+    qr_image = verify_image(slug, manifest, "qrImage", qr_size)
     if instagram == qr_image:
         fail(slug, "discovery and QR artwork paths must remain distinct")
 
@@ -86,7 +87,8 @@ def verify_image(slug: str, manifest: dict, key: str, expected_size: tuple[int, 
 def verify_qr(slug: str, path: Path, expected_url: str) -> None:
     with Image.open(path) as image:
         original = zxingcpp.read_barcode(image)
-        reduced = zxingcpp.read_barcode(image.resize((540, 540), Image.Resampling.LANCZOS))
+        reduced_size = (960, 540) if image.width > image.height else (540, 540)
+        reduced = zxingcpp.read_barcode(image.resize(reduced_size, Image.Resampling.LANCZOS))
     if original is None or original.text != expected_url:
         fail(slug, "full-size QR scan-back failed")
     if reduced is None or reduced.text != expected_url:
