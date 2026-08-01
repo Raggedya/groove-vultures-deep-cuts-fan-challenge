@@ -813,6 +813,8 @@ function createJookBoxDestinationLink(definition,className,source){
   const link=document.createElement("a");
   link.className=`jookbox-destination ${className}`;
   link.dataset.kind=jookBoxSelectionKind(definition);
+  link.dataset.jookboxKey=String(definition.key||definition.kind||"").trim().toLowerCase();
+  link.dataset.jookboxLabel=String(definition.label||"").trim().toLowerCase();
   link.innerHTML=`<span class="jookbox-action-icon" aria-hidden="true">${jookBoxActionIcon(definition)}</span><span class="jookbox-action-copy"><strong>${escapeHtml(definition.label)}</strong><small>${escapeHtml(definition.subLabel||"Open verified destination")}</small></span><span class="jookbox-external-mark" aria-hidden="true">↗</span>`;
   configureJookBoxDestinationAnchor(link,definition.url,definition,source);
   return link;

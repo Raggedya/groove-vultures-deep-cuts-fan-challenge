@@ -23,6 +23,7 @@ const packagedFiles=new Set([
   "/assets/hgm-aggits-owner-supplied.jpg",
   "/assets/jookbox-cabinet-photoreal-v1.webp",
   "/assets/jookbox-atlas-reference-v1.webp",
+  "/assets/jookbox-bar-heritage-brass-v1.png",
   "/assets/jookbox-venue-qr-master-v1.png",
   "/assets/audio/jukebox-real-coin-insert-cc0.mp3",
   "/assets/audio/jukebox-real-coin-insert-cc0.LICENSE.txt"

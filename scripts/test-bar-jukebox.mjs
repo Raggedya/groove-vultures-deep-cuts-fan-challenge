@@ -3,7 +3,7 @@ import crypto from "node:crypto";
 import fs from "node:fs/promises";
 import {attachMp4,createProject,renderStudioPreview} from "./studio-model.mjs";
 
-const [contracts,html,app,styles,studioHtml,studioApp,server,validator,forge,venueHtml,venueServer,publisher,artwork,artworkVerifier]=await Promise.all([
+const [contracts,html,app,styles,studioHtml,studioApp,server,validator,forge,venueHtml,venueServer,publisher,artwork,artworkVerifier,heritageArtwork]=await Promise.all([
   fs.readFile("edition-contracts.json","utf8").then(JSON.parse),
   fs.readFile("index.html","utf8"),
   fs.readFile("js/app.js","utf8"),
@@ -17,8 +17,11 @@ const [contracts,html,app,styles,studioHtml,studioApp,server,validator,forge,ven
   fs.readFile("scripts/venue-library-server.mjs","utf8"),
   fs.readFile("scripts/bar-edition-publication.mjs","utf8"),
   fs.readFile("scripts/generate-social-assets.py","utf8"),
-  fs.readFile("scripts/verify-delivery-assets.py","utf8")
+  fs.readFile("scripts/verify-delivery-assets.py","utf8"),
+  fs.readFile("assets/jookbox-bar-heritage-brass-v1.png")
 ]);
+
+assert.equal(crypto.createHash("sha256").update(heritageArtwork).digest("hex"),"d2556a41bb1b0d56d96e78d9a6ff538f780637e32ba473c153d5b61184f1eb92","The owner-approved Bar heritage cabinet must remain immutable.");
 
 assert.equal(contracts.productModels.bar_jukebox.version,1);
 assert.equal(contracts.productModels.bar_jukebox.defaultAppearanceVariant,"atlas-reference-cabinet/1");
@@ -89,6 +92,11 @@ assert.match(validator,/requires administrator-approved About Us copy/);
 assert.match(validator,/config\.editionType!=='bar_jukebox'/);
 assert.match(forge,/jukebox-real-coin-insert-cc0\.mp3/);
 assert.match(forge,/jookbox-atlas-reference-v1\.webp/);
+assert.match(forge,/jookbox-bar-heritage-brass-v1\.png/);
+assert.match(styles,/BAR_HERITAGE_BRASS_VISUAL_CONTRACT_START/);
+assert.match(styles,/jookbox-bar-heritage-brass-v1\.png/);
+assert.match(styles,/\.jookbox-ticker-text\{[^}]*font-size:clamp\(\.82rem,3\.55vw,1\.9rem\)[^}]*white-space:nowrap/s);
+assert.match(styles,/\.jookbox-cabinet-copyright\{[^}]*background:linear-gradient\(145deg,#c69d58/s);
 assert.match(venueHtml,/id="publish-venue"/);assert.match(venueHtml,/Secure Publish Venue/);assert.match(venueHtml,/id="activate-publishing"/);assert.doesNotMatch(venueHtml,/Connect GitHub/);
 assert.match(venueServer,/createVenuePublicationJob/);assert.match(venueServer,/publicationPublisher\.publish/);
 assert.match(publisher,/BAR_PUBLIC_VIDEO_MAX_BYTES=24\*1024\*1024/);assert.match(publisher,/createDirectVenuePublisher/);assert.match(publisher,/createVenueQrArtwork/);assert.match(publisher,/verifyPublicEdition/);assert.doesNotMatch(publisher,/GitHubVenuePublisher/);
@@ -132,7 +140,9 @@ assert.match(preview,/class="coin-label">INSERT COIN</);
 assert.doesNotMatch(preview,/Drag coin up to play/);
 assert.match(preview,/\.machine\.is-awake \.coin\{animation:none!important;opacity:0;filter:none;box-shadow:none\}/);
 assert.match(preview,/machine\.classList\.remove\("is-powering","is-accepting"\)/);
-assert.match(preview,/\.title\{[^}]*top:8\.45%;[^}]*height:7\.75%/);
+assert.match(preview,/jookbox-bar-heritage-brass-v1\.png/);
+assert.match(preview,/\.title\{[^}]*top:6\.15%;[^}]*height:12\.7%/);
+assert.match(preview,/\.ticker span\{[^}]*white-space:nowrap/);
 assert.doesNotMatch(preview,/\.title small:after\{[^}]*content:"BAR EDITION"/);
 assert.match(preview,/Share Shotkickers with your mates/);
 assert.match(preview,/Public sharing activates after deployment/);
@@ -147,4 +157,4 @@ assert.match(preview,/is-ticker-on/);
 assert.doesNotMatch(preview,/youtube-nocookie/i);
 assert.match(preview,/No web lookup runs for Bar Edition/i);
 
-console.log("Bar Edition contract tests passed: the isolated ATLAS cabinet, five-plus-About Us keys, sole Share panel, local MP4, coin start-up and Mac Studio intake are locked.");
+console.log("Bar Edition contract tests passed: the isolated heritage brass cabinet, five-plus-About Us keys, sole Share panel, local MP4, coin start-up and Studio intake are locked.");
