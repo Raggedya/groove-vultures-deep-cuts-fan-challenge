@@ -2603,6 +2603,275 @@ body{margin:0;min-height:100%;color:var(--ink);background:#000713;overflow-x:hid
   }
 }
 
+/* BAR_HERITAGE_CRAFT_FINISH_START
+   Precision overlay repair for the isolated bar-jukebox/1 product. The
+   immutable brass cabinet provides the physical frames; these responsive
+   SVG and lighting layers supply editable venue identity and controls. */
+.bar-jookbox-marquee-artwork,
+.bar-jookbox-share-hand{display:none}
+
+html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"][data-jookbox-embedded-marquee="false"] .jookbox-marquee{
+  top:6.15%;
+  left:14%;
+  display:block;
+  width:72%;
+  height:12.7%;
+  padding:0;
+  overflow:visible;
+  filter:brightness(.54) saturate(.62);
+  transition:filter .45s ease
+}
+html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"][data-jookbox-embedded-marquee="false"] .is-neon-on .jookbox-marquee{
+  filter:brightness(1) saturate(.9)
+}
+html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"][data-jookbox-embedded-marquee="false"] .jookbox-marquee>h1,
+html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"][data-jookbox-embedded-marquee="false"] .jookbox-marquee>.jookbox-model-mark{
+  position:absolute!important;
+  width:1px!important;
+  height:1px!important;
+  padding:0!important;
+  overflow:hidden!important;
+  clip:rect(0 0 0 0)!important;
+  clip-path:inset(50%)!important;
+  white-space:nowrap!important
+}
+html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .bar-jookbox-marquee-artwork{
+  display:block;
+  width:100%;
+  height:100%;
+  overflow:visible
+}
+html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .bar-jookbox-curved-title{
+  fill:#d3b074;
+  stroke:rgba(48,25,11,.74);
+  stroke-width:1.35;
+  paint-order:stroke fill;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:88px;
+  font-weight:800;
+  letter-spacing:.045em;
+  filter:drop-shadow(0 2px 0 #2a1308) drop-shadow(0 0 2px rgba(248,219,155,.24))
+}
+html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .bar-jookbox-model-title{
+  fill:#d1ad70;
+  stroke:rgba(45,23,9,.68);
+  stroke-width:.7;
+  paint-order:stroke fill;
+  font:800 25px/1 Georgia,"Times New Roman",serif;
+  letter-spacing:5px;
+  filter:drop-shadow(0 1px 0 #2b1508)
+}
+html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .bar-jookbox-marquee-ornament{
+  fill:none;
+  stroke:#a57b43;
+  stroke-width:1.7;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  opacity:.82;
+  filter:drop-shadow(0 1px 0 #251006)
+}
+
+html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .jookbox-action-key,
+html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .jookbox-action-key:last-child:nth-child(odd){
+  padding:5% 4% 5%;
+  gap:2%;
+  border:0;
+  border-radius:4%;
+  color:#2b180c;
+  background:linear-gradient(180deg,rgba(255,234,181,.012),rgba(90,46,17,.018));
+  box-shadow:inset 0 1px rgba(255,244,210,.025),inset 0 -3px rgba(55,26,9,.025);
+  filter:brightness(.3) saturate(.34);
+  opacity:.34;
+  transition:filter .42s ease,opacity .42s ease,box-shadow .42s ease,background .42s ease,transform .1s ease
+}
+html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .jookbox-action-icon{
+  display:grid;
+  width:100%;
+  height:54%;
+  place-items:center;
+  overflow:visible;
+  border:0;
+  border-radius:0;
+  color:#2a180c;
+  background:none;
+  box-shadow:none;
+  font-size:0;
+  text-shadow:none
+}
+html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .jookbox-action-icon:before{display:none!important;content:none!important}
+html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .bar-jookbox-key-icon{
+  width:min(59%,64px);
+  height:100%;
+  overflow:visible;
+  color:inherit;
+  filter:drop-shadow(0 1px 0 rgba(255,235,188,.22))
+}
+html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .bar-jookbox-key-icon g{
+  fill:none;
+  stroke:currentColor;
+  stroke-width:3.2;
+  stroke-linecap:round;
+  stroke-linejoin:round
+}
+html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .bar-jookbox-key-icon .bar-jookbox-key-icon-fill{
+  fill:currentColor;
+  stroke:none
+}
+html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .jookbox-action-copy{
+  height:38%
+}
+html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .jookbox-action-copy strong{
+  color:#28160b;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(.57rem,2.43vw,1.2rem);
+  font-weight:800;
+  letter-spacing:.01em;
+  line-height:1;
+  overflow-wrap:normal;
+  text-align:center;
+  text-shadow:0 1px rgba(255,238,194,.16);
+  text-transform:uppercase
+}
+html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .is-awake .jookbox-action-key,
+html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .is-awake .jookbox-action-key:last-child:nth-child(odd){
+  color:#2a180c;
+  background:linear-gradient(180deg,rgba(255,241,203,.025),rgba(113,64,27,.035));
+  box-shadow:inset 0 1px rgba(255,245,213,.08),inset 0 -3px rgba(54,25,8,.07);
+  filter:brightness(.92) saturate(.79);
+  opacity:1
+}
+html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .is-buttons-running .jookbox-action-key.is-current-key{
+  color:#211108;
+  background:
+    radial-gradient(ellipse 78% 72% at 50% 42%,rgba(255,247,207,.31),rgba(255,221,145,.12) 51%,transparent 76%),
+    linear-gradient(180deg,rgba(255,245,211,.12),rgba(162,92,33,.08));
+  box-shadow:
+    inset 0 0 12px rgba(255,252,222,.52),
+    inset 0 -5px 12px rgba(188,106,35,.2),
+    0 0 7px rgba(255,205,104,.26);
+  filter:brightness(1.13) saturate(.84);
+  opacity:1;
+  animation:barHeritageIncandescentCycle var(--jookbox-key-duration,1500ms) ease-in-out both
+}
+html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .is-awake .jookbox-action-key:hover,
+html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .is-awake .jookbox-action-key:focus-visible{
+  color:#211108;
+  outline:2px solid #ffedb1;
+  outline-offset:-4px;
+  background:radial-gradient(ellipse at 50% 42%,rgba(255,246,205,.28),rgba(255,222,151,.08) 62%,transparent 79%);
+  box-shadow:inset 0 0 15px rgba(255,249,217,.44),0 0 7px rgba(255,208,112,.26);
+  filter:brightness(1.08) saturate(.82)
+}
+
+html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .jookbox-primary-action,
+html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .jookbox-primary-action.is-share-action{
+  display:grid!important;
+  grid-template-columns:1fr;
+  grid-template-rows:1fr;
+  padding:1.05% 15.5%;
+  place-items:center;
+  color:#28160b;
+  background:linear-gradient(180deg,rgba(255,240,199,.018),rgba(103,54,21,.025));
+  box-shadow:inset 0 1px rgba(255,245,215,.045),inset 0 -3px rgba(50,24,8,.045)
+}
+html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .jookbox-primary-action:before,
+html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .jookbox-primary-action:after{display:none!important;content:none!important}
+html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .jookbox-primary-action>.bar-jookbox-share-hand{
+  position:absolute;
+  z-index:1;
+  top:50%;
+  display:block;
+  width:13%;
+  height:auto;
+  overflow:visible;
+  fill:none;
+  stroke:#2b180c;
+  stroke-width:2.25;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  filter:drop-shadow(0 1px rgba(255,235,181,.2));
+  transform:translateY(-50%)
+}
+html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .bar-jookbox-share-hand-left{left:4.2%}
+html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .bar-jookbox-share-hand-right{
+  right:4.2%;
+  transform:translateY(-50%) scaleX(-1)
+}
+html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .jookbox-primary-action strong,
+html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .jookbox-primary-action.is-share-action strong{
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-column:1;
+  grid-row:1;
+  width:100%;
+  gap:.12em;
+  place-items:center;
+  color:#28160b;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(.62rem,2.85vw,1.42rem);
+  font-weight:800;
+  letter-spacing:.015em;
+  line-height:.98;
+  text-align:center;
+  text-shadow:0 1px rgba(255,235,182,.18);
+  text-transform:uppercase;
+  text-wrap:balance
+}
+html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .bar-jookbox-share-venue{display:block;width:100%;text-wrap:balance}
+html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .bar-jookbox-share-invitation{
+  display:flex;
+  width:100%;
+  align-items:center;
+  justify-content:center;
+  gap:4%;
+  font-size:.8em;
+  letter-spacing:.045em;
+  white-space:nowrap
+}
+html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .bar-jookbox-share-invitation:before,
+html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .bar-jookbox-share-invitation:after{
+  width:14%;
+  height:1px;
+  content:"";
+  background:linear-gradient(90deg,transparent,#5e3518);
+  box-shadow:0 1px rgba(255,235,183,.18)
+}
+html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .bar-jookbox-share-invitation:after{background:linear-gradient(90deg,#5e3518,transparent)}
+html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .bar-jookbox-share-feedback{font-size:.9em;letter-spacing:.07em}
+html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .is-awake .jookbox-primary-action{
+  filter:brightness(.98) saturate(.78);
+  opacity:1;
+  box-shadow:inset 0 0 14px rgba(255,235,185,.13),inset 0 -3px rgba(66,31,9,.08)
+}
+
+@keyframes barHeritageIncandescentCycle{
+  0%,100%{
+    background:radial-gradient(ellipse 75% 68% at 50% 42%,rgba(255,244,199,.18),rgba(255,218,139,.07) 53%,transparent 77%);
+    box-shadow:inset 0 0 11px rgba(255,246,205,.32),0 0 3px rgba(255,199,91,.16);
+    filter:brightness(1.02) saturate(.79)
+  }
+  38%,68%{
+    background:radial-gradient(ellipse 82% 76% at 50% 42%,rgba(255,253,226,.39),rgba(255,222,145,.16) 54%,transparent 79%);
+    box-shadow:inset 0 0 19px rgba(255,252,224,.59),inset 0 -5px 12px rgba(184,102,32,.18),0 0 8px rgba(255,207,104,.31);
+    filter:brightness(1.14) saturate(.84)
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .is-buttons-running .jookbox-action-key,
+  html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .is-buttons-running .jookbox-action-key.is-current-key{
+    color:#2a180c;
+    border:0;
+    background:radial-gradient(ellipse at 50% 42%,rgba(255,242,196,.12),rgba(255,220,145,.035) 65%,transparent 82%);
+    box-shadow:inset 0 0 10px rgba(255,242,198,.2);
+    filter:brightness(.98) saturate(.8);
+    opacity:1;
+    animation:none!important
+  }
+}
+/* BAR_HERITAGE_CRAFT_FINISH_END */
+
 /* BAR_HERITAGE_BRASS_VISUAL_CONTRACT_START
    Owner-approved Swan Hotel presentation for Bar Edition only. The public
    interaction contract, destination data, analytics and Band JookBox remain
@@ -3146,7 +3415,7 @@ html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][da
   grid-column:1;
   grid-row:1;
   align-self:center;
-  color:#ff9eab;
+  color:#2c190d;
   font-size:clamp(.68rem,3.35vw,1.68rem);
   letter-spacing:.035em;
   line-height:1.05;

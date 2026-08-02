@@ -1,6 +1,6 @@
 "use strict";
 
-const VERSION="20260802-bar-heritage-1";
+const VERSION="20260802-bar-heritage-2";
 const LANEWAY_REPORTING_VERSION="laneway-weekly-v1";
 const $=id=>document.getElementById(id);
 const els={
@@ -19,7 +19,8 @@ const els={
   barJookBoxIntro:$("barJookBoxIntro"),barJookBoxHero:$("barJookBoxHero"),barJookBoxLogo:$("barJookBoxLogo"),
   barJookBoxVenueName:$("barJookBoxVenueName"),barJookBoxDescription:$("barJookBoxDescription"),
   barJookBoxAddress:$("barJookBoxAddress"),barJookBoxMediaStatus:$("barJookBoxMediaStatus"),
-  barJookBoxWelcomeVideo:$("barJookBoxWelcomeVideo"),
+  barJookBoxWelcomeVideo:$("barJookBoxWelcomeVideo"),barJookBoxMarqueeArtwork:$("barJookBoxMarqueeArtwork"),
+  barJookBoxMarqueeText:$("barJookBoxMarqueeText"),
   links:$("platformLinks"),share:$("shareButton"),status:$("shareStatus"),description:$("pageDescription"),poweredBy:$("poweredByLabel"),
   copyright:$("coverCopyright"),lanewayHome:$("lanewayHomeLink"),lanewayRecommended:$("lanewayRecommendedLink"),
   companyDirectory:$("lanewayCompanyDirectory"),companyDirectoryCount:$("lanewayCompanyDirectoryCount"),companySearch:$("lanewayCompanySearch"),
@@ -107,6 +108,7 @@ let jookBoxMarqueeFitFrame=0;
 let jookBoxMarqueeResizeObserver=null;
 let barJookBoxCoinDragController=null;
 let barJookBoxCoinDragState=null;
+let barJookBoxShareFeedbackTimer=0;
 const jookBoxStartupTimers=new Set();
 init();
 
@@ -242,8 +244,8 @@ function barJookBoxRuntimeConfig(){
     appearanceVariant:"atlas-reference-cabinet/1",
     keyBankFormat:"bar-six-key/1",
     lightSequence:true,
-    lightSequenceMode:"single-key",
-    buttonLightDurationMs:Math.max(650,Math.min(1400,Number(source.buttonLightDurationMs)||1000)),
+    lightSequenceMode:"row-pair",
+    buttonLightDurationMs:Math.max(1200,Math.min(1800,Number(source.buttonLightDurationMs)||1500)),
     coinSound:source.coinSound||"assets/audio/jukebox-real-coin-insert-cc0.mp3",
     coinSoundSha256:source.coinSoundSha256||"3fd636fe3763b95a09bc8f6be470361ddf0a49e7772464d1a5292fa7c7674e8a",
     sessionStorageKey:source.sessionStorageKey||`barJookBoxActivated:${editionEntry.editionId}`,
@@ -376,6 +378,7 @@ function buildFeaturedVideo(){
 function buildJookBox(){
   if(!isJookBoxEdition())return;
   els.jookBoxTitle.textContent=config.jookBox?.marquee||config.bandName;
+  configureBarJookBoxMarquee();
   const marquee=els.jookBoxTitle.closest(".jookbox-marquee");
   const embeddedMarquee=document.documentElement.dataset.jookboxEmbeddedMarquee==="true";
   marquee?.classList.toggle("visually-hidden",embeddedMarquee);
@@ -534,8 +537,39 @@ function scheduleJookBoxMarqueeTitleFit(){
   });
 }
 
+function configureBarJookBoxMarquee(){
+  if(!els.barJookBoxMarqueeArtwork||!els.barJookBoxMarqueeText)return;
+  const bar=isBarJookBoxEdition();
+  els.barJookBoxMarqueeArtwork.hidden=!bar;
+  if(!bar)return;
+  els.barJookBoxMarqueeText.textContent=String(config.jookBox?.marquee||config.bandName||"Venue").trim().toUpperCase();
+}
+
+function fitBarJookBoxMarqueeTitle(){
+  const title=els.barJookBoxMarqueeText;
+  if(!isBarJookBoxEdition()||!title||els.barJookBoxMarqueeArtwork?.hidden)return;
+  const targetWidth=596;
+  const maximumSize=88;
+  const minimumSize=35;
+  title.removeAttribute("lengthAdjust");
+  title.removeAttribute("textLength");
+  title.style.fontSize=`${maximumSize}px`;
+  const measured=Math.max(1,title.getComputedTextLength?.()||targetWidth);
+  const fitted=Math.max(minimumSize,Math.min(maximumSize,maximumSize*targetWidth/measured));
+  title.style.fontSize=`${fitted.toFixed(2)}px`;
+  const finalWidth=Math.max(1,title.getComputedTextLength?.()||targetWidth);
+  if(finalWidth>targetWidth){
+    title.setAttribute("textLength",String(targetWidth));
+    title.setAttribute("lengthAdjust","spacingAndGlyphs");
+  }
+}
+
 function fitJookBoxMarqueeTitle(){
   if(!isJookBoxEdition()||!els.jookBoxTitle)return;
+  if(isBarJookBoxEdition()){
+    fitBarJookBoxMarqueeTitle();
+    return;
+  }
   const title=els.jookBoxTitle;
   const marquee=title.closest(".jookbox-marquee");
   if(!marquee||!title.clientWidth||!marquee.clientHeight)return;
@@ -693,11 +727,12 @@ function createJookBoxUtilityKey(kind,index){
   button.dataset.kind=definition.kind;
   button.dataset.jookboxUtility=definition.kind;
   button.dataset.keyIndex=String(index);
+  button.dataset.jookboxLabel=definition.label.toLowerCase();
   button.disabled=true;
   button.tabIndex=-1;
   button.setAttribute("aria-disabled","true");
   button.setAttribute("aria-label",definition.kind==="learn_more"?`${barAbout?"About":"Learn more about"} ${config.bandName}`:`Share the ${config.bandName} ${isBarJookBoxEdition()?"Bar Edition":"JookBox"}`);
-  button.innerHTML=`<span class="jookbox-action-icon" aria-hidden="true">${definition.icon}</span><span class="jookbox-action-copy"><strong>${definition.label}</strong><small>${definition.subLabel}</small></span><span class="jookbox-external-mark" aria-hidden="true">${barAbout?"›":"↗"}</span>`;
+  button.innerHTML=`<span class="jookbox-action-icon" aria-hidden="true">${jookBoxActionIcon(definition)}</span><span class="jookbox-action-copy"><strong>${definition.label}</strong><small>${definition.subLabel}</small></span><span class="jookbox-external-mark" aria-hidden="true">${barAbout?"›":"↗"}</span>`;
   button.addEventListener("click",()=>{
     if(!jookBoxPowered){focusJookBoxCoin();return}
     if(definition.kind==="learn_more"){
@@ -761,9 +796,11 @@ function buildJookBoxProductNavigation(){
 }
 
 function configureJookBoxPrimaryAction(definition){
-  const icon=els.jookBoxPrimaryAction.querySelector("span");
+  const icon=els.jookBoxPrimaryAction.querySelector(":scope > span");
   const title=els.jookBoxPrimaryAction.querySelector("strong");
   const detail=els.jookBoxPrimaryAction.querySelector("small");
+  window.clearTimeout(barJookBoxShareFeedbackTimer);
+  barJookBoxShareFeedbackTimer=0;
   els.jookBoxPrimaryAction.hidden=true;
   els.jookBoxPrimaryAction.classList.remove("is-share-action");
   els.jookBoxPrimaryAction.removeAttribute("href");
@@ -777,10 +814,12 @@ function configureJookBoxPrimaryAction(definition){
   els.jookBoxPrimaryAction.onclick=null;
   els.jookBoxPrimaryAction.onkeydown=null;
   if(!definition)return;
-  icon.textContent=jookBoxActionIcon(definition);
+  if(isBarJookBoxEdition())icon.innerHTML=jookBoxActionIcon(definition);
+  else icon.textContent=jookBoxActionIcon(definition);
   title.textContent=definition.label;
   detail.replaceChildren(document.createTextNode(definition.subLabel));
   if(definition.action==="share"){
+    if(isBarJookBoxEdition())setBarJookBoxShareLabel(title);
     const shareIcon=document.createElement("span");
     shareIcon.className="jookbox-primary-detail-icon";
     shareIcon.setAttribute("aria-hidden","true");
@@ -790,7 +829,7 @@ function configureJookBoxPrimaryAction(definition){
     els.jookBoxPrimaryAction.dataset.jookboxAction="share";
     els.jookBoxPrimaryAction.setAttribute("role","button");
     els.jookBoxPrimaryAction.setAttribute("aria-disabled","true");
-    els.jookBoxPrimaryAction.setAttribute("aria-label",`Share the ${config.bandName} JookBox`);
+    els.jookBoxPrimaryAction.setAttribute("aria-label",`Share ${config.bandName} with your mates`);
     els.jookBoxPrimaryAction.tabIndex=-1;
     const activateShare=event=>{
       event.preventDefault();
@@ -836,7 +875,60 @@ function configureJookBoxDestinationAnchor(element,url,definition,source){
   };
 }
 
+function setBarJookBoxShareLabel(title,message=""){
+  if(!title)return;
+  if(message){
+    const feedback=document.createElement("span");
+    feedback.className="bar-jookbox-share-feedback";
+    feedback.textContent=message;
+    title.replaceChildren(feedback);
+    return;
+  }
+  const venue=document.createElement("span");
+  venue.className="bar-jookbox-share-venue";
+  venue.textContent=`Share ${String(config.barJookBox?.venueName||config.bandName||"this venue").trim()}`;
+  const invitation=document.createElement("span");
+  invitation.className="bar-jookbox-share-invitation";
+  invitation.textContent="With your mates";
+  title.replaceChildren(venue,invitation);
+}
+
+function showBarJookBoxShareFeedback(copied){
+  if(!isBarJookBoxEdition()||els.jookBoxPrimaryAction.dataset.jookboxAction!=="share")return;
+  const message=copied?"Link copied":"Copy the browser address";
+  setBarJookBoxShareLabel(els.jookBoxPrimaryAction.querySelector("strong"),message);
+  els.jookBoxPowerStatus.textContent=copied?`${config.bandName} link copied. Return to the JookBox whenever you like.`:"Copy was blocked. Copy the address from your browser.";
+  window.clearTimeout(barJookBoxShareFeedbackTimer);
+  barJookBoxShareFeedbackTimer=window.setTimeout(()=>{
+    setBarJookBoxShareLabel(els.jookBoxPrimaryAction.querySelector("strong"));
+    barJookBoxShareFeedbackTimer=0;
+  },1900);
+}
+
+function barJookBoxActionIcon(definition){
+  const identity=[definition.key,definition.kind,definition.id,definition.label,definition.sourceTitle]
+    .map(value=>String(value||"").toLowerCase()).join(" ");
+  const type=/instagram/.test(identity)?"instagram"
+    :/facebook/.test(identity)?"facebook"
+    :/contact|phone|telephone/.test(identity)?"contact"
+    :/menu|drink|food|eat/.test(identity)?"menu"
+    :/gig|show|event|what.?s on/.test(identity)?"gigs"
+    :/learn_more|about|information/.test(identity)?"about"
+    :"ornament";
+  const paths={
+    gigs:'<path d="M8 7h29l18 8v20H29L8 25Z"/><path d="M37 7v28M29 35v6h26v-6M22 41h34M17 46h43M27 51h23"/><path d="M12 13h20l-8 8H12Z"/>',
+    menu:'<path d="M8 32c10 0 9-15 19-15 7 0 8 8 13 8s6-8 13-8c10 0 9 15 19 15-10 0-9 15-19 15-7 0-8-8-13-8s-6 8-13 8C17 47 18 32 8 32Z"/><path d="M18 32h44M32 23c-4 4-4 14 0 18M48 23c4 4 4 14 0 18"/>',
+    contact:'<path d="M14 25c0-12 10-18 26-18s26 6 26 18v5H53v-7H27v7H14Z"/><path d="M22 32h36l7 9v16H15V41Z"/><circle cx="40" cy="44" r="9"/><path d="M40 38v12M34 44h12"/>',
+    instagram:'<rect x="11" y="11" width="58" height="58" rx="15"/><circle cx="40" cy="40" r="14"/><circle cx="59" cy="21" r="3" fill="currentColor" stroke="none"/>',
+    facebook:'<path class="bar-jookbox-key-icon-fill" d="M46 70V44h9l2-11H46v-7c0-4 2-7 7-7h6V9c-3-1-7-1-11-1-11 0-18 7-18 19v6H20v11h10v26Z"/>',
+    about:'<circle cx="40" cy="40" r="30"/><path d="M40 34v22"/><circle cx="40" cy="23" r="2.5" fill="currentColor" stroke="none"/>',
+    ornament:'<path d="M10 40c12-2 18-10 23-25 4 8 7 13 7 25 0-12 3-17 7-25 5 15 11 23 23 25-12 2-18 10-23 25-4-8-7-13-7-25 0 12-3 17-7 25-5-15-11-23-23-25Z"/>'
+  };
+  return`<svg class="bar-jookbox-key-icon bar-jookbox-key-icon-${type}" viewBox="0 0 80 80" focusable="false" aria-hidden="true"><g>${paths[type]}</g></svg>`;
+}
+
 function jookBoxActionIcon(definition){
+  if(isBarJookBoxEdition())return barJookBoxActionIcon(definition);
   const configured=String(definition.icon||"").trim();
   if(configured)return configured;
   return({
@@ -880,6 +972,7 @@ function jookBoxSessionKey(){
 }
 
 function jookBoxKeyLightDuration(){
+  if(isBarJookBoxEdition())return Math.max(1200,Math.min(1800,Number(config.jookBox?.buttonLightDurationMs)||1500));
   return Math.max(450,Math.min(1200,Number(config.jookBox?.buttonLightDurationMs)||Number(config.jookBox?.buttonRowDurationMs)||650));
 }
 
@@ -1621,6 +1714,7 @@ async function sharePage(){
   analytics.track("copy_link_clicked",{share_method:"copy_link",share_action_id:actionId},{dedupeKey:"share-copy",dedupeMs:500});
   const copied=await DeepCutsInteractions.copyLink({clipboard:navigator.clipboard,tracker:analytics,text:canonicalURL(),trigger:"share_fallback",actionId});
   els.status.textContent=copied?"Deep Cuts page link copied.":"Copy was blocked. Please copy the address from your browser.";
+  showBarJookBoxShareFeedback(copied);
 }
 
 function escapeHtml(value){return String(value).replace(/[&<>'"]/g,char=>({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"})[char])}

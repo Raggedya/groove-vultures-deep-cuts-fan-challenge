@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#000713">
   <meta id="pageDescription" name="description" content="Discover a verified Deep Cuts edition.">
   <title>Deep Cuts</title>
-  <link rel="stylesheet" href="/styles.css?v=20260802-bar-heritage-1">
+  <link rel="stylesheet" href="/styles.css?v=20260802-bar-heritage-2">
 </head>
 <body>
   <main id="app" class="discovery-shell">
@@ -33,6 +33,21 @@
             <header class="jookbox-marquee visually-hidden">
               <p class="jookbox-model-mark">JookBox</p>
               <h1 id="jookBoxTitle">Featured artist</h1>
+              <svg id="barJookBoxMarqueeArtwork" class="bar-jookbox-marquee-artwork" viewBox="0 0 720 222" preserveAspectRatio="xMidYMid meet" aria-hidden="true" hidden>
+                <defs>
+                  <path id="barJookBoxTitlePath" d="M 62 118 Q 360 6 658 118"></path>
+                </defs>
+                <text class="bar-jookbox-curved-title">
+                  <textPath id="barJookBoxMarqueeText" href="#barJookBoxTitlePath" startOffset="50%" text-anchor="middle">Featured venue</textPath>
+                </text>
+                <g class="bar-jookbox-marquee-ornament">
+                  <path d="M 132 171 H 255 M 465 171 H 588"></path>
+                  <path d="M 255 171 c 14 0 18 -12 28 -12 c 9 0 12 12 23 12 c -11 0 -14 12 -23 12 c -10 0 -14 -12 -28 -12 Z"></path>
+                  <path d="M 465 171 c -14 0 -18 -12 -28 -12 c -9 0 -12 12 -23 12 c 11 0 14 12 23 12 c 10 0 14 -12 28 -12 Z"></path>
+                  <path d="M 270 194 H 320 c 9 0 13 -7 20 -7 c 8 0 12 7 20 7 c 8 0 12 -7 20 -7 c 7 0 11 7 20 7 H 450"></path>
+                </g>
+                <text class="bar-jookbox-model-title" x="360" y="177" text-anchor="middle">JOOKBOX</text>
+              </svg>
               <span class="jookbox-playing-status">
                 <i aria-hidden="true"></i>
                 <span id="jookBoxStatusLabel">Ready to play</span>
@@ -93,6 +108,16 @@
               <span aria-hidden="true">★</span>
               <strong>Open verified destination</strong>
               <small>Continue with the band</small>
+              <svg class="bar-jookbox-share-hand bar-jookbox-share-hand-left" viewBox="0 0 128 58" aria-hidden="true">
+                <path d="M 5 16 h 20 v 29 H 5 Z M 10 21 h 9 M 10 27 h 9 M 10 33 h 9 M 10 39 h 9"></path>
+                <path d="M 25 20 h 9 c 5 0 8 3 11 7 l 4 5 l 7 -2 l 9 -9 c 3 -3 8 -3 10 0 c 2 3 1 6 -2 9 l -4 4 l 9 -5 c 4 -2 8 -1 10 2 c 1 3 0 6 -3 8 l -4 2 l 9 -1 c 4 0 7 2 7 5 c 0 4 -3 6 -7 6 H 54 c -6 0 -10 -2 -15 -5 l -14 -8 Z"></path>
+                <path d="M 88 40 h 33 c 2 0 4 2 4 4 s -2 4 -4 4 H 88"></path>
+              </svg>
+              <svg class="bar-jookbox-share-hand bar-jookbox-share-hand-right" viewBox="0 0 128 58" aria-hidden="true">
+                <path d="M 5 16 h 20 v 29 H 5 Z M 10 21 h 9 M 10 27 h 9 M 10 33 h 9 M 10 39 h 9"></path>
+                <path d="M 25 20 h 9 c 5 0 8 3 11 7 l 4 5 l 7 -2 l 9 -9 c 3 -3 8 -3 10 0 c 2 3 1 6 -2 9 l -4 4 l 9 -5 c 4 -2 8 -1 10 2 c 1 3 0 6 -3 8 l -4 2 l 9 -1 c 4 0 7 2 7 5 c 0 4 -3 6 -7 6 H 54 c -6 0 -10 -2 -15 -5 l -14 -8 Z"></path>
+                <path d="M 88 40 h 33 c 2 0 4 2 4 4 s -2 4 -4 4 H 88"></path>
+              </svg>
             </a>
             <p id="jookBoxPowerStatus" class="visually-hidden" aria-live="polite"></p>
 
@@ -374,6 +399,6 @@
   <script src="/js/laneway-company-quiz.js?v=20260727-indie-label-3"></script>
   <script src="/js/business-quiz.js?v=20260728-hgm-1"></script>
   <script src="/js/business-profile.js?v=20260729-hgm-profile-1"></script>
-  <script src="/js/app.js?v=20260802-bar-heritage-1"></script>
+  <script src="/js/app.js?v=20260802-bar-heritage-2"></script>
 </body>
 </html>
