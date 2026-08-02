@@ -39,6 +39,8 @@ assert.equal(config.editionType,"bar_jukebox");
 assert.equal(config.barJookBox.modelVersion,"bar-jukebox/1");
 assert.equal(config.barJookBox.actions.length,5);
 assert.equal(config.barJookBox.webLookupAllowed,false);
+assert.equal(config.barJookBox.lightSequenceMode,"single-key");
+assert.equal(config.barJookBox.buttonLightDurationMs,1100);
 assert.equal(config.barJookBox.supportAction.label,"Share Test Melbourne Venue with your mates");
 assert.equal(config.barJookBox.localWelcomeVideo,"/api/bar-assets/dc_0123456789/video");
 

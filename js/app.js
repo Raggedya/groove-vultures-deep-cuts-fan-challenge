@@ -1,6 +1,6 @@
 "use strict";
 
-const VERSION="20260802-bar-heritage-6";
+const VERSION="20260802-bar-behaviour-7";
 const LANEWAY_REPORTING_VERSION="laneway-weekly-v1";
 const $=id=>document.getElementById(id);
 const els={
@@ -244,8 +244,8 @@ function barJookBoxRuntimeConfig(){
     appearanceVariant:"atlas-reference-cabinet/1",
     keyBankFormat:"bar-six-key/1",
     lightSequence:true,
-    lightSequenceMode:"row-pair",
-    buttonLightDurationMs:Math.max(1200,Math.min(1800,Number(source.buttonLightDurationMs)||1500)),
+    lightSequenceMode:"single-key",
+    buttonLightDurationMs:1100,
     coinSound:source.coinSound||"assets/audio/jukebox-real-coin-insert-cc0.mp3",
     coinSoundSha256:source.coinSoundSha256||"3fd636fe3763b95a09bc8f6be470361ddf0a49e7772464d1a5292fa7c7674e8a",
     sessionStorageKey:source.sessionStorageKey||`barJookBoxActivated:${editionEntry.editionId}`,
@@ -952,6 +952,7 @@ function focusJookBoxCoin(){
 function unlockJookBoxDestinations(){
   for(const link of document.querySelectorAll("[data-jookbox-href]")){
     link.href=link.dataset.jookboxHref;
+    DeepCutsInteractions.secureExternalLink(link,link.dataset.jookboxHref,location.href);
     link.removeAttribute("aria-disabled");
     link.tabIndex=0;
   }
@@ -979,7 +980,7 @@ function jookBoxSessionKey(){
 }
 
 function jookBoxKeyLightDuration(){
-  if(isBarJookBoxEdition())return Math.max(1200,Math.min(1800,Number(config.jookBox?.buttonLightDurationMs)||1500));
+  if(isBarJookBoxEdition())return Math.max(850,Math.min(1400,Number(config.jookBox?.buttonLightDurationMs)||1100));
   return Math.max(450,Math.min(1200,Number(config.jookBox?.buttonLightDurationMs)||Number(config.jookBox?.buttonRowDurationMs)||650));
 }
 
