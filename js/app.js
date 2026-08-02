@@ -1,6 +1,6 @@
 "use strict";
 
-const VERSION="20260802-bar-heritage-5";
+const VERSION="20260802-bar-heritage-6";
 const LANEWAY_REPORTING_VERSION="laneway-weekly-v1";
 const $=id=>document.getElementById(id);
 const els={
@@ -548,13 +548,13 @@ function configureBarJookBoxMarquee(){
 function fitBarJookBoxMarqueeTitle(){
   const title=els.barJookBoxMarqueeText;
   if(!isBarJookBoxEdition()||!title||els.barJookBoxMarqueeArtwork?.hidden)return;
-  const targetWidth=540;
-  const maximumSize=76;
-  const minimumSize=31;
+  const targetWidth=610;
+  const maximumSize=82;
+  const minimumSize=33;
   const characterCount=String(title.textContent||"").trim().length;
   title.removeAttribute("lengthAdjust");
   title.removeAttribute("textLength");
-  title.style.letterSpacing=characterCount>19?".018em":characterCount>14?".03em":".045em";
+  title.style.letterSpacing=characterCount>22?".012em":characterCount>18?".018em":characterCount>14?".026em":".04em";
   title.style.fontSize=`${maximumSize}px`;
   const measured=Math.max(1,title.getComputedTextLength?.()||targetWidth);
   const fitted=Math.max(minimumSize,Math.min(maximumSize,maximumSize*targetWidth/measured));
@@ -893,7 +893,7 @@ function setBarJookBoxShareLabel(title,message=""){
   venue.className="bar-jookbox-share-venue";
   venue.textContent=`Share ${venueName}`;
   venue.dataset.characterCount=String(venueName.length);
-  title.style.setProperty("--bar-share-name-size",venueName.length>25?".68em":venueName.length>21?".76em":venueName.length>16?".84em":".94em");
+  title.style.setProperty("--bar-share-name-size",venueName.length>25?".8em":venueName.length>21?".86em":venueName.length>16?".92em":"1em");
   const invitation=document.createElement("span");
   invitation.className="bar-jookbox-share-invitation";
   invitation.textContent="With your mates";
