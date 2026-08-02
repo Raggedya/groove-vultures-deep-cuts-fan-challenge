@@ -41,6 +41,7 @@ const runtimeFiles=[
   "scripts/studio-server.mjs",
   "scripts/venue-library.mjs",
   "scripts/venue-library-server.mjs",
+  "scripts/venue-batch-publication.mjs",
   "scripts/bar-edition-publication.mjs",
   "scripts/venue-qr-artwork.mjs",
   "scripts/vendor/qrcode.min.js",
@@ -315,6 +316,15 @@ try{
   });
   if(packagedPaths.length!==1)throw new Error("Windows packaging did not produce exactly one application.");
   log("Native Windows application packaged.");
+
+  const packagedApplication=path.join(packagedPaths[0],`${executableName}.exe`);
+  log("Running the bounded packaged-application smoke test.");
+  await execFileAsync(packagedApplication,["--deep-cuts-bounded-smoke-test"],{
+    windowsHide:true,
+    timeout:45_000,
+    maxBuffer:16*1024*1024
+  });
+  log("Bounded packaged-application smoke test passed.");
 
   await fs.rm(outputDirectory,{recursive:true,force:true});
   await fs.mkdir(outputDirectory,{recursive:true});
