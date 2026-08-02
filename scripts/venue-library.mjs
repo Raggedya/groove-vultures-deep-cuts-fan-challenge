@@ -318,7 +318,9 @@ export function upsertStudioVenue(library,project,{initiatingUser="Deep Cuts Stu
   if(sourceUrls.length!==5||sourceLabels.length!==5)throw new VenueLibraryError("Exactly five labelled HTTPS destinations are required.","studio_venue_destinations_invalid");
   const actions=sourceUrls.map((url,index)=>({label:clean(sourceLabels[index],42),url:normalizeUrl(url)}));
   if(actions.some(action=>!action.label||!/^https:\/\//i.test(action.url)))throw new VenueLibraryError("Exactly five labelled HTTPS destinations are required.","studio_venue_destinations_invalid");
-  const timestamp=now.toISOString(),masterId=`Studio_${String(project.id).replace(/^studio_/,"")}`,id=venueInternalId(masterId);
+  const timestamp=now.toISOString();
+  const existing=Object.values(next.venues).find(item=>item?.admin?.sourceStudioProjectId===project.id);
+  const masterId=existing?.masterId||nextAvailableAggitsMasterId(next),id=existing?.id||venueInternalId(masterId);
   const record=normalizeCsvVenue({
     researchDate:timestamp.slice(0,10),masterId,venueName:project.input.name,venueType:"Bar Edition",websiteUrl:actions[0].url,
     gigsUrl:actions.find(action=>/gig|show|event|what'?s on/i.test(action.label))?.url||actions[0].url,
@@ -341,6 +343,15 @@ export function upsertStudioVenue(library,project,{initiatingUser="Deep Cuts Stu
   next.audit=[auditEntry("studio_venue_saved",initiatingUser,{venueId:id,masterId,sourceStudioProjectId:project.id,actionCount:actions.length,preservedPublicIdentity:Boolean(venue.admin.publicEditionUrl)},timestamp),...next.audit].slice(0,5000);
   touchLibrary(next,timestamp);
   return{library:next,venue:structuredClone(venue),created:venue.createdAt===timestamp&&venue.revision===1};
+}
+
+function nextAvailableAggitsMasterId(library){
+  const used=new Set(Object.values(library?.venues||{}).map(venue=>String(venue?.masterId||"").toLocaleLowerCase("en-AU")));
+  for(let sequence=1;sequence<=999;sequence++){
+    const candidate=`Aggits_${String(sequence).padStart(3,"0")}`;
+    if(!used.has(candidate.toLocaleLowerCase("en-AU")))return candidate;
+  }
+  throw new VenueLibraryError("The Venue Library has exhausted its available immutable Master IDs.","venue_master_id_exhausted");
 }
 
 export function setVenuePublicationState(library,id,published,{publication=null,initiatingUser="Deep Cuts secure publisher",now=new Date()}={}){

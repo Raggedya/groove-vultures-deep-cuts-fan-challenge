@@ -60,7 +60,7 @@ const studioVenueProject={
   input:{type:"bar_jukebox",name:"Studio Test Venue",sourceLabels:["Gigs","Menu","Contact Us","Instagram","Facebook"],sourceUrls:["https://venue.example/gigs","https://venue.example/menu","https://venue.example/contact","https://instagram.com/venue","https://facebook.com/venue"],tickerText:"STUDIO TEST VENUE — LIVE THIS WEEK",aboutText:"Administrator-approved test venue information."}
 };
 const studioSaved=upsertStudioVenue(createVenueLibrary(),studioVenueProject,{now:new Date("2026-08-01T00:04:00Z")});
-assert.equal(studioSaved.created,true);assert.equal(studioSaved.venue.admin.studioActions.length,5);assert.equal(studioSaved.venue.admin.sourceStudioProjectId,studioVenueProject.id);
+assert.equal(studioSaved.created,true);assert.equal(studioSaved.venue.masterId,"Aggits_001","A direct Studio venue must use the next immutable ID accepted by the live protected publisher.");assert.equal(studioSaved.venue.admin.studioActions.length,5);assert.equal(studioSaved.venue.admin.sourceStudioProjectId,studioVenueProject.id);
 const studioResaved=upsertStudioVenue(studioSaved.library,{...studioVenueProject,input:{...studioVenueProject.input,name:"Studio Test Venue Updated"}},{now:new Date("2026-08-01T00:05:00Z")});
 assert.equal(Object.keys(studioResaved.library.venues).length,1,"Saving the same Studio project again must update its one Venue Library record, not duplicate it.");assert.equal(studioResaved.venue.csv.venueName,"Studio Test Venue Updated");
 
