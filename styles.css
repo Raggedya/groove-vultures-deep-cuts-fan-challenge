@@ -5079,3 +5079,92 @@ html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][da
   }
 }
 /* BAR_HERITAGE_PRECISION_AUTHORITY_V2_END */
+
+/* BAR_SINGLE_KEY_CONTAINED_LIGHT_AUTHORITY_V1_START
+   Owner-approved 2026-08-02: the lamp lives behind the parchment insert.
+   No glow, square or bloom may escape across the physical bronze frame. */
+html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .jookbox-action-key{
+  position:relative!important;
+  isolation:isolate!important;
+  overflow:hidden!important;
+  background:transparent!important;
+  box-shadow:none!important
+}
+html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .jookbox-action-key:before{
+  content:""!important;
+  position:absolute!important;
+  z-index:0!important;
+  inset:6.5% 5.5% 8%!important;
+  display:block!important;
+  border:0!important;
+  border-radius:3%!important;
+  pointer-events:none!important;
+  opacity:0!important;
+  background:
+    radial-gradient(ellipse 88% 82% at 50% 42%,rgba(255,253,226,.84),rgba(255,226,158,.45) 54%,rgba(185,102,38,.12) 79%,transparent 82%)!important;
+  box-shadow:
+    inset 0 2px 4px rgba(255,255,239,.7),
+    inset 0 0 16px rgba(255,236,181,.74),
+    inset 0 -7px 11px rgba(126,61,21,.2)!important;
+  filter:none!important;
+  transition:opacity .42s ease!important
+}
+html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .jookbox-action-key>.jookbox-action-icon,
+html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .jookbox-action-key>.jookbox-action-copy{
+  position:relative!important;
+  z-index:1!important
+}
+html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .is-buttons-running .jookbox-action-key.is-current-key{
+  color:#211108!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  filter:brightness(1.08) saturate(.88)!important;
+  animation:none!important
+}
+html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .is-buttons-running .jookbox-action-key.is-current-key:before{
+  opacity:.95!important;
+  animation:barContainedKeyLamp 1100ms ease-in-out both!important
+}
+html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .is-awake .jookbox-action-key:hover,
+html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .is-awake .jookbox-action-key:focus-visible{
+  outline:2px solid rgba(255,239,190,.88)!important;
+  outline-offset:-4px!important;
+  box-shadow:inset 0 0 0 3px rgba(79,42,17,.34)!important
+}
+@keyframes barContainedKeyLamp{
+  0%,100%{opacity:.55}
+  45%,62%{opacity:1}
+}
+@media(prefers-reduced-motion:reduce){
+  html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .is-buttons-running .jookbox-action-key:before,
+  html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .is-buttons-running .jookbox-action-key.is-current-key:before{
+    opacity:.14!important;
+    animation:none!important;
+    transition:none!important
+  }
+}
+/* BAR_SINGLE_KEY_CONTAINED_LIGHT_AUTHORITY_V1_END */
+
+/* BAR_VIDEO_APERTURE_AUTHORITY_V1_START
+   The physical aperture is already rendered by the locked cabinet artwork.
+   Remove the synthetic black matte and let the supplied MP4 cover it fully. */
+html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .jookbox-screen-frame{
+  padding:0!important;
+  background:transparent!important;
+  box-shadow:none!important
+}
+html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .jookbox-screen-frame:after{
+  inset:0!important;
+  border-radius:1.5%!important
+}
+html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .bar-jookbox-welcome-video{
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  border:0!important;
+  border-radius:1.5%!important;
+  background:transparent!important;
+  object-fit:cover!important;
+  object-position:50% 50%!important
+}
+/* BAR_VIDEO_APERTURE_AUTHORITY_V1_END */

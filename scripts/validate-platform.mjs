@@ -90,9 +90,9 @@ for(const edition of platform.editions){
         bar.contentMode!=='administrator-static'||
         bar.webLookupAllowed!==false||
         bar.lightSequence!==true||
-        bar.lightSequenceMode!=='row-pair'||
+        bar.lightSequenceMode!=='single-key'||
         bar.coinStart!==true
-      )errors.push(`${edition.config} must preserve the locked static Bar Edition model, heritage cabinet, five-plus-About Us key bank and paired incandescent light sequence.`);
+      )errors.push(`${edition.config} must preserve the locked static Bar Edition model, heritage cabinet, five-plus-About Us key bank and contained single-key incandescent light sequence.`);
       if(config.featuredVideo||config.quiz||Object.values(config.links||{}).some(Boolean))errors.push(`${edition.config} Bar Edition must use only its administrator-supplied local MP4 and action list.`);
       if(!/^Aggits_\d{3,}$/i.test(String(bar.sourceMasterId||'')))errors.push(`${edition.config} Bar Edition requires its immutable Venue Library Master ID.`);
       if(!config.bandName||bar.venueName!==config.bandName||!bar.tickerText||bar.tickerText.length>500)errors.push(`${edition.config} requires the exact venue name and administrator-supplied ticker copy.`);
@@ -127,7 +127,7 @@ for(const edition of platform.editions){
         !bar.sessionStorageKey||
         bar.cabinetCopyright!=='Copyright Clearlight Creative 2026.'
       )errors.push(`${edition.config} must preserve the locked cabinet, sourced real coin sound, session key and Clearlight copyright.`);
-      if(!(bar.buttonLightDurationMs>=1200&&bar.buttonLightDurationMs<=1800)||bar.autoplayDelayMs!==0)errors.push(`${edition.config} must preserve direct-gesture autoplay and a valid paired-light duration.`);
+      if(!(bar.buttonLightDurationMs>=850&&bar.buttonLightDurationMs<=1400)||bar.autoplayDelayMs!==0)errors.push(`${edition.config} must preserve direct-gesture autoplay and a valid contained single-key light duration.`);
       if(!(timings.mechanism>=0&&timings.neonOn>=300&&timings.screenOn>=timings.neonOn&&timings.buttonsOn>=timings.screenOn&&timings.tickerOn>=timings.buttonsOn))errors.push(`${edition.config} contains an invalid Bar Edition start-up timeline.`);
       const cabinet=await fs.readFile(bar.cabinetArtwork||'');
       if(crypto.createHash('sha256').update(cabinet).digest('hex')!==bar.cabinetArtworkSha256)errors.push(`${edition.config} locked Bar Edition cabinet artwork failed its SHA-256 identity check.`);

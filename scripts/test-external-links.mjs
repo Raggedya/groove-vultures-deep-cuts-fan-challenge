@@ -102,10 +102,11 @@ const [app, html] = await Promise.all([
   fs.readFile("index.html", "utf8"),
 ]);
 assert.match(app, /DeepCutsInteractions\.secureExternalLink\(element,safeURL,location\.href\)/);
+assert.match(app, /link\.href=link\.dataset\.jookboxHref;\s*DeepCutsInteractions\.secureExternalLink\(link,link\.dataset\.jookboxHref,location\.href\)/, "Unlocking a coin-gated destination must reapply the external-tab security policy.");
 assert.match(app, /DeepCutsInteractions\.secureExternalLink\(els\.jookBoxBioSource,source,location\.href\)/);
 assert.match(app, /DeepCutsInteractions\.applyExternalLinkPolicy\(document,location\.href\)/);
 assert.match(html, /interactions\.js\?v=20260731-jookbox-19/);
-assert.match(html, /app\.js\?v=20260802-bar-heritage-6/);
+assert.match(html, /app\.js\?v=20260802-bar-behaviour-7/);
 assert.doesNotMatch(html, /id="jookBoxBioSource"[^>]*target="_blank"/, "The biography link must use the same origin-aware helper as every other JookBox link.");
 
 console.log("External-link policy passed: every verified JookBox destination opens securely in a new tab, while internal links remain unchanged.");

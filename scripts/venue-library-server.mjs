@@ -173,8 +173,16 @@ export function createVenueLibraryController({dataDir,root:workspaceRoot=process
   async function runPublication(jobId,videoPath){
     try{
       let library=await load(),job=library.publicationJobs.find(item=>item.id===jobId);if(!job)return;
-      const venue=getVenue(library,job.venueId);
-      await updatePublication(jobId,{status:"running",stage:"preparing",message:"Preparing the protected publication request"});
+      let venue=getVenue(library,job.venueId);
+      await updatePublication(jobId,{status:"running",stage:"gigs",message:"Reading the verified Gigs page and preparing the upcoming-events ticker"});
+      const tickerRefresh=await updateOneVenue(
+        venue,
+        {selectedOperations:{checkUrls:false,retrieveGigs:true,regenerateTickers:true,regenerateQr:false}},
+        operation=>updatePublication(jobId,{status:"running",stage:"gigs",message:operation})
+      );
+      await transact(current=>markVenueUpdate(current,venue.id,{...tickerRefresh,runId:jobId}));
+      library=await load();venue=getVenue(library,job.venueId);
+      await updatePublication(jobId,{status:"running",stage:"preparing",message:tickerRefresh.automated?.generatedTicker?.entryCount?"Verified upcoming events added to the ticker":"No supported upcoming events were found; the approved fallback ticker was preserved"});
       const result=await publicationPublisher.publish({venue,videoPath,onProgress:async(stage,message,changes={})=>updatePublication(jobId,{status:"running",stage,message,...changes})});
       await updatePublication(jobId,{status:"published",stage:"published",message:"Published, verified and delivered",remoteJobId:result.jobId,editionId:result.editionId,slug:result.slug,liveUrl:result.liveUrl,qrImageUrl:result.qrImageUrl,deploymentUrl:result.deploymentUrl,errorCode:"",error:""});
     }catch(error){

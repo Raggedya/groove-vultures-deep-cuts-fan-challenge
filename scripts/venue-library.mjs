@@ -426,9 +426,9 @@ export function qrStatusFor(venue){
 export function effectiveVenueContent(venue){
   const generated=venue.automated?.generatedTicker?.tickerText||"";
   return{
-    tickerText:venue.admin?.tickerOverride||generated||`${venue.csv.venueName.toUpperCase()} — ${[venue.csv.location,venue.csv.venueType].filter(Boolean).join(" — ").toUpperCase()}`,
+    tickerText:generated||venue.admin?.tickerOverride||`${venue.csv.venueName.toUpperCase()} — ${[venue.csv.location,venue.csv.venueType].filter(Boolean).join(" — ").toUpperCase()}`,
     aboutText:venue.admin?.aboutOverride||factualAbout(venue.csv),
-    tickerSource:venue.admin?.tickerOverride?"manual_override":generated?"automatic_events":"csv_facts",
+    tickerSource:generated?"verified_gigs_events":venue.admin?.tickerOverride?"manual_fallback":"csv_facts",
     aboutSource:venue.admin?.aboutOverride?"manual_override":"csv_facts"
   };
 }
