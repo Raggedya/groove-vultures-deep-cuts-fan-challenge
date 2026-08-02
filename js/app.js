@@ -1,6 +1,6 @@
 "use strict";
 
-const VERSION="20260802-bar-behaviour-7";
+const VERSION="20260802-bar-mobile-8";
 const LANEWAY_REPORTING_VERSION="laneway-weekly-v1";
 const $=id=>document.getElementById(id);
 const els={
@@ -261,7 +261,7 @@ function barJookBoxRuntimeConfig(){
     },
     supportAction:{
       action:"share",
-      label:`Share ${source.venueName||config.bandName} with your mates`,
+      label:"SHARE",
       detail:"",
       icon:"",
       detailIcon:""
@@ -439,7 +439,7 @@ function configureBarJookBoxMedia(){
   const source=config.barJookBox||{};
   const hero=localJookBoxAsset(source.heroArtwork,/\.(?:avif|jpe?g|png|webp)$/i);
   const logo=localJookBoxAsset(source.logoArtwork,/\.(?:avif|jpe?g|png|svg|webp)$/i);
-  const video=localJookBoxAsset(source.localWelcomeVideo,/\.mp4$/i);
+  const video=barJookBoxVideoAsset(source.localWelcomeVideo);
   els.barJookBoxVenueName.textContent=config.bandName;
   els.barJookBoxDescription.textContent=String(source.venueDescription||"").trim();
   els.barJookBoxDescription.hidden=!els.barJookBoxDescription.textContent;
@@ -459,6 +459,9 @@ function configureBarJookBoxMedia(){
   els.barJookBoxMediaStatus.textContent=video?"Drag the coin upward to play the venue welcome video.":"Welcome video awaiting administrator MP4.";
   if(video){
     els.barJookBoxWelcomeVideo.src=video;
+    els.barJookBoxWelcomeVideo.preload="auto";
+    els.barJookBoxWelcomeVideo.playsInline=true;
+    els.barJookBoxWelcomeVideo.setAttribute("webkit-playsinline","");
     if(hero)els.barJookBoxWelcomeVideo.poster=hero;
     els.barJookBoxWelcomeVideo.setAttribute("aria-label",`${config.bandName} welcome video`);
     els.barJookBoxWelcomeVideo.hidden=false;
@@ -492,6 +495,12 @@ function localJookBoxAsset(value,extensionPattern){
   const path=String(value||"").trim().replace(/^\/+/,"");
   if(!path||path.includes("..")||!/^assets\/[A-Za-z0-9_./-]+$/.test(path)||!extensionPattern.test(path))return"";
   return`/${path}`;
+}
+
+function barJookBoxVideoAsset(value){
+  const source=String(value||"").trim();
+  if(/^\/api\/bar-assets\/dc_[a-f0-9]{10}\/video$/i.test(source))return source;
+  return localJookBoxAsset(source,/\.mp4$/i);
 }
 
 function configureBarJookBoxCoinDrag(){
@@ -550,22 +559,23 @@ function fitBarJookBoxMarqueeTitle(){
   if(!isBarJookBoxEdition()||!title||els.barJookBoxMarqueeArtwork?.hidden)return;
   const targetWidth=610;
   const maximumSize=82;
-  const minimumSize=33;
+  const minimumSize=20;
   const characterCount=String(title.textContent||"").trim().length;
   title.removeAttribute("lengthAdjust");
   title.removeAttribute("textLength");
   title.style.letterSpacing=characterCount>22?".012em":characterCount>18?".018em":characterCount>14?".026em":".04em";
   title.style.fontSize=`${maximumSize}px`;
   const measured=Math.max(1,title.getComputedTextLength?.()||targetWidth);
-  const fitted=Math.max(minimumSize,Math.min(maximumSize,maximumSize*targetWidth/measured));
+  let fitted=Math.max(minimumSize,Math.min(maximumSize,maximumSize*targetWidth/measured*.965));
   title.style.fontSize=`${fitted.toFixed(2)}px`;
-  const finalWidth=Math.max(1,title.getComputedTextLength?.()||targetWidth);
-  if(finalWidth>targetWidth){
-    title.setAttribute("textLength",String(targetWidth));
-    title.setAttribute("lengthAdjust","spacingAndGlyphs");
+  let finalWidth=Math.max(1,title.getComputedTextLength?.()||targetWidth);
+  for(let pass=0;pass<8&&finalWidth>targetWidth&&fitted>minimumSize;pass+=1){
+    fitted=Math.max(minimumSize,fitted*targetWidth/finalWidth*.985);
+    title.style.fontSize=`${fitted.toFixed(2)}px`;
+    finalWidth=Math.max(1,title.getComputedTextLength?.()||targetWidth);
   }
   title.dataset.fittedSize=fitted.toFixed(2);
-  title.dataset.fittedWidth=Math.min(finalWidth,targetWidth).toFixed(2);
+  title.dataset.fittedWidth=finalWidth.toFixed(2);
 }
 
 function fitJookBoxMarqueeTitle(){
@@ -803,6 +813,7 @@ function configureJookBoxPrimaryAction(definition){
   const icon=els.jookBoxPrimaryAction.querySelector(":scope > span");
   const title=els.jookBoxPrimaryAction.querySelector("strong");
   const detail=els.jookBoxPrimaryAction.querySelector("small");
+  detail.hidden=false;
   window.clearTimeout(barJookBoxShareFeedbackTimer);
   barJookBoxShareFeedbackTimer=0;
   els.jookBoxPrimaryAction.hidden=true;
@@ -823,12 +834,17 @@ function configureJookBoxPrimaryAction(definition){
   title.textContent=definition.label;
   detail.replaceChildren(document.createTextNode(definition.subLabel));
   if(definition.action==="share"){
-    if(isBarJookBoxEdition())setBarJookBoxShareLabel(title);
-    const shareIcon=document.createElement("span");
-    shareIcon.className="jookbox-primary-detail-icon";
-    shareIcon.setAttribute("aria-hidden","true");
-    shareIcon.textContent=definition.detailIcon||"\u2197";
-    detail.append(" ",shareIcon);
+    if(isBarJookBoxEdition()){
+      setBarJookBoxShareLabel(title);
+      detail.replaceChildren();
+      detail.hidden=true;
+    }else{
+      const shareIcon=document.createElement("span");
+      shareIcon.className="jookbox-primary-detail-icon";
+      shareIcon.setAttribute("aria-hidden","true");
+      shareIcon.textContent=definition.detailIcon||"\u2197";
+      detail.append(" ",shareIcon);
+    }
     els.jookBoxPrimaryAction.classList.add("is-share-action");
     els.jookBoxPrimaryAction.dataset.jookboxAction="share";
     els.jookBoxPrimaryAction.setAttribute("role","button");
@@ -888,16 +904,11 @@ function setBarJookBoxShareLabel(title,message=""){
     title.replaceChildren(feedback);
     return;
   }
-  const venueName=String(config.barJookBox?.venueName||config.bandName||"this venue").trim();
-  const venue=document.createElement("span");
-  venue.className="bar-jookbox-share-venue";
-  venue.textContent=`Share ${venueName}`;
-  venue.dataset.characterCount=String(venueName.length);
-  title.style.setProperty("--bar-share-name-size",venueName.length>25?".8em":venueName.length>21?".86em":venueName.length>16?".92em":"1em");
-  const invitation=document.createElement("span");
-  invitation.className="bar-jookbox-share-invitation";
-  invitation.textContent="With your mates";
-  title.replaceChildren(venue,invitation);
+  const label=document.createElement("span");
+  label.className="bar-jookbox-share-word";
+  label.textContent="SHARE";
+  title.style.removeProperty("--bar-share-name-size");
+  title.replaceChildren(label);
 }
 
 function showBarJookBoxShareFeedback(copied){
