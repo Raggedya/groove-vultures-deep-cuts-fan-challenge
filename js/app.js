@@ -1,6 +1,6 @@
 "use strict";
 
-const VERSION="20260802-bar-heritage-3";
+const VERSION="20260802-bar-heritage-4";
 const LANEWAY_REPORTING_VERSION="laneway-weekly-v1";
 const $=id=>document.getElementById(id);
 const els={
@@ -548,11 +548,13 @@ function configureBarJookBoxMarquee(){
 function fitBarJookBoxMarqueeTitle(){
   const title=els.barJookBoxMarqueeText;
   if(!isBarJookBoxEdition()||!title||els.barJookBoxMarqueeArtwork?.hidden)return;
-  const targetWidth=596;
-  const maximumSize=88;
-  const minimumSize=35;
+  const targetWidth=540;
+  const maximumSize=76;
+  const minimumSize=31;
+  const characterCount=String(title.textContent||"").trim().length;
   title.removeAttribute("lengthAdjust");
   title.removeAttribute("textLength");
+  title.style.letterSpacing=characterCount>19?".018em":characterCount>14?".03em":".045em";
   title.style.fontSize=`${maximumSize}px`;
   const measured=Math.max(1,title.getComputedTextLength?.()||targetWidth);
   const fitted=Math.max(minimumSize,Math.min(maximumSize,maximumSize*targetWidth/measured));
@@ -562,6 +564,8 @@ function fitBarJookBoxMarqueeTitle(){
     title.setAttribute("textLength",String(targetWidth));
     title.setAttribute("lengthAdjust","spacingAndGlyphs");
   }
+  title.dataset.fittedSize=fitted.toFixed(2);
+  title.dataset.fittedWidth=Math.min(finalWidth,targetWidth).toFixed(2);
 }
 
 function fitJookBoxMarqueeTitle(){
@@ -884,9 +888,12 @@ function setBarJookBoxShareLabel(title,message=""){
     title.replaceChildren(feedback);
     return;
   }
+  const venueName=String(config.barJookBox?.venueName||config.bandName||"this venue").trim();
   const venue=document.createElement("span");
   venue.className="bar-jookbox-share-venue";
-  venue.textContent=`Share ${String(config.barJookBox?.venueName||config.bandName||"this venue").trim()}`;
+  venue.textContent=`Share ${venueName}`;
+  venue.dataset.characterCount=String(venueName.length);
+  title.style.setProperty("--bar-share-name-size",venueName.length>25?".68em":venueName.length>21?".76em":venueName.length>16?".84em":".94em");
   const invitation=document.createElement("span");
   invitation.className="bar-jookbox-share-invitation";
   invitation.textContent="With your mates";
@@ -916,15 +923,15 @@ function barJookBoxActionIcon(definition){
     :/learn_more|about|information/.test(identity)?"about"
     :"ornament";
   const paths={
-    gigs:'<path d="M8 7h29l18 8v20H29L8 25Z"/><path d="M37 7v28M29 35v6h26v-6M22 41h34M17 46h43M27 51h23"/><path d="M12 13h20l-8 8H12Z"/>',
-    menu:'<path d="M8 32c10 0 9-15 19-15 7 0 8 8 13 8s6-8 13-8c10 0 9 15 19 15-10 0-9 15-19 15-7 0-8-8-13-8s-6 8-13 8C17 47 18 32 8 32Z"/><path d="M18 32h44M32 23c-4 4-4 14 0 18M48 23c4 4 4 14 0 18"/>',
-    contact:'<path d="M14 25c0-12 10-18 26-18s26 6 26 18v5H53v-7H27v7H14Z"/><path d="M22 32h36l7 9v16H15V41Z"/><circle cx="40" cy="44" r="9"/><path d="M40 38v12M34 44h12"/>',
-    instagram:'<rect x="11" y="11" width="58" height="58" rx="15"/><circle cx="40" cy="40" r="14"/><circle cx="59" cy="21" r="3" fill="currentColor" stroke="none"/>',
-    facebook:'<path class="bar-jookbox-key-icon-fill" d="M46 70V44h9l2-11H46v-7c0-4 2-7 7-7h6V9c-3-1-7-1-11-1-11 0-18 7-18 19v6H20v11h10v26Z"/>',
-    about:'<circle cx="40" cy="40" r="30"/><path d="M40 34v22"/><circle cx="40" cy="23" r="2.5" fill="currentColor" stroke="none"/>',
-    ornament:'<path d="M10 40c12-2 18-10 23-25 4 8 7 13 7 25 0-12 3-17 7-25 5 15 11 23 23 25-12 2-18 10-23 25-4-8-7-13-7-25 0 12-3 17-7 25-5-15-11-23-23-25Z"/>'
+    gigs:'<path d="M10 9c24-3 42 3 58 18L51 43C41 32 29 27 10 28Z"/><path d="M58 37c7 3 11 8 11 15M65 51H41v17h37V51h-9M34 68h51M29 74h61"/><circle cx="57" cy="49" r="5"/><path d="M16 16h31M16 22h23"/>',
+    menu:'<path d="M7 43c13 0 17-8 21-19 5 4 8 9 10 16 3-10 8-17 12-23 4 6 9 13 12 23 2-7 5-12 10-16 4 11 8 19 21 19-13 0-17 8-21 19-5-4-8-9-10-16-3 10-8 17-12 23-4-6-9-13-12-23-2 7-5 12-10 16C24 51 20 43 7 43Z"/><path d="M18 43h64M31 32c5 4 8 7 9 11-1 4-4 7-9 11M69 32c-5 4-8 7-9 11 1 4 4 7 9 11"/><circle cx="50" cy="43" r="4"/>',
+    contact:'<path d="M15 30c0-15 13-23 35-23s35 8 35 23v7H68V27H32v10H15Z"/><path d="M25 40h50l10 12v23H15V52Z"/><circle cx="50" cy="58" r="13"/><circle cx="50" cy="58" r="5"/><path d="M50 45v5M50 66v5M37 58h5M58 58h5M41 49l4 4M55 63l4 4M59 49l-4 4M45 63l-4 4"/>',
+    instagram:'<rect x="12" y="5" width="76" height="76" rx="20"/><circle cx="50" cy="43" r="19"/><circle cx="74" cy="19" r="4" class="bar-jookbox-key-icon-fill"/>',
+    facebook:'<path class="bar-jookbox-key-icon-fill" d="M57 81V49h12l2-14H57v-9c0-6 3-10 11-10h7V4c-4-1-10-2-16-2-15 0-25 9-25 26v7H21v14h13v32Z"/>',
+    about:'<circle cx="50" cy="43" r="36"/><path d="M50 37v29"/><circle cx="50" cy="24" r="4" class="bar-jookbox-key-icon-fill"/>',
+    ornament:'<path d="M7 43c14-2 23-10 29-30 5 9 9 16 14 30 5-14 9-21 14-30 6 20 15 28 29 30-14 2-23 10-29 30-5-9-9-16-14-30-5 14-9 21-14 30C30 53 21 45 7 43Z"/>'
   };
-  return`<svg class="bar-jookbox-key-icon bar-jookbox-key-icon-${type}" viewBox="0 0 80 80" focusable="false" aria-hidden="true"><g>${paths[type]}</g></svg>`;
+  return`<svg class="bar-jookbox-key-icon bar-jookbox-key-icon-${type}" viewBox="0 0 100 86" focusable="false" aria-hidden="true"><g>${paths[type]}</g></svg>`;
 }
 
 function jookBoxActionIcon(definition){
