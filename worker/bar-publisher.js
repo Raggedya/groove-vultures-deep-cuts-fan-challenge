@@ -17,6 +17,8 @@ export async function handleBarPublisher(request,env,url){
   if(!device)return json({ok:false,error:"Secure publisher activation is required.",code:"publisher_activation_required"},401);
   if(path==="session"&&request.method==="GET")return json({ok:true,active:true,installationId:device.installation_id});
   if(path==="publications"&&request.method==="POST")return preparePublication(request,env,device,url);
+  const editionState=path.match(/^editions\/(dc_[a-f0-9]{10})\/state$/);
+  if(editionState&&request.method==="PUT")return setEditionState(request,env,editionState[1],url,device);
   const match=path.match(/^publications\/(barjob_[a-f0-9-]+)(?:\/(video|qr|commit|rollback))?$/);
   if(!match)return json({ok:false,error:"Publisher route not found."},404);
   const job=await ownedJob(env,match[1],device.installation_id);
@@ -28,6 +30,23 @@ export async function handleBarPublisher(request,env,url){
   if(action==="commit"&&request.method==="POST")return commitPublication(env,job);
   if(action==="rollback"&&request.method==="POST")return rollbackPublication(env,job,"client_verification_failed","Studio could not verify the live publication.");
   return json({ok:false,error:"Publisher method not allowed."},405);
+}
+
+async function setEditionState(request,env,editionId,url,device){
+  const body=await safeJson(request),published=body?.published===true,row=await env.DB.prepare("SELECT be.* FROM bar_editions be JOIN bar_publication_jobs bpj ON bpj.job_id=be.current_job_id WHERE be.edition_id=?1 AND bpj.installation_id=?2").bind(editionId,device.installation_id).first();
+  if(!row)return json({ok:false,error:"The preserved public edition could not be found.",code:"edition_not_found"},404);
+  const now=new Date().toISOString();
+  if(published){
+    const [video,qr]=await Promise.all([env.BAR_ASSETS.head(row.video_key),env.BAR_ASSETS.head(row.qr_key)]);
+    let config;try{config=JSON.parse(row.config_json)}catch{return json({ok:false,error:"The preserved edition configuration is invalid.",code:"edition_validation_failed"},409)}
+    if(!video||!qr||config?.editionType!=="bar_jukebox"||config?.barJookBox?.actions?.length!==5)return json({ok:false,error:"The preserved edition failed the required asset and destination checks.",code:"edition_validation_failed"},409);
+  }
+  const status=published?"active":"inactive";
+  await env.DB.batch([
+    env.DB.prepare("UPDATE bar_editions SET status=?1,updated_at=?2 WHERE edition_id=?3").bind(status,now,editionId),
+    env.DB.prepare("UPDATE editions SET status=?1,updated_at=?2 WHERE edition_id=?3").bind(status,now,editionId)
+  ]);
+  return json({ok:true,editionId,slug:row.slug,published,liveUrl:`${url.origin}/e/${editionId}`,qrImageUrl:`${url.origin}/output/${row.slug}/instagram-qr.png`,identityPreserved:true});
 }
 
 export async function handleBarPublicAsset(request,env,url){

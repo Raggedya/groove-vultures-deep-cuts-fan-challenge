@@ -152,7 +152,7 @@ async function runBoundedPackageSmokeTest(){
     fetch(`${studioOrigin}/studio/venue-library.html`)
   ]);
   const [html,venueHtml]=await Promise.all([response.text(),venueResponse.text()]);
-  if(!response.ok||!venueResponse.ok||!html.includes("Deep Cuts Studio")||!html.includes('class="output-column" hidden')||!venueHtml.includes("Venue Library")||!venueHtml.includes("Secure Publish Venue")){
+  if(!response.ok||!venueResponse.ok||!html.includes("Deep Cuts Studio")||!html.includes('class="output-column" hidden')||!venueHtml.includes("Venue Library")||!venueHtml.includes('id="venue-published-toggle"')){
     throw new Error("The packaged Studio server did not return the simplified owner interface.");
   }
 }

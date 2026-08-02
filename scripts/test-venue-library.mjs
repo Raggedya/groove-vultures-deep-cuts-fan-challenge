@@ -4,8 +4,8 @@ import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import {
-  VenueLibraryError,applyVenueSync,attachVenueVideo,createVenueLibrary,deriveOverallHealth,encodeCsv,extractEventsFromHtml,fetchSafeUrl,
-  effectiveVenueContent,generateVenueTicker,getVenue,listVenueSummaries,mergeVenueEvents,previewVenueSync,reportRows,updateVenue,venueLibraryBootstrap
+  VenueLibraryError,applyVenueSync,archiveLegacyVenueLibrary,attachVenueVideo,createVenueLibrary,deriveOverallHealth,encodeCsv,extractEventsFromHtml,fetchSafeUrl,
+  effectiveVenueContent,generateVenueTicker,getVenue,listVenueSummaries,mergeVenueEvents,previewVenueSync,reportRows,setVenueLibraryVisibility,updateVenue,venueLibraryBootstrap
 } from "./venue-library.mjs";
 import {createStudioServer} from "./studio-server.mjs";
 import {BAR_PUBLIC_VIDEO_MAX_BYTES,buildBarEditionPublication,publicationReadiness} from "./bar-edition-publication.mjs";
@@ -29,6 +29,12 @@ assert.equal(listVenueSummaries(library,{updateState:"not_updated"}).length,31);
 assert.equal(listVenueSummaries(library,{gigFreshness:"never_checked"}).length,31);
 const again=previewVenueSync(library,fixture,{fileName:"melbourne_venue_prospects_210.csv"});
 assert.equal(again.newCount,0);assert.equal(again.updatedCount,0);assert.equal(again.unchangedCount,31,"Re-import must be idempotent.");
+
+const legacyLibrary=structuredClone(library);delete legacyLibrary.settings.activeLibraryResetVersion;delete legacyLibrary.settings.activeLibraryResetAt;
+const archivedReset=archiveLegacyVenueLibrary(legacyLibrary,{now:new Date("2026-08-01T00:02:00Z")});
+assert.equal(archivedReset.changed,true);assert.equal(archivedReset.archivedCount,31);assert.equal(venueLibraryBootstrap(archivedReset.library).venueCount,0);assert.equal(venueLibraryBootstrap(archivedReset.library).archivedVenueCount,31);
+const restoredOne=setVenueLibraryVisibility(archivedReset.library,id001,"active",{now:new Date("2026-08-01T00:03:00Z")}).library;
+assert.equal(venueLibraryBootstrap(restoredOne).venueCount,1);assert.equal(venueLibraryBootstrap(restoredOne).archivedVenueCount,30);
 
 let updated=updateVenue(library,id001,{admin:{publicationState:"draft",tickerOverride:"PINNED MANUAL TICKER",aboutOverride:"Administrator-approved venue copy.",intendedQrUrl:"https://example.com/q/venue"}},{expectedRevision:getVenue(library,id001).revision}).library;
 updated=attachVenueVideo(updated,id001,{fileName:"welcome.mp4",sizeBytes:1000,sha256:"a".repeat(64)}).library;
@@ -78,8 +84,8 @@ assert.equal(qrBytes.subarray(1,4).toString("ascii"),"PNG");
 assert.equal(qrBytes.readUInt32BE(16),1920);assert.equal(qrBytes.readUInt32BE(20),1080,"QR master dimensions must remain 1920 × 1080.");
 const ui=await fs.readFile(path.join(root,"studio","venue-library.js"),"utf8");
 assert.match(ui,/new QRCode\(els\.qrSource/);assert.match(ui,/BarcodeDetector/);assert.match(ui,/jookbox-venue-qr-master-v1\.png/);
-assert.match(ui,/Secure publication started/);assert.match(ui,/venue-publications\/capabilities/);
-assert.match(ui,/if\(result\.authentication\?\.available\)state\.activationPending=false/,"A successful publisher refresh must clear a stale activation-code prompt.");
+assert.match(ui,/Publishing started/);assert.match(ui,/venue-publications\/capabilities/);assert.match(ui,/data-publication-toggle/);assert.match(ui,/venues-archived/);
+assert.doesNotMatch(ui,/startPublisherActivation|completePublisherActivation/,"The owner-facing activation ceremony must not remain in the simplified Venue Library interface.");
 const welcomeVideo=Buffer.from([0,0,0,24,0x66,0x74,0x79,0x70,0x69,0x73,0x6f,0x6d,0,0,0,0,0,0,0,0,0,0,0,0]);
 const publicationVenue=structuredClone(preserved);publicationVenue.admin.customVideo={fileName:"welcome.mp4",sizeBytes:welcomeVideo.length,sha256:crypto.createHash("sha256").update(welcomeVideo).digest("hex")};
 assert.equal(publicationReadiness(publicationVenue,{videoPath:"welcome.mp4",videoSizeBytes:welcomeVideo.length}).ready,true);
@@ -95,6 +101,7 @@ let publishedTicker="";const fakePublisher={
   authentication:async()=>({available:true,state:"active",reason:"Automatic publishing is securely activated."}),
   startActivation:async()=>({message:"Activation code sent."}),
   completeActivation:async()=>({available:true,state:"active"}),
+  setPublished:async({editionId,published})=>({editionId,published,slug:"bar-aggits-001",liveUrl:`https://deep-cuts.andrewharris501.workers.dev/e/${editionId}`,qrImageUrl:"https://deep-cuts.andrewharris501.workers.dev/output/bar-aggits-001/instagram-qr.png",deploymentUrl:"https://deep-cuts.andrewharris501.workers.dev"}),
   publish:async({venue,onProgress})=>{publishedTicker=effectiveVenueContent(venue).tickerText;await onProgress("validating","Validation is running");await onProgress("publishing","Direct Cloudflare publication is running");return{jobId:"barjob_test",editionId:"dc_1234567890",slug:`bar-${venue.masterId.toLowerCase()}`,liveUrl:"https://deep-cuts.andrewharris501.workers.dev/e/dc_1234567890",qrImageUrl:"https://deep-cuts.andrewharris501.workers.dev/q/dc_1234567890",deploymentUrl:"https://deep-cuts.andrewharris501.workers.dev"}}
 };
 const server=createStudioServer({root,dataDir:temporary,token,venueFetchImpl:fakeFetch,venueDnsLookup:async()=>[{address:"93.184.216.34",family:4}],venuePublisher:fakePublisher});
@@ -114,11 +121,16 @@ try{
   const preservedApi=await fetch(`${origin}/api/studio/venues/${venueId}`).then(response=>response.json());assert.equal(preservedApi.venue.admin.tickerOverride,"MANUAL API TICKER");
   const capabilities=await fetch(`${origin}/api/studio/venue-publications/capabilities`).then(response=>response.json());assert.equal(capabilities.authentication.available,true);assert.equal(capabilities.maxVideoBytes,BAR_PUBLIC_VIDEO_MAX_BYTES);
   const uploaded=await fetch(`${origin}/api/studio/venues/${venueId}/video`,{method:"POST",headers:{origin,"content-type":"video/mp4","x-deep-cuts-studio-token":token,"x-studio-file-name":"welcome.mp4"},body:welcomeVideo}).then(response=>response.json());assert.equal(uploaded.venue.admin.customVideo.sizeBytes,welcomeVideo.length);
-  const publicationCreated=await mutate(`/api/studio/venues/${venueId}/publish`,{}).then(response=>response.json());assert.match(publicationCreated.job.id,/^publication_/);
+  const publicationCreated=await mutate(`/api/studio/venues/${venueId}/publication`,{published:true},"PUT").then(response=>response.json());assert.match(publicationCreated.job.id,/^publication_/);
   let publication;for(let attempt=0;attempt<80;attempt++){publication=await fetch(`${origin}/api/studio/venue-publications/${publicationCreated.job.id}`).then(response=>response.json()).then(body=>body.job);if(["published","failed"].includes(publication.status))break;await new Promise(resolve=>setTimeout(resolve,25))}
   assert.equal(publication.status,"published",publication.error);assert.equal(publication.liveUrl,"https://deep-cuts.andrewharris501.workers.dev/e/dc_1234567890");
   assert.match(publishedTicker,/LIVE TEST BAND/i,"Secure Publish must refresh and use verified upcoming events from the venue Gigs destination.");
   const publishedVenue=await fetch(`${origin}/api/studio/venues/${venueId}`).then(response=>response.json());assert.equal(publishedVenue.venue.admin.publicationState,"published");assert.equal(publishedVenue.qr.publiclyDistributable,true);
+  const permanentUrl=publishedVenue.venue.admin.publicEditionUrl,permanentQr=publishedVenue.venue.admin.intendedQrUrl,editionId=publishedVenue.venue.admin.publication.editionId;
+  const unpublished=await mutate(`/api/studio/venues/${venueId}/publication`,{published:false},"PUT").then(response=>response.json());assert.equal(unpublished.venue.admin.publicationState,"draft");assert.equal(unpublished.venue.admin.publicEditionUrl,permanentUrl);assert.equal(unpublished.venue.admin.intendedQrUrl,permanentQr);assert.equal(unpublished.venue.admin.publication.editionId,editionId);
+  const republishCreated=await mutate(`/api/studio/venues/${venueId}/publication`,{published:true},"PUT").then(response=>response.json());assert.match(republishCreated.job.id,/^publication_/);assert.equal(republishCreated.identityPreserved,true);
+  let republishedJob;for(let attempt=0;attempt<80;attempt++){republishedJob=await fetch(`${origin}/api/studio/venue-publications/${republishCreated.job.id}`).then(response=>response.json()).then(body=>body.job);if(["published","failed"].includes(republishedJob.status))break;await new Promise(resolve=>setTimeout(resolve,25))}
+  assert.equal(republishedJob.status,"published",republishedJob.error);const republished=await fetch(`${origin}/api/studio/venues/${venueId}`).then(response=>response.json());assert.equal(republished.venue.admin.publicationState,"published");assert.equal(republished.venue.admin.publicEditionUrl,permanentUrl);assert.equal(republished.venue.admin.publication.editionId,editionId);
   const runCreated=await mutate("/api/studio/venue-jobs",{scope:"selected",venueIds:[venueId],operations:{checkUrls:true,retrieveGigs:true,regenerateTickers:true,regenerateQr:true}}).then(response=>response.json());
   let run;for(let attempt=0;attempt<80;attempt++){run=await fetch(`${origin}/api/studio/venue-jobs/${runCreated.run.id}`).then(response=>response.json()).then(body=>body.run);if(run.status==="completed")break;await new Promise(resolve=>setTimeout(resolve,25))}
   assert.equal(run.status,"completed");assert.equal(run.completedCount,1);assert.equal(run.failureCount,0);assert.equal(run.results[0].masterId,"Aggits_001");

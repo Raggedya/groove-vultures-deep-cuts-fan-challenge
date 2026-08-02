@@ -32,7 +32,9 @@ The visible cabinet instruction reads `INSERT COIN`. The visitor drags the visib
 9. Test the coin, sound, video, ticker, all six keys, About Us return behavior and responsive title in the phone preview.
 10. Make changes directly or through the typed/dictated revision field.
 11. Confirm that the single large venue Share panel unlocks after the coin.
-12. On the first production use, press **Activate Publishing**, enter the six-digit code sent to the owner email, then press **Publish Venue**. Later venues require only **Publish Venue**. Keep Studio open until direct Cloudflare publication, live verification, permanent QR scan-back and completion email are confirmed.
+12. In Venue Library, use the single **Published / Unpublished** switch. First publication automatically runs direct Cloudflare publication, live verification, permanent QR scan-back and completion-email confirmation. Switching off preserves the venue's opaque edition ID, URL, QR payload, versioned assets and history; switching on again validates and restores that same permanent identity.
+
+The active Venue Library begins clean after the one-time August 2026 migration. Previous venue records are archived and hidden, not deleted or unpublished. Use **Add Venue** to return one preserved venue at a time.
 
 Studio does not infer, add or replace missing destinations. During Secure Publish it reads only the administrator-configured official Gigs destination, extracts supported structured upcoming-event facts and stores a static event ticker; unsupported or absent event data preserves the approved fallback rather than fabricating copy. It is bound to an ephemeral private `127.0.0.1` address and must not generate a scannable preview QR: on a phone, that address refers to the phone rather than the Mac. Studio displays a publication-pending panel instead. The permanent public URL and QR pass through the platform isolation, asset-integrity, deployment and live-verification steps; only the deployed HTTPS URL is encoded and scan-tested.
 

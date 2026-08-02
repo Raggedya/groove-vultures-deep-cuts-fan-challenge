@@ -65,6 +65,7 @@ const fakeRemote=async(url,options={})=>{calls.push({url:String(url),method:opti
   if(pathname==="/api/bar-publisher/activation/start")return Response.json({ok:true,message:"Activation code sent."});
   if(pathname==="/api/bar-publisher/activation/complete")return Response.json({ok:true,token:activationToken});
   if(pathname==="/api/bar-publisher/session")return Response.json({ok:true});
+  if(pathname===`/api/bar-publisher/editions/${job.edition_id}/state`&&options.method==="PUT"){const body=JSON.parse(options.body);return Response.json({ok:true,editionId:job.edition_id,slug:job.slug,published:body.published,liveUrl:`${job.base_url}/e/${job.edition_id}`,qrImageUrl:`${job.base_url}/output/${job.slug}/instagram-qr.png`})}
   if(pathname==="/api/bar-publisher/publications"&&options.method==="POST")return Response.json({ok:true,job:publishedJob,qrPayload:destination});
   if(pathname.endsWith("/video")&&options.method==="PUT")return Response.json({ok:true});
   if(pathname.endsWith("/qr")&&options.method==="PUT"){uploadedQr=Buffer.from(options.body);assert.equal(options.headers["x-deep-cuts-qr-scan-proof"],"rendered-matrix:full+960x540");return Response.json({ok:true})}
@@ -82,6 +83,8 @@ try{
   await publisher.startActivation();assert.equal((await publisher.completeActivation("123456")).available,true);
   const stages=[],result=await publisher.publish({venue,videoPath,onProgress:async stage=>stages.push(stage)});
   assert.equal(result.editionId,job.edition_id);assert.deepEqual(stages,["validating","uploading","qr","publishing","verifying","delivered"]);assert.ok(uploadedQr.length>10000);assert.ok(calls.every(call=>call.url.startsWith("https://")));
+  const unpublished=await publisher.setPublished({editionId:job.edition_id,published:false});assert.equal(unpublished.published,false);assert.equal(unpublished.liveUrl,result.liveUrl);
+  const republished=await publisher.setPublished({editionId:job.edition_id,published:true});assert.equal(republished.published,true);assert.equal(republished.editionId,result.editionId);
 }finally{await fs.rm(temporary,{recursive:true,force:true})}
 
 const migration=await fs.readFile(path.join(root,"migrations","0004_bar_publisher.sql"),"utf8");

@@ -3,9 +3,9 @@ import {createReadStream} from "node:fs";
 import fs from "node:fs/promises";
 import path from "node:path";
 import {
-  VenueLibraryError,applyVenueSync,attachVenueVideo,createUpdateRun,createVenueLibrary,createVenuePublicationJob,effectiveVenueContent,encodeCsv,
+  VenueLibraryError,applyVenueSync,archiveLegacyVenueLibrary,attachVenueVideo,createUpdateRun,createVenueLibrary,createVenuePublicationJob,effectiveVenueContent,encodeCsv,
   extractEventsFromHtml,fetchSafeUrl,finishRun,generateVenueTicker,getVenue,listVenueSummaries,markVenueUpdate,mergeVenueEvents,
-  interruptVenuePublications,migrateVenueLibrary,previewVenueSync,qrStatusFor,recordRunVenueResult,removeVenueVideo,reportRows,startRun,updateVenue,
+  interruptVenuePublications,migrateVenueLibrary,previewVenueSync,qrStatusFor,recordRunVenueResult,removeVenueVideo,reportRows,setVenueLibraryVisibility,setVenuePublicationState,startRun,updateVenue,
   updateVenuePublicationJob,venueLibraryBootstrap
 } from "./venue-library.mjs";
 import {BAR_PUBLIC_VIDEO_MAX_BYTES,createDirectVenuePublisher,inspectStoredVideo} from "./bar-edition-publication.mjs";
@@ -31,7 +31,7 @@ export function createVenueLibraryController({dataDir,root:workspaceRoot=process
     await fs.mkdir(root,{recursive:true});
     const temporary=path.join(root,`library-${process.pid}-${crypto.randomBytes(3).toString("hex")}.tmp`);
     await fs.writeFile(temporary,`${JSON.stringify(library,null,2)}\n`,"utf8");
-    await fs.rename(temporary,libraryFile);
+    for(let attempt=0;;attempt++)try{await fs.rename(temporary,libraryFile);break}catch(error){if(!["EPERM","EACCES"].includes(error.code)||attempt>=5)throw error;await new Promise(resolve=>setTimeout(resolve,20*(attempt+1)))}
   }
   function transact(callback){
     const operation=writeQueue.then(async()=>{const library=await load();const result=await callback(library);if(result?.library)await save(result.library);return result});
@@ -40,8 +40,8 @@ export function createVenueLibraryController({dataDir,root:workspaceRoot=process
 
   async function initialize(){
     if(initialized)return;initialized=true;
-    const current=await load();const interrupted=interruptVenuePublications(current);
-    if(interrupted.changed)await save(interrupted.library);
+    const current=await load(),archived=archiveLegacyVenueLibrary(current),interrupted=interruptVenuePublications(archived.library);
+    if(archived.changed||interrupted.changed)await save(interrupted.library);
   }
 
   async function handle({request,response,url}){
@@ -85,8 +85,12 @@ export function createVenueLibraryController({dataDir,root:workspaceRoot=process
     if(request.method==="GET"&&url.pathname==="/api/studio/venues"){
       const library=await load();const filters=Object.fromEntries(url.searchParams.entries());return json(response,200,{ok:true,venues:listVenueSummaries(library,filters),bootstrap:venueLibraryBootstrap(library)});
     }
+    if(request.method==="GET"&&url.pathname==="/api/studio/venues-archived"){
+      const library=await load(),filters={...Object.fromEntries(url.searchParams.entries()),visibility:"archived",sort:"name"};
+      return json(response,200,{ok:true,venues:listVenueSummaries(library,filters)});
+    }
 
-    const venueMatch=url.pathname.match(/^\/api\/studio\/venues\/(venue_[a-f0-9]{16})(?:\/(preview|video|update|urls|gigs|ticker|qr|publish))?$/);
+    const venueMatch=url.pathname.match(/^\/api\/studio\/venues\/(venue_[a-f0-9]{16})(?:\/(preview|video|update|urls|gigs|ticker|qr|publish|publication|visibility))?$/);
     if(venueMatch){
       const venueId=venueMatch[1],action=venueMatch[2]||"record";
       if(request.method==="GET"&&action==="record"){
@@ -103,6 +107,26 @@ export function createVenueLibraryController({dataDir,root:workspaceRoot=process
         activePublications.set(created.id,true);
         setTimeout(()=>runPublication(created.id,videoPath).catch(error=>console.error("[Secure Venue Publication]",error)),0);
         return json(response,202,{ok:true,job:created,readiness});
+      }
+      if(request.method==="PUT"&&action==="visibility"){
+        const body=await readJson(request),result=await transact(library=>setVenueLibraryVisibility(library,venueId,body.visibility));
+        return json(response,200,{ok:true,venue:result.venue,bootstrap:venueLibraryBootstrap(result.library),venues:listVenueSummaries(result.library)});
+      }
+      if(request.method==="PUT"&&action==="publication"){
+        const body=await readJson(request),published=body.published===true,library=await load(),venue=getVenue(library,venueId);
+        if(published&&venue.admin.publicationState==="published")return json(response,200,{ok:true,published:true,venue});
+        const editionId=publicationEditionId(venue);
+        if(!published){
+          if(!editionId)throw new VenueLibraryError("This venue has not been published yet.","edition_identity_missing");
+          const remote=await publicationPublisher.setPublished({editionId,published:false});
+          const result=await transact(current=>setVenuePublicationState(current,venueId,false,{publication:remote}));
+          return json(response,200,{ok:true,published:false,venue:result.venue,identityPreserved:true});
+        }
+        const videoPath=path.join(videosRoot,`${venueId}.mp4`),readiness=await inspectStoredVideo(venue,videoPath);
+        if(!readiness.ready)throw new VenueLibraryError(readiness.errors.join(" "),"publication_not_ready");
+        let created;await transact(current=>{const result=createVenuePublicationJob(current,venueId);created=result.job;return result});
+        activePublications.set(created.id,true);setTimeout(()=>runPublication(created.id,videoPath).catch(error=>console.error("[Secure Venue Publication]",error)),0);
+        return json(response,202,{ok:true,published:false,pending:true,job:created,readiness,identityPreserved:Boolean(editionId)});
       }
       if(request.method==="PUT"&&action==="record"){
         const body=await readJson(request);const result=await transact(library=>updateVenue(library,venueId,body,{expectedRevision:body.expectedRevision}));
@@ -132,7 +156,7 @@ export function createVenueLibraryController({dataDir,root:workspaceRoot=process
     }
 
     if(request.method==="POST"&&url.pathname==="/api/studio/venue-jobs"){
-      const body=await readJson(request);const library=await load();const venueIds=body.scope==="all"?Object.keys(library.venues):body.venueIds;
+      const body=await readJson(request);const library=await load();const venueIds=body.scope==="all"?listVenueSummaries(library).map(venue=>venue.id):body.venueIds;
       const run=await queueRun({venueIds,scope:body.scope||"selected",operations:body.operations});return json(response,202,{ok:true,run});
     }
     const jobMatch=url.pathname.match(/^\/api\/studio\/venue-jobs\/(run_[a-f0-9-]+)(?:\/(cancel|retry|export))?$/);
@@ -247,6 +271,11 @@ export function createVenueLibraryController({dataDir,root:workspaceRoot=process
   }
 
   return{handle,load};
+}
+
+function publicationEditionId(venue){
+  const direct=String(venue?.admin?.publication?.editionId||"");if(/^dc_[a-f0-9]{10}$/.test(direct))return direct;
+  const match=String(venue?.admin?.publicEditionUrl||"").match(/\/e\/(dc_[a-f0-9]{10})(?:$|[/?#])/);return match?.[1]||"";
 }
 
 function renderVenuePreview(venue,videoUrl){

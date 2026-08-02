@@ -17,9 +17,10 @@
 
   <main>
     <section class="hero" aria-labelledby="page-title">
-      <div><p class="eyebrow">JOOKBOX OPERATIONS</p><h1 id="page-title">Venue Library</h1><p>Synchronise the master CSV, update venue information and prepare venue-specific JookBox editions from one private Windows workspace.</p></div>
+      <div><p class="eyebrow">JOOKBOX OPERATIONS</p><h1 id="page-title">Venue Library</h1><p>Your active library starts clean. Add venues one at a time while the previous library remains safely archived and hidden.</p></div>
       <div class="hero-actions">
-        <label class="button primary" for="csv-file">Synchronise Master CSV<input id="csv-file" type="file" accept=".csv,text/csv"></label>
+        <button class="button primary" id="restore-venue" type="button">Add Venue</button>
+        <label class="button subtle" for="csv-file">Import CSV<input id="csv-file" type="file" accept=".csv,text/csv"></label>
         <button class="button warm" id="update-all" type="button" disabled>Update All Venues</button>
       </div>
     </section>
@@ -38,7 +39,7 @@
         <div class="filters">
           <label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Search venue name or Aggits reference" autocomplete="off"></label>
           <select id="health-filter" aria-label="Filter by health"><option value="">All health states</option><option value="red">Red</option><option value="amber">Amber</option><option value="green">Green</option><option value="grey">Grey</option></select>
-          <select id="publication-filter" aria-label="Filter by publication"><option value="">All publication states</option><option value="draft">Draft</option><option value="published">Published</option><option value="archived">Archived</option></select>
+          <select id="publication-filter" aria-label="Filter by publication"><option value="">All publication states</option><option value="draft">Unpublished</option><option value="published">Published</option></select>
           <select id="video-filter" aria-label="Filter by video"><option value="">All videos</option><option value="present">Custom video added</option><option value="missing">Video missing</option></select>
           <select id="gig-filter" aria-label="Filter by gig-data status"><option value="">All gig-data states</option><option value="current">Current gig data</option><option value="stale">Stale gig data</option><option value="review_required">Review required</option><option value="failed">Gig retrieval failed</option><option value="never_checked">Never checked</option></select>
           <select id="type-filter" aria-label="Filter by venue type"><option value="">All venue types</option></select>
@@ -50,8 +51,8 @@
         <div class="batch-bar" id="batch-bar" hidden><strong><span id="selected-count">0</span> selected</strong><button type="button" id="update-selected">Update Selected</button><button type="button" id="check-selected">Check URLs</button><button type="button" id="clear-selected">Clear</button></div>
         <div class="table-wrap">
           <table>
-            <thead><tr><th><input id="select-all" type="checkbox" aria-label="Select all visible venues"></th><th>Venue</th><th>Status</th><th>Gig feed</th><th>Video</th><th>Last success</th><th></th></tr></thead>
-            <tbody id="venue-rows"><tr><td colspan="7" class="empty">Synchronise a venue CSV to begin.</td></tr></tbody>
+            <thead><tr><th><input id="select-all" type="checkbox" aria-label="Select all visible venues"></th><th>Venue</th><th>Published</th><th>Status</th><th>Gig feed</th><th>Video</th><th>Last success</th><th></th></tr></thead>
+            <tbody id="venue-rows"><tr><td colspan="8" class="empty">Your active library is empty. Press Add Venue to begin.</td></tr></tbody>
           </table>
         </div>
         <p class="analytics-note"><strong>Public activity:</strong> Requires hosted analytics. This local release does not invent page views, QR scans or visitor clicks.</p>
@@ -82,6 +83,17 @@
     </form>
   </dialog>
 
+  <dialog id="restore-dialog">
+    <form method="dialog" class="dialog-card compact">
+      <button class="dialog-close" value="cancel" aria-label="Close add venue">×</button>
+      <p class="eyebrow">ARCHIVED &amp; SAFE</p><h2>Add one venue</h2>
+      <p>Choose a preserved venue to return to the active library. Its URL, QR, video, history and publication state remain unchanged.</p>
+      <label>Archived venue<select id="archived-venue-select"></select></label>
+      <p id="archived-empty" class="preservation" hidden>No archived venues remain. Import a new venue CSV to add another venue.</p>
+      <div class="dialog-actions"><button value="cancel" class="button subtle">Cancel</button><button id="confirm-restore" value="default" type="button" class="button primary">Add Venue</button></div>
+    </form>
+  </dialog>
+
   <dialog id="update-dialog">
     <form method="dialog" class="dialog-card compact">
       <button class="dialog-close" value="cancel" aria-label="Close update options">×</button>
@@ -98,22 +110,11 @@
       <div class="venue-title"><div><p class="eyebrow" id="venue-master-id">AGGITS_000</p><h2 id="venue-name">Venue name</h2><p id="venue-meta"></p></div><span class="venue-health grey" id="venue-health">NOT CHECKED</span></div>
       <div class="venue-grid">
         <div class="editor-column">
-          <section><h3>Overview &amp; publication</h3><div class="field-grid"><label>Publication state<select id="venue-publication" disabled><option value="draft">Draft</option><option value="published">Published</option><option value="archived">Archived</option></select></label><label>Public edition URL<input id="venue-public-url" type="url" placeholder="Created after secure publication" inputmode="url" readonly></label><label class="wide">QR destination<input id="venue-qr-url" type="url" placeholder="Created after secure publication" inputmode="url" readonly></label></div><p class="source-label">These fields are controlled by Secure Publish Venue and cannot be marked live manually.</p></section>
+          <section><h3>Publication</h3><div class="publication-toggle-row"><div><strong id="publication-toggle-label">Unpublished</strong><span id="publication-toggle-detail">Switch on when this venue is ready to go live.</span></div><label class="switch"><input id="venue-published-toggle" type="checkbox" role="switch" aria-label="Publish this venue"><span></span></label></div><div class="publication-links" id="publication-links" hidden></div><div class="publication-status" id="publication-status" role="status" aria-live="polite"><strong>Unpublished</strong><span>The permanent identity will be preserved.</span></div><div class="publication-progress" id="publication-progress" hidden><span id="publication-progress-fill"></span></div><p class="publication-limit" id="publication-limit">Camtasia canvas/export: 1114 × 1205 px. Public welcome video limit: 24 MB.</p><div class="field-grid"><label>Permanent edition URL<input id="venue-public-url" type="url" placeholder="Created on first publication" inputmode="url" readonly></label><label>Permanent QR destination<input id="venue-qr-url" type="url" placeholder="Created on first publication" inputmode="url" readonly></label></div></section>
           <section><h3>Verified CSV destinations</h3><div id="venue-links" class="venue-links"></div></section>
           <section><h3>Ticker</h3><p class="source-label" id="ticker-source">Source: CSV facts</p><label>Manual override<textarea id="venue-ticker" rows="4" maxlength="1600" placeholder="Leave blank to use the generated event ticker"></textarea></label><label>Pinned notice<textarea id="venue-pinned" rows="2" maxlength="500" placeholder="Optional notice preserved above generated events"></textarea></label><p id="generated-ticker" class="generated-copy"></p></section>
           <section><h3>About Us</h3><p class="source-label" id="about-source">Source: CSV facts</p><label>Manual override<textarea id="venue-about" rows="5" maxlength="3000" placeholder="Leave blank to use factual CSV information"></textarea></label><p id="effective-about" class="generated-copy"></p></section>
           <section><h3>Custom welcome video</h3><p id="venue-video-state">Custom video not yet added</p><div class="inline-actions"><label class="button subtle" for="venue-video">Select MP4<input id="venue-video" type="file" accept=".mp4,video/mp4"></label><button id="remove-venue-video" class="button danger" type="button" hidden>Remove video</button></div></section>
-          <section class="publication-card" aria-labelledby="publication-title">
-            <p class="eyebrow">PROTECTED PRODUCTION</p><h3 id="publication-title">Secure Publish Venue</h3>
-            <p>Publishes the isolated Bar Edition directly to Cloudflare, scan-tests its permanent QR and confirms delivery by email.</p>
-            <div class="publication-security"><span aria-hidden="true">&#9670;</span><span>Activate this Windows installation once by email. Its publishing credential is encrypted by Windows; no GitHub account is required.</span></div>
-            <div class="publication-status" id="publication-status" role="status" aria-live="polite"><strong>Checking secure connection</strong><span>Please wait.</span></div>
-            <div class="publication-progress" id="publication-progress" hidden><span id="publication-progress-fill"></span></div>
-            <p class="publication-limit" id="publication-limit">Camtasia canvas/export: 1114 × 1205 px. Public welcome video limit: 24 MB. Larger MP4 files remain available for local preview.</p>
-            <div class="activation-form" id="activation-form" hidden><label for="activation-code">Six-digit email code</label><div class="inline-actions"><input id="activation-code" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]{6}" placeholder="000000"><button id="complete-activation" type="button" class="button warm">Confirm Code</button></div></div>
-            <div class="inline-actions"><button id="activate-publishing" type="button" class="button subtle">Activate Publishing</button><button id="publish-venue" type="button" class="button primary" disabled>Publish Venue</button></div>
-            <div class="publication-links" id="publication-links" hidden></div>
-          </section>
           <section><h3>Notes</h3><label>Private administrator notes<textarea id="venue-notes" rows="3" maxlength="2000"></textarea></label></section>
           <div class="editor-actions"><button id="save-venue" type="button" class="button primary">Save changes</button><button id="update-venue" type="button" class="button warm">Update this venue</button><button id="check-venue" type="button" class="button subtle">Check URLs now</button></div>
         </div>

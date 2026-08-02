@@ -110,7 +110,13 @@ export function createDirectVenuePublisher({
       return{schemaVersion:BAR_PUBLICATION_SCHEMA,editionId:job.editionId,slug:job.slug,liveUrl:job.liveUrl,qrImageUrl:job.qrImageUrl,jobId:job.id,deploymentUrl:baseUrl};
     }catch(error){await remoteJson(fetchImpl,`${baseUrl}/api/bar-publisher/publications/${remoteJob.id}/rollback`,{method:"POST",identity:current,body:{}}).catch(()=>{});throw normalizeRemoteError(error)}
   }
-  return{authentication,startActivation,completeActivation,publish};
+  async function setPublished({editionId,published}={}){
+    const current=await identity();if(!current.token)throw publicationError("Secure publishing is not activated on this Windows installation.","publisher_activation_required");
+    if(!/^dc_[a-f0-9]{10}$/.test(String(editionId||"")))throw publicationError("This venue does not yet have a permanent public edition identity.","edition_identity_missing");
+    const result=await remoteJson(fetchImpl,`${baseUrl}/api/bar-publisher/editions/${editionId}/state`,{method:"PUT",identity:current,body:{published:Boolean(published)}});
+    return{editionId:result.editionId,slug:result.slug,liveUrl:result.liveUrl,qrImageUrl:result.qrImageUrl,published:Boolean(result.published),deploymentUrl:baseUrl};
+  }
+  return{authentication,startActivation,completeActivation,publish,setPublished};
 }
 
 export function createEnvironmentCredentialStore({token=process.env.DEEP_CUTS_PUBLISHER_TOKEN||"",installationId=process.env.DEEP_CUTS_PUBLISHER_INSTALLATION_ID||`studio_${crypto.randomBytes(16).toString("hex")}`}={}){

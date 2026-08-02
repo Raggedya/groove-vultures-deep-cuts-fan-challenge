@@ -2,7 +2,7 @@
 
 ## What this module is
 
-Venue Library is the private, local-first operations area inside Deep Cuts Studio 3.4.0. It synchronises a venue master CSV, stores protected administrator work, checks official destinations on demand, retrieves structured gig data where a venue exposes it, prepares ticker copy, securely publishes isolated Bar Editions, creates branded QR artwork and reports local operational health.
+Venue Library is the private, local-first operations area inside Deep Cuts Studio 3.4.1. It synchronises a venue master CSV, stores protected administrator work, checks official destinations on demand, retrieves structured gig data where a venue exposes it, prepares ticker copy, securely publishes isolated Bar Editions, creates branded QR artwork and reports local operational health.
 
 It is not a public website and it does not run while Deep Cuts Studio is closed. Public visitor analytics require a separately hosted service and are deliberately not estimated here.
 
@@ -12,9 +12,9 @@ Venue Library is operational tooling. It does not change the locked Band Edition
 
 1. Open **Deep Cuts Studio**.
 2. Select **Venue Library** in the top navigation.
-3. Press **Synchronise Master CSV**.
-4. Select the UTF-8 master CSV.
-5. Review the preview counts, warnings, rejected rows and duplicates.
+3. The active library initially appears empty. Existing records are safely archived and hidden; their live pages, URLs and QR codes are unchanged.
+4. Press **Add Venue**, choose one archived venue and press **Add Venue** again to return only that venue to the active library.
+5. To add a genuinely new record, press **Import CSV**, select a UTF-8 CSV and review the preview counts, warnings, rejected rows and duplicates.
 6. Press **Synchronise valid venues** only when the preview is correct.
 
 The supplied file named `melbourne_venue_prospects_210.csv` contains 31 data records, `Aggits_001` through `Aggits_031`. Studio always parses the file; it never trusts the number in the filename.
@@ -73,11 +73,11 @@ Enter either a confirmed public HTTPS edition URL or an intended future HTTPS de
 
 A QR made from only an intended destination is a preview and is not approved for distribution. A public poster must use the deployed HTTPS edition, pass Studio’s payload validation and then be scan-tested from the exported PNG or printed PDF before delivery. The private `127.0.0.1` preview is never a valid phone QR destination.
 
-## Secure Publish Venue
+## Published / Unpublished switch
 
 Open one venue and complete all five verified HTTPS destinations, ticker copy, About Us copy and a custom MP4. The live MP4 must be 24 MiB or smaller. A larger file continues to work in the local preview, but must be re-exported at a lower bitrate before publication.
 
-On first use only, press **Activate Publishing**. A six-digit code is sent to the configured owner email. Enter that code in Studio and press **Confirm Code**. The resulting device-scoped token is encrypted by Windows and is not written to `library.json`, the repository or a venue record. No GitHub or Cloudflare account is required in the owner workflow. Then press **Publish Venue** and keep Studio open while it reports:
+Use the single **Published / Unpublished** switch in the venue editor. No activation form or separate Publish Venue button is shown. The existing device-scoped credential remains encrypted by Windows and is not written to `library.json`, the repository or a venue record. Switch a ready venue to **Published** and keep Studio open while it automatically performs:
 
 1. validating the static Bar Edition and its exactly five public HTTPS destinations;
 2. checking the ticker, About Us copy, MP4 signature, SHA-256 identity and 24 MiB ceiling;
@@ -87,6 +87,8 @@ On first use only, press **Activate Publishing**. A six-digit code is sent to th
 6. waiting for confirmed email delivery, then verifying the live page, QR, configuration and MP4 before marking the venue **Published**.
 
 If validation, upload, email delivery or live verification fails, Studio records the failure and leaves the venue unmarked. A failed update restores the previous live venue record. It never activates an unvalidated edition. Closing Studio interrupts the local monitor; the remote job remains fail-closed and the venue can be reviewed and retried safely.
+
+Switching a published venue to **Unpublished** hides its public route but does not delete its opaque edition ID, permanent URL, QR payload, stored video, configuration or history. Switching it back to **Published** runs the complete protected pipeline against the current local content and reuses the same permanent URL and QR identity.
 
 ## Reports
 
@@ -109,10 +111,10 @@ The private server binds only to `127.0.0.1`. Mutations require Studio’s sessi
 ## Troubleshooting
 
 - **CSV rejected:** keep the exact headers, UTF-8 encoding, unique Master IDs and complete HTTP/HTTPS URLs.
-- **OneDrive file moved:** choose it again with **Synchronise Master CSV**; no saved venue is deleted.
+- **OneDrive file moved:** choose it again with **Import CSV**; no saved venue is deleted.
 - **Gig page reachable but empty:** the page may be client-rendered or lack structured events. Preserve manual copy and add a tested site adapter later.
 - **Red URL after one outage:** run **Check URLs now** again. Repeated failures, not one minor transient failure, drive red health.
 - **QR says preview only:** configure and deploy the permanent public HTTPS edition, then regenerate and scan-test.
-- **Activate Publishing is shown:** press it, check the configured owner inbox for the six-digit code, enter the code and press **Confirm Code**. Codes expire after ten minutes. If no email arrives, check junk mail, wait briefly, then request one fresh code.
+- **A venue is missing from the active list:** press **Add Venue** and restore it from the archived list. This does not change its live status, URL or QR.
 - **MP4 is too large to publish:** re-export it below 24 MiB; keep the same cabinet aspect ratio and test it locally before publishing.
 - **No public activity numbers:** deploy the future hosted redirect/analytics service; local Studio will not fabricate those metrics.
