@@ -2618,6 +2618,10 @@ html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][da
   height:12.7%;
   padding:0;
   overflow:visible;
+  margin:0!important;
+  clip:auto!important;
+  clip-path:none!important;
+  white-space:normal!important;
   filter:brightness(.54) saturate(.62);
   transition:filter .45s ease
 }
@@ -2636,7 +2640,7 @@ html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][da
   white-space:nowrap!important
 }
 html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .bar-jookbox-marquee-artwork{
-  display:block;
+  display:block!important;
   width:100%;
   height:100%;
   overflow:visible
@@ -2673,8 +2677,11 @@ html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][da
 
 html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .jookbox-action-key,
 html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .jookbox-action-key:last-child:nth-child(odd){
-  padding:5% 4% 5%;
-  gap:2%;
+  display:grid;
+  grid-template-rows:minmax(0,1fr) auto;
+  padding:4% 4% 7%;
+  gap:1%;
+  align-items:stretch;
   border:0;
   border-radius:4%;
   color:#2b180c;
@@ -2687,7 +2694,8 @@ html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][da
 html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .jookbox-action-icon{
   display:grid;
   width:100%;
-  height:54%;
+  height:auto;
+  min-height:0;
   place-items:center;
   overflow:visible;
   border:0;
@@ -2718,7 +2726,10 @@ html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][da
   stroke:none
 }
 html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .jookbox-action-copy{
-  height:38%
+  display:grid;
+  height:auto;
+  min-height:0;
+  place-items:center
 }
 html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .jookbox-action-copy strong{
   color:#28160b;
@@ -2781,7 +2792,7 @@ html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][da
   z-index:1;
   top:50%;
   display:block;
-  width:13%;
+  width:18%;
   height:auto;
   overflow:visible;
   fill:none;
@@ -2792,9 +2803,9 @@ html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][da
   filter:drop-shadow(0 1px rgba(255,235,181,.2));
   transform:translateY(-50%)
 }
-html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .bar-jookbox-share-hand-left{left:4.2%}
+html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .bar-jookbox-share-hand-left{left:2.7%}
 html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .bar-jookbox-share-hand-right{
-  right:4.2%;
+  right:2.7%;
   transform:translateY(-50%) scaleX(-1)
 }
 html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .jookbox-primary-action strong,
