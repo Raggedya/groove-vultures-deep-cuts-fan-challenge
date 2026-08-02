@@ -1,6 +1,6 @@
 "use strict";
 
-const VERSION="20260802-bar-heritage-4";
+const VERSION="20260802-bar-heritage-5";
 const LANEWAY_REPORTING_VERSION="laneway-weekly-v1";
 const $=id=>document.getElementById(id);
 const els={
