@@ -5047,6 +5047,17 @@ html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][da
 }
 html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .bar-jookbox-share-venue{font-size:var(--bar-share-name-size,.94em)!important;line-height:.86!important}
 html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .bar-jookbox-share-invitation{font-size:.72em!important;line-height:.92!important}
+
+/* The 320px viewport has less than 306px of cabinet content width once the
+   physical side rails are accounted for. Preserve a clean separation between
+   the period icon and its label instead of allowing their painted bounds to
+   touch at that single narrow breakpoint. */
+@media (max-width:340px){
+  html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .bar-jookbox-key-icon{
+    width:min(48%,44px)!important;
+    height:50%!important;
+  }
+}
 @media(prefers-reduced-motion:reduce){
   html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .is-buttons-running .jookbox-action-key,
   html[data-product-type="bar_jukebox"][data-jookbox-layout="coin-awakening/1"][data-jookbox-appearance="atlas-reference-cabinet/1"] .is-buttons-running .jookbox-action-key.is-current-key{
