@@ -121,7 +121,7 @@ for(const edition of platform.editions){
         bar.cabinetArtwork!=='assets/jookbox-atlas-reference-v1.webp'||
         bar.cabinetArtworkSha256!=='ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3'||
         bar.coinSound!=='assets/audio/jukebox-real-coin-insert-cc0.mp3'||
-        bar.coinSoundSha256!=='3fd636fe3763b95a09bc8f6be470361ddf0a49e7772464d1a5292fa7c7674e8a'||
+        bar.coinSoundSha256!=='0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0'||
         !/^https:\/\//.test(bar.coinSoundSource||'')||
         !bar.coinSoundLicense||
         !bar.sessionStorageKey||

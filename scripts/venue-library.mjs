@@ -49,7 +49,7 @@ export function migrateVenueLibrary(input,now=new Date()){
   library.updateRuns=Array.isArray(library.updateRuns)?library.updateRuns:[];
   library.publicationJobs=Array.isArray(library.publicationJobs)?library.publicationJobs:[];
   library.audit=Array.isArray(library.audit)?library.audit:[];
-  for(const venue of Object.values(library.venues))venue.admin={publicationState:"draft",libraryVisibility:"active",libraryArchivedAt:null,publicEditionUrl:"",intendedQrUrl:"",tickerOverride:"",tickerPinnedNotice:"",aboutOverride:"",notes:"",customVideo:null,publication:null,...(venue.admin||{})};
+  for(const venue of Object.values(library.venues))venue.admin={publicationState:"draft",libraryVisibility:"active",libraryArchivedAt:null,publicEditionUrl:"",intendedQrUrl:"",tickerOverride:"",tickerPinnedNotice:"",aboutOverride:"",notes:"",customVideo:null,publication:null,sourceStudioProjectId:"",studioActions:[],...(venue.admin||{})};
   return library;
 }
 
@@ -309,6 +309,40 @@ export function updateVenuePublicationJob(library,jobId,changes,{initiatingUser=
   touchLibrary(next,timestamp);return{library:next,job:structuredClone(job),venue:structuredClone(venue)};
 }
 
+export function upsertStudioVenue(library,project,{initiatingUser="Deep Cuts Studio",now=new Date()}={}){
+  const next=migrateVenueLibrary(library,now);
+  if(project?.schemaVersion!=="deep-cuts-studio-project/1"||project?.input?.type!=="bar_jukebox")throw new VenueLibraryError("Only a complete Bar Edition Studio project can be saved to Venue Library.","invalid_studio_venue");
+  if(project?.readiness?.handoffReady!==true)throw new VenueLibraryError((project?.readiness?.blockers||[]).join(" ")||"Complete the Bar Edition before saving it to Venue Library.","studio_venue_not_ready");
+  const sourceUrls=Array.isArray(project.input.sourceUrls)?project.input.sourceUrls:[];
+  const sourceLabels=Array.isArray(project.input.sourceLabels)?project.input.sourceLabels:[];
+  if(sourceUrls.length!==5||sourceLabels.length!==5)throw new VenueLibraryError("Exactly five labelled HTTPS destinations are required.","studio_venue_destinations_invalid");
+  const actions=sourceUrls.map((url,index)=>({label:clean(sourceLabels[index],42),url:normalizeUrl(url)}));
+  if(actions.some(action=>!action.label||!/^https:\/\//i.test(action.url)))throw new VenueLibraryError("Exactly five labelled HTTPS destinations are required.","studio_venue_destinations_invalid");
+  const timestamp=now.toISOString(),masterId=`Studio_${String(project.id).replace(/^studio_/,"")}`,id=venueInternalId(masterId);
+  const record=normalizeCsvVenue({
+    researchDate:timestamp.slice(0,10),masterId,venueName:project.input.name,venueType:"Bar Edition",websiteUrl:actions[0].url,
+    gigsUrl:actions.find(action=>/gig|show|event|what'?s on/i.test(action.label))?.url||actions[0].url,
+    menuUrl:actions.find(action=>/menu|eat|drink/i.test(action.label))?.url||actions[1].url,
+    contactUrl:actions.find(action=>/contact|book|enquir/i.test(action.label))?.url||actions[2].url,
+    instagramUrl:actions.find(action=>/instagram/i.test(action.label))?.url||actions[3].url,
+    facebookUrl:actions.find(action=>/facebook/i.test(action.label))?.url||actions[4].url,
+    aboutUrl:actions[0].url,location:"",streetAddress:"",suburb:"",state:"VIC",postcode:"",phone:"",email:"",venueCapacity:"",
+    verificationNotes:"Administrator-supplied Bar Edition Studio project."
+  },0);
+  let venue=next.venues[id];
+  if(!venue){
+    venue=createVenueRecord(id,record,timestamp);next.venues[id]=venue;
+  }else{
+    venue.csv={...venue.csv,...csvRecordForStorage(record)};venue.csvFingerprint=csvFingerprint(record);venue.csvUpdatedAt=timestamp;
+    venue.revision=Number(venue.revision||0)+1;venue.updatedAt=timestamp;
+  }
+  venue.admin={...venue.admin,libraryVisibility:"active",libraryArchivedAt:null,sourceStudioProjectId:project.id,studioActions:actions,tickerOverride:cleanMultiline(project.input.tickerText,1600),aboutOverride:cleanMultiline(project.input.aboutText,3000)};
+  venue.health=deriveOverallHealth(venue,next.settings.healthThresholds,now);
+  next.audit=[auditEntry("studio_venue_saved",initiatingUser,{venueId:id,masterId,sourceStudioProjectId:project.id,actionCount:actions.length,preservedPublicIdentity:Boolean(venue.admin.publicEditionUrl)},timestamp),...next.audit].slice(0,5000);
+  touchLibrary(next,timestamp);
+  return{library:next,venue:structuredClone(venue),created:venue.createdAt===timestamp&&venue.revision===1};
+}
+
 export function setVenuePublicationState(library,id,published,{publication=null,initiatingUser="Deep Cuts secure publisher",now=new Date()}={}){
   const next=migrateVenueLibrary(library,now),venue=next.venues?.[id];if(!venue)throw new VenueLibraryError("Venue not found.","venue_not_found");
   const timestamp=now.toISOString();venue.admin.publicationState=published?"published":"draft";
@@ -474,7 +508,7 @@ export function effectiveVenueContent(venue){
 function createVenueRecord(id,record,timestamp){
   const venue={
     id,masterId:record.masterId,revision:1,csv:csvRecordForStorage(record),csvFingerprint:csvFingerprint(record),csvImportedAt:timestamp,csvUpdatedAt:timestamp,
-    admin:{publicationState:"draft",libraryVisibility:"active",libraryArchivedAt:null,publicEditionUrl:"",intendedQrUrl:"",tickerOverride:"",tickerPinnedNotice:"",aboutOverride:"",notes:"",customVideo:null,publication:null},
+    admin:{publicationState:"draft",libraryVisibility:"active",libraryArchivedAt:null,publicEditionUrl:"",intendedQrUrl:"",tickerOverride:"",tickerPinnedNotice:"",aboutOverride:"",notes:"",customVideo:null,publication:null,sourceStudioProjectId:"",studioActions:[]},
     automated:{events:[],gigStatus:"never_checked",gigEvidence:[],generatedTicker:null,lastGigAttempt:null,lastGigSuccess:null},
     healthChecks:{},health:null,lastUpdateAttempt:null,lastSuccessfulUpdate:null,lastUpdateResult:null,createdAt:timestamp,updatedAt:timestamp
   };

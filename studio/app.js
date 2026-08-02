@@ -50,6 +50,10 @@ const els={
   runLabel:$("#run-label"),
   runDescription:$("#run-description"),
   runButton:$("#studio-form .run-button"),
+  savePublish:$("#save-publish-venue"),
+  publishStatus:$("#direct-publish-status"),
+  publishMessage:$("#direct-publish-message"),
+  publishLive:$("#direct-publish-live"),
   projectVersion:$("#project-version"),
   recent:$("#recent-projects"),
   preview:$("#mobile-preview"),
@@ -96,6 +100,7 @@ async function init(){
 
 function bindEvents(){
   els.form.addEventListener("submit",runProject);
+  els.savePublish.addEventListener("click",saveVenueAndPublish);
   els.type.addEventListener("change",updateTypePolicy);
   els.name.addEventListener("input",updateTypePolicy);
   els.aggits.addEventListener("change",renderAggitsThumbnail);
@@ -139,6 +144,8 @@ function updateTypePolicy(){
   els.barVideoField.hidden=!bar;
   els.briefField.hidden=bar;
   els.optionalFields.hidden=bar;
+  els.savePublish.hidden=!bar;
+  els.publishStatus.hidden=!bar;
   els.sourceLabels.forEach(field=>{
     field.hidden=jookBox;
     field.required=bar;
@@ -206,27 +213,7 @@ async function runProject(event){
   event.preventDefault();
   setBusy(true,"BUILDING PREVIEW");
   try{
-    const body={input:formInput()};
-    let result;
-    if(state.project)result=await api(`/api/studio/projects/${state.project.id}`,body,{method:"PUT"});
-    else result=await api("/api/studio/projects",body,{method:"POST"});
-    setProject(result);
-    if(els.logo.files[0]){
-      result=await uploadLogo(els.logo.files[0]);
-      els.logo.value="";
-    }
-    setProject(result);
-    if(els.mp3.files[0]){
-      result=await uploadAudio(els.mp3.files[0]);
-      els.mp3.value="";
-    }
-    setProject(result);
-    if(els.mp4.files[0]){
-      result=await uploadVideo(els.mp4.files[0]);
-      els.mp4.value="";
-    }
-    setProject(result);
-    renderProject();
+    let result=await persistProjectFromForm();
     if(state.project.input.type==="jookbox"){
       setBusy(true,"RESEARCHING & VERIFYING");
       els.outputStatus.textContent="RESEARCHING";
@@ -247,6 +234,42 @@ async function runProject(event){
           :"Deep Cuts preview and local QR created.");
   }catch(error){showError(error.message)}
   finally{setBusy(false)}
+}
+
+async function persistProjectFromForm(){
+  const body={input:formInput()};
+  let result=state.project?await api(`/api/studio/projects/${state.project.id}`,body,{method:"PUT"}):await api("/api/studio/projects",body,{method:"POST"});
+  setProject(result);
+  if(els.logo.files[0]){result=await uploadLogo(els.logo.files[0]);els.logo.value="";setProject(result)}
+  if(els.mp3.files[0]){result=await uploadAudio(els.mp3.files[0]);els.mp3.value="";setProject(result)}
+  if(els.mp4.files[0]){result=await uploadVideo(els.mp4.files[0]);els.mp4.value="";setProject(result)}
+  renderProject();return result;
+}
+
+async function saveVenueAndPublish(){
+  if(els.type.value!=="bar_jukebox")return;
+  setBusy(true,"SAVING VENUE");els.savePublish.disabled=true;els.publishLive.hidden=true;els.publishStatus.className="direct-publish-status";els.publishMessage.textContent="Saving this Bar Edition to Venue Library and starting protected publication…";
+  try{
+    await persistProjectFromForm();
+    if(!state.project.readiness.handoffReady)throw new Error(state.project.readiness.blockers.join(" ")||"Complete the venue before publishing.");
+    const queued=await api(`/api/studio/projects/${state.project.id}/save-publish`,{}, {method:"POST"});
+    els.publishMessage.textContent="Venue saved. Protected publication is running…";
+    const job=await waitForPublication(queued.job.id);
+    if(job.status!=="published")throw new Error(job.error||"Publication stopped safely.");
+    els.publishStatus.classList.add("is-success");els.publishMessage.textContent="Saved to Venue Library and published successfully.";els.publishLive.href=job.liveUrl;els.publishLive.hidden=false;
+    showToast("Venue saved to Library and published.");await refreshRecent();
+  }catch(error){els.publishStatus.classList.add("is-error");els.publishMessage.textContent=error.message;showError(error.message)}
+  finally{setBusy(false);els.savePublish.disabled=false}
+}
+
+async function waitForPublication(jobId){
+  for(let attempt=0;attempt<400;attempt++){
+    const result=await api(`/api/studio/venue-publications/${jobId}`,null,{method:"GET"}),job=result.job;
+    els.publishMessage.textContent=job.message||`Publishing: ${job.stage||"working"}`;
+    if(["published","failed","interrupted"].includes(job.status))return job;
+    await new Promise(resolve=>setTimeout(resolve,750));
+  }
+  throw new Error("Publication is still running. Open Venue Library to see its status.");
 }
 
 async function uploadLogo(file){
@@ -537,6 +560,7 @@ function resetProject(){
   els.audioState.textContent="Optional · maximum 25 MB";els.removeAudio.classList.add("hidden");
   els.videoState.textContent="Local MP4 · maximum 500 MB";els.removeVideo.classList.add("hidden");els.mp4.value="";
   els.revision.value="";els.revisionMessage.className="revision-message";
+  els.publishStatus.className="direct-publish-status";els.publishMessage.textContent="Ready to save and publish.";els.publishLive.hidden=true;
   els.revisionMessage.textContent="Typed and dictated changes are kept in the project revision history.";
   els.gateList.replaceChildren(listItem("Run a preview to see production requirements."));
   els.researchResult.className="research-result waiting";
@@ -720,6 +744,7 @@ async function api(url,body,{method="POST",requiresToken=true,headers={},raw=fal
 
 function setBusy(busy,label=""){
   els.runButton.disabled=busy;
+  if(els.type.value==="bar_jukebox")els.savePublish.disabled=busy;
   if(busy)els.runLabel.textContent=label;
   else updateRunCopy();
 }

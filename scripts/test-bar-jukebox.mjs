@@ -193,9 +193,9 @@ assert.equal((preview.match(/class="share-hand-detail"/g)||[]).length,2);
 assert.match(preview,/const target=610/);
 assert.match(preview,/grid-template-columns:minmax\(0,1fr\)/);
 assert.match(preview,/\.share-hand-right\{right:2\.5%;transform:translateY\(-50%\) scaleX\(-1\)\}/);
-assert.match(preview,/index===keyIndex/);
 assert.doesNotMatch(preview,/Math\.floor\(index\/2\)/);
 assert.match(preview,/setTimeout\(sequence,1100\)/);
+assert.match(preview,/keys\.forEach\(key=>key\.classList\.remove\("is-current"\)\)[\s\S]*?keys\[keyIndex\]\.classList\.add\("is-current"\)/,"Studio preview must clear every key before adding exactly one active light.");
 assert.match(preview,/\.machine\.is-buttons-on \.key\.is-current:before\{opacity:\.95;animation:keyFaceGlow 1100ms/);
 assert.doesNotMatch(preview,/0 0 9px rgba\(255,203,98/);
 assert.match(preview,/\.screen video\{[^}]*object-fit:cover;object-position:50% 50%;background:transparent/);
@@ -214,5 +214,6 @@ assert.doesNotMatch(preview,/youtube-nocookie/i);
 assert.match(preview,/No web lookup runs for Bar Edition/i);
 assert.match(publisher,/buttonLightDurationMs:1100/);
 assert.match(publisher,/lightSequenceMode:"single-key"/);
+assert.doesNotMatch(app,/playJookBoxCoinFallback|window\.AudioContext|webkitAudioContext/,"Bar/JookBox must never fall back to an electronic synthesized coin noise.");
 
 console.log("Bar Edition contract tests passed: the isolated heritage brass cabinet, five-plus-About Us keys, sole Share panel, local MP4, coin start-up and Studio intake are locked.");

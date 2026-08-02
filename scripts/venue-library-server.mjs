@@ -6,7 +6,7 @@ import {
   VenueLibraryError,applyVenueSync,archiveLegacyVenueLibrary,attachVenueVideo,createUpdateRun,createVenueLibrary,createVenuePublicationJob,effectiveVenueContent,encodeCsv,
   extractEventsFromHtml,fetchSafeUrl,finishRun,generateVenueTicker,getVenue,listVenueSummaries,markVenueUpdate,mergeVenueEvents,
   interruptVenuePublications,migrateVenueLibrary,previewVenueSync,qrStatusFor,recordRunVenueResult,removeVenueVideo,reportRows,setVenueLibraryVisibility,setVenuePublicationState,startRun,updateVenue,
-  updateVenuePublicationJob,venueLibraryBootstrap
+  updateVenuePublicationJob,upsertStudioVenue,venueLibraryBootstrap
 } from "./venue-library.mjs";
 import {BAR_PUBLIC_VIDEO_MAX_BYTES,createDirectVenuePublisher,inspectStoredVideo} from "./bar-edition-publication.mjs";
 import {attachMp4,createProject,renderStudioPreview} from "./studio-model.mjs";
@@ -100,13 +100,7 @@ export function createVenueLibraryController({dataDir,root:workspaceRoot=process
         return json(response,200,{ok:true,venue,effective:effectiveVenueContent(venue),qr:qrStatusFor(venue),history,audit});
       }
       if(request.method==="POST"&&action==="publish"){
-        const library=await load(),venue=getVenue(library,venueId),videoPath=path.join(videosRoot,`${venueId}.mp4`);
-        const readiness=await inspectStoredVideo(venue,videoPath);
-        if(!readiness.ready)throw new VenueLibraryError(readiness.errors.join(" "),"publication_not_ready");
-        let created;await transact(current=>{const result=createVenuePublicationJob(current,venueId);created=result.job;return result});
-        activePublications.set(created.id,true);
-        setTimeout(()=>runPublication(created.id,videoPath).catch(error=>console.error("[Secure Venue Publication]",error)),0);
-        return json(response,202,{ok:true,job:created,readiness});
+        const queued=await queuePublication(venueId);return json(response,202,{ok:true,...queued});
       }
       if(request.method==="PUT"&&action==="visibility"){
         const body=await readJson(request),result=await transact(library=>setVenueLibraryVisibility(library,venueId,body.visibility));
@@ -122,11 +116,8 @@ export function createVenueLibraryController({dataDir,root:workspaceRoot=process
           const result=await transact(current=>setVenuePublicationState(current,venueId,false,{publication:remote}));
           return json(response,200,{ok:true,published:false,venue:result.venue,identityPreserved:true});
         }
-        const videoPath=path.join(videosRoot,`${venueId}.mp4`),readiness=await inspectStoredVideo(venue,videoPath);
-        if(!readiness.ready)throw new VenueLibraryError(readiness.errors.join(" "),"publication_not_ready");
-        let created;await transact(current=>{const result=createVenuePublicationJob(current,venueId);created=result.job;return result});
-        activePublications.set(created.id,true);setTimeout(()=>runPublication(created.id,videoPath).catch(error=>console.error("[Secure Venue Publication]",error)),0);
-        return json(response,202,{ok:true,published:false,pending:true,job:created,readiness,identityPreserved:Boolean(editionId)});
+        const queued=await queuePublication(venueId);
+        return json(response,202,{ok:true,published:false,pending:true,...queued,identityPreserved:Boolean(editionId)});
       }
       if(request.method==="PUT"&&action==="record"){
         const body=await readJson(request);const result=await transact(library=>updateVenue(library,venueId,body,{expectedRevision:body.expectedRevision}));
@@ -192,6 +183,32 @@ export function createVenueLibraryController({dataDir,root:workspaceRoot=process
     const control={cancelRequested:false};activeJobs.set(created.id,control);
     setTimeout(()=>runUpdate(created.id,control).catch(error=>console.error("[Venue Library update]",error)),0);
     return created;
+  }
+
+  async function queuePublication(venueId){
+    const library=await load(),venue=getVenue(library,venueId),videoPath=path.join(videosRoot,`${venueId}.mp4`);
+    const readiness=await inspectStoredVideo(venue,videoPath);
+    if(!readiness.ready)throw new VenueLibraryError(readiness.errors.join(" "),"publication_not_ready");
+    let created;await transact(current=>{const result=createVenuePublicationJob(current,venueId);created=result.job;return result});
+    activePublications.set(created.id,true);
+    setTimeout(()=>runPublication(created.id,videoPath).catch(error=>console.error("[Secure Venue Publication]",error)),0);
+    return{job:created,readiness};
+  }
+
+  async function saveStudioProjectAndPublish({project,videoPath}){
+    await initialize();
+    let saved;await transact(library=>{saved=upsertStudioVenue(library,project);return saved});
+    const venueId=saved.venue.id,target=path.join(videosRoot,`${venueId}.mp4`),temporary=path.join(videosRoot,`${venueId}-${process.pid}-${crypto.randomBytes(3).toString("hex")}.tmp`);
+    await fs.mkdir(videosRoot,{recursive:true});
+    try{
+      await fs.copyFile(videoPath,temporary);
+      const bytes=await fs.readFile(temporary),sha256=crypto.createHash("sha256").update(bytes).digest("hex");
+      if(bytes.length!==Number(project.mp4?.sizeBytes)||sha256!==project.mp4?.sha256)throw new VenueLibraryError("The Studio welcome video failed its transfer integrity check.","studio_video_identity_mismatch");
+      await fs.rm(target,{force:true});await fs.rename(temporary,target);
+      await transact(library=>attachVenueVideo(library,venueId,{fileName:project.mp4.fileName,sizeBytes:bytes.length,sha256}));
+    }catch(error){await fs.rm(temporary,{force:true});throw error}
+    const queued=await queuePublication(venueId);
+    return{venue:getVenue(await load(),venueId),created:saved.created,...queued};
   }
 
   async function runPublication(jobId,videoPath){
@@ -270,7 +287,7 @@ export function createVenueLibraryController({dataDir,root:workspaceRoot=process
     await transact(async library=>{const run=library.updateRuns.find(item=>item.id===runId);if(run){run.currentVenueId=venue.id;run.currentVenueName=venue.csv.venueName;run.currentOperation=operation}return{library}});
   }
 
-  return{handle,load};
+  return{handle,load,saveStudioProjectAndPublish};
 }
 
 function publicationEditionId(venue){
@@ -279,7 +296,9 @@ function publicationEditionId(venue){
 }
 
 function renderVenuePreview(venue,videoUrl){
-  const content=effectiveVenueContent(venue);const urls=[venue.csv.gigsUrl,venue.csv.menuUrl,venue.csv.contactUrl,venue.csv.instagramUrl,venue.csv.facebookUrl];const labels=["Gigs","Menu","Contact Us","Instagram","Facebook"];
+  const content=effectiveVenueContent(venue),studioActions=Array.isArray(venue.admin?.studioActions)?venue.admin.studioActions:[];
+  const urls=studioActions.length===5?studioActions.map(action=>action.url):[venue.csv.gigsUrl,venue.csv.menuUrl,venue.csv.contactUrl,venue.csv.instagramUrl,venue.csv.facebookUrl];
+  const labels=studioActions.length===5?studioActions.map(action=>action.label):["Gigs","Menu","Contact Us","Instagram","Facebook"];
   let project=createProject({name:venue.csv.venueName,type:"bar_jukebox",sourceUrls:urls,sourceLabels:labels,tickerText:content.tickerText,aboutText:content.aboutText});
   project.id=`studio_${venue.id.slice(-12)}`;if(venue.admin.customVideo)project=attachMp4(project,venue.admin.customVideo);
   project.readiness={...project.readiness,handoffReady:false,publicationPending:true,blockers:venue.admin.customVideo?[]:["Custom video not yet added."]};

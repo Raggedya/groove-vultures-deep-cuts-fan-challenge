@@ -21,8 +21,8 @@ assert.equal(config.jookBox?.modelVersion, "jookbox/3");
 assert.equal(config.jookBox?.layoutVersion, "coin-awakening/1");
 assert.equal(config.jookBox?.cabinetArtwork, "assets/jookbox-filthy-animals-locked-v1.jpg");
 assert.equal(config.jookBox?.coinSound, "assets/audio/jukebox-real-coin-insert-cc0.mp3");
-assert.equal(config.jookBox?.coinSoundSha256, "3fd636fe3763b95a09bc8f6be470361ddf0a49e7772464d1a5292fa7c7674e8a");
-assert.equal(config.jookBox?.coinSoundSource, "https://freesound.org/s/696745/");
+assert.equal(config.jookBox?.coinSoundSha256, "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0");
+assert.equal(config.jookBox?.coinSoundSource, "https://freesound.org/people/kyles/sounds/637369/");
 assert.equal(config.jookBox?.coinSoundLicense, "CC0-1.0");
 assert.equal(config.jookBox?.sessionStorageKey, "filthyAnimalsJukeboxActivated");
 assert.equal(config.jookBox?.tickerDurationSeconds, 36);
@@ -56,16 +56,16 @@ assert.equal(
 
 const coinSound = await fs.readFile(config.jookBox.coinSound);
 assert.ok(coinSound[0] === 0xff && (coinSound[1] & 0xe0) === 0xe0, "The local coin recording must be a valid MPEG audio stream.");
-assert.ok(coinSound.byteLength > 40000, "The local coin mechanism sound must not be an empty placeholder.");
+assert.ok(coinSound.byteLength > 20000, "The sourced 2.502-second local coin mechanism recording must not be an empty placeholder.");
 assert.equal(
   crypto.createHash("sha256").update(coinSound).digest("hex"),
   config.jookBox.coinSoundSha256,
   "The licensed real coin-slot recording must retain its verified identity.",
 );
 const coinSoundLicense = await fs.readFile("assets/audio/jukebox-real-coin-insert-cc0.LICENSE.txt", "utf8");
-assert.match(coinSoundLicense, /vending_machine_coin_insert\.wav/);
+assert.match(coinSoundLicense, /coin in jukebox slot \+fall1\.flac/);
 assert.match(coinSoundLicense, /Creative Commons CC0 1\.0/);
-assert.match(coinSoundLicense, /https:\/\/freesound\.org\/s\/696745\//);
+assert.match(coinSoundLicense, /https:\/\/freesound\.org\/people\/kyles\/sounds\/637369\//);
 
 assert.equal(config.featuredVideo?.selectionBasis, "most-viewed-official");
 assert.equal(config.featuredVideo?.youtubeURL, "https://www.youtube.com/watch?v=Yarspws7fDA");
@@ -151,7 +151,7 @@ assert.match(app, /function cleanupJookBoxLifecycle\(\)/);
 assert.doesNotMatch(app, /jookBoxAutoplayTimer|scheduleJookBoxAutoplay|clearJookBoxAutoplayTimer/);
 assert.match(app, /function prepareJookBoxCoinAudio\(\)/);
 assert.match(app, /new Audio\(source\.startsWith/);
-assert.match(app, /function playJookBoxCoinFallback\(\)/);
+assert.doesNotMatch(app, /function playJookBoxCoinFallback\(\)|window\.AudioContext|webkitAudioContext/, "A failed recording must remain silent instead of producing an electronic synthesized fallback.");
 assert.match(app, /function handleJookBoxVisibility\(\)/);
 assert.match(app, /window\.addEventListener\("pagehide",cleanupJookBoxLifecycle/);
 assert.match(app, /window\.addEventListener\("pageshow",handleJookBoxPageShow/);

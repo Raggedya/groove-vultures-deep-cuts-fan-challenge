@@ -5,7 +5,7 @@ import os from "node:os";
 import path from "node:path";
 import {
   VenueLibraryError,applyVenueSync,archiveLegacyVenueLibrary,attachVenueVideo,createVenueLibrary,deriveOverallHealth,encodeCsv,extractEventsFromHtml,fetchSafeUrl,
-  effectiveVenueContent,generateVenueTicker,getVenue,listVenueSummaries,mergeVenueEvents,previewVenueSync,reportRows,setVenueLibraryVisibility,updateVenue,venueLibraryBootstrap
+  effectiveVenueContent,generateVenueTicker,getVenue,listVenueSummaries,mergeVenueEvents,previewVenueSync,reportRows,setVenueLibraryVisibility,updateVenue,upsertStudioVenue,venueLibraryBootstrap
 } from "./venue-library.mjs";
 import {createStudioServer} from "./studio-server.mjs";
 import {BAR_PUBLIC_VIDEO_MAX_BYTES,buildBarEditionPublication,publicationReadiness} from "./bar-edition-publication.mjs";
@@ -54,6 +54,15 @@ const header=fixture.slice(0,fixture.indexOf("\n")+1);const firstRow=fixture.sli
 const addedRow=firstRow.replaceAll("Aggits_001","Aggits_032").replaceAll("The Duke of Wellington","New Test Venue");
 const addedPreview=previewVenueSync(library,`${fixture.trim()}\r\n${addedRow}\r\n`,{fileName:"extended.csv"});
 assert.equal(addedPreview.newCount,1,"A later CSV can append a new immutable Master ID.");
+
+const studioVenueProject={
+  schemaVersion:"deep-cuts-studio-project/1",id:"studio_abcdef123456",readiness:{handoffReady:true,blockers:[]},mp4:{fileName:"venue.mp4",sizeBytes:24,sha256:"a".repeat(64)},
+  input:{type:"bar_jukebox",name:"Studio Test Venue",sourceLabels:["Gigs","Menu","Contact Us","Instagram","Facebook"],sourceUrls:["https://venue.example/gigs","https://venue.example/menu","https://venue.example/contact","https://instagram.com/venue","https://facebook.com/venue"],tickerText:"STUDIO TEST VENUE — LIVE THIS WEEK",aboutText:"Administrator-approved test venue information."}
+};
+const studioSaved=upsertStudioVenue(createVenueLibrary(),studioVenueProject,{now:new Date("2026-08-01T00:04:00Z")});
+assert.equal(studioSaved.created,true);assert.equal(studioSaved.venue.admin.studioActions.length,5);assert.equal(studioSaved.venue.admin.sourceStudioProjectId,studioVenueProject.id);
+const studioResaved=upsertStudioVenue(studioSaved.library,{...studioVenueProject,input:{...studioVenueProject.input,name:"Studio Test Venue Updated"}},{now:new Date("2026-08-01T00:05:00Z")});
+assert.equal(Object.keys(studioResaved.library.venues).length,1,"Saving the same Studio project again must update its one Venue Library record, not duplicate it.");assert.equal(studioResaved.venue.csv.venueName,"Studio Test Venue Updated");
 
 const eventHtml=`<!doctype html><script type="application/ld+json">{"@context":"https://schema.org","@type":"Event","@id":"event-1","name":"Live Test Band","startDate":"2026-09-12T20:00:00+10:00","url":"https://venue.example/events/live-test-band","description":"A current official event."}</script>`;
 const extracted=extractEventsFromHtml(eventHtml,{venueId:id001,sourceUrl:"https://venue.example/whats-on",now:new Date("2026-08-01T00:00:00Z")});
@@ -138,6 +147,13 @@ try{
   const reportResponse=await fetch(`${origin}/api/studio/venue-reports/operations.csv`);assert.equal(reportResponse.status,200);assert.match(await reportResponse.text(),/Aggits_001/);
   const printable=await fetch(`${origin}/api/studio/venue-reports/print?search=Aggits_001`);assert.equal(printable.status,200);assert.match(await printable.text(),/JookBox Venue Operations/);
   const runExport=await fetch(`${origin}/api/studio/venue-jobs/${run.id}/export`);assert.equal(runExport.status,200);assert.match(await runExport.text(),/Live Test Band|The Duke of Wellington/);
+
+  const directInput={name:"Direct Publish Venue",type:"bar_jukebox",sourceLabels:["Gigs","Menu","Contact Us","Instagram","Facebook"],sourceUrls:["https://venue.example/gigs","https://venue.example/menu","https://venue.example/contact","https://instagram.com/venue","https://facebook.com/venue"],tickerText:"DIRECT PUBLISH VENUE — LIVE EVENTS",aboutText:"Administrator-approved direct publication venue copy.",aggitsOption:"none",youtubeUrl:"",brief:"",posterHeading:"",addWheel:false};
+  const directCreated=await mutate("/api/studio/projects",{input:directInput}).then(response=>response.json());
+  const directVideo=await fetch(`${origin}/api/studio/projects/${directCreated.project.id}/video`,{method:"POST",headers:{origin,"content-type":"video/mp4","x-deep-cuts-studio-token":token,"x-studio-file-name":"direct.mp4"},body:welcomeVideo}).then(response=>response.json());assert.equal(directVideo.project.readiness.handoffReady,true);
+  const directQueued=await mutate(`/api/studio/projects/${directCreated.project.id}/save-publish`,{}).then(response=>response.json());assert.match(directQueued.job.id,/^publication_/);assert.equal(directQueued.venue.admin.sourceStudioProjectId,directCreated.project.id);assert.equal(directQueued.venue.admin.studioActions.length,5);
+  let directJob;for(let attempt=0;attempt<80;attempt++){directJob=await fetch(`${origin}/api/studio/venue-publications/${directQueued.job.id}`).then(response=>response.json()).then(body=>body.job);if(["published","failed"].includes(directJob.status))break;await new Promise(resolve=>setTimeout(resolve,25))}
+  assert.equal(directJob.status,"published",directJob.error);const libraryAfterDirect=await fetch(`${origin}/api/studio/venues`).then(response=>response.json());assert.equal(libraryAfterDirect.venues.filter(venue=>venue.venueName==="Direct Publish Venue").length,1,"One-click transfer must create exactly one visible Venue Library record.");
 }finally{await new Promise(resolve=>server.close(resolve));await fs.rm(temporary,{recursive:true,force:true})}
 
 const green=deriveOverallHealth({...getVenue(library,id001),healthChecks:{website:{success:true,durationMs:100},gigs:{success:true,durationMs:150}},lastUpdateAttempt:"2026-08-01T00:00:00Z",lastSuccessfulUpdate:"2026-08-01T00:00:00Z"},{slowMs:4000,staleDays:14,redAfterFailures:2},new Date("2026-08-02T00:00:00Z"));

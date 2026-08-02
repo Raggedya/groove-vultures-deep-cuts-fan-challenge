@@ -29,6 +29,8 @@ const manifest={
 const validated=__test.validateManifest(manifest);
 assert.equal(validated.ok,true,validated.error);
 assert.equal(validated.value.actions.length,5);
+assert.equal(__test.validateManifest({...manifest,masterId:"Studio_abcdef123456"}).ok,true,"Direct Save Venue + Publish must accept the stable Studio venue identity.");
+assert.equal(__test.validateManifest({...manifest,masterId:"Studio_not-valid"}).ok,false,"Malformed Studio venue identities must fail closed.");
 assert.equal(__test.validateManifest({...manifest,actions:manifest.actions.slice(0,4)}).ok,false,"The publisher must fail closed unless exactly five destinations exist.");
 assert.equal(__test.validateManifest({...manifest,actions:manifest.actions.map((item,index)=>index?item:{...item,url:"http://127.0.0.1/private"})}).ok,false,"Private or non-HTTPS destinations must be rejected.");
 assert.equal(__test.validateManifest({...manifest,video:{...manifest.video,sizeBytes:24*1024*1024+1}}).ok,false,"Oversize public MP4 files must be rejected.");

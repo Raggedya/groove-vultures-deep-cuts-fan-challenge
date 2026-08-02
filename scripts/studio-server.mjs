@@ -75,7 +75,7 @@ export function createStudioServer({
       if(url.pathname.startsWith("/api/studio/")){
         if(request.method!=="GET")authorizeMutation(request,token);
         if(await venueLibrary.handle({request,response,url}))return;
-        return await handleApi({request,response,url,projectRoot,token,researcher});
+        return await handleApi({request,response,url,projectRoot,token,researcher,venueLibrary});
       }
       if(url.pathname==="/studio")return redirect(response,"/studio/");
       if(url.pathname==="/vendor/qrcode.min.js")return await serveFile(response,path.join(root,"scripts","vendor","qrcode.min.js"),path.join(root,"scripts","vendor"));
@@ -90,7 +90,7 @@ export function createStudioServer({
   });
 }
 
-async function handleApi({request,response,url,projectRoot,token,researcher}){
+async function handleApi({request,response,url,projectRoot,token,researcher,venueLibrary}){
   if(request.method==="GET"&&url.pathname==="/api/studio/bootstrap"){
     const projects=await listProjects(projectRoot);
     return sendJson(response,200,{ok:true,token,productTypes:PRODUCT_TYPES,legacyProductTypes:LEGACY_PRODUCT_TYPES,aggitsOptions:AGGITS_OPTIONS,projects});
@@ -105,7 +105,7 @@ async function handleApi({request,response,url,projectRoot,token,researcher}){
     return sendProject(response,201,project,request);
   }
 
-  const match=url.pathname.match(/^\/api\/studio\/projects\/(studio_[a-f0-9]{12})(?:\/(preview|audio|video|logo|revise|research|handoff))?$/);
+  const match=url.pathname.match(/^\/api\/studio\/projects\/(studio_[a-f0-9]{12})(?:\/(preview|audio|video|logo|revise|research|handoff|save-publish))?$/);
   if(!match)throw Object.assign(new Error("Studio route not found."),{code:"ENOENT"});
   const id=assertProjectId(match[1]),action=match[2]||"project";
   const project=await loadProject(projectRoot,id);
@@ -141,6 +141,12 @@ async function handleApi({request,response,url,projectRoot,token,researcher}){
     const updated=attachJookBoxResearch(project,result);
     await saveProject(projectRoot,updated);
     return sendProject(response,200,updated,request);
+  }
+  if(request.method==="POST"&&action==="save-publish"){
+    if(project.input.type!=="bar_jukebox")throw new StudioValidationError("Save Venue + Publish is available only for Bar Edition.","wrong_publish_type");
+    if(!project.mp4)throw new StudioValidationError("Add the local MP4 welcome video before publishing.","missing_video");
+    const result=await venueLibrary.saveStudioProjectAndPublish({project,videoPath:path.join(projectDirectory(projectRoot,id),"welcome.mp4")});
+    return sendJson(response,202,{ok:true,venue:result.venue,created:result.created,job:result.job,readiness:result.readiness});
   }
   if(request.method==="POST"&&action==="audio"){
     const fileName=decodeURIComponent(String(request.headers["x-studio-file-name"]||"audio.mp3"));

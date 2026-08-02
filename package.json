@@ -3,7 +3,7 @@
   "productName": "Deep Cuts Studio",
   "type": "module",
   "private": true,
-  "version": "3.4.1",
+  "version": "3.4.2",
   "description": "Permanent Deep Cuts artist discovery, analytics and publishing platform.",
   "main": "studio/desktop-main.mjs",
   "author": "Clearlight Creative",

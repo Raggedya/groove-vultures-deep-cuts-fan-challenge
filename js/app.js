@@ -247,7 +247,7 @@ function barJookBoxRuntimeConfig(){
     lightSequenceMode:"single-key",
     buttonLightDurationMs:1100,
     coinSound:source.coinSound||"assets/audio/jukebox-real-coin-insert-cc0.mp3",
-    coinSoundSha256:source.coinSoundSha256||"3fd636fe3763b95a09bc8f6be470361ddf0a49e7772464d1a5292fa7c7674e8a",
+    coinSoundSha256:source.coinSoundSha256||"0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
     sessionStorageKey:source.sessionStorageKey||`barJookBoxActivated:${editionEntry.editionId}`,
     tickerBio:String(source.tickerText||"ADMINISTRATOR TICKER TEXT TO BE SUPPLIED.").toUpperCase(),
     tickerDurationSeconds:Math.max(12,Math.min(60,Number(source.tickerDurationSeconds)||34)),
@@ -1193,13 +1193,12 @@ function playJookBoxCoinSound(){
       jookBoxAudio.currentTime=0;
       const playback=jookBoxAudio.play();
       if(playback&&typeof playback.catch==="function")playback.catch(error=>{
-        console.warn("JookBox coin sound playback failed; using the mechanical fallback.",error);
-        playJookBoxCoinFallback();
+        console.warn("JookBox coin recording could not be played; continuing silently.",error);
       });
       return;
-    }catch(error){console.warn("JookBox coin sound playback failed; using the mechanical fallback.",error)}
+    }catch(error){console.warn("JookBox coin recording could not be played; continuing silently.",error)}
   }
-  playJookBoxCoinFallback();
+  console.warn("JookBox coin recording is unavailable; continuing silently.");
 }
 
 function handleJookBoxVisibility(){
@@ -1213,33 +1212,6 @@ function handleJookBoxPageShow(event){
   if(!event.persisted)return;
   if(jookBoxState!=="awake")restoreJookBoxSessionState();
   else startJookBoxKeyLightSequence();
-}
-
-function playJookBoxCoinFallback(){
-  const AudioContext=window.AudioContext||window.webkitAudioContext;
-  if(!AudioContext)return;
-  try{
-    const context=new AudioContext();
-    const master=context.createGain();
-    master.gain.setValueAtTime(.0001,context.currentTime);
-    master.gain.exponentialRampToValueAtTime(.18,context.currentTime+.015);
-    master.gain.exponentialRampToValueAtTime(.0001,context.currentTime+.62);
-    master.connect(context.destination);
-    [1320,1760,980].forEach((frequency,index)=>{
-      const oscillator=context.createOscillator();
-      const gain=context.createGain();
-      const start=context.currentTime+index*.105;
-      oscillator.type=index===2?"triangle":"sine";
-      oscillator.frequency.setValueAtTime(frequency,start);
-      oscillator.frequency.exponentialRampToValueAtTime(frequency*.72,start+.14);
-      gain.gain.setValueAtTime(.0001,start);
-      gain.gain.exponentialRampToValueAtTime(index===2?.38:.22,start+.006);
-      gain.gain.exponentialRampToValueAtTime(.0001,start+.16);
-      oscillator.connect(gain);gain.connect(master);
-      oscillator.start(start);oscillator.stop(start+.18);
-    });
-    window.setTimeout(()=>context.close(),900);
-  }catch(error){console.warn("JookBox fallback coin sound could not be played.",error)}
 }
 
 function configureJookBoxBio(){
