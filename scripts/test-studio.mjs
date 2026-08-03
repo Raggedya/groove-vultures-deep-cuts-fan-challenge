@@ -177,6 +177,9 @@ const sourceFiles=await Promise.all([
   fs.readFile("studio/index.html","utf8"),
   fs.readFile("studio/styles.css","utf8"),
   fs.readFile("studio/app.js","utf8"),
+  fs.readFile("studio/import-editions.html","utf8"),
+  fs.readFile("studio/import-editions.css","utf8"),
+  fs.readFile("studio/import-editions.js","utf8"),
   fs.readFile("studio/venue-library.html","utf8"),
   fs.readFile("studio/venue-library.css","utf8"),
   fs.readFile("studio/venue-library.js","utf8"),
@@ -189,7 +192,7 @@ const sourceFiles=await Promise.all([
   fs.readFile("worker/index.js","utf8"),
   fs.readFile("js/app.js","utf8")
 ]);
-const [html,css,app,venueHtml,venueCss,venueApp,desktopMain,serverSource,forgeConfig,packageSource,macWorkflow,cloudflareBuild,worker,discoveryApp]=sourceFiles;
+const [html,css,app,importHtml,importCss,importApp,venueHtml,venueCss,venueApp,desktopMain,serverSource,forgeConfig,packageSource,macWorkflow,cloudflareBuild,worker,discoveryApp]=sourceFiles;
 assert.match(html,/Deep Cuts Studio/);
 assert.match(html,/Copyright Clearlight Creative/);
 assert.match(html,/APPLY EDITS &amp; RE-CREATE/);
@@ -207,6 +210,14 @@ assert.match(html,/id="aggits-step"/);
 assert.match(html,/id="project-name-label"/);
 assert.match(html,/id="qr-output-title"/);
 assert.match(html,/href="\/studio\/venue-library\.html"/);
+assert.match(html,/href="\/studio\/import-editions\.html"/);
+assert.match(importHtml,/Import Editions/);
+assert.match(importHtml,/NO AUTO-PUBLISH/);
+assert.match(importHtml,/accept="\.csv,\.xlsx/);
+assert.match(importCss,/--brass/);
+assert.match(importApp,/\/api\/studio\/imports\/preflight/);
+assert.match(importHtml,/update_drafts/);
+assert.match(importApp,/ROLLBACK/);
 assert.match(html,/<aside class="output-column" hidden aria-hidden="true">/,"The retired right-hand Studio column must remain absent from the visible interface.");
 assert.match(html,/id="save-publish-venue"[\s\S]*?SAVE VENUE \+ PUBLISH/,"Bar Edition needs one direct Save Venue + Publish control.");
 assert.match(html,/name="addWheel" value="yes"/);
@@ -222,10 +233,12 @@ assert.match(app,/field\.hidden=jookBox/,"The JookBox intake must not ask the ow
 assert.match(app,/type\?\.id==="bar_jukebox"/);
 assert.match(app,/Build the local MP4 JookBox with five links, About Us and the Share bar/);
 assert.match(app,/renderPublicationPendingPoster\(\)/);
-assert.match(app,/PUBLIC QR CREATED AFTER DEPLOYMENT/);
-assert.match(app,/els\.qr\.hidden=bar/);
-assert.match(app,/els\.downloadPoster\.hidden=bar/);
-assert.match(app,/els\.downloadQr\.hidden=bar/);
+assert.match(app,/PUBLIC QR CREATED/);
+assert.match(app,/AFTER PUBLISHING/);
+assert.match(app,/els\.qr\.hidden=publicationType/);
+assert.match(app,/els\.downloadPoster\.hidden=publicationType/);
+assert.match(app,/els\.downloadQr\.hidden=publicationType/);
+assert.match(app,/renderStoredPublication/);
 assert.doesNotMatch(app,/This QR opens the private preview on this computer/);
 assert.match(css,/--orange:#f38a45/);
 assert.match(css,/\.bar-jukebox-mode/);
@@ -250,6 +263,8 @@ assert.match(desktopMain,/if\(isBoundedSmokeTest\)\{\s*app\.disableHardwareAccel
 assert.match(desktopMain,/async function runBoundedPackageSmokeTest\(\)/,"The packaged smoke test must verify the local Studio server without requiring a sandbox GPU renderer.");
 assert.match(desktopMain,/html\.includes\('class="output-column" hidden'\)/,"The packaged smoke test must verify the simplified owner interface.");
 assert.match(desktopMain,/venueHtml\.includes\("Venue Library"\)/,"The packaged smoke test must verify the Venue Library surface.");
+assert.match(desktopMain,/importHtml\.includes\("Import Editions"\)/,"The packaged smoke test must verify the bulk-import surface.");
+assert.match(desktopMain,/importHtml\.includes\("NO AUTO-PUBLISH"\)/,"The packaged smoke test must keep bulk import draft-only.");
 assert.match(desktopMain,/if\(isBoundedSmokeTest\)\{\s*await runBoundedPackageSmokeTest\(\);\s*await stopStudioServer\(\);\s*app\.exit\(0\);\s*return;/,"Bounded verification must close its local server and exit without opening a hardware-rendered test window.");
 assert.match(desktopMain,/isBoundedSmokeTest\|\|app\.requestSingleInstanceLock\(\)/,"Normal desktop launches must retain the single-instance lock.");
 assert.match(desktopMain,/contextIsolation:true/);
@@ -270,6 +285,9 @@ assert.match(forgeConfig,/jukebox-real-coin-insert-cc0\.mp3/);
 assert.match(packageSource,/"studio:desktop": "electron-forge start"/);
 assert.match(packageSource,/"studio:make": "node scripts\/build-studio-windows\.mjs"/);
 const windowsBuilder=await fs.readFile(path.join(process.cwd(),"scripts","build-studio-windows.mjs"),"utf8");
+assert.match(windowsBuilder,/scripts\/aggits-jukebox-preview\.mjs/);
+assert.match(windowsBuilder,/assets\/aggits-jukebox-master-v1\.jpg/);
+assert.match(windowsBuilder,/iconFiles\.length!==110/);
 assert.match(windowsBuilder,/electron-v\$\{electronVersion\}-win32-x64\.zip/);
 assert.match(windowsBuilder,/iexpress\.exe/);
 assert.match(windowsBuilder,/Deep-Cuts-Studio-\$\{version\}-Windows-x64\.zip/);
@@ -301,11 +319,23 @@ try{
   const bootstrap=await fetch(`${origin}/api/studio/bootstrap`).then(response=>response.json());
   assert.equal(bootstrap.ok,true);
   assert.equal(bootstrap.token,token);
-  assert.deepEqual(bootstrap.productTypes.map(item=>item.id),["bar_jukebox","jookbox","business","recruitment","individual_band","restaurant","tourist_attraction","town"]);
+  assert.deepEqual(bootstrap.productTypes.map(item=>item.id),["aggits_jukebox","bar_jukebox","jookbox","business","recruitment","individual_band","restaurant","tourist_attraction","town"]);
+  assert.equal(bootstrap.aggitsJukeboxIcons.length,110,"Studio must expose the complete approved Aggits Jukebox icon library.");
   assert.ok(bootstrap.legacyProductTypes.some(item=>item.id==="music"),"Legacy Studio drafts must remain loadable.");
 
   const missing=await fetch(`${origin}/studio/favicon.ico`);
   assert.equal(missing.status,404,"Missing static files must return 404 without crashing Studio.");
+
+  const importPage=await fetch(`${origin}/studio/import-editions.html`);
+  assert.equal(importPage.status,200,"The private import surface must be served by Studio.");
+  assert.match(await importPage.text(),/Create local drafts only/);
+
+  const rejectedImport=await fetch(`${origin}/api/studio/imports/preflight`,{
+    method:"POST",
+    headers:{"content-type":"text/csv","origin":origin,"x-studio-file-name":"sample.csv"},
+    body:"record_id"
+  });
+  assert.equal(rejectedImport.status,400,"Import writes require the local Studio token.");
 
   const rejected=await fetch(`${origin}/api/studio/projects`,{
     method:"POST",

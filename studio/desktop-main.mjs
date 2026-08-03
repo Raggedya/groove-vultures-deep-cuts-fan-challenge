@@ -147,12 +147,13 @@ function createPublisherCredentialStore(filePath){
 
 async function runBoundedPackageSmokeTest(){
   if(!studioOrigin)await startStudioServer();
-  const [response,venueResponse]=await Promise.all([
+  const [response,venueResponse,importResponse]=await Promise.all([
     fetch(`${studioOrigin}/studio/`),
-    fetch(`${studioOrigin}/studio/venue-library.html`)
+    fetch(`${studioOrigin}/studio/venue-library.html`),
+    fetch(`${studioOrigin}/studio/import-editions.html`)
   ]);
-  const [html,venueHtml]=await Promise.all([response.text(),venueResponse.text()]);
-  if(!response.ok||!venueResponse.ok||!html.includes("Deep Cuts Studio")||!html.includes('class="output-column" hidden')||!venueHtml.includes("Venue Library")||!venueHtml.includes('id="venue-published-toggle"')){
+  const [html,venueHtml,importHtml]=await Promise.all([response.text(),venueResponse.text(),importResponse.text()]);
+  if(!response.ok||!venueResponse.ok||!importResponse.ok||!html.includes("Deep Cuts Studio")||!html.includes('class="output-column" hidden')||!venueHtml.includes("Venue Library")||!venueHtml.includes('id="venue-published-toggle"')||!importHtml.includes("Import Editions")||!importHtml.includes("NO AUTO-PUBLISH")){
     throw new Error("The packaged Studio server did not return the simplified owner interface.");
   }
 }
