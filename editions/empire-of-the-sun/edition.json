@@ -1,0 +1,162 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Empire of the Sun",
+  "editionTitle": "Empire of the Sun",
+  "description": "Empire of the Sun, the visionary Australian electronic duo comprising Luke Steele and Nick Littlemore, have been making waves across the world with phenomenal live shows and anthemic...",
+  "discovery": {
+    "bio": "Empire of the Sun, the visionary Australian electronic duo comprising Luke Steele and Nick Littlemore, have been making waves across the world with phenomenal live shows and anthemic...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "empire-of-the-sun",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_8517649a4b",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/empire-of-the-sun/instagram-discovery.png",
+    "qrImage": "output/empire-of-the-sun/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "",
+    "spotify": "https://open.spotify.com/artist/67hb7towEyKvt5Z8Bx306c",
+    "instagram": "https://www.instagram.com/empireofthesunsound/",
+    "website": "https://empireofthesun.co/",
+    "buyMusic": "",
+    "merchandise": "https://empireofthesun.store/",
+    "facebook": "",
+    "youtube": "https://www.youtube.com/channel/UCyacMWc-JhzX6iq2PCF-4jw"
+  },
+  "featuredVideo": {
+    "title": "Empire Of The Sun - Chapter 3: The Beginning",
+    "youtubeURL": "https://www.youtube.com/watch?v=D2KUK3P8_Y0",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:52:53.384Z"
+  },
+  "analytics": {
+    "editionId": "dc_8517649a4b",
+    "pageIdentifier": "dc_8517649a4b:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_81565b56-c76e-497d-ad57-3ac1954de712",
+    "submittedAt": "2026-08-03T11:29:07.037Z",
+    "researchCompletedAt": "2026-08-03T11:54:14.846Z",
+    "editionCreatedAt": "2026-08-03T11:54:14.846Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_8517649a4b",
+    "tickerBio": "EMPIRE OF THE SUN, THE VISIONARY AUSTRALIAN ELECTRONIC DUO COMPRISING LUKE STEELE AND NICK LITTLEMORE, HAVE BEEN MAKING WAVES ACROSS THE WORLD WITH PHENOMENAL LIVE SHOWS AND ANTHEMIC SMASH HITS FOR THE LAST DECADE AS ONE OF AUSTRALIA’S MOST SUCCESSFUL MUSICAL EXPORTS. THEIR SEMINAL DEBUT ALBUM, WALKING ON A DREAM, WHICH THE MUSICIANS DESCRIBED AS \"A SPIRITUAL ROAD MOVIE\" SPAWNED ICONIC SINGLES “WALKING ON A DREAM” AN",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "spotify-49c4148d",
+      "youtube-335b7593",
+      "instagram-fd6696f2",
+      "website-219aa7ad",
+      "merchandise-c843f342"
+    ],
+    "marquee": "Empire of the Sun",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://empireofthesun.co/",
+    "linkSourceVerifiedAt": "2026-08-03T11:52:45.520Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "spotify-49c4148d",
+        "sourceTitle": "Spotify",
+        "label": "Spotify",
+        "detail": "Listen on Spotify",
+        "url": "https://open.spotify.com/artist/67hb7towEyKvt5Z8Bx306c",
+        "platform": "website",
+        "kind": "spotify"
+      },
+      {
+        "id": "youtube-335b7593",
+        "sourceTitle": "YouTube",
+        "label": "YouTube",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/channel/UCyacMWc-JhzX6iq2PCF-4jw",
+        "platform": "youtube",
+        "kind": "youtube"
+      },
+      {
+        "id": "instagram-fd6696f2",
+        "sourceTitle": "Instagram",
+        "label": "Instagram",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/empireofthesunsound/",
+        "platform": "instagram",
+        "kind": "instagram"
+      },
+      {
+        "id": "website-219aa7ad",
+        "sourceTitle": "Band Website",
+        "label": "Band Website",
+        "detail": "Visit the official website",
+        "url": "https://empireofthesun.co/",
+        "platform": "website",
+        "kind": "website"
+      },
+      {
+        "id": "merchandise-c843f342",
+        "sourceTitle": "Official Link Store",
+        "label": "Official Link Store",
+        "detail": "Official band merchandise",
+        "url": "https://empireofthesun.store/",
+        "platform": "merchandise",
+        "kind": "merchandise"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://www.youtube.com/channel/UCyacMWc-JhzX6iq2PCF-4jw",
+      "paragraphs": [
+        "Empire of the Sun, the visionary Australian electronic duo comprising Luke Steele and Nick Littlemore, have been making waves across the world with phenomenal live shows and anthemic smash hits for the last decade as one of Australia’s most successful musical exports. Their seminal debut album, Walking On A Dream, which the musicians described as \"a spiritual road movie\" spawned iconic singles “Walking On A Dream” an"
+      ]
+    }
+  }
+}

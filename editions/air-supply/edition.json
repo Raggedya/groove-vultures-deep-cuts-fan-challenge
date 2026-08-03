@@ -1,0 +1,190 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Air Supply",
+  "editionTitle": "Air Supply",
+  "description": "50 years since they met in the chorus of the Australian touring company of Jesus Christ Superstar, the duo is ever-present on the road in North America and overseas to the tune of 130...",
+  "discovery": {
+    "bio": "50 years since they met in the chorus of the Australian touring company of Jesus Christ Superstar, the duo is ever-present on the road in North America and overseas to the tune of 130...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "air-supply",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_151a0f73fc",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/air-supply/instagram-discovery.png",
+    "qrImage": "output/air-supply/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "",
+    "spotify": "https://open.spotify.com/artist/4xXCRXOfQKQ2gjWxNhNzYW?nd=1",
+    "instagram": "https://www.instagram.com/airsupplymusic/",
+    "website": "https://airsupplymusic.com/",
+    "buyMusic": "https://airsupplymusic.com/discography/",
+    "merchandise": "https://shop.airsupplymusic.com/",
+    "facebook": "https://www.facebook.com/airsupplymusic/",
+    "youtube": "https://www.youtube.com/channel/UCLIx3q_0KLVHAxgxsvh_vSQ"
+  },
+  "featuredVideo": {
+    "title": "Air Supply - All Out of Love (Into the Night With Rick Dees, 1991)",
+    "youtubeURL": "https://www.youtube.com/watch?v=gppjjSlwqrI",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:22:48.606Z"
+  },
+  "analytics": {
+    "editionId": "dc_151a0f73fc",
+    "pageIdentifier": "dc_151a0f73fc:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_1ffd2e9d-6eeb-4a37-94aa-7e2cce02c151",
+    "submittedAt": "2026-08-03T11:28:58.819Z",
+    "researchCompletedAt": "2026-08-03T11:28:58.929Z",
+    "editionCreatedAt": "2026-08-03T11:28:58.929Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_151a0f73fc",
+    "tickerBio": "50 YEARS SINCE THEY MET IN THE CHORUS OF THE AUSTRALIAN TOURING COMPANY OF JESUS CHRIST SUPERSTAR, THE DUO IS EVER-PRESENT ON THE ROAD IN NORTH AMERICA AND OVERSEAS TO THE TUNE OF 130 DATES A YEAR. THIS RUN INCLUDES BEING THE FIRST WESTERN GROUP TO TOUR CHINA AND SEVERAL OTHER COUNTRIES WHO PRIOR TO THEIR BREAKTHROUGH WOULD NOT ALLOW POP MUSIC ACROSS THEIR BORDERS, AS WELL AS PERFORMING FOR A RECORD 175,000 PEOPLE I",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "spotify-ecc0674d",
+      "youtube-ad3fcd2a",
+      "instagram-7b38ebd7",
+      "website-b8641917",
+      "buy_music-f778e6a5",
+      "merchandise-4fdf7aa8"
+    ],
+    "marquee": "Air Supply",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://airsupplymusic.com/",
+    "linkSourceVerifiedAt": "2026-08-03T11:22:42.905Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "website-b8641917",
+        "sourceTitle": "Band Website",
+        "label": "Band Website",
+        "detail": "Visit the official website",
+        "url": "https://airsupplymusic.com/",
+        "platform": "website",
+        "kind": "website"
+      },
+      {
+        "id": "buy_music-f778e6a5",
+        "sourceTitle": "Discography",
+        "label": "Discography",
+        "detail": "Purchase music online",
+        "url": "https://airsupplymusic.com/discography/",
+        "platform": "website",
+        "kind": "buy_music"
+      },
+      {
+        "id": "merchandise-4fdf7aa8",
+        "sourceTitle": "Store",
+        "label": "Store",
+        "detail": "Official band merchandise",
+        "url": "https://shop.airsupplymusic.com/",
+        "platform": "merchandise",
+        "kind": "merchandise"
+      },
+      {
+        "id": "facebook-eafc52dc",
+        "sourceTitle": "Facebook",
+        "label": "Facebook",
+        "detail": "Follow the band",
+        "url": "https://www.facebook.com/airsupplymusic/",
+        "platform": "facebook",
+        "kind": "facebook"
+      },
+      {
+        "id": "instagram-7b38ebd7",
+        "sourceTitle": "Instagram",
+        "label": "Instagram",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/airsupplymusic/",
+        "platform": "instagram",
+        "kind": "instagram"
+      },
+      {
+        "id": "youtube-ad3fcd2a",
+        "sourceTitle": "YouTube",
+        "label": "YouTube",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/channel/UCLIx3q_0KLVHAxgxsvh_vSQ",
+        "platform": "youtube",
+        "kind": "youtube"
+      },
+      {
+        "id": "spotify-ecc0674d",
+        "sourceTitle": "Spotify",
+        "label": "Spotify",
+        "detail": "Listen on Spotify",
+        "url": "https://open.spotify.com/artist/4xXCRXOfQKQ2gjWxNhNzYW?nd=1",
+        "platform": "website",
+        "kind": "spotify"
+      },
+      {
+        "id": "newsletter-467e86e7",
+        "sourceTitle": "Newsletter",
+        "label": "Newsletter",
+        "detail": "Join the official mailing list",
+        "url": "https://assets.mailerlite.com/jsonp/424592/forms/87357176953177952/subscribe",
+        "platform": "website",
+        "kind": "newsletter"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://airsupplymusic.com/",
+      "paragraphs": [
+        "50 years since they met in the chorus of the Australian touring company of Jesus Christ Superstar, the duo is ever-present on the road in North America and overseas to the tune of 130 dates a year. This run includes being the first Western group to tour China and several other countries who prior to their breakthrough would not allow pop music across their borders, as well as performing for a record 175,000 people i"
+      ]
+    }
+  }
+}

@@ -1,0 +1,208 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Bee Gees",
+  "editionTitle": "Bee Gees",
+  "description": "There was no escaping the Brothers Gibb in 1978! That year, the band had an impressive eight number one songs – though, not all of them were performed by the... The band has always been...",
+  "discovery": {
+    "bio": "There was no escaping the Brothers Gibb in 1978! That year, the band had an impressive eight number one songs – though, not all of them were performed by the... The band has always been...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "bee-gees",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_f3ec5855a9",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/bee-gees/instagram-discovery.png",
+    "qrImage": "output/bee-gees/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "",
+    "spotify": "https://open.spotify.com/artist/1LZEQNv7sE11VDY3SdxQeN",
+    "instagram": "https://www.instagram.com/beegees/",
+    "website": "https://www.beegees.com/",
+    "buyMusic": "https://www.beegees.com/discography/",
+    "merchandise": "https://shop.beegees.com/",
+    "facebook": "https://www.facebook.com/beegees",
+    "youtube": "https://www.youtube.com/beegees"
+  },
+  "featuredVideo": {
+    "title": "Bee Gees - Tragedy (Official Music Video)",
+    "youtubeURL": "https://www.youtube.com/watch?v=I248-SyRDnU",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:22:35.908Z"
+  },
+  "analytics": {
+    "editionId": "dc_f3ec5855a9",
+    "pageIdentifier": "dc_f3ec5855a9:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_2edb817c-94b2-484f-9862-868a145bbf88",
+    "submittedAt": "2026-08-03T11:28:57.659Z",
+    "researchCompletedAt": "2026-08-03T11:28:57.770Z",
+    "editionCreatedAt": "2026-08-03T11:28:57.770Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_f3ec5855a9",
+    "tickerBio": "THERE WAS NO ESCAPING THE BROTHERS GIBB IN 1978! THAT YEAR, THE BAND HAD AN IMPRESSIVE EIGHT NUMBER ONE SONGS – THOUGH, NOT ALL OF THEM WERE PERFORMED BY THE... THE BAND HAS ALWAYS BEEN KNOWN FOR THEIR INCREDIBLY MOVING LOVE SONGS, SO WE’VE COMPILED THEM ALL HERE INTO A COLLECTION THAT INCLUDES “TOO MUCH HEAVEN,” “EMOTION,” AND MORE. THE BEE GEES LOVE SONGS PLAYLIST IS AN EXPERIENCE TO ENJOY WHETHER IT’S VALENTINE’S ",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "spotify-50de45d6",
+      "youtube-115e0898",
+      "instagram-d1898c31",
+      "website-0f1cc5e3",
+      "buy_music-6c4bec6a",
+      "merchandise-45a2c623"
+    ],
+    "marquee": "Bee Gees",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://www.beegees.com/",
+    "linkSourceVerifiedAt": "2026-08-03T11:22:26.953Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "buy_music-6c4bec6a",
+        "sourceTitle": "Discography",
+        "label": "Discography",
+        "detail": "Purchase music online",
+        "url": "https://www.beegees.com/discography/",
+        "platform": "website",
+        "kind": "buy_music"
+      },
+      {
+        "id": "merchandise-45a2c623",
+        "sourceTitle": "Shop",
+        "label": "Shop",
+        "detail": "Official band merchandise",
+        "url": "https://shop.beegees.com/",
+        "platform": "merchandise",
+        "kind": "merchandise"
+      },
+      {
+        "id": "newsletter-7e40800c",
+        "sourceTitle": "Subscribe",
+        "label": "Subscribe",
+        "detail": "Join the official mailing list",
+        "url": "https://www.beegees.com/subscribe/",
+        "platform": "website",
+        "kind": "newsletter"
+      },
+      {
+        "id": "website-0f1cc5e3",
+        "sourceTitle": "Social",
+        "label": "Social",
+        "detail": "Visit the official website",
+        "url": "https://www.beegees.com/",
+        "platform": "website",
+        "kind": "website"
+      },
+      {
+        "id": "facebook-b4b96987",
+        "sourceTitle": "Facebook",
+        "label": "Facebook",
+        "detail": "Follow the band",
+        "url": "https://www.facebook.com/beegees",
+        "platform": "facebook",
+        "kind": "facebook"
+      },
+      {
+        "id": "instagram-d1898c31",
+        "sourceTitle": "Instagram",
+        "label": "Instagram",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/beegees/",
+        "platform": "instagram",
+        "kind": "instagram"
+      },
+      {
+        "id": "youtube-115e0898",
+        "sourceTitle": "YouTube",
+        "label": "YouTube",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/beegees",
+        "platform": "youtube",
+        "kind": "youtube"
+      },
+      {
+        "id": "spotify-50de45d6",
+        "sourceTitle": "Spotify",
+        "label": "Spotify",
+        "detail": "Listen on Spotify",
+        "url": "https://open.spotify.com/artist/1LZEQNv7sE11VDY3SdxQeN",
+        "platform": "website",
+        "kind": "spotify"
+      },
+      {
+        "id": "newsletter-1d120e7e",
+        "sourceTitle": "Newsletter",
+        "label": "Newsletter",
+        "detail": "Join the official mailing list",
+        "url": "https://www.beegees.com/wp-content/plugins/umg-newsletter/public/assets/icons/",
+        "platform": "website",
+        "kind": "newsletter"
+      },
+      {
+        "id": "newsletter-82332d7a",
+        "sourceTitle": "Newsletter",
+        "label": "Newsletter",
+        "detail": "Join the official mailing list",
+        "url": "https://www.beegees.com/wp-content/plugins/umg-newsletter/public/assets/flags/",
+        "platform": "website",
+        "kind": "newsletter"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://www.beegees.com/",
+      "paragraphs": [
+        "There was no escaping the Brothers Gibb in 1978! That year, the band had an impressive eight number one songs – though, not all of them were performed by the... The band has always been known for their incredibly moving love songs, so we’ve compiled them all here into a collection that includes “Too Much Heaven,” “Emotion,” and more. The Bee Gees Love Songs playlist is an experience to enjoy whether it’s Valentine’s Day or an occasion when you’re thinking about or spending time with those you hold dear!"
+      ]
+    }
+  }
+}

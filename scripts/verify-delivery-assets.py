@@ -54,12 +54,17 @@ def verify_edition(platform: dict, edition: dict) -> None:
         fail(slug, f"manifest destination must be {expected_url}")
 
     instagram = verify_image(slug, manifest, "instagramImage", (1080, 1080))
-    qr_size = (1920, 1080) if config.get("editionType") == "bar_jukebox" else (1080, 1080)
+    if config.get("editionType") == "bar_jukebox":
+        qr_size = (1920, 1080)
+    elif config.get("editionType") == "jukebox" and config.get("jookBox", {}).get("qrArtworkVariant") == "aggits-character-poster/1":
+        qr_size = (1254, 1254)
+    else:
+        qr_size = (1080, 1080)
     qr_image = verify_image(slug, manifest, "qrImage", qr_size)
     if instagram == qr_image:
         fail(slug, "discovery and QR artwork paths must remain distinct")
 
-    verify_qr(slug, qr_image, expected_url)
+    verify_qr(slug, qr_image, expected_url, compact_required=qr_size == (1254, 1254))
 
 
 def verify_image(slug: str, manifest: dict, key: str, expected_size: tuple[int, int]) -> Path:
@@ -84,15 +89,22 @@ def verify_image(slug: str, manifest: dict, key: str, expected_size: tuple[int, 
     return path
 
 
-def verify_qr(slug: str, path: Path, expected_url: str) -> None:
+def verify_qr(slug: str, path: Path, expected_url: str, compact_required: bool = False) -> None:
     with Image.open(path) as image:
         original = zxingcpp.read_barcode(image)
         reduced_size = (960, 540) if image.width > image.height else (540, 540)
         reduced = zxingcpp.read_barcode(image.resize(reduced_size, Image.Resampling.LANCZOS))
+        compact = (
+            zxingcpp.read_barcode(image.resize((360, 360), Image.Resampling.LANCZOS))
+            if compact_required
+            else None
+        )
     if original is None or original.text != expected_url:
         fail(slug, "full-size QR scan-back failed")
     if reduced is None or reduced.text != expected_url:
         fail(slug, "reduced-size QR scan-back failed")
+    if compact_required and (compact is None or compact.text != expected_url):
+        fail(slug, "compact-phone QR scan-back failed")
 
 
 def parse_arguments() -> argparse.Namespace:

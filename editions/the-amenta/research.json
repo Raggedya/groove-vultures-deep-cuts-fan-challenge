@@ -1,0 +1,128 @@
+{
+  "bandName": "The Amenta",
+  "slug": "the-amenta",
+  "editionId": "dc_60121e87bd",
+  "verifiedAt": "2026-08-03T11:29:07.909Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://theamenta1.bandcamp.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:28.532Z",
+      "evidence": "The page identified The Amenta and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.facebook.com/theamenta",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:28.940Z",
+      "evidence": "The page identified The Amenta and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:bandcamp-dbb5841f",
+      "url": "https://bandcamp.com/?from=menubar_logo_logged_out",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:29.332Z",
+      "evidence": "Bandcamp resolved directly from an identity-matched artist-controlled source for The Amenta."
+    },
+    {
+      "destination": "bandcamp",
+      "url": "https://bandcamp.com/?from=menubar_logo_logged_out",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:29.332Z",
+      "evidence": "Bandcamp resolved directly from an identity-matched artist-controlled source for The Amenta."
+    },
+    {
+      "destination": "selection:facebook-43de52d1",
+      "url": "https://www.facebook.com/theamenta/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:31.958Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched The Amenta."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/theamenta/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:31.958Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched The Amenta."
+    },
+    {
+      "destination": "selection:instagram-cfff5391",
+      "url": "https://www.instagram.com/the_amenta/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:32.189Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched The Amenta."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/the_amenta/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:32.189Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched The Amenta."
+    },
+    {
+      "destination": "selection:youtube-244f87ed",
+      "url": "https://www.youtube.com/user/theamenta/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:31.892Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched The Amenta."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/user/theamenta/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:31.892Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched The Amenta."
+    },
+    {
+      "destination": "selection:merchandise-b5b03ffc",
+      "url": "https://direct-merch.com/collections/the-amenta",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:32.509Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched The Amenta."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://direct-merch.com/collections/the-amenta",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:32.509Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched The Amenta."
+    },
+    {
+      "destination": "biography",
+      "url": "https://theamenta1.bandcamp.com/",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:33.539Z",
+      "evidence": "The official source supplied the concise biography text used by the The Amenta ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=A6SEkwMv4ig",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:33.108Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured The Amenta video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://theamenta1.bandcamp.com/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:28.532Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for The Amenta."
+    }
+  ]
+}

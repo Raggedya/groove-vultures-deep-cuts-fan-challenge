@@ -1,0 +1,172 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Wolfmother",
+  "editionTitle": "Wolfmother",
+  "description": "Wolfmother 🇦🇺 25-07-2026 Wolfmother is an Australian hard rock band from Sydney, formed in 2004. They're known for blending classic '70s-inspired hard rock with psychedelic and stoner...",
+  "discovery": {
+    "bio": "Wolfmother 🇦🇺 25-07-2026 Wolfmother is an Australian hard rock band from Sydney, formed in 2004. They're known for blending classic '70s-inspired hard rock with psychedelic and stoner...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "wolfmother",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_b52be0b54a",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/wolfmother/instagram-discovery.png",
+    "qrImage": "output/wolfmother/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "https://wolfmother.bandcamp.com/",
+    "spotify": "",
+    "instagram": "https://www.instagram.com/officialwolfmother",
+    "website": "https://wolfmother.com/",
+    "buyMusic": "",
+    "merchandise": "",
+    "facebook": "",
+    "youtube": ""
+  },
+  "featuredVideo": {
+    "title": "Wolfmother - Love Train (Audio / Chicken Lips Remix)",
+    "youtubeURL": "https://www.youtube.com/watch?v=gu53f8umqZE",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:32:24.423Z"
+  },
+  "analytics": {
+    "editionId": "dc_b52be0b54a",
+    "pageIdentifier": "dc_b52be0b54a:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_40b8eddd-017b-4407-9d84-15c350c5d444",
+    "submittedAt": "2026-08-03T11:28:53.958Z",
+    "researchCompletedAt": "2026-08-03T11:33:35.185Z",
+    "editionCreatedAt": "2026-08-03T11:33:35.185Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_b52be0b54a",
+    "tickerBio": "WOLFMOTHER 🇦🇺 25-07-2026 WOLFMOTHER IS AN AUSTRALIAN HARD ROCK BAND FROM SYDNEY, FORMED IN 2004. THEY'RE KNOWN FOR BLENDING CLASSIC '70S-INSPIRED HARD ROCK WITH PSYCHEDELIC AND STONER ROCK INFLUENCES. THE BAND'S DRIVING FORCE IS ANDREW STOCKDALE, WHO SINGS, PLAYS GUITAR, AND WRITES MOST OF THE MUSIC. WHILE THE LINEUP HAS CHANGED MANY TIMES OVER THE YEARS, STOCKDALE HAS REMAINED THE BAND'S ONLY CONSTANT MEMBER, AT @",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "bandcamp-c2a5a5b5",
+      "instagram-0fd80ac3",
+      "website-5be777c4",
+      "newsletter-1938afad",
+      "newsletter-dbc7645b",
+      "contact-267eb574"
+    ],
+    "marquee": "Wolfmother",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://wolfmother.com/",
+    "linkSourceVerifiedAt": "2026-08-03T11:32:18.407Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "instagram-0fd80ac3",
+        "sourceTitle": "Instagram",
+        "label": "Instagram",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/officialwolfmother",
+        "platform": "instagram",
+        "kind": "instagram"
+      },
+      {
+        "id": "newsletter-1938afad",
+        "sourceTitle": "Follow us",
+        "label": "Follow us",
+        "detail": "Join the official mailing list",
+        "url": "https://www.bandsintown.com/artist-subscribe/238?app_id=bandzoogle",
+        "platform": "website",
+        "kind": "newsletter"
+      },
+      {
+        "id": "newsletter-dbc7645b",
+        "sourceTitle": "Request a show",
+        "label": "Request a show",
+        "detail": "Join the official mailing list",
+        "url": "https://www.bandsintown.com/artist-subscribe/238?app_id=bandzoogle&play_my_city=true",
+        "platform": "website",
+        "kind": "newsletter"
+      },
+      {
+        "id": "contact-267eb574",
+        "sourceTitle": "Contact",
+        "label": "Contact",
+        "detail": "Official band enquiries",
+        "url": "https://wolfmother.com/go/help",
+        "platform": "website",
+        "kind": "contact"
+      },
+      {
+        "id": "website-5be777c4",
+        "sourceTitle": "Band Website",
+        "label": "Band Website",
+        "detail": "Visit the official website",
+        "url": "https://wolfmother.com/",
+        "platform": "website",
+        "kind": "website"
+      },
+      {
+        "id": "bandcamp-c2a5a5b5",
+        "sourceTitle": "Bandcamp",
+        "label": "Bandcamp",
+        "detail": "Listen and buy direct",
+        "url": "https://wolfmother.bandcamp.com/",
+        "platform": "website",
+        "kind": "bandcamp"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://www.instagram.com/officialwolfmother/",
+      "paragraphs": [
+        "Wolfmother 🇦🇺 25-07-2026 Wolfmother is an Australian hard rock band from Sydney, formed in 2004. They're known for blending classic '70s-inspired hard rock with psychedelic and stoner rock influences. The band's driving force is Andrew Stockdale, who sings, plays guitar, and writes most of the music. While the lineup has changed many times over the years, Stockdale has remained the band's only constant member, at @"
+      ]
+    }
+  }
+}

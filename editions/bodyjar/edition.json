@@ -1,0 +1,172 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Bodyjar",
+  "editionTitle": "Bodyjar",
+  "description": "MELBOURNE! Absolutely stoked to announce we’re playing the return of the iconic PUSH OVER festival on Sat November 21st at the Royal Botanic Gardens! ☀️ Push Over holds a massive place...",
+  "discovery": {
+    "bio": "MELBOURNE! Absolutely stoked to announce we’re playing the return of the iconic PUSH OVER festival on Sat November 21st at the Royal Botanic Gardens! ☀️ Push Over holds a massive place...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "bodyjar",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_7a9c18a18e",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/bodyjar/instagram-discovery.png",
+    "qrImage": "output/bodyjar/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "",
+    "spotify": "",
+    "instagram": "https://www.instagram.com/bodyjar_official/",
+    "website": "",
+    "buyMusic": "https://www.bodyjar.com/releases.html",
+    "merchandise": "https://localitystore.com.au/collections/bodyjar",
+    "facebook": "https://www.facebook.com/bodyjar",
+    "youtube": "https://www.youtube.com/user/officialbodyjar"
+  },
+  "featuredVideo": {
+    "title": "Bodyjar - Sound Of The Stereo [Official Music Video]",
+    "youtubeURL": "https://www.youtube.com/watch?v=mmcQ6vQKiLw",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:22:45.070Z"
+  },
+  "analytics": {
+    "editionId": "dc_7a9c18a18e",
+    "pageIdentifier": "dc_7a9c18a18e:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_5d732ff3-c9b5-4012-a327-a51ab605cbbe",
+    "submittedAt": "2026-08-03T11:28:57.992Z",
+    "researchCompletedAt": "2026-08-03T11:28:58.106Z",
+    "editionCreatedAt": "2026-08-03T11:28:58.106Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_7a9c18a18e",
+    "tickerBio": "MELBOURNE! ABSOLUTELY STOKED TO ANNOUNCE WE’RE PLAYING THE RETURN OF THE ICONIC PUSH OVER FESTIVAL ON SAT NOVEMBER 21ST AT THE ROYAL BOTANIC GARDENS! ☀️ PUSH OVER HOLDS A MASSIVE PLACE IN AUSSIE MUSIC HISTORY, AND TO BE PART OF CELEBRATING 40 YEARS OF THE PUSH ALONGSIDE OUR OLD MATES FRENZAL RHOMB, REGURGITATOR, MAGIC DIRT, KILLING HEIDI, AND A HEAPS GOOD LINEUP OF LEGENDARY AUSSIE ACTS IS GOING TO BE SOMETHING SPECI",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "youtube-7cd7eda1",
+      "instagram-28f4ff39",
+      "buy_music-7837b56c",
+      "merchandise-5ff00f90",
+      "facebook-0853c897",
+      "contact-994b112e"
+    ],
+    "marquee": "Bodyjar",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://www.bodyjar.com/",
+    "linkSourceVerifiedAt": "2026-08-03T11:22:34.496Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "buy_music-7837b56c",
+        "sourceTitle": "Buy Music",
+        "label": "Buy Music",
+        "detail": "Purchase music online",
+        "url": "https://www.bodyjar.com/releases.html",
+        "platform": "website",
+        "kind": "buy_music"
+      },
+      {
+        "id": "contact-994b112e",
+        "sourceTitle": "Contact",
+        "label": "Contact",
+        "detail": "Official band enquiries",
+        "url": "https://www.bodyjar.com/contact.html",
+        "platform": "website",
+        "kind": "contact"
+      },
+      {
+        "id": "instagram-28f4ff39",
+        "sourceTitle": "Instagram",
+        "label": "Instagram",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/bodyjar_official/",
+        "platform": "instagram",
+        "kind": "instagram"
+      },
+      {
+        "id": "facebook-0853c897",
+        "sourceTitle": "Facebook",
+        "label": "Facebook",
+        "detail": "Follow the band",
+        "url": "https://www.facebook.com/bodyjar",
+        "platform": "facebook",
+        "kind": "facebook"
+      },
+      {
+        "id": "youtube-7cd7eda1",
+        "sourceTitle": "YouTube",
+        "label": "YouTube",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/user/officialbodyjar",
+        "platform": "youtube",
+        "kind": "youtube"
+      },
+      {
+        "id": "merchandise-5ff00f90",
+        "sourceTitle": "MERCH",
+        "label": "MERCH",
+        "detail": "Official band merchandise",
+        "url": "https://localitystore.com.au/collections/bodyjar",
+        "platform": "merchandise",
+        "kind": "merchandise"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://www.instagram.com/bodyjar_official/",
+      "paragraphs": [
+        "MELBOURNE! Absolutely stoked to announce we’re playing the return of the iconic PUSH OVER festival on Sat November 21st at the Royal Botanic Gardens! ☀️ Push Over holds a massive place in Aussie music history, and to be part of celebrating 40 Years of The Push alongside our old mates Frenzal Rhomb, Regurgitator, Magic Dirt, Killing Heidi, and a heaps good lineup of legendary Aussie acts is going to be something speci"
+      ]
+    }
+  }
+}

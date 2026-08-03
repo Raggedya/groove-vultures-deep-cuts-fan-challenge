@@ -82,6 +82,7 @@ if(editionType==='jukebox'){
     lightSequence:true,
     lightSequenceMode:'single-key',
     appearanceVariant,
+    qrArtworkVariant:'aggits-character-poster/1',
     supportAction:{action:'share',label:'Support Our Band',detail:'Please share our JookBox',kind:'share',icon:'\u2661',detailIcon:'\u2197'},
     cabinetCopyright:'Copyright Clearlight Creative 2026.',
     coinStart:true,

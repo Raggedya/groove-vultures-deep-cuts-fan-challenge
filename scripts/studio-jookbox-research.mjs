@@ -16,7 +16,7 @@ const PLATFORM_HOSTS=new Set([
 const IGNORED_HOSTS=new Set([
   "google.com","www.google.com","googleusercontent.com","gstatic.com",
   "doubleclick.net","www.youtube-nocookie.com","schema.org",
-  "twitter.com","x.com","pinterest.com","linkedin.com"
+  "twitter.com","x.com","pinterest.com","linkedin.com","browsehappy.com"
 ]);
 const IGNORED_EXTENSIONS=/\.(?:css|js|mjs|map|png|jpe?g|gif|svg|webp|ico|woff2?|ttf|eot|pdf|xml)(?:$|\?)/i;
 const KIND_PRIORITY=[
@@ -194,7 +194,10 @@ export async function researchStudioJookBox(input,{network=new StudioResearchNet
   ));
   for(const page of verifiedRoots){
     const kind=classifyURL(page.finalURL,"",bandName);
-    if(kind==="website")sourceEntries.push({url:page.finalURL,label:"Official Website",sourceURL:page.finalURL,sourceIdentity:true});
+    if(kind){
+      const [label]=KIND_LABELS[kind]||["Official destination"];
+      sourceEntries.push({url:page.finalURL,label,sourceURL:page.finalURL,sourceIdentity:true});
+    }
   }
   if(suppliedVideo)sourceEntries.push({url:suppliedVideo,label:"Owner-supplied YouTube lead",sourceURL:suppliedVideo,sourceIdentity:false});
 
@@ -202,10 +205,15 @@ export async function researchStudioJookBox(input,{network=new StudioResearchNet
     .map(entry=>({...entry,kind:classifyEntry(entry,bandName)}))
     .filter(entry=>entry.kind));
 
-  const destinationCandidates=candidates.slice(0,40).filter(candidate=>isDirectDestination(candidate.kind,candidate.url));
+  const destinationCandidates=candidates
+    .filter(candidate=>isDirectDestination(candidate.kind,candidate.url))
+    .sort((left,right)=>candidatePriority(right,verifiedRoots)-candidatePriority(left,verifiedRoots))
+    .slice(0,60);
   const verifiedDestinationResults=await mapWithConcurrency(destinationCandidates,4,async candidate=>{
     const page=await inspect(candidate.url);
     if(!page.ok)return null;
+    const finalURL=cleanTrackingURL(page.finalURL||candidate.url);
+    if(!isDirectDestination(candidate.kind,finalURL))return null;
     const linkedByVerifiedRoot=verifiedRoots.some(root=>sameURL(root.finalURL,candidate.sourceURL));
     const destinationIdentity=pageIdentityMatch(page,bandName);
     const matchingRootCount=new Set(sourceEntries.filter(entry=>sameURL(entry.url,candidate.url)&&entry.sourceIdentity).map(entry=>host(entry.sourceURL))).size;
@@ -218,7 +226,7 @@ export async function researchStudioJookBox(input,{network=new StudioResearchNet
       label:clean(buttonLabel(candidate.label,defaultLabel),80),
       detail:defaultDetail,
       kind:candidate.kind,
-      url:cleanTrackingURL(page.finalURL||candidate.url),
+      url:finalURL,
       platform:platformFor(candidate.kind),
       confidence,
       verifiedAt:page.checkedAt,
@@ -499,7 +507,7 @@ function classifyURL(value,label="",bandName=""){
   const context=`${label} ${path}`.toLowerCase();
   if(LINK_HUB_HOSTS.has(hostname)||IGNORED_HOSTS.has(hostname)||SEARCH_HOSTS.has(hostname)||IGNORED_EXTENSIONS.test(url.href))return"";
   if(hostname==="open.spotify.com"&&/^\/artist\/[a-z0-9]+/i.test(path))return"spotify";
-  if(hostname.endsWith("bandcamp.com")&&!path.startsWith("/search"))return"bandcamp";
+  if(hostname.endsWith(".bandcamp.com")&&!path.startsWith("/search"))return"bandcamp";
   if(["youtube.com","m.youtube.com","youtu.be"].includes(hostname)&&!path.startsWith("/results")&&!path.startsWith("/search"))return"youtube";
   if(hostname==="instagram.com"&&path.split("/").filter(Boolean).length>=1&&!path.startsWith("/explore"))return"instagram";
   if(["facebook.com","m.facebook.com"].includes(hostname)&&path!=="/"&&!/^\/(?:search|login|share)/.test(path))return"facebook";
@@ -522,12 +530,18 @@ function isDirectDestination(kind,value){
   const hostname=url.hostname.replace(/^www\./,"").toLowerCase();
   const path=url.pathname.toLowerCase();
   if(kind==="spotify")return hostname==="open.spotify.com"&&/^\/artist\/[a-z0-9]+/i.test(path);
-  if(kind==="instagram")return hostname==="instagram.com"&&path.split("/").filter(Boolean).length>=1;
-  if(kind==="facebook")return ["facebook.com","m.facebook.com"].includes(hostname)&&path!=="/";
+  if(kind==="instagram")return hostname==="instagram.com"&&path.split("/").filter(Boolean).length>=1&&!path.startsWith("/accounts/")&&!url.searchParams.has("next");
+  if(kind==="facebook")return ["facebook.com","m.facebook.com"].includes(hostname)&&path!=="/"&&!/^\/(?:login|checkpoint|recover|reg|help)(?:\/|$)/.test(path)&&!url.searchParams.has("next");
   if(kind==="tiktok")return hostname==="tiktok.com"&&path.startsWith("/@");
   if(kind==="youtube")return ["youtube.com","m.youtube.com","youtu.be"].includes(hostname)&&!path.startsWith("/results");
-  if(kind==="bandcamp")return hostname.endsWith("bandcamp.com")&&!path.startsWith("/search");
+  if(kind==="bandcamp")return hostname.endsWith(".bandcamp.com")&&!path.startsWith("/search");
   return true;
+}
+
+function candidatePriority(candidate,verifiedRoots){
+  const rootDestination=verifiedRoots.some(root=>sameURL(root.finalURL,candidate.url));
+  const kindIndex=KIND_PRIORITY.indexOf(candidate.kind);
+  return(rootDestination?1000:0)+(candidate.sourceIdentity?100:0)+(kindIndex<0?0:(KIND_PRIORITY.length-kindIndex)*10);
 }
 
 function pageIdentityMatch(page,bandName){

@@ -1,0 +1,152 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Thundamentals",
+  "editionTitle": "Thundamentals",
+  "description": "Happy Record Store day! Happy release day to the kings @hermitude on their 8th album release. Go listen. Happy book release to @april77_creative who has worked on our and many others...",
+  "discovery": {
+    "bio": "Happy Record Store day! Happy release day to the kings @hermitude on their 8th album release. Go listen. Happy book release to @april77_creative who has worked on our and many others...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "thundamentals",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_f132e66b69",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/thundamentals/instagram-discovery.png",
+    "qrImage": "output/thundamentals/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "",
+    "spotify": "https://open.spotify.com/artist/7ymhGfvQPQLHU20RovzLMJ",
+    "instagram": "https://www.instagram.com/thundamentals/",
+    "website": "https://thundamentals.com.au/",
+    "buyMusic": "",
+    "merchandise": "",
+    "facebook": "",
+    "youtube": "https://www.youtube.com/channel/UCCkzxcN8-YbH4VYj5tNhGFA"
+  },
+  "featuredVideo": {
+    "title": "Thundamentals & Horrorshow - 100 Degrees Ft. Thom Crawford",
+    "youtubeURL": "https://www.youtube.com/watch?v=-wlXankifuY",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:46:51.690Z"
+  },
+  "analytics": {
+    "editionId": "dc_f132e66b69",
+    "pageIdentifier": "dc_f132e66b69:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_d3be6f06-e899-4dde-9cfd-76b1978031be",
+    "submittedAt": "2026-08-03T11:47:05.105Z",
+    "researchCompletedAt": "2026-08-03T11:47:05.181Z",
+    "editionCreatedAt": "2026-08-03T11:47:05.181Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_f132e66b69",
+    "tickerBio": "HAPPY RECORD STORE DAY! HAPPY RELEASE DAY TO THE KINGS @HERMITUDE ON THEIR 8TH ALBUM RELEASE. GO LISTEN. HAPPY BOOK RELEASE TO @APRIL77_CREATIVE WHO HAS WORKED ON OUR AND MANY OTHERS COVER ART. WWW.APRIL77.COM LOVED VINYL SINCE I WAS A TEEN AND HAVING OUR OWN MUSIC ON VINYL IS A TRIP. STILL LOVE DIGGING AND HOW YOU CAN TELL WHAT AN ALBUM MIGHT SOUND LIKE BY THE ARTWORK. SHOUTS TO EVERYONE WHO HAS A COPY OF ONE OF OUR",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "spotify-aab5f564",
+      "youtube-b4809809",
+      "instagram-b47d3ecf",
+      "website-14a3a6be"
+    ],
+    "marquee": "Thundamentals",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://thundamentals.com.au/",
+    "linkSourceVerifiedAt": "2026-08-03T11:46:43.503Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "spotify-aab5f564",
+        "sourceTitle": "Spotify",
+        "label": "Spotify",
+        "detail": "Listen on Spotify",
+        "url": "https://open.spotify.com/artist/7ymhGfvQPQLHU20RovzLMJ",
+        "platform": "website",
+        "kind": "spotify"
+      },
+      {
+        "id": "youtube-b4809809",
+        "sourceTitle": "YouTube",
+        "label": "YouTube",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/channel/UCCkzxcN8-YbH4VYj5tNhGFA",
+        "platform": "youtube",
+        "kind": "youtube"
+      },
+      {
+        "id": "instagram-b47d3ecf",
+        "sourceTitle": "Instagram",
+        "label": "Instagram",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/thundamentals/",
+        "platform": "instagram",
+        "kind": "instagram"
+      },
+      {
+        "id": "website-14a3a6be",
+        "sourceTitle": "Band Website",
+        "label": "Band Website",
+        "detail": "Visit the official website",
+        "url": "https://thundamentals.com.au/",
+        "platform": "website",
+        "kind": "website"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://www.instagram.com/thundamentals/",
+      "paragraphs": [
+        "Happy Record Store day! Happy release day to the kings @hermitude on their 8th album release. Go listen. Happy book release to @april77_creative who has worked on our and many others cover art. www.april77.com Loved vinyl since I was a teen and having our own music on vinyl is a trip. Still love digging and how you can tell what an album might sound like by the artwork. Shouts to everyone who has a copy of one of our"
+      ]
+    }
+  }
+}

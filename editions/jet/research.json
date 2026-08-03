@@ -1,0 +1,208 @@
+{
+  "bandName": "Jet",
+  "slug": "jet",
+  "editionId": "dc_5394bffe4e",
+  "verifiedAt": "2026-08-03T11:28:57.452Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://www.jetofficial.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:15.505Z",
+      "evidence": "The page identified Jet and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/jet.theband/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:15.629Z",
+      "evidence": "The page identified Jet and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/5ypxebeHEIXjMtJb17uJlI",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:15.333Z",
+      "evidence": "The page identified Jet and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UC5vZ92ZTaMqw7lLFDvFNu0A",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:15.486Z",
+      "evidence": "The page identified Jet and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://linktr.ee/jet.theband",
+      "sourceType": "official artist-controlled link hub",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:15.789Z",
+      "evidence": "The page identified Jet and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:website-7403d08f",
+      "url": "https://www.jetofficial.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:15.505Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Jet."
+    },
+    {
+      "destination": "website",
+      "url": "https://www.jetofficial.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:15.505Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Jet."
+    },
+    {
+      "destination": "selection:newsletter-2ebb2092",
+      "url": "https://drop.cobrand.com/d/Jet/updates",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:15.945Z",
+      "evidence": "Newsletter resolved directly and its destination metadata matched Jet."
+    },
+    {
+      "destination": "selection:merchandise-c8f9a34e",
+      "url": "https://sound-merch.com.au/collections/jet",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:16.689Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Jet."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://sound-merch.com.au/collections/jet",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:16.689Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Jet."
+    },
+    {
+      "destination": "selection:contact-b57bfe24",
+      "url": "https://www.jetofficial.com/contact",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:16.324Z",
+      "evidence": "Contact resolved directly and its destination metadata matched Jet."
+    },
+    {
+      "destination": "contact",
+      "url": "https://www.jetofficial.com/contact",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:16.324Z",
+      "evidence": "Contact resolved directly and its destination metadata matched Jet."
+    },
+    {
+      "destination": "selection:instagram-60a1cdfb",
+      "url": "https://www.instagram.com/jet.theband",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:16.471Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Jet."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/jet.theband",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:16.471Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Jet."
+    },
+    {
+      "destination": "selection:tiktok-56468a84",
+      "url": "https://www.tiktok.com/@jet.theband?is_from_webapp=1&sender_device=pc",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:16.108Z",
+      "evidence": "TikTok resolved directly and its destination metadata matched Jet."
+    },
+    {
+      "destination": "tiktok",
+      "url": "https://www.tiktok.com/@jet.theband?is_from_webapp=1&sender_device=pc",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:16.108Z",
+      "evidence": "TikTok resolved directly and its destination metadata matched Jet."
+    },
+    {
+      "destination": "selection:youtube-68c97448",
+      "url": "https://www.youtube.com/channel/UC5vZ92ZTaMqw7lLFDvFNu0A",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:15.486Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Jet."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/channel/UC5vZ92ZTaMqw7lLFDvFNu0A",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:15.486Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Jet."
+    },
+    {
+      "destination": "selection:spotify-513c8446",
+      "url": "https://open.spotify.com/artist/5ypxebeHEIXjMtJb17uJlI",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:16.344Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Jet."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/5ypxebeHEIXjMtJb17uJlI",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:16.344Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Jet."
+    },
+    {
+      "destination": "selection:facebook-170ce6c6",
+      "url": "https://www.facebook.com/help/instagram/261704639352628",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:21.869Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Jet."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/help/instagram/261704639352628",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:21.869Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Jet."
+    },
+    {
+      "destination": "biography",
+      "url": "https://linktr.ee/jet.theband",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:24.339Z",
+      "evidence": "The official source supplied the concise biography text used by the Jet ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=Ojm-FXGacM0",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:24.066Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Jet video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://www.jetofficial.com/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:15.505Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Jet."
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "bandName": "Boy & Bear",
+  "slug": "boy-bear",
+  "editionId": "dc_f99afdac0a",
+  "verifiedAt": "2026-08-03T11:47:03.552Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://www.boyandbear.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:45:16.603Z",
+      "evidence": "The page identified Boy & Bear and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/boyandbear/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:45:17.031Z",
+      "evidence": "The page identified Boy & Bear and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/2NqgE99Ll5vOTvmbN7O2R6",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:45:16.644Z",
+      "evidence": "The page identified Boy & Bear and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UClnDLRF8MBjl3o16JO73A4A",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:45:17.270Z",
+      "evidence": "The page identified Boy & Bear and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://linktr.ee/boyandbear",
+      "sourceType": "official artist-controlled link hub",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:45:17.380Z",
+      "evidence": "The page identified Boy & Bear and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:spotify-b5310e75",
+      "url": "https://open.spotify.com/artist/2NqgE99Ll5vOTvmbN7O2R6",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:45:16.644Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Boy & Bear."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/2NqgE99Ll5vOTvmbN7O2R6",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:45:16.644Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Boy & Bear."
+    },
+    {
+      "destination": "selection:youtube-73804240",
+      "url": "https://www.youtube.com/channel/UClnDLRF8MBjl3o16JO73A4A",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:45:17.270Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Boy & Bear."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/channel/UClnDLRF8MBjl3o16JO73A4A",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:45:17.270Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Boy & Bear."
+    },
+    {
+      "destination": "selection:instagram-49005cc0",
+      "url": "https://www.instagram.com/boyandbear/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:45:17.031Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Boy & Bear."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/boyandbear/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:45:17.031Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Boy & Bear."
+    },
+    {
+      "destination": "selection:website-c74eae1c",
+      "url": "https://www.boyandbear.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:45:16.603Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Boy & Bear."
+    },
+    {
+      "destination": "website",
+      "url": "https://www.boyandbear.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:45:16.603Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Boy & Bear."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.instagram.com/boyandbear/",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:45:25.894Z",
+      "evidence": "The official source supplied the concise biography text used by the Boy & Bear ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=_TlroEpZt18",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:45:25.444Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Boy & Bear video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://www.boyandbear.com/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:45:16.603Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Boy & Bear."
+    }
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "bandName": "Tame Impala",
+  "slug": "tame-impala",
+  "editionId": "dc_675e1b4025",
+  "verifiedAt": "2026-08-03T11:28:56.454Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://www.tameimpala.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:49.995Z",
+      "evidence": "The page identified Tame Impala and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/tameimpala/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:49.155Z",
+      "evidence": "The page identified Tame Impala and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/5INjqkS1o8h1imAzPqGZBb",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:48.944Z",
+      "evidence": "The page identified Tame Impala and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UCdI8MAC5HoPJSJ4zrgDDI-Q",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:49.587Z",
+      "evidence": "The page identified Tame Impala and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:website-332516d6",
+      "url": "https://www.tameimpala.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:49.654Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Tame Impala."
+    },
+    {
+      "destination": "website",
+      "url": "https://www.tameimpala.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:49.654Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Tame Impala."
+    },
+    {
+      "destination": "selection:contact-1b0f1fc9",
+      "url": "https://www.sonymusic.com/ccpa-contact-form/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:50.053Z",
+      "evidence": "Contact resolved directly from an identity-matched artist-controlled source for Tame Impala."
+    },
+    {
+      "destination": "contact",
+      "url": "https://www.sonymusic.com/ccpa-contact-form/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:50.053Z",
+      "evidence": "Contact resolved directly from an identity-matched artist-controlled source for Tame Impala."
+    },
+    {
+      "destination": "selection:youtube-61e7a646",
+      "url": "https://www.youtube.com/embed/s3a4OQR-10M",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:50.243Z",
+      "evidence": "YouTube resolved directly from an identity-matched artist-controlled source for Tame Impala."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/embed/s3a4OQR-10M",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:50.243Z",
+      "evidence": "YouTube resolved directly from an identity-matched artist-controlled source for Tame Impala."
+    },
+    {
+      "destination": "selection:instagram-66a4896d",
+      "url": "https://www.instagram.com/accounts/login/?next=%2Ftameimpala%2F&source=desktop_nav",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:50.659Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Tame Impala."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/accounts/login/?next=%2Ftameimpala%2F&source=desktop_nav",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:50.659Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Tame Impala."
+    },
+    {
+      "destination": "selection:facebook-170ce6c6",
+      "url": "https://www.facebook.com/help/instagram/261704639352628",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:54.015Z",
+      "evidence": "Facebook resolved directly from an identity-matched artist-controlled source for Tame Impala."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/help/instagram/261704639352628",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:54.015Z",
+      "evidence": "Facebook resolved directly from an identity-matched artist-controlled source for Tame Impala."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.youtube.com/channel/UCdI8MAC5HoPJSJ4zrgDDI-Q",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:58.052Z",
+      "evidence": "The official source supplied the concise biography text used by the Tame Impala ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=NiNXwI_Y1So",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:57.720Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Tame Impala video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://www.tameimpala.com/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:49.995Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Tame Impala."
+    }
+  ]
+}

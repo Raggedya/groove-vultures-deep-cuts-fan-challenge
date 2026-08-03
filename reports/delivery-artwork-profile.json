@@ -1,0 +1,758 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-08-03T12:09:49.089Z",
+  "finishedAt": "2026-08-03T12:14:13.403Z",
+  "durationMs": 264313.9,
+  "jobs": 1,
+  "editionCount": 123,
+  "stages": [
+    {
+      "name": "Parallel artwork rendering",
+      "durationMs": 253168.9,
+      "editions": [
+        {
+          "slug": "groove-vultures",
+          "durationMs": 2471.2,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "the-drones",
+          "durationMs": 2216.4,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "lilith-lane",
+          "durationMs": 2339.3,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "les-ye-ye-girls",
+          "durationMs": 2493.3,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "sydney-shae",
+          "durationMs": 2338.4,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "nada-surf",
+          "durationMs": 2301.2,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "super-american-eagle",
+          "durationMs": 2478.4,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "immigrant-union",
+          "durationMs": 2275.5,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "the-living-end",
+          "durationMs": 2318.8,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "iron-maiden",
+          "durationMs": 2361,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "upchuck",
+          "durationMs": 2327.1,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "civic",
+          "durationMs": 2237.4,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "sweeping-promises",
+          "durationMs": 2381.1,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "dummy",
+          "durationMs": 2339.3,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "daiistar",
+          "durationMs": 2268.9,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "cable-ties",
+          "durationMs": 2364.7,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "screamin-eagles",
+          "durationMs": 2623.1,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "models",
+          "durationMs": 2353,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "ashley-davies",
+          "durationMs": 2763,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "autopharge",
+          "durationMs": 2690.9,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "laura-panic",
+          "durationMs": 3401.3,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "eh-holden",
+          "durationMs": 2320.6,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "blackburn-bowls-club",
+          "durationMs": 2970.8,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "kerrimuir-primary-school",
+          "durationMs": 611.7,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "fakeaways",
+          "durationMs": 2296.6,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "horsepower-in-the-high-country",
+          "durationMs": 2689.6,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "celibate-rifles",
+          "durationMs": 611.6,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "chain",
+          "durationMs": 509.1,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "laneway-music-one-off",
+          "durationMs": 651.3,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "cool-death-records",
+          "durationMs": 681.9,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "nastyboy-records",
+          "durationMs": 1299.1,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "high-grade-mechanical",
+          "durationMs": 1466,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "hays",
+          "durationMs": 628.9,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "filthy-animals",
+          "durationMs": 499.8,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "atlas",
+          "durationMs": 491.8,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "southern-culture-on-the-skids",
+          "durationMs": 535.4,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "angelspit",
+          "durationMs": 2115,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "australian-pink-floyd-show",
+          "durationMs": 2056,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "frenzal-rhomb",
+          "durationMs": 2221.7,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "dead-can-dance",
+          "durationMs": 1910.1,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "inxs",
+          "durationMs": 2419.5,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "tame-impala",
+          "durationMs": 1960.4,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "jet",
+          "durationMs": 2128.7,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "bee-gees",
+          "durationMs": 2144.5,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "bodyjar",
+          "durationMs": 1806.9,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "cut-copy",
+          "durationMs": 1851.3,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "air-supply",
+          "durationMs": 2076.7,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "sodastream",
+          "durationMs": 2120.8,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "feenixpawl",
+          "durationMs": 1867.7,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "even",
+          "durationMs": 2138.3,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "the-cat-empire",
+          "durationMs": 1838.2,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "mammoth-mammoth",
+          "durationMs": 2127.1,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "pond",
+          "durationMs": 2125.3,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "the-avalanches",
+          "durationMs": 1911.9,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "operator-please",
+          "durationMs": 2131.7,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "the-amenta",
+          "durationMs": 2219,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "eskimo-joe",
+          "durationMs": 2162.4,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "little-river-band",
+          "durationMs": 1911.2,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "the-butterfly-effect",
+          "durationMs": 2460.8,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "the-amity-affliction",
+          "durationMs": 1818.9,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "sick-puppies",
+          "durationMs": 2127.1,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "augie-march",
+          "durationMs": 2209.5,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "bliss-n-eso",
+          "durationMs": 2134,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "67-special",
+          "durationMs": 2129.7,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "all-india-radio",
+          "durationMs": 2558.1,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "ball-park-music",
+          "durationMs": 1849.8,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "last-dinosaurs",
+          "durationMs": 2206.5,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "konqistador",
+          "durationMs": 2177.2,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "buchanan",
+          "durationMs": 2159.4,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "husky",
+          "durationMs": 1877.4,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "htrk",
+          "durationMs": 2123.6,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "violent-soho",
+          "durationMs": 1875.2,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "northlane",
+          "durationMs": 2092,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "gang-gajang",
+          "durationMs": 2189.9,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "the-grates",
+          "durationMs": 2185.7,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "something-for-kate",
+          "durationMs": 1845.3,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "closure-in-moscow",
+          "durationMs": 2394.6,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "the-jungle-giants",
+          "durationMs": 1882.9,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "the-eternal",
+          "durationMs": 2224.6,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "the-laurels",
+          "durationMs": 2246.5,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "rogue-traders",
+          "durationMs": 2200,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "wolfmother",
+          "durationMs": 1868,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "birds-of-tokyo",
+          "durationMs": 2513,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "the-angels",
+          "durationMs": 1879.1,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "pendulum",
+          "durationMs": 1951.6,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "dragon",
+          "durationMs": 2194.2,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "the-wiggles",
+          "durationMs": 1922.1,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "psycroptic",
+          "durationMs": 2176.4,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "powderfinger",
+          "durationMs": 2243.1,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "sneaky-sound-system",
+          "durationMs": 2237.4,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "miami-horror",
+          "durationMs": 1879.4,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "dead-letter-circus",
+          "durationMs": 2831.8,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "crowded-house",
+          "durationMs": 2008.2,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "howling-bells",
+          "durationMs": 2272,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "be-lakor",
+          "durationMs": 2315.8,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "atlas-genius",
+          "durationMs": 2018.7,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "art-of-fighting",
+          "durationMs": 2380.7,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "screamfeeder",
+          "durationMs": 2293.7,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "regurgitator",
+          "durationMs": 2245,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "voyager",
+          "durationMs": 1913.4,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "thy-art-is-murder",
+          "durationMs": 2222.2,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "the-superjesus",
+          "durationMs": 2217.1,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "knife-party",
+          "durationMs": 1898.9,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "dz-deathrays",
+          "durationMs": 2349.4,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "the-temper-trap",
+          "durationMs": 2056.4,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "cog",
+          "durationMs": 2121.5,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "dirty-three",
+          "durationMs": 2074.8,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "cold-chisel",
+          "durationMs": 2114.7,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "boy-bear",
+          "durationMs": 1862.6,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "northeast-party-house",
+          "durationMs": 2081.2,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "seeker-lover-keeper",
+          "durationMs": 2126.2,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "magic-dirt",
+          "durationMs": 1841.7,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "the-waifs",
+          "durationMs": 2403.8,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "australian-crawl",
+          "durationMs": 1985.4,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "tria-mera",
+          "durationMs": 2104.1,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "thundamentals",
+          "durationMs": 2100.7,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "planetshakers",
+          "durationMs": 2170.6,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "airbourne",
+          "durationMs": 1831.6,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "savage-garden",
+          "durationMs": 2319.8,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "newsboys",
+          "durationMs": 1844.8,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "empire-of-the-sun",
+          "durationMs": 2040.8,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "art-vs-science",
+          "durationMs": 2590.1,
+          "attempts": 1,
+          "ok": true
+        },
+        {
+          "slug": "boxcar",
+          "durationMs": 1834.2,
+          "attempts": 1,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "name": "Complete artwork integrity and scan-back verification",
+      "durationMs": 11129.3
+    }
+  ]
+}

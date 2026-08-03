@@ -1,0 +1,152 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Newsboys",
+  "editionTitle": "Newsboys",
+  "description": "The wait is over. Worldwide Revival (Deluxe) is officially out now — featuring 4 brand new songs all about hope and the truth of God’s promises. Available now wherever you stream music....",
+  "discovery": {
+    "bio": "The wait is over. Worldwide Revival (Deluxe) is officially out now — featuring 4 brand new songs all about hope and the truth of God’s promises. Available now wherever you stream music....",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "newsboys",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_fd251af95f",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/newsboys/instagram-discovery.png",
+    "qrImage": "output/newsboys/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "",
+    "spotify": "https://open.spotify.com/artist/1SZMaiNHfdUuU0qZKZ6y62",
+    "instagram": "https://www.instagram.com/newsboys/",
+    "website": "https://www.newsboys.com/",
+    "buyMusic": "",
+    "merchandise": "",
+    "facebook": "",
+    "youtube": "https://www.youtube.com/user/newsboystv"
+  },
+  "featuredVideo": {
+    "title": "Newsboys - New Name (Audio)",
+    "youtubeURL": "https://www.youtube.com/watch?v=ixWGyUpG4Sg",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:52:44.716Z"
+  },
+  "analytics": {
+    "editionId": "dc_fd251af95f",
+    "pageIdentifier": "dc_fd251af95f:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_5a5b6c39-aec5-4409-918b-9df123a2a2aa",
+    "submittedAt": "2026-08-03T11:29:04.960Z",
+    "researchCompletedAt": "2026-08-03T11:54:14.667Z",
+    "editionCreatedAt": "2026-08-03T11:54:14.667Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_fd251af95f",
+    "tickerBio": "THE WAIT IS OVER. WORLDWIDE REVIVAL (DELUXE) IS OFFICIALLY OUT NOW — FEATURING 4 BRAND NEW SONGS ALL ABOUT HOPE AND THE TRUTH OF GOD’S PROMISES. AVAILABLE NOW WHEREVER YOU STREAM MUSIC. 🌐🎶 #WORLDWIDEREVIVAL #NEWSBOYS",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "spotify-22d1c98b",
+      "youtube-daffde34",
+      "instagram-943e0e2a",
+      "website-85103df5"
+    ],
+    "marquee": "Newsboys",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://www.newsboys.com/",
+    "linkSourceVerifiedAt": "2026-08-03T11:52:34.396Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "spotify-22d1c98b",
+        "sourceTitle": "Spotify",
+        "label": "Spotify",
+        "detail": "Listen on Spotify",
+        "url": "https://open.spotify.com/artist/1SZMaiNHfdUuU0qZKZ6y62",
+        "platform": "website",
+        "kind": "spotify"
+      },
+      {
+        "id": "instagram-943e0e2a",
+        "sourceTitle": "Instagram",
+        "label": "Instagram",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/newsboys/",
+        "platform": "instagram",
+        "kind": "instagram"
+      },
+      {
+        "id": "website-85103df5",
+        "sourceTitle": "Band Website",
+        "label": "Band Website",
+        "detail": "Visit the official website",
+        "url": "https://www.newsboys.com/",
+        "platform": "website",
+        "kind": "website"
+      },
+      {
+        "id": "youtube-daffde34",
+        "sourceTitle": "YouTube",
+        "label": "YouTube",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/user/newsboystv",
+        "platform": "youtube",
+        "kind": "youtube"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://www.instagram.com/newsboys/",
+      "paragraphs": [
+        "The wait is over. Worldwide Revival (Deluxe) is officially out now — featuring 4 brand new songs all about hope and the truth of God’s promises. Available now wherever you stream music. 🌐🎶 #WorldwideRevival #Newsboys"
+      ]
+    }
+  }
+}

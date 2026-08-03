@@ -1,0 +1,168 @@
+{
+  "bandName": "Violent Soho",
+  "slug": "violent-soho",
+  "editionId": "dc_876c0b3cc3",
+  "verifiedAt": "2026-08-03T11:29:21.996Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://violentsoho.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:46.445Z",
+      "evidence": "The page identified Violent Soho and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://violentsoho.bandcamp.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:46.604Z",
+      "evidence": "The page identified Violent Soho and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/violentsoho4122/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:46.991Z",
+      "evidence": "The page identified Violent Soho and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UCPNrO68wmTklz_ATyjNc9Gg",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:46.834Z",
+      "evidence": "The page identified Violent Soho and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://violentsoho.com/?s={search_term_string}",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:47.952Z",
+      "evidence": "The page identified Violent Soho and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:website-d62ff005",
+      "url": "https://violentsoho.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:46.445Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Violent Soho."
+    },
+    {
+      "destination": "website",
+      "url": "https://violentsoho.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:46.445Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Violent Soho."
+    },
+    {
+      "destination": "selection:contact-c3c2ec5d",
+      "url": "https://violentsoho.com/contact/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:48.080Z",
+      "evidence": "Contact resolved directly and its destination metadata matched Violent Soho."
+    },
+    {
+      "destination": "contact",
+      "url": "https://violentsoho.com/contact/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:48.080Z",
+      "evidence": "Contact resolved directly and its destination metadata matched Violent Soho."
+    },
+    {
+      "destination": "selection:spotify-e22a77ef",
+      "url": "https://open.spotify.com/artist/2N2EFVDEbp2JB8ulEUVIxp",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:48.367Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Violent Soho."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/2N2EFVDEbp2JB8ulEUVIxp",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:48.367Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Violent Soho."
+    },
+    {
+      "destination": "selection:youtube-c2c96100",
+      "url": "https://www.youtube.com/user/ViolentSoho4122",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:48.570Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Violent Soho."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/user/ViolentSoho4122",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:48.570Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Violent Soho."
+    },
+    {
+      "destination": "selection:instagram-ffe7be93",
+      "url": "https://www.instagram.com/illyal/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:48.716Z",
+      "evidence": "Instagram resolved directly from an identity-matched artist-controlled source for Violent Soho."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/illyal/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:48.716Z",
+      "evidence": "Instagram resolved directly from an identity-matched artist-controlled source for Violent Soho."
+    },
+    {
+      "destination": "selection:facebook-774d5503",
+      "url": "https://www.facebook.com/illyal/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:48.866Z",
+      "evidence": "Facebook resolved directly from an identity-matched artist-controlled source for Violent Soho."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/illyal/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:48.866Z",
+      "evidence": "Facebook resolved directly from an identity-matched artist-controlled source for Violent Soho."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.instagram.com/violentsoho4122/",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:55.619Z",
+      "evidence": "The official source supplied the concise biography text used by the Violent Soho ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=z5A247tsiHg",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:55.191Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Violent Soho video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://violentsoho.com/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:46.445Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Violent Soho."
+    }
+  ]
+}

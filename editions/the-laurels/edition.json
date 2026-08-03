@@ -1,0 +1,162 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "The Laurels",
+  "editionTitle": "The Laurels",
+  "description": "Our album ‘Homecoming’ is out everywhere today via @third_eye_stimuli @flightlessdistro @gagamusicco @mushroompublish 🤝 Major props to @lachlanjm37 at @parliamentstudios for his golden...",
+  "discovery": {
+    "bio": "Our album ‘Homecoming’ is out everywhere today via @third_eye_stimuli @flightlessdistro @gagamusicco @mushroompublish 🤝 Major props to @lachlanjm37 at @parliamentstudios for his golden...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "the-laurels",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_8f20d6f0df",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/the-laurels/instagram-discovery.png",
+    "qrImage": "output/the-laurels/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "https://bandcamp.com/?from=menubar_logo_logged_out",
+    "spotify": "https://open.spotify.com/artist/25zGuAmfVIDItxVb6Hwf3N",
+    "instagram": "https://www.instagram.com/_the_laurels_",
+    "website": "",
+    "buyMusic": "",
+    "merchandise": "",
+    "facebook": "https://www.facebook.com/theelaurels",
+    "youtube": "https://www.youtube.com/user/theelaurels/videos"
+  },
+  "featuredVideo": {
+    "title": "The Laurels - Borrowed Time",
+    "youtubeURL": "https://www.youtube.com/watch?v=tLSU23l3j_g",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:28:35.515Z"
+  },
+  "analytics": {
+    "editionId": "dc_8f20d6f0df",
+    "pageIdentifier": "dc_8f20d6f0df:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_56682d5a-c76c-46d0-b4c2-0b18af524905",
+    "submittedAt": "2026-08-03T11:29:30.995Z",
+    "researchCompletedAt": "2026-08-03T11:29:31.127Z",
+    "editionCreatedAt": "2026-08-03T11:29:31.127Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_8f20d6f0df",
+    "tickerBio": "OUR ALBUM ‘HOMECOMING’ IS OUT EVERYWHERE TODAY VIA @THIRD_EYE_STIMULI @FLIGHTLESSDISTRO @GAGAMUSICCO @MUSHROOMPUBLISH 🤝 MAJOR PROPS TO @LACHLANJM37 AT @PARLIAMENTSTUDIOS FOR HIS GOLDEN EARS @TIMGCARR FOR THE SHINY MASTERING @WBYKWBYK FOR THEIR AWESOME ARTWORK ❤️ ALBUM TOUR KICKS OFF NEXT WEEK! STREAM/DOWNLOAD/VINYL/MERCH/TOUR TIX ALL AVAILABLE VIA OUR BIO 🎉",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "bandcamp-dbb5841f",
+      "spotify-c35c6c5a",
+      "youtube-38776fb8",
+      "instagram-60a6c2e0",
+      "facebook-878fdf0b"
+    ],
+    "marquee": "The Laurels",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://open.spotify.com/artist/0VQzVGhHHxzvbZW3kd2s3S",
+    "linkSourceVerifiedAt": "2026-08-03T11:28:29.606Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "spotify-c35c6c5a",
+        "sourceTitle": "Beaches",
+        "label": "Beaches",
+        "detail": "Listen on Spotify",
+        "url": "https://open.spotify.com/artist/25zGuAmfVIDItxVb6Hwf3N",
+        "platform": "website",
+        "kind": "spotify"
+      },
+      {
+        "id": "facebook-878fdf0b",
+        "sourceTitle": "Facebook",
+        "label": "Facebook",
+        "detail": "Follow the band",
+        "url": "https://www.facebook.com/theelaurels",
+        "platform": "facebook",
+        "kind": "facebook"
+      },
+      {
+        "id": "instagram-60a6c2e0",
+        "sourceTitle": "Instagram",
+        "label": "Instagram",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/_the_laurels_",
+        "platform": "instagram",
+        "kind": "instagram"
+      },
+      {
+        "id": "bandcamp-dbb5841f",
+        "sourceTitle": "Bandcamp",
+        "label": "Bandcamp",
+        "detail": "Listen and buy direct",
+        "url": "https://bandcamp.com/?from=menubar_logo_logged_out",
+        "platform": "website",
+        "kind": "bandcamp"
+      },
+      {
+        "id": "youtube-38776fb8",
+        "sourceTitle": "YouTube",
+        "label": "YouTube",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/user/theelaurels/videos",
+        "platform": "youtube",
+        "kind": "youtube"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://www.instagram.com/_the_laurels_/",
+      "paragraphs": [
+        "Our album ‘Homecoming’ is out everywhere today via @third_eye_stimuli @flightlessdistro @gagamusicco @mushroompublish 🤝 Major props to @lachlanjm37 at @parliamentstudios for his golden ears @timgcarr for the shiny mastering @wbykwbyk for their awesome artwork ❤️ Album tour kicks off next week! Stream/download/vinyl/merch/tour tix all available via our bio 🎉"
+      ]
+    }
+  }
+}

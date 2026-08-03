@@ -1,0 +1,200 @@
+{
+  "bandName": "Crowded House",
+  "slug": "crowded-house",
+  "editionId": "dc_34451b60b3",
+  "verifiedAt": "2026-08-03T11:33:38.657Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://www.crowdedhouse.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:55.764Z",
+      "evidence": "The page identified Crowded House and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/crowdedhousehq/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:55.695Z",
+      "evidence": "The page identified Crowded House and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/7ohlPA8dRBtCf92zaZCaaB",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:55.273Z",
+      "evidence": "The page identified Crowded House and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UCaY4Qzbi0DVPX-c5Pvf-yxg",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:55.668Z",
+      "evidence": "The page identified Crowded House and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://linktr.ee/crowdedhouse",
+      "sourceType": "official artist-controlled link hub",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:55.875Z",
+      "evidence": "The page identified Crowded House and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:website-bc403081",
+      "url": "https://www.crowdedhouse.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:55.764Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Crowded House."
+    },
+    {
+      "destination": "website",
+      "url": "https://www.crowdedhouse.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:55.764Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Crowded House."
+    },
+    {
+      "destination": "selection:merchandise-8d48790d",
+      "url": "https://usstore.crowdedhouse.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:56.313Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Crowded House."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://usstore.crowdedhouse.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:56.313Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Crowded House."
+    },
+    {
+      "destination": "selection:facebook-513c9d8a",
+      "url": "https://www.facebook.com/crowdedhouse/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:56.868Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Crowded House."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/crowdedhouse/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:56.868Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Crowded House."
+    },
+    {
+      "destination": "selection:instagram-077bbda9",
+      "url": "https://www.instagram.com/crowdedhousehq/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:55.695Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Crowded House."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/crowdedhousehq/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:55.695Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Crowded House."
+    },
+    {
+      "destination": "selection:tiktok-93a5edb8",
+      "url": "https://www.tiktok.com/@crowdedhousehq",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:56.132Z",
+      "evidence": "TikTok resolved directly and its destination metadata matched Crowded House."
+    },
+    {
+      "destination": "tiktok",
+      "url": "https://www.tiktok.com/@crowdedhousehq",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:56.132Z",
+      "evidence": "TikTok resolved directly and its destination metadata matched Crowded House."
+    },
+    {
+      "destination": "selection:spotify-86a4b2e5",
+      "url": "https://open.spotify.com/artist/7ohlPA8dRBtCf92zaZCaaB",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:55.273Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Crowded House."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/7ohlPA8dRBtCf92zaZCaaB",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:55.273Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Crowded House."
+    },
+    {
+      "destination": "selection:youtube-bf124d51",
+      "url": "https://www.youtube.com/crowdedhouse",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:56.730Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Crowded House."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/crowdedhouse",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:56.730Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Crowded House."
+    },
+    {
+      "destination": "selection:show-28e38f81",
+      "url": "https://join.thechorus.com/crowdedhouse/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:56.688Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Crowded House."
+    },
+    {
+      "destination": "selection:show-7036b5ca",
+      "url": "https://singaporegp.sg/en/tickets/general-tickets/grandstands/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:57.201Z",
+      "evidence": "Tickets resolved directly from an identity-matched artist-controlled source for Crowded House."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.instagram.com/crowdedhousehq/",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:04.813Z",
+      "evidence": "The official source supplied the concise biography text used by the Crowded House ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=HriFtNDC-8E",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:04.394Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Crowded House video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://www.crowdedhouse.com/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:55.764Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Crowded House."
+    }
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "bandName": "The Laurels",
+  "slug": "the-laurels",
+  "editionId": "dc_8f20d6f0df",
+  "verifiedAt": "2026-08-03T11:29:31.127Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/0VQzVGhHHxzvbZW3kd2s3S",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:29.606Z",
+      "evidence": "The page identified The Laurels and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://thelaurels.bandcamp.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:29.839Z",
+      "evidence": "The page identified The Laurels and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/_the_laurels_/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:30.016Z",
+      "evidence": "The page identified The Laurels and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://linktr.ee/thelaurels",
+      "sourceType": "official artist-controlled link hub",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:31.987Z",
+      "evidence": "The page identified The Laurels and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:spotify-c35c6c5a",
+      "url": "https://open.spotify.com/artist/25zGuAmfVIDItxVb6Hwf3N",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:32.371Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched The Laurels."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/25zGuAmfVIDItxVb6Hwf3N",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:32.371Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched The Laurels."
+    },
+    {
+      "destination": "selection:facebook-878fdf0b",
+      "url": "https://www.facebook.com/theelaurels",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:33.683Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched The Laurels."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/theelaurels",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:33.683Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched The Laurels."
+    },
+    {
+      "destination": "selection:instagram-60a6c2e0",
+      "url": "https://www.instagram.com/_the_laurels_",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:33.395Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched The Laurels."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/_the_laurels_",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:33.395Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched The Laurels."
+    },
+    {
+      "destination": "selection:bandcamp-dbb5841f",
+      "url": "https://bandcamp.com/?from=menubar_logo_logged_out",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:32.706Z",
+      "evidence": "Bandcamp resolved directly from an identity-matched artist-controlled source for The Laurels."
+    },
+    {
+      "destination": "bandcamp",
+      "url": "https://bandcamp.com/?from=menubar_logo_logged_out",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:32.706Z",
+      "evidence": "Bandcamp resolved directly from an identity-matched artist-controlled source for The Laurels."
+    },
+    {
+      "destination": "selection:youtube-38776fb8",
+      "url": "https://www.youtube.com/user/theelaurels/videos",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:34.597Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched The Laurels."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/user/theelaurels/videos",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:34.597Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched The Laurels."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.instagram.com/_the_laurels_/",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:35.871Z",
+      "evidence": "The official source supplied the concise biography text used by the The Laurels ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=tLSU23l3j_g",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:35.515Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured The Laurels video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://open.spotify.com/artist/0VQzVGhHHxzvbZW3kd2s3S",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:29.606Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for The Laurels."
+    }
+  ]
+}

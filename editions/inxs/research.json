@@ -1,0 +1,200 @@
+{
+  "bandName": "INXS",
+  "slug": "inxs",
+  "editionId": "dc_36e2298568",
+  "verifiedAt": "2026-08-03T11:28:55.682Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://www.inxs.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:38.458Z",
+      "evidence": "The page identified INXS and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/officialinxs/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:38.235Z",
+      "evidence": "The page identified INXS and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/1eClJfHLoDI4rZe5HxzBFv",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:37.905Z",
+      "evidence": "The page identified INXS and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UCAldEKRD6LXGd8FAXI6Oo3w",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:38.284Z",
+      "evidence": "The page identified INXS and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://shop.inxs.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:39.168Z",
+      "evidence": "The page identified INXS and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://aushop.inxs.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:39.633Z",
+      "evidence": "The page identified INXS and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://shopuk.inxs.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:39.736Z",
+      "evidence": "The page identified INXS and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:website-cf2e5845",
+      "url": "https://www.inxs.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:38.458Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched INXS."
+    },
+    {
+      "destination": "website",
+      "url": "https://www.inxs.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:38.458Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched INXS."
+    },
+    {
+      "destination": "selection:youtube-3108d0c2",
+      "url": "https://www.youtube.com/user/inxsofficial",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:40.425Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched INXS."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/user/inxsofficial",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:40.425Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched INXS."
+    },
+    {
+      "destination": "selection:merchandise-6d29d4b0",
+      "url": "https://shop.inxs.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:39.168Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched INXS."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://shop.inxs.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:39.168Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched INXS."
+    },
+    {
+      "destination": "selection:facebook-687a5fbf",
+      "url": "https://www.facebook.com/inxs",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:40.811Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched INXS."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/inxs",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:40.811Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched INXS."
+    },
+    {
+      "destination": "selection:instagram-575f048f",
+      "url": "https://www.instagram.com/officialinxs/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:38.235Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched INXS."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/officialinxs/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:38.235Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched INXS."
+    },
+    {
+      "destination": "selection:spotify-8e9195e0",
+      "url": "https://open.spotify.com/artist/1eClJfHLoDI4rZe5HxzBFv",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:37.905Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched INXS."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/1eClJfHLoDI4rZe5HxzBFv",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:37.905Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched INXS."
+    },
+    {
+      "destination": "selection:tiktok-325678a4",
+      "url": "https://www.tiktok.com/@inxs",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:40.638Z",
+      "evidence": "TikTok resolved directly and its destination metadata matched INXS."
+    },
+    {
+      "destination": "tiktok",
+      "url": "https://www.tiktok.com/@inxs",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:40.638Z",
+      "evidence": "TikTok resolved directly and its destination metadata matched INXS."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.youtube.com/channel/UCAldEKRD6LXGd8FAXI6Oo3w",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:48.405Z",
+      "evidence": "The official source supplied the concise biography text used by the INXS ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=G6Dn2zcSC84",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:47.953Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured INXS video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://www.inxs.com/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:38.458Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for INXS."
+    }
+  ]
+}

@@ -1,0 +1,152 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "The Waifs",
+  "editionTitle": "The Waifs",
+  "description": "New Single from the upcoming album 'Beautiful You'. Pre-Order your copy of the new album 'Beautiful You' on iTunes now:",
+  "discovery": {
+    "bio": "New Single from the upcoming album 'Beautiful You'. Pre-Order your copy of the new album 'Beautiful You' on iTunes now:",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "the-waifs",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_a9e2250ba8",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/the-waifs/instagram-discovery.png",
+    "qrImage": "output/the-waifs/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "",
+    "spotify": "https://open.spotify.com/artist/5uKeKhwXi2w5cXdtoSaqjz",
+    "instagram": "",
+    "website": "",
+    "buyMusic": "",
+    "merchandise": "https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.meta.com%2F&h=AUDAw1U1mkUG_3CSmyZJDZpd42UfHe2DOngmHrgF-BMk7yZVCDo-oz_JaY0kiIpn78D1sIumJcgIbUPbynNZHT529ohEg6CdDGaSvHMVttId0G1dawMy8XW5x2cQqrXif9MjQUkLF3TojPWmuv7glrroS2gbCHqH",
+    "facebook": "https://www.facebook.com/lite/",
+    "youtube": "https://www.youtube.com/channel/UC6bdVeyVd0puszMcj2nW7pw"
+  },
+  "featuredVideo": {
+    "title": "The Waifs - Bridal Train (Offical Music Video)",
+    "youtubeURL": "https://www.youtube.com/watch?v=8sP_JQV8er0",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:46:23.408Z"
+  },
+  "analytics": {
+    "editionId": "dc_a9e2250ba8",
+    "pageIdentifier": "dc_a9e2250ba8:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_516dcacf-42a9-4169-b6df-32715ee10a4f",
+    "submittedAt": "2026-08-03T11:47:04.417Z",
+    "researchCompletedAt": "2026-08-03T11:47:04.498Z",
+    "editionCreatedAt": "2026-08-03T11:47:04.498Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_a9e2250ba8",
+    "tickerBio": "NEW SINGLE FROM THE UPCOMING ALBUM 'BEAUTIFUL YOU'. PRE-ORDER YOUR COPY OF THE NEW ALBUM 'BEAUTIFUL YOU' ON ITUNES NOW:",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "spotify-6c4d84f5",
+      "youtube-98f886b2",
+      "merchandise-b415e1a2",
+      "facebook-0402af7d"
+    ],
+    "marquee": "The Waifs",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Fthewaifs",
+    "linkSourceVerifiedAt": "2026-08-03T11:46:15.596Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "spotify-6c4d84f5",
+        "sourceTitle": "Spotify",
+        "label": "Spotify",
+        "detail": "Listen on Spotify",
+        "url": "https://open.spotify.com/artist/5uKeKhwXi2w5cXdtoSaqjz",
+        "platform": "website",
+        "kind": "spotify"
+      },
+      {
+        "id": "youtube-98f886b2",
+        "sourceTitle": "YouTube",
+        "label": "YouTube",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/channel/UC6bdVeyVd0puszMcj2nW7pw",
+        "platform": "youtube",
+        "kind": "youtube"
+      },
+      {
+        "id": "merchandise-b415e1a2",
+        "sourceTitle": "Meta Store",
+        "label": "Meta Store",
+        "detail": "Official band merchandise",
+        "url": "https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.meta.com%2F&h=AUDAw1U1mkUG_3CSmyZJDZpd42UfHe2DOngmHrgF-BMk7yZVCDo-oz_JaY0kiIpn78D1sIumJcgIbUPbynNZHT529ohEg6CdDGaSvHMVttId0G1dawMy8XW5x2cQqrXif9MjQUkLF3TojPWmuv7glrroS2gbCHqH",
+        "platform": "merchandise",
+        "kind": "merchandise"
+      },
+      {
+        "id": "facebook-0402af7d",
+        "sourceTitle": "Facebook Lite",
+        "label": "Facebook Lite",
+        "detail": "Follow the band",
+        "url": "https://www.facebook.com/lite/",
+        "platform": "facebook",
+        "kind": "facebook"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://www.youtube.com/channel/UC6bdVeyVd0puszMcj2nW7pw",
+      "paragraphs": [
+        "New Single from the upcoming album 'Beautiful You'. Pre-Order your copy of the new album 'Beautiful You' on iTunes now:"
+      ]
+    }
+  }
+}

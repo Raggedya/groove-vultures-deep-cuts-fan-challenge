@@ -164,8 +164,8 @@ function updateTypePolicy(){
   els.sourceStack.hidden=aggitsJukebox;
   els.savePublish.hidden=!(bar||aggitsJukebox);
   els.publishStatus.hidden=!(bar||aggitsJukebox);
-  els.publishLabel.textContent=aggitsJukebox?"SAVE + PUBLISH JUKEBOX":"SAVE VENUE + PUBLISH";
-  els.publishDetail.textContent=aggitsJukebox?"One step: permanent URL, fitted QR and delivery email":"One step: save to Venue Library, validate and publish";
+  els.publishLabel.textContent=aggitsJukebox?"PUBLISH + EMAIL QR":"SAVE VENUE + PUBLISH";
+  els.publishDetail.textContent=aggitsJukebox?"One click: save, publish and automatically email the permanent URL + QR":"One step: save to Venue Library, validate and publish";
   els.sourceLabels.forEach(field=>{
     field.hidden=jookBox||aggitsJukebox;
     field.required=bar;
@@ -319,7 +319,7 @@ async function waitForPublication(jobId){
 
 async function publishAggitsJukebox(){
   if(els.type.value!=="aggits_jukebox")return;
-  setBusy(true,"PUBLISHING JUKEBOX");els.savePublish.disabled=true;els.publishLive.hidden=true;els.publishQr.hidden=true;els.publishStatus.className="direct-publish-status";els.publishMessage.textContent="Saving this edition and allocating its permanent identity…";
+  setBusy(true,"PUBLISHING JUKEBOX");els.savePublish.disabled=true;els.publishLive.hidden=true;els.publishQr.hidden=true;els.publishStatus.className="direct-publish-status";els.publishMessage.textContent="Publishing now. The permanent URL and fitted QR will be emailed automatically…";
   try{
     await persistProjectFromForm();
     if(!state.project.readiness.handoffReady)throw new Error(state.project.readiness.blockers.filter(item=>!/protected publishing workflow/i.test(item)).join(" ")||"Complete the Jukebox before publishing.");

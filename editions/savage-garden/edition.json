@@ -1,0 +1,152 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Savage Garden",
+  "editionTitle": "Savage Garden",
+  "description": "Savage Garden on Vevo - Official Music Videos, Live Performances, Interviews and more...",
+  "discovery": {
+    "bio": "Savage Garden on Vevo - Official Music Videos, Live Performances, Interviews and more...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "savage-garden",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_e65763b78b",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/savage-garden/instagram-discovery.png",
+    "qrImage": "output/savage-garden/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "",
+    "spotify": "https://open.spotify.com/artist/3NRFinRTEqUCfaTTZmk8ek",
+    "instagram": "",
+    "website": "",
+    "buyMusic": "",
+    "merchandise": "https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.meta.com%2F&h=AUD00RLSnED-cIxbDxOvtmwk9Jun4lF18nL7hlEsn6ziMA_0gAgY4dNLFeGBtn7_QEg2uHgkQT3QUFnOGGjWPWOv9JnG3utilKTI8B-Po7MImB10pVs36IUII2JUfg1ywOga9Enn39cesWxrJsY6ji-7X46yFE1r",
+    "facebook": "https://www.facebook.com/lite/",
+    "youtube": "https://www.youtube.com/channel/UCocAlqGOU7BqzKc87qx6WUg"
+  },
+  "featuredVideo": {
+    "title": "Savage Garden - To the Moon and Back (Official Video - Australian Version)",
+    "youtubeURL": "https://www.youtube.com/watch?v=H5zcfhrBR3I",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:52:12.640Z"
+  },
+  "analytics": {
+    "editionId": "dc_e65763b78b",
+    "pageIdentifier": "dc_e65763b78b:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_a2b8ea10-7478-4c1e-bd57-d3e23577b1fd",
+    "submittedAt": "2026-08-03T11:54:14.437Z",
+    "researchCompletedAt": "2026-08-03T11:54:14.498Z",
+    "editionCreatedAt": "2026-08-03T11:54:14.498Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_e65763b78b",
+    "tickerBio": "SAVAGE GARDEN ON VEVO - OFFICIAL MUSIC VIDEOS, LIVE PERFORMANCES, INTERVIEWS AND MORE...",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "spotify-9ceda04c",
+      "youtube-b614c027",
+      "merchandise-9c97a4f7",
+      "facebook-0402af7d"
+    ],
+    "marquee": "Savage Garden",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://open.spotify.com/artist/3NRFinRTEqUCfaTTZmk8ek",
+    "linkSourceVerifiedAt": "2026-08-03T11:52:04.164Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "spotify-9ceda04c",
+        "sourceTitle": "Spotify",
+        "label": "Spotify",
+        "detail": "Listen on Spotify",
+        "url": "https://open.spotify.com/artist/3NRFinRTEqUCfaTTZmk8ek",
+        "platform": "website",
+        "kind": "spotify"
+      },
+      {
+        "id": "youtube-b614c027",
+        "sourceTitle": "YouTube",
+        "label": "YouTube",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/channel/UCocAlqGOU7BqzKc87qx6WUg",
+        "platform": "youtube",
+        "kind": "youtube"
+      },
+      {
+        "id": "merchandise-9c97a4f7",
+        "sourceTitle": "Meta Store",
+        "label": "Meta Store",
+        "detail": "Official band merchandise",
+        "url": "https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.meta.com%2F&h=AUD00RLSnED-cIxbDxOvtmwk9Jun4lF18nL7hlEsn6ziMA_0gAgY4dNLFeGBtn7_QEg2uHgkQT3QUFnOGGjWPWOv9JnG3utilKTI8B-Po7MImB10pVs36IUII2JUfg1ywOga9Enn39cesWxrJsY6ji-7X46yFE1r",
+        "platform": "merchandise",
+        "kind": "merchandise"
+      },
+      {
+        "id": "facebook-0402af7d",
+        "sourceTitle": "Facebook Lite",
+        "label": "Facebook Lite",
+        "detail": "Follow the band",
+        "url": "https://www.facebook.com/lite/",
+        "platform": "facebook",
+        "kind": "facebook"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://www.youtube.com/channel/UCocAlqGOU7BqzKc87qx6WUg",
+      "paragraphs": [
+        "Savage Garden on Vevo - Official Music Videos, Live Performances, Interviews and more..."
+      ]
+    }
+  }
+}

@@ -1,0 +1,181 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "INXS",
+  "editionTitle": "INXS",
+  "description": "ONE OF THE GREATEST BANDS OF ALL TIME With a career spanning over 40 extraordinary years, INXS are one of the world’s greatest rock bands. With more than 70 million records sold...",
+  "discovery": {
+    "bio": "ONE OF THE GREATEST BANDS OF ALL TIME With a career spanning over 40 extraordinary years, INXS are one of the world’s greatest rock bands. With more than 70 million records sold...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "inxs",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_36e2298568",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/inxs/instagram-discovery.png",
+    "qrImage": "output/inxs/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "",
+    "spotify": "https://open.spotify.com/artist/1eClJfHLoDI4rZe5HxzBFv",
+    "instagram": "https://www.instagram.com/officialinxs/",
+    "website": "https://www.inxs.com/",
+    "buyMusic": "",
+    "merchandise": "https://shop.inxs.com/",
+    "facebook": "https://www.facebook.com/inxs",
+    "youtube": "https://www.youtube.com/user/inxsofficial"
+  },
+  "featuredVideo": {
+    "title": "INXS - Disappear (Réveillon réveillons, December 31, 1990)",
+    "youtubeURL": "https://www.youtube.com/watch?v=G6Dn2zcSC84",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:21:47.953Z"
+  },
+  "analytics": {
+    "editionId": "dc_36e2298568",
+    "pageIdentifier": "dc_36e2298568:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_bcba6539-a570-408b-b25f-dddf3ec035cb",
+    "submittedAt": "2026-08-03T11:28:55.516Z",
+    "researchCompletedAt": "2026-08-03T11:28:55.682Z",
+    "editionCreatedAt": "2026-08-03T11:28:55.682Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_36e2298568",
+    "tickerBio": "ONE OF THE GREATEST BANDS OF ALL TIME WITH A CAREER SPANNING OVER 40 EXTRAORDINARY YEARS, INXS ARE ONE OF THE WORLD’S GREATEST ROCK BANDS. WITH MORE THAN 70 MILLION RECORDS SOLD WORLDWIDE, COUNTLESS AWARDS FROM BOTH THEIR PEERS & FANS, INCLUDING 7 MTV AWARDS, 3 GRAMMY NOMINATIONS, BRIT AWARDS AND HUNDREDS OF PLATINUM, GOLD AND NOW TWI DIAMOND AWARDS FROM CANADA AND AUSTRALIA. THE BAND, BROTHERS AND FRIENDS FROM SCHOO",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "spotify-8e9195e0",
+      "youtube-3108d0c2",
+      "instagram-575f048f",
+      "tiktok-325678a4",
+      "website-cf2e5845",
+      "merchandise-6d29d4b0"
+    ],
+    "marquee": "INXS",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://www.inxs.com/",
+    "linkSourceVerifiedAt": "2026-08-03T11:21:38.458Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "website-cf2e5845",
+        "sourceTitle": "Home",
+        "label": "Home",
+        "detail": "Visit the official website",
+        "url": "https://www.inxs.com/",
+        "platform": "website",
+        "kind": "website"
+      },
+      {
+        "id": "youtube-3108d0c2",
+        "sourceTitle": "Watch",
+        "label": "Watch",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/user/inxsofficial",
+        "platform": "youtube",
+        "kind": "youtube"
+      },
+      {
+        "id": "merchandise-6d29d4b0",
+        "sourceTitle": "US Store",
+        "label": "US Store",
+        "detail": "Official band merchandise",
+        "url": "https://shop.inxs.com/",
+        "platform": "merchandise",
+        "kind": "merchandise"
+      },
+      {
+        "id": "facebook-687a5fbf",
+        "sourceTitle": "Facebook",
+        "label": "Facebook",
+        "detail": "Follow the band",
+        "url": "https://www.facebook.com/inxs",
+        "platform": "facebook",
+        "kind": "facebook"
+      },
+      {
+        "id": "instagram-575f048f",
+        "sourceTitle": "Instagram",
+        "label": "Instagram",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/officialinxs/",
+        "platform": "instagram",
+        "kind": "instagram"
+      },
+      {
+        "id": "spotify-8e9195e0",
+        "sourceTitle": "Spotify",
+        "label": "Spotify",
+        "detail": "Listen on Spotify",
+        "url": "https://open.spotify.com/artist/1eClJfHLoDI4rZe5HxzBFv",
+        "platform": "website",
+        "kind": "spotify"
+      },
+      {
+        "id": "tiktok-325678a4",
+        "sourceTitle": "TikTok",
+        "label": "TikTok",
+        "detail": "Official band clips",
+        "url": "https://www.tiktok.com/@inxs",
+        "platform": "website",
+        "kind": "tiktok"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://www.youtube.com/channel/UCAldEKRD6LXGd8FAXI6Oo3w",
+      "paragraphs": [
+        "ONE OF THE GREATEST BANDS OF ALL TIME With a career spanning over 40 extraordinary years, INXS are one of the world’s greatest rock bands. With more than 70 million records sold worldwide, countless awards from both their peers & fans, including 7 MTV Awards, 3 Grammy Nominations, Brit Awards and hundreds of platinum, gold and now twi diamond Awards from Canada and Australia. The band, brothers and friends from schoo"
+      ]
+    }
+  }
+}

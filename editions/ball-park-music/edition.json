@@ -1,0 +1,199 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Ball Park Music",
+  "editionTitle": "Ball Park Music",
+  "description": "Please Don't Move To Melbourne is the second single from Ball Park Music's 2025 album \\\"Like Love\\\" \\n\\nMusic Video by Dean Hanson \\nFilmed by Ball Park Music on a sunny day in...",
+  "discovery": {
+    "bio": "Please Don't Move To Melbourne is the second single from Ball Park Music's 2025 album \\\"Like Love\\\" \\n\\nMusic Video by Dean Hanson \\nFilmed by Ball Park Music on a sunny day in...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "ball-park-music",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_1d2f48f205",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/ball-park-music/instagram-discovery.png",
+    "qrImage": "output/ball-park-music/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "",
+    "spotify": "https://open.spotify.com/artist/1ououJVWgWsHWMYDLvT7sH",
+    "instagram": "https://www.instagram.com/ballparkmusic/",
+    "website": "https://www.ballparkmusic.com/",
+    "buyMusic": "",
+    "merchandise": "https://merchjungle.com/collections/ball-park-music",
+    "facebook": "https://www.facebook.com/ballparkmusic/",
+    "youtube": "https://www.youtube.com/channel/UCHJA95ntm2cOro8BU4xgJiA"
+  },
+  "featuredVideo": {
+    "title": "WORLD BEHIND YOUR EYES - The Making of Like Love - EP 4 “Overwhelming”",
+    "youtubeURL": "https://www.youtube.com/watch?v=lyuQ8vxWnoY",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:25:53.205Z"
+  },
+  "analytics": {
+    "editionId": "dc_1d2f48f205",
+    "pageIdentifier": "dc_1d2f48f205:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_30a49de2-faab-48b6-881a-ad32b7c4de5c",
+    "submittedAt": "2026-08-03T11:29:17.534Z",
+    "researchCompletedAt": "2026-08-03T11:29:17.758Z",
+    "editionCreatedAt": "2026-08-03T11:29:17.758Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_1d2f48f205",
+    "tickerBio": "PLEASE DON'T MOVE TO MELBOURNE IS THE SECOND SINGLE FROM BALL PARK MUSIC'S 2025 ALBUM \\\"LIKE LOVE\\\" \\N\\NMUSIC VIDEO BY DEAN HANSON \\NFILMED BY BALL PARK MUSIC ON A SUNNY DAY IN BRISBANE/MEANJIN IN JANUARY 2025 \\N\\NPLEASE DON'T MOVE TO MELBOURNE PRODUCED, MIXED AND MASTERED BY MATT REDLICH.\\N\\NBROUGHT TO YOU BY PRAWN RECORDS",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "spotify-fd4f6626",
+      "youtube-41b41c7c",
+      "instagram-51977cff",
+      "tiktok-fdc1d7d0",
+      "website-d830b1ac",
+      "merchandise-43dc89f5"
+    ],
+    "marquee": "Ball Park Music",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://www.ballparkmusic.com/",
+    "linkSourceVerifiedAt": "2026-08-03T11:25:44.126Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "website-d830b1ac",
+        "sourceTitle": "Skip to Content",
+        "label": "Band Website",
+        "detail": "Visit the official website",
+        "url": "https://www.ballparkmusic.com/",
+        "platform": "website",
+        "kind": "website"
+      },
+      {
+        "id": "merchandise-43dc89f5",
+        "sourceTitle": "SHOP",
+        "label": "SHOP",
+        "detail": "Official band merchandise",
+        "url": "https://merchjungle.com/collections/ball-park-music",
+        "platform": "merchandise",
+        "kind": "merchandise"
+      },
+      {
+        "id": "newsletter-9a2e998c",
+        "sourceTitle": "SUBSCRIBE",
+        "label": "SUBSCRIBE",
+        "detail": "Join the official mailing list",
+        "url": "https://www.ballparkmusic.com/subscribe",
+        "platform": "website",
+        "kind": "newsletter"
+      },
+      {
+        "id": "contact-889be44e",
+        "sourceTitle": "CONTACT",
+        "label": "CONTACT",
+        "detail": "Official band enquiries",
+        "url": "https://www.ballparkmusic.com/contact",
+        "platform": "website",
+        "kind": "contact"
+      },
+      {
+        "id": "spotify-fd4f6626",
+        "sourceTitle": "Spotify",
+        "label": "Spotify",
+        "detail": "Listen on Spotify",
+        "url": "https://open.spotify.com/artist/1ououJVWgWsHWMYDLvT7sH",
+        "platform": "website",
+        "kind": "spotify"
+      },
+      {
+        "id": "instagram-51977cff",
+        "sourceTitle": "Instagram",
+        "label": "Instagram",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/ballparkmusic/",
+        "platform": "instagram",
+        "kind": "instagram"
+      },
+      {
+        "id": "youtube-41b41c7c",
+        "sourceTitle": "YouTube",
+        "label": "YouTube",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/channel/UCHJA95ntm2cOro8BU4xgJiA",
+        "platform": "youtube",
+        "kind": "youtube"
+      },
+      {
+        "id": "tiktok-fdc1d7d0",
+        "sourceTitle": "TikTok",
+        "label": "TikTok",
+        "detail": "Official band clips",
+        "url": "https://www.tiktok.com/@ballparkmusic",
+        "platform": "website",
+        "kind": "tiktok"
+      },
+      {
+        "id": "facebook-8622cd2a",
+        "sourceTitle": "Facebook",
+        "label": "Facebook",
+        "detail": "Follow the band",
+        "url": "https://www.facebook.com/ballparkmusic/",
+        "platform": "facebook",
+        "kind": "facebook"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://www.youtube.com/channel/UCHJA95ntm2cOro8BU4xgJiA",
+      "paragraphs": [
+        "Please Don't Move To Melbourne is the second single from Ball Park Music's 2025 album \\\"Like Love\\\" \\n\\nMusic Video by Dean Hanson \\nFilmed by Ball Park Music on a sunny day in Brisbane/Meanjin in January 2025 \\n\\nPlease Don't Move To Melbourne produced, mixed and mastered by Matt Redlich.\\n\\nBrought to you by Prawn Records"
+      ]
+    }
+  }
+}

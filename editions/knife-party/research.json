@@ -1,0 +1,192 @@
+{
+  "bandName": "Knife Party",
+  "slug": "knife-party",
+  "editionId": "dc_48973433b0",
+  "verifiedAt": "2026-08-03T11:35:02.018Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://knifeparty.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:34:53.183Z",
+      "evidence": "The page identified Knife Party and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/knifepartyinc/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:34:53.325Z",
+      "evidence": "The page identified Knife Party and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/2DuJi13MWHjRHrqRUwk8vH",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:34:52.927Z",
+      "evidence": "The page identified Knife Party and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UCtXRolzmkBDmAkTEJiFXohw",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:34:53.281Z",
+      "evidence": "The page identified Knife Party and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://knifeparty.redstarmerch.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:34:53.673Z",
+      "evidence": "The page identified Knife Party and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:show-4771a3b4",
+      "url": "https://browsehappy.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:34:54.292Z",
+      "evidence": "Tickets resolved directly from an identity-matched artist-controlled source for Knife Party."
+    },
+    {
+      "destination": "selection:merchandise-c4228451",
+      "url": "https://knifeparty.com/en-usd/collections/all",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:34:53.950Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Knife Party."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://knifeparty.com/en-usd/collections/all",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:34:53.950Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Knife Party."
+    },
+    {
+      "destination": "selection:website-f0e4c4d1",
+      "url": "https://knifeparty.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:34:53.183Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Knife Party."
+    },
+    {
+      "destination": "website",
+      "url": "https://knifeparty.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:34:53.183Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Knife Party."
+    },
+    {
+      "destination": "selection:youtube-4fdb5f52",
+      "url": "https://www.youtube.com/channel/UCtXRolzmkBDmAkTEJiFXohw",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:34:54.645Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Knife Party."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/channel/UCtXRolzmkBDmAkTEJiFXohw",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:34:54.645Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Knife Party."
+    },
+    {
+      "destination": "selection:instagram-35706942",
+      "url": "https://www.instagram.com/knifepartyinc",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:34:54.713Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Knife Party."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/knifepartyinc",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:34:54.713Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Knife Party."
+    },
+    {
+      "destination": "selection:facebook-f21d4eee",
+      "url": "https://www.facebook.com/knifeparty",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:34:54.890Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Knife Party."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/knifeparty",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:34:54.890Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Knife Party."
+    },
+    {
+      "destination": "selection:tiktok-13f2d929",
+      "url": "https://www.tiktok.com/@knifepartyinc",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:34:54.541Z",
+      "evidence": "TikTok resolved directly and its destination metadata matched Knife Party."
+    },
+    {
+      "destination": "tiktok",
+      "url": "https://www.tiktok.com/@knifepartyinc",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:34:54.541Z",
+      "evidence": "TikTok resolved directly and its destination metadata matched Knife Party."
+    },
+    {
+      "destination": "selection:spotify-ef4e49ef",
+      "url": "https://open.spotify.com/artist/2DuJi13MWHjRHrqRUwk8vH",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:34:52.927Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Knife Party."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/2DuJi13MWHjRHrqRUwk8vH",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:34:52.927Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Knife Party."
+    },
+    {
+      "destination": "biography",
+      "url": "https://knifeparty.redstarmerch.com/",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:35:01.395Z",
+      "evidence": "The official source supplied the concise biography text used by the Knife Party ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=Xc1nU7tuE_E",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:35:00.952Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Knife Party video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://knifeparty.com/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:34:53.183Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Knife Party."
+    }
+  ]
+}

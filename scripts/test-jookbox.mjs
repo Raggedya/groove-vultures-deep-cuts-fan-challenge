@@ -95,7 +95,7 @@ for (const selection of config.jookBox.selections) {
 }
 assert.ok(research.sources.some((source) => source.destination === "featuredVideo" && source.url === config.featuredVideo.youtubeURL && /380K views/.test(source.evidence)), "The featured video must retain official Popular-order evidence.");
 
-const [html, app, styles, creator, validator, contractsText, studioModel] = await Promise.all([
+const [html, app, styles, creator, validator, contractsText, studioModel, artworkGenerator, artworkVerifier, characterQrRenderer] = await Promise.all([
   fs.readFile("index.html", "utf8"),
   fs.readFile("js/app.js", "utf8"),
   fs.readFile("styles.css", "utf8"),
@@ -103,13 +103,16 @@ const [html, app, styles, creator, validator, contractsText, studioModel] = awai
   fs.readFile("scripts/validate-platform.mjs", "utf8"),
   fs.readFile("edition-contracts.json", "utf8"),
   fs.readFile("scripts/studio-model.mjs", "utf8"),
+  fs.readFile("scripts/generate-social-assets.py", "utf8"),
+  fs.readFile("scripts/verify-delivery-assets.py", "utf8"),
+  fs.readFile("scripts/render-character-jookbox-qr.mjs", "utf8"),
 ]);
 const contracts = JSON.parse(contractsText);
 assert.equal(contracts.productModels.jookbox.version, 3);
 assert.deepEqual(contracts.editionTypes.jukebox.renderedLinks, []);
 assert.match(html, /id="jookBoxCabinet"/);
 assert.match(html, /styles\.css\?v=20260802-bar-mobile-8/);
-assert.match(html, /app\.js\?v=20260802-bar-mobile-8/);
+assert.match(html, /app\.js\?v=20260803-coin-audio-1/);
 assert.match(html, /id="jookBoxVideoSlot"/);
 assert.match(html, /id="jookBoxCoinButton"[\s\S]*aria-label="Insert coin and start the jukebox"/);
 assert.match(html, /id="jookBoxTickerText"/);
@@ -123,7 +126,7 @@ assert.doesNotMatch(html, /Filthy Animals/, "The reusable HTML renderer must nev
 assert.doesNotMatch(html, /id="jookBoxSoundToggle"|class="jookbox-band-plaque"|id="jookBoxActionBar"/);
 
 assert.match(app, /function setJookBoxState\(nextState\)/);
-assert.match(app, /const VERSION="20260802-bar-mobile-8"/);
+assert.match(app, /const VERSION="20260803-coin-audio-1"/);
 assert.match(app, /dataset\.jookboxEmbeddedMarquee=embeddedMarquee\?"true":"false"/);
 assert.match(app, /dataset\.jookboxAppearance=config\.jookBox\?\.appearanceVariant\|\|"reference"/);
 assert.match(app, /dataset\.jookboxLightSequence=config\.jookBox\?\.lightSequenceMode\|\|"single-key"/);
@@ -150,8 +153,9 @@ assert.match(app, /function startJookBoxKeyLightSequence\(\)/);
 assert.match(app, /function cleanupJookBoxLifecycle\(\)/);
 assert.doesNotMatch(app, /jookBoxAutoplayTimer|scheduleJookBoxAutoplay|clearJookBoxAutoplayTimer/);
 assert.match(app, /function prepareJookBoxCoinAudio\(\)/);
-assert.match(app, /new Audio\(source\.startsWith/);
-assert.doesNotMatch(app, /function playJookBoxCoinFallback\(\)|window\.AudioContext|webkitAudioContext/, "A failed recording must remain silent instead of producing an electronic synthesized fallback.");
+assert.match(app, /DeepCutsJookBoxCoinAudio/);
+assert.match(app, /volume:1,gain:1\.15/);
+assert.doesNotMatch(app, /function playJookBoxCoinFallback\(\)|createOscillator/, "A failed recording must never produce an electronic synthesized fallback.");
 assert.match(app, /function handleJookBoxVisibility\(\)/);
 assert.match(app, /window\.addEventListener\("pagehide",cleanupJookBoxLifecycle/);
 assert.match(app, /window\.addEventListener\("pageshow",handleJookBoxPageShow/);
@@ -256,6 +260,11 @@ assert.match(creator, /keyBankFormat,/);
 assert.match(creator, /displaySelectionIds:requestedDisplayIds/);
 assert.match(creator, /cabinetArtwork:'assets\/jookbox-atlas-reference-v1\.webp'/);
 assert.match(creator, /cabinetArtworkSha256:'ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3'/);
+assert.match(creator, /qrArtworkVariant:'aggits-character-poster\/1'/);
+assert.match(artworkGenerator, /aggits-character-poster\/1/);
+assert.match(artworkGenerator, /Compact-phone character JookBox QR scan-back failed/);
+assert.match(artworkVerifier, /compact-phone QR scan-back failed/);
+assert.match(characterQrRenderer, /createAggitsJukeboxQrArtwork/);
 assert.match(creator, /supportAction:\{action:'share',label:'Support Our Band',detail:'Please share our JookBox'/);
 assert.match(creator, /cabinetCopyright:'Copyright Clearlight Creative 2026\.'/);
 assert.match(creator, /assets\/audio\/jukebox-real-coin-insert-cc0\.mp3/);

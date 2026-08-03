@@ -1,0 +1,152 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Miami Horror",
+  "editionTitle": "Miami Horror",
+  "description": "Late last year we played one of our favorite shows in Australia - Live at the Botanical Gardens in Melbourne. We were lucky to have Ange from @telenovaofficial join us for her song...",
+  "discovery": {
+    "bio": "Late last year we played one of our favorite shows in Australia - Live at the Botanical Gardens in Melbourne. We were lucky to have Ange from @telenovaofficial join us for her song...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "miami-horror",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_e84f719c88",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/miami-horror/instagram-discovery.png",
+    "qrImage": "output/miami-horror/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "",
+    "spotify": "",
+    "instagram": "https://www.instagram.com/miamihorror/",
+    "website": "https://miamihorror.com/",
+    "buyMusic": "",
+    "merchandise": "",
+    "facebook": "https://www.facebook.com/miamihorror",
+    "youtube": "https://www.youtube.com/channel/UCi6npYM3xgDR-ohvXeDtIPw"
+  },
+  "featuredVideo": {
+    "title": "Miami Horror - Remember ft. Tim Ayre (Official Live Video)",
+    "youtubeURL": "https://www.youtube.com/watch?v=c3v-qsRhS1Y",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:33:05.724Z"
+  },
+  "analytics": {
+    "editionId": "dc_e84f719c88",
+    "pageIdentifier": "dc_e84f719c88:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_0f31f1cd-5ef1-40b3-8f40-eb4dccae1fc9",
+    "submittedAt": "2026-08-03T11:29:05.565Z",
+    "researchCompletedAt": "2026-08-03T11:33:37.857Z",
+    "editionCreatedAt": "2026-08-03T11:33:37.857Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_e84f719c88",
+    "tickerBio": "LATE LAST YEAR WE PLAYED ONE OF OUR FAVORITE SHOWS IN AUSTRALIA - LIVE AT THE BOTANICAL GARDENS IN MELBOURNE. WE WERE LUCKY TO HAVE ANGE FROM @TELENOVAOFFICIAL JOIN US FOR HER SONG “WE’RE ALL MADE OF STARS” FROM THE NEW ALBUM. THE LIVE RECORDING IS UP ON YOUTUBE NOW IF YOU’D LIKE TO WATCH - THE FULL SHOW IS COMING SOON. WE ARE SO PROUD OF THIS SONG, IT CAPTURES SUCH A SPECIAL FEELING AND ENCAPSULATES THE WHOLE VISION",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "youtube-7cd62dbc",
+      "instagram-9e8aab21",
+      "website-74db86d7",
+      "facebook-40fdf852"
+    ],
+    "marquee": "Miami Horror",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://miamihorror.com/",
+    "linkSourceVerifiedAt": "2026-08-03T11:32:58.081Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "instagram-9e8aab21",
+        "sourceTitle": "INSTAGRAM",
+        "label": "INSTAGRAM",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/miamihorror/",
+        "platform": "instagram",
+        "kind": "instagram"
+      },
+      {
+        "id": "facebook-40fdf852",
+        "sourceTitle": "FACEBOOK",
+        "label": "FACEBOOK",
+        "detail": "Follow the band",
+        "url": "https://www.facebook.com/miamihorror",
+        "platform": "facebook",
+        "kind": "facebook"
+      },
+      {
+        "id": "youtube-7cd62dbc",
+        "sourceTitle": "YOUTUBE",
+        "label": "YOUTUBE",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/channel/UCi6npYM3xgDR-ohvXeDtIPw",
+        "platform": "youtube",
+        "kind": "youtube"
+      },
+      {
+        "id": "website-74db86d7",
+        "sourceTitle": "Band Website",
+        "label": "Band Website",
+        "detail": "Visit the official website",
+        "url": "https://miamihorror.com/",
+        "platform": "website",
+        "kind": "website"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://www.instagram.com/miamihorror/",
+      "paragraphs": [
+        "Late last year we played one of our favorite shows in Australia - Live at the Botanical Gardens in Melbourne. We were lucky to have Ange from @telenovaofficial join us for her song “We’re All Made Of Stars” from the new album. The live recording is up on youtube now if you’d like to watch - the full show is coming soon. We are so proud of this song, it captures such a special feeling and encapsulates the whole vision"
+      ]
+    }
+  }
+}

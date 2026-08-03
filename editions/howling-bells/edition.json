@@ -1,0 +1,152 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Howling Bells",
+  "editionTitle": "Howling Bells",
+  "description": "In an attempt to find some O.G Bells demos for our bonus 7”, I stumbled on my bedroom demo of The Night Is Young, maybe 2003? It’s the first version of the track ever recorded. So we’ve...",
+  "discovery": {
+    "bio": "In an attempt to find some O.G Bells demos for our bonus 7”, I stumbled on my bedroom demo of The Night Is Young, maybe 2003? It’s the first version of the track ever recorded. So we’ve...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "howling-bells",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_c92dad74b8",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/howling-bells/instagram-discovery.png",
+    "qrImage": "output/howling-bells/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "",
+    "spotify": "https://open.spotify.com/artist/4ZB5ywwPWbVJDgCHTxtUZE",
+    "instagram": "https://www.instagram.com/howlingbells",
+    "website": "",
+    "buyMusic": "",
+    "merchandise": "",
+    "facebook": "https://www.facebook.com/howlingbells",
+    "youtube": "https://www.youtube.com/channel/UCBu8tkqEeOxKTAa53jz4eDw"
+  },
+  "featuredVideo": {
+    "title": "The Night Is Young - Bedroom Demo/2003",
+    "youtubeURL": "https://www.youtube.com/watch?v=lEpAUuSFy24",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:33:16.508Z"
+  },
+  "analytics": {
+    "editionId": "dc_c92dad74b8",
+    "pageIdentifier": "dc_c92dad74b8:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_264804e1-fe46-4507-a433-021612546874",
+    "submittedAt": "2026-08-03T11:29:11.669Z",
+    "researchCompletedAt": "2026-08-03T11:33:38.993Z",
+    "editionCreatedAt": "2026-08-03T11:33:38.993Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_c92dad74b8",
+    "tickerBio": "IN AN ATTEMPT TO FIND SOME O.G BELLS DEMOS FOR OUR BONUS 7”, I STUMBLED ON MY BEDROOM DEMO OF THE NIGHT IS YOUNG, MAYBE 2003? IT’S THE FIRST VERSION OF THE TRACK EVER RECORDED. SO WE’VE ATTACHED THE SONG TO SOME OF THE EARLIEST FOOTAGE WE HAVE OF THE BAND … (BACK THEN, CALLED WAIKIKI) THIS VIDEO IS A LOVE LETTER TO THE SYDNEY WE GREW UP IN, EARLY 2000S, BONDI BEACH AND THE INNER CITY, WHERE THE 3 OF US WOULD WRITE AN",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "spotify-05d238b9",
+      "youtube-5b42aa3f",
+      "instagram-27a86c6d",
+      "facebook-103674a8"
+    ],
+    "marquee": "Howling Bells",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://ffm.bio/howlingbells",
+    "linkSourceVerifiedAt": "2026-08-03T11:33:06.681Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "facebook-103674a8",
+        "sourceTitle": "Facebook",
+        "label": "Facebook",
+        "detail": "Follow the band",
+        "url": "https://www.facebook.com/howlingbells",
+        "platform": "facebook",
+        "kind": "facebook"
+      },
+      {
+        "id": "youtube-5b42aa3f",
+        "sourceTitle": "YouTube",
+        "label": "YouTube",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/channel/UCBu8tkqEeOxKTAa53jz4eDw",
+        "platform": "youtube",
+        "kind": "youtube"
+      },
+      {
+        "id": "spotify-05d238b9",
+        "sourceTitle": "Spotify",
+        "label": "Spotify",
+        "detail": "Listen on Spotify",
+        "url": "https://open.spotify.com/artist/4ZB5ywwPWbVJDgCHTxtUZE",
+        "platform": "website",
+        "kind": "spotify"
+      },
+      {
+        "id": "instagram-27a86c6d",
+        "sourceTitle": "Instagram",
+        "label": "Instagram",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/howlingbells",
+        "platform": "instagram",
+        "kind": "instagram"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://www.instagram.com/howlingbells/",
+      "paragraphs": [
+        "In an attempt to find some O.G Bells demos for our bonus 7”, I stumbled on my bedroom demo of The Night Is Young, maybe 2003? It’s the first version of the track ever recorded. So we’ve attached the song to some of the earliest footage we have of the band … (back then, called Waikiki) this video is a love letter to the Sydney we grew up in, early 2000s, Bondi Beach and the inner city, where the 3 of us would write an"
+      ]
+    }
+  }
+}

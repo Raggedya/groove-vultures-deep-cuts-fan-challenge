@@ -1,0 +1,152 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Dead Letter Circus",
+  "editionTitle": "Dead Letter Circus",
+  "description": "Dead Letter Circus will make a triumphant return to the national stage for a handful of intimate live shows in support of the song. The ‘Armour You Own’ single tour will kick off on May...",
+  "discovery": {
+    "bio": "Dead Letter Circus will make a triumphant return to the national stage for a handful of intimate live shows in support of the song. The ‘Armour You Own’ single tour will kick off on May...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "dead-letter-circus",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_be88a39b9b",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/dead-letter-circus/instagram-discovery.png",
+    "qrImage": "output/dead-letter-circus/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "",
+    "spotify": "",
+    "instagram": "https://www.instagram.com/deadletterinsta",
+    "website": "https://deadlettercircus.com/",
+    "buyMusic": "",
+    "merchandise": "",
+    "facebook": "https://www.facebook.com/deadlettercircus/",
+    "youtube": "https://www.youtube.com/user/DEADLETTERCIRCUSTV"
+  },
+  "featuredVideo": {
+    "title": "Dead Letter Circus - 'Home' (Official Audio)",
+    "youtubeURL": "https://www.youtube.com/watch?v=Apyiet_pSjQ",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:33:04.274Z"
+  },
+  "analytics": {
+    "editionId": "dc_be88a39b9b",
+    "pageIdentifier": "dc_be88a39b9b:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_d3631a57-1121-4b2b-a6bf-a5e672943074",
+    "submittedAt": "2026-08-03T11:29:06.057Z",
+    "researchCompletedAt": "2026-08-03T11:33:38.243Z",
+    "editionCreatedAt": "2026-08-03T11:33:38.243Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_be88a39b9b",
+    "tickerBio": "DEAD LETTER CIRCUS WILL MAKE A TRIUMPHANT RETURN TO THE NATIONAL STAGE FOR A HANDFUL OF INTIMATE LIVE SHOWS IN SUPPORT OF THE SONG. THE ‘ARMOUR YOU OWN’ SINGLE TOUR WILL KICK OFF ON MAY 31 AT MELBOURNE’S CORNER HOTEL AND TAKE IN MAJOR CITIES LIKE SYDNEY, ADELAIDE, BRISBANE, PERTH AND FREMANTLE. THE BAND WILL BE MATCH FIT, HAVING JUST WRAPPED UP SHOWS WITH AMERICAN SUPERGROUP PROPHETS OF RAGE ON THEIR RECENT AUSTRALIA",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "youtube-14be24ac",
+      "instagram-990c7248",
+      "website-2aba034f",
+      "facebook-c27c5b13"
+    ],
+    "marquee": "Dead Letter Circus",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://deadlettercircus.com/",
+    "linkSourceVerifiedAt": "2026-08-03T11:32:55.620Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "website-2aba034f",
+        "sourceTitle": "Home",
+        "label": "Home",
+        "detail": "Visit the official website",
+        "url": "https://deadlettercircus.com/",
+        "platform": "website",
+        "kind": "website"
+      },
+      {
+        "id": "facebook-c27c5b13",
+        "sourceTitle": "Facebook",
+        "label": "Facebook",
+        "detail": "Follow the band",
+        "url": "https://www.facebook.com/deadlettercircus/",
+        "platform": "facebook",
+        "kind": "facebook"
+      },
+      {
+        "id": "instagram-990c7248",
+        "sourceTitle": "Instagram",
+        "label": "Instagram",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/deadletterinsta",
+        "platform": "instagram",
+        "kind": "instagram"
+      },
+      {
+        "id": "youtube-14be24ac",
+        "sourceTitle": "YouTube",
+        "label": "YouTube",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/user/DEADLETTERCIRCUSTV",
+        "platform": "youtube",
+        "kind": "youtube"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://deadlettercircus.com/",
+      "paragraphs": [
+        "Dead Letter Circus will make a triumphant return to the national stage for a handful of intimate live shows in support of the song. The ‘Armour You Own’ single tour will kick off on May 31 at Melbourne’s Corner Hotel and take in major cities like Sydney, Adelaide, Brisbane, Perth and Fremantle. The band will be match fit, having just wrapped up shows with American supergroup Prophets Of Rage on their recent Australia"
+      ]
+    }
+  }
+}

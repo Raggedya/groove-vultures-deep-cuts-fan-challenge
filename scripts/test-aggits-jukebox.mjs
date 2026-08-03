@@ -32,13 +32,19 @@ assert.equal(project.readiness.handoffReady,true);
 const html=renderStudioPreview(project,{videoUrl:"/media/welcome.mp4"});
 assert.match(html,/<tspan x="500" y="72">AN EXCEPTIONALLY LONG<\/tspan>/,"exceptionally long titles must use the balanced two-line fallback");
 for(const required of [
-  "aggits-jukebox-master-v1.jpg","jukebox-real-coin-insert-cc0.mp3","object-fit:cover","ResizeObserver","Math.random()",
-  'addEventListener("ended"',"noopener noreferrer","1120"
+  "aggits-jukebox-master-v1.jpg","jukebox-real-coin-insert-cc0.mp3","object-fit:cover","ResizeObserver",
+  'addEventListener("ended"',"noopener noreferrer","1120","aspect-ratio:1","width:min(64%,70px)","enableActions"
 ])assert.ok(html.includes(required),`preview missing ${required}`);
+assert.ok(!html.includes("Math.random()"),"action-key illumination and random sequencing must remain removed");
+assert.ok(!html.includes("is-lighting"),"Aggits Jukebox action keys must not render lighting states");
+assert.ok(!html.includes("<strong>CALL US</strong>"),"public action keys must render icons only");
+assert.ok(!html.includes("outline:3px solid #ffe19a"),"the large transparent coin hotspot must never expose an oval focus outline");
+assert.match(html,/aria-label="CALL US"/,"stored labels must remain accessible names");
+assert.match(html,/background:radial-gradient\(circle at 31% 24%,#fff8bd/,"coin must use the polished opaque gold treatment");
 assert.ok(!html.includes('setTimeout(()=>video.pause'),"video completion must not use a timer");
 assert.ok(!html.includes('addEventListener("timeupdate"'),"media time must not be artificially clamped");
 const directive=fs.readFileSync(path.join(root,"PLATFORM_ARCHITECTURE_DIRECTIVE.md"),"utf8");
 assert.match(directive,/## Aggits four-button Jukebox contract/);
 assert.match(directive,/video opening is exactly `7:8`/);
 
-console.log(`Aggits Jukebox tests passed: ${AGGITS_JUKEBOX_ICONS.length} icons, safe actions, genuine media completion and 7:8 guidance.`);
+console.log(`Aggits Jukebox tests passed: ${AGGITS_JUKEBOX_ICONS.length} icons, polished coin, static icon-only actions, genuine media completion and 7:8 guidance.`);

@@ -1,0 +1,136 @@
+{
+  "bandName": "Bliss n Eso",
+  "slug": "bliss-n-eso",
+  "editionId": "dc_390ba8c782",
+  "verifiedAt": "2026-08-03T11:29:13.972Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://blissneso.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:26.774Z",
+      "evidence": "The page identified Bliss n Eso and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/blissneso/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:26.389Z",
+      "evidence": "The page identified Bliss n Eso and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UCwgWa8z08e4LYg15C0woAkA",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:26.349Z",
+      "evidence": "The page identified Bliss n Eso and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:website-9aca6a3a",
+      "url": "https://blissneso.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:26.774Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Bliss n Eso."
+    },
+    {
+      "destination": "website",
+      "url": "https://blissneso.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:26.774Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Bliss n Eso."
+    },
+    {
+      "destination": "selection:merchandise-c16ecbc0",
+      "url": "https://blissneso.com/collections/all",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:27.079Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Bliss n Eso."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://blissneso.com/collections/all",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:27.079Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Bliss n Eso."
+    },
+    {
+      "destination": "selection:contact-e1f83210",
+      "url": "https://blissneso.com/pages/contact",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:27.092Z",
+      "evidence": "Contact resolved directly and its destination metadata matched Bliss n Eso."
+    },
+    {
+      "destination": "contact",
+      "url": "https://blissneso.com/pages/contact",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:27.092Z",
+      "evidence": "Contact resolved directly and its destination metadata matched Bliss n Eso."
+    },
+    {
+      "destination": "selection:instagram-5b75dce4",
+      "url": "https://www.instagram.com/accounts/login/?next=%2Fblissneso%2F&source=desktop_nav",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:27.374Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Bliss n Eso."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/accounts/login/?next=%2Fblissneso%2F&source=desktop_nav",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:27.374Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Bliss n Eso."
+    },
+    {
+      "destination": "selection:facebook-170ce6c6",
+      "url": "https://www.facebook.com/help/instagram/261704639352628",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:30.015Z",
+      "evidence": "Facebook resolved directly from an identity-matched artist-controlled source for Bliss n Eso."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/help/instagram/261704639352628",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:30.015Z",
+      "evidence": "Facebook resolved directly from an identity-matched artist-controlled source for Bliss n Eso."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.youtube.com/channel/UCwgWa8z08e4LYg15C0woAkA",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:33.583Z",
+      "evidence": "The official source supplied the concise biography text used by the Bliss n Eso ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=fSyfBa91tOY",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:33.127Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Bliss n Eso video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://blissneso.com/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:26.774Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Bliss n Eso."
+    }
+  ]
+}

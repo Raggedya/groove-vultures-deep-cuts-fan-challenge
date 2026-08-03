@@ -1,6 +1,6 @@
 "use strict";
 
-const VERSION="20260802-bar-mobile-8";
+const VERSION="20260803-coin-audio-1";
 const LANEWAY_REPORTING_VERSION="laneway-weekly-v1";
 const $=id=>document.getElementById(id);
 const els={
@@ -1124,6 +1124,8 @@ function cleanupJookBoxLifecycle(){
   barJookBoxCoinDragController?.abort();
   barJookBoxCoinDragController=null;
   barJookBoxCoinDragState=null;
+  jookBoxAudio?.destroy?.();
+  jookBoxAudio=null;
   if(isBarJookBoxEdition())els.barJookBoxWelcomeVideo.pause();
 }
 
@@ -1176,11 +1178,11 @@ function powerJookBox(){
 function prepareJookBoxCoinAudio(){
   const source=String(config.jookBox?.coinSound||"").trim();
   if(!source)return;
+  jookBoxAudio?.destroy?.();
   try{
-    jookBoxAudio=new Audio(source.startsWith("/")?source:`/${source}`);
-    jookBoxAudio.preload="auto";
-    jookBoxAudio.volume=.56;
-    jookBoxAudio.addEventListener("error",()=>console.warn(`JookBox coin sound could not be loaded: ${source}`),{once:true});
+    const factory=window.DeepCutsJookBoxCoinAudio;
+    if(!factory?.create)throw new Error("The shared JookBox coin-audio engine was not loaded.");
+    jookBoxAudio=factory.create(source,{volume:1,gain:1.15});
   }catch(error){
     console.warn("JookBox coin sound could not be prepared.",error);
     jookBoxAudio=null;
@@ -1190,15 +1192,14 @@ function prepareJookBoxCoinAudio(){
 function playJookBoxCoinSound(){
   if(jookBoxAudio){
     try{
-      jookBoxAudio.currentTime=0;
       const playback=jookBoxAudio.play();
       if(playback&&typeof playback.catch==="function")playback.catch(error=>{
-        console.warn("JookBox coin recording could not be played; continuing silently.",error);
+        console.warn("JookBox coin recording could not be played.",error);
       });
       return;
-    }catch(error){console.warn("JookBox coin recording could not be played; continuing silently.",error)}
+    }catch(error){console.warn("JookBox coin recording could not be played.",error)}
   }
-  console.warn("JookBox coin recording is unavailable; continuing silently.");
+  console.warn("JookBox coin recording is unavailable.");
 }
 
 function handleJookBoxVisibility(){

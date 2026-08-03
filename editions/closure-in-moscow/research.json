@@ -1,0 +1,152 @@
+{
+  "bandName": "Closure in Moscow",
+  "slug": "closure-in-moscow",
+  "editionId": "dc_576c23c5b1",
+  "verifiedAt": "2026-08-03T11:29:28.139Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://www.closureinmoscow.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:55.876Z",
+      "evidence": "The page identified Closure in Moscow and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://closureinmoscow.bandcamp.com/album/soft-hell",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:55.738Z",
+      "evidence": "The page identified Closure in Moscow and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/closureinmoscowofficial/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:55.138Z",
+      "evidence": "The page identified Closure in Moscow and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://closureinmoscow.squarespace.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:56.816Z",
+      "evidence": "The page identified Closure in Moscow and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://linktr.ee/closureinmoscow",
+      "sourceType": "official artist-controlled link hub",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:55.827Z",
+      "evidence": "The page identified Closure in Moscow and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:merchandise-33165139",
+      "url": "https://www.closureinmoscow.com/shop",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:57.161Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Closure in Moscow."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://www.closureinmoscow.com/shop",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:57.161Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Closure in Moscow."
+    },
+    {
+      "destination": "selection:contact-b184b218",
+      "url": "https://www.closureinmoscow.com/contact",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:57.684Z",
+      "evidence": "Contact resolved directly and its destination metadata matched Closure in Moscow."
+    },
+    {
+      "destination": "contact",
+      "url": "https://www.closureinmoscow.com/contact",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:57.684Z",
+      "evidence": "Contact resolved directly and its destination metadata matched Closure in Moscow."
+    },
+    {
+      "destination": "selection:facebook-3abad5de",
+      "url": "https://www.facebook.com/closureinmoscow",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:57.775Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Closure in Moscow."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/closureinmoscow",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:57.775Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Closure in Moscow."
+    },
+    {
+      "destination": "selection:website-768b39f3",
+      "url": "https://www.closureinmoscow.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:55.876Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Closure in Moscow."
+    },
+    {
+      "destination": "website",
+      "url": "https://www.closureinmoscow.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:55.876Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Closure in Moscow."
+    },
+    {
+      "destination": "selection:bandcamp-dbb5841f",
+      "url": "https://bandcamp.com/?from=menubar_logo_logged_out",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:57.711Z",
+      "evidence": "Bandcamp resolved directly from an identity-matched artist-controlled source for Closure in Moscow."
+    },
+    {
+      "destination": "bandcamp",
+      "url": "https://bandcamp.com/?from=menubar_logo_logged_out",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:57.711Z",
+      "evidence": "Bandcamp resolved directly from an identity-matched artist-controlled source for Closure in Moscow."
+    },
+    {
+      "destination": "biography",
+      "url": "https://closureinmoscow.bandcamp.com/album/soft-hell",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:07.547Z",
+      "evidence": "The official source supplied the concise biography text used by the Closure in Moscow ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=9hsMPeBayNw",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:07.247Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Closure in Moscow video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://www.closureinmoscow.com/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:55.876Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Closure in Moscow."
+    }
+  ]
+}

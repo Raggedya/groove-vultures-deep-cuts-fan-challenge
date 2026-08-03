@@ -1,0 +1,280 @@
+{
+  "bandName": "The Wiggles",
+  "slug": "the-wiggles",
+  "editionId": "dc_7bb8539598",
+  "verifiedAt": "2026-08-03T11:33:36.631Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://thewiggles.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:38.149Z",
+      "evidence": "The page identified The Wiggles and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/thewiggles/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:37.846Z",
+      "evidence": "The page identified The Wiggles and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/2JY5qzEozvTdogkDTkkOMf",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:37.319Z",
+      "evidence": "The page identified The Wiggles and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UC5vVe2R4ucoMzJP53o38Yaw",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:37.690Z",
+      "evidence": "The page identified The Wiggles and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://linktr.ee/TheWiggles",
+      "sourceType": "official artist-controlled link hub",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:37.967Z",
+      "evidence": "The page identified The Wiggles and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:website-c99621d4",
+      "url": "https://thewiggles.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:38.149Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched The Wiggles."
+    },
+    {
+      "destination": "website",
+      "url": "https://thewiggles.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:38.149Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched The Wiggles."
+    },
+    {
+      "destination": "selection:facebook-17b2ffa9",
+      "url": "https://www.facebook.com/thewiggles",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:38.997Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched The Wiggles."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/thewiggles",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:38.997Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched The Wiggles."
+    },
+    {
+      "destination": "selection:instagram-33e802d3",
+      "url": "https://www.instagram.com/thewiggles/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:37.846Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched The Wiggles."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/thewiggles/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:37.846Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched The Wiggles."
+    },
+    {
+      "destination": "selection:youtube-f9492393",
+      "url": "https://www.youtube.com/user/TheWigglesPtyLtd?sub_confirmation=1",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:38.885Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched The Wiggles."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/user/TheWigglesPtyLtd?sub_confirmation=1",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:38.885Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched The Wiggles."
+    },
+    {
+      "destination": "selection:tiktok-f9f5c7f5",
+      "url": "https://www.tiktok.com/@thewiggles",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:38.442Z",
+      "evidence": "TikTok resolved directly and its destination metadata matched The Wiggles."
+    },
+    {
+      "destination": "tiktok",
+      "url": "https://www.tiktok.com/@thewiggles",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:38.442Z",
+      "evidence": "TikTok resolved directly and its destination metadata matched The Wiggles."
+    },
+    {
+      "destination": "selection:show-329a080c",
+      "url": "https://thewiggles.com/pages/live",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:38.491Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched The Wiggles."
+    },
+    {
+      "destination": "selection:merchandise-eef118b7",
+      "url": "https://thewiggles.com/collections/shop-all",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:38.835Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched The Wiggles."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://thewiggles.com/collections/shop-all",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:38.835Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched The Wiggles."
+    },
+    {
+      "destination": "selection:contact-fd1feccf",
+      "url": "https://thewiggles.com/pages/contact-us",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:39.141Z",
+      "evidence": "Contact resolved directly and its destination metadata matched The Wiggles."
+    },
+    {
+      "destination": "contact",
+      "url": "https://thewiggles.com/pages/contact-us",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:39.141Z",
+      "evidence": "Contact resolved directly and its destination metadata matched The Wiggles."
+    },
+    {
+      "destination": "selection:newsletter-a79ba55b",
+      "url": "https://thewiggles.com/pages/subscribe",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:39.289Z",
+      "evidence": "Newsletter resolved directly and its destination metadata matched The Wiggles."
+    },
+    {
+      "destination": "selection:show-7a89fe84",
+      "url": "https://iview.abc.net.au/show/ready-steady-wiggle",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:39.099Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched The Wiggles."
+    },
+    {
+      "destination": "selection:show-2ee1dd6f",
+      "url": "https://iview.abc.net.au/show/wiggle-and-learn",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:39.129Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched The Wiggles."
+    },
+    {
+      "destination": "selection:buy_music-7a16ab53",
+      "url": "https://thewiggles.com/pages/music",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:39.298Z",
+      "evidence": "Buy Music resolved directly and its destination metadata matched The Wiggles."
+    },
+    {
+      "destination": "buyMusic",
+      "url": "https://thewiggles.com/pages/music",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:39.298Z",
+      "evidence": "Buy Music resolved directly and its destination metadata matched The Wiggles."
+    },
+    {
+      "destination": "selection:spotify-e398cb1e",
+      "url": "https://open.spotify.com/artist/2JY5qzEozvTdogkDTkkOMf",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:37.319Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched The Wiggles."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/2JY5qzEozvTdogkDTkkOMf",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:37.319Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched The Wiggles."
+    },
+    {
+      "destination": "selection:show-6eb7bf4a",
+      "url": "https://thewiggles.com/pages/the-wiggles-sparkle-big-show",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:39.346Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched The Wiggles."
+    },
+    {
+      "destination": "selection:show-7c5bd43a",
+      "url": "https://thewiggles.com/pages/concerts-the-tree-of-wisdom",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:39.410Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched The Wiggles."
+    },
+    {
+      "destination": "selection:show-7d844401",
+      "url": "https://thewiggles.com/pages/the-wiggles-live-in-concert-2026",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:39.483Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched The Wiggles."
+    },
+    {
+      "destination": "selection:newsletter-b9e69708",
+      "url": "https://manage.kmail-lists.com/subscriptions/subscribe?a=TPincc&g=ThKX8C",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:40.384Z",
+      "evidence": "Newsletter resolved directly from an identity-matched artist-controlled source for The Wiggles."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.youtube.com/channel/UC5vVe2R4ucoMzJP53o38Yaw",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:46.292Z",
+      "evidence": "The official source supplied the concise biography text used by the The Wiggles ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=tghgSwS2c7E",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:45.954Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured The Wiggles video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://thewiggles.com/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:38.149Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for The Wiggles."
+    }
+  ]
+}

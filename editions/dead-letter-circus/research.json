@@ -1,0 +1,128 @@
+{
+  "bandName": "Dead Letter Circus",
+  "slug": "dead-letter-circus",
+  "editionId": "dc_be88a39b9b",
+  "verifiedAt": "2026-08-03T11:33:38.243Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://deadlettercircus.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:55.620Z",
+      "evidence": "The page identified Dead Letter Circus and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/deadletterinsta/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:55.246Z",
+      "evidence": "The page identified Dead Letter Circus and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/3NW2VkBpoHFv327eSuH490",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:54.866Z",
+      "evidence": "The page identified Dead Letter Circus and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UCpOXUtOVvQdo4JQs0LcT32w",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:55.227Z",
+      "evidence": "The page identified Dead Letter Circus and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:website-2aba034f",
+      "url": "https://deadlettercircus.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:55.620Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Dead Letter Circus."
+    },
+    {
+      "destination": "website",
+      "url": "https://deadlettercircus.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:55.620Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Dead Letter Circus."
+    },
+    {
+      "destination": "selection:facebook-c27c5b13",
+      "url": "https://www.facebook.com/deadlettercircus/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:56.388Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Dead Letter Circus."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/deadlettercircus/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:56.388Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Dead Letter Circus."
+    },
+    {
+      "destination": "selection:instagram-990c7248",
+      "url": "https://www.instagram.com/deadletterinsta",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:56.247Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Dead Letter Circus."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/deadletterinsta",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:56.247Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Dead Letter Circus."
+    },
+    {
+      "destination": "selection:youtube-14be24ac",
+      "url": "https://www.youtube.com/user/DEADLETTERCIRCUSTV",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:56.900Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Dead Letter Circus."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/user/DEADLETTERCIRCUSTV",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:56.900Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Dead Letter Circus."
+    },
+    {
+      "destination": "biography",
+      "url": "https://deadlettercircus.com/",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:04.723Z",
+      "evidence": "The official source supplied the concise biography text used by the Dead Letter Circus ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=Apyiet_pSjQ",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:04.274Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Dead Letter Circus video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://deadlettercircus.com/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:55.620Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Dead Letter Circus."
+    }
+  ]
+}

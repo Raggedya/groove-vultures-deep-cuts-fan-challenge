@@ -1,0 +1,144 @@
+{
+  "bandName": "Dead Can Dance",
+  "slug": "dead-can-dance",
+  "editionId": "dc_d5da00c80d",
+  "verifiedAt": "2026-08-03T11:28:55.238Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://www.deadcandance.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:30.273Z",
+      "evidence": "The page identified Dead Can Dance and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/dcdofficial/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:30.419Z",
+      "evidence": "The page identified Dead Can Dance and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/6sq7prp0tj9Abn89khmfja",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:29.990Z",
+      "evidence": "The page identified Dead Can Dance and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UCZn4_LiKXOu-ArkS4sJTG5w",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:30.365Z",
+      "evidence": "The page identified Dead Can Dance and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:website-e6b2f313",
+      "url": "https://www.deadcandance.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:30.273Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Dead Can Dance."
+    },
+    {
+      "destination": "website",
+      "url": "https://www.deadcandance.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:30.273Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Dead Can Dance."
+    },
+    {
+      "destination": "selection:bandcamp-b1809200",
+      "url": "https://deadcandance.bandcamp.com/album/the-cicadas",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:31.613Z",
+      "evidence": "Bandcamp resolved directly and its destination metadata matched Dead Can Dance."
+    },
+    {
+      "destination": "bandcamp",
+      "url": "https://deadcandance.bandcamp.com/album/the-cicadas",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:31.613Z",
+      "evidence": "Bandcamp resolved directly and its destination metadata matched Dead Can Dance."
+    },
+    {
+      "destination": "selection:contact-5550a69a",
+      "url": "https://www.deadcandance.com/new-page",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:30.962Z",
+      "evidence": "Contact resolved directly and its destination metadata matched Dead Can Dance."
+    },
+    {
+      "destination": "contact",
+      "url": "https://www.deadcandance.com/new-page",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:30.962Z",
+      "evidence": "Contact resolved directly and its destination metadata matched Dead Can Dance."
+    },
+    {
+      "destination": "selection:facebook-9a22eb78",
+      "url": "https://www.facebook.com/tr?id=817435185254163&ev=PageView&noscript=1",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:30.523Z",
+      "evidence": "Facebook resolved directly from an identity-matched artist-controlled source for Dead Can Dance."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/tr?id=817435185254163&ev=PageView&noscript=1",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:30.523Z",
+      "evidence": "Facebook resolved directly from an identity-matched artist-controlled source for Dead Can Dance."
+    },
+    {
+      "destination": "selection:instagram-51188217",
+      "url": "https://www.instagram.com/accounts/login/?next=%2Fdcdofficial%2F&source=desktop_nav",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:31.078Z",
+      "evidence": "Instagram resolved directly from an identity-matched artist-controlled source for Dead Can Dance."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/accounts/login/?next=%2Fdcdofficial%2F&source=desktop_nav",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:31.078Z",
+      "evidence": "Instagram resolved directly from an identity-matched artist-controlled source for Dead Can Dance."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.instagram.com/dcdofficial/",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:37.566Z",
+      "evidence": "The official source supplied the concise biography text used by the Dead Can Dance ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=BmpWw8dI1-Y",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:37.109Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Dead Can Dance video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://www.deadcandance.com/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:30.273Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Dead Can Dance."
+    }
+  ]
+}

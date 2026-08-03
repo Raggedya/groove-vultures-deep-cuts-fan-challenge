@@ -1,0 +1,162 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Psycroptic",
+  "editionTitle": "Psycroptic",
+  "description": "The Leeds metal band lean into their proggy excesses across this gargantuan science-fiction concept LP. Bandcamp Album of the Day Mar 3, 2026",
+  "discovery": {
+    "bio": "The Leeds metal band lean into their proggy excesses across this gargantuan science-fiction concept LP. Bandcamp Album of the Day Mar 3, 2026",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "psycroptic",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_00caa452fd",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/psycroptic/instagram-discovery.png",
+    "qrImage": "output/psycroptic/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "https://metalblade.bandcamp.com/?from=btl",
+    "spotify": "https://open.spotify.com/artist/2O8ZayBAqBqoXujSAAx7pm",
+    "instagram": "https://www.instagram.com/psycroptic_official",
+    "website": "",
+    "buyMusic": "",
+    "merchandise": "",
+    "facebook": "https://www.facebook.com/tr?id=1689089755161732&ev=PageView&noscript=1",
+    "youtube": "https://www.youtube.com/embed/2fGNpFirpjc"
+  },
+  "featuredVideo": {
+    "title": "PSYCROPTIC - Live Chat w Dave Haley 1-23-12 (OFFICIAL)",
+    "youtubeURL": "https://www.youtube.com/watch?v=dMtwQ1BssZw",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:32:53.825Z"
+  },
+  "analytics": {
+    "editionId": "dc_00caa452fd",
+    "pageIdentifier": "dc_00caa452fd:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_b83772a6-8695-48ce-9c25-4b347b319203",
+    "submittedAt": "2026-08-03T11:29:01.367Z",
+    "researchCompletedAt": "2026-08-03T11:33:36.895Z",
+    "editionCreatedAt": "2026-08-03T11:33:36.895Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_00caa452fd",
+    "tickerBio": "THE LEEDS METAL BAND LEAN INTO THEIR PROGGY EXCESSES ACROSS THIS GARGANTUAN SCIENCE-FICTION CONCEPT LP. BANDCAMP ALBUM OF THE DAY MAR 3, 2026",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "bandcamp-a18568dc",
+      "spotify-532cd4d3",
+      "youtube-c809871a",
+      "instagram-da04d18b",
+      "facebook-72709e7e"
+    ],
+    "marquee": "Psycroptic",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://www.psycroptic.com/",
+    "linkSourceVerifiedAt": "2026-08-03T11:32:45.919Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "facebook-72709e7e",
+        "sourceTitle": "Facebook",
+        "label": "Facebook",
+        "detail": "Follow the band",
+        "url": "https://www.facebook.com/tr?id=1689089755161732&ev=PageView&noscript=1",
+        "platform": "facebook",
+        "kind": "facebook"
+      },
+      {
+        "id": "instagram-da04d18b",
+        "sourceTitle": "Instagram",
+        "label": "Instagram",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/psycroptic_official",
+        "platform": "instagram",
+        "kind": "instagram"
+      },
+      {
+        "id": "spotify-532cd4d3",
+        "sourceTitle": "Spotify",
+        "label": "Spotify",
+        "detail": "Listen on Spotify",
+        "url": "https://open.spotify.com/artist/2O8ZayBAqBqoXujSAAx7pm",
+        "platform": "website",
+        "kind": "spotify"
+      },
+      {
+        "id": "youtube-c809871a",
+        "sourceTitle": "YouTube",
+        "label": "YouTube",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/embed/2fGNpFirpjc",
+        "platform": "youtube",
+        "kind": "youtube"
+      },
+      {
+        "id": "bandcamp-a18568dc",
+        "sourceTitle": "&larr; more from Metal Blade Records",
+        "label": "&larr; more from Metal Blade Records",
+        "detail": "Listen and buy direct",
+        "url": "https://metalblade.bandcamp.com/?from=btl",
+        "platform": "website",
+        "kind": "bandcamp"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://psycroptic.bandcamp.com/album/the-pulse-of-annihilation",
+      "paragraphs": [
+        "The Leeds metal band lean into their proggy excesses across this gargantuan science-fiction concept LP. Bandcamp Album of the Day Mar 3, 2026"
+      ]
+    }
+  }
+}

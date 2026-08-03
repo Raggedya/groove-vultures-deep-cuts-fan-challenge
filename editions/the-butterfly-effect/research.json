@@ -1,0 +1,128 @@
+{
+  "bandName": "The Butterfly Effect",
+  "slug": "the-butterfly-effect",
+  "editionId": "dc_3ce4bcadbb",
+  "verifiedAt": "2026-08-03T11:29:09.550Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://www.facebook.com/thebutterflyeffectau",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:44.039Z",
+      "evidence": "The page identified The Butterfly Effect and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/0kns2X0IFTXafgOGd2IlKJ",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:44.069Z",
+      "evidence": "The page identified The Butterfly Effect and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UCMhmI-gdbUVymiAgCmpqSXw",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:44.114Z",
+      "evidence": "The page identified The Butterfly Effect and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://thebutterflyeffectband.com.au/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:48.026Z",
+      "evidence": "The page identified The Butterfly Effect and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:facebook-59e7f006",
+      "url": "https://www.facebook.com/thebutterflyeffectau",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:44.039Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched The Butterfly Effect."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/thebutterflyeffectau",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:44.039Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched The Butterfly Effect."
+    },
+    {
+      "destination": "selection:youtube-3c473ec4",
+      "url": "https://www.youtube.com/watch?v=f1J38FlDKxo",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:48.509Z",
+      "evidence": "YouTube resolved directly from an identity-matched artist-controlled source for The Butterfly Effect."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/watch?v=f1J38FlDKxo",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:48.509Z",
+      "evidence": "YouTube resolved directly from an identity-matched artist-controlled source for The Butterfly Effect."
+    },
+    {
+      "destination": "selection:spotify-0a35e672",
+      "url": "https://open.spotify.com/artist/6gD6Pm7jo3mmKgDtyMruA6",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:49.017Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched The Butterfly Effect."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/6gD6Pm7jo3mmKgDtyMruA6",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:49.017Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched The Butterfly Effect."
+    },
+    {
+      "destination": "selection:instagram-448d0e0c",
+      "url": "https://www.instagram.com/thebutterflyeffectband",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:50.602Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched The Butterfly Effect."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/thebutterflyeffectband",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:50.602Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched The Butterfly Effect."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.youtube.com/channel/UCMhmI-gdbUVymiAgCmpqSXw",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:52.547Z",
+      "evidence": "The official source supplied the concise biography text used by the The Butterfly Effect ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=tcQcknh7Jhk",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:51.957Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured The Butterfly Effect video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://www.facebook.com/thebutterflyeffectau",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:44.039Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for The Butterfly Effect."
+    }
+  ]
+}

@@ -1,0 +1,216 @@
+{
+  "bandName": "Screamfeeder",
+  "slug": "screamfeeder",
+  "editionId": "dc_c0ee14333b",
+  "verifiedAt": "2026-08-03T11:33:39.940Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://screamfeeder.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:16.931Z",
+      "evidence": "The page identified Screamfeeder and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://screamfeeder.bandcamp.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:16.216Z",
+      "evidence": "The page identified Screamfeeder and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/therealscreamfeeder/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:16.271Z",
+      "evidence": "The page identified Screamfeeder and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://screamfeeder.com/?add-to-cart=505",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:19.674Z",
+      "evidence": "The page identified Screamfeeder and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://screamfeeder.com/?s={search_term_string}",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:19.641Z",
+      "evidence": "The page identified Screamfeeder and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:website-1aa0ade5",
+      "url": "https://screamfeeder.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:16.931Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Screamfeeder."
+    },
+    {
+      "destination": "website",
+      "url": "https://screamfeeder.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:16.931Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Screamfeeder."
+    },
+    {
+      "destination": "selection:merchandise-a35438aa",
+      "url": "https://screamfeeder.com/screamfeeder-official-store/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:19.792Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Screamfeeder."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://screamfeeder.com/screamfeeder-official-store/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:19.792Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Screamfeeder."
+    },
+    {
+      "destination": "selection:show-9f186c53",
+      "url": "https://open.spotify.com/show/1UkUQ3T6l2aaIoUF431boe",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:19.988Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Screamfeeder."
+    },
+    {
+      "destination": "selection:contact-3a471863",
+      "url": "https://screamfeeder.com/contact-screamfeeder/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:19.785Z",
+      "evidence": "Contact resolved directly and its destination metadata matched Screamfeeder."
+    },
+    {
+      "destination": "contact",
+      "url": "https://screamfeeder.com/contact-screamfeeder/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:19.785Z",
+      "evidence": "Contact resolved directly and its destination metadata matched Screamfeeder."
+    },
+    {
+      "destination": "selection:facebook-7f2c4617",
+      "url": "https://www.facebook.com/theendinggoesforever/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:20.395Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Screamfeeder."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/theendinggoesforever/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:20.395Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Screamfeeder."
+    },
+    {
+      "destination": "selection:instagram-cb89b9b4",
+      "url": "https://www.instagram.com/theendinggoesforever/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:20.448Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Screamfeeder."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/theendinggoesforever/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:20.448Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Screamfeeder."
+    },
+    {
+      "destination": "selection:spotify-7497ce59",
+      "url": "https://open.spotify.com/artist/4nOTFRagkeG3D6Y4se11Jn",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:20.204Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Screamfeeder."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/4nOTFRagkeG3D6Y4se11Jn",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:20.204Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Screamfeeder."
+    },
+    {
+      "destination": "selection:youtube-a3fb0280",
+      "url": "https://www.youtube.com/user/ScreamfeederOfficial",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:20.743Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Screamfeeder."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/user/ScreamfeederOfficial",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:20.743Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Screamfeeder."
+    },
+    {
+      "destination": "selection:bandcamp-6cd04f5c",
+      "url": "https://screamfeeder.bandcamp.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:16.216Z",
+      "evidence": "Bandcamp resolved directly and its destination metadata matched Screamfeeder."
+    },
+    {
+      "destination": "bandcamp",
+      "url": "https://screamfeeder.bandcamp.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:16.216Z",
+      "evidence": "Bandcamp resolved directly and its destination metadata matched Screamfeeder."
+    },
+    {
+      "destination": "selection:newsletter-517f084e",
+      "url": "https://assets.mailerlite.com/jsonp/434132/forms/91541036870928072/subscribe",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:21.031Z",
+      "evidence": "Newsletter resolved directly from an identity-matched artist-controlled source for Screamfeeder."
+    },
+    {
+      "destination": "biography",
+      "url": "https://screamfeeder.bandcamp.com/",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:27.293Z",
+      "evidence": "The official source supplied the concise biography text used by the Screamfeeder ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=yfVWpmmEzqU",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:26.849Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Screamfeeder video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://screamfeeder.com/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:16.931Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Screamfeeder."
+    }
+  ]
+}

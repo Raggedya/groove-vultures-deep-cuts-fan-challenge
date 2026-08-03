@@ -1,0 +1,128 @@
+{
+  "bandName": "Regurgitator",
+  "slug": "regurgitator",
+  "editionId": "dc_29ea5bd281",
+  "verifiedAt": "2026-08-03T11:33:40.121Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/6n3YUZcayLRuAunJUUelvz",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:17.108Z",
+      "evidence": "The page identified Regurgitator and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://regurgitator.bandcamp.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:17.427Z",
+      "evidence": "The page identified Regurgitator and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.facebook.com/regurgitators",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:17.506Z",
+      "evidence": "The page identified Regurgitator and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UCdP626huAIxuTosGS-gpMtQ",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:17.265Z",
+      "evidence": "The page identified Regurgitator and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:spotify-e529cf95",
+      "url": "https://open.spotify.com/artist/5aVKsCIE4jsTKODYwjVVLK",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:17.822Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Regurgitator."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/5aVKsCIE4jsTKODYwjVVLK",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:17.822Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Regurgitator."
+    },
+    {
+      "destination": "selection:facebook-cf20f434",
+      "url": "https://www.facebook.com/regurgitators",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:18.847Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Regurgitator."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/regurgitators",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:18.847Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Regurgitator."
+    },
+    {
+      "destination": "selection:instagram-2e89153f",
+      "url": "https://www.instagram.com/regurgitators/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:18.896Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Regurgitator."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/regurgitators/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:18.896Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Regurgitator."
+    },
+    {
+      "destination": "selection:bandcamp-69977fdf",
+      "url": "https://regurgitator.bandcamp.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:17.427Z",
+      "evidence": "Bandcamp resolved directly and its destination metadata matched Regurgitator."
+    },
+    {
+      "destination": "bandcamp",
+      "url": "https://regurgitator.bandcamp.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:17.427Z",
+      "evidence": "Bandcamp resolved directly and its destination metadata matched Regurgitator."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.youtube.com/channel/UCdP626huAIxuTosGS-gpMtQ",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:25.678Z",
+      "evidence": "The official source supplied the concise biography text used by the Regurgitator ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=8gvREi0Txpg",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:25.400Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Regurgitator video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://open.spotify.com/artist/6n3YUZcayLRuAunJUUelvz",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:17.108Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Regurgitator."
+    }
+  ]
+}

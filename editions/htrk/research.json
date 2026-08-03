@@ -1,0 +1,152 @@
+{
+  "bandName": "HTRK",
+  "slug": "htrk",
+  "editionId": "dc_e94b1a4c21",
+  "verifiedAt": "2026-08-03T11:29:21.371Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://yourcomicbookfantasy.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:38.108Z",
+      "evidence": "The page identified HTRK and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://htrk.bandcamp.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:36.781Z",
+      "evidence": "The page identified HTRK and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/psychic9to5club/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:36.250Z",
+      "evidence": "The page identified HTRK and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://linktr.ee/psychic9to5club",
+      "sourceType": "official artist-controlled link hub",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:41.293Z",
+      "evidence": "The page identified HTRK and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:spotify-c30f0c2b",
+      "url": "https://open.spotify.com/artist/06sdJwlggq0PKOe4LPZWCg",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:41.636Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched HTRK."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/06sdJwlggq0PKOe4LPZWCg",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:41.636Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched HTRK."
+    },
+    {
+      "destination": "selection:bandcamp-67661acb",
+      "url": "https://htrk.bandcamp.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:36.781Z",
+      "evidence": "Bandcamp resolved directly and its destination metadata matched HTRK."
+    },
+    {
+      "destination": "bandcamp",
+      "url": "https://htrk.bandcamp.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:36.781Z",
+      "evidence": "Bandcamp resolved directly and its destination metadata matched HTRK."
+    },
+    {
+      "destination": "selection:contact-d7639189",
+      "url": "https://yourcomicbookfantasy.com/Contact",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:42.291Z",
+      "evidence": "Contact resolved directly and its destination metadata matched HTRK."
+    },
+    {
+      "destination": "contact",
+      "url": "https://yourcomicbookfantasy.com/Contact",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:42.291Z",
+      "evidence": "Contact resolved directly and its destination metadata matched HTRK."
+    },
+    {
+      "destination": "selection:merchandise-a03e90cb",
+      "url": "https://yourcomicbookfantasy.com/Shop",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:42.649Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched HTRK."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://yourcomicbookfantasy.com/Shop",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:42.649Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched HTRK."
+    },
+    {
+      "destination": "selection:newsletter-920b2801",
+      "url": "https://yourcomicbookfantasy.com/Subscribe",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:42.674Z",
+      "evidence": "Newsletter resolved directly and its destination metadata matched HTRK."
+    },
+    {
+      "destination": "selection:buy_music-a85d33dc",
+      "url": "https://yourcomicbookfantasy.com/Studio-albums",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:43.388Z",
+      "evidence": "Buy Music resolved directly and its destination metadata matched HTRK."
+    },
+    {
+      "destination": "buyMusic",
+      "url": "https://yourcomicbookfantasy.com/Studio-albums",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:43.388Z",
+      "evidence": "Buy Music resolved directly and its destination metadata matched HTRK."
+    },
+    {
+      "destination": "biography",
+      "url": "https://htrk.bandcamp.com/",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:46.236Z",
+      "evidence": "The official source supplied the concise biography text used by the HTRK ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=cKVrwBOtryM",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:45.787Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured HTRK video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://yourcomicbookfantasy.com/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:38.108Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for HTRK."
+    }
+  ]
+}

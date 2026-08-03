@@ -1,0 +1,152 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Rogue Traders",
+  "editionTitle": "Rogue Traders",
+  "description": "\"Rogue Traders are back! The legendary original lineup&mdash;Nat Bass, James, Tim, and Cam&mdash;reunites for the explosive 'THE ANTHEMS' 21st Anniversary Tour. Relive the...",
+  "discovery": {
+    "bio": "\"Rogue Traders are back! The legendary original lineup&mdash;Nat Bass, James, Tim, and Cam&mdash;reunites for the explosive 'THE ANTHEMS' 21st Anniversary Tour. Relive the...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "rogue-traders",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_24c509ffd1",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/rogue-traders/instagram-discovery.png",
+    "qrImage": "output/rogue-traders/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "",
+    "spotify": "",
+    "instagram": "https://www.instagram.com/natbassingthwaighte/",
+    "website": "https://www.roguetraders.net/",
+    "buyMusic": "",
+    "merchandise": "",
+    "facebook": "https://www.facebook.com/roguetraders/",
+    "youtube": "https://www.youtube.com/user/RogueTradersVEVO/videos"
+  },
+  "featuredVideo": {
+    "title": "Rogue Traders - Hearts Beat As One (Official Song of the Qantas Socceroos)",
+    "youtubeURL": "https://www.youtube.com/watch?v=XO4tvxt5CQ0",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:32:25.561Z"
+  },
+  "analytics": {
+    "editionId": "dc_24c509ffd1",
+    "pageIdentifier": "dc_24c509ffd1:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_449d5ece-ba7f-46f1-8be9-2cbc5812dd89",
+    "submittedAt": "2026-08-03T11:28:53.217Z",
+    "researchCompletedAt": "2026-08-03T11:33:34.844Z",
+    "editionCreatedAt": "2026-08-03T11:33:34.844Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_24c509ffd1",
+    "tickerBio": "\"ROGUE TRADERS ARE BACK! THE LEGENDARY ORIGINAL LINEUP&MDASH;NAT BASS, JAMES, TIM, AND CAM&MDASH;REUNITES FOR THE EXPLOSIVE 'THE ANTHEMS' 21ST ANNIVERSARY TOUR. RELIVE THE GENERATION-DEFINING HITS LIKE 'VOODOO CHILD,' 'WATCHING YOU,' AND 'IN LOVE AGAIN' IN ONE MASSIVE NIGHT OF ROCK-INFUSED ELECTRO NOSTALGIA.\"",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "youtube-db321601",
+      "instagram-ef84182b",
+      "website-6de72f26",
+      "facebook-685b67a4"
+    ],
+    "marquee": "Rogue Traders",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://www.roguetraders.net/",
+    "linkSourceVerifiedAt": "2026-08-03T11:32:17.838Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "website-6de72f26",
+        "sourceTitle": "Tour",
+        "label": "Tour",
+        "detail": "Visit the official website",
+        "url": "https://www.roguetraders.net/",
+        "platform": "website",
+        "kind": "website"
+      },
+      {
+        "id": "facebook-685b67a4",
+        "sourceTitle": "Facebook",
+        "label": "Facebook",
+        "detail": "Follow the band",
+        "url": "https://www.facebook.com/roguetraders/",
+        "platform": "facebook",
+        "kind": "facebook"
+      },
+      {
+        "id": "instagram-ef84182b",
+        "sourceTitle": "Instagram",
+        "label": "Instagram",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/natbassingthwaighte/",
+        "platform": "instagram",
+        "kind": "instagram"
+      },
+      {
+        "id": "youtube-db321601",
+        "sourceTitle": "YouTube",
+        "label": "YouTube",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/user/RogueTradersVEVO/videos",
+        "platform": "youtube",
+        "kind": "youtube"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://www.roguetraders.net/",
+      "paragraphs": [
+        "\"Rogue Traders are back! The legendary original lineup&mdash;Nat Bass, James, Tim, and Cam&mdash;reunites for the explosive 'THE ANTHEMS' 21st Anniversary Tour. Relive the generation-defining hits like 'Voodoo Child,' 'Watching You,' and 'In Love Again' in one massive night of rock-infused electro nostalgia.\""
+      ]
+    }
+  }
+}

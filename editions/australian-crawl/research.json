@@ -1,0 +1,120 @@
+{
+  "bandName": "Australian Crawl",
+  "slug": "australian-crawl",
+  "editionId": "dc_d10266e7d2",
+  "verifiedAt": "2026-08-03T11:47:04.729Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/41fDGRDlzczk5Yo2wDo0H4",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:24.104Z",
+      "evidence": "The page identified Australian Crawl and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Faustraliancrawl",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:24.727Z",
+      "evidence": "The page identified Australian Crawl and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UCMH5E19_uxGioJxbr70RljA",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:24.364Z",
+      "evidence": "The page identified Australian Crawl and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:spotify-3df5b955",
+      "url": "https://open.spotify.com/artist/41fDGRDlzczk5Yo2wDo0H4",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:24.104Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Australian Crawl."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/41fDGRDlzczk5Yo2wDo0H4",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:24.104Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Australian Crawl."
+    },
+    {
+      "destination": "selection:youtube-34e93d4a",
+      "url": "https://www.youtube.com/channel/UCMH5E19_uxGioJxbr70RljA",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:24.364Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Australian Crawl."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/channel/UCMH5E19_uxGioJxbr70RljA",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:24.364Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Australian Crawl."
+    },
+    {
+      "destination": "selection:merchandise-0ff2c117",
+      "url": "https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.meta.com%2F&h=AUAUxh0CgtbZ3r_sJf0lx_bM9uc5f2kpCKyTCtRA_CkVdxPf8oyUtfhngdQljgXRzEra2hyyqQDTSwvswYelyRR1E1_QWwytNq3OGeuvi_Hg2eTEZAuZdA64oLqJEg2vMfJjpZMUBiO8rEc3sg8gmSbOyxWcppxJ",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:28.074Z",
+      "evidence": "Buy Merch resolved directly from an identity-matched artist-controlled source for Australian Crawl."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.meta.com%2F&h=AUAUxh0CgtbZ3r_sJf0lx_bM9uc5f2kpCKyTCtRA_CkVdxPf8oyUtfhngdQljgXRzEra2hyyqQDTSwvswYelyRR1E1_QWwytNq3OGeuvi_Hg2eTEZAuZdA64oLqJEg2vMfJjpZMUBiO8rEc3sg8gmSbOyxWcppxJ",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:28.074Z",
+      "evidence": "Buy Merch resolved directly from an identity-matched artist-controlled source for Australian Crawl."
+    },
+    {
+      "destination": "selection:facebook-0402af7d",
+      "url": "https://www.facebook.com/lite/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:28.637Z",
+      "evidence": "Facebook resolved directly from an identity-matched artist-controlled source for Australian Crawl."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/lite/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:28.637Z",
+      "evidence": "Facebook resolved directly from an identity-matched artist-controlled source for Australian Crawl."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.youtube.com/channel/UCMH5E19_uxGioJxbr70RljA",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:32.520Z",
+      "evidence": "The official source supplied the concise biography text used by the Australian Crawl ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=v8j4XKMKoKg",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:32.192Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Australian Crawl video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://open.spotify.com/artist/41fDGRDlzczk5Yo2wDo0H4",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:24.104Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Australian Crawl."
+    }
+  ]
+}

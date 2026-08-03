@@ -1,0 +1,181 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "The Avalanches",
+  "editionTitle": "The Avalanches",
+  "description": "There are few living musicians as influential and original as world renowned recording artists, producers and DJs, The Avalanches. Their debut album 'Since I Left You', released in 2000...",
+  "discovery": {
+    "bio": "There are few living musicians as influential and original as world renowned recording artists, producers and DJs, The Avalanches. Their debut album 'Since I Left You', released in 2000...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "the-avalanches",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_45e81d29f4",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/the-avalanches/instagram-discovery.png",
+    "qrImage": "output/the-avalanches/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "",
+    "spotify": "https://open.spotify.com/artist/3C8RpaI3Go0yFF9whvKoED",
+    "instagram": "https://www.instagram.com/theavalanches/",
+    "website": "https://www.theavalanches.com/",
+    "buyMusic": "",
+    "merchandise": "https://theavalanchesstore.com/",
+    "facebook": "https://www.facebook.com/theavalanches",
+    "youtube": "https://www.youtube.com/user/avalanchesofficial"
+  },
+  "featuredVideo": {
+    "title": "The Avalanches - Blue Shadows ft. Karen O",
+    "youtubeURL": "https://www.youtube.com/watch?v=x3yo95DVgTc",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:24:08.250Z"
+  },
+  "analytics": {
+    "editionId": "dc_45e81d29f4",
+    "pageIdentifier": "dc_45e81d29f4:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_7163f02a-70a3-44d8-9901-11511e3582fa",
+    "submittedAt": "2026-08-03T11:29:04.505Z",
+    "researchCompletedAt": "2026-08-03T11:29:04.661Z",
+    "editionCreatedAt": "2026-08-03T11:29:04.661Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_45e81d29f4",
+    "tickerBio": "THERE ARE FEW LIVING MUSICIANS AS INFLUENTIAL AND ORIGINAL AS WORLD RENOWNED RECORDING ARTISTS, PRODUCERS AND DJS, THE AVALANCHES. THEIR DEBUT ALBUM 'SINCE I LEFT YOU', RELEASED IN 2000, LAID THE BLUEPRINT FOR THE FUTURE OF SAMPLE-BASED MUSIC IN THE 21ST CENTURY. SIMILARLY, THEIR FOLLOW UP ALBUM, 2016’S ‘WILDFLOWER', SITS ON A PATCHWORK OF SAMPLES EARNING THE BAND FURTHER CRITICAL ACCLAIM ACROSS THE GLOBE. THEIR THIR",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "spotify-7cd46c8b",
+      "youtube-e60f9550",
+      "instagram-ee49ab9d",
+      "tiktok-67012292",
+      "website-143ee2d1",
+      "merchandise-60ac800b"
+    ],
+    "marquee": "The Avalanches",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://www.theavalanches.com/",
+    "linkSourceVerifiedAt": "2026-08-03T11:24:01.592Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "merchandise-60ac800b",
+        "sourceTitle": "STORE",
+        "label": "STORE",
+        "detail": "Official band merchandise",
+        "url": "https://theavalanchesstore.com/",
+        "platform": "merchandise",
+        "kind": "merchandise"
+      },
+      {
+        "id": "instagram-ee49ab9d",
+        "sourceTitle": "Instagram",
+        "label": "Instagram",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/theavalanches/",
+        "platform": "instagram",
+        "kind": "instagram"
+      },
+      {
+        "id": "tiktok-67012292",
+        "sourceTitle": "TikTok",
+        "label": "TikTok",
+        "detail": "Official band clips",
+        "url": "https://www.tiktok.com/@theavalanches",
+        "platform": "website",
+        "kind": "tiktok"
+      },
+      {
+        "id": "facebook-4fab02dc",
+        "sourceTitle": "Facebook",
+        "label": "Facebook",
+        "detail": "Follow the band",
+        "url": "https://www.facebook.com/theavalanches",
+        "platform": "facebook",
+        "kind": "facebook"
+      },
+      {
+        "id": "youtube-e60f9550",
+        "sourceTitle": "YouTube",
+        "label": "YouTube",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/user/avalanchesofficial",
+        "platform": "youtube",
+        "kind": "youtube"
+      },
+      {
+        "id": "spotify-7cd46c8b",
+        "sourceTitle": "Spotify",
+        "label": "Spotify",
+        "detail": "Listen on Spotify",
+        "url": "https://open.spotify.com/artist/3C8RpaI3Go0yFF9whvKoED",
+        "platform": "website",
+        "kind": "spotify"
+      },
+      {
+        "id": "website-143ee2d1",
+        "sourceTitle": "Band Website",
+        "label": "Band Website",
+        "detail": "Visit the official website",
+        "url": "https://www.theavalanches.com/",
+        "platform": "website",
+        "kind": "website"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://www.youtube.com/channel/UCxKS_QjhJAfV2hgLYxxGkWA",
+      "paragraphs": [
+        "There are few living musicians as influential and original as world renowned recording artists, producers and DJs, The Avalanches. Their debut album 'Since I Left You', released in 2000, laid the blueprint for the future of sample-based music in the 21st century. Similarly, their follow up album, 2016’s ‘Wildflower', sits on a patchwork of samples earning the band further critical acclaim across the globe. Their thir"
+      ]
+    }
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "bandName": "Konqistador",
+  "slug": "konqistador",
+  "editionId": "dc_739d55b931",
+  "verifiedAt": "2026-08-03T11:29:19.558Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/1m4IwHih7AdX8WZZdyZIas",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:03.809Z",
+      "evidence": "The page identified Konqistador and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://konqistador.bandcamp.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:03.703Z",
+      "evidence": "The page identified Konqistador and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/knqstdr/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:03.980Z",
+      "evidence": "The page identified Konqistador and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UCcKomgj5Uzixc1n42s_0j9Q",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:03.692Z",
+      "evidence": "The page identified Konqistador and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:facebook-829f95e4",
+      "url": "https://www.facebook.com/Konqistadormusic",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:05.435Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Konqistador."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/Konqistadormusic",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:05.435Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Konqistador."
+    },
+    {
+      "destination": "selection:instagram-f46bed66",
+      "url": "https://www.instagram.com/konqistadormusic",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:04.755Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Konqistador."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/konqistadormusic",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:04.755Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Konqistador."
+    },
+    {
+      "destination": "selection:spotify-b3533905",
+      "url": "https://open.spotify.com/artist/1m4IwHih7AdX8WZZdyZIas",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:03.809Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Konqistador."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/1m4IwHih7AdX8WZZdyZIas",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:03.809Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Konqistador."
+    },
+    {
+      "destination": "selection:youtube-ebf42acc",
+      "url": "https://www.youtube.com/watch?v=1TgrjUS2XL4&feature=youtu.be",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:08.714Z",
+      "evidence": "YouTube resolved directly from an identity-matched artist-controlled source for Konqistador."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/watch?v=1TgrjUS2XL4&feature=youtu.be",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:08.714Z",
+      "evidence": "YouTube resolved directly from an identity-matched artist-controlled source for Konqistador."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.youtube.com/channel/UCcKomgj5Uzixc1n42s_0j9Q",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:15.980Z",
+      "evidence": "The official source supplied the concise biography text used by the Konqistador ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=eQPmwgXBvP4",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:15.498Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Konqistador video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://open.spotify.com/artist/1m4IwHih7AdX8WZZdyZIas",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:03.809Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Konqistador."
+    }
+  ]
+}

@@ -1,0 +1,184 @@
+{
+  "bandName": "Be'lakor",
+  "slug": "be-lakor",
+  "editionId": "dc_eaaa4ca02a",
+  "verifiedAt": "2026-08-03T11:33:39.226Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://belakorband.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:06.300Z",
+      "evidence": "The page identified Be'lakor and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://belakor.bandcamp.com/album/coherence",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:06.246Z",
+      "evidence": "The page identified Be'lakor and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/belakorband/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:05.676Z",
+      "evidence": "The page identified Be'lakor and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UCk8-SfsdoQEt2jvsWEF62mQ",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:05.410Z",
+      "evidence": "The page identified Be'lakor and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://linktr.ee/belakorband",
+      "sourceType": "official artist-controlled link hub",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:06.402Z",
+      "evidence": "The page identified Be'lakor and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:website-5117f059",
+      "url": "https://belakorband.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:06.300Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Be'lakor."
+    },
+    {
+      "destination": "website",
+      "url": "https://belakorband.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:06.300Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Be'lakor."
+    },
+    {
+      "destination": "selection:merchandise-fb511862",
+      "url": "https://belakorband.com/new-merch-items-and-a-re-stock/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:06.945Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Be'lakor."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://belakorband.com/new-merch-items-and-a-re-stock/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:06.945Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Be'lakor."
+    },
+    {
+      "destination": "selection:show-a5779993",
+      "url": "https://www.oztix.com.au/?requestedEventId=400e1f0c-e649-44c6-b584-26ada1284002",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:06.842Z",
+      "evidence": "Tickets resolved directly from an identity-matched artist-controlled source for Be'lakor."
+    },
+    {
+      "destination": "selection:show-55b715e8",
+      "url": "https://ticketsearch.queue-fair.net/augenricqueue?target=https%3A%2F%2Faucentury.sales.ticketsearch.com%2Fsales%2Fsalesevent%2F150044&qfuid=6a707c72",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:07.216Z",
+      "evidence": "Tickets resolved directly from an identity-matched artist-controlled source for Be'lakor."
+    },
+    {
+      "destination": "selection:show-ffa4234f",
+      "url": "https://www.oztix.com.au/?requestedEventId=4b84e8f1-fc54-4454-abad-3c979cd6bd09",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:06.826Z",
+      "evidence": "Tickets resolved directly from an identity-matched artist-controlled source for Be'lakor."
+    },
+    {
+      "destination": "selection:bandcamp-6a172905",
+      "url": "https://belakor.bandcamp.com/album/coherence",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:06.246Z",
+      "evidence": "Bandcamp resolved directly and its destination metadata matched Be'lakor."
+    },
+    {
+      "destination": "bandcamp",
+      "url": "https://belakor.bandcamp.com/album/coherence",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:06.246Z",
+      "evidence": "Bandcamp resolved directly and its destination metadata matched Be'lakor."
+    },
+    {
+      "destination": "selection:spotify-a7774a87",
+      "url": "https://open.spotify.com/artist/7qUcsMCdIHrs2LOZlmciQp",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:07.851Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Be'lakor."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/7qUcsMCdIHrs2LOZlmciQp",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:07.851Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Be'lakor."
+    },
+    {
+      "destination": "selection:youtube-005201e7",
+      "url": "https://www.youtube.com/user/belakorband",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:08.259Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Be'lakor."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/user/belakorband",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:08.259Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Be'lakor."
+    },
+    {
+      "destination": "selection:newsletter-38bcb838",
+      "url": "https://ymlp.com/subscribe.php?id=guewqysgmgs",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:09.605Z",
+      "evidence": "Newsletter resolved directly from an identity-matched artist-controlled source for Be'lakor."
+    },
+    {
+      "destination": "biography",
+      "url": "https://belakor.bandcamp.com/album/coherence",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:15.447Z",
+      "evidence": "The official source supplied the concise biography text used by the Be'lakor ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=8fBoQBoO23I",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:15.139Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Be'lakor video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://belakorband.com/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:06.300Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Be'lakor."
+    }
+  ]
+}

@@ -1,0 +1,199 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Pendulum",
+  "editionTitle": "Pendulum",
+  "description": "Pendulum are undoubtedly one of the biggest electronic bands of all time. With 3 platinum albums to their name including renowned debut ‘Hold Your Colour’ and a UK #1 and #2 for...",
+  "discovery": {
+    "bio": "Pendulum are undoubtedly one of the biggest electronic bands of all time. With 3 platinum albums to their name including renowned debut ‘Hold Your Colour’ and a UK #1 and #2 for...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "pendulum",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_f889aff0d9",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/pendulum/instagram-discovery.png",
+    "qrImage": "output/pendulum/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "",
+    "spotify": "https://open.spotify.com/artist/7MqnCTCAX6SsIYYdJCQj9B",
+    "instagram": "https://www.instagram.com/pendulum/",
+    "website": "https://pendulum.com/",
+    "buyMusic": "https://pendulum.com/pages/releases",
+    "merchandise": "https://pendulum.bandtshirts.com.au/shop/pendulum",
+    "facebook": "https://www.facebook.com/pendulum/",
+    "youtube": "https://www.youtube.com/channel/UCP2uxfZ9lfeqY2nkUkoPtvg"
+  },
+  "featuredVideo": {
+    "title": "Pendulum - Napalm (Live At Milton Keynes)",
+    "youtubeURL": "https://www.youtube.com/watch?v=xbgpT2jMBEY",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:32:36.617Z"
+  },
+  "analytics": {
+    "editionId": "dc_f889aff0d9",
+    "pageIdentifier": "dc_f889aff0d9:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_45320e81-33bd-4e36-9637-d63cc8af1cbe",
+    "submittedAt": "2026-08-03T11:28:56.676Z",
+    "researchCompletedAt": "2026-08-03T11:33:35.815Z",
+    "editionCreatedAt": "2026-08-03T11:33:35.815Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_f889aff0d9",
+    "tickerBio": "PENDULUM ARE UNDOUBTEDLY ONE OF THE BIGGEST ELECTRONIC BANDS OF ALL TIME. WITH 3 PLATINUM ALBUMS TO THEIR NAME INCLUDING RENOWNED DEBUT ‘HOLD YOUR COLOUR’ AND A UK #1 AND #2 FOR ‘IMMERSION’ AND ‘IN SILICO’, THE DRUM AND BASS/ROCK BAND FROM PERTH, AUSTRALIA HAVE SOLD OVER A MILLION ALBUMS IN THE UK ALONE. SELLING OUT GLOBAL ARENA TOURS AND PLAYING TO THOUSANDS ACROSS MAIN STAGE PERFORMANCES FROM GLASTONBURY, DOWNLOAD",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "spotify-90baa6a5",
+      "youtube-2e0f6424",
+      "instagram-fb428b37",
+      "website-6b9f1a01",
+      "buy_music-d44abc51",
+      "merchandise-bd5e5d71"
+    ],
+    "marquee": "Pendulum",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://pendulum.com/",
+    "linkSourceVerifiedAt": "2026-08-03T11:32:27.929Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "contact-88a08b27",
+        "sourceTitle": "Form",
+        "label": "Form",
+        "detail": "Official band enquiries",
+        "url": "https://apps.shopify.com/form-builder-contact-form",
+        "platform": "website",
+        "kind": "contact"
+      },
+      {
+        "id": "website-6b9f1a01",
+        "sourceTitle": "Skip to content",
+        "label": "Band Website",
+        "detail": "Visit the official website",
+        "url": "https://pendulum.com/",
+        "platform": "website",
+        "kind": "website"
+      },
+      {
+        "id": "facebook-0229d24c",
+        "sourceTitle": "Facebook",
+        "label": "Facebook",
+        "detail": "Follow the band",
+        "url": "https://www.facebook.com/pendulum/",
+        "platform": "facebook",
+        "kind": "facebook"
+      },
+      {
+        "id": "youtube-2e0f6424",
+        "sourceTitle": "Youtube",
+        "label": "Youtube",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/channel/UCP2uxfZ9lfeqY2nkUkoPtvg",
+        "platform": "youtube",
+        "kind": "youtube"
+      },
+      {
+        "id": "instagram-fb428b37",
+        "sourceTitle": "Instagram",
+        "label": "Instagram",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/pendulum/",
+        "platform": "instagram",
+        "kind": "instagram"
+      },
+      {
+        "id": "spotify-90baa6a5",
+        "sourceTitle": "Spotify",
+        "label": "Spotify",
+        "detail": "Listen on Spotify",
+        "url": "https://open.spotify.com/artist/7MqnCTCAX6SsIYYdJCQj9B",
+        "platform": "website",
+        "kind": "spotify"
+      },
+      {
+        "id": "merchandise-bd5e5d71",
+        "sourceTitle": "SHOP NOW",
+        "label": "SHOP NOW",
+        "detail": "Official band merchandise",
+        "url": "https://pendulum.bandtshirts.com.au/shop/pendulum",
+        "platform": "merchandise",
+        "kind": "merchandise"
+      },
+      {
+        "id": "buy_music-d44abc51",
+        "sourceTitle": "MUSIC",
+        "label": "MUSIC",
+        "detail": "Purchase music online",
+        "url": "https://pendulum.com/pages/releases",
+        "platform": "website",
+        "kind": "buy_music"
+      },
+      {
+        "id": "contact-d1a740e1",
+        "sourceTitle": "CONTACT US",
+        "label": "CONTACT US",
+        "detail": "Official band enquiries",
+        "url": "https://pendulum.com/pages/contact-us",
+        "platform": "website",
+        "kind": "contact"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://pendulum.com/",
+      "paragraphs": [
+        "Pendulum are undoubtedly one of the biggest electronic bands of all time. With 3 platinum albums to their name including renowned debut ‘Hold Your Colour’ and a UK #1 and #2 for ‘Immersion’ and ‘In Silico’, the drum and bass/rock band from Perth, Australia have sold over a million albums in the UK alone. Selling out global arena tours and playing to thousands across main stage performances from Glastonbury, Download"
+      ]
+    }
+  }
+}

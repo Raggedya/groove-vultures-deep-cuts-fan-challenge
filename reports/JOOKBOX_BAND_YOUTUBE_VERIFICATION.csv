@@ -1,0 +1,390 @@
+Record ID,Band Name,Factory Status,Confidence,Official YouTube Channel,Most Popular Verified Video Title,Most Popular Verified Video URL,Selection Basis,Verified At,Permanent URL,Edition ID,QR Poster Variant,Failure / Omission Reason
+JBX-WD-Q494270,Rogue Traders,configured,100,https://www.youtube.com/user/RogueTradersVEVO,Rogue Traders - Hearts Beat As One (Official Song of the Qantas Socceroos),https://www.youtube.com/watch?v=XO4tvxt5CQ0,most-viewed-official,2026-08-03T11:32:25.561Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_24c509ffd1,dc_24c509ffd1,aggits-character-poster/1,"file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:280
+    if(item.kind==='show'&&(!item.dateLabel||!item.venue))throw new Error(`JookBox show ${item.id||'unknown'} requires a verified date label and venue.`);
+                                                                ^
+
+Error: JookBox show show-0046cd30 requires a verified date label and venue.
+    at file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:280:65
+    at Array.map (<anonymous>)
+    at validateJookBoxSelections (file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:260:21)
+    at file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:45:20
+
+Node.js v24.14.0"
+JBX-WD-Q537424,Angelspit,configured,100,https://www.youtube.com/user/krankhaus,Ice Planet 9000's 4th Album is Kickstarting now! #DarkAmbient #spacemusic #Vangelis #BerlinSchool,https://www.youtube.com/watch?v=B8cfSs6mJiM,most-viewed-official,2026-08-03T11:20:39.685Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_5fc05fa620,dc_5fc05fa620,aggits-character-poster/1,
+JBX-WD-Q1051182,Nick Cave and the Bad Seeds,rejected,64,,,,,2026-08-03T11:51:55.989Z,,,,A concise biography could not be extracted from an identity-verified official source. | The most-viewed embeddable video on the verified official YouTube channel could not be proved.
+JBX-WD-Q487586,Snog,rejected,80,,,,,2026-08-03T11:51:31.413Z,,,,The most-viewed embeddable video on the verified official YouTube channel could not be proved.
+JBX-WD-Q914012,Planetshakers,configured,100,https://www.youtube.com/@planetshakerstv/,"Less Of Me, More Of You | Planetshakers | Mighty God Live Album",https://www.youtube.com/watch?v=OnNwoodEFp4,most-viewed-official,2026-08-03T11:48:36.916Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_73cd2cc39e,dc_73cd2cc39e,aggits-character-poster/1,"file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/start-edition.mjs:15
+  if(job.status!=='in_progress')throw new Error(`A completed factory job already exists for ${bandName}.`);
+                                      ^
+
+Error: A completed factory job already exists for Planetshakers.
+    at file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/start-edition.mjs:15:39
+
+Node.js v24.14.0"
+JBX-WD-Q736766,Wolfmother,configured,100,https://www.youtube.com/channel/UC6VWE_jbihcn_2kJBUZWX2Q,Wolfmother - Love Train (Audio / Chicken Lips Remix),https://www.youtube.com/watch?v=gu53f8umqZE,most-viewed-official,2026-08-03T11:32:24.423Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_b52be0b54a,dc_b52be0b54a,aggits-character-poster/1,"file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:280
+    if(item.kind==='show'&&(!item.dateLabel||!item.venue))throw new Error(`JookBox show ${item.id||'unknown'} requires a verified date label and venue.`);
+                                                                ^
+
+Error: JookBox show show-07b284bd requires a verified date label and venue.
+    at file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:280:65
+    at Array.map (<anonymous>)
+    at validateJookBoxSelections (file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:260:21)
+    at file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:45:20
+
+Node.js v24.14.0"
+JBX-WD-Q381722,Australian Pink Floyd Show,configured,100,https://www.youtube.com/channel/UCt2opuko_zFANT0Q5qfFUZw,Us And Them - The Dark Side Of The Moon Live 2023 - Performed By The Australian Pink Floyd Show,https://www.youtube.com/watch?v=Mp-LMEFnYLw,most-viewed-official,2026-08-03T11:21:10.260Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_0b0dc0187e,dc_0b0dc0187e,aggits-character-poster/1,
+JBX-WD-Q253844,San Cisco,rejected,90,https://www.youtube.com/channel/UCdJCBo-Fa4qLpuwOGR0qdAA,San Cisco - Family Trust (Official Music Video),https://www.youtube.com/watch?v=OmE6MY75i8g,most-viewed-official,2026-08-03T11:51:29.683Z,,,,At least four direct destinations must reach the mandatory 98% confidence gate for the locked six-key JookBox.
+JBX-WD-Q61107,Architecture in Helsinki,rejected,70,,,,,2026-08-03T11:51:34.570Z,,,,The most-viewed embeddable video on the verified official YouTube channel could not be proved. | At least four direct destinations must reach the mandatory 98% confidence gate for the locked six-key JookBox.
+JBX-WD-Q157327,Silverchair,rejected,84,https://www.youtube.com/channel/UC7GKCAc8HNjraXz1bRy7Oaw,Silverchair - Cemetery (Official Video),https://www.youtube.com/watch?v=GSIulfUP02M,most-viewed-official,2026-08-03T11:51:39.859Z,,,,A concise biography could not be extracted from an identity-verified official source.
+JBX-WD-Q1078,Birds of Tokyo,configured,100,https://www.youtube.com/channel/UCdTpdO3tq-GZ3BraW4ROoNQ,Birds of Tokyo – ‘Starlights’ (Official Video),https://www.youtube.com/watch?v=IGTa6lsT01g,most-viewed-official,2026-08-03T11:32:35.746Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_0071724e35,dc_0071724e35,aggits-character-poster/1,"file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:280
+    if(item.kind==='show'&&(!item.dateLabel||!item.venue))throw new Error(`JookBox show ${item.id||'unknown'} requires a verified date label and venue.`);
+                                                                ^
+
+Error: JookBox show show-8199d98d requires a verified date label and venue.
+    at file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:280:65
+    at Array.map (<anonymous>)
+    at validateJookBoxSelections (file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:260:21)
+    at file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:45:20
+
+Node.js v24.14.0"
+JBX-WD-Q750607,Frenzal Rhomb,configured,100,https://www.youtube.com/channel/UCL3qFVJYh-tks9GeQG9ioow,Where Drug Dealers Take Their Kids,https://www.youtube.com/watch?v=-ttj61BnePk,most-viewed-official,2026-08-03T11:21:20.389Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_a800c6bad5,dc_a800c6bad5,aggits-character-poster/1,
+JBX-WD-Q5207054,DZ Deathrays,configured,100,https://www.youtube.com/channel/UCPAEiAuuz63M6DIuyAOWMLg,DZ Deathrays - Like People Live (featuring Murray Cook from the Wiggles),https://www.youtube.com/watch?v=3Dg50NElVtU,most-viewed-official,2026-08-03T11:43:38.383Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_447409856f,dc_447409856f,aggits-character-poster/1,
+JBX-WD-Q690404,The Temper Trap,configured,100,https://www.youtube.com/channel/UC-1k7y80RAIK_JlXP8WlDDw,The Temper Trap - Lifeline (Official Visualiser),https://www.youtube.com/watch?v=xBar8-B7fBw,most-viewed-official,2026-08-03T11:43:36.449Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_c61dc6297d,dc_c61dc6297d,aggits-character-poster/1,
+JBX-WD-Q539502,Tonight Alive,rejected,90,https://www.youtube.com/channel/UCgd1OFjJ8ROQfjUu3KQ0XkQ,Tonight Alive sign to Hopeless Records/UNFD,https://www.youtube.com/watch?v=WCYEXuya6NE,most-viewed-official,2026-08-03T11:51:48.601Z,,,,At least four direct destinations must reach the mandatory 98% confidence gate for the locked six-key JookBox.
+JBX-WD-Q324400,Dead Can Dance,configured,100,https://www.youtube.com/channel/UCZn4_LiKXOu-ArkS4sJTG5w,Dead Can Dance - Mushin,https://www.youtube.com/watch?v=BmpWw8dI1-Y,most-viewed-official,2026-08-03T11:21:37.109Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_d5da00c80d,dc_d5da00c80d,aggits-character-poster/1,
+JBX-WD-Q128220,The Jezabels,rejected,90,https://www.youtube.com/channel/UCFdgWifhQ3COhLLujLHK0Dg,The Jezabels - Endless Summer (Acoustic : From the Loungeroom 2022),https://www.youtube.com/watch?v=Z5-AayspvhY,most-viewed-official,2026-08-03T11:51:48.642Z,,,,At least four direct destinations must reach the mandatory 98% confidence gate for the locked six-key JookBox.
+JBX-WD-Q489801,INXS,configured,100,https://www.youtube.com/user/inxsofficial,"INXS - Disappear (Réveillon réveillons, December 31, 1990)",https://www.youtube.com/watch?v=G6Dn2zcSC84,most-viewed-official,2026-08-03T11:21:47.953Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_36e2298568,dc_36e2298568,aggits-character-poster/1,
+JBX-WD-Q660729,The Angels,configured,100,https://www.youtube.com/channel/UC6-yLcVzDmS1ngXmoDVJoFg,Keith Knows... Now Metallica....,https://www.youtube.com/watch?v=E72BbXWzXJc,most-viewed-official,2026-08-03T11:32:35.884Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_953dbe5104,dc_953dbe5104,aggits-character-poster/1,"file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:280
+    if(item.kind==='show'&&(!item.dateLabel||!item.venue))throw new Error(`JookBox show ${item.id||'unknown'} requires a verified date label and venue.`);
+                                                                ^
+
+Error: JookBox show show-b81b1324 requires a verified date label and venue.
+    at file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:280:65
+    at Array.map (<anonymous>)
+    at validateJookBoxSelections (file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:260:21)
+    at file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:45:20
+
+Node.js v24.14.0"
+JBX-WD-Q977452,Clue to Kalo,rejected,64,,,,,2026-08-03T11:51:55.580Z,,,,A concise biography could not be extracted from an identity-verified official source. | The most-viewed embeddable video on the verified official YouTube channel could not be proved.
+JBX-WD-Q27593,AC/DC,rejected,84,https://www.youtube.com/channel/UCB0JSO6d5ysH2Mmqz5I9rIw,"AC/DC - The Jack (Downsview Park Toronto Rocks, July 2003)",https://www.youtube.com/watch?v=0F0d48zoOKI,most-viewed-official,2026-08-03T11:51:56.051Z,,,,A concise biography could not be extracted from an identity-verified official source.
+JBX-WD-Q9619,Tame Impala,configured,100,https://www.youtube.com/channel/UCdI8MAC5HoPJSJ4zrgDDI-Q,"Tame Impala, JENNIE, Boys Noize - Dracula (JENNIE Remix - Boys Noize Disko Version - Official Audio)",https://www.youtube.com/watch?v=NiNXwI_Y1So,most-viewed-official,2026-08-03T11:21:57.720Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_675e1b4025,dc_675e1b4025,aggits-character-poster/1,
+JBX-WD-Q592387,The Seekers,rejected,80,,,,,2026-08-03T11:52:03.844Z,,,,The most-viewed embeddable video on the verified official YouTube channel could not be proved.
+JBX-WD-Q5141067,Cog,configured,100,https://www.youtube.com/user/cogrockmusic,COG - Walk the line,https://www.youtube.com/watch?v=E6JmYBI0EnY,most-viewed-official,2026-08-03T11:44:06.292Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_fb7794b6ea,dc_fb7794b6ea,aggits-character-poster/1,
+JBX-WD-Q20672,Pendulum,configured,100,https://www.youtube.com/channel/UCP2uxfZ9lfeqY2nkUkoPtvg,Pendulum - Napalm (Live At Milton Keynes),https://www.youtube.com/watch?v=xbgpT2jMBEY,most-viewed-official,2026-08-03T11:32:36.617Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_f889aff0d9,dc_f889aff0d9,aggits-character-poster/1,"file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:280
+    if(item.kind==='show'&&(!item.dateLabel||!item.venue))throw new Error(`JookBox show ${item.id||'unknown'} requires a verified date label and venue.`);
+                                                                ^
+
+Error: JookBox show show-54a7189b requires a verified date label and venue.
+    at file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:280:65
+    at Array.map (<anonymous>)
+    at validateJookBoxSelections (file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:260:21)
+    at file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:45:20
+
+Node.js v24.14.0"
+JBX-WD-Q576457,The Panics,rejected,84,https://www.youtube.com/channel/UCo9JCaRLXEk9Gp6cA6Im9lg,40 Years of Dutch Hip-Hop,https://www.youtube.com/watch?v=QxGmRVBn3hk,most-viewed-official,2026-08-03T11:52:08.163Z,,,,A concise biography could not be extracted from an identity-verified official source.
+JBX-WD-Q20615,Knife Party,configured,100,https://www.youtube.com/channel/UCtXRolzmkBDmAkTEJiFXohw,Knife Party @ Ultra Music Festival Miami 2022,https://www.youtube.com/watch?v=Xc1nU7tuE_E,most-viewed-official,2026-08-03T11:35:00.952Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_48973433b0,dc_48973433b0,aggits-character-poster/1,"node:internal/fs/promises:637
+  return new FileHandle(await PromisePrototypeThen(
+                        ^
+
+Error: UNKNOWN: unknown error, open 'C:\Users\andre\Documents\Codex\2026-07-26\https-deep-cuts-andrewharris501-workers-dev\platform.json'
+    at async open (node:internal/fs/promises:637:25)
+    at async Object.writeFile (node:internal/fs/promises:1239:14)
+    at async file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:136:1 {
+  errno: -4094,
+  code: 'UNKNOWN',
+  syscall: 'open',
+  path: 'C:\\Users\\andre\\Documents\\Codex\\2026-07-26\\https-deep-cuts-andrewharris501-workers-dev\\platform.json'
+}
+
+Node.js v24.14.0"
+JBX-WD-Q1036439,Hillsong United,rejected,90,https://www.youtube.com/channel/UCsOoQeBWPnfWBYAwmO795zg,Stay and Wait - Live at Team Night 2013 | Hillsong UNITED,https://www.youtube.com/watch?v=qb62p235Jco,most-viewed-official,2026-08-03T11:52:06.493Z,,,,At least four direct destinations must reach the mandatory 98% confidence gate for the locked six-key JookBox.
+JBX-WD-Q750460,Jet,configured,100,https://www.youtube.com/channel/UC5vZ92ZTaMqw7lLFDvFNu0A,Jet - On Tour with Lenny Kravitz (Australian Tour Highlights - 2025),https://www.youtube.com/watch?v=Ojm-FXGacM0,most-viewed-official,2026-08-03T11:22:24.066Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_5394bffe4e,dc_5394bffe4e,aggits-character-poster/1,
+JBX-WD-Q493710,Savage Garden,configured,100,https://www.youtube.com/channel/UCocAlqGOU7BqzKc87qx6WUg,Savage Garden - To the Moon and Back (Official Video - Australian Version),https://www.youtube.com/watch?v=H5zcfhrBR3I,most-viewed-official,2026-08-03T11:52:12.640Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_e65763b78b,dc_e65763b78b,aggits-character-poster/1,
+JBX-WD-Q5125089,Claim the Throne,rejected,80,,,,,2026-08-03T11:52:19.717Z,,,,The most-viewed embeddable video on the verified official YouTube channel could not be proved.
+JBX-WD-Q133405,Bee Gees,configured,100,https://www.youtube.com/channel/UCD9sCcKXnFxMeuFoNayVxeQ,Bee Gees - Tragedy (Official Music Video),https://www.youtube.com/watch?v=I248-SyRDnU,most-viewed-official,2026-08-03T11:22:35.908Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_f3ec5855a9,dc_f3ec5855a9,aggits-character-poster/1,
+JBX-WD-Q311576,Dirty Three,configured,100,https://www.youtube.com/channel/UCUcTHq5c6iCot-_oQucmIvw,"""Love changes everything II"" by Dirty Three",https://www.youtube.com/watch?v=P6VE8z8ieYc,most-viewed-official,2026-08-03T11:44:18.660Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_521347d705,dc_521347d705,aggits-character-poster/1,
+JBX-WD-Q600519,Bodyjar,configured,100,https://www.youtube.com/user/officialbodyjar,Bodyjar - Sound Of The Stereo [Official Music Video],https://www.youtube.com/watch?v=mmcQ6vQKiLw,most-viewed-official,2026-08-03T11:22:45.070Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_7a9c18a18e,dc_7a9c18a18e,aggits-character-poster/1,
+JBX-WD-Q573168,Cut Copy,configured,100,https://www.youtube.com/channel/UCvueeIpQ6l5BlyzUTWY13eQ,Cut Copy & Kate Bollinger - Belong To You [Official Video],https://www.youtube.com/watch?v=_zoXZj19yUA,most-viewed-official,2026-08-03T11:22:42.246Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_003845ddb2,dc_003845ddb2,aggits-character-poster/1,
+JBX-WD-Q407814,Air Supply,configured,100,https://www.youtube.com/channel/UCLIx3q_0KLVHAxgxsvh_vSQ,"Air Supply - All Out of Love (Into the Night With Rick Dees, 1991)",https://www.youtube.com/watch?v=gppjjSlwqrI,most-viewed-official,2026-08-03T11:22:48.606Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_151a0f73fc,dc_151a0f73fc,aggits-character-poster/1,
+JBX-WD-Q408139,Airbourne,configured,100,https://www.youtube.com/channel/UC99gXrm2NHOlKVLuKIk6IGA,Airbourne - Here She Comes (Art Track),https://www.youtube.com/watch?v=8bO75LnGEc8,most-viewed-official,2026-08-03T11:49:31.703Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_20eaf944b5,dc_20eaf944b5,aggits-character-poster/1,"node:internal/fs/promises:637
+  return new FileHandle(await PromisePrototypeThen(
+                        ^
+
+Error: UNKNOWN: unknown error, open 'C:\Users\andre\Documents\Codex\2026-07-26\https-deep-cuts-andrewharris501-workers-dev\platform.json'
+    at async open (node:internal/fs/promises:637:25)
+    at async Object.writeFile (node:internal/fs/promises:1239:14)
+    at async file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:136:1 {
+  errno: -4094,
+  code: 'UNKNOWN',
+  syscall: 'open',
+  path: 'C:\\Users\\andre\\Documents\\Codex\\2026-07-26\\https-deep-cuts-andrewharris501-workers-dev\\platform.json'
+}
+
+Node.js v24.14.0"
+JBX-WD-Q5125404,Clairy Browne & The Bangin’ Rackettes,rejected,54,,,,,2026-08-03T11:52:11.992Z,,,,A concise biography could not be extracted from an identity-verified official source. | The most-viewed embeddable video on the verified official YouTube channel could not be proved. | At least four direct destinations must reach the mandatory 98% confidence gate for the locked six-key JookBox.
+JBX-WD-Q5211330,Dallas Frasca,rejected,64,,,,,2026-08-03T11:52:22.210Z,,,,A concise biography could not be extracted from an identity-verified official source. | The most-viewed embeddable video on the verified official YouTube channel could not be proved.
+JBX-WD-Q472726,Sodastream,configured,100,https://www.youtube.com/user/sodastreamaustralia,Three Sins,https://www.youtube.com/watch?v=UbxGTO0cVzE,most-viewed-official,2026-08-03T11:23:01.876Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_b53b573830,dc_b53b573830,aggits-character-poster/1,
+JBX-WD-Q5550946,Gerling,rejected,84,https://www.youtube.com/channel/UCIjV2o7DfyAhbhBuT-CIBKw,Good Timing,https://www.youtube.com/watch?v=7F1S4_CYB_E,most-viewed-official,2026-08-03T11:52:22.741Z,,,,A concise biography could not be extracted from an identity-verified official source.
+JBX-WD-Q5305104,Dragon,configured,100,https://www.youtube.com/channel/UCISWM9bdL3G_DaJ5fJXdbCg,Dragon - Place In The Sun (Official Audio),https://www.youtube.com/watch?v=-k6pzKt7gdE,most-viewed-official,2026-08-03T11:32:45.234Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_cf0c26e052,dc_cf0c26e052,aggits-character-poster/1,"file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:280
+    if(item.kind==='show'&&(!item.dateLabel||!item.venue))throw new Error(`JookBox show ${item.id||'unknown'} requires a verified date label and venue.`);
+                                                                ^
+
+Error: JookBox show show-6b05669d requires a verified date label and venue.
+    at file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:280:65
+    at Array.map (<anonymous>)
+    at validateJookBoxSelections (file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:260:21)
+    at file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:45:20
+
+Node.js v24.14.0"
+JBX-WD-Q5306414,"Dream On, Dreamer",rejected,84,https://www.youtube.com/channel/UCqpfplu0s02Yt6IBszJ_q5w,Dream on Dreamer - White Room (Official Music Video),https://www.youtube.com/watch?v=VYE28UcuezQ,most-viewed-official,2026-08-03T11:52:28.896Z,,,,A concise biography could not be extracted from an identity-verified official source.
+JBX-WD-Q5379378,Enola Fall,rejected,64,,,,,2026-08-03T11:52:32.105Z,,,,A concise biography could not be extracted from an identity-verified official source. | The most-viewed embeddable video on the verified official YouTube channel could not be proved.
+JBX-WD-Q5441452,Feenixpawl,configured,100,https://www.youtube.com/channel/UC5jXSlq8qeBtSLv2DuukAlQ,LJ MASE & Feenixpawl - Balloons,https://www.youtube.com/watch?v=8jA2wosv5Mw,most-viewed-official,2026-08-03T11:23:23.560Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_524265c4c2,dc_524265c4c2,aggits-character-poster/1,
+JBX-WD-Q5416495,Even,configured,100,https://www.youtube.com/channel/UCMTCxxJxvkFtmanb7iPN0HA,EVEN - Let Me Know,https://www.youtube.com/watch?v=uoWTB9x9cq0,most-viewed-official,2026-08-03T11:23:24.492Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_ae8daf66a5,dc_ae8daf66a5,aggits-character-poster/1,
+JBX-WD-Q5416497,Even As We Speak,rejected,80,,,,,2026-08-03T11:52:33.601Z,,,,The most-viewed embeddable video on the verified official YouTube channel could not be proved.
+JBX-WD-Q1409039,The Wiggles,configured,100,https://www.youtube.com/user/TheWigglesPtyLtd,"Doing the Dishes Can Be Fun! 🫧 The Wiggles 📺 Ready, Steady, Wiggle! Series 8",https://www.youtube.com/watch?v=tghgSwS2c7E,most-viewed-official,2026-08-03T11:32:45.954Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_7bb8539598,dc_7bb8539598,aggits-character-poster/1,"file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:280
+    if(item.kind==='show'&&(!item.dateLabel||!item.venue))throw new Error(`JookBox show ${item.id||'unknown'} requires a verified date label and venue.`);
+                                                                ^
+
+Error: JookBox show show-329a080c requires a verified date label and venue.
+    at file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:280:65
+    at Array.map (<anonymous>)
+    at validateJookBoxSelections (file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:260:21)
+    at file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:45:20
+
+Node.js v24.14.0"
+JBX-WD-Q1259710,Psycroptic,configured,100,https://www.youtube.com/user/psycroptic,PSYCROPTIC - Live Chat w Dave Haley 1-23-12 (OFFICIAL),https://www.youtube.com/watch?v=dMtwQ1BssZw,most-viewed-official,2026-08-03T11:32:53.825Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_00caa452fd,dc_00caa452fd,aggits-character-poster/1,"file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:280
+    if(item.kind==='show'&&(!item.dateLabel||!item.venue))throw new Error(`JookBox show ${item.id||'unknown'} requires a verified date label and venue.`);
+                                                                ^
+
+Error: JookBox show show-76a84ae1 requires a verified date label and venue.
+    at file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:280:65
+    at Array.map (<anonymous>)
+    at validateJookBoxSelections (file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:260:21)
+    at file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:45:20
+
+Node.js v24.14.0"
+JBX-WD-Q1539053,The Cat Empire,configured,100,https://www.youtube.com/channel/UC2Ns1Jsrn_X9PA3GStYctVw,The Cat Empire - Steal The Light (Live at Sydney Opera House) (Official Live Video),https://www.youtube.com/watch?v=d7AumllXmfA,most-viewed-official,2026-08-03T11:23:53.094Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_41c875c4f1,dc_41c875c4f1,aggits-character-poster/1,
+JBX-WD-Q1192255,Powderfinger,configured,100,https://www.youtube.com/channel/UCfLfieeWptxNHlirXjhfalA,Powderfinger - 'These Days' Live In Concert - A Vulture Street Film #20thanniversary,https://www.youtube.com/watch?v=mFjAhH53rPg,most-viewed-official,2026-08-03T11:32:54.680Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_c8c3b75f0e,dc_c8c3b75f0e,aggits-character-poster/1,"file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:280
+    if(item.kind==='show'&&(!item.dateLabel||!item.venue))throw new Error(`JookBox show ${item.id||'unknown'} requires a verified date label and venue.`);
+                                                                ^
+
+Error: JookBox show show-6ac81d96 requires a verified date label and venue.
+    at file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:280:65
+    at Array.map (<anonymous>)
+    at validateJookBoxSelections (file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:260:21)
+    at file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:45:20
+
+Node.js v24.14.0"
+JBX-WD-Q2061634,The Presets,rejected,84,https://www.youtube.com/channel/UCH73vRRJj5lnLYc8l7L3nkg,Foreverafter 2027,https://www.youtube.com/watch?v=2HENJvoeH0M,most-viewed-official,2026-08-03T11:52:41.087Z,,,,A concise biography could not be extracted from an identity-verified official source.
+JBX-WD-Q1543521,Sneaky Sound System,configured,100,https://www.youtube.com/channel/UCDzfrn4naL1oNizS5Gst1cQ,Really Want To See You Again,https://www.youtube.com/watch?v=Wmu_f33matw,most-viewed-official,2026-08-03T11:32:54.218Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_1f2a28ff05,dc_1f2a28ff05,aggits-character-poster/1,"file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:280
+    if(item.kind==='show'&&(!item.dateLabel||!item.venue))throw new Error(`JookBox show ${item.id||'unknown'} requires a verified date label and venue.`);
+                                                                ^
+
+Error: JookBox show show-2dd74f5f requires a verified date label and venue.
+    at file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:280:65
+    at Array.map (<anonymous>)
+    at validateJookBoxSelections (file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:260:21)
+    at file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:45:20
+
+Node.js v24.14.0"
+JBX-WD-Q1888386,Mammoth Mammoth,configured,100,https://www.youtube.com/@MAMMOTHMAMMOTHOFFICIAL,MAMMOTH MAMMOTH - RICK AND MACCA LISTENING TO VOLUME VI - WARTS N ALL (LIVE),https://www.youtube.com/watch?v=LEl4IZ8lcXo,most-viewed-official,2026-08-03T11:24:00.704Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_b48d910afb,dc_b48d910afb,aggits-character-poster/1,
+JBX-WD-Q2103520,Pond,configured,100,https://www.youtube.com/channel/UC740AuHpQa5nAo4S7yezzkg,Pond - Terrestrials Full Album (Official Audio),https://www.youtube.com/watch?v=_AC05n_k6JI,most-viewed-official,2026-08-03T11:24:08.654Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_929391308b,dc_929391308b,aggits-character-poster/1,
+JBX-WD-Q1618844,Hilltop Hoods,rejected,90,https://www.youtube.com/channel/UC3MvNfKIhwubtPr2LMOFSZA,Hilltop Hoods - Fall From The Light ft. Nyassa (Official Video),https://www.youtube.com/watch?v=kK9fljqwz-Q,most-viewed-official,2026-08-03T11:52:42.650Z,,,,At least four direct destinations must reach the mandatory 98% confidence gate for the locked six-key JookBox.
+JBX-WD-Q2000851,The Avalanches,configured,100,https://www.youtube.com/user/avalanchesofficial,The Avalanches - Blue Shadows ft. Karen O,https://www.youtube.com/watch?v=x3yo95DVgTc,most-viewed-official,2026-08-03T11:24:08.250Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_45e81d29f4,dc_45e81d29f4,aggits-character-poster/1,
+JBX-WD-Q1445071,Newsboys,configured,100,https://www.youtube.com/user/newsboystv,Newsboys - New Name (Audio),https://www.youtube.com/watch?v=ixWGyUpG4Sg,most-viewed-official,2026-08-03T11:52:44.716Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_fd251af95f,dc_fd251af95f,aggits-character-poster/1,
+JBX-WD-Q1590496,Yothu Yindi,rejected,90,https://www.youtube.com/channel/UCCZdwusV2ScYxyWHy2FwuBw,Yothu Yindi - Dots on the Shells,https://www.youtube.com/watch?v=rhAv1IvJAFM,most-viewed-official,2026-08-03T11:52:49.748Z,,,,At least four direct destinations must reach the mandatory 98% confidence gate for the locked six-key JookBox.
+JBX-WD-Q2129943,Miami Horror,configured,100,https://www.youtube.com/channel/UCi6npYM3xgDR-ohvXeDtIPw,Miami Horror - Remember ft. Tim Ayre (Official Live Video),https://www.youtube.com/watch?v=c3v-qsRhS1Y,most-viewed-official,2026-08-03T11:33:05.724Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_e84f719c88,dc_e84f719c88,aggits-character-poster/1,"file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:280
+    if(item.kind==='show'&&(!item.dateLabel||!item.venue))throw new Error(`JookBox show ${item.id||'unknown'} requires a verified date label and venue.`);
+                                                                ^
+
+Error: JookBox show show-02ac1a4a requires a verified date label and venue.
+    at file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:280:65
+    at Array.map (<anonymous>)
+    at validateJookBoxSelections (file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:260:21)
+    at file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:45:20
+
+Node.js v24.14.0"
+JBX-WD-Q1180813,Dead Letter Circus,configured,100,https://www.youtube.com/user/DEADLETTERCIRCUSTV,Dead Letter Circus - 'Home' (Official Audio),https://www.youtube.com/watch?v=Apyiet_pSjQ,most-viewed-official,2026-08-03T11:33:04.274Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_be88a39b9b,dc_be88a39b9b,aggits-character-poster/1,"node:internal/fs/promises:637
+  return new FileHandle(await PromisePrototypeThen(
+                        ^
+
+Error: UNKNOWN: unknown error, open 'C:\Users\andre\Documents\Codex\2026-07-26\https-deep-cuts-andrewharris501-workers-dev\platform.json'
+    at async open (node:internal/fs/promises:637:25)
+    at async Object.writeFile (node:internal/fs/promises:1239:14)
+    at async file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:136:1 {
+  errno: -4094,
+  code: 'UNKNOWN',
+  syscall: 'open',
+  path: 'C:\\Users\\andre\\Documents\\Codex\\2026-07-26\\https-deep-cuts-andrewharris501-workers-dev\\platform.json'
+}
+
+Node.js v24.14.0"
+JBX-WD-Q1898365,TISM,rejected,74,https://www.youtube.com/channel/UC7qw0Ps2BwboL1nfNC3bibA,TISM - On Behalf Of TISM I Would Like To Concede We Have Lost The Election,https://www.youtube.com/watch?v=PbPpSVUIxeg,most-viewed-official,2026-08-03T11:52:53.242Z,,,,A concise biography could not be extracted from an identity-verified official source. | At least four direct destinations must reach the mandatory 98% confidence gate for the locked six-key JookBox.
+JBX-WD-Q1517846,Operator Please,configured,100,https://www.youtube.com/channel/UCGNas1NDgT_6Ly7hfboRhzQ,OPERATOR PLEASE - BIG DAY OUT 2011- ADELAIDE,https://www.youtube.com/watch?v=QNUn2XGoVKI,most-viewed-official,2026-08-03T11:24:41.443Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_ab58ce9489,dc_ab58ce9489,aggits-character-poster/1,
+JBX-WD-Q1141426,Empire of the Sun,configured,100,https://www.youtube.com/channel/UCyacMWc-JhzX6iq2PCF-4jw,Empire Of The Sun - Chapter 3: The Beginning,https://www.youtube.com/watch?v=D2KUK3P8_Y0,most-viewed-official,2026-08-03T11:52:53.384Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_8517649a4b,dc_8517649a4b,aggits-character-poster/1,
+JBX-WD-Q2121729,The Amenta,configured,100,https://www.youtube.com/user/theamenta/,"The Amenta - ""Sekem"", live at Crowbar, Sydney. May 9th, 2026 ( Pro Shot Video)",https://www.youtube.com/watch?v=A6SEkwMv4ig,most-viewed-official,2026-08-03T11:24:33.108Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_60121e87bd,dc_60121e87bd,aggits-character-poster/1,
+JBX-WD-Q1367820,Eskimo Joe,configured,100,https://www.youtube.com/channel/UC_u6lT3KKqi-G6dxbUcpSEQ,"Eskimo Joe - Black Fingernails, Red Wine (Alternate Official Music Video)",https://www.youtube.com/watch?v=x-uyBbS7ykw,most-viewed-official,2026-08-03T11:24:43.367Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_3fb64cab96,dc_3fb64cab96,aggits-character-poster/1,
+JBX-WD-Q1442656,John Butler Trio,rejected,64,,,,,2026-08-03T11:52:52.672Z,,,,A concise biography could not be extracted from an identity-verified official source. | The most-viewed embeddable video on the verified official YouTube channel could not be proved.
+JBX-WD-Q1474932,Little River Band,configured,100,https://www.youtube.com/channel/UC5G7TEx54qe73K_I9q5ZUZQ,Little River Band - Soul Full of Sunshine ft. Randy Houser (Lyric Video),https://www.youtube.com/watch?v=HHP8_UOyLKg,most-viewed-official,2026-08-03T11:24:52.027Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_ff71ec4a82,dc_ff71ec4a82,aggits-character-poster/1,
+JBX-WD-Q1420529,The Butterfly Effect,configured,100,https://www.youtube.com/channel/UCMhmI-gdbUVymiAgCmpqSXw,The Butterfly Effect - Consequence (Live In Brisbane),https://www.youtube.com/watch?v=tcQcknh7Jhk,most-viewed-official,2026-08-03T11:24:51.957Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_3ce4bcadbb,dc_3ce4bcadbb,aggits-character-poster/1,
+JBX-WD-Q1764491,The Amity Affliction,configured,100,https://www.youtube.com/channel/UCW5bPOVKOxDBNlIQBacw6Ow,The Amity Affliction - Recording 'House of Cards' (Part 3),https://www.youtube.com/watch?v=2tHAcwNm8f4,most-viewed-official,2026-08-03T11:24:56.280Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_b8a5a59a65,dc_b8a5a59a65,aggits-character-poster/1,
+JBX-WD-Q1164628,Sick Puppies,configured,100,https://www.youtube.com/user/sickpuppies1,Sick Puppies - HALFWAY HOME (OFFICIAL VISUALIZER),https://www.youtube.com/watch?v=f-4cfgXTiz4,most-viewed-official,2026-08-03T11:25:02.998Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_d08b8b28b3,dc_d08b8b28b3,aggits-character-poster/1,
+JBX-WD-Q1128045,Crowded House,configured,100,https://www.youtube.com/channel/UCaY4Qzbi0DVPX-c5Pvf-yxg,Introducing Private Universe,https://www.youtube.com/watch?v=HriFtNDC-8E,most-viewed-official,2026-08-03T11:33:04.394Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_34451b60b3,dc_34451b60b3,aggits-character-poster/1,"file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:280
+    if(item.kind==='show'&&(!item.dateLabel||!item.venue))throw new Error(`JookBox show ${item.id||'unknown'} requires a verified date label and venue.`);
+                                                                ^
+
+Error: JookBox show show-28e38f81 requires a verified date label and venue.
+    at file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:280:65
+    at Array.map (<anonymous>)
+    at validateJookBoxSelections (file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:260:21)
+    at file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:45:20
+
+Node.js v24.14.0"
+JBX-WD-Q1632042,Howling Bells,configured,100,https://www.youtube.com/channel/UCBu8tkqEeOxKTAa53jz4eDw,The Night Is Young - Bedroom Demo/2003,https://www.youtube.com/watch?v=lEpAUuSFy24,most-viewed-official,2026-08-03T11:33:16.508Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_c92dad74b8,dc_c92dad74b8,aggits-character-poster/1,"file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:280
+    if(item.kind==='show'&&(!item.dateLabel||!item.venue))throw new Error(`JookBox show ${item.id||'unknown'} requires a verified date label and venue.`);
+                                                                ^
+
+Error: JookBox show show-7e66e9ff requires a verified date label and venue.
+    at file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:280:65
+    at Array.map (<anonymous>)
+    at validateJookBoxSelections (file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:260:21)
+    at file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:45:20
+
+Node.js v24.14.0"
+JBX-WD-Q1780510,Pseudo Echo,rejected,90,https://www.youtube.com/channel/UCEhbWk4sB9yJNFiiUQJAXzA,Pseudo Echo - Funkytown (Official Video),https://www.youtube.com/watch?v=uE-itlGNap4,most-viewed-official,2026-08-03T11:53:00.881Z,,,,At least four direct destinations must reach the mandatory 98% confidence gate for the locked six-key JookBox.
+JBX-WD-Q1107765,Cold Chisel,configured,100,https://www.youtube.com/channel/UCZW5rgF90OnAgNhLh52YHeQ,Cold Chisel - The Things I love In You (Offical Video),https://www.youtube.com/watch?v=pJzPn4wlbZw,most-viewed-official,2026-08-03T11:45:16.048Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_dedb317397,dc_dedb317397,aggits-character-poster/1,
+JBX-WD-Q4820403,Augie March,configured,100,https://www.youtube.com/user/augiemarch,Augie March - Every Song a Miracle (Lyric Video),https://www.youtube.com/watch?v=yvZgXu8LmFc,most-viewed-official,2026-08-03T11:25:24.540Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_09e7cac126,dc_09e7cac126,aggits-character-poster/1,
+JBX-WD-Q4641147,5 Seconds of Summer,rejected,70,,,,,2026-08-03T11:53:05.037Z,,,,The most-viewed embeddable video on the verified official YouTube channel could not be proved. | At least four direct destinations must reach the mandatory 98% confidence gate for the locked six-key JookBox.
+JBX-WD-Q4875428,Be'lakor,configured,100,https://www.youtube.com/user/belakorband,BE'LAKOR: North America 2025 - Tour Trailer,https://www.youtube.com/watch?v=8fBoQBoO23I,most-viewed-official,2026-08-03T11:33:15.139Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_eaaa4ca02a,dc_eaaa4ca02a,aggits-character-poster/1,"file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:280
+    if(item.kind==='show'&&(!item.dateLabel||!item.venue))throw new Error(`JookBox show ${item.id||'unknown'} requires a verified date label and venue.`);
+                                                                ^
+
+Error: JookBox show show-a5779993 requires a verified date label and venue.
+    at file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:280:65
+    at Array.map (<anonymous>)
+    at validateJookBoxSelections (file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:260:21)
+    at file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:45:20
+
+Node.js v24.14.0"
+JBX-WD-Q4411699,Boy & Bear,configured,100,https://www.youtube.com/channel/UClnDLRF8MBjl3o16JO73A4A,Boy & Bear - Love Has Been Too Good To Me (Official Visualiser),https://www.youtube.com/watch?v=_TlroEpZt18,most-viewed-official,2026-08-03T11:45:25.444Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_f99afdac0a,dc_f99afdac0a,aggits-character-poster/1,
+JBX-WD-Q4035202,Bliss n Eso,configured,100,https://www.youtube.com/channel/UCwgWa8z08e4LYg15C0woAkA,Behind The Bars with Bliss n Eso — Take Me Higher,https://www.youtube.com/watch?v=fSyfBa91tOY,most-viewed-official,2026-08-03T11:25:33.127Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_390ba8c782,dc_390ba8c782,aggits-character-poster/1,
+JBX-WD-Q4642271,67 Special,configured,100,https://www.youtube.com/channel/UC4IvBdpV1s2sRnPNuRRezsg,Sold Your Little Sister for a Red Motor Car,https://www.youtube.com/watch?v=8YhfBsvneVo,most-viewed-official,2026-08-03T11:25:40.653Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_d4f8e7527d,dc_d4f8e7527d,aggits-character-poster/1,
+JBX-WD-Q4728979,All India Radio,configured,100,https://www.youtube.com/@allindiaradioband,Writing a new song and it feels very Pink Floyd-ish!,https://www.youtube.com/watch?v=o50suaeGdy0,most-viewed-official,2026-08-03T11:25:43.293Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_37af872e87,dc_37af872e87,aggits-character-poster/1,
+JBX-WD-Q4797282,Art vs. Science,configured,100,https://www.youtube.com/channel/UCESnBKrueJLr3-o1gpG3evQ,Art Vs Science - Powder (Official Video),https://www.youtube.com/watch?v=nuBgPEvK6g8,most-viewed-official,2026-08-03T11:53:01.788Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_f73f0ede22,dc_f73f0ede22,aggits-character-poster/1,
+JBX-WD-Q4816806,Atlas Genius,configured,100,https://www.youtube.com/channel/UCQMGO_YpzXNAmsg4QK6zjGg,Atlas Genius & Robert DeLong Tour,https://www.youtube.com/watch?v=rB9RS3q4ah4,most-viewed-official,2026-08-03T11:33:14.219Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_7374b0bdca,dc_7374b0bdca,aggits-character-poster/1,"file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:280
+    if(item.kind==='show'&&(!item.dateLabel||!item.venue))throw new Error(`JookBox show ${item.id||'unknown'} requires a verified date label and venue.`);
+                                                                ^
+
+Error: JookBox show show-a4c6e704 requires a verified date label and venue.
+    at file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:280:65
+    at Array.map (<anonymous>)
+    at validateJookBoxSelections (file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:260:21)
+    at file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:45:20
+
+Node.js v24.14.0"
+JBX-WD-Q4851208,Ball Park Music,configured,100,https://www.youtube.com/channel/UCHJA95ntm2cOro8BU4xgJiA,WORLD BEHIND YOUR EYES - The Making of Like Love - EP 4 “Overwhelming”,https://www.youtube.com/watch?v=lyuQ8vxWnoY,most-viewed-official,2026-08-03T11:25:53.205Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_1d2f48f205,dc_1d2f48f205,aggits-character-poster/1,
+JBX-WD-Q4797237,Art of Fighting,configured,100,https://www.youtube.com/channel/UCRuJaa8xjeK8Xb1MEVzHRWw/,Art of Fighting - Conjuror,https://www.youtube.com/watch?v=9-Nl-27L9SU,most-viewed-official,2026-08-03T11:33:22.562Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_5161f4fcee,dc_5161f4fcee,aggits-character-poster/1,"file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:280
+    if(item.kind==='show'&&(!item.dateLabel||!item.venue))throw new Error(`JookBox show ${item.id||'unknown'} requires a verified date label and venue.`);
+                                                                ^
+
+Error: JookBox show show-db1fe181 requires a verified date label and venue.
+    at file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:280:65
+    at Array.map (<anonymous>)
+    at validateJookBoxSelections (file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:260:21)
+    at file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:45:20
+
+Node.js v24.14.0"
+JBX-WD-Q6678880,Lord,rejected,54,,,,,2026-08-03T11:53:15.690Z,,,,A concise biography could not be extracted from an identity-verified official source. | The most-viewed embeddable video on the verified official YouTube channel could not be proved. | At least four direct destinations must reach the mandatory 98% confidence gate for the locked six-key JookBox.
+JBX-WD-Q6494315,Last Dinosaurs,configured,100,https://www.youtube.com/@LastDinosaurs,Last Dinosaurs - Take Your Time (OFFICIAL LIVE PERFORMANCE),https://www.youtube.com/watch?v=DBzPgYzA5SE,most-viewed-official,2026-08-03T11:26:15.430Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_c7f4777c19,dc_c7f4777c19,aggits-character-poster/1,
+JBX-WD-Q6723662,Machine Gun Fellatio,rejected,90,https://www.youtube.com/channel/UCrda_YK4AdTAFCNzKyfTkPQ,Hollywood,https://www.youtube.com/watch?v=tOoNb-TseFo,most-viewed-official,2026-08-03T11:53:09.944Z,,,,At least four direct destinations must reach the mandatory 98% confidence gate for the locked six-key JookBox.
+JBX-WD-Q6429679,Konqistador,configured,100,https://www.youtube.com/channel/UCcKomgj5Uzixc1n42s_0j9Q,"Konqistador | Hey Man, Nice Shot [Filter Cover] | OFFICIAL VIDEO",https://www.youtube.com/watch?v=eQPmwgXBvP4,most-viewed-official,2026-08-03T11:26:15.498Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_739d55b931,dc_739d55b931,aggits-character-poster/1,
+JBX-WD-Q6045802,Northeast Party House,configured,100,https://www.youtube.com/channel/UCn76h7oi2vtLqqnJ1voB_xw,Heads Will Roll - Live @ The Forum,https://www.youtube.com/watch?v=1RGhJBz3PBE,most-viewed-official,2026-08-03T11:45:42.105Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_32b11822fe,dc_32b11822fe,aggits-character-poster/1,
+JBX-WD-Q2246721,Hard-Ons,rejected,64,,,,,2026-08-03T11:53:20.787Z,,,,A concise biography could not be extracted from an identity-verified official source. | The most-viewed embeddable video on the verified official YouTube channel could not be proved.
+JBX-WD-Q4951639,Boxcar,configured,100,https://www.youtube.com/channel/UCYUh7jqIqSQvY7eoAHVAVGg,"Boxcar Bytes presents ""9Lives for Cherry Audio Octave Cat"" (v2.0)",https://www.youtube.com/watch?v=yth2rhx0RE4,most-viewed-official,2026-08-03T11:53:20.580Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_e8324accf9,dc_e8324accf9,aggits-character-poster/1,
+JBX-WD-Q4970092,British India,rejected,64,,,,,2026-08-03T11:53:20.009Z,,,,A concise biography could not be extracted from an identity-verified official source. | The most-viewed embeddable video on the verified official YouTube channel could not be proved.
+JBX-WD-Q4982557,Buchanan,configured,100,https://www.youtube.com/user/buchananofficial,Buchanan - Hold Off,https://www.youtube.com/watch?v=GVrTuq-hUOk,most-viewed-official,2026-08-03T11:26:37.250Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_3cbcecbf7e,dc_3cbcecbf7e,aggits-character-poster/1,
+JBX-WD-Q5949369,Husky,configured,100,https://www.youtube.com/channel/UC_M1aJ2RvGfS2vYZX_QmN4Q,Forever So Anniversary Tour,https://www.youtube.com/watch?v=CrwqEhLQL6g,most-viewed-official,2026-08-03T11:26:37.668Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_9d8d788a17,dc_9d8d788a17,aggits-character-poster/1,
+JBX-WD-Q5636130,HTRK,configured,100,https://www.youtube.com/channel/UCzY6kSkMsg5Cgy88hHBG_vg,HTRK Poison (unofficial),https://www.youtube.com/watch?v=cKVrwBOtryM,most-viewed-official,2026-08-03T11:26:45.787Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_e94b1a4c21,dc_e94b1a4c21,aggits-character-poster/1,
+JBX-WD-Q2278773,Mournful Congregation,rejected,64,,,,,2026-08-03T11:53:28.291Z,,,,A concise biography could not be extracted from an identity-verified official source. | The most-viewed embeddable video on the verified official YouTube channel could not be proved.
+JBX-WD-Q2234960,Hungry Kids of Hungary,rejected,64,,,,,2026-08-03T11:53:26.180Z,,,,A concise biography could not be extracted from an identity-verified official source. | The most-viewed embeddable video on the verified official YouTube channel could not be proved.
+JBX-WD-Q2154972,Violent Soho,configured,100,https://www.youtube.com/user/ViolentSoho4122,Lay Me Down (Official Audio),https://www.youtube.com/watch?v=z5A247tsiHg,most-viewed-official,2026-08-03T11:26:55.191Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_876c0b3cc3,dc_876c0b3cc3,aggits-character-poster/1,
+JBX-WD-Q5750135,Hi-5,rejected,90,https://www.youtube.com/channel/UCdVou-K8PKJIHPbqM3CzmAA,Hi-5 House Ep 42 - Christmas (2016),https://www.youtube.com/watch?v=ZHbT1iJOh20,most-viewed-official,2026-08-03T11:53:30.755Z,,,,At least four direct destinations must reach the mandatory 98% confidence gate for the locked six-key JookBox.
+JBX-WD-Q4930371,Bluejuice,rejected,90,https://www.youtube.com/channel/UCuujTG4sk7_uLw98bImZ_Yg,Movies,https://www.youtube.com/watch?v=3RY94bv6_rY,most-viewed-official,2026-08-03T11:53:33.688Z,,,,At least four direct destinations must reach the mandatory 98% confidence gate for the locked six-key JookBox.
+JBX-WD-Q7059558,Northlane,configured,100,https://www.youtube.com/channel/UCDzB7hPwj9qoL_bKEb2atFw,Northlane - CUT_it [Official Music Video],https://www.youtube.com/watch?v=1eP9aoe2F6E,most-viewed-official,2026-08-03T11:27:00.543Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_4f0b9f6406,dc_4f0b9f6406,aggits-character-poster/1,
+JBX-WD-Q7438916,Screamfeeder,configured,100,https://www.youtube.com/user/ScreamfeederOfficial,Screamfeeder - Wrote You Off - 2024 - feat. Adalita,https://www.youtube.com/watch?v=yfVWpmmEzqU,most-viewed-official,2026-08-03T11:33:26.849Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_c0ee14333b,dc_c0ee14333b,aggits-character-poster/1,"file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:280
+    if(item.kind==='show'&&(!item.dateLabel||!item.venue))throw new Error(`JookBox show ${item.id||'unknown'} requires a verified date label and venue.`);
+                                                                ^
+
+Error: JookBox show show-9f186c53 requires a verified date label and venue.
+    at file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:280:65
+    at Array.map (<anonymous>)
+    at validateJookBoxSelections (file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:260:21)
+    at file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:45:20
+
+Node.js v24.14.0"
+JBX-WD-Q7309724,Regurgitator,configured,100,https://www.youtube.com/channel/UCdP626huAIxuTosGS-gpMtQ,COCAINE RUNAWAY,https://www.youtube.com/watch?v=8gvREi0Txpg,most-viewed-official,2026-08-03T11:33:25.400Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_29ea5bd281,dc_29ea5bd281,aggits-character-poster/1,"file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:280
+    if(item.kind==='show'&&(!item.dateLabel||!item.venue))throw new Error(`JookBox show ${item.id||'unknown'} requires a verified date label and venue.`);
+                                                                ^
+
+Error: JookBox show show-cf830239 requires a verified date label and venue.
+    at file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:280:65
+    at Array.map (<anonymous>)
+    at validateJookBoxSelections (file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:260:21)
+    at file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:45:20
+
+Node.js v24.14.0"
+JBX-WD-Q7130823,Panel of Judges,rejected,90,https://www.youtube.com/channel/UCwAPSip2ymHE0vxwGS0Zn0g,Bugles on the Moon,https://www.youtube.com/watch?v=-OnfE8WDkzE,most-viewed-official,2026-08-03T11:53:34.804Z,,,,At least four direct destinations must reach the mandatory 98% confidence gate for the locked six-key JookBox.
+JBX-WD-Q7445785,Seeker Lover Keeper,configured,100,https://www.youtube.com/channel/UC48CLpdNovPkG8xYZMMF9Bg,Seeker Lover Keeper - Superstar (Official Video),https://www.youtube.com/watch?v=kdEfbLollr0,most-viewed-official,2026-08-03T11:46:11.600Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_c18886f768,dc_c18886f768,aggits-character-poster/1,
+JBX-WD-Q2761963,Pnau,rejected,84,https://www.youtube.com/channel/UCgddtt1rqF8_OpcO3-qFTMA,PNAU - Heart Beats feat. Marieme,https://www.youtube.com/watch?v=PlUwfQ_7XGM,most-viewed-official,2026-08-03T11:53:39.978Z,,,,A concise biography could not be extracted from an identity-verified official source.
+JBX-WD-Q2380112,Gyroscope,rejected,80,,,,,2026-08-03T11:53:43.888Z,,,,The most-viewed embeddable video on the verified official YouTube channel could not be proved.
+JBX-WD-Q3276881,Magic Dirt,configured,100,https://www.youtube.com/channel/UCPzDAU4p9JuKTPjv8iQiJzA,[I'm] Stranded,https://www.youtube.com/watch?v=dT0wmZGIhJ4,most-viewed-official,2026-08-03T11:46:27.616Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_dc16b20ab0,dc_dc16b20ab0,aggits-character-poster/1,
+JBX-WD-Q2534926,Voyager,configured,100,https://www.youtube.com/channel/UCJ0FbAfZ5x1_wv0QaveNYNA,Voyager By Night - Live at Magnet House (2025 comeback show),https://www.youtube.com/watch?v=wXLCECMG054,most-viewed-official,2026-08-03T11:33:33.909Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_f75917624b,dc_f75917624b,aggits-character-poster/1,"file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:280
+    if(item.kind==='show'&&(!item.dateLabel||!item.venue))throw new Error(`JookBox show ${item.id||'unknown'} requires a verified date label and venue.`);
+                                                                ^
+
+Error: JookBox show show-da44dd4e requires a verified date label and venue.
+    at file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:280:65
+    at Array.map (<anonymous>)
+    at validateJookBoxSelections (file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:260:21)
+    at file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:45:20
+
+Node.js v24.14.0"
+JBX-WD-Q2415014,The Waifs,configured,100,https://www.youtube.com/channel/UC6bdVeyVd0puszMcj2nW7pw,The Waifs - Bridal Train (Offical Music Video),https://www.youtube.com/watch?v=8sP_JQV8er0,most-viewed-official,2026-08-03T11:46:23.408Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_a9e2250ba8,dc_a9e2250ba8,aggits-character-poster/1,
+JBX-WD-Q3062076,Expatriate,rejected,84,https://www.youtube.com/channel/UCxWH3Yc-k4pklKrMs4g31eQ,Expatriate 'Skool',https://www.youtube.com/watch?v=X3yEO3NGj6Y,most-viewed-official,2026-08-03T11:53:41.709Z,,,,A concise biography could not be extracted from an identity-verified official source.
+JBX-WD-Q3093109,Gang Gajang,configured,100,https://www.youtube.com/user/GANGgajangOfficial,GANGgajang - Speak To Me (lyric),https://www.youtube.com/watch?v=F2sGdr0dnWc,most-viewed-official,2026-08-03T11:27:41.231Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_a3b328b255,dc_a3b328b255,aggits-character-poster/1,
+JBX-WD-Q2872160,Australian Crawl,configured,100,https://www.youtube.com/channel/UCMH5E19_uxGioJxbr70RljA,Australian Crawl - Louie Louie (Official Audio),https://www.youtube.com/watch?v=v8j4XKMKoKg,most-viewed-official,2026-08-03T11:46:32.192Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_d10266e7d2,dc_d10266e7d2,aggits-character-poster/1,
+JBX-WD-Q2411737,The Grates,configured,100,https://www.youtube.com/channel/UC1lby4_CIjzK-XarnhoZRUw,The Grates - Call Me,https://www.youtube.com/watch?v=xk2lJrO98VE,most-viewed-official,2026-08-03T11:28:12.637Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_0e780559f5,dc_0e780559f5,aggits-character-poster/1,
+JBX-WD-Q3489831,Something for Kate,configured,100,https://www.youtube.com/user/sfkofficial,Something for Kate 'Refugee' Live from Homebake 2006 (Tom Petty & the Heartbreakers),https://www.youtube.com/watch?v=DeSc12aLLn0,most-viewed-official,2026-08-03T11:28:05.847Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_0c663efc79,dc_0c663efc79,aggits-character-poster/1,
+JBX-WD-Q2979674,Closure in Moscow,configured,100,https://www.youtube.com/channel/UCBroCHZSk4DcnY3oya4JHoA,Closure in Moscow - Keeper of the Lake (Official Music Video),https://www.youtube.com/watch?v=9hsMPeBayNw,most-viewed-official,2026-08-03T11:28:07.247Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_576c23c5b1,dc_576c23c5b1,aggits-character-poster/1,
+JBX-WD-Q2430218,Thy Art Is Murder,configured,100,https://www.youtube.com/channel/UCGjEbsGoyWSJlMjzuWM4FKQ,Kevin Goes Hard: Daily Tour Gym Routine (What’s Your Excuse?),https://www.youtube.com/watch?v=NRqa1kybOyU,most-viewed-official,2026-08-03T11:33:34.167Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_a6a36d7c00,dc_a6a36d7c00,aggits-character-poster/1,"file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:280
+    if(item.kind==='show'&&(!item.dateLabel||!item.venue))throw new Error(`JookBox show ${item.id||'unknown'} requires a verified date label and venue.`);
+                                                                ^
+
+Error: JookBox show show-b9999430 requires a verified date label and venue.
+    at file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:280:65
+    at Array.map (<anonymous>)
+    at validateJookBoxSelections (file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:260:21)
+    at file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:45:20
+
+Node.js v24.14.0"
+JBX-WD-Q3307572,Faker,rejected,54,,,,,2026-08-03T11:54:14.328Z,,,,A concise biography could not be extracted from an identity-verified official source. | The most-viewed embeddable video on the verified official YouTube channel could not be proved. | At least four direct destinations must reach the mandatory 98% confidence gate for the locked six-key JookBox.
+JBX-WD-Q3629919,Austere,rejected,64,,,,,2026-08-03T11:53:47.209Z,,,,A concise biography could not be extracted from an identity-verified official source. | The most-viewed embeddable video on the verified official YouTube channel could not be proved.
+JBX-WD-Q7738225,The Greencards,rejected,90,https://www.youtube.com/channel/UCdDIKLbRQDVy_-A2TY4zGqA,Kym 40th Aussie Video,https://www.youtube.com/watch?v=XN-ZVRyyr4M,most-viewed-official,2026-08-03T11:53:54.858Z,,,,At least four direct destinations must reach the mandatory 98% confidence gate for the locked six-key JookBox.
+JBX-WD-Q7743843,The Jungle Giants,configured,100,https://www.youtube.com/user/thejunglegiants,The Jungle Giants - World's Getting Smaller (Lyric Video),https://www.youtube.com/watch?v=dRFtgN5ZDEA,most-viewed-official,2026-08-03T11:28:28.786Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_6be3201e60,dc_6be3201e60,aggits-character-poster/1,
+JBX-WD-Q7732541,The Eternal,configured,100,https://www.youtube.com/user/theeternalband,Mark Kelson - 'Existing To Expire' Sing-Through,https://www.youtube.com/watch?v=ifNY4AaptcI,most-viewed-official,2026-08-03T11:28:33.486Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_5f80fedc03,dc_5f80fedc03,aggits-character-poster/1,
+JBX-WD-Q7746373,The Laurels,configured,100,https://www.youtube.com/user/theelaurels,The Laurels - Borrowed Time,https://www.youtube.com/watch?v=tLSU23l3j_g,most-viewed-official,2026-08-03T11:28:35.515Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_8f20d6f0df,dc_8f20d6f0df,aggits-character-poster/1,
+JBX-WD-Q7839860,Tria Mera,configured,100,https://www.youtube.com/channel/UCRK8amsqIcwxsvdFJ715rEg,"Tria Mera - Waiting For Destruction (Live at the New Globe Theatre, Brisbane) [2015-12-05]",https://www.youtube.com/watch?v=GmJ_oC9gQH8,most-viewed-official,2026-08-03T11:46:45.548Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_c6d9576775,dc_c6d9576775,aggits-character-poster/1,
+JBX-WD-Q7767480,The Superjesus,configured,100,https://www.youtube.com/channel/UClPdB4gBde9T4pYbK6cHavA,THE SUPERJESUS - 'DIAMONDS' OFFICIAL VIDEO,https://www.youtube.com/watch?v=Xdyt3KKZaOY,most-viewed-official,2026-08-03T11:33:34.219Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_1a405acafc,dc_1a405acafc,aggits-character-poster/1,"file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:280
+    if(item.kind==='show'&&(!item.dateLabel||!item.venue))throw new Error(`JookBox show ${item.id||'unknown'} requires a verified date label and venue.`);
+                                                                ^
+
+Error: JookBox show show-b300bf68 requires a verified date label and venue.
+    at file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:280:65
+    at Array.map (<anonymous>)
+    at validateJookBoxSelections (file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:260:21)
+    at file:///C:/Users/andre/Documents/Codex/2026-07-26/https-deep-cuts-andrewharris501-workers-dev/scripts/create-edition.mjs:45:20
+
+Node.js v24.14.0"
+JBX-WD-Q7798882,Thundamentals,configured,100,https://www.youtube.com/channel/UCCkzxcN8-YbH4VYj5tNhGFA,Thundamentals & Horrorshow - 100 Degrees Ft. Thom Crawford,https://www.youtube.com/watch?v=-wlXankifuY,most-viewed-official,2026-08-03T11:46:51.690Z,https://deep-cuts.andrewharris501.workers.dev/e/dc_f132e66b69,dc_f132e66b69,aggits-character-poster/1,
+JBX-WD-Q7715496,The Bamboos,rejected,64,,,,,2026-08-03T11:53:53.512Z,,,,A concise biography could not be extracted from an identity-verified official source. | The most-viewed embeddable video on the verified official YouTube channel could not be proved.
+JBX-WD-Q7621467,Strange Talk,rejected,84,https://www.youtube.com/channel/UC2LR7ucFS2m92iX8z12WM9g,Strange Talk - What Makes Strange Talk (Influences),https://www.youtube.com/watch?v=AZuAYDye8rs,most-viewed-official,2026-08-03T11:54:01.670Z,,,,A concise biography could not be extracted from an identity-verified official source.

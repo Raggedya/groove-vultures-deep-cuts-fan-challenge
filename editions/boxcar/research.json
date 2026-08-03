@@ -1,0 +1,144 @@
+{
+  "bandName": "Boxcar",
+  "slug": "boxcar",
+  "editionId": "dc_e8324accf9",
+  "verifiedAt": "2026-08-03T11:54:15.193Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://www.boxcar.com.au/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:53:11.391Z",
+      "evidence": "The page identified Boxcar and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/boxcar909/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:53:11.084Z",
+      "evidence": "The page identified Boxcar and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UCYUh7jqIqSQvY7eoAHVAVGg",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:53:10.715Z",
+      "evidence": "The page identified Boxcar and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://linktr.ee/boxcar909",
+      "sourceType": "official artist-controlled link hub",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:53:12.182Z",
+      "evidence": "The page identified Boxcar and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:youtube-cf5b9944",
+      "url": "https://www.youtube.com/channel/UCYUh7jqIqSQvY7eoAHVAVGg",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:53:10.715Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Boxcar."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/channel/UCYUh7jqIqSQvY7eoAHVAVGg",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:53:10.715Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Boxcar."
+    },
+    {
+      "destination": "selection:instagram-8c2d6805",
+      "url": "https://www.instagram.com/boxcar909/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:53:11.084Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Boxcar."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/boxcar909/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:53:11.084Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Boxcar."
+    },
+    {
+      "destination": "selection:website-7de92f6d",
+      "url": "https://www.boxcar.com.au/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:53:11.391Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Boxcar."
+    },
+    {
+      "destination": "website",
+      "url": "https://www.boxcar.com.au/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:53:11.391Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Boxcar."
+    },
+    {
+      "destination": "selection:bandcamp-f064c435",
+      "url": "https://efficientspace.bandcamp.com/album/volition-cuts-vol-1",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:53:13.143Z",
+      "evidence": "Bandcamp resolved directly and its destination metadata matched Boxcar."
+    },
+    {
+      "destination": "bandcamp",
+      "url": "https://efficientspace.bandcamp.com/album/volition-cuts-vol-1",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:53:13.143Z",
+      "evidence": "Bandcamp resolved directly and its destination metadata matched Boxcar."
+    },
+    {
+      "destination": "selection:spotify-b78ccb02",
+      "url": "https://open.spotify.com/artist/7yK2JyOXdE696clwhEyWR0",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:53:13.402Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Boxcar."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/7yK2JyOXdE696clwhEyWR0",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:53:13.402Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Boxcar."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.instagram.com/boxcar909/",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:53:20.988Z",
+      "evidence": "The official source supplied the concise biography text used by the Boxcar ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=yth2rhx0RE4",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:53:20.580Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Boxcar video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://www.boxcar.com.au/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:53:11.391Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Boxcar."
+    }
+  ]
+}

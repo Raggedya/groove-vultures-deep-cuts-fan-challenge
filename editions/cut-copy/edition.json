@@ -1,0 +1,172 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Cut Copy",
+  "editionTitle": "Cut Copy",
+  "description": "We’re excited to finally share some big news — our new album Moments is coming out September 5. The album continues the futuristic sound palette developed from our last album and...",
+  "discovery": {
+    "bio": "We’re excited to finally share some big news — our new album Moments is coming out September 5. The album continues the futuristic sound palette developed from our last album and...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "cut-copy",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_003845ddb2",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/cut-copy/instagram-discovery.png",
+    "qrImage": "output/cut-copy/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "https://bandcamp.com/?from=menubar_logo_logged_out",
+    "spotify": "",
+    "instagram": "https://www.instagram.com/cut_copy",
+    "website": "https://www.cutcopy.net/",
+    "buyMusic": "",
+    "merchandise": "https://sound-merch.com.au/collections/cut-copy",
+    "facebook": "https://www.facebook.com/cutcopy",
+    "youtube": "https://www.youtube.com/channel/UCvueeIpQ6l5BlyzUTWY13eQ"
+  },
+  "featuredVideo": {
+    "title": "Cut Copy & Kate Bollinger - Belong To You [Official Video]",
+    "youtubeURL": "https://www.youtube.com/watch?v=_zoXZj19yUA",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:22:42.246Z"
+  },
+  "analytics": {
+    "editionId": "dc_003845ddb2",
+    "pageIdentifier": "dc_003845ddb2:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_d22a0da7-a450-457c-99ca-284b9487af06",
+    "submittedAt": "2026-08-03T11:28:58.340Z",
+    "researchCompletedAt": "2026-08-03T11:28:58.488Z",
+    "editionCreatedAt": "2026-08-03T11:28:58.488Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_003845ddb2",
+    "tickerBio": "WE’RE EXCITED TO FINALLY SHARE SOME BIG NEWS — OUR NEW ALBUM MOMENTS IS COMING OUT SEPTEMBER 5. THE ALBUM CONTINUES THE FUTURISTIC SOUND PALETTE DEVELOPED FROM OUR LAST ALBUM AND TRANSPOSES IT TO LARGER SPACES, BIGGER SOUNDS AND BOLDER RHYTHMS. IT EMERGES OUT OF THE COLD AND BACK ONTO THE DANCE FLOOR. THE NEW SINGLE, “WHEN THIS IS OVER,” IS OUT TODAY, AND WE’VE ALSO ANNOUNCED TOUR DATES: AUSTRALIA IN SEPTEMBER, AND N",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "bandcamp-dbb5841f",
+      "youtube-b9285fdb",
+      "instagram-7c813b23",
+      "website-317cc28d",
+      "merchandise-504acc8f",
+      "facebook-3b9eeed1"
+    ],
+    "marquee": "Cut Copy",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://www.cutcopy.net/",
+    "linkSourceVerifiedAt": "2026-08-03T11:22:37.662Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "website-317cc28d",
+        "sourceTitle": "Skip to Content",
+        "label": "Band Website",
+        "detail": "Visit the official website",
+        "url": "https://www.cutcopy.net/",
+        "platform": "website",
+        "kind": "website"
+      },
+      {
+        "id": "youtube-b9285fdb",
+        "sourceTitle": "Videos",
+        "label": "Videos",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/channel/UCvueeIpQ6l5BlyzUTWY13eQ",
+        "platform": "youtube",
+        "kind": "youtube"
+      },
+      {
+        "id": "merchandise-504acc8f",
+        "sourceTitle": "Folder: Merch",
+        "label": "Folder: Merch",
+        "detail": "Official band merchandise",
+        "url": "https://sound-merch.com.au/collections/cut-copy",
+        "platform": "merchandise",
+        "kind": "merchandise"
+      },
+      {
+        "id": "instagram-7c813b23",
+        "sourceTitle": "Instagram",
+        "label": "Instagram",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/cut_copy",
+        "platform": "instagram",
+        "kind": "instagram"
+      },
+      {
+        "id": "facebook-3b9eeed1",
+        "sourceTitle": "Facebook",
+        "label": "Facebook",
+        "detail": "Follow the band",
+        "url": "https://www.facebook.com/cutcopy",
+        "platform": "facebook",
+        "kind": "facebook"
+      },
+      {
+        "id": "bandcamp-dbb5841f",
+        "sourceTitle": "Bandcamp",
+        "label": "Bandcamp",
+        "detail": "Listen and buy direct",
+        "url": "https://bandcamp.com/?from=menubar_logo_logged_out",
+        "platform": "website",
+        "kind": "bandcamp"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://www.instagram.com/cut_copy/",
+      "paragraphs": [
+        "We’re excited to finally share some big news — our new album Moments is coming out September 5. The album continues the futuristic sound palette developed from our last album and transposes it to larger spaces, bigger sounds and bolder rhythms. It emerges out of the cold and back onto the dance floor. The new single, “When This Is Over,” is out today, and we’ve also announced tour dates: Australia in September, and N"
+      ]
+    }
+  }
+}

@@ -1,0 +1,162 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Even",
+  "editionTitle": "Even",
+  "description": "Reverse Light Years is EVEN's first album since 2018's Satin Returns, and is a 17-track double album that is sure to please EVEN fans. For loyal EVEN fans and vinyl record purists, the...",
+  "discovery": {
+    "bio": "Reverse Light Years is EVEN's first album since 2018's Satin Returns, and is a 17-track double album that is sure to please EVEN fans. For loyal EVEN fans and vinyl record purists, the...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "even",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_ae8daf66a5",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/even/instagram-discovery.png",
+    "qrImage": "output/even/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "https://even.bandcamp.com/album/reverse-light-years",
+    "spotify": "https://open.spotify.com/artist/0VHnEIVMeX4v5PPCbAMO2u",
+    "instagram": "https://www.instagram.com/even.1994/",
+    "website": "https://even.com.au/",
+    "buyMusic": "",
+    "merchandise": "",
+    "facebook": "https://www.facebook.com/EVEN.theband/",
+    "youtube": ""
+  },
+  "featuredVideo": {
+    "title": "EVEN - Let Me Know",
+    "youtubeURL": "https://www.youtube.com/watch?v=uoWTB9x9cq0",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:23:24.492Z"
+  },
+  "analytics": {
+    "editionId": "dc_ae8daf66a5",
+    "pageIdentifier": "dc_ae8daf66a5:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_e98a59c2-c172-47b4-ad7f-d2413734a591",
+    "submittedAt": "2026-08-03T11:29:00.348Z",
+    "researchCompletedAt": "2026-08-03T11:29:00.511Z",
+    "editionCreatedAt": "2026-08-03T11:29:00.511Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_ae8daf66a5",
+    "tickerBio": "REVERSE LIGHT YEARS IS EVEN'S FIRST ALBUM SINCE 2018'S SATIN RETURNS, AND IS A 17-TRACK DOUBLE ALBUM THAT IS SURE TO PLEASE EVEN FANS. FOR LOYAL EVEN FANS AND VINYL RECORD PURISTS, THE INITIAL PRESSINGS OF REVERSE LIGHT YEARS WILL BE AVAILABLE ON 180GRAM BLACK VINYL WITH GATEFOLD SLEEVE AND DOWNLOAD CARD INCLUDED. PLEASE NOTE: THE FULL ALBUM IS AVAILABLE FOR IMMEDIATE DOWNLOAD AND STREAMING VIA THE BANDCAMP APP.",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "bandcamp-165a30c3",
+      "spotify-f0c64d8a",
+      "instagram-7ecd9692",
+      "website-364e3ede",
+      "facebook-c75ac4a1"
+    ],
+    "marquee": "Even",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://even.com.au/",
+    "linkSourceVerifiedAt": "2026-08-03T11:23:20.697Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "bandcamp-165a30c3",
+        "sourceTitle": "Bandcamp",
+        "label": "Bandcamp",
+        "detail": "Listen and buy direct",
+        "url": "https://even.bandcamp.com/album/reverse-light-years",
+        "platform": "website",
+        "kind": "bandcamp"
+      },
+      {
+        "id": "facebook-c75ac4a1",
+        "sourceTitle": "Facebook",
+        "label": "Facebook",
+        "detail": "Follow the band",
+        "url": "https://www.facebook.com/EVEN.theband/",
+        "platform": "facebook",
+        "kind": "facebook"
+      },
+      {
+        "id": "spotify-f0c64d8a",
+        "sourceTitle": "Spotify",
+        "label": "Spotify",
+        "detail": "Listen on Spotify",
+        "url": "https://open.spotify.com/artist/0VHnEIVMeX4v5PPCbAMO2u",
+        "platform": "website",
+        "kind": "spotify"
+      },
+      {
+        "id": "instagram-7ecd9692",
+        "sourceTitle": "Instagram",
+        "label": "Instagram",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/even.1994/",
+        "platform": "instagram",
+        "kind": "instagram"
+      },
+      {
+        "id": "website-364e3ede",
+        "sourceTitle": "Band Website",
+        "label": "Band Website",
+        "detail": "Visit the official website",
+        "url": "https://even.com.au/",
+        "platform": "website",
+        "kind": "website"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://even.bandcamp.com/album/reverse-light-years",
+      "paragraphs": [
+        "Reverse Light Years is EVEN's first album since 2018's Satin Returns, and is a 17-track double album that is sure to please EVEN fans. For loyal EVEN fans and vinyl record purists, the initial pressings of Reverse Light Years will be available on 180gram black vinyl with gatefold sleeve and download card included. Please note: The full album is available for immediate download and streaming via the Bandcamp app."
+      ]
+    }
+  }
+}

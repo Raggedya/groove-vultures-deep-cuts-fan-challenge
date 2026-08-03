@@ -1,0 +1,128 @@
+{
+  "bandName": "Airbourne",
+  "slug": "airbourne",
+  "editionId": "dc_20eaf944b5",
+  "verifiedAt": "2026-08-03T11:49:32.833Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/airbourne/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:48:25.967Z",
+      "evidence": "The page identified Airbourne and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/6urzdpGY5yUimWZsgJUoTb",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:48:25.584Z",
+      "evidence": "The page identified Airbourne and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UC99gXrm2NHOlKVLuKIk6IGA",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:48:25.949Z",
+      "evidence": "The page identified Airbourne and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://airbourne.diggers.store/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:49:24.121Z",
+      "evidence": "The page identified Airbourne and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:spotify-8fef0905",
+      "url": "https://open.spotify.com/artist/6urzdpGY5yUimWZsgJUoTb",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:48:25.584Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Airbourne."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/6urzdpGY5yUimWZsgJUoTb",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:48:25.584Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Airbourne."
+    },
+    {
+      "destination": "selection:youtube-e1e316ff",
+      "url": "https://www.youtube.com/channel/UC99gXrm2NHOlKVLuKIk6IGA",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:48:25.949Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Airbourne."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/channel/UC99gXrm2NHOlKVLuKIk6IGA",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:48:25.949Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Airbourne."
+    },
+    {
+      "destination": "selection:instagram-56f2fa3a",
+      "url": "https://www.instagram.com/airbourne/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:48:25.967Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Airbourne."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/airbourne/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:48:25.967Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Airbourne."
+    },
+    {
+      "destination": "selection:website-dbd291a5",
+      "url": "https://airbourne.diggers.store/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:49:24.121Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Airbourne."
+    },
+    {
+      "destination": "website",
+      "url": "https://airbourne.diggers.store/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:49:24.121Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Airbourne."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.instagram.com/airbourne/",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:49:32.466Z",
+      "evidence": "The official source supplied the concise biography text used by the Airbourne ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=8bO75LnGEc8",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:49:31.703Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Airbourne video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://www.instagram.com/airbourne/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:48:25.967Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Airbourne."
+    }
+  ]
+}

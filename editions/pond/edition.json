@@ -1,0 +1,152 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Pond",
+  "editionTitle": "Pond",
+  "description": "POND has been a member of Linktree for 5 years and joined in March 2021. The social media accounts linked to from POND are: • Facebook • Instagram • TikTok • Spotify • YouTube •...",
+  "discovery": {
+    "bio": "POND has been a member of Linktree for 5 years and joined in March 2021. The social media accounts linked to from POND are: • Facebook • Instagram • TikTok • Spotify • YouTube •...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "pond",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_929391308b",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/pond/instagram-discovery.png",
+    "qrImage": "output/pond/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "",
+    "spotify": "https://open.spotify.com/artist/4skJp5OKvcc9eKokiuhi2s/concerts",
+    "instagram": "https://www.instagram.com/ponderers",
+    "website": "",
+    "buyMusic": "",
+    "merchandise": "",
+    "facebook": "https://www.facebook.com/pondling/",
+    "youtube": ""
+  },
+  "featuredVideo": {
+    "title": "Pond - Terrestrials Full Album (Official Audio)",
+    "youtubeURL": "https://www.youtube.com/watch?v=_AC05n_k6JI",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:24:08.654Z"
+  },
+  "analytics": {
+    "editionId": "dc_929391308b",
+    "pageIdentifier": "dc_929391308b:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_e170dada-dad7-446b-9587-aafdbb7cfd7c",
+    "submittedAt": "2026-08-03T11:29:04.032Z",
+    "researchCompletedAt": "2026-08-03T11:29:04.167Z",
+    "editionCreatedAt": "2026-08-03T11:29:04.167Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_929391308b",
+    "tickerBio": "POND HAS BEEN A MEMBER OF LINKTREE FOR 5 YEARS AND JOINED IN MARCH 2021. THE SOCIAL MEDIA ACCOUNTS LINKED TO FROM POND ARE: • FACEBOOK • INSTAGRAM • TIKTOK • SPOTIFY • YOUTUBE • SOUNDCLOUD • APPLE MUSIC • EMAIL • X BESIDES SOCIAL MEDIA ACCOUNTS, PONDBAND HAS POPULATED THEIR SITE WITH: • POND - SKYWORKS (OFFICIAL VIDEO) • POND - THROUGH THE HEATHER (OFFICIAL VIDEO) • POND - O, UV RAY (BUDAKID REMIX) - SINGLE • 'TERRES",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "spotify-4e50996d",
+      "instagram-7b866e48",
+      "tiktok-33a1b75d",
+      "facebook-9f4a1c9a"
+    ],
+    "marquee": "Pond",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://open.spotify.com/artist/4skJp5OKvcc9eKokiuhi2s",
+    "linkSourceVerifiedAt": "2026-08-03T11:23:58.390Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "spotify-4e50996d",
+        "sourceTitle": "View all upcoming concerts (9)",
+        "label": "View all upcoming concerts (9)",
+        "detail": "Listen on Spotify",
+        "url": "https://open.spotify.com/artist/4skJp5OKvcc9eKokiuhi2s/concerts",
+        "platform": "website",
+        "kind": "spotify"
+      },
+      {
+        "id": "facebook-9f4a1c9a",
+        "sourceTitle": "Facebook",
+        "label": "Facebook",
+        "detail": "Follow the band",
+        "url": "https://www.facebook.com/pondling/",
+        "platform": "facebook",
+        "kind": "facebook"
+      },
+      {
+        "id": "instagram-7b866e48",
+        "sourceTitle": "Instagram",
+        "label": "Instagram",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/ponderers",
+        "platform": "instagram",
+        "kind": "instagram"
+      },
+      {
+        "id": "tiktok-33a1b75d",
+        "sourceTitle": "TikTok",
+        "label": "TikTok",
+        "detail": "Official band clips",
+        "url": "https://www.tiktok.com/@pondband",
+        "platform": "website",
+        "kind": "tiktok"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://linktr.ee/Pondband",
+      "paragraphs": [
+        "POND has been a member of Linktree for 5 years and joined in March 2021. The social media accounts linked to from POND are: • Facebook • Instagram • TikTok • Spotify • YouTube • SoundCloud • Apple Music • Email • X Besides social media accounts, Pondband has populated their site with: • Pond - Skyworks (Official Video) • Pond - Through The Heather (Official Video) • Pond - O, UV Ray (Budakid Remix) - Single • 'TERRES"
+      ]
+    }
+  }
+}

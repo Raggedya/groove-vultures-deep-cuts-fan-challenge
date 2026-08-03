@@ -1,0 +1,128 @@
+{
+  "bandName": "DZ Deathrays",
+  "slug": "dz-deathrays",
+  "editionId": "dc_447409856f",
+  "verifiedAt": "2026-08-03T11:47:02.243Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/dzdeathrays/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:43:26.477Z",
+      "evidence": "The page identified DZ Deathrays and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/0qGPycvPHafmEPTOm4M7Tu",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:43:26.068Z",
+      "evidence": "The page identified DZ Deathrays and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UCPAEiAuuz63M6DIuyAOWMLg",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:43:26.399Z",
+      "evidence": "The page identified DZ Deathrays and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://linktr.ee/DZDeathrays",
+      "sourceType": "official artist-controlled link hub",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:43:29.454Z",
+      "evidence": "The page identified DZ Deathrays and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:spotify-7c65bd59",
+      "url": "https://open.spotify.com/artist/0qGPycvPHafmEPTOm4M7Tu",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:43:26.068Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched DZ Deathrays."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/0qGPycvPHafmEPTOm4M7Tu",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:43:26.068Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched DZ Deathrays."
+    },
+    {
+      "destination": "selection:youtube-05ed58a5",
+      "url": "https://www.youtube.com/channel/UCPAEiAuuz63M6DIuyAOWMLg",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:43:26.399Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched DZ Deathrays."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/channel/UCPAEiAuuz63M6DIuyAOWMLg",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:43:26.399Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched DZ Deathrays."
+    },
+    {
+      "destination": "selection:instagram-58ab25d8",
+      "url": "https://www.instagram.com/dzdeathrays/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:43:26.477Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched DZ Deathrays."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/dzdeathrays/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:43:26.477Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched DZ Deathrays."
+    },
+    {
+      "destination": "selection:bandcamp-e81b7696",
+      "url": "https://dzdeathrays.bandcamp.com/merch",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:43:30.093Z",
+      "evidence": "Bandcamp resolved directly and its destination metadata matched DZ Deathrays."
+    },
+    {
+      "destination": "bandcamp",
+      "url": "https://dzdeathrays.bandcamp.com/merch",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:43:30.093Z",
+      "evidence": "Bandcamp resolved directly and its destination metadata matched DZ Deathrays."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.youtube.com/channel/UCPAEiAuuz63M6DIuyAOWMLg",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:43:38.681Z",
+      "evidence": "The official source supplied the concise biography text used by the DZ Deathrays ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=3Dg50NElVtU",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:43:38.383Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured DZ Deathrays video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://www.instagram.com/dzdeathrays/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:43:26.477Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for DZ Deathrays."
+    }
+  ]
+}

@@ -1,0 +1,152 @@
+{
+  "bandName": "Dragon",
+  "slug": "dragon",
+  "editionId": "dc_cf0c26e052",
+  "verifiedAt": "2026-08-03T11:33:36.381Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://www.dragononline.com.au/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:37.993Z",
+      "evidence": "The page identified Dragon and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/dragon.official/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:37.081Z",
+      "evidence": "The page identified Dragon and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/622HMYOaiqowUmcd5t3b7t",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:36.582Z",
+      "evidence": "The page identified Dragon and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www-dragononline-com-au.filesusr.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:38.381Z",
+      "evidence": "The page identified Dragon and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:website-62b4b5a8",
+      "url": "https://www.dragononline.com.au/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:37.993Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Dragon."
+    },
+    {
+      "destination": "website",
+      "url": "https://www.dragononline.com.au/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:37.993Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Dragon."
+    },
+    {
+      "destination": "selection:merchandise-aba8ccb7",
+      "url": "https://store749064.ecwid.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:38.853Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Dragon."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://store749064.ecwid.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:38.853Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Dragon."
+    },
+    {
+      "destination": "selection:facebook-cc6503d9",
+      "url": "https://www.facebook.com/dragonmusic/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:39.271Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Dragon."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/dragonmusic/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:39.271Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Dragon."
+    },
+    {
+      "destination": "selection:youtube-1a67e4da",
+      "url": "https://www.youtube.com/channel/UCISWM9bdL3G_DaJ5fJXdbCg",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:38.970Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Dragon."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/channel/UCISWM9bdL3G_DaJ5fJXdbCg",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:38.970Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Dragon."
+    },
+    {
+      "destination": "selection:instagram-983af009",
+      "url": "https://www.instagram.com/dragon.official/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:37.081Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Dragon."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/dragon.official/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:37.081Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Dragon."
+    },
+    {
+      "destination": "selection:show-6b05669d",
+      "url": "https://www.ticketmaster.com.au/event/250062BC896F132F",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:43.092Z",
+      "evidence": "Tickets resolved directly from an identity-matched artist-controlled source for Dragon."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.instagram.com/dragon.official/",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:45.717Z",
+      "evidence": "The official source supplied the concise biography text used by the Dragon ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=-k6pzKt7gdE",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:45.234Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Dragon video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://www.dragononline.com.au/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:37.993Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Dragon."
+    }
+  ]
+}

@@ -1,0 +1,208 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "The Eternal",
+  "editionTitle": "The Eternal",
+  "description": "The Eternal formed in Melbourne, Australia in early 2003. In the bands almost 20 year history they have released 6 internationally acclaimed studio albums. The band has toured...",
+  "discovery": {
+    "bio": "The Eternal formed in Melbourne, Australia in early 2003. In the bands almost 20 year history they have released 6 internationally acclaimed studio albums. The band has toured...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "the-eternal",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_5f80fedc03",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/the-eternal/instagram-discovery.png",
+    "qrImage": "output/the-eternal/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "https://bandcamp.com/?from=menubar_logo_logged_out",
+    "spotify": "https://open.spotify.com/artist/2uCKA5H0fEPfF0PxLooHvn",
+    "instagram": "https://www.instagram.com/theeternalofficial",
+    "website": "https://the-eternal.com/",
+    "buyMusic": "https://the-eternal.com/collections/discography",
+    "merchandise": "https://the-eternal.com/products/skinwalker-t-shirt",
+    "facebook": "https://www.facebook.com/TheEternal",
+    "youtube": "https://www.youtube.com/user/theeternalband"
+  },
+  "featuredVideo": {
+    "title": "Mark Kelson - 'Existing To Expire' Sing-Through",
+    "youtubeURL": "https://www.youtube.com/watch?v=ifNY4AaptcI",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:28:33.486Z"
+  },
+  "analytics": {
+    "editionId": "dc_5f80fedc03",
+    "pageIdentifier": "dc_5f80fedc03:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_81b84419-7f62-45d2-9eec-1d73775a2fcb",
+    "submittedAt": "2026-08-03T11:29:30.452Z",
+    "researchCompletedAt": "2026-08-03T11:29:30.665Z",
+    "editionCreatedAt": "2026-08-03T11:29:30.665Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_5f80fedc03",
+    "tickerBio": "THE ETERNAL FORMED IN MELBOURNE, AUSTRALIA IN EARLY 2003. IN THE BANDS ALMOST 20 YEAR HISTORY THEY HAVE RELEASED 6 INTERNATIONALLY ACCLAIMED STUDIO ALBUMS. THE BAND HAS TOURED EXTENSIVELY NATIONALLY & INTERNATIONALLY WITH THE LIKES OF AMORPHIS, ANATHEMA, HIM, KATATONIA, SWALLOW THE SUN & OPETH JUST TO NAME A FEW. THE ETERNAL’S SOUND CAN BE BEST DESCRIBED AS DARK, MELANCHOLIC PROGRESSIVE METAL.... MORE",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "bandcamp-dbb5841f",
+      "spotify-8096c270",
+      "youtube-0551ac8a",
+      "instagram-69983fc3",
+      "tiktok-c72a54c2",
+      "website-1f193bda"
+    ],
+    "marquee": "The Eternal",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://the-eternal.com/",
+    "linkSourceVerifiedAt": "2026-08-03T11:28:27.019Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "website-1f193bda",
+        "sourceTitle": "Skip to content",
+        "label": "Band Website",
+        "detail": "Visit the official website",
+        "url": "https://the-eternal.com/",
+        "platform": "website",
+        "kind": "website"
+      },
+      {
+        "id": "buy_music-83f4ceb1",
+        "sourceTitle": "Discography",
+        "label": "Discography",
+        "detail": "Purchase music online",
+        "url": "https://the-eternal.com/collections/discography",
+        "platform": "website",
+        "kind": "buy_music"
+      },
+      {
+        "id": "facebook-83b74b0d",
+        "sourceTitle": "Facebook",
+        "label": "Facebook",
+        "detail": "Follow the band",
+        "url": "https://www.facebook.com/TheEternal",
+        "platform": "facebook",
+        "kind": "facebook"
+      },
+      {
+        "id": "instagram-69983fc3",
+        "sourceTitle": "Instagram",
+        "label": "Instagram",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/theeternalofficial",
+        "platform": "instagram",
+        "kind": "instagram"
+      },
+      {
+        "id": "youtube-0551ac8a",
+        "sourceTitle": "YouTube",
+        "label": "YouTube",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/user/theeternalband",
+        "platform": "youtube",
+        "kind": "youtube"
+      },
+      {
+        "id": "tiktok-c72a54c2",
+        "sourceTitle": "TikTok",
+        "label": "TikTok",
+        "detail": "Official band clips",
+        "url": "https://www.tiktok.com/@theeternalofficial",
+        "platform": "website",
+        "kind": "tiktok"
+      },
+      {
+        "id": "spotify-8096c270",
+        "sourceTitle": "Spotify",
+        "label": "Spotify",
+        "detail": "Listen on Spotify",
+        "url": "https://open.spotify.com/artist/2uCKA5H0fEPfF0PxLooHvn",
+        "platform": "website",
+        "kind": "spotify"
+      },
+      {
+        "id": "merchandise-ccfd1f30",
+        "sourceTitle": "View full details",
+        "label": "View full details",
+        "detail": "Official band merchandise",
+        "url": "https://the-eternal.com/products/skinwalker-t-shirt",
+        "platform": "merchandise",
+        "kind": "merchandise"
+      },
+      {
+        "id": "contact-79f60600",
+        "sourceTitle": "Contact information",
+        "label": "Contact information",
+        "detail": "Official band enquiries",
+        "url": "https://the-eternal.com/policies/contact-information",
+        "platform": "website",
+        "kind": "contact"
+      },
+      {
+        "id": "bandcamp-dbb5841f",
+        "sourceTitle": "Bandcamp",
+        "label": "Bandcamp",
+        "detail": "Listen and buy direct",
+        "url": "https://bandcamp.com/?from=menubar_logo_logged_out",
+        "platform": "website",
+        "kind": "bandcamp"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://theeternal.bandcamp.com/album/waiting-for-the-endless-dawn",
+      "paragraphs": [
+        "The Eternal formed in Melbourne, Australia in early 2003. In the bands almost 20 year history they have released 6 internationally acclaimed studio albums. The band has toured extensively nationally & internationally with the likes of Amorphis, Anathema, Him, Katatonia, Swallow The Sun & Opeth just to name a few. The Eternal’s sound can be best described as dark, melancholic progressive metal.... more"
+      ]
+    }
+  }
+}

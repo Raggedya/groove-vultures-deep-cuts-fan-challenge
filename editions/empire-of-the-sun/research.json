@@ -1,0 +1,152 @@
+{
+  "bandName": "Empire of the Sun",
+  "slug": "empire-of-the-sun",
+  "editionId": "dc_8517649a4b",
+  "verifiedAt": "2026-08-03T11:54:14.846Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://empireofthesun.co/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:52:45.520Z",
+      "evidence": "The page identified Empire of the Sun and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/empireofthesunsound/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:52:45.706Z",
+      "evidence": "The page identified Empire of the Sun and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/67hb7towEyKvt5Z8Bx306c",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:52:45.279Z",
+      "evidence": "The page identified Empire of the Sun and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UCyacMWc-JhzX6iq2PCF-4jw",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:52:45.889Z",
+      "evidence": "The page identified Empire of the Sun and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://empireofthesun.store/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:52:46.329Z",
+      "evidence": "The page identified Empire of the Sun and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:spotify-49c4148d",
+      "url": "https://open.spotify.com/artist/67hb7towEyKvt5Z8Bx306c",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:52:45.279Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Empire of the Sun."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/67hb7towEyKvt5Z8Bx306c",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:52:45.279Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Empire of the Sun."
+    },
+    {
+      "destination": "selection:youtube-335b7593",
+      "url": "https://www.youtube.com/channel/UCyacMWc-JhzX6iq2PCF-4jw",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:52:45.889Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Empire of the Sun."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/channel/UCyacMWc-JhzX6iq2PCF-4jw",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:52:45.889Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Empire of the Sun."
+    },
+    {
+      "destination": "selection:instagram-fd6696f2",
+      "url": "https://www.instagram.com/empireofthesunsound/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:52:45.706Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Empire of the Sun."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/empireofthesunsound/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:52:45.706Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Empire of the Sun."
+    },
+    {
+      "destination": "selection:website-219aa7ad",
+      "url": "https://empireofthesun.co/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:52:45.520Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Empire of the Sun."
+    },
+    {
+      "destination": "website",
+      "url": "https://empireofthesun.co/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:52:45.520Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Empire of the Sun."
+    },
+    {
+      "destination": "selection:merchandise-c843f342",
+      "url": "https://empireofthesun.store/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:52:46.329Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Empire of the Sun."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://empireofthesun.store/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:52:46.329Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Empire of the Sun."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.youtube.com/channel/UCyacMWc-JhzX6iq2PCF-4jw",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:52:53.798Z",
+      "evidence": "The official source supplied the concise biography text used by the Empire of the Sun ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=D2KUK3P8_Y0",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:52:53.384Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Empire of the Sun video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://empireofthesun.co/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:52:45.520Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Empire of the Sun."
+    }
+  ]
+}

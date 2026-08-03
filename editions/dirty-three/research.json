@@ -1,0 +1,168 @@
+{
+  "bandName": "Dirty Three",
+  "slug": "dirty-three",
+  "editionId": "dc_521347d705",
+  "verifiedAt": "2026-08-03T11:47:02.888Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://www.dirtythree.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:44:08.081Z",
+      "evidence": "The page identified Dirty Three and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://dirtythree.bandcamp.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:44:08.589Z",
+      "evidence": "The page identified Dirty Three and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.facebook.com/dirtythreeband",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:44:08.709Z",
+      "evidence": "The page identified Dirty Three and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://linktr.ee/realdirtythree",
+      "sourceType": "official artist-controlled link hub",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:44:08.835Z",
+      "evidence": "The page identified Dirty Three and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:bandcamp-bcb40f82",
+      "url": "https://dirtythree.bandcamp.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:44:08.589Z",
+      "evidence": "Bandcamp resolved directly and its destination metadata matched Dirty Three."
+    },
+    {
+      "destination": "bandcamp",
+      "url": "https://dirtythree.bandcamp.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:44:08.589Z",
+      "evidence": "Bandcamp resolved directly and its destination metadata matched Dirty Three."
+    },
+    {
+      "destination": "selection:website-713fa735",
+      "url": "https://www.dirtythree.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:44:08.081Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Dirty Three."
+    },
+    {
+      "destination": "website",
+      "url": "https://www.dirtythree.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:44:08.081Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Dirty Three."
+    },
+    {
+      "destination": "selection:facebook-5764cf4b",
+      "url": "https://www.facebook.com/dirtythreeband",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:44:08.709Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Dirty Three."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/dirtythreeband",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:44:08.709Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Dirty Three."
+    },
+    {
+      "destination": "selection:youtube-3c473ec4",
+      "url": "https://www.youtube.com/watch?v=f1J38FlDKxo",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:44:12.758Z",
+      "evidence": "YouTube resolved directly from an identity-matched artist-controlled source for Dirty Three."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/watch?v=f1J38FlDKxo",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:44:12.758Z",
+      "evidence": "YouTube resolved directly from an identity-matched artist-controlled source for Dirty Three."
+    },
+    {
+      "destination": "selection:show-3e519523",
+      "url": "https://antigel.ch/en/event/dirty-three",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:44:16.849Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Dirty Three."
+    },
+    {
+      "destination": "selection:show-c3a9ed88",
+      "url": "https://www.billetlugen.dk/event/21402750/?affiliate=SXV",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:44:17.740Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Dirty Three."
+    },
+    {
+      "destination": "selection:show-fa1fe73b",
+      "url": "https://www.eventim.de/event/dirty-three-columbia-theater-21409394",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:44:16.525Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Dirty Three."
+    },
+    {
+      "destination": "selection:show-dfc6ac1e",
+      "url": "https://www.eventim.de/event/dirty-three-gebaeude-9-21402556",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:44:16.699Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Dirty Three."
+    },
+    {
+      "destination": "selection:show-35607a8b",
+      "url": "https://leguesswho.com/tickets",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:44:18.212Z",
+      "evidence": "Tickets resolved directly from an identity-matched artist-controlled source for Dirty Three."
+    },
+    {
+      "destination": "biography",
+      "url": "https://dirtythree.bandcamp.com/",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:44:18.998Z",
+      "evidence": "The official source supplied the concise biography text used by the Dirty Three ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=P6VE8z8ieYc",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:44:18.660Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Dirty Three video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://www.dirtythree.com/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:44:08.081Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Dirty Three."
+    }
+  ]
+}

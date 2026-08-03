@@ -1,0 +1,168 @@
+{
+  "bandName": "Last Dinosaurs",
+  "slug": "last-dinosaurs",
+  "editionId": "dc_c7f4777c19",
+  "verifiedAt": "2026-08-03T11:29:18.952Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://www.lastdinosaurs.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:55.281Z",
+      "evidence": "The page identified Last Dinosaurs and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/lastdinosaurs/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:54.319Z",
+      "evidence": "The page identified Last Dinosaurs and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/677sHrkjhB7IP4YwjzZyc4",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:54.141Z",
+      "evidence": "The page identified Last Dinosaurs and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UC2qXH8KhJpsO-XTrV3RAgVw",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:54.199Z",
+      "evidence": "The page identified Last Dinosaurs and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://linktr.ee/lastdinosaurs",
+      "sourceType": "official artist-controlled link hub",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:57.894Z",
+      "evidence": "The page identified Last Dinosaurs and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:website-18e3bf08",
+      "url": "https://www.lastdinosaurs.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:55.281Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Last Dinosaurs."
+    },
+    {
+      "destination": "website",
+      "url": "https://www.lastdinosaurs.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:55.281Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Last Dinosaurs."
+    },
+    {
+      "destination": "selection:instagram-8b358a78",
+      "url": "https://www.instagram.com/lastdinosaurs",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:58.568Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Last Dinosaurs."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/lastdinosaurs",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:58.568Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Last Dinosaurs."
+    },
+    {
+      "destination": "selection:youtube-6778b44f",
+      "url": "https://www.youtube.com/@LastDinosaurs",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:58.499Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Last Dinosaurs."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/@LastDinosaurs",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:58.499Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Last Dinosaurs."
+    },
+    {
+      "destination": "selection:tiktok-68b46f00",
+      "url": "https://www.tiktok.com/@lastdinosaurs",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:58.140Z",
+      "evidence": "TikTok resolved directly and its destination metadata matched Last Dinosaurs."
+    },
+    {
+      "destination": "tiktok",
+      "url": "https://www.tiktok.com/@lastdinosaurs",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:58.140Z",
+      "evidence": "TikTok resolved directly and its destination metadata matched Last Dinosaurs."
+    },
+    {
+      "destination": "selection:facebook-1717d30f",
+      "url": "https://www.facebook.com/lastdinosaurs",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:58.668Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Last Dinosaurs."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/lastdinosaurs",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:58.668Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Last Dinosaurs."
+    },
+    {
+      "destination": "selection:spotify-df910651",
+      "url": "https://open.spotify.com/artist/677sHrkjhB7IP4YwjzZyc4",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:58.386Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Last Dinosaurs."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/677sHrkjhB7IP4YwjzZyc4",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:58.386Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Last Dinosaurs."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.instagram.com/lastdinosaurs/",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:15.896Z",
+      "evidence": "The official source supplied the concise biography text used by the Last Dinosaurs ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=DBzPgYzA5SE",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:15.430Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Last Dinosaurs video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://www.lastdinosaurs.com/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:55.281Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Last Dinosaurs."
+    }
+  ]
+}

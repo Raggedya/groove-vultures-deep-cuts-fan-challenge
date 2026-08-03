@@ -31,6 +31,8 @@
     "sales:demo": "node scripts/serve-sales-demo.mjs",
     "deepcuts:batch": "node scripts/deep-cuts-batch.mjs",
     "deepcuts:batch:test": "node scripts/test-batch.mjs",
+    "jookbox:bands": "node scripts/jookbox-band-batch.mjs",
+    "jookbox:bands:test": "node scripts/test-jookbox-band-batch.mjs",
     "record-company:start": "node scripts/record-company/start.mjs",
     "record-company:test": "node scripts/test-record-company.mjs",
     "studio": "node scripts/studio-server.mjs",

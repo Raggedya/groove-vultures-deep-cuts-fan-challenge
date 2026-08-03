@@ -1,0 +1,172 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Feenixpawl",
+  "editionTitle": "Feenixpawl",
+  "description": "2021-2022, we got the gang back together plus a new family member! 👼 The full music video for #Drowning is online on our YouTube channel! Come with us from 2010 until now 😎 Just in...",
+  "discovery": {
+    "bio": "2021-2022, we got the gang back together plus a new family member! 👼 The full music video for #Drowning is online on our YouTube channel! Come with us from 2010 until now 😎 Just in...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "feenixpawl",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_524265c4c2",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/feenixpawl/instagram-discovery.png",
+    "qrImage": "output/feenixpawl/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "",
+    "spotify": "https://open.spotify.com/artist/5FvlJcXnFIm72pgQtW3Dct",
+    "instagram": "https://www.instagram.com/p/CsU3NsiJcl3/",
+    "website": "https://www.feenixpawl.com/",
+    "buyMusic": "",
+    "merchandise": "https://www.teepublic.com/user/feenixpawl",
+    "facebook": "https://www.facebook.com/help/instagram/261704639352628",
+    "youtube": "https://www.youtube.com/feenixpawl"
+  },
+  "featuredVideo": {
+    "title": "LJ MASE & Feenixpawl - Balloons",
+    "youtubeURL": "https://www.youtube.com/watch?v=8jA2wosv5Mw",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:23:23.560Z"
+  },
+  "analytics": {
+    "editionId": "dc_524265c4c2",
+    "pageIdentifier": "dc_524265c4c2:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_358f60b5-b549-4ae0-bfc9-46d197582221",
+    "submittedAt": "2026-08-03T11:28:59.850Z",
+    "researchCompletedAt": "2026-08-03T11:28:59.993Z",
+    "editionCreatedAt": "2026-08-03T11:28:59.993Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_524265c4c2",
+    "tickerBio": "2021-2022, WE GOT THE GANG BACK TOGETHER PLUS A NEW FAMILY MEMBER! 👼 THE FULL MUSIC VIDEO FOR #DROWNING IS ONLINE ON OUR YOUTUBE CHANNEL! COME WITH US FROM 2010 UNTIL NOW 😎 JUST IN TIME FOR FRESH TUNES 🎵",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "spotify-d5e96f0b",
+      "youtube-4c36c641",
+      "instagram-4bfa52a1",
+      "website-af08b58e",
+      "merchandise-731e1fcc",
+      "facebook-170ce6c6"
+    ],
+    "marquee": "Feenixpawl",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://www.feenixpawl.com/",
+    "linkSourceVerifiedAt": "2026-08-03T11:23:17.029Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "website-af08b58e",
+        "sourceTitle": "Home",
+        "label": "Home",
+        "detail": "Visit the official website",
+        "url": "https://www.feenixpawl.com/",
+        "platform": "website",
+        "kind": "website"
+      },
+      {
+        "id": "merchandise-731e1fcc",
+        "sourceTitle": "STORE",
+        "label": "STORE",
+        "detail": "Official band merchandise",
+        "url": "https://www.teepublic.com/user/feenixpawl",
+        "platform": "merchandise",
+        "kind": "merchandise"
+      },
+      {
+        "id": "spotify-d5e96f0b",
+        "sourceTitle": "Listen",
+        "label": "Listen",
+        "detail": "Listen on Spotify",
+        "url": "https://open.spotify.com/artist/5FvlJcXnFIm72pgQtW3Dct",
+        "platform": "website",
+        "kind": "spotify"
+      },
+      {
+        "id": "youtube-4c36c641",
+        "sourceTitle": "WATCH",
+        "label": "WATCH",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/feenixpawl",
+        "platform": "youtube",
+        "kind": "youtube"
+      },
+      {
+        "id": "instagram-4bfa52a1",
+        "sourceTitle": "Instagram",
+        "label": "Instagram",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/p/CsU3NsiJcl3/",
+        "platform": "instagram",
+        "kind": "instagram"
+      },
+      {
+        "id": "facebook-170ce6c6",
+        "sourceTitle": "Contact Uploading & Non-Users",
+        "label": "Contact Uploading & Non-Users",
+        "detail": "Follow the band",
+        "url": "https://www.facebook.com/help/instagram/261704639352628",
+        "platform": "facebook",
+        "kind": "facebook"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://www.instagram.com/feenixpawl/",
+      "paragraphs": [
+        "2021-2022, we got the gang back together plus a new family member! 👼 The full music video for #Drowning is online on our YouTube channel! Come with us from 2010 until now 😎 Just in time for fresh tunes 🎵"
+      ]
+    }
+  }
+}

@@ -1,0 +1,162 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "The Amenta",
+  "editionTitle": "The Amenta",
+  "description": "The Amenta. Sydney, Australia. THE AMENTA was crudely welded together in the sickly dawn of a new millennium, Combining the uglier aspects of Black Metal, Death Metal, extreme Industrial...",
+  "discovery": {
+    "bio": "The Amenta. Sydney, Australia. THE AMENTA was crudely welded together in the sickly dawn of a new millennium, Combining the uglier aspects of Black Metal, Death Metal, extreme Industrial...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "the-amenta",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_60121e87bd",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/the-amenta/instagram-discovery.png",
+    "qrImage": "output/the-amenta/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "https://bandcamp.com/?from=menubar_logo_logged_out",
+    "spotify": "",
+    "instagram": "https://www.instagram.com/the_amenta/",
+    "website": "",
+    "buyMusic": "",
+    "merchandise": "https://direct-merch.com/collections/the-amenta",
+    "facebook": "https://www.facebook.com/theamenta/",
+    "youtube": "https://www.youtube.com/user/theamenta/"
+  },
+  "featuredVideo": {
+    "title": "The Amenta - \"Sekem\", live at Crowbar, Sydney. May 9th, 2026 ( Pro Shot Video)",
+    "youtubeURL": "https://www.youtube.com/watch?v=A6SEkwMv4ig",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:24:33.108Z"
+  },
+  "analytics": {
+    "editionId": "dc_60121e87bd",
+    "pageIdentifier": "dc_60121e87bd:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_ea476135-6dd2-4422-acc1-4f54b82fa6eb",
+    "submittedAt": "2026-08-03T11:29:07.691Z",
+    "researchCompletedAt": "2026-08-03T11:29:07.909Z",
+    "editionCreatedAt": "2026-08-03T11:29:07.909Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_60121e87bd",
+    "tickerBio": "THE AMENTA. SYDNEY, AUSTRALIA. THE AMENTA WAS CRUDELY WELDED TOGETHER IN THE SICKLY DAWN OF A NEW MILLENNIUM, COMBINING THE UGLIER ASPECTS OF BLACK METAL, DEATH METAL, EXTREME INDUSTRIAL AND AMBIENT ELECTRONICA, THE AMENTA SOUNDTRACKS AN ERA OF ROT, RUST AND RUIN THE CURRENT LINE-UP CONSISTS OF: MARK BEVAN (VOCALS/BASS) ERIK MIEHS (GUITARS) TIMOTHY POPE (SAMPLES, KEYBOARDS) MATT WILCOCK (GUITARS) DAVID HALEY (DRUMS)",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "bandcamp-dbb5841f",
+      "youtube-244f87ed",
+      "instagram-cfff5391",
+      "merchandise-b5b03ffc",
+      "facebook-43de52d1"
+    ],
+    "marquee": "The Amenta",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://theamenta1.bandcamp.com/",
+    "linkSourceVerifiedAt": "2026-08-03T11:24:28.532Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "bandcamp-dbb5841f",
+        "sourceTitle": "Bandcamp",
+        "label": "Bandcamp",
+        "detail": "Listen and buy direct",
+        "url": "https://bandcamp.com/?from=menubar_logo_logged_out",
+        "platform": "website",
+        "kind": "bandcamp"
+      },
+      {
+        "id": "facebook-43de52d1",
+        "sourceTitle": "Facebook",
+        "label": "Facebook",
+        "detail": "Follow the band",
+        "url": "https://www.facebook.com/theamenta/",
+        "platform": "facebook",
+        "kind": "facebook"
+      },
+      {
+        "id": "instagram-cfff5391",
+        "sourceTitle": "Instagram",
+        "label": "Instagram",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/the_amenta/",
+        "platform": "instagram",
+        "kind": "instagram"
+      },
+      {
+        "id": "youtube-244f87ed",
+        "sourceTitle": "YouTube",
+        "label": "YouTube",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/user/theamenta/",
+        "platform": "youtube",
+        "kind": "youtube"
+      },
+      {
+        "id": "merchandise-b5b03ffc",
+        "sourceTitle": "direct-merch.com",
+        "label": "direct-merch.com",
+        "detail": "Official band merchandise",
+        "url": "https://direct-merch.com/collections/the-amenta",
+        "platform": "merchandise",
+        "kind": "merchandise"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://theamenta1.bandcamp.com/",
+      "paragraphs": [
+        "The Amenta. Sydney, Australia. THE AMENTA was crudely welded together in the sickly dawn of a new millennium, Combining the uglier aspects of Black Metal, Death Metal, extreme Industrial and ambient Electronica, THE AMENTA soundtracks an era of rot, rust and ruin The current line-up consists of: Mark Bevan (Vocals/Bass) Erik Miehs (Guitars) Timothy Pope (Samples, Keyboards) Matt Wilcock (Guitars) David Haley (Drums)"
+      ]
+    }
+  }
+}

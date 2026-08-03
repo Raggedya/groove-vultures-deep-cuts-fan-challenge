@@ -1,0 +1,152 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Northeast Party House",
+  "editionTitle": "Northeast Party House",
+  "description": "northeastpartyhouse has been a member of Linktree for 8 years and joined in April 2018. The social media accounts linked to from northeastpartyhouse are: • Facebook • Spotify • YouTube •...",
+  "discovery": {
+    "bio": "northeastpartyhouse has been a member of Linktree for 8 years and joined in April 2018. The social media accounts linked to from northeastpartyhouse are: • Facebook • Spotify • YouTube •...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "northeast-party-house",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_32b11822fe",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/northeast-party-house/instagram-discovery.png",
+    "qrImage": "output/northeast-party-house/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "https://northeastpartyhouse.bandcamp.com/",
+    "spotify": "https://open.spotify.com/artist/500YRyClzP6Z7HtWd1BIje",
+    "instagram": "https://www.instagram.com/northeastpartyhouse/",
+    "website": "",
+    "buyMusic": "",
+    "merchandise": "",
+    "facebook": "",
+    "youtube": "https://www.youtube.com/channel/UCn76h7oi2vtLqqnJ1voB_xw"
+  },
+  "featuredVideo": {
+    "title": "Heads Will Roll - Live @ The Forum",
+    "youtubeURL": "https://www.youtube.com/watch?v=1RGhJBz3PBE",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:45:42.105Z"
+  },
+  "analytics": {
+    "editionId": "dc_32b11822fe",
+    "pageIdentifier": "dc_32b11822fe:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_326b1f89-72e8-437e-83be-cd4fd3dc66fb",
+    "submittedAt": "2026-08-03T11:47:03.688Z",
+    "researchCompletedAt": "2026-08-03T11:47:03.752Z",
+    "editionCreatedAt": "2026-08-03T11:47:03.752Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_32b11822fe",
+    "tickerBio": "NORTHEASTPARTYHOUSE HAS BEEN A MEMBER OF LINKTREE FOR 8 YEARS AND JOINED IN APRIL 2018. THE SOCIAL MEDIA ACCOUNTS LINKED TO FROM NORTHEASTPARTYHOUSE ARE: • FACEBOOK • SPOTIFY • YOUTUBE • EMAIL • X BESIDES SOCIAL MEDIA ACCOUNTS, NORTHEASTPARTYHOUSE HAS POPULATED THEIR SITE WITH: • MERCH STORE • WATCH: HEADS WILL ROLL - LIKE A VERSION • LATE NIGHT COOKING DJ MIX #1 • NEW ALBUM ENHANCER OUT NOW • WATCH: WISH WE COULD OF",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "bandcamp-ef985a17",
+      "spotify-2d22dd5e",
+      "youtube-c3fe214d",
+      "instagram-af91ee60"
+    ],
+    "marquee": "Northeast Party House",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://northeastpartyhouse.bandcamp.com/",
+    "linkSourceVerifiedAt": "2026-08-03T11:45:29.099Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "bandcamp-ef985a17",
+        "sourceTitle": "Bandcamp",
+        "label": "Bandcamp",
+        "detail": "Listen and buy direct",
+        "url": "https://northeastpartyhouse.bandcamp.com/",
+        "platform": "website",
+        "kind": "bandcamp"
+      },
+      {
+        "id": "youtube-c3fe214d",
+        "sourceTitle": "YouTube",
+        "label": "YouTube",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/channel/UCn76h7oi2vtLqqnJ1voB_xw",
+        "platform": "youtube",
+        "kind": "youtube"
+      },
+      {
+        "id": "instagram-af91ee60",
+        "sourceTitle": "Instagram",
+        "label": "Instagram",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/northeastpartyhouse/",
+        "platform": "instagram",
+        "kind": "instagram"
+      },
+      {
+        "id": "spotify-2d22dd5e",
+        "sourceTitle": "Spotify",
+        "label": "Spotify",
+        "detail": "Listen on Spotify",
+        "url": "https://open.spotify.com/artist/500YRyClzP6Z7HtWd1BIje",
+        "platform": "website",
+        "kind": "spotify"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://linktr.ee/northeastpartyhouse",
+      "paragraphs": [
+        "northeastpartyhouse has been a member of Linktree for 8 years and joined in April 2018. The social media accounts linked to from northeastpartyhouse are: • Facebook • Spotify • YouTube • Email • X Besides social media accounts, northeastpartyhouse has populated their site with: • MERCH STORE • WATCH: Heads Will Roll - Like A Version • Late Night Cooking DJ Mix #1 • New Album Enhancer Out Now • Watch: Wish We Could Of"
+      ]
+    }
+  }
+}

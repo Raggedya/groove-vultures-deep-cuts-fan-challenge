@@ -1,0 +1,172 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Mammoth Mammoth",
+  "editionTitle": "Mammoth Mammoth",
+  "description": "Kreuzung by Mammoth Mammoth, released 08 November 2019 1. I’m Ready 2. Wanted Man 3. Motherf@cker 4. Screamin’ 5. Kreuzung 6. Tear It Down 7. Tonight 8. Mad World 9. Let Go 10. Lead...",
+  "discovery": {
+    "bio": "Kreuzung by Mammoth Mammoth, released 08 November 2019 1. I’m Ready 2. Wanted Man 3. Motherf@cker 4. Screamin’ 5. Kreuzung 6. Tear It Down 7. Tonight 8. Mad World 9. Let Go 10. Lead...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "mammoth-mammoth",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_b48d910afb",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/mammoth-mammoth/instagram-discovery.png",
+    "qrImage": "output/mammoth-mammoth/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "https://napalmrecords.bandcamp.com/?from=btl",
+    "spotify": "",
+    "instagram": "https://www.instagram.com/mammoth_mammoth_official/",
+    "website": "https://mammothmammoth.com/",
+    "buyMusic": "",
+    "merchandise": "https://mammothmammoth.com/store",
+    "facebook": "https://www.facebook.com/mammothmammothband",
+    "youtube": "https://www.youtube.com/@MAMMOTHMAMMOTHOFFICIAL"
+  },
+  "featuredVideo": {
+    "title": "MAMMOTH MAMMOTH - RICK AND MACCA LISTENING TO VOLUME VI - WARTS N ALL (LIVE)",
+    "youtubeURL": "https://www.youtube.com/watch?v=LEl4IZ8lcXo",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:24:00.704Z"
+  },
+  "analytics": {
+    "editionId": "dc_b48d910afb",
+    "pageIdentifier": "dc_b48d910afb:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_f87a23d5-7b5d-4022-a6e9-463f6910ae14",
+    "submittedAt": "2026-08-03T11:29:03.574Z",
+    "researchCompletedAt": "2026-08-03T11:29:03.754Z",
+    "editionCreatedAt": "2026-08-03T11:29:03.754Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_b48d910afb",
+    "tickerBio": "KREUZUNG BY MAMMOTH MAMMOTH, RELEASED 08 NOVEMBER 2019 1. I’M READY 2. WANTED MAN 3. MOTHERF@CKER 4. SCREAMIN’ 5. KREUZUNG 6. TEAR IT DOWN 7. TONIGHT 8. MAD WORLD 9. LET GO 10. LEAD BOOTS 11. GOD’S GONNA HATE ME ‘I`M READY’ COMES OUT SWINGING WITH A TORNADO OF RIFFS – AND HELL YES, WE`RE MORE THAN READY! THE HIGH VOLTAGE AUSTRALIAN OUTFIT HAVE SEIZED THE OPPORTUNITY TO BOIL DOWN THEIR HARD ROCK FORMULA SINCE THE RELE",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "bandcamp-2e62f5c1",
+      "youtube-e2f9e51e",
+      "instagram-4252f916",
+      "website-6a3af22c",
+      "merchandise-9606ab71",
+      "facebook-03d19931"
+    ],
+    "marquee": "Mammoth Mammoth",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://mammothmammoth.com/",
+    "linkSourceVerifiedAt": "2026-08-03T11:23:54.804Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "website-6a3af22c",
+        "sourceTitle": "Band Website",
+        "label": "Band Website",
+        "detail": "Visit the official website",
+        "url": "https://mammothmammoth.com/",
+        "platform": "website",
+        "kind": "website"
+      },
+      {
+        "id": "merchandise-9606ab71",
+        "sourceTitle": "STORE",
+        "label": "STORE",
+        "detail": "Official band merchandise",
+        "url": "https://mammothmammoth.com/store",
+        "platform": "merchandise",
+        "kind": "merchandise"
+      },
+      {
+        "id": "facebook-03d19931",
+        "sourceTitle": "Facebook",
+        "label": "Facebook",
+        "detail": "Follow the band",
+        "url": "https://www.facebook.com/mammothmammothband",
+        "platform": "facebook",
+        "kind": "facebook"
+      },
+      {
+        "id": "instagram-4252f916",
+        "sourceTitle": "Instagram",
+        "label": "Instagram",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/mammoth_mammoth_official/",
+        "platform": "instagram",
+        "kind": "instagram"
+      },
+      {
+        "id": "youtube-e2f9e51e",
+        "sourceTitle": "YouTube",
+        "label": "YouTube",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/@MAMMOTHMAMMOTHOFFICIAL",
+        "platform": "youtube",
+        "kind": "youtube"
+      },
+      {
+        "id": "bandcamp-2e62f5c1",
+        "sourceTitle": "&larr; more from Napalm Records",
+        "label": "&larr; more from Napalm Records",
+        "detail": "Listen and buy direct",
+        "url": "https://napalmrecords.bandcamp.com/?from=btl",
+        "platform": "website",
+        "kind": "bandcamp"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://mammoth-mammoth.bandcamp.com/album/kreuzung",
+      "paragraphs": [
+        "Kreuzung by Mammoth Mammoth, released 08 November 2019 1. I’m Ready 2. Wanted Man 3. Motherf@cker 4. Screamin’ 5. Kreuzung 6. Tear It Down 7. Tonight 8. Mad World 9. Let Go 10. Lead Boots 11. God’s Gonna Hate Me ‘I`m Ready’ comes out swinging with a tornado of riffs – and hell yes, we`re more than ready! The high voltage Australian outfit have seized the opportunity to boil down their hard rock formula since the rele"
+      ]
+    }
+  }
+}

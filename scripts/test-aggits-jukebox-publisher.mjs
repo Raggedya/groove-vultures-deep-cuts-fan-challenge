@@ -3,7 +3,7 @@ import crypto from "node:crypto";
 import fs from "node:fs/promises";
 import path from "node:path";
 import sharp from "sharp";
-import {createAggitsJukeboxQrArtwork,AGGITS_JUKEBOX_QR_MASTER_SHA256} from "./aggits-jukebox-qr-artwork.mjs";
+import {createAggitsJukeboxQrArtwork,AGGITS_JUKEBOX_QR_MASTER_SHA256,AGGITS_JUKEBOX_QR_PANEL} from "./aggits-jukebox-qr-artwork.mjs";
 import {aggitsJukeboxPublicationReadiness,buildAggitsJukeboxPublicationManifest} from "./aggits-jukebox-publication.mjs";
 import {__test} from "../worker/aggits-jukebox-publisher.js";
 
@@ -14,7 +14,10 @@ const manifest=buildAggitsJukeboxPublicationManifest(project);assert.equal(manif
 const validated=__test.validateManifest(manifest);assert.equal(validated.ok,true);assert.equal(validated.value.actions[0].iconId,"gigs");assert.equal(__test.stableSlug(project.id),"aggits-jukebox-123456abcdef");
 const config=__test.buildConfig({job_id:"ajjob_test",edition_id:"dc_0123456789",slug:"aggits-jukebox-123456abcdef",base_url:"https://deep-cuts.example",created_at:new Date().toISOString()},validated.value);assert.equal(config.editionType,"aggits_jukebox");assert.equal(config.aggitsJukebox.actions.length,2);assert.match(config.aggitsJukebox.localWelcomeVideo,/aggits-jukebox-assets/);
 const master=await fs.readFile(path.join(root,"assets","aggits-jukebox-qr-master-v1.png"));assert.equal(crypto.createHash("sha256").update(master).digest("hex"),AGGITS_JUKEBOX_QR_MASTER_SHA256);
+assert.deepEqual(AGGITS_JUKEBOX_QR_PANEL,{left:751,top:543,width:354,height:384},"QR panel must remain centred inside the master cabinet opening");
 const qr=await createAggitsJukeboxQrArtwork({root,title:"A Long Test Jukebox Edition",destination:"https://deep-cuts.example/q/dc_0123456789"});const meta=await sharp(qr.bytes).metadata();assert.equal(meta.width,1254);assert.equal(meta.height,1254);assert.equal(qr.scanProof,"rendered-matrix:full+627x627");
-const [worker,studio,renderer,index,html]=await Promise.all([fs.readFile(path.join(root,"worker","aggits-jukebox-publisher.js"),"utf8"),fs.readFile(path.join(root,"scripts","studio-server.mjs"),"utf8"),fs.readFile(path.join(root,"scripts","aggits-jukebox-preview.mjs"),"utf8"),fs.readFile(path.join(root,"worker","index.js"),"utf8"),fs.readFile(path.join(root,"studio","index.html"),"utf8")]);
+const [worker,studio,renderer,index,html,app]=await Promise.all([fs.readFile(path.join(root,"worker","aggits-jukebox-publisher.js"),"utf8"),fs.readFile(path.join(root,"scripts","studio-server.mjs"),"utf8"),fs.readFile(path.join(root,"scripts","aggits-jukebox-preview.mjs"),"utf8"),fs.readFile(path.join(root,"worker","index.js"),"utf8"),fs.readFile(path.join(root,"studio","index.html"),"utf8"),fs.readFile(path.join(root,"studio","app.js"),"utf8")]);
 assert.match(worker,/Copyable permanent URL/);assert.match(worker,/job_type",value:"aggits_jukebox"/);assert.match(worker,/attachments:/);assert.match(worker,/aggits_jukebox_editions/);assert.match(worker,/1254,1254/);assert.match(index,/handleAggitsJukeboxPublisher/);assert.match(studio,/action==="publish"/);assert.match(studio,/action==="publication"/);assert.match(renderer,/publicMode/);assert.match(html,/direct-publish-qr/);
+assert.match(worker,/sendEmail\(env,job/,"the publication transaction must request its completion email automatically");
+assert.match(app,/PUBLISH \+ EMAIL QR/);assert.match(app,/automatically email the permanent URL \+ QR/);
 console.log("Aggits Jukebox protected publisher and fitted QR workflow passed.");

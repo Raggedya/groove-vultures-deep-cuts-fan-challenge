@@ -7,6 +7,7 @@ import sharp from "sharp";
 export const AGGITS_JUKEBOX_QR_SIZE=1254;
 export const AGGITS_JUKEBOX_QR_SCHEMA="deep-cuts-aggits-jukebox-qr/1";
 export const AGGITS_JUKEBOX_QR_MASTER_SHA256="1750e428f4445b7be57b2bcc9ad681681c2c070930b1ade019c237ed68fdb684";
+export const AGGITS_JUKEBOX_QR_PANEL=Object.freeze({left:751,top:543,width:354,height:384});
 
 export async function createAggitsJukeboxQrArtwork({root,title,destination}={}){
   const sourceRoot=path.resolve(root||process.cwd()),payload=assertDestination(destination),displayTitle=cleanTitle(title);
@@ -30,12 +31,13 @@ function qrMatrix(source,text){
   const count=actual.getModuleCount();return Array.from({length:count},(_,row)=>Array.from({length:count},(_,column)=>Boolean(actual.isDark(row,column))));
 }
 
-function qrPlacement(count){const border=4,module=Math.floor(344/(count+border*2)),size=module*(count+border*2);if(module<3)throw qrError("The permanent URL is too long for the locked QR panel.","qr_payload_too_long");return{border,module,size,left:748+Math.floor((368-size)/2),top:526+Math.floor((410-size)/2)}}
+function qrPlacement(count){const panel=AGGITS_JUKEBOX_QR_PANEL,border=4,module=Math.floor((panel.width-10)/(count+border*2)),size=module*(count+border*2);if(module<3)throw qrError("The permanent URL is too long for the locked QR panel.","qr_payload_too_long");return{border,module,size,left:panel.left+Math.floor((panel.width-size)/2),top:panel.top+Math.floor((panel.height-size)/2)}}
 function renderOverlay(matrix,p,title){
   const modules=[];for(let row=0;row<matrix.length;row++)for(let column=0;column<matrix.length;column++)if(matrix[row][column])modules.push(`<rect x="${p.left+(column+p.border)*p.module}" y="${p.top+(row+p.border)*p.module}" width="${p.module}" height="${p.module}" fill="#050403"/>`);
   const lines=titleLines(title),fontSize=fitTitle(lines);
   const titleMarkup=lines.length===1?`<text x="930" y="406">${xml(lines[0])}</text>`:`<text x="930" y="385">${xml(lines[0])}</text><text x="930" y="430">${xml(lines[1])}</text>`;
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="1254" height="1254" viewBox="0 0 1254 1254"><rect x="724" y="335" width="411" height="133" rx="28" fill="#0d0a06" opacity=".97"/><g fill="#e2b86d" stroke="#3c210b" stroke-width="1.2" paint-order="stroke" text-anchor="middle" font-family="Georgia,Times New Roman,serif" font-size="${fontSize}" font-weight="800" letter-spacing="2">${titleMarkup}</g><rect x="748" y="526" width="368" height="410" fill="#fffaf0"/>${modules.join("")}</svg>`;
+  const panel=AGGITS_JUKEBOX_QR_PANEL;
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="1254" height="1254" viewBox="0 0 1254 1254"><rect x="724" y="335" width="411" height="133" rx="28" fill="#0d0a06" opacity=".97"/><g fill="#e2b86d" stroke="#3c210b" stroke-width="1.2" paint-order="stroke" text-anchor="middle" font-family="Georgia,Times New Roman,serif" font-size="${fontSize}" font-weight="800" letter-spacing="2">${titleMarkup}</g><rect x="${panel.left}" y="${panel.top}" width="${panel.width}" height="${panel.height}" rx="4" fill="#fffaf0"/>${modules.join("")}</svg>`;
 }
 async function verifyMatrix(png,matrix,p,scale){const {data,info}=await sharp(png).resize(Math.round(AGGITS_JUKEBOX_QR_SIZE*scale),Math.round(AGGITS_JUKEBOX_QR_SIZE*scale),{kernel:sharp.kernel.nearest}).removeAlpha().raw().toBuffer({resolveWithObject:true});let mismatches=0,total=0;for(let row=0;row<matrix.length;row++)for(let column=0;column<matrix.length;column++){const x=Math.round((p.left+(column+p.border+.5)*p.module)*scale),y=Math.round((p.top+(row+p.border+.5)*p.module)*scale),i=(Math.min(info.height-1,y)*info.width+Math.min(info.width-1,x))*info.channels,dark=(data[i]+data[i+1]+data[i+2])/3<128;if(dark!==matrix[row][column])mismatches++;total++}if(mismatches>Math.max(1,Math.floor(total*.002)))throw qrError(`The ${info.width} x ${info.height} QR scan-back failed.`,"qr_scanback_failed")}
 function titleLines(value){const words=value.split(/\s+/);if(value.length<=23||words.length<2)return[value];let at=1,diff=Infinity;for(let i=1;i<words.length;i++){const next=Math.abs(words.slice(0,i).join(" ").length-words.slice(i).join(" ").length);if(next<diff){diff=next;at=i}}return[words.slice(0,at).join(" "),words.slice(at).join(" ")]}

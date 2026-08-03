@@ -1,0 +1,224 @@
+{
+  "bandName": "Voyager",
+  "slug": "voyager",
+  "editionId": "dc_f75917624b",
+  "verifiedAt": "2026-08-03T11:33:40.333Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://www.voyagerau.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:25.283Z",
+      "evidence": "The page identified Voyager and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://voyager.bandcamp.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:23.594Z",
+      "evidence": "The page identified Voyager and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/voyagerau/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:23.671Z",
+      "evidence": "The page identified Voyager and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UCJ0FbAfZ5x1_wv0QaveNYNA",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:23.491Z",
+      "evidence": "The page identified Voyager and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://store.voyagerau.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:24.556Z",
+      "evidence": "The page identified Voyager and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:website-3012bce7",
+      "url": "https://www.voyagerau.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:24.140Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Voyager."
+    },
+    {
+      "destination": "website",
+      "url": "https://www.voyagerau.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:24.140Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Voyager."
+    },
+    {
+      "destination": "selection:merchandise-a5c0f42e",
+      "url": "https://www.voyagerau.com/collections/all",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:26.471Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Voyager."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://www.voyagerau.com/collections/all",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:26.471Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Voyager."
+    },
+    {
+      "destination": "selection:show-da44dd4e",
+      "url": "https://www.voyagerau.com/products/magnet-house-live-show?variant=52307655459157",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:27.450Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Voyager."
+    },
+    {
+      "destination": "selection:facebook-344c16ec",
+      "url": "https://www.facebook.com/voyageraustralia/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:27.260Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Voyager."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/voyageraustralia/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:27.260Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Voyager."
+    },
+    {
+      "destination": "selection:instagram-b984afa8",
+      "url": "https://www.instagram.com/voyagerau/?hl=en",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:27.321Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Voyager."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/voyagerau/?hl=en",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:27.321Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Voyager."
+    },
+    {
+      "destination": "selection:tiktok-2a7cc1c2",
+      "url": "https://www.tiktok.com/@voyagerau",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:27.432Z",
+      "evidence": "TikTok resolved directly and its destination metadata matched Voyager."
+    },
+    {
+      "destination": "tiktok",
+      "url": "https://www.tiktok.com/@voyagerau",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:27.432Z",
+      "evidence": "TikTok resolved directly and its destination metadata matched Voyager."
+    },
+    {
+      "destination": "selection:spotify-20f0e966",
+      "url": "https://open.spotify.com/artist/16fltNcwTM5V9rnxIlcha4",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:27.498Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Voyager."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/16fltNcwTM5V9rnxIlcha4",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:27.498Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Voyager."
+    },
+    {
+      "destination": "selection:contact-33a4ecb4",
+      "url": "https://www.voyagerau.com/policies/contact-information",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:28.204Z",
+      "evidence": "Contact resolved directly and its destination metadata matched Voyager."
+    },
+    {
+      "destination": "contact",
+      "url": "https://www.voyagerau.com/policies/contact-information",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:28.204Z",
+      "evidence": "Contact resolved directly and its destination metadata matched Voyager."
+    },
+    {
+      "destination": "selection:youtube-a2fce288",
+      "url": "https://www.youtube.com/embed/I69IhlRlLAY?&playlist=I69IhlRlLAY&loop=1",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:27.809Z",
+      "evidence": "YouTube resolved directly from an identity-matched artist-controlled source for Voyager."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/embed/I69IhlRlLAY?&playlist=I69IhlRlLAY&loop=1",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:27.809Z",
+      "evidence": "YouTube resolved directly from an identity-matched artist-controlled source for Voyager."
+    },
+    {
+      "destination": "selection:bandcamp-b1027a61",
+      "url": "https://voyager.bandcamp.com/music",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:28.166Z",
+      "evidence": "Bandcamp resolved directly and its destination metadata matched Voyager."
+    },
+    {
+      "destination": "bandcamp",
+      "url": "https://voyager.bandcamp.com/music",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:28.166Z",
+      "evidence": "Bandcamp resolved directly and its destination metadata matched Voyager."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.instagram.com/voyagerau/",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:34.371Z",
+      "evidence": "The official source supplied the concise biography text used by the Voyager ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=wXLCECMG054",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:33.909Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Voyager video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://www.voyagerau.com/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:25.283Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Voyager."
+    }
+  ]
+}

@@ -64,10 +64,11 @@ async function renderEditions(editions, workerCount) {
       const edition = editions[index];
       const editionStarted = performance.now();
       try {
-        await run(python, ["scripts/generate-social-assets.py", edition.slug]);
+        const attempts = await renderWithTechnicalRetry(edition.slug);
         const result = {
           slug: edition.slug,
           durationMs: round(performance.now() - editionStarted),
+          attempts,
           ok: true
         };
         results[index] = result;
@@ -86,6 +87,30 @@ async function renderEditions(editions, workerCount) {
   }));
   if (failure) throw failure;
   return results;
+}
+
+async function renderWithTechnicalRetry(slug) {
+  const maximumAttempts = 3;
+  for (let attempt = 1; attempt <= maximumAttempts; attempt += 1) {
+    try {
+      await run(python, ["scripts/generate-social-assets.py", slug]);
+      return attempt;
+    } catch (error) {
+      if (attempt === maximumAttempts || !isTransientRendererFailure(error)) throw error;
+      console.warn(`RETRY ${attempt}/${maximumAttempts - 1} — ${slug}: transient local renderer failure`);
+      await delay(350 * attempt);
+    }
+  }
+  return maximumAttempts;
+}
+
+function isTransientRendererFailure(error) {
+  const message = String(error?.message || error);
+  return /ImportError: cannot import name ['"]Image['"] from ['"]PIL['"]|spawn EPERM|resource temporarily unavailable/i.test(message);
+}
+
+function delay(milliseconds) {
+  return new Promise(resolve => setTimeout(resolve, milliseconds));
 }
 
 async function timedStage(name, work) {

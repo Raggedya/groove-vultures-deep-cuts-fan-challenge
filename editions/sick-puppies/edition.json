@@ -1,0 +1,190 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Sick Puppies",
+  "editionTitle": "Sick Puppies",
+  "description": "SICK PUPPIES - \\\"GOING PLACES\\\" (Official Music Video)\\n🚩NEW ALBUM WAVE THE BULL out early 2025 🚩\\n\\nJOIN THE BAND as Emma, Bryan and Mark will be LIVE on Youtube starting at 11:45am...",
+  "discovery": {
+    "bio": "SICK PUPPIES - \\\"GOING PLACES\\\" (Official Music Video)\\n🚩NEW ALBUM WAVE THE BULL out early 2025 🚩\\n\\nJOIN THE BAND as Emma, Bryan and Mark will be LIVE on Youtube starting at 11:45am...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "sick-puppies",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_d08b8b28b3",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/sick-puppies/instagram-discovery.png",
+    "qrImage": "output/sick-puppies/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "",
+    "spotify": "https://open.spotify.com/artist/7qAcXJgt1PWnxwUgxMdyuk",
+    "instagram": "https://www.instagram.com/sickpuppiesofficial/",
+    "website": "https://sickpuppies.com/",
+    "buyMusic": "",
+    "merchandise": "https://sickpuppies.com/cart",
+    "facebook": "https://www.facebook.com/sickpuppies",
+    "youtube": "https://www.youtube.com/sickpuppies"
+  },
+  "featuredVideo": {
+    "title": "Sick Puppies - HALFWAY HOME (OFFICIAL VISUALIZER)",
+    "youtubeURL": "https://www.youtube.com/watch?v=f-4cfgXTiz4",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:25:02.998Z"
+  },
+  "analytics": {
+    "editionId": "dc_d08b8b28b3",
+    "pageIdentifier": "dc_d08b8b28b3:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_d9b07036-abc9-46ec-afd8-be796783cb26",
+    "submittedAt": "2026-08-03T11:29:10.557Z",
+    "researchCompletedAt": "2026-08-03T11:29:10.792Z",
+    "editionCreatedAt": "2026-08-03T11:29:10.792Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_d08b8b28b3",
+    "tickerBio": "SICK PUPPIES - \\\"GOING PLACES\\\" (OFFICIAL MUSIC VIDEO)\\N🚩NEW ALBUM WAVE THE BULL OUT EARLY 2025 🚩\\N\\NJOIN THE BAND AS EMMA, BRYAN AND MARK WILL BE LIVE ON YOUTUBE STARTING AT 11:45AM EST ON SEPTEMBER 13TH LEADING INTO THE PREMIERE OF \\\"GOING PLACES\\\" MUSIC VIDEO \\N\\NSTREAM THE NEW SONG:",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "spotify-e2b86a88",
+      "youtube-860340c8",
+      "instagram-88d43966",
+      "tiktok-fe408e13",
+      "website-006e0a38",
+      "merchandise-414b309a"
+    ],
+    "marquee": "Sick Puppies",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://sickpuppies.com/",
+    "linkSourceVerifiedAt": "2026-08-03T11:24:53.990Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "website-006e0a38",
+        "sourceTitle": "Skip to content",
+        "label": "Band Website",
+        "detail": "Visit the official website",
+        "url": "https://sickpuppies.com/",
+        "platform": "website",
+        "kind": "website"
+      },
+      {
+        "id": "youtube-860340c8",
+        "sourceTitle": "Video",
+        "label": "Video",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/sickpuppies",
+        "platform": "youtube",
+        "kind": "youtube"
+      },
+      {
+        "id": "contact-8a0636c6",
+        "sourceTitle": "Contact",
+        "label": "Contact",
+        "detail": "Official band enquiries",
+        "url": "https://sickpuppies.com/pages/contact",
+        "platform": "website",
+        "kind": "contact"
+      },
+      {
+        "id": "facebook-9d1535a5",
+        "sourceTitle": "Facebook",
+        "label": "Facebook",
+        "detail": "Follow the band",
+        "url": "https://www.facebook.com/sickpuppies",
+        "platform": "facebook",
+        "kind": "facebook"
+      },
+      {
+        "id": "instagram-88d43966",
+        "sourceTitle": "Instagram",
+        "label": "Instagram",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/sickpuppiesofficial/",
+        "platform": "instagram",
+        "kind": "instagram"
+      },
+      {
+        "id": "tiktok-fe408e13",
+        "sourceTitle": "TikTok",
+        "label": "TikTok",
+        "detail": "Official band clips",
+        "url": "https://www.tiktok.com/@sickpuppies",
+        "platform": "website",
+        "kind": "tiktok"
+      },
+      {
+        "id": "spotify-e2b86a88",
+        "sourceTitle": "Spotify",
+        "label": "Spotify",
+        "detail": "Listen on Spotify",
+        "url": "https://open.spotify.com/artist/7qAcXJgt1PWnxwUgxMdyuk",
+        "platform": "website",
+        "kind": "spotify"
+      },
+      {
+        "id": "merchandise-414b309a",
+        "sourceTitle": "0\" x-text=\"$store.cartCount.count\" x-cloak >",
+        "label": "Buy Merch",
+        "detail": "Official band merchandise",
+        "url": "https://sickpuppies.com/cart",
+        "platform": "merchandise",
+        "kind": "merchandise"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://www.youtube.com/channel/UC7jC42alvQUO4wzCXSgS_jg",
+      "paragraphs": [
+        "SICK PUPPIES - \\\"GOING PLACES\\\" (Official Music Video)\\n🚩NEW ALBUM WAVE THE BULL out early 2025 🚩\\n\\nJOIN THE BAND as Emma, Bryan and Mark will be LIVE on Youtube starting at 11:45am EST on September 13th leading into the premiere of \\\"GOING PLACES\\\" music video \\n\\nStream the new song:"
+      ]
+    }
+  }
+}

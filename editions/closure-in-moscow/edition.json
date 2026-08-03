@@ -1,0 +1,162 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Closure in Moscow",
+  "editionTitle": "Closure in Moscow",
+  "description": "Our new album on 180g 12\\\" vinyl pressed by Dunk Pressing in Belgium\\n\\nFeatures a 16-page insert with original artwork by Pablo Lineros, lyrics and liner notes\\n\\nShipping from the...",
+  "discovery": {
+    "bio": "Our new album on 180g 12\\\" vinyl pressed by Dunk Pressing in Belgium\\n\\nFeatures a 16-page insert with original artwork by Pablo Lineros, lyrics and liner notes\\n\\nShipping from the...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "closure-in-moscow",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_576c23c5b1",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/closure-in-moscow/instagram-discovery.png",
+    "qrImage": "output/closure-in-moscow/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "https://bandcamp.com/?from=menubar_logo_logged_out",
+    "spotify": "",
+    "instagram": "",
+    "website": "https://www.closureinmoscow.com/",
+    "buyMusic": "",
+    "merchandise": "https://www.closureinmoscow.com/shop",
+    "facebook": "https://www.facebook.com/closureinmoscow",
+    "youtube": ""
+  },
+  "featuredVideo": {
+    "title": "Closure in Moscow - Keeper of the Lake (Official Music Video)",
+    "youtubeURL": "https://www.youtube.com/watch?v=9hsMPeBayNw",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:28:07.247Z"
+  },
+  "analytics": {
+    "editionId": "dc_576c23c5b1",
+    "pageIdentifier": "dc_576c23c5b1:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_1a9210f9-b5ea-4e8a-a5f6-871affe7dffd",
+    "submittedAt": "2026-08-03T11:29:27.940Z",
+    "researchCompletedAt": "2026-08-03T11:29:28.139Z",
+    "editionCreatedAt": "2026-08-03T11:29:28.139Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_576c23c5b1",
+    "tickerBio": "OUR NEW ALBUM ON 180G 12\\\" VINYL PRESSED BY DUNK PRESSING IN BELGIUM\\N\\NFEATURES A 16-PAGE INSERT WITH ORIGINAL ARTWORK BY PABLO LINEROS, LYRICS AND LINER NOTES\\N\\NSHIPPING FROM THE ALBUM RELEASE FRI 27 OCT\\N\\NVARIANT 1 - DISC 1 BLACK / DISC 2 RED\\N\\NVARIANT 2 - DISC 1 TRANS RED W BLACK MARBLE / DISC 2 TRANS RED W BLACK SPLATTER\\N\\NVARIANT 3 - DISC 1 PURPLE W WHITE SPLATTER / DISC 2 BLUE/BLACK MARBLED W WHITE SPLATTE",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "bandcamp-dbb5841f",
+      "website-768b39f3",
+      "merchandise-33165139",
+      "facebook-3abad5de",
+      "contact-b184b218"
+    ],
+    "marquee": "Closure in Moscow",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://www.closureinmoscow.com/",
+    "linkSourceVerifiedAt": "2026-08-03T11:27:55.876Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "merchandise-33165139",
+        "sourceTitle": "Merch Shop",
+        "label": "Merch Shop",
+        "detail": "Official band merchandise",
+        "url": "https://www.closureinmoscow.com/shop",
+        "platform": "merchandise",
+        "kind": "merchandise"
+      },
+      {
+        "id": "contact-b184b218",
+        "sourceTitle": "Contact",
+        "label": "Contact",
+        "detail": "Official band enquiries",
+        "url": "https://www.closureinmoscow.com/contact",
+        "platform": "website",
+        "kind": "contact"
+      },
+      {
+        "id": "facebook-3abad5de",
+        "sourceTitle": "Facebook",
+        "label": "Facebook",
+        "detail": "Follow the band",
+        "url": "https://www.facebook.com/closureinmoscow",
+        "platform": "facebook",
+        "kind": "facebook"
+      },
+      {
+        "id": "website-768b39f3",
+        "sourceTitle": "Band Website",
+        "label": "Band Website",
+        "detail": "Visit the official website",
+        "url": "https://www.closureinmoscow.com/",
+        "platform": "website",
+        "kind": "website"
+      },
+      {
+        "id": "bandcamp-dbb5841f",
+        "sourceTitle": "Bandcamp",
+        "label": "Bandcamp",
+        "detail": "Listen and buy direct",
+        "url": "https://bandcamp.com/?from=menubar_logo_logged_out",
+        "platform": "website",
+        "kind": "bandcamp"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://closureinmoscow.bandcamp.com/album/soft-hell",
+      "paragraphs": [
+        "Our new album on 180g 12\\\" vinyl pressed by Dunk Pressing in Belgium\\n\\nFeatures a 16-page insert with original artwork by Pablo Lineros, lyrics and liner notes\\n\\nShipping from the album release Fri 27 Oct\\n\\nVariant 1 - Disc 1 Black / Disc 2 Red\\n\\nVariant 2 - Disc 1 Trans Red w black marble / Disc 2 Trans Red w black splatter\\n\\nVariant 3 - Disc 1 Purple w white splatter / Disc 2 Blue/black marbled w white splatte"
+      ]
+    }
+  }
+}

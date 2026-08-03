@@ -1,0 +1,21 @@
+{
+  "ok": true,
+  "schemaVersion": "deep-cuts-jookbox-band-batch/1",
+  "batchId": "jookbox_band_20260803112030_345cbd",
+  "mode": "run",
+  "inputPath": "C:\\Users\\andre\\OneDrive\\Desktop\\JOOKBOX AGGITS\\master database\\JOOKBOX_Master_Database_2026-08-03.csv",
+  "inputFingerprint": "0b0d513fc25f4e3f0f44dc075c514a197732125a2800942083e68a7cda8365bf",
+  "startedAt": "2026-08-03T11:20:30.217Z",
+  "finishedAt": "2026-08-03T11:54:15.233Z",
+  "recipient": "andrewharris501@gmail.com",
+  "qrArtworkVariant": "aggits-character-poster/1",
+  "counts": {
+    "total": 130,
+    "verified": 87,
+    "configured": 87,
+    "rejected": 43,
+    "technicalFailures": 0,
+    "skippedExisting": 0
+  },
+  "report": "reports/JOOKBOX_BAND_YOUTUBE_VERIFICATION.csv"
+}

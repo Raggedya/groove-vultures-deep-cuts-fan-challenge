@@ -1,0 +1,120 @@
+{
+  "bandName": "The Waifs",
+  "slug": "the-waifs",
+  "editionId": "dc_a9e2250ba8",
+  "verifiedAt": "2026-08-03T11:47:04.498Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Fthewaifs",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:15.596Z",
+      "evidence": "The page identified The Waifs and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/5uKeKhwXi2w5cXdtoSaqjz",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:14.995Z",
+      "evidence": "The page identified The Waifs and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UC6bdVeyVd0puszMcj2nW7pw",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:15.239Z",
+      "evidence": "The page identified The Waifs and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:spotify-6c4d84f5",
+      "url": "https://open.spotify.com/artist/5uKeKhwXi2w5cXdtoSaqjz",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:14.995Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched The Waifs."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/5uKeKhwXi2w5cXdtoSaqjz",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:14.995Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched The Waifs."
+    },
+    {
+      "destination": "selection:youtube-98f886b2",
+      "url": "https://www.youtube.com/channel/UC6bdVeyVd0puszMcj2nW7pw",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:15.239Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched The Waifs."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/channel/UC6bdVeyVd0puszMcj2nW7pw",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:15.239Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched The Waifs."
+    },
+    {
+      "destination": "selection:merchandise-b415e1a2",
+      "url": "https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.meta.com%2F&h=AUDAw1U1mkUG_3CSmyZJDZpd42UfHe2DOngmHrgF-BMk7yZVCDo-oz_JaY0kiIpn78D1sIumJcgIbUPbynNZHT529ohEg6CdDGaSvHMVttId0G1dawMy8XW5x2cQqrXif9MjQUkLF3TojPWmuv7glrroS2gbCHqH",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:18.998Z",
+      "evidence": "Buy Merch resolved directly from an identity-matched artist-controlled source for The Waifs."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.meta.com%2F&h=AUDAw1U1mkUG_3CSmyZJDZpd42UfHe2DOngmHrgF-BMk7yZVCDo-oz_JaY0kiIpn78D1sIumJcgIbUPbynNZHT529ohEg6CdDGaSvHMVttId0G1dawMy8XW5x2cQqrXif9MjQUkLF3TojPWmuv7glrroS2gbCHqH",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:18.998Z",
+      "evidence": "Buy Merch resolved directly from an identity-matched artist-controlled source for The Waifs."
+    },
+    {
+      "destination": "selection:facebook-0402af7d",
+      "url": "https://www.facebook.com/lite/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:19.421Z",
+      "evidence": "Facebook resolved directly from an identity-matched artist-controlled source for The Waifs."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/lite/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:19.421Z",
+      "evidence": "Facebook resolved directly from an identity-matched artist-controlled source for The Waifs."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.youtube.com/channel/UC6bdVeyVd0puszMcj2nW7pw",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:23.822Z",
+      "evidence": "The official source supplied the concise biography text used by the The Waifs ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=8sP_JQV8er0",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:23.408Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured The Waifs video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Fthewaifs",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:15.596Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for The Waifs."
+    }
+  ]
+}

@@ -700,6 +700,28 @@ def create_jookbox_qr(config: dict, destination: Path) -> str:
     edition_id = config.get("analytics", {}).get("editionId")
     url = f"{base_url}/q/{edition_id}"
     node = os.environ.get("DEEP_CUTS_NODE", "node")
+    if config.get("jookBox", {}).get("qrArtworkVariant") == "aggits-character-poster/1":
+        subprocess.run([
+            node,
+            str(ROOT / "scripts" / "render-character-jookbox-qr.mjs"),
+            "--title", str(config["bandName"]),
+            "--destination", url,
+            "--output", str(destination),
+        ], cwd=ROOT, check=True, capture_output=True, text=True)
+        with Image.open(destination) as rendered:
+            if rendered.size != (1254, 1254):
+                raise SystemExit("The character JookBox QR poster must remain 1254 x 1254.")
+            if zxingcpp is not None:
+                full_scan = zxingcpp.read_barcode(rendered)
+                phone_scan = zxingcpp.read_barcode(rendered.resize((627, 627), Image.Resampling.LANCZOS))
+                compact_scan = zxingcpp.read_barcode(rendered.resize((360, 360), Image.Resampling.LANCZOS))
+                if full_scan is None or full_scan.text != url:
+                    raise SystemExit(f"Rendered character JookBox QR scan-back failed for {destination}")
+                if phone_scan is None or phone_scan.text != url:
+                    raise SystemExit(f"Phone-size character JookBox QR scan-back failed for {destination}")
+                if compact_scan is None or compact_scan.text != url:
+                    raise SystemExit(f"Compact-phone character JookBox QR scan-back failed for {destination}")
+        return url
     result = subprocess.run([node, str(ROOT / "scripts" / "qr-matrix.cjs"), url], cwd=ROOT, check=True, capture_output=True, text=True)
     matrix = json.loads(result.stdout)
     border = 4
@@ -835,7 +857,12 @@ def main() -> None:
         aggits = Image.open(ROOT / config["characterArtwork"]).convert("RGBA")
         create_instagram(config, aggits, instagram)
         verified_url = create_qr(config, aggits, qr_path)
-    qr_width, qr_height = (BAR_QR_WIDTH, BAR_QR_HEIGHT) if config.get("editionType") == "bar_jukebox" else (SIZE, QR_HEIGHT)
+    if config.get("editionType") == "bar_jukebox":
+        qr_width, qr_height = BAR_QR_WIDTH, BAR_QR_HEIGHT
+    elif config.get("editionType") == "jukebox" and config.get("jookBox", {}).get("qrArtworkVariant") == "aggits-character-poster/1":
+        qr_width, qr_height = 1254, 1254
+    else:
+        qr_width, qr_height = SIZE, QR_HEIGHT
     manifest = {
         "slug": slug,
         "bandName": config["bandName"],

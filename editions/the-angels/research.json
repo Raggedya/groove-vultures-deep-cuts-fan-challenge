@@ -1,0 +1,208 @@
+{
+  "bandName": "The Angels",
+  "slug": "the-angels",
+  "editionId": "dc_953dbe5104",
+  "verifiedAt": "2026-08-03T11:33:35.578Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://theangels.com.au/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:26.740Z",
+      "evidence": "The page identified The Angels and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.facebook.com/theangelsofficialpage",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:26.702Z",
+      "evidence": "The page identified The Angels and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/2PeqTZKroEc2oDwTfmB2al",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:26.232Z",
+      "evidence": "The page identified The Angels and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UC6-yLcVzDmS1ngXmoDVJoFg",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:27.144Z",
+      "evidence": "The page identified The Angels and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://theangels.com.au/?s={search_term_string}",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:27.792Z",
+      "evidence": "The page identified The Angels and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://theangels.com.au/?na=s",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:27.659Z",
+      "evidence": "The page identified The Angels and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:website-ec1efb6d",
+      "url": "https://theangels.com.au/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:26.740Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched The Angels."
+    },
+    {
+      "destination": "website",
+      "url": "https://theangels.com.au/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:26.740Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched The Angels."
+    },
+    {
+      "destination": "selection:merchandise-2490ca1b",
+      "url": "https://theangels.com.au/shop/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:29.136Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched The Angels."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://theangels.com.au/shop/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:29.136Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched The Angels."
+    },
+    {
+      "destination": "selection:newsletter-8702bd58",
+      "url": "https://theangels.com.au/newsletter/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:29.084Z",
+      "evidence": "Newsletter resolved directly and its destination metadata matched The Angels."
+    },
+    {
+      "destination": "selection:facebook-826c58e6",
+      "url": "https://www.facebook.com/theangelsofficialpage",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:29.486Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched The Angels."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/theangelsofficialpage",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:29.486Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched The Angels."
+    },
+    {
+      "destination": "selection:youtube-001cc19f",
+      "url": "https://www.youtube.com/theangelsofficialchannel",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:29.219Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched The Angels."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/theangelsofficialchannel",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:29.219Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched The Angels."
+    },
+    {
+      "destination": "selection:contact-0a06694a",
+      "url": "https://theangels.com.au/private-corporate-events/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:30.136Z",
+      "evidence": "Contact resolved directly and its destination metadata matched The Angels."
+    },
+    {
+      "destination": "contact",
+      "url": "https://theangels.com.au/private-corporate-events/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:30.136Z",
+      "evidence": "Contact resolved directly and its destination metadata matched The Angels."
+    },
+    {
+      "destination": "selection:contact-75368d47",
+      "url": "https://theangels.com.au/wp-json/contact-form-7/v1",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:29.722Z",
+      "evidence": "Contact resolved directly and its destination metadata matched The Angels."
+    },
+    {
+      "destination": "contact",
+      "url": "https://theangels.com.au/wp-json/contact-form-7/v1",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:29.722Z",
+      "evidence": "Contact resolved directly and its destination metadata matched The Angels."
+    },
+    {
+      "destination": "selection:show-b81b1324",
+      "url": "https://open.spotify.com/album/3UKOSGXgMPybIzyAPZISap",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:35.367Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched The Angels."
+    },
+    {
+      "destination": "selection:spotify-ab89158b",
+      "url": "https://open.spotify.com/artist/2PeqTZKroEc2oDwTfmB2al/concerts",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:35.558Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched The Angels."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/2PeqTZKroEc2oDwTfmB2al/concerts",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:35.558Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched The Angels."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.facebook.com/theangelsofficialpage",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:36.281Z",
+      "evidence": "The official source supplied the concise biography text used by the The Angels ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=E72BbXWzXJc",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:35.884Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured The Angels video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://theangels.com.au/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:26.740Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for The Angels."
+    }
+  ]
+}

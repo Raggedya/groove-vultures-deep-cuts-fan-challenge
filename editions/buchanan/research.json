@@ -1,0 +1,144 @@
+{
+  "bandName": "Buchanan",
+  "slug": "buchanan",
+  "editionId": "dc_3cbcecbf7e",
+  "verifiedAt": "2026-08-03T11:29:20.162Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://www.buchananband.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:29.811Z",
+      "evidence": "The page identified Buchanan and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/buchananband/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:29.742Z",
+      "evidence": "The page identified Buchanan and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/5c570XBYBetraAQaO1Xk2j",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:29.397Z",
+      "evidence": "The page identified Buchanan and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UCe9pNt4kh9eMzl26C4J5Q0g",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:29.470Z",
+      "evidence": "The page identified Buchanan and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:website-3c51d71f",
+      "url": "https://www.buchananband.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:29.811Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Buchanan."
+    },
+    {
+      "destination": "website",
+      "url": "https://www.buchananband.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:29.811Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Buchanan."
+    },
+    {
+      "destination": "selection:youtube-c3b5bc64",
+      "url": "https://www.youtube.com/user/buchananofficial",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:30.241Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Buchanan."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/user/buchananofficial",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:30.241Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Buchanan."
+    },
+    {
+      "destination": "selection:instagram-5cd684ff",
+      "url": "https://www.instagram.com/buchananband",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:30.424Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Buchanan."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/buchananband",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:30.424Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Buchanan."
+    },
+    {
+      "destination": "selection:facebook-b86d07f4",
+      "url": "https://www.facebook.com/OfficialBuchanan/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:31.457Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Buchanan."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/OfficialBuchanan/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:31.457Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Buchanan."
+    },
+    {
+      "destination": "selection:spotify-b623c8c1",
+      "url": "https://open.spotify.com/artist/5c570XBYBetraAQaO1Xk2j",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:30.067Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Buchanan."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/5c570XBYBetraAQaO1Xk2j",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:30.067Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Buchanan."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.youtube.com/channel/UCe9pNt4kh9eMzl26C4J5Q0g",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:37.711Z",
+      "evidence": "The official source supplied the concise biography text used by the Buchanan ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=GVrTuq-hUOk",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:37.250Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Buchanan video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://www.buchananband.com/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:29.811Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Buchanan."
+    }
+  ]
+}

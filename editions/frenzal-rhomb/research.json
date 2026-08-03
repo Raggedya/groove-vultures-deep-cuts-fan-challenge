@@ -1,0 +1,200 @@
+{
+  "bandName": "Frenzal Rhomb",
+  "slug": "frenzal-rhomb",
+  "editionId": "dc_a800c6bad5",
+  "verifiedAt": "2026-08-03T11:28:54.889Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://frenzalrhomb.net/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:12.103Z",
+      "evidence": "The page identified Frenzal Rhomb and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://frenzalrhomb.bandcamp.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:11.659Z",
+      "evidence": "The page identified Frenzal Rhomb and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/frenzalofficial/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:11.782Z",
+      "evidence": "The page identified Frenzal Rhomb and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UCL3qFVJYh-tks9GeQG9ioow",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:11.426Z",
+      "evidence": "The page identified Frenzal Rhomb and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://linktr.ee/FrenzalRhomb",
+      "sourceType": "official artist-controlled link hub",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:12.373Z",
+      "evidence": "The page identified Frenzal Rhomb and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:website-0e272438",
+      "url": "https://frenzalrhomb.net/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:12.103Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Frenzal Rhomb."
+    },
+    {
+      "destination": "website",
+      "url": "https://frenzalrhomb.net/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:12.103Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Frenzal Rhomb."
+    },
+    {
+      "destination": "selection:merchandise-51a5d2b2",
+      "url": "https://artistfirst.com.au/collections/frenzal-rhomb",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:13.412Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Frenzal Rhomb."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://artistfirst.com.au/collections/frenzal-rhomb",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:13.412Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Frenzal Rhomb."
+    },
+    {
+      "destination": "selection:youtube-cfed0822",
+      "url": "https://www.youtube.com/watch?v=XmVnJEpXGV0&feature=youtu.be",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:14.039Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Frenzal Rhomb."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/watch?v=XmVnJEpXGV0&feature=youtu.be",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:14.039Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Frenzal Rhomb."
+    },
+    {
+      "destination": "selection:instagram-7741c2b8",
+      "url": "https://www.instagram.com/frenzalofficial",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:13.091Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Frenzal Rhomb."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/frenzalofficial",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:13.091Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Frenzal Rhomb."
+    },
+    {
+      "destination": "selection:facebook-3537c28f",
+      "url": "https://www.facebook.com/FrenzalRhomb/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:14.182Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Frenzal Rhomb."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/FrenzalRhomb/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:14.182Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Frenzal Rhomb."
+    },
+    {
+      "destination": "selection:spotify-b74dbf14",
+      "url": "https://open.spotify.com/artist/4cxBQR2C44tnfQ74lpFN7N",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:13.327Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Frenzal Rhomb."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/4cxBQR2C44tnfQ74lpFN7N",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:13.327Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Frenzal Rhomb."
+    },
+    {
+      "destination": "selection:bandcamp-a82a418b",
+      "url": "https://frenzalrhomb.bandcamp.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:11.659Z",
+      "evidence": "Bandcamp resolved directly and its destination metadata matched Frenzal Rhomb."
+    },
+    {
+      "destination": "bandcamp",
+      "url": "https://frenzalrhomb.bandcamp.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:11.659Z",
+      "evidence": "Bandcamp resolved directly and its destination metadata matched Frenzal Rhomb."
+    },
+    {
+      "destination": "selection:contact-782d199b",
+      "url": "https://frenzalrhomb.net/pages/contact/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:13.604Z",
+      "evidence": "Contact resolved directly and its destination metadata matched Frenzal Rhomb."
+    },
+    {
+      "destination": "contact",
+      "url": "https://frenzalrhomb.net/pages/contact/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:13.604Z",
+      "evidence": "Contact resolved directly and its destination metadata matched Frenzal Rhomb."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.youtube.com/channel/UCL3qFVJYh-tks9GeQG9ioow",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:20.675Z",
+      "evidence": "The official source supplied the concise biography text used by the Frenzal Rhomb ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=-ttj61BnePk",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:20.389Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Frenzal Rhomb video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://frenzalrhomb.net/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:12.103Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Frenzal Rhomb."
+    }
+  ]
+}

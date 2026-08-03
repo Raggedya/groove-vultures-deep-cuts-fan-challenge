@@ -1,0 +1,172 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Gang Gajang",
+  "editionTitle": "Gang Gajang",
+  "description": "@ganggajang 40th Anniversary Party at the @bridgehotelrozelle on FRIDAY 3 OCTOBER 2025! 🐨 GANGgajang, the iconic Australian band, has etched its indelible mark on the country’s music...",
+  "discovery": {
+    "bio": "@ganggajang 40th Anniversary Party at the @bridgehotelrozelle on FRIDAY 3 OCTOBER 2025! 🐨 GANGgajang, the iconic Australian band, has etched its indelible mark on the country’s music...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "gang-gajang",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_a3b328b255",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/gang-gajang/instagram-discovery.png",
+    "qrImage": "output/gang-gajang/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "",
+    "spotify": "",
+    "instagram": "https://www.instagram.com/Ganggajang/",
+    "website": "https://ganggajang.com/",
+    "buyMusic": "https://ganggajang.com/discography/",
+    "merchandise": "",
+    "facebook": "https://www.facebook.com/GANGgajang",
+    "youtube": "https://www.youtube.com/user/GANGgajangOfficial?feature=mhum"
+  },
+  "featuredVideo": {
+    "title": "GANGgajang - Speak To Me (lyric)",
+    "youtubeURL": "https://www.youtube.com/watch?v=F2sGdr0dnWc",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:27:41.231Z"
+  },
+  "analytics": {
+    "editionId": "dc_a3b328b255",
+    "pageIdentifier": "dc_a3b328b255:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_9313abc5-e469-4e86-8a5b-3131fb889eb7",
+    "submittedAt": "2026-08-03T11:29:25.923Z",
+    "researchCompletedAt": "2026-08-03T11:29:26.122Z",
+    "editionCreatedAt": "2026-08-03T11:29:26.122Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_a3b328b255",
+    "tickerBio": "@GANGGAJANG 40TH ANNIVERSARY PARTY AT THE @BRIDGEHOTELROZELLE ON FRIDAY 3 OCTOBER 2025! 🐨 GANGGAJANG, THE ICONIC AUSTRALIAN BAND, HAS ETCHED ITS INDELIBLE MARK ON THE COUNTRY’S MUSIC LANDSCAPE, CAPTIVATING AUDIENCES FOR FOUR DECADES WITH THEIR UNIQUE BLEND OF ROCK, POP, AND NUANCED STORYTELLING. FORMED IN 1984, GANGGAJANG‘S DISTINCTIVE SOUND AND THOUGHT-PROVOKING LYRICS HAVE MADE THEM A BELOVED AND ENDURING PRESENCE",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "youtube-59119d45",
+      "instagram-ca5360eb",
+      "website-e0ef630f",
+      "buy_music-18d42e6f",
+      "facebook-070f9d18",
+      "contact-fd98a202"
+    ],
+    "marquee": "Gang Gajang",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://ganggajang.com/",
+    "linkSourceVerifiedAt": "2026-08-03T11:27:33.201Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "buy_music-18d42e6f",
+        "sourceTitle": "Discography",
+        "label": "Discography",
+        "detail": "Purchase music online",
+        "url": "https://ganggajang.com/discography/",
+        "platform": "website",
+        "kind": "buy_music"
+      },
+      {
+        "id": "youtube-59119d45",
+        "sourceTitle": "Videos",
+        "label": "Videos",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/user/GANGgajangOfficial?feature=mhum",
+        "platform": "youtube",
+        "kind": "youtube"
+      },
+      {
+        "id": "contact-fd98a202",
+        "sourceTitle": "Contact",
+        "label": "Contact",
+        "detail": "Official band enquiries",
+        "url": "https://ganggajang.com/contact/",
+        "platform": "website",
+        "kind": "contact"
+      },
+      {
+        "id": "facebook-070f9d18",
+        "sourceTitle": "Facebook",
+        "label": "Facebook",
+        "detail": "Follow the band",
+        "url": "https://www.facebook.com/GANGgajang",
+        "platform": "facebook",
+        "kind": "facebook"
+      },
+      {
+        "id": "instagram-ca5360eb",
+        "sourceTitle": "Instagram",
+        "label": "Instagram",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/Ganggajang/",
+        "platform": "instagram",
+        "kind": "instagram"
+      },
+      {
+        "id": "website-e0ef630f",
+        "sourceTitle": "Band Website",
+        "label": "Band Website",
+        "detail": "Visit the official website",
+        "url": "https://ganggajang.com/",
+        "platform": "website",
+        "kind": "website"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://www.instagram.com/ganggajang/",
+      "paragraphs": [
+        "@ganggajang 40th Anniversary Party at the @bridgehotelrozelle on FRIDAY 3 OCTOBER 2025! 🐨 GANGgajang, the iconic Australian band, has etched its indelible mark on the country’s music landscape, captivating audiences for four decades with their unique blend of rock, pop, and nuanced storytelling. Formed in 1984, GANGgajang‘s distinctive sound and thought-provoking lyrics have made them a beloved and enduring presence"
+      ]
+    }
+  }
+}

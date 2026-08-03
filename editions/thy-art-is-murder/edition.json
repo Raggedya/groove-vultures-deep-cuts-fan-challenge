@@ -1,0 +1,162 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Thy Art Is Murder",
+  "editionTitle": "Thy Art Is Murder",
+  "description": "Australia's THY ART IS MURDER has ascended to extreme metal's top-tier with a meteoric rise matching humanity's descent into doom. Their savage blackened death metal, combined with...",
+  "discovery": {
+    "bio": "Australia's THY ART IS MURDER has ascended to extreme metal's top-tier with a meteoric rise matching humanity's descent into doom. Their savage blackened death metal, combined with...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "thy-art-is-murder",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_a6a36d7c00",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/thy-art-is-murder/instagram-discovery.png",
+    "qrImage": "output/thy-art-is-murder/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "",
+    "spotify": "",
+    "instagram": "",
+    "website": "https://www.thyartismurder.net/",
+    "buyMusic": "",
+    "merchandise": "https://www.thyartismurder.net/merch",
+    "facebook": "https://www.facebook.com/help/instagram/261704639352628",
+    "youtube": ""
+  },
+  "featuredVideo": {
+    "title": "Kevin Goes Hard: Daily Tour Gym Routine (What’s Your Excuse?)",
+    "youtubeURL": "https://www.youtube.com/watch?v=NRqa1kybOyU",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:33:34.167Z"
+  },
+  "analytics": {
+    "editionId": "dc_a6a36d7c00",
+    "pageIdentifier": "dc_a6a36d7c00:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_b454c93e-0693-4d55-b04b-5719538df1e2",
+    "submittedAt": "2026-08-03T11:29:28.521Z",
+    "researchCompletedAt": "2026-08-03T11:33:40.555Z",
+    "editionCreatedAt": "2026-08-03T11:33:40.555Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_a6a36d7c00",
+    "tickerBio": "AUSTRALIA'S THY ART IS MURDER HAS ASCENDED TO EXTREME METAL'S TOP-TIER WITH A METEORIC RISE MATCHING HUMANITY'S DESCENT INTO DOOM. THEIR SAVAGE BLACKENED DEATH METAL, COMBINED WITH THOUGHT-PROVOKING SOCIAL COMMENTARY, INVITES AUDIENCES TO EXPERIENCE A FRESH ARMAGEDDON IN A DIVIDED POSTMODERN DYSTOPIA. \"GODLIKE,\" THEIR SIXTH FULL-LENGTH ALBUM, EXPLORES NEW SONIC DEPTHS WITHOUT SACRIFICING THEIR TRADEMARK INTENSITY. JO",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "website-0725e35c",
+      "merchandise-8cefa1fd",
+      "facebook-170ce6c6",
+      "newsletter-2672cc12",
+      "contact-8c67ba44"
+    ],
+    "marquee": "Thy Art Is Murder",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://www.thyartismurder.net/",
+    "linkSourceVerifiedAt": "2026-08-03T11:33:26.197Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "website-0725e35c",
+        "sourceTitle": "Home",
+        "label": "Home",
+        "detail": "Visit the official website",
+        "url": "https://www.thyartismurder.net/",
+        "platform": "website",
+        "kind": "website"
+      },
+      {
+        "id": "merchandise-8cefa1fd",
+        "sourceTitle": "Merch",
+        "label": "Merch",
+        "detail": "Official band merchandise",
+        "url": "https://www.thyartismurder.net/merch",
+        "platform": "merchandise",
+        "kind": "merchandise"
+      },
+      {
+        "id": "contact-8c67ba44",
+        "sourceTitle": "Contact",
+        "label": "Contact",
+        "detail": "Official band enquiries",
+        "url": "https://www.thyartismurder.net/contact",
+        "platform": "website",
+        "kind": "contact"
+      },
+      {
+        "id": "newsletter-2672cc12",
+        "sourceTitle": "Newsletter",
+        "label": "Newsletter",
+        "detail": "Join the official mailing list",
+        "url": "https://www.thyartismurder.net/newsletter",
+        "platform": "website",
+        "kind": "newsletter"
+      },
+      {
+        "id": "facebook-170ce6c6",
+        "sourceTitle": "Contact Uploading & Non-Users",
+        "label": "Contact Uploading & Non-Users",
+        "detail": "Follow the band",
+        "url": "https://www.facebook.com/help/instagram/261704639352628",
+        "platform": "facebook",
+        "kind": "facebook"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://www.youtube.com/channel/UCGjEbsGoyWSJlMjzuWM4FKQ",
+      "paragraphs": [
+        "Australia's THY ART IS MURDER has ascended to extreme metal's top-tier with a meteoric rise matching humanity's descent into doom. Their savage blackened death metal, combined with thought-provoking social commentary, invites audiences to experience a fresh Armageddon in a divided postmodern dystopia. \"Godlike,\" their sixth full-length album, explores new sonic depths without sacrificing their trademark intensity. Jo"
+      ]
+    }
+  }
+}

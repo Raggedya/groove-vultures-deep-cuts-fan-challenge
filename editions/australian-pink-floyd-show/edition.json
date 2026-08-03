@@ -1,0 +1,162 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Australian Pink Floyd Show",
+  "editionTitle": "Australian Pink Floyd Show",
+  "description": "Having sold over five million tickets to concerts that have taken place in 35 countries, The Australian Pink Floyd Show is rightfully hailed as one of the most in demand touring entities...",
+  "discovery": {
+    "bio": "Having sold over five million tickets to concerts that have taken place in 35 countries, The Australian Pink Floyd Show is rightfully hailed as one of the most in demand touring entities...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "australian-pink-floyd-show",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_0b0dc0187e",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/australian-pink-floyd-show/instagram-discovery.png",
+    "qrImage": "output/australian-pink-floyd-show/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "",
+    "spotify": "",
+    "instagram": "https://www.instagram.com/australianpinkfloyd",
+    "website": "",
+    "buyMusic": "",
+    "merchandise": "",
+    "facebook": "https://www.facebook.com/australianpinkfloyd",
+    "youtube": "https://www.youtube.com/aussiefloyd"
+  },
+  "featuredVideo": {
+    "title": "Us And Them - The Dark Side Of The Moon Live 2023 - Performed By The Australian Pink Floyd Show",
+    "youtubeURL": "https://www.youtube.com/watch?v=Mp-LMEFnYLw",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:21:10.260Z"
+  },
+  "analytics": {
+    "editionId": "dc_0b0dc0187e",
+    "pageIdentifier": "dc_0b0dc0187e:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_c1fd16e0-af24-49a2-94db-9667a5a8973f",
+    "submittedAt": "2026-08-03T11:28:54.204Z",
+    "researchCompletedAt": "2026-08-03T11:28:54.285Z",
+    "editionCreatedAt": "2026-08-03T11:28:54.285Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_0b0dc0187e",
+    "tickerBio": "HAVING SOLD OVER FIVE MILLION TICKETS TO CONCERTS THAT HAVE TAKEN PLACE IN 35 COUNTRIES, THE AUSTRALIAN PINK FLOYD SHOW IS RIGHTFULLY HAILED AS ONE OF THE MOST IN DEMAND TOURING ENTITIES CURRENTLY OPERATING, THE TIMES NEWSPAPER IN LONDON DESCRIBED THEM AS “THE GOLD STANDARD”. THIS ACT IS SO GOOD THEY WERE EVEN ENGAGED BY DAVID GILMOUR TO PERFORM AT HIS 50TH BIRTHDAY CELEBRATION! SOMETHING NO OTHER TRIBUTE ACT CAN CLA",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "youtube-8f2c2acd",
+      "instagram-ab497781",
+      "facebook-f529405f",
+      "newsletter-4b04ede3",
+      "contact-a453b86b"
+    ],
+    "marquee": "Australian Pink Floyd Show",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://www.aussiefloyd.com/",
+    "linkSourceVerifiedAt": "2026-08-03T11:20:56.988Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "contact-a453b86b",
+        "sourceTitle": "Contact",
+        "label": "Contact",
+        "detail": "Official band enquiries",
+        "url": "https://www.aussiefloyd.com/contact",
+        "platform": "website",
+        "kind": "contact"
+      },
+      {
+        "id": "newsletter-4b04ede3",
+        "sourceTitle": "Mailing List",
+        "label": "Mailing List",
+        "detail": "Join the official mailing list",
+        "url": "https://www.aussiefloyd.com/mailing-list",
+        "platform": "website",
+        "kind": "newsletter"
+      },
+      {
+        "id": "facebook-f529405f",
+        "sourceTitle": "Facebook",
+        "label": "Facebook",
+        "detail": "Follow the band",
+        "url": "https://www.facebook.com/australianpinkfloyd",
+        "platform": "facebook",
+        "kind": "facebook"
+      },
+      {
+        "id": "youtube-8f2c2acd",
+        "sourceTitle": "YouTube",
+        "label": "YouTube",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/aussiefloyd",
+        "platform": "youtube",
+        "kind": "youtube"
+      },
+      {
+        "id": "instagram-ab497781",
+        "sourceTitle": "Instagram",
+        "label": "Instagram",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/australianpinkfloyd",
+        "platform": "instagram",
+        "kind": "instagram"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://www.aussiefloyd.com/",
+      "paragraphs": [
+        "Having sold over five million tickets to concerts that have taken place in 35 countries, The Australian Pink Floyd Show is rightfully hailed as one of the most in demand touring entities currently operating, The Times Newspaper in London described them as “The Gold Standard”. This act is so good they were even engaged by David Gilmour to perform at his 50th birthday celebration! Something no other tribute act can cla"
+      ]
+    }
+  }
+}

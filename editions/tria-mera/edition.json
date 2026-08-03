@@ -1,0 +1,152 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Tria Mera",
+  "editionTitle": "Tria Mera",
+  "description": "The brainchild of Juz Cook, Tria Mera is the product of five years of hard work, dedication and carefully searching and selecting the right musicians to complete the current line-up....",
+  "discovery": {
+    "bio": "The brainchild of Juz Cook, Tria Mera is the product of five years of hard work, dedication and carefully searching and selecting the right musicians to complete the current line-up....",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "tria-mera",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_c6d9576775",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/tria-mera/instagram-discovery.png",
+    "qrImage": "output/tria-mera/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "https://triamera.bandcamp.com/",
+    "spotify": "",
+    "instagram": "",
+    "website": "",
+    "buyMusic": "",
+    "merchandise": "https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.meta.com%2F&h=AUD_obhtrOQedVG1N-zG9BpJJOtJJSYYjkS2FbwMXWopjTEW17UqAvXG7iiXvLS14D7qDUa7fGCcPjk8ZvzBZfIRx8-zHlH0pYMBnR4de7O3VV4T-Bv6MCrQj_T9AGoY4J2yanJsZLvvuxFaTXiQjWKNKJZcgIw8",
+    "facebook": "https://www.facebook.com/lite/",
+    "youtube": "https://www.youtube.com/channel/UCRK8amsqIcwxsvdFJ715rEg"
+  },
+  "featuredVideo": {
+    "title": "Tria Mera - Waiting For Destruction (Live at the New Globe Theatre, Brisbane) [2015-12-05]",
+    "youtubeURL": "https://www.youtube.com/watch?v=GmJ_oC9gQH8",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:46:45.548Z"
+  },
+  "analytics": {
+    "editionId": "dc_c6d9576775",
+    "pageIdentifier": "dc_c6d9576775:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_778c6885-629b-4e19-b0ee-02188086ce87",
+    "submittedAt": "2026-08-03T11:47:04.869Z",
+    "researchCompletedAt": "2026-08-03T11:47:04.929Z",
+    "editionCreatedAt": "2026-08-03T11:47:04.929Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_c6d9576775",
+    "tickerBio": "THE BRAINCHILD OF JUZ COOK, TRIA MERA IS THE PRODUCT OF FIVE YEARS OF HARD WORK, DEDICATION AND CAREFULLY SEARCHING AND SELECTING THE RIGHT MUSICIANS TO COMPLETE THE CURRENT LINE-UP. TRIA MERA ARE WITHOUT A DOUBT ONE OF THE MOST PROFESSIONAL AND EXCITING BANDS ON THE LOCAL MUSIC SCENE, BOTH ON AND OFF THE STAGE, AND THEY WILL BE A FORCE TO BE RECKONED WITH IN BOTH BRISBANE AND BEYOND. VOCALS - BEN DAVIS GUITAR - JUZ",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "bandcamp-84f2d1cf",
+      "youtube-284d46af",
+      "merchandise-ef92408e",
+      "facebook-0402af7d"
+    ],
+    "marquee": "Tria Mera",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://triamera.bandcamp.com/",
+    "linkSourceVerifiedAt": "2026-08-03T11:46:37.410Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "bandcamp-84f2d1cf",
+        "sourceTitle": "Bandcamp",
+        "label": "Bandcamp",
+        "detail": "Listen and buy direct",
+        "url": "https://triamera.bandcamp.com/",
+        "platform": "website",
+        "kind": "bandcamp"
+      },
+      {
+        "id": "youtube-284d46af",
+        "sourceTitle": "YouTube",
+        "label": "YouTube",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/channel/UCRK8amsqIcwxsvdFJ715rEg",
+        "platform": "youtube",
+        "kind": "youtube"
+      },
+      {
+        "id": "merchandise-ef92408e",
+        "sourceTitle": "Meta Store",
+        "label": "Meta Store",
+        "detail": "Official band merchandise",
+        "url": "https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.meta.com%2F&h=AUD_obhtrOQedVG1N-zG9BpJJOtJJSYYjkS2FbwMXWopjTEW17UqAvXG7iiXvLS14D7qDUa7fGCcPjk8ZvzBZfIRx8-zHlH0pYMBnR4de7O3VV4T-Bv6MCrQj_T9AGoY4J2yanJsZLvvuxFaTXiQjWKNKJZcgIw8",
+        "platform": "merchandise",
+        "kind": "merchandise"
+      },
+      {
+        "id": "facebook-0402af7d",
+        "sourceTitle": "Facebook Lite",
+        "label": "Facebook Lite",
+        "detail": "Follow the band",
+        "url": "https://www.facebook.com/lite/",
+        "platform": "facebook",
+        "kind": "facebook"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://www.youtube.com/channel/UCRK8amsqIcwxsvdFJ715rEg",
+      "paragraphs": [
+        "The brainchild of Juz Cook, Tria Mera is the product of five years of hard work, dedication and carefully searching and selecting the right musicians to complete the current line-up. Tria Mera are without a doubt one of the most professional and exciting bands on the local music scene, both on and off the stage, and they will be a force to be reckoned with in both Brisbane and beyond. Vocals - Ben Davis Guitar - Juz"
+      ]
+    }
+  }
+}

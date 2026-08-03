@@ -26,7 +26,8 @@ const packagedFiles=new Set([
   "/assets/jookbox-bar-heritage-brass-v1.png",
   "/assets/jookbox-venue-qr-master-v1.png",
   "/assets/audio/jukebox-real-coin-insert-cc0.mp3",
-  "/assets/audio/jukebox-real-coin-insert-cc0.LICENSE.txt"
+  "/assets/audio/jukebox-real-coin-insert-cc0.LICENSE.txt",
+  "/assets/js/jookbox-coin-audio.js"
 ]);
 
 function shouldIgnore(filePath){
