@@ -32,6 +32,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - name: Install production Node dependencies
+        run: npm ci --omit=dev
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -45,7 +47,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: output
-          key: deep-cuts-artwork-v1-${{ runner.os }}-${{ hashFiles('platform.json', 'editions/**', 'assets/**', 'scripts/build-delivery-assets.mjs', 'scripts/generate-social-assets.py', 'scripts/verify-delivery-assets.py', 'scripts/qr-matrix.cjs', 'scripts/vendor/qrcode.min.js', 'requirements.txt') }}
+          key: deep-cuts-artwork-v1-${{ runner.os }}-${{ hashFiles('platform.json', 'editions/**', 'assets/**', 'scripts/build-delivery-assets.mjs', 'scripts/generate-social-assets.py', 'scripts/render-character-jookbox-qr.mjs', 'scripts/verify-delivery-assets.py', 'scripts/qr-matrix.cjs', 'scripts/vendor/qrcode.min.js', 'package-lock.json', 'requirements.txt') }}
       - name: Generate scan-tested delivery artwork
         if: steps.artwork_cache.outputs.cache-hit != 'true'
         run: node scripts/build-delivery-assets.mjs --validated --dependencies-ready --jobs 2 --profile .deep-cuts/artwork-profile.json
