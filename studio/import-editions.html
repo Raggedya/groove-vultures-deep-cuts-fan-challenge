@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#130b06">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Import Editions · Deep Cuts Studio</title>
+  <link rel="stylesheet" href="./import-editions.css">
+</head>
+<body>
+  <header class="import-header">
+    <a href="/studio/" class="wordmark"><span>DEEP CUTS</span><strong>STUDIO</strong></a>
+    <div><p>ADMINISTRATOR TOOL</p><h1>Import Editions</h1></div>
+    <a href="/studio/" class="back-link">← STUDIO</a>
+  </header>
+
+  <main>
+    <section class="panel intro-panel" aria-labelledby="upload-title">
+      <div class="section-heading"><div><p class="eyebrow">STEP 1 · SOURCE</p><h2 id="upload-title">Upload the master data</h2></div><span class="state-pill" id="upload-state">WAITING</span></div>
+      <p>Choose the import-ready CSV or the Excel master workbook. Excel imports read only the <strong>Import Ready</strong> worksheet. Preflight is read-only and creates no editions.</p>
+      <div class="upload-row">
+        <label class="file-control"><span>SELECT CSV OR XLSX</span><input id="import-file" type="file" accept=".csv,.xlsx,text/csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"></label>
+        <button id="run-preflight" type="button" disabled>RUN PREFLIGHT</button>
+      </div>
+      <p class="file-note" id="file-note">Maximum 30 MB · maximum 5,000 source rows · maximum 1,000 drafts per commit</p>
+    </section>
+
+    <section class="panel" id="preflight-panel" hidden aria-labelledby="preflight-title">
+      <div class="section-heading"><div><p class="eyebrow">STEP 2 · PREFLIGHT</p><h2 id="preflight-title">Review before writing drafts</h2></div><a id="error-report" class="download-link" href="#" hidden>DOWNLOAD ERROR CSV</a></div>
+      <div class="summary-grid" id="summary-grid"></div>
+      <div class="filter-grid" aria-label="Import filters">
+        <label>Entity group<select id="filter-group"></select></label>
+        <label>Category<select id="filter-category"></select></label>
+        <label>Subcategory<select id="filter-subcategory"></select></label>
+        <label>Country<select id="filter-country"></select></label>
+        <label>State / region<select id="filter-state"></select></label>
+        <label>Readiness<select id="filter-readiness"></select></label>
+      </div>
+      <div class="selection-toolbar">
+        <label class="check"><input id="select-visible" type="checkbox"> Select every eligible row currently shown</label>
+        <span id="selection-count">0 selected</span>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th scope="col">Use</th><th scope="col">Row</th><th scope="col">Identity</th><th scope="col">Type</th><th scope="col">Four physical buttons</th><th scope="col">Preflight</th></tr></thead>
+          <tbody id="preflight-rows"></tbody>
+        </table>
+      </div>
+      <p class="table-note" id="table-note"></p>
+      <details class="mapping-details"><summary>Exact import mappings</summary><div class="mapping-columns"><div><h3>Icon keys</h3><pre id="icon-mappings"></pre></div><div><h3>Action types</h3><pre id="action-mappings"></pre></div></div></details>
+    </section>
+
+    <section class="panel" id="commit-panel" hidden aria-labelledby="commit-title">
+      <div class="section-heading"><div><p class="eyebrow">STEP 3 · CONFIRM</p><h2 id="commit-title">Create local drafts only</h2></div><span class="draft-lock">NO AUTO-PUBLISH</span></div>
+      <div class="commit-grid">
+        <label>Reimport mode<select id="import-mode"><option value="skip_existing">Skip existing records</option><option value="update_drafts">Update existing drafts</option><option value="create_new_only">Create new records only</option></select></label>
+        <label>Maximum drafts<input id="import-maximum" type="number" min="1" max="1000" value="1000"></label>
+      </div>
+      <label class="confirmation"><input id="confirm-import" type="checkbox"> I confirm that the selected eligible records may be written to Studio as unpublished drafts. Nothing will be published.</label>
+      <button id="commit-import" class="commit-button" type="button" disabled>IMPORT SELECTED DRAFTS</button>
+    </section>
+
+    <section class="panel" id="results-panel" hidden aria-labelledby="results-title">
+      <div class="section-heading"><div><p class="eyebrow">RECONCILIATION</p><h2 id="results-title">Import batch complete</h2></div><a id="reconciliation-report" class="download-link" href="#">DOWNLOAD REPORT CSV</a></div>
+      <div class="summary-grid" id="result-summary"></div>
+      <div id="result-list" class="result-list"></div>
+      <div class="rollback-block"><p>Rollback is recoverable: created drafts are archived and updated drafts are restored from snapshots.</p><button id="rollback-batch" type="button">ROLL BACK THIS BATCH</button></div>
+    </section>
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="./import-editions.js" defer></script>
+</body>
+</html>

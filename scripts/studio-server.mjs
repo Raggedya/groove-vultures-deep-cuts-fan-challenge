@@ -24,8 +24,14 @@ import {
   updateProject
 } from "./studio-model.mjs";
 import {researchStudioJookBox} from "./studio-jookbox-research.mjs";
+import {AGGITS_JUKEBOX_ICONS} from "./aggits-jukebox-icons.mjs";
 import {VenueLibraryError} from "./venue-library.mjs";
 import {createVenueLibraryController} from "./venue-library-server.mjs";
+import {createDirectAggitsJukeboxPublisher} from "./aggits-jukebox-publication.mjs";
+import {
+  AGGITS_IMPORT_MAX_FILE_BYTES,
+  createAggitsJukeboxImportController
+} from "./aggits-jukebox-import.mjs";
 
 const DEFAULT_ROOT=path.resolve(process.env.DEEP_CUTS_ROOT||process.cwd());
 const DEFAULT_DATA=path.resolve(process.env.DEEP_CUTS_STUDIO_DATA_DIR||path.join(DEFAULT_ROOT,".deep-cuts","studio"));
@@ -53,7 +59,8 @@ export function createStudioServer({
   venueFetchImpl=fetch,
   venueDnsLookup,
   venuePublisher,
-  venueCredentialStore
+  venueCredentialStore,
+  aggitsJukeboxPublisher
 }={}){
   const studioRoot=path.join(root,"studio");
   const assetRoot=path.join(root,"assets");
@@ -67,15 +74,24 @@ export function createStudioServer({
     publisher:venuePublisher,
     credentialStore:venueCredentialStore
   });
+  const directAggitsJukeboxPublisher=aggitsJukeboxPublisher||(venueCredentialStore?createDirectAggitsJukeboxPublisher({credentialStore:venueCredentialStore,root,appVersion:process.env.npm_package_version||"3.4.4"}):null);
+  const aggitsPublicationJobs=new Map();
+  const aggitsImporter=createAggitsJukeboxImportController({
+    dataDir,
+    projectRoot,
+    loadProject:id=>loadProject(projectRoot,id),
+    saveProject:project=>saveProject(projectRoot,project),
+    projectDirectory:id=>projectDirectory(projectRoot,id)
+  });
 
   return http.createServer(async(request,response)=>{
     addSecurityHeaders(response);
     try{
       const url=new URL(request.url,`http://${request.headers.host||"127.0.0.1"}`);
       if(url.pathname.startsWith("/api/studio/")){
-        if(request.method!=="GET")authorizeMutation(request,token);
+        if(request.method!=="GET"||url.pathname.startsWith("/api/studio/imports/"))authorizeMutation(request,token);
         if(await venueLibrary.handle({request,response,url}))return;
-        return await handleApi({request,response,url,projectRoot,token,researcher,venueLibrary});
+        return await handleApi({request,response,url,projectRoot,token,researcher,venueLibrary,aggitsJukeboxPublisher:directAggitsJukeboxPublisher,aggitsPublicationJobs,aggitsImporter});
       }
       if(url.pathname==="/studio")return redirect(response,"/studio/");
       if(url.pathname==="/vendor/qrcode.min.js")return await serveFile(response,path.join(root,"scripts","vendor","qrcode.min.js"),path.join(root,"scripts","vendor"));
@@ -90,10 +106,10 @@ export function createStudioServer({
   });
 }
 
-async function handleApi({request,response,url,projectRoot,token,researcher,venueLibrary}){
+async function handleApi({request,response,url,projectRoot,token,researcher,venueLibrary,aggitsJukeboxPublisher,aggitsPublicationJobs,aggitsImporter}){
   if(request.method==="GET"&&url.pathname==="/api/studio/bootstrap"){
     const projects=await listProjects(projectRoot);
-    return sendJson(response,200,{ok:true,token,productTypes:PRODUCT_TYPES,legacyProductTypes:LEGACY_PRODUCT_TYPES,aggitsOptions:AGGITS_OPTIONS,projects});
+    return sendJson(response,200,{ok:true,token,productTypes:PRODUCT_TYPES,legacyProductTypes:LEGACY_PRODUCT_TYPES,aggitsOptions:AGGITS_OPTIONS,aggitsJukeboxIcons:AGGITS_JUKEBOX_ICONS,projects});
   }
   if(request.method==="GET"&&url.pathname==="/api/studio/projects"){
     return sendJson(response,200,{ok:true,projects:await listProjects(projectRoot)});
@@ -104,8 +120,35 @@ async function handleApi({request,response,url,projectRoot,token,researcher,venu
     await saveProject(projectRoot,project);
     return sendProject(response,201,project,request);
   }
+  if(request.method==="POST"&&url.pathname==="/api/studio/imports/preflight"){
+    const bytes=await readBytes(request,AGGITS_IMPORT_MAX_FILE_BYTES);
+    const fileName=decodeURIComponent(String(request.headers["x-studio-file-name"]||"import.csv"));
+    return sendJson(response,201,{ok:true,preflight:await aggitsImporter.preflight({bytes,fileName})});
+  }
+  let importMatch=url.pathname.match(/^\/api\/studio\/imports\/preflights\/(preflight_[a-f0-9]{16})(?:\/(commit|errors\.csv))?$/);
+  if(importMatch){
+    const [,preflightId,action="preflight"]=importMatch;
+    if(request.method==="GET"&&action==="preflight")return sendJson(response,200,{ok:true,preflight:await aggitsImporter.getPreflight(preflightId)});
+    if(request.method==="POST"&&action==="commit"){
+      const body=await readJson(request);
+      return sendJson(response,201,{ok:true,batch:await aggitsImporter.commit({preflightId,...body})});
+    }
+    if(request.method==="GET"&&action==="errors.csv")return sendCsv(response,`${preflightId}-errors.csv`,await aggitsImporter.reportCsv(preflightId,{errorsOnly:true}));
+    throw Object.assign(new Error("Studio import method not allowed."),{code:"method_not_allowed"});
+  }
+  importMatch=url.pathname.match(/^\/api\/studio\/imports\/batches\/(import_\d{14}_[a-f0-9]{8})(?:\/(report\.csv|rollback))?$/);
+  if(importMatch){
+    const [,batchId,action="batch"]=importMatch;
+    if(request.method==="GET"&&action==="batch")return sendJson(response,200,{ok:true,batch:await aggitsImporter.getBatch(batchId)});
+    if(request.method==="GET"&&action==="report.csv")return sendCsv(response,`${batchId}-reconciliation.csv`,await aggitsImporter.reportCsv(batchId));
+    if(request.method==="POST"&&action==="rollback"){
+      const body=await readJson(request);
+      return sendJson(response,200,{ok:true,batch:await aggitsImporter.rollback({batchId,confirmation:body.confirmation})});
+    }
+    throw Object.assign(new Error("Studio import method not allowed."),{code:"method_not_allowed"});
+  }
 
-  const match=url.pathname.match(/^\/api\/studio\/projects\/(studio_[a-f0-9]{12})(?:\/(preview|audio|video|logo|revise|research|handoff|save-publish))?$/);
+  const match=url.pathname.match(/^\/api\/studio\/projects\/(studio_[a-f0-9]{12})(?:\/(preview|audio|video|logo|revise|research|handoff|save-publish|publish|publication))?$/);
   if(!match)throw Object.assign(new Error("Studio route not found."),{code:"ENOENT"});
   const id=assertProjectId(match[1]),action=match[2]||"project";
   const project=await loadProject(projectRoot,id);
@@ -148,6 +191,18 @@ async function handleApi({request,response,url,projectRoot,token,researcher,venu
     const result=await venueLibrary.saveStudioProjectAndPublish({project,videoPath:path.join(projectDirectory(projectRoot,id),"welcome.mp4")});
     return sendJson(response,202,{ok:true,venue:result.venue,created:result.created,job:result.job,readiness:result.readiness});
   }
+  if(request.method==="GET"&&action==="publication")return sendJson(response,200,{ok:true,publication:aggitsPublicationJobs.get(id)||project.publication||null});
+  if(request.method==="POST"&&action==="publish"){
+    if(project.input.type!=="aggits_jukebox")throw new StudioValidationError("This publish control is reserved for the isolated Aggits Jukebox product.","wrong_publish_type");
+    if(!aggitsJukeboxPublisher)throw new StudioValidationError("Protected publishing is available in the installed Windows application.","publisher_unavailable");
+    if(!project.readiness.handoffReady)throw new StudioValidationError(project.readiness.blockers.filter(item=>!/protected publishing workflow/i.test(item)).join(" ")||"Complete the title, ticker, MP4 and actions before publishing.","publication_not_ready");
+    const active=aggitsPublicationJobs.get(id);if(active&&active.status==="running")return sendJson(response,202,{ok:true,publication:active});
+    const videoPath=path.join(projectDirectory(projectRoot,id),"welcome.mp4"),startedAt=new Date().toISOString();
+    const persistPublication=async patch=>{const next={projectId:id,status:"running",stage:"queued",message:"Protected publication queued.",startedAt,...(aggitsPublicationJobs.get(id)||project.publication||{}),...patch,updatedAt:new Date().toISOString()};aggitsPublicationJobs.set(id,next);const stored=await loadProject(projectRoot,id),updated={...stored,publication:next,updatedAt:new Date().toISOString()};await saveProject(projectRoot,updated);return next};
+    const queued=await persistPublication({status:"running",stage:"queued",message:"Allocating the permanent URL and QR identity."});
+    void aggitsJukeboxPublisher.publish({project,videoPath,onProgress:async(stage,message,fields={})=>{await persistPublication({status:"running",stage,message,...fields})}}).then(async result=>{await persistPublication({status:"published",stage:"published",message:"Permanent URL, QR and delivery email confirmed.",...result,publishedAt:new Date().toISOString()})}).catch(async error=>{await persistPublication({status:"failed",stage:"failed",message:error.message,error:error.message,errorCode:error.code||"publication_failed"})});
+    return sendJson(response,202,{ok:true,publication:queued});
+  }
   if(request.method==="POST"&&action==="audio"){
     const fileName=decodeURIComponent(String(request.headers["x-studio-file-name"]||"audio.mp3"));
     if(!/\.mp3$/i.test(fileName))throw new StudioValidationError("Studio currently accepts MP3 files only.","invalid_audio_type");
@@ -161,9 +216,9 @@ async function handleApi({request,response,url,projectRoot,token,researcher,venu
     return sendProject(response,200,updated,request);
   }
   if(request.method==="POST"&&action==="video"){
-    if(project.input.type!=="bar_jukebox")throw new StudioValidationError("Choose Bar Edition before adding a local MP4 welcome video.","wrong_video_type");
+    if(!["bar_jukebox","aggits_jukebox"].includes(project.input.type))throw new StudioValidationError("Choose Bar Edition or Aggits Jukebox before adding a local MP4 welcome video.","wrong_video_type");
     const fileName=decodeURIComponent(String(request.headers["x-studio-file-name"]||"welcome.mp4"));
-    if(!/\.mp4$/i.test(fileName))throw new StudioValidationError("Bar Edition accepts MP4 welcome videos only.","invalid_video_type");
+    if(!/\.mp4$/i.test(fileName))throw new StudioValidationError("This Jukebox model accepts MP4 welcome videos only.","invalid_video_type");
     const directory=projectDirectory(projectRoot,id);
     await fs.mkdir(directory,{recursive:true});
     const temporary=path.join(directory,`welcome-${process.pid}.tmp`);
@@ -413,6 +468,7 @@ function sendHtml(response,html,{scriptNonce=""}={}){
   response.end(html);
 }
 function sendJson(response,status,body){response.writeHead(status,{"content-type":"application/json; charset=utf-8","cache-control":"no-store"});response.end(JSON.stringify(body))}
+function sendCsv(response,fileName,body){response.writeHead(200,{"content-type":"text/csv; charset=utf-8","content-disposition":`attachment; filename="${safeDownloadName(fileName)}"`,"cache-control":"no-store","x-content-type-options":"nosniff"});response.end(body)}
 function safeDownloadName(value){return String(value||"deep-cuts").replace(/[^a-z0-9._-]+/gi,"-").replace(/^-|-$/g,"").slice(0,100)||"deep-cuts"}
 
 const isMain=process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url);

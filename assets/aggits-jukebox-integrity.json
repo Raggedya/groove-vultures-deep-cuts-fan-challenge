@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "deep-cuts-aggits-jukebox-integrity/1",
+  "cabinet": {
+    "path": "assets/aggits-jukebox-master-v1.jpg",
+    "width": 1320,
+    "height": 2390,
+    "sha256": "28806c43ecc8d7eb3ac2216f064f1887d057e939bad1841d62ecbf9a6627373d"
+  },
+  "iconMaster": {
+    "path": "assets/aggits-jukebox-icons-master-v1.jpg",
+    "width": 1320,
+    "height": 1778,
+    "sha256": "021e112589a982df5ea3ee665c1d19edb849dd4758cbf2749522c779d2caf527",
+    "iconCount": 110
+  },
+  "qrMaster": {
+    "path": "assets/aggits-jukebox-qr-master-v1.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "1750e428f4445b7be57b2bcc9ad681681c2c070930b1ade019c237ed68fdb684"
+  }
+}

@@ -21,6 +21,7 @@
       </select>
     </div>
     <div class="header-actions">
+      <a class="header-button header-link" href="/studio/import-editions.html">IMPORT EDITIONS</a>
       <a class="header-button header-link" href="/studio/venue-library.html">VENUE LIBRARY</a>
       <button class="header-button" id="new-project" type="button"><span aria-hidden="true">＋</span> CREATE NEW</button>
     </div>
@@ -79,10 +80,20 @@
             <label class="bar-only-row" hidden><span>04</span><input id="source-label-4" aria-label="Button label 4" maxlength="42" placeholder="Button label"><input id="source-url-4" aria-label="URL 4" inputmode="url" autocomplete="url" placeholder="https://venue-destination.com"></label>
             <label class="bar-only-row" hidden><span>05</span><input id="source-label-5" aria-label="Button label 5" maxlength="42" placeholder="Button label"><input id="source-url-5" aria-label="URL 5" inputmode="url" autocomplete="url" placeholder="https://venue-destination.com"></label>
           </div>
+          <section id="aggits-jukebox-actions" class="aggits-jukebox-actions" aria-labelledby="aggits-jukebox-actions-title" hidden>
+            <span class="field-label" id="aggits-jukebox-actions-title">Four physical action buttons</span>
+            <p class="field-note">Choose one approved vintage-brass icon and action for each fixed position.</p>
+            <div class="aggits-jukebox-action-list">
+              <fieldset class="aggits-jukebox-action" data-action-slot="1"><legend>Button 1</legend><label class="action-enabled"><input type="checkbox" data-action-field="enabled" checked> Enabled</label><label><span>Icon</span><select data-action-field="iconId" aria-label="Button 1 icon"></select></label><label><span>Label</span><input data-action-field="label" maxlength="32" value="CALL US" placeholder="CALL US"></label><label><span>Action</span><select data-action-field="actionType"><option value="web">Website / booking URL</option><option value="tel">Telephone</option><option value="email">Email</option><option value="map">Map / directions URL</option></select></label><label class="action-value"><span>Destination</span><input data-action-field="value" placeholder="https://… or destination value"></label><label class="action-new-tab"><input type="checkbox" data-action-field="openInNewTab" checked> Open web destination in a new tab</label></fieldset>
+              <fieldset class="aggits-jukebox-action" data-action-slot="2"><legend>Button 2</legend><label class="action-enabled"><input type="checkbox" data-action-field="enabled" checked> Enabled</label><label><span>Icon</span><select data-action-field="iconId" aria-label="Button 2 icon"></select></label><label><span>Label</span><input data-action-field="label" maxlength="32" value="BOOK NOW" placeholder="BOOK NOW"></label><label><span>Action</span><select data-action-field="actionType"><option value="web">Website / booking URL</option><option value="tel">Telephone</option><option value="email">Email</option><option value="map">Map / directions URL</option></select></label><label class="action-value"><span>Destination</span><input data-action-field="value" placeholder="https://… or destination value"></label><label class="action-new-tab"><input type="checkbox" data-action-field="openInNewTab" checked> Open web destination in a new tab</label></fieldset>
+              <fieldset class="aggits-jukebox-action" data-action-slot="3"><legend>Button 3</legend><label class="action-enabled"><input type="checkbox" data-action-field="enabled" checked> Enabled</label><label><span>Icon</span><select data-action-field="iconId" aria-label="Button 3 icon"></select></label><label><span>Label</span><input data-action-field="label" maxlength="32" value="UPCOMING GIGS" placeholder="UPCOMING GIGS"></label><label><span>Action</span><select data-action-field="actionType"><option value="web">Website / booking URL</option><option value="tel">Telephone</option><option value="email">Email</option><option value="map">Map / directions URL</option></select></label><label class="action-value"><span>Destination</span><input data-action-field="value" placeholder="https://… or destination value"></label><label class="action-new-tab"><input type="checkbox" data-action-field="openInNewTab" checked> Open web destination in a new tab</label></fieldset>
+              <fieldset class="aggits-jukebox-action" data-action-slot="4"><legend>Button 4</legend><label class="action-enabled"><input type="checkbox" data-action-field="enabled" checked> Enabled</label><label><span>Icon</span><select data-action-field="iconId" aria-label="Button 4 icon"></select></label><label><span>Label</span><input data-action-field="label" maxlength="32" value="MENU" placeholder="MENU"></label><label><span>Action</span><select data-action-field="actionType"><option value="web">Website / booking URL</option><option value="tel">Telephone</option><option value="email">Email</option><option value="map">Map / directions URL</option></select></label><label class="action-value"><span>Destination</span><input data-action-field="value" placeholder="https://… or destination value"></label><label class="action-new-tab"><input type="checkbox" data-action-field="openInNewTab" checked> Open web destination in a new tab</label></fieldset>
+            </div>
+          </section>
           <div id="bar-ticker-field" hidden>
             <label class="field-label spaced" for="bar-ticker">Scrolling ticker</label>
             <textarea id="bar-ticker" rows="3" maxlength="500" placeholder="SHOTKICKERS — LIVE MUSIC, GIGS, DRINKS AND GOOD TIMES IN MELBOURNE."></textarea>
-            <p class="field-note">Administrator-supplied wording only. Bar Edition performs no web lookup.</p>
+            <p class="field-note">Administrator-supplied wording only. Static Jukebox products perform no web lookup.</p>
           </div>
           <div id="bar-about-field" hidden>
             <label class="field-label spaced" for="bar-about">About Us</label>
@@ -100,6 +111,11 @@
             </div>
             <label class="file-button" for="mp4-file">SELECT MP4<input id="mp4-file" type="file" accept=".mp4,video/mp4"></label>
             <button id="remove-video" class="icon-button hidden" type="button" aria-label="Remove supplied welcome video">×</button>
+          </div>
+          <div id="aggits-video-guide" class="aggits-video-guide" hidden>
+            <strong>Camtasia video canvas</strong>
+            <span>7:8 aspect ratio · 1120 × 1280 px recommended · 1680 × 1920 px high resolution</span>
+            <small>Export MP4/H.264. Fill the canvas edge to edge; do not add black padding. The player uses a minimal centre crop only when a source does not match 7:8.</small>
           </div>
           <details class="optional-fields" id="optional-fields">
             <summary><span>Optional media &amp; poster</span><b aria-hidden="true">＋</b></summary>
@@ -135,12 +151,13 @@
         </button>
         <button id="save-publish-venue" class="direct-publish-button" type="button" hidden>
           <span aria-hidden="true">◆</span>
-          <span><strong>SAVE VENUE + PUBLISH</strong><small>One step: save to Venue Library, validate and publish</small></span>
+          <span><strong id="direct-publish-label">SAVE VENUE + PUBLISH</strong><small id="direct-publish-detail">One step: save to Venue Library, validate and publish</small></span>
           <b aria-hidden="true">&gt;</b>
         </button>
         <div id="direct-publish-status" class="direct-publish-status" role="status" aria-live="polite" hidden>
           <span id="direct-publish-message">Ready to save and publish.</span>
           <a id="direct-publish-live" href="#" target="_blank" rel="noopener noreferrer" hidden>OPEN LIVE VENUE</a>
+          <a id="direct-publish-qr" href="#" target="_blank" rel="noopener noreferrer" hidden>OPEN PERMANENT QR</a>
         </div>
       </form>
       <p id="local-note" class="local-note"><span aria-hidden="true">●</span> Drafts and supplied media remain in this computer’s private Studio workspace.</p>
