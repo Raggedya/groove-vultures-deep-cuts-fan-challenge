@@ -38,12 +38,15 @@ const verified={
 };
 const factory=factoryResearchFromStudio(verified);
 assert.equal(factory.editionType,"jukebox");
-assert.equal(factory.jookBox.qrArtworkVariant,"aggits-character-poster/1");
+assert.equal(factory.jookBox.qrArtworkVariant,"aggits-character-poster-perspective/2");
+assert.equal(factory.jookBox.appearanceVariant,"mahogany-jookbox-master/1");
+assert.equal(factory.jookBox.keyBankFormat,"mahogany-four-key/1");
 assert.equal(factory.featuredVideo.youtubeURL,"https://www.youtube.com/watch?v=abcdefghijk");
 assert.equal(factory.jookBox.selections.find(selection=>selection.id==="incomplete-show")?.kind,"website");
-assert.equal(factory.jookBox.displaySelectionIds.includes("incomplete-show"),true);
+assert.equal(factory.jookBox.displaySelectionIds.length,4);
+assert.equal(factory.jookBox.displaySelectionIds.includes("incomplete-show"),false);
 const report=youtubeReportRow({...items[0],status:"configured",research:verified,editionId:"dc_0123456789",liveURL:"https://example.com/e/dc_0123456789"});
 assert.equal(report["Most Popular Verified Video URL"],verified.featuredVideo.youtubeURL);
-assert.equal(report["QR Poster Variant"],"aggits-character-poster/1");
+assert.equal(report["QR Poster Variant"],"aggits-character-poster-perspective/2");
 assert.match(youtubeReportRow({...items[0],status:"technical_failure",blockers:[],reasons:[{message:"Configuration failed."}]} )["Failure / Omission Reason"],/Configuration failed/);
 console.log("Band JookBox batch mapping passed.");

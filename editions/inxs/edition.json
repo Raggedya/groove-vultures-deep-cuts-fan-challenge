@@ -53,8 +53,8 @@
   "jookBox": {
     "modelVersion": "jookbox/3",
     "layoutVersion": "coin-awakening/1",
-    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
-    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "cabinetArtwork": "assets/aggits-jukebox-master-v1.jpg",
+    "cabinetArtworkSha256": "28806c43ecc8d7eb3ac2216f064f1887d057e939bad1841d62ecbf9a6627373d",
     "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
     "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
     "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
@@ -63,7 +63,7 @@
     "tickerBio": "ONE OF THE GREATEST BANDS OF ALL TIME WITH A CAREER SPANNING OVER 40 EXTRAORDINARY YEARS, INXS ARE ONE OF THE WORLD’S GREATEST ROCK BANDS. WITH MORE THAN 70 MILLION RECORDS SOLD WORLDWIDE, COUNTLESS AWARDS FROM BOTH THEIR PEERS & FANS, INCLUDING 7 MTV AWARDS, 3 GRAMMY NOMINATIONS, BRIT AWARDS AND HUNDREDS OF PLATINUM, GOLD AND NOW TWI DIAMOND AWARDS FROM CANADA AND AUSTRALIA. THE BAND, BROTHERS AND FRIENDS FROM SCHOO",
     "tickerDurationSeconds": 36,
     "buttonLightDurationMs": 1100,
-    "keyBankFormat": "six-key/1",
+    "keyBankFormat": "mahogany-four-key/1",
     "autoplayDelayMs": 0,
     "startupTimingsMs": {
       "mechanism": 120,
@@ -76,9 +76,7 @@
       "spotify-8e9195e0",
       "youtube-3108d0c2",
       "instagram-575f048f",
-      "tiktok-325678a4",
-      "website-cf2e5845",
-      "merchandise-6d29d4b0"
+      "tiktok-325678a4"
     ],
     "marquee": "INXS",
     "videoLabel": "Now playing",
@@ -89,17 +87,17 @@
       "Follow",
       "Shop"
     ],
-    "lightSequence": true,
-    "lightSequenceMode": "single-key",
-    "appearanceVariant": "atlas-reference-cabinet/1",
-    "qrArtworkVariant": "aggits-character-poster/1",
+    "lightSequence": false,
+    "lightSequenceMode": "none",
+    "appearanceVariant": "mahogany-jookbox-master/1",
+    "qrArtworkVariant": "aggits-character-poster-perspective/2",
     "supportAction": {
       "action": "share",
-      "label": "Support Our Band",
-      "detail": "Please share our JookBox",
+      "label": "SHARE",
+      "detail": "",
       "kind": "share",
-      "icon": "♡",
-      "detailIcon": "↗"
+      "icon": "",
+      "detailIcon": ""
     },
     "cabinetCopyright": "Copyright Clearlight Creative 2026.",
     "coinStart": true,

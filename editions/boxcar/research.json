@@ -86,19 +86,19 @@
     },
     {
       "destination": "selection:bandcamp-f064c435",
-      "url": "https://efficientspace.bandcamp.com/album/volition-cuts-vol-1",
+      "url": "https://boxcar909.bandcamp.com/",
       "sourceType": "verified direct JookBox destination",
       "identityVerified": true,
-      "verifiedAt": "2026-08-03T11:53:13.143Z",
-      "evidence": "Bandcamp resolved directly and its destination metadata matched Boxcar."
+      "verifiedAt": "2026-08-03T22:30:00.000Z",
+      "evidence": "The direct artist Bandcamp page identifies Boxcar from Sydney, Australia and links the band's catalogue."
     },
     {
       "destination": "bandcamp",
-      "url": "https://efficientspace.bandcamp.com/album/volition-cuts-vol-1",
+      "url": "https://boxcar909.bandcamp.com/",
       "sourceType": "verified direct JookBox destination",
       "identityVerified": true,
-      "verifiedAt": "2026-08-03T11:53:13.143Z",
-      "evidence": "Bandcamp resolved directly and its destination metadata matched Boxcar."
+      "verifiedAt": "2026-08-03T22:30:00.000Z",
+      "evidence": "The direct artist Bandcamp page identifies Boxcar from Sydney, Australia and links the band's catalogue."
     },
     {
       "destination": "selection:spotify-b78ccb02",

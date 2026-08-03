@@ -26,7 +26,7 @@
   },
   "links": {
     "bandcamp": "https://wolfmother.bandcamp.com/",
-    "spotify": "",
+    "spotify": "https://open.spotify.com/artist/3yEnArbNHyTCwMRvD9SBy4",
     "instagram": "https://www.instagram.com/officialwolfmother",
     "website": "https://wolfmother.com/",
     "buyMusic": "",
@@ -53,8 +53,8 @@
   "jookBox": {
     "modelVersion": "jookbox/3",
     "layoutVersion": "coin-awakening/1",
-    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
-    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "cabinetArtwork": "assets/aggits-jukebox-master-v1.jpg",
+    "cabinetArtworkSha256": "28806c43ecc8d7eb3ac2216f064f1887d057e939bad1841d62ecbf9a6627373d",
     "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
     "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
     "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
@@ -63,7 +63,7 @@
     "tickerBio": "WOLFMOTHER 🇦🇺 25-07-2026 WOLFMOTHER IS AN AUSTRALIAN HARD ROCK BAND FROM SYDNEY, FORMED IN 2004. THEY'RE KNOWN FOR BLENDING CLASSIC '70S-INSPIRED HARD ROCK WITH PSYCHEDELIC AND STONER ROCK INFLUENCES. THE BAND'S DRIVING FORCE IS ANDREW STOCKDALE, WHO SINGS, PLAYS GUITAR, AND WRITES MOST OF THE MUSIC. WHILE THE LINEUP HAS CHANGED MANY TIMES OVER THE YEARS, STOCKDALE HAS REMAINED THE BAND'S ONLY CONSTANT MEMBER, AT @",
     "tickerDurationSeconds": 36,
     "buttonLightDurationMs": 1100,
-    "keyBankFormat": "six-key/1",
+    "keyBankFormat": "mahogany-four-key/1",
     "autoplayDelayMs": 0,
     "startupTimingsMs": {
       "mechanism": 120,
@@ -76,9 +76,7 @@
       "bandcamp-c2a5a5b5",
       "instagram-0fd80ac3",
       "website-5be777c4",
-      "newsletter-1938afad",
-      "newsletter-dbc7645b",
-      "contact-267eb574"
+      "spotify-official-20260804"
     ],
     "marquee": "Wolfmother",
     "videoLabel": "Now playing",
@@ -89,17 +87,17 @@
       "Follow",
       "Shop"
     ],
-    "lightSequence": true,
-    "lightSequenceMode": "single-key",
-    "appearanceVariant": "atlas-reference-cabinet/1",
-    "qrArtworkVariant": "aggits-character-poster/1",
+    "lightSequence": false,
+    "lightSequenceMode": "none",
+    "appearanceVariant": "mahogany-jookbox-master/1",
+    "qrArtworkVariant": "aggits-character-poster-perspective/2",
     "supportAction": {
       "action": "share",
-      "label": "Support Our Band",
-      "detail": "Please share our JookBox",
+      "label": "SHARE",
+      "detail": "",
       "kind": "share",
-      "icon": "♡",
-      "detailIcon": "↗"
+      "icon": "",
+      "detailIcon": ""
     },
     "cabinetCopyright": "Copyright Clearlight Creative 2026.",
     "coinStart": true,
@@ -160,6 +158,15 @@
         "url": "https://wolfmother.bandcamp.com/",
         "platform": "website",
         "kind": "bandcamp"
+      },
+      {
+        "id": "spotify-official-20260804",
+        "sourceTitle": "Wolfmother | Spotify",
+        "label": "Spotify",
+        "detail": "Listen on Spotify",
+        "url": "https://open.spotify.com/artist/3yEnArbNHyTCwMRvD9SBy4",
+        "platform": "spotify",
+        "kind": "spotify"
       }
     ],
     "biography": {

@@ -3,6 +3,8 @@ import crypto from 'node:crypto';
 
 const requiredDocs=['PLATFORM_ARCHITECTURE_DIRECTIVE.md','DEEP_CUTS_PRODUCTION_MANUAL.md','CLAUDE.md','ROADMAP.md','AGENTS.md','.agents/skills/deep-cuts-factory/SKILL.md'];
 const LEGACY_JOOKBOX_EDITION_ID='dc_a3c049e4bc';
+const BAND_JOOKBOX_MAHOGANY_TRIAL_IDS=new Set(['dc_e65763b78b','dc_36e2298568','dc_8517649a4b','dc_0b0dc0187e','dc_0c663efc79','dc_151a0f73fc','dc_c8c3b75f0e','dc_29ea5bd281','dc_b52be0b54a','dc_e8324accf9']);
+const BAND_JOOKBOX_ATLAS_FREEZE_CUTOFF=Date.parse('2026-08-04T00:00:00.000Z');
 const errors=[];
 for(const file of requiredDocs)try{const text=await fs.readFile(file,'utf8');if(text.trim().length<100)errors.push(`${file} is unexpectedly short.`)}catch{errors.push(`Missing ${file}.`)}
 try{
@@ -137,15 +139,21 @@ for(const edition of platform.editions){
       if(config.brandName!=='JookBox'||config.characterArtwork)errors.push(`${edition.config} must preserve the isolated no-Aggits JookBox contract.`);
       const appearanceVariant=config.jookBox?.appearanceVariant||'reference';
       const atlasReferenceCabinet=appearanceVariant==='atlas-reference-cabinet/1';
+      const mahoganyReferenceCabinet=appearanceVariant==='mahogany-jookbox-master/1';
       const keyBankFormat=config.jookBox?.keyBankFormat||'classic-eight-key/1';
       const sixKeyFormat=keyBankFormat==='six-key/1';
+      const mahoganyFourKeyFormat=keyBankFormat==='mahogany-four-key/1';
       const legacyJookBox=edition.editionId===LEGACY_JOOKBOX_EDITION_ID;
-      const validKeyBankFormat=['classic-eight-key/1','six-key/1'].includes(keyBankFormat);
-      const validAppearanceVariant=['reference','atlas-reference-cabinet/1'].includes(appearanceVariant);
-      const validLightSequence=config.jookBox?.lightSequenceMode==='single-key';
-      if(config.jookBox?.modelVersion!=='jookbox/3'||config.jookBox?.layoutVersion!=='coin-awakening/1'||JSON.stringify(config.jookBox?.heroLabels)!==JSON.stringify(['Listen','Watch','Follow','Shop'])||config.jookBox?.lightSequence!==true||!validKeyBankFormat||!validAppearanceVariant||!validLightSequence||config.jookBox?.coinStart!==true||config.jookBox?.syncMode!=='verified-build-time')errors.push(`${edition.config} must preserve the locked coin-awakening JookBox model, appearance, key-bank format and single-key light sequence.`);
+      const editionCreatedAt=Date.parse(config.production?.editionCreatedAt||'');
+      const frozenAtlasJookBox=atlasReferenceCabinet&&Number.isFinite(editionCreatedAt)&&editionCreatedAt<BAND_JOOKBOX_ATLAS_FREEZE_CUTOFF&&!BAND_JOOKBOX_MAHOGANY_TRIAL_IDS.has(edition.editionId);
+      const validKeyBankFormat=['classic-eight-key/1','six-key/1','mahogany-four-key/1'].includes(keyBankFormat);
+      const validAppearanceVariant=['reference','atlas-reference-cabinet/1','mahogany-jookbox-master/1'].includes(appearanceVariant);
+      const validLightSequence=mahoganyReferenceCabinet?config.jookBox?.lightSequence===false&&config.jookBox?.lightSequenceMode==='none':config.jookBox?.lightSequence===true&&config.jookBox?.lightSequenceMode==='single-key';
+      if(config.jookBox?.modelVersion!=='jookbox/3'||config.jookBox?.layoutVersion!=='coin-awakening/1'||JSON.stringify(config.jookBox?.heroLabels)!==JSON.stringify(['Listen','Watch','Follow','Shop'])||!validKeyBankFormat||!validAppearanceVariant||!validLightSequence||config.jookBox?.coinStart!==true||config.jookBox?.syncMode!=='verified-build-time')errors.push(`${edition.config} must preserve the locked coin-awakening JookBox model, approved appearance, key-bank format and lighting policy.`);
       if(legacyJookBox&&(appearanceVariant!=='reference'||keyBankFormat!=='classic-eight-key/1'))errors.push(`${edition.config} must preserve the immutable Filthy Animals legacy JookBox presentation.`);
-      if(!legacyJookBox&&(!atlasReferenceCabinet||!sixKeyFormat))errors.push(`${edition.config} must use the locked ATLAS presentation and six-key bank; only the immutable Filthy Animals edition may use the legacy cabinet.`);
+      if(BAND_JOOKBOX_MAHOGANY_TRIAL_IDS.has(edition.editionId)&&(!mahoganyReferenceCabinet||!mahoganyFourKeyFormat))errors.push(`${edition.config} is in the ten-edition trial and must use the locked mahogany four-key presentation.`);
+      if(!legacyJookBox&&!frozenAtlasJookBox&&!mahoganyReferenceCabinet)errors.push(`${edition.config} must use the mahogany Band JookBox; ATLAS is retired and accepted only for frozen pre-trial editions.`);
+      if(frozenAtlasJookBox&&!sixKeyFormat)errors.push(`${edition.config} is a frozen pre-trial ATLAS edition and its legacy six-key presentation must remain unchanged until migrated.`);
       if(!config.jookBox?.tickerBio||!config.jookBox?.coinSound||!config.jookBox?.coinSoundSha256||!/^https:\/\//.test(config.jookBox?.coinSoundSource||'')||!config.jookBox?.coinSoundLicense||!config.jookBox?.sessionStorageKey)errors.push(`${edition.config} requires configured ticker copy, sourced local coin audio with an integrity hash and licence, and session restoration.`);
       if(config.jookBox?.autoplayDelayMs!==0)errors.push(`${edition.config} must request JookBox video playback immediately within the direct coin interaction.`);
       if(!(config.jookBox?.buttonLightDurationMs>=450&&config.jookBox?.buttonLightDurationMs<=1200))errors.push(`${edition.config} must use a valid JookBox light duration.`);
@@ -160,12 +168,13 @@ for(const edition of platform.editions){
         if(selection.kind&& !['show','bandcamp','spotify','youtube','instagram','facebook','tiktok','buy_music','merchandise','newsletter','website','contact','deep_cut'].includes(selection.kind))errors.push(`${edition.config} contains an unsupported JookBox selection kind.`);
         if(selection.kind==='show'&&(!selection.dateLabel||!selection.venue))errors.push(`${edition.config} JookBox show ${selection.id||'unknown'} requires verified date and venue display data.`);
         if(ids.has(selection.id)||selectionURLs.has(url))errors.push(`${edition.config} contains a duplicate JookBox selection.`);
+        if(mahoganyReferenceCabinet&&(/https:\/\/l\.facebook\.com\/l\.php/i.test(url)||/facebook\.com\/lite\/?$/i.test(url)||/meta\.com\/?$/i.test(url)))errors.push(`${edition.config} JookBox selection ${selection.id||'unknown'} uses a redirect, generic Facebook endpoint or unrelated Meta destination and must fail closed.`);
         if(!research.sources.some(source=>source.destination===`selection:${selection.id}`&&source.identityVerified===true&&normalized(source.url)===url))errors.push(`${edition.config} JookBox selection ${selection.id||'unknown'} lacks matching source evidence.`);
         ids.add(selection.id);selectionURLs.add(url);
       }
       const displayIds=Array.isArray(config.jookBox?.displaySelectionIds)?config.jookBox.displaySelectionIds:[];
-      const validDisplayCount=sixKeyFormat?displayIds.length>=4&&displayIds.length<=6:displayIds.length>=1&&displayIds.length<=8;
-      if(!validDisplayCount||new Set(displayIds).size!==displayIds.length||displayIds.some(id=>!ids.has(id)))errors.push(sixKeyFormat?`${edition.config} six-key format requires four to six unique display selection IDs backed by verified snapshot entries; Learn More and then Share fill the remaining positions.`:`${edition.config} requires one to eight unique display selection IDs backed by verified snapshot entries.`);
+      const validDisplayCount=mahoganyFourKeyFormat?displayIds.length===4:sixKeyFormat?displayIds.length>=4&&displayIds.length<=6:displayIds.length>=1&&displayIds.length<=8;
+      if(!validDisplayCount||new Set(displayIds).size!==displayIds.length||displayIds.some(id=>!ids.has(id)))errors.push(mahoganyFourKeyFormat?`${edition.config} mahogany format requires exactly four unique display selection IDs backed by verified snapshot entries.`:sixKeyFormat?`${edition.config} frozen six-key format requires four to six unique display selection IDs backed by verified snapshot entries.`:`${edition.config} requires one to eight unique display selection IDs backed by verified snapshot entries.`);
       const timings=config.jookBox?.startupTimingsMs||{};
       if(!(timings.mechanism>=0&&timings.neonOn>=300&&timings.screenOn>=timings.neonOn&&timings.buttonsOn>=timings.screenOn&&timings.tickerOn>=timings.buttonsOn))errors.push(`${edition.config} contains an invalid JookBox start-up timeline.`);
       if(!normalized(config.jookBox?.linkSourceURL)||!Number.isFinite(new Date(config.jookBox?.linkSourceVerifiedAt).getTime())||!research.sources.some(source=>source.destination==='jookBoxSource'&&source.identityVerified===true&&normalized(source.url)===normalized(config.jookBox?.linkSourceURL)))errors.push(`${edition.config} requires a dated, verified Linktree source snapshot.`);
@@ -188,6 +197,22 @@ for(const edition of platform.editions){
         keyBankFormat!=='six-key/1'||
         config.jookBox?.lightSequenceMode!=='single-key'
       ))errors.push(`${edition.config} must preserve the locked ATLAS reference cabinet, Support Our Band share action with both icons, cabinet copyright, exact six-key bank and single-key reading-order light sequence.`);
+      const mahoganySupportAction=config.jookBox?.supportAction;
+      if(mahoganyReferenceCabinet&&(
+        config.jookBox?.cabinetArtworkSha256!=='28806c43ecc8d7eb3ac2216f064f1887d057e939bad1841d62ecbf9a6627373d'||
+        config.jookBox?.cabinetArtwork!=='assets/aggits-jukebox-master-v1.jpg'||
+        mahoganySupportAction?.action!=='share'||
+        mahoganySupportAction?.label!=='SHARE'||
+        mahoganySupportAction?.detail!==''||
+        mahoganySupportAction?.kind!=='share'||
+        mahoganySupportAction?.icon!==''||
+        mahoganySupportAction?.detailIcon!==''||
+        config.jookBox?.cabinetCopyright!=='Copyright Clearlight Creative 2026.'||
+        keyBankFormat!=='mahogany-four-key/1'||
+        config.jookBox?.lightSequence!==false||
+        config.jookBox?.lightSequenceMode!=='none'||
+        config.jookBox?.qrArtworkVariant!=='aggits-character-poster-perspective/2'
+      ))errors.push(`${edition.config} must preserve the locked mahogany cabinet, icon-only four-key bank, unlit keys, brass SHARE control, character QR artwork and cabinet copyright.`);
       if(config.jookBox?.coinSound){
         const coinSound=await fs.readFile(config.jookBox.coinSound);
         if(config.jookBox.coinSoundSha256&&crypto.createHash('sha256').update(coinSound).digest('hex')!==config.jookBox.coinSoundSha256)errors.push(`${edition.config} JookBox coin recording failed its SHA-256 identity check.`);

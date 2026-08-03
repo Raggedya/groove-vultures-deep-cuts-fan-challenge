@@ -95,7 +95,7 @@ for (const selection of config.jookBox.selections) {
 }
 assert.ok(research.sources.some((source) => source.destination === "featuredVideo" && source.url === config.featuredVideo.youtubeURL && /380K views/.test(source.evidence)), "The featured video must retain official Popular-order evidence.");
 
-const [html, app, styles, creator, validator, contractsText, studioModel, artworkGenerator, artworkVerifier, characterQrRenderer] = await Promise.all([
+const [html, app, styles, creator, validator, contractsText, studioModel, artworkVerifier, characterQrRenderer, lockedModel] = await Promise.all([
   fs.readFile("index.html", "utf8"),
   fs.readFile("js/app.js", "utf8"),
   fs.readFile("styles.css", "utf8"),
@@ -103,16 +103,16 @@ const [html, app, styles, creator, validator, contractsText, studioModel, artwor
   fs.readFile("scripts/validate-platform.mjs", "utf8"),
   fs.readFile("edition-contracts.json", "utf8"),
   fs.readFile("scripts/studio-model.mjs", "utf8"),
-  fs.readFile("scripts/generate-social-assets.py", "utf8"),
   fs.readFile("scripts/verify-delivery-assets.py", "utf8"),
   fs.readFile("scripts/render-character-jookbox-qr.mjs", "utf8"),
+  fs.readFile("scripts/jookbox-locked-model.mjs", "utf8"),
 ]);
 const contracts = JSON.parse(contractsText);
 assert.equal(contracts.productModels.jookbox.version, 3);
 assert.deepEqual(contracts.editionTypes.jukebox.renderedLinks, []);
 assert.match(html, /id="jookBoxCabinet"/);
-assert.match(html, /styles\.css\?v=20260802-bar-mobile-8/);
-assert.match(html, /app\.js\?v=20260803-coin-audio-1/);
+assert.match(html, /styles\.css\?v=20260804-mahogany-band-1/);
+assert.match(html, /app\.js\?v=20260804-mahogany-band-1/);
 assert.match(html, /id="jookBoxVideoSlot"/);
 assert.match(html, /id="jookBoxCoinButton"[\s\S]*aria-label="Insert coin and start the jukebox"/);
 assert.match(html, /id="jookBoxTickerText"/);
@@ -126,7 +126,7 @@ assert.doesNotMatch(html, /Filthy Animals/, "The reusable HTML renderer must nev
 assert.doesNotMatch(html, /id="jookBoxSoundToggle"|class="jookbox-band-plaque"|id="jookBoxActionBar"/);
 
 assert.match(app, /function setJookBoxState\(nextState\)/);
-assert.match(app, /const VERSION="20260803-coin-audio-1"/);
+assert.match(app, /const VERSION="20260804-mahogany-band-1"/);
 assert.match(app, /dataset\.jookboxEmbeddedMarquee=embeddedMarquee\?"true":"false"/);
 assert.match(app, /dataset\.jookboxAppearance=config\.jookBox\?\.appearanceVariant\|\|"reference"/);
 assert.match(app, /dataset\.jookboxLightSequence=config\.jookBox\?\.lightSequenceMode\|\|"single-key"/);
@@ -138,7 +138,8 @@ assert.match(app, /document\.fonts\?\.ready/);
 assert.match(app, /new ResizeObserver\(scheduleJookBoxMarqueeTitleFit\)/);
 assert.match(app, /title\.dataset\.fitMode="single-line"/);
 assert.match(app, /title\.dataset\.fitMode="multi-line"/);
-assert.match(app, /const minimumMultiLine=Math\.min\(maximumSize,7\)/);
+assert.match(app, /const minimumSingleLine=Math\.min\(maximumSize,16\)/);
+assert.match(app, /const minimumMultiLine=Math\.min\(maximumSize,12\)/);
 assert.match(app, /window\.removeEventListener\("resize",scheduleJookBoxMarqueeTitleFit\)/);
 assert.match(app, /availableKeyCount===1\?"key is":"keys are"/);
 assert.match(app, /\["sleeping","acceptingCoin","poweringUp","awake"\]/);
@@ -150,12 +151,14 @@ assert.match(app, /function clearJookBoxKeyLightTimer\(reset=false\)/);
 assert.match(app, /function jookBoxKeyLightGroupSize\(\)\{[\s\S]*lightSequenceMode==="row-pair"\?2:1/);
 assert.match(app, /function advanceJookBoxKeyLight\(\)/);
 assert.match(app, /function startJookBoxKeyLightSequence\(\)/);
+assert.match(app, /if\(config\.jookBox\?\.lightSequence===false\)return/);
 assert.match(app, /function cleanupJookBoxLifecycle\(\)/);
 assert.doesNotMatch(app, /jookBoxAutoplayTimer|scheduleJookBoxAutoplay|clearJookBoxAutoplayTimer/);
 assert.match(app, /function prepareJookBoxCoinAudio\(\)/);
 assert.match(app, /DeepCutsJookBoxCoinAudio/);
 assert.match(app, /volume:1,gain:1\.15/);
 assert.doesNotMatch(app, /function playJookBoxCoinFallback\(\)|createOscillator/, "A failed recording must never produce an electronic synthesized fallback.");
+assert.match(app, /playJookBoxCoinSound\(\);[\s\S]*scheduleJookBoxStartup\(\(\)=>\{[\s\S]*activateJookBoxVideo\(true\)[\s\S]*\},650\)/, "The real coin recording must receive mobile media focus before YouTube autoplay is attempted.");
 assert.match(app, /function handleJookBoxVisibility\(\)/);
 assert.match(app, /window\.addEventListener\("pagehide",cleanupJookBoxLifecycle/);
 assert.match(app, /window\.addEventListener\("pageshow",handleJookBoxPageShow/);
@@ -186,9 +189,11 @@ assert.match(app, /classList\.toggle\("is-current-key",index>=groupStart&&index<
 assert.match(app, /jookBoxKeyLightTimer=window\.setTimeout\(advanceJookBoxKeyLight,jookBoxKeyLightDuration\(\)\)/);
 assert.doesNotMatch(app, /--jookbox-row-delay|--jookbox-row-cycle/);
 assert.match(app, /autoplay=\$\{autoplay\?1:0\}/);
-assert.match(app, /function powerJookBox\(\)\{[\s\S]*?playJookBoxCoinSound\(\);[\s\S]*?else activateJookBoxVideo\(true\);[\s\S]*?const reducedMotion/);
 assert.match(app, /www\.youtube-nocookie\.com\/embed/);
 assert.match(app, /function trackJookBoxOutbound\(definition,url,source="jookbox_linktree"\)/);
+assert.match(app, /function jookBoxUsesMahoganyFourKeyFormat\(\)/);
+assert.match(app, /jookBoxDestinationDefinitions\(\)\.slice\(0,mahoganyFourKeyFormat\?4/);
+assert.match(app, /jookbox-mahogany-key-icon/);
 
 assert.match(styles, /\[data-jookbox-layout="coin-awakening\/1"\] \.jookbox-machine\{[\s\S]*aspect-ratio:762\/1280/);
 assert.match(styles, /data-jookbox-embedded-marquee="false"[\s\S]*\.jookbox-marquee h1\{[\s\S]*text-transform:uppercase/);
@@ -221,6 +226,11 @@ assert.match(styles, /\.jookbox-primary-action\.is-share-action small\{[\s\S]*gr
 assert.match(styles, /data-jookbox-appearance="atlas-reference-cabinet\/1"[\s\S]*\.jookbox-cabinet-copyright\{[\s\S]*top:91\.1%/);
 assert.match(styles, /@keyframes atlasReferenceKeyPulse/);
 assert.match(styles, /@keyframes atlasReferenceCoinInsert/);
+assert.match(styles, /BAND_MAHOGANY_JOOKBOX_MASTER_V1_START/);
+assert.match(styles, /data-jookbox-appearance="mahogany-jookbox-master\/1"[\s\S]*\.jookbox-machine\{[\s\S]*aspect-ratio:1120\/2000/);
+assert.match(styles, /data-jookbox-appearance="mahogany-jookbox-master\/1"[\s\S]*\.jookbox-secondary-actions\{[\s\S]*grid-template-columns:repeat\(4,minmax\(0,1fr\)\)/);
+assert.match(styles, /data-jookbox-appearance="mahogany-jookbox-master\/1"[\s\S]*\.jookbox-action-copy,[\s\S]*\.jookbox-external-mark\{display:none!important\}/);
+assert.match(styles, /data-jookbox-appearance="mahogany-jookbox-master\/1"[\s\S]*\.is-current-key[\s\S]*filter:brightness\(1\)!important/);
 assert.match(styles, /\.jookbox-coin-button\{[\s\S]*min-height:44px/);
 assert.match(styles, /@keyframes jookBoxLockedCoinAttention/);
 assert.match(styles, /@keyframes jookBoxLockedCoinInsert/);
@@ -249,59 +259,99 @@ assert.match(styles, /env\(safe-area-inset-bottom\)/);
 
 assert.match(creator, /modelVersion:'jookbox\/3'/);
 assert.match(creator, /layoutVersion:'coin-awakening\/1'/);
-assert.match(creator, /const appearanceVariant='atlas-reference-cabinet\/1'/);
-assert.match(creator, /const keyBankFormat='six-key\/1'/);
-assert.match(creator, /requestedAppearanceVariant&&requestedAppearanceVariant!==appearanceVariant/);
-assert.match(creator, /requestedKeyBankFormat&&requestedKeyBankFormat!==keyBankFormat/);
-assert.match(creator, /requestedCabinetArtwork&&requestedCabinetArtwork!=='assets\/jookbox-atlas-reference-v1\.webp'/);
-assert.match(creator, /const minimumDisplayIds=4/);
-assert.match(creator, /const maximumDisplayIds=6/);
+assert.match(creator, /assertCurrentBandJookBoxModel/);
+assert.match(creator, /BAND_JOOKBOX_MODEL/);
+assert.match(creator, /requires exactly four unique, verified displaySelectionIds/);
 assert.match(creator, /keyBankFormat,/);
 assert.match(creator, /displaySelectionIds:requestedDisplayIds/);
-assert.match(creator, /cabinetArtwork:'assets\/jookbox-atlas-reference-v1\.webp'/);
-assert.match(creator, /cabinetArtworkSha256:'ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3'/);
-assert.match(creator, /qrArtworkVariant:'aggits-character-poster\/1'/);
-assert.match(artworkGenerator, /aggits-character-poster\/1/);
-assert.match(artworkGenerator, /Compact-phone character JookBox QR scan-back failed/);
+assert.match(creator, /cabinetArtwork:BAND_JOOKBOX_MODEL\.cabinetArtwork/);
+assert.match(creator, /qrArtworkVariant:BAND_JOOKBOX_MODEL\.qrArtworkVariant/);
+assert.match(creator, /supportAction:\{action:'share',label:'SHARE',detail:'',kind:'share',icon:'',detailIcon:''\}/);
+assert.match(creator, /lightSequence:false/);
+assert.match(creator, /lightSequenceMode:'none'/);
 assert.match(artworkVerifier, /compact-phone QR scan-back failed/);
 assert.match(characterQrRenderer, /createAggitsJukeboxQrArtwork/);
-assert.match(creator, /supportAction:\{action:'share',label:'Support Our Band',detail:'Please share our JookBox'/);
+assert.match(lockedModel, /appearanceVariant:"mahogany-jookbox-master\/1"/);
+assert.match(lockedModel, /keyBankFormat:"mahogany-four-key\/1"/);
+assert.match(lockedModel, /cabinetArtwork:"assets\/aggits-jukebox-master-v1\.jpg"/);
+assert.match(lockedModel, /ATLAS and every other retired Band JookBox appearance are blocked/);
 assert.match(creator, /cabinetCopyright:'Copyright Clearlight Creative 2026\.'/);
 assert.match(creator, /assets\/audio\/jukebox-real-coin-insert-cc0\.mp3/);
 assert.match(creator, /coinSoundLicense:clean\(input\.jookBox\?\.coinSoundLicense\|\|'CC0-1\.0'/);
 assert.match(creator, /tickerDurationSeconds:Math\.max\(12,Math\.min\(60,Number\(input\.jookBox\?\.tickerDurationSeconds\)\|\|36\)\)/);
 assert.match(creator, /buttonLightDurationMs:Math\.max\(450,Math\.min\(1200,Number\(input\.jookBox\?\.buttonLightDurationMs\)\|\|Number\(input\.jookBox\?\.buttonRowDurationMs\)\|\|1100\)\)/);
-assert.match(creator, /lightSequenceMode:'single-key'/);
 assert.match(creator, /autoplayDelayMs:0/);
 assert.match(validator, /locked JookBox cabinet artwork failed its SHA-256 identity check/);
 assert.match(validator, /JookBox coin recording failed its SHA-256 identity check/);
 assert.match(validator, /request JookBox video playback immediately within the direct coin interaction/);
-assert.match(validator, /const atlasReferenceCabinet=appearanceVariant==='atlas-reference-cabinet\/1'/);
+assert.match(validator, /const mahoganyReferenceCabinet=appearanceVariant==='mahogany-jookbox-master\/1'/);
 assert.match(validator, /valid JookBox light duration/);
-assert.match(validator, /six-key format requires four to six unique display selection IDs/);
-assert.match(validator, /keyBankFormat!=='six-key\/1'/);
+assert.match(validator, /mahogany format requires exactly four unique display selection IDs/);
 assert.match(validator, /const LEGACY_JOOKBOX_EDITION_ID='dc_a3c049e4bc'/);
-assert.match(validator, /!legacyJookBox&&\(!atlasReferenceCabinet\|\|!sixKeyFormat\)/);
-assert.match(validator, /only the immutable Filthy Animals edition may use the legacy cabinet/);
-assert.equal(contracts.productModels.jookbox.referenceEditionId, "dc_e22f1cb651");
+assert.match(validator, /BAND_JOOKBOX_MAHOGANY_TRIAL_IDS/);
+assert.match(validator, /ATLAS is retired and accepted only for frozen pre-trial editions/);
+assert.equal(contracts.productModels.jookbox.referenceEditionId, "dc_e65763b78b");
 assert.equal(contracts.productModels.jookbox.legacyReferenceEditionId, "dc_a3c049e4bc");
-assert.equal(contracts.productModels.jookbox.defaultAppearanceVariant, "atlas-reference-cabinet/1");
-assert.equal(contracts.productModels.jookbox.defaultKeyBankFormat, "six-key/1");
-assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("atlas-reference-cabinet-permanent-new-edition-default"));
-assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("atlas-reference-only-for-all-non-legacy-jookboxes"));
+assert.equal(contracts.productModels.jookbox.defaultAppearanceVariant, "mahogany-jookbox-master/1");
+assert.equal(contracts.productModels.jookbox.defaultKeyBankFormat, "mahogany-four-key/1");
+assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("mahogany-cabinet-permanent-new-edition-default"));
+assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("atlas-retired-for-new-and-regenerated-band-jookboxes"));
 assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("automatic-responsive-marquee-title-fit-without-truncation"));
 assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("immediate-coin-interaction-autoplay-request-with-manual-fallback"));
 assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("pre-coin-dimmed-locked-selection-keys"));
-assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("single-key-sequential-illumination"));
-assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("six-key-fixed-uniform-bank"));
-assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("six-key-learn-more-then-share-gap-fill"));
-assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("six-key-single-key-reading-order-illumination"));
+assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("no-band-button-lighting"));
+assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("four-key-fixed-uniform-bank"));
+assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("character-qr-poster-perspective-fit"));
 assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("hero-biography-ticker-above-video"));
 assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("centered-post-video-coin-control"));
 assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("origin-aware-secure-external-tabs"));
 assert.match(studioModel, /id="studioJookBoxTitle"/);
 assert.match(studioModel, /data-fit-mode="multi-line"/);
 assert.match(studioModel, /new ResizeObserver\(schedule\)\.observe\(frame\)/);
+
+const mahoganyTrialEditionIds = [
+  "dc_e65763b78b",
+  "dc_36e2298568",
+  "dc_8517649a4b",
+  "dc_0b0dc0187e",
+  "dc_0c663efc79",
+  "dc_151a0f73fc",
+  "dc_c8c3b75f0e",
+  "dc_29ea5bd281",
+  "dc_b52be0b54a",
+  "dc_e8324accf9",
+];
+for (const editionId of mahoganyTrialEditionIds) {
+  const trialEntry = platform.editions.find((item) => item.editionId === editionId);
+  assert.ok(trialEntry?.active, `${editionId} must remain an active isolated trial edition.`);
+  const trialConfig = JSON.parse(await fs.readFile(trialEntry.config, "utf8"));
+  assert.equal(trialConfig.editionType, "jukebox");
+  assert.equal(trialConfig.jookBox?.appearanceVariant, "mahogany-jookbox-master/1");
+  assert.equal(trialConfig.jookBox?.keyBankFormat, "mahogany-four-key/1");
+  assert.equal(trialConfig.jookBox?.cabinetArtwork, "assets/aggits-jukebox-master-v1.jpg");
+  assert.equal(trialConfig.jookBox?.cabinetArtworkSha256, "28806c43ecc8d7eb3ac2216f064f1887d057e939bad1841d62ecbf9a6627373d");
+  assert.equal(trialConfig.jookBox?.qrArtworkVariant, "aggits-character-poster-perspective/2");
+  assert.equal(trialConfig.jookBox?.coinSound, "assets/audio/jukebox-real-coin-insert-cc0.mp3");
+  assert.equal(trialConfig.jookBox?.coinSoundSha256, "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0");
+  assert.equal(trialConfig.jookBox?.lightSequence, false);
+  assert.equal(trialConfig.jookBox?.lightSequenceMode, "none");
+  assert.equal(trialConfig.jookBox?.displaySelectionIds?.length, 4);
+  assert.equal(new Set(trialConfig.jookBox.displaySelectionIds).size, 4);
+  assert.deepEqual(trialConfig.jookBox?.supportAction, {
+    action: "share",
+    label: "SHARE",
+    detail: "",
+    kind: "share",
+    icon: "",
+    detailIcon: "",
+  });
+  for (const selectionId of trialConfig.jookBox.displaySelectionIds) {
+    const selection = trialConfig.jookBox.selections?.find((item) => item.id === selectionId);
+    assert.ok(selection, `${trialEntry.slug}: ${selectionId} must resolve to a trial selection.`);
+    assert.match(selection.url, /^https:\/\//, `${trialEntry.slug}: ${selectionId} must use HTTPS.`);
+    assert.doesNotMatch(selection.url, /facebook\.com\/lite|l\.facebook\.com\/l\.php|lm\.facebook\.com\/l\.php|meta\.com\/help/i);
+  }
+}
 
 assert.equal(atlasConfig.jookBox?.appearanceVariant, "atlas-reference-cabinet/1");
 assert.equal(atlasConfig.jookBox?.keyBankFormat, "six-key/1");
@@ -391,4 +441,4 @@ for (const other of platform.editions.filter((item) => item.editionId !== entry.
   assert.notEqual(otherConfig.jookBox?.sessionStorageKey, config.jookBox.sessionStorageKey, `${other.slug} must not share the Filthy Animals session key.`);
 }
 
-console.log("JookBox v3 passed: Filthy Animals is unchanged, while the byte-locked ATLAS six-key cabinet is the permanent future default and Southern Culture uses it with independently verified content.");
+console.log("JookBox v3 passed: frozen legacy editions remain unchanged, while the ten-edition mahogany four-key trial is isolated, unlit and protected by the locked model.");

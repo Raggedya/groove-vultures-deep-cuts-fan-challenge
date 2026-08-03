@@ -13,6 +13,7 @@ import {
   youtubeReportRow,
   batchFingerprint
 } from "./jookbox-band-batch-lib.mjs";
+import {BAND_JOOKBOX_MODEL} from "./jookbox-locked-model.mjs";
 
 const command=process.argv[2]||"help";
 const options=parseOptions(process.argv.slice(3));
@@ -95,7 +96,7 @@ if(command!=="test"&&options.publish!=="false"){
         status:"configured",
         editionId:created.editionId,
         liveURL:`${platform.publicBaseURL}${created.canonicalPath}`,
-        qrArtworkVariant:"aggits-character-poster/1",
+        qrArtworkVariant:BAND_JOOKBOX_MODEL.qrArtworkVariant,
         deploymentStatus:"pending_merge",
         emailStatus:"pending_deployment"
       });
@@ -146,7 +147,7 @@ function newState(items,inputPath,mode){
     mode,inputPath,startedAt,finishedAt:null,
     inputFingerprint:batchFingerprint(items),
     recipient:"andrewharris501@gmail.com",
-    qrArtworkVariant:"aggits-character-poster/1",
+    qrArtworkVariant:BAND_JOOKBOX_MODEL.qrArtworkVariant,
     items:items.map(item=>({...item,status:"pending",attempts:0,confidence:null,blockers:[],reasons:[],editionId:"",liveURL:""})),
     counts:counts([])
   };

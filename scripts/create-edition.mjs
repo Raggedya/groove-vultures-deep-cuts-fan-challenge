@@ -1,6 +1,7 @@
 import crypto from 'node:crypto';
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import {BAND_JOOKBOX_MODEL,assertCurrentBandJookBoxModel} from './jookbox-locked-model.mjs';
 
 const root=path.resolve(process.env.DEEP_CUTS_ROOT||process.cwd());
 const inputPath=process.argv[2];
@@ -46,23 +47,18 @@ if(editionType==='jukebox'){
   const requestedAppearanceVariant=clean(input.jookBox?.appearanceVariant||'',80);
   const requestedKeyBankFormat=clean(input.jookBox?.keyBankFormat||'',40);
   const requestedCabinetArtwork=clean(input.jookBox?.cabinetArtwork||'',180);
-  const appearanceVariant='atlas-reference-cabinet/1';
-  const keyBankFormat='six-key/1';
-  if(requestedAppearanceVariant&&requestedAppearanceVariant!==appearanceVariant)throw new Error('All new JookBox editions must use the locked ATLAS presentation (atlas-reference-cabinet/1).');
-  if(requestedKeyBankFormat&&requestedKeyBankFormat!==keyBankFormat)throw new Error('All new JookBox editions must use the locked ATLAS six-key presentation (six-key/1).');
-  if(requestedCabinetArtwork&&requestedCabinetArtwork!=='assets/jookbox-atlas-reference-v1.webp')throw new Error('All new JookBox editions must use the SHA-256-locked ATLAS cabinet artwork.');
-  const minimumDisplayIds=4;
-  const maximumDisplayIds=6;
+  assertCurrentBandJookBoxModel({appearanceVariant:requestedAppearanceVariant,keyBankFormat:requestedKeyBankFormat,cabinetArtwork:requestedCabinetArtwork});
+  const {appearanceVariant,keyBankFormat,minimumDestinations:minimumDisplayIds,maximumDestinations:maximumDisplayIds}=BAND_JOOKBOX_MODEL;
   const requestedDisplayIds=Array.isArray(input.jookBox?.displaySelectionIds)?input.jookBox.displaySelectionIds.map(value=>clean(value,80)).filter(Boolean):selections.slice(0,maximumDisplayIds).map(selection=>selection.id);
-  if(requestedDisplayIds.length<minimumDisplayIds||requestedDisplayIds.length>maximumDisplayIds||new Set(requestedDisplayIds).size!==requestedDisplayIds.length||requestedDisplayIds.some(id=>!selections.some(selection=>selection.id===id)))throw new Error(keyBankFormat==='six-key/1'?'The six-key JookBox format requires four to six unique displaySelectionIds backed by verified Linktree selections; Learn More and then Share fill the remaining positions.':'JookBox requires one to eight unique displaySelectionIds that match verified Linktree selections.');
+  if(requestedDisplayIds.length!==maximumDisplayIds||new Set(requestedDisplayIds).size!==requestedDisplayIds.length||requestedDisplayIds.some(id=>!selections.some(selection=>selection.id===id)))throw new Error('The mahogany Band JookBox requires exactly four unique, verified displaySelectionIds.');
   const paragraphs=(Array.isArray(input.jookBox?.biography?.paragraphs)?input.jookBox.biography.paragraphs:[]).map(paragraph=>clean(paragraph,520)).filter(Boolean);
   const biographySource=https(input.jookBox?.biography?.sourceURL||'');
   if(!paragraphs.length||!biographySource)throw new Error('JookBox requires verified biography paragraphs and an official HTTPS source.');
   config.jookBox={
     modelVersion:'jookbox/3',
     layoutVersion:'coin-awakening/1',
-    cabinetArtwork:'assets/jookbox-atlas-reference-v1.webp',
-    cabinetArtworkSha256:'ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3',
+    cabinetArtwork:BAND_JOOKBOX_MODEL.cabinetArtwork,
+    cabinetArtworkSha256:BAND_JOOKBOX_MODEL.cabinetArtworkSha256,
     coinSound:clean(input.jookBox?.coinSound||'assets/audio/jukebox-real-coin-insert-cc0.mp3',180),
     coinSoundSha256:clean(input.jookBox?.coinSoundSha256||'0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0',64),
     coinSoundSource:https(input.jookBox?.coinSoundSource||'https://freesound.org/people/kyles/sounds/637369/'),
@@ -79,11 +75,11 @@ if(editionType==='jukebox'){
     videoLabel:clean(input.jookBox?.videoLabel||'Now playing',40),
     primaryActionLabel:clean(input.jookBox?.primaryActionLabel||'Open verified destination',60),
     heroLabels:['Listen','Watch','Follow','Shop'],
-    lightSequence:true,
-    lightSequenceMode:'single-key',
+    lightSequence:false,
+    lightSequenceMode:'none',
     appearanceVariant,
-    qrArtworkVariant:'aggits-character-poster/1',
-    supportAction:{action:'share',label:'Support Our Band',detail:'Please share our JookBox',kind:'share',icon:'\u2661',detailIcon:'\u2197'},
+    qrArtworkVariant:BAND_JOOKBOX_MODEL.qrArtworkVariant,
+    supportAction:{action:'share',label:'SHARE',detail:'',kind:'share',icon:'',detailIcon:''},
     cabinetCopyright:'Copyright Clearlight Creative 2026.',
     coinStart:true,
     linkSourceURL:https(input.jookBox?.linkSourceURL||''),

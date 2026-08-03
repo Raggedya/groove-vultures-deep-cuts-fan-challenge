@@ -237,6 +237,22 @@
       "evidence": "Bandcamp resolved directly and its destination metadata matched Wolfmother."
     },
     {
+      "destination": "selection:spotify-official-20260804",
+      "url": "https://open.spotify.com/artist/3yEnArbNHyTCwMRvD9SBy4",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T22:30:00.000Z",
+      "evidence": "The direct Spotify artist page identifies Wolfmother and lists the band's catalogue."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/3yEnArbNHyTCwMRvD9SBy4",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T22:30:00.000Z",
+      "evidence": "The direct Spotify artist page identifies Wolfmother and lists the band's catalogue."
+    },
+    {
       "destination": "biography",
       "url": "https://www.instagram.com/officialwolfmother/",
       "sourceType": "identity-verified artist-controlled biography source",
