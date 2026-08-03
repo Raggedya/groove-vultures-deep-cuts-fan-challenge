@@ -1,6 +1,6 @@
 "use strict";
 
-const VERSION="20260803-coin-audio-1";
+const VERSION="20260804-mahogany-band-1";
 const LANEWAY_REPORTING_VERSION="laneway-weekly-v1";
 const $=id=>document.getElementById(id);
 const els={
@@ -608,7 +608,7 @@ function fitJookBoxMarqueeTitle(){
     title.style.removeProperty("font-size");
     return;
   }
-  const minimumSingleLine=Math.min(maximumSize,12);
+  const minimumSingleLine=Math.min(maximumSize,16);
   if(fits(minimumSingleLine,false,Number.POSITIVE_INFINITY)){
     title.style.fontSize=`${largestFit(minimumSingleLine,maximumSize,false,Number.POSITIVE_INFINITY).toFixed(2)}px`;
     return;
@@ -621,7 +621,7 @@ function fitJookBoxMarqueeTitle(){
       return total+element.offsetHeight+(Number.parseFloat(style.marginTop)||0)+(Number.parseFloat(style.marginBottom)||0);
     },0);
   const availableHeight=Math.max(24,marquee.clientHeight-reservedHeight-4);
-  const minimumMultiLine=Math.min(maximumSize,7);
+  const minimumMultiLine=Math.min(maximumSize,12);
   title.style.fontSize=`${largestFit(minimumMultiLine,maximumSize,true,availableHeight).toFixed(2)}px`;
 }
 
@@ -719,6 +719,10 @@ function jookBoxUsesSixKeyFormat(){
   return config.jookBox?.keyBankFormat==="six-key/1";
 }
 
+function jookBoxUsesMahoganyFourKeyFormat(){
+  return isBandJookBoxEdition()&&config.jookBox?.appearanceVariant==="mahogany-jookbox-master/1"&&config.jookBox?.keyBankFormat==="mahogany-four-key/1";
+}
+
 function jookBoxHasBiography(){
   return Array.isArray(config.jookBox?.biography?.paragraphs)&&config.jookBox.biography.paragraphs.length>0;
 }
@@ -761,8 +765,9 @@ function createJookBoxUtilityKey(kind,index){
 
 function buildJookBoxProductNavigation(){
   const sixKeyFormat=jookBoxUsesSixKeyFormat();
+  const mahoganyFourKeyFormat=jookBoxUsesMahoganyFourKeyFormat();
   const barSixKeyFormat=isBarJookBoxEdition()&&config.jookBox?.keyBankFormat==="bar-six-key/1";
-  const destinations=jookBoxDestinationDefinitions().slice(0,barSixKeyFormat?5:sixKeyFormat?6:8);
+  const destinations=jookBoxDestinationDefinitions().slice(0,mahoganyFourKeyFormat?4:barSixKeyFormat?5:sixKeyFormat?6:8);
   const controls=destinations.map((definition,index)=>{
     const link=createJookBoxDestinationLink(definition,"jookbox-action-key","jookbox_selection_bank");
     link.dataset.keyIndex=String(index);
@@ -775,6 +780,7 @@ function buildJookBoxProductNavigation(){
   }
   if(barSixKeyFormat&&controls.length!==6)console.warn("The Bar Edition contract requires exactly five administrator-supplied destinations plus About Us.");
   if(sixKeyFormat&&controls.length!==6)console.warn("The six-key JookBox contract requires four to six verified destinations so Learn More and Share can preserve all six positions.");
+  if(mahoganyFourKeyFormat&&controls.length!==4)console.warn("The mahogany Band JookBox contract requires exactly four verified destination keys.");
   const utilityKinds=new Set(controls.map(control=>control.dataset.jookboxUtility).filter(Boolean));
   const atlasReferenceCabinet=config.jookBox?.appearanceVariant==="atlas-reference-cabinet/1";
   els.jookBoxLearnMore.hidden=!jookBoxHasBiography()||utilityKinds.has("learn_more")||atlasReferenceCabinet;
@@ -875,8 +881,18 @@ function createJookBoxDestinationLink(definition,className,source){
   link.dataset.jookboxKey=String(definition.key||definition.kind||"").trim().toLowerCase();
   link.dataset.jookboxLabel=String(definition.label||"").trim().toLowerCase();
   link.innerHTML=`<span class="jookbox-action-icon" aria-hidden="true">${jookBoxActionIcon(definition)}</span><span class="jookbox-action-copy"><strong>${escapeHtml(definition.label)}</strong><small>${escapeHtml(definition.subLabel||"Open verified destination")}</small></span><span class="jookbox-external-mark" aria-hidden="true">↗</span>`;
+  if(jookBoxUsesMahoganyFourKeyFormat())link.querySelector(".jookbox-action-icon").innerHTML=`<img class="jookbox-mahogany-key-icon" src="/${jookBoxMahoganyIconAsset(definition)}" alt="">`;
   configureJookBoxDestinationAnchor(link,definition.url,definition,source);
   return link;
+}
+
+function jookBoxMahoganyIconAsset(definition){
+  const name=({
+    bandcamp:"music",spotify:"spotify",youtube:"youtube",instagram:"instagram",website:"website",
+    buy_music:"shop",deep_cut:"music",merchandise:"shop",facebook:"facebook",tiktok:"tiktok",
+    contact:"contact",newsletter:"news",show:"gigs"
+  })[jookBoxSelectionKind(definition)]||"music";
+  return`assets/aggits-jukebox-icons/${name}.webp`;
 }
 
 function configureJookBoxDestinationAnchor(element,url,definition,source){
@@ -1025,6 +1041,7 @@ function advanceJookBoxKeyLight(){
 }
 
 function startJookBoxKeyLightSequence(){
+  if(config.jookBox?.lightSequence===false)return;
   if(jookBoxKeyLightTimer||document.hidden||matchMedia("(prefers-reduced-motion: reduce)").matches)return;
   advanceJookBoxKeyLight();
 }
@@ -1146,8 +1163,12 @@ function powerJookBox(){
   els.jookBoxCoinPrompt.textContent="Coin accepted. The JookBox is powering up.";
   els.jookBoxPowerStatus.textContent="Coin accepted. The JookBox is powering up.";
   playJookBoxCoinSound();
-  if(isBarJookBoxEdition())activateBarJookBoxWelcomeVideo({autoplay:true});
-  else activateJookBoxVideo(true);
+  /* Protect the real coin recording from iOS media-focus interruption. Video is
+     armed after the mechanical drop has audibly started; manual Play remains. */
+  scheduleJookBoxStartup(()=>{
+    if(isBarJookBoxEdition())activateBarJookBoxWelcomeVideo({autoplay:true});
+    else activateJookBoxVideo(true);
+  },650);
   try{sessionStorage.setItem(jookBoxSessionKey(),"true")}catch{}
   const id=isBarJookBoxEdition()?"local-mp4":els.videoFrame.dataset.videoId;
   analytics.track("jookbox_coin_inserted",{interaction_source:"jookbox_coin",video_id:id||"",edition_type:config.editionType},{onceKey:`jookbox-coin:${editionEntry.editionId}`});
@@ -1196,10 +1217,11 @@ function playJookBoxCoinSound(){
       if(playback&&typeof playback.catch==="function")playback.catch(error=>{
         console.warn("JookBox coin recording could not be played.",error);
       });
-      return;
+      return playback;
     }catch(error){console.warn("JookBox coin recording could not be played.",error)}
   }
   console.warn("JookBox coin recording is unavailable.");
+  return null;
 }
 
 function handleJookBoxVisibility(){

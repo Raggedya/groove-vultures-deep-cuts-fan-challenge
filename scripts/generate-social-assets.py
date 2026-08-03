@@ -700,7 +700,10 @@ def create_jookbox_qr(config: dict, destination: Path) -> str:
     edition_id = config.get("analytics", {}).get("editionId")
     url = f"{base_url}/q/{edition_id}"
     node = os.environ.get("DEEP_CUTS_NODE", "node")
-    if config.get("jookBox", {}).get("qrArtworkVariant") == "aggits-character-poster/1":
+    if config.get("jookBox", {}).get("qrArtworkVariant") in {
+        "aggits-character-poster/1",
+        "aggits-character-poster-perspective/2",
+    }:
         subprocess.run([
             node,
             str(ROOT / "scripts" / "render-character-jookbox-qr.mjs"),
@@ -859,7 +862,10 @@ def main() -> None:
         verified_url = create_qr(config, aggits, qr_path)
     if config.get("editionType") == "bar_jukebox":
         qr_width, qr_height = BAR_QR_WIDTH, BAR_QR_HEIGHT
-    elif config.get("editionType") == "jukebox" and config.get("jookBox", {}).get("qrArtworkVariant") == "aggits-character-poster/1":
+    elif config.get("editionType") == "jukebox" and config.get("jookBox", {}).get("qrArtworkVariant") in {
+        "aggits-character-poster/1",
+        "aggits-character-poster-perspective/2",
+    }:
         qr_width, qr_height = 1254, 1254
     else:
         qr_width, qr_height = SIZE, QR_HEIGHT

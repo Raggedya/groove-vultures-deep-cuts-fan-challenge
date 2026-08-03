@@ -1,4 +1,5 @@
 import crypto from "node:crypto";
+import {BAND_JOOKBOX_MODEL} from "./jookbox-locked-model.mjs";
 
 export const JOOKBOX_BAND_BATCH_SCHEMA="deep-cuts-jookbox-band-batch/1";
 export const JOOKBOX_BAND_CONFIDENCE_GATE=98;
@@ -51,8 +52,8 @@ export function factoryResearchFromStudio(research){
     ?{...selection,kind:"website",label:selection.label||"Tickets",detail:"Open the verified ticket destination"}
     :selection).filter(selection=>!authenticationWall(selection.url));
   const selectionIds=new Set(selections.map(selection=>selection.id));
-  const displaySelectionIds=(research.displaySelectionIds||[]).filter(id=>selectionIds.has(id));
-  for(const selection of selections)if(displaySelectionIds.length<6&&!displaySelectionIds.includes(selection.id))displaySelectionIds.push(selection.id);
+  const displaySelectionIds=(research.displaySelectionIds||[]).filter(id=>selectionIds.has(id)).slice(0,BAND_JOOKBOX_MODEL.maximumDestinations);
+  for(const selection of selections)if(displaySelectionIds.length<BAND_JOOKBOX_MODEL.maximumDestinations&&!displaySelectionIds.includes(selection.id))displaySelectionIds.push(selection.id);
   const sources=[...(research.sources||[])];
   if(!sources.some(source=>source.destination==="jookBoxSource"&&sameURL(source.url,root.url))){
     sources.push({
@@ -82,9 +83,10 @@ export function factoryResearchFromStudio(research){
       linkSourceVerifiedAt:root.verifiedAt||research.verifiedAt,
       selections,
       biography:{sourceURL:research.biography.sourceURL,paragraphs},
-      appearanceVariant:"atlas-reference-cabinet/1",
-      keyBankFormat:"six-key/1",
-      qrArtworkVariant:"aggits-character-poster/1"
+      appearanceVariant:BAND_JOOKBOX_MODEL.appearanceVariant,
+      keyBankFormat:BAND_JOOKBOX_MODEL.keyBankFormat,
+      cabinetArtwork:BAND_JOOKBOX_MODEL.cabinetArtwork,
+      qrArtworkVariant:BAND_JOOKBOX_MODEL.qrArtworkVariant
     }
   };
 }
@@ -104,7 +106,7 @@ export function youtubeReportRow(item){
     "Verified At":featured.verifiedAt||research.verifiedAt||"",
     "Permanent URL":item.liveURL||"",
     "Edition ID":item.editionId||"",
-    "QR Poster Variant":item.editionId?"aggits-character-poster/1":"",
+    "QR Poster Variant":item.editionId?BAND_JOOKBOX_MODEL.qrArtworkVariant:"",
     "Failure / Omission Reason":[...(item.blockers||[]),...(item.reasons||[])].map(value=>typeof value==="string"?value:value.message).filter(Boolean).join(" | ")
   };
 }

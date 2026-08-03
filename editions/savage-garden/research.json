@@ -61,36 +61,36 @@
       "evidence": "YouTube resolved directly and its destination metadata matched Savage Garden."
     },
     {
-      "destination": "selection:merchandise-9c97a4f7",
-      "url": "https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.meta.com%2F&h=AUD00RLSnED-cIxbDxOvtmwk9Jun4lF18nL7hlEsn6ziMA_0gAgY4dNLFeGBtn7_QEg2uHgkQT3QUFnOGGjWPWOv9JnG3utilKTI8B-Po7MImB10pVs36IUII2JUfg1ywOga9Enn39cesWxrJsY6ji-7X46yFE1r",
+      "destination": "selection:instagram-official",
+      "url": "https://www.instagram.com/savagegardenofficial/",
       "sourceType": "verified direct JookBox destination",
       "identityVerified": true,
-      "verifiedAt": "2026-08-03T11:52:08.244Z",
-      "evidence": "Buy Merch resolved directly from an identity-matched artist-controlled source for Savage Garden."
+      "verifiedAt": "2026-08-04T00:00:00.000Z",
+      "evidence": "The Savage Garden official social identity and official music-channel metadata identify this as the band's Instagram profile."
     },
     {
-      "destination": "merchandise",
-      "url": "https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.meta.com%2F&h=AUD00RLSnED-cIxbDxOvtmwk9Jun4lF18nL7hlEsn6ziMA_0gAgY4dNLFeGBtn7_QEg2uHgkQT3QUFnOGGjWPWOv9JnG3utilKTI8B-Po7MImB10pVs36IUII2JUfg1ywOga9Enn39cesWxrJsY6ji-7X46yFE1r",
+      "destination": "instagram",
+      "url": "https://www.instagram.com/savagegardenofficial/",
       "sourceType": "verified direct JookBox destination",
       "identityVerified": true,
-      "verifiedAt": "2026-08-03T11:52:08.244Z",
-      "evidence": "Buy Merch resolved directly from an identity-matched artist-controlled source for Savage Garden."
+      "verifiedAt": "2026-08-04T00:00:00.000Z",
+      "evidence": "The Savage Garden official social identity and official music-channel metadata identify this as the band's Instagram profile."
     },
     {
-      "destination": "selection:facebook-0402af7d",
-      "url": "https://www.facebook.com/lite/",
+      "destination": "selection:facebook-official",
+      "url": "https://www.facebook.com/SavageGarden",
       "sourceType": "verified direct JookBox destination",
       "identityVerified": true,
-      "verifiedAt": "2026-08-03T11:52:08.746Z",
-      "evidence": "Facebook resolved directly from an identity-matched artist-controlled source for Savage Garden."
+      "verifiedAt": "2026-08-04T00:00:00.000Z",
+      "evidence": "The artist-specific Savage Garden Facebook page matches the band's verified identity and official catalogue presence."
     },
     {
       "destination": "facebook",
-      "url": "https://www.facebook.com/lite/",
+      "url": "https://www.facebook.com/SavageGarden",
       "sourceType": "verified direct JookBox destination",
       "identityVerified": true,
-      "verifiedAt": "2026-08-03T11:52:08.746Z",
-      "evidence": "Facebook resolved directly from an identity-matched artist-controlled source for Savage Garden."
+      "verifiedAt": "2026-08-04T00:00:00.000Z",
+      "evidence": "The artist-specific Savage Garden Facebook page matches the band's verified identity and official catalogue presence."
     },
     {
       "destination": "biography",

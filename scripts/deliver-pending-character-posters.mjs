@@ -9,7 +9,7 @@ const candidates=[];
 
 for(const edition of platform.editions.filter(item=>item.active)){
   const config=JSON.parse(await fs.readFile(edition.config,'utf8'));
-  if(config.jookBox?.qrArtworkVariant==='aggits-character-poster/1')candidates.push(edition);
+  if(['aggits-character-poster/1','aggits-character-poster-perspective/2'].includes(config.jookBox?.qrArtworkVariant))candidates.push(edition);
 }
 
 const jobs=Math.max(1,Math.min(6,Number(process.env.DEEP_CUTS_DELIVERY_JOBS||4)));

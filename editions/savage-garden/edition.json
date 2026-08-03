@@ -27,11 +27,11 @@
   "links": {
     "bandcamp": "",
     "spotify": "https://open.spotify.com/artist/3NRFinRTEqUCfaTTZmk8ek",
-    "instagram": "",
+    "instagram": "https://www.instagram.com/savagegardenofficial/",
     "website": "",
     "buyMusic": "",
-    "merchandise": "https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.meta.com%2F&h=AUD00RLSnED-cIxbDxOvtmwk9Jun4lF18nL7hlEsn6ziMA_0gAgY4dNLFeGBtn7_QEg2uHgkQT3QUFnOGGjWPWOv9JnG3utilKTI8B-Po7MImB10pVs36IUII2JUfg1ywOga9Enn39cesWxrJsY6ji-7X46yFE1r",
-    "facebook": "https://www.facebook.com/lite/",
+    "merchandise": "",
+    "facebook": "https://www.facebook.com/SavageGarden",
     "youtube": "https://www.youtube.com/channel/UCocAlqGOU7BqzKc87qx6WUg"
   },
   "featuredVideo": {
@@ -53,8 +53,8 @@
   "jookBox": {
     "modelVersion": "jookbox/3",
     "layoutVersion": "coin-awakening/1",
-    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
-    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "cabinetArtwork": "assets/aggits-jukebox-master-v1.jpg",
+    "cabinetArtworkSha256": "28806c43ecc8d7eb3ac2216f064f1887d057e939bad1841d62ecbf9a6627373d",
     "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
     "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
     "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
@@ -63,7 +63,7 @@
     "tickerBio": "SAVAGE GARDEN ON VEVO - OFFICIAL MUSIC VIDEOS, LIVE PERFORMANCES, INTERVIEWS AND MORE...",
     "tickerDurationSeconds": 36,
     "buttonLightDurationMs": 1100,
-    "keyBankFormat": "six-key/1",
+    "keyBankFormat": "mahogany-four-key/1",
     "autoplayDelayMs": 0,
     "startupTimingsMs": {
       "mechanism": 120,
@@ -75,8 +75,8 @@
     "displaySelectionIds": [
       "spotify-9ceda04c",
       "youtube-b614c027",
-      "merchandise-9c97a4f7",
-      "facebook-0402af7d"
+      "instagram-official",
+      "facebook-official"
     ],
     "marquee": "Savage Garden",
     "videoLabel": "Now playing",
@@ -87,17 +87,17 @@
       "Follow",
       "Shop"
     ],
-    "lightSequence": true,
-    "lightSequenceMode": "single-key",
-    "appearanceVariant": "atlas-reference-cabinet/1",
-    "qrArtworkVariant": "aggits-character-poster/1",
+    "lightSequence": false,
+    "lightSequenceMode": "none",
+    "appearanceVariant": "mahogany-jookbox-master/1",
+    "qrArtworkVariant": "aggits-character-poster-perspective/2",
     "supportAction": {
       "action": "share",
-      "label": "Support Our Band",
-      "detail": "Please share our JookBox",
+      "label": "SHARE",
+      "detail": "",
       "kind": "share",
-      "icon": "♡",
-      "detailIcon": "↗"
+      "icon": "",
+      "detailIcon": ""
     },
     "cabinetCopyright": "Copyright Clearlight Creative 2026.",
     "coinStart": true,
@@ -124,20 +124,20 @@
         "kind": "youtube"
       },
       {
-        "id": "merchandise-9c97a4f7",
-        "sourceTitle": "Meta Store",
-        "label": "Meta Store",
-        "detail": "Official band merchandise",
-        "url": "https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.meta.com%2F&h=AUD00RLSnED-cIxbDxOvtmwk9Jun4lF18nL7hlEsn6ziMA_0gAgY4dNLFeGBtn7_QEg2uHgkQT3QUFnOGGjWPWOv9JnG3utilKTI8B-Po7MImB10pVs36IUII2JUfg1ywOga9Enn39cesWxrJsY6ji-7X46yFE1r",
-        "platform": "merchandise",
-        "kind": "merchandise"
+        "id": "instagram-official",
+        "sourceTitle": "Instagram",
+        "label": "Instagram",
+        "detail": "Follow Savage Garden",
+        "url": "https://www.instagram.com/savagegardenofficial/",
+        "platform": "instagram",
+        "kind": "instagram"
       },
       {
-        "id": "facebook-0402af7d",
-        "sourceTitle": "Facebook Lite",
-        "label": "Facebook Lite",
+        "id": "facebook-official",
+        "sourceTitle": "Facebook",
+        "label": "Facebook",
         "detail": "Follow the band",
-        "url": "https://www.facebook.com/lite/",
+        "url": "https://www.facebook.com/SavageGarden",
         "platform": "facebook",
         "kind": "facebook"
       }

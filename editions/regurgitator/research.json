@@ -38,19 +38,19 @@
     },
     {
       "destination": "selection:spotify-e529cf95",
-      "url": "https://open.spotify.com/artist/5aVKsCIE4jsTKODYwjVVLK",
+      "url": "https://open.spotify.com/artist/6n3YUZcayLRuAunJUUelvz",
       "sourceType": "verified direct JookBox destination",
       "identityVerified": true,
-      "verifiedAt": "2026-08-03T11:33:17.822Z",
-      "evidence": "Spotify resolved directly and its destination metadata matched Regurgitator."
+      "verifiedAt": "2026-08-03T22:30:00.000Z",
+      "evidence": "The direct Spotify artist page identifies Regurgitator and lists the band's catalogue."
     },
     {
       "destination": "spotify",
-      "url": "https://open.spotify.com/artist/5aVKsCIE4jsTKODYwjVVLK",
+      "url": "https://open.spotify.com/artist/6n3YUZcayLRuAunJUUelvz",
       "sourceType": "verified direct JookBox destination",
       "identityVerified": true,
-      "verifiedAt": "2026-08-03T11:33:17.822Z",
-      "evidence": "Spotify resolved directly and its destination metadata matched Regurgitator."
+      "verifiedAt": "2026-08-03T22:30:00.000Z",
+      "evidence": "The direct Spotify artist page identifies Regurgitator and lists the band's catalogue."
     },
     {
       "destination": "selection:facebook-cf20f434",

@@ -56,7 +56,10 @@ def verify_edition(platform: dict, edition: dict) -> None:
     instagram = verify_image(slug, manifest, "instagramImage", (1080, 1080))
     if config.get("editionType") == "bar_jukebox":
         qr_size = (1920, 1080)
-    elif config.get("editionType") == "jukebox" and config.get("jookBox", {}).get("qrArtworkVariant") == "aggits-character-poster/1":
+    elif config.get("editionType") == "jukebox" and config.get("jookBox", {}).get("qrArtworkVariant") in {
+        "aggits-character-poster/1",
+        "aggits-character-poster-perspective/2",
+    }:
         qr_size = (1254, 1254)
     else:
         qr_size = (1080, 1080)
