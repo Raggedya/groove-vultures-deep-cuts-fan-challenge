@@ -1,0 +1,168 @@
+{
+  "bandName": "Rogue Traders",
+  "slug": "rogue-traders",
+  "editionId": "dc_24c509ffd1",
+  "verifiedAt": "2026-08-03T11:33:34.844Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://www.roguetraders.net/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:17.838Z",
+      "evidence": "The page identified Rogue Traders and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/rogue_traders/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:18.042Z",
+      "evidence": "The page identified Rogue Traders and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/3YUrEElXpqiPSbffh9XXZd",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:17.599Z",
+      "evidence": "The page identified Rogue Traders and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UCi2dxsuDusm9JLqMGTnKOFA",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:17.949Z",
+      "evidence": "The page identified Rogue Traders and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www-roguetraders-net.filesusr.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:18.484Z",
+      "evidence": "The page identified Rogue Traders and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://linktr.ee/roguetraders",
+      "sourceType": "official artist-controlled link hub",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:18.352Z",
+      "evidence": "The page identified Rogue Traders and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:website-6de72f26",
+      "url": "https://www.roguetraders.net/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:17.838Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Rogue Traders."
+    },
+    {
+      "destination": "website",
+      "url": "https://www.roguetraders.net/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:17.838Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Rogue Traders."
+    },
+    {
+      "destination": "selection:show-0046cd30",
+      "url": "https://tickets.oztix.com.au/outlet/event/521844dc-3987-435f-94d3-c0b3f01387c2",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:18.920Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Rogue Traders."
+    },
+    {
+      "destination": "selection:show-c24b9d6a",
+      "url": "https://rosemounthotel.oztix.com.au/outlet/event/e151d7a0-d123-4269-8c1c-aecb15509b06?preview=de630930-5847-44f3-9977-72d6d4623c11",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:18.912Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Rogue Traders."
+    },
+    {
+      "destination": "selection:show-90404a71",
+      "url": "https://tickets.oztix.com.au/outlet/event/a69a25a4-9c0d-4740-b324-b67140facac7",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:18.929Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Rogue Traders."
+    },
+    {
+      "destination": "selection:facebook-685b67a4",
+      "url": "https://www.facebook.com/roguetraders/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:19.545Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Rogue Traders."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/roguetraders/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:19.545Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Rogue Traders."
+    },
+    {
+      "destination": "selection:instagram-ef84182b",
+      "url": "https://www.instagram.com/natbassingthwaighte/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:19.697Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Rogue Traders."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/natbassingthwaighte/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:19.697Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Rogue Traders."
+    },
+    {
+      "destination": "selection:youtube-db321601",
+      "url": "https://www.youtube.com/user/RogueTradersVEVO/videos",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:19.352Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Rogue Traders."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/user/RogueTradersVEVO/videos",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:19.352Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Rogue Traders."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.roguetraders.net/",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:25.925Z",
+      "evidence": "The official source supplied the concise biography text used by the Rogue Traders ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=XO4tvxt5CQ0",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:25.561Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Rogue Traders video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://www.roguetraders.net/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:17.838Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Rogue Traders."
+    }
+  ]
+}

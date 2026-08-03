@@ -1,0 +1,152 @@
+{
+  "bandName": "Art vs. Science",
+  "slug": "art-vs-science",
+  "editionId": "dc_f73f0ede22",
+  "verifiedAt": "2026-08-03T11:54:15.014Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://www.artvsscience.net/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:52:54.505Z",
+      "evidence": "The page identified Art vs. Science and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/artvssciencemusic/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:52:54.467Z",
+      "evidence": "The page identified Art vs. Science and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/4MlrZKzgi3UuZi2iDKjOar",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:52:54.061Z",
+      "evidence": "The page identified Art vs. Science and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UCESnBKrueJLr3-o1gpG3evQ",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:52:54.646Z",
+      "evidence": "The page identified Art vs. Science and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://linktr.ee/artvsscience",
+      "sourceType": "official artist-controlled link hub",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:52:54.790Z",
+      "evidence": "The page identified Art vs. Science and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:spotify-44358678",
+      "url": "https://open.spotify.com/artist/4MlrZKzgi3UuZi2iDKjOar",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:52:54.061Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Art vs. Science."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/4MlrZKzgi3UuZi2iDKjOar",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:52:54.061Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Art vs. Science."
+    },
+    {
+      "destination": "selection:youtube-75413289",
+      "url": "https://www.youtube.com/channel/UCESnBKrueJLr3-o1gpG3evQ",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:52:54.646Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Art vs. Science."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/channel/UCESnBKrueJLr3-o1gpG3evQ",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:52:54.646Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Art vs. Science."
+    },
+    {
+      "destination": "selection:instagram-0a72fc64",
+      "url": "https://www.instagram.com/artvssciencemusic/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:52:54.467Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Art vs. Science."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/artvssciencemusic/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:52:54.467Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Art vs. Science."
+    },
+    {
+      "destination": "selection:website-6b964429",
+      "url": "https://www.artvsscience.net/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:52:54.505Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Art vs. Science."
+    },
+    {
+      "destination": "website",
+      "url": "https://www.artvsscience.net/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:52:54.505Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Art vs. Science."
+    },
+    {
+      "destination": "selection:bandcamp-ac4f7032",
+      "url": "https://artvsscience.bandcamp.com/merch",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:52:55.480Z",
+      "evidence": "Bandcamp resolved directly and its destination metadata matched Art vs. Science."
+    },
+    {
+      "destination": "bandcamp",
+      "url": "https://artvsscience.bandcamp.com/merch",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:52:55.480Z",
+      "evidence": "Bandcamp resolved directly and its destination metadata matched Art vs. Science."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.instagram.com/artvssciencemusic/",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:53:02.124Z",
+      "evidence": "The official source supplied the concise biography text used by the Art vs. Science ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=nuBgPEvK6g8",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:53:01.788Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Art vs. Science video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://www.artvsscience.net/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:52:54.505Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Art vs. Science."
+    }
+  ]
+}

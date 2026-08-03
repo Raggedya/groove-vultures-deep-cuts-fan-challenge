@@ -1,0 +1,152 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Australian Crawl",
+  "editionTitle": "Australian Crawl",
+  "description": "This is the official YouTube channel for Australian Crawl. Australian Crawl, from 1979-1986 perfectly married the sounds of the summer and good times into musical form through the...",
+  "discovery": {
+    "bio": "This is the official YouTube channel for Australian Crawl. Australian Crawl, from 1979-1986 perfectly married the sounds of the summer and good times into musical form through the...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "australian-crawl",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_d10266e7d2",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/australian-crawl/instagram-discovery.png",
+    "qrImage": "output/australian-crawl/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "",
+    "spotify": "https://open.spotify.com/artist/41fDGRDlzczk5Yo2wDo0H4",
+    "instagram": "",
+    "website": "",
+    "buyMusic": "",
+    "merchandise": "https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.meta.com%2F&h=AUAUxh0CgtbZ3r_sJf0lx_bM9uc5f2kpCKyTCtRA_CkVdxPf8oyUtfhngdQljgXRzEra2hyyqQDTSwvswYelyRR1E1_QWwytNq3OGeuvi_Hg2eTEZAuZdA64oLqJEg2vMfJjpZMUBiO8rEc3sg8gmSbOyxWcppxJ",
+    "facebook": "https://www.facebook.com/lite/",
+    "youtube": "https://www.youtube.com/channel/UCMH5E19_uxGioJxbr70RljA"
+  },
+  "featuredVideo": {
+    "title": "Australian Crawl - Louie Louie (Official Audio)",
+    "youtubeURL": "https://www.youtube.com/watch?v=v8j4XKMKoKg",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:46:32.192Z"
+  },
+  "analytics": {
+    "editionId": "dc_d10266e7d2",
+    "pageIdentifier": "dc_d10266e7d2:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_fc2aba2b-1168-4fce-97cd-801080125c7c",
+    "submittedAt": "2026-08-03T11:47:04.670Z",
+    "researchCompletedAt": "2026-08-03T11:47:04.729Z",
+    "editionCreatedAt": "2026-08-03T11:47:04.729Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_d10266e7d2",
+    "tickerBio": "THIS IS THE OFFICIAL YOUTUBE CHANNEL FOR AUSTRALIAN CRAWL. AUSTRALIAN CRAWL, FROM 1979-1986 PERFECTLY MARRIED THE SOUNDS OF THE SUMMER AND GOOD TIMES INTO MUSICAL FORM THROUGH THE CLASSIC SINGLES BEAUTIFUL PEOPLE, THE BOYS LIGHT UP, DOWNHEARTED, HOOCHIE GUCCI FIORUCCI MAMA, INDISPOSED, THINGS DON'T SEEM, UNPUBLISHED CRITICS, LAKESIDE, OH NO NOT YOU AGAIN, ERROL, RUNAWAY GIRLS, DAUGHTERS OF THE NORTHERN COAST, SHUTDOW",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "spotify-3df5b955",
+      "youtube-34e93d4a",
+      "merchandise-0ff2c117",
+      "facebook-0402af7d"
+    ],
+    "marquee": "Australian Crawl",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://open.spotify.com/artist/41fDGRDlzczk5Yo2wDo0H4",
+    "linkSourceVerifiedAt": "2026-08-03T11:46:24.104Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "spotify-3df5b955",
+        "sourceTitle": "Spotify",
+        "label": "Spotify",
+        "detail": "Listen on Spotify",
+        "url": "https://open.spotify.com/artist/41fDGRDlzczk5Yo2wDo0H4",
+        "platform": "website",
+        "kind": "spotify"
+      },
+      {
+        "id": "youtube-34e93d4a",
+        "sourceTitle": "YouTube",
+        "label": "YouTube",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/channel/UCMH5E19_uxGioJxbr70RljA",
+        "platform": "youtube",
+        "kind": "youtube"
+      },
+      {
+        "id": "merchandise-0ff2c117",
+        "sourceTitle": "Meta Store",
+        "label": "Meta Store",
+        "detail": "Official band merchandise",
+        "url": "https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.meta.com%2F&h=AUAUxh0CgtbZ3r_sJf0lx_bM9uc5f2kpCKyTCtRA_CkVdxPf8oyUtfhngdQljgXRzEra2hyyqQDTSwvswYelyRR1E1_QWwytNq3OGeuvi_Hg2eTEZAuZdA64oLqJEg2vMfJjpZMUBiO8rEc3sg8gmSbOyxWcppxJ",
+        "platform": "merchandise",
+        "kind": "merchandise"
+      },
+      {
+        "id": "facebook-0402af7d",
+        "sourceTitle": "Facebook Lite",
+        "label": "Facebook Lite",
+        "detail": "Follow the band",
+        "url": "https://www.facebook.com/lite/",
+        "platform": "facebook",
+        "kind": "facebook"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://www.youtube.com/channel/UCMH5E19_uxGioJxbr70RljA",
+      "paragraphs": [
+        "This is the official YouTube channel for Australian Crawl. Australian Crawl, from 1979-1986 perfectly married the sounds of the summer and good times into musical form through the classic singles Beautiful People, The Boys Light Up, Downhearted, Hoochie Gucci Fiorucci Mama, Indisposed, Things Don't Seem, Unpublished Critics, Lakeside, Oh No Not You Again, Errol, Runaway Girls, Daughters Of The Northern Coast, Shutdow"
+      ]
+    }
+  }
+}

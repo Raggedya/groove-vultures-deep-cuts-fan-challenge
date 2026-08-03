@@ -1,0 +1,120 @@
+{
+  "bandName": "The Grates",
+  "slug": "the-grates",
+  "editionId": "dc_0e780559f5",
+  "verifiedAt": "2026-08-03T11:29:26.869Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://www.facebook.com/thegrates",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:05.654Z",
+      "evidence": "The page identified The Grates and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/0aWSylARSZCDo7vTDgvKbb",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:54.597Z",
+      "evidence": "The page identified The Grates and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UC1lby4_CIjzK-XarnhoZRUw",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:54.820Z",
+      "evidence": "The page identified The Grates and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:facebook-a1c40be0",
+      "url": "https://www.facebook.com/thegrates",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:05.654Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched The Grates."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/thegrates",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:05.654Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched The Grates."
+    },
+    {
+      "destination": "selection:youtube-3c473ec4",
+      "url": "https://www.youtube.com/watch?v=f1J38FlDKxo",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:08.815Z",
+      "evidence": "YouTube resolved directly from an identity-matched artist-controlled source for The Grates."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/watch?v=f1J38FlDKxo",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:08.815Z",
+      "evidence": "YouTube resolved directly from an identity-matched artist-controlled source for The Grates."
+    },
+    {
+      "destination": "selection:spotify-9f1fa4ae",
+      "url": "https://open.spotify.com/artist/78XLiUvZTJiY3Sj0nIZRou",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:10.125Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched The Grates."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/78XLiUvZTJiY3Sj0nIZRou",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:10.125Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched The Grates."
+    },
+    {
+      "destination": "selection:instagram-10a97b59",
+      "url": "https://www.instagram.com/thegrates/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:11.978Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched The Grates."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/thegrates/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:11.978Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched The Grates."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.facebook.com/thegrates",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:13.117Z",
+      "evidence": "The official source supplied the concise biography text used by the The Grates ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=xk2lJrO98VE",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:12.637Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured The Grates video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://www.facebook.com/thegrates",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:05.654Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for The Grates."
+    }
+  ]
+}

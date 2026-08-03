@@ -1,0 +1,162 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Atlas Genius",
+  "editionTitle": "Atlas Genius",
+  "description": "Hey everyone, Just a quick update on the tour. We’re ready to go, but there’s been a delay with our US visas. Until they’re approved, we can’t get into the country. This means, sadly, we...",
+  "discovery": {
+    "bio": "Hey everyone, Just a quick update on the tour. We’re ready to go, but there’s been a delay with our US visas. Until they’re approved, we can’t get into the country. This means, sadly, we...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "atlas-genius",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_7374b0bdca",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/atlas-genius/instagram-discovery.png",
+    "qrImage": "output/atlas-genius/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "",
+    "spotify": "https://open.spotify.com/artist/42vg2T0Xg9yPaAgogJzoQH",
+    "instagram": "",
+    "website": "https://www.atlasgenius.com/",
+    "buyMusic": "",
+    "merchandise": "",
+    "facebook": "https://www.facebook.com/AtlasGenius/",
+    "youtube": "https://www.youtube.com/atlasgenius"
+  },
+  "featuredVideo": {
+    "title": "Atlas Genius & Robert DeLong Tour",
+    "youtubeURL": "https://www.youtube.com/watch?v=rB9RS3q4ah4",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:33:14.219Z"
+  },
+  "analytics": {
+    "editionId": "dc_7374b0bdca",
+    "pageIdentifier": "dc_7374b0bdca:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_032048f7-2bae-4ff0-8d8d-2f897e2c947b",
+    "submittedAt": "2026-08-03T11:29:16.745Z",
+    "researchCompletedAt": "2026-08-03T11:33:39.460Z",
+    "editionCreatedAt": "2026-08-03T11:33:39.460Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_7374b0bdca",
+    "tickerBio": "HEY EVERYONE, JUST A QUICK UPDATE ON THE TOUR. WE’RE READY TO GO, BUT THERE’S BEEN A DELAY WITH OUR US VISAS. UNTIL THEY’RE APPROVED, WE CAN’T GET INTO THE COUNTRY. THIS MEANS, SADLY, WE WON’T BE ABLE TO PLAY THE FIRST SHOWS WITH NEON TREES. WE’RE STILL HOLDING OUT HOPE FOR THE REST OF THE TOUR, BUT RIGHT NOW IT’S UNCERTAIN. WE’RE GUTTED ABOUT THIS, BUT WE’RE STAYING HOPEFUL AND WILL KEEP YOU UPDATED. LOVE, KEITH, MI",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "spotify-0a2f1520",
+      "youtube-fc3d7cfe",
+      "website-753e9a20",
+      "facebook-f342bd26",
+      "contact-d17b1174"
+    ],
+    "marquee": "Atlas Genius",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://www.atlasgenius.com/",
+    "linkSourceVerifiedAt": "2026-08-03T11:33:06.784Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "website-753e9a20",
+        "sourceTitle": "Home",
+        "label": "Home",
+        "detail": "Visit the official website",
+        "url": "https://www.atlasgenius.com/",
+        "platform": "website",
+        "kind": "website"
+      },
+      {
+        "id": "contact-d17b1174",
+        "sourceTitle": "Contact",
+        "label": "Contact",
+        "detail": "Official band enquiries",
+        "url": "https://www.atlasgenius.com/contact",
+        "platform": "website",
+        "kind": "contact"
+      },
+      {
+        "id": "facebook-f342bd26",
+        "sourceTitle": "Facebook",
+        "label": "Facebook",
+        "detail": "Follow the band",
+        "url": "https://www.facebook.com/AtlasGenius/",
+        "platform": "facebook",
+        "kind": "facebook"
+      },
+      {
+        "id": "spotify-0a2f1520",
+        "sourceTitle": "Spotify",
+        "label": "Spotify",
+        "detail": "Listen on Spotify",
+        "url": "https://open.spotify.com/artist/42vg2T0Xg9yPaAgogJzoQH",
+        "platform": "website",
+        "kind": "spotify"
+      },
+      {
+        "id": "youtube-fc3d7cfe",
+        "sourceTitle": "YouTube",
+        "label": "YouTube",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/atlasgenius",
+        "platform": "youtube",
+        "kind": "youtube"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://www.instagram.com/atlasgenius/",
+      "paragraphs": [
+        "Hey everyone, Just a quick update on the tour. We’re ready to go, but there’s been a delay with our US visas. Until they’re approved, we can’t get into the country. This means, sadly, we won’t be able to play the first shows with Neon Trees. We’re still holding out hope for the rest of the tour, but right now it’s uncertain. We’re gutted about this, but we’re staying hopeful and will keep you updated. Love, Keith, Mi"
+      ]
+    }
+  }
+}

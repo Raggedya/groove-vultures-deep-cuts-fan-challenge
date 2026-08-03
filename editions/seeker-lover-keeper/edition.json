@@ -1,0 +1,152 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Seeker Lover Keeper",
+  "editionTitle": "Seeker Lover Keeper",
+  "description": "Seeker Lover Keeper is the collaborative project of three of Australia’s most beloved musicians; Sarah Blasko, Holly Throsby and Sally Seltmann. 2011 saw the release of their certified...",
+  "discovery": {
+    "bio": "Seeker Lover Keeper is the collaborative project of three of Australia’s most beloved musicians; Sarah Blasko, Holly Throsby and Sally Seltmann. 2011 saw the release of their certified...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "seeker-lover-keeper",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_c18886f768",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/seeker-lover-keeper/instagram-discovery.png",
+    "qrImage": "output/seeker-lover-keeper/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "",
+    "spotify": "https://open.spotify.com/artist/18E9agcfYi1KIQlJivdEcX",
+    "instagram": "https://www.instagram.com/seekerloverkeeper_/",
+    "website": "https://www.seekerloverkeeper.com.au/",
+    "buyMusic": "",
+    "merchandise": "",
+    "facebook": "",
+    "youtube": "https://www.youtube.com/channel/UC48CLpdNovPkG8xYZMMF9Bg"
+  },
+  "featuredVideo": {
+    "title": "Seeker Lover Keeper - Superstar (Official Video)",
+    "youtubeURL": "https://www.youtube.com/watch?v=kdEfbLollr0",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:46:11.600Z"
+  },
+  "analytics": {
+    "editionId": "dc_c18886f768",
+    "pageIdentifier": "dc_c18886f768:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_f5a97046-f51a-43bc-a4b3-7d695c69ad63",
+    "submittedAt": "2026-08-03T11:47:03.915Z",
+    "researchCompletedAt": "2026-08-03T11:47:03.987Z",
+    "editionCreatedAt": "2026-08-03T11:47:03.987Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_c18886f768",
+    "tickerBio": "SEEKER LOVER KEEPER IS THE COLLABORATIVE PROJECT OF THREE OF AUSTRALIA’S MOST BELOVED MUSICIANS; SARAH BLASKO, HOLLY THROSBY AND SALLY SELTMANN. 2011 SAW THE RELEASE OF THEIR CERTIFIED GOLD AND MUCH-LOVED SELF-TITLED DEBUT RECORD, AND AFTER ANOTHER 8 YEARS PURSUING INDIVIDUAL PROJECTS, THE THREE CAME TOGETHER AGAIN IN 2019 FOR THE RELEASE OF THEIR 2ND AND ARIA NOMINATED RECORD WILD SEEDS.",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "spotify-a4309943",
+      "youtube-501914a4",
+      "instagram-d7d22cba",
+      "website-03ab41ac"
+    ],
+    "marquee": "Seeker Lover Keeper",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://www.instagram.com/seekerloverkeeper_/",
+    "linkSourceVerifiedAt": "2026-08-03T11:46:01.224Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "spotify-a4309943",
+        "sourceTitle": "Spotify",
+        "label": "Spotify",
+        "detail": "Listen on Spotify",
+        "url": "https://open.spotify.com/artist/18E9agcfYi1KIQlJivdEcX",
+        "platform": "website",
+        "kind": "spotify"
+      },
+      {
+        "id": "youtube-501914a4",
+        "sourceTitle": "YouTube",
+        "label": "YouTube",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/channel/UC48CLpdNovPkG8xYZMMF9Bg",
+        "platform": "youtube",
+        "kind": "youtube"
+      },
+      {
+        "id": "instagram-d7d22cba",
+        "sourceTitle": "Instagram",
+        "label": "Instagram",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/seekerloverkeeper_/",
+        "platform": "instagram",
+        "kind": "instagram"
+      },
+      {
+        "id": "website-03ab41ac",
+        "sourceTitle": "Band Website",
+        "label": "Band Website",
+        "detail": "Visit the official website",
+        "url": "https://www.seekerloverkeeper.com.au/",
+        "platform": "website",
+        "kind": "website"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://www.youtube.com/channel/UC48CLpdNovPkG8xYZMMF9Bg",
+      "paragraphs": [
+        "Seeker Lover Keeper is the collaborative project of three of Australia’s most beloved musicians; Sarah Blasko, Holly Throsby and Sally Seltmann. 2011 saw the release of their certified Gold and much-loved self-titled debut record, and after another 8 years pursuing individual projects, the three came together again in 2019 for the release of their 2nd and ARIA nominated record Wild Seeds."
+      ]
+    }
+  }
+}

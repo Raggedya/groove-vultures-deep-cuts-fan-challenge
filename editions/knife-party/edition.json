@@ -1,0 +1,190 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Knife Party",
+  "editionTitle": "Knife Party",
+  "description": "Official store of Australian electronic music duo Knife Party featuring tees, hats, hoodies, vinyl records, and more.",
+  "discovery": {
+    "bio": "Official store of Australian electronic music duo Knife Party featuring tees, hats, hoodies, vinyl records, and more.",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "knife-party",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_48973433b0",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/knife-party/instagram-discovery.png",
+    "qrImage": "output/knife-party/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "",
+    "spotify": "https://open.spotify.com/artist/2DuJi13MWHjRHrqRUwk8vH",
+    "instagram": "https://www.instagram.com/knifepartyinc",
+    "website": "https://knifeparty.com/",
+    "buyMusic": "",
+    "merchandise": "https://knifeparty.com/en-usd/collections/all",
+    "facebook": "https://www.facebook.com/knifeparty",
+    "youtube": "https://www.youtube.com/channel/UCtXRolzmkBDmAkTEJiFXohw"
+  },
+  "featuredVideo": {
+    "title": "Knife Party @ Ultra Music Festival Miami 2022",
+    "youtubeURL": "https://www.youtube.com/watch?v=Xc1nU7tuE_E",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:35:00.952Z"
+  },
+  "analytics": {
+    "editionId": "dc_48973433b0",
+    "pageIdentifier": "dc_48973433b0:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_bb9c1697-2532-42b2-b0e4-fd053bd6ae57",
+    "submittedAt": "2026-08-03T11:28:56.990Z",
+    "researchCompletedAt": "2026-08-03T11:35:02.018Z",
+    "editionCreatedAt": "2026-08-03T11:35:02.018Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_48973433b0",
+    "tickerBio": "OFFICIAL STORE OF AUSTRALIAN ELECTRONIC MUSIC DUO KNIFE PARTY FEATURING TEES, HATS, HOODIES, VINYL RECORDS, AND MORE.",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "spotify-ef4e49ef",
+      "youtube-4fdb5f52",
+      "instagram-35706942",
+      "tiktok-13f2d929",
+      "website-f0e4c4d1",
+      "merchandise-c4228451"
+    ],
+    "marquee": "Knife Party",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://knifeparty.com/",
+    "linkSourceVerifiedAt": "2026-08-03T11:34:53.183Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "show-4771a3b4",
+        "sourceTitle": "upgrade to a newer one to improve your experience with this site ' ); document.write( ' ' ); document.write( ' ' ); // show info bar document.querySelector(\".br",
+        "label": "Tickets",
+        "detail": "Open the verified ticket destination",
+        "url": "https://browsehappy.com/",
+        "platform": "website",
+        "kind": "website"
+      },
+      {
+        "id": "merchandise-c4228451",
+        "sourceTitle": "Shop",
+        "label": "Shop",
+        "detail": "Official band merchandise",
+        "url": "https://knifeparty.com/en-usd/collections/all",
+        "platform": "merchandise",
+        "kind": "merchandise"
+      },
+      {
+        "id": "website-f0e4c4d1",
+        "sourceTitle": "Band Website",
+        "label": "Band Website",
+        "detail": "Visit the official website",
+        "url": "https://knifeparty.com/",
+        "platform": "website",
+        "kind": "website"
+      },
+      {
+        "id": "youtube-4fdb5f52",
+        "sourceTitle": "YouTube",
+        "label": "YouTube",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/channel/UCtXRolzmkBDmAkTEJiFXohw",
+        "platform": "youtube",
+        "kind": "youtube"
+      },
+      {
+        "id": "instagram-35706942",
+        "sourceTitle": "Instagram",
+        "label": "Instagram",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/knifepartyinc",
+        "platform": "instagram",
+        "kind": "instagram"
+      },
+      {
+        "id": "facebook-f21d4eee",
+        "sourceTitle": "Facebook",
+        "label": "Facebook",
+        "detail": "Follow the band",
+        "url": "https://www.facebook.com/knifeparty",
+        "platform": "facebook",
+        "kind": "facebook"
+      },
+      {
+        "id": "tiktok-13f2d929",
+        "sourceTitle": "TikTok",
+        "label": "TikTok",
+        "detail": "Official band clips",
+        "url": "https://www.tiktok.com/@knifepartyinc",
+        "platform": "website",
+        "kind": "tiktok"
+      },
+      {
+        "id": "spotify-ef4e49ef",
+        "sourceTitle": "Spotify",
+        "label": "Spotify",
+        "detail": "Listen on Spotify",
+        "url": "https://open.spotify.com/artist/2DuJi13MWHjRHrqRUwk8vH",
+        "platform": "website",
+        "kind": "spotify"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://knifeparty.redstarmerch.com/",
+      "paragraphs": [
+        "Official store of Australian electronic music duo Knife Party featuring tees, hats, hoodies, vinyl records, and more."
+      ]
+    }
+  }
+}

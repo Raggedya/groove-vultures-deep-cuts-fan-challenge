@@ -1,0 +1,136 @@
+{
+  "bandName": "Howling Bells",
+  "slug": "howling-bells",
+  "editionId": "dc_c92dad74b8",
+  "verifiedAt": "2026-08-03T11:33:38.993Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://ffm.bio/howlingbells",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:06.681Z",
+      "evidence": "The page identified Howling Bells and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/howlingbells/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:05.437Z",
+      "evidence": "The page identified Howling Bells and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/4ZB5ywwPWbVJDgCHTxtUZE",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:05.063Z",
+      "evidence": "The page identified Howling Bells and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:show-17c38f6e",
+      "url": "https://api.ffm.to/bl/e/c/howlingbells?cd=eyJ1YSI6eyJ1YSI6IkRlZXBDdXRzU3R1ZGlvUmVzZWFyY2gvMS4wIiwiYnJvd3NlciI6e30sImNwdSI6e30sImRldmljZSI6e30sImVuZ2luZSI6e30sIm9zIjp7fX0sImNsaWVudCI6eyJyaWQiOiJmZDA3ZTNjZC1kMjBjLTQzNWEtYWE0My1jMGExZTcwZjIzNjgiLCJzaWQiOiIyZGFkYmFhYi0wYjNhLTQwMWItYWQ1ZC0yMzUxYzUyYjE3MWMiLCJpcCI6IjEuMTIzLjIyOC4yMjkiLCJyZWYiOiIiLCJob3N0IjoiZmZtLmJpbyIsImxhbmciOm51bGwsImlwQ291bnRyeSI6IkFVIn0sImlzV2VicFN1cHBvcnRlZCI6ZmFsc2UsImdkcHJFbmZvcmNlIjpmYWxzZSwiY291bnRyeUNvZGUiOiJBVSIsImlzQm90Ijp0cnVlLCJ1c2VBZmYiOiJzZWxmIiwidmlkIjoiOGM4YWU1MjEtMGNjOS00YjU0LTk3NzktMWIxMTAyZWU5ZmVmIiwiaWQiOiI2OGMwNDk1YzM1MDAwMGEyYWY0NTBmNWUiLCJ0em8iOm51bGwsImFuIjpudWxsLCJjaCI6bnVsbCwiZGVzdFVybCI6Imh0dHBzOi8vd3d3LmxpdmVuYXRpb24uY28udWsvaG93bGluZy1iZWxscy10aWNrZXRzLWFkcDI1MzAiLCJzcnZjIjpudWxsLCJwcm9kdWN0IjoiYmlvbGluayIsInNob3J0SWQiOiJob3dsaW5nYmVsbHMiLCJpc0F1dGhvcml6YXRpb25SZXF1aXJlZCI6ZmFsc2UsIm93bmVyIjoiNjhjMDQ3ZTkyNzAwMDA1ZTAwOTVjMzFiIiwiYXIiOiI2OGMwNDk1ODI5MDAwMDUyMDBhN2E0ODAiLCJibGtfdHlwZSI6InZpc2l0IiwiYmxrX2lkIjoibXNwWFlDdnFnIn0",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:07.489Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Howling Bells."
+    },
+    {
+      "destination": "selection:facebook-103674a8",
+      "url": "https://www.facebook.com/howlingbells",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:07.394Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Howling Bells."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/howlingbells",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:07.394Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Howling Bells."
+    },
+    {
+      "destination": "selection:youtube-5b42aa3f",
+      "url": "https://www.youtube.com/channel/UCBu8tkqEeOxKTAa53jz4eDw",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:07.055Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Howling Bells."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/channel/UCBu8tkqEeOxKTAa53jz4eDw",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:07.055Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Howling Bells."
+    },
+    {
+      "destination": "selection:spotify-05d238b9",
+      "url": "https://open.spotify.com/artist/4ZB5ywwPWbVJDgCHTxtUZE",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:05.063Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Howling Bells."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/4ZB5ywwPWbVJDgCHTxtUZE",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:05.063Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Howling Bells."
+    },
+    {
+      "destination": "selection:instagram-27a86c6d",
+      "url": "https://www.instagram.com/howlingbells",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:07.299Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Howling Bells."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/howlingbells",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:07.299Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Howling Bells."
+    },
+    {
+      "destination": "selection:show-5d35ca7e",
+      "url": "https://www.livenation.co.uk/howling-bells-tickets-adp2530",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:15.301Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Howling Bells."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.instagram.com/howlingbells/",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:16.803Z",
+      "evidence": "The official source supplied the concise biography text used by the Howling Bells ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=lEpAUuSFy24",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:16.508Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Howling Bells video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://ffm.bio/howlingbells",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:06.681Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Howling Bells."
+    }
+  ]
+}

@@ -1,0 +1,168 @@
+{
+  "bandName": "Sneaky Sound System",
+  "slug": "sneaky-sound-system",
+  "editionId": "dc_1f2a28ff05",
+  "verifiedAt": "2026-08-03T11:33:37.518Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://sneakysoundsystem.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:47.248Z",
+      "evidence": "The page identified Sneaky Sound System and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/sneakysoundsystem/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:47.097Z",
+      "evidence": "The page identified Sneaky Sound System and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/6ieVhWXtOmK6DO6dmX7Eko",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:46.713Z",
+      "evidence": "The page identified Sneaky Sound System and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UCDzfrn4naL1oNizS5Gst1cQ",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:46.827Z",
+      "evidence": "The page identified Sneaky Sound System and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:website-ad165e62",
+      "url": "https://sneakysoundsystem.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:47.248Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Sneaky Sound System."
+    },
+    {
+      "destination": "website",
+      "url": "https://sneakysoundsystem.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:47.248Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Sneaky Sound System."
+    },
+    {
+      "destination": "selection:facebook-45b9a8f9",
+      "url": "https://www.facebook.com/sneakysoundsystem",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:48.057Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Sneaky Sound System."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/sneakysoundsystem",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:48.057Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Sneaky Sound System."
+    },
+    {
+      "destination": "selection:instagram-a8825cca",
+      "url": "https://www.instagram.com/sneakysoundsystem",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:47.954Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Sneaky Sound System."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/sneakysoundsystem",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:47.954Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Sneaky Sound System."
+    },
+    {
+      "destination": "selection:tiktok-ad323dc0",
+      "url": "https://www.tiktok.com/@snkysndsystm",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:47.396Z",
+      "evidence": "TikTok resolved directly from an identity-matched artist-controlled source for Sneaky Sound System."
+    },
+    {
+      "destination": "tiktok",
+      "url": "https://www.tiktok.com/@snkysndsystm",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:47.396Z",
+      "evidence": "TikTok resolved directly from an identity-matched artist-controlled source for Sneaky Sound System."
+    },
+    {
+      "destination": "selection:spotify-1e26499a",
+      "url": "https://open.spotify.com/artist/6ieVhWXtOmK6DO6dmX7Eko",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:46.713Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Sneaky Sound System."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/6ieVhWXtOmK6DO6dmX7Eko",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:46.713Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Sneaky Sound System."
+    },
+    {
+      "destination": "selection:youtube-a804520b",
+      "url": "https://www.youtube.com/sneakysoundsystem",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:47.763Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Sneaky Sound System."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/sneakysoundsystem",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:47.763Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Sneaky Sound System."
+    },
+    {
+      "destination": "selection:show-2dd74f5f",
+      "url": "https://tickets.oztix.com.au/outlet/event/e8ea2015-1e43-4bd4-a383-7d8500b9ca70",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:47.682Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Sneaky Sound System."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.instagram.com/sneakysoundsystem/",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:54.605Z",
+      "evidence": "The official source supplied the concise biography text used by the Sneaky Sound System ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=Wmu_f33matw",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:54.218Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Sneaky Sound System video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://sneakysoundsystem.com/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:47.248Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Sneaky Sound System."
+    }
+  ]
+}

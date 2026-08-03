@@ -1,0 +1,162 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Dragon",
+  "editionTitle": "Dragon",
+  "description": "🎶 SUNSET SOUNDS IS BACK! 🌅🎸 Get ready for an unforgettable afternoon at Sunset Sounds! 🔥 Starring: 🎤 Dragon 🎸 The Radiators 🎹 Eurogliders 🎵 V Spy V Spy 🚕 Taxiride 💃 The...",
+  "discovery": {
+    "bio": "🎶 SUNSET SOUNDS IS BACK! 🌅🎸 Get ready for an unforgettable afternoon at Sunset Sounds! 🔥 Starring: 🎤 Dragon 🎸 The Radiators 🎹 Eurogliders 🎵 V Spy V Spy 🚕 Taxiride 💃 The...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "dragon",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_cf0c26e052",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/dragon/instagram-discovery.png",
+    "qrImage": "output/dragon/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "",
+    "spotify": "",
+    "instagram": "https://www.instagram.com/dragon.official/",
+    "website": "https://www.dragononline.com.au/",
+    "buyMusic": "",
+    "merchandise": "https://store749064.ecwid.com/",
+    "facebook": "https://www.facebook.com/dragonmusic/",
+    "youtube": "https://www.youtube.com/channel/UCISWM9bdL3G_DaJ5fJXdbCg"
+  },
+  "featuredVideo": {
+    "title": "Dragon - Place In The Sun (Official Audio)",
+    "youtubeURL": "https://www.youtube.com/watch?v=-k6pzKt7gdE",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:32:45.234Z"
+  },
+  "analytics": {
+    "editionId": "dc_cf0c26e052",
+    "pageIdentifier": "dc_cf0c26e052:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_c6a19c27-25e3-4dda-aca1-289ec5980d4f",
+    "submittedAt": "2026-08-03T11:28:59.520Z",
+    "researchCompletedAt": "2026-08-03T11:33:36.381Z",
+    "editionCreatedAt": "2026-08-03T11:33:36.381Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_cf0c26e052",
+    "tickerBio": "🎶 SUNSET SOUNDS IS BACK! 🌅🎸 GET READY FOR AN UNFORGETTABLE AFTERNOON AT SUNSET SOUNDS! 🔥 STARRING: 🎤 DRAGON 🎸 THE RADIATORS 🎹 EUROGLIDERS 🎵 V SPY V SPY 🚕 TAXIRIDE 💃 THE CHANTOOZIES 📍 TORONTO HOTEL 📅 SATURDAY 21ST NOVEMBER DON'T MISS THIS INCREDIBLE LINE-UP OF AUSTRALIAN LEGENDS PERFORMING ALL THE HITS YOU KNOW AND LOVE AS THE SUN GOES DOWN. 🎟️ PRE-SALE STARTS FRIDAY AT 10:00AM – SECURE YOUR TICKETS BEFOR",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "youtube-1a67e4da",
+      "instagram-983af009",
+      "website-62b4b5a8",
+      "merchandise-aba8ccb7",
+      "facebook-cc6503d9"
+    ],
+    "marquee": "Dragon",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://www.dragononline.com.au/",
+    "linkSourceVerifiedAt": "2026-08-03T11:32:37.993Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "website-62b4b5a8",
+        "sourceTitle": "ABOUT",
+        "label": "ABOUT",
+        "detail": "Visit the official website",
+        "url": "https://www.dragononline.com.au/",
+        "platform": "website",
+        "kind": "website"
+      },
+      {
+        "id": "merchandise-aba8ccb7",
+        "sourceTitle": "STORE",
+        "label": "STORE",
+        "detail": "Official band merchandise",
+        "url": "https://store749064.ecwid.com/",
+        "platform": "merchandise",
+        "kind": "merchandise"
+      },
+      {
+        "id": "facebook-cc6503d9",
+        "sourceTitle": "Facebook",
+        "label": "Facebook",
+        "detail": "Follow the band",
+        "url": "https://www.facebook.com/dragonmusic/",
+        "platform": "facebook",
+        "kind": "facebook"
+      },
+      {
+        "id": "youtube-1a67e4da",
+        "sourceTitle": "YouTube",
+        "label": "YouTube",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/channel/UCISWM9bdL3G_DaJ5fJXdbCg",
+        "platform": "youtube",
+        "kind": "youtube"
+      },
+      {
+        "id": "instagram-983af009",
+        "sourceTitle": "Instagram",
+        "label": "Instagram",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/dragon.official/",
+        "platform": "instagram",
+        "kind": "instagram"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://www.instagram.com/dragon.official/",
+      "paragraphs": [
+        "🎶 SUNSET SOUNDS IS BACK! 🌅🎸 Get ready for an unforgettable afternoon at Sunset Sounds! 🔥 Starring: 🎤 Dragon 🎸 The Radiators 🎹 Eurogliders 🎵 V Spy V Spy 🚕 Taxiride 💃 The Chantoozies 📍 Toronto Hotel 📅 Saturday 21st November Don't miss this incredible line-up of Australian legends performing all the hits you know and love as the sun goes down. 🎟️ Pre-sale starts Friday at 10:00am – secure your tickets befor"
+      ]
+    }
+  }
+}

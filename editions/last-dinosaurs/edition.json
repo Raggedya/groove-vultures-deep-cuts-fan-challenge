@@ -1,0 +1,172 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Last Dinosaurs",
+  "editionTitle": "Last Dinosaurs",
+  "description": "Looking back at a proper night with @lastdinosaurs. 🦕✨ The energy was unmatched, the room was packed, and the Road to COCA Opening officially set the tone for what’s ahead. From...",
+  "discovery": {
+    "bio": "Looking back at a proper night with @lastdinosaurs. 🦕✨ The energy was unmatched, the room was packed, and the Road to COCA Opening officially set the tone for what’s ahead. From...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "last-dinosaurs",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_c7f4777c19",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/last-dinosaurs/instagram-discovery.png",
+    "qrImage": "output/last-dinosaurs/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "",
+    "spotify": "https://open.spotify.com/artist/677sHrkjhB7IP4YwjzZyc4",
+    "instagram": "https://www.instagram.com/lastdinosaurs",
+    "website": "https://www.lastdinosaurs.com/",
+    "buyMusic": "",
+    "merchandise": "",
+    "facebook": "https://www.facebook.com/lastdinosaurs",
+    "youtube": "https://www.youtube.com/@LastDinosaurs"
+  },
+  "featuredVideo": {
+    "title": "Last Dinosaurs - Take Your Time (OFFICIAL LIVE PERFORMANCE)",
+    "youtubeURL": "https://www.youtube.com/watch?v=DBzPgYzA5SE",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:26:15.430Z"
+  },
+  "analytics": {
+    "editionId": "dc_c7f4777c19",
+    "pageIdentifier": "dc_c7f4777c19:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_07720da2-6dcf-4e02-a4d9-fb9ba95ae80c",
+    "submittedAt": "2026-08-03T11:29:18.739Z",
+    "researchCompletedAt": "2026-08-03T11:29:18.952Z",
+    "editionCreatedAt": "2026-08-03T11:29:18.952Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_c7f4777c19",
+    "tickerBio": "LOOKING BACK AT A PROPER NIGHT WITH @LASTDINOSAURS. 🦕✨ THE ENERGY WAS UNMATCHED, THE ROOM WAS PACKED, AND THE ROAD TO COCA OPENING OFFICIALLY SET THE TONE FOR WHAT’S AHEAD. FROM IMMERSING OURSELVES IN ‘MONISME’ BY @RIARR AND COLD BEERS BY @BLACKSANDBREWERY, TO THE LIVE SETS BY @PATRAS.MUSIC AND @BABON.BAND THAT GOT THE AMPHITHEATER MOVING. HUGE THANKS TO EVERYONE WHO CAME DOWN, GRABBED A DRINK, AND SHARED THE FLOOR",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "spotify-df910651",
+      "youtube-6778b44f",
+      "instagram-8b358a78",
+      "tiktok-68b46f00",
+      "website-18e3bf08",
+      "facebook-1717d30f"
+    ],
+    "marquee": "Last Dinosaurs",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://www.lastdinosaurs.com/",
+    "linkSourceVerifiedAt": "2026-08-03T11:25:55.281Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "website-18e3bf08",
+        "sourceTitle": "Skip to Content",
+        "label": "Band Website",
+        "detail": "Visit the official website",
+        "url": "https://www.lastdinosaurs.com/",
+        "platform": "website",
+        "kind": "website"
+      },
+      {
+        "id": "instagram-8b358a78",
+        "sourceTitle": "Instagram",
+        "label": "Instagram",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/lastdinosaurs",
+        "platform": "instagram",
+        "kind": "instagram"
+      },
+      {
+        "id": "youtube-6778b44f",
+        "sourceTitle": "YouTube",
+        "label": "YouTube",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/@LastDinosaurs",
+        "platform": "youtube",
+        "kind": "youtube"
+      },
+      {
+        "id": "tiktok-68b46f00",
+        "sourceTitle": "TikTok",
+        "label": "TikTok",
+        "detail": "Official band clips",
+        "url": "https://www.tiktok.com/@lastdinosaurs",
+        "platform": "website",
+        "kind": "tiktok"
+      },
+      {
+        "id": "facebook-1717d30f",
+        "sourceTitle": "Facebook",
+        "label": "Facebook",
+        "detail": "Follow the band",
+        "url": "https://www.facebook.com/lastdinosaurs",
+        "platform": "facebook",
+        "kind": "facebook"
+      },
+      {
+        "id": "spotify-df910651",
+        "sourceTitle": "Spotify",
+        "label": "Spotify",
+        "detail": "Listen on Spotify",
+        "url": "https://open.spotify.com/artist/677sHrkjhB7IP4YwjzZyc4",
+        "platform": "website",
+        "kind": "spotify"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://www.instagram.com/lastdinosaurs/",
+      "paragraphs": [
+        "Looking back at a proper night with @lastdinosaurs. 🦕✨ The energy was unmatched, the room was packed, and the Road to COCA Opening officially set the tone for what’s ahead. From immersing ourselves in ‘Monisme’ by @riarr and cold beers by @blacksandbrewery, to the live sets by @patras.music and @babon.band that got the Amphitheater moving. Huge thanks to everyone who came down, grabbed a drink, and shared the floor"
+      ]
+    }
+  }
+}

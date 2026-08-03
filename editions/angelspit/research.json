@@ -1,0 +1,184 @@
+{
+  "bandName": "Angelspit",
+  "slug": "angelspit",
+  "editionId": "dc_5fc05fa620",
+  "verifiedAt": "2026-08-03T11:28:53.530Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://www.angelspit.net/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:20:31.385Z",
+      "evidence": "The page identified Angelspit and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://angelspit-official.bandcamp.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:20:30.935Z",
+      "evidence": "The page identified Angelspit and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/angelspit/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:20:31.039Z",
+      "evidence": "The page identified Angelspit and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:website-74c722f8",
+      "url": "https://www.angelspit.net/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:20:31.385Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Angelspit."
+    },
+    {
+      "destination": "website",
+      "url": "https://www.angelspit.net/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:20:31.385Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Angelspit."
+    },
+    {
+      "destination": "selection:contact-7df3ea3a",
+      "url": "https://www.angelspit.net/bookings/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:20:31.787Z",
+      "evidence": "Contact resolved directly and its destination metadata matched Angelspit."
+    },
+    {
+      "destination": "contact",
+      "url": "https://www.angelspit.net/bookings/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:20:31.787Z",
+      "evidence": "Contact resolved directly and its destination metadata matched Angelspit."
+    },
+    {
+      "destination": "selection:contact-23307902",
+      "url": "https://www.angelspit.net/contact-us/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:20:32.368Z",
+      "evidence": "Contact resolved directly and its destination metadata matched Angelspit."
+    },
+    {
+      "destination": "contact",
+      "url": "https://www.angelspit.net/contact-us/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:20:32.368Z",
+      "evidence": "Contact resolved directly and its destination metadata matched Angelspit."
+    },
+    {
+      "destination": "selection:buy_music-c7734ede",
+      "url": "https://www.angelspit.net/discography/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:20:32.566Z",
+      "evidence": "Buy Music resolved directly and its destination metadata matched Angelspit."
+    },
+    {
+      "destination": "buyMusic",
+      "url": "https://www.angelspit.net/discography/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:20:32.566Z",
+      "evidence": "Buy Music resolved directly and its destination metadata matched Angelspit."
+    },
+    {
+      "destination": "selection:facebook-76c2f944",
+      "url": "https://www.facebook.com/angelspitmusic",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:20:31.791Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Angelspit."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/angelspitmusic",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:20:31.791Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Angelspit."
+    },
+    {
+      "destination": "selection:bandcamp-39b27e93",
+      "url": "https://venusofgorgon.bandcamp.com/track/breathing-but-not-alive",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:20:32.704Z",
+      "evidence": "Bandcamp resolved directly and its destination metadata matched Angelspit."
+    },
+    {
+      "destination": "bandcamp",
+      "url": "https://venusofgorgon.bandcamp.com/track/breathing-but-not-alive",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:20:32.704Z",
+      "evidence": "Bandcamp resolved directly and its destination metadata matched Angelspit."
+    },
+    {
+      "destination": "selection:youtube-a4f09f20",
+      "url": "https://www.youtube.com/watch?v=qg77sfoLwNs&feature=youtu.be",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:20:34.626Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Angelspit."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/watch?v=qg77sfoLwNs&feature=youtu.be",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:20:34.626Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Angelspit."
+    },
+    {
+      "destination": "selection:merchandise-17ec1de2",
+      "url": "https://www.angelspit.net/category/merch-2/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:20:34.265Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Angelspit."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://www.angelspit.net/category/merch-2/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:20:34.265Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Angelspit."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.instagram.com/angelspit/",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:20:40.045Z",
+      "evidence": "The official source supplied the concise biography text used by the Angelspit ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=B8cfSs6mJiM",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:20:39.685Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Angelspit video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://www.angelspit.net/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:20:31.385Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Angelspit."
+    }
+  ]
+}

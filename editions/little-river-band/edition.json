@@ -1,0 +1,152 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Little River Band",
+  "editionTitle": "Little River Band",
+  "description": "Little River Band is delivering all the hits, great new music and excellent shows worldwide. New album #WindowToTheWorld out now! https://littleriverband.kom... Little River Band is...",
+  "discovery": {
+    "bio": "Little River Band is delivering all the hits, great new music and excellent shows worldwide. New album #WindowToTheWorld out now! https://littleriverband.kom... Little River Band is...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "little-river-band",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_ff71ec4a82",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/little-river-band/instagram-discovery.png",
+    "qrImage": "output/little-river-band/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "",
+    "spotify": "https://open.spotify.com/artist/6clbbhnIqpHnqxwtOWcilg/concerts",
+    "instagram": "https://www.instagram.com/little_river_band/",
+    "website": "",
+    "buyMusic": "",
+    "merchandise": "",
+    "facebook": "https://www.facebook.com/littleriverband",
+    "youtube": "https://www.youtube.com/watch?v=f1J38FlDKxo"
+  },
+  "featuredVideo": {
+    "title": "Little River Band - Soul Full of Sunshine ft. Randy Houser (Lyric Video)",
+    "youtubeURL": "https://www.youtube.com/watch?v=HHP8_UOyLKg",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:24:52.027Z"
+  },
+  "analytics": {
+    "editionId": "dc_ff71ec4a82",
+    "pageIdentifier": "dc_ff71ec4a82:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_844eb26c-e788-4c40-a015-e92f3e1aa17c",
+    "submittedAt": "2026-08-03T11:29:08.863Z",
+    "researchCompletedAt": "2026-08-03T11:29:09.034Z",
+    "editionCreatedAt": "2026-08-03T11:29:09.034Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_ff71ec4a82",
+    "tickerBio": "LITTLE RIVER BAND IS DELIVERING ALL THE HITS, GREAT NEW MUSIC AND EXCELLENT SHOWS WORLDWIDE. NEW ALBUM #WINDOWTOTHEWORLD OUT NOW! HTTPS://LITTLERIVERBAND.KOM... LITTLE RIVER BAND IS DELIVERING ALL THE HITS, GREAT NEW MUSIC AND EXCELLENT SHOWS WORLDWIDE. NEW ALBUM #WINDOWTOTHEWORLD OUT NOW! HTTPS://LITTLERIVERBAND.KOMI.IO",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "spotify-45be676c",
+      "youtube-3c473ec4",
+      "instagram-ae977e56",
+      "facebook-9b4eda3e"
+    ],
+    "marquee": "Little River Band",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://www.facebook.com/littleriverband",
+    "linkSourceVerifiedAt": "2026-08-03T11:24:42.297Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "facebook-9b4eda3e",
+        "sourceTitle": "Facebook",
+        "label": "Facebook",
+        "detail": "Follow the band",
+        "url": "https://www.facebook.com/littleriverband",
+        "platform": "facebook",
+        "kind": "facebook"
+      },
+      {
+        "id": "youtube-3c473ec4",
+        "sourceTitle": "YouTube",
+        "label": "YouTube",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/watch?v=f1J38FlDKxo",
+        "platform": "youtube",
+        "kind": "youtube"
+      },
+      {
+        "id": "spotify-45be676c",
+        "sourceTitle": "View all upcoming concerts (30)",
+        "label": "View all upcoming concerts (30)",
+        "detail": "Listen on Spotify",
+        "url": "https://open.spotify.com/artist/6clbbhnIqpHnqxwtOWcilg/concerts",
+        "platform": "website",
+        "kind": "spotify"
+      },
+      {
+        "id": "instagram-ae977e56",
+        "sourceTitle": "Instagram",
+        "label": "Instagram",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/little_river_band/",
+        "platform": "instagram",
+        "kind": "instagram"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://www.youtube.com/channel/UC5G7TEx54qe73K_I9q5ZUZQ",
+      "paragraphs": [
+        "Little River Band is delivering all the hits, great new music and excellent shows worldwide. New album #WindowToTheWorld out now! https://littleriverband.kom... Little River Band is delivering all the hits, great new music and excellent shows worldwide. New album #WindowToTheWorld out now! https://littleriverband.komi.io"
+      ]
+    }
+  }
+}

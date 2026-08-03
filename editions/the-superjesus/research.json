@@ -1,0 +1,256 @@
+{
+  "bandName": "The Superjesus",
+  "slug": "the-superjesus",
+  "editionId": "dc_1a405acafc",
+  "verifiedAt": "2026-08-03T11:33:40.821Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://www.thesuperjesus.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:28.078Z",
+      "evidence": "The page identified The Superjesus and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/sarahmcleod1/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:28.116Z",
+      "evidence": "The page identified The Superjesus and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/7o9kdTx6RmO12iAVVsNehd",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:27.620Z",
+      "evidence": "The page identified The Superjesus and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UCGuheChNiyScekev57-we0w",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:27.748Z",
+      "evidence": "The page identified The Superjesus and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://thesuperjesus.squarespace.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:28.832Z",
+      "evidence": "The page identified The Superjesus and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://linktr.ee/SarahMcLeod",
+      "sourceType": "official artist-controlled link hub",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:28.246Z",
+      "evidence": "The page identified The Superjesus and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:website-696df8e3",
+      "url": "https://www.thesuperjesus.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:28.078Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched The Superjesus."
+    },
+    {
+      "destination": "website",
+      "url": "https://www.thesuperjesus.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:28.078Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched The Superjesus."
+    },
+    {
+      "destination": "selection:merchandise-d41f24a7",
+      "url": "https://www.thesuperjesus.com/merch",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:29.455Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched The Superjesus."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://www.thesuperjesus.com/merch",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:29.455Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched The Superjesus."
+    },
+    {
+      "destination": "selection:contact-7fb003d2",
+      "url": "https://www.thesuperjesus.com/contact",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:28.997Z",
+      "evidence": "Contact resolved directly and its destination metadata matched The Superjesus."
+    },
+    {
+      "destination": "contact",
+      "url": "https://www.thesuperjesus.com/contact",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:28.997Z",
+      "evidence": "Contact resolved directly and its destination metadata matched The Superjesus."
+    },
+    {
+      "destination": "selection:show-b300bf68",
+      "url": "https://moshtix.com.au/v2/event/the-superjesus-%E2%80%93-25-years-of-jet-age/192457",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:29.547Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched The Superjesus."
+    },
+    {
+      "destination": "selection:show-cd5d4d27",
+      "url": "https://coolyhotel.oztix.com.au/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:29.206Z",
+      "evidence": "Tickets resolved directly from an identity-matched artist-controlled source for The Superjesus."
+    },
+    {
+      "destination": "selection:show-8edb7b47",
+      "url": "https://www.oztix.com.au/?requestedEventId=03bf0faa-6a0c-40d8-b5a7-189a16a9f735",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:29.425Z",
+      "evidence": "Tickets resolved directly from an identity-matched artist-controlled source for The Superjesus."
+    },
+    {
+      "destination": "selection:show-5ae15808",
+      "url": "https://theatreroyalcastlemaine.oztix.com.au/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:29.553Z",
+      "evidence": "Tickets resolved directly from an identity-matched artist-controlled source for The Superjesus."
+    },
+    {
+      "destination": "selection:show-baab9e80",
+      "url": "https://theriver.oztix.com.au/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:29.756Z",
+      "evidence": "Tickets resolved directly from an identity-matched artist-controlled source for The Superjesus."
+    },
+    {
+      "destination": "selection:show-91f25b4a",
+      "url": "https://moshtix.com.au/v2/event/the-superjesus-25-years-of-jet-age/192507?skin=FREO%20%C2%A0",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:29.923Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched The Superjesus."
+    },
+    {
+      "destination": "selection:show-a492e32c",
+      "url": "https://www.oztix.com.au/?requestedEventId=af2fa0f7-fcb4-41ce-ae56-b4715d5c6fd9",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:29.771Z",
+      "evidence": "Tickets resolved directly from an identity-matched artist-controlled source for The Superjesus."
+    },
+    {
+      "destination": "selection:show-cf2b6e3a",
+      "url": "https://www.oztix.com.au/?requestedEventId=a4832a93-cabf-4d9b-bcb3-c6664f2de3b6",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:29.867Z",
+      "evidence": "Tickets resolved directly from an identity-matched artist-controlled source for The Superjesus."
+    },
+    {
+      "destination": "selection:show-1c474aa3",
+      "url": "https://aucentury.sales.ticketsearch.com/sales/salesevent/162025",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:30.147Z",
+      "evidence": "Tickets resolved directly from an identity-matched artist-controlled source for The Superjesus."
+    },
+    {
+      "destination": "selection:youtube-ca22c7de",
+      "url": "https://www.youtube.com/channel/UClPdB4gBde9T4pYbK6cHavA",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:30.142Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched The Superjesus."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/channel/UClPdB4gBde9T4pYbK6cHavA",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:30.142Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched The Superjesus."
+    },
+    {
+      "destination": "selection:spotify-b03dc4c1",
+      "url": "https://open.spotify.com/artist/7o9kdTx6RmO12iAVVsNehd",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:27.620Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched The Superjesus."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/7o9kdTx6RmO12iAVVsNehd",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:27.620Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched The Superjesus."
+    },
+    {
+      "destination": "selection:show-dc703e0b",
+      "url": "https://moshtix.com.au/v2/event/the-superjesus-25-years-of-jet-age/192507?skin=FREO",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:30.426Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched The Superjesus."
+    },
+    {
+      "destination": "selection:instagram-29002b5f",
+      "url": "https://www.instagram.com/accounts/login/?next=%2Fsarahmcleod1%2F&source=desktop_nav",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:30.551Z",
+      "evidence": "Instagram resolved directly from an identity-matched artist-controlled source for The Superjesus."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/accounts/login/?next=%2Fsarahmcleod1%2F&source=desktop_nav",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:30.551Z",
+      "evidence": "Instagram resolved directly from an identity-matched artist-controlled source for The Superjesus."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.youtube.com/channel/UCGuheChNiyScekev57-we0w",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:34.630Z",
+      "evidence": "The official source supplied the concise biography text used by the The Superjesus ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=Xdyt3KKZaOY",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:34.219Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured The Superjesus video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://www.thesuperjesus.com/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:28.078Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for The Superjesus."
+    }
+  ]
+}

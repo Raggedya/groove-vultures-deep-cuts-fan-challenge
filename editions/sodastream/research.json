@@ -1,0 +1,152 @@
+{
+  "bandName": "Sodastream",
+  "slug": "sodastream",
+  "editionId": "dc_b53b573830",
+  "verifiedAt": "2026-08-03T11:28:59.306Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://sodastream.net.au/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:54.066Z",
+      "evidence": "The page identified Sodastream and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://sodastream.bandcamp.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:53.351Z",
+      "evidence": "The page identified Sodastream and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/sodastream_band/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:53.931Z",
+      "evidence": "The page identified Sodastream and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:bandcamp-ee7d194e",
+      "url": "https://sodastream.bandcamp.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:53.351Z",
+      "evidence": "Bandcamp resolved directly and its destination metadata matched Sodastream."
+    },
+    {
+      "destination": "bandcamp",
+      "url": "https://sodastream.bandcamp.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:53.351Z",
+      "evidence": "Bandcamp resolved directly and its destination metadata matched Sodastream."
+    },
+    {
+      "destination": "selection:spotify-2e7b2604",
+      "url": "https://open.spotify.com/artist/1TrFfv6GwWHIKXJUDWbqcG",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:54.442Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Sodastream."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/1TrFfv6GwWHIKXJUDWbqcG",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:54.442Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Sodastream."
+    },
+    {
+      "destination": "selection:youtube-d34d8a32",
+      "url": "https://www.youtube.com/user/sodastreamaustralia",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:54.554Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Sodastream."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/user/sodastreamaustralia",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:54.554Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Sodastream."
+    },
+    {
+      "destination": "selection:instagram-83a209e8",
+      "url": "https://www.instagram.com/sodastream_band/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:53.931Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Sodastream."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/sodastream_band/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:53.931Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Sodastream."
+    },
+    {
+      "destination": "selection:facebook-0950bcf5",
+      "url": "https://www.facebook.com/sodastream.band",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:55.656Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Sodastream."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/sodastream.band",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:55.656Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Sodastream."
+    },
+    {
+      "destination": "selection:contact-8396e952",
+      "url": "https://sodastream.net.au/contact/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:54.672Z",
+      "evidence": "Contact resolved directly and its destination metadata matched Sodastream."
+    },
+    {
+      "destination": "contact",
+      "url": "https://sodastream.net.au/contact/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:54.672Z",
+      "evidence": "Contact resolved directly and its destination metadata matched Sodastream."
+    },
+    {
+      "destination": "biography",
+      "url": "https://sodastream.net.au/",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:02.344Z",
+      "evidence": "The official source supplied the concise biography text used by the Sodastream ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=UbxGTO0cVzE",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:01.876Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Sodastream video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://sodastream.net.au/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:54.066Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Sodastream."
+    }
+  ]
+}

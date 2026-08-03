@@ -1,0 +1,172 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Sodastream",
+  "editionTitle": "Sodastream",
+  "description": "Sodastream — Australian indie band, now also performing as Smith & Cohen",
+  "discovery": {
+    "bio": "Sodastream — Australian indie band, now also performing as Smith & Cohen",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "sodastream",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_b53b573830",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/sodastream/instagram-discovery.png",
+    "qrImage": "output/sodastream/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "https://sodastream.bandcamp.com/",
+    "spotify": "https://open.spotify.com/artist/1TrFfv6GwWHIKXJUDWbqcG",
+    "instagram": "https://www.instagram.com/sodastream_band/",
+    "website": "",
+    "buyMusic": "",
+    "merchandise": "",
+    "facebook": "https://www.facebook.com/sodastream.band",
+    "youtube": "https://www.youtube.com/user/sodastreamaustralia"
+  },
+  "featuredVideo": {
+    "title": "Three Sins",
+    "youtubeURL": "https://www.youtube.com/watch?v=UbxGTO0cVzE",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:23:01.876Z"
+  },
+  "analytics": {
+    "editionId": "dc_b53b573830",
+    "pageIdentifier": "dc_b53b573830:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_72b48ba3-42e4-4772-8f78-7df06badbf08",
+    "submittedAt": "2026-08-03T11:28:59.169Z",
+    "researchCompletedAt": "2026-08-03T11:28:59.306Z",
+    "editionCreatedAt": "2026-08-03T11:28:59.306Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_b53b573830",
+    "tickerBio": "SODASTREAM — AUSTRALIAN INDIE BAND, NOW ALSO PERFORMING AS SMITH & COHEN",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "bandcamp-ee7d194e",
+      "spotify-2e7b2604",
+      "youtube-d34d8a32",
+      "instagram-83a209e8",
+      "facebook-0950bcf5",
+      "contact-8396e952"
+    ],
+    "marquee": "Sodastream",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://sodastream.net.au/",
+    "linkSourceVerifiedAt": "2026-08-03T11:22:54.066Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "bandcamp-ee7d194e",
+        "sourceTitle": "Bandcamp",
+        "label": "Bandcamp",
+        "detail": "Listen and buy direct",
+        "url": "https://sodastream.bandcamp.com/",
+        "platform": "website",
+        "kind": "bandcamp"
+      },
+      {
+        "id": "spotify-2e7b2604",
+        "sourceTitle": "Spotify",
+        "label": "Spotify",
+        "detail": "Listen on Spotify",
+        "url": "https://open.spotify.com/artist/1TrFfv6GwWHIKXJUDWbqcG",
+        "platform": "website",
+        "kind": "spotify"
+      },
+      {
+        "id": "youtube-d34d8a32",
+        "sourceTitle": "YouTube",
+        "label": "YouTube",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/user/sodastreamaustralia",
+        "platform": "youtube",
+        "kind": "youtube"
+      },
+      {
+        "id": "instagram-83a209e8",
+        "sourceTitle": "Instagram",
+        "label": "Instagram",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/sodastream_band/",
+        "platform": "instagram",
+        "kind": "instagram"
+      },
+      {
+        "id": "facebook-0950bcf5",
+        "sourceTitle": "Facebook",
+        "label": "Facebook",
+        "detail": "Follow the band",
+        "url": "https://www.facebook.com/sodastream.band",
+        "platform": "facebook",
+        "kind": "facebook"
+      },
+      {
+        "id": "contact-8396e952",
+        "sourceTitle": "Contact",
+        "label": "Contact",
+        "detail": "Official band enquiries",
+        "url": "https://sodastream.net.au/contact/",
+        "platform": "website",
+        "kind": "contact"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://sodastream.net.au/",
+      "paragraphs": [
+        "Sodastream — Australian indie band, now also performing as Smith & Cohen"
+      ]
+    }
+  }
+}

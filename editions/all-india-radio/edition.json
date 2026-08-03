@@ -1,0 +1,181 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "All India Radio",
+  "editionTitle": "All India Radio",
+  "description": "We got together last week in country Victoria to try out some new material. Amazingly it’s the first time the three of us have written together in the same room in 21 years. The last...",
+  "discovery": {
+    "bio": "We got together last week in country Victoria to try out some new material. Amazingly it’s the first time the three of us have written together in the same room in 21 years. The last...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "all-india-radio",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_37af872e87",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/all-india-radio/instagram-discovery.png",
+    "qrImage": "output/all-india-radio/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "https://bandcamp.com/?from=menubar_logo_logged_out",
+    "spotify": "https://open.spotify.com/artist/6abfAcMcC3hYJcaxzLeiCW",
+    "instagram": "https://www.instagram.com/allindiaradioband",
+    "website": "https://allindiaradio.com.au/",
+    "buyMusic": "",
+    "merchandise": "",
+    "facebook": "https://www.facebook.com/allindiaradioband",
+    "youtube": "https://www.youtube.com/@allindiaradioband"
+  },
+  "featuredVideo": {
+    "title": "Writing a new song and it feels very Pink Floyd-ish!",
+    "youtubeURL": "https://www.youtube.com/watch?v=o50suaeGdy0",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:25:43.293Z"
+  },
+  "analytics": {
+    "editionId": "dc_37af872e87",
+    "pageIdentifier": "dc_37af872e87:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_1f784558-8615-423f-b1b8-80eb522febfc",
+    "submittedAt": "2026-08-03T11:29:15.154Z",
+    "researchCompletedAt": "2026-08-03T11:29:15.524Z",
+    "editionCreatedAt": "2026-08-03T11:29:15.524Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_37af872e87",
+    "tickerBio": "WE GOT TOGETHER LAST WEEK IN COUNTRY VICTORIA TO TRY OUT SOME NEW MATERIAL. AMAZINGLY IT’S THE FIRST TIME THE THREE OF US HAVE WRITTEN TOGETHER IN THE SAME ROOM IN 21 YEARS. THE LAST TIME WAS WRITING SONGS FOR ECHO OTHER. THE SONG IS A BIT WONKY, BUT IT’S A FIRST TRY AND IT’LL ONLY GET BETTER ONE HOPES. FULL VIDEO ON YOUTUBE - LYNX IN BYOH",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "bandcamp-dbb5841f",
+      "spotify-321860e9",
+      "youtube-13847ba9",
+      "instagram-92305fcc",
+      "website-024fd227",
+      "facebook-60c4e093"
+    ],
+    "marquee": "All India Radio",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://allindiaradio.com.au/",
+    "linkSourceVerifiedAt": "2026-08-03T11:25:34.808Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "website-024fd227",
+        "sourceTitle": "Skip to content",
+        "label": "Band Website",
+        "detail": "Visit the official website",
+        "url": "https://allindiaradio.com.au/",
+        "platform": "website",
+        "kind": "website"
+      },
+      {
+        "id": "contact-a4fde911",
+        "sourceTitle": "Contact Us",
+        "label": "Contact Us",
+        "detail": "Official band enquiries",
+        "url": "https://allindiaradio.com.au/contact-us/",
+        "platform": "website",
+        "kind": "contact"
+      },
+      {
+        "id": "bandcamp-dbb5841f",
+        "sourceTitle": "Bandcamp",
+        "label": "Bandcamp",
+        "detail": "Listen and buy direct",
+        "url": "https://bandcamp.com/?from=menubar_logo_logged_out",
+        "platform": "website",
+        "kind": "bandcamp"
+      },
+      {
+        "id": "youtube-13847ba9",
+        "sourceTitle": "YouTube",
+        "label": "YouTube",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/@allindiaradioband",
+        "platform": "youtube",
+        "kind": "youtube"
+      },
+      {
+        "id": "spotify-321860e9",
+        "sourceTitle": "open.spotify.com",
+        "label": "open.spotify.com",
+        "detail": "Listen on Spotify",
+        "url": "https://open.spotify.com/artist/6abfAcMcC3hYJcaxzLeiCW",
+        "platform": "website",
+        "kind": "spotify"
+      },
+      {
+        "id": "instagram-92305fcc",
+        "sourceTitle": "Instagram",
+        "label": "Instagram",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/allindiaradioband",
+        "platform": "instagram",
+        "kind": "instagram"
+      },
+      {
+        "id": "facebook-60c4e093",
+        "sourceTitle": "Facebook",
+        "label": "Facebook",
+        "detail": "Follow the band",
+        "url": "https://www.facebook.com/allindiaradioband",
+        "platform": "facebook",
+        "kind": "facebook"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://www.instagram.com/allindiaradioband/",
+      "paragraphs": [
+        "We got together last week in country Victoria to try out some new material. Amazingly it’s the first time the three of us have written together in the same room in 21 years. The last time was writing songs for Echo Other. The song is a bit wonky, but it’s a first try and it’ll only get better one hopes. Full video on YouTube - lynx in byoh"
+      ]
+    }
+  }
+}

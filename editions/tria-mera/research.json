@@ -1,0 +1,120 @@
+{
+  "bandName": "Tria Mera",
+  "slug": "tria-mera",
+  "editionId": "dc_c6d9576775",
+  "verifiedAt": "2026-08-03T11:47:04.929Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://triamera.bandcamp.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:37.410Z",
+      "evidence": "The page identified Tria Mera and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Ftriameraband",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:37.652Z",
+      "evidence": "The page identified Tria Mera and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UCRK8amsqIcwxsvdFJ715rEg",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:37.125Z",
+      "evidence": "The page identified Tria Mera and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:bandcamp-84f2d1cf",
+      "url": "https://triamera.bandcamp.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:37.410Z",
+      "evidence": "Bandcamp resolved directly and its destination metadata matched Tria Mera."
+    },
+    {
+      "destination": "bandcamp",
+      "url": "https://triamera.bandcamp.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:37.410Z",
+      "evidence": "Bandcamp resolved directly and its destination metadata matched Tria Mera."
+    },
+    {
+      "destination": "selection:youtube-284d46af",
+      "url": "https://www.youtube.com/channel/UCRK8amsqIcwxsvdFJ715rEg",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:37.125Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Tria Mera."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/channel/UCRK8amsqIcwxsvdFJ715rEg",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:37.125Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Tria Mera."
+    },
+    {
+      "destination": "selection:merchandise-ef92408e",
+      "url": "https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.meta.com%2F&h=AUD_obhtrOQedVG1N-zG9BpJJOtJJSYYjkS2FbwMXWopjTEW17UqAvXG7iiXvLS14D7qDUa7fGCcPjk8ZvzBZfIRx8-zHlH0pYMBnR4de7O3VV4T-Bv6MCrQj_T9AGoY4J2yanJsZLvvuxFaTXiQjWKNKJZcgIw8",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:41.246Z",
+      "evidence": "Buy Merch resolved directly from an identity-matched artist-controlled source for Tria Mera."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.meta.com%2F&h=AUD_obhtrOQedVG1N-zG9BpJJOtJJSYYjkS2FbwMXWopjTEW17UqAvXG7iiXvLS14D7qDUa7fGCcPjk8ZvzBZfIRx8-zHlH0pYMBnR4de7O3VV4T-Bv6MCrQj_T9AGoY4J2yanJsZLvvuxFaTXiQjWKNKJZcgIw8",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:41.246Z",
+      "evidence": "Buy Merch resolved directly from an identity-matched artist-controlled source for Tria Mera."
+    },
+    {
+      "destination": "selection:facebook-0402af7d",
+      "url": "https://www.facebook.com/lite/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:41.954Z",
+      "evidence": "Facebook resolved directly from an identity-matched artist-controlled source for Tria Mera."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/lite/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:41.954Z",
+      "evidence": "Facebook resolved directly from an identity-matched artist-controlled source for Tria Mera."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.youtube.com/channel/UCRK8amsqIcwxsvdFJ715rEg",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:45.831Z",
+      "evidence": "The official source supplied the concise biography text used by the Tria Mera ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=GmJ_oC9gQH8",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:45.548Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Tria Mera video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://triamera.bandcamp.com/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:37.410Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Tria Mera."
+    }
+  ]
+}

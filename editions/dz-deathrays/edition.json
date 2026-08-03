@@ -1,0 +1,152 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "DZ Deathrays",
+  "editionTitle": "DZ Deathrays",
+  "description": "VIDEO BY RHYS BENNETT & ADRIANNE ARMIDA EUROPE SUMMER TOUR DATES 18.07.26 - Astroshow, Bordeaux 19.07.26 - La Fosse, Laval 21.07.26 - Cold Crash, Nantes 23.07.26 - Terrasses du Jeudi...",
+  "discovery": {
+    "bio": "VIDEO BY RHYS BENNETT & ADRIANNE ARMIDA EUROPE SUMMER TOUR DATES 18.07.26 - Astroshow, Bordeaux 19.07.26 - La Fosse, Laval 21.07.26 - Cold Crash, Nantes 23.07.26 - Terrasses du Jeudi...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "dz-deathrays",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_447409856f",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/dz-deathrays/instagram-discovery.png",
+    "qrImage": "output/dz-deathrays/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "https://dzdeathrays.bandcamp.com/merch",
+    "spotify": "https://open.spotify.com/artist/0qGPycvPHafmEPTOm4M7Tu",
+    "instagram": "https://www.instagram.com/dzdeathrays/",
+    "website": "",
+    "buyMusic": "",
+    "merchandise": "",
+    "facebook": "",
+    "youtube": "https://www.youtube.com/channel/UCPAEiAuuz63M6DIuyAOWMLg"
+  },
+  "featuredVideo": {
+    "title": "DZ Deathrays - Like People Live (featuring Murray Cook from the Wiggles)",
+    "youtubeURL": "https://www.youtube.com/watch?v=3Dg50NElVtU",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:43:38.383Z"
+  },
+  "analytics": {
+    "editionId": "dc_447409856f",
+    "pageIdentifier": "dc_447409856f:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_6f5b28da-5027-4895-a53a-10dcf36e5ee8",
+    "submittedAt": "2026-08-03T11:47:02.184Z",
+    "researchCompletedAt": "2026-08-03T11:47:02.243Z",
+    "editionCreatedAt": "2026-08-03T11:47:02.243Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_447409856f",
+    "tickerBio": "VIDEO BY RHYS BENNETT & ADRIANNE ARMIDA EUROPE SUMMER TOUR DATES 18.07.26 - ASTROSHOW, BORDEAUX 19.07.26 - LA FOSSE, LAVAL 21.07.26 - COLD CRASH, NANTES 23.07.26 - TERRASSES DU JEUDI, ROUEN 24.07.26 - FESTIVAL DE LA MER, LANDUVNEX 25.07.26 - LE CHINOIS, PARIS 26.07.26 - DB'S, UTRECHT 27.07.26 - KINETT, KUSEL 29.07.26 - PINK WHALE, BRATISLAVA 30.07.26 - ROCK CAFE, PRAGUE 31.07.26 - URBAN SPREE - BERLIN 01.08.26 - ROCK",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "bandcamp-e81b7696",
+      "spotify-7c65bd59",
+      "youtube-05ed58a5",
+      "instagram-58ab25d8"
+    ],
+    "marquee": "DZ Deathrays",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://www.instagram.com/dzdeathrays/",
+    "linkSourceVerifiedAt": "2026-08-03T11:43:26.477Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "spotify-7c65bd59",
+        "sourceTitle": "Spotify",
+        "label": "Spotify",
+        "detail": "Listen on Spotify",
+        "url": "https://open.spotify.com/artist/0qGPycvPHafmEPTOm4M7Tu",
+        "platform": "website",
+        "kind": "spotify"
+      },
+      {
+        "id": "youtube-05ed58a5",
+        "sourceTitle": "YouTube",
+        "label": "YouTube",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/channel/UCPAEiAuuz63M6DIuyAOWMLg",
+        "platform": "youtube",
+        "kind": "youtube"
+      },
+      {
+        "id": "instagram-58ab25d8",
+        "sourceTitle": "52.6K followers",
+        "label": "52.6K followers",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/dzdeathrays/",
+        "platform": "instagram",
+        "kind": "instagram"
+      },
+      {
+        "id": "bandcamp-e81b7696",
+        "sourceTitle": "Bandcamp",
+        "label": "Bandcamp",
+        "detail": "Listen and buy direct",
+        "url": "https://dzdeathrays.bandcamp.com/merch",
+        "platform": "website",
+        "kind": "bandcamp"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://www.youtube.com/channel/UCPAEiAuuz63M6DIuyAOWMLg",
+      "paragraphs": [
+        "VIDEO BY RHYS BENNETT & ADRIANNE ARMIDA EUROPE SUMMER TOUR DATES 18.07.26 - Astroshow, Bordeaux 19.07.26 - La Fosse, Laval 21.07.26 - Cold Crash, Nantes 23.07.26 - Terrasses du Jeudi, Rouen 24.07.26 - Festival de la Mer, Landuvnex 25.07.26 - Le Chinois, Paris 26.07.26 - DB's, Utrecht 27.07.26 - Kinett, Kusel 29.07.26 - Pink Whale, Bratislava 30.07.26 - Rock Cafe, Prague 31.07.26 - Urban Spree - Berlin 01.08.26 - Rock"
+      ]
+    }
+  }
+}

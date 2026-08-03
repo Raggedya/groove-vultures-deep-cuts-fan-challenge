@@ -1,0 +1,152 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Magic Dirt",
+  "editionTitle": "Magic Dirt",
+  "description": "Magic Dirt is an Australian rock band, which formed in 1991 in Geelong, Victoria, with Daniel Herring on guitar, Adam Robertson on drums, Adalita Srsen on vocals and guitar, and Dean...",
+  "discovery": {
+    "bio": "Magic Dirt is an Australian rock band, which formed in 1991 in Geelong, Victoria, with Daniel Herring on guitar, Adam Robertson on drums, Adalita Srsen on vocals and guitar, and Dean...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "magic-dirt",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_dc16b20ab0",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/magic-dirt/instagram-discovery.png",
+    "qrImage": "output/magic-dirt/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "https://magicdirt.bandcamp.com/",
+    "spotify": "",
+    "instagram": "https://www.instagram.com/magicdirtofficial/",
+    "website": "https://magicdirt.net/",
+    "buyMusic": "",
+    "merchandise": "",
+    "facebook": "",
+    "youtube": "https://www.youtube.com/channel/UCPzDAU4p9JuKTPjv8iQiJzA"
+  },
+  "featuredVideo": {
+    "title": "[I'm] Stranded",
+    "youtubeURL": "https://www.youtube.com/watch?v=dT0wmZGIhJ4",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:46:27.616Z"
+  },
+  "analytics": {
+    "editionId": "dc_dc16b20ab0",
+    "pageIdentifier": "dc_dc16b20ab0:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_50978a73-bba8-45c3-acb2-119ee998a987",
+    "submittedAt": "2026-08-03T11:47:04.160Z",
+    "researchCompletedAt": "2026-08-03T11:47:04.240Z",
+    "editionCreatedAt": "2026-08-03T11:47:04.240Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_dc16b20ab0",
+    "tickerBio": "MAGIC DIRT IS AN AUSTRALIAN ROCK BAND, WHICH FORMED IN 1991 IN GEELONG, VICTORIA, WITH DANIEL HERRING ON GUITAR, ADAM ROBERTSON ON DRUMS, ADALITA SRSEN ON VOCALS AND GUITAR, AND DEAN TURNER ON BASS GUITAR. INITIALLY FORMING AN ALTERNATIVE UNDERGROUND BAND CALLED DEER BUBBLES WHICH SPLIT AND FORMED INTO THE MUCH HEAVIER, ROCK BASED GROUP CALLED THE JIM JIMS, THEY WERE RENAMED AS MAGIC DIRT. THEIR TOP 40 RELEASES ON TH",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "bandcamp-de7f8652",
+      "youtube-814293af",
+      "instagram-77fc1a67",
+      "website-3e9c8d26"
+    ],
+    "marquee": "Magic Dirt",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://magicdirt.net/",
+    "linkSourceVerifiedAt": "2026-08-03T11:46:19.657Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "bandcamp-de7f8652",
+        "sourceTitle": "Bandcamp",
+        "label": "Bandcamp",
+        "detail": "Listen and buy direct",
+        "url": "https://magicdirt.bandcamp.com/",
+        "platform": "website",
+        "kind": "bandcamp"
+      },
+      {
+        "id": "youtube-814293af",
+        "sourceTitle": "YouTube",
+        "label": "YouTube",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/channel/UCPzDAU4p9JuKTPjv8iQiJzA",
+        "platform": "youtube",
+        "kind": "youtube"
+      },
+      {
+        "id": "instagram-77fc1a67",
+        "sourceTitle": "Instagram",
+        "label": "Instagram",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/magicdirtofficial/",
+        "platform": "instagram",
+        "kind": "instagram"
+      },
+      {
+        "id": "website-3e9c8d26",
+        "sourceTitle": "Skip to content",
+        "label": "Band Website",
+        "detail": "Visit the official website",
+        "url": "https://magicdirt.net/",
+        "platform": "website",
+        "kind": "website"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://www.youtube.com/channel/UCPzDAU4p9JuKTPjv8iQiJzA",
+      "paragraphs": [
+        "Magic Dirt is an Australian rock band, which formed in 1991 in Geelong, Victoria, with Daniel Herring on guitar, Adam Robertson on drums, Adalita Srsen on vocals and guitar, and Dean Turner on bass guitar. Initially forming an alternative underground band called Deer Bubbles which split and formed into the much heavier, rock based group called The Jim Jims, they were renamed as Magic Dirt. Their top 40 releases on th"
+      ]
+    }
+  }
+}

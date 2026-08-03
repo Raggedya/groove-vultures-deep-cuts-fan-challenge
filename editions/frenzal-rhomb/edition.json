@@ -1,0 +1,190 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Frenzal Rhomb",
+  "editionTitle": "Frenzal Rhomb",
+  "description": "Frenzal Rhomb are an Australian punk rock band that formed in 1992 in Sydney. The band's current lineup consists of lead vocalist Jason \"Jay\" Whalley, guitarist Lindsay \"The Doctor\"...",
+  "discovery": {
+    "bio": "Frenzal Rhomb are an Australian punk rock band that formed in 1992 in Sydney. The band's current lineup consists of lead vocalist Jason \"Jay\" Whalley, guitarist Lindsay \"The Doctor\"...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "frenzal-rhomb",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_a800c6bad5",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/frenzal-rhomb/instagram-discovery.png",
+    "qrImage": "output/frenzal-rhomb/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "https://frenzalrhomb.bandcamp.com/",
+    "spotify": "https://open.spotify.com/artist/4cxBQR2C44tnfQ74lpFN7N",
+    "instagram": "https://www.instagram.com/frenzalofficial",
+    "website": "https://frenzalrhomb.net/",
+    "buyMusic": "",
+    "merchandise": "https://artistfirst.com.au/collections/frenzal-rhomb",
+    "facebook": "https://www.facebook.com/FrenzalRhomb/",
+    "youtube": "https://www.youtube.com/watch?v=XmVnJEpXGV0&feature=youtu.be"
+  },
+  "featuredVideo": {
+    "title": "Where Drug Dealers Take Their Kids",
+    "youtubeURL": "https://www.youtube.com/watch?v=-ttj61BnePk",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:21:20.389Z"
+  },
+  "analytics": {
+    "editionId": "dc_a800c6bad5",
+    "pageIdentifier": "dc_a800c6bad5:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_64eadb56-f41a-4af3-82aa-078aa466684a",
+    "submittedAt": "2026-08-03T11:28:54.784Z",
+    "researchCompletedAt": "2026-08-03T11:28:54.889Z",
+    "editionCreatedAt": "2026-08-03T11:28:54.889Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_a800c6bad5",
+    "tickerBio": "FRENZAL RHOMB ARE AN AUSTRALIAN PUNK ROCK BAND THAT FORMED IN 1992 IN SYDNEY. THE BAND'S CURRENT LINEUP CONSISTS OF LEAD VOCALIST JASON \"JAY\" WHALLEY, GUITARIST LINDSAY \"THE DOCTOR\" MCDOUGALL, DRUMMER GORDON \"GORDY\" FORMAN, AND BASSIST MICHAEL \"DAL\" DALLINGER. THOUGH THE BAND'S MAINSTREAM SUCCESS HAS BEEN MINIMAL, FOUR OF THE GROUP'S ALBUMS HAVE ENTERED THE TOP 20 ON THE ARIA ALBUMS CHART: A MAN'S NOT A CAMEL, SMOKO",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "bandcamp-a82a418b",
+      "spotify-b74dbf14",
+      "youtube-cfed0822",
+      "instagram-7741c2b8",
+      "website-0e272438",
+      "merchandise-51a5d2b2"
+    ],
+    "marquee": "Frenzal Rhomb",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://frenzalrhomb.net/",
+    "linkSourceVerifiedAt": "2026-08-03T11:21:12.103Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "website-0e272438",
+        "sourceTitle": "Frenzal Rhomb Website",
+        "label": "Frenzal Rhomb Website",
+        "detail": "Visit the official website",
+        "url": "https://frenzalrhomb.net/",
+        "platform": "website",
+        "kind": "website"
+      },
+      {
+        "id": "merchandise-51a5d2b2",
+        "sourceTitle": "Store",
+        "label": "Store",
+        "detail": "Official band merchandise",
+        "url": "https://artistfirst.com.au/collections/frenzal-rhomb",
+        "platform": "merchandise",
+        "kind": "merchandise"
+      },
+      {
+        "id": "youtube-cfed0822",
+        "sourceTitle": "YouTube",
+        "label": "YouTube",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/watch?v=XmVnJEpXGV0&feature=youtu.be",
+        "platform": "youtube",
+        "kind": "youtube"
+      },
+      {
+        "id": "instagram-7741c2b8",
+        "sourceTitle": "instagram",
+        "label": "instagram",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/frenzalofficial",
+        "platform": "instagram",
+        "kind": "instagram"
+      },
+      {
+        "id": "facebook-3537c28f",
+        "sourceTitle": "facebook",
+        "label": "facebook",
+        "detail": "Follow the band",
+        "url": "https://www.facebook.com/FrenzalRhomb/",
+        "platform": "facebook",
+        "kind": "facebook"
+      },
+      {
+        "id": "spotify-b74dbf14",
+        "sourceTitle": "spotify",
+        "label": "spotify",
+        "detail": "Listen on Spotify",
+        "url": "https://open.spotify.com/artist/4cxBQR2C44tnfQ74lpFN7N",
+        "platform": "website",
+        "kind": "spotify"
+      },
+      {
+        "id": "bandcamp-a82a418b",
+        "sourceTitle": "bandcamp",
+        "label": "bandcamp",
+        "detail": "Listen and buy direct",
+        "url": "https://frenzalrhomb.bandcamp.com/",
+        "platform": "website",
+        "kind": "bandcamp"
+      },
+      {
+        "id": "contact-782d199b",
+        "sourceTitle": "Contact admin",
+        "label": "Contact admin",
+        "detail": "Official band enquiries",
+        "url": "https://frenzalrhomb.net/pages/contact/",
+        "platform": "website",
+        "kind": "contact"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://www.youtube.com/channel/UCL3qFVJYh-tks9GeQG9ioow",
+      "paragraphs": [
+        "Frenzal Rhomb are an Australian punk rock band that formed in 1992 in Sydney. The band's current lineup consists of lead vocalist Jason \"Jay\" Whalley, guitarist Lindsay \"The Doctor\" McDougall, drummer Gordon \"Gordy\" Forman, and bassist Michael \"Dal\" Dallinger. Though the band's mainstream success has been minimal, four of the group's albums have entered the top 20 on the ARIA Albums Chart: A Man's Not a Camel, Smoko"
+      ]
+    }
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "bandName": "Magic Dirt",
+  "slug": "magic-dirt",
+  "editionId": "dc_dc16b20ab0",
+  "verifiedAt": "2026-08-03T11:47:04.240Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://magicdirt.net/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:19.657Z",
+      "evidence": "The page identified Magic Dirt and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://magicdirt.bandcamp.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:15.148Z",
+      "evidence": "The page identified Magic Dirt and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/magicdirtofficial/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:15.187Z",
+      "evidence": "The page identified Magic Dirt and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UCPzDAU4p9JuKTPjv8iQiJzA",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:14.845Z",
+      "evidence": "The page identified Magic Dirt and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://magicdirt.net/?s={search_term_string}",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:19.402Z",
+      "evidence": "The page identified Magic Dirt and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:bandcamp-de7f8652",
+      "url": "https://magicdirt.bandcamp.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:15.148Z",
+      "evidence": "Bandcamp resolved directly and its destination metadata matched Magic Dirt."
+    },
+    {
+      "destination": "bandcamp",
+      "url": "https://magicdirt.bandcamp.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:15.148Z",
+      "evidence": "Bandcamp resolved directly and its destination metadata matched Magic Dirt."
+    },
+    {
+      "destination": "selection:youtube-814293af",
+      "url": "https://www.youtube.com/channel/UCPzDAU4p9JuKTPjv8iQiJzA",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:14.845Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Magic Dirt."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/channel/UCPzDAU4p9JuKTPjv8iQiJzA",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:14.845Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Magic Dirt."
+    },
+    {
+      "destination": "selection:instagram-77fc1a67",
+      "url": "https://www.instagram.com/magicdirtofficial/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:15.187Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Magic Dirt."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/magicdirtofficial/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:15.187Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Magic Dirt."
+    },
+    {
+      "destination": "selection:website-3e9c8d26",
+      "url": "https://magicdirt.net/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:19.657Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Magic Dirt."
+    },
+    {
+      "destination": "website",
+      "url": "https://magicdirt.net/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:19.657Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Magic Dirt."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.youtube.com/channel/UCPzDAU4p9JuKTPjv8iQiJzA",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:27.922Z",
+      "evidence": "The official source supplied the concise biography text used by the Magic Dirt ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=dT0wmZGIhJ4",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:27.616Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Magic Dirt video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://magicdirt.net/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:19.657Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Magic Dirt."
+    }
+  ]
+}

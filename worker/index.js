@@ -1,6 +1,7 @@
 import {handleSales} from "./sales.js";
 import {handleRecordCompany,handleRecordCompanyQr,processRecordCompanyJobs} from "./record-company.js";
 import {augmentPlatformManifest,handleBarDeliveryEvent,handleBarPublicAsset,handleBarPublisher} from "./bar-publisher.js";
+import {augmentAggitsJukeboxManifest,handleAggitsJukeboxDeliveryEvent,handleAggitsJukeboxPublicAsset,handleAggitsJukeboxPublisher} from "./aggits-jukebox-publisher.js";
 import {
   binaryBase64,
   buildLanewayEmailHtml,
@@ -38,6 +39,9 @@ export default {
       if(request.method==="OPTIONS")return cors(new Response(null,{status:204}),request,env);
       if(url.pathname.startsWith("/api/record-company/"))return handleRecordCompany(request,env,ctx,url);
       if(url.pathname.startsWith("/api/bar-publisher/"))return handleBarPublisher(request,env,url);
+      if(url.pathname.startsWith("/api/aggits-jukebox-publisher/"))return handleAggitsJukeboxPublisher(request,env,url);
+      const aggitsJukeboxAsset=await handleAggitsJukeboxPublicAsset(request,env,url);
+      if(aggitsJukeboxAsset)return aggitsJukeboxAsset;
       const barAsset=await handleBarPublicAsset(request,env,url);
       if(barAsset)return barAsset;
       if(url.pathname.startsWith("/record-company/q/"))return handleRecordCompanyQr(request,env,ctx,url);
@@ -65,7 +69,7 @@ export default {
       if(url.pathname==="/api/health")return json({ok:true,service:"deep-cuts",timestamp:new Date().toISOString()});
       if(url.pathname==="/platform.json"&&["GET","HEAD"].includes(request.method)){
         const staticManifest=await env.ASSETS.fetch(request);
-        return request.method==="HEAD"?staticManifest:augmentPlatformManifest(staticManifest,env);
+        return request.method==="HEAD"?staticManifest:augmentAggitsJukeboxManifest(await augmentPlatformManifest(staticManifest,env),env);
       }
       return env.ASSETS.fetch(request);
     }catch(error){
@@ -270,6 +274,8 @@ async function handleResendWebhook(request,env){
       await env.DB.prepare("UPDATE record_company_jobs SET notification_email_status='delivered',updated_at=?1 WHERE job_id=?2").bind(occurredAt,jobId).run();
     }else if(jobType==="bar_edition"){
       await handleBarDeliveryEvent(env,{body,tags,occurredAt});
+    }else if(jobType==="aggits_jukebox"){
+      await handleAggitsJukeboxDeliveryEvent(env,{body,tags,occurredAt});
     }else{
       await env.DB.prepare("UPDATE production_jobs SET email_delivered_at=?1,updated_at=?1 WHERE job_id=?2").bind(occurredAt,jobId).run();
       await completeJob(env,jobId,occurredAt);
@@ -280,6 +286,9 @@ async function handleResendWebhook(request,env){
   }
   if(["email.bounced","email.failed","email.complained"].includes(body.type)&&jobId&&jobType==="bar_edition"){
     await handleBarDeliveryEvent(env,{body,tags,occurredAt});
+  }
+  if(["email.bounced","email.failed","email.complained"].includes(body.type)&&jobId&&jobType==="aggits_jukebox"){
+    await handleAggitsJukeboxDeliveryEvent(env,{body,tags,occurredAt});
   }
   return json({ok:true});
 }

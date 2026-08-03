@@ -1,0 +1,199 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Powderfinger",
+  "editionTitle": "Powderfinger",
+  "description": "In 2016, the beloved Brisbane venue launched The Triffid Album of the Year to celebrate the extraordinary talent emerging from Queensland. Public voting for this year’s award just...",
+  "discovery": {
+    "bio": "In 2016, the beloved Brisbane venue launched The Triffid Album of the Year to celebrate the extraordinary talent emerging from Queensland. Public voting for this year’s award just...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "powderfinger",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_c8c3b75f0e",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/powderfinger/instagram-discovery.png",
+    "qrImage": "output/powderfinger/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "https://powderfinger.bandcamp.com/album/dream-days-at-the-hotel-existence",
+    "spotify": "https://open.spotify.com/artist/6LBCQo20ri3tsvbsWWLmr6",
+    "instagram": "https://www.instagram.com/powderfinger_bandofficial/?hl=en",
+    "website": "https://powderfinger.com/",
+    "buyMusic": "",
+    "merchandise": "https://powderfinger.bandtshirts.com.au/",
+    "facebook": "https://www.facebook.com/groups/267435324523860",
+    "youtube": "https://www.youtube.com/channel/UCfLfieeWptxNHlirXjhfalA"
+  },
+  "featuredVideo": {
+    "title": "Powderfinger - 'These Days' Live In Concert - A Vulture Street Film #20thanniversary",
+    "youtubeURL": "https://www.youtube.com/watch?v=mFjAhH53rPg",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:32:54.680Z"
+  },
+  "analytics": {
+    "editionId": "dc_c8c3b75f0e",
+    "pageIdentifier": "dc_c8c3b75f0e:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_6716b50c-f54e-4fb5-b926-34cf88301a6d",
+    "submittedAt": "2026-08-03T11:29:02.475Z",
+    "researchCompletedAt": "2026-08-03T11:33:37.195Z",
+    "editionCreatedAt": "2026-08-03T11:33:37.195Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_c8c3b75f0e",
+    "tickerBio": "IN 2016, THE BELOVED BRISBANE VENUE LAUNCHED THE TRIFFID ALBUM OF THE YEAR TO CELEBRATE THE EXTRAORDINARY TALENT EMERGING FROM QUEENSLAND. PUBLIC VOTING FOR THIS YEAR’S AWARD JUST WRAPPED, AND THE OFFICIAL CEREMONY WILL TAKE PLACE TOMORROW NIGHT ON THURSDAY, 27 NOVEMBER! REFLECTING ON THE TRIFFID ALBUM OF THE YEAR’S IMPACT ON LOCAL ARTISTS, THE MUSIC CAUGHT UP WITH JOHN “JC” COLLINS, MAINSTAY BASSIST OF @POWDERFINGER",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "bandcamp-901ff865",
+      "spotify-9099ab50",
+      "youtube-b9fa1f9b",
+      "instagram-a333458b",
+      "website-a7f42006",
+      "merchandise-990c7c79"
+    ],
+    "marquee": "Powderfinger",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://powderfinger.com/",
+    "linkSourceVerifiedAt": "2026-08-03T11:32:47.196Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "website-a7f42006",
+        "sourceTitle": "Music",
+        "label": "Music",
+        "detail": "Visit the official website",
+        "url": "https://powderfinger.com/",
+        "platform": "website",
+        "kind": "website"
+      },
+      {
+        "id": "merchandise-990c7c79",
+        "sourceTitle": "Store",
+        "label": "Store",
+        "detail": "Official band merchandise",
+        "url": "https://powderfinger.bandtshirts.com.au/",
+        "platform": "merchandise",
+        "kind": "merchandise"
+      },
+      {
+        "id": "newsletter-8bfedddc",
+        "sourceTitle": "Newsletter",
+        "label": "Newsletter",
+        "detail": "Join the official mailing list",
+        "url": "https://powderfinger.com/mailing-list/",
+        "platform": "website",
+        "kind": "newsletter"
+      },
+      {
+        "id": "facebook-f9344557",
+        "sourceTitle": "Pash",
+        "label": "Pash",
+        "detail": "Follow the band",
+        "url": "https://www.facebook.com/groups/267435324523860",
+        "platform": "facebook",
+        "kind": "facebook"
+      },
+      {
+        "id": "contact-211f4748",
+        "sourceTitle": "Contact",
+        "label": "Contact",
+        "detail": "Official band enquiries",
+        "url": "https://powderfinger.com/contact/",
+        "platform": "website",
+        "kind": "contact"
+      },
+      {
+        "id": "youtube-b9fa1f9b",
+        "sourceTitle": "YouTube",
+        "label": "YouTube",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/channel/UCfLfieeWptxNHlirXjhfalA",
+        "platform": "youtube",
+        "kind": "youtube"
+      },
+      {
+        "id": "spotify-9099ab50",
+        "sourceTitle": "Spotify",
+        "label": "Spotify",
+        "detail": "Listen on Spotify",
+        "url": "https://open.spotify.com/artist/6LBCQo20ri3tsvbsWWLmr6",
+        "platform": "website",
+        "kind": "spotify"
+      },
+      {
+        "id": "instagram-a333458b",
+        "sourceTitle": "Instagram",
+        "label": "Instagram",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/powderfinger_bandofficial/?hl=en",
+        "platform": "instagram",
+        "kind": "instagram"
+      },
+      {
+        "id": "bandcamp-901ff865",
+        "sourceTitle": "music",
+        "label": "music",
+        "detail": "Listen and buy direct",
+        "url": "https://powderfinger.bandcamp.com/album/dream-days-at-the-hotel-existence",
+        "platform": "website",
+        "kind": "bandcamp"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://www.instagram.com/powderfinger_bandofficial/",
+      "paragraphs": [
+        "In 2016, the beloved Brisbane venue launched The Triffid Album of the Year to celebrate the extraordinary talent emerging from Queensland. Public voting for this year’s award just wrapped, and the official ceremony will take place tomorrow night on Thursday, 27 November! Reflecting on The Triffid Album of the Year’s impact on local artists, The Music caught up with John “JC” Collins, mainstay bassist of @powderfinger"
+      ]
+    }
+  }
+}

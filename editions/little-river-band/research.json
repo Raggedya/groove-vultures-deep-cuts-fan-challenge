@@ -1,0 +1,136 @@
+{
+  "bandName": "Little River Band",
+  "slug": "little-river-band",
+  "editionId": "dc_ff71ec4a82",
+  "verifiedAt": "2026-08-03T11:29:09.034Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://www.facebook.com/littleriverband",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:42.297Z",
+      "evidence": "The page identified Little River Band and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/6clbbhnIqpHnqxwtOWcilg",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:42.331Z",
+      "evidence": "The page identified Little River Band and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UC5G7TEx54qe73K_I9q5ZUZQ",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:42.433Z",
+      "evidence": "The page identified Little River Band and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://littleriverband.komi.io/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:45.746Z",
+      "evidence": "The page identified Little River Band and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://reallittleriverband.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:47.695Z",
+      "evidence": "The page identified Little River Band and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:facebook-9b4eda3e",
+      "url": "https://www.facebook.com/littleriverband",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:42.297Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Little River Band."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/littleriverband",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:42.297Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Little River Band."
+    },
+    {
+      "destination": "selection:youtube-3c473ec4",
+      "url": "https://www.youtube.com/watch?v=f1J38FlDKxo",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:48.509Z",
+      "evidence": "YouTube resolved directly from an identity-matched artist-controlled source for Little River Band."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/watch?v=f1J38FlDKxo",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:48.509Z",
+      "evidence": "YouTube resolved directly from an identity-matched artist-controlled source for Little River Band."
+    },
+    {
+      "destination": "selection:spotify-45be676c",
+      "url": "https://open.spotify.com/artist/6clbbhnIqpHnqxwtOWcilg/concerts",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:49.014Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Little River Band."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/6clbbhnIqpHnqxwtOWcilg/concerts",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:49.014Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Little River Band."
+    },
+    {
+      "destination": "selection:instagram-ae977e56",
+      "url": "https://www.instagram.com/little_river_band/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:50.797Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Little River Band."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/little_river_band/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:50.797Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Little River Band."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.youtube.com/channel/UC5G7TEx54qe73K_I9q5ZUZQ",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:52.480Z",
+      "evidence": "The official source supplied the concise biography text used by the Little River Band ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=HHP8_UOyLKg",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:52.027Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Little River Band video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://www.facebook.com/littleriverband",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:42.297Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Little River Band."
+    }
+  ]
+}

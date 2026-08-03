@@ -3,7 +3,7 @@
   "productName": "Deep Cuts Studio",
   "type": "module",
   "private": true,
-  "version": "3.4.2",
+  "version": "3.5.0",
   "description": "Permanent Deep Cuts artist discovery, analytics and publishing platform.",
   "main": "studio/desktop-main.mjs",
   "author": "Clearlight Creative",
@@ -31,13 +31,15 @@
     "sales:demo": "node scripts/serve-sales-demo.mjs",
     "deepcuts:batch": "node scripts/deep-cuts-batch.mjs",
     "deepcuts:batch:test": "node scripts/test-batch.mjs",
+    "jookbox:bands": "node scripts/jookbox-band-batch.mjs",
+    "jookbox:bands:test": "node scripts/test-jookbox-band-batch.mjs",
     "record-company:start": "node scripts/record-company/start.mjs",
     "record-company:test": "node scripts/test-record-company.mjs",
     "studio": "node scripts/studio-server.mjs",
     "studio:desktop": "electron-forge start",
     "studio:package": "electron-forge package",
     "studio:make": "node scripts/build-studio-windows.mjs",
-    "studio:test": "node scripts/test-studio-jookbox-research.mjs && node scripts/test-bar-jukebox.mjs && node scripts/test-bar-publisher.mjs && node scripts/test-venue-library.mjs && node scripts/test-studio.mjs",
+    "studio:test": "node scripts/test-aggits-jukebox.mjs && node scripts/test-aggits-jukebox-import.mjs && node scripts/test-aggits-jukebox-publisher.mjs && node scripts/test-studio-jookbox-research.mjs && node scripts/test-bar-jukebox.mjs && node scripts/test-bar-publisher.mjs && node scripts/test-venue-library.mjs && node scripts/test-studio.mjs",
     "studio:venue:test": "node scripts/test-venue-library.mjs",
     "studio:venue:batch:test": "node scripts/test-venue-batch-publication.mjs",
     "studio:make:mac:arm64": "electron-forge make --platform=darwin --arch=arm64",
@@ -45,7 +47,8 @@
   },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.1",
-    "sharp": "0.35.2"
+    "sharp": "0.35.2",
+    "yauzl": "2.10.0"
   },
   "devDependencies": {
     "@electron-forge/cli": "^7.11.2",

@@ -1,0 +1,128 @@
+{
+  "bandName": "Cold Chisel",
+  "slug": "cold-chisel",
+  "editionId": "dc_dedb317397",
+  "verifiedAt": "2026-08-03T11:47:03.350Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/coldchiselofficial/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:45:09.817Z",
+      "evidence": "The page identified Cold Chisel and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/1VcbchGlIfo3Gylxc3F076",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:45:09.389Z",
+      "evidence": "The page identified Cold Chisel and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UCZW5rgF90OnAgNhLh52YHeQ",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:45:09.722Z",
+      "evidence": "The page identified Cold Chisel and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://coldchisel.bandtshirts.com.au/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:45:10.625Z",
+      "evidence": "The page identified Cold Chisel and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:spotify-b7a504e4",
+      "url": "https://open.spotify.com/artist/1VcbchGlIfo3Gylxc3F076",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:45:09.389Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Cold Chisel."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/1VcbchGlIfo3Gylxc3F076",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:45:09.389Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Cold Chisel."
+    },
+    {
+      "destination": "selection:youtube-c8d98cee",
+      "url": "https://www.youtube.com/channel/UCZW5rgF90OnAgNhLh52YHeQ",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:45:09.722Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Cold Chisel."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/channel/UCZW5rgF90OnAgNhLh52YHeQ",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:45:09.722Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Cold Chisel."
+    },
+    {
+      "destination": "selection:instagram-23c69b28",
+      "url": "https://www.instagram.com/coldchiselofficial/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:45:09.817Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Cold Chisel."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/coldchiselofficial/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:45:09.817Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Cold Chisel."
+    },
+    {
+      "destination": "selection:website-66e5e448",
+      "url": "https://coldchisel.bandtshirts.com.au/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:45:10.625Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Cold Chisel."
+    },
+    {
+      "destination": "website",
+      "url": "https://coldchisel.bandtshirts.com.au/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:45:10.625Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Cold Chisel."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.youtube.com/channel/UCZW5rgF90OnAgNhLh52YHeQ",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:45:16.360Z",
+      "evidence": "The official source supplied the concise biography text used by the Cold Chisel ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=pJzPn4wlbZw",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:45:16.048Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Cold Chisel video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://www.instagram.com/coldchiselofficial/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:45:09.817Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Cold Chisel."
+    }
+  ]
+}

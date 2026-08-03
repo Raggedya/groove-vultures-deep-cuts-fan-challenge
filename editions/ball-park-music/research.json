@@ -1,0 +1,216 @@
+{
+  "bandName": "Ball Park Music",
+  "slug": "ball-park-music",
+  "editionId": "dc_1d2f48f205",
+  "verifiedAt": "2026-08-03T11:29:17.758Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://www.ballparkmusic.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:44.126Z",
+      "evidence": "The page identified Ball Park Music and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/ballparkmusic/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:44.346Z",
+      "evidence": "The page identified Ball Park Music and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/1ououJVWgWsHWMYDLvT7sH",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:43.875Z",
+      "evidence": "The page identified Ball Park Music and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UCHJA95ntm2cOro8BU4xgJiA",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:44.087Z",
+      "evidence": "The page identified Ball Park Music and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://linktr.ee/Ball_park_music",
+      "sourceType": "official artist-controlled link hub",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:45.144Z",
+      "evidence": "The page identified Ball Park Music and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://linktr.ee/ball_park_music",
+      "sourceType": "official artist-controlled link hub",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:45.125Z",
+      "evidence": "The page identified Ball Park Music and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:website-d830b1ac",
+      "url": "https://www.ballparkmusic.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:44.126Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Ball Park Music."
+    },
+    {
+      "destination": "website",
+      "url": "https://www.ballparkmusic.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:44.126Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Ball Park Music."
+    },
+    {
+      "destination": "selection:merchandise-43dc89f5",
+      "url": "https://merchjungle.com/collections/ball-park-music",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:46.151Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Ball Park Music."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://merchjungle.com/collections/ball-park-music",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:46.151Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Ball Park Music."
+    },
+    {
+      "destination": "selection:newsletter-9a2e998c",
+      "url": "https://www.ballparkmusic.com/subscribe",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:45.818Z",
+      "evidence": "Newsletter resolved directly and its destination metadata matched Ball Park Music."
+    },
+    {
+      "destination": "selection:contact-889be44e",
+      "url": "https://www.ballparkmusic.com/contact",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:45.692Z",
+      "evidence": "Contact resolved directly and its destination metadata matched Ball Park Music."
+    },
+    {
+      "destination": "contact",
+      "url": "https://www.ballparkmusic.com/contact",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:45.692Z",
+      "evidence": "Contact resolved directly and its destination metadata matched Ball Park Music."
+    },
+    {
+      "destination": "selection:spotify-fd4f6626",
+      "url": "https://open.spotify.com/artist/1ououJVWgWsHWMYDLvT7sH",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:43.875Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Ball Park Music."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/1ououJVWgWsHWMYDLvT7sH",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:43.875Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Ball Park Music."
+    },
+    {
+      "destination": "selection:instagram-51977cff",
+      "url": "https://www.instagram.com/ballparkmusic/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:44.346Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Ball Park Music."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/ballparkmusic/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:44.346Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Ball Park Music."
+    },
+    {
+      "destination": "selection:youtube-41b41c7c",
+      "url": "https://www.youtube.com/channel/UCHJA95ntm2cOro8BU4xgJiA",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:44.087Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Ball Park Music."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/channel/UCHJA95ntm2cOro8BU4xgJiA",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:44.087Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Ball Park Music."
+    },
+    {
+      "destination": "selection:tiktok-fdc1d7d0",
+      "url": "https://www.tiktok.com/@ballparkmusic",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:45.395Z",
+      "evidence": "TikTok resolved directly and its destination metadata matched Ball Park Music."
+    },
+    {
+      "destination": "tiktok",
+      "url": "https://www.tiktok.com/@ballparkmusic",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:45.395Z",
+      "evidence": "TikTok resolved directly and its destination metadata matched Ball Park Music."
+    },
+    {
+      "destination": "selection:facebook-8622cd2a",
+      "url": "https://www.facebook.com/ballparkmusic/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:46.376Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Ball Park Music."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/ballparkmusic/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:46.376Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Ball Park Music."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.youtube.com/channel/UCHJA95ntm2cOro8BU4xgJiA",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:53.608Z",
+      "evidence": "The official source supplied the concise biography text used by the Ball Park Music ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=lyuQ8vxWnoY",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:53.205Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Ball Park Music video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://www.ballparkmusic.com/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:44.126Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Ball Park Music."
+    }
+  ]
+}

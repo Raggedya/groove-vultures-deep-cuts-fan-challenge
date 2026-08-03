@@ -1,0 +1,162 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Art of Fighting",
+  "editionTitle": "Art of Fighting",
+  "description": "News 21.03.25: Over nearly 30 years, four albums, a handful of EPs and a little bit of soundtrack work, we have moved through many moods, toured many lands and graced many stages. There...",
+  "discovery": {
+    "bio": "News 21.03.25: Over nearly 30 years, four albums, a handful of EPs and a little bit of soundtrack work, we have moved through many moods, toured many lands and graced many stages. There...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "art-of-fighting",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_5161f4fcee",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/art-of-fighting/instagram-discovery.png",
+    "qrImage": "output/art-of-fighting/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "https://artoffighting.bandcamp.com/",
+    "spotify": "https://open.spotify.com/artist/5xQCHjcF27mamh9MvZEcgt",
+    "instagram": "",
+    "website": "https://www.artoffighting.com/",
+    "buyMusic": "",
+    "merchandise": "",
+    "facebook": "https://www.facebook.com/artoffightingband/",
+    "youtube": "https://www.youtube.com/channel/UCRuJaa8xjeK8Xb1MEVzHRWw/?sub_confirmation=1"
+  },
+  "featuredVideo": {
+    "title": "Art of Fighting - Conjuror",
+    "youtubeURL": "https://www.youtube.com/watch?v=9-Nl-27L9SU",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:33:22.562Z"
+  },
+  "analytics": {
+    "editionId": "dc_5161f4fcee",
+    "pageIdentifier": "dc_5161f4fcee:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_6433ae95-eac5-4a61-965b-0dce9307aa7d",
+    "submittedAt": "2026-08-03T11:29:18.087Z",
+    "researchCompletedAt": "2026-08-03T11:33:39.730Z",
+    "editionCreatedAt": "2026-08-03T11:33:39.730Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_5161f4fcee",
+    "tickerBio": "NEWS 21.03.25: OVER NEARLY 30 YEARS, FOUR ALBUMS, A HANDFUL OF EPS AND A LITTLE BIT OF SOUNDTRACK WORK, WE HAVE MOVED THROUGH MANY MOODS, TOURED MANY LANDS AND GRACED MANY STAGES. THERE ARE NOW A LOT OF AOF SONGS. TOO MANY SONGS TO ALWAYS MAKE A SET LIST. AND FOR A DEDICATED “ALBUM BAND”, THERE ARE TOO MANY FAN FAVOURITES THAT WE HAVEN’T PLAYED LIVE FOR YEARS. SO AS A GENTLE NOD TO RE-AFFIRMING A LOVE OF DEMOCRACY, W",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "bandcamp-decf2a36",
+      "spotify-227d0bf5",
+      "youtube-baaade36",
+      "website-80fda554",
+      "facebook-609ad68d"
+    ],
+    "marquee": "Art of Fighting",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://www.artoffighting.com/",
+    "linkSourceVerifiedAt": "2026-08-03T11:33:15.419Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "website-80fda554",
+        "sourceTitle": "Band Website",
+        "label": "Band Website",
+        "detail": "Visit the official website",
+        "url": "https://www.artoffighting.com/",
+        "platform": "website",
+        "kind": "website"
+      },
+      {
+        "id": "spotify-227d0bf5",
+        "sourceTitle": "Spotify",
+        "label": "Spotify",
+        "detail": "Listen on Spotify",
+        "url": "https://open.spotify.com/artist/5xQCHjcF27mamh9MvZEcgt",
+        "platform": "website",
+        "kind": "spotify"
+      },
+      {
+        "id": "facebook-609ad68d",
+        "sourceTitle": "Facebook",
+        "label": "Facebook",
+        "detail": "Follow the band",
+        "url": "https://www.facebook.com/artoffightingband/",
+        "platform": "facebook",
+        "kind": "facebook"
+      },
+      {
+        "id": "youtube-baaade36",
+        "sourceTitle": "YouTube",
+        "label": "YouTube",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/channel/UCRuJaa8xjeK8Xb1MEVzHRWw/?sub_confirmation=1",
+        "platform": "youtube",
+        "kind": "youtube"
+      },
+      {
+        "id": "bandcamp-decf2a36",
+        "sourceTitle": "Bandcamp store",
+        "label": "Bandcamp store",
+        "detail": "Listen and buy direct",
+        "url": "https://artoffighting.bandcamp.com/",
+        "platform": "website",
+        "kind": "bandcamp"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://www.artoffighting.com/",
+      "paragraphs": [
+        "News 21.03.25: Over nearly 30 years, four albums, a handful of EPs and a little bit of soundtrack work, we have moved through many moods, toured many lands and graced many stages. There are now A LOT of AOF songs. Too many songs to always make a set list. And for a dedicated “album band”, there are too many fan favourites that we haven’t played live for years. So as a gentle nod to re-affirming a love of democracy, w"
+      ]
+    }
+  }
+}

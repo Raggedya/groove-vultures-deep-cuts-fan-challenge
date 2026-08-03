@@ -1,0 +1,160 @@
+{
+  "bandName": "Gang Gajang",
+  "slug": "gang-gajang",
+  "editionId": "dc_a3b328b255",
+  "verifiedAt": "2026-08-03T11:29:26.122Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://ganggajang.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:33.201Z",
+      "evidence": "The page identified Gang Gajang and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/ganggajang/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:32.860Z",
+      "evidence": "The page identified Gang Gajang and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/3CDzOX9D1buMRHeTNFHXMm",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:32.439Z",
+      "evidence": "The page identified Gang Gajang and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://ganggajang.com/?qxiqin=56x5",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:34.061Z",
+      "evidence": "The page identified Gang Gajang and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:buy_music-18d42e6f",
+      "url": "https://ganggajang.com/discography/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:34.290Z",
+      "evidence": "Buy Music resolved directly and its destination metadata matched Gang Gajang."
+    },
+    {
+      "destination": "buyMusic",
+      "url": "https://ganggajang.com/discography/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:34.290Z",
+      "evidence": "Buy Music resolved directly and its destination metadata matched Gang Gajang."
+    },
+    {
+      "destination": "selection:youtube-59119d45",
+      "url": "https://www.youtube.com/user/GANGgajangOfficial?feature=mhum",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:34.513Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Gang Gajang."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/user/GANGgajangOfficial?feature=mhum",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:34.513Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Gang Gajang."
+    },
+    {
+      "destination": "selection:contact-fd98a202",
+      "url": "https://ganggajang.com/contact/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:34.298Z",
+      "evidence": "Contact resolved directly and its destination metadata matched Gang Gajang."
+    },
+    {
+      "destination": "contact",
+      "url": "https://ganggajang.com/contact/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:34.298Z",
+      "evidence": "Contact resolved directly and its destination metadata matched Gang Gajang."
+    },
+    {
+      "destination": "selection:facebook-070f9d18",
+      "url": "https://www.facebook.com/GANGgajang",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:35.015Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Gang Gajang."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/GANGgajang",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:35.015Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Gang Gajang."
+    },
+    {
+      "destination": "selection:instagram-ca5360eb",
+      "url": "https://www.instagram.com/Ganggajang/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:35.137Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Gang Gajang."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/Ganggajang/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:35.137Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Gang Gajang."
+    },
+    {
+      "destination": "selection:website-e0ef630f",
+      "url": "https://ganggajang.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:33.201Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Gang Gajang."
+    },
+    {
+      "destination": "website",
+      "url": "https://ganggajang.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:33.201Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Gang Gajang."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.instagram.com/ganggajang/",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:41.684Z",
+      "evidence": "The official source supplied the concise biography text used by the Gang Gajang ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=F2sGdr0dnWc",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:41.231Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Gang Gajang video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://ganggajang.com/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:33.201Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Gang Gajang."
+    }
+  ]
+}

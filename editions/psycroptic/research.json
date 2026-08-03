@@ -1,0 +1,360 @@
+{
+  "bandName": "Psycroptic",
+  "slug": "psycroptic",
+  "editionId": "dc_00caa452fd",
+  "verifiedAt": "2026-08-03T11:33:36.895Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://www.psycroptic.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:45.919Z",
+      "evidence": "The page identified Psycroptic and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://psycroptic.bandcamp.com/album/the-pulse-of-annihilation",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:47.353Z",
+      "evidence": "The page identified Psycroptic and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.facebook.com/psycroptic",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:46.663Z",
+      "evidence": "The page identified Psycroptic and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:show-76a84ae1",
+      "url": "https://moshtix.com.au/v2/event/psycroptic/196393",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:48.256Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Psycroptic."
+    },
+    {
+      "destination": "selection:show-8a082035",
+      "url": "https://tickets.iwannaticket.com.au/event/psycroptic-jt88mf",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:47.869Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Psycroptic."
+    },
+    {
+      "destination": "selection:show-be93bb6c",
+      "url": "https://moshtix.com.au/v2/event/psycroptic%E2%80%94supported-by-body-prison-and-pulverized-cranial-matter/196377?skin=AltarBar",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:48.191Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Psycroptic."
+    },
+    {
+      "destination": "selection:show-05c2ddd6",
+      "url": "https://tickets.393murray.com.au/outlet/event/ca2a40fb-3d87-4d71-9b4b-8652c166bb10",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:47.696Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Psycroptic."
+    },
+    {
+      "destination": "selection:show-c062577b",
+      "url": "https://moshtix.com.au/v2/event/psycroptic-rivers-of-nihil-usa-co-headline-tour/192450?skin=LAF20",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:48.214Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Psycroptic."
+    },
+    {
+      "destination": "selection:show-bc3dd3b4",
+      "url": "https://tickets.oztix.com.au/outlet/event/542dca6d-7fae-4664-ae66-dcb215a36499",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:48.029Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Psycroptic."
+    },
+    {
+      "destination": "selection:show-ee259718",
+      "url": "https://moshtix.com.au/v2/event/psycroptic-rivers-of-nihil-usa-co-headline-tour-w-special-guests-growth-sl/192533",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:48.906Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Psycroptic."
+    },
+    {
+      "destination": "selection:show-9a8be020",
+      "url": "https://tickets.oztix.com.au/outlet/event/571c76f6-8314-43fd-a6ee-cc7c67a199cf",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:48.353Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Psycroptic."
+    },
+    {
+      "destination": "selection:show-d9acb458",
+      "url": "https://www.swdjapan.com/extremeritualvol1-tickets",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:49.017Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Psycroptic."
+    },
+    {
+      "destination": "selection:show-ef563205",
+      "url": "https://www.ticketweb.com/event/psycroptic-inferi-cognitive-summoning-the-dingbatz-tickets/14273474",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:49.134Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Psycroptic."
+    },
+    {
+      "destination": "selection:show-b920a3f2",
+      "url": "https://www.eventbrite.com/e/psycroptic-tickets-1994682597344?aff=oddtdtcreator",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:48.510Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Psycroptic."
+    },
+    {
+      "destination": "selection:show-e5ca58a8",
+      "url": "https://www.universe.com/events/psycroptic-tickets-W8N4FX",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:48.929Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Psycroptic."
+    },
+    {
+      "destination": "selection:show-d37329b9",
+      "url": "https://www.ticketweb.ca/event/psycroptic-inferi-cognitive-summoning-the-the-cave-tickets/14271754?pl=inertia&refid=dynamic",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:49.815Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Psycroptic."
+    },
+    {
+      "destination": "selection:show-1af0400d",
+      "url": "https://www.ticketweb.com/event/psycroptic-inferi-cognitive-summoning-the-tsdmaac-tickets/14268154?pl=sanctuary",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:49.734Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Psycroptic."
+    },
+    {
+      "destination": "selection:show-1a104c9c",
+      "url": "https://www.ticketweb.com/event/psycroptic-inferi-cognitive-summoning-the-reggies-rock-club-tickets/14274814",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:49.803Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Psycroptic."
+    },
+    {
+      "destination": "selection:show-e58be367",
+      "url": "https://www.etix.com/ticket/p/43569990/psycroptic-inferi-cognitive-summoning-the-lich-cudahy-xray-arcade",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:49.791Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Psycroptic."
+    },
+    {
+      "destination": "selection:show-8b7a0ceb",
+      "url": "https://www.ticketweb.ca/event/psycroptic-inferi-cognitive-sidestage-tickets/14269584?pl=sidestage",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:50.529Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Psycroptic."
+    },
+    {
+      "destination": "selection:show-0db982e4",
+      "url": "https://www.ticketweb.ca/event/psycroptic-w-inferi-cognitive-the-starlite-room-tickets/14273814?pl=ConcertWorks",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:50.569Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Psycroptic."
+    },
+    {
+      "destination": "selection:show-27544f42",
+      "url": "https://www.ticketweb.ca/event/psycroptic-w-inferi-cognitive-dickens-pub-tickets/14273824?pl=ConcertWorks",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:50.583Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Psycroptic."
+    },
+    {
+      "destination": "selection:show-7ce0cf94",
+      "url": "https://www.ticketweb.com/event/psycroptic-with-inferi-cognitive-star-theater-tickets/14269614?pl=star",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:50.534Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Psycroptic."
+    },
+    {
+      "destination": "selection:show-e9291a25",
+      "url": "https://www.ticketweb.com/event/psycroptic-inferi-cognitive-summoning-the-the-ritz-tickets/14270954",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:51.240Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Psycroptic."
+    },
+    {
+      "destination": "selection:show-87be4385",
+      "url": "https://www.ticketmaster.com/event/090064F5A16C71B4",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:50.900Z",
+      "evidence": "Tickets resolved directly from an identity-matched artist-controlled source for Psycroptic."
+    },
+    {
+      "destination": "selection:show-c1d0cb61",
+      "url": "https://wl.eventim.us/event/psycroptic/699722?afflky=13thFloorEntertainment",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:51.048Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Psycroptic."
+    },
+    {
+      "destination": "selection:show-cca50c9c",
+      "url": "https://dice.fm/event/eo65md-psycroptic-28th-nov-grey-witch-henderson-tickets",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:51.651Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Psycroptic."
+    },
+    {
+      "destination": "selection:show-c2180db2",
+      "url": "https://www.24tix.com/event/21406295365",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:52.019Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Psycroptic."
+    },
+    {
+      "destination": "selection:show-96be11c8",
+      "url": "https://hqdenver.holdmyticket.com/tickets/465319",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:51.513Z",
+      "evidence": "Tickets resolved directly from an identity-matched artist-controlled source for Psycroptic."
+    },
+    {
+      "destination": "selection:show-78dd0d73",
+      "url": "https://www.etix.com/ticket/p/35912727/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:51.433Z",
+      "evidence": "Tickets resolved directly from an identity-matched artist-controlled source for Psycroptic."
+    },
+    {
+      "destination": "selection:show-129623b0",
+      "url": "https://www.etix.com/ticket/p/90751663/psycropticthe-pulse-of-annihilation-new-kensington-preserving",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:51.626Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Psycroptic."
+    },
+    {
+      "destination": "selection:facebook-72709e7e",
+      "url": "https://www.facebook.com/tr?id=1689089755161732&ev=PageView&noscript=1",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:51.531Z",
+      "evidence": "Facebook resolved directly from an identity-matched artist-controlled source for Psycroptic."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/tr?id=1689089755161732&ev=PageView&noscript=1",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:51.531Z",
+      "evidence": "Facebook resolved directly from an identity-matched artist-controlled source for Psycroptic."
+    },
+    {
+      "destination": "selection:instagram-da04d18b",
+      "url": "https://www.instagram.com/psycroptic_official",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:52.278Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Psycroptic."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/psycroptic_official",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:52.278Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Psycroptic."
+    },
+    {
+      "destination": "selection:spotify-532cd4d3",
+      "url": "https://open.spotify.com/artist/2O8ZayBAqBqoXujSAAx7pm",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:51.902Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Psycroptic."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/2O8ZayBAqBqoXujSAAx7pm",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:51.902Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Psycroptic."
+    },
+    {
+      "destination": "selection:youtube-c809871a",
+      "url": "https://www.youtube.com/embed/2fGNpFirpjc",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:52.080Z",
+      "evidence": "YouTube resolved directly from an identity-matched artist-controlled source for Psycroptic."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/embed/2fGNpFirpjc",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:52.080Z",
+      "evidence": "YouTube resolved directly from an identity-matched artist-controlled source for Psycroptic."
+    },
+    {
+      "destination": "selection:bandcamp-a18568dc",
+      "url": "https://metalblade.bandcamp.com/?from=btl",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:52.983Z",
+      "evidence": "Bandcamp resolved directly and its destination metadata matched Psycroptic."
+    },
+    {
+      "destination": "bandcamp",
+      "url": "https://metalblade.bandcamp.com/?from=btl",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:52.983Z",
+      "evidence": "Bandcamp resolved directly and its destination metadata matched Psycroptic."
+    },
+    {
+      "destination": "biography",
+      "url": "https://psycroptic.bandcamp.com/album/the-pulse-of-annihilation",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:54.230Z",
+      "evidence": "The official source supplied the concise biography text used by the Psycroptic ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=dMtwQ1BssZw",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:53.825Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Psycroptic video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://www.psycroptic.com/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:45.919Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Psycroptic."
+    }
+  ]
+}

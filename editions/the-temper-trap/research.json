@@ -1,0 +1,136 @@
+{
+  "bandName": "The Temper Trap",
+  "slug": "the-temper-trap",
+  "editionId": "dc_c61dc6297d",
+  "verifiedAt": "2026-08-03T11:47:02.422Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://thetempertrap.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:43:29.843Z",
+      "evidence": "The page identified The Temper Trap and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/thetempertrap/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:43:29.877Z",
+      "evidence": "The page identified The Temper Trap and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/4W48hZAnAHVOC2c8WH8pcq",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:43:29.525Z",
+      "evidence": "The page identified The Temper Trap and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UC-1k7y80RAIK_JlXP8WlDDw",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:43:29.731Z",
+      "evidence": "The page identified The Temper Trap and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://linktr.ee/thetempertrapmusic",
+      "sourceType": "official artist-controlled link hub",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:43:29.944Z",
+      "evidence": "The page identified The Temper Trap and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:spotify-c9fef156",
+      "url": "https://open.spotify.com/artist/4W48hZAnAHVOC2c8WH8pcq",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:43:29.525Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched The Temper Trap."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/4W48hZAnAHVOC2c8WH8pcq",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:43:29.525Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched The Temper Trap."
+    },
+    {
+      "destination": "selection:youtube-ed8a0f8e",
+      "url": "https://www.youtube.com/channel/UC-1k7y80RAIK_JlXP8WlDDw",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:43:29.731Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched The Temper Trap."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/channel/UC-1k7y80RAIK_JlXP8WlDDw",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:43:29.731Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched The Temper Trap."
+    },
+    {
+      "destination": "selection:instagram-9d60e19d",
+      "url": "https://www.instagram.com/thetempertrap/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:43:29.877Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched The Temper Trap."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/thetempertrap/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:43:29.877Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched The Temper Trap."
+    },
+    {
+      "destination": "selection:website-8da08ce2",
+      "url": "https://thetempertrap.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:43:29.843Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched The Temper Trap."
+    },
+    {
+      "destination": "website",
+      "url": "https://thetempertrap.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:43:29.843Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched The Temper Trap."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.instagram.com/thetempertrap/",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:43:36.906Z",
+      "evidence": "The official source supplied the concise biography text used by the The Temper Trap ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=xBar8-B7fBw",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:43:36.449Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured The Temper Trap video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://thetempertrap.com/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:43:29.843Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for The Temper Trap."
+    }
+  ]
+}

@@ -1,0 +1,152 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Airbourne",
+  "editionTitle": "Airbourne",
+  "description": "Rippin’ our way through this tour, with so many more mega cities to ROCK 🔥🫵 where are we seeing YOU?! 🫵🔥 #Airbourne #GetGUTSY #rocknroll Defy The Gods (of Rock ‘N’ Roll) As you guys...",
+  "discovery": {
+    "bio": "Rippin’ our way through this tour, with so many more mega cities to ROCK 🔥🫵 where are we seeing YOU?! 🫵🔥 #Airbourne #GetGUTSY #rocknroll Defy The Gods (of Rock ‘N’ Roll) As you guys...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "airbourne",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_20eaf944b5",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/airbourne/instagram-discovery.png",
+    "qrImage": "output/airbourne/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "",
+    "spotify": "https://open.spotify.com/artist/6urzdpGY5yUimWZsgJUoTb",
+    "instagram": "https://www.instagram.com/airbourne/",
+    "website": "https://airbourne.diggers.store/",
+    "buyMusic": "",
+    "merchandise": "",
+    "facebook": "",
+    "youtube": "https://www.youtube.com/channel/UC99gXrm2NHOlKVLuKIk6IGA"
+  },
+  "featuredVideo": {
+    "title": "Airbourne - Here She Comes (Art Track)",
+    "youtubeURL": "https://www.youtube.com/watch?v=8bO75LnGEc8",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:49:31.703Z"
+  },
+  "analytics": {
+    "editionId": "dc_20eaf944b5",
+    "pageIdentifier": "dc_20eaf944b5:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_bf70a45b-aeb8-417f-8b44-c18a154b93e7",
+    "submittedAt": "2026-08-03T11:47:03.066Z",
+    "researchCompletedAt": "2026-08-03T11:49:32.833Z",
+    "editionCreatedAt": "2026-08-03T11:49:32.833Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_20eaf944b5",
+    "tickerBio": "RIPPIN’ OUR WAY THROUGH THIS TOUR, WITH SO MANY MORE MEGA CITIES TO ROCK 🔥🫵 WHERE ARE WE SEEING YOU?! 🫵🔥 #AIRBOURNE #GETGUTSY #ROCKNROLL DEFY THE GODS (OF ROCK ‘N’ ROLL) AS YOU GUYS KNOW, THIS ALBUM HAS BEEN OUR OWN ODYSSEY SO WE WANTED TO GIVE YOU GUYS A LITTLE SOMETHING TO SAY, SOMETIMES IT JUST TAKES A LITTLE LONGER THAN PLANNED… SEPTEMBER 4TH. MARK IT IN YOUR CALENDARS! ⚔️⚔️",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "spotify-8fef0905",
+      "youtube-e1e316ff",
+      "instagram-56f2fa3a",
+      "website-dbd291a5"
+    ],
+    "marquee": "Airbourne",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://www.instagram.com/airbourne/",
+    "linkSourceVerifiedAt": "2026-08-03T11:48:25.967Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "spotify-8fef0905",
+        "sourceTitle": "Spotify",
+        "label": "Spotify",
+        "detail": "Listen on Spotify",
+        "url": "https://open.spotify.com/artist/6urzdpGY5yUimWZsgJUoTb",
+        "platform": "website",
+        "kind": "spotify"
+      },
+      {
+        "id": "youtube-e1e316ff",
+        "sourceTitle": "YouTube",
+        "label": "YouTube",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/channel/UC99gXrm2NHOlKVLuKIk6IGA",
+        "platform": "youtube",
+        "kind": "youtube"
+      },
+      {
+        "id": "instagram-56f2fa3a",
+        "sourceTitle": "115K followers",
+        "label": "115K followers",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/airbourne/",
+        "platform": "instagram",
+        "kind": "instagram"
+      },
+      {
+        "id": "website-dbd291a5",
+        "sourceTitle": "Band Website",
+        "label": "Band Website",
+        "detail": "Visit the official website",
+        "url": "https://airbourne.diggers.store/",
+        "platform": "website",
+        "kind": "website"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://www.instagram.com/airbourne/",
+      "paragraphs": [
+        "Rippin’ our way through this tour, with so many more mega cities to ROCK 🔥🫵 where are we seeing YOU?! 🫵🔥 #Airbourne #GetGUTSY #rocknroll Defy The Gods (of Rock ‘N’ Roll) As you guys know, this album has been our own Odyssey so we wanted to give you guys a little something to say, sometimes it just takes a LITTLE longer than planned… September 4th. Mark it in your calendars! ⚔️⚔️"
+      ]
+    }
+  }
+}

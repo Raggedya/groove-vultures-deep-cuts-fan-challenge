@@ -3,10 +3,13 @@ import {
   STUDIO_JOOKBOX_RESEARCH_SCHEMA,
   researchFingerprint
 } from "./studio-jookbox-research.mjs";
+import {renderAggitsJukeboxStudioPreview} from "./aggits-jukebox-preview.mjs";
+import {aggitsJukeboxIcon} from "./aggits-jukebox-icons.mjs";
 
 export const STUDIO_SCHEMA_VERSION="deep-cuts-studio-project/1";
 
 export const PRODUCT_TYPES=Object.freeze([
+  {id:"aggits_jukebox",label:"Aggits Jukebox",description:"The owner-approved four-button vintage Jukebox with administrator-supplied title, ticker, MP4 and actions.",aggitsPolicy:"forbidden",workflow:"aggits-jukebox-static",automaticResearch:false},
   {id:"bar_jukebox",label:"Bar Edition",description:"A static venue JookBox with a local welcome video, five administrator-supplied links, About Us and one Share bar.",aggitsPolicy:"forbidden",workflow:"bar-jukebox-static",automaticResearch:false},
   {id:"jookbox",label:"JookBox Band",description:"A verified band JookBox built from a band name and artist-controlled URL.",aggitsPolicy:"forbidden",workflow:"jookbox-factory",automaticResearch:true},
   {id:"business",label:"Business",description:"Company discovery, services, story and verified customer actions.",aggitsPolicy:"required",workflow:"factory"},
@@ -58,6 +61,7 @@ export const AGGITS_OPTIONS=Object.freeze([
 const TYPE_BY_ID=new Map([...PRODUCT_TYPES,...LEGACY_PRODUCT_TYPES].map(item=>[item.id,item]));
 const AGGITS_BY_ID=new Map(AGGITS_OPTIONS.map(item=>[item.id,item]));
 const TYPE_ALIASES=new Map([
+  ["aggits jukebox","aggits_jukebox"],["aggits jookbox","aggits_jukebox"],["four button jukebox","aggits_jukebox"],["four button jookbox","aggits_jukebox"],
   ["bar edition","bar_jukebox"],["bar jukebox","bar_jukebox"],["venue jukebox","bar_jukebox"],["venue","bar_jukebox"],
   ["jookbox","jookbox"],["jukebox","jookbox"],["jook box","jookbox"],["band jookbox","jookbox"],
   ["artist","individual_band"],["band","individual_band"],["individual band","individual_band"],["music","individual_band"],
@@ -225,7 +229,7 @@ export function applyRevision(project,instruction,now=new Date()){
       changes.push(`Source URL ${index+1} removed.`);continue;
     }
     if((match=clause.match(/^(?:add|use)\s+(?:source\s+)?(?:url|website)\s+(https?:\/\/\S+)[.!]?$/i))){
-      const maximum=next.type==="bar_jukebox"?5:3;
+      const maximum=next.type==="bar_jukebox"?5:next.type==="aggits_jukebox"?4:3;
       if(next.sourceUrls.length<maximum){
         next.sourceUrls.push(match[1].replace(/[.,!?]+$/,""));
         next.sourceLabels.push("");
@@ -282,14 +286,17 @@ export function normalizeProjectInput(input={},fallback={}){
   const urls=Array.isArray(input.sourceUrls)?input.sourceUrls:Array.isArray(fallback.sourceUrls)?fallback.sourceUrls:[];
   const labels=Array.isArray(input.sourceLabels)?input.sourceLabels:Array.isArray(fallback.sourceLabels)?fallback.sourceLabels:[];
   const pairs=[];
-  const maximumSources=type==="bar_jukebox"?5:3;
+  const maximumSources=type==="bar_jukebox"?5:type==="aggits_jukebox"?4:3;
   for(let index=0;index<urls.length&&pairs.length<maximumSources;index++){
     const url=normalizeHttpsUrl(urls[index]);
     if(!url||pairs.some(item=>item.url===url))continue;
     pairs.push({url,label:clean(labels[index],42)});
   }
-  const youtubeUrl=type==="bar_jukebox"?"":normalizeYouTubeUrl(input.youtubeUrl??fallback.youtubeUrl??"");
-  const addWheel=["jookbox","bar_jukebox"].includes(type)?false:booleanValue(input.addWheel??fallback.addWheel,false);
+  const youtubeUrl=["bar_jukebox","aggits_jukebox"].includes(type)?"":normalizeYouTubeUrl(input.youtubeUrl??fallback.youtubeUrl??"");
+  const addWheel=["jookbox","bar_jukebox","aggits_jukebox"].includes(type)?false:booleanValue(input.addWheel??fallback.addWheel,false);
+  const actionButtons=type==="aggits_jukebox"
+    ?normalizeAggitsJukeboxActions(input.actionButtons??fallback.actionButtons,pairs)
+    :[];
   return{
     name,
     type,
@@ -301,6 +308,7 @@ export function normalizeProjectInput(input={},fallback={}){
     tickerText:cleanMultiline(input.tickerText??fallback.tickerText,500),
     aboutText:cleanMultiline(input.aboutText??fallback.aboutText,1200),
     posterHeading:clean(input.posterHeading??fallback.posterHeading,90),
+    actionButtons,
     addWheel
   };
 }
@@ -349,6 +357,25 @@ export function readinessFor(project){
       webLookupAllowed:false
     };
   }
+  if(project.input.type==="aggits_jukebox"){
+    const enabled=project.input.actionButtons.filter(action=>action.enabled);
+    if(!project.input.tickerText)blockers.push("Add the administrator-supplied ticker message.");
+    if(!project.mp4)blockers.push("Select the local MP4 welcome video.");
+    if(!enabled.length)blockers.push("Enable and configure at least one action button.");
+    if(enabled.some(action=>!action.label||!action.iconId||!action.value||!action.href))blockers.push("Complete the icon, label, action type and destination for every enabled button.");
+    const handoffReady=Boolean(project.input.name&&project.input.tickerText&&project.mp4&&enabled.length&&!enabled.some(action=>!action.label||!action.iconId||!action.value||!action.href));
+    if(handoffReady)blockers.push("Create the isolated Aggits Jukebox production edition through the protected publishing workflow.");
+    return{
+      previewReady:Boolean(project.input.name),
+      handoffReady,
+      productionReady:false,
+      blockers,
+      nextWorkflow:TYPE_BY_ID.get(project.input.type).workflow,
+      staticAdministratorContent:true,
+      webLookupAllowed:false,
+      enabledActionCount:enabled.length
+    };
+  }
   if(project.input.type==="jookbox"){
     const currentResearch=project.research?.inputFingerprint===researchFingerprint(project.input)?project.research:null;
     if(!currentResearch)blockers.push("Run the automatic identity and destination research.");
@@ -383,6 +410,7 @@ export function readinessFor(project){
 
 export function renderStudioPreview(project,{audioUrl="",logoUrl="",videoUrl="",scriptNonce=""}={}){
   assertProject(project);
+  if(project.input.type==="aggits_jukebox")return renderAggitsJukeboxStudioPreview(project,{videoUrl,scriptNonce});
   if(project.input.type==="bar_jukebox")return renderBarJookBoxStudioPreview(project,{videoUrl,scriptNonce});
   if(project.input.type==="jookbox")return renderJookBoxStudioPreview(project,{scriptNonce});
   const input=project.input;
@@ -546,12 +574,13 @@ function renderBarJookBoxStudioPreview(project,{videoUrl="",scriptNonce=""}={}){
     <div id="previewGate" class="gate"><strong>${project.readiness.handoffReady?"STATIC CONTENT COMPLETE":"ADMINISTRATOR INPUT REQUIRED"}</strong>No web lookup runs for Bar Edition. The five labels, five URLs, ticker, About Us copy and MP4 come only from this local Studio project.</div>
     <footer aria-label="Deep Cuts platform"><strong>Deep Cuts</strong><br>Copyright Clearlight Creative</footer>
   </main>
-  <audio id="coinSound" preload="auto" src="/assets/audio/jukebox-real-coin-insert-cc0.mp3"></audio>
+  <link rel="preload" href="/assets/audio/jukebox-real-coin-insert-cc0.mp3" as="audio" type="audio/mpeg">
+  <script src="/assets/js/jookbox-coin-audio.js"></script>
   <script${scriptNonce?` nonce="${escapeAttribute(scriptNonce)}"`:""}>
-    (()=>{const machine=document.getElementById("machine"),coinButton=document.getElementById("coinButton"),coin=document.getElementById("coin"),video=document.getElementById("welcomeVideo"),status=document.getElementById("status"),keys=[...document.querySelectorAll(".key:not(.is-placeholder)")],aboutKey=document.getElementById("aboutKey"),aboutScreen=document.getElementById("aboutScreen"),aboutBack=document.getElementById("aboutBack"),aboutTitle=document.getElementById("aboutTitle"),previewGate=document.getElementById("previewGate"),sharePanel=document.getElementById("sharePanel"),sound=document.getElementById("coinSound");let state="sleeping",drag=null,keyTimer=0,keyIndex=-1;
+    (()=>{const machine=document.getElementById("machine"),coinButton=document.getElementById("coinButton"),coin=document.getElementById("coin"),video=document.getElementById("welcomeVideo"),status=document.getElementById("status"),keys=[...document.querySelectorAll(".key:not(.is-placeholder)")],aboutKey=document.getElementById("aboutKey"),aboutScreen=document.getElementById("aboutScreen"),aboutBack=document.getElementById("aboutBack"),aboutTitle=document.getElementById("aboutTitle"),previewGate=document.getElementById("previewGate"),sharePanel=document.getElementById("sharePanel"),sound=window.DeepCutsJookBoxCoinAudio?.create("/assets/audio/jukebox-real-coin-insert-cc0.mp3",{volume:1,gain:1.15});let state="sleeping",drag=null,keyTimer=0,keyIndex=-1;
     const unlock=()=>{keys.forEach(key=>{if(key.tagName==="A"){key.removeAttribute("aria-disabled");key.tabIndex=0}else{key.disabled=false;key.removeAttribute("aria-disabled")}});sharePanel.disabled=false;sharePanel.removeAttribute("aria-disabled")};
     const sequence=()=>{clearTimeout(keyTimer);keys.forEach(key=>key.classList.remove("is-current"));if(document.hidden||!machine.classList.contains("is-buttons-on")||matchMedia("(prefers-reduced-motion: reduce)").matches||!keys.length)return;keyIndex=(keyIndex+1)%keys.length;keys[keyIndex].classList.add("is-current");keyTimer=setTimeout(sequence,1100)};
-    const awaken=(restore=false)=>{if(state!=="sleeping")return;state="starting";machine.classList.add("is-accepting");status.textContent="Coin accepted — Bar Edition is powering up";if(!restore){sound.volume=.56;sound.play().catch(()=>{});if(video){video.currentTime=0;video.play().catch(()=>{status.textContent="Coin accepted — press play for the welcome video"})}try{sessionStorage.setItem("${sessionKey}","true")}catch{}}setTimeout(()=>machine.classList.add("is-powering"),120);setTimeout(()=>machine.classList.add("is-neon-on"),800);setTimeout(()=>machine.classList.add("is-screen-on"),1200);setTimeout(()=>{machine.classList.add("is-buttons-on");unlock();sequence()},1600);setTimeout(()=>{machine.classList.add("is-ticker-on","is-awake");machine.classList.remove("is-powering","is-accepting");state="awake";status.textContent="Coin accepted — JookBox is live"},2000)};
+    const awaken=(restore=false)=>{if(state!=="sleeping")return;state="starting";machine.classList.add("is-accepting");status.textContent="Coin accepted — Bar Edition is powering up";if(!restore){sound?.play().catch(error=>console.warn("Coin recording could not be played.",error));if(video){video.currentTime=0;video.play().catch(()=>{status.textContent="Coin accepted — press play for the welcome video"})}try{sessionStorage.setItem("${sessionKey}","true")}catch{}}setTimeout(()=>machine.classList.add("is-powering"),120);setTimeout(()=>machine.classList.add("is-neon-on"),800);setTimeout(()=>machine.classList.add("is-screen-on"),1200);setTimeout(()=>{machine.classList.add("is-buttons-on");unlock();sequence()},1600);setTimeout(()=>{machine.classList.add("is-ticker-on","is-awake");machine.classList.remove("is-powering","is-accepting");state="awake";status.textContent="Coin accepted — JookBox is live"},2000)};
     coinButton.addEventListener("click",event=>{if(state!=="sleeping")return;if(event.detail===0||!drag)awaken()});coinButton.addEventListener("pointerdown",event=>{if(state!=="sleeping"||event.button!==0)return;event.preventDefault();coinButton.setPointerCapture?.(event.pointerId);drag={id:event.pointerId,y:event.clientY,progress:0}});coinButton.addEventListener("pointermove",event=>{if(!drag||drag.id!==event.pointerId)return;event.preventDefault();drag.progress=Math.max(0,Math.min(1,(drag.y-event.clientY)/70));coin.style.transform="translate(-50%,calc(-50% - "+Math.round(drag.progress*118)+"%)) rotate("+Math.round(5+drag.progress*12)+"deg)"});const finish=event=>{if(!drag||drag.id!==event.pointerId)return;const accepted=drag.progress>=.5;drag=null;coin.style.removeProperty("transform");if(accepted)awaken()};coinButton.addEventListener("pointerup",finish);coinButton.addEventListener("pointercancel",finish);
     document.querySelectorAll(".key").forEach(key=>key.addEventListener("click",event=>{if(state!=="awake"){event.preventDefault();coinButton.focus()}}));aboutKey.addEventListener("click",()=>{if(state!=="awake"){coinButton.focus();return}machine.hidden=true;previewGate.hidden=true;aboutScreen.hidden=false;aboutTitle.focus();scrollTo({top:0,behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"})});aboutBack.addEventListener("click",()=>{aboutScreen.hidden=true;machine.hidden=false;previewGate.hidden=false;aboutKey.focus();scrollTo({top:0,behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"})});const previewShare=async()=>{if(state!=="awake"){coinButton.focus();return}status.textContent="Public sharing activates after deployment";};sharePanel.addEventListener("click",previewShare);
     document.addEventListener("visibilitychange",()=>{if(document.hidden)clearTimeout(keyTimer);else if(state==="awake")sequence()});try{if(sessionStorage.getItem("${sessionKey}")==="true"){machine.classList.add("is-neon-on","is-screen-on","is-buttons-on","is-ticker-on","is-awake");state="awake";status.textContent="Coin accepted — JookBox is live";unlock();sequence();if(video){video.pause();video.currentTime=0}}}catch{}
@@ -628,7 +657,7 @@ function renderJookBoxStudioPreview(project,{scriptNonce=""}={}){
 
 export function attachMp4(project,{fileName,sizeBytes,sha256},now=new Date()){
   assertProject(project);
-  if(project.input.type!=="bar_jukebox")throw new StudioValidationError("Local MP4 welcome videos are available only for Bar Edition projects.","wrong_video_type");
+  if(!["bar_jukebox","aggits_jukebox"].includes(project.input.type))throw new StudioValidationError("Local MP4 welcome videos are available only for Bar Edition and Aggits Jukebox projects.","wrong_video_type");
   return finalize({
     ...project,
     revision:Number(project.revision||0)+1,
@@ -685,6 +714,50 @@ function booleanValue(value,fallback=false){
   }
   return Boolean(fallback);
 }
+function normalizeAggitsJukeboxActions(value,legacyPairs=[]){
+  const supplied=Array.isArray(value)?value:[];
+  const defaults=["call","book_now","gigs","menu"];
+  return Array.from({length:4},(_,index)=>{
+    const legacy=legacyPairs[index]||{};
+    const action=supplied[index]||{};
+    const type=normalizeAggitsActionType(action.actionType||"web");
+    const rawValue=String(action.value??legacy.url??"").trim();
+    const enabled=booleanValue(action.enabled,Boolean(rawValue));
+    const iconId=aggitsJukeboxIcon(action.iconId)?.id||defaults[index];
+    const label=clean(action.label??legacy.label,32);
+    const href=enabled?normalizeAggitsActionHref(type,rawValue):"";
+    return{
+      slot:index+1,
+      enabled,
+      iconId,
+      iconAsset:aggitsJukeboxIcon(iconId)?.assetPath||"",
+      label,
+      actionType:type,
+      value:rawValue,
+      href,
+      openInNewTab:["web","map"].includes(type)?booleanValue(action.openInNewTab,true):false
+    };
+  });
+}
+function normalizeAggitsActionType(value){
+  const type=String(value||"").trim().toLowerCase();
+  return["web","tel","email","map"].includes(type)?type:"web";
+}
+function normalizeAggitsActionHref(type,value){
+  const raw=String(value||"").trim();
+  if(!raw)return"";
+  if(type==="tel"){
+    const number=raw.replace(/^tel:/i,"").replace(/[^+0-9*#(),.;-]/g,"");
+    if(!/[0-9]/.test(number))throw new StudioValidationError("Enter a valid telephone number for the enabled Call action.","invalid_action_value");
+    return`tel:${number}`;
+  }
+  if(type==="email"){
+    const address=raw.replace(/^mailto:/i,"").trim();
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(address))throw new StudioValidationError("Enter a valid email address for the enabled Email action.","invalid_action_value");
+    return`mailto:${address}`;
+  }
+  return normalizeExternalWebUrl(raw);
+}
 function assertProject(project){
   if(!project||project.schemaVersion!==STUDIO_SCHEMA_VERSION)throw new StudioValidationError("Unsupported Studio project file.","invalid_project");
   assertProjectId(project.id);
@@ -698,6 +771,17 @@ function normalizeHttpsUrl(value){
     url.hash="";
     return url.href;
   }catch{throw new StudioValidationError(`Use a complete HTTPS URL: ${raw}`,"invalid_url")}
+}
+function normalizeExternalWebUrl(value){
+  const raw=String(value||"").trim();
+  if(!raw)return"";
+  try{
+    const url=new URL(/^[a-z][a-z0-9+.-]*:\/\//i.test(raw)?raw:`https://${raw}`);
+    if(!["https:","http:"].includes(url.protocol)||url.username||url.password)throw new Error();
+    if(["localhost","127.0.0.1","::1"].includes(url.hostname.toLowerCase()))throw new Error();
+    url.hash="";
+    return url.href;
+  }catch{throw new StudioValidationError(`Use a complete HTTP or HTTPS URL: ${raw}`,"invalid_url")}
 }
 function normalizeYouTubeUrl(value){
   const url=normalizeHttpsUrl(value);

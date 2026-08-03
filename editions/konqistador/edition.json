@@ -1,0 +1,152 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Konqistador",
+  "editionTitle": "Konqistador",
+  "description": "Konqistador is a genre-blending electro-industrial and darkwave collective formed in 2005 in Melbourne, Australia, now based in Detroit, Michigan. Led by Canadian producers Elizabeth...",
+  "discovery": {
+    "bio": "Konqistador is a genre-blending electro-industrial and darkwave collective formed in 2005 in Melbourne, Australia, now based in Detroit, Michigan. Led by Canadian producers Elizabeth...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "konqistador",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_739d55b931",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/konqistador/instagram-discovery.png",
+    "qrImage": "output/konqistador/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "",
+    "spotify": "https://open.spotify.com/artist/1m4IwHih7AdX8WZZdyZIas",
+    "instagram": "https://www.instagram.com/konqistadormusic",
+    "website": "",
+    "buyMusic": "",
+    "merchandise": "",
+    "facebook": "https://www.facebook.com/Konqistadormusic",
+    "youtube": "https://www.youtube.com/watch?v=1TgrjUS2XL4&feature=youtu.be"
+  },
+  "featuredVideo": {
+    "title": "Konqistador | Hey Man, Nice Shot [Filter Cover] | OFFICIAL VIDEO",
+    "youtubeURL": "https://www.youtube.com/watch?v=eQPmwgXBvP4",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:26:15.498Z"
+  },
+  "analytics": {
+    "editionId": "dc_739d55b931",
+    "pageIdentifier": "dc_739d55b931:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_b56ea122-3f59-4d49-8e27-16b8cb0615ef",
+    "submittedAt": "2026-08-03T11:29:19.333Z",
+    "researchCompletedAt": "2026-08-03T11:29:19.558Z",
+    "editionCreatedAt": "2026-08-03T11:29:19.558Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_739d55b931",
+    "tickerBio": "KONQISTADOR IS A GENRE-BLENDING ELECTRO-INDUSTRIAL AND DARKWAVE COLLECTIVE FORMED IN 2005 IN MELBOURNE, AUSTRALIA, NOW BASED IN DETROIT, MICHIGAN. LED BY CANADIAN PRODUCERS ELIZABETH GRAHAM AND REGINALD TIESSEN, ALONG WITH UK PRODUCER INFEST8, THE GROUP FUSES GLITCHED SYNTHS, BASS-HEAVY BEATS, AND MEDIEVAL-GOTHIC TEXTURES TO CREATE A CINEMATIC, GLOBALLY INFLUENCED SOUND. THEIR COLLABORATIVE ETHOS SPANS CONTINENTS, IN",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "spotify-b3533905",
+      "youtube-ebf42acc",
+      "instagram-f46bed66",
+      "facebook-829f95e4"
+    ],
+    "marquee": "Konqistador",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://open.spotify.com/artist/1m4IwHih7AdX8WZZdyZIas",
+    "linkSourceVerifiedAt": "2026-08-03T11:26:03.809Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "facebook-829f95e4",
+        "sourceTitle": "Facebook",
+        "label": "Facebook",
+        "detail": "Follow the band",
+        "url": "https://www.facebook.com/Konqistadormusic",
+        "platform": "facebook",
+        "kind": "facebook"
+      },
+      {
+        "id": "instagram-f46bed66",
+        "sourceTitle": "Instagram",
+        "label": "Instagram",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/konqistadormusic",
+        "platform": "instagram",
+        "kind": "instagram"
+      },
+      {
+        "id": "spotify-b3533905",
+        "sourceTitle": "Spotify",
+        "label": "Spotify",
+        "detail": "Listen on Spotify",
+        "url": "https://open.spotify.com/artist/1m4IwHih7AdX8WZZdyZIas",
+        "platform": "website",
+        "kind": "spotify"
+      },
+      {
+        "id": "youtube-ebf42acc",
+        "sourceTitle": "Konqistador",
+        "label": "Konqistador",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/watch?v=1TgrjUS2XL4&feature=youtu.be",
+        "platform": "youtube",
+        "kind": "youtube"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://www.youtube.com/channel/UCcKomgj5Uzixc1n42s_0j9Q",
+      "paragraphs": [
+        "Konqistador is a genre-blending electro-industrial and darkwave collective formed in 2005 in Melbourne, Australia, now based in Detroit, Michigan. Led by Canadian producers Elizabeth Graham and Reginald Tiessen, along with UK producer INfest8, the group fuses glitched synths, bass-heavy beats, and medieval-gothic textures to create a cinematic, globally influenced sound. Their collaborative ethos spans continents, in"
+      ]
+    }
+  }
+}

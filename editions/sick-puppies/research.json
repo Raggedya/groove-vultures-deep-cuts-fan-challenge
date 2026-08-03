@@ -1,0 +1,208 @@
+{
+  "bandName": "Sick Puppies",
+  "slug": "sick-puppies",
+  "editionId": "dc_d08b8b28b3",
+  "verifiedAt": "2026-08-03T11:29:10.792Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://sickpuppies.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:53.990Z",
+      "evidence": "The page identified Sick Puppies and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/sickpuppiesofficial/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:53.212Z",
+      "evidence": "The page identified Sick Puppies and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/7qAcXJgt1PWnxwUgxMdyuk",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:52.941Z",
+      "evidence": "The page identified Sick Puppies and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UC7jC42alvQUO4wzCXSgS_jg",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:53.037Z",
+      "evidence": "The page identified Sick Puppies and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.sickpuppiesworldcrew.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:54.561Z",
+      "evidence": "The page identified Sick Puppies and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://linktr.ee/Sickpuppies",
+      "sourceType": "official artist-controlled link hub",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:55.729Z",
+      "evidence": "The page identified Sick Puppies and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:website-006e0a38",
+      "url": "https://sickpuppies.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:53.990Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Sick Puppies."
+    },
+    {
+      "destination": "website",
+      "url": "https://sickpuppies.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:53.990Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Sick Puppies."
+    },
+    {
+      "destination": "selection:youtube-860340c8",
+      "url": "https://www.youtube.com/sickpuppies",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:56.231Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Sick Puppies."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/sickpuppies",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:56.231Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Sick Puppies."
+    },
+    {
+      "destination": "selection:contact-8a0636c6",
+      "url": "https://sickpuppies.com/pages/contact",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:56.267Z",
+      "evidence": "Contact resolved directly and its destination metadata matched Sick Puppies."
+    },
+    {
+      "destination": "contact",
+      "url": "https://sickpuppies.com/pages/contact",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:56.267Z",
+      "evidence": "Contact resolved directly and its destination metadata matched Sick Puppies."
+    },
+    {
+      "destination": "selection:facebook-9d1535a5",
+      "url": "https://www.facebook.com/sickpuppies",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:56.786Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Sick Puppies."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/sickpuppies",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:56.786Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Sick Puppies."
+    },
+    {
+      "destination": "selection:instagram-88d43966",
+      "url": "https://www.instagram.com/sickpuppiesofficial/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:53.212Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Sick Puppies."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/sickpuppiesofficial/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:53.212Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Sick Puppies."
+    },
+    {
+      "destination": "selection:tiktok-fe408e13",
+      "url": "https://www.tiktok.com/@sickpuppies",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:56.009Z",
+      "evidence": "TikTok resolved directly and its destination metadata matched Sick Puppies."
+    },
+    {
+      "destination": "tiktok",
+      "url": "https://www.tiktok.com/@sickpuppies",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:56.009Z",
+      "evidence": "TikTok resolved directly and its destination metadata matched Sick Puppies."
+    },
+    {
+      "destination": "selection:spotify-e2b86a88",
+      "url": "https://open.spotify.com/artist/7qAcXJgt1PWnxwUgxMdyuk",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:52.941Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Sick Puppies."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/7qAcXJgt1PWnxwUgxMdyuk",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:52.941Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Sick Puppies."
+    },
+    {
+      "destination": "selection:merchandise-414b309a",
+      "url": "https://sickpuppies.com/cart",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:56.559Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Sick Puppies."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://sickpuppies.com/cart",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:56.559Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Sick Puppies."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.youtube.com/channel/UC7jC42alvQUO4wzCXSgS_jg",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:03.485Z",
+      "evidence": "The official source supplied the concise biography text used by the Sick Puppies ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=f-4cfgXTiz4",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:02.998Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Sick Puppies video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://sickpuppies.com/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:53.990Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Sick Puppies."
+    }
+  ]
+}

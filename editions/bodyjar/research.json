@@ -1,0 +1,160 @@
+{
+  "bandName": "Bodyjar",
+  "slug": "bodyjar",
+  "editionId": "dc_7a9c18a18e",
+  "verifiedAt": "2026-08-03T11:28:58.106Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://www.bodyjar.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:34.496Z",
+      "evidence": "The page identified Bodyjar and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/bodyjar_official/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:34.969Z",
+      "evidence": "The page identified Bodyjar and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/2LyXoG111QdqfI0HLYQgvS",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:34.744Z",
+      "evidence": "The page identified Bodyjar and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UCKTs__axMi9wD-X8UP_WGOA",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:34.778Z",
+      "evidence": "The page identified Bodyjar and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:buy_music-7837b56c",
+      "url": "https://www.bodyjar.com/releases.html",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:35.178Z",
+      "evidence": "Buy Music resolved directly and its destination metadata matched Bodyjar."
+    },
+    {
+      "destination": "buyMusic",
+      "url": "https://www.bodyjar.com/releases.html",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:35.178Z",
+      "evidence": "Buy Music resolved directly and its destination metadata matched Bodyjar."
+    },
+    {
+      "destination": "selection:contact-994b112e",
+      "url": "https://www.bodyjar.com/contact.html",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:35.121Z",
+      "evidence": "Contact resolved directly and its destination metadata matched Bodyjar."
+    },
+    {
+      "destination": "contact",
+      "url": "https://www.bodyjar.com/contact.html",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:35.121Z",
+      "evidence": "Contact resolved directly and its destination metadata matched Bodyjar."
+    },
+    {
+      "destination": "selection:instagram-28f4ff39",
+      "url": "https://www.instagram.com/bodyjar_official/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:34.969Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Bodyjar."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/bodyjar_official/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:34.969Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Bodyjar."
+    },
+    {
+      "destination": "selection:facebook-0853c897",
+      "url": "https://www.facebook.com/bodyjar",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:36.092Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Bodyjar."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/bodyjar",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:36.092Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Bodyjar."
+    },
+    {
+      "destination": "selection:youtube-7cd7eda1",
+      "url": "https://www.youtube.com/user/officialbodyjar",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:35.453Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Bodyjar."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/user/officialbodyjar",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:35.453Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Bodyjar."
+    },
+    {
+      "destination": "selection:merchandise-5ff00f90",
+      "url": "https://localitystore.com.au/collections/bodyjar",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:41.342Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Bodyjar."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://localitystore.com.au/collections/bodyjar",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:41.342Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Bodyjar."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.instagram.com/bodyjar_official/",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:45.355Z",
+      "evidence": "The official source supplied the concise biography text used by the Bodyjar ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=mmcQ6vQKiLw",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:45.070Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Bodyjar video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://www.bodyjar.com/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:34.496Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Bodyjar."
+    }
+  ]
+}

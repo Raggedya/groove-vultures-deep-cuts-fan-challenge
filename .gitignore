@@ -5,6 +5,12 @@ output/*/
 !output/*/.gitkeep
 build-records/in-progress/*.json
 .deep-cuts/
+.codex-artifacts/
+.codex-git-objects/
+.codex-index*
+.wrangler-config/
+.gh-auth-*.log
+.gh-config/
 data/research-cache/
 .env
 node_modules/

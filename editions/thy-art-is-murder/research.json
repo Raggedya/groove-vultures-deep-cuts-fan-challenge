@@ -1,0 +1,176 @@
+{
+  "bandName": "Thy Art Is Murder",
+  "slug": "thy-art-is-murder",
+  "editionId": "dc_a6a36d7c00",
+  "verifiedAt": "2026-08-03T11:33:40.555Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://www.thyartismurder.net/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:26.197Z",
+      "evidence": "The page identified Thy Art Is Murder and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/thyartinstagram/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:26.388Z",
+      "evidence": "The page identified Thy Art Is Murder and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/3et9upNERQI5IYt5jEDTxM",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:25.981Z",
+      "evidence": "The page identified Thy Art Is Murder and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UCGjEbsGoyWSJlMjzuWM4FKQ",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:26.309Z",
+      "evidence": "The page identified Thy Art Is Murder and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:website-0725e35c",
+      "url": "https://www.thyartismurder.net/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:26.197Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Thy Art Is Murder."
+    },
+    {
+      "destination": "website",
+      "url": "https://www.thyartismurder.net/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:26.197Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Thy Art Is Murder."
+    },
+    {
+      "destination": "selection:merchandise-8cefa1fd",
+      "url": "https://www.thyartismurder.net/merch",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:26.568Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Thy Art Is Murder."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://www.thyartismurder.net/merch",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:26.568Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Thy Art Is Murder."
+    },
+    {
+      "destination": "selection:contact-8c67ba44",
+      "url": "https://www.thyartismurder.net/contact",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:26.915Z",
+      "evidence": "Contact resolved directly and its destination metadata matched Thy Art Is Murder."
+    },
+    {
+      "destination": "contact",
+      "url": "https://www.thyartismurder.net/contact",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:26.915Z",
+      "evidence": "Contact resolved directly and its destination metadata matched Thy Art Is Murder."
+    },
+    {
+      "destination": "selection:newsletter-2672cc12",
+      "url": "https://www.thyartismurder.net/newsletter",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:27.059Z",
+      "evidence": "Newsletter resolved directly and its destination metadata matched Thy Art Is Murder."
+    },
+    {
+      "destination": "selection:show-b9999430",
+      "url": "https://thyart.tix.to/EuropeanSummer26",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:27.178Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Thy Art Is Murder."
+    },
+    {
+      "destination": "selection:show-cfb2c434",
+      "url": "https://www.thyartismurder.net/tour",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:26.680Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Thy Art Is Murder."
+    },
+    {
+      "destination": "selection:show-4399aae0",
+      "url": "https://thyart.tix.to/BrutalityAcrossAustraliaWE",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:27.342Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Thy Art Is Murder."
+    },
+    {
+      "destination": "selection:instagram-ccd13f17",
+      "url": "https://www.instagram.com/accounts/login/?next=%2Fthyartinstagram%2F&source=desktop_nav",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:27.696Z",
+      "evidence": "Instagram resolved directly from an identity-matched artist-controlled source for Thy Art Is Murder."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/accounts/login/?next=%2Fthyartinstagram%2F&source=desktop_nav",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:27.696Z",
+      "evidence": "Instagram resolved directly from an identity-matched artist-controlled source for Thy Art Is Murder."
+    },
+    {
+      "destination": "selection:facebook-170ce6c6",
+      "url": "https://www.facebook.com/help/instagram/261704639352628",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:31.864Z",
+      "evidence": "Facebook resolved directly from an identity-matched artist-controlled source for Thy Art Is Murder."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/help/instagram/261704639352628",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:31.864Z",
+      "evidence": "Facebook resolved directly from an identity-matched artist-controlled source for Thy Art Is Murder."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.youtube.com/channel/UCGjEbsGoyWSJlMjzuWM4FKQ",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:34.582Z",
+      "evidence": "The official source supplied the concise biography text used by the Thy Art Is Murder ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=NRqa1kybOyU",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:34.167Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Thy Art Is Murder video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://www.thyartismurder.net/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:26.197Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Thy Art Is Murder."
+    }
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "bandName": "Even",
+  "slug": "even",
+  "editionId": "dc_ae8daf66a5",
+  "verifiedAt": "2026-08-03T11:29:00.511Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://even.com.au/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:20.697Z",
+      "evidence": "The page identified Even and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://even.bandcamp.com/album/reverse-light-years",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:20.854Z",
+      "evidence": "The page identified Even and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.facebook.com/EVEN.theband",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:20.882Z",
+      "evidence": "The page identified Even and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UCMTCxxJxvkFtmanb7iPN0HA",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:20.039Z",
+      "evidence": "The page identified Even and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:bandcamp-165a30c3",
+      "url": "https://even.bandcamp.com/album/reverse-light-years",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:20.854Z",
+      "evidence": "Bandcamp resolved directly and its destination metadata matched Even."
+    },
+    {
+      "destination": "bandcamp",
+      "url": "https://even.bandcamp.com/album/reverse-light-years",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:20.854Z",
+      "evidence": "Bandcamp resolved directly and its destination metadata matched Even."
+    },
+    {
+      "destination": "selection:facebook-c75ac4a1",
+      "url": "https://www.facebook.com/EVEN.theband/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:21.538Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Even."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/EVEN.theband/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:21.538Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Even."
+    },
+    {
+      "destination": "selection:spotify-f0c64d8a",
+      "url": "https://open.spotify.com/artist/0VHnEIVMeX4v5PPCbAMO2u",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:21.265Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Even."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/0VHnEIVMeX4v5PPCbAMO2u",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:21.265Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Even."
+    },
+    {
+      "destination": "selection:instagram-7ecd9692",
+      "url": "https://www.instagram.com/even.1994/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:21.517Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Even."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/even.1994/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:21.517Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Even."
+    },
+    {
+      "destination": "selection:website-364e3ede",
+      "url": "https://even.com.au/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:20.697Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Even."
+    },
+    {
+      "destination": "website",
+      "url": "https://even.com.au/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:20.697Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Even."
+    },
+    {
+      "destination": "biography",
+      "url": "https://even.bandcamp.com/album/reverse-light-years",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:24.799Z",
+      "evidence": "The official source supplied the concise biography text used by the Even ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=uoWTB9x9cq0",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:24.492Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Even video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://even.com.au/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:20.697Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Even."
+    }
+  ]
+}

@@ -1,0 +1,160 @@
+{
+  "bandName": "Mammoth Mammoth",
+  "slug": "mammoth-mammoth",
+  "editionId": "dc_b48d910afb",
+  "verifiedAt": "2026-08-03T11:29:03.754Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://mammothmammoth.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:54.804Z",
+      "evidence": "The page identified Mammoth Mammoth and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://mammoth-mammoth.bandcamp.com/album/kreuzung",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:54.673Z",
+      "evidence": "The page identified Mammoth Mammoth and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.facebook.com/mammothmammothband",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:54.584Z",
+      "evidence": "The page identified Mammoth Mammoth and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://mammothmammothstore.bigcartel.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:55.424Z",
+      "evidence": "The page identified Mammoth Mammoth and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:website-6a3af22c",
+      "url": "https://mammothmammoth.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:54.804Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Mammoth Mammoth."
+    },
+    {
+      "destination": "website",
+      "url": "https://mammothmammoth.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:54.804Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Mammoth Mammoth."
+    },
+    {
+      "destination": "selection:merchandise-9606ab71",
+      "url": "https://mammothmammoth.com/store",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:55.712Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Mammoth Mammoth."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://mammothmammoth.com/store",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:55.712Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Mammoth Mammoth."
+    },
+    {
+      "destination": "selection:facebook-03d19931",
+      "url": "https://www.facebook.com/mammothmammothband",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:54.584Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Mammoth Mammoth."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/mammothmammothband",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:54.584Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Mammoth Mammoth."
+    },
+    {
+      "destination": "selection:instagram-4252f916",
+      "url": "https://www.instagram.com/mammoth_mammoth_official/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:55.809Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Mammoth Mammoth."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/mammoth_mammoth_official/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:55.809Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Mammoth Mammoth."
+    },
+    {
+      "destination": "selection:youtube-e2f9e51e",
+      "url": "https://www.youtube.com/@MAMMOTHMAMMOTHOFFICIAL",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:55.803Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Mammoth Mammoth."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/@MAMMOTHMAMMOTHOFFICIAL",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:55.803Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Mammoth Mammoth."
+    },
+    {
+      "destination": "selection:bandcamp-2e62f5c1",
+      "url": "https://napalmrecords.bandcamp.com/?from=btl",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:00.337Z",
+      "evidence": "Bandcamp resolved directly and its destination metadata matched Mammoth Mammoth."
+    },
+    {
+      "destination": "bandcamp",
+      "url": "https://napalmrecords.bandcamp.com/?from=btl",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:00.337Z",
+      "evidence": "Bandcamp resolved directly and its destination metadata matched Mammoth Mammoth."
+    },
+    {
+      "destination": "biography",
+      "url": "https://mammoth-mammoth.bandcamp.com/album/kreuzung",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:01.024Z",
+      "evidence": "The official source supplied the concise biography text used by the Mammoth Mammoth ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=LEl4IZ8lcXo",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:00.704Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Mammoth Mammoth video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://mammothmammoth.com/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:54.804Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Mammoth Mammoth."
+    }
+  ]
+}

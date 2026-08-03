@@ -1,0 +1,208 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "The Jungle Giants",
+  "editionTitle": "The Jungle Giants",
+  "description": "Experiencing Feelings of Joy is now yours ❤️ This album represents the last 5 years for us. Highs and lows, a whole lot of growth and re discovery of who we are as a band. This record...",
+  "discovery": {
+    "bio": "Experiencing Feelings of Joy is now yours ❤️ This album represents the last 5 years for us. Highs and lows, a whole lot of growth and re discovery of who we are as a band. This record...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "the-jungle-giants",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_6be3201e60",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/the-jungle-giants/instagram-discovery.png",
+    "qrImage": "output/the-jungle-giants/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "https://bandcamp.com/?from=menubar_logo_logged_out",
+    "spotify": "https://open.spotify.com/artist/6wFwvxJkurQPU2UdeD4qVt?nd=1",
+    "instagram": "https://www.instagram.com/thejunglegiants/",
+    "website": "https://www.thejunglegiants.com/",
+    "buyMusic": "",
+    "merchandise": "https://www.thejunglegiants.com/merch",
+    "facebook": "https://www.facebook.com/thejunglegiants",
+    "youtube": "https://www.youtube.com/user/thejunglegiants"
+  },
+  "featuredVideo": {
+    "title": "The Jungle Giants - World's Getting Smaller (Lyric Video)",
+    "youtubeURL": "https://www.youtube.com/watch?v=dRFtgN5ZDEA",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:28:28.786Z"
+  },
+  "analytics": {
+    "editionId": "dc_6be3201e60",
+    "pageIdentifier": "dc_6be3201e60:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_4c0e0704-ef4e-442c-a897-7e9dc1644259",
+    "submittedAt": "2026-08-03T11:29:29.009Z",
+    "researchCompletedAt": "2026-08-03T11:29:30.027Z",
+    "editionCreatedAt": "2026-08-03T11:29:30.027Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_6be3201e60",
+    "tickerBio": "EXPERIENCING FEELINGS OF JOY IS NOW YOURS ❤️ THIS ALBUM REPRESENTS THE LAST 5 YEARS FOR US. HIGHS AND LOWS, A WHOLE LOT OF GROWTH AND RE DISCOVERY OF WHO WE ARE AS A BAND. THIS RECORD LIKE A STEP LADDER, AND EACH SONG IS A DIFFERENT EMOTION OR STORY THAT IS A STEP TOWARDS THAT FINAL GOAL. JOY. FUN FACT - THE NAME OF THE RECORD CAME FROM AN UBER RIDE WITH THE BAND. SAM WAS STRUGGLING TO EXPLAIN HIS EMOTIONS AND ONE PO",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "bandcamp-dbb5841f",
+      "spotify-3670ff46",
+      "youtube-7aadd55b",
+      "instagram-9f07b473",
+      "tiktok-2c71c7b4",
+      "website-7f41202c"
+    ],
+    "marquee": "The Jungle Giants",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://www.thejunglegiants.com/",
+    "linkSourceVerifiedAt": "2026-08-03T11:28:21.153Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "website-7f41202c",
+        "sourceTitle": "Band Website",
+        "label": "Band Website",
+        "detail": "Visit the official website",
+        "url": "https://www.thejunglegiants.com/",
+        "platform": "website",
+        "kind": "website"
+      },
+      {
+        "id": "merchandise-0d539834",
+        "sourceTitle": "Merch",
+        "label": "Merch",
+        "detail": "Official band merchandise",
+        "url": "https://www.thejunglegiants.com/merch",
+        "platform": "merchandise",
+        "kind": "merchandise"
+      },
+      {
+        "id": "contact-9ac69b8e",
+        "sourceTitle": "Contact",
+        "label": "Contact",
+        "detail": "Official band enquiries",
+        "url": "https://www.thejunglegiants.com/contact",
+        "platform": "website",
+        "kind": "contact"
+      },
+      {
+        "id": "newsletter-7d2059bd",
+        "sourceTitle": "Join our Mailing List!",
+        "label": "Join our Mailing List!",
+        "detail": "Join the official mailing list",
+        "url": "https://arep.co/m/thejunglegiants",
+        "platform": "website",
+        "kind": "newsletter"
+      },
+      {
+        "id": "facebook-e1955dbc",
+        "sourceTitle": "Facebook",
+        "label": "Facebook",
+        "detail": "Follow the band",
+        "url": "https://www.facebook.com/thejunglegiants",
+        "platform": "facebook",
+        "kind": "facebook"
+      },
+      {
+        "id": "instagram-9f07b473",
+        "sourceTitle": "Instagram",
+        "label": "Instagram",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/thejunglegiants/",
+        "platform": "instagram",
+        "kind": "instagram"
+      },
+      {
+        "id": "tiktok-2c71c7b4",
+        "sourceTitle": "TikTok",
+        "label": "TikTok",
+        "detail": "Official band clips",
+        "url": "https://www.tiktok.com/@thejunglegiants?",
+        "platform": "website",
+        "kind": "tiktok"
+      },
+      {
+        "id": "youtube-7aadd55b",
+        "sourceTitle": "YouTube",
+        "label": "YouTube",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/user/thejunglegiants",
+        "platform": "youtube",
+        "kind": "youtube"
+      },
+      {
+        "id": "spotify-3670ff46",
+        "sourceTitle": "Spotify",
+        "label": "Spotify",
+        "detail": "Listen on Spotify",
+        "url": "https://open.spotify.com/artist/6wFwvxJkurQPU2UdeD4qVt?nd=1",
+        "platform": "website",
+        "kind": "spotify"
+      },
+      {
+        "id": "bandcamp-dbb5841f",
+        "sourceTitle": "Bandcamp",
+        "label": "Bandcamp",
+        "detail": "Listen and buy direct",
+        "url": "https://bandcamp.com/?from=menubar_logo_logged_out",
+        "platform": "website",
+        "kind": "bandcamp"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://www.instagram.com/thejunglegiants/",
+      "paragraphs": [
+        "Experiencing Feelings of Joy is now yours ❤️ This album represents the last 5 years for us. Highs and lows, a whole lot of growth and re discovery of who we are as a band. This record like a step ladder, and each song is a different emotion or story that is a step towards that final goal. Joy. Fun fact - the name of the record came from an uber ride with the band. Sam was struggling to explain his emotions and one po"
+      ]
+    }
+  }
+}

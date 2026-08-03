@@ -1,0 +1,216 @@
+{
+  "bandName": "Art of Fighting",
+  "slug": "art-of-fighting",
+  "editionId": "dc_5161f4fcee",
+  "verifiedAt": "2026-08-03T11:33:39.730Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://www.artoffighting.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:15.419Z",
+      "evidence": "The page identified Art of Fighting and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/artoffightingband/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:15.480Z",
+      "evidence": "The page identified Art of Fighting and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/5xQCHjcF27mamh9MvZEcgt",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:15.080Z",
+      "evidence": "The page identified Art of Fighting and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UCRuJaa8xjeK8Xb1MEVzHRWw",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:15.268Z",
+      "evidence": "The page identified Art of Fighting and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://linktr.ee/artoffightingband",
+      "sourceType": "official artist-controlled link hub",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:15.625Z",
+      "evidence": "The page identified Art of Fighting and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:website-80fda554",
+      "url": "https://www.artoffighting.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:15.419Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Art of Fighting."
+    },
+    {
+      "destination": "website",
+      "url": "https://www.artoffighting.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:15.419Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Art of Fighting."
+    },
+    {
+      "destination": "selection:spotify-227d0bf5",
+      "url": "https://open.spotify.com/artist/5xQCHjcF27mamh9MvZEcgt",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:15.884Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Art of Fighting."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/5xQCHjcF27mamh9MvZEcgt",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:15.884Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Art of Fighting."
+    },
+    {
+      "destination": "selection:facebook-609ad68d",
+      "url": "https://www.facebook.com/artoffightingband/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:16.778Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Art of Fighting."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/artoffightingband/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:16.778Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Art of Fighting."
+    },
+    {
+      "destination": "selection:youtube-baaade36",
+      "url": "https://www.youtube.com/channel/UCRuJaa8xjeK8Xb1MEVzHRWw/?sub_confirmation=1",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:16.041Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Art of Fighting."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/channel/UCRuJaa8xjeK8Xb1MEVzHRWw/?sub_confirmation=1",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:16.041Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Art of Fighting."
+    },
+    {
+      "destination": "selection:bandcamp-decf2a36",
+      "url": "https://artoffighting.bandcamp.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:16.318Z",
+      "evidence": "Bandcamp resolved directly and its destination metadata matched Art of Fighting."
+    },
+    {
+      "destination": "bandcamp",
+      "url": "https://artoffighting.bandcamp.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:16.318Z",
+      "evidence": "Bandcamp resolved directly and its destination metadata matched Art of Fighting."
+    },
+    {
+      "destination": "selection:show-db1fe181",
+      "url": "https://www.oztix.com.au/?requestedEventId=7a65c525-ee28-4fdb-8719-edcd9d7fa2d8",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:16.247Z",
+      "evidence": "Tickets resolved directly from an identity-matched artist-controlled source for Art of Fighting."
+    },
+    {
+      "destination": "selection:show-591e0573",
+      "url": "https://moshtix.com.au/v2/event/art-of-fighting-wires-21st-anniversary-tour-selling-fast/142154?skin=TheVanguard",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:17.125Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Art of Fighting."
+    },
+    {
+      "destination": "selection:show-9d5ebde8",
+      "url": "https://moshtix.com.au/v2/event/art-of-fighting-wires-21st-anniversary-tour-final-tix/142155?skin=TheVanguard",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:17.495Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Art of Fighting."
+    },
+    {
+      "destination": "selection:show-b2f5a43d",
+      "url": "https://moshtix.com.au/v2/event/art-of-fighting-21st-anniversary-tour-canberra/142123?OFFERCODE=WIRESCANBERRA",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:17.344Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Art of Fighting."
+    },
+    {
+      "destination": "selection:show-3dd061d6",
+      "url": "https://www.oztix.com.au/?requestedEventId=e6466b51-8834-4e5d-91e1-f705ae7d471c",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:17.386Z",
+      "evidence": "Tickets resolved directly from an identity-matched artist-controlled source for Art of Fighting."
+    },
+    {
+      "destination": "selection:show-c5d41b46",
+      "url": "https://www.trybooking.com/au/event/936406?eid=936406&embed",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:18.279Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Art of Fighting."
+    },
+    {
+      "destination": "selection:instagram-fe689cae",
+      "url": "https://www.instagram.com/accounts/login/?next=%2Fartoffightingband%2F&source=desktop_nav",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:17.936Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Art of Fighting."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/accounts/login/?next=%2Fartoffightingband%2F&source=desktop_nav",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:17.936Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Art of Fighting."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.artoffighting.com/",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:22.950Z",
+      "evidence": "The official source supplied the concise biography text used by the Art of Fighting ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=9-Nl-27L9SU",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:22.562Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Art of Fighting video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://www.artoffighting.com/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:15.419Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Art of Fighting."
+    }
+  ]
+}

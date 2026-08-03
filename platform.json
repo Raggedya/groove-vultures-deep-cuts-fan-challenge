@@ -297,6 +297,702 @@
       "name": "Southern Culture on the Skids",
       "config": "editions/southern-culture-on-the-skids/edition.json",
       "active": true
+    },
+    {
+      "slug": "angelspit",
+      "editionId": "dc_5fc05fa620",
+      "canonicalPath": "/e/dc_5fc05fa620",
+      "name": "Angelspit",
+      "config": "editions/angelspit/edition.json",
+      "active": true
+    },
+    {
+      "slug": "australian-pink-floyd-show",
+      "editionId": "dc_0b0dc0187e",
+      "canonicalPath": "/e/dc_0b0dc0187e",
+      "name": "Australian Pink Floyd Show",
+      "config": "editions/australian-pink-floyd-show/edition.json",
+      "active": true
+    },
+    {
+      "slug": "frenzal-rhomb",
+      "editionId": "dc_a800c6bad5",
+      "canonicalPath": "/e/dc_a800c6bad5",
+      "name": "Frenzal Rhomb",
+      "config": "editions/frenzal-rhomb/edition.json",
+      "active": true
+    },
+    {
+      "slug": "dead-can-dance",
+      "editionId": "dc_d5da00c80d",
+      "canonicalPath": "/e/dc_d5da00c80d",
+      "name": "Dead Can Dance",
+      "config": "editions/dead-can-dance/edition.json",
+      "active": true
+    },
+    {
+      "slug": "inxs",
+      "editionId": "dc_36e2298568",
+      "canonicalPath": "/e/dc_36e2298568",
+      "name": "INXS",
+      "config": "editions/inxs/edition.json",
+      "active": true
+    },
+    {
+      "slug": "tame-impala",
+      "editionId": "dc_675e1b4025",
+      "canonicalPath": "/e/dc_675e1b4025",
+      "name": "Tame Impala",
+      "config": "editions/tame-impala/edition.json",
+      "active": true
+    },
+    {
+      "slug": "jet",
+      "editionId": "dc_5394bffe4e",
+      "canonicalPath": "/e/dc_5394bffe4e",
+      "name": "Jet",
+      "config": "editions/jet/edition.json",
+      "active": true
+    },
+    {
+      "slug": "bee-gees",
+      "editionId": "dc_f3ec5855a9",
+      "canonicalPath": "/e/dc_f3ec5855a9",
+      "name": "Bee Gees",
+      "config": "editions/bee-gees/edition.json",
+      "active": true
+    },
+    {
+      "slug": "bodyjar",
+      "editionId": "dc_7a9c18a18e",
+      "canonicalPath": "/e/dc_7a9c18a18e",
+      "name": "Bodyjar",
+      "config": "editions/bodyjar/edition.json",
+      "active": true
+    },
+    {
+      "slug": "cut-copy",
+      "editionId": "dc_003845ddb2",
+      "canonicalPath": "/e/dc_003845ddb2",
+      "name": "Cut Copy",
+      "config": "editions/cut-copy/edition.json",
+      "active": true
+    },
+    {
+      "slug": "air-supply",
+      "editionId": "dc_151a0f73fc",
+      "canonicalPath": "/e/dc_151a0f73fc",
+      "name": "Air Supply",
+      "config": "editions/air-supply/edition.json",
+      "active": true
+    },
+    {
+      "slug": "sodastream",
+      "editionId": "dc_b53b573830",
+      "canonicalPath": "/e/dc_b53b573830",
+      "name": "Sodastream",
+      "config": "editions/sodastream/edition.json",
+      "active": true
+    },
+    {
+      "slug": "feenixpawl",
+      "editionId": "dc_524265c4c2",
+      "canonicalPath": "/e/dc_524265c4c2",
+      "name": "Feenixpawl",
+      "config": "editions/feenixpawl/edition.json",
+      "active": true
+    },
+    {
+      "slug": "even",
+      "editionId": "dc_ae8daf66a5",
+      "canonicalPath": "/e/dc_ae8daf66a5",
+      "name": "Even",
+      "config": "editions/even/edition.json",
+      "active": true
+    },
+    {
+      "slug": "the-cat-empire",
+      "editionId": "dc_41c875c4f1",
+      "canonicalPath": "/e/dc_41c875c4f1",
+      "name": "The Cat Empire",
+      "config": "editions/the-cat-empire/edition.json",
+      "active": true
+    },
+    {
+      "slug": "mammoth-mammoth",
+      "editionId": "dc_b48d910afb",
+      "canonicalPath": "/e/dc_b48d910afb",
+      "name": "Mammoth Mammoth",
+      "config": "editions/mammoth-mammoth/edition.json",
+      "active": true
+    },
+    {
+      "slug": "pond",
+      "editionId": "dc_929391308b",
+      "canonicalPath": "/e/dc_929391308b",
+      "name": "Pond",
+      "config": "editions/pond/edition.json",
+      "active": true
+    },
+    {
+      "slug": "the-avalanches",
+      "editionId": "dc_45e81d29f4",
+      "canonicalPath": "/e/dc_45e81d29f4",
+      "name": "The Avalanches",
+      "config": "editions/the-avalanches/edition.json",
+      "active": true
+    },
+    {
+      "slug": "operator-please",
+      "editionId": "dc_ab58ce9489",
+      "canonicalPath": "/e/dc_ab58ce9489",
+      "name": "Operator Please",
+      "config": "editions/operator-please/edition.json",
+      "active": true
+    },
+    {
+      "slug": "the-amenta",
+      "editionId": "dc_60121e87bd",
+      "canonicalPath": "/e/dc_60121e87bd",
+      "name": "The Amenta",
+      "config": "editions/the-amenta/edition.json",
+      "active": true
+    },
+    {
+      "slug": "eskimo-joe",
+      "editionId": "dc_3fb64cab96",
+      "canonicalPath": "/e/dc_3fb64cab96",
+      "name": "Eskimo Joe",
+      "config": "editions/eskimo-joe/edition.json",
+      "active": true
+    },
+    {
+      "slug": "little-river-band",
+      "editionId": "dc_ff71ec4a82",
+      "canonicalPath": "/e/dc_ff71ec4a82",
+      "name": "Little River Band",
+      "config": "editions/little-river-band/edition.json",
+      "active": true
+    },
+    {
+      "slug": "the-butterfly-effect",
+      "editionId": "dc_3ce4bcadbb",
+      "canonicalPath": "/e/dc_3ce4bcadbb",
+      "name": "The Butterfly Effect",
+      "config": "editions/the-butterfly-effect/edition.json",
+      "active": true
+    },
+    {
+      "slug": "the-amity-affliction",
+      "editionId": "dc_b8a5a59a65",
+      "canonicalPath": "/e/dc_b8a5a59a65",
+      "name": "The Amity Affliction",
+      "config": "editions/the-amity-affliction/edition.json",
+      "active": true
+    },
+    {
+      "slug": "sick-puppies",
+      "editionId": "dc_d08b8b28b3",
+      "canonicalPath": "/e/dc_d08b8b28b3",
+      "name": "Sick Puppies",
+      "config": "editions/sick-puppies/edition.json",
+      "active": true
+    },
+    {
+      "slug": "augie-march",
+      "editionId": "dc_09e7cac126",
+      "canonicalPath": "/e/dc_09e7cac126",
+      "name": "Augie March",
+      "config": "editions/augie-march/edition.json",
+      "active": true
+    },
+    {
+      "slug": "bliss-n-eso",
+      "editionId": "dc_390ba8c782",
+      "canonicalPath": "/e/dc_390ba8c782",
+      "name": "Bliss n Eso",
+      "config": "editions/bliss-n-eso/edition.json",
+      "active": true
+    },
+    {
+      "slug": "67-special",
+      "editionId": "dc_d4f8e7527d",
+      "canonicalPath": "/e/dc_d4f8e7527d",
+      "name": "67 Special",
+      "config": "editions/67-special/edition.json",
+      "active": true
+    },
+    {
+      "slug": "all-india-radio",
+      "editionId": "dc_37af872e87",
+      "canonicalPath": "/e/dc_37af872e87",
+      "name": "All India Radio",
+      "config": "editions/all-india-radio/edition.json",
+      "active": true
+    },
+    {
+      "slug": "ball-park-music",
+      "editionId": "dc_1d2f48f205",
+      "canonicalPath": "/e/dc_1d2f48f205",
+      "name": "Ball Park Music",
+      "config": "editions/ball-park-music/edition.json",
+      "active": true
+    },
+    {
+      "slug": "last-dinosaurs",
+      "editionId": "dc_c7f4777c19",
+      "canonicalPath": "/e/dc_c7f4777c19",
+      "name": "Last Dinosaurs",
+      "config": "editions/last-dinosaurs/edition.json",
+      "active": true
+    },
+    {
+      "slug": "konqistador",
+      "editionId": "dc_739d55b931",
+      "canonicalPath": "/e/dc_739d55b931",
+      "name": "Konqistador",
+      "config": "editions/konqistador/edition.json",
+      "active": true
+    },
+    {
+      "slug": "buchanan",
+      "editionId": "dc_3cbcecbf7e",
+      "canonicalPath": "/e/dc_3cbcecbf7e",
+      "name": "Buchanan",
+      "config": "editions/buchanan/edition.json",
+      "active": true
+    },
+    {
+      "slug": "husky",
+      "editionId": "dc_9d8d788a17",
+      "canonicalPath": "/e/dc_9d8d788a17",
+      "name": "Husky",
+      "config": "editions/husky/edition.json",
+      "active": true
+    },
+    {
+      "slug": "htrk",
+      "editionId": "dc_e94b1a4c21",
+      "canonicalPath": "/e/dc_e94b1a4c21",
+      "name": "HTRK",
+      "config": "editions/htrk/edition.json",
+      "active": true
+    },
+    {
+      "slug": "violent-soho",
+      "editionId": "dc_876c0b3cc3",
+      "canonicalPath": "/e/dc_876c0b3cc3",
+      "name": "Violent Soho",
+      "config": "editions/violent-soho/edition.json",
+      "active": true
+    },
+    {
+      "slug": "northlane",
+      "editionId": "dc_4f0b9f6406",
+      "canonicalPath": "/e/dc_4f0b9f6406",
+      "name": "Northlane",
+      "config": "editions/northlane/edition.json",
+      "active": true
+    },
+    {
+      "slug": "gang-gajang",
+      "editionId": "dc_a3b328b255",
+      "canonicalPath": "/e/dc_a3b328b255",
+      "name": "Gang Gajang",
+      "config": "editions/gang-gajang/edition.json",
+      "active": true
+    },
+    {
+      "slug": "the-grates",
+      "editionId": "dc_0e780559f5",
+      "canonicalPath": "/e/dc_0e780559f5",
+      "name": "The Grates",
+      "config": "editions/the-grates/edition.json",
+      "active": true
+    },
+    {
+      "slug": "something-for-kate",
+      "editionId": "dc_0c663efc79",
+      "canonicalPath": "/e/dc_0c663efc79",
+      "name": "Something for Kate",
+      "config": "editions/something-for-kate/edition.json",
+      "active": true
+    },
+    {
+      "slug": "closure-in-moscow",
+      "editionId": "dc_576c23c5b1",
+      "canonicalPath": "/e/dc_576c23c5b1",
+      "name": "Closure in Moscow",
+      "config": "editions/closure-in-moscow/edition.json",
+      "active": true
+    },
+    {
+      "slug": "the-jungle-giants",
+      "editionId": "dc_6be3201e60",
+      "canonicalPath": "/e/dc_6be3201e60",
+      "name": "The Jungle Giants",
+      "config": "editions/the-jungle-giants/edition.json",
+      "active": true
+    },
+    {
+      "slug": "the-eternal",
+      "editionId": "dc_5f80fedc03",
+      "canonicalPath": "/e/dc_5f80fedc03",
+      "name": "The Eternal",
+      "config": "editions/the-eternal/edition.json",
+      "active": true
+    },
+    {
+      "slug": "the-laurels",
+      "editionId": "dc_8f20d6f0df",
+      "canonicalPath": "/e/dc_8f20d6f0df",
+      "name": "The Laurels",
+      "config": "editions/the-laurels/edition.json",
+      "active": true
+    },
+    {
+      "slug": "rogue-traders",
+      "editionId": "dc_24c509ffd1",
+      "canonicalPath": "/e/dc_24c509ffd1",
+      "name": "Rogue Traders",
+      "config": "editions/rogue-traders/edition.json",
+      "active": true
+    },
+    {
+      "slug": "wolfmother",
+      "editionId": "dc_b52be0b54a",
+      "canonicalPath": "/e/dc_b52be0b54a",
+      "name": "Wolfmother",
+      "config": "editions/wolfmother/edition.json",
+      "active": true
+    },
+    {
+      "slug": "birds-of-tokyo",
+      "editionId": "dc_0071724e35",
+      "canonicalPath": "/e/dc_0071724e35",
+      "name": "Birds of Tokyo",
+      "config": "editions/birds-of-tokyo/edition.json",
+      "active": true
+    },
+    {
+      "slug": "the-angels",
+      "editionId": "dc_953dbe5104",
+      "canonicalPath": "/e/dc_953dbe5104",
+      "name": "The Angels",
+      "config": "editions/the-angels/edition.json",
+      "active": true
+    },
+    {
+      "slug": "pendulum",
+      "editionId": "dc_f889aff0d9",
+      "canonicalPath": "/e/dc_f889aff0d9",
+      "name": "Pendulum",
+      "config": "editions/pendulum/edition.json",
+      "active": true
+    },
+    {
+      "slug": "dragon",
+      "editionId": "dc_cf0c26e052",
+      "canonicalPath": "/e/dc_cf0c26e052",
+      "name": "Dragon",
+      "config": "editions/dragon/edition.json",
+      "active": true
+    },
+    {
+      "slug": "the-wiggles",
+      "editionId": "dc_7bb8539598",
+      "canonicalPath": "/e/dc_7bb8539598",
+      "name": "The Wiggles",
+      "config": "editions/the-wiggles/edition.json",
+      "active": true
+    },
+    {
+      "slug": "psycroptic",
+      "editionId": "dc_00caa452fd",
+      "canonicalPath": "/e/dc_00caa452fd",
+      "name": "Psycroptic",
+      "config": "editions/psycroptic/edition.json",
+      "active": true
+    },
+    {
+      "slug": "powderfinger",
+      "editionId": "dc_c8c3b75f0e",
+      "canonicalPath": "/e/dc_c8c3b75f0e",
+      "name": "Powderfinger",
+      "config": "editions/powderfinger/edition.json",
+      "active": true
+    },
+    {
+      "slug": "sneaky-sound-system",
+      "editionId": "dc_1f2a28ff05",
+      "canonicalPath": "/e/dc_1f2a28ff05",
+      "name": "Sneaky Sound System",
+      "config": "editions/sneaky-sound-system/edition.json",
+      "active": true
+    },
+    {
+      "slug": "miami-horror",
+      "editionId": "dc_e84f719c88",
+      "canonicalPath": "/e/dc_e84f719c88",
+      "name": "Miami Horror",
+      "config": "editions/miami-horror/edition.json",
+      "active": true
+    },
+    {
+      "slug": "dead-letter-circus",
+      "editionId": "dc_be88a39b9b",
+      "canonicalPath": "/e/dc_be88a39b9b",
+      "name": "Dead Letter Circus",
+      "config": "editions/dead-letter-circus/edition.json",
+      "active": true
+    },
+    {
+      "slug": "crowded-house",
+      "editionId": "dc_34451b60b3",
+      "canonicalPath": "/e/dc_34451b60b3",
+      "name": "Crowded House",
+      "config": "editions/crowded-house/edition.json",
+      "active": true
+    },
+    {
+      "slug": "howling-bells",
+      "editionId": "dc_c92dad74b8",
+      "canonicalPath": "/e/dc_c92dad74b8",
+      "name": "Howling Bells",
+      "config": "editions/howling-bells/edition.json",
+      "active": true
+    },
+    {
+      "slug": "be-lakor",
+      "editionId": "dc_eaaa4ca02a",
+      "canonicalPath": "/e/dc_eaaa4ca02a",
+      "name": "Be'lakor",
+      "config": "editions/be-lakor/edition.json",
+      "active": true
+    },
+    {
+      "slug": "atlas-genius",
+      "editionId": "dc_7374b0bdca",
+      "canonicalPath": "/e/dc_7374b0bdca",
+      "name": "Atlas Genius",
+      "config": "editions/atlas-genius/edition.json",
+      "active": true
+    },
+    {
+      "slug": "art-of-fighting",
+      "editionId": "dc_5161f4fcee",
+      "canonicalPath": "/e/dc_5161f4fcee",
+      "name": "Art of Fighting",
+      "config": "editions/art-of-fighting/edition.json",
+      "active": true
+    },
+    {
+      "slug": "screamfeeder",
+      "editionId": "dc_c0ee14333b",
+      "canonicalPath": "/e/dc_c0ee14333b",
+      "name": "Screamfeeder",
+      "config": "editions/screamfeeder/edition.json",
+      "active": true
+    },
+    {
+      "slug": "regurgitator",
+      "editionId": "dc_29ea5bd281",
+      "canonicalPath": "/e/dc_29ea5bd281",
+      "name": "Regurgitator",
+      "config": "editions/regurgitator/edition.json",
+      "active": true
+    },
+    {
+      "slug": "voyager",
+      "editionId": "dc_f75917624b",
+      "canonicalPath": "/e/dc_f75917624b",
+      "name": "Voyager",
+      "config": "editions/voyager/edition.json",
+      "active": true
+    },
+    {
+      "slug": "thy-art-is-murder",
+      "editionId": "dc_a6a36d7c00",
+      "canonicalPath": "/e/dc_a6a36d7c00",
+      "name": "Thy Art Is Murder",
+      "config": "editions/thy-art-is-murder/edition.json",
+      "active": true
+    },
+    {
+      "slug": "the-superjesus",
+      "editionId": "dc_1a405acafc",
+      "canonicalPath": "/e/dc_1a405acafc",
+      "name": "The Superjesus",
+      "config": "editions/the-superjesus/edition.json",
+      "active": true
+    },
+    {
+      "slug": "knife-party",
+      "editionId": "dc_48973433b0",
+      "canonicalPath": "/e/dc_48973433b0",
+      "name": "Knife Party",
+      "config": "editions/knife-party/edition.json",
+      "active": true
+    },
+    {
+      "slug": "dz-deathrays",
+      "editionId": "dc_447409856f",
+      "canonicalPath": "/e/dc_447409856f",
+      "name": "DZ Deathrays",
+      "config": "editions/dz-deathrays/edition.json",
+      "active": true
+    },
+    {
+      "slug": "the-temper-trap",
+      "editionId": "dc_c61dc6297d",
+      "canonicalPath": "/e/dc_c61dc6297d",
+      "name": "The Temper Trap",
+      "config": "editions/the-temper-trap/edition.json",
+      "active": true
+    },
+    {
+      "slug": "cog",
+      "editionId": "dc_fb7794b6ea",
+      "canonicalPath": "/e/dc_fb7794b6ea",
+      "name": "Cog",
+      "config": "editions/cog/edition.json",
+      "active": true
+    },
+    {
+      "slug": "dirty-three",
+      "editionId": "dc_521347d705",
+      "canonicalPath": "/e/dc_521347d705",
+      "name": "Dirty Three",
+      "config": "editions/dirty-three/edition.json",
+      "active": true
+    },
+    {
+      "slug": "cold-chisel",
+      "editionId": "dc_dedb317397",
+      "canonicalPath": "/e/dc_dedb317397",
+      "name": "Cold Chisel",
+      "config": "editions/cold-chisel/edition.json",
+      "active": true
+    },
+    {
+      "slug": "boy-bear",
+      "editionId": "dc_f99afdac0a",
+      "canonicalPath": "/e/dc_f99afdac0a",
+      "name": "Boy & Bear",
+      "config": "editions/boy-bear/edition.json",
+      "active": true
+    },
+    {
+      "slug": "northeast-party-house",
+      "editionId": "dc_32b11822fe",
+      "canonicalPath": "/e/dc_32b11822fe",
+      "name": "Northeast Party House",
+      "config": "editions/northeast-party-house/edition.json",
+      "active": true
+    },
+    {
+      "slug": "seeker-lover-keeper",
+      "editionId": "dc_c18886f768",
+      "canonicalPath": "/e/dc_c18886f768",
+      "name": "Seeker Lover Keeper",
+      "config": "editions/seeker-lover-keeper/edition.json",
+      "active": true
+    },
+    {
+      "slug": "magic-dirt",
+      "editionId": "dc_dc16b20ab0",
+      "canonicalPath": "/e/dc_dc16b20ab0",
+      "name": "Magic Dirt",
+      "config": "editions/magic-dirt/edition.json",
+      "active": true
+    },
+    {
+      "slug": "the-waifs",
+      "editionId": "dc_a9e2250ba8",
+      "canonicalPath": "/e/dc_a9e2250ba8",
+      "name": "The Waifs",
+      "config": "editions/the-waifs/edition.json",
+      "active": true
+    },
+    {
+      "slug": "australian-crawl",
+      "editionId": "dc_d10266e7d2",
+      "canonicalPath": "/e/dc_d10266e7d2",
+      "name": "Australian Crawl",
+      "config": "editions/australian-crawl/edition.json",
+      "active": true
+    },
+    {
+      "slug": "tria-mera",
+      "editionId": "dc_c6d9576775",
+      "canonicalPath": "/e/dc_c6d9576775",
+      "name": "Tria Mera",
+      "config": "editions/tria-mera/edition.json",
+      "active": true
+    },
+    {
+      "slug": "thundamentals",
+      "editionId": "dc_f132e66b69",
+      "canonicalPath": "/e/dc_f132e66b69",
+      "name": "Thundamentals",
+      "config": "editions/thundamentals/edition.json",
+      "active": true
+    },
+    {
+      "slug": "planetshakers",
+      "editionId": "dc_73cd2cc39e",
+      "canonicalPath": "/e/dc_73cd2cc39e",
+      "name": "Planetshakers",
+      "config": "editions/planetshakers/edition.json",
+      "active": true
+    },
+    {
+      "slug": "airbourne",
+      "editionId": "dc_20eaf944b5",
+      "canonicalPath": "/e/dc_20eaf944b5",
+      "name": "Airbourne",
+      "config": "editions/airbourne/edition.json",
+      "active": true
+    },
+    {
+      "slug": "savage-garden",
+      "editionId": "dc_e65763b78b",
+      "canonicalPath": "/e/dc_e65763b78b",
+      "name": "Savage Garden",
+      "config": "editions/savage-garden/edition.json",
+      "active": true
+    },
+    {
+      "slug": "newsboys",
+      "editionId": "dc_fd251af95f",
+      "canonicalPath": "/e/dc_fd251af95f",
+      "name": "Newsboys",
+      "config": "editions/newsboys/edition.json",
+      "active": true
+    },
+    {
+      "slug": "empire-of-the-sun",
+      "editionId": "dc_8517649a4b",
+      "canonicalPath": "/e/dc_8517649a4b",
+      "name": "Empire of the Sun",
+      "config": "editions/empire-of-the-sun/edition.json",
+      "active": true
+    },
+    {
+      "slug": "art-vs-science",
+      "editionId": "dc_f73f0ede22",
+      "canonicalPath": "/e/dc_f73f0ede22",
+      "name": "Art vs. Science",
+      "config": "editions/art-vs-science/edition.json",
+      "active": true
+    },
+    {
+      "slug": "boxcar",
+      "editionId": "dc_e8324accf9",
+      "canonicalPath": "/e/dc_e8324accf9",
+      "name": "Boxcar",
+      "config": "editions/boxcar/edition.json",
+      "active": true
     }
   ]
 }

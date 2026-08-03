@@ -1,0 +1,152 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Operator Please",
+  "editionTitle": "Operator Please",
+  "description": "Operator Please - Just A Song About Ping Pong Live @ Aria Awards 2007",
+  "discovery": {
+    "bio": "Operator Please - Just A Song About Ping Pong Live @ Aria Awards 2007",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "operator-please",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_ab58ce9489",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/operator-please/instagram-discovery.png",
+    "qrImage": "output/operator-please/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "",
+    "spotify": "https://open.spotify.com/artist/0aWSylARSZCDo7vTDgvKbb",
+    "instagram": "",
+    "website": "https://operatorpleaseband.com/",
+    "buyMusic": "",
+    "merchandise": "",
+    "facebook": "https://www.facebook.com/operatorplease",
+    "youtube": "https://www.youtube.com/watch?v=f1J38FlDKxo"
+  },
+  "featuredVideo": {
+    "title": "OPERATOR PLEASE - BIG DAY OUT 2011- ADELAIDE",
+    "youtubeURL": "https://www.youtube.com/watch?v=QNUn2XGoVKI",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:24:41.443Z"
+  },
+  "analytics": {
+    "editionId": "dc_ab58ce9489",
+    "pageIdentifier": "dc_ab58ce9489:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_adf30e7b-7158-4a65-acdd-79ee221aea60",
+    "submittedAt": "2026-08-03T11:29:06.596Z",
+    "researchCompletedAt": "2026-08-03T11:29:06.734Z",
+    "editionCreatedAt": "2026-08-03T11:29:06.734Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_ab58ce9489",
+    "tickerBio": "OPERATOR PLEASE - JUST A SONG ABOUT PING PONG LIVE @ ARIA AWARDS 2007",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "spotify-70063ad1",
+      "youtube-3c473ec4",
+      "website-d8324d5d",
+      "facebook-ae0f2fd7"
+    ],
+    "marquee": "Operator Please",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://operatorpleaseband.com/",
+    "linkSourceVerifiedAt": "2026-08-03T11:24:26.181Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "website-d8324d5d",
+        "sourceTitle": "欧美日韩中国x",
+        "label": "欧美日韩中国x",
+        "detail": "Visit the official website",
+        "url": "https://operatorpleaseband.com/",
+        "platform": "website",
+        "kind": "website"
+      },
+      {
+        "id": "facebook-ae0f2fd7",
+        "sourceTitle": "Facebook",
+        "label": "Facebook",
+        "detail": "Follow the band",
+        "url": "https://www.facebook.com/operatorplease",
+        "platform": "facebook",
+        "kind": "facebook"
+      },
+      {
+        "id": "youtube-3c473ec4",
+        "sourceTitle": "YouTube",
+        "label": "YouTube",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/watch?v=f1J38FlDKxo",
+        "platform": "youtube",
+        "kind": "youtube"
+      },
+      {
+        "id": "spotify-70063ad1",
+        "sourceTitle": "The Grates",
+        "label": "The Grates",
+        "detail": "Listen on Spotify",
+        "url": "https://open.spotify.com/artist/0aWSylARSZCDo7vTDgvKbb",
+        "platform": "website",
+        "kind": "spotify"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://www.youtube.com/channel/UCGNas1NDgT_6Ly7hfboRhzQ",
+      "paragraphs": [
+        "Operator Please - Just A Song About Ping Pong Live @ Aria Awards 2007"
+      ]
+    }
+  }
+}

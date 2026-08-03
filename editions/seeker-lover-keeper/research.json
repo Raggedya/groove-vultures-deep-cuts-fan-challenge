@@ -1,0 +1,136 @@
+{
+  "bandName": "Seeker Lover Keeper",
+  "slug": "seeker-lover-keeper",
+  "editionId": "dc_c18886f768",
+  "verifiedAt": "2026-08-03T11:47:03.987Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/seekerloverkeeper_/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:01.224Z",
+      "evidence": "The page identified Seeker Lover Keeper and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/18E9agcfYi1KIQlJivdEcX",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:00.875Z",
+      "evidence": "The page identified Seeker Lover Keeper and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UC48CLpdNovPkG8xYZMMF9Bg",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:01.147Z",
+      "evidence": "The page identified Seeker Lover Keeper and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://linktr.ee/seekerloverkeeper_",
+      "sourceType": "official artist-controlled link hub",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:03.388Z",
+      "evidence": "The page identified Seeker Lover Keeper and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.seekerloverkeeper.com.au/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:03.942Z",
+      "evidence": "The page identified Seeker Lover Keeper and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:spotify-a4309943",
+      "url": "https://open.spotify.com/artist/18E9agcfYi1KIQlJivdEcX",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:00.875Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Seeker Lover Keeper."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/18E9agcfYi1KIQlJivdEcX",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:00.875Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Seeker Lover Keeper."
+    },
+    {
+      "destination": "selection:youtube-501914a4",
+      "url": "https://www.youtube.com/channel/UC48CLpdNovPkG8xYZMMF9Bg",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:01.147Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Seeker Lover Keeper."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/channel/UC48CLpdNovPkG8xYZMMF9Bg",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:01.147Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Seeker Lover Keeper."
+    },
+    {
+      "destination": "selection:instagram-d7d22cba",
+      "url": "https://www.instagram.com/seekerloverkeeper_/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:01.224Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Seeker Lover Keeper."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/seekerloverkeeper_/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:01.224Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Seeker Lover Keeper."
+    },
+    {
+      "destination": "selection:website-03ab41ac",
+      "url": "https://www.seekerloverkeeper.com.au/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:03.942Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Seeker Lover Keeper."
+    },
+    {
+      "destination": "website",
+      "url": "https://www.seekerloverkeeper.com.au/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:03.942Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Seeker Lover Keeper."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.youtube.com/channel/UC48CLpdNovPkG8xYZMMF9Bg",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:12.061Z",
+      "evidence": "The official source supplied the concise biography text used by the Seeker Lover Keeper ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=kdEfbLollr0",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:11.600Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Seeker Lover Keeper video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://www.instagram.com/seekerloverkeeper_/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:01.224Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Seeker Lover Keeper."
+    }
+  ]
+}

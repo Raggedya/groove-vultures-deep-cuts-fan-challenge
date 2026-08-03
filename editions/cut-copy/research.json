@@ -1,0 +1,176 @@
+{
+  "bandName": "Cut Copy",
+  "slug": "cut-copy",
+  "editionId": "dc_003845ddb2",
+  "verifiedAt": "2026-08-03T11:28:58.488Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://www.cutcopy.net/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:37.662Z",
+      "evidence": "The page identified Cut Copy and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://cutcopy.bandcamp.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:37.014Z",
+      "evidence": "The page identified Cut Copy and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/cut_copy/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:37.109Z",
+      "evidence": "The page identified Cut Copy and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UCvueeIpQ6l5BlyzUTWY13eQ",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:37.206Z",
+      "evidence": "The page identified Cut Copy and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://cut-copy-mt.myshopify.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:38.311Z",
+      "evidence": "The page identified Cut Copy and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://cutcopy.shop.redstarmerch.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:37.665Z",
+      "evidence": "The page identified Cut Copy and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:website-317cc28d",
+      "url": "https://www.cutcopy.net/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:37.662Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Cut Copy."
+    },
+    {
+      "destination": "website",
+      "url": "https://www.cutcopy.net/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:37.662Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Cut Copy."
+    },
+    {
+      "destination": "selection:youtube-b9285fdb",
+      "url": "https://www.youtube.com/channel/UCvueeIpQ6l5BlyzUTWY13eQ",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:37.206Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Cut Copy."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/channel/UCvueeIpQ6l5BlyzUTWY13eQ",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:37.206Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Cut Copy."
+    },
+    {
+      "destination": "selection:merchandise-504acc8f",
+      "url": "https://sound-merch.com.au/collections/cut-copy",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:39.626Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Cut Copy."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://sound-merch.com.au/collections/cut-copy",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:39.626Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Cut Copy."
+    },
+    {
+      "destination": "selection:instagram-7c813b23",
+      "url": "https://www.instagram.com/cut_copy",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:39.038Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Cut Copy."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/cut_copy",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:39.038Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Cut Copy."
+    },
+    {
+      "destination": "selection:facebook-3b9eeed1",
+      "url": "https://www.facebook.com/cutcopy",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:40.332Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Cut Copy."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/cutcopy",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:40.332Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Cut Copy."
+    },
+    {
+      "destination": "selection:bandcamp-dbb5841f",
+      "url": "https://bandcamp.com/?from=menubar_logo_logged_out",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:39.507Z",
+      "evidence": "Bandcamp resolved directly from an identity-matched artist-controlled source for Cut Copy."
+    },
+    {
+      "destination": "bandcamp",
+      "url": "https://bandcamp.com/?from=menubar_logo_logged_out",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:39.507Z",
+      "evidence": "Bandcamp resolved directly from an identity-matched artist-controlled source for Cut Copy."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.instagram.com/cut_copy/",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:42.622Z",
+      "evidence": "The official source supplied the concise biography text used by the Cut Copy ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=_zoXZj19yUA",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:42.246Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Cut Copy video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://www.cutcopy.net/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:37.662Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Cut Copy."
+    }
+  ]
+}

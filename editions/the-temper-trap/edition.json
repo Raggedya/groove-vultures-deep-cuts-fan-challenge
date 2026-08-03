@@ -1,0 +1,152 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "The Temper Trap",
+  "editionTitle": "The Temper Trap",
+  "description": "Our first album in a decade, Sungazer, is out now. This album feels like it’s captured the most pure collection of music we’ve ever made. We had more fun making this record and in the...",
+  "discovery": {
+    "bio": "Our first album in a decade, Sungazer, is out now. This album feels like it’s captured the most pure collection of music we’ve ever made. We had more fun making this record and in the...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "the-temper-trap",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_c61dc6297d",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/the-temper-trap/instagram-discovery.png",
+    "qrImage": "output/the-temper-trap/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "",
+    "spotify": "https://open.spotify.com/artist/4W48hZAnAHVOC2c8WH8pcq",
+    "instagram": "https://www.instagram.com/thetempertrap/",
+    "website": "https://thetempertrap.com/",
+    "buyMusic": "",
+    "merchandise": "",
+    "facebook": "",
+    "youtube": "https://www.youtube.com/channel/UC-1k7y80RAIK_JlXP8WlDDw"
+  },
+  "featuredVideo": {
+    "title": "The Temper Trap - Lifeline (Official Visualiser)",
+    "youtubeURL": "https://www.youtube.com/watch?v=xBar8-B7fBw",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:43:36.449Z"
+  },
+  "analytics": {
+    "editionId": "dc_c61dc6297d",
+    "pageIdentifier": "dc_c61dc6297d:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_b98dd02c-9631-48ac-8f17-f04135aff379",
+    "submittedAt": "2026-08-03T11:47:02.360Z",
+    "researchCompletedAt": "2026-08-03T11:47:02.422Z",
+    "editionCreatedAt": "2026-08-03T11:47:02.422Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_c61dc6297d",
+    "tickerBio": "OUR FIRST ALBUM IN A DECADE, SUNGAZER, IS OUT NOW. THIS ALBUM FEELS LIKE IT’S CAPTURED THE MOST PURE COLLECTION OF MUSIC WE’VE EVER MADE. WE HAD MORE FUN MAKING THIS RECORD AND IN THE WRITING ROOM THAN ON ANY OF THE PREVIOUS RECORDS WE’VE DONE, AND WE’RE ECSTATIC WE FINALLY GET TO SHARE IT WITH YOU. WE’RE CURRENTLY ON TOUR IN THE US WITH OUR MATES MUSE ACROSS NORTH AMERICA BEFORE COMING HOME TO AUSTRALIA IN SEPTEMBER",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "spotify-c9fef156",
+      "youtube-ed8a0f8e",
+      "instagram-9d60e19d",
+      "website-8da08ce2"
+    ],
+    "marquee": "The Temper Trap",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://thetempertrap.com/",
+    "linkSourceVerifiedAt": "2026-08-03T11:43:29.843Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "spotify-c9fef156",
+        "sourceTitle": "Spotify",
+        "label": "Spotify",
+        "detail": "Listen on Spotify",
+        "url": "https://open.spotify.com/artist/4W48hZAnAHVOC2c8WH8pcq",
+        "platform": "website",
+        "kind": "spotify"
+      },
+      {
+        "id": "youtube-ed8a0f8e",
+        "sourceTitle": "YouTube",
+        "label": "YouTube",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/channel/UC-1k7y80RAIK_JlXP8WlDDw",
+        "platform": "youtube",
+        "kind": "youtube"
+      },
+      {
+        "id": "instagram-9d60e19d",
+        "sourceTitle": "Instagram",
+        "label": "Instagram",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/thetempertrap/",
+        "platform": "instagram",
+        "kind": "instagram"
+      },
+      {
+        "id": "website-8da08ce2",
+        "sourceTitle": "Band Website",
+        "label": "Band Website",
+        "detail": "Visit the official website",
+        "url": "https://thetempertrap.com/",
+        "platform": "website",
+        "kind": "website"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://www.instagram.com/thetempertrap/",
+      "paragraphs": [
+        "Our first album in a decade, Sungazer, is out now. This album feels like it’s captured the most pure collection of music we’ve ever made. We had more fun making this record and in the writing room than on any of the previous records we’ve done, and we’re ecstatic we finally get to share it with you. We’re currently on tour in the US with our mates Muse across North America before coming home to Australia in September"
+      ]
+    }
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "bandName": "Cog",
+  "slug": "cog",
+  "editionId": "dc_fb7794b6ea",
+  "verifiedAt": "2026-08-03T11:47:02.643Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://cogaus.bandcamp.com/track/walk-the-line",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:43:53.993Z",
+      "evidence": "The page identified Cog and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/cog101/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:43:53.521Z",
+      "evidence": "The page identified Cog and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://linktr.ee/cog101",
+      "sourceType": "official artist-controlled link hub",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:43:54.098Z",
+      "evidence": "The page identified Cog and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:bandcamp-49876a47",
+      "url": "https://cogaus.bandcamp.com/track/walk-the-line",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:43:54.917Z",
+      "evidence": "Bandcamp resolved directly and its destination metadata matched Cog."
+    },
+    {
+      "destination": "bandcamp",
+      "url": "https://cogaus.bandcamp.com/track/walk-the-line",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:43:54.917Z",
+      "evidence": "Bandcamp resolved directly and its destination metadata matched Cog."
+    },
+    {
+      "destination": "selection:instagram-268b33c4",
+      "url": "https://www.instagram.com/cog101/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:43:53.521Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Cog."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/cog101/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:43:53.521Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Cog."
+    },
+    {
+      "destination": "selection:spotify-0a35e672",
+      "url": "https://open.spotify.com/artist/6gD6Pm7jo3mmKgDtyMruA6",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:43:59.276Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Cog."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/6gD6Pm7jo3mmKgDtyMruA6",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:43:59.276Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Cog."
+    },
+    {
+      "destination": "selection:youtube-3c473ec4",
+      "url": "https://www.youtube.com/watch?v=f1J38FlDKxo",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:43:59.526Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Cog."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/watch?v=f1J38FlDKxo",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:43:59.526Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Cog."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.instagram.com/cog101/",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:44:06.736Z",
+      "evidence": "The official source supplied the concise biography text used by the Cog ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=E6JmYBI0EnY",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:44:06.292Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Cog video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://cogaus.bandcamp.com/track/walk-the-line",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:43:53.993Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Cog."
+    }
+  ]
+}

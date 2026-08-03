@@ -1,0 +1,168 @@
+{
+  "bandName": "Atlas Genius",
+  "slug": "atlas-genius",
+  "editionId": "dc_7374b0bdca",
+  "verifiedAt": "2026-08-03T11:33:39.460Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://www.atlasgenius.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:06.784Z",
+      "evidence": "The page identified Atlas Genius and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/atlasgenius/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:06.792Z",
+      "evidence": "The page identified Atlas Genius and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/42vg2T0Xg9yPaAgogJzoQH",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:06.367Z",
+      "evidence": "The page identified Atlas Genius and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UCQMGO_YpzXNAmsg4QK6zjGg",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:06.967Z",
+      "evidence": "The page identified Atlas Genius and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:website-753e9a20",
+      "url": "https://www.atlasgenius.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:06.784Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Atlas Genius."
+    },
+    {
+      "destination": "website",
+      "url": "https://www.atlasgenius.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:06.784Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Atlas Genius."
+    },
+    {
+      "destination": "selection:contact-d17b1174",
+      "url": "https://www.atlasgenius.com/contact",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:07.504Z",
+      "evidence": "Contact resolved directly and its destination metadata matched Atlas Genius."
+    },
+    {
+      "destination": "contact",
+      "url": "https://www.atlasgenius.com/contact",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:07.504Z",
+      "evidence": "Contact resolved directly and its destination metadata matched Atlas Genius."
+    },
+    {
+      "destination": "selection:facebook-f342bd26",
+      "url": "https://www.facebook.com/AtlasGenius/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:07.879Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Atlas Genius."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/AtlasGenius/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:07.879Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Atlas Genius."
+    },
+    {
+      "destination": "selection:spotify-0a2f1520",
+      "url": "https://open.spotify.com/artist/42vg2T0Xg9yPaAgogJzoQH",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:07.228Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Atlas Genius."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/42vg2T0Xg9yPaAgogJzoQH",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:07.228Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Atlas Genius."
+    },
+    {
+      "destination": "selection:youtube-fc3d7cfe",
+      "url": "https://www.youtube.com/atlasgenius",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:07.775Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Atlas Genius."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/atlasgenius",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:07.775Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Atlas Genius."
+    },
+    {
+      "destination": "selection:instagram-a1453b4b",
+      "url": "https://www.instagram.com/accounts/login/?next=%2Fatlasgenius%2F&source=desktop_nav",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:08.002Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Atlas Genius."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/accounts/login/?next=%2Fatlasgenius%2F&source=desktop_nav",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:08.002Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Atlas Genius."
+    },
+    {
+      "destination": "selection:show-a4c6e704",
+      "url": "https://laylo.com/atlasgenius/m/CiUmj",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:12.004Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Atlas Genius."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.instagram.com/atlasgenius/",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:14.796Z",
+      "evidence": "The official source supplied the concise biography text used by the Atlas Genius ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=rB9RS3q4ah4",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:14.219Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Atlas Genius video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://www.atlasgenius.com/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:06.784Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Atlas Genius."
+    }
+  ]
+}

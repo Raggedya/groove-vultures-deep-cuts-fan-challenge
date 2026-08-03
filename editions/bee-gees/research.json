@@ -1,0 +1,216 @@
+{
+  "bandName": "Bee Gees",
+  "slug": "bee-gees",
+  "editionId": "dc_f3ec5855a9",
+  "verifiedAt": "2026-08-03T11:28:57.770Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://www.beegees.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:26.953Z",
+      "evidence": "The page identified Bee Gees and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/beegees/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:25.010Z",
+      "evidence": "The page identified Bee Gees and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/1LZEQNv7sE11VDY3SdxQeN",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:24.754Z",
+      "evidence": "The page identified Bee Gees and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UCD9sCcKXnFxMeuFoNayVxeQ",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:25.228Z",
+      "evidence": "The page identified Bee Gees and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://shop.beegees.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:26.145Z",
+      "evidence": "The page identified Bee Gees and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://linktr.ee/beegees",
+      "sourceType": "official artist-controlled link hub",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:27.998Z",
+      "evidence": "The page identified Bee Gees and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:buy_music-6c4bec6a",
+      "url": "https://www.beegees.com/discography/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:30.059Z",
+      "evidence": "Buy Music resolved directly and its destination metadata matched Bee Gees."
+    },
+    {
+      "destination": "buyMusic",
+      "url": "https://www.beegees.com/discography/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:30.059Z",
+      "evidence": "Buy Music resolved directly and its destination metadata matched Bee Gees."
+    },
+    {
+      "destination": "selection:merchandise-45a2c623",
+      "url": "https://shop.beegees.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:26.145Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Bee Gees."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://shop.beegees.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:26.145Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Bee Gees."
+    },
+    {
+      "destination": "selection:newsletter-7e40800c",
+      "url": "https://www.beegees.com/subscribe/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:30.555Z",
+      "evidence": "Newsletter resolved directly and its destination metadata matched Bee Gees."
+    },
+    {
+      "destination": "selection:website-0f1cc5e3",
+      "url": "https://www.beegees.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:25.366Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Bee Gees."
+    },
+    {
+      "destination": "website",
+      "url": "https://www.beegees.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:25.366Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Bee Gees."
+    },
+    {
+      "destination": "selection:facebook-b4b96987",
+      "url": "https://www.facebook.com/beegees",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:28.870Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Bee Gees."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/beegees",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:28.870Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Bee Gees."
+    },
+    {
+      "destination": "selection:instagram-d1898c31",
+      "url": "https://www.instagram.com/beegees/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:25.010Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Bee Gees."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/beegees/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:25.010Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Bee Gees."
+    },
+    {
+      "destination": "selection:youtube-115e0898",
+      "url": "https://www.youtube.com/beegees",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:29.069Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Bee Gees."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/beegees",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:29.069Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Bee Gees."
+    },
+    {
+      "destination": "selection:spotify-50de45d6",
+      "url": "https://open.spotify.com/artist/1LZEQNv7sE11VDY3SdxQeN",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:24.754Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Bee Gees."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/1LZEQNv7sE11VDY3SdxQeN",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:24.754Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Bee Gees."
+    },
+    {
+      "destination": "selection:newsletter-1d120e7e",
+      "url": "https://www.beegees.com/wp-content/plugins/umg-newsletter/public/assets/icons/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:30.486Z",
+      "evidence": "Newsletter resolved directly and its destination metadata matched Bee Gees."
+    },
+    {
+      "destination": "selection:newsletter-82332d7a",
+      "url": "https://www.beegees.com/wp-content/plugins/umg-newsletter/public/assets/flags/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:30.637Z",
+      "evidence": "Newsletter resolved directly and its destination metadata matched Bee Gees."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.beegees.com/",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:36.343Z",
+      "evidence": "The official source supplied the concise biography text used by the Bee Gees ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=I248-SyRDnU",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:35.908Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Bee Gees video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://www.beegees.com/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:26.953Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Bee Gees."
+    }
+  ]
+}

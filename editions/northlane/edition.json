@@ -1,0 +1,152 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Northlane",
+  "editionTitle": "Northlane",
+  "description": "Evian, making its debut live on tour with @Dayseekerband",
+  "discovery": {
+    "bio": "Evian, making its debut live on tour with @Dayseekerband",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "northlane",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_4f0b9f6406",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/northlane/instagram-discovery.png",
+    "qrImage": "output/northlane/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "https://bandcamp.com/?from=menubar_logo_logged_out",
+    "spotify": "https://open.spotify.com/artist/3qyg72RGnGdF521zMU02u9/concerts",
+    "instagram": "https://www.instagram.com/northlane",
+    "website": "",
+    "buyMusic": "",
+    "merchandise": "",
+    "facebook": "https://www.facebook.com/northlane",
+    "youtube": ""
+  },
+  "featuredVideo": {
+    "title": "Northlane - CUT_it [Official Music Video]",
+    "youtubeURL": "https://www.youtube.com/watch?v=1eP9aoe2F6E",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:27:00.543Z"
+  },
+  "analytics": {
+    "editionId": "dc_4f0b9f6406",
+    "pageIdentifier": "dc_4f0b9f6406:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_a1cf0143-93b6-4311-9130-c6f27a8fa343",
+    "submittedAt": "2026-08-03T11:29:22.394Z",
+    "researchCompletedAt": "2026-08-03T11:29:22.633Z",
+    "editionCreatedAt": "2026-08-03T11:29:22.633Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_4f0b9f6406",
+    "tickerBio": "EVIAN, MAKING ITS DEBUT LIVE ON TOUR WITH @DAYSEEKERBAND",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "bandcamp-dbb5841f",
+      "spotify-a4e9bdff",
+      "instagram-db99a1ab",
+      "facebook-aa663ca0"
+    ],
+    "marquee": "Northlane",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://open.spotify.com/artist/3qyg72RGnGdF521zMU02u9",
+    "linkSourceVerifiedAt": "2026-08-03T11:26:56.033Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "spotify-a4e9bdff",
+        "sourceTitle": "View all upcoming concerts (26)",
+        "label": "View all upcoming concerts (26)",
+        "detail": "Listen on Spotify",
+        "url": "https://open.spotify.com/artist/3qyg72RGnGdF521zMU02u9/concerts",
+        "platform": "website",
+        "kind": "spotify"
+      },
+      {
+        "id": "facebook-aa663ca0",
+        "sourceTitle": "Facebook",
+        "label": "Facebook",
+        "detail": "Follow the band",
+        "url": "https://www.facebook.com/northlane",
+        "platform": "facebook",
+        "kind": "facebook"
+      },
+      {
+        "id": "instagram-db99a1ab",
+        "sourceTitle": "Instagram",
+        "label": "Instagram",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/northlane",
+        "platform": "instagram",
+        "kind": "instagram"
+      },
+      {
+        "id": "bandcamp-dbb5841f",
+        "sourceTitle": "Bandcamp",
+        "label": "Bandcamp",
+        "detail": "Listen and buy direct",
+        "url": "https://bandcamp.com/?from=menubar_logo_logged_out",
+        "platform": "website",
+        "kind": "bandcamp"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://www.youtube.com/channel/UCDzB7hPwj9qoL_bKEb2atFw",
+      "paragraphs": [
+        "Evian, making its debut live on tour with @Dayseekerband"
+      ]
+    }
+  }
+}

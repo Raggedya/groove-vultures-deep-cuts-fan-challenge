@@ -1,0 +1,217 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "The Wiggles",
+  "editionTitle": "The Wiggles",
+  "description": "*About The Wiggles* Children are our inspiration, Education is our goal, Music and Movement is our way! With a remarkable 30+ year legacy of lively performances, The Wiggles have earned...",
+  "discovery": {
+    "bio": "*About The Wiggles* Children are our inspiration, Education is our goal, Music and Movement is our way! With a remarkable 30+ year legacy of lively performances, The Wiggles have earned...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "the-wiggles",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_7bb8539598",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/the-wiggles/instagram-discovery.png",
+    "qrImage": "output/the-wiggles/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "",
+    "spotify": "https://open.spotify.com/artist/2JY5qzEozvTdogkDTkkOMf",
+    "instagram": "https://www.instagram.com/thewiggles/",
+    "website": "https://thewiggles.com/",
+    "buyMusic": "https://thewiggles.com/pages/music",
+    "merchandise": "https://thewiggles.com/collections/shop-all",
+    "facebook": "https://www.facebook.com/thewiggles",
+    "youtube": "https://www.youtube.com/user/TheWigglesPtyLtd?sub_confirmation=1"
+  },
+  "featuredVideo": {
+    "title": "Doing the Dishes Can Be Fun! 🫧 The Wiggles 📺 Ready, Steady, Wiggle! Series 8",
+    "youtubeURL": "https://www.youtube.com/watch?v=tghgSwS2c7E",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:32:45.954Z"
+  },
+  "analytics": {
+    "editionId": "dc_7bb8539598",
+    "pageIdentifier": "dc_7bb8539598:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_581b53e8-4290-4851-ba1f-bbf89893e837",
+    "submittedAt": "2026-08-03T11:29:00.853Z",
+    "researchCompletedAt": "2026-08-03T11:33:36.631Z",
+    "editionCreatedAt": "2026-08-03T11:33:36.631Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_7bb8539598",
+    "tickerBio": "*ABOUT THE WIGGLES* CHILDREN ARE OUR INSPIRATION, EDUCATION IS OUR GOAL, MUSIC AND MOVEMENT IS OUR WAY! WITH A REMARKABLE 30+ YEAR LEGACY OF LIVELY PERFORMANCES, THE WIGGLES HAVE EARNED A GLOBAL REPUTATION FOR THEIR DISTINCTIVE, HIGH-ENERGY SONGS, CONCERTS, AND VIDEOS. THE WIGGLES UTILISE THE UNIVERSAL LANGUAGE OF MUSIC TO EDUCATE CHILDREN, GUIDING THEM TO BETTER UNDERSTAND THEIR WORLD. DESIGNED SPECIFICALLY FOR PRE-",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "spotify-e398cb1e",
+      "youtube-f9492393",
+      "instagram-33e802d3",
+      "tiktok-f9f5c7f5",
+      "website-c99621d4",
+      "buy_music-7a16ab53"
+    ],
+    "marquee": "The Wiggles",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://thewiggles.com/",
+    "linkSourceVerifiedAt": "2026-08-03T11:32:38.149Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "website-c99621d4",
+        "sourceTitle": "Skip to content",
+        "label": "Band Website",
+        "detail": "Visit the official website",
+        "url": "https://thewiggles.com/",
+        "platform": "website",
+        "kind": "website"
+      },
+      {
+        "id": "facebook-17b2ffa9",
+        "sourceTitle": "Facebook",
+        "label": "Facebook",
+        "detail": "Follow the band",
+        "url": "https://www.facebook.com/thewiggles",
+        "platform": "facebook",
+        "kind": "facebook"
+      },
+      {
+        "id": "instagram-33e802d3",
+        "sourceTitle": "Instagram",
+        "label": "Instagram",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/thewiggles/",
+        "platform": "instagram",
+        "kind": "instagram"
+      },
+      {
+        "id": "youtube-f9492393",
+        "sourceTitle": "YouTube",
+        "label": "YouTube",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/user/TheWigglesPtyLtd?sub_confirmation=1",
+        "platform": "youtube",
+        "kind": "youtube"
+      },
+      {
+        "id": "tiktok-f9f5c7f5",
+        "sourceTitle": "TikTok",
+        "label": "TikTok",
+        "detail": "Official band clips",
+        "url": "https://www.tiktok.com/@thewiggles",
+        "platform": "website",
+        "kind": "tiktok"
+      },
+      {
+        "id": "merchandise-eef118b7",
+        "sourceTitle": "Best Sellers",
+        "label": "Best Sellers",
+        "detail": "Official band merchandise",
+        "url": "https://thewiggles.com/collections/shop-all",
+        "platform": "merchandise",
+        "kind": "merchandise"
+      },
+      {
+        "id": "contact-fd1feccf",
+        "sourceTitle": "Contact",
+        "label": "Contact",
+        "detail": "Official band enquiries",
+        "url": "https://thewiggles.com/pages/contact-us",
+        "platform": "website",
+        "kind": "contact"
+      },
+      {
+        "id": "newsletter-a79ba55b",
+        "sourceTitle": "Subscribe",
+        "label": "Subscribe",
+        "detail": "Join the official mailing list",
+        "url": "https://thewiggles.com/pages/subscribe",
+        "platform": "website",
+        "kind": "newsletter"
+      },
+      {
+        "id": "buy_music-7a16ab53",
+        "sourceTitle": "New Releases",
+        "label": "New Releases",
+        "detail": "Purchase music online",
+        "url": "https://thewiggles.com/pages/music",
+        "platform": "website",
+        "kind": "buy_music"
+      },
+      {
+        "id": "spotify-e398cb1e",
+        "sourceTitle": "Spotify",
+        "label": "Spotify",
+        "detail": "Listen on Spotify",
+        "url": "https://open.spotify.com/artist/2JY5qzEozvTdogkDTkkOMf",
+        "platform": "website",
+        "kind": "spotify"
+      },
+      {
+        "id": "newsletter-b9e69708",
+        "sourceTitle": "Join our Mailing List!",
+        "label": "Join our Mailing List!",
+        "detail": "Join the official mailing list",
+        "url": "https://manage.kmail-lists.com/subscriptions/subscribe?a=TPincc&g=ThKX8C",
+        "platform": "website",
+        "kind": "newsletter"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://www.youtube.com/channel/UC5vVe2R4ucoMzJP53o38Yaw",
+      "paragraphs": [
+        "*About The Wiggles* Children are our inspiration, Education is our goal, Music and Movement is our way! With a remarkable 30+ year legacy of lively performances, The Wiggles have earned a global reputation for their distinctive, high-energy songs, concerts, and videos. The Wiggles utilise the universal language of music to educate children, guiding them to better understand their world. Designed specifically for pre-"
+      ]
+    }
+  }
+}

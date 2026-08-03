@@ -1,0 +1,152 @@
+{
+  "bandName": "The Amity Affliction",
+  "slug": "the-amity-affliction",
+  "editionId": "dc_b8a5a59a65",
+  "verifiedAt": "2026-08-03T11:29:10.059Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://theamityaffliction.net/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:47.859Z",
+      "evidence": "The page identified The Amity Affliction and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/theamityaffliction/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:44.460Z",
+      "evidence": "The page identified The Amity Affliction and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/6kNKUYGn6VNGsRoXmyoDPK",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:44.182Z",
+      "evidence": "The page identified The Amity Affliction and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UCW5bPOVKOxDBNlIQBacw6Ow",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:44.382Z",
+      "evidence": "The page identified The Amity Affliction and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:instagram-f536af81",
+      "url": "https://www.instagram.com/theamityaffliction",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:48.556Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched The Amity Affliction."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/theamityaffliction",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:48.556Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched The Amity Affliction."
+    },
+    {
+      "destination": "selection:facebook-60903b7a",
+      "url": "https://www.facebook.com/theamityafflictionofficial",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:48.814Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched The Amity Affliction."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/theamityafflictionofficial",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:48.814Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched The Amity Affliction."
+    },
+    {
+      "destination": "selection:tiktok-561d5ee4",
+      "url": "https://www.tiktok.com/@amityaffliction_official?",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:48.092Z",
+      "evidence": "TikTok resolved directly and its destination metadata matched The Amity Affliction."
+    },
+    {
+      "destination": "tiktok",
+      "url": "https://www.tiktok.com/@amityaffliction_official?",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:48.092Z",
+      "evidence": "TikTok resolved directly and its destination metadata matched The Amity Affliction."
+    },
+    {
+      "destination": "selection:website-cd294746",
+      "url": "https://theamityaffliction.net/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:47.859Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched The Amity Affliction."
+    },
+    {
+      "destination": "website",
+      "url": "https://theamityaffliction.net/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:47.859Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched The Amity Affliction."
+    },
+    {
+      "destination": "selection:youtube-4522fa09",
+      "url": "https://www.youtube.com/embed/WhpyVdWbJhM?feature=oembed",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:48.278Z",
+      "evidence": "YouTube resolved directly from an identity-matched artist-controlled source for The Amity Affliction."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/embed/WhpyVdWbJhM?feature=oembed",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:48.278Z",
+      "evidence": "YouTube resolved directly from an identity-matched artist-controlled source for The Amity Affliction."
+    },
+    {
+      "destination": "selection:newsletter-9943c329",
+      "url": "https://net.us9.list-manage.com/subscribe/post?u=89627b708400cd1e3111dbeb9&id=807e030726",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:48.946Z",
+      "evidence": "Newsletter resolved directly from an identity-matched artist-controlled source for The Amity Affliction."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.instagram.com/theamityaffliction/",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:56.643Z",
+      "evidence": "The official source supplied the concise biography text used by the The Amity Affliction ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=2tHAcwNm8f4",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:56.280Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured The Amity Affliction video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://theamityaffliction.net/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:47.859Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for The Amity Affliction."
+    }
+  ]
+}

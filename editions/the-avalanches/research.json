@@ -1,0 +1,184 @@
+{
+  "bandName": "The Avalanches",
+  "slug": "the-avalanches",
+  "editionId": "dc_45e81d29f4",
+  "verifiedAt": "2026-08-03T11:29:04.661Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://www.theavalanches.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:01.592Z",
+      "evidence": "The page identified The Avalanches and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/theavalanches/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:01.686Z",
+      "evidence": "The page identified The Avalanches and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/3C8RpaI3Go0yFF9whvKoED",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:01.294Z",
+      "evidence": "The page identified The Avalanches and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UCxKS_QjhJAfV2hgLYxxGkWA",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:01.728Z",
+      "evidence": "The page identified The Avalanches and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://theavalanchesstore.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:02.327Z",
+      "evidence": "The page identified The Avalanches and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:merchandise-60ac800b",
+      "url": "https://theavalanchesstore.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:02.327Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched The Avalanches."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://theavalanchesstore.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:02.327Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched The Avalanches."
+    },
+    {
+      "destination": "selection:instagram-ee49ab9d",
+      "url": "https://www.instagram.com/theavalanches/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:01.686Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched The Avalanches."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/theavalanches/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:01.686Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched The Avalanches."
+    },
+    {
+      "destination": "selection:tiktok-67012292",
+      "url": "https://www.tiktok.com/@theavalanches",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:02.549Z",
+      "evidence": "TikTok resolved directly and its destination metadata matched The Avalanches."
+    },
+    {
+      "destination": "tiktok",
+      "url": "https://www.tiktok.com/@theavalanches",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:02.549Z",
+      "evidence": "TikTok resolved directly and its destination metadata matched The Avalanches."
+    },
+    {
+      "destination": "selection:facebook-4fab02dc",
+      "url": "https://www.facebook.com/theavalanches",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:03.125Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched The Avalanches."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/theavalanches",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:03.125Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched The Avalanches."
+    },
+    {
+      "destination": "selection:youtube-e60f9550",
+      "url": "https://www.youtube.com/user/avalanchesofficial",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:03.166Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched The Avalanches."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/user/avalanchesofficial",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:03.166Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched The Avalanches."
+    },
+    {
+      "destination": "selection:spotify-7cd46c8b",
+      "url": "https://open.spotify.com/artist/3C8RpaI3Go0yFF9whvKoED",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:01.294Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched The Avalanches."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/3C8RpaI3Go0yFF9whvKoED",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:01.294Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched The Avalanches."
+    },
+    {
+      "destination": "selection:website-143ee2d1",
+      "url": "https://www.theavalanches.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:01.592Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched The Avalanches."
+    },
+    {
+      "destination": "website",
+      "url": "https://www.theavalanches.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:01.592Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched The Avalanches."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.youtube.com/channel/UCxKS_QjhJAfV2hgLYxxGkWA",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:08.775Z",
+      "evidence": "The official source supplied the concise biography text used by the The Avalanches ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=x3yo95DVgTc",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:08.250Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured The Avalanches video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://www.theavalanches.com/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:01.592Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for The Avalanches."
+    }
+  ]
+}

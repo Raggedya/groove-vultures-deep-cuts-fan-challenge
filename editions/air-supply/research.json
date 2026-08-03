@@ -1,0 +1,200 @@
+{
+  "bandName": "Air Supply",
+  "slug": "air-supply",
+  "editionId": "dc_151a0f73fc",
+  "verifiedAt": "2026-08-03T11:28:58.929Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://airsupplymusic.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:42.905Z",
+      "evidence": "The page identified Air Supply and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://officalairsupply.bandcamp.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:39.914Z",
+      "evidence": "The page identified Air Supply and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/air_supply_band/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:39.947Z",
+      "evidence": "The page identified Air Supply and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UCLIx3q_0KLVHAxgxsvh_vSQ",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:40.224Z",
+      "evidence": "The page identified Air Supply and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://shop.airsupplymusic.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:43.406Z",
+      "evidence": "The page identified Air Supply and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://airsupplymusic.com/?s={search_term_string}",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:43.622Z",
+      "evidence": "The page identified Air Supply and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:website-b8641917",
+      "url": "https://airsupplymusic.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:42.905Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Air Supply."
+    },
+    {
+      "destination": "website",
+      "url": "https://airsupplymusic.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:42.905Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Air Supply."
+    },
+    {
+      "destination": "selection:buy_music-f778e6a5",
+      "url": "https://airsupplymusic.com/discography/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:44.035Z",
+      "evidence": "Buy Music resolved directly and its destination metadata matched Air Supply."
+    },
+    {
+      "destination": "buyMusic",
+      "url": "https://airsupplymusic.com/discography/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:44.035Z",
+      "evidence": "Buy Music resolved directly and its destination metadata matched Air Supply."
+    },
+    {
+      "destination": "selection:merchandise-4fdf7aa8",
+      "url": "https://shop.airsupplymusic.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:43.406Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Air Supply."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://shop.airsupplymusic.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:43.406Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Air Supply."
+    },
+    {
+      "destination": "selection:facebook-eafc52dc",
+      "url": "https://www.facebook.com/airsupplymusic/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:44.489Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Air Supply."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/airsupplymusic/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:44.489Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Air Supply."
+    },
+    {
+      "destination": "selection:instagram-7b38ebd7",
+      "url": "https://www.instagram.com/airsupplymusic/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:44.305Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Air Supply."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/airsupplymusic/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:44.305Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Air Supply."
+    },
+    {
+      "destination": "selection:youtube-ad3fcd2a",
+      "url": "https://www.youtube.com/channel/UCLIx3q_0KLVHAxgxsvh_vSQ",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:40.224Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Air Supply."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/channel/UCLIx3q_0KLVHAxgxsvh_vSQ",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:40.224Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Air Supply."
+    },
+    {
+      "destination": "selection:spotify-ecc0674d",
+      "url": "https://open.spotify.com/artist/4xXCRXOfQKQ2gjWxNhNzYW?nd=1",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:44.274Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Air Supply."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/4xXCRXOfQKQ2gjWxNhNzYW?nd=1",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:44.274Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Air Supply."
+    },
+    {
+      "destination": "selection:newsletter-467e86e7",
+      "url": "https://assets.mailerlite.com/jsonp/424592/forms/87357176953177952/subscribe",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:45.304Z",
+      "evidence": "Newsletter resolved directly from an identity-matched artist-controlled source for Air Supply."
+    },
+    {
+      "destination": "biography",
+      "url": "https://airsupplymusic.com/",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:48.942Z",
+      "evidence": "The official source supplied the concise biography text used by the Air Supply ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=gppjjSlwqrI",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:48.606Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Air Supply video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://airsupplymusic.com/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:22:42.905Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Air Supply."
+    }
+  ]
+}

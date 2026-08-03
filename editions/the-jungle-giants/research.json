@@ -1,0 +1,224 @@
+{
+  "bandName": "The Jungle Giants",
+  "slug": "the-jungle-giants",
+  "editionId": "dc_6be3201e60",
+  "verifiedAt": "2026-08-03T11:29:30.027Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://www.thejunglegiants.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:21.153Z",
+      "evidence": "The page identified The Jungle Giants and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://thejunglegiantsau.bandcamp.com/track/mr-polite",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:22.435Z",
+      "evidence": "The page identified The Jungle Giants and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/thejunglegiants/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:21.471Z",
+      "evidence": "The page identified The Jungle Giants and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UCBcw7Il9DcKdgHvkPjn9nPA",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:21.445Z",
+      "evidence": "The page identified The Jungle Giants and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.pollenarts.club/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:23.833Z",
+      "evidence": "The page identified The Jungle Giants and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:website-7f41202c",
+      "url": "https://www.thejunglegiants.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:21.153Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched The Jungle Giants."
+    },
+    {
+      "destination": "website",
+      "url": "https://www.thejunglegiants.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:21.153Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched The Jungle Giants."
+    },
+    {
+      "destination": "selection:merchandise-0d539834",
+      "url": "https://www.thejunglegiants.com/merch",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:23.987Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched The Jungle Giants."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://www.thejunglegiants.com/merch",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:23.987Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched The Jungle Giants."
+    },
+    {
+      "destination": "selection:contact-9ac69b8e",
+      "url": "https://www.thejunglegiants.com/contact",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:23.931Z",
+      "evidence": "Contact resolved directly and its destination metadata matched The Jungle Giants."
+    },
+    {
+      "destination": "contact",
+      "url": "https://www.thejunglegiants.com/contact",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:23.931Z",
+      "evidence": "Contact resolved directly and its destination metadata matched The Jungle Giants."
+    },
+    {
+      "destination": "selection:newsletter-7d2059bd",
+      "url": "https://arep.co/m/thejunglegiants",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:24.060Z",
+      "evidence": "Newsletter resolved directly and its destination metadata matched The Jungle Giants."
+    },
+    {
+      "destination": "selection:facebook-e1955dbc",
+      "url": "https://www.facebook.com/thejunglegiants",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:24.690Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched The Jungle Giants."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/thejunglegiants",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:24.690Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched The Jungle Giants."
+    },
+    {
+      "destination": "selection:instagram-9f07b473",
+      "url": "https://www.instagram.com/thejunglegiants/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:21.471Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched The Jungle Giants."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/thejunglegiants/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:21.471Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched The Jungle Giants."
+    },
+    {
+      "destination": "selection:tiktok-2c71c7b4",
+      "url": "https://www.tiktok.com/@thejunglegiants?",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:24.138Z",
+      "evidence": "TikTok resolved directly and its destination metadata matched The Jungle Giants."
+    },
+    {
+      "destination": "tiktok",
+      "url": "https://www.tiktok.com/@thejunglegiants?",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:24.138Z",
+      "evidence": "TikTok resolved directly and its destination metadata matched The Jungle Giants."
+    },
+    {
+      "destination": "selection:youtube-7aadd55b",
+      "url": "https://www.youtube.com/user/thejunglegiants",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:24.447Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched The Jungle Giants."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/user/thejunglegiants",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:24.447Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched The Jungle Giants."
+    },
+    {
+      "destination": "selection:spotify-3670ff46",
+      "url": "https://open.spotify.com/artist/6wFwvxJkurQPU2UdeD4qVt?nd=1",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:24.485Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched The Jungle Giants."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/6wFwvxJkurQPU2UdeD4qVt?nd=1",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:24.485Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched The Jungle Giants."
+    },
+    {
+      "destination": "selection:bandcamp-dbb5841f",
+      "url": "https://bandcamp.com/?from=menubar_logo_logged_out",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:25.075Z",
+      "evidence": "Bandcamp resolved directly from an identity-matched artist-controlled source for The Jungle Giants."
+    },
+    {
+      "destination": "bandcamp",
+      "url": "https://bandcamp.com/?from=menubar_logo_logged_out",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:25.075Z",
+      "evidence": "Bandcamp resolved directly from an identity-matched artist-controlled source for The Jungle Giants."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.instagram.com/thejunglegiants/",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:29.097Z",
+      "evidence": "The official source supplied the concise biography text used by the The Jungle Giants ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=dRFtgN5ZDEA",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:28.786Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured The Jungle Giants video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://www.thejunglegiants.com/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:21.153Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for The Jungle Giants."
+    }
+  ]
+}

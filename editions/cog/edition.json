@@ -1,0 +1,152 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Cog",
+  "editionTitle": "Cog",
+  "description": "COG - Walk The Line Tour Odeon Theatre, Hobart - 17/04/26 “Politically charged and heavy lyrics surround you as youre carried through by a deep raw groove. Their technical prowess...",
+  "discovery": {
+    "bio": "COG - Walk The Line Tour Odeon Theatre, Hobart - 17/04/26 “Politically charged and heavy lyrics surround you as youre carried through by a deep raw groove. Their technical prowess...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "cog",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_fb7794b6ea",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/cog/instagram-discovery.png",
+    "qrImage": "output/cog/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "https://cogaus.bandcamp.com/track/walk-the-line",
+    "spotify": "https://open.spotify.com/artist/6gD6Pm7jo3mmKgDtyMruA6",
+    "instagram": "https://www.instagram.com/cog101/",
+    "website": "",
+    "buyMusic": "",
+    "merchandise": "",
+    "facebook": "",
+    "youtube": "https://www.youtube.com/watch?v=f1J38FlDKxo"
+  },
+  "featuredVideo": {
+    "title": "COG - Walk the line",
+    "youtubeURL": "https://www.youtube.com/watch?v=E6JmYBI0EnY",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:44:06.292Z"
+  },
+  "analytics": {
+    "editionId": "dc_fb7794b6ea",
+    "pageIdentifier": "dc_fb7794b6ea:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_82322a84-480d-42bf-b6af-9f378352a21a",
+    "submittedAt": "2026-08-03T11:47:02.571Z",
+    "researchCompletedAt": "2026-08-03T11:47:02.643Z",
+    "editionCreatedAt": "2026-08-03T11:47:02.643Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_fb7794b6ea",
+    "tickerBio": "COG - WALK THE LINE TOUR ODEON THEATRE, HOBART - 17/04/26 “POLITICALLY CHARGED AND HEAVY LYRICS SURROUND YOU AS YOURE CARRIED THROUGH BY A DEEP RAW GROOVE. THEIR TECHNICAL PROWESS, ABILITY TO CONSISTENTLY WRITE AND PERFORM MEANINGFUL AUTHENTIC MUSIC AND THEIR COMPATIBILTY AS A TRIO CAME TOGETHER TO MAKE A MEMORABLE NIGHT. COG PROVED AGAIN THEY ARE ONE OF AUSTRALIA’S TOP TIER TOURING ACTS. IN COG WE TRUST.” LS GALLE",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "bandcamp-49876a47",
+      "spotify-0a35e672",
+      "youtube-3c473ec4",
+      "instagram-268b33c4"
+    ],
+    "marquee": "Cog",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://cogaus.bandcamp.com/track/walk-the-line",
+    "linkSourceVerifiedAt": "2026-08-03T11:43:53.993Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "bandcamp-49876a47",
+        "sourceTitle": "Bandcamp",
+        "label": "Bandcamp",
+        "detail": "Listen and buy direct",
+        "url": "https://cogaus.bandcamp.com/track/walk-the-line",
+        "platform": "website",
+        "kind": "bandcamp"
+      },
+      {
+        "id": "instagram-268b33c4",
+        "sourceTitle": "Instagram",
+        "label": "Instagram",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/cog101/",
+        "platform": "instagram",
+        "kind": "instagram"
+      },
+      {
+        "id": "spotify-0a35e672",
+        "sourceTitle": "Spotify",
+        "label": "Spotify",
+        "detail": "Listen on Spotify",
+        "url": "https://open.spotify.com/artist/6gD6Pm7jo3mmKgDtyMruA6",
+        "platform": "website",
+        "kind": "spotify"
+      },
+      {
+        "id": "youtube-3c473ec4",
+        "sourceTitle": "YouTube",
+        "label": "YouTube",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/watch?v=f1J38FlDKxo",
+        "platform": "youtube",
+        "kind": "youtube"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://www.instagram.com/cog101/",
+      "paragraphs": [
+        "COG - Walk The Line Tour Odeon Theatre, Hobart - 17/04/26 “Politically charged and heavy lyrics surround you as youre carried through by a deep raw groove. Their technical prowess, ability to consistently write and perform meaningful authentic music and their compatibilty as a trio came together to make a memorable night. COG proved again they are one of Australia’s top tier touring acts. In COG we trust.” LS Galle"
+      ]
+    }
+  }
+}

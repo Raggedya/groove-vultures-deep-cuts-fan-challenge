@@ -1,0 +1,224 @@
+{
+  "bandName": "Powderfinger",
+  "slug": "powderfinger",
+  "editionId": "dc_c8c3b75f0e",
+  "verifiedAt": "2026-08-03T11:33:37.195Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://powderfinger.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:47.196Z",
+      "evidence": "The page identified Powderfinger and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://powderfinger.bandcamp.com/album/dream-days-at-the-hotel-existence",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:47.132Z",
+      "evidence": "The page identified Powderfinger and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/powderfinger_bandofficial/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:46.842Z",
+      "evidence": "The page identified Powderfinger and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UCfLfieeWptxNHlirXjhfalA",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:46.625Z",
+      "evidence": "The page identified Powderfinger and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://powderfinger.bandtshirts.com.au/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:47.347Z",
+      "evidence": "The page identified Powderfinger and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://powderfinger.com/?s={search_term_string}",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:47.635Z",
+      "evidence": "The page identified Powderfinger and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:website-a7f42006",
+      "url": "https://powderfinger.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:47.196Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Powderfinger."
+    },
+    {
+      "destination": "website",
+      "url": "https://powderfinger.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:47.196Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Powderfinger."
+    },
+    {
+      "destination": "selection:merchandise-990c7c79",
+      "url": "https://powderfinger.bandtshirts.com.au/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:47.347Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Powderfinger."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://powderfinger.bandtshirts.com.au/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:47.347Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Powderfinger."
+    },
+    {
+      "destination": "selection:newsletter-8bfedddc",
+      "url": "https://powderfinger.com/mailing-list/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:47.741Z",
+      "evidence": "Newsletter resolved directly and its destination metadata matched Powderfinger."
+    },
+    {
+      "destination": "selection:facebook-f9344557",
+      "url": "https://www.facebook.com/groups/267435324523860",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:48.696Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Powderfinger."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/groups/267435324523860",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:48.696Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Powderfinger."
+    },
+    {
+      "destination": "selection:contact-211f4748",
+      "url": "https://powderfinger.com/contact/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:47.733Z",
+      "evidence": "Contact resolved directly and its destination metadata matched Powderfinger."
+    },
+    {
+      "destination": "contact",
+      "url": "https://powderfinger.com/contact/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:47.733Z",
+      "evidence": "Contact resolved directly and its destination metadata matched Powderfinger."
+    },
+    {
+      "destination": "selection:show-6ac81d96",
+      "url": "https://powderfinger.com/gig-history/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:48.072Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Powderfinger."
+    },
+    {
+      "destination": "selection:youtube-b9fa1f9b",
+      "url": "https://www.youtube.com/channel/UCfLfieeWptxNHlirXjhfalA",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:46.625Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Powderfinger."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/channel/UCfLfieeWptxNHlirXjhfalA",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:46.625Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Powderfinger."
+    },
+    {
+      "destination": "selection:spotify-9099ab50",
+      "url": "https://open.spotify.com/artist/6LBCQo20ri3tsvbsWWLmr6",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:47.945Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Powderfinger."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/6LBCQo20ri3tsvbsWWLmr6",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:47.945Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Powderfinger."
+    },
+    {
+      "destination": "selection:instagram-a333458b",
+      "url": "https://www.instagram.com/powderfinger_bandofficial/?hl=en",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:48.539Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Powderfinger."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/powderfinger_bandofficial/?hl=en",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:48.539Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Powderfinger."
+    },
+    {
+      "destination": "selection:bandcamp-901ff865",
+      "url": "https://powderfinger.bandcamp.com/album/dream-days-at-the-hotel-existence",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:49.751Z",
+      "evidence": "Bandcamp resolved directly and its destination metadata matched Powderfinger."
+    },
+    {
+      "destination": "bandcamp",
+      "url": "https://powderfinger.bandcamp.com/album/dream-days-at-the-hotel-existence",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:49.751Z",
+      "evidence": "Bandcamp resolved directly and its destination metadata matched Powderfinger."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.instagram.com/powderfinger_bandofficial/",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:54.966Z",
+      "evidence": "The official source supplied the concise biography text used by the Powderfinger ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=mFjAhH53rPg",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:54.680Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Powderfinger video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://powderfinger.com/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:47.196Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Powderfinger."
+    }
+  ]
+}

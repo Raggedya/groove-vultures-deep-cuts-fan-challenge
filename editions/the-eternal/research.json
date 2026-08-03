@@ -1,0 +1,224 @@
+{
+  "bandName": "The Eternal",
+  "slug": "the-eternal",
+  "editionId": "dc_5f80fedc03",
+  "verifiedAt": "2026-08-03T11:29:30.665Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://the-eternal.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:27.019Z",
+      "evidence": "The page identified The Eternal and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://theeternal.bandcamp.com/album/waiting-for-the-endless-dawn",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:26.650Z",
+      "evidence": "The page identified The Eternal and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.facebook.com/TheEternal",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:26.207Z",
+      "evidence": "The page identified The Eternal and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://linktr.ee/theeternalofficial",
+      "sourceType": "official artist-controlled link hub",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:29.127Z",
+      "evidence": "The page identified The Eternal and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:website-1f193bda",
+      "url": "https://the-eternal.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:27.019Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched The Eternal."
+    },
+    {
+      "destination": "website",
+      "url": "https://the-eternal.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:27.019Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched The Eternal."
+    },
+    {
+      "destination": "selection:buy_music-83f4ceb1",
+      "url": "https://the-eternal.com/collections/discography",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:29.598Z",
+      "evidence": "Buy Music resolved directly and its destination metadata matched The Eternal."
+    },
+    {
+      "destination": "buyMusic",
+      "url": "https://the-eternal.com/collections/discography",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:29.598Z",
+      "evidence": "Buy Music resolved directly and its destination metadata matched The Eternal."
+    },
+    {
+      "destination": "selection:facebook-83b74b0d",
+      "url": "https://www.facebook.com/TheEternal",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:26.207Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched The Eternal."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/TheEternal",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:26.207Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched The Eternal."
+    },
+    {
+      "destination": "selection:instagram-69983fc3",
+      "url": "https://www.instagram.com/theeternalofficial",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:30.204Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched The Eternal."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/theeternalofficial",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:30.204Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched The Eternal."
+    },
+    {
+      "destination": "selection:youtube-0551ac8a",
+      "url": "https://www.youtube.com/user/theeternalband",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:29.792Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched The Eternal."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/user/theeternalband",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:29.792Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched The Eternal."
+    },
+    {
+      "destination": "selection:tiktok-c72a54c2",
+      "url": "https://www.tiktok.com/@theeternalofficial",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:29.398Z",
+      "evidence": "TikTok resolved directly and its destination metadata matched The Eternal."
+    },
+    {
+      "destination": "tiktok",
+      "url": "https://www.tiktok.com/@theeternalofficial",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:29.398Z",
+      "evidence": "TikTok resolved directly and its destination metadata matched The Eternal."
+    },
+    {
+      "destination": "selection:spotify-8096c270",
+      "url": "https://open.spotify.com/artist/2uCKA5H0fEPfF0PxLooHvn",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:29.801Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched The Eternal."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/2uCKA5H0fEPfF0PxLooHvn",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:29.801Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched The Eternal."
+    },
+    {
+      "destination": "selection:merchandise-ccfd1f30",
+      "url": "https://the-eternal.com/products/skinwalker-t-shirt",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:29.904Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched The Eternal."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://the-eternal.com/products/skinwalker-t-shirt",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:29.904Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched The Eternal."
+    },
+    {
+      "destination": "selection:contact-79f60600",
+      "url": "https://the-eternal.com/policies/contact-information",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:30.172Z",
+      "evidence": "Contact resolved directly and its destination metadata matched The Eternal."
+    },
+    {
+      "destination": "contact",
+      "url": "https://the-eternal.com/policies/contact-information",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:30.172Z",
+      "evidence": "Contact resolved directly and its destination metadata matched The Eternal."
+    },
+    {
+      "destination": "selection:bandcamp-dbb5841f",
+      "url": "https://bandcamp.com/?from=menubar_logo_logged_out",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:32.706Z",
+      "evidence": "Bandcamp resolved directly from an identity-matched artist-controlled source for The Eternal."
+    },
+    {
+      "destination": "bandcamp",
+      "url": "https://bandcamp.com/?from=menubar_logo_logged_out",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:32.706Z",
+      "evidence": "Bandcamp resolved directly from an identity-matched artist-controlled source for The Eternal."
+    },
+    {
+      "destination": "biography",
+      "url": "https://theeternal.bandcamp.com/album/waiting-for-the-endless-dawn",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:33.911Z",
+      "evidence": "The official source supplied the concise biography text used by the The Eternal ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=ifNY4AaptcI",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:33.486Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured The Eternal video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://the-eternal.com/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:27.019Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for The Eternal."
+    }
+  ]
+}

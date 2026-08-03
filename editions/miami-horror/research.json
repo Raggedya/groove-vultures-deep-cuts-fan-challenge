@@ -1,0 +1,144 @@
+{
+  "bandName": "Miami Horror",
+  "slug": "miami-horror",
+  "editionId": "dc_e84f719c88",
+  "verifiedAt": "2026-08-03T11:33:37.857Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://miamihorror.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:58.081Z",
+      "evidence": "The page identified Miami Horror and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/miamihorror/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:54.888Z",
+      "evidence": "The page identified Miami Horror and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/0Z5pcmXDCKTrFWLnDChC37",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:54.548Z",
+      "evidence": "The page identified Miami Horror and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UCi6npYM3xgDR-ohvXeDtIPw",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:54.872Z",
+      "evidence": "The page identified Miami Horror and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://linktr.ee/miamihorror",
+      "sourceType": "official artist-controlled link hub",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:56.217Z",
+      "evidence": "The page identified Miami Horror and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:show-02ac1a4a",
+      "url": "https://www.bandsintown.com/a/60894-miami-horror",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:58.332Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Miami Horror."
+    },
+    {
+      "destination": "selection:instagram-9e8aab21",
+      "url": "https://www.instagram.com/miamihorror/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:54.888Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Miami Horror."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/miamihorror/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:54.888Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Miami Horror."
+    },
+    {
+      "destination": "selection:facebook-40fdf852",
+      "url": "https://www.facebook.com/miamihorror",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:59.019Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Miami Horror."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/miamihorror",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:59.019Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Miami Horror."
+    },
+    {
+      "destination": "selection:youtube-7cd62dbc",
+      "url": "https://www.youtube.com/channel/UCi6npYM3xgDR-ohvXeDtIPw",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:54.872Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Miami Horror."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/channel/UCi6npYM3xgDR-ohvXeDtIPw",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:54.872Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Miami Horror."
+    },
+    {
+      "destination": "selection:website-74db86d7",
+      "url": "https://miamihorror.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:58.081Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Miami Horror."
+    },
+    {
+      "destination": "website",
+      "url": "https://miamihorror.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:58.081Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Miami Horror."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.instagram.com/miamihorror/",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:06.080Z",
+      "evidence": "The official source supplied the concise biography text used by the Miami Horror ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=c3v-qsRhS1Y",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:33:05.724Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Miami Horror video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://miamihorror.com/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:58.081Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Miami Horror."
+    }
+  ]
+}

@@ -1,0 +1,192 @@
+{
+  "bandName": "Birds of Tokyo",
+  "slug": "birds-of-tokyo",
+  "editionId": "dc_0071724e35",
+  "verifiedAt": "2026-08-03T11:33:35.371Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://www.birdsoftokyo.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:26.789Z",
+      "evidence": "The page identified Birds of Tokyo and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/birdsoftokyo/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:25.676Z",
+      "evidence": "The page identified Birds of Tokyo and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/25ou7Y6W7L1fcMoCZMbf86",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:25.343Z",
+      "evidence": "The page identified Birds of Tokyo and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UCdTpdO3tq-GZ3BraW4ROoNQ",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:25.584Z",
+      "evidence": "The page identified Birds of Tokyo and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.birdsoftokyo.com/?s={search_term_string}",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:27.374Z",
+      "evidence": "The page identified Birds of Tokyo and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:website-c69476b7",
+      "url": "https://www.birdsoftokyo.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:26.789Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Birds of Tokyo."
+    },
+    {
+      "destination": "website",
+      "url": "https://www.birdsoftokyo.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:26.789Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Birds of Tokyo."
+    },
+    {
+      "destination": "selection:facebook-396804a5",
+      "url": "https://www.facebook.com/birdsoftokyomusic",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:28.239Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Birds of Tokyo."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/birdsoftokyomusic",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:28.239Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Birds of Tokyo."
+    },
+    {
+      "destination": "selection:instagram-ca225764",
+      "url": "https://www.instagram.com/birdsoftokyo/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:28.330Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Birds of Tokyo."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/birdsoftokyo/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:28.330Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Birds of Tokyo."
+    },
+    {
+      "destination": "selection:youtube-b568323f",
+      "url": "https://www.youtube.com/birdsoftokyo",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:27.986Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Birds of Tokyo."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/birdsoftokyo",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:27.986Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Birds of Tokyo."
+    },
+    {
+      "destination": "selection:spotify-c429475f",
+      "url": "https://open.spotify.com/artist/25ou7Y6W7L1fcMoCZMbf86",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:25.343Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Birds of Tokyo."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/25ou7Y6W7L1fcMoCZMbf86",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:25.343Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Birds of Tokyo."
+    },
+    {
+      "destination": "selection:merchandise-353b543d",
+      "url": "https://sound-merch.com.au/collections/birds-of-tokyo",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:28.016Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Birds of Tokyo."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://sound-merch.com.au/collections/birds-of-tokyo",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:28.016Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Birds of Tokyo."
+    },
+    {
+      "destination": "selection:newsletter-5cb6c0f1",
+      "url": "https://www.birdsoftokyo.com/subscribe/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:28.599Z",
+      "evidence": "Newsletter resolved directly and its destination metadata matched Birds of Tokyo."
+    },
+    {
+      "destination": "selection:show-8199d98d",
+      "url": "https://www.birdsoftokyo.com/birds-of-tokyo-to-play-free-show-wa-show-cockburn-sun-set-sets/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:29.823Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Birds of Tokyo."
+    },
+    {
+      "destination": "selection:show-06d57d60",
+      "url": "https://www.musicinparadise.com.au/event/birds-of-tokyo-pete-murray-the-rubens-live-in-bali/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:35.332Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Birds of Tokyo."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.youtube.com/channel/UCdTpdO3tq-GZ3BraW4ROoNQ",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:36.139Z",
+      "evidence": "The official source supplied the concise biography text used by the Birds of Tokyo ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=IGTa6lsT01g",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:35.746Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Birds of Tokyo video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://www.birdsoftokyo.com/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:26.789Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Birds of Tokyo."
+    }
+  ]
+}

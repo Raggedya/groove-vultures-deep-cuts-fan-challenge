@@ -1,0 +1,136 @@
+{
+  "bandName": "Thundamentals",
+  "slug": "thundamentals",
+  "editionId": "dc_f132e66b69",
+  "verifiedAt": "2026-08-03T11:47:05.181Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://thundamentals.com.au/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:43.503Z",
+      "evidence": "The page identified Thundamentals and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/thundamentals/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:43.797Z",
+      "evidence": "The page identified Thundamentals and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/7ymhGfvQPQLHU20RovzLMJ",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:43.472Z",
+      "evidence": "The page identified Thundamentals and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UCCkzxcN8-YbH4VYj5tNhGFA",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:43.886Z",
+      "evidence": "The page identified Thundamentals and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://lnk.bio/thundamentals",
+      "sourceType": "official artist-controlled link hub",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:44.286Z",
+      "evidence": "The page identified Thundamentals and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:spotify-aab5f564",
+      "url": "https://open.spotify.com/artist/7ymhGfvQPQLHU20RovzLMJ",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:43.472Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Thundamentals."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/7ymhGfvQPQLHU20RovzLMJ",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:43.472Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Thundamentals."
+    },
+    {
+      "destination": "selection:youtube-b4809809",
+      "url": "https://www.youtube.com/channel/UCCkzxcN8-YbH4VYj5tNhGFA",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:43.886Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Thundamentals."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/channel/UCCkzxcN8-YbH4VYj5tNhGFA",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:43.886Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Thundamentals."
+    },
+    {
+      "destination": "selection:instagram-b47d3ecf",
+      "url": "https://www.instagram.com/thundamentals/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:43.797Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Thundamentals."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/thundamentals/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:43.797Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Thundamentals."
+    },
+    {
+      "destination": "selection:website-14a3a6be",
+      "url": "https://thundamentals.com.au/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:43.503Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Thundamentals."
+    },
+    {
+      "destination": "website",
+      "url": "https://thundamentals.com.au/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:43.503Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Thundamentals."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.instagram.com/thundamentals/",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:52.122Z",
+      "evidence": "The official source supplied the concise biography text used by the Thundamentals ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=-wlXankifuY",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:51.690Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Thundamentals video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://thundamentals.com.au/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:46:43.503Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Thundamentals."
+    }
+  ]
+}

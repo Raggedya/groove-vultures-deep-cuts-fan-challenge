@@ -1,0 +1,172 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Sneaky Sound System",
+  "editionTitle": "Sneaky Sound System",
+  "description": "On Saturday August 29, the iconic Whitsunday Sailing Club transforms into an open-air waterfront party featuring Australian dance music icons Sneaky Sound System headlining alongside a...",
+  "discovery": {
+    "bio": "On Saturday August 29, the iconic Whitsunday Sailing Club transforms into an open-air waterfront party featuring Australian dance music icons Sneaky Sound System headlining alongside a...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "sneaky-sound-system",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_1f2a28ff05",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/sneaky-sound-system/instagram-discovery.png",
+    "qrImage": "output/sneaky-sound-system/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "",
+    "spotify": "https://open.spotify.com/artist/6ieVhWXtOmK6DO6dmX7Eko",
+    "instagram": "https://www.instagram.com/sneakysoundsystem",
+    "website": "https://sneakysoundsystem.com/",
+    "buyMusic": "",
+    "merchandise": "",
+    "facebook": "https://www.facebook.com/sneakysoundsystem",
+    "youtube": "https://www.youtube.com/sneakysoundsystem"
+  },
+  "featuredVideo": {
+    "title": "Really Want To See You Again",
+    "youtubeURL": "https://www.youtube.com/watch?v=Wmu_f33matw",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:32:54.218Z"
+  },
+  "analytics": {
+    "editionId": "dc_1f2a28ff05",
+    "pageIdentifier": "dc_1f2a28ff05:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_fea943e4-57cc-40a4-945f-d47ce2d43cb3",
+    "submittedAt": "2026-08-03T11:29:03.093Z",
+    "researchCompletedAt": "2026-08-03T11:33:37.518Z",
+    "editionCreatedAt": "2026-08-03T11:33:37.518Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_1f2a28ff05",
+    "tickerBio": "ON SATURDAY AUGUST 29, THE ICONIC WHITSUNDAY SAILING CLUB TRANSFORMS INTO AN OPEN-AIR WATERFRONT PARTY FEATURING AUSTRALIAN DANCE MUSIC ICONS SNEAKY SOUND SYSTEM HEADLINING ALONGSIDE A STACKED LINEUP OF DJS AND PARTY STARTERS. EXPECT SUNSET SESSIONS, OCEAN VIEWS, HANDS-IN-THE-AIR SINGALONGS AND A FULL DAY OF HOUSE, DISCO, DANCE AND PARTY ANTHEMS IN ONE OF AUSTRALIA’S MOST UNREAL LOCATIONS. FROM 4PM–10PM, OPEN AIR-LIE",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "spotify-1e26499a",
+      "youtube-a804520b",
+      "instagram-a8825cca",
+      "tiktok-ad323dc0",
+      "website-ad165e62",
+      "facebook-45b9a8f9"
+    ],
+    "marquee": "Sneaky Sound System",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://sneakysoundsystem.com/",
+    "linkSourceVerifiedAt": "2026-08-03T11:32:47.248Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "website-ad165e62",
+        "sourceTitle": "ABOUT",
+        "label": "ABOUT",
+        "detail": "Visit the official website",
+        "url": "https://sneakysoundsystem.com/",
+        "platform": "website",
+        "kind": "website"
+      },
+      {
+        "id": "facebook-45b9a8f9",
+        "sourceTitle": "FACEBOOK",
+        "label": "FACEBOOK",
+        "detail": "Follow the band",
+        "url": "https://www.facebook.com/sneakysoundsystem",
+        "platform": "facebook",
+        "kind": "facebook"
+      },
+      {
+        "id": "instagram-a8825cca",
+        "sourceTitle": "INSTAGRAM",
+        "label": "INSTAGRAM",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/sneakysoundsystem",
+        "platform": "instagram",
+        "kind": "instagram"
+      },
+      {
+        "id": "tiktok-ad323dc0",
+        "sourceTitle": "TIKTOK",
+        "label": "TIKTOK",
+        "detail": "Official band clips",
+        "url": "https://www.tiktok.com/@snkysndsystm",
+        "platform": "website",
+        "kind": "tiktok"
+      },
+      {
+        "id": "spotify-1e26499a",
+        "sourceTitle": "SPOTIFY",
+        "label": "SPOTIFY",
+        "detail": "Listen on Spotify",
+        "url": "https://open.spotify.com/artist/6ieVhWXtOmK6DO6dmX7Eko",
+        "platform": "website",
+        "kind": "spotify"
+      },
+      {
+        "id": "youtube-a804520b",
+        "sourceTitle": "YOUTUBE",
+        "label": "YOUTUBE",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/sneakysoundsystem",
+        "platform": "youtube",
+        "kind": "youtube"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://www.instagram.com/sneakysoundsystem/",
+      "paragraphs": [
+        "On Saturday August 29, the iconic Whitsunday Sailing Club transforms into an open-air waterfront party featuring Australian dance music icons Sneaky Sound System headlining alongside a stacked lineup of DJs and party starters. Expect sunset sessions, ocean views, hands-in-the-air singalongs and a full day of house, disco, dance and party anthems in one of Australia’s most unreal locations. From 4PM–10PM, Open Air-lie"
+      ]
+    }
+  }
+}

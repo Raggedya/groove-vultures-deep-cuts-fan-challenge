@@ -1,0 +1,199 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Dirty Three",
+  "editionTitle": "Dirty Three",
+  "description": "Dirty Three. Australia. Dirty Three – Warren Ellis, Mick Turner and Jim White – formed up their guitar drums and violin or viola in 1992, and have cut six albums and toured over the...",
+  "discovery": {
+    "bio": "Dirty Three. Australia. Dirty Three – Warren Ellis, Mick Turner and Jim White – formed up their guitar drums and violin or viola in 1992, and have cut six albums and toured over the...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "dirty-three",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_521347d705",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/dirty-three/instagram-discovery.png",
+    "qrImage": "output/dirty-three/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "https://dirtythree.bandcamp.com/",
+    "spotify": "",
+    "instagram": "",
+    "website": "https://www.dirtythree.com/",
+    "buyMusic": "",
+    "merchandise": "",
+    "facebook": "https://www.facebook.com/dirtythreeband",
+    "youtube": "https://www.youtube.com/watch?v=f1J38FlDKxo"
+  },
+  "featuredVideo": {
+    "title": "\"Love changes everything II\" by Dirty Three",
+    "youtubeURL": "https://www.youtube.com/watch?v=P6VE8z8ieYc",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:44:18.660Z"
+  },
+  "analytics": {
+    "editionId": "dc_521347d705",
+    "pageIdentifier": "dc_521347d705:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_679962c9-1faa-4b03-ab44-e9f6b1443587",
+    "submittedAt": "2026-08-03T11:47:02.820Z",
+    "researchCompletedAt": "2026-08-03T11:47:02.888Z",
+    "editionCreatedAt": "2026-08-03T11:47:02.888Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_521347d705",
+    "tickerBio": "DIRTY THREE. AUSTRALIA. DIRTY THREE – WARREN ELLIS, MICK TURNER AND JIM WHITE – FORMED UP THEIR GUITAR DRUMS AND VIOLIN OR VIOLA IN 1992, AND HAVE CUT SIX ALBUMS AND TOURED OVER THE PLANET SINCE THEN. INDIVIDUALLY PURSUED COLLABORATIONS WITH OTHER ESTEEMED TALENTS HAVE LIMITED THEIR TIME TOGETHER LATELY, BUT THEY DO STILL GET TOGETHER TO RENEW THE VOW, REV THE ENGINES, PLAY SOME SHOWS, MAKE AN ALBUM. IT’S ALWAYS GREA",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "bandcamp-bcb40f82",
+      "youtube-3c473ec4",
+      "website-713fa735",
+      "facebook-5764cf4b",
+      "show-3e519523",
+      "show-c3a9ed88"
+    ],
+    "marquee": "Dirty Three",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://www.dirtythree.com/",
+    "linkSourceVerifiedAt": "2026-08-03T11:44:08.081Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "bandcamp-bcb40f82",
+        "sourceTitle": "Bandcamp",
+        "label": "Bandcamp",
+        "detail": "Listen and buy direct",
+        "url": "https://dirtythree.bandcamp.com/",
+        "platform": "website",
+        "kind": "bandcamp"
+      },
+      {
+        "id": "website-713fa735",
+        "sourceTitle": "Band Website",
+        "label": "Band Website",
+        "detail": "Visit the official website",
+        "url": "https://www.dirtythree.com/",
+        "platform": "website",
+        "kind": "website"
+      },
+      {
+        "id": "facebook-5764cf4b",
+        "sourceTitle": "Facebook",
+        "label": "Facebook",
+        "detail": "Follow the band",
+        "url": "https://www.facebook.com/dirtythreeband",
+        "platform": "facebook",
+        "kind": "facebook"
+      },
+      {
+        "id": "youtube-3c473ec4",
+        "sourceTitle": "YouTube",
+        "label": "YouTube",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/watch?v=f1J38FlDKxo",
+        "platform": "youtube",
+        "kind": "youtube"
+      },
+      {
+        "id": "show-3e519523",
+        "sourceTitle": "28 Oct Festival Antigel 2026",
+        "label": "28 Oct Festival Antigel 2026",
+        "detail": "Open the verified ticket destination",
+        "url": "https://antigel.ch/en/event/dirty-three",
+        "platform": "website",
+        "kind": "website"
+      },
+      {
+        "id": "show-c3a9ed88",
+        "sourceTitle": "02 Nov \"Denmark Copenhagen Vega\"",
+        "label": "02 Nov \"Denmark Copenhagen Vega\"",
+        "detail": "Open the verified ticket destination",
+        "url": "https://www.billetlugen.dk/event/21402750/?affiliate=SXV",
+        "platform": "website",
+        "kind": "website"
+      },
+      {
+        "id": "show-fa1fe73b",
+        "sourceTitle": "04 Nov \"DE Berlin Columbia Theatre\"",
+        "label": "04 Nov \"DE Berlin Columbia Theatre\"",
+        "detail": "Open the verified ticket destination",
+        "url": "https://www.eventim.de/event/dirty-three-columbia-theater-21409394",
+        "platform": "website",
+        "kind": "website"
+      },
+      {
+        "id": "show-dfc6ac1e",
+        "sourceTitle": "06 Nov \"DE Koln Gebäude 9\"",
+        "label": "06 Nov \"DE Koln Gebäude 9\"",
+        "detail": "Open the verified ticket destination",
+        "url": "https://www.eventim.de/event/dirty-three-gebaeude-9-21402556",
+        "platform": "website",
+        "kind": "website"
+      },
+      {
+        "id": "show-35607a8b",
+        "sourceTitle": "08 Nov \"Netherlands Utrecht Le Guess Who?\"",
+        "label": "Tickets",
+        "detail": "Open the verified ticket destination",
+        "url": "https://leguesswho.com/tickets",
+        "platform": "website",
+        "kind": "website"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://dirtythree.bandcamp.com/",
+      "paragraphs": [
+        "Dirty Three. Australia. Dirty Three – Warren Ellis, Mick Turner and Jim White – formed up their guitar drums and violin or viola in 1992, and have cut six albums and toured over the planet since then. Individually pursued collaborations with other esteemed talents have limited their time together lately, but they do still get together to renew the vow, rev the engines, play some shows, make an album. It’s always grea"
+      ]
+    }
+  }
+}

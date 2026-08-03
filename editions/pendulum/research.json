@@ -1,0 +1,232 @@
+{
+  "bandName": "Pendulum",
+  "slug": "pendulum",
+  "editionId": "dc_f889aff0d9",
+  "verifiedAt": "2026-08-03T11:33:35.815Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://pendulum.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:27.929Z",
+      "evidence": "The page identified Pendulum and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/pendulum/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:27.632Z",
+      "evidence": "The page identified Pendulum and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/7MqnCTCAX6SsIYYdJCQj9B",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:27.127Z",
+      "evidence": "The page identified Pendulum and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UCP2uxfZ9lfeqY2nkUkoPtvg",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:27.578Z",
+      "evidence": "The page identified Pendulum and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://pendulum.bandtshirts.com.au/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:28.164Z",
+      "evidence": "The page identified Pendulum and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:contact-88a08b27",
+      "url": "https://apps.shopify.com/form-builder-contact-form",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:28.718Z",
+      "evidence": "Contact resolved directly from an identity-matched artist-controlled source for Pendulum."
+    },
+    {
+      "destination": "contact",
+      "url": "https://apps.shopify.com/form-builder-contact-form",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:28.718Z",
+      "evidence": "Contact resolved directly from an identity-matched artist-controlled source for Pendulum."
+    },
+    {
+      "destination": "selection:website-6b9f1a01",
+      "url": "https://pendulum.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:27.929Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Pendulum."
+    },
+    {
+      "destination": "website",
+      "url": "https://pendulum.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:27.929Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Pendulum."
+    },
+    {
+      "destination": "selection:facebook-0229d24c",
+      "url": "https://www.facebook.com/pendulum/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:28.974Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Pendulum."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/pendulum/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:28.974Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Pendulum."
+    },
+    {
+      "destination": "selection:youtube-2e0f6424",
+      "url": "https://www.youtube.com/channel/UCP2uxfZ9lfeqY2nkUkoPtvg",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:27.578Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Pendulum."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/channel/UCP2uxfZ9lfeqY2nkUkoPtvg",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:27.578Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Pendulum."
+    },
+    {
+      "destination": "selection:instagram-fb428b37",
+      "url": "https://www.instagram.com/pendulum/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:27.632Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Pendulum."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/pendulum/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:27.632Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Pendulum."
+    },
+    {
+      "destination": "selection:spotify-90baa6a5",
+      "url": "https://open.spotify.com/artist/7MqnCTCAX6SsIYYdJCQj9B",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:28.506Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Pendulum."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/7MqnCTCAX6SsIYYdJCQj9B",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:28.506Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Pendulum."
+    },
+    {
+      "destination": "selection:merchandise-bd5e5d71",
+      "url": "https://pendulum.bandtshirts.com.au/shop/pendulum",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:28.351Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Pendulum."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://pendulum.bandtshirts.com.au/shop/pendulum",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:28.351Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Pendulum."
+    },
+    {
+      "destination": "selection:buy_music-d44abc51",
+      "url": "https://pendulum.com/pages/releases",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:29.101Z",
+      "evidence": "Buy Music resolved directly and its destination metadata matched Pendulum."
+    },
+    {
+      "destination": "buyMusic",
+      "url": "https://pendulum.com/pages/releases",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:29.101Z",
+      "evidence": "Buy Music resolved directly and its destination metadata matched Pendulum."
+    },
+    {
+      "destination": "selection:show-54a7189b",
+      "url": "https://www.livenation.co.uk/pendulum-tickets-adp2021",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:31.792Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Pendulum."
+    },
+    {
+      "destination": "selection:contact-d1a740e1",
+      "url": "https://pendulum.com/pages/contact-us",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:30.651Z",
+      "evidence": "Contact resolved directly and its destination metadata matched Pendulum."
+    },
+    {
+      "destination": "contact",
+      "url": "https://pendulum.com/pages/contact-us",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:30.651Z",
+      "evidence": "Contact resolved directly and its destination metadata matched Pendulum."
+    },
+    {
+      "destination": "selection:show-fff4ce8b",
+      "url": "https://pendulum.com/pages/tours",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:36.211Z",
+      "evidence": "Tickets resolved directly and its destination metadata matched Pendulum."
+    },
+    {
+      "destination": "biography",
+      "url": "https://pendulum.com/",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:36.982Z",
+      "evidence": "The official source supplied the concise biography text used by the Pendulum ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=xbgpT2jMBEY",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:36.617Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Pendulum video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://pendulum.com/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:27.929Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Pendulum."
+    }
+  ]
+}

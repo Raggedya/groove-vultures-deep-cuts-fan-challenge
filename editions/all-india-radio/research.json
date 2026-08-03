@@ -1,0 +1,192 @@
+{
+  "bandName": "All India Radio",
+  "slug": "all-india-radio",
+  "editionId": "dc_37af872e87",
+  "verifiedAt": "2026-08-03T11:29:15.524Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://allindiaradio.com.au/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:34.808Z",
+      "evidence": "The page identified All India Radio and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://allindiaradio.bandcamp.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:34.211Z",
+      "evidence": "The page identified All India Radio and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/allindiaradioband/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:34.322Z",
+      "evidence": "The page identified All India Radio and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UCS6HXfBcep7FmK1MQbejbGQ",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:34.479Z",
+      "evidence": "The page identified All India Radio and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://allindiaradio.com.au/?s={search_term_string}",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:35.586Z",
+      "evidence": "The page identified All India Radio and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.allindiaradioband.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:36.065Z",
+      "evidence": "The page identified All India Radio and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:website-024fd227",
+      "url": "https://allindiaradio.com.au/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:34.808Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched All India Radio."
+    },
+    {
+      "destination": "website",
+      "url": "https://allindiaradio.com.au/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:34.808Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched All India Radio."
+    },
+    {
+      "destination": "selection:contact-a4fde911",
+      "url": "https://allindiaradio.com.au/contact-us/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:37.667Z",
+      "evidence": "Contact resolved directly and its destination metadata matched All India Radio."
+    },
+    {
+      "destination": "contact",
+      "url": "https://allindiaradio.com.au/contact-us/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:37.667Z",
+      "evidence": "Contact resolved directly and its destination metadata matched All India Radio."
+    },
+    {
+      "destination": "selection:bandcamp-dbb5841f",
+      "url": "https://bandcamp.com/?from=menubar_logo_logged_out",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:36.647Z",
+      "evidence": "Bandcamp resolved directly from an identity-matched artist-controlled source for All India Radio."
+    },
+    {
+      "destination": "bandcamp",
+      "url": "https://bandcamp.com/?from=menubar_logo_logged_out",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:36.647Z",
+      "evidence": "Bandcamp resolved directly from an identity-matched artist-controlled source for All India Radio."
+    },
+    {
+      "destination": "selection:youtube-13847ba9",
+      "url": "https://www.youtube.com/@allindiaradioband",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:42.107Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched All India Radio."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/@allindiaradioband",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:42.107Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched All India Radio."
+    },
+    {
+      "destination": "selection:spotify-321860e9",
+      "url": "https://open.spotify.com/artist/6abfAcMcC3hYJcaxzLeiCW",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:41.808Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched All India Radio."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/6abfAcMcC3hYJcaxzLeiCW",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:41.808Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched All India Radio."
+    },
+    {
+      "destination": "selection:instagram-92305fcc",
+      "url": "https://www.instagram.com/allindiaradioband",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:42.722Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched All India Radio."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/allindiaradioband",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:42.722Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched All India Radio."
+    },
+    {
+      "destination": "selection:facebook-60c4e093",
+      "url": "https://www.facebook.com/allindiaradioband",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:42.915Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched All India Radio."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/allindiaradioband",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:42.915Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched All India Radio."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.instagram.com/allindiaradioband/",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:43.582Z",
+      "evidence": "The official source supplied the concise biography text used by the All India Radio ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=o50suaeGdy0",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:43.293Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured All India Radio video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://allindiaradio.com.au/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:34.808Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for All India Radio."
+    }
+  ]
+}

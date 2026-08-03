@@ -1,0 +1,162 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "The Superjesus",
+  "editionTitle": "The Superjesus",
+  "description": "The Superjesus are an Australian rock band formed in Adelaide in late 1994. Their debut album, Sumo, peaked at No. 2 on the ARIA Albums Chart, their second album, Jet Age reached No. 5...",
+  "discovery": {
+    "bio": "The Superjesus are an Australian rock band formed in Adelaide in late 1994. Their debut album, Sumo, peaked at No. 2 on the ARIA Albums Chart, their second album, Jet Age reached No. 5...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "the-superjesus",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_1a405acafc",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/the-superjesus/instagram-discovery.png",
+    "qrImage": "output/the-superjesus/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "",
+    "spotify": "https://open.spotify.com/artist/7o9kdTx6RmO12iAVVsNehd",
+    "instagram": "",
+    "website": "https://www.thesuperjesus.com/",
+    "buyMusic": "",
+    "merchandise": "https://www.thesuperjesus.com/merch",
+    "facebook": "",
+    "youtube": "https://www.youtube.com/channel/UClPdB4gBde9T4pYbK6cHavA"
+  },
+  "featuredVideo": {
+    "title": "THE SUPERJESUS - 'DIAMONDS' OFFICIAL VIDEO",
+    "youtubeURL": "https://www.youtube.com/watch?v=Xdyt3KKZaOY",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:33:34.219Z"
+  },
+  "analytics": {
+    "editionId": "dc_1a405acafc",
+    "pageIdentifier": "dc_1a405acafc:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_423b826e-b7d9-4864-ae40-cce77655f6db",
+    "submittedAt": "2026-08-03T11:29:31.412Z",
+    "researchCompletedAt": "2026-08-03T11:33:40.821Z",
+    "editionCreatedAt": "2026-08-03T11:33:40.821Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_1a405acafc",
+    "tickerBio": "THE SUPERJESUS ARE AN AUSTRALIAN ROCK BAND FORMED IN ADELAIDE IN LATE 1994. THEIR DEBUT ALBUM, SUMO, PEAKED AT NO. 2 ON THE ARIA ALBUMS CHART, THEIR SECOND ALBUM, JET AGE REACHED NO. 5 AND THEIR THIRD ALBUM, ROCK MUSIC PEAKED AT NO. 14. THEIR TOP 40 SINGLES INCLUDE \"DOWN AGAIN\", \"NOW AND THEN\", \"GRAVITY\" AND \"STICK TOGETHER\". AT THE ARIA MUSIC AWARDS OF 1997 THEY WON BEST NEW TALENT FOR EIGHT STEP RAIL AND BREAKTHROU",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "spotify-b03dc4c1",
+      "youtube-ca22c7de",
+      "website-696df8e3",
+      "merchandise-d41f24a7",
+      "contact-7fb003d2"
+    ],
+    "marquee": "The Superjesus",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://www.thesuperjesus.com/",
+    "linkSourceVerifiedAt": "2026-08-03T11:33:28.078Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "website-696df8e3",
+        "sourceTitle": "Skip to Content",
+        "label": "Band Website",
+        "detail": "Visit the official website",
+        "url": "https://www.thesuperjesus.com/",
+        "platform": "website",
+        "kind": "website"
+      },
+      {
+        "id": "merchandise-d41f24a7",
+        "sourceTitle": "MERCH",
+        "label": "MERCH",
+        "detail": "Official band merchandise",
+        "url": "https://www.thesuperjesus.com/merch",
+        "platform": "merchandise",
+        "kind": "merchandise"
+      },
+      {
+        "id": "contact-7fb003d2",
+        "sourceTitle": "Contact",
+        "label": "Contact",
+        "detail": "Official band enquiries",
+        "url": "https://www.thesuperjesus.com/contact",
+        "platform": "website",
+        "kind": "contact"
+      },
+      {
+        "id": "youtube-ca22c7de",
+        "sourceTitle": "YouTube",
+        "label": "YouTube",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/channel/UClPdB4gBde9T4pYbK6cHavA",
+        "platform": "youtube",
+        "kind": "youtube"
+      },
+      {
+        "id": "spotify-b03dc4c1",
+        "sourceTitle": "Spotify",
+        "label": "Spotify",
+        "detail": "Listen on Spotify",
+        "url": "https://open.spotify.com/artist/7o9kdTx6RmO12iAVVsNehd",
+        "platform": "website",
+        "kind": "spotify"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://www.youtube.com/channel/UCGuheChNiyScekev57-we0w",
+      "paragraphs": [
+        "The Superjesus are an Australian rock band formed in Adelaide in late 1994. Their debut album, Sumo, peaked at No. 2 on the ARIA Albums Chart, their second album, Jet Age reached No. 5 and their third album, Rock Music peaked at No. 14. Their top 40 singles include \"Down Again\", \"Now and Then\", \"Gravity\" and \"Stick Together\". At the ARIA Music Awards of 1997 they won Best New Talent for Eight Step Rail and Breakthrou"
+      ]
+    }
+  }
+}

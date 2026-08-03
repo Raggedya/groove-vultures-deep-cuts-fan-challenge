@@ -1,0 +1,199 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Jet",
+  "editionTitle": "Jet",
+  "description": "@jet.theband has been a member of Linktree for 5 years and joined in February 2021. The social media accounts linked to from @jet.theband are: • Instagram • TikTok • Spotify • YouTube •...",
+  "discovery": {
+    "bio": "@jet.theband has been a member of Linktree for 5 years and joined in February 2021. The social media accounts linked to from @jet.theband are: • Instagram • TikTok • Spotify • YouTube •...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "jet",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_5394bffe4e",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/jet/instagram-discovery.png",
+    "qrImage": "output/jet/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "",
+    "spotify": "https://open.spotify.com/artist/5ypxebeHEIXjMtJb17uJlI",
+    "instagram": "https://www.instagram.com/jet.theband",
+    "website": "https://www.jetofficial.com/",
+    "buyMusic": "",
+    "merchandise": "https://sound-merch.com.au/collections/jet",
+    "facebook": "https://www.facebook.com/help/instagram/261704639352628",
+    "youtube": "https://www.youtube.com/channel/UC5vZ92ZTaMqw7lLFDvFNu0A"
+  },
+  "featuredVideo": {
+    "title": "Jet - On Tour with Lenny Kravitz (Australian Tour Highlights - 2025)",
+    "youtubeURL": "https://www.youtube.com/watch?v=Ojm-FXGacM0",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:22:24.066Z"
+  },
+  "analytics": {
+    "editionId": "dc_5394bffe4e",
+    "pageIdentifier": "dc_5394bffe4e:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_363cc1a3-96a7-4de8-994c-088ca306f4e9",
+    "submittedAt": "2026-08-03T11:28:57.339Z",
+    "researchCompletedAt": "2026-08-03T11:28:57.452Z",
+    "editionCreatedAt": "2026-08-03T11:28:57.452Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_5394bffe4e",
+    "tickerBio": "@JET.THEBAND HAS BEEN A MEMBER OF LINKTREE FOR 5 YEARS AND JOINED IN FEBRUARY 2021. THE SOCIAL MEDIA ACCOUNTS LINKED TO FROM @JET.THEBAND ARE: • INSTAGRAM • TIKTOK • SPOTIFY • YOUTUBE • APPLE MUSIC BESIDES SOCIAL MEDIA ACCOUNTS, JET.THEBAND HAS POPULATED THEIR SITE WITH: • TICKETS: JET | NIGHT AT THE BARRACKS • ALL UPCOMING TOUR DATES • SIGN UP TO THE MAILING LIST • MERCH • TOUR DATES & TICKETS • BUY GET BORN - ITUNE",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "spotify-513c8446",
+      "youtube-68c97448",
+      "instagram-60a1cdfb",
+      "tiktok-56468a84",
+      "website-7403d08f",
+      "merchandise-c8f9a34e"
+    ],
+    "marquee": "Jet",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://www.jetofficial.com/",
+    "linkSourceVerifiedAt": "2026-08-03T11:22:15.505Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "website-7403d08f",
+        "sourceTitle": "Skip to Content",
+        "label": "Band Website",
+        "detail": "Visit the official website",
+        "url": "https://www.jetofficial.com/",
+        "platform": "website",
+        "kind": "website"
+      },
+      {
+        "id": "newsletter-2ebb2092",
+        "sourceTitle": "SUBSCRIBE",
+        "label": "SUBSCRIBE",
+        "detail": "Join the official mailing list",
+        "url": "https://drop.cobrand.com/d/Jet/updates",
+        "platform": "website",
+        "kind": "newsletter"
+      },
+      {
+        "id": "merchandise-c8f9a34e",
+        "sourceTitle": "MERCH",
+        "label": "MERCH",
+        "detail": "Official band merchandise",
+        "url": "https://sound-merch.com.au/collections/jet",
+        "platform": "merchandise",
+        "kind": "merchandise"
+      },
+      {
+        "id": "contact-b57bfe24",
+        "sourceTitle": "CONTACT",
+        "label": "CONTACT",
+        "detail": "Official band enquiries",
+        "url": "https://www.jetofficial.com/contact",
+        "platform": "website",
+        "kind": "contact"
+      },
+      {
+        "id": "instagram-60a1cdfb",
+        "sourceTitle": "Instagram",
+        "label": "Instagram",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/jet.theband",
+        "platform": "instagram",
+        "kind": "instagram"
+      },
+      {
+        "id": "tiktok-56468a84",
+        "sourceTitle": "TikTok",
+        "label": "TikTok",
+        "detail": "Official band clips",
+        "url": "https://www.tiktok.com/@jet.theband?is_from_webapp=1&sender_device=pc",
+        "platform": "website",
+        "kind": "tiktok"
+      },
+      {
+        "id": "youtube-68c97448",
+        "sourceTitle": "YouTube",
+        "label": "YouTube",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/channel/UC5vZ92ZTaMqw7lLFDvFNu0A",
+        "platform": "youtube",
+        "kind": "youtube"
+      },
+      {
+        "id": "spotify-513c8446",
+        "sourceTitle": "Spotify",
+        "label": "Spotify",
+        "detail": "Listen on Spotify",
+        "url": "https://open.spotify.com/artist/5ypxebeHEIXjMtJb17uJlI",
+        "platform": "website",
+        "kind": "spotify"
+      },
+      {
+        "id": "facebook-170ce6c6",
+        "sourceTitle": "Contact Uploading & Non-Users",
+        "label": "Contact Uploading & Non-Users",
+        "detail": "Follow the band",
+        "url": "https://www.facebook.com/help/instagram/261704639352628",
+        "platform": "facebook",
+        "kind": "facebook"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://linktr.ee/jet.theband",
+      "paragraphs": [
+        "@jet.theband has been a member of Linktree for 5 years and joined in February 2021. The social media accounts linked to from @jet.theband are: • Instagram • TikTok • Spotify • YouTube • Apple Music Besides social media accounts, jet.theband has populated their site with: • Tickets: JET | Night At The Barracks • All Upcoming Tour Dates • Sign up to the Mailing List • Merch • Tour Dates & Tickets • Buy Get Born - iTune"
+      ]
+    }
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "bandName": "67 Special",
+  "slug": "67-special",
+  "editionId": "dc_d4f8e7527d",
+  "verifiedAt": "2026-08-03T11:29:14.696Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://67special.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:31.911Z",
+      "evidence": "The page identified 67 Special and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.facebook.com/people/67-Special/100063511633450/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:31.717Z",
+      "evidence": "The page identified 67 Special and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/7DJnKtwXXGcdLsJ1y7357G",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:30.729Z",
+      "evidence": "The page identified 67 Special and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UC4IvBdpV1s2sRnPNuRRezsg",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:30.642Z",
+      "evidence": "The page identified 67 Special and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://en-au.67special.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:32.789Z",
+      "evidence": "The page identified 67 Special and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://67special.com/?s={search_term_string}",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:31.909Z",
+      "evidence": "The page identified 67 Special and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:website-0a2d3a57",
+      "url": "https://67special.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:31.911Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched 67 Special."
+    },
+    {
+      "destination": "website",
+      "url": "https://67special.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:31.911Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched 67 Special."
+    },
+    {
+      "destination": "selection:facebook-69631ff9",
+      "url": "https://www.facebook.com/people/67-Special/100063511633450/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:33.432Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched 67 Special."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/people/67-Special/100063511633450/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:33.432Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched 67 Special."
+    },
+    {
+      "destination": "selection:youtube-3c473ec4",
+      "url": "https://www.youtube.com/watch?v=f1J38FlDKxo",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:35.494Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched 67 Special."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/watch?v=f1J38FlDKxo",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:35.494Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched 67 Special."
+    },
+    {
+      "destination": "selection:spotify-ad70f812",
+      "url": "https://open.spotify.com/artist/5OG8p1O5o1UqJvtB5bccp4",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:37.084Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched 67 Special."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/5OG8p1O5o1UqJvtB5bccp4",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:37.084Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched 67 Special."
+    },
+    {
+      "destination": "biography",
+      "url": "https://en-au.67special.com/",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:41.098Z",
+      "evidence": "The official source supplied the concise biography text used by the 67 Special ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=8YhfBsvneVo",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:40.653Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured 67 Special video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://67special.com/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:31.911Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for 67 Special."
+    }
+  ]
+}

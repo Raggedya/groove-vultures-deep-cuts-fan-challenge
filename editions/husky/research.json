@@ -1,0 +1,176 @@
+{
+  "bandName": "Husky",
+  "slug": "husky",
+  "editionId": "dc_9d8d788a17",
+  "verifiedAt": "2026-08-03T11:29:20.788Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://www.huskysongs.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:30.677Z",
+      "evidence": "The page identified Husky and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/huskysongs/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:30.640Z",
+      "evidence": "The page identified Husky and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/1BQ5NhlyhxAO1CdRYGHmQe",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:30.288Z",
+      "evidence": "The page identified Husky and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://linktr.ee/huskysongs",
+      "sourceType": "official artist-controlled link hub",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:30.863Z",
+      "evidence": "The page identified Husky and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:website-0df09c17",
+      "url": "https://www.huskysongs.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:30.677Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Husky."
+    },
+    {
+      "destination": "website",
+      "url": "https://www.huskysongs.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:30.677Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Husky."
+    },
+    {
+      "destination": "selection:merchandise-4b2bb1b9",
+      "url": "https://www.musicglue.com/husky/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:32.514Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Husky."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://www.musicglue.com/husky/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:32.514Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Husky."
+    },
+    {
+      "destination": "selection:contact-d4ac8d4c",
+      "url": "https://www.huskysongs.com/contact",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:31.369Z",
+      "evidence": "Contact resolved directly and its destination metadata matched Husky."
+    },
+    {
+      "destination": "contact",
+      "url": "https://www.huskysongs.com/contact",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:31.369Z",
+      "evidence": "Contact resolved directly and its destination metadata matched Husky."
+    },
+    {
+      "destination": "selection:facebook-bc32a06c",
+      "url": "https://www.facebook.com/huskysongs/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:31.617Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Husky."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/huskysongs/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:31.617Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Husky."
+    },
+    {
+      "destination": "selection:youtube-16fd1d85",
+      "url": "https://www.youtube.com/channel/UC_M1aJ2RvGfS2vYZX_QmN4Q",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:31.503Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Husky."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/channel/UC_M1aJ2RvGfS2vYZX_QmN4Q",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:31.503Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Husky."
+    },
+    {
+      "destination": "selection:spotify-f2ad71a7",
+      "url": "https://open.spotify.com/artist/47nuMLurQsLP1gLK7gJtis",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:31.679Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Husky."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/47nuMLurQsLP1gLK7gJtis",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:31.679Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Husky."
+    },
+    {
+      "destination": "selection:instagram-b81bd675",
+      "url": "https://www.instagram.com/accounts/login/?next=%2Fhuskysongs%2F&source=desktop_nav",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:32.264Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Husky."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/accounts/login/?next=%2Fhuskysongs%2F&source=desktop_nav",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:32.264Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Husky."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.instagram.com/huskysongs/",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:37.982Z",
+      "evidence": "The official source supplied the concise biography text used by the Husky ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=CrwqEhLQL6g",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:37.668Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Husky video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://www.huskysongs.com/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:26:30.677Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Husky."
+    }
+  ]
+}

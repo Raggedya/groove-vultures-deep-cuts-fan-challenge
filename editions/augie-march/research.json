@@ -1,0 +1,216 @@
+{
+  "bandName": "Augie March",
+  "slug": "augie-march",
+  "editionId": "dc_09e7cac126",
+  "verifiedAt": "2026-08-03T11:29:12.568Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://augiemarch.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:16.848Z",
+      "evidence": "The page identified Augie March and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.facebook.com/augiemarch",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:15.979Z",
+      "evidence": "The page identified Augie March and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/0vntgse6gPZfthoW8kTTlR",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:15.359Z",
+      "evidence": "The page identified Augie March and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UCBEJePBndj90d4IXiZP3V_w",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:15.523Z",
+      "evidence": "The page identified Augie March and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://augie-march.squarespace.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:17.720Z",
+      "evidence": "The page identified Augie March and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:website-7fe015f1",
+      "url": "https://augiemarch.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:16.848Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Augie March."
+    },
+    {
+      "destination": "website",
+      "url": "https://augiemarch.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:16.848Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Augie March."
+    },
+    {
+      "destination": "selection:merchandise-dfef1be4",
+      "url": "https://augiemarch.com/shop",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:17.874Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Augie March."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://augiemarch.com/shop",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:17.874Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Augie March."
+    },
+    {
+      "destination": "selection:bandcamp-c7eb5b0e",
+      "url": "https://augiemarch.bandcamp.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:18.315Z",
+      "evidence": "Bandcamp resolved directly and its destination metadata matched Augie March."
+    },
+    {
+      "destination": "bandcamp",
+      "url": "https://augiemarch.bandcamp.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:18.315Z",
+      "evidence": "Bandcamp resolved directly and its destination metadata matched Augie March."
+    },
+    {
+      "destination": "selection:facebook-1e5a5cb1",
+      "url": "https://www.facebook.com/groups/augiemarchforum/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:18.602Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Augie March."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/groups/augiemarchforum/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:18.602Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Augie March."
+    },
+    {
+      "destination": "selection:contact-3b6ec93f",
+      "url": "https://augiemarch.com/contacts",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:18.175Z",
+      "evidence": "Contact resolved directly and its destination metadata matched Augie March."
+    },
+    {
+      "destination": "contact",
+      "url": "https://augiemarch.com/contacts",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:18.175Z",
+      "evidence": "Contact resolved directly and its destination metadata matched Augie March."
+    },
+    {
+      "destination": "selection:buy_music-c3852d57",
+      "url": "https://augiemarch.com/other-releases",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:17.989Z",
+      "evidence": "Buy Music resolved directly and its destination metadata matched Augie March."
+    },
+    {
+      "destination": "buyMusic",
+      "url": "https://augiemarch.com/other-releases",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:17.989Z",
+      "evidence": "Buy Music resolved directly and its destination metadata matched Augie March."
+    },
+    {
+      "destination": "selection:youtube-941669bc",
+      "url": "https://www.youtube.com/user/augiemarch",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:18.791Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Augie March."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/user/augiemarch",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:18.791Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Augie March."
+    },
+    {
+      "destination": "selection:spotify-fc4df10a",
+      "url": "https://open.spotify.com/artist/0vntgse6gPZfthoW8kTTlR",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:15.359Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Augie March."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/0vntgse6gPZfthoW8kTTlR",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:15.359Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Augie March."
+    },
+    {
+      "destination": "selection:instagram-afb37fb3",
+      "url": "https://www.instagram.com/augiemarchmusic/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:19.326Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Augie March."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/augiemarchmusic/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:19.326Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Augie March."
+    },
+    {
+      "destination": "biography",
+      "url": "https://augiemarch.com/",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:24.996Z",
+      "evidence": "The official source supplied the concise biography text used by the Augie March ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=yvZgXu8LmFc",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:24.540Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Augie March video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://augiemarch.com/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:25:16.848Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Augie March."
+    }
+  ]
+}

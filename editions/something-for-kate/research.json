@@ -1,0 +1,136 @@
+{
+  "bandName": "Something for Kate",
+  "slug": "something-for-kate",
+  "editionId": "dc_0c663efc79",
+  "verifiedAt": "2026-08-03T11:29:27.573Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://somethingforkate.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:54.844Z",
+      "evidence": "The page identified Something for Kate and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/somethingforkate/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:55.256Z",
+      "evidence": "The page identified Something for Kate and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UCclnS4HmALdz0sYlMAAwDkA",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:55.076Z",
+      "evidence": "The page identified Something for Kate and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://somethingforkate.com/?s={search_term_string}",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:55.578Z",
+      "evidence": "The page identified Something for Kate and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://linktr.ee/somethingforkate",
+      "sourceType": "official artist-controlled link hub",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:57.805Z",
+      "evidence": "The page identified Something for Kate and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:website-6355f212",
+      "url": "https://somethingforkate.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:54.844Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Something for Kate."
+    },
+    {
+      "destination": "website",
+      "url": "https://somethingforkate.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:54.844Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Something for Kate."
+    },
+    {
+      "destination": "selection:facebook-b4a5edec",
+      "url": "https://www.facebook.com/sfkband/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:59.090Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Something for Kate."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/sfkband/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:59.090Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Something for Kate."
+    },
+    {
+      "destination": "selection:instagram-69a535d7",
+      "url": "https://www.instagram.com/somethingforkate/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:58.800Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Something for Kate."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/somethingforkate/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:58.800Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Something for Kate."
+    },
+    {
+      "destination": "selection:youtube-fa8eb6ff",
+      "url": "https://www.youtube.com/user/sfkofficial",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:58.715Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Something for Kate."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/user/sfkofficial",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:58.715Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Something for Kate."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.youtube.com/channel/UCclnS4HmALdz0sYlMAAwDkA",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:06.255Z",
+      "evidence": "The official source supplied the concise biography text used by the Something for Kate ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=DeSc12aLLn0",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:28:05.847Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Something for Kate video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://somethingforkate.com/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:27:54.844Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Something for Kate."
+    }
+  ]
+}

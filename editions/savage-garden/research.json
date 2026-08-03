@@ -1,0 +1,120 @@
+{
+  "bandName": "Savage Garden",
+  "slug": "savage-garden",
+  "editionId": "dc_e65763b78b",
+  "verifiedAt": "2026-08-03T11:54:14.498Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/3NRFinRTEqUCfaTTZmk8ek",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:52:04.164Z",
+      "evidence": "The page identified Savage Garden and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Fsavagegarden",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:52:04.775Z",
+      "evidence": "The page identified Savage Garden and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UCocAlqGOU7BqzKc87qx6WUg",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:52:04.504Z",
+      "evidence": "The page identified Savage Garden and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:spotify-9ceda04c",
+      "url": "https://open.spotify.com/artist/3NRFinRTEqUCfaTTZmk8ek",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:52:04.164Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Savage Garden."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/3NRFinRTEqUCfaTTZmk8ek",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:52:04.164Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Savage Garden."
+    },
+    {
+      "destination": "selection:youtube-b614c027",
+      "url": "https://www.youtube.com/channel/UCocAlqGOU7BqzKc87qx6WUg",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:52:04.504Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Savage Garden."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/channel/UCocAlqGOU7BqzKc87qx6WUg",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:52:04.504Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Savage Garden."
+    },
+    {
+      "destination": "selection:merchandise-9c97a4f7",
+      "url": "https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.meta.com%2F&h=AUD00RLSnED-cIxbDxOvtmwk9Jun4lF18nL7hlEsn6ziMA_0gAgY4dNLFeGBtn7_QEg2uHgkQT3QUFnOGGjWPWOv9JnG3utilKTI8B-Po7MImB10pVs36IUII2JUfg1ywOga9Enn39cesWxrJsY6ji-7X46yFE1r",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:52:08.244Z",
+      "evidence": "Buy Merch resolved directly from an identity-matched artist-controlled source for Savage Garden."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.meta.com%2F&h=AUD00RLSnED-cIxbDxOvtmwk9Jun4lF18nL7hlEsn6ziMA_0gAgY4dNLFeGBtn7_QEg2uHgkQT3QUFnOGGjWPWOv9JnG3utilKTI8B-Po7MImB10pVs36IUII2JUfg1ywOga9Enn39cesWxrJsY6ji-7X46yFE1r",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:52:08.244Z",
+      "evidence": "Buy Merch resolved directly from an identity-matched artist-controlled source for Savage Garden."
+    },
+    {
+      "destination": "selection:facebook-0402af7d",
+      "url": "https://www.facebook.com/lite/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:52:08.746Z",
+      "evidence": "Facebook resolved directly from an identity-matched artist-controlled source for Savage Garden."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/lite/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:52:08.746Z",
+      "evidence": "Facebook resolved directly from an identity-matched artist-controlled source for Savage Garden."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.youtube.com/channel/UCocAlqGOU7BqzKc87qx6WUg",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:52:13.055Z",
+      "evidence": "The official source supplied the concise biography text used by the Savage Garden ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=H5zcfhrBR3I",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:52:12.640Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Savage Garden video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://open.spotify.com/artist/3NRFinRTEqUCfaTTZmk8ek",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:52:04.164Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Savage Garden."
+    }
+  ]
+}

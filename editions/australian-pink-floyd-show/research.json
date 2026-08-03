@@ -1,0 +1,128 @@
+{
+  "bandName": "Australian Pink Floyd Show",
+  "slug": "australian-pink-floyd-show",
+  "editionId": "dc_0b0dc0187e",
+  "verifiedAt": "2026-08-03T11:28:54.285Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://www.aussiefloyd.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:20:56.988Z",
+      "evidence": "The page identified Australian Pink Floyd Show and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.facebook.com/australianpinkfloyd",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:20:55.383Z",
+      "evidence": "The page identified Australian Pink Floyd Show and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UCt2opuko_zFANT0Q5qfFUZw",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:20:55.123Z",
+      "evidence": "The page identified Australian Pink Floyd Show and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:contact-a453b86b",
+      "url": "https://www.aussiefloyd.com/contact",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:20:57.686Z",
+      "evidence": "Contact resolved directly and its destination metadata matched Australian Pink Floyd Show."
+    },
+    {
+      "destination": "contact",
+      "url": "https://www.aussiefloyd.com/contact",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:20:57.686Z",
+      "evidence": "Contact resolved directly and its destination metadata matched Australian Pink Floyd Show."
+    },
+    {
+      "destination": "selection:newsletter-4b04ede3",
+      "url": "https://www.aussiefloyd.com/mailing-list",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:20:58.842Z",
+      "evidence": "Newsletter resolved directly and its destination metadata matched Australian Pink Floyd Show."
+    },
+    {
+      "destination": "selection:facebook-f529405f",
+      "url": "https://www.facebook.com/australianpinkfloyd",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:20:55.383Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Australian Pink Floyd Show."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/australianpinkfloyd",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:20:55.383Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Australian Pink Floyd Show."
+    },
+    {
+      "destination": "selection:youtube-8f2c2acd",
+      "url": "https://www.youtube.com/aussiefloyd",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:20:57.658Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Australian Pink Floyd Show."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/aussiefloyd",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:20:57.658Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Australian Pink Floyd Show."
+    },
+    {
+      "destination": "selection:instagram-ab497781",
+      "url": "https://www.instagram.com/australianpinkfloyd",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:20:57.764Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Australian Pink Floyd Show."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/australianpinkfloyd",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:20:57.764Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Australian Pink Floyd Show."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.aussiefloyd.com/",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:10.806Z",
+      "evidence": "The official source supplied the concise biography text used by the Australian Pink Floyd Show ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=Mp-LMEFnYLw",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:21:10.260Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Australian Pink Floyd Show video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://www.aussiefloyd.com/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:20:56.988Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Australian Pink Floyd Show."
+    }
+  ]
+}

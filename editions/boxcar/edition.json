@@ -1,0 +1,162 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Boxcar",
+  "editionTitle": "Boxcar",
+  "description": "Our Sea Fever 🇦🇺 Edition LP is trending on the venerable Side-Line music news/reviews site. And so it should🤘such an awesome record - link to the LP in our profile. Be sure to sign up...",
+  "discovery": {
+    "bio": "Our Sea Fever 🇦🇺 Edition LP is trending on the venerable Side-Line music news/reviews site. And so it should🤘such an awesome record - link to the LP in our profile. Be sure to sign up...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "boxcar",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_e8324accf9",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/boxcar/instagram-discovery.png",
+    "qrImage": "output/boxcar/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "https://efficientspace.bandcamp.com/album/volition-cuts-vol-1",
+    "spotify": "https://open.spotify.com/artist/7yK2JyOXdE696clwhEyWR0",
+    "instagram": "https://www.instagram.com/boxcar909/",
+    "website": "https://www.boxcar.com.au/",
+    "buyMusic": "",
+    "merchandise": "",
+    "facebook": "",
+    "youtube": "https://www.youtube.com/channel/UCYUh7jqIqSQvY7eoAHVAVGg"
+  },
+  "featuredVideo": {
+    "title": "Boxcar Bytes presents \"9Lives for Cherry Audio Octave Cat\" (v2.0)",
+    "youtubeURL": "https://www.youtube.com/watch?v=yth2rhx0RE4",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:53:20.580Z"
+  },
+  "analytics": {
+    "editionId": "dc_e8324accf9",
+    "pageIdentifier": "dc_e8324accf9:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_4ef96444-f9fa-4806-9ed6-a8b83a109403",
+    "submittedAt": "2026-08-03T11:54:15.134Z",
+    "researchCompletedAt": "2026-08-03T11:54:15.193Z",
+    "editionCreatedAt": "2026-08-03T11:54:15.193Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_e8324accf9",
+    "tickerBio": "OUR SEA FEVER 🇦🇺 EDITION LP IS TRENDING ON THE VENERABLE SIDE-LINE MUSIC NEWS/REVIEWS SITE. AND SO IT SHOULD🤘SUCH AN AWESOME RECORD - LINK TO THE LP IN OUR PROFILE. BE SURE TO SIGN UP TO SIDE-LINE’S NEWSLETTER. @SIDELINEMAG @SEAFEVERBAND @BOXCAR909 @VISIONFOUR5 @DHARMABUFFER @HEDFOG_MUSIC @FAIRBROTHERINOZ @TOMCHAPMAN01 @PHILIPCUNNINGHAM8 @EBARLOW0 @BETHJCASSIDY @IWANGRONOW",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "bandcamp-f064c435",
+      "spotify-b78ccb02",
+      "youtube-cf5b9944",
+      "instagram-8c2d6805",
+      "website-7de92f6d"
+    ],
+    "marquee": "Boxcar",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://www.boxcar.com.au/",
+    "linkSourceVerifiedAt": "2026-08-03T11:53:11.391Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "youtube-cf5b9944",
+        "sourceTitle": "YouTube",
+        "label": "YouTube",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/channel/UCYUh7jqIqSQvY7eoAHVAVGg",
+        "platform": "youtube",
+        "kind": "youtube"
+      },
+      {
+        "id": "instagram-8c2d6805",
+        "sourceTitle": "Instagram",
+        "label": "Instagram",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/boxcar909/",
+        "platform": "instagram",
+        "kind": "instagram"
+      },
+      {
+        "id": "website-7de92f6d",
+        "sourceTitle": "Band Website",
+        "label": "Band Website",
+        "detail": "Visit the official website",
+        "url": "https://www.boxcar.com.au/",
+        "platform": "website",
+        "kind": "website"
+      },
+      {
+        "id": "bandcamp-f064c435",
+        "sourceTitle": "Volition Cuts Vol. 1",
+        "label": "Volition Cuts Vol. 1",
+        "detail": "Listen and buy direct",
+        "url": "https://efficientspace.bandcamp.com/album/volition-cuts-vol-1",
+        "platform": "website",
+        "kind": "bandcamp"
+      },
+      {
+        "id": "spotify-b78ccb02",
+        "sourceTitle": "Spotify",
+        "label": "Spotify",
+        "detail": "Listen on Spotify",
+        "url": "https://open.spotify.com/artist/7yK2JyOXdE696clwhEyWR0",
+        "platform": "website",
+        "kind": "spotify"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://www.instagram.com/boxcar909/",
+      "paragraphs": [
+        "Our Sea Fever 🇦🇺 Edition LP is trending on the venerable Side-Line music news/reviews site. And so it should🤘such an awesome record - link to the LP in our profile. Be sure to sign up to Side-Line’s newsletter. @sidelinemag @seafeverband @boxcar909 @visionfour5 @dharmabuffer @hedfog_music @fairbrotherinoz @tomchapman01 @philipcunningham8 @ebarlow0 @bethjcassidy @iwangronow"
+      ]
+    }
+  }
+}

@@ -1,0 +1,172 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "The Amity Affliction",
+  "editionTitle": "The Amity Affliction",
+  "description": "Europe/ UK, It’s time! We are joining forces with @silentplanetband, @varialspa and @orthodoxtn to bring you the ‘House of Cards’ album tour. Presale is live now! General sale starts...",
+  "discovery": {
+    "bio": "Europe/ UK, It’s time! We are joining forces with @silentplanetband, @varialspa and @orthodoxtn to bring you the ‘House of Cards’ album tour. Presale is live now! General sale starts...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "the-amity-affliction",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_b8a5a59a65",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/the-amity-affliction/instagram-discovery.png",
+    "qrImage": "output/the-amity-affliction/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "",
+    "spotify": "",
+    "instagram": "https://www.instagram.com/theamityaffliction",
+    "website": "https://theamityaffliction.net/",
+    "buyMusic": "",
+    "merchandise": "",
+    "facebook": "https://www.facebook.com/theamityafflictionofficial",
+    "youtube": "https://www.youtube.com/embed/WhpyVdWbJhM?feature=oembed"
+  },
+  "featuredVideo": {
+    "title": "The Amity Affliction - Recording 'House of Cards' (Part 3)",
+    "youtubeURL": "https://www.youtube.com/watch?v=2tHAcwNm8f4",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:24:56.280Z"
+  },
+  "analytics": {
+    "editionId": "dc_b8a5a59a65",
+    "pageIdentifier": "dc_b8a5a59a65:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_382df185-d529-4d09-ab74-fa1ffc70966d",
+    "submittedAt": "2026-08-03T11:29:09.869Z",
+    "researchCompletedAt": "2026-08-03T11:29:10.059Z",
+    "editionCreatedAt": "2026-08-03T11:29:10.059Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_b8a5a59a65",
+    "tickerBio": "EUROPE/ UK, IT’S TIME! WE ARE JOINING FORCES WITH @SILENTPLANETBAND, @VARIALSPA AND @ORTHODOXTN TO BRING YOU THE ‘HOUSE OF CARDS’ ALBUM TOUR. PRESALE IS LIVE NOW! GENERAL SALE STARTS FEBRUARY 9TH 11AM CET/ 10AM UK TIME THEAMITYAFFLICTION.NET",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "youtube-4522fa09",
+      "instagram-f536af81",
+      "tiktok-561d5ee4",
+      "website-cd294746",
+      "facebook-60903b7a",
+      "newsletter-9943c329"
+    ],
+    "marquee": "The Amity Affliction",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://theamityaffliction.net/",
+    "linkSourceVerifiedAt": "2026-08-03T11:24:47.859Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "instagram-f536af81",
+        "sourceTitle": "instagram",
+        "label": "instagram",
+        "detail": "Latest band updates",
+        "url": "https://www.instagram.com/theamityaffliction",
+        "platform": "instagram",
+        "kind": "instagram"
+      },
+      {
+        "id": "facebook-60903b7a",
+        "sourceTitle": "facebook",
+        "label": "facebook",
+        "detail": "Follow the band",
+        "url": "https://www.facebook.com/theamityafflictionofficial",
+        "platform": "facebook",
+        "kind": "facebook"
+      },
+      {
+        "id": "tiktok-561d5ee4",
+        "sourceTitle": "tiktok",
+        "label": "tiktok",
+        "detail": "Official band clips",
+        "url": "https://www.tiktok.com/@amityaffliction_official?",
+        "platform": "website",
+        "kind": "tiktok"
+      },
+      {
+        "id": "website-cd294746",
+        "sourceTitle": "Band Website",
+        "label": "Band Website",
+        "detail": "Visit the official website",
+        "url": "https://theamityaffliction.net/",
+        "platform": "website",
+        "kind": "website"
+      },
+      {
+        "id": "youtube-4522fa09",
+        "sourceTitle": "YouTube",
+        "label": "YouTube",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/embed/WhpyVdWbJhM?feature=oembed",
+        "platform": "youtube",
+        "kind": "youtube"
+      },
+      {
+        "id": "newsletter-9943c329",
+        "sourceTitle": "Newsletter",
+        "label": "Newsletter",
+        "detail": "Join the official mailing list",
+        "url": "https://net.us9.list-manage.com/subscribe/post?u=89627b708400cd1e3111dbeb9&id=807e030726",
+        "platform": "website",
+        "kind": "newsletter"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://www.instagram.com/theamityaffliction/",
+      "paragraphs": [
+        "Europe/ UK, It’s time! We are joining forces with @silentplanetband, @varialspa and @orthodoxtn to bring you the ‘House of Cards’ album tour. Presale is live now! General sale starts February 9th 11am CET/ 10am UK time theamityaffliction.net"
+      ]
+    }
+  }
+}

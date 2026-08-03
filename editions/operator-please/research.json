@@ -1,0 +1,128 @@
+{
+  "bandName": "Operator Please",
+  "slug": "operator-please",
+  "editionId": "dc_ab58ce9489",
+  "verifiedAt": "2026-08-03T11:29:06.734Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://operatorpleaseband.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:26.181Z",
+      "evidence": "The page identified Operator Please and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.facebook.com/operatorplease",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:25.490Z",
+      "evidence": "The page identified Operator Please and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/3KshwzAIDBZRPr5Xc7S79C",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:24.127Z",
+      "evidence": "The page identified Operator Please and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UCGNas1NDgT_6Ly7hfboRhzQ",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:24.297Z",
+      "evidence": "The page identified Operator Please and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:website-d8324d5d",
+      "url": "https://operatorpleaseband.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:26.181Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Operator Please."
+    },
+    {
+      "destination": "website",
+      "url": "https://operatorpleaseband.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:26.181Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Operator Please."
+    },
+    {
+      "destination": "selection:facebook-ae0f2fd7",
+      "url": "https://www.facebook.com/operatorplease",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:25.490Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Operator Please."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/operatorplease",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:25.490Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Operator Please."
+    },
+    {
+      "destination": "selection:youtube-3c473ec4",
+      "url": "https://www.youtube.com/watch?v=f1J38FlDKxo",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:28.137Z",
+      "evidence": "YouTube resolved directly from an identity-matched artist-controlled source for Operator Please."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/watch?v=f1J38FlDKxo",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:28.137Z",
+      "evidence": "YouTube resolved directly from an identity-matched artist-controlled source for Operator Please."
+    },
+    {
+      "destination": "selection:spotify-70063ad1",
+      "url": "https://open.spotify.com/artist/0aWSylARSZCDo7vTDgvKbb",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:29.691Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Operator Please."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/0aWSylARSZCDo7vTDgvKbb",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:29.691Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Operator Please."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.youtube.com/channel/UCGNas1NDgT_6Ly7hfboRhzQ",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:41.867Z",
+      "evidence": "The official source supplied the concise biography text used by the Operator Please ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=QNUn2XGoVKI",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:41.443Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Operator Please video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://operatorpleaseband.com/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:26.181Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Operator Please."
+    }
+  ]
+}

@@ -1,0 +1,184 @@
+{
+  "bandName": "The Cat Empire",
+  "slug": "the-cat-empire",
+  "editionId": "dc_41c875c4f1",
+  "verifiedAt": "2026-08-03T11:29:02.028Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://thecatempire.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:40.948Z",
+      "evidence": "The page identified The Cat Empire and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/thecatempire/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:36.857Z",
+      "evidence": "The page identified The Cat Empire and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/023YMawCG3OvACmRjWxLWC",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:36.810Z",
+      "evidence": "The page identified The Cat Empire and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://the-catempire.tmstor.es/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:39.908Z",
+      "evidence": "The page identified The Cat Empire and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://thecatempire.diggers.store/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:40.509Z",
+      "evidence": "The page identified The Cat Empire and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:website-3179c674",
+      "url": "https://thecatempire.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:40.948Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched The Cat Empire."
+    },
+    {
+      "destination": "website",
+      "url": "https://thecatempire.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:40.948Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched The Cat Empire."
+    },
+    {
+      "destination": "selection:facebook-56e4251e",
+      "url": "https://www.facebook.com/thecatempire",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:41.764Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched The Cat Empire."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/thecatempire",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:41.764Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched The Cat Empire."
+    },
+    {
+      "destination": "selection:instagram-035248aa",
+      "url": "https://www.instagram.com/thecatempire",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:41.850Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched The Cat Empire."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/thecatempire",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:41.850Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched The Cat Empire."
+    },
+    {
+      "destination": "selection:tiktok-bca50165",
+      "url": "https://www.tiktok.com/@thecatempireofficial",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:41.140Z",
+      "evidence": "TikTok resolved directly and its destination metadata matched The Cat Empire."
+    },
+    {
+      "destination": "tiktok",
+      "url": "https://www.tiktok.com/@thecatempireofficial",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:41.140Z",
+      "evidence": "TikTok resolved directly and its destination metadata matched The Cat Empire."
+    },
+    {
+      "destination": "selection:youtube-2cb1e67f",
+      "url": "https://www.youtube.com/thecatempire?sub_confirmation=1",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:41.509Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched The Cat Empire."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/thecatempire?sub_confirmation=1",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:41.509Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched The Cat Empire."
+    },
+    {
+      "destination": "selection:spotify-11ce7266",
+      "url": "https://open.spotify.com/artist/023YMawCG3OvACmRjWxLWC",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:41.449Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched The Cat Empire."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/023YMawCG3OvACmRjWxLWC",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:41.449Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched The Cat Empire."
+    },
+    {
+      "destination": "selection:merchandise-5c5862e0",
+      "url": "https://www.sonira.com.au/shop/the-cat-empire/H2W5GMA2DNWCMUGLSAOELGQ7",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:42.510Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched The Cat Empire."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://www.sonira.com.au/shop/the-cat-empire/H2W5GMA2DNWCMUGLSAOELGQ7",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:42.510Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched The Cat Empire."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.instagram.com/thecatempire/",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:53.388Z",
+      "evidence": "The official source supplied the concise biography text used by the The Cat Empire ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=d7AumllXmfA",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:53.094Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured The Cat Empire video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://thecatempire.com/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:23:40.948Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for The Cat Empire."
+    }
+  ]
+}

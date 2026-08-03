@@ -1,0 +1,128 @@
+{
+  "bandName": "Northeast Party House",
+  "slug": "northeast-party-house",
+  "editionId": "dc_32b11822fe",
+  "verifiedAt": "2026-08-03T11:47:03.752Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://northeastpartyhouse.bandcamp.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:45:29.099Z",
+      "evidence": "The page identified Northeast Party House and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/northeastpartyhouse/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:45:29.490Z",
+      "evidence": "The page identified Northeast Party House and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UCn76h7oi2vtLqqnJ1voB_xw",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:45:29.381Z",
+      "evidence": "The page identified Northeast Party House and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://linktr.ee/northeastpartyhouse",
+      "sourceType": "official artist-controlled link hub",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:45:31.427Z",
+      "evidence": "The page identified Northeast Party House and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:bandcamp-ef985a17",
+      "url": "https://northeastpartyhouse.bandcamp.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:45:29.099Z",
+      "evidence": "Bandcamp resolved directly and its destination metadata matched Northeast Party House."
+    },
+    {
+      "destination": "bandcamp",
+      "url": "https://northeastpartyhouse.bandcamp.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:45:29.099Z",
+      "evidence": "Bandcamp resolved directly and its destination metadata matched Northeast Party House."
+    },
+    {
+      "destination": "selection:youtube-c3fe214d",
+      "url": "https://www.youtube.com/channel/UCn76h7oi2vtLqqnJ1voB_xw",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:45:29.381Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Northeast Party House."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/channel/UCn76h7oi2vtLqqnJ1voB_xw",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:45:29.381Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Northeast Party House."
+    },
+    {
+      "destination": "selection:instagram-af91ee60",
+      "url": "https://www.instagram.com/northeastpartyhouse/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:45:29.490Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Northeast Party House."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/northeastpartyhouse/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:45:29.490Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Northeast Party House."
+    },
+    {
+      "destination": "selection:spotify-2d22dd5e",
+      "url": "https://open.spotify.com/artist/500YRyClzP6Z7HtWd1BIje",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:45:31.684Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Northeast Party House."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/500YRyClzP6Z7HtWd1BIje",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:45:31.684Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Northeast Party House."
+    },
+    {
+      "destination": "biography",
+      "url": "https://linktr.ee/northeastpartyhouse",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:45:42.564Z",
+      "evidence": "The official source supplied the concise biography text used by the Northeast Party House ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=1RGhJBz3PBE",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:45:42.105Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Northeast Party House video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://northeastpartyhouse.bandcamp.com/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:45:29.099Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Northeast Party House."
+    }
+  ]
+}

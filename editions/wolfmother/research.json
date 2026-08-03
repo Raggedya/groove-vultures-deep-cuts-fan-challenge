@@ -1,0 +1,264 @@
+{
+  "bandName": "Wolfmother",
+  "slug": "wolfmother",
+  "editionId": "dc_b52be0b54a",
+  "verifiedAt": "2026-08-03T11:33:35.185Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://wolfmother.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:18.407Z",
+      "evidence": "The page identified Wolfmother and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://wolfmother.bandcamp.com/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:17.921Z",
+      "evidence": "The page identified Wolfmother and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/officialwolfmother/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:18.111Z",
+      "evidence": "The page identified Wolfmother and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UC6VWE_jbihcn_2kJBUZWX2Q",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:18.162Z",
+      "evidence": "The page identified Wolfmother and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://wolfmother.tmstor.es/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:18.647Z",
+      "evidence": "The page identified Wolfmother and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:instagram-0fd80ac3",
+      "url": "https://www.instagram.com/officialwolfmother",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:19.839Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Wolfmother."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/officialwolfmother",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:19.839Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Wolfmother."
+    },
+    {
+      "destination": "selection:show-07b284bd",
+      "url": "https://www.bandsintown.com/t/1038510005?app_id=Bandzoogle&came_from=267",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:18.881Z",
+      "evidence": "Tickets resolved directly from an identity-matched artist-controlled source for Wolfmother."
+    },
+    {
+      "destination": "selection:show-0ae55b44",
+      "url": "https://www.bandsintown.com/t/107546052?app_id=Bandzoogle&came_from=267",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:18.887Z",
+      "evidence": "Tickets resolved directly from an identity-matched artist-controlled source for Wolfmother."
+    },
+    {
+      "destination": "selection:show-df72d909",
+      "url": "https://www.bandsintown.com/t/1038528353?app_id=Bandzoogle&came_from=267",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:18.894Z",
+      "evidence": "Tickets resolved directly from an identity-matched artist-controlled source for Wolfmother."
+    },
+    {
+      "destination": "selection:show-33e1d805",
+      "url": "https://www.bandsintown.com/t/1038528685?app_id=Bandzoogle&came_from=267",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:18.958Z",
+      "evidence": "Tickets resolved directly from an identity-matched artist-controlled source for Wolfmother."
+    },
+    {
+      "destination": "selection:show-cddc53d3",
+      "url": "https://www.bandsintown.com/t/1038538205?app_id=Bandzoogle&came_from=267",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:18.970Z",
+      "evidence": "Tickets resolved directly from an identity-matched artist-controlled source for Wolfmother."
+    },
+    {
+      "destination": "selection:show-a8932988",
+      "url": "https://www.bandsintown.com/t/1038528452?app_id=Bandzoogle&came_from=267",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:18.964Z",
+      "evidence": "Tickets resolved directly from an identity-matched artist-controlled source for Wolfmother."
+    },
+    {
+      "destination": "selection:show-3cfe97d0",
+      "url": "https://www.bandsintown.com/t/107546057?app_id=Bandzoogle&came_from=267",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:19.012Z",
+      "evidence": "Tickets resolved directly from an identity-matched artist-controlled source for Wolfmother."
+    },
+    {
+      "destination": "selection:show-9e7faa3c",
+      "url": "https://www.bandsintown.com/t/107546062?app_id=Bandzoogle&came_from=267",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:19.037Z",
+      "evidence": "Tickets resolved directly from an identity-matched artist-controlled source for Wolfmother."
+    },
+    {
+      "destination": "selection:show-2fbe1ff0",
+      "url": "https://www.bandsintown.com/t/107546067?app_id=Bandzoogle&came_from=267",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:19.030Z",
+      "evidence": "Tickets resolved directly from an identity-matched artist-controlled source for Wolfmother."
+    },
+    {
+      "destination": "selection:show-d070543f",
+      "url": "https://www.bandsintown.com/t/1038528344?app_id=Bandzoogle&came_from=267",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:19.068Z",
+      "evidence": "Tickets resolved directly from an identity-matched artist-controlled source for Wolfmother."
+    },
+    {
+      "destination": "selection:show-807f3921",
+      "url": "https://www.bandsintown.com/t/1038529061?app_id=Bandzoogle&came_from=267",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:19.094Z",
+      "evidence": "Tickets resolved directly from an identity-matched artist-controlled source for Wolfmother."
+    },
+    {
+      "destination": "selection:show-07abaa40",
+      "url": "https://www.bandsintown.com/t/1039106964?app_id=Bandzoogle&came_from=267",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:19.100Z",
+      "evidence": "Tickets resolved directly from an identity-matched artist-controlled source for Wolfmother."
+    },
+    {
+      "destination": "selection:show-7cc33336",
+      "url": "https://www.bandsintown.com/t/107546073?app_id=Bandzoogle&came_from=267",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:19.130Z",
+      "evidence": "Tickets resolved directly from an identity-matched artist-controlled source for Wolfmother."
+    },
+    {
+      "destination": "selection:show-515a8dce",
+      "url": "https://www.bandsintown.com/t/107546078?app_id=Bandzoogle&came_from=267",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:19.155Z",
+      "evidence": "Tickets resolved directly from an identity-matched artist-controlled source for Wolfmother."
+    },
+    {
+      "destination": "selection:newsletter-1938afad",
+      "url": "https://www.bandsintown.com/artist-subscribe/238?app_id=bandzoogle",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:20.226Z",
+      "evidence": "Newsletter resolved directly from an identity-matched artist-controlled source for Wolfmother."
+    },
+    {
+      "destination": "selection:newsletter-dbc7645b",
+      "url": "https://www.bandsintown.com/artist-subscribe/238?app_id=bandzoogle&play_my_city=true",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:20.279Z",
+      "evidence": "Newsletter resolved directly from an identity-matched artist-controlled source for Wolfmother."
+    },
+    {
+      "destination": "selection:contact-267eb574",
+      "url": "https://wolfmother.com/go/help",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:19.486Z",
+      "evidence": "Contact resolved directly and its destination metadata matched Wolfmother."
+    },
+    {
+      "destination": "contact",
+      "url": "https://wolfmother.com/go/help",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:19.486Z",
+      "evidence": "Contact resolved directly and its destination metadata matched Wolfmother."
+    },
+    {
+      "destination": "selection:website-5be777c4",
+      "url": "https://wolfmother.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:18.407Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Wolfmother."
+    },
+    {
+      "destination": "website",
+      "url": "https://wolfmother.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:18.407Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Wolfmother."
+    },
+    {
+      "destination": "selection:bandcamp-c2a5a5b5",
+      "url": "https://wolfmother.bandcamp.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:17.921Z",
+      "evidence": "Bandcamp resolved directly and its destination metadata matched Wolfmother."
+    },
+    {
+      "destination": "bandcamp",
+      "url": "https://wolfmother.bandcamp.com/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:17.921Z",
+      "evidence": "Bandcamp resolved directly and its destination metadata matched Wolfmother."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.instagram.com/officialwolfmother/",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:24.979Z",
+      "evidence": "The official source supplied the concise biography text used by the Wolfmother ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=gu53f8umqZE",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:24.423Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Wolfmother video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://wolfmother.com/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:32:18.407Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Wolfmother."
+    }
+  ]
+}

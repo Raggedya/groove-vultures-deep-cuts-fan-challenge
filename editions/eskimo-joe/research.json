@@ -1,0 +1,200 @@
+{
+  "bandName": "Eskimo Joe",
+  "slug": "eskimo-joe",
+  "editionId": "dc_3fb64cab96",
+  "verifiedAt": "2026-08-03T11:29:08.522Z",
+  "sources": [
+    {
+      "destination": "identity",
+      "url": "https://www.eskimojoe.net/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:35.003Z",
+      "evidence": "The page identified Eskimo Joe and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.instagram.com/eskimojoemusic/",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:34.281Z",
+      "evidence": "The page identified Eskimo Joe and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://open.spotify.com/artist/3yW6jTzGjHUUkLvLkjLOVn",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:33.807Z",
+      "evidence": "The page identified Eskimo Joe and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://www.youtube.com/channel/UC_u6lT3KKqi-G6dxbUcpSEQ",
+      "sourceType": "identity-matched artist-controlled source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:34.041Z",
+      "evidence": "The page identified Eskimo Joe and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "identity",
+      "url": "https://linktr.ee/EskimoJoe",
+      "sourceType": "official artist-controlled link hub",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:35.128Z",
+      "evidence": "The page identified Eskimo Joe and supplied direct artist destinations used for independent cross-checking."
+    },
+    {
+      "destination": "selection:website-2c3516a4",
+      "url": "https://www.eskimojoe.net/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:35.003Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Eskimo Joe."
+    },
+    {
+      "destination": "website",
+      "url": "https://www.eskimojoe.net/",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:35.003Z",
+      "evidence": "Band Website resolved directly and its destination metadata matched Eskimo Joe."
+    },
+    {
+      "destination": "selection:merchandise-304f7539",
+      "url": "https://www.eskimojoe.net/store",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:36.001Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Eskimo Joe."
+    },
+    {
+      "destination": "merchandise",
+      "url": "https://www.eskimojoe.net/store",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:36.001Z",
+      "evidence": "Buy Merch resolved directly and its destination metadata matched Eskimo Joe."
+    },
+    {
+      "destination": "selection:buy_music-f2dc5552",
+      "url": "https://www.eskimojoe.net/discography",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:36.823Z",
+      "evidence": "Buy Music resolved directly and its destination metadata matched Eskimo Joe."
+    },
+    {
+      "destination": "buyMusic",
+      "url": "https://www.eskimojoe.net/discography",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:36.823Z",
+      "evidence": "Buy Music resolved directly and its destination metadata matched Eskimo Joe."
+    },
+    {
+      "destination": "selection:contact-ea126a08",
+      "url": "https://www.eskimojoe.net/contact",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:36.749Z",
+      "evidence": "Contact resolved directly and its destination metadata matched Eskimo Joe."
+    },
+    {
+      "destination": "contact",
+      "url": "https://www.eskimojoe.net/contact",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:36.749Z",
+      "evidence": "Contact resolved directly and its destination metadata matched Eskimo Joe."
+    },
+    {
+      "destination": "selection:instagram-f21b0a41",
+      "url": "https://www.instagram.com/eskimojoemusic",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:36.114Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Eskimo Joe."
+    },
+    {
+      "destination": "instagram",
+      "url": "https://www.instagram.com/eskimojoemusic",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:36.114Z",
+      "evidence": "Instagram resolved directly and its destination metadata matched Eskimo Joe."
+    },
+    {
+      "destination": "selection:spotify-ec06b486",
+      "url": "https://open.spotify.com/artist/3yW6jTzGjHUUkLvLkjLOVn",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:33.807Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Eskimo Joe."
+    },
+    {
+      "destination": "spotify",
+      "url": "https://open.spotify.com/artist/3yW6jTzGjHUUkLvLkjLOVn",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:33.807Z",
+      "evidence": "Spotify resolved directly and its destination metadata matched Eskimo Joe."
+    },
+    {
+      "destination": "selection:youtube-06112797",
+      "url": "https://www.youtube.com/channel/UC_u6lT3KKqi-G6dxbUcpSEQ",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:36.899Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Eskimo Joe."
+    },
+    {
+      "destination": "youtube",
+      "url": "https://www.youtube.com/channel/UC_u6lT3KKqi-G6dxbUcpSEQ",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:36.899Z",
+      "evidence": "YouTube resolved directly and its destination metadata matched Eskimo Joe."
+    },
+    {
+      "destination": "selection:facebook-a7cb69c7",
+      "url": "https://www.facebook.com/EskimoJoe",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:37.243Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Eskimo Joe."
+    },
+    {
+      "destination": "facebook",
+      "url": "https://www.facebook.com/EskimoJoe",
+      "sourceType": "verified direct JookBox destination",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:37.243Z",
+      "evidence": "Facebook resolved directly and its destination metadata matched Eskimo Joe."
+    },
+    {
+      "destination": "biography",
+      "url": "https://www.youtube.com/channel/UC_u6lT3KKqi-G6dxbUcpSEQ",
+      "sourceType": "identity-verified artist-controlled biography source",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:43.659Z",
+      "evidence": "The official source supplied the concise biography text used by the Eskimo Joe ticker."
+    },
+    {
+      "destination": "featuredVideo",
+      "url": "https://www.youtube.com/watch?v=x-uyBbS7ykw",
+      "sourceType": "official YouTube channel Popular ordering",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:43.367Z",
+      "evidence": "The verified official channel Popular ordering supplied the featured Eskimo Joe video, and the privacy-enhanced embed was reachable."
+    },
+    {
+      "destination": "jookBoxSource",
+      "url": "https://www.eskimojoe.net/",
+      "sourceType": "verified artist-controlled source snapshot",
+      "identityVerified": true,
+      "verifiedAt": "2026-08-03T11:24:35.003Z",
+      "evidence": "The verified artist-controlled source supplied the JookBox destinations for Eskimo Joe."
+    }
+  ]
+}

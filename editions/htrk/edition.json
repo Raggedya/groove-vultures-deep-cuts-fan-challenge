@@ -1,0 +1,172 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "HTRK",
+  "editionTitle": "HTRK",
+  "description": "Join the HTRK fan club, in which we selectively share our secrets, dreams and torments during the making of our new album. During the course of your subscription, you will receive new...",
+  "discovery": {
+    "bio": "Join the HTRK fan club, in which we selectively share our secrets, dreams and torments during the making of our new album. During the course of your subscription, you will receive new...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "htrk",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_e94b1a4c21",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/htrk/instagram-discovery.png",
+    "qrImage": "output/htrk/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "https://htrk.bandcamp.com/",
+    "spotify": "https://open.spotify.com/artist/06sdJwlggq0PKOe4LPZWCg",
+    "instagram": "",
+    "website": "",
+    "buyMusic": "https://yourcomicbookfantasy.com/Studio-albums",
+    "merchandise": "https://yourcomicbookfantasy.com/Shop",
+    "facebook": "",
+    "youtube": ""
+  },
+  "featuredVideo": {
+    "title": "HTRK Poison (unofficial)",
+    "youtubeURL": "https://www.youtube.com/watch?v=cKVrwBOtryM",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:26:45.787Z"
+  },
+  "analytics": {
+    "editionId": "dc_e94b1a4c21",
+    "pageIdentifier": "dc_e94b1a4c21:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_cb20abfa-c543-4b7a-9e07-81c3170e61be",
+    "submittedAt": "2026-08-03T11:29:21.174Z",
+    "researchCompletedAt": "2026-08-03T11:29:21.371Z",
+    "editionCreatedAt": "2026-08-03T11:29:21.371Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_e94b1a4c21",
+    "tickerBio": "JOIN THE HTRK FAN CLUB, IN WHICH WE SELECTIVELY SHARE OUR SECRETS, DREAMS AND TORMENTS DURING THE MAKING OF OUR NEW ALBUM. DURING THE COURSE OF YOUR SUBSCRIPTION, YOU WILL RECEIVE NEW MUSIC AND MERCH, PLUS THE OCCASIONAL ARCHIVAL FIND. WE SOMETIMES FORGET HOW MUCH HTRK CAN MEAN TO OUR FANS, AND WE WANT TO HONOUR THIS WITH A FAN CLUB PROJECT OF PARTICULAR DISTINCTION. OUR WISH IS THAT THE DIVULGING OF DEMOS AND SKETCH",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "bandcamp-67661acb",
+      "spotify-c30f0c2b",
+      "buy_music-a85d33dc",
+      "merchandise-a03e90cb",
+      "newsletter-920b2801",
+      "contact-d7639189"
+    ],
+    "marquee": "HTRK",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://yourcomicbookfantasy.com/",
+    "linkSourceVerifiedAt": "2026-08-03T11:26:38.108Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "spotify-c30f0c2b",
+        "sourceTitle": "\\ue051\\ufe0e",
+        "label": "\\ue051\\ufe0e",
+        "detail": "Listen on Spotify",
+        "url": "https://open.spotify.com/artist/06sdJwlggq0PKOe4LPZWCg",
+        "platform": "website",
+        "kind": "spotify"
+      },
+      {
+        "id": "bandcamp-67661acb",
+        "sourceTitle": "\\ue0f4\\ufe0e",
+        "label": "\\ue0f4\\ufe0e",
+        "detail": "Listen and buy direct",
+        "url": "https://htrk.bandcamp.com/",
+        "platform": "website",
+        "kind": "bandcamp"
+      },
+      {
+        "id": "contact-d7639189",
+        "sourceTitle": "Contact",
+        "label": "Contact",
+        "detail": "Official band enquiries",
+        "url": "https://yourcomicbookfantasy.com/Contact",
+        "platform": "website",
+        "kind": "contact"
+      },
+      {
+        "id": "merchandise-a03e90cb",
+        "sourceTitle": "Buy Merch",
+        "label": "Buy Merch",
+        "detail": "Official band merchandise",
+        "url": "https://yourcomicbookfantasy.com/Shop",
+        "platform": "merchandise",
+        "kind": "merchandise"
+      },
+      {
+        "id": "newsletter-920b2801",
+        "sourceTitle": "Newsletter",
+        "label": "Newsletter",
+        "detail": "Join the official mailing list",
+        "url": "https://yourcomicbookfantasy.com/Subscribe",
+        "platform": "website",
+        "kind": "newsletter"
+      },
+      {
+        "id": "buy_music-a85d33dc",
+        "sourceTitle": "Buy Music",
+        "label": "Buy Music",
+        "detail": "Purchase music online",
+        "url": "https://yourcomicbookfantasy.com/Studio-albums",
+        "platform": "website",
+        "kind": "buy_music"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://htrk.bandcamp.com/",
+      "paragraphs": [
+        "Join the HTRK fan club, in which we selectively share our secrets, dreams and torments during the making of our new album. During the course of your subscription, you will receive new music and merch, plus the occasional archival find. We sometimes forget how much HTRK can mean to our fans, and we want to honour this with a fan club project of particular distinction. Our wish is that the divulging of demos and sketch"
+      ]
+    }
+  }
+}

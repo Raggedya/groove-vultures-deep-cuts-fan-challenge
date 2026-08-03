@@ -1,0 +1,190 @@
+{
+  "brandName": "JookBox",
+  "editionType": "jukebox",
+  "bandName": "Angelspit",
+  "editionTitle": "Angelspit",
+  "description": "AUSTRALIAN ROCK FROM 1983\\nI was in my local record shop yesterday I found this in the bargain bin. It's Australian Rock from 1983 - ABSOLUTELY AWESOME!\\nI've always loved \\\"Women in...",
+  "discovery": {
+    "bio": "AUSTRALIAN ROCK FROM 1983\\nI was in my local record shop yesterday I found this in the bargain bin. It's Australian Rock from 1983 - ABSOLUTELY AWESOME!\\nI've always loved \\\"Women in...",
+    "newsLabel": ""
+  },
+  "mode": "discovery",
+  "slug": "angelspit",
+  "publicURL": "https://deep-cuts.andrewharris501.workers.dev/e/dc_5fc05fa620",
+  "characterArtwork": "",
+  "backgroundArtwork": "",
+  "social": {
+    "copyright": "copyright Clearlight Creative",
+    "instagramImage": "output/angelspit/instagram-discovery.png",
+    "qrImage": "output/angelspit/instagram-qr.png"
+  },
+  "theme": {
+    "accent": "#55D9FF",
+    "accentSecondary": "#FF6640",
+    "gold": "#FFD66B",
+    "surface": "#091321"
+  },
+  "links": {
+    "bandcamp": "https://venusofgorgon.bandcamp.com/track/breathing-but-not-alive",
+    "spotify": "",
+    "instagram": "",
+    "website": "https://www.angelspit.net/",
+    "buyMusic": "https://www.angelspit.net/discography/",
+    "merchandise": "https://www.angelspit.net/category/merch-2/",
+    "facebook": "https://www.facebook.com/angelspitmusic",
+    "youtube": "https://www.youtube.com/watch?v=qg77sfoLwNs&feature=youtu.be"
+  },
+  "featuredVideo": {
+    "title": "Ice Planet 9000's 4th Album is Kickstarting now! #DarkAmbient #spacemusic #Vangelis #BerlinSchool",
+    "youtubeURL": "https://www.youtube.com/watch?v=B8cfSs6mJiM",
+    "selectionBasis": "most-viewed-official",
+    "verifiedAt": "2026-08-03T11:20:39.685Z"
+  },
+  "analytics": {
+    "editionId": "dc_5fc05fa620",
+    "pageIdentifier": "dc_5fc05fa620:jookbox-v3"
+  },
+  "production": {
+    "jobId": "dcjob_6d72851f-7360-4a9d-a93c-fcb97c992e8d",
+    "submittedAt": "2026-08-03T11:28:53.467Z",
+    "researchCompletedAt": "2026-08-03T11:28:53.530Z",
+    "editionCreatedAt": "2026-08-03T11:28:53.530Z"
+  },
+  "jookBox": {
+    "modelVersion": "jookbox/3",
+    "layoutVersion": "coin-awakening/1",
+    "cabinetArtwork": "assets/jookbox-atlas-reference-v1.webp",
+    "cabinetArtworkSha256": "ee1f3b869c2b8e9b7ac747e33d62de20a7904b3ed6fcacf7e87bbfeec61bdfb3",
+    "coinSound": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+    "coinSoundSha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
+    "coinSoundSource": "https://freesound.org/people/kyles/sounds/637369/",
+    "coinSoundLicense": "CC0-1.0",
+    "sessionStorageKey": "jookBoxActivated:dc_5fc05fa620",
+    "tickerBio": "AUSTRALIAN ROCK FROM 1983\\NI WAS IN MY LOCAL RECORD SHOP YESTERDAY I FOUND THIS IN THE BARGAIN BIN. IT'S AUSTRALIAN ROCK FROM 1983 - ABSOLUTELY AWESOME!\\NI'VE ALWAYS LOVED \\\"WOMEN IN UNIFORM\\\" BY SKYHOOKS - IT'S SUCH A BANGER!\\NI LOVE HOW AUSTRALIAN MUSIC FROM THAT PERIOD IS SO RAUCOUS!\\NI THINK IT'S A REASON SO MANY AUSTRALIAN BANDS DON'T WORK IN THE USA BECAUSE THEY WHERE A LITTLE TOO WILD AND COULD NOT BE SQUEEZED",
+    "tickerDurationSeconds": 36,
+    "buttonLightDurationMs": 1100,
+    "keyBankFormat": "six-key/1",
+    "autoplayDelayMs": 0,
+    "startupTimingsMs": {
+      "mechanism": 120,
+      "neonOn": 800,
+      "screenOn": 1200,
+      "buttonsOn": 1600,
+      "tickerOn": 2000
+    },
+    "displaySelectionIds": [
+      "bandcamp-39b27e93",
+      "youtube-a4f09f20",
+      "website-74c722f8",
+      "buy_music-c7734ede",
+      "merchandise-17ec1de2",
+      "facebook-76c2f944"
+    ],
+    "marquee": "Angelspit",
+    "videoLabel": "Now playing",
+    "primaryActionLabel": "Open verified destination",
+    "heroLabels": [
+      "Listen",
+      "Watch",
+      "Follow",
+      "Shop"
+    ],
+    "lightSequence": true,
+    "lightSequenceMode": "single-key",
+    "appearanceVariant": "atlas-reference-cabinet/1",
+    "qrArtworkVariant": "aggits-character-poster/1",
+    "supportAction": {
+      "action": "share",
+      "label": "Support Our Band",
+      "detail": "Please share our JookBox",
+      "kind": "share",
+      "icon": "♡",
+      "detailIcon": "↗"
+    },
+    "cabinetCopyright": "Copyright Clearlight Creative 2026.",
+    "coinStart": true,
+    "linkSourceURL": "https://www.angelspit.net/",
+    "linkSourceVerifiedAt": "2026-08-03T11:20:31.385Z",
+    "syncMode": "verified-build-time",
+    "selections": [
+      {
+        "id": "website-74c722f8",
+        "sourceTitle": "Skip to Content",
+        "label": "Band Website",
+        "detail": "Visit the official website",
+        "url": "https://www.angelspit.net/",
+        "platform": "website",
+        "kind": "website"
+      },
+      {
+        "id": "contact-7df3ea3a",
+        "sourceTitle": "Bookings",
+        "label": "Bookings",
+        "detail": "Official band enquiries",
+        "url": "https://www.angelspit.net/bookings/",
+        "platform": "website",
+        "kind": "contact"
+      },
+      {
+        "id": "contact-23307902",
+        "sourceTitle": "Contact Us",
+        "label": "Contact Us",
+        "detail": "Official band enquiries",
+        "url": "https://www.angelspit.net/contact-us/",
+        "platform": "website",
+        "kind": "contact"
+      },
+      {
+        "id": "buy_music-c7734ede",
+        "sourceTitle": "Discography",
+        "label": "Discography",
+        "detail": "Purchase music online",
+        "url": "https://www.angelspit.net/discography/",
+        "platform": "website",
+        "kind": "buy_music"
+      },
+      {
+        "id": "facebook-76c2f944",
+        "sourceTitle": "Facebook",
+        "label": "Facebook",
+        "detail": "Follow the band",
+        "url": "https://www.facebook.com/angelspitmusic",
+        "platform": "facebook",
+        "kind": "facebook"
+      },
+      {
+        "id": "bandcamp-39b27e93",
+        "sourceTitle": "Bandcamp",
+        "label": "Bandcamp",
+        "detail": "Listen and buy direct",
+        "url": "https://venusofgorgon.bandcamp.com/track/breathing-but-not-alive",
+        "platform": "website",
+        "kind": "bandcamp"
+      },
+      {
+        "id": "youtube-a4f09f20",
+        "sourceTitle": "https://youtu.be/qg77sfoLwNs",
+        "label": "YouTube",
+        "detail": "Watch and subscribe",
+        "url": "https://www.youtube.com/watch?v=qg77sfoLwNs&feature=youtu.be",
+        "platform": "youtube",
+        "kind": "youtube"
+      },
+      {
+        "id": "merchandise-17ec1de2",
+        "sourceTitle": "Merch",
+        "label": "Merch",
+        "detail": "Official band merchandise",
+        "url": "https://www.angelspit.net/category/merch-2/",
+        "platform": "merchandise",
+        "kind": "merchandise"
+      }
+    ],
+    "biography": {
+      "sourceURL": "https://www.instagram.com/angelspit/",
+      "paragraphs": [
+        "AUSTRALIAN ROCK FROM 1983\\nI was in my local record shop yesterday I found this in the bargain bin. It's Australian Rock from 1983 - ABSOLUTELY AWESOME!\\nI've always loved \\\"Women in Uniform\\\" by Skyhooks - it's SUCH A BANGER!\\nI love how Australian music from that period is so raucous!\\nI think it's a reason so many Australian bands don't work in the USA because they where a little too wild and could not be squeezed"
+      ]
+    }
+  }
+}
