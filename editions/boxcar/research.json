@@ -126,11 +126,11 @@
     },
     {
       "destination": "featuredVideo",
-      "url": "https://www.youtube.com/watch?v=yth2rhx0RE4",
-      "sourceType": "official YouTube channel Popular ordering",
+      "url": "https://www.youtube.com/watch?v=v3sP8qTQE5A",
+      "sourceType": "verified Boxcar official music video archive",
       "identityVerified": true,
-      "verifiedAt": "2026-08-03T11:53:20.580Z",
-      "evidence": "The verified official channel Popular ordering supplied the featured Boxcar video, and the privacy-enhanced embed was reachable."
+      "verifiedAt": "2026-08-03T23:40:35.000Z",
+      "evidence": "The video is the Boxcar official music video for Insect, matching the band's official-site catalogue and identity. The YouTube embed and oEmbed endpoints were reachable."
     },
     {
       "destination": "jookBoxSource",
