@@ -13,6 +13,12 @@ const jobId=process.env.DEEP_CUTS_DELIVERY_JOB_ID||config.production?.jobId||`de
 const liveURL=`${baseURL}${edition.canonicalPath}`;
 const qrImageURL=`${baseURL}/output/${encodeURIComponent(slug)}/instagram-qr.png`;
 
+const existingDelivery=await getExistingDelivery(jobId);
+if(existingDelivery?.email_delivered_at){
+  console.log(JSON.stringify({ok:true,skipped:true,reason:'already_delivered',job_id:jobId,email_delivered_at:existingDelivery.email_delivered_at,live_url:liveURL,qr_image_url:qrImageURL},null,2));
+  process.exit(0);
+}
+
 const qrResponse=await fetchQrWithPropagationRetry(qrImageURL);
 if(!qrResponse.ok||!(qrResponse.headers.get('content-type')||'').toLowerCase().includes('image/png'))throw new Error('The public scan-tested QR PNG is unavailable; email delivery was blocked.');
 
@@ -41,6 +47,14 @@ async function waitForDelivery(id){
     await new Promise(resolve=>setTimeout(resolve,4000));
   }
   throw new Error('Resend accepted the email but confirmed delivery was not recorded within two minutes.');
+}
+
+async function getExistingDelivery(id){
+  const response=await fetch(`${baseURL}/api/builds/${encodeURIComponent(id)}`,{headers:{authorization:`Bearer ${token}`,accept:'application/json'}});
+  if(response.status===404)return null;
+  const result=await response.json().catch(()=>({}));
+  if(!response.ok||result.ok!==true)throw new Error(`Delivery status check failed with status ${response.status}: ${result.error||'unknown error'}`);
+  return result;
 }
 
 async function fetchQrWithPropagationRetry(url){
