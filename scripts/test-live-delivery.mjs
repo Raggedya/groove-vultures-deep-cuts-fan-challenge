@@ -5,6 +5,7 @@ const platform=JSON.parse(await fs.readFile('platform.json','utf8'));
 const generator=await fs.readFile('scripts/generate-social-assets.py','utf8');
 const deploy=await fs.readFile('.github/workflows/deploy-cloudflare.yml','utf8');
 const delivery=await fs.readFile('scripts/send-delivery.mjs','utf8');
+const characterRecovery=await fs.readFile('scripts/deliver-pending-character-posters.mjs','utf8');
 const emailWorkflow=await fs.readFile('.github/workflows/verify-email-delivery.yml','utf8');
 
 assert.equal(platform.publicBaseURL,'https://deep-cuts.andrewharris501.workers.dev');
@@ -19,6 +20,11 @@ assert.match(delivery,/fetchQrWithPropagationRetry\(qrImageURL\)/,'Email deliver
 assert.match(delivery,/DEEP_CUTS_QR_DELIVERY_ATTEMPTS\|\|12/,'QR propagation retries must be bounded.');
 assert.match(delivery,/\/api\/delivery/,'Email delivery must use the permanent authenticated delivery API.');
 assert.match(delivery,/waitForDelivery\(jobId\)/,'Publishing must wait for confirmed email delivery.');
+assert.match(delivery,/getExistingDelivery\(jobId\)/,'Delivery retries must check for an existing confirmed email first.');
+assert.match(delivery,/reason:'already_delivered'/,'Confirmed delivery jobs must be skipped idempotently.');
+assert.match(characterRecovery,/aggits-character-poster\/1/,'Character-poster recovery must target only the approved poster variant.');
+assert.match(characterRecovery,/DEEP_CUTS_DELIVERY_JOBS\|\|4/,'Character-poster delivery recovery must use bounded concurrency.');
+assert.match(deploy,/Recover pending character-poster deliveries/,'Production deploys must recover unconfirmed character-poster emails.');
 assert.match(emailWorkflow,/DEEP_CUTS_ADMIN_TOKEN: \$\{\{ secrets\.DEEP_CUTS_ADMIN_TOKEN \}\}/,'The email verification workflow must keep the admin token encrypted.');
 console.log('Permanent QR and delivery workflow checks passed.');
 
