@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import crypto from "node:crypto";
 import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
@@ -8,6 +9,8 @@ import {
 } from "./aggits-jukebox-qr-artwork.mjs";
 import {
   MAHOGANY_FIXED_MARQUEE,
+  MAHOGANY_FIXED_MARQUEE_ASSET,
+  MAHOGANY_FIXED_MARQUEE_SHA256,
   renderAggitsJukeboxStudioPreview,
 } from "./aggits-jukebox-preview.mjs";
 import { createMahoganyStudioServer } from "./mahogany-studio-server.mjs";
@@ -62,14 +65,17 @@ const preview = renderAggitsJukeboxStudioPreview(toPreviewProject(sample), {
 });
 assert.match(preview, /MAHOGANY JUKEBOX/);
 assert.equal(MAHOGANY_FIXED_MARQUEE, "AGGITS");
-assert.match(preview, /id="fixedMarqueeTitle"/);
-assert.match(preview, />AGGITS<\/textPath>/);
-assert.doesNotMatch(preview, /id="titleText"/);
-assert.match(preview, /#fixedMarqueeTitle[^}]+opacity:\.68/);
-assert.match(
-  preview,
-  /is-powering \.marquee #fixedMarqueeTitle[^}]+brightness\(1\.13\)/,
+assert.equal(MAHOGANY_FIXED_MARQUEE_ASSET, "/assets/aggits-marquee-reference-v1.jpg");
+assert.match(MAHOGANY_FIXED_MARQUEE_SHA256, /^[a-f0-9]{64}$/);
+assert.equal(
+  crypto.createHash("sha256").update(await fs.readFile(path.join(root, MAHOGANY_FIXED_MARQUEE_ASSET.slice(1)))).digest("hex"),
+  MAHOGANY_FIXED_MARQUEE_SHA256,
 );
+assert.match(preview, /class="marquee" aria-label="AGGITS"/);
+assert.match(preview, /aggits-marquee-reference-v1\.jpg/);
+assert.doesNotMatch(preview, /id="titleText"/);
+assert.match(preview, /\.marquee\{[^}]+filter:brightness\(\.58\)/);
+assert.match(preview, /is-powering \.marquee[^}]+brightness\(1\.08\)/);
 assert.match(preview, /youtube-nocookie\.com\/embed\/4QK0RZ0FQ_0/);
 assert.match(preview, /jukebox-real-coin-insert-cc0\.mp3/);
 assert.match(preview, /coinInsert/);

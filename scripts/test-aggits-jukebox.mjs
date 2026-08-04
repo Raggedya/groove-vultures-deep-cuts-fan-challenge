@@ -4,6 +4,7 @@ import fs from "node:fs";
 import path from "node:path";
 import {createProject,attachMp4,renderStudioPreview} from "./studio-model.mjs";
 import {AGGITS_JUKEBOX_ICONS,AGGITS_JUKEBOX_CABINET_SHA256,AGGITS_JUKEBOX_ICON_MASTER_SHA256} from "./aggits-jukebox-icons.mjs";
+import {MAHOGANY_FIXED_MARQUEE_ASSET,MAHOGANY_FIXED_MARQUEE_SHA256} from "./aggits-jukebox-preview.mjs";
 
 const root=path.resolve(import.meta.dirname,"..");
 const fixture={type:"aggits_jukebox",name:"An Exceptionally Long Melbourne Venue Name",tickerText:"THE BLOCK AND BEYOND! KITCHEN, EVENTS AND BOOKINGS.",actionButtons:[
@@ -19,6 +20,7 @@ assert.match(AGGITS_JUKEBOX_ICON_MASTER_SHA256,/^[a-f0-9]{64}$/);
 const sha256=file=>crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex");
 assert.equal(sha256(path.join(root,"assets","aggits-jukebox-master-v1.jpg")),AGGITS_JUKEBOX_CABINET_SHA256,"cabinet master identity changed");
 assert.equal(sha256(path.join(root,"assets","aggits-jukebox-icons-master-v1.jpg")),AGGITS_JUKEBOX_ICON_MASTER_SHA256,"icon master identity changed");
+assert.equal(sha256(path.join(root,MAHOGANY_FIXED_MARQUEE_ASSET.replace(/^\//,""))),MAHOGANY_FIXED_MARQUEE_SHA256,"fixed AGGITS marquee reference changed");
 for(const icon of AGGITS_JUKEBOX_ICONS){
   const file=path.join(root,icon.assetPath.replace(/^\//,""));
   assert.ok(fs.statSync(file).size>1000,`missing or empty icon asset: ${icon.id}`);
@@ -30,7 +32,7 @@ assert.equal(project.readiness.handoffReady,false);
 project=attachMp4(project,{fileName:"welcome.mp4",sizeBytes:1024,sha256:"a".repeat(64)},new Date("2026-08-03T00:01:00Z"));
 assert.equal(project.readiness.handoffReady,true);
 const html=renderStudioPreview(project,{videoUrl:"/media/welcome.mp4"});
-assert.match(html,/<textPath href="#aggitsMarqueeArc" startOffset="50%">AGGITS<\/textPath>/,"the physical marquee must use the permanent AGGITS heading");
+assert.match(html,/class="marquee" aria-label="AGGITS"/,"the physical marquee must use the permanent AGGITS reference image");
 assert.ok(!html.includes(">AN EXCEPTIONALLY LONG MELBOURNE VENUE NAME<"),"the project identity must never replace the fixed physical marquee");
 for(const required of [
   "aggits-jukebox-master-v1.jpg","jukebox-real-coin-insert-cc0.mp3","object-fit:cover",
