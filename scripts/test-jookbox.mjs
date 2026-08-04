@@ -111,8 +111,9 @@ const contracts = JSON.parse(contractsText);
 assert.equal(contracts.productModels.jookbox.version, 3);
 assert.deepEqual(contracts.editionTypes.jukebox.renderedLinks, []);
 assert.match(html, /id="jookBoxCabinet"/);
-assert.match(html, /styles\.css\?v=20260804-mahogany-band-1/);
-assert.match(html, /app\.js\?v=20260804-mahogany-band-1/);
+assert.match(html, /styles\.css\?v=20260804-mahogany-band-2/);
+assert.match(html, /jookbox-coin-audio\.js\?v=20260804-coin-audio-2/);
+assert.match(html, /app\.js\?v=20260804-mahogany-band-2/);
 assert.match(html, /id="jookBoxVideoSlot"/);
 assert.match(html, /id="jookBoxCoinButton"[\s\S]*aria-label="Insert coin and start the jukebox"/);
 assert.match(html, /id="jookBoxTickerText"/);
@@ -126,7 +127,7 @@ assert.doesNotMatch(html, /Filthy Animals/, "The reusable HTML renderer must nev
 assert.doesNotMatch(html, /id="jookBoxSoundToggle"|class="jookbox-band-plaque"|id="jookBoxActionBar"/);
 
 assert.match(app, /function setJookBoxState\(nextState\)/);
-assert.match(app, /const VERSION="20260804-mahogany-band-1"/);
+assert.match(app, /const VERSION="20260804-mahogany-band-2"/);
 assert.match(app, /dataset\.jookboxEmbeddedMarquee=embeddedMarquee\?"true":"false"/);
 assert.match(app, /dataset\.jookboxAppearance=config\.jookBox\?\.appearanceVariant\|\|"reference"/);
 assert.match(app, /dataset\.jookboxLightSequence=config\.jookBox\?\.lightSequenceMode\|\|"single-key"/);
@@ -158,7 +159,7 @@ assert.match(app, /function prepareJookBoxCoinAudio\(\)/);
 assert.match(app, /DeepCutsJookBoxCoinAudio/);
 assert.match(app, /volume:1,gain:1\.15/);
 assert.doesNotMatch(app, /function playJookBoxCoinFallback\(\)|createOscillator/, "A failed recording must never produce an electronic synthesized fallback.");
-assert.match(app, /playJookBoxCoinSound\(\);[\s\S]*scheduleJookBoxStartup\(\(\)=>\{[\s\S]*activateJookBoxVideo\(true\)[\s\S]*\},650\)/, "The real coin recording must receive mobile media focus before YouTube autoplay is attempted.");
+assert.match(app, /const coinPlayback=playJookBoxCoinSound\(\);[\s\S]*coinPlayback\.then\(activateVideoAfterCoin\)/, "YouTube may request mobile media focus only after the real coin recording ends.");
 assert.match(app, /function handleJookBoxVisibility\(\)/);
 assert.match(app, /window\.addEventListener\("pagehide",cleanupJookBoxLifecycle/);
 assert.match(app, /window\.addEventListener\("pageshow",handleJookBoxPageShow/);
@@ -231,6 +232,9 @@ assert.match(styles, /data-jookbox-appearance="mahogany-jookbox-master\/1"[\s\S]
 assert.match(styles, /data-jookbox-appearance="mahogany-jookbox-master\/1"[\s\S]*\.jookbox-secondary-actions\{[\s\S]*grid-template-columns:repeat\(4,minmax\(0,1fr\)\)/);
 assert.match(styles, /data-jookbox-appearance="mahogany-jookbox-master\/1"[\s\S]*\.jookbox-action-copy,[\s\S]*\.jookbox-external-mark\{display:none!important\}/);
 assert.match(styles, /data-jookbox-appearance="mahogany-jookbox-master\/1"[\s\S]*\.is-current-key[\s\S]*filter:brightness\(1\)!important/);
+assert.match(styles, /\.jookbox-ticker-console:before\{display:none!important;content:none!important\}/);
+assert.match(styles, /\.jookbox-action-icon\{[^}]*width:82px!important;[^}]*height:82px!important/);
+assert.match(styles, /\.jookbox-mahogany-key-icon\{[^}]*width:min\(96%,112px\)!important/);
 assert.match(styles, /\.jookbox-coin-button\{[\s\S]*min-height:44px/);
 assert.match(styles, /@keyframes jookBoxLockedCoinAttention/);
 assert.match(styles, /@keyframes jookBoxLockedCoinInsert/);
@@ -283,7 +287,7 @@ assert.match(creator, /buttonLightDurationMs:Math\.max\(450,Math\.min\(1200,Numb
 assert.match(creator, /autoplayDelayMs:0/);
 assert.match(validator, /locked JookBox cabinet artwork failed its SHA-256 identity check/);
 assert.match(validator, /JookBox coin recording failed its SHA-256 identity check/);
-assert.match(validator, /request JookBox video playback immediately within the direct coin interaction/);
+assert.match(validator, /preserve zero configured delay after the real coin recording completes/);
 assert.match(validator, /const mahoganyReferenceCabinet=appearanceVariant==='mahogany-jookbox-master\/1'/);
 assert.match(validator, /valid JookBox light duration/);
 assert.match(validator, /mahogany format requires exactly four unique display selection IDs/);
@@ -297,7 +301,7 @@ assert.equal(contracts.productModels.jookbox.defaultKeyBankFormat, "mahogany-fou
 assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("mahogany-cabinet-permanent-new-edition-default"));
 assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("atlas-retired-for-new-and-regenerated-band-jookboxes"));
 assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("automatic-responsive-marquee-title-fit-without-truncation"));
-assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("immediate-coin-interaction-autoplay-request-with-manual-fallback"));
+assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("coin-recording-completes-before-video-focus-with-manual-fallback"));
 assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("pre-coin-dimmed-locked-selection-keys"));
 assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("no-band-button-lighting"));
 assert.ok(contracts.productModels.jookbox.lockedCapabilities.includes("four-key-fixed-uniform-bank"));
@@ -335,6 +339,7 @@ for (const editionId of mahoganyTrialEditionIds) {
   assert.equal(trialConfig.jookBox?.coinSoundSha256, "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0");
   assert.equal(trialConfig.jookBox?.lightSequence, false);
   assert.equal(trialConfig.jookBox?.lightSequenceMode, "none");
+  assert.equal(trialConfig.jookBox?.tickerDurationSeconds, 36, `${trialEntry.slug}: approved ticker speed must remain identical across the trial.`);
   assert.equal(trialConfig.jookBox?.displaySelectionIds?.length, 4);
   assert.equal(new Set(trialConfig.jookBox.displaySelectionIds).size, 4);
   assert.deepEqual(trialConfig.jookBox?.supportAction, {

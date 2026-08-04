@@ -155,7 +155,7 @@ for(const edition of platform.editions){
       if(!legacyJookBox&&!frozenAtlasJookBox&&!mahoganyReferenceCabinet)errors.push(`${edition.config} must use the mahogany Band JookBox; ATLAS is retired and accepted only for frozen pre-trial editions.`);
       if(frozenAtlasJookBox&&!sixKeyFormat)errors.push(`${edition.config} is a frozen pre-trial ATLAS edition and its legacy six-key presentation must remain unchanged until migrated.`);
       if(!config.jookBox?.tickerBio||!config.jookBox?.coinSound||!config.jookBox?.coinSoundSha256||!/^https:\/\//.test(config.jookBox?.coinSoundSource||'')||!config.jookBox?.coinSoundLicense||!config.jookBox?.sessionStorageKey)errors.push(`${edition.config} requires configured ticker copy, sourced local coin audio with an integrity hash and licence, and session restoration.`);
-      if(config.jookBox?.autoplayDelayMs!==0)errors.push(`${edition.config} must request JookBox video playback immediately within the direct coin interaction.`);
+      if(config.jookBox?.autoplayDelayMs!==0)errors.push(`${edition.config} must preserve zero configured delay after the real coin recording completes.`);
       if(!(config.jookBox?.buttonLightDurationMs>=450&&config.jookBox?.buttonLightDurationMs<=1200))errors.push(`${edition.config} must use a valid JookBox light duration.`);
       if(config.featuredVideo?.selectionBasis!=='most-viewed-official'||!config.featuredVideo?.youtubeURL)errors.push(`${edition.config} requires the verified most-viewed official YouTube feature.`);
       const selections=Array.isArray(config.jookBox?.selections)?config.jookBox.selections:[];

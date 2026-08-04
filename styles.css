@@ -5258,7 +5258,7 @@ html[data-product-type="jukebox"][data-jookbox-appearance="mahogany-jookbox-mast
   display:flex!important;align-items:center!important;overflow:hidden!important;padding:0 4.5%!important;border:0!important;border-radius:7%!important;
   background:#030201!important;box-shadow:inset 0 0 20px #000!important;filter:brightness(.34)!important;transition:filter .45s!important
 }
-html[data-product-type="jukebox"][data-jookbox-appearance="mahogany-jookbox-master/1"] .jookbox-ticker-console:before{flex:none;margin-right:3%;content:"★";color:#f7ca59;font-size:clamp(.9rem,4vw,1.4rem);text-shadow:0 0 6px rgba(255,199,65,.72)}
+html[data-product-type="jukebox"][data-jookbox-appearance="mahogany-jookbox-master/1"] .jookbox-ticker-console:before{display:none!important;content:none!important}
 html[data-product-type="jukebox"][data-jookbox-appearance="mahogany-jookbox-master/1"] .jookbox-biography-ticker{width:100%!important;height:100%!important;overflow:hidden!important;background:transparent!important}
 html[data-product-type="jukebox"][data-jookbox-appearance="mahogany-jookbox-master/1"] .jookbox-ticker-text{top:50%!important;color:#ffda62!important;font:900 clamp(.72rem,3.7vw,1.25rem)/1 "Courier New",monospace!important;letter-spacing:.035em!important;text-shadow:0 0 2px #fff3a6,0 0 7px #ffb52d!important;white-space:nowrap!important}
 html[data-product-type="jukebox"][data-jookbox-appearance="mahogany-jookbox-master/1"] .is-ticker-running .jookbox-ticker-console{filter:brightness(1.12)!important}
@@ -5303,8 +5303,8 @@ html[data-product-type="jukebox"][data-jookbox-appearance="mahogany-jookbox-mast
 html[data-product-type="jukebox"][data-jookbox-appearance="mahogany-jookbox-master/1"] .jookbox-action-key:after{display:none!important;content:none!important}
 html[data-product-type="jukebox"][data-jookbox-appearance="mahogany-jookbox-master/1"] .is-awake .jookbox-action-key{filter:brightness(.94) saturate(.82)!important;opacity:1!important;pointer-events:auto!important}
 html[data-product-type="jukebox"][data-jookbox-appearance="mahogany-jookbox-master/1"] .is-buttons-running .jookbox-action-key.is-current-key{filter:brightness(1)!important;box-shadow:none!important;animation:none!important}
-html[data-product-type="jukebox"][data-jookbox-appearance="mahogany-jookbox-master/1"] .jookbox-action-icon{display:grid!important;place-items:center!important;width:100%!important;height:100%!important;margin:0!important;border:0!important;background:transparent!important;box-shadow:none!important}
-html[data-product-type="jukebox"][data-jookbox-appearance="mahogany-jookbox-master/1"] .jookbox-mahogany-key-icon{display:block!important;width:min(68%,78px)!important;aspect-ratio:1!important;object-fit:contain!important;border-radius:50%!important;filter:drop-shadow(0 2px 3px #000)!important}
+html[data-product-type="jukebox"][data-jookbox-appearance="mahogany-jookbox-master/1"] .jookbox-action-icon{display:grid!important;place-items:center!important;width:82px!important;height:82px!important;margin:0!important;border:0!important;background:transparent!important;box-shadow:none!important}
+html[data-product-type="jukebox"][data-jookbox-appearance="mahogany-jookbox-master/1"] .jookbox-mahogany-key-icon{display:block!important;width:min(96%,112px)!important;aspect-ratio:1!important;object-fit:contain!important;border-radius:50%!important;filter:drop-shadow(0 2px 3px #000)!important}
 html[data-product-type="jukebox"][data-jookbox-appearance="mahogany-jookbox-master/1"] .jookbox-action-copy,
 html[data-product-type="jukebox"][data-jookbox-appearance="mahogany-jookbox-master/1"] .jookbox-external-mark{display:none!important}
 html[data-product-type="jukebox"][data-jookbox-appearance="mahogany-jookbox-master/1"] .jookbox-action-key:focus-visible{outline:2px solid #ffe9ae!important;outline-offset:-5px!important;border-radius:50%!important}
