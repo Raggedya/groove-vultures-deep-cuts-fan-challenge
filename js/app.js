@@ -1,6 +1,6 @@
 "use strict";
 
-const VERSION="20260804-mahogany-band-1";
+const VERSION="20260804-mahogany-band-2";
 const LANEWAY_REPORTING_VERSION="laneway-weekly-v1";
 const $=id=>document.getElementById(id);
 const els={
@@ -1162,13 +1162,22 @@ function powerJookBox(){
   els.jookBoxCoin.disabled=true;
   els.jookBoxCoinPrompt.textContent="Coin accepted. The JookBox is powering up.";
   els.jookBoxPowerStatus.textContent="Coin accepted. The JookBox is powering up.";
-  playJookBoxCoinSound();
-  /* Protect the real coin recording from iOS media-focus interruption. Video is
-     armed after the mechanical drop has audibly started; manual Play remains. */
-  scheduleJookBoxStartup(()=>{
+  const coinPlayback=playJookBoxCoinSound();
+  /* The real 2.5-second mechanism recording keeps mobile media focus until its
+     ended event. Only then may YouTube or the local welcome video request focus. */
+  const activateVideoAfterCoin=()=>{
+    if(jookBoxState==="sleeping")return;
     if(isBarJookBoxEdition())activateBarJookBoxWelcomeVideo({autoplay:true});
     else activateJookBoxVideo(true);
-  },650);
+  };
+  if(coinPlayback&&typeof coinPlayback.then==="function"){
+    coinPlayback.then(activateVideoAfterCoin).catch(error=>{
+      console.warn("JookBox coin recording could not complete; video remains available.",error);
+      scheduleJookBoxStartup(activateVideoAfterCoin,250);
+    });
+  }else{
+    scheduleJookBoxStartup(activateVideoAfterCoin,2700);
+  }
   try{sessionStorage.setItem(jookBoxSessionKey(),"true")}catch{}
   const id=isBarJookBoxEdition()?"local-mp4":els.videoFrame.dataset.videoId;
   analytics.track("jookbox_coin_inserted",{interaction_source:"jookbox_coin",video_id:id||"",edition_type:config.editionType},{onceKey:`jookbox-coin:${editionEntry.editionId}`});
@@ -1214,9 +1223,6 @@ function playJookBoxCoinSound(){
   if(jookBoxAudio){
     try{
       const playback=jookBoxAudio.play();
-      if(playback&&typeof playback.catch==="function")playback.catch(error=>{
-        console.warn("JookBox coin recording could not be played.",error);
-      });
       return playback;
     }catch(error){console.warn("JookBox coin recording could not be played.",error)}
   }

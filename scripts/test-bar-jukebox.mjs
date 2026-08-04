@@ -33,7 +33,7 @@ assert.ok(contracts.productModels.bar_jukebox.lockedCapabilities.includes("perma
 assert.ok(contracts.productModels.bar_jukebox.lockedCapabilities.includes("working-dynamic-venue-share-panel"));
 assert.ok(contracts.productModels.bar_jukebox.lockedCapabilities.includes("single-long-share-control"));
 assert.ok(contracts.productModels.bar_jukebox.lockedCapabilities.includes("no-scannable-localhost-preview-qr"));
-assert.ok(contracts.productModels.bar_jukebox.lockedCapabilities.includes("direct-coin-gesture-local-mp4-autoplay-request-with-controls-fallback"));
+assert.ok(contracts.productModels.bar_jukebox.lockedCapabilities.includes("coin-recording-completes-before-local-mp4-focus-with-controls-fallback"));
 assert.ok(contracts.productModels.bar_jukebox.lockedCapabilities.includes("six-stage-single-key-contained-incandescent-illumination"));
 
 assert.match(html,/id="barJookBoxWelcomeVideo"/);
@@ -207,6 +207,7 @@ assert.doesNotMatch(preview,/url:location\.href/);
 assert.match(preview,/target="_blank" rel="noopener noreferrer"/);
 assert.match(preview,/DeepCutsJookBoxCoinAudio/);
 assert.match(preview,/sound\?\.play\(\)/);
+assert.match(preview,/coinPlayback\?\.then\)coinPlayback\.then\(startVideo\)/);
 assert.match(preview,/volume:1,gain:1\.15/);
 assert.match(preview,/video\.play\(\)/);
 assert.match(preview,/is-neon-on/);

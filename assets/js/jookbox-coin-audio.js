@@ -24,6 +24,7 @@
       this.buffer=null;
       this.bufferPromise=null;
       this.activeSource=null;
+      this.activeCompletion=null;
       if(!this.source)return;
 
       try{
@@ -59,6 +60,7 @@
     }
 
     stop(){
+      this.finishActivePlayback();
       if(this.activeSource){
         try{this.activeSource.stop()}catch{}
         this.activeSource=null;
@@ -69,18 +71,63 @@
       }
     }
 
+    finishActivePlayback(error=null){
+      const completion=this.activeCompletion;
+      this.activeCompletion=null;
+      if(!completion)return;
+      completion.cleanup?.();
+      if(error)completion.reject(error);
+      else completion.resolve();
+    }
+
     startDecodedBuffer(){
-      if(!this.context||!this.buffer||this.context.state==="closed")return false;
-      const source=this.context.createBufferSource();
-      const gainNode=this.context.createGain();
-      source.buffer=this.buffer;
-      gainNode.gain.value=this.gain;
-      source.connect(gainNode);
-      gainNode.connect(this.context.destination);
-      source.addEventListener("ended",()=>{if(this.activeSource===source)this.activeSource=null},{once:true});
-      source.start(0);
-      this.activeSource=source;
-      return true;
+      if(!this.context||!this.buffer||this.context.state==="closed")return null;
+      return new Promise((resolve,reject)=>{
+        const source=this.context.createBufferSource();
+        const gainNode=this.context.createGain();
+        source.buffer=this.buffer;
+        gainNode.gain.value=this.gain;
+        source.connect(gainNode);
+        gainNode.connect(this.context.destination);
+        const cleanup=()=>source.removeEventListener("ended",finish);
+        const finish=()=>{
+          if(this.activeSource===source)this.activeSource=null;
+          this.finishActivePlayback();
+        };
+        source.addEventListener("ended",finish,{once:true});
+        this.activeCompletion={resolve,reject,cleanup};
+        try{
+          source.start(0);
+          this.activeSource=source;
+        }catch(error){
+          this.finishActivePlayback(error);
+        }
+      });
+    }
+
+    playHtmlRecording(){
+      if(!this.element)return Promise.reject(new Error("HTML audio is unavailable."));
+      const element=this.element;
+      element.muted=false;
+      element.volume=this.volume;
+      try{element.currentTime=0}catch{}
+      return new Promise((resolve,reject)=>{
+        let guardTimer=0;
+        const cleanup=()=>{
+          element.removeEventListener("ended",finish);
+          element.removeEventListener("error",fail);
+          if(guardTimer)global.clearTimeout(guardTimer);
+        };
+        const finish=()=>this.finishActivePlayback();
+        const fail=()=>this.finishActivePlayback(element.error||new Error("The coin recording could not be played."));
+        element.addEventListener("ended",finish,{once:true});
+        element.addEventListener("error",fail,{once:true});
+        this.activeCompletion={resolve,reject,cleanup};
+        guardTimer=global.setTimeout(finish,8000);
+        let playback;
+        try{playback=element.play()}catch(error){playback=Promise.reject(error)}
+        Promise.resolve(playback).catch(error=>this.finishActivePlayback(error));
+      });
     }
 
     play(){
@@ -91,27 +138,28 @@
       if(this.context&&this.context.state!=="running"&&this.context.state!=="closed"){
         try{resumePromise=Promise.resolve(this.context.resume())}catch(error){resumePromise=Promise.reject(error)}
       }
-      if(this.buffer&&this.context){
-        return resumePromise.then(()=>{
-          if(!this.startDecodedBuffer())throw new Error("Decoded JookBox coin recording could not start.");
+      /* HTML media is the first choice because it is started synchronously inside
+         the visitor's coin gesture on iOS. Web Audio remains a decoded fallback. */
+      if(this.element){
+        resumePromise.catch(()=>{});
+        return this.playHtmlRecording().catch(async primaryError=>{
+          await resumePromise.catch(()=>{});
+          if(this.bufferPromise)await this.bufferPromise;
+          const decodedPlayback=this.startDecodedBuffer();
+          if(decodedPlayback)return decodedPlayback;
+          throw primaryError;
         });
       }
 
-      if(!this.element){
-        return resumePromise.then(()=>this.bufferPromise).then(()=>{
-          if(!this.startDecodedBuffer())throw new Error("JookBox coin recording is unavailable.");
-        });
-      }
-
-      this.element.muted=false;
-      this.element.volume=this.volume;
-      try{this.element.currentTime=0}catch{}
-      let playback;
-      try{playback=this.element.play()}catch(error){playback=Promise.reject(error)}
-      return Promise.resolve(playback).catch(async primaryError=>{
+      return resumePromise.then(()=>this.bufferPromise).then(()=>{
+        const decodedPlayback=this.startDecodedBuffer();
+        if(decodedPlayback)return decodedPlayback;
+        throw new Error("JookBox coin recording is unavailable.");
+      }).catch(async primaryError=>{
         await resumePromise.catch(()=>{});
         if(this.bufferPromise)await this.bufferPromise;
-        if(this.startDecodedBuffer())return;
+        const decodedPlayback=this.startDecodedBuffer();
+        if(decodedPlayback)return decodedPlayback;
         throw primaryError;
       });
     }
