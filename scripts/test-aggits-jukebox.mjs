@@ -30,9 +30,10 @@ assert.equal(project.readiness.handoffReady,false);
 project=attachMp4(project,{fileName:"welcome.mp4",sizeBytes:1024,sha256:"a".repeat(64)},new Date("2026-08-03T00:01:00Z"));
 assert.equal(project.readiness.handoffReady,true);
 const html=renderStudioPreview(project,{videoUrl:"/media/welcome.mp4"});
-assert.match(html,/<tspan x="500" y="72">AN EXCEPTIONALLY LONG<\/tspan>/,"exceptionally long titles must use the balanced two-line fallback");
+assert.match(html,/<textPath href="#aggitsMarqueeArc" startOffset="50%">AGGITS<\/textPath>/,"the physical marquee must use the permanent AGGITS heading");
+assert.ok(!html.includes(">AN EXCEPTIONALLY LONG MELBOURNE VENUE NAME<"),"the project identity must never replace the fixed physical marquee");
 for(const required of [
-  "aggits-jukebox-master-v1.jpg","jukebox-real-coin-insert-cc0.mp3","object-fit:cover","ResizeObserver",
+  "aggits-jukebox-master-v1.jpg","jukebox-real-coin-insert-cc0.mp3","object-fit:cover",
   'addEventListener("ended"',"noopener noreferrer","1120","aspect-ratio:1","width:min(64%,70px)","enableActions"
 ])assert.ok(html.includes(required),`preview missing ${required}`);
 assert.ok(!html.includes("Math.random()"),"action-key illumination and random sequencing must remain removed");
