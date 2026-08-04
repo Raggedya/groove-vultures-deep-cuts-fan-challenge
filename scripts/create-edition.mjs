@@ -44,10 +44,7 @@ if(editionType==='car')config.automotive={make:clean(input.automotive?.make,60),
 if(editionType==='club')config.club={location:clean(input.club?.location,120),formed:clean(input.club?.formed,30),heroLabels:['Visit','Play','Join','Connect']};
 if(editionType==='jukebox'){
   const selections=validateJookBoxSelections(input);
-  const requestedAppearanceVariant=clean(input.jookBox?.appearanceVariant||'',80);
-  const requestedKeyBankFormat=clean(input.jookBox?.keyBankFormat||'',40);
-  const requestedCabinetArtwork=clean(input.jookBox?.cabinetArtwork||'',180);
-  assertCurrentBandJookBoxModel({appearanceVariant:requestedAppearanceVariant,keyBankFormat:requestedKeyBankFormat,cabinetArtwork:requestedCabinetArtwork});
+  assertCurrentBandJookBoxModel(input.jookBox||{});
   const {appearanceVariant,keyBankFormat,minimumDestinations:minimumDisplayIds,maximumDestinations:maximumDisplayIds}=BAND_JOOKBOX_MODEL;
   const requestedDisplayIds=Array.isArray(input.jookBox?.displaySelectionIds)?input.jookBox.displaySelectionIds.map(value=>clean(value,80)).filter(Boolean):selections.slice(0,maximumDisplayIds).map(selection=>selection.id);
   if(requestedDisplayIds.length!==maximumDisplayIds||new Set(requestedDisplayIds).size!==requestedDisplayIds.length||requestedDisplayIds.some(id=>!selections.some(selection=>selection.id===id)))throw new Error('The mahogany Band JookBox requires exactly four unique, verified displaySelectionIds.');
@@ -55,33 +52,33 @@ if(editionType==='jukebox'){
   const biographySource=https(input.jookBox?.biography?.sourceURL||'');
   if(!paragraphs.length||!biographySource)throw new Error('JookBox requires verified biography paragraphs and an official HTTPS source.');
   config.jookBox={
-    modelVersion:'jookbox/3',
-    layoutVersion:'coin-awakening/1',
+    modelVersion:BAND_JOOKBOX_MODEL.modelVersion,
+    layoutVersion:BAND_JOOKBOX_MODEL.layoutVersion,
     cabinetArtwork:BAND_JOOKBOX_MODEL.cabinetArtwork,
     cabinetArtworkSha256:BAND_JOOKBOX_MODEL.cabinetArtworkSha256,
-    coinSound:clean(input.jookBox?.coinSound||'assets/audio/jukebox-real-coin-insert-cc0.mp3',180),
-    coinSoundSha256:clean(input.jookBox?.coinSoundSha256||'0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0',64),
-    coinSoundSource:https(input.jookBox?.coinSoundSource||'https://freesound.org/people/kyles/sounds/637369/'),
-    coinSoundLicense:clean(input.jookBox?.coinSoundLicense||'CC0-1.0',40),
+    coinSound:BAND_JOOKBOX_MODEL.coinSound,
+    coinSoundSha256:BAND_JOOKBOX_MODEL.coinSoundSha256,
+    coinSoundSource:BAND_JOOKBOX_MODEL.coinSoundSource,
+    coinSoundLicense:BAND_JOOKBOX_MODEL.coinSoundLicense,
     sessionStorageKey:`jookBoxActivated:${editionId}`,
     tickerBio:clean(input.jookBox?.tickerBio||bio,420).toUpperCase(),
-    tickerDurationSeconds:Math.max(12,Math.min(60,Number(input.jookBox?.tickerDurationSeconds)||36)),
-    buttonLightDurationMs:Math.max(450,Math.min(1200,Number(input.jookBox?.buttonLightDurationMs)||Number(input.jookBox?.buttonRowDurationMs)||1100)),
+    tickerDurationSeconds:BAND_JOOKBOX_MODEL.tickerDurationSeconds,
+    buttonLightDurationMs:BAND_JOOKBOX_MODEL.buttonLightDurationMs,
     keyBankFormat,
-    autoplayDelayMs:0,
-    startupTimingsMs:{mechanism:120,neonOn:800,screenOn:1200,buttonsOn:1600,tickerOn:2000},
+    autoplayDelayMs:BAND_JOOKBOX_MODEL.autoplayDelayMs,
+    startupTimingsMs:{...BAND_JOOKBOX_MODEL.startupTimingsMs},
     displaySelectionIds:requestedDisplayIds,
     marquee:clean(input.jookBox?.marquee||bandName,80),
     videoLabel:clean(input.jookBox?.videoLabel||'Now playing',40),
     primaryActionLabel:clean(input.jookBox?.primaryActionLabel||'Open verified destination',60),
-    heroLabels:['Listen','Watch','Follow','Shop'],
-    lightSequence:false,
-    lightSequenceMode:'none',
+    heroLabels:[...BAND_JOOKBOX_MODEL.heroLabels],
+    lightSequence:BAND_JOOKBOX_MODEL.lightSequence,
+    lightSequenceMode:BAND_JOOKBOX_MODEL.lightSequenceMode,
     appearanceVariant,
     qrArtworkVariant:BAND_JOOKBOX_MODEL.qrArtworkVariant,
-    supportAction:{action:'share',label:'SHARE',detail:'',kind:'share',icon:'',detailIcon:''},
-    cabinetCopyright:'Copyright Clearlight Creative 2026.',
-    coinStart:true,
+    supportAction:{...BAND_JOOKBOX_MODEL.supportAction},
+    cabinetCopyright:BAND_JOOKBOX_MODEL.cabinetCopyright,
+    coinStart:BAND_JOOKBOX_MODEL.coinStart,
     linkSourceURL:https(input.jookBox?.linkSourceURL||''),
     linkSourceVerifiedAt:String(input.jookBox?.linkSourceVerifiedAt||''),
     syncMode:'verified-build-time',
