@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#100906" />
+    <title>Mahogany Jukebox</title>
+    <link rel="stylesheet" href="/mahogany-studio/styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <span class="eyebrow">Clearlight Creative</span>
+        <h1>Mahogany Jukebox</h1>
+      </div>
+      <nav aria-label="Application">
+        <button class="nav-button is-active" data-view="builder">
+          Create / Edit</button
+        ><button class="nav-button" data-view="library">Library</button>
+      </nav>
+    </header>
+    <main>
+      <section id="builderView" class="view builder-view">
+        <aside class="preview-column" aria-label="Production previews">
+          <div class="panel preview-panel">
+            <div class="panel-heading">
+              <div>
+                <span class="eyebrow">Locked master</span>
+                <h2>Jukebox preview</h2>
+              </div>
+              <span id="previewStatus" class="status-chip">Draft</span>
+            </div>
+            <iframe
+              id="jukeboxPreview"
+              title="Mahogany Jukebox mobile preview"
+            ></iframe>
+          </div>
+          <div class="panel qr-panel">
+            <div class="panel-heading">
+              <div>
+                <span class="eyebrow">Permanent artwork</span>
+                <h2>QR poster preview</h2>
+              </div>
+            </div>
+            <div id="qrEmpty" class="empty-preview">
+              <span class="qr-placeholder"></span><strong>Press Create</strong>
+              <p>
+                The permanent URL and perspective-fitted QR poster will appear
+                here.
+              </p>
+            </div>
+            <img
+              id="qrPreview"
+              alt="Perspective-fitted Aggits Mahogany Jukebox QR poster"
+              hidden
+            />
+          </div>
+        </aside>
+        <section class="panel form-panel">
+          <div class="panel-heading">
+            <div>
+              <span class="eyebrow">Create new jukebox</span>
+              <h2 id="formTitle">Manual production inputs</h2>
+            </div>
+            <button id="newProject" class="quiet-button" type="button">
+              New
+            </button>
+          </div>
+          <form id="projectForm" novalidate>
+            <label class="field"
+              ><span>Jukebox name</span
+              ><input
+                id="name"
+                maxlength="120"
+                placeholder="e.g. The Filthy Animals"
+                required
+            /></label>
+            <fieldset>
+              <legend><span>1</span> Video input</legend>
+              <div class="video-choice">
+                <label
+                  ><input
+                    type="radio"
+                    name="videoKind"
+                    value="youtube"
+                    checked
+                  /><span>YouTube URL</span></label
+                ><input
+                  id="youtubeUrl"
+                  type="url"
+                  placeholder="https://youtube.com/watch?v=…"
+                /><label
+                  ><input type="radio" name="videoKind" value="mp4" /><span
+                    >Upload MP4</span
+                  ></label
+                ><button id="chooseMp4" class="file-button" type="button">
+                  Choose file</button
+                ><input
+                  id="mp4File"
+                  type="file"
+                  accept="video/mp4"
+                  hidden
+                /><small id="videoFileName"
+                  >MP4/H.264 · 1120 × 1280 px · maximum 24 MiB</small
+                >
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend><span>2</span> Four physical action keys</legend>
+              <p class="help">
+                Select any approved icon, enter its accessible label, then paste
+                the destination.
+              </p>
+              <div id="actionRows" class="action-rows"></div>
+            </fieldset>
+            <fieldset>
+              <legend><span>3</span> Ticker text</legend>
+              <label class="field ticker-field">
+                <textarea
+                  id="tickerText"
+                  maxlength="500"
+                  rows="3"
+                  placeholder="Enter the message that scrolls across the Mahogany Jukebox…"
+                  required
+                ></textarea
+                ><small><span id="tickerCount">0</span>/500</small></label
+              >
+            </fieldset>
+            <div id="validation" class="validation" aria-live="polite"></div>
+            <div class="workflow-actions">
+              <button id="saveDraft" class="quiet-button" type="submit">
+                Save draft</button
+              ><button id="createJukebox" class="primary-button" type="button">
+                Create</button
+              ><button
+                id="acceptJukebox"
+                class="accept-button"
+                type="button"
+                disabled
+              >
+                Accept &amp; publish
+              </button>
+            </div>
+          </form>
+          <section id="activationPanel" class="activation-panel" hidden>
+            <strong>Secure publishing activation</strong>
+            <p id="activationMessage">
+              Activate this Windows installation once.
+            </p>
+            <div>
+              <button id="startActivation" class="quiet-button" type="button">
+                Email code</button
+              ><input
+                id="activationCode"
+                inputmode="numeric"
+                maxlength="6"
+                placeholder="6-digit code"
+              /><button
+                id="completeActivation"
+                class="primary-button"
+                type="button"
+              >
+                Activate
+              </button>
+            </div>
+          </section>
+        </section>
+      </section>
+      <section id="libraryView" class="view library-view" hidden>
+        <div class="panel library-panel">
+          <div class="panel-heading">
+            <div>
+              <span class="eyebrow">Permanent collection</span>
+              <h2>Jukebox library</h2>
+            </div>
+            <button id="libraryNew" class="primary-button" type="button">
+              Create new
+            </button>
+          </div>
+          <label class="search"
+            ><span>Search</span
+            ><input
+              id="librarySearch"
+              type="search"
+              placeholder="Search by Jukebox name or status"
+          /></label>
+          <div id="libraryList" class="library-list"></div>
+          <div id="libraryEmpty" class="empty-library">
+            <strong>No Jukeboxes yet</strong>
+            <p>Create and accept your first Mahogany Jukebox.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <dialog id="iconDialog">
+      <form method="dialog" class="icon-dialog">
+        <div class="panel-heading">
+          <div>
+            <span class="eyebrow">110 approved icons</span>
+            <h2>Select an icon</h2>
+          </div>
+          <button class="dialog-close" value="cancel" aria-label="Close">
+            ×
+          </button>
+        </div>
+        <label class="search"
+          ><span>Find icon</span
+          ><input
+            id="iconSearch"
+            type="search"
+            placeholder="Spotify, menu, tickets, reviews…"
+        /></label>
+        <div id="iconGrid" class="icon-grid"></div>
+      </form>
+    </dialog>
+    <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+    <script type="module" src="/mahogany-studio/app.js"></script>
+  </body>
+</html>
