@@ -84,7 +84,7 @@ assert.equal(
   "Equivalent Studio identity inputs must retain the same research fingerprint."
 );
 
-console.log("Deep Cuts Studio JookBox research tests passed: name-plus-URL and name-only discovery verify independently, populate four to six 98% destinations for the locked cabinet, and fail closed on identity mismatch.");
+console.log("Deep Cuts Studio JookBox research tests passed: name-plus-URL and name-only discovery verify independently, collect verified destination candidates for the factory's locked four-key selection, and fail closed on identity mismatch.");
 
 function page(url,body,status=200){
   return{

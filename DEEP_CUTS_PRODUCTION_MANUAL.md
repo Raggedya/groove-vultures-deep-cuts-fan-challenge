@@ -26,7 +26,7 @@ Hays is the second isolated Business Recruitment edition at `dc_3481f25897`. It 
 
 ## JookBox permanent rules
 
-JookBox uses `editionType: jukebox` and locked model `jookbox/3` on the shared engine. It is a band-only discovery model with no Aggits, quiz or spinning wheel. From the owner override dated 2026-08-04, every new or regenerated Band JookBox must use `mahogany-jookbox-master/1` and `mahogany-four-key/1`; factory input cannot select or restore ATLAS or another cabinet. The mandatory shared presentation is the SHA-256-locked 1120 × 2000 `assets/aggits-jukebox-master-v1.jpg` mahogany/brass cabinet. Completed non-trial ATLAS products remain frozen only for backward compatibility and cannot be regenerated or reused. The initial migration is deliberately limited to ten named trial editions until owner approval.
+JookBox uses `editionType: jukebox` and locked model `jookbox/3` on the shared engine. It is a band-only discovery model with no Aggits, quiz or spinning wheel. The final owner-approved product is **Mahogany Jukebox Master**, with Savage Garden `dc_e65763b78b` as its approved live reference after the final mobile coin-motion and four-key proportion corrections. Every new, migrated or regenerated Band JookBox must use `mahogany-jookbox-master/1` and `mahogany-four-key/1`; factory input cannot select or restore ATLAS, neon or another cabinet. The mandatory shared presentation is the SHA-256-locked `assets/aggits-jukebox-master-v1.jpg` mahogany/brass cabinet. Completed alternative products remain frozen only for backward compatibility and cannot be regenerated or reused. The ten-edition trial is complete; all future Band work uses this master.
 
 The owner-approved delivery exception is `aggits-character-poster-perspective/2`: every newly configured or trial-migrated Band JookBox receives the locked 1254 × 1254 character QR poster while the live page remains completely Aggits-free. Its band title is fitted into the physical plaque and the permanent opaque URL is rendered as a high-contrast QR perspective-fitted to the photographed cabinet opening. Publication fails unless an actual decoder reads the final poster at 1254, 627 and 360 pixels.
 
@@ -44,7 +44,7 @@ The locked mahogany cabinet uses its full-width brass plate as the sole working 
 
 Filthy Animals is the first completed JookBox edition at `dc_a3c049e4bc`. Its exact destinations, copy, colours and featured video belong only to that edition. Future JookBox bands reuse the renderer and model contract while supplying separately verified configuration and evidence.
 
-ATLAS and other pre-2026-08-04 ATLAS editions remain frozen historical products only. Every current mahogany edition supplies its own independently verified identity, video, destinations, ticker and biography; no edition depends directly on another edition's configuration. The ten-edition trial is migrated in place without changing any opaque route.
+ATLAS and other pre-2026-08-04 alternative editions remain frozen historical products only. Every current mahogany edition supplies its own independently verified identity, video, destinations, ticker and biography; no edition depends directly on another edition's configuration. Existing routes are preserved, while every future migration uses the final Mahogany Jukebox Master without changing the opaque route.
 
 ## Laneway permanent rules
 

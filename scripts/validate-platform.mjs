@@ -1,9 +1,10 @@
 import fs from 'node:fs/promises';
 import crypto from 'node:crypto';
+import {BAND_JOOKBOX_MODEL} from './jookbox-locked-model.mjs';
 
-const requiredDocs=['PLATFORM_ARCHITECTURE_DIRECTIVE.md','DEEP_CUTS_PRODUCTION_MANUAL.md','CLAUDE.md','ROADMAP.md','AGENTS.md','.agents/skills/deep-cuts-factory/SKILL.md'];
+const requiredDocs=['PLATFORM_ARCHITECTURE_DIRECTIVE.md','DEEP_CUTS_PRODUCTION_MANUAL.md','CLAUDE.md','ROADMAP.md','MAHOGANY_JUKEBOX_MASTER.md','AGENTS.md','.agents/skills/deep-cuts-factory/SKILL.md'];
 const LEGACY_JOOKBOX_EDITION_ID='dc_a3c049e4bc';
-const BAND_JOOKBOX_MAHOGANY_TRIAL_IDS=new Set(['dc_e65763b78b','dc_36e2298568','dc_8517649a4b','dc_0b0dc0187e','dc_0c663efc79','dc_151a0f73fc','dc_c8c3b75f0e','dc_29ea5bd281','dc_b52be0b54a','dc_e8324accf9']);
+const BAND_JOOKBOX_MAHOGANY_REFERENCE_IDS=new Set(['dc_e65763b78b','dc_36e2298568','dc_8517649a4b','dc_0b0dc0187e','dc_0c663efc79','dc_151a0f73fc','dc_c8c3b75f0e','dc_29ea5bd281','dc_b52be0b54a','dc_e8324accf9']);
 const BAND_JOOKBOX_ATLAS_FREEZE_CUTOFF=Date.parse('2026-08-04T00:00:00.000Z');
 const errors=[];
 for(const file of requiredDocs)try{const text=await fs.readFile(file,'utf8');if(text.trim().length<100)errors.push(`${file} is unexpectedly short.`)}catch{errors.push(`Missing ${file}.`)}
@@ -145,14 +146,14 @@ for(const edition of platform.editions){
       const mahoganyFourKeyFormat=keyBankFormat==='mahogany-four-key/1';
       const legacyJookBox=edition.editionId===LEGACY_JOOKBOX_EDITION_ID;
       const editionCreatedAt=Date.parse(config.production?.editionCreatedAt||'');
-      const frozenAtlasJookBox=atlasReferenceCabinet&&Number.isFinite(editionCreatedAt)&&editionCreatedAt<BAND_JOOKBOX_ATLAS_FREEZE_CUTOFF&&!BAND_JOOKBOX_MAHOGANY_TRIAL_IDS.has(edition.editionId);
+      const frozenAtlasJookBox=atlasReferenceCabinet&&Number.isFinite(editionCreatedAt)&&editionCreatedAt<BAND_JOOKBOX_ATLAS_FREEZE_CUTOFF&&!BAND_JOOKBOX_MAHOGANY_REFERENCE_IDS.has(edition.editionId);
       const validKeyBankFormat=['classic-eight-key/1','six-key/1','mahogany-four-key/1'].includes(keyBankFormat);
       const validAppearanceVariant=['reference','atlas-reference-cabinet/1','mahogany-jookbox-master/1'].includes(appearanceVariant);
       const validLightSequence=mahoganyReferenceCabinet?config.jookBox?.lightSequence===false&&config.jookBox?.lightSequenceMode==='none':config.jookBox?.lightSequence===true&&config.jookBox?.lightSequenceMode==='single-key';
       if(config.jookBox?.modelVersion!=='jookbox/3'||config.jookBox?.layoutVersion!=='coin-awakening/1'||JSON.stringify(config.jookBox?.heroLabels)!==JSON.stringify(['Listen','Watch','Follow','Shop'])||!validKeyBankFormat||!validAppearanceVariant||!validLightSequence||config.jookBox?.coinStart!==true||config.jookBox?.syncMode!=='verified-build-time')errors.push(`${edition.config} must preserve the locked coin-awakening JookBox model, approved appearance, key-bank format and lighting policy.`);
       if(legacyJookBox&&(appearanceVariant!=='reference'||keyBankFormat!=='classic-eight-key/1'))errors.push(`${edition.config} must preserve the immutable Filthy Animals legacy JookBox presentation.`);
-      if(BAND_JOOKBOX_MAHOGANY_TRIAL_IDS.has(edition.editionId)&&(!mahoganyReferenceCabinet||!mahoganyFourKeyFormat))errors.push(`${edition.config} is in the ten-edition trial and must use the locked mahogany four-key presentation.`);
-      if(!legacyJookBox&&!frozenAtlasJookBox&&!mahoganyReferenceCabinet)errors.push(`${edition.config} must use the mahogany Band JookBox; ATLAS is retired and accepted only for frozen pre-trial editions.`);
+      if(BAND_JOOKBOX_MAHOGANY_REFERENCE_IDS.has(edition.editionId)&&(!mahoganyReferenceCabinet||!mahoganyFourKeyFormat))errors.push(`${edition.config} is an approved Mahogany Jukebox Master reference edition and must preserve the locked four-key presentation.`);
+      if(!legacyJookBox&&!frozenAtlasJookBox&&!mahoganyReferenceCabinet)errors.push(`${edition.config} must use the Mahogany Jukebox Master; alternative Band appearances are accepted only for frozen historical routes.`);
       if(frozenAtlasJookBox&&!sixKeyFormat)errors.push(`${edition.config} is a frozen pre-trial ATLAS edition and its legacy six-key presentation must remain unchanged until migrated.`);
       if(!config.jookBox?.tickerBio||!config.jookBox?.coinSound||!config.jookBox?.coinSoundSha256||!/^https:\/\//.test(config.jookBox?.coinSoundSource||'')||!config.jookBox?.coinSoundLicense||!config.jookBox?.sessionStorageKey)errors.push(`${edition.config} requires configured ticker copy, sourced local coin audio with an integrity hash and licence, and session restoration.`);
       if(config.jookBox?.autoplayDelayMs!==0)errors.push(`${edition.config} must preserve zero configured delay after the real coin recording completes.`);
@@ -199,19 +200,26 @@ for(const edition of platform.editions){
       ))errors.push(`${edition.config} must preserve the locked ATLAS reference cabinet, Support Our Band share action with both icons, cabinet copyright, exact six-key bank and single-key reading-order light sequence.`);
       const mahoganySupportAction=config.jookBox?.supportAction;
       if(mahoganyReferenceCabinet&&(
-        config.jookBox?.cabinetArtworkSha256!=='28806c43ecc8d7eb3ac2216f064f1887d057e939bad1841d62ecbf9a6627373d'||
-        config.jookBox?.cabinetArtwork!=='assets/aggits-jukebox-master-v1.jpg'||
-        mahoganySupportAction?.action!=='share'||
-        mahoganySupportAction?.label!=='SHARE'||
-        mahoganySupportAction?.detail!==''||
-        mahoganySupportAction?.kind!=='share'||
-        mahoganySupportAction?.icon!==''||
-        mahoganySupportAction?.detailIcon!==''||
-        config.jookBox?.cabinetCopyright!=='Copyright Clearlight Creative 2026.'||
-        keyBankFormat!=='mahogany-four-key/1'||
-        config.jookBox?.lightSequence!==false||
-        config.jookBox?.lightSequenceMode!=='none'||
-        config.jookBox?.qrArtworkVariant!=='aggits-character-poster-perspective/2'
+        config.jookBox?.modelVersion!==BAND_JOOKBOX_MODEL.modelVersion||
+        config.jookBox?.layoutVersion!==BAND_JOOKBOX_MODEL.layoutVersion||
+        config.jookBox?.cabinetArtworkSha256!==BAND_JOOKBOX_MODEL.cabinetArtworkSha256||
+        config.jookBox?.cabinetArtwork!==BAND_JOOKBOX_MODEL.cabinetArtwork||
+        config.jookBox?.coinSound!==BAND_JOOKBOX_MODEL.coinSound||
+        config.jookBox?.coinSoundSha256!==BAND_JOOKBOX_MODEL.coinSoundSha256||
+        config.jookBox?.coinSoundSource!==BAND_JOOKBOX_MODEL.coinSoundSource||
+        config.jookBox?.coinSoundLicense!==BAND_JOOKBOX_MODEL.coinSoundLicense||
+        config.jookBox?.tickerDurationSeconds!==BAND_JOOKBOX_MODEL.tickerDurationSeconds||
+        config.jookBox?.buttonLightDurationMs!==BAND_JOOKBOX_MODEL.buttonLightDurationMs||
+        config.jookBox?.autoplayDelayMs!==BAND_JOOKBOX_MODEL.autoplayDelayMs||
+        JSON.stringify(config.jookBox?.startupTimingsMs)!==JSON.stringify(BAND_JOOKBOX_MODEL.startupTimingsMs)||
+        JSON.stringify(config.jookBox?.heroLabels)!==JSON.stringify(BAND_JOOKBOX_MODEL.heroLabels)||
+        JSON.stringify(mahoganySupportAction)!==JSON.stringify(BAND_JOOKBOX_MODEL.supportAction)||
+        config.jookBox?.cabinetCopyright!==BAND_JOOKBOX_MODEL.cabinetCopyright||
+        config.jookBox?.coinStart!==BAND_JOOKBOX_MODEL.coinStart||
+        keyBankFormat!==BAND_JOOKBOX_MODEL.keyBankFormat||
+        config.jookBox?.lightSequence!==BAND_JOOKBOX_MODEL.lightSequence||
+        config.jookBox?.lightSequenceMode!==BAND_JOOKBOX_MODEL.lightSequenceMode||
+        config.jookBox?.qrArtworkVariant!==BAND_JOOKBOX_MODEL.qrArtworkVariant
       ))errors.push(`${edition.config} must preserve the locked mahogany cabinet, icon-only four-key bank, unlit keys, brass SHARE control, character QR artwork and cabinet copyright.`);
       if(config.jookBox?.coinSound){
         const coinSound=await fs.readFile(config.jookBox.coinSound);
