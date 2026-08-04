@@ -113,6 +113,16 @@ Treat every completed edition as a finished commercial product that must remain 
 - Delivery is part of the publication gate. The single owner-facing Publish action saves the edition, publishes it and automatically requests the delivery email without a second click or separate email step. The owner email must identify the edition, include both a clickable and plain-copy permanent URL, and attach the fitted QR artwork. The edition is not marked live until confirmed delivery and live page, MP4 and QR verification succeed.
 - Bulk intake is a private Studio draft-creation boundary, never a publisher. It accepts only the versioned 40-column CSV contract or the exact `Import Ready` Excel worksheet, validates every identity, mapping, action and destination fail-closed, and writes no more than 1,000 isolated `aggits_jukebox` drafts per confirmed batch. Stable identities, source checksums, reconciliation reports, draft snapshots and recoverable rollback are mandatory. Unknown mappings, spreadsheet formulas and published-record updates fail closed; every imported draft still passes the existing individual media and publication gates.
 
+## Mahogany Jukebox Windows application contract
+
+- `Mahogany Jukebox` is a separate owner-facing Windows application surface on the shared platform engine. Its source remains in this repository, but its executable, local data directory and two-screen interface are isolated from Deep Cuts Studio and from every completed edition.
+- The public output is always the locked Mahogany Jukebox Master rendered by `aggits-jukebox-preview.mjs`. No alternate, ATLAS or neon cabinet may be selected or generated through this application.
+- The owner manually supplies one title, one ticker, exactly one video source (YouTube URL or local MP4), and exactly four ordered action keys. Every key uses one of the 110 immutable approved brass icons, retains an accessible label and accepts only a validated HTTPS, telephone or email destination.
+- `Create` validates the draft, reserves its stable opaque public identity and generates the permanent Aggits QR poster. `Accept & publish` is the sole approval boundary: it uploads any MP4, publishes the prepared edition, verifies the live page and selected media, confirms delivery email, and only then adds the item to the published Library state.
+- The QR poster master remains SHA-256 locked. The QR is projected module-by-module into the four measured corners of the photographed trapezoidal frame; a flat square overlay is forbidden. Matrix validation at full and half resolution plus the deployed phone decoder gate are mandatory.
+- Library editing must preserve the edition identity. Unpublish and republish never delete or replace the permanent opaque URL, QR payload, uploaded assets or local project. Failed work remains explicit and unpublished.
+- Existing encrypted Windows publisher activation may be reused, but credentials remain outside the application package and are protected by Electron `safeStorage`. GitHub and Cloudflare controls never appear in the owner workflow.
+
 ## Private Venue Library contract
 
 - Venue Library is a private local operations module inside Deep Cuts Studio. It is not a public edition and never mutates a completed Band Edition, Bar Edition or public registry record.

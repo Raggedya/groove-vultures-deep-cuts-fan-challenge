@@ -66,7 +66,15 @@ assert.doesNotMatch(app,/activateJookBoxVideo\(true\);[\s\S]{0,80}\},650/,"YouTu
 assert.doesNotMatch(studioModel,/sound\.play\(\)\.catch\(\(\)=>\{\}\)/,"Bar Studio must not silently swallow coin playback failure.");
 assert.match(forgeConfig,/assets\/js\/jookbox-coin-audio\.js/,"Electron packaging must include the shared coin-audio engine.");
 assert.match(windowsBuilder,/assets\/js\/jookbox-coin-audio\.js/,"The deterministic Windows installer must include the shared coin-audio engine.");
-assert.match(worker,/coinSoundSha256:"0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0"/,"Published Aggits editions must retain the verified real coin recording identity.");
-assert.match(worker,/coinSoundLicense:"CC0-1\.0"/,"Published Aggits editions must retain the coin recording licence.");
+assert.match(
+  worker,
+  /coinSoundSha256\s*:\s*"0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0"/,
+  "Published Aggits editions must retain the verified real coin recording identity.",
+);
+assert.match(
+  worker,
+  /coinSoundLicense\s*:\s*"CC0-1\.0"/,
+  "Published Aggits editions must retain the coin recording licence.",
+);
 
 console.log("Shared JookBox coin audio passed: the real recording starts in the coin gesture, resolves on its ended event, and defers video media focus across Band, Bar, Aggits and Studio runtimes.");

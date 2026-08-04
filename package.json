@@ -43,7 +43,11 @@
     "studio:venue:test": "node scripts/test-venue-library.mjs",
     "studio:venue:batch:test": "node scripts/test-venue-batch-publication.mjs",
     "studio:make:mac:arm64": "electron-forge make --platform=darwin --arch=arm64",
-    "studio:make:mac:x64": "electron-forge make --platform=darwin --arch=x64"
+    "studio:make:mac:x64": "electron-forge make --platform=darwin --arch=x64",
+    "mahogany:server": "node scripts/mahogany-studio-server.mjs",
+    "mahogany:desktop": "electron studio/mahogany-desktop-main.mjs",
+    "mahogany:test": "node scripts/test-mahogany-jukebox.mjs",
+    "mahogany:make": "node scripts/build-mahogany-jukebox-windows.mjs"
   },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.1",
@@ -59,4 +63,3 @@
     "wrangler": "^4.0.0"
   }
 }
-
