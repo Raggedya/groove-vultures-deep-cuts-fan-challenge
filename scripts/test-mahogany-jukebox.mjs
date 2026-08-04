@@ -6,7 +6,10 @@ import {
   createAggitsJukeboxQrArtwork,
   AGGITS_JUKEBOX_QR_PANEL,
 } from "./aggits-jukebox-qr-artwork.mjs";
-import { renderAggitsJukeboxStudioPreview } from "./aggits-jukebox-preview.mjs";
+import {
+  MAHOGANY_FIXED_MARQUEE,
+  renderAggitsJukeboxStudioPreview,
+} from "./aggits-jukebox-preview.mjs";
 import { createMahoganyStudioServer } from "./mahogany-studio-server.mjs";
 import {
   buildMahoganyManifest,
@@ -58,6 +61,15 @@ const preview = renderAggitsJukeboxStudioPreview(toPreviewProject(sample), {
   youtubeUrl: sample.video.youtubeUrl,
 });
 assert.match(preview, /MAHOGANY JUKEBOX/);
+assert.equal(MAHOGANY_FIXED_MARQUEE, "AGGITS");
+assert.match(preview, /id="fixedMarqueeTitle"/);
+assert.match(preview, />AGGITS<\/textPath>/);
+assert.doesNotMatch(preview, /id="titleText"/);
+assert.match(preview, /#fixedMarqueeTitle[^}]+opacity:\.68/);
+assert.match(
+  preview,
+  /is-powering \.marquee #fixedMarqueeTitle[^}]+brightness\(1\.13\)/,
+);
 assert.match(preview, /youtube-nocookie\.com\/embed\/4QK0RZ0FQ_0/);
 assert.match(preview, /jukebox-real-coin-insert-cc0\.mp3/);
 assert.match(preview, /coinInsert/);
