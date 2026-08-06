@@ -83,7 +83,7 @@ const uncheckedYouTube = normalizeMahoganyProject({
 assert.equal(validateMahoganyProject(uncheckedYouTube).ready, false);
 assert.match(
   validateMahoganyProject(uncheckedYouTube).errors.join(" "),
-  /verify that YouTube allows/i,
+  /publish to verify that YouTube allows/i,
 );
 const manifest = buildMahoganyManifest(sample);
 assert.equal(manifest.actions.length, 4);
@@ -177,7 +177,9 @@ const fakePublisher = {
         "https://deep-cuts.example/output/aggits-jukebox-test/instagram-qr.png",
     };
   },
-  async accept() {
+  async accept({ onProgress = async () => {} } = {}) {
+    await onProgress("publishing", "Publishing the permanent Jukebox");
+    await onProgress("delivery", "Waiting for confirmed email delivery");
     return {
       schemaVersion: "deep-cuts-mahogany-jukebox-publication/2",
       editionId: "dc_0123456789",
@@ -271,6 +273,16 @@ try {
   ).then((response) => response.json());
   assert.equal(unpublished.project.status, "unpublished");
   assert.equal(unpublished.project.publication.editionId, "dc_0123456789");
+  const republished = await fetch(
+    `${origin}/api/mahogany/projects/${created.project.id}/publish`,
+    { method: "POST" },
+  ).then((response) => response.json());
+  assert.equal(republished.project.status, "published");
+  assert.equal(republished.project.publicationProgress.stage, "completed");
+  assert.match(
+    republished.project.publicationProgress.message,
+    /delivered by email/i,
+  );
 } finally {
   await new Promise((resolve) => server.close(resolve));
   await fs.rm(temporary, { recursive: true, force: true });
@@ -287,6 +299,16 @@ const studioApp = await fs.readFile(
 assert.match(studioApp, /youtube\.com\/iframe_api/);
 assert.match(studioApp, /event\.data === 101 \|\| event\.data === 150/);
 assert.match(studioApp, /Embedding allowed/);
+assert.match(studioApp, /\/publish`/);
+assert.match(studioApp, /scheduleAutosave/);
+assert.doesNotMatch(studioApp, /function acceptProduction/);
+const studioHtml = await fs.readFile(
+  path.join(root, "mahogany-studio", "index.html"),
+  "utf8",
+);
+assert.match(studioHtml, /CREATE, PUBLISH &amp; EMAIL/);
+assert.doesNotMatch(studioHtml, /Save draft/);
+assert.doesNotMatch(studioHtml, /Accept &amp; publish/);
 console.log(
   "Mahogany Jukebox model, locked renderer, perspective QR and local server tests passed.",
 );

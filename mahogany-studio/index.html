@@ -43,7 +43,7 @@
               </div>
             </div>
             <div id="qrEmpty" class="empty-preview">
-              <span class="qr-placeholder"></span><strong>Press Create</strong>
+              <span class="qr-placeholder"></span><strong>Ready to publish</strong>
               <p>
                 The permanent URL and perspective-fitted QR poster will appear
                 here.
@@ -127,18 +127,20 @@
               >
             </fieldset>
             <div id="validation" class="validation" aria-live="polite"></div>
+            <div
+              id="publishProgress"
+              class="publish-progress"
+              role="status"
+              aria-live="polite"
+              hidden
+            ></div>
             <div class="workflow-actions">
-              <button id="saveDraft" class="quiet-button" type="submit">
-                Save draft</button
-              ><button id="createJukebox" class="primary-button" type="button">
-                Create</button
-              ><button
-                id="acceptJukebox"
-                class="accept-button"
-                type="button"
-                disabled
+              <button
+                id="publishJukebox"
+                class="primary-button publish-button"
+                type="submit"
               >
-                Accept &amp; publish
+                CREATE, PUBLISH &amp; EMAIL
               </button>
             </div>
           </form>

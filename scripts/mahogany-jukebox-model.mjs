@@ -37,6 +37,7 @@ export function newMahoganyProject() {
       openInNewTab: true,
     })),
     status: "draft",
+    publicationProgress: null,
     publication: null,
     createdAt: now,
     updatedAt: now,
@@ -87,6 +88,7 @@ export function normalizeMahoganyProject(value) {
   project.status = [
     "draft",
     "prepared",
+    "publishing",
     "published",
     "unpublished",
     "failed",
@@ -96,6 +98,15 @@ export function normalizeMahoganyProject(value) {
   project.publication =
     source.publication && typeof source.publication === "object"
       ? source.publication
+      : null;
+  project.publicationProgress =
+    source.publicationProgress &&
+    typeof source.publicationProgress === "object"
+      ? {
+          stage: clean(source.publicationProgress.stage, 60),
+          message: clean(source.publicationProgress.message, 240),
+          updatedAt: validDate(source.publicationProgress.updatedAt),
+        }
       : null;
   project.createdAt = validDate(source.createdAt) || base.createdAt;
   project.updatedAt = validDate(source.updatedAt) || base.updatedAt;
@@ -119,7 +130,9 @@ export function validateMahoganyProject(
       value.video.embedVideoId !== youtubeId ||
       !value.video.embedCheckedAt
     )
-      errors.push("Press Create to verify that YouTube allows this video to be embedded.");
+      errors.push(
+        "Publish to verify that YouTube allows this video to be embedded.",
+      );
   } else {
     if (
       !value.video.fileName ||

@@ -5,6 +5,8 @@ const state = {
   icons: [],
   activeSlot: 0,
   authentication: null,
+  isPublishing: false,
+  autosaveTimer: null,
 };
 const els = {
   builderView: $("builderView"),
@@ -25,8 +27,8 @@ const els = {
   qr: $("qrPreview"),
   qrEmpty: $("qrEmpty"),
   validation: $("validation"),
-  create: $("createJukebox"),
-  accept: $("acceptJukebox"),
+  publish: $("publishJukebox"),
+  publishProgress: $("publishProgress"),
   iconDialog: $("iconDialog"),
   iconGrid: $("iconGrid"),
   iconSearch: $("iconSearch"),
@@ -100,7 +102,8 @@ function fillForm() {
   refreshPreview();
   renderPrepared();
   els.previewStatus.textContent = p.status;
-  els.accept.disabled = p.status !== "prepared";
+  renderPublishState();
+  renderPublicationProgress(p);
 }
 function formProject() {
   const kind = document.querySelector("input[name=videoKind]:checked").value;
@@ -146,6 +149,19 @@ async function save({ quiet = false } = {}) {
   refreshPreview();
   return data;
 }
+function scheduleAutosave() {
+  if (!state.project || state.isPublishing) return;
+  clearTimeout(state.autosaveTimer);
+  state.autosaveTimer = setTimeout(() => {
+    state.autosaveTimer = null;
+    save({ quiet: true }).catch(failure);
+  }, 700);
+}
+async function flushAutosave() {
+  clearTimeout(state.autosaveTimer);
+  state.autosaveTimer = null;
+  return save({ quiet: true });
+}
 function renderActions() {
   els.actions.innerHTML = state.project.actions
     .map(
@@ -182,6 +198,7 @@ function renderIcons(query = "") {
       if (!row.querySelector(".action-label").value)
         row.querySelector(".action-label").value = icon.label;
       els.iconDialog.close();
+      scheduleAutosave();
     }),
   );
 }
@@ -338,13 +355,42 @@ async function verifyYouTubeEmbed(value) {
     throw error;
   }
 }
-async function createProduction() {
+function renderPublishState() {
+  if (!state.project || state.isPublishing) return;
+  els.publish.disabled = false;
+  els.publish.textContent = state.project.publication?.editionId
+    ? "UPDATE, PUBLISH & EMAIL"
+    : "CREATE, PUBLISH & EMAIL";
+}
+function renderPublicationProgress(project = state.project) {
+  const progress = project?.publicationProgress;
+  els.publishProgress.hidden = !progress?.message;
+  if (progress?.message) els.publishProgress.textContent = progress.message;
+}
+async function readPublicationProgress() {
   try {
+    const data = await api(`/api/mahogany/projects/${state.project.id}`);
+    if (data.project.id !== state.project.id) return;
+    state.project.status = data.project.status;
+    state.project.prepared = data.project.prepared;
+    state.project.publicationProgress = data.project.publicationProgress;
+    els.previewStatus.textContent = data.project.status;
+    renderPublicationProgress(data.project);
+    renderPrepared();
+  } catch {}
+}
+async function publishProduction() {
+  let progressTimer;
+  try {
+    state.isPublishing = true;
+    clearTimeout(state.autosaveTimer);
+    state.autosaveTimer = null;
+    busy(els.publish, true, "CHECKING & SAVING...");
     const videoKind = document.querySelector(
       "input[name=videoKind]:checked",
     ).value;
     if (videoKind === "youtube") {
-      busy(els.create, true, "Checking video…");
+      busy(els.publish, true, "CHECKING VIDEO...");
       const result = await verifyYouTubeEmbed(els.youtube.value);
       state.project.video = {
         ...state.project.video,
@@ -356,39 +402,29 @@ async function createProduction() {
       };
       renderYouTubeStatus("playable", "Embedding allowed");
     }
-    await save({ quiet: true });
-    busy(els.create, true, "Creating…");
-    const data = await api(
-      `/api/mahogany/projects/${state.project.id}/create`,
+    await flushAutosave();
+    busy(els.publish, true, "CREATING & PUBLISHING...");
+    els.publishProgress.hidden = false;
+    els.publishProgress.textContent =
+      "Creating the permanent Jukebox, QR poster and delivery email...";
+    const request = api(
+      `/api/mahogany/projects/${state.project.id}/publish`,
       { method: "POST", body: "{}" },
     );
+    progressTimer = setInterval(readPublicationProgress, 1000);
+    const data = await request;
     state.project = data.project;
     replaceProject();
     fillForm();
     message(
-      "Permanent URL reserved. Review both previews, then press Accept & publish.",
+      "Created, published, verified and emailed to andrewharris501@gmail.com.",
     );
   } catch (error) {
     failure(error);
   } finally {
-    busy(els.create, false, "Create");
-  }
-}
-async function acceptProduction() {
-  try {
-    busy(els.accept, true, "Publishing…");
-    const data = await api(
-      `/api/mahogany/projects/${state.project.id}/accept`,
-      { method: "POST", body: "{}" },
-    );
-    state.project = data.project;
-    replaceProject();
-    fillForm();
-    message("Published, verified and emailed to andrewharris501@gmail.com.");
-  } catch (error) {
-    failure(error);
-  } finally {
-    busy(els.accept, false, "Accept & publish");
+    clearInterval(progressTimer);
+    state.isPublishing = false;
+    renderPublishState();
   }
 }
 function renderLibrary() {
@@ -400,7 +436,7 @@ function renderLibrary() {
   els.libraryList.innerHTML = items
     .map(
       (p) =>
-        `<article class="library-item" data-id="${p.id}"><div><h3>${escapeHtml(p.name || "Untitled Jukebox")}</h3><p>${escapeHtml(p.status)} · ${new Date(p.updatedAt).toLocaleString()}</p></div><label class="toggle"><input type="checkbox" ${p.status === "published" ? "checked" : ""} ${p.publication?.editionId ? "" : "disabled"}>Published</label><a class="library-url" href="${escapeHtml(p.publication?.liveUrl || "")}" target="_blank" rel="noopener noreferrer">${escapeHtml(p.publication?.liveUrl || "Permanent URL created on Accept")}</a><div class="library-actions"><button class="quiet-button edit" type="button">Edit</button>${p.publication?.qrImageUrl ? `<a class="quiet-button" href="${escapeHtml(p.publication.qrImageUrl)}" target="_blank" rel="noopener noreferrer">QR</a>` : ""}</div></article>`,
+        `<article class="library-item" data-id="${p.id}"><div><h3>${escapeHtml(p.name || "Untitled Jukebox")}</h3><p>${escapeHtml(p.status)} · ${new Date(p.updatedAt).toLocaleString()}</p></div><label class="toggle"><input type="checkbox" ${p.status === "published" ? "checked" : ""} ${p.publication?.editionId ? "" : "disabled"}>Published</label><a class="library-url" href="${escapeHtml(p.publication?.liveUrl || "")}" target="_blank" rel="noopener noreferrer">${escapeHtml(p.publication?.liveUrl || "Permanent URL created when published")}</a><div class="library-actions"><button class="quiet-button edit" type="button">Edit</button>${p.publication?.qrImageUrl ? `<a class="quiet-button" href="${escapeHtml(p.publication.qrImageUrl)}" target="_blank" rel="noopener noreferrer">QR</a>` : ""}</div></article>`,
     )
     .join("");
   els.libraryList.querySelectorAll(".library-item").forEach((item) => {
@@ -483,10 +519,10 @@ function escapeHtml(value) {
 }
 els.form.addEventListener("submit", (event) => {
   event.preventDefault();
-  save().catch(failure);
+  publishProduction();
 });
-els.create.addEventListener("click", createProduction);
-els.accept.addEventListener("click", acceptProduction);
+els.form.addEventListener("input", scheduleAutosave);
+els.form.addEventListener("change", scheduleAutosave);
 els.chooseMp4.addEventListener("click", () => els.mp4.click());
 els.mp4.addEventListener("change", async () => {
   const file = els.mp4.files[0];
