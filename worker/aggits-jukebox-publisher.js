@@ -218,19 +218,43 @@ async function prepare(request, env, device, url) {
       400,
     );
   const active = await env.DB.prepare(
-    "SELECT job_id FROM aggits_jukebox_publication_jobs WHERE project_id=?1 AND status IN ('prepared','video_uploaded','qr_uploaded','awaiting_delivery') LIMIT 1",
+    "SELECT * FROM aggits_jukebox_publication_jobs WHERE project_id=?1 AND status IN ('prepared','video_uploaded','qr_uploaded','awaiting_delivery') LIMIT 1",
   )
     .bind(manifest.value.projectId)
     .first();
-  if (active)
-    return json(
-      {
-        ok: false,
-        error: "This Jukebox already has a publication in progress.",
-        code: "publication_in_progress",
-      },
-      409,
-    );
+  if (active) {
+    const sameDevice = active.installation_id === device.installation_id,
+      sameManifest = publicationManifestsMatch(
+        JSON.parse(active.manifest_json || "null"),
+        manifest.value,
+      );
+    if (sameDevice && sameManifest)
+      return json({
+        ok: true,
+        resumed: true,
+        job: publicJob(active),
+        qrPayload: `${active.base_url || url.origin}/q/${active.edition_id}`,
+      });
+    if (sameDevice && active.status !== "awaiting_delivery")
+      await rollback(
+        env,
+        active,
+        "publication_superseded",
+        "A newer publication replaced this unfinished draft.",
+      );
+    else
+      return json(
+        {
+          ok: false,
+          error:
+            active.status === "awaiting_delivery"
+              ? "The completion email is still being confirmed. Try this button again shortly."
+              : "This Jukebox is being published by another authorised installation.",
+          code: "publication_in_progress",
+        },
+        409,
+      );
+  }
   const now = new Date().toISOString(),
     existing = await env.DB.prepare(
       "SELECT * FROM aggits_jukebox_editions WHERE project_id=?1",
@@ -833,6 +857,9 @@ function publicJob(j) {
     updatedAt: j.updated_at || "",
   };
 }
+function publicationManifestsMatch(left, right) {
+  return JSON.stringify(left || null) === JSON.stringify(right || null);
+}
 async function authorize(request, env) {
   const installationId = installation(
       request.headers.get("x-deep-cuts-installation-id"),
@@ -1049,6 +1076,7 @@ export const __test = {
   validateManifest,
   buildConfig,
   publicJob,
+  publicationManifestsMatch,
   isPng,
   stableSlug,
 };

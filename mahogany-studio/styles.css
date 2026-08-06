@@ -411,10 +411,29 @@ fieldset legend span {
   color: #a7c88b;
 }
 .workflow-actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-  margin-top: 8px;
+  display: block;
+  margin-top: 10px;
+}
+.publish-button {
+  width: 100%;
+  min-height: 62px;
+  border-color: #d49a46;
+  font-size: clamp(15px, 1.7vw, 20px);
+  letter-spacing: 0.08em;
+  box-shadow:
+    inset 0 2px 1px #ffe6ad7a,
+    inset 0 -10px 18px #5d2709,
+    0 8px 22px #0009;
+}
+.publish-progress {
+  margin: 12px 0 0;
+  padding: 12px 14px;
+  border: 1px solid #5e3c1e;
+  border-radius: 9px;
+  background: #100a06;
+  color: #e7c48b;
+  font-size: 12px;
+  line-height: 1.45;
 }
 .activation-panel {
   margin: 20px;

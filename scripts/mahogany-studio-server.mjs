@@ -138,7 +138,7 @@ async function api({ request, response, url, root, projectRoot, publisher }) {
     });
   }
   const match = url.pathname.match(
-    /^\/api\/mahogany\/projects\/(studio_[a-f0-9]{12})(?:\/(preview|video|qr|create|accept|state))?$/,
+    /^\/api\/mahogany\/projects\/(studio_[a-f0-9]{12})(?:\/(preview|video|qr|publish|create|accept|state))?$/,
   );
   if (!match) {
     response.writeHead(404);
@@ -155,7 +155,11 @@ async function api({ request, response, url, root, projectRoot, publisher }) {
   if (request.method === "PUT" && action === "project") {
     const current = await loadMahoganyProject(projectRoot, id),
       body = await readJson(request);
-    if (current.status === "prepared" && current.prepared && publisher)
+    if (
+      ["prepared", "publishing"].includes(current.status) &&
+      current.prepared &&
+      publisher
+    )
       await publisher
         .rollback({ ...current.prepared, qrBytes: Buffer.alloc(1) })
         .catch(() => {});
@@ -170,6 +174,7 @@ async function api({ request, response, url, root, projectRoot, publisher }) {
             ? current.status
             : "draft",
         prepared: null,
+        publicationProgress: null,
         publication: current.publication,
       }),
     );
@@ -194,6 +199,7 @@ async function api({ request, response, url, root, projectRoot, publisher }) {
         ...updated,
         status: "draft",
         prepared: null,
+        publicationProgress: null,
       }),
     });
   }
@@ -232,6 +238,108 @@ async function api({ request, response, url, root, projectRoot, publisher }) {
     });
     response.end(html);
     return;
+  }
+  if (request.method === "POST" && action === "publish") {
+    if (!publisher)
+      throw apiError(
+        "Protected publishing is available in the installed Windows app.",
+        "publisher_unavailable",
+      );
+    let project = await loadMahoganyProject(projectRoot, id);
+    const readiness = validateMahoganyProject(project, {
+      requireStoredMp4: true,
+    });
+    if (!readiness.ready)
+      throw apiError(readiness.errors.join(" "), "project_not_ready");
+    const saveProgress = async (stage, message) => {
+      project = await saveMahoganyProject(projectRoot, {
+        ...project,
+        status: "publishing",
+        publicationProgress: {
+          stage,
+          message,
+          updatedAt: new Date().toISOString(),
+        },
+      });
+    };
+    try {
+      let prepared;
+      if (project.prepared) {
+        const qrBytes = await fs.readFile(path.join(projectRoot, id, "qr.png"));
+        prepared = { ...project.prepared, qrBytes };
+        await saveProgress(
+          "resuming",
+          "Resuming the protected publication from its last safe stage.",
+        );
+      } else {
+        await saveProgress(
+          "preparing",
+          "Reserving the permanent URL and generating the QR poster.",
+        );
+        prepared = await publisher.prepare({ project });
+        await fs.writeFile(path.join(projectRoot, id, "qr.png"), prepared.qrBytes);
+        const storedPrepared = {
+          schemaVersion: prepared.schemaVersion,
+          manifest: prepared.manifest,
+          job: prepared.job,
+          qrPayload: prepared.qrPayload,
+          qrSha256: prepared.qrSha256,
+          qrScanProof: prepared.qrScanProof,
+          editionId: prepared.editionId,
+          slug: prepared.slug,
+          liveUrl: prepared.liveUrl,
+          qrImageUrl: prepared.qrImageUrl,
+        };
+        project = await saveMahoganyProject(projectRoot, {
+          ...project,
+          status: "publishing",
+          prepared: storedPrepared,
+          publicationProgress: {
+            stage: "prepared",
+            message: "Permanent URL and scan-tested QR are ready.",
+            updatedAt: new Date().toISOString(),
+          },
+        });
+        prepared = { ...storedPrepared, qrBytes: prepared.qrBytes };
+      }
+      const publication = await publisher.accept({
+        prepared,
+        videoPath:
+          project.video.kind === "mp4"
+            ? path.join(projectRoot, id, "video.mp4")
+            : "",
+        onProgress: saveProgress,
+      });
+      project = await saveMahoganyProject(projectRoot, {
+        ...project,
+        status: "published",
+        prepared: null,
+        publication: {
+          ...publication,
+          published: true,
+          publishedAt: new Date().toISOString(),
+        },
+        publicationProgress: {
+          stage: "completed",
+          message: "Published, verified and delivered by email.",
+          updatedAt: new Date().toISOString(),
+        },
+      });
+      return sendJson(response, 200, { ok: true, project, publication });
+    } catch (error) {
+      project = await saveMahoganyProject(projectRoot, {
+        ...project,
+        status: "failed",
+        prepared: null,
+        lastError: error.message,
+        publicationProgress: {
+          stage: "failed",
+          message: error.message,
+          updatedAt: new Date().toISOString(),
+        },
+      });
+      throw error;
+    }
   }
   if (request.method === "POST" && action === "create") {
     if (!publisher)

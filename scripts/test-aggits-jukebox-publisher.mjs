@@ -12,6 +12,8 @@ const project={schemaVersion:"deep-cuts-studio-project/1",id:"studio_123456abcde
 assert.equal(aggitsJukeboxPublicationReadiness(project,{videoPath:"welcome.mp4"}).ready,true);
 const manifest=buildAggitsJukeboxPublicationManifest(project);assert.equal(manifest.projectId,project.id);assert.equal(manifest.actions.length,2);
 const validated=__test.validateManifest(manifest);assert.equal(validated.ok,true);assert.equal(validated.value.actions[0].iconId,"gigs");assert.equal(__test.stableSlug(project.id),"aggits-jukebox-123456abcdef");
+assert.equal(__test.publicationManifestsMatch(validated.value,structuredClone(validated.value)),true,"an interrupted matching publication must be resumable");
+assert.equal(__test.publicationManifestsMatch(validated.value,{...validated.value,title:"Changed"}),false,"changed inputs must not resume an older manifest");
 const config=__test.buildConfig({job_id:"ajjob_test",edition_id:"dc_0123456789",slug:"aggits-jukebox-123456abcdef",base_url:"https://deep-cuts.example",created_at:new Date().toISOString()},validated.value);assert.equal(config.editionType,"aggits_jukebox");assert.equal(config.aggitsJukebox.actions.length,2);assert.match(config.aggitsJukebox.localWelcomeVideo,/aggits-jukebox-assets/);
 assert.equal(config.aggitsJukebox.appearanceVariant,"aggits-jukebox-oval-master/4");
 const youtubeManifest={...manifest,schemaVersion:"deep-cuts-mahogany-jukebox-publication/2",video:{kind:"youtube",youtubeUrl:"https://www.youtube.com/watch?v=4QK0RZ0FQ_0",embedStatus:"playable",embedVideoId:"4QK0RZ0FQ_0",embedCheckedAt:new Date().toISOString(),sha256:"a".repeat(64)}};
@@ -23,5 +25,6 @@ const qr=await createAggitsJukeboxQrArtwork({root,title:"A Long Test Jukebox Edi
 const [worker,studio,renderer,index,html,app]=await Promise.all([fs.readFile(path.join(root,"worker","aggits-jukebox-publisher.js"),"utf8"),fs.readFile(path.join(root,"scripts","studio-server.mjs"),"utf8"),fs.readFile(path.join(root,"scripts","aggits-jukebox-preview.mjs"),"utf8"),fs.readFile(path.join(root,"worker","index.js"),"utf8"),fs.readFile(path.join(root,"studio","index.html"),"utf8"),fs.readFile(path.join(root,"studio","app.js"),"utf8")]);
 assert.match(worker,/Copyable permanent URL/);assert.match(worker,/name:\s*"job_type",\s*value:\s*"aggits_jukebox"/);assert.match(worker,/attachments:/);assert.match(worker,/aggits_jukebox_editions/);assert.match(worker,/1254,\s*1254/);assert.match(index,/handleAggitsJukeboxPublisher/);assert.match(studio,/action==="publish"/);assert.match(studio,/action==="publication"/);assert.match(renderer,/publicMode/);assert.match(html,/direct-publish-qr/);
 assert.match(worker,/sendEmail\(\s*env,\s*job/,"the publication transaction must request its completion email automatically");
+assert.match(worker,/resumed:\s*true/,"matching interrupted publications must resume instead of dead-ending");
 assert.match(app,/PUBLISH \+ EMAIL QR/);assert.match(app,/automatically email the permanent URL \+ QR/);
 console.log("Aggits Jukebox protected publisher and fitted QR workflow passed.");

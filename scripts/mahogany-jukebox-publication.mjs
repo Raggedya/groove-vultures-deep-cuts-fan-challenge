@@ -46,35 +46,49 @@ export function createMahoganyJukeboxPublisher({
         "Activate secure publishing once on this Windows installation.",
         "publisher_activation_required",
       );
-    const manifest = buildMahoganyManifest(project),
+    const manifest = buildMahoganyManifest(project);
+    let prepared;
+    try {
       prepared = await remoteJson(
         fetchImpl,
         `${baseUrl}/api/aggits-jukebox-publisher/publications`,
         { method: "POST", identity: current, body: manifest },
       );
-    if (!prepared.job?.id || !prepared.qrPayload)
-      throw publicationError(
-        "The publisher did not reserve the permanent Mahogany Jukebox identity.",
-        "publisher_prepare_invalid",
-      );
-    const qr = await createAggitsJukeboxQrArtwork({
-      root,
-      title: manifest.title,
-      destination: prepared.qrPayload,
-    });
-    return {
-      schemaVersion: MAHOGANY_PUBLICATION_SCHEMA,
-      manifest,
-      job: prepared.job,
-      qrPayload: prepared.qrPayload,
-      qrBytes: qr.bytes,
-      qrSha256: qr.sha256,
-      qrScanProof: qr.scanProof,
-      editionId: prepared.job.editionId,
-      slug: prepared.job.slug,
-      liveUrl: prepared.job.liveUrl,
-      qrImageUrl: prepared.job.qrImageUrl,
-    };
+      if (!prepared.job?.id || !prepared.qrPayload)
+        throw publicationError(
+          "The publisher did not reserve the permanent Mahogany Jukebox identity.",
+          "publisher_prepare_invalid",
+        );
+      const qr = await createAggitsJukeboxQrArtwork({
+        root,
+        title: manifest.title,
+        destination: prepared.qrPayload,
+      });
+      return {
+        schemaVersion: MAHOGANY_PUBLICATION_SCHEMA,
+        manifest,
+        job: prepared.job,
+        qrPayload: prepared.qrPayload,
+        qrBytes: qr.bytes,
+        qrSha256: qr.sha256,
+        qrScanProof: qr.scanProof,
+        editionId: prepared.job.editionId,
+        slug: prepared.job.slug,
+        liveUrl: prepared.job.liveUrl,
+        qrImageUrl: prepared.job.qrImageUrl,
+      };
+    } catch (error) {
+      if (
+        prepared?.job?.id &&
+        prepared.job.status !== "awaiting_delivery"
+      )
+        await remoteJson(
+          fetchImpl,
+          `${baseUrl}/api/aggits-jukebox-publisher/publications/${prepared.job.id}/rollback`,
+          { method: "POST", identity: current, body: {} },
+        ).catch(() => {});
+      throw error;
+    }
   }
   async function accept({
     prepared,
@@ -91,11 +105,23 @@ export function createMahoganyJukeboxPublisher({
       );
     if (!job?.id || !manifest || !prepared.qrBytes)
       throw publicationError(
-        "Press Create before Accept.",
+        "Publication preparation is missing.",
         "publication_not_prepared",
       );
     try {
-      if (manifest.video.kind === "mp4") {
+      let currentJob = (
+        await remoteJson(
+          fetchImpl,
+          `${baseUrl}/api/aggits-jukebox-publisher/publications/${job.id}`,
+          { identity: current },
+        )
+      ).job;
+      if (currentJob.status === "failed")
+        throw publicationError(
+          currentJob.error || "Publication failed safely.",
+          currentJob.errorCode || "publication_failed",
+        );
+      if (manifest.video.kind === "mp4" && currentJob.status === "prepared") {
         await onProgress("uploading", "Uploading the verified MP4");
         const bytes = await fs.readFile(videoPath),
           sha = crypto.createHash("sha256").update(bytes).digest("hex");
@@ -116,36 +142,48 @@ export function createMahoganyJukeboxPublisher({
             headers: { "content-type": "video/mp4", "x-content-sha256": sha },
           },
         );
+        currentJob = { ...currentJob, status: "video_uploaded" };
       }
-      await onProgress(
-        "qr",
-        "Uploading the perspective-fitted, scan-tested QR poster",
-      );
-      await remoteBytes(
-        fetchImpl,
-        `${baseUrl}/api/aggits-jukebox-publisher/publications/${job.id}/qr`,
-        {
-          identity: current,
-          bytes: prepared.qrBytes,
-          headers: {
-            "content-type": "image/png",
-            "x-content-sha256": prepared.qrSha256,
-            "x-deep-cuts-qr-payload": prepared.qrPayload,
-            "x-deep-cuts-qr-scan-proof": prepared.qrScanProof,
+      if (currentJob.status === "video_uploaded") {
+        await onProgress(
+          "qr",
+          "Uploading the perspective-fitted, scan-tested QR poster",
+        );
+        await remoteBytes(
+          fetchImpl,
+          `${baseUrl}/api/aggits-jukebox-publisher/publications/${job.id}/qr`,
+          {
+            identity: current,
+            bytes: prepared.qrBytes,
+            headers: {
+              "content-type": "image/png",
+              "x-content-sha256": prepared.qrSha256,
+              "x-deep-cuts-qr-payload": prepared.qrPayload,
+              "x-deep-cuts-qr-scan-proof": prepared.qrScanProof,
+            },
           },
-        },
-      );
-      await onProgress(
-        "publishing",
-        "Publishing the permanent Jukebox and sending the completion email",
-      );
-      await remoteJson(
-        fetchImpl,
-        `${baseUrl}/api/aggits-jukebox-publisher/publications/${job.id}/commit`,
-        { method: "POST", identity: current, body: {} },
-      );
-      let currentJob = job;
+        );
+        currentJob = { ...currentJob, status: "qr_uploaded" };
+      }
+      if (currentJob.status === "qr_uploaded") {
+        await onProgress(
+          "publishing",
+          "Publishing the permanent Jukebox and sending the completion email",
+        );
+        await remoteJson(
+          fetchImpl,
+          `${baseUrl}/api/aggits-jukebox-publisher/publications/${job.id}/commit`,
+          { method: "POST", identity: current, body: {} },
+        );
+        currentJob = { ...currentJob, status: "awaiting_delivery" };
+      }
+      if (!["awaiting_delivery", "published"].includes(currentJob.status))
+        throw publicationError(
+          `Publication cannot resume from ${currentJob.status}.`,
+          "publication_stage_invalid",
+        );
       for (let attempt = 0; attempt < maxPolls; attempt++) {
+        if (currentJob.status === "published") break;
         currentJob = (
           await remoteJson(
             fetchImpl,
