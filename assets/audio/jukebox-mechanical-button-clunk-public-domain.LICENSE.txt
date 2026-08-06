@@ -1,0 +1,10 @@
+Asset: jukebox-mechanical-button-clunk-public-domain.ogg
+Original title: mechanical tack
+Creator: stephan
+Source: https://commons.wikimedia.org/wiki/File:Mechanical_tack.ogg
+Licence: Public domain
+Use: Mahogany Jukebox four-key mechanical latch sound
+
+The creator released the recording into the public domain. The Wikimedia
+Commons file page records that it may be used for any purpose without
+conditions, subject only to any conditions required by law.

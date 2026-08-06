@@ -5,7 +5,7 @@ import { createAggitsJukeboxQrArtwork } from "./aggits-jukebox-qr-artwork.mjs";
 import { buildMahoganyManifest } from "./mahogany-jukebox-model.mjs";
 
 export const MAHOGANY_PUBLICATION_SCHEMA =
-  "deep-cuts-mahogany-jukebox-publication/1";
+  "deep-cuts-mahogany-jukebox-publication/2";
 export const DEFAULT_MAHOGANY_PUBLISHER_URL =
   "https://deep-cuts.andrewharris501.workers.dev";
 

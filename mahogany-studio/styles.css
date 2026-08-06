@@ -278,6 +278,50 @@ fieldset legend span {
   grid-column: 2;
   color: #8d775f;
 }
+.video-check-status {
+  grid-column: 2;
+  min-height: 22px;
+  color: #9b8063;
+  font-size: 12px;
+  font-weight: 800;
+}
+.video-check-status::before {
+  display: inline-grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  margin-right: 7px;
+  border: 1px solid #72502d;
+  border-radius: 50%;
+  content: "?";
+  vertical-align: -2px;
+}
+.video-check-status.is-checking { color: #e1b96e; }
+.video-check-status.is-checking::before { content: "…"; }
+.video-check-status.is-playable { color: #a8cf8d; }
+.video-check-status.is-playable::before {
+  border-color: #75975f;
+  content: "✓";
+}
+.video-check-status.is-blocked { color: #e18a74; }
+.video-check-status.is-blocked::before {
+  border-color: #a74f3d;
+  content: "×";
+}
+.youtube-probe {
+  position: fixed;
+  top: 0;
+  left: -10000px;
+  width: 320px;
+  height: 200px;
+  visibility: hidden;
+  pointer-events: none;
+}
+.youtube-probe iframe {
+  width: 320px;
+  height: 200px;
+  border: 0;
+}
 .file-button {
   justify-self: start;
 }
@@ -287,7 +331,7 @@ fieldset legend span {
 }
 .action-row {
   display: grid;
-  grid-template-columns: 38px 54px minmax(120px, 0.55fr) minmax(210px, 1fr);
+  grid-template-columns: 38px 64px minmax(120px, 0.55fr) minmax(210px, 1fr);
   gap: 9px;
   align-items: center;
 }
@@ -299,20 +343,54 @@ fieldset legend span {
   text-align: center;
 }
 .icon-picker {
-  width: 52px;
-  aspect-ratio: 1;
-  padding: 4px;
-  border: 1px solid #74502b;
+  position: relative;
+  width: 58px;
+  height: 70px;
+  overflow: hidden;
+  padding: 8px;
+  border: 1px solid #a16b31;
   border-radius: 50%;
-  background: #080503;
+  background: radial-gradient(ellipse at 45% 32%, #2b1b0f, #090503 68%);
+  box-shadow:
+    inset 0 0 0 2px #130b06,
+    inset 0 0 0 4px #67421f,
+    inset 0 8px 11px #b678281a,
+    inset 0 -10px 13px #000,
+    0 3px 7px #000;
   cursor: pointer;
 }
-.icon-picker img {
+.icon-picker-art {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  width: 68%;
+  aspect-ratio: 1;
+  overflow: visible;
+  transform: translate(-50%, -50%);
+}
+.icon-picker-art img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
   display: block;
   width: 100%;
   height: 100%;
+  max-width: none;
   object-fit: contain;
-  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+.icon-picker:hover,
+.icon-picker:focus-visible {
+  border-color: #e1ad61;
+  outline: none;
+  box-shadow:
+    inset 0 0 0 2px #130b06,
+    inset 0 0 0 4px #8a5827,
+    inset 0 8px 11px #b6782822,
+    inset 0 -10px 13px #000,
+    0 0 0 2px #e1ad614d,
+    0 3px 7px #000;
 }
 .ticker-field {
   position: relative;
@@ -461,36 +539,60 @@ dialog::backdrop {
 }
 .icon-grid {
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  gap: 8px;
+  grid-template-columns: repeat(6, minmax(92px, 1fr));
+  gap: 14px;
   max-height: 58vh;
   overflow: auto;
   padding: 0 18px;
 }
 .icon-option {
   display: grid;
+  grid-template-rows: 1fr auto;
   place-items: center;
-  gap: 5px;
-  padding: 8px 4px;
-  border: 1px solid #3f2815;
-  border-radius: 9px;
-  color: #b99a72;
-  background: #080503;
+  gap: 4px;
+  min-height: 148px;
+  padding: 17px 9px 15px;
+  overflow: hidden;
+  border: 1px solid #8d5e2b;
+  border-radius: 50%;
+  color: #c58d49;
+  background: radial-gradient(ellipse at 46% 30%, #2c1c10, #080503 70%);
+  box-shadow:
+    inset 0 0 0 2px #120a05,
+    inset 0 0 0 4px #5b391b,
+    inset 0 9px 13px #cf86301a,
+    inset 0 -12px 16px #000,
+    0 3px 7px #000;
   cursor: pointer;
 }
 .icon-option:hover {
-  border-color: #ba7a39;
-  background: #1b1009;
+  border-color: #d1984f;
+  background: radial-gradient(ellipse at 46% 30%, #3a2514, #0a0604 70%);
+  transform: translateY(-1px);
 }
-.icon-option img {
-  width: 56px;
+.icon-option-art {
+  position: relative;
+  display: block;
+  width: 70px;
   aspect-ratio: 1;
-  border-radius: 50%;
+  overflow: visible;
 }
-.icon-option span {
+.icon-option-art img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: contain;
+  transform: translate(-50%, -50%);
+}
+.icon-option-label {
   overflow: hidden;
   width: 100%;
-  font-size: 9px;
+  color: #c58d49;
+  font: 800 10px/1.05 Georgia, serif;
   font-weight: 800;
   text-align: center;
   text-overflow: ellipsis;
@@ -520,6 +622,23 @@ dialog::backdrop {
     display: none;
   }
   .icon-grid {
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(5, minmax(88px, 1fr));
+  }
+}
+@media (max-width: 600px) {
+  dialog {
+    width: min(96vw, 420px);
+  }
+  .icon-grid {
+    grid-template-columns: repeat(3, minmax(72px, 1fr));
+    gap: 10px;
+    padding: 0 12px;
+  }
+  .icon-option {
+    min-height: 126px;
+    padding: 13px 6px 11px;
+  }
+  .icon-option-art {
+    width: 58px;
   }
 }

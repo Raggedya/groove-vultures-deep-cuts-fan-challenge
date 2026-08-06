@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import crypto from "node:crypto";
 import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
@@ -8,6 +9,12 @@ import {
 } from "./aggits-jukebox-qr-artwork.mjs";
 import {
   MAHOGANY_FIXED_MARQUEE,
+  MAHOGANY_FIXED_MARQUEE_ASSET,
+  MAHOGANY_FIXED_MARQUEE_SHA256,
+  MAHOGANY_OVAL_CABINET_ASSET,
+  MAHOGANY_OVAL_CABINET_SHA256,
+  MAHOGANY_BUTTON_CLUNK_ASSET,
+  MAHOGANY_BUTTON_LINK_DELAY_MS,
   renderAggitsJukeboxStudioPreview,
 } from "./aggits-jukebox-preview.mjs";
 import { createMahoganyStudioServer } from "./mahogany-studio-server.mjs";
@@ -27,6 +34,9 @@ const root = process.cwd(),
     video: {
       kind: "youtube",
       youtubeUrl: "https://www.youtube.com/watch?v=4QK0RZ0FQ_0",
+      embedStatus: "playable",
+      embedVideoId: "4QK0RZ0FQ_0",
+      embedCheckedAt: new Date().toISOString(),
     },
     actions: [
       {
@@ -53,26 +63,58 @@ const root = process.cwd(),
   });
 const checked = validateMahoganyProject(sample);
 assert.equal(checked.ready, true, checked.errors.join(" "));
+const uncheckedYouTube = normalizeMahoganyProject({
+  ...sample,
+  video: {
+    kind: "youtube",
+    youtubeUrl: sample.video.youtubeUrl,
+  },
+});
+assert.equal(validateMahoganyProject(uncheckedYouTube).ready, false);
+assert.match(
+  validateMahoganyProject(uncheckedYouTube).errors.join(" "),
+  /verify that YouTube allows/i,
+);
 const manifest = buildMahoganyManifest(sample);
 assert.equal(manifest.actions.length, 4);
 assert.equal(manifest.video.kind, "youtube");
+assert.equal(manifest.schemaVersion, "deep-cuts-mahogany-jukebox-publication/2");
+assert.equal(manifest.video.embedStatus, "playable");
 assert.match(manifest.video.sha256, /^[a-f0-9]{64}$/);
 const preview = renderAggitsJukeboxStudioPreview(toPreviewProject(sample), {
   youtubeUrl: sample.video.youtubeUrl,
 });
 assert.match(preview, /MAHOGANY JUKEBOX/);
 assert.equal(MAHOGANY_FIXED_MARQUEE, "AGGITS");
-assert.match(preview, /id="fixedMarqueeTitle"/);
-assert.match(preview, />AGGITS<\/textPath>/);
-assert.doesNotMatch(preview, /id="titleText"/);
-assert.match(preview, /#fixedMarqueeTitle[^}]+opacity:\.68/);
-assert.match(
-  preview,
-  /is-powering \.marquee #fixedMarqueeTitle[^}]+brightness\(1\.13\)/,
+assert.equal(MAHOGANY_FIXED_MARQUEE_ASSET, "/assets/aggits-marquee-reference-v1.jpg");
+assert.match(MAHOGANY_FIXED_MARQUEE_SHA256, /^[a-f0-9]{64}$/);
+assert.equal(
+  crypto.createHash("sha256").update(await fs.readFile(path.join(root, MAHOGANY_FIXED_MARQUEE_ASSET.slice(1)))).digest("hex"),
+  MAHOGANY_FIXED_MARQUEE_SHA256,
 );
+assert.equal(MAHOGANY_OVAL_CABINET_ASSET, "/assets/aggits-jukebox-oval-master-v2.jpg");
+assert.equal(
+  crypto.createHash("sha256").update(await fs.readFile(path.join(root, MAHOGANY_OVAL_CABINET_ASSET.slice(1)))).digest("hex"),
+  MAHOGANY_OVAL_CABINET_SHA256,
+);
+assert.match(preview, /aggits-jukebox-oval-master-v2\.jpg/);
+assert.doesNotMatch(preview, /id="titleText"/);
+assert.match(preview, /is-powering:before\{opacity:\.36\}/);
 assert.match(preview, /youtube-nocookie\.com\/embed\/4QK0RZ0FQ_0/);
 assert.match(preview, /jukebox-real-coin-insert-cc0\.mp3/);
 assert.match(preview, /coinInsert/);
+assert.match(preview, /rotateY\(48deg\)/);
+assert.match(preview, /is-depressed/);
+assert.match(preview, /actions\.forEach\(candidate=>candidate\.classList\.toggle\("is-depressed",candidate===action\)\)/);
+assert.match(preview, /jukebox-mechanical-button-clunk-public-domain\.ogg/);
+assert.match(preview, /\.video\{[^}]*left:24\.55%;width:62\.65%/);
+assert.match(preview, /\.actions\{[^}]*left:11\.1%;width:78\.9%;[^}]*gap:1\.25%/);
+assert.match(preview, /aggits-jukebox-icons-oval-v3\/spotify\.svg/);
+assert.match(preview, /\.action-icon img\{[^}]*width:100%;height:100%/);
+assert.match(preview, /is-label-medium/);
+assert.match(preview, /max-height:3\.15em;overflow:hidden/);
+assert.equal(MAHOGANY_BUTTON_LINK_DELAY_MS, 500);
+assert.match(MAHOGANY_BUTTON_CLUNK_ASSET, /mechanical-button-clunk/);
 assert.equal((preview.match(/class="action"/g) || []).length, 4);
 assert.notEqual(
   AGGITS_JUKEBOX_QR_PANEL.topLeft.x,
@@ -100,7 +142,7 @@ const fakePublisher = {
   },
   async prepare({ project }) {
     return {
-      schemaVersion: "deep-cuts-mahogany-jukebox-publication/1",
+      schemaVersion: "deep-cuts-mahogany-jukebox-publication/2",
       manifest: buildMahoganyManifest(project),
       job: {
         id: "ajjob_test",
@@ -123,7 +165,7 @@ const fakePublisher = {
   },
   async accept() {
     return {
-      schemaVersion: "deep-cuts-mahogany-jukebox-publication/1",
+      schemaVersion: "deep-cuts-mahogany-jukebox-publication/2",
       editionId: "dc_0123456789",
       slug: "aggits-jukebox-test",
       liveUrl: "https://deep-cuts.example/e/dc_0123456789",
@@ -223,6 +265,13 @@ const studioCss = await fs.readFile(
   "utf8",
 );
 assert.match(studioCss, /\[hidden\]\s*\{\s*display:\s*none\s*!important/);
+const studioApp = await fs.readFile(
+  path.join(root, "mahogany-studio", "app.js"),
+  "utf8",
+);
+assert.match(studioApp, /youtube\.com\/iframe_api/);
+assert.match(studioApp, /event\.data === 101 \|\| event\.data === 150/);
+assert.match(studioApp, /Embedding allowed/);
 console.log(
   "Mahogany Jukebox model, locked renderer, perspective QR and local server tests passed.",
 );
