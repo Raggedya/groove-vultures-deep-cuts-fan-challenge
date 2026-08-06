@@ -9,6 +9,8 @@ build-records/in-progress/*.json
 .codex-git-objects/
 .codex-index*
 .wrangler-config/
+.wrangler-auth/
+.mahogany-studio/
 .gh-auth-*.log
 .gh-config/
 data/research-cache/

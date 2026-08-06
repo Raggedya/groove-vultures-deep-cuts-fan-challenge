@@ -14,7 +14,8 @@ const fixture={type:"aggits_jukebox",name:"An Exceptionally Long Melbourne Venue
   {enabled:true,iconId:"menu",label:"MENU",actionType:"web",value:"https://example.com/menu"}
 ]};
 
-assert.equal(AGGITS_JUKEBOX_ICONS.length,110,"canonical icon library must contain 110 mapped icons");
+assert.equal(AGGITS_JUKEBOX_ICONS.length,111,"canonical icon library must contain 111 mapped icons");
+assert.ok(AGGITS_JUKEBOX_ICONS.some(icon=>icon.id==="bandcamp"),"canonical icon library must include Bandcamp");
 assert.match(AGGITS_JUKEBOX_CABINET_SHA256,/^[a-f0-9]{64}$/);
 assert.match(AGGITS_JUKEBOX_ICON_MASTER_SHA256,/^[a-f0-9]{64}$/);
 const sha256=file=>crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex");
@@ -25,7 +26,7 @@ const ovalSetHash=crypto.createHash("sha256");
 for(const icon of AGGITS_JUKEBOX_ICONS){
   const file=path.join(root,icon.assetPath.replace(/^\//,""));
   assert.ok(fs.statSync(file).size>300,`missing or empty icon asset: ${icon.id}`);
-  assert.match(icon.assetPath,/aggits-jukebox-icons-oval-v3\/.+\.svg$/);
+  assert.match(icon.assetPath,/aggits-jukebox-icons-oval-v4\/.+\.svg$/);
   const svg=fs.readFileSync(file,"utf8");
   assert.equal((svg.match(/<svg\b/g)||[]).length,1,`icon must contain one clean SVG root: ${icon.id}`);
   ovalSetHash.update(path.basename(file));
@@ -41,12 +42,17 @@ assert.equal(project.readiness.handoffReady,true);
 const html=renderStudioPreview(project,{videoUrl:"/media/welcome.mp4"});
 assert.ok(!html.includes(">AN EXCEPTIONALLY LONG MELBOURNE VENUE NAME<"),"the project identity must never replace the fixed physical marquee");
 for(const required of [
-  "aggits-jukebox-oval-master-v2.jpg","aggits-jukebox-icons-oval-v3","jukebox-real-coin-insert-cc0.mp3","object-fit:cover",
+  "aggits-jukebox-oval-master-v2.jpg","aggits-jukebox-icons-oval-v4","jukebox-real-coin-insert-cc0.mp3","object-fit:cover",
   'addEventListener("ended"',"noopener noreferrer","1120","aspect-ratio:720/1280","is-depressed","enableActions"
 ])assert.ok(html.includes(required),`preview missing ${required}`);
 assert.ok(!html.includes("Math.random()"),"action-key illumination and random sequencing must remain removed");
 assert.ok(!html.includes("is-lighting"),"Aggits Jukebox action keys must not render lighting states");
-assert.ok(html.includes("<strong>CALL US</strong>"),"public oval keys must retain their visible physical labels");
+assert.ok(!html.includes("<strong>CALL US</strong>"),"public oval keys must remain icon-only");
+assert.ok(!html.includes(".action:before"),"public oval keys must not render an exterior secondary line");
+assert.match(html,/\.actions:before\{[^}]*top:-6%;height:7%;background:#070402/,"button bank must mask the baked cabinet arcs above the live oval keys");
+assert.ok(!html.includes("solid transparent"),"public oval keys must not render an exterior border layer");
+assert.ok(!html.includes("border-box;color:#d5a355"),"public oval keys must use an internal bevel instead of an exterior gradient contour");
+assert.match(html,/\.action-icon\{[^}]*width:84%/,"public oval key icons must use the approved larger proportion");
 assert.ok(!html.includes("outline:3px solid #ffe19a"),"the large transparent coin hotspot must never expose an oval focus outline");
 assert.match(html,/aria-label="CALL US"/,"stored labels must remain accessible names");
 assert.match(html,/width:30%;height:72%/,"coin must use the vertical metallic treatment");

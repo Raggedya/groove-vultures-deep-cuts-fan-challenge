@@ -19,12 +19,12 @@
     "iconCount": 110
   },
   "ovalNativeIconSet": {
-    "path": "assets/aggits-jukebox-icons-oval-v3",
+    "path": "assets/aggits-jukebox-icons-oval-v4",
     "format": "svg",
-    "iconCount": 110,
-    "combinedSha256": "bccbc067d5c3c11da5ee4e953ca3bc4d55c21b943ef75437935b462c426df961",
-    "source": "Lucide Icons 1.28.0 with five compatible custom brand glyphs",
-    "license": "assets/aggits-jukebox-icons-oval-v3.LICENSE.txt"
+    "iconCount": 111,
+    "combinedSha256": "43668a5c6b090e1f8e65127e59e8bb7f93371e5a5a74681317194619f696e14e",
+    "source": "Lucide Icons 1.28.0 with six compatible custom brand glyphs, including Bandcamp",
+    "license": "assets/aggits-jukebox-icons-oval-v4.LICENSE.txt"
   },
   "qrMaster": {
     "path": "assets/aggits-jukebox-qr-master-v1.png",

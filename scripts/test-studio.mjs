@@ -288,7 +288,7 @@ const windowsBuilder=await fs.readFile(path.join(process.cwd(),"scripts","build-
 assert.match(windowsBuilder,/scripts\/aggits-jukebox-preview\.mjs/);
 assert.match(windowsBuilder,/assets\/aggits-jukebox-oval-master-v2\.jpg/);
 assert.match(windowsBuilder,/jukebox-mechanical-button-clunk-public-domain\.ogg/);
-assert.match(windowsBuilder,/iconFiles\.length!==110/);
+assert.match(windowsBuilder,/iconFiles\.length!==111/);
 assert.match(windowsBuilder,/electron-v\$\{electronVersion\}-win32-x64\.zip/);
 assert.match(windowsBuilder,/iexpress\.exe/);
 assert.match(windowsBuilder,/Deep-Cuts-Studio-\$\{version\}-Windows-x64\.zip/);
@@ -321,7 +321,8 @@ try{
   assert.equal(bootstrap.ok,true);
   assert.equal(bootstrap.token,token);
   assert.deepEqual(bootstrap.productTypes.map(item=>item.id),["aggits_jukebox","bar_jukebox","jookbox","business","recruitment","individual_band","restaurant","tourist_attraction","town"]);
-  assert.equal(bootstrap.aggitsJukeboxIcons.length,110,"Studio must expose the complete approved Aggits Jukebox icon library.");
+  assert.equal(bootstrap.aggitsJukeboxIcons.length,111,"Studio must expose the complete approved Aggits Jukebox icon library.");
+  assert.ok(bootstrap.aggitsJukeboxIcons.some(icon=>icon.id==="bandcamp"),"Studio must expose Bandcamp.");
   assert.ok(bootstrap.legacyProductTypes.some(item=>item.id==="music"),"Legacy Studio drafts must remain loadable.");
 
   const missing=await fetch(`${origin}/studio/favicon.ico`);

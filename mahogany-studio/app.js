@@ -152,7 +152,7 @@ function renderActions() {
       (action, index) => {
         const assetPath =
           state.icons.find((icon) => icon.id === action.iconId)?.assetPath || "";
-        return `<div class="action-row" data-icon="${escapeHtml(action.iconId)}"><span class="slot-number">${index + 1}</span><button class="icon-picker" type="button" data-slot="${index}" aria-label="Choose icon for key ${index + 1}"><span class="icon-picker-art"><img src="${escapeHtml(assetPath)}" alt=""></span></button><input class="action-label" maxlength="22" value="${escapeHtml(action.label)}" placeholder="Button label"><input class="action-url" value="${escapeHtml(action.href)}" placeholder="https://your-destination.com"></div>`;
+        return `<div class="action-row" data-icon="${escapeHtml(action.iconId)}"><span class="slot-number">${index + 1}</span><button class="icon-picker" type="button" data-slot="${index}" aria-label="Choose icon for key ${index + 1}"><span class="icon-picker-art"><img src="${escapeHtml(assetPath)}" alt=""></span></button><input class="action-label" maxlength="22" value="${escapeHtml(action.label)}" placeholder="Accessible name (not displayed)"><input class="action-url" value="${escapeHtml(action.href)}" placeholder="https://your-destination.com"></div>`;
       },
     )
     .join("");
@@ -170,7 +170,7 @@ function renderIcons(query = "") {
     .filter((icon) => !needle || icon.label.toLowerCase().includes(needle))
     .map(
       (icon) =>
-        `<button class="icon-option" type="button" data-icon="${icon.id}"><span class="icon-option-art"><img src="${icon.assetPath}" alt=""></span><span class="icon-option-label">${escapeHtml(icon.label)}</span></button>`,
+        `<button class="icon-option" type="button" data-icon="${icon.id}" aria-label="${escapeHtml(icon.label)}" title="${escapeHtml(icon.label)}"><span class="icon-option-art"><img src="${icon.assetPath}" alt=""></span></button>`,
     )
     .join("");
   els.iconGrid.querySelectorAll(".icon-option").forEach((button) =>

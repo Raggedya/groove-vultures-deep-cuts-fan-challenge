@@ -16,7 +16,7 @@ const require = createRequire(import.meta.url),
   execFileAsync = promisify(execFile),
   zipAsync = promisify(zip);
 const root = process.cwd(),
-  version = "1.2.0",
+  version = "1.3.2",
   productName = "Mahogany Jukebox",
   executableName = "mahogany-jukebox",
   electronVersion = String(electronPackage.version),
@@ -51,6 +51,7 @@ const runtimeFiles = [
   "assets/aggits-jukebox-master-v1.jpg",
   "assets/aggits-jukebox-oval-master-v2.jpg",
   "assets/aggits-jukebox-icons-master-v1.jpg",
+  "assets/aggits-jukebox-icons-oval-v4.LICENSE.txt",
   "assets/aggits-jukebox-integrity.json",
   "assets/aggits-jukebox-qr-master-v1.png",
   "assets/audio/jukebox-real-coin-insert-cc0.mp3",
@@ -187,12 +188,12 @@ try {
   log("Staging the isolated application runtime.");
   await fs.mkdir(sourceDirectory, { recursive: true });
   for (const file of runtimeFiles) await copy(file);
-  const iconDirectory = "assets/aggits-jukebox-icons-oval-v3",
+  const iconDirectory = "assets/aggits-jukebox-icons-oval-v4",
     icons = (await fs.readdir(path.join(root, iconDirectory))).filter((file) =>
       file.endsWith(".svg"),
     );
-  if (icons.length !== 110)
-    throw new Error(`Expected 110 approved icons, found ${icons.length}.`);
+  if (icons.length !== 111)
+    throw new Error(`Expected 111 approved icons, found ${icons.length}.`);
   for (const icon of icons) await copy(path.join(iconDirectory, icon));
   await fs.writeFile(
     path.join(sourceDirectory, "package.json"),
@@ -240,12 +241,21 @@ try {
     throw new Error("Packaging did not produce exactly one application.");
   const application = path.join(packaged[0], `${executableName}.exe`);
   log("Running the bounded packaged-app smoke test.");
-  await execFileAsync(application, ["--mahogany-bounded-smoke-test"], {
-    windowsHide: true,
-    timeout: 45000,
-    maxBuffer: 16 * 1024 * 1024,
-    env: { ...process.env, ELECTRON_DISABLE_CRASH_REPORTER: "1" },
-  });
+  const smokeProfile = path.join(temporaryRoot, "smoke-profile");
+  await fs.mkdir(smokeProfile, { recursive: true });
+  await execFileAsync(
+    application,
+    [
+      "--mahogany-bounded-smoke-test",
+      `--user-data-dir=${smokeProfile}`,
+    ],
+    {
+      windowsHide: true,
+      timeout: 45000,
+      maxBuffer: 16 * 1024 * 1024,
+      env: { ...process.env, ELECTRON_DISABLE_CRASH_REPORTER: "1" },
+    },
+  );
   await fs.rm(outputDirectory, { recursive: true, force: true });
   await fs.mkdir(outputDirectory, { recursive: true });
   const files = await installer(packaged[0]),

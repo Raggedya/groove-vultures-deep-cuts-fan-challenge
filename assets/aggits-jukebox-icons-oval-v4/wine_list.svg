@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="url(#brass)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><defs><linearGradient id="brass" x1="4" y1="3" x2="20" y2="21" gradientUnits="userSpaceOnUse"><stop stop-color="#ffe0a0"/><stop offset=".38" stop-color="#d89a43"/><stop offset=".72" stop-color="#a96320"/><stop offset="1" stop-color="#f0bd66"/></linearGradient></defs>
+  <path d="M8 22h8" />
+  <path d="M7 10h10" />
+  <path d="M12 15v7" />
+  <path d="M12 15a5 5 0 0 0 5-5c0-2-.5-4-2-8H9c-1.5 4-2 6-2 8a5 5 0 0 0 5 5Z" />
+</svg>
