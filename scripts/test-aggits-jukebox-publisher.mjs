@@ -13,7 +13,7 @@ assert.equal(aggitsJukeboxPublicationReadiness(project,{videoPath:"welcome.mp4"}
 const manifest=buildAggitsJukeboxPublicationManifest(project);assert.equal(manifest.projectId,project.id);assert.equal(manifest.actions.length,2);
 const validated=__test.validateManifest(manifest);assert.equal(validated.ok,true);assert.equal(validated.value.actions[0].iconId,"gigs");assert.equal(__test.stableSlug(project.id),"aggits-jukebox-123456abcdef");
 const config=__test.buildConfig({job_id:"ajjob_test",edition_id:"dc_0123456789",slug:"aggits-jukebox-123456abcdef",base_url:"https://deep-cuts.example",created_at:new Date().toISOString()},validated.value);assert.equal(config.editionType,"aggits_jukebox");assert.equal(config.aggitsJukebox.actions.length,2);assert.match(config.aggitsJukebox.localWelcomeVideo,/aggits-jukebox-assets/);
-assert.equal(config.aggitsJukebox.appearanceVariant,"aggits-jukebox-oval-master/3");
+assert.equal(config.aggitsJukebox.appearanceVariant,"aggits-jukebox-oval-master/4");
 const youtubeManifest={...manifest,schemaVersion:"deep-cuts-mahogany-jukebox-publication/2",video:{kind:"youtube",youtubeUrl:"https://www.youtube.com/watch?v=4QK0RZ0FQ_0",embedStatus:"playable",embedVideoId:"4QK0RZ0FQ_0",embedCheckedAt:new Date().toISOString(),sha256:"a".repeat(64)}};
 assert.equal(__test.validateManifest(youtubeManifest).ok,true);
 assert.equal(__test.validateManifest({...youtubeManifest,video:{...youtubeManifest.video,embedStatus:""}}).ok,false,"new YouTube publications must fail closed without a playable embed proof");

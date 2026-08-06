@@ -1,11 +1,11 @@
 export const AGGITS_JUKEBOX_MODEL_VERSION="aggits-jukebox/1";
-export const AGGITS_JUKEBOX_APPEARANCE="aggits-jukebox-oval-master/3";
+export const AGGITS_JUKEBOX_APPEARANCE="aggits-jukebox-oval-master/4";
 export const AGGITS_JUKEBOX_CABINET="assets/aggits-jukebox-oval-master-v2.jpg";
 export const AGGITS_JUKEBOX_CABINET_SHA256="7cbb93d3df3966c621ae943196001a2402de16d5ea64ff2d02bf975449046546";
 export const AGGITS_JUKEBOX_ICON_MASTER="assets/aggits-jukebox-icons-master-v1.jpg";
 export const AGGITS_JUKEBOX_ICON_MASTER_SHA256="021e112589a982df5ea3ee665c1d19edb849dd4758cbf2749522c779d2caf527";
-export const AGGITS_JUKEBOX_OVAL_ICON_SET="assets/aggits-jukebox-icons-oval-v3";
-export const AGGITS_JUKEBOX_OVAL_ICON_SET_SHA256="bccbc067d5c3c11da5ee4e953ca3bc4d55c21b943ef75437935b462c426df961";
+export const AGGITS_JUKEBOX_OVAL_ICON_SET="assets/aggits-jukebox-icons-oval-v4";
+export const AGGITS_JUKEBOX_OVAL_ICON_SET_SHA256="43668a5c6b090e1f8e65127e59e8bb7f93371e5a5a74681317194619f696e14e";
 
 const LABEL_ROWS=[
   ["Call","Book Now","Gigs","Menu","Food","Drinks","Specials","Happy Hour","Cocktails","Wine List"],
@@ -13,7 +13,7 @@ const LABEL_ROWS=[
   ["Shop","Offers","Loyalty","Gift Cards","Membership","Coupons","Discounts","Vouchers","Deals","Clearance"],
   ["Order Online","Takeaway","Delivery","Coffee","Breakfast","Lunch","Dinner","Desserts","Kids Menu","Catering"],
   ["Gallery","Photos","Videos","Live Stream","Music","Playlist","Podcast","Radio","SoundCloud","YouTube"],
-  ["Instagram","Facebook","TikTok","Spotify","Website","Blog","News","Press","Magazine","Media"],
+  ["Instagram","Facebook","TikTok","Spotify","Bandcamp","Website","Blog","News","Press","Magazine","Media"],
   ["Find Us","Directions","Map","Location","Parking","Transport","Taxi","Uber","Train","Bus"],
   ["Accommodation","Rooms","Book Direct","Check In","Facilities","Pool","WiFi","Air Con","Smoking Area","Pet Friendly"],
   ["Functions","Private Hire","Birthdays","Weddings","Corporate","Meetings","Conferences","Parties","Venue Hire","Event Spaces"],

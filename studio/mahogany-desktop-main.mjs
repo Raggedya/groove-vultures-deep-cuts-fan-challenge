@@ -87,7 +87,7 @@ async function bounded() {
     !html.includes("Mahogany Jukebox") ||
     !html.includes("Four physical action keys") ||
     !Array.isArray(json.icons) ||
-    json.icons.length !== 110
+    json.icons.length !== 111
   )
     throw new Error("The packaged Mahogany Jukebox smoke test failed.");
 }

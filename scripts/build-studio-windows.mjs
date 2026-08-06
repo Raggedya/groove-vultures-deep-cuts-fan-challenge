@@ -278,9 +278,9 @@ try{
   log(`Preparing ${productName} ${version} from the validated runtime files.`);
   await fs.mkdir(sourceDirectory,{recursive:true});
   for(const relativePath of runtimeFiles)await copyRuntimeFile(relativePath);
-  const iconDirectory=path.join("assets","aggits-jukebox-icons-oval-v3");
+  const iconDirectory=path.join("assets","aggits-jukebox-icons-oval-v4");
   const iconFiles=(await fs.readdir(path.join(root,iconDirectory))).filter(file=>file.toLowerCase().endsWith(".svg"));
-  if(iconFiles.length!==110)throw new Error(`Expected 110 Aggits Jukebox icon assets, found ${iconFiles.length}.`);
+  if(iconFiles.length!==111)throw new Error(`Expected 111 Aggits Jukebox icon assets, found ${iconFiles.length}.`);
   for(const file of iconFiles)await copyRuntimeFile(path.join(iconDirectory,file));
 
   const stagedPackage={

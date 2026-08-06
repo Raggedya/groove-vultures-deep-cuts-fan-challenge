@@ -27,6 +27,14 @@ import {
 } from "./mahogany-jukebox-model.mjs";
 
 const root = process.cwd(),
+  desktopMainSource = await fs.readFile(
+    path.join(root, "studio", "mahogany-desktop-main.mjs"),
+    "utf8",
+  ),
+  windowsBuilderSource = await fs.readFile(
+    path.join(root, "scripts", "build-mahogany-jukebox-windows.mjs"),
+    "utf8",
+  ),
   sample = normalizeMahoganyProject({
     ...newMahoganyProject(),
     name: "Savage Garden",
@@ -61,6 +69,8 @@ const root = process.cwd(),
       },
     ],
   });
+assert.match(desktopMainSource, /json\.icons\.length !== 111/);
+assert.match(windowsBuilderSource, /--user-data-dir=\$\{smokeProfile\}/);
 const checked = validateMahoganyProject(sample);
 assert.equal(checked.ready, true, checked.errors.join(" "));
 const uncheckedYouTube = normalizeMahoganyProject({
@@ -109,10 +119,14 @@ assert.match(preview, /actions\.forEach\(candidate=>candidate\.classList\.toggle
 assert.match(preview, /jukebox-mechanical-button-clunk-public-domain\.ogg/);
 assert.match(preview, /\.video\{[^}]*left:24\.55%;width:62\.65%/);
 assert.match(preview, /\.actions\{[^}]*left:11\.1%;width:78\.9%;[^}]*gap:1\.25%/);
-assert.match(preview, /aggits-jukebox-icons-oval-v3\/spotify\.svg/);
+assert.match(preview, /aggits-jukebox-icons-oval-v4\/spotify\.svg/);
 assert.match(preview, /\.action-icon img\{[^}]*width:100%;height:100%/);
-assert.match(preview, /is-label-medium/);
-assert.match(preview, /max-height:3\.15em;overflow:hidden/);
+assert.match(preview, /\.action-icon\{[^}]*width:84%/);
+assert.doesNotMatch(preview, /solid transparent/);
+assert.doesNotMatch(preview, /is-label-medium/);
+assert.doesNotMatch(preview, /<strong>Spotify<\/strong>/);
+assert.doesNotMatch(preview, /\.action:before/);
+assert.match(preview, /\.actions:before\{[^}]*top:-6%;height:7%;background:#070402/);
 assert.equal(MAHOGANY_BUTTON_LINK_DELAY_MS, 500);
 assert.match(MAHOGANY_BUTTON_CLUNK_ASSET, /mechanical-button-clunk/);
 assert.equal((preview.match(/class="action"/g) || []).length, 4);
@@ -205,7 +219,8 @@ try {
     [html, data] = await Promise.all([page.text(), bootstrap.json()]);
   assert.equal(page.ok, true);
   assert.match(html, /Four physical action keys/);
-  assert.equal(data.icons.length, 110);
+  assert.equal(data.icons.length, 111);
+  assert.ok(data.icons.some((icon) => icon.id === "bandcamp"));
   const created = await fetch(`${origin}/api/mahogany/projects`, {
     method: "POST",
     headers: { "content-type": "application/json" },

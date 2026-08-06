@@ -4,7 +4,7 @@ import { AGGITS_JUKEBOX_ICONS } from "./aggits-jukebox-icons.mjs";
 
 const root = process.cwd();
 const lucideDirectory = path.join(root, "node_modules", "lucide-static", "icons");
-const outputDirectory = path.join(root, "assets", "aggits-jukebox-icons-oval-v3");
+const outputDirectory = path.join(root, "assets", "aggits-jukebox-icons-oval-v4");
 
 const lucideById = {
   call: "phone", book_now: "calendar-check", gigs: "guitar", menu: "book-open",
@@ -42,6 +42,7 @@ const customIcons = {
   instagram: '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="url(#brass)" stroke="none"/>',
   facebook: '<path d="M14.5 21v-8h2.8l.5-3h-3.3V8.1c0-.9.3-1.6 1.7-1.6H18V3.8c-.6-.1-1.5-.2-2.6-.2-2.7 0-4.5 1.6-4.5 4.6V10H8v3h2.9v8Z" fill="url(#brass)" stroke="none"/>',
   spotify: '<circle cx="12" cy="12" r="9"/><path d="M7.2 9.4c3.5-1 7.6-.7 10.2.7M7.8 12.4c3-.8 6.5-.5 8.9.7M8.4 15.2c2.4-.6 5-.4 7 .5"/>',
+  bandcamp: '<path d="M6.6 6.2h14.1l-4.9 11.6H1.7Z" fill="url(#brass)" stroke="none"/>',
   soundcloud: '<path d="M4 15v-3m3 5V9m3 8V7m3 10V9a4.5 4.5 0 0 1 8 3 3 3 0 0 1-1 5Z"/>',
 };
 
