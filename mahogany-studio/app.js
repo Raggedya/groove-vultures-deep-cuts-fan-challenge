@@ -14,6 +14,8 @@ const els = {
   ticker: $("tickerText"),
   tickerCount: $("tickerCount"),
   youtube: $("youtubeUrl"),
+  youtubeStatus: $("youtubeStatus"),
+  youtubeProbe: $("youtubeProbe"),
   mp4: $("mp4File"),
   chooseMp4: $("chooseMp4"),
   videoFileName: $("videoFileName"),
@@ -82,6 +84,11 @@ function fillForm() {
   els.ticker.value = p.tickerText;
   els.tickerCount.textContent = p.tickerText.length;
   els.youtube.value = p.video.kind === "youtube" ? p.video.youtubeUrl : "";
+  renderYouTubeStatus(
+    p.video.kind === "youtube" && p.video.embedStatus === "playable"
+      ? "playable"
+      : "idle",
+  );
   document.querySelector(
     `input[name=videoKind][value=${p.video.kind}]`,
   ).checked = true;
@@ -96,14 +103,22 @@ function fillForm() {
   els.accept.disabled = p.status !== "prepared";
 }
 function formProject() {
+  const kind = document.querySelector("input[name=videoKind]:checked").value;
+  const youtubeUrl = els.youtube.value.trim();
+  const checkedVideo = state.project.video || {};
+  const keepEmbedCheck =
+    kind === "youtube" && checkedVideo.youtubeUrl === youtubeUrl;
   return {
     ...state.project,
     name: els.name.value,
     tickerText: els.ticker.value,
     video: {
       ...state.project.video,
-      kind: document.querySelector("input[name=videoKind]:checked").value,
-      youtubeUrl: els.youtube.value,
+      kind,
+      youtubeUrl,
+      embedStatus: keepEmbedCheck ? checkedVideo.embedStatus : "",
+      embedVideoId: keepEmbedCheck ? checkedVideo.embedVideoId : "",
+      embedCheckedAt: keepEmbedCheck ? checkedVideo.embedCheckedAt : "",
     },
     actions: [...document.querySelectorAll(".action-row")].map(
       (row, index) => ({
@@ -134,8 +149,11 @@ async function save({ quiet = false } = {}) {
 function renderActions() {
   els.actions.innerHTML = state.project.actions
     .map(
-      (action, index) =>
-        `<div class="action-row" data-icon="${escapeHtml(action.iconId)}"><span class="slot-number">${index + 1}</span><button class="icon-picker" type="button" data-slot="${index}" aria-label="Choose icon for key ${index + 1}"><img src="/assets/aggits-jukebox-icons/${escapeHtml(action.iconId)}.webp" alt=""></button><input class="action-label" maxlength="32" value="${escapeHtml(action.label)}" placeholder="Button label"><input class="action-url" value="${escapeHtml(action.href)}" placeholder="https://your-destination.com"></div>`,
+      (action, index) => {
+        const assetPath =
+          state.icons.find((icon) => icon.id === action.iconId)?.assetPath || "";
+        return `<div class="action-row" data-icon="${escapeHtml(action.iconId)}"><span class="slot-number">${index + 1}</span><button class="icon-picker" type="button" data-slot="${index}" aria-label="Choose icon for key ${index + 1}"><span class="icon-picker-art"><img src="${escapeHtml(assetPath)}" alt=""></span></button><input class="action-label" maxlength="22" value="${escapeHtml(action.label)}" placeholder="Button label"><input class="action-url" value="${escapeHtml(action.href)}" placeholder="https://your-destination.com"></div>`;
+      },
     )
     .join("");
   els.actions.querySelectorAll(".icon-picker").forEach((button) =>
@@ -152,7 +170,7 @@ function renderIcons(query = "") {
     .filter((icon) => !needle || icon.label.toLowerCase().includes(needle))
     .map(
       (icon) =>
-        `<button class="icon-option" type="button" data-icon="${icon.id}"><img src="${icon.assetPath}" alt=""><span>${escapeHtml(icon.label)}</span></button>`,
+        `<button class="icon-option" type="button" data-icon="${icon.id}"><span class="icon-option-art"><img src="${icon.assetPath}" alt=""></span><span class="icon-option-label">${escapeHtml(icon.label)}</span></button>`,
     )
     .join("");
   els.iconGrid.querySelectorAll(".icon-option").forEach((button) =>
@@ -180,8 +198,164 @@ function renderPrepared() {
       ? `/api/mahogany/projects/${state.project.id}/qr?revision=${Date.now()}`
       : state.project.publication.qrImageUrl;
 }
+
+let youtubeApiPromise;
+function youtubeVideoId(value) {
+  const text = String(value || "").trim();
+  if (/^[A-Za-z0-9_-]{11}$/.test(text)) return text;
+  try {
+    const url = new URL(text);
+    if (url.hostname === "youtu.be") return url.pathname.slice(1).split("/")[0];
+    if (!/(^|\.)youtube\.com$/.test(url.hostname)) return "";
+    return url.pathname === "/watch"
+      ? url.searchParams.get("v") || ""
+      : (url.pathname.match(/^\/(?:embed|shorts|live)\/([^/?#]+)/) || [])[1] || "";
+  } catch {
+    return "";
+  }
+}
+function renderYouTubeStatus(status, text = "") {
+  els.youtubeStatus.className = `video-check-status${status === "idle" ? "" : ` is-${status}`}`;
+  els.youtubeStatus.textContent =
+    text ||
+    ({
+      idle: "Not checked",
+      checking: "Checking…",
+      playable: "Embedding allowed",
+      blocked: "Unavailable",
+    }[status] || "Not checked");
+}
+function loadYouTubePlayerApi() {
+  if (window.YT?.Player) return Promise.resolve(window.YT);
+  if (youtubeApiPromise) return youtubeApiPromise;
+  youtubeApiPromise = new Promise((resolve, reject) => {
+    const previous = window.onYouTubeIframeAPIReady;
+    const timer = setTimeout(
+      () =>
+        reject(
+          new Error(
+            "YouTube did not respond. Check the internet connection and try again.",
+          ),
+        ),
+      15000,
+    );
+    window.onYouTubeIframeAPIReady = () => {
+      clearTimeout(timer);
+      previous?.();
+      resolve(window.YT);
+    };
+    const script = document.createElement("script");
+    script.src = "https://www.youtube.com/iframe_api";
+    script.onerror = () => {
+      clearTimeout(timer);
+      reject(
+        new Error(
+          "YouTube could not be reached. Check the internet connection and try again.",
+        ),
+      );
+    };
+    document.head.append(script);
+  }).catch((error) => {
+    youtubeApiPromise = null;
+    throw error;
+  });
+  return youtubeApiPromise;
+}
+async function verifyYouTubeEmbed(value) {
+  const videoId = youtubeVideoId(value);
+  if (!/^[A-Za-z0-9_-]{11}$/.test(videoId)) {
+    renderYouTubeStatus("blocked", "Invalid YouTube URL");
+    throw new Error("Enter a valid direct YouTube video URL.");
+  }
+  renderYouTubeStatus("checking", "Checking YouTube embedding…");
+  try {
+    const YT = await loadYouTubePlayerApi();
+    return await new Promise((resolve, reject) => {
+      els.youtubeProbe.replaceChildren();
+      const mount = document.createElement("div");
+      mount.id = `youtubeProbePlayer-${Date.now()}`;
+      els.youtubeProbe.append(mount);
+      let settled = false;
+      let player;
+      const finish = (error) => {
+        if (settled) return;
+        settled = true;
+        clearTimeout(timeout);
+        try {
+          player?.destroy();
+        } catch {}
+        els.youtubeProbe.replaceChildren();
+        if (error) reject(error);
+        else resolve({ videoId });
+      };
+      const timeout = setTimeout(
+        () =>
+          finish(
+            new Error(
+              "YouTube could not confirm embedded playback. Try another official video.",
+            ),
+          ),
+        16000,
+      );
+      player = new YT.Player(mount.id, {
+        width: 320,
+        height: 200,
+        videoId,
+        playerVars: {
+          controls: 0,
+          playsinline: 1,
+          rel: 0,
+          origin: location.origin,
+          widget_referrer: location.href,
+        },
+        events: {
+          onReady: (event) => event.target.cueVideoById(videoId),
+          onStateChange: (event) => {
+            if (
+              [
+                YT.PlayerState.CUED,
+                YT.PlayerState.PLAYING,
+                YT.PlayerState.PAUSED,
+              ].includes(event.data)
+            )
+              finish();
+          },
+          onError: (event) => {
+            const blocked = event.data === 101 || event.data === 150;
+            finish(
+              new Error(
+                blocked
+                  ? "This video’s owner blocks playback inside websites. Choose another official YouTube video."
+                  : `YouTube cannot embed this video (error ${event.data}). Choose another video.`,
+              ),
+            );
+          },
+        },
+      });
+    });
+  } catch (error) {
+    renderYouTubeStatus("blocked", error.message);
+    throw error;
+  }
+}
 async function createProduction() {
   try {
+    const videoKind = document.querySelector(
+      "input[name=videoKind]:checked",
+    ).value;
+    if (videoKind === "youtube") {
+      busy(els.create, true, "Checking video…");
+      const result = await verifyYouTubeEmbed(els.youtube.value);
+      state.project.video = {
+        ...state.project.video,
+        kind: "youtube",
+        youtubeUrl: els.youtube.value.trim(),
+        embedStatus: "playable",
+        embedVideoId: result.videoId,
+        embedCheckedAt: new Date().toISOString(),
+      };
+      renderYouTubeStatus("playable", "Embedding allowed");
+    }
     await save({ quiet: true });
     busy(els.create, true, "Creating…");
     const data = await api(
@@ -339,6 +513,20 @@ els.mp4.addEventListener("change", async () => {
 els.ticker.addEventListener(
   "input",
   () => (els.tickerCount.textContent = els.ticker.value.length),
+);
+els.youtube.addEventListener("input", () => {
+  state.project.video.embedStatus = "";
+  state.project.video.embedVideoId = "";
+  state.project.video.embedCheckedAt = "";
+  renderYouTubeStatus("idle");
+});
+document.querySelectorAll('input[name="videoKind"]').forEach((radio) =>
+  radio.addEventListener("change", () => {
+    if (radio.checked && radio.value === "youtube")
+      renderYouTubeStatus(
+        state.project.video.embedStatus === "playable" ? "playable" : "idle",
+      );
+  }),
 );
 els.iconSearch.addEventListener("input", () =>
   renderIcons(els.iconSearch.value),

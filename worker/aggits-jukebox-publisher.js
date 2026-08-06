@@ -1,4 +1,7 @@
-import { AGGITS_JUKEBOX_ICONS } from "../scripts/aggits-jukebox-icons.mjs";
+import {
+  AGGITS_JUKEBOX_APPEARANCE,
+  AGGITS_JUKEBOX_ICONS,
+} from "../scripts/aggits-jukebox-icons.mjs";
 import { renderAggitsJukeboxStudioPreview } from "../scripts/aggits-jukebox-preview.mjs";
 
 const JSON_HEADERS = {
@@ -646,7 +649,7 @@ function buildConfig(job, m) {
     },
     aggitsJukebox: {
       modelVersion: "aggits-jukebox/1",
-      appearanceVariant: "aggits-jukebox-master/1",
+      appearanceVariant: AGGITS_JUKEBOX_APPEARANCE,
       projectId: m.projectId,
       title: m.title,
       tickerText: m.tickerText,
@@ -657,12 +660,20 @@ function buildConfig(job, m) {
           ? `/api/aggits-jukebox-assets/${job.edition_id}/video`
           : "",
       localWelcomeVideoSha256: m.video.sha256,
-      cabinetArtwork: "assets/aggits-jukebox-master-v1.jpg",
+      cabinetArtwork: "assets/aggits-jukebox-oval-master-v2.jpg",
       coinSound: "assets/audio/jukebox-real-coin-insert-cc0.mp3",
       coinSoundSha256:
         "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
       coinSoundSource: "https://freesound.org/people/kyles/sounds/637369/",
       coinSoundLicense: "CC0-1.0",
+      buttonClunkSound:
+        "assets/audio/jukebox-mechanical-button-clunk-public-domain.ogg",
+      buttonClunkSoundSha256:
+        "d45c44c7cf8d700216c7f56182a430183df64880fe6aab834552daa6af6d5919",
+      buttonClunkSoundSource:
+        "https://commons.wikimedia.org/wiki/File:Mechanical_tack.ogg",
+      buttonClunkSoundLicense: "Public Domain",
+      externalLinkDelayMs: 500,
       sessionStorageKey: `aggitsJukeboxActivated:${job.edition_id}`,
       actions: m.actions,
     },
@@ -699,7 +710,8 @@ function publicProject(config, editionId) {
   };
 }
 function validateManifest(body) {
-  const projectId = clean(body?.projectId, 40),
+  const requestedSchema = clean(body?.schemaVersion, 80),
+    projectId = clean(body?.projectId, 40),
     title = clean(body?.title, 120),
     tickerText = multiline(body?.tickerText, 500),
     actions = Array.isArray(body?.actions) ? body.actions : [],
@@ -714,7 +726,7 @@ function validateManifest(body) {
   const cleaned = [];
   for (const item of actions) {
     const iconId = clean(item.iconId, 40),
-      label = clean(item.label, 32),
+      label = clean(item.label, 22),
       actionType = clean(item.actionType, 12),
       href = safeActionHref(item.href, actionType);
     if (!ICON_IDS.has(iconId) || !label || !href)
@@ -737,6 +749,22 @@ function validateManifest(body) {
     videoKind === "youtube" ? safeYouTubeId(video.youtubeUrl) : "";
   if (videoKind === "youtube" && !youtubeId)
     return { ok: false, error: "Enter a valid YouTube video URL." };
+  if (videoKind === "youtube" && requestedSchema.endsWith("/2")) {
+    const embedCheckedAt = Date.parse(String(video.embedCheckedAt || "")),
+      proofIsFresh =
+        Number.isFinite(embedCheckedAt) &&
+        Math.abs(Date.now() - embedCheckedAt) <= 24 * 60 * 60 * 1000;
+    if (
+      video.embedStatus !== "playable" ||
+      video.embedVideoId !== youtubeId ||
+      !proofIsFresh
+    )
+      return {
+        ok: false,
+        error:
+          "Create must confirm that YouTube allows this video to play inside websites before publication.",
+      };
+  }
   if (
     videoKind === "mp4" &&
     (!Number.isInteger(Number(video.sizeBytes)) ||
@@ -768,6 +796,18 @@ function validateManifest(body) {
         youtubeUrl:
           videoKind === "youtube"
             ? `https://www.youtube.com/watch?v=${youtubeId}`
+            : "",
+        embedStatus:
+          videoKind === "youtube" && requestedSchema.endsWith("/2")
+            ? "playable"
+            : "legacy_unchecked",
+        embedVideoId:
+          videoKind === "youtube" && requestedSchema.endsWith("/2")
+            ? youtubeId
+            : "",
+        embedCheckedAt:
+          videoKind === "youtube" && requestedSchema.endsWith("/2")
+            ? new Date(video.embedCheckedAt).toISOString()
             : "",
         sizeBytes: videoKind === "mp4" ? Number(video.sizeBytes) : 0,
         sha256: String(video.sha256),

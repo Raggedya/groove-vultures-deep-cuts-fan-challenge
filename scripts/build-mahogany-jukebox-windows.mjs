@@ -16,7 +16,7 @@ const require = createRequire(import.meta.url),
   execFileAsync = promisify(execFile),
   zipAsync = promisify(zip);
 const root = process.cwd(),
-  version = "1.0.0",
+  version = "1.2.0",
   productName = "Mahogany Jukebox",
   executableName = "mahogany-jukebox",
   electronVersion = String(electronPackage.version),
@@ -49,11 +49,14 @@ const runtimeFiles = [
   "scripts/venue-qr-artwork.mjs",
   "scripts/vendor/qrcode.min.js",
   "assets/aggits-jukebox-master-v1.jpg",
+  "assets/aggits-jukebox-oval-master-v2.jpg",
   "assets/aggits-jukebox-icons-master-v1.jpg",
   "assets/aggits-jukebox-integrity.json",
   "assets/aggits-jukebox-qr-master-v1.png",
   "assets/audio/jukebox-real-coin-insert-cc0.mp3",
   "assets/audio/jukebox-real-coin-insert-cc0.LICENSE.txt",
+  "assets/audio/jukebox-mechanical-button-clunk-public-domain.ogg",
+  "assets/audio/jukebox-mechanical-button-clunk-public-domain.LICENSE.txt",
   "assets/js/jookbox-coin-audio.js",
 ];
 const log = (text) => console.log(`[Mahogany Jukebox] ${text}`);
@@ -184,9 +187,9 @@ try {
   log("Staging the isolated application runtime.");
   await fs.mkdir(sourceDirectory, { recursive: true });
   for (const file of runtimeFiles) await copy(file);
-  const iconDirectory = "assets/aggits-jukebox-icons",
+  const iconDirectory = "assets/aggits-jukebox-icons-oval-v3",
     icons = (await fs.readdir(path.join(root, iconDirectory))).filter((file) =>
-      file.endsWith(".webp"),
+      file.endsWith(".svg"),
     );
   if (icons.length !== 110)
     throw new Error(`Expected 110 approved icons, found ${icons.length}.`);

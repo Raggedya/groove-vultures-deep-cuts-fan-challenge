@@ -1,10 +1,15 @@
 {
   "schemaVersion": "deep-cuts-aggits-jukebox-integrity/1",
   "cabinet": {
-    "path": "assets/aggits-jukebox-master-v1.jpg",
-    "width": 1320,
-    "height": 2390,
-    "sha256": "28806c43ecc8d7eb3ac2216f064f1887d057e939bad1841d62ecbf9a6627373d"
+    "path": "assets/aggits-jukebox-oval-master-v2.jpg",
+    "width": 720,
+    "height": 1280,
+    "sha256": "7cbb93d3df3966c621ae943196001a2402de16d5ea64ff2d02bf975449046546"
+  },
+  "buttonClunk": {
+    "path": "assets/audio/jukebox-mechanical-button-clunk-public-domain.ogg",
+    "sha256": "d45c44c7cf8d700216c7f56182a430183df64880fe6aab834552daa6af6d5919",
+    "license": "Public Domain"
   },
   "iconMaster": {
     "path": "assets/aggits-jukebox-icons-master-v1.jpg",
@@ -12,6 +17,14 @@
     "height": 1778,
     "sha256": "021e112589a982df5ea3ee665c1d19edb849dd4758cbf2749522c779d2caf527",
     "iconCount": 110
+  },
+  "ovalNativeIconSet": {
+    "path": "assets/aggits-jukebox-icons-oval-v3",
+    "format": "svg",
+    "iconCount": 110,
+    "combinedSha256": "bccbc067d5c3c11da5ee4e953ca3bc4d55c21b943ef75437935b462c426df961",
+    "source": "Lucide Icons 1.28.0 with five compatible custom brand glyphs",
+    "license": "assets/aggits-jukebox-icons-oval-v3.LICENSE.txt"
   },
   "qrMaster": {
     "path": "assets/aggits-jukebox-qr-master-v1.png",

@@ -1,9 +1,11 @@
 export const AGGITS_JUKEBOX_MODEL_VERSION="aggits-jukebox/1";
-export const AGGITS_JUKEBOX_APPEARANCE="aggits-jukebox-master/1";
-export const AGGITS_JUKEBOX_CABINET="assets/aggits-jukebox-master-v1.jpg";
-export const AGGITS_JUKEBOX_CABINET_SHA256="28806c43ecc8d7eb3ac2216f064f1887d057e939bad1841d62ecbf9a6627373d";
+export const AGGITS_JUKEBOX_APPEARANCE="aggits-jukebox-oval-master/3";
+export const AGGITS_JUKEBOX_CABINET="assets/aggits-jukebox-oval-master-v2.jpg";
+export const AGGITS_JUKEBOX_CABINET_SHA256="7cbb93d3df3966c621ae943196001a2402de16d5ea64ff2d02bf975449046546";
 export const AGGITS_JUKEBOX_ICON_MASTER="assets/aggits-jukebox-icons-master-v1.jpg";
 export const AGGITS_JUKEBOX_ICON_MASTER_SHA256="021e112589a982df5ea3ee665c1d19edb849dd4758cbf2749522c779d2caf527";
+export const AGGITS_JUKEBOX_OVAL_ICON_SET="assets/aggits-jukebox-icons-oval-v3";
+export const AGGITS_JUKEBOX_OVAL_ICON_SET_SHA256="bccbc067d5c3c11da5ee4e953ca3bc4d55c21b943ef75437935b462c426df961";
 
 const LABEL_ROWS=[
   ["Call","Book Now","Gigs","Menu","Food","Drinks","Specials","Happy Hour","Cocktails","Wine List"],
@@ -26,7 +28,7 @@ export const AGGITS_JUKEBOX_ICONS=Object.freeze(LABEL_ROWS.flatMap((row,rowIndex
   label,
   row:rowIndex+1,
   column:columnIndex+1,
-  assetPath:`/assets/aggits-jukebox-icons/${slug(label)}.webp`
+  assetPath:`/${AGGITS_JUKEBOX_OVAL_ICON_SET}/${slug(label)}.svg`
 }))));
 
 const ICON_BY_ID=new Map(AGGITS_JUKEBOX_ICONS.map(icon=>[icon.id,icon]));

@@ -7,6 +7,8 @@ import {
 } from "./aggits-jukebox-icons.mjs";
 
 export const MAHOGANY_PROJECT_SCHEMA = "mahogany-jukebox-project/1";
+export const MAHOGANY_PUBLICATION_MANIFEST_SCHEMA =
+  "deep-cuts-mahogany-jukebox-publication/2";
 export const MAHOGANY_VIDEO_MAX_BYTES = 24 * 1024 * 1024;
 export const MAHOGANY_ACTION_COUNT = 4;
 
@@ -20,6 +22,9 @@ export function newMahoganyProject() {
     video: {
       kind: "youtube",
       youtubeUrl: "",
+      embedStatus: "",
+      embedVideoId: "",
+      embedCheckedAt: "",
       fileName: "",
       sizeBytes: 0,
       sha256: "",
@@ -53,6 +58,11 @@ export function normalizeMahoganyProject(value) {
   project.video = {
     kind: video.kind === "mp4" ? "mp4" : "youtube",
     youtubeUrl: clean(video.youtubeUrl, 300),
+    embedStatus: video.embedStatus === "playable" ? "playable" : "",
+    embedVideoId: /^[A-Za-z0-9_-]{11}$/.test(String(video.embedVideoId || ""))
+      ? String(video.embedVideoId)
+      : "",
+    embedCheckedAt: validDate(video.embedCheckedAt),
     fileName: clean(video.fileName, 180),
     sizeBytes: Number(video.sizeBytes) || 0,
     sha256: /^[a-f0-9]{64}$/.test(String(video.sha256 || ""))
@@ -68,7 +78,7 @@ export function normalizeMahoganyProject(value) {
       return {
         slot: index + 1,
         iconId: aggitsJukeboxIcon(item.iconId) ? item.iconId : fallback.iconId,
-        label: clean(item.label, 32),
+        label: clean(item.label, 22),
         href: clean(item.href, 500),
         openInNewTab: item.openInNewTab !== false,
       };
@@ -101,8 +111,15 @@ export function validateMahoganyProject(
   if (!value.name) errors.push("Enter the Jukebox name.");
   if (!value.tickerText) errors.push("Enter the ticker text.");
   if (value.video.kind === "youtube") {
-    if (!youtubeVideoId(value.video.youtubeUrl))
+    const youtubeId = youtubeVideoId(value.video.youtubeUrl);
+    if (!youtubeId)
       errors.push("Enter a valid YouTube video URL.");
+    else if (
+      value.video.embedStatus !== "playable" ||
+      value.video.embedVideoId !== youtubeId ||
+      !value.video.embedCheckedAt
+    )
+      errors.push("Press Create to verify that YouTube allows this video to be embedded.");
   } else {
     if (
       !value.video.fileName ||
@@ -165,7 +182,7 @@ export function buildMahoganyManifest(project) {
   const value = checked.value,
     youtubeId = youtubeVideoId(value.video.youtubeUrl);
   return {
-    schemaVersion: "deep-cuts-mahogany-jukebox-publication/1",
+    schemaVersion: MAHOGANY_PUBLICATION_MANIFEST_SCHEMA,
     projectId: value.id,
     title: value.name,
     tickerText: value.tickerText,
@@ -182,6 +199,9 @@ export function buildMahoganyManifest(project) {
         ? {
             kind: "youtube",
             youtubeUrl: `https://www.youtube.com/watch?v=${youtubeId}`,
+            embedStatus: value.video.embedStatus,
+            embedVideoId: value.video.embedVideoId,
+            embedCheckedAt: value.video.embedCheckedAt,
             sha256: crypto
               .createHash("sha256")
               .update(`youtube:${youtubeId}`)

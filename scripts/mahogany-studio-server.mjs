@@ -436,7 +436,9 @@ function mime(file) {
       ".jpg": "image/jpeg",
       ".jpeg": "image/jpeg",
       ".webp": "image/webp",
+      ".svg": "image/svg+xml",
       ".mp3": "audio/mpeg",
+      ".ogg": "audio/ogg",
       ".mp4": "video/mp4",
     }[path.extname(file).toLowerCase()] || "application/octet-stream"
   );

@@ -89,7 +89,7 @@
                   id="youtubeUrl"
                   type="url"
                   placeholder="https://youtube.com/watch?v=…"
-                /><label
+                /><span id="youtubeStatus" class="video-check-status" aria-live="polite">Not checked</span><label
                   ><input type="radio" name="videoKind" value="mp4" /><span
                     >Upload MP4</span
                   ></label
@@ -214,6 +214,7 @@
       </form>
     </dialog>
     <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+    <div id="youtubeProbe" class="youtube-probe" aria-hidden="true"></div>
     <script type="module" src="/mahogany-studio/app.js"></script>
   </body>
 </html>

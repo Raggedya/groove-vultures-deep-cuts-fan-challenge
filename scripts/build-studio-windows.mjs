@@ -61,11 +61,14 @@ const runtimeFiles=[
   "assets/jookbox-bar-heritage-brass-v1.png",
   "assets/jookbox-venue-qr-master-v1.png",
   "assets/aggits-jukebox-master-v1.jpg",
+  "assets/aggits-jukebox-oval-master-v2.jpg",
   "assets/aggits-jukebox-icons-master-v1.jpg",
   "assets/aggits-jukebox-integrity.json",
   "assets/aggits-jukebox-qr-master-v1.png",
   "assets/audio/jukebox-real-coin-insert-cc0.mp3",
   "assets/audio/jukebox-real-coin-insert-cc0.LICENSE.txt",
+  "assets/audio/jukebox-mechanical-button-clunk-public-domain.ogg",
+  "assets/audio/jukebox-mechanical-button-clunk-public-domain.LICENSE.txt",
   "assets/js/jookbox-coin-audio.js"
 ];
 
@@ -275,8 +278,8 @@ try{
   log(`Preparing ${productName} ${version} from the validated runtime files.`);
   await fs.mkdir(sourceDirectory,{recursive:true});
   for(const relativePath of runtimeFiles)await copyRuntimeFile(relativePath);
-  const iconDirectory=path.join("assets","aggits-jukebox-icons");
-  const iconFiles=(await fs.readdir(path.join(root,iconDirectory))).filter(file=>file.toLowerCase().endsWith(".webp"));
+  const iconDirectory=path.join("assets","aggits-jukebox-icons-oval-v3");
+  const iconFiles=(await fs.readdir(path.join(root,iconDirectory))).filter(file=>file.toLowerCase().endsWith(".svg"));
   if(iconFiles.length!==110)throw new Error(`Expected 110 Aggits Jukebox icon assets, found ${iconFiles.length}.`);
   for(const file of iconFiles)await copyRuntimeFile(path.join(iconDirectory,file));
 
