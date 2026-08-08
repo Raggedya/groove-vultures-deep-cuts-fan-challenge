@@ -55,7 +55,7 @@ assert.ok(!html.includes("solid transparent"),"public oval keys must not render 
 assert.ok(!html.includes("border-box;color:#d5a355"),"public oval keys must use an internal bevel instead of an exterior gradient contour");
 assert.match(html,/\.action-icon\{[^}]*width:68%/,"public oval key icons must remain centred inside the photographed key faces");
 assert.ok(!html.includes("outline:3px solid #ffe19a"),"the large transparent coin hotspot must never expose an oval focus outline");
-assert.match(html,/aria-label="CALL US"/,"stored labels must remain accessible names");
+assert.match(html,/aria-label="CALL US \\(opens in a new tab\\)"/,"stored labels must remain accessible names and announce external-tab behaviour");
 assert.equal(sha256(path.join(root,MAHOGANY_AGGITS_COIN_ASSET.replace(/^\//,""))),MAHOGANY_AGGITS_COIN_SHA256,"embossed Aggits coin identity changed");
 assert.match(html,/class="coin-art"[^>]+aggits-coin-gold-v1\.png/,"coin must use the locked face-visible Aggits artwork");
 assert.match(html,/left:16\.7%;width:9\.4%/,"coin must begin beside the illuminated master slot with only a shallow overlap");
