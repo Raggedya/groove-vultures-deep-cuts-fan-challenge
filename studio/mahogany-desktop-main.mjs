@@ -95,7 +95,10 @@ async function stop() {
   if (!server) return;
   const closing = server;
   server = null;
-  await new Promise((resolve) => closing.close(resolve));
+  await new Promise((resolve) => {
+    closing.close(resolve);
+    closing.closeAllConnections?.();
+  });
 }
 function createCredentialStore(file) {
   async function read() {
