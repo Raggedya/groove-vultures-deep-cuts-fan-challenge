@@ -4,7 +4,7 @@ import fs from "node:fs";
 import path from "node:path";
 import {createProject,attachMp4,renderStudioPreview} from "./studio-model.mjs";
 import {AGGITS_JUKEBOX_ICONS,AGGITS_JUKEBOX_CABINET,AGGITS_JUKEBOX_CABINET_SHA256,AGGITS_JUKEBOX_ICON_MASTER_SHA256,AGGITS_JUKEBOX_OVAL_ICON_SET_SHA256} from "./aggits-jukebox-icons.mjs";
-import {MAHOGANY_FIXED_MARQUEE_ASSET,MAHOGANY_FIXED_MARQUEE_SHA256,MAHOGANY_BUTTON_CLUNK_ASSET,MAHOGANY_BUTTON_CLUNK_SHA256,MAHOGANY_BUTTON_LINK_DELAY_MS} from "./aggits-jukebox-preview.mjs";
+import {MAHOGANY_FIXED_MARQUEE_ASSET,MAHOGANY_FIXED_MARQUEE_SHA256,MAHOGANY_BUTTON_CLUNK_ASSET,MAHOGANY_BUTTON_CLUNK_SHA256,MAHOGANY_BUTTON_LINK_DELAY_MS,MAHOGANY_AGGITS_COIN_ASSET,MAHOGANY_AGGITS_COIN_SHA256,MAHOGANY_BUTTON_ATTENTION_START_SECONDS,MAHOGANY_BUTTON_ATTENTION_FLASH_SECONDS,MAHOGANY_BUTTON_ATTENTION_BUTTON_COUNT,MAHOGANY_BUTTON_ATTENTION_CYCLES,MAHOGANY_BUTTON_ATTENTION_END_SECONDS,mahoganyButtonAttentionIndex,isMahoganyButtonAttentionTime} from "./aggits-jukebox-preview.mjs";
 
 const root=path.resolve(import.meta.dirname,"..");
 const fixture={type:"aggits_jukebox",name:"An Exceptionally Long Melbourne Venue Name",tickerText:"THE BLOCK AND BEYOND! KITCHEN, EVENTS AND BOOKINGS.",actionButtons:[
@@ -42,29 +42,58 @@ assert.equal(project.readiness.handoffReady,true);
 const html=renderStudioPreview(project,{videoUrl:"/media/welcome.mp4"});
 assert.ok(!html.includes(">AN EXCEPTIONALLY LONG MELBOURNE VENUE NAME<"),"the project identity must never replace the fixed physical marquee");
 for(const required of [
-  "aggits-jukebox-oval-master-v2.jpg","aggits-jukebox-icons-oval-v4","jukebox-real-coin-insert-cc0.mp3","object-fit:cover",
-  'addEventListener("ended"',"noopener noreferrer","1120","aspect-ratio:720/1280","is-depressed","enableActions"
+  "aggits-jukebox-illuminated-master-v3.png","aggits-jukebox-icons-oval-v4","jukebox-real-coin-insert-cc0.mp3","object-fit:cover",
+  'addEventListener("ended"',"noopener noreferrer","1804","1436","aspect-ratio:864/1536","is-depressed","enableActions"
 ])assert.ok(html.includes(required),`preview missing ${required}`);
 assert.ok(!html.includes("Math.random()"),"action-key illumination and random sequencing must remain removed");
 assert.ok(!html.includes("is-lighting"),"Aggits Jukebox action keys must not render lighting states");
 assert.ok(!html.includes("<strong>CALL US</strong>"),"public oval keys must remain icon-only");
 assert.ok(!html.includes(".action:before"),"public oval keys must not render an exterior secondary line");
-assert.match(html,/\.actions:before\{[^}]*top:-6%;height:7%;background:#070402/,"button bank must mask the baked cabinet arcs above the live oval keys");
+assert.match(html,/\.actions\{[^}]*background:transparent/,"button bank must preserve the illuminated master artwork beneath the live oval keys");
+assert.ok(!html.includes(".actions:before"),"the clean illuminated master must not require a corrective mask above the key bank");
 assert.ok(!html.includes("solid transparent"),"public oval keys must not render an exterior border layer");
 assert.ok(!html.includes("border-box;color:#d5a355"),"public oval keys must use an internal bevel instead of an exterior gradient contour");
-assert.match(html,/\.action-icon\{[^}]*width:84%/,"public oval key icons must use the approved larger proportion");
+assert.match(html,/\.action-icon\{[^}]*width:68%/,"public oval key icons must remain centred inside the photographed key faces");
 assert.ok(!html.includes("outline:3px solid #ffe19a"),"the large transparent coin hotspot must never expose an oval focus outline");
 assert.match(html,/aria-label="CALL US"/,"stored labels must remain accessible names");
-assert.match(html,/width:30%;height:72%/,"coin must use the vertical metallic treatment");
-assert.match(html,/rotateY\(48deg\)/,"coin must be vertically oriented toward the physical slot");
+assert.equal(sha256(path.join(root,MAHOGANY_AGGITS_COIN_ASSET.replace(/^\//,""))),MAHOGANY_AGGITS_COIN_SHA256,"embossed Aggits coin identity changed");
+assert.match(html,/class="coin-art"[^>]+aggits-coin-gold-v1\.png/,"coin must use the locked face-visible Aggits artwork");
+assert.match(html,/left:16\.7%;width:9\.4%/,"coin must begin beside the illuminated master slot with only a shallow overlap");
+assert.match(html,/translateX\(-56%\) rotateY\(88deg\)/,"coin must turn edge-on while travelling into the physical slot");
 assert.equal(sha256(path.join(root,MAHOGANY_BUTTON_CLUNK_ASSET.replace(/^\//,""))),MAHOGANY_BUTTON_CLUNK_SHA256,"mechanical clunk identity changed");
 assert.equal(MAHOGANY_BUTTON_LINK_DELAY_MS,500);
 assert.match(html,/actions\.forEach\(candidate=>candidate\.classList\.toggle\("is-depressed",candidate===action\)\)/,"only one key may stay mechanically depressed");
 assert.match(html,/setTimeout\(\(\)=>\{if\(newTab\)/,"destination opening must follow the mechanical delay");
 assert.ok(!html.includes('setTimeout(()=>video.pause'),"video completion must not use a timer");
-assert.ok(!html.includes('addEventListener("timeupdate"'),"media time must not be artificially clamped");
+assert.equal(MAHOGANY_BUTTON_ATTENTION_START_SECONDS,45.14);
+assert.equal(MAHOGANY_BUTTON_ATTENTION_FLASH_SECONDS,.5);
+assert.equal(MAHOGANY_BUTTON_ATTENTION_BUTTON_COUNT,4);
+assert.equal(MAHOGANY_BUTTON_ATTENTION_CYCLES,3);
+assert.equal(MAHOGANY_BUTTON_ATTENTION_END_SECONDS,51.14);
+assert.equal(isMahoganyButtonAttentionTime(45.139),false);
+assert.equal(isMahoganyButtonAttentionTime(45.14),true);
+assert.equal(isMahoganyButtonAttentionTime(45.639),true);
+assert.equal(mahoganyButtonAttentionIndex(45.14),0);
+assert.equal(mahoganyButtonAttentionIndex(45.639),0);
+assert.equal(mahoganyButtonAttentionIndex(45.64),1);
+assert.equal(mahoganyButtonAttentionIndex(46.14),2);
+assert.equal(mahoganyButtonAttentionIndex(46.64),3);
+assert.equal(mahoganyButtonAttentionIndex(47.14),0);
+assert.equal(mahoganyButtonAttentionIndex(49.14),0);
+assert.equal(mahoganyButtonAttentionIndex(51.139),3);
+assert.equal(mahoganyButtonAttentionIndex(51.14),-1);
+assert.equal(isMahoganyButtonAttentionTime(51.14),false);
+assert.match(html,/requestVideoFrameCallback/,"native MP4 timing must use presented media frames when supported");
+assert.match(html,/metadata\?\.mediaTime/,"the attention state must consume media time rather than elapsed page time");
+assert.match(html,/setInterval\(requestYouTubeTime,80\)/,"YouTube timing must be actively sampled on mobile while playback is confirmed");
+assert.match(html,/postYouTube\("getCurrentTime"\)/,"YouTube timing must request actual player media time");
+assert.match(html,/frame\?\.addEventListener\("load",connectYouTube\)/,"the mobile YouTube bridge must reconnect after the iframe loads");
+assert.match(html,/class="attention-flash-border"/,"every physical key needs a dedicated border-only flash layer");
+assert.equal((html.match(/class="attention-flash-border"/g)||[]).length,4,"all four physical keys need the flash border layer");
+assert.match(html,/\.action\.is-attention-flash \.attention-flash-border\{opacity:1\}/);
+assert.match(html,/video\?\.addEventListener\("loadstart",\(\)=>resetAttentionFlash/,"a new source must reset the one-shot flash");
 const directive=fs.readFileSync(path.join(root,"PLATFORM_ARCHITECTURE_DIRECTIVE.md"),"utf8");
 assert.match(directive,/## Aggits four-button Jukebox contract/);
-assert.match(directive,/video opening is exactly `7:8`/);
+assert.match(directive,/video opening is landscape `3759:2992`/);
 
-console.log(`Aggits Jukebox tests passed: ${AGGITS_JUKEBOX_ICONS.length} icons, vertical coin, interlocked oval keys, 500 ms clunk delay, genuine media completion and 7:8 guidance.`);
+console.log(`Aggits Jukebox tests passed: ${AGGITS_JUKEBOX_ICONS.length} icons, embossed Aggits coin insertion, interlocked oval keys, 500 ms clunk delay, genuine media completion and 1804 × 1436 guidance.`);

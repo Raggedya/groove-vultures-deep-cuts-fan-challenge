@@ -3,6 +3,7 @@ import fs from "node:fs/promises";
 import { createDirectVenuePublisher } from "./bar-edition-publication.mjs";
 import { createAggitsJukeboxQrArtwork } from "./aggits-jukebox-qr-artwork.mjs";
 import { buildMahoganyManifest } from "./mahogany-jukebox-model.mjs";
+import { MAHOGANY_RENDERER_VERSION } from "./aggits-jukebox-preview.mjs";
 
 export const MAHOGANY_PUBLICATION_SCHEMA =
   "deep-cuts-mahogany-jukebox-publication/2";
@@ -300,15 +301,21 @@ export async function verifyMahoganyPublication(fetchImpl, job, manifest) {
       qr.arrayBuffer(),
     ]),
     png = new Uint8Array(qrBytes);
-  if (!page.ok || !html.includes("Mahogany Jukebox"))
+  if (
+    !page.ok ||
+    !html.includes("Mahogany Jukebox") ||
+    !html.includes(`content="${MAHOGANY_RENDERER_VERSION}"`) ||
+    page.headers.get("x-deep-cuts-renderer") !== MAHOGANY_RENDERER_VERSION
+  )
     throw publicationError(
-      "The live Mahogany Jukebox page failed verification.",
+      "The public service is not running the accepted Mahogany Jukebox graphics. Publication was stopped safely.",
       "live_verification_failed",
     );
   if (
     !config.ok ||
     json?.bandName !== manifest.title ||
-    json?.aggitsJukebox?.videoKind !== manifest.video.kind
+    json?.aggitsJukebox?.videoKind !== manifest.video.kind ||
+    json?.aggitsJukebox?.modelVersion !== MAHOGANY_RENDERER_VERSION
   )
     throw publicationError(
       "The live configuration did not match the accepted preview.",

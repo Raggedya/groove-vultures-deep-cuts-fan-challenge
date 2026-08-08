@@ -6,6 +6,7 @@ import sharp from "sharp";
 import {createAggitsJukeboxQrArtwork,AGGITS_JUKEBOX_QR_MASTER_SHA256,AGGITS_JUKEBOX_QR_PANEL} from "./aggits-jukebox-qr-artwork.mjs";
 import {aggitsJukeboxPublicationReadiness,buildAggitsJukeboxPublicationManifest} from "./aggits-jukebox-publication.mjs";
 import {__test} from "../worker/aggits-jukebox-publisher.js";
+import {MAHOGANY_RENDERER_VERSION,MAHOGANY_OVAL_CABINET_ASSET} from "./aggits-jukebox-preview.mjs";
 
 const root=process.cwd(),video=Buffer.concat([Buffer.alloc(4),Buffer.from("ftyp"),Buffer.from("isom0000")]),sha=crypto.createHash("sha256").update(video).digest("hex");
 const project={schemaVersion:"deep-cuts-studio-project/1",id:"studio_123456abcdef",input:{type:"aggits_jukebox",name:"The Test Edition",tickerText:"WELCOME TO THE TEST JUKEBOX",actionButtons:[{enabled:true,iconId:"gigs",label:"GIGS",actionType:"web",value:"https://example.com/gigs",href:"https://example.com/gigs",openInNewTab:true},{enabled:true,iconId:"call",label:"CALL",actionType:"tel",value:"+61 3 9000 0000",href:"tel:+61390000000",openInNewTab:false}]},mp4:{fileName:"welcome.mp4",sizeBytes:video.length,sha256:sha}};
@@ -15,6 +16,8 @@ const validated=__test.validateManifest(manifest);assert.equal(validated.ok,true
 assert.equal(__test.publicationManifestsMatch(validated.value,structuredClone(validated.value)),true,"an interrupted matching publication must be resumable");
 assert.equal(__test.publicationManifestsMatch(validated.value,{...validated.value,title:"Changed"}),false,"changed inputs must not resume an older manifest");
 const config=__test.buildConfig({job_id:"ajjob_test",edition_id:"dc_0123456789",slug:"aggits-jukebox-123456abcdef",base_url:"https://deep-cuts.example",created_at:new Date().toISOString()},validated.value);assert.equal(config.editionType,"aggits_jukebox");assert.equal(config.aggitsJukebox.actions.length,2);assert.match(config.aggitsJukebox.localWelcomeVideo,/aggits-jukebox-assets/);
+assert.equal(config.aggitsJukebox.modelVersion,MAHOGANY_RENDERER_VERSION);
+assert.equal(config.aggitsJukebox.cabinetArtwork,MAHOGANY_OVAL_CABINET_ASSET.slice(1));
 assert.equal(config.aggitsJukebox.appearanceVariant,"aggits-jukebox-oval-master/4");
 const youtubeManifest={...manifest,schemaVersion:"deep-cuts-mahogany-jukebox-publication/2",video:{kind:"youtube",youtubeUrl:"https://www.youtube.com/watch?v=4QK0RZ0FQ_0",embedStatus:"playable",embedVideoId:"4QK0RZ0FQ_0",embedCheckedAt:new Date().toISOString(),sha256:"a".repeat(64)}};
 assert.equal(__test.validateManifest(youtubeManifest).ok,true);
