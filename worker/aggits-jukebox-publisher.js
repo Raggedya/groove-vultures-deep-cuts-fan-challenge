@@ -2,7 +2,11 @@ import {
   AGGITS_JUKEBOX_APPEARANCE,
   AGGITS_JUKEBOX_ICONS,
 } from "../scripts/aggits-jukebox-icons.mjs";
-import { renderAggitsJukeboxStudioPreview } from "../scripts/aggits-jukebox-preview.mjs";
+import {
+  MAHOGANY_OVAL_CABINET_ASSET,
+  MAHOGANY_RENDERER_VERSION,
+  renderAggitsJukeboxStudioPreview,
+} from "../scripts/aggits-jukebox-preview.mjs";
 
 const JSON_HEADERS = {
     "content-type": "application/json; charset=utf-8",
@@ -94,6 +98,7 @@ export async function handleAggitsJukeboxPublicAsset(request, env, url) {
       headers: {
         "content-type": "text/html; charset=utf-8",
         "cache-control": "no-store",
+        "x-deep-cuts-renderer": MAHOGANY_RENDERER_VERSION,
         "x-content-type-options": "nosniff",
         "referrer-policy": "strict-origin-when-cross-origin",
       },
@@ -672,7 +677,7 @@ function buildConfig(job, m) {
       updatedAt: now,
     },
     aggitsJukebox: {
-      modelVersion: "aggits-jukebox/1",
+      modelVersion: MAHOGANY_RENDERER_VERSION,
       appearanceVariant: AGGITS_JUKEBOX_APPEARANCE,
       projectId: m.projectId,
       title: m.title,
@@ -684,7 +689,7 @@ function buildConfig(job, m) {
           ? `/api/aggits-jukebox-assets/${job.edition_id}/video`
           : "",
       localWelcomeVideoSha256: m.video.sha256,
-      cabinetArtwork: "assets/aggits-jukebox-oval-master-v2.jpg",
+      cabinetArtwork: MAHOGANY_OVAL_CABINET_ASSET.replace(/^\//, ""),
       coinSound: "assets/audio/jukebox-real-coin-insert-cc0.mp3",
       coinSoundSha256:
         "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",

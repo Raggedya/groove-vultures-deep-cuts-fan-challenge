@@ -1,15 +1,23 @@
 {
   "schemaVersion": "deep-cuts-aggits-jukebox-integrity/1",
   "cabinet": {
-    "path": "assets/aggits-jukebox-oval-master-v2.jpg",
-    "width": 720,
-    "height": 1280,
-    "sha256": "7cbb93d3df3966c621ae943196001a2402de16d5ea64ff2d02bf975449046546"
+    "path": "assets/aggits-jukebox-illuminated-master-v3.png",
+    "width": 864,
+    "height": 1536,
+    "sha256": "c42731d8f90b7c53ddbf44ee65a16930c8315c170fb5fa68cd9a81db7d7c9262",
+    "source": "Owner-supplied illuminated AGGITS visual master, production-cleaned for dynamic ticker, video and icon overlays"
   },
   "buttonClunk": {
     "path": "assets/audio/jukebox-mechanical-button-clunk-public-domain.ogg",
     "sha256": "d45c44c7cf8d700216c7f56182a430183df64880fe6aab834552daa6af6d5919",
     "license": "Public Domain"
+  },
+  "aggitsCoin": {
+    "path": "assets/aggits-coin-gold-v1.png",
+    "width": 1105,
+    "height": 1087,
+    "sha256": "a98943dec001c831ea8709eb260f87062782009cfd3a6665247be8585c3f87e1",
+    "source": "Owner-supplied Aggits coin reference, background isolated for the interactive control"
   },
   "iconMaster": {
     "path": "assets/aggits-jukebox-icons-master-v1.jpg",

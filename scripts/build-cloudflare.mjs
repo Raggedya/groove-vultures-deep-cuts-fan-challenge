@@ -12,6 +12,7 @@ await Promise.all([
   ...files.map(file=>copyOptionalFile(file)),
   ...directories.map(directory=>copyOptionalDirectory(directory))
 ]);
+await fs.access(path.join(dist,'assets','aggits-coin-gold-v1.png'));
 console.log(`Deep Cuts static bundle created at ${dist}.`);
 
 async function copyOptionalFile(file){
