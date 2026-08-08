@@ -135,14 +135,14 @@ const preview = renderAggitsJukeboxStudioPreview(toPreviewProject(sample), {
 });
 assert.match(preview, /MAHOGANY JUKEBOX/);
 assert.equal(MAHOGANY_FIXED_MARQUEE, "AGGITS");
-assert.equal(MAHOGANY_RENDERER_VERSION, "mahogany-jukebox/2026-08-08-v6");
+assert.equal(MAHOGANY_RENDERER_VERSION, "mahogany-jukebox/2026-08-08-v7");
 assert.match(
   preview,
-  /<meta name="deep-cuts-renderer" content="mahogany-jukebox\/2026-08-08-v6">/,
+  /<meta name="deep-cuts-renderer" content="mahogany-jukebox\/2026-08-08-v7">/,
 );
 assert.match(
   preview,
-  /data-renderer-version="mahogany-jukebox\/2026-08-08-v6"/,
+  /data-renderer-version="mahogany-jukebox\/2026-08-08-v7"/,
 );
 assert.equal(MAHOGANY_FIXED_MARQUEE_ASSET, "/assets/aggits-marquee-reference-v1.jpg");
 assert.match(MAHOGANY_FIXED_MARQUEE_SHA256, /^[a-f0-9]{64}$/);
@@ -209,10 +209,14 @@ assert.match(preview, /border:clamp\(2px,\.65vw,4px\) solid #ffd36a/);
 assert.doesNotMatch(preview, /\.action\.is-attention-flash\{[^}]*filter|\.action\.is-attention-flash\{[^}]*transform/);
 assert.match(preview, /requestVideoFrameCallback\(attentionTick\)/);
 assert.match(preview, /Number\.isFinite\(metadata\?\.mediaTime\)\?metadata\.mediaTime:video\.currentTime/);
+assert.match(preview, /setInterval\(\(\)=>syncAttentionFlash\(video\.currentTime,video\.currentSrc\|\|video\.src\),50\)/);
 assert.match(preview, /message\?\.event==="infoDelivery"/);
 assert.match(preview, /setInterval\(requestYouTubeTime,80\)/);
 assert.match(preview, /postYouTube\("getCurrentTime"\)/);
-assert.match(preview, /frame\?\.addEventListener\("load",connectYouTube\)/);
+assert.match(preview, /frame\?\.addEventListener\("load",\(\)=>\{connectYouTube\(\);startYouTubeClock\(\)\}\)/);
+assert.match(preview, /video\?\.addEventListener\("play",\(\)=>\{syncAttentionFlash/);
+assert.match(preview, /video\?\.addEventListener\("seeked",\(\)=>\{syncAttentionFlash/);
+assert.doesNotMatch(preview, /attentionCompleted|attentionTriggered/);
 const inlineScripts = [...preview.matchAll(/<script(?: nonce="[^"]*")?>([\s\S]*?)<\/script>/g)];
 assert.ok(inlineScripts.length > 0, "preview should include its runtime script");
 assert.doesNotThrow(
