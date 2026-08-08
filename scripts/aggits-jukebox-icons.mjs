@@ -1,7 +1,7 @@
 export const AGGITS_JUKEBOX_MODEL_VERSION="aggits-jukebox/1";
 export const AGGITS_JUKEBOX_APPEARANCE="aggits-jukebox-oval-master/4";
-export const AGGITS_JUKEBOX_CABINET="assets/aggits-jukebox-oval-master-v2.jpg";
-export const AGGITS_JUKEBOX_CABINET_SHA256="7cbb93d3df3966c621ae943196001a2402de16d5ea64ff2d02bf975449046546";
+export const AGGITS_JUKEBOX_CABINET="assets/aggits-jukebox-illuminated-master-v3.png";
+export const AGGITS_JUKEBOX_CABINET_SHA256="c42731d8f90b7c53ddbf44ee65a16930c8315c170fb5fa68cd9a81db7d7c9262";
 export const AGGITS_JUKEBOX_ICON_MASTER="assets/aggits-jukebox-icons-master-v1.jpg";
 export const AGGITS_JUKEBOX_ICON_MASTER_SHA256="021e112589a982df5ea3ee665c1d19edb849dd4758cbf2749522c779d2caf527";
 export const AGGITS_JUKEBOX_OVAL_ICON_SET="assets/aggits-jukebox-icons-oval-v4";
