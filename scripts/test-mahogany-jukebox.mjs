@@ -135,7 +135,7 @@ const preview = renderAggitsJukeboxStudioPreview(toPreviewProject(sample), {
 });
 assert.match(preview, /MAHOGANY JUKEBOX/);
 assert.equal(MAHOGANY_FIXED_MARQUEE, "AGGITS");
-assert.equal(MAHOGANY_RENDERER_VERSION, "mahogany-jukebox/2026-08-08-v5");
+assert.equal(MAHOGANY_RENDERER_VERSION, "mahogany-jukebox/2026-08-08-v6");
 assert.match(
   preview,
   /<meta name="deep-cuts-renderer" content="mahogany-jukebox\/2026-08-08-v5">/,
@@ -224,6 +224,21 @@ assert.doesNotMatch(preview, /\.actions:before/);
 assert.equal(MAHOGANY_BUTTON_LINK_DELAY_MS, 500);
 assert.match(MAHOGANY_BUTTON_CLUNK_ASSET, /mechanical-button-clunk/);
 assert.equal((preview.match(/class="action"/g) || []).length, 4);
+assert.equal(
+  (preview.match(/data-new-tab="true"/g) || []).length,
+  4,
+  "all four physical destination keys must preserve the Jukebox in its original tab",
+);
+assert.equal(
+  (preview.match(/\(opens in a new tab\)/g) || []).length,
+  4,
+  "all four keys must announce their new-tab behaviour",
+);
+assert.match(preview, /window\.open\("about:blank","_blank"\)/);
+assert.match(preview, /outboundWindow\.opener=null/);
+assert.match(preview, /outbound\.rel="noopener noreferrer"/);
+assert.match(preview, /outbound\.target="_self"/);
+assert.match(preview, /outboundWindow\.closed/);
 assert.notEqual(
   AGGITS_JUKEBOX_QR_PANEL.topLeft.x,
   AGGITS_JUKEBOX_QR_PANEL.bottomLeft.x,
