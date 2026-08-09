@@ -7,12 +7,17 @@ import {
   MAHOGANY_RENDERER_VERSION,
   renderAggitsJukeboxStudioPreview,
 } from "../scripts/aggits-jukebox-preview.mjs";
+import {
+  MAHOGANY_VU_RENDERER_VERSION,
+  renderMahoganyVuPreview,
+} from "../scripts/mahogany-vu-preview.mjs";
 
 const JSON_HEADERS = {
     "content-type": "application/json; charset=utf-8",
     "cache-control": "no-store",
   },
   VIDEO_MAX_BYTES = 24 * 1024 * 1024,
+  AUDIO_MAX_BYTES = 48 * 1024 * 1024,
   QR_MAX_BYTES = 8 * 1024 * 1024;
 const ICON_IDS = new Set(AGGITS_JUKEBOX_ICONS.map((item) => item.id));
 
@@ -48,7 +53,7 @@ export async function handleAggitsJukeboxPublisher(request, env, url) {
   if (state && request.method === "PUT")
     return setState(request, env, state[1], url, device);
   const match = path.match(
-    /^publications\/(ajjob_[a-f0-9-]+)(?:\/(video|qr|commit|rollback))?$/,
+    /^publications\/(ajjob_[a-f0-9-]+)(?:\/(video|music|character|qr|commit|rollback))?$/,
   );
   if (!match)
     return json({ ok: false, error: "Publisher route not found." }, 404);
@@ -60,6 +65,8 @@ export async function handleAggitsJukeboxPublisher(request, env, url) {
     return json({ ok: true, job: publicJob(job) });
   if (action === "video" && request.method === "PUT")
     return uploadVideo(request, env, job);
+  if (["music", "character"].includes(action) && request.method === "PUT")
+    return uploadVuMedia(request, env, job, action);
   if (action === "qr" && request.method === "PUT")
     return uploadQr(request, env, job);
   if (action === "commit" && request.method === "POST") return commit(env, job);
@@ -85,20 +92,34 @@ export async function handleAggitsJukeboxPublicAsset(request, env, url) {
     if (!row) return null;
     const config = JSON.parse(row.config_json),
       project = publicProject(config, page[1]),
-      html = renderAggitsJukeboxStudioPreview(project, {
-        videoUrl:
-          config.aggitsJukebox?.videoKind === "mp4"
-            ? `/api/aggits-jukebox-assets/${page[1]}/video`
-            : "",
-        youtubeUrl: config.aggitsJukebox?.youtubeUrl || "",
-        publicMode: true,
-        canonicalUrl: `${url.origin}${url.pathname}`,
-      });
+      isVu = config.aggitsJukebox?.appearanceVariant === "mahogany-vu",
+      renderer = isVu
+        ? MAHOGANY_VU_RENDERER_VERSION
+        : MAHOGANY_RENDERER_VERSION,
+      html = isVu
+        ? renderMahoganyVuPreview(project, {
+            musicUrl: config.aggitsJukebox?.musicAudio?.fileName
+              ? `/api/aggits-jukebox-assets/${page[1]}/music`
+              : "",
+            characterUrl: config.aggitsJukebox?.presenterVideo?.fileName
+              ? `/api/aggits-jukebox-assets/${page[1]}/character`
+              : "",
+            canonicalUrl: `${url.origin}${url.pathname}`,
+          })
+        : renderAggitsJukeboxStudioPreview(project, {
+            videoUrl:
+              config.aggitsJukebox?.videoKind === "mp4"
+                ? `/api/aggits-jukebox-assets/${page[1]}/video`
+                : "",
+            youtubeUrl: config.aggitsJukebox?.youtubeUrl || "",
+            publicMode: true,
+            canonicalUrl: `${url.origin}${url.pathname}`,
+          });
     return new Response(request.method === "HEAD" ? null : html, {
       headers: {
         "content-type": "text/html; charset=utf-8",
         "cache-control": "no-store",
-        "x-deep-cuts-renderer": MAHOGANY_RENDERER_VERSION,
+        "x-deep-cuts-renderer": renderer,
         "x-content-type-options": "nosniff",
         "referrer-policy": "strict-origin-when-cross-origin",
       },
@@ -123,6 +144,11 @@ export async function handleAggitsJukeboxPublicAsset(request, env, url) {
   );
   if (video && ["GET", "HEAD"].includes(request.method))
     return serveObjectForEdition(request, env, video[1], "video");
+  const vuMedia = url.pathname.match(
+    /^\/api\/aggits-jukebox-assets\/(dc_[a-f0-9]{10})\/(music|character)$/,
+  );
+  if (vuMedia && ["GET", "HEAD"].includes(request.method))
+    return serveVuObjectForEdition(request, env, vuMedia[1], vuMedia[2]);
   const qr = url.pathname.match(
     /^\/output\/(aggits-jukebox-[a-z0-9-]+)\/instagram-qr\.png$/,
   );
@@ -223,7 +249,7 @@ async function prepare(request, env, device, url) {
       400,
     );
   const active = await env.DB.prepare(
-    "SELECT * FROM aggits_jukebox_publication_jobs WHERE project_id=?1 AND status IN ('prepared','video_uploaded','qr_uploaded','awaiting_delivery') LIMIT 1",
+    "SELECT * FROM aggits_jukebox_publication_jobs WHERE project_id=?1 AND status IN ('prepared','music_uploaded','video_uploaded','qr_uploaded','awaiting_delivery') LIMIT 1",
   )
     .bind(manifest.value.projectId)
     .first();
@@ -270,13 +296,17 @@ async function prepare(request, env, device, url) {
     slug = existing?.slug || stableSlug(manifest.value.projectId),
     jobId = `ajjob_${crypto.randomUUID()}`,
     baseUrl = url.origin,
-    videoKey =
-      manifest.value.video.kind === "mp4"
+    isVu = manifest.value.appearance === "mahogany-vu",
+    videoKey = isVu
+      ? `aggits-jukebox/${editionId}/${jobId}/music.${manifest.value.vu.music.mimeType === "audio/wav" ? "wav" : "mp3"}`
+      : manifest.value.video.kind === "mp4"
         ? `aggits-jukebox/${editionId}/${jobId}/welcome.mp4`
         : `youtube:${manifest.value.video.youtubeId}`,
     qrKey = `aggits-jukebox/${editionId}/${jobId}/qr.png`,
     initialStatus =
-      manifest.value.video.kind === "youtube" ? "video_uploaded" : "prepared",
+      !isVu && manifest.value.video.kind === "youtube"
+        ? "video_uploaded"
+        : "prepared",
     initialStage = initialStatus;
   await env.DB.prepare(
     `INSERT INTO aggits_jukebox_publication_jobs (job_id,installation_id,project_id,edition_id,slug,title,status,stage,manifest_json,previous_record_json,base_url,video_key,qr_key,video_sha256,created_at,updated_at) VALUES (?1,?2,?3,?4,?5,?6,?7,?8,?9,?10,?11,?12,?13,?14,?15,?15)`,
@@ -295,7 +325,9 @@ async function prepare(request, env, device, url) {
       baseUrl,
       videoKey,
       qrKey,
-      manifest.value.video.sha256,
+      isVu
+        ? manifest.value.vu.music.sha256 || manifest.value.vu.character.sha256
+        : manifest.value.video.sha256,
       now,
     )
     .run();
@@ -427,16 +459,31 @@ async function commit(env, input) {
       },
       409,
     );
-  const manifest = JSON.parse(job.manifest_json);
-  const [video, qr] = await Promise.all([
-    manifest.video.kind === "mp4"
-      ? env.BAR_ASSETS.head(job.video_key)
-      : Promise.resolve({ customMetadata: { sha256: job.video_sha256 } }),
+  const manifest = JSON.parse(job.manifest_json),
+    isVu = manifest.appearance === "mahogany-vu",
+    characterKey = `aggits-jukebox/${job.edition_id}/${job.job_id}/presenter.mp4`;
+  const [video, qr, character] = await Promise.all([
+    isVu
+      ? manifest.vu.music.sizeBytes > 0
+        ? env.BAR_ASSETS.head(job.video_key)
+        : Promise.resolve(true)
+      : manifest.video.kind === "mp4"
+        ? env.BAR_ASSETS.head(job.video_key)
+        : Promise.resolve({ customMetadata: { sha256: job.video_sha256 } }),
     env.BAR_ASSETS.head(job.qr_key),
+    isVu && manifest.vu.character.sizeBytes > 0
+      ? env.BAR_ASSETS.head(characterKey)
+      : Promise.resolve(true),
   ]);
   if (
     !video ||
-    video.customMetadata?.sha256 !== job.video_sha256 ||
+    (isVu && manifest.vu.music.sizeBytes > 0
+      ? video.customMetadata?.sha256 !== manifest.vu.music.sha256
+      : !isVu && video.customMetadata?.sha256 !== job.video_sha256) ||
+    !character ||
+    (isVu && manifest.vu.character.sizeBytes > 0
+      ? character.customMetadata?.sha256 !== manifest.vu.character.sha256
+      : false) ||
     !qr ||
     qr.customMetadata?.sha256 !== job.qr_sha256
   )
@@ -618,14 +665,20 @@ async function setState(request, env, editionId, url, device) {
     );
   if (published) {
     const config = JSON.parse(row.config_json);
-    const requiresStoredVideo = config.aggitsJukebox?.videoKind !== "youtube";
-    const [video, qr] = await Promise.all([
-      requiresStoredVideo
-        ? env.BAR_ASSETS.head(row.video_key)
-        : Promise.resolve(true),
-      env.BAR_ASSETS.head(row.qr_key),
-    ]);
-    if (!video || !qr)
+    const isVu = config.aggitsJukebox?.appearanceVariant === "mahogany-vu",
+      mediaKeys = isVu
+        ? [
+            config.aggitsJukebox.musicAudio?.objectKey,
+            config.aggitsJukebox.presenterVideo?.objectKey,
+          ].filter(Boolean)
+        : config.aggitsJukebox?.videoKind !== "youtube"
+          ? [row.video_key]
+          : [],
+      [qr, ...media] = await Promise.all([
+        env.BAR_ASSETS.head(row.qr_key),
+        ...mediaKeys.map((key) => env.BAR_ASSETS.head(key)),
+      ]);
+    if (!qr || media.some((asset) => !asset))
       return json(
         { ok: false, error: "Preserved assets did not pass validation." },
         409,
@@ -654,6 +707,50 @@ async function setState(request, env, editionId, url, device) {
 
 function buildConfig(job, m) {
   const now = new Date().toISOString();
+  if (m.appearance === "mahogany-vu")
+    return {
+      brandName: "Mahogany Jukebox",
+      editionType: "aggits_jukebox",
+      bandName: m.title,
+      editionTitle: m.title,
+      description: m.tickerText,
+      mode: "discovery",
+      slug: job.slug,
+      publicURL: `${job.base_url}/e/${job.edition_id}`,
+      social: {
+        copyright: "Copyright Clearlight Creative 2026",
+        qrImage: `output/${job.slug}/instagram-qr.png`,
+      },
+      analytics: {
+        editionId: job.edition_id,
+        pageIdentifier: `${job.edition_id}:aggits-jukebox-vu-v1`,
+      },
+      production: {
+        jobId: job.job_id,
+        submittedAt: job.created_at,
+        updatedAt: now,
+      },
+      aggitsJukebox: {
+        modelVersion: MAHOGANY_VU_RENDERER_VERSION,
+        appearanceVariant: "mahogany-vu",
+        projectId: m.projectId,
+        title: m.title,
+        tickerText: m.tickerText,
+        musicAudio: {
+          ...m.vu.music,
+          objectKey: m.vu.music.sizeBytes > 0 ? job.video_key : "",
+        },
+        presenterVideo: {
+          ...m.vu.character,
+          objectKey:
+            m.vu.character.sizeBytes > 0
+              ? `aggits-jukebox/${job.edition_id}/${job.job_id}/presenter.mp4`
+              : "",
+        },
+        ducking: m.vu.ducking,
+        actions: m.actions,
+      },
+    };
   return {
     brandName: "Mahogany Jukebox",
     editionType: "aggits_jukebox",
@@ -708,8 +805,105 @@ function buildConfig(job, m) {
     },
   };
 }
+async function uploadVuMedia(request, env, job, kind) {
+  if (!["prepared", "music_uploaded", "video_uploaded"].includes(job.status))
+    return json(
+      { ok: false, error: "The publication is not accepting VU media." },
+      409,
+    );
+  const manifest = JSON.parse(job.manifest_json);
+  if (manifest.appearance !== "mahogany-vu")
+    return json({ ok: false, error: "This is not a VU publication." }, 409);
+  const expected = kind === "music" ? manifest.vu.music : manifest.vu.character;
+  if (!expected?.sizeBytes)
+    return json({ ok: false, error: `No ${kind} asset was prepared.` }, 409);
+  if (kind === "music" && job.status !== "prepared")
+    return json({ ok: false, error: "The music upload is already complete." }, 409);
+  if (
+    kind === "character" &&
+    manifest.vu.music.sizeBytes > 0 &&
+    job.status === "prepared"
+  )
+    return json({ ok: false, error: "Upload the music before the presenter." }, 409);
+  const length = contentLength(request),
+    maximum = kind === "music" ? AUDIO_MAX_BYTES : VIDEO_MAX_BYTES;
+  if (length <= 0 || length > maximum || length !== expected.sizeBytes)
+    return json(
+      { ok: false, error: `The ${kind} size does not match the manifest.` },
+      400,
+    );
+  const bytes = new Uint8Array(await request.arrayBuffer()),
+    validFormat =
+      kind === "character"
+        ? isMp4(bytes)
+        : expected.mimeType === "audio/wav"
+          ? isWav(bytes)
+          : isMp3(bytes);
+  if (
+    bytes.length !== length ||
+    !validFormat ||
+    (await sha256(bytes)) !== expected.sha256
+  )
+    return json(
+      { ok: false, error: `The ${kind} failed format or SHA-256 validation.` },
+      400,
+    );
+  const key =
+    kind === "music"
+      ? job.video_key
+      : `aggits-jukebox/${job.edition_id}/${job.job_id}/presenter.mp4`;
+  await env.BAR_ASSETS.put(key, bytes, {
+    httpMetadata: {
+      contentType: expected.mimeType,
+      cacheControl: "public, max-age=31536000, immutable",
+    },
+    customMetadata: {
+      sha256: expected.sha256,
+      kind,
+      jobId: job.job_id,
+      editionId: job.edition_id,
+    },
+  });
+  const nextStatus =
+    kind === "music" && manifest.vu.character.sizeBytes > 0
+      ? "music_uploaded"
+      : "video_uploaded";
+  await env.DB.prepare(
+    "UPDATE aggits_jukebox_publication_jobs SET status=?1,stage=?1,updated_at=?2 WHERE job_id=?3",
+  )
+    .bind(nextStatus, new Date().toISOString(), job.job_id)
+    .run();
+  return json({ ok: true, stage: nextStatus });
+}
 function publicProject(config, editionId) {
   const a = config.aggitsJukebox;
+  if (a.appearanceVariant === "mahogany-vu")
+    return {
+      schemaVersion: "deep-cuts-studio-project/1",
+      id: `studio_${a.projectId.replace(/^studio_/, "")}`,
+      appearance: "mahogany-vu",
+      vu: {
+        music: a.musicAudio,
+        character: a.presenterVideo,
+        ducking: a.ducking,
+      },
+      input: {
+        type: "aggits_jukebox",
+        name: a.title,
+        tickerText: a.tickerText,
+        youtubeUrl: "",
+        actionButtons: a.actions.map((item) => ({
+          enabled: true,
+          ...item,
+          value: item.href,
+        })),
+      },
+      mp4: null,
+      readiness: { handoffReady: true },
+      revision: 1,
+      status: "published",
+      editionId,
+    };
   return {
     schemaVersion: "deep-cuts-studio-project/1",
     id: `studio_${a.projectId.replace(/^studio_/, "")}`,
@@ -773,6 +967,89 @@ function validateManifest(body) {
         ["web", "map"].includes(actionType) && item.openInNewTab !== false,
     });
   }
+  if (body?.appearance === "mahogany-vu") {
+    const music = body?.vu?.music || {},
+      character = body?.vu?.character || {},
+      musicSize = Number(music.sizeBytes) || 0,
+      characterSize = Number(character.sizeBytes) || 0,
+      validHash = (value) => /^[a-f0-9]{64}$/.test(String(value || ""));
+    if (!musicSize && !characterSize)
+      return { ok: false, error: "VU publication requires music or a presenter." };
+    if (
+      musicSize < 0 ||
+      musicSize > AUDIO_MAX_BYTES ||
+      (musicSize > 0 &&
+        (!validHash(music.sha256) ||
+          !["audio/mpeg", "audio/wav"].includes(music.mimeType)))
+    )
+      return { ok: false, error: "The VU music asset is invalid." };
+    if (
+      characterSize < 0 ||
+      characterSize > VIDEO_MAX_BYTES ||
+      (characterSize > 0 &&
+        (!validHash(character.sha256) || character.mimeType !== "video/mp4"))
+    )
+      return { ok: false, error: "The VU presenter asset is invalid." };
+    const ducking = body?.vu?.ducking || {},
+      analysis = ducking.analysis || {},
+      regions = Array.isArray(analysis.regions)
+        ? analysis.regions
+            .slice(0, 400)
+            .map((region) => [Number(region?.[0]), Number(region?.[1])])
+            .filter(
+              ([start, end]) =>
+                Number.isFinite(start) && Number.isFinite(end) && start >= 0 && end > start,
+            )
+        : [];
+    return {
+      ok: true,
+      value: {
+        schemaVersion: "deep-cuts-aggits-jukebox-publication/2",
+        projectId,
+        appearance: "mahogany-vu",
+        title,
+        tickerText,
+        actions: cleaned,
+        vu: {
+          music: {
+            fileName: musicSize ? clean(music.fileName, 180) : "",
+            sizeBytes: musicSize,
+            sha256: musicSize ? String(music.sha256) : "",
+            mimeType: musicSize ? music.mimeType : "",
+          },
+          character: {
+            fileName: characterSize ? clean(character.fileName, 180) : "",
+            sizeBytes: characterSize,
+            sha256: characterSize ? String(character.sha256) : "",
+            mimeType: characterSize ? "video/mp4" : "",
+          },
+          ducking: {
+            enabled: ducking.enabled !== false,
+            speakingLevel: Math.max(0.08, Math.min(0.5, Number(ducking.speakingLevel) || 0.2)),
+            attackMs: Math.max(150, Math.min(700, Number(ducking.attackMs) || 320)),
+            releaseMs: Math.max(300, Math.min(1800, Number(ducking.releaseMs) || 800)),
+            holdMs: Math.max(200, Math.min(800, Number(ducking.holdMs) || 400)),
+            sensitivity: Math.max(0.1, Math.min(0.95, Number(ducking.sensitivity) || 0.55)),
+            analysis: {
+              status:
+                analysis.status === "complete" &&
+                analysis.sourceSha256 === character.sha256
+                  ? "complete"
+                  : "none",
+              version: clean(analysis.version, 80),
+              sourceSha256: validHash(analysis.sourceSha256)
+                ? String(analysis.sourceSha256)
+                : "",
+              durationSeconds: Math.max(0, Number(analysis.durationSeconds) || 0),
+              regions,
+              analysedAt: clean(analysis.analysedAt, 60),
+              error: "",
+            },
+          },
+        },
+      },
+    };
+  }
   const videoKind = video.kind === "youtube" ? "youtube" : "mp4";
   const youtubeId =
     videoKind === "youtube" ? safeYouTubeId(video.youtubeUrl) : "";
@@ -816,6 +1093,7 @@ function validateManifest(body) {
     value: {
       schemaVersion: "deep-cuts-aggits-jukebox-publication/1",
       projectId,
+      appearance: "mahogany-master",
       title,
       tickerText,
       actions: cleaned,
@@ -968,6 +1246,27 @@ async function serveObjectForEdition(request, env, id, kind) {
       )
     : new Response("Unknown Deep Cuts edition", { status: 404 });
 }
+async function serveVuObjectForEdition(request, env, id, kind) {
+  const row = await env.DB.prepare(
+    "SELECT config_json FROM aggits_jukebox_editions WHERE edition_id=?1 AND status='active'",
+  )
+    .bind(id)
+    .first();
+  if (!row) return new Response("Unknown Deep Cuts edition", { status: 404 });
+  const config = JSON.parse(row.config_json),
+    media =
+      kind === "music"
+        ? config.aggitsJukebox?.musicAudio
+        : config.aggitsJukebox?.presenterVideo;
+  if (!media?.objectKey)
+    return new Response("VU media asset not found", { status: 404 });
+  return serveObject(
+    request,
+    env.BAR_ASSETS,
+    media.objectKey,
+    media.mimeType || (kind === "music" ? "audio/mpeg" : "video/mp4"),
+  );
+}
 async function serveObject(request, bucket, key, type) {
   const range = parseRange(request.headers.get("range")),
     object = await bucket.get(key, range ? { range } : undefined);
@@ -1031,6 +1330,19 @@ function contentLength(r) {
 }
 function isMp4(b) {
   return b.length >= 12 && String.fromCharCode(...b.subarray(4, 8)) === "ftyp";
+}
+function isMp3(b) {
+  return (
+    (b.length >= 3 && String.fromCharCode(...b.subarray(0, 3)) === "ID3") ||
+    (b.length >= 2 && b[0] === 0xff && (b[1] & 0xe0) === 0xe0)
+  );
+}
+function isWav(b) {
+  return (
+    b.length >= 12 &&
+    String.fromCharCode(...b.subarray(0, 4)) === "RIFF" &&
+    String.fromCharCode(...b.subarray(8, 12)) === "WAVE"
+  );
 }
 function isPng(b, w, h) {
   if (b.length < 24 || b[0] !== 0x89 || b[1] !== 0x50) return false;
