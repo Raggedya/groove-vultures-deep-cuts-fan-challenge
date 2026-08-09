@@ -17,7 +17,7 @@ const root = process.cwd(),
   electronChecksums = require("electron/checksums.json"),
   execFileAsync = promisify(execFile),
   zipAsync = promisify(zip);
-const version = "1.0.0",
+const version = "1.0.1",
   productName = "Invitation Jukebox",
   executableName = "invitation-jukebox",
   electronVersion = String(electronPackage.version),
@@ -265,7 +265,7 @@ try {
   await fs.writeFile(
     path.join(outputDirectory, "INSTALL ON WINDOWS.txt"),
     [
-      `INVITATION JUKEBOX ${version} â€” WINDOWS`,
+      `INVITATION JUKEBOX ${version} Ã¢â‚¬â€ WINDOWS`,
       "",
       `Double-click: ${path.basename(files.setup)}`,
       "",
@@ -280,3 +280,4 @@ try {
 } finally {
   await fs.rm(temporaryRoot, { recursive: true, force: true });
 }
+

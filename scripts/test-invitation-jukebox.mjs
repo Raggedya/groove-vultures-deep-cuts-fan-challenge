@@ -7,7 +7,7 @@ import {
   loadInvitationProject, newInvitationProject, normalizeInvitationProject,
   saveInvitationProject, validateInvitationProject,
 } from "./invitation-jukebox-model.mjs";
-import { INVITATION_CABINET_ASSETS, INVITATION_RENDERER_VERSION, renderInvitationJukeboxPreview } from "./invitation-jukebox-preview.mjs";
+import { INVITATION_CABINET_ASSETS, INVITATION_LAYOUT, INVITATION_RENDERER_VERSION, renderInvitationJukeboxPreview } from "./invitation-jukebox-preview.mjs";
 import { __test as workerTest } from "../worker/aggits-jukebox-publisher.js";
 
 const types = invitationTypeCatalog();
@@ -49,7 +49,19 @@ assert.ok(html.includes(INVITATION_RENDERER_VERSION));
 assert.ok(html.includes(INVITATION_CABINET_ASSETS.birthday));
 assert.ok(html.includes("Copyright Clearlight Creative 2026"));
 assert.ok(html.includes("Ruby turns 40"));
-assert.ok(!html.includes("AGGITS"));
+assert.ok(html.includes('<div class="brand" aria-label="AGGITS">AGGITS</div>'));
+assert.ok(html.includes('<div class="display" aria-label="Invitation video">'));
+assert.ok(!html.includes("invite-copy"));
+assert.ok(html.includes(`top:${INVITATION_LAYOUT.media.top};left:${INVITATION_LAYOUT.media.left};width:${INVITATION_LAYOUT.media.width};height:${INVITATION_LAYOUT.media.height}`));
+assert.ok(html.includes("repeating-radial-gradient"));
+assert.equal(INVITATION_LAYOUT.media.left, "26.4%");
+assert.equal(INVITATION_LAYOUT.machineAspectRatio, "953 / 1650");
+for (const type of types) {
+  const typeHtml = renderInvitationJukeboxPreview(newInvitationProject(type.id));
+  assert.ok(typeHtml.includes(`class="machine type-${type.id}"`));
+  assert.ok(typeHtml.includes(`top:${INVITATION_LAYOUT.media.top};left:${INVITATION_LAYOUT.media.left};width:${INVITATION_LAYOUT.media.width};height:${INVITATION_LAYOUT.media.height}`));
+  assert.ok(!typeHtml.includes("invite-copy"));
+}
 
 const sourceChecks = await Promise.all([
   fs.readFile(new URL("../mahogany-studio/index.html", import.meta.url), "utf8"),
@@ -58,3 +70,4 @@ const sourceChecks = await Promise.all([
 assert.ok(sourceChecks[0].includes("Mahogany Jukebox"));
 assert.ok(sourceChecks[1].includes("mahogany-jukebox-project/1"));
 console.log("Invitation Jukebox model, libraries, renderer, plaque and legacy isolation passed.");
+
