@@ -25,7 +25,7 @@
     "test:analytics": "node scripts/test-analytics.mjs",
     "test:worker": "node scripts/test-worker.mjs",
     "cloudflare:dev": "wrangler dev",
-    "cloudflare:deploy": "wrangler deploy",
+    "cloudflare:deploy": "npm run build && wrangler deploy",
     "cloudflare:migrate": "wrangler d1 migrations apply deep-cuts-production --remote",
     "cloudflare:sync": "node scripts/sync-editions.mjs",
     "sales:demo": "node scripts/serve-sales-demo.mjs",
@@ -46,8 +46,12 @@
     "studio:make:mac:x64": "electron-forge make --platform=darwin --arch=x64",
     "mahogany:server": "node scripts/mahogany-studio-server.mjs",
     "mahogany:desktop": "electron studio/mahogany-desktop-main.mjs",
-    "mahogany:test": "node scripts/test-mahogany-jukebox.mjs",
-    "mahogany:make": "node scripts/build-mahogany-jukebox-windows.mjs"
+    "mahogany:test": "node scripts/test-mahogany-jukebox.mjs && node scripts/test-mahogany-band-candidates.mjs",
+    "mahogany:make": "node scripts/build-mahogany-jukebox-windows.mjs",
+    "invitation:server": "node scripts/invitation-studio-server-cli.mjs",
+    "invitation:desktop": "electron studio/invitation-desktop-main.mjs",
+    "invitation:test": "node scripts/test-invitation-jukebox.mjs && node scripts/test-invitation-studio-server.mjs",
+    "invitation:make": "node scripts/build-invitation-jukebox-windows.mjs"
   },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.1",

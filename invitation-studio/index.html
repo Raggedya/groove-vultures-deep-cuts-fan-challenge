@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Invitation Jukebox</title>
+  <link rel="stylesheet" href="/invitation-studio/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div><span class="eyebrow">Clearlight Creative</span><h1>Invitation Jukebox</h1></div>
+    <nav class="tabs" aria-label="Workspace"><button class="tab active" data-view="create">Create</button><button class="tab" data-view="library">Libraries</button></nav>
+    <div id="authStatus" class="auth-status">Checking publishing…</div>
+  </header>
+
+  <main>
+    <section id="createView" class="workspace">
+      <aside class="type-rail">
+        <div class="rail-heading"><span class="step">1</span><div><strong>Invitation type</strong><small>Select a library and cabinet</small></div></div>
+        <div id="typePicker" class="type-picker"></div>
+        <button id="newInvitation" class="new-button" type="button">+ New invitation</button>
+      </aside>
+
+      <section class="editor">
+        <div class="section-heading"><span class="step">2</span><div><strong>Central workspace</strong><small id="editorContext">Create your invitation</small></div><span id="saveState" class="save-state">Saved</span></div>
+        <form id="invitationForm">
+          <div class="field-grid two"><label>Invitation title<input id="title" maxlength="120" placeholder="Emily & James — Our Wedding"></label><label>Hosts / guests of honour<input id="hostNames" maxlength="120" placeholder="Emily & James"></label></div>
+          <label>Ticker message<textarea id="tickerText" maxlength="500" rows="2" placeholder="You're invited — Saturday 25 October 2026"></textarea></label>
+          <div class="field-grid three"><label>Date<input id="eventDate" type="date"></label><label>Time<input id="eventTime" type="time"></label><label>Venue<input id="venue" maxlength="160" placeholder="The Grand Ballroom"></label></div>
+          <label>Address<input id="address" maxlength="240" placeholder="123 Collins Street, Melbourne"></label>
+          <label>Invitation message<textarea id="message" maxlength="900" rows="4" placeholder="Please join us as we celebrate…"></textarea></label>
+
+          <fieldset><legend>Welcome media</legend><div class="media-row"><label class="radio"><input type="radio" name="videoKind" value="youtube" checked> YouTube</label><label class="radio"><input type="radio" name="videoKind" value="mp4"> Local MP4</label></div><label id="youtubeField">YouTube URL<input id="youtubeUrl" type="url" placeholder="https://www.youtube.com/watch?v=…"><span id="youtubeStatus" class="field-note">Embedding is checked before publishing.</span></label><label id="mp4Field" hidden>MP4 (24 MiB maximum)<input id="mp4File" type="file" accept="video/mp4"><span id="mp4Status" class="field-note">No MP4 selected.</span></label><div id="youtubeProbe" hidden></div></fieldset>
+
+          <fieldset><legend>Four invitation keys</legend><div id="actionFields" class="action-fields"></div></fieldset>
+        </form>
+        <div class="editor-actions"><button id="save" class="secondary" type="button">Save draft</button><button id="publish" class="primary" type="button">Create, publish &amp; email</button></div>
+        <p id="publishProgress" class="progress" hidden></p>
+        <div id="publicationResult" class="publication-result" hidden><div><span>Permanent invitation link</span><a id="liveLink" target="_blank" rel="noopener noreferrer"></a></div><img id="qrImage" alt="Invitation QR code image"><button id="emailLink" type="button">Email link</button></div>
+      </section>
+
+      <aside class="preview-panel">
+        <div class="section-heading"><span class="step">3</span><div><strong>Live preview</strong><small>Exact published layout</small></div></div>
+        <iframe id="preview" title="Invitation preview"></iframe>
+        <p class="plaque-note">Every cabinet includes the locked plaque: “Copyright Clearlight Creative 2026”.</p>
+      </aside>
+    </section>
+
+    <section id="libraryView" class="library-view" hidden>
+      <div class="library-header"><div><span class="eyebrow">Saved by invitation type</span><h2>Invitation libraries</h2></div><input id="librarySearch" type="search" placeholder="Search invitations"></div>
+      <div id="libraryFilters" class="library-filters"></div>
+      <div id="libraryGroups" class="library-groups"></div>
+    </section>
+  </main>
+
+  <dialog id="activationDialog"><form method="dialog"><h2>Activate protected publishing</h2><p>Use the one-time activation code for this Windows installation.</p><button id="startActivation" type="button">Request code</button><label>Activation code<input id="activationCode" autocomplete="one-time-code"></label><div class="dialog-actions"><button value="cancel">Cancel</button><button id="completeActivation" type="button" class="primary">Activate</button></div><p id="activationMessage" class="progress"></p></form></dialog>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="/invitation-studio/app.js"></script>
+</body>
+</html>
