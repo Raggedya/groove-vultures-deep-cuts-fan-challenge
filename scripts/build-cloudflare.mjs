@@ -21,14 +21,7 @@ async function copyOptionalFile(file){
 }
 
 async function copyOptionalDirectory(directory){
-  try{await fs.cp(path.join(root,directory),path.join(dist,directory),{recursive:true,filter:source=>{
-    if(source.includes(`${path.sep}.tools${path.sep}`))return false;
-    if(directory==='output'){
-      const top=path.relative(path.join(root,directory),source).split(path.sep)[0];
-      if(/^Invitation-Jukebox-Windows-/i.test(top))return false;
-    }
-    return true;
-  }})}
+  try{await fs.cp(path.join(root,directory),path.join(dist,directory),{recursive:true,filter:source=>!source.includes(`${path.sep}.tools${path.sep}`)})}
   catch(error){if(error.code!=='ENOENT')throw error}
 }
 
