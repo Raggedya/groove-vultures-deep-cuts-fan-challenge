@@ -2,7 +2,7 @@ name: Deploy Deep Cuts
 
 on:
   push:
-    branches: [main]
+    branches: [main, codex/mahogany-icon-only-bandcamp]
   workflow_dispatch:
 
 permissions:
