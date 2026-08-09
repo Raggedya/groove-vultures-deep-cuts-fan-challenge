@@ -540,7 +540,255 @@ async function commit(env, input) {
     );
   await env.DB.batch([
     env.DB.prepare(
-      "UPDATE aggits_jukebox_publication_jobs SET em…2115 tokens truncated…coinSoundSha256:
+      "UPDATE aggits_jukebox_publication_jobs SET email_id=?1,updated_at=?2 WHERE job_id=?3",
+    ).bind(email.id, now, job.job_id),
+    env.DB.prepare(
+      "UPDATE production_jobs SET status='email_accepted',email_accepted_at=?1,updated_at=?1 WHERE job_id=?2",
+    ).bind(now, job.job_id),
+  ]);
+  return json(
+    {
+      ok: true,
+      job: publicJob({
+        ...job,
+        status: "awaiting_delivery",
+        stage: "email_delivery",
+        email_id: email.id,
+        updated_at: now,
+      }),
+    },
+    202,
+  );
+}
+async function sendEmail(env, job, bytes) {
+  if (!env.RESEND_API_KEY || !env.REPORT_RECIPIENT || !env.REPORT_FROM_EMAIL)
+    return { ok: false, error: "Completion email is not configured." };
+  const liveUrl = `${job.base_url}/e/${job.edition_id}`,
+    response = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        authorization: `Bearer ${env.RESEND_API_KEY}`,
+        "content-type": "application/json",
+        "idempotency-key": `aggits-jukebox-${job.job_id}`,
+      },
+      body: JSON.stringify({
+        from: env.REPORT_FROM_EMAIL,
+        to: [env.REPORT_RECIPIENT],
+        subject: `JookBox published: ${clean(job.title, 200)}`,
+        html: `<p><strong>${escapeHtml(job.title)}</strong> has passed protected publication and is live.</p><p><a href="${escapeHtml(liveUrl)}">Open ${escapeHtml(job.title)}</a></p><p>Copyable permanent URL:</p><p><code style="font-size:16px;user-select:all">${escapeHtml(liveUrl)}</code></p><p>The fitted, scan-tested QR artwork is attached.</p>`,
+        attachments: [
+          { content: bytesBase64(bytes), filename: `${job.slug}-qr.png` },
+        ],
+        tags: [
+          { name: "job_id", value: job.job_id },
+          { name: "edition_id", value: job.edition_id },
+          { name: "job_type", value: "aggits_jukebox" },
+        ],
+      }),
+    }),
+    result = await response.json().catch(() => ({}));
+  return response.ok
+    ? { ok: true, id: clean(result.id, 160) }
+    : { ok: false, error: "Completion email was rejected." };
+}
+async function rollback(env, job, code, message) {
+  const previous = job.previous_record_json
+      ? JSON.parse(job.previous_record_json)
+      : null,
+    now = new Date().toISOString(),
+    batch = [];
+  if (previous) {
+    batch.push(
+      env.DB.prepare(
+        "UPDATE aggits_jukebox_editions SET title=?1,config_json=?2,video_key=?3,qr_key=?4,status=?5,current_job_id=?6,updated_at=?7 WHERE edition_id=?8",
+      ).bind(
+        previous.title,
+        previous.config_json,
+        previous.video_key,
+        previous.qr_key,
+        previous.status,
+        previous.current_job_id,
+        now,
+        job.edition_id,
+      ),
+    );
+    batch.push(
+      env.DB.prepare(
+        "UPDATE editions SET band_name=?1,status=?2,updated_at=?3 WHERE edition_id=?4",
+      ).bind(previous.title, previous.status, now, job.edition_id),
+    );
+  } else {
+    batch.push(
+      env.DB.prepare(
+        "DELETE FROM aggits_jukebox_editions WHERE edition_id=?1 AND current_job_id=?2",
+      ).bind(job.edition_id, job.job_id),
+    );
+    batch.push(
+      env.DB.prepare(
+        "UPDATE editions SET status='inactive',updated_at=?1 WHERE edition_id=?2",
+      ).bind(now, job.edition_id),
+    );
+  }
+  batch.push(
+    env.DB.prepare(
+      "UPDATE aggits_jukebox_publication_jobs SET status='failed',stage='failed',error_code=?1,error_message=?2,updated_at=?3,completed_at=?3 WHERE job_id=?4",
+    ).bind(code, clean(message, 600), now, job.job_id),
+  );
+  await env.DB.batch(batch);
+  return json(
+    {
+      ok: false,
+      error: message,
+      code,
+      job: publicJob({
+        ...job,
+        status: "failed",
+        error_code: code,
+        error_message: message,
+      }),
+    },
+    409,
+  );
+}
+async function setState(request, env, editionId, url, device) {
+  const body = await safeJson(request),
+    published = body?.published === true,
+    row = await env.DB.prepare(
+      "SELECT ae.* FROM aggits_jukebox_editions ae JOIN aggits_jukebox_publication_jobs aj ON aj.job_id=ae.current_job_id WHERE ae.edition_id=?1 AND aj.installation_id=?2",
+    )
+      .bind(editionId, device.installation_id)
+      .first();
+  if (!row)
+    return json(
+      { ok: false, error: "The permanent edition was not found." },
+      404,
+    );
+  if (published) {
+    const config = JSON.parse(row.config_json);
+    const isVu = config.aggitsJukebox?.appearanceVariant === "mahogany-vu",
+      mediaKeys = isVu
+        ? [
+            config.aggitsJukebox.musicAudio?.objectKey,
+            config.aggitsJukebox.presenterVideo?.objectKey,
+          ].filter(Boolean)
+        : config.aggitsJukebox?.videoKind !== "youtube"
+          ? [row.video_key]
+          : [],
+      [qr, ...media] = await Promise.all([
+        env.BAR_ASSETS.head(row.qr_key),
+        ...mediaKeys.map((key) => env.BAR_ASSETS.head(key)),
+      ]);
+    if (!qr || media.some((asset) => !asset))
+      return json(
+        { ok: false, error: "Preserved assets did not pass validation." },
+        409,
+      );
+  }
+  const status = published ? "active" : "inactive",
+    now = new Date().toISOString();
+  await env.DB.batch([
+    env.DB.prepare(
+      "UPDATE aggits_jukebox_editions SET status=?1,updated_at=?2 WHERE edition_id=?3",
+    ).bind(status, now, editionId),
+    env.DB.prepare(
+      "UPDATE editions SET status=?1,updated_at=?2 WHERE edition_id=?3",
+    ).bind(status, now, editionId),
+  ]);
+  return json({
+    ok: true,
+    editionId,
+    slug: row.slug,
+    published,
+    liveUrl: `${url.origin}/e/${editionId}`,
+    qrImageUrl: `${url.origin}/output/${row.slug}/instagram-qr.png`,
+    identityPreserved: true,
+  });
+}
+
+function buildConfig(job, m) {
+  const now = new Date().toISOString();
+  if (m.appearance === "mahogany-vu")
+    return {
+      brandName: "Mahogany Jukebox",
+      editionType: "aggits_jukebox",
+      bandName: m.title,
+      editionTitle: m.title,
+      description: m.tickerText,
+      mode: "discovery",
+      slug: job.slug,
+      publicURL: `${job.base_url}/e/${job.edition_id}`,
+      social: {
+        copyright: "Copyright Clearlight Creative 2026",
+        qrImage: `output/${job.slug}/instagram-qr.png`,
+      },
+      analytics: {
+        editionId: job.edition_id,
+        pageIdentifier: `${job.edition_id}:aggits-jukebox-vu-v1`,
+      },
+      production: {
+        jobId: job.job_id,
+        submittedAt: job.created_at,
+        updatedAt: now,
+      },
+      aggitsJukebox: {
+        modelVersion: MAHOGANY_VU_RENDERER_VERSION,
+        appearanceVariant: "mahogany-vu",
+        projectId: m.projectId,
+        title: m.title,
+        tickerText: m.tickerText,
+        musicAudio: {
+          ...m.vu.music,
+          objectKey: m.vu.music.sizeBytes > 0 ? job.video_key : "",
+        },
+        presenterVideo: {
+          ...m.vu.character,
+          objectKey:
+            m.vu.character.sizeBytes > 0
+              ? `aggits-jukebox/${job.edition_id}/${job.job_id}/presenter.mp4`
+              : "",
+        },
+        ducking: m.vu.ducking,
+        actions: m.actions,
+      },
+    };
+  return {
+    brandName: "Mahogany Jukebox",
+    editionType: "aggits_jukebox",
+    bandName: m.title,
+    editionTitle: m.title,
+    description: m.tickerText,
+    mode: "discovery",
+    slug: job.slug,
+    publicURL: `${job.base_url}/e/${job.edition_id}`,
+    social: {
+      copyright: "Copyright Clearlight Creative",
+      qrImage: `output/${job.slug}/instagram-qr.png`,
+    },
+    analytics: {
+      editionId: job.edition_id,
+      pageIdentifier: `${job.edition_id}:aggits-jukebox-v1`,
+    },
+    production: {
+      jobId: job.job_id,
+      submittedAt: job.created_at,
+      updatedAt: now,
+    },
+    aggitsJukebox: {
+      modelVersion: MAHOGANY_RENDERER_VERSION,
+      appearanceVariant: AGGITS_JUKEBOX_APPEARANCE,
+      projectId: m.projectId,
+      title: m.title,
+      tickerText: m.tickerText,
+      videoKind: m.video.kind,
+      youtubeUrl: m.video.kind === "youtube" ? m.video.youtubeUrl : "",
+      localWelcomeVideo:
+        m.video.kind === "mp4"
+          ? `/api/aggits-jukebox-assets/${job.edition_id}/video`
+          : "",
+      localWelcomeVideoSha256: m.video.sha256,
+      cabinetArtwork: MAHOGANY_OVAL_CABINET_ASSET.replace(/^\//, ""),
+      coinSound: "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+      coinSoundSha256:
         "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
       coinSoundSource: "https://freesound.org/people/kyles/sounds/637369/",
       coinSoundLicense: "CC0-1.0",
@@ -1149,4 +1397,3 @@ export const __test = {
   isPng,
   stableSlug,
 };
-
