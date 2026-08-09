@@ -12,6 +12,19 @@ await Promise.all([
   ...files.map(file=>copyOptionalFile(file)),
   ...directories.map(directory=>copyOptionalDirectory(directory))
 ]);
+const vuArtwork=path.join(dist,'assets','aggits-jukebox-vu-master-v1.jpg');
+try{await fs.access(vuArtwork)}
+catch(error){
+  if(error.code!=='ENOENT')throw error;
+  const assetDirectory=path.dirname(vuArtwork),baseName=path.basename(vuArtwork),
+    parts=(await fs.readdir(assetDirectory)).filter(name=>name.startsWith(`${baseName}.base64.part`)).sort(),
+    encoded=parts.length
+      ? (await Promise.all(parts.map(name=>fs.readFile(path.join(assetDirectory,name),'utf8')))).join('')
+      : await fs.readFile(`${vuArtwork}.base64`,'utf8');
+  await fs.writeFile(vuArtwork,Buffer.from(encoded.trim(),'base64'));
+  await fs.rm(`${vuArtwork}.base64`,{force:true});
+  await Promise.all(parts.map(name=>fs.rm(path.join(assetDirectory,name),{force:true})));
+}
 await fs.access(path.join(dist,'assets','aggits-coin-gold-v1.png'));
 console.log(`Deep Cuts static bundle created at ${dist}.`);
 
@@ -24,4 +37,5 @@ async function copyOptionalDirectory(directory){
   try{await fs.cp(path.join(root,directory),path.join(dist,directory),{recursive:true,filter:source=>!source.includes(`${path.sep}.tools${path.sep}`)})}
   catch(error){if(error.code!=='ENOENT')throw error}
 }
+
 

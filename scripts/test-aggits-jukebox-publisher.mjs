@@ -7,6 +7,7 @@ import {createAggitsJukeboxQrArtwork,AGGITS_JUKEBOX_QR_MASTER_SHA256,AGGITS_JUKE
 import {aggitsJukeboxPublicationReadiness,buildAggitsJukeboxPublicationManifest} from "./aggits-jukebox-publication.mjs";
 import {__test} from "../worker/aggits-jukebox-publisher.js";
 import {MAHOGANY_RENDERER_VERSION,MAHOGANY_OVAL_CABINET_ASSET} from "./aggits-jukebox-preview.mjs";
+import {MAHOGANY_VU_RENDERER_VERSION} from "./mahogany-vu-preview.mjs";
 
 const root=process.cwd(),video=Buffer.concat([Buffer.alloc(4),Buffer.from("ftyp"),Buffer.from("isom0000")]),sha=crypto.createHash("sha256").update(video).digest("hex");
 const project={schemaVersion:"deep-cuts-studio-project/1",id:"studio_123456abcdef",input:{type:"aggits_jukebox",name:"The Test Edition",tickerText:"WELCOME TO THE TEST JUKEBOX",actionButtons:[{enabled:true,iconId:"gigs",label:"GIGS",actionType:"web",value:"https://example.com/gigs",href:"https://example.com/gigs",openInNewTab:true},{enabled:true,iconId:"call",label:"CALL",actionType:"tel",value:"+61 3 9000 0000",href:"tel:+61390000000",openInNewTab:false}]},mp4:{fileName:"welcome.mp4",sizeBytes:video.length,sha256:sha}};
@@ -19,6 +20,10 @@ const config=__test.buildConfig({job_id:"ajjob_test",edition_id:"dc_0123456789",
 assert.equal(config.aggitsJukebox.modelVersion,MAHOGANY_RENDERER_VERSION);
 assert.equal(config.aggitsJukebox.cabinetArtwork,MAHOGANY_OVAL_CABINET_ASSET.slice(1));
 assert.equal(config.aggitsJukebox.appearanceVariant,"aggits-jukebox-oval-master/4");
+const vuManifest={schemaVersion:"deep-cuts-mahogany-jukebox-publication/2",projectId:project.id,appearance:"mahogany-vu",title:"DARTZ",tickerText:"DARTZ FROM WELLINGTON",actions:manifest.actions,vu:{music:{fileName:"green-river.mp3",sizeBytes:4096,sha256:"b".repeat(64),mimeType:"audio/mpeg"},character:{fileName:"",sizeBytes:0,sha256:"",mimeType:""},ducking:{enabled:true,speakingLevel:.2,attackMs:320,releaseMs:800,holdMs:400,sensitivity:.55,analysis:{status:"none",regions:[]}}}};
+const validatedVu=__test.validateManifest(vuManifest);assert.equal(validatedVu.ok,true);assert.equal(validatedVu.value.appearance,"mahogany-vu");
+const vuConfig=__test.buildConfig({job_id:"ajjob_vu",edition_id:"dc_0123456789",slug:"aggits-jukebox-123456abcdef",base_url:"https://deep-cuts.example",video_key:"aggits-jukebox/dc_0123456789/ajjob_vu/music.mp3",created_at:new Date().toISOString()},validatedVu.value);
+assert.equal(vuConfig.aggitsJukebox.modelVersion,MAHOGANY_VU_RENDERER_VERSION);assert.equal(vuConfig.aggitsJukebox.appearanceVariant,"mahogany-vu");assert.equal(vuConfig.aggitsJukebox.musicAudio.fileName,"green-river.mp3");assert.equal(vuConfig.aggitsJukebox.presenterVideo.fileName,"");
 const youtubeManifest={...manifest,schemaVersion:"deep-cuts-mahogany-jukebox-publication/2",video:{kind:"youtube",youtubeUrl:"https://www.youtube.com/watch?v=4QK0RZ0FQ_0",embedStatus:"playable",embedVideoId:"4QK0RZ0FQ_0",embedCheckedAt:new Date().toISOString(),sha256:"a".repeat(64)}};
 assert.equal(__test.validateManifest(youtubeManifest).ok,true);
 assert.equal(__test.validateManifest({...youtubeManifest,video:{...youtubeManifest.video,embedStatus:""}}).ok,false,"new YouTube publications must fail closed without a playable embed proof");
@@ -31,3 +36,4 @@ assert.match(worker,/sendEmail\(\s*env,\s*job/,"the publication transaction must
 assert.match(worker,/resumed:\s*true/,"matching interrupted publications must resume instead of dead-ending");
 assert.match(app,/PUBLISH \+ EMAIL QR/);assert.match(app,/automatically email the permanent URL \+ QR/);
 console.log("Aggits Jukebox protected publisher and fitted QR workflow passed.");
+
