@@ -7,6 +7,10 @@ import {
   MAHOGANY_RENDERER_VERSION,
   renderAggitsJukeboxStudioPreview,
 } from "../scripts/aggits-jukebox-preview.mjs";
+import {
+  INVITATION_RENDERER_VERSION,
+  renderInvitationJukeboxPreview,
+} from "../scripts/invitation-jukebox-preview.mjs";
 
 const JSON_HEADERS = {
     "content-type": "application/json; charset=utf-8",
@@ -85,12 +89,17 @@ export async function handleAggitsJukeboxPublicAsset(request, env, url) {
     if (!row) return null;
     const config = JSON.parse(row.config_json),
       project = publicProject(config, page[1]),
-      html = renderAggitsJukeboxStudioPreview(project, {
+      invitation = config.editionType === "invitation_jukebox",
+      html = (invitation ? renderInvitationJukeboxPreview : renderAggitsJukeboxStudioPreview)(project, {
         videoUrl:
-          config.aggitsJukebox?.videoKind === "mp4"
+          (invitation
+            ? config.invitationJukebox?.videoKind
+            : config.aggitsJukebox?.videoKind) === "mp4"
             ? `/api/aggits-jukebox-assets/${page[1]}/video`
             : "",
-        youtubeUrl: config.aggitsJukebox?.youtubeUrl || "",
+        youtubeUrl: invitation
+          ? config.invitationJukebox?.youtubeUrl || ""
+          : config.aggitsJukebox?.youtubeUrl || "",
         publicMode: true,
         canonicalUrl: `${url.origin}${url.pathname}`,
       });
@@ -98,7 +107,9 @@ export async function handleAggitsJukeboxPublicAsset(request, env, url) {
       headers: {
         "content-type": "text/html; charset=utf-8",
         "cache-control": "no-store",
-        "x-deep-cuts-renderer": MAHOGANY_RENDERER_VERSION,
+        "x-deep-cuts-renderer": invitation
+          ? INVITATION_RENDERER_VERSION
+          : MAHOGANY_RENDERER_VERSION,
         "x-content-type-options": "nosniff",
         "referrer-policy": "strict-origin-when-cross-origin",
       },
@@ -372,19 +383,23 @@ async function uploadQr(request, env, job) {
   const length = contentLength(request),
     bytes = new Uint8Array(await request.arrayBuffer()),
     payload = request.headers.get("x-deep-cuts-qr-payload") || "",
-    proof = request.headers.get("x-deep-cuts-qr-scan-proof") || "";
+    proof = request.headers.get("x-deep-cuts-qr-scan-proof") || "",
+    invitation = JSON.parse(job.manifest_json || "null")?.product === "invitation_jukebox",
+    expectedProof = invitation
+      ? "matrix:1254+627;decoder:360-required"
+      : "perspective-matrix:1254+627;decoder:360-required";
   if (
     length <= 0 ||
     length > QR_MAX_BYTES ||
     !isPng(bytes, 1254, 1254) ||
     payload !== `${job.base_url}/q/${job.edition_id}` ||
-    proof !== "perspective-matrix:1254+627;decoder:360-required"
+    proof !== expectedProof
   )
     return json(
       {
         ok: false,
         error:
-          "The permanent perspective-fitted QR artwork or scan proof is invalid.",
+          "The permanent QR artwork or scan proof is invalid.",
       },
       400,
     );
@@ -517,6 +532,7 @@ async function sendEmail(env, job, bytes) {
   if (!env.RESEND_API_KEY || !env.REPORT_RECIPIENT || !env.REPORT_FROM_EMAIL)
     return { ok: false, error: "Completion email is not configured." };
   const liveUrl = `${job.base_url}/e/${job.edition_id}`,
+    invitation = JSON.parse(job.manifest_json || "null")?.product === "invitation_jukebox",
     response = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
@@ -527,8 +543,8 @@ async function sendEmail(env, job, bytes) {
       body: JSON.stringify({
         from: env.REPORT_FROM_EMAIL,
         to: [env.REPORT_RECIPIENT],
-        subject: `JookBox published: ${clean(job.title, 200)}`,
-        html: `<p><strong>${escapeHtml(job.title)}</strong> has passed protected publication and is live.</p><p><a href="${escapeHtml(liveUrl)}">Open ${escapeHtml(job.title)}</a></p><p>Copyable permanent URL:</p><p><code style="font-size:16px;user-select:all">${escapeHtml(liveUrl)}</code></p><p>The fitted, scan-tested QR artwork is attached.</p>`,
+        subject: `${invitation ? "Invitation" : "JookBox"} published: ${clean(job.title, 200)}`,
+        html: `<p><strong>${escapeHtml(job.title)}</strong> has passed protected publication and is live.</p><p><a href="${escapeHtml(liveUrl)}">Open ${invitation ? "invitation" : escapeHtml(job.title)}</a></p><p>Copyable permanent URL:</p><p><code style="font-size:16px;user-select:all">${escapeHtml(liveUrl)}</code></p><p>The scan-tested QR artwork is attached.</p>`,
         attachments: [
           { content: bytesBase64(bytes), filename: `${job.slug}-qr.png` },
         ],
@@ -654,6 +670,49 @@ async function setState(request, env, editionId, url, device) {
 
 function buildConfig(job, m) {
   const now = new Date().toISOString();
+  if (m.product === "invitation_jukebox")
+    return {
+      brandName: "Invitation Jukebox",
+      editionType: "invitation_jukebox",
+      bandName: m.title,
+      editionTitle: m.title,
+      description: m.tickerText,
+      mode: "invitation",
+      slug: job.slug,
+      publicURL: `${job.base_url}/e/${job.edition_id}`,
+      social: {
+        copyright: "Copyright Clearlight Creative 2026",
+        qrImage: `output/${job.slug}/instagram-qr.png`,
+      },
+      analytics: {
+        editionId: job.edition_id,
+        pageIdentifier: `${job.edition_id}:invitation-jukebox-v1`,
+      },
+      production: {
+        jobId: job.job_id,
+        submittedAt: job.created_at,
+        updatedAt: now,
+      },
+      invitationJukebox: {
+        modelVersion: INVITATION_RENDERER_VERSION,
+        projectId: m.projectId,
+        invitationType: m.invitationType,
+        title: m.title,
+        hostNames: m.hostNames,
+        tickerText: m.tickerText,
+        event: m.event,
+        message: m.message,
+        videoKind: m.video.kind,
+        youtubeUrl: m.video.kind === "youtube" ? m.video.youtubeUrl : "",
+        localWelcomeVideo:
+          m.video.kind === "mp4"
+            ? `/api/aggits-jukebox-assets/${job.edition_id}/video`
+            : "",
+        localWelcomeVideoSha256: m.video.sha256,
+        actions: m.actions,
+        copyrightPlaque: "Copyright Clearlight Creative 2026",
+      },
+    };
   return {
     brandName: "Mahogany Jukebox",
     editionType: "aggits_jukebox",
@@ -709,6 +768,28 @@ function buildConfig(job, m) {
   };
 }
 function publicProject(config, editionId) {
+  if (config.editionType === "invitation_jukebox") {
+    const invitation = config.invitationJukebox;
+    return {
+      schemaVersion: "deep-cuts-invitation-preview/1",
+      id: invitation.projectId,
+      invitationType: invitation.invitationType,
+      title: invitation.title,
+      hostNames: invitation.hostNames,
+      tickerText: invitation.tickerText,
+      event: invitation.event,
+      message: invitation.message,
+      video: {
+        kind: invitation.videoKind,
+        youtubeUrl: invitation.youtubeUrl || "",
+        sha256: invitation.localWelcomeVideoSha256,
+      },
+      actions: invitation.actions,
+      readiness: { ready: true, errors: [] },
+      status: "published",
+      editionId,
+    };
+  }
   const a = config.aggitsJukebox;
   return {
     schemaVersion: "deep-cuts-studio-project/1",
@@ -740,12 +821,17 @@ function publicProject(config, editionId) {
 }
 function validateManifest(body) {
   const requestedSchema = clean(body?.schemaVersion, 80),
+    product = body?.product === "invitation_jukebox" ? "invitation_jukebox" : "aggits_jukebox",
     projectId = clean(body?.projectId, 40),
     title = clean(body?.title, 120),
     tickerText = multiline(body?.tickerText, 500),
     actions = Array.isArray(body?.actions) ? body.actions : [],
     video = body?.video || {};
-  if (!/^studio_[a-f0-9]{12}$/.test(projectId) || !title || !tickerText)
+  const projectIdentityOk =
+    product === "invitation_jukebox"
+      ? /^invitation_[a-f0-9]{12}$/.test(projectId)
+      : /^studio_[a-f0-9]{12}$/.test(projectId);
+  if (!projectIdentityOk || !title || !tickerText)
     return {
       ok: false,
       error: "A stable project, title and ticker are required.",
@@ -778,7 +864,10 @@ function validateManifest(body) {
     videoKind === "youtube" ? safeYouTubeId(video.youtubeUrl) : "";
   if (videoKind === "youtube" && !youtubeId)
     return { ok: false, error: "Enter a valid YouTube video URL." };
-  if (videoKind === "youtube" && requestedSchema.endsWith("/2")) {
+  if (
+    videoKind === "youtube" &&
+    (requestedSchema.endsWith("/2") || product === "invitation_jukebox")
+  ) {
     const embedCheckedAt = Date.parse(String(video.embedCheckedAt || "")),
       proofIsFresh =
         Number.isFinite(embedCheckedAt) &&
@@ -811,13 +900,49 @@ function validateManifest(body) {
       ok: false,
       error: "The selected video requires a SHA-256 identity.",
     };
+  const invitationType = clean(body?.invitationType, 30),
+    hostNames = clean(body?.hostNames, 120),
+    message = multiline(body?.message, 900),
+    event = body?.event && typeof body.event === "object" ? body.event : {};
+  if (
+    product === "invitation_jukebox" &&
+    (!new Set(["wedding", "birthday", "corporate", "seasonal", "group_trip"]).has(invitationType) ||
+      !hostNames ||
+      !message ||
+      !/^\d{4}-\d{2}-\d{2}$/.test(String(event.date || "")) ||
+      !clean(event.venue, 160))
+  )
+    return {
+      ok: false,
+      error: "Invitation type, names, date, venue and message are required.",
+    };
   return {
     ok: true,
     value: {
-      schemaVersion: "deep-cuts-aggits-jukebox-publication/1",
+      schemaVersion:
+        product === "invitation_jukebox"
+          ? "deep-cuts-invitation-jukebox-publication/1"
+          : "deep-cuts-aggits-jukebox-publication/1",
+      product,
       projectId,
       title,
       tickerText,
+      ...(product === "invitation_jukebox"
+        ? {
+            invitationType,
+            hostNames,
+            message,
+            event: {
+              date: String(event.date),
+              time: /^\d{2}:\d{2}$/.test(String(event.time || ""))
+                ? String(event.time)
+                : "",
+              timezone: clean(event.timezone, 80),
+              venue: clean(event.venue, 160),
+              address: clean(event.address, 240),
+            },
+          }
+        : {}),
       actions: cleaned,
       video: {
         kind: videoKind,
@@ -827,15 +952,18 @@ function validateManifest(body) {
             ? `https://www.youtube.com/watch?v=${youtubeId}`
             : "",
         embedStatus:
-          videoKind === "youtube" && requestedSchema.endsWith("/2")
+          videoKind === "youtube" &&
+          (requestedSchema.endsWith("/2") || product === "invitation_jukebox")
             ? "playable"
             : "legacy_unchecked",
         embedVideoId:
-          videoKind === "youtube" && requestedSchema.endsWith("/2")
+          videoKind === "youtube" &&
+          (requestedSchema.endsWith("/2") || product === "invitation_jukebox")
             ? youtubeId
             : "",
         embedCheckedAt:
-          videoKind === "youtube" && requestedSchema.endsWith("/2")
+          videoKind === "youtube" &&
+          (requestedSchema.endsWith("/2") || product === "invitation_jukebox")
             ? new Date(video.embedCheckedAt).toISOString()
             : "",
         sizeBytes: videoKind === "mp4" ? Number(video.sizeBytes) : 0,
