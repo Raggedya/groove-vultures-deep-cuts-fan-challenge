@@ -3,6 +3,7 @@ import crypto from "node:crypto";
 import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
+import sharp from "sharp";
 import {
   analysePresenterAudio,
   DEFAULT_DUCKING_SETTINGS,
@@ -23,6 +24,7 @@ import {
   AGGITS_JUKEBOX_CANONICAL_BUTTON_ASSET,
   AGGITS_JUKEBOX_CANONICAL_BUTTON_SHA256,
   AGGITS_JUKEBOX_CANONICAL_BUTTON_VERSION,
+  MAHOGANY_VU_CABINET_URL,
   MAHOGANY_VU_PRESENTER_GAIN,
   MAHOGANY_VU_RENDERER_VERSION,
   MAHOGANY_VU_START_DELAY_MS,
@@ -116,7 +118,20 @@ try {
   assert.match(otherBand, /<div class="ticker"><span>ONLY THE SECOND BAND MESSAGE<\/span><\/div>/);
   assert.doesNotMatch(otherBand, /NOW PLAYING VU TEST BAND/);
   assert.match(musicOnly, /id="music"/);
-  assert.match(musicOnly, /aggits-jukebox-vu-master-v1\.jpg/);
+  assert.equal(
+    MAHOGANY_VU_CABINET_URL,
+    "/assets/aggits-jukebox-vu-master-v2.jpg",
+  );
+  assert.match(musicOnly, /aggits-jukebox-vu-master-v2\.jpg/);
+  assert.doesNotMatch(musicOnly, /aggits-jukebox-vu-master-v1\.jpg/);
+  assert.match(
+    musicOnly,
+    /<link rel="preload" href="\/assets\/aggits-jukebox-vu-master-v2\.jpg" as="image">/,
+  );
+  assert.match(
+    musicOnly,
+    /\.machine:before\{[^}]*top:18\.55%;left:8\.55%;width:80\.3%;height:5\.95%[^}]*background:#070402/,
+  );
   assert.match(musicOnly, /class="reel left"><i class="reel-rotor"/);
   assert.match(musicOnly, /\.is-playing \.reel\{animation:none\}/);
   assert.match(musicOnly, /\.is-playing \.reel-rotor\{animation:spin/);
@@ -327,7 +342,40 @@ try {
   project = await removeMahoganyVuMedia(root, project, "character");
   assert.equal(project.vu.character.fileName, "");
   assert.equal(project.vu.ducking.analysis.status, "none");
-  assert.equal(MAHOGANY_VU_RENDERER_VERSION, "mahogany-vu-jukebox/2026-08-11-v20");
+  assert.equal(MAHOGANY_VU_RENDERER_VERSION, "mahogany-vu-jukebox/2026-08-11-v21");
+
+  const cleanCabinetPath = path.join(
+      process.cwd(),
+      "assets",
+      "aggits-jukebox-vu-master-v2.jpg",
+    ),
+    cleanCabinetBytes = await fs.readFile(cleanCabinetPath),
+    cleanCabinetHash = crypto
+      .createHash("sha256")
+      .update(cleanCabinetBytes)
+      .digest("hex"),
+    cleanTickerPixels = await sharp(cleanCabinetBytes)
+      .extract({ left: 95, top: 310, width: 740, height: 60 })
+      .removeAlpha()
+      .raw()
+      .toBuffer({ resolveWithObject: true });
+  let brightTickerPixels = 0;
+  for (let index = 0; index < cleanTickerPixels.data.length; index += 3) {
+    const luminance =
+      cleanTickerPixels.data[index] * 0.2126 +
+      cleanTickerPixels.data[index + 1] * 0.7152 +
+      cleanTickerPixels.data[index + 2] * 0.0722;
+    if (luminance > 90) brightTickerPixels += 1;
+  }
+  assert.equal(
+    cleanCabinetHash,
+    "71d5f554d02db692aaeec81dfec13d2df988a431fcc30fdee72012ed239d2924",
+  );
+  assert.ok(
+    brightTickerPixels / (cleanTickerPixels.info.width * cleanTickerPixels.info.height) <
+      0.002,
+    "the physical cabinet ticker window must contain no bright baked lettering",
+  );
 
   const permanentPresenter = await fs.readFile(
     path.join(process.cwd(), "assets", "aggits-vu-presenter-v1.mp4"),

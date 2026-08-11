@@ -25,6 +25,14 @@
     "sha256": "1991d02acaf7884873c375af0f1f1ebd162c2fc0da98765707b43fefc014a0ea",
     "source": "Owner-supplied permanent green-screen Aggits presenter for every Mahogany VU Jukebox"
   },
+  "vuCabinet": {
+    "path": "assets/aggits-jukebox-vu-master-v2.jpg",
+    "version": "mahogany-vu-cabinet/2",
+    "width": 965,
+    "height": 1630,
+    "sha256": "71d5f554d02db692aaeec81dfec13d2df988a431fcc30fdee72012ed239d2924",
+    "source": "Owner-approved Mahogany VU cabinet with a permanently clean, empty physical ticker window for configuration-driven text"
+  },
   "iconMaster": {
     "path": "assets/aggits-jukebox-icons-master-v1.jpg",
     "width": 1320,

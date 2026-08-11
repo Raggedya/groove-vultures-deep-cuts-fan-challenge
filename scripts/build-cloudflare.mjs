@@ -17,7 +17,7 @@ await Promise.all([
   ...files.map(file=>copyOptionalFile(file)),
   ...directories.map(directory=>copyOptionalDirectory(directory))
 ]);
-const vuArtwork=path.join(dist,'assets','aggits-jukebox-vu-master-v1.jpg');
+const vuArtwork=path.join(dist,'assets','aggits-jukebox-vu-master-v2.jpg');
 try{await fs.access(vuArtwork)}
 catch(error){
   if(error.code!=='ENOENT')throw error;
@@ -48,6 +48,7 @@ async function copyOptionalDirectory(directory){
 async function includeStaticAsset(directory,sourceRoot,source){
   if(source.includes(`${path.sep}.tools${path.sep}`))return false;
   if(path.basename(source).startsWith('.qr-test-'))return false;
+  if(directory==='assets'&&path.basename(source).startsWith('aggits-jukebox-vu-master-v1.jpg'))return false;
   if(directory==='output'){
     const relative=path.relative(sourceRoot,source);
     const topLevel=relative.split(path.sep)[0]||'';
