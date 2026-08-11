@@ -3,6 +3,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { app, BrowserWindow, Menu, safeStorage, shell } from "electron";
 import { createMahoganyStudioServer } from "../scripts/mahogany-studio-server.mjs";
+import { applyMahoganyLibraryCleanSlate } from "../scripts/mahogany-library-clean-slate.mjs";
 
 const smoke =
   process.argv.includes("--mahogany-bounded-smoke-test") ||
@@ -35,6 +36,11 @@ async function start() {
       "publisher-credential.json",
     ),
     credentialStore = createCredentialStore(sharedCredential);
+  await applyMahoganyLibraryCleanSlate({
+    dataDir,
+    appVersion: app.getVersion(),
+    enabled: !smoke,
+  });
   server = createMahoganyStudioServer({
     root,
     dataDir,

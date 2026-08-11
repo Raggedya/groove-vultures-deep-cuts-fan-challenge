@@ -43,6 +43,8 @@ Treat Aggits Jukebox protected publication as separate from Venue Library and bo
 
 Keep Aggits Jukebox bulk import local, authenticated and draft-only. Use the central importer and explicit source mappings; never infer unknown icons/actions, evaluate spreadsheet formulas, overwrite published editions, or bypass per-edition publication. Preserve stable identities, source checksum, audit results, snapshots and recoverable rollback. Full operator details live in `docs/AGGITS_JUKEBOX_BULK_IMPORT.md`.
 
+Keep Mahogany Jukebox `ADD 20 BANDS` local and draft-only. Shortlist from a single structured Wikidata query requiring musical-group Linktree, Bandcamp, Instagram, Facebook and Spotify identifiers; use search only as fallback, and independently resolve every constructed destination at the 98% identity gate. Grade an eligible embeddable official YouTube video as gold and the same four-platform set without video as silver; reject every incomplete set. Never automatically publish. `Delete Jukebox` archives only never-published projects and must fail closed once any permanent edition identity has been reserved.
+
 Route every JookBox anchor through the shared origin-aware external-link policy. External HTTPS destinations open in a new tab with `target="_blank"` and `rel="noopener noreferrer"`; same-origin and relative links must remain unchanged.
 
 For `mahogany-four-key/1`, require exactly four verified external `displaySelectionIds` and always render four uniform circular icon-only keys. Do not render key labels, gap-fill utilities or Band key lighting. Accessibility names and analytics metadata remain mandatory.

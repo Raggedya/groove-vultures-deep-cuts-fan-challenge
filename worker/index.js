@@ -2,6 +2,7 @@ import {handleSales} from "./sales.js";
 import {handleRecordCompany,handleRecordCompanyQr,processRecordCompanyJobs} from "./record-company.js";
 import {augmentPlatformManifest,handleBarDeliveryEvent,handleBarPublicAsset,handleBarPublisher} from "./bar-publisher.js";
 import {augmentAggitsJukeboxManifest,handleAggitsJukeboxDeliveryEvent,handleAggitsJukeboxPublicAsset,handleAggitsJukeboxPublisher} from "./aggits-jukebox-publisher.js";
+import {buildAggitsVuConsolidatedCsv,buildAggitsVuWeeklyReport,isMelbourneFridayFive,sendAggitsVuWeeklyReports} from "./aggits-jukebox-report.js";
 import {
   binaryBase64,
   buildLanewayEmailHtml,
@@ -64,6 +65,7 @@ export default {
       if(url.pathname==="/api/delivery"&&request.method==="POST")return handleDelivery(request,env);
       if(url.pathname==="/api/webhooks/resend"&&request.method==="POST")return handleResendWebhook(request,env);
       if(url.pathname==="/api/reports/weekly.csv"&&request.method==="GET")return handleReport(request,env);
+      if(url.pathname==="/api/reports/aggits-vu-weekly.csv"&&request.method==="GET")return handleAggitsVuReport(request,env);
       if(url.pathname==="/api/reports/laneway-weekly.pdf"&&request.method==="GET")return handleLanewayReport(request,env,"pdf");
       if(url.pathname==="/api/reports/laneway-weekly.xlsx"&&request.method==="GET")return handleLanewayReport(request,env,"xlsx");
       if(url.pathname==="/api/health")return json({ok:true,service:"deep-cuts",timestamp:new Date().toISOString()});
@@ -142,7 +144,11 @@ async function recordCompanyHome(env,url){
 async function handleQr(request,env,ctx,url){
   const editionId=cleanId(url.pathname.split("/").filter(Boolean)[1]);
   if(!editionId)return new Response("Unknown Deep Cuts edition",{status:404});
-  const edition=await env.DB.prepare("SELECT edition_id, canonical_path FROM editions WHERE edition_id=?1 AND status='active'").bind(editionId).first();
+  let edition=await env.DB.prepare("SELECT edition_id, canonical_path FROM editions WHERE edition_id=?1 AND status='active'").bind(editionId).first();
+  if(!edition){
+    const jukebox=await env.DB.prepare("SELECT edition_id FROM aggits_jukebox_editions WHERE edition_id=?1 AND status='active'").bind(editionId).first();
+    if(jukebox)edition={edition_id:jukebox.edition_id,canonical_path:`/e/${jukebox.edition_id}`};
+  }
   if(!edition)return new Response("Unknown Deep Cuts edition",{status:404});
   const event=baseEvent(request,editionId,"qr_scan",{referring_source:url.searchParams.get("source")||"qr"});
   ctx.waitUntil(insertEvent(env,event));
@@ -334,6 +340,12 @@ async function handleReport(request,env){
   return csvResponse(await weeklyRows(env,days),`deep-cuts-${days}-day-report.csv`);
 }
 
+async function handleAggitsVuReport(request,env){
+  if(!authorized(request,env))return json({ok:false,error:"Unauthorized"},401);
+  const report=await buildAggitsVuWeeklyReport(env,new Date(),7);
+  return new Response(buildAggitsVuConsolidatedCsv(report),{headers:{"content-type":"text/csv; charset=utf-8","content-disposition":`attachment; filename="aggits-vu-weekly-${new Date().toISOString().slice(0,10)}.csv"`,"cache-control":"no-store"}});
+}
+
 async function handleLanewayReport(request,env,format){
   if(!authorized(request,env))return json({ok:false,error:"Unauthorized"},401);
   const url=new URL(request.url);
@@ -371,11 +383,9 @@ async function weeklyRows(env,days=7){
 
 async function sendWeeklyReportIfDue(controller,env){
   const now=new Date(controller.scheduledTime||Date.now());
-  const parts=new Intl.DateTimeFormat("en-AU",{timeZone:"Australia/Sydney",weekday:"short",hour:"2-digit",hour12:false}).formatToParts(now);
-  const weekday=parts.find(item=>item.type==="weekday")?.value;
-  const hour=Number(parts.find(item=>item.type==="hour")?.value);
-  if(weekday!=="Fri"||hour!==9)return;
+  if(!isMelbourneFridayFive(now))return;
   if(!env.RESEND_API_KEY||!env.REPORT_RECIPIENT||!env.REPORT_FROM_EMAIL)return;
+  await sendAggitsVuWeeklyReports(env,now);
   const [rows,report]=await Promise.all([weeklyRows(env,7),buildLanewayWeeklyReport(env,now,7)]);
   const csv=toCsv(rows),pdf=buildLanewayPdf(report),xlsx=buildLanewayXlsx(report);
   const stamp=now.toISOString().slice(0,10);

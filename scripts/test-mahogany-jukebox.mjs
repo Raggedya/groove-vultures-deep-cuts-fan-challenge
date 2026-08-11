@@ -5,9 +5,13 @@ import os from "node:os";
 import path from "node:path";
 import {
   createAggitsJukeboxQrArtwork,
+  AGGITS_JUKEBOX_QR_DESIGN,
   AGGITS_JUKEBOX_QR_PANEL,
 } from "./aggits-jukebox-qr-artwork.mjs";
 import {
+  AGGITS_JUKEBOX_CANONICAL_BUTTON_ASSET,
+  AGGITS_JUKEBOX_CANONICAL_BUTTON_SHA256,
+  AGGITS_JUKEBOX_CANONICAL_BUTTON_VERSION,
   MAHOGANY_FIXED_MARQUEE,
   MAHOGANY_RENDERER_VERSION,
   MAHOGANY_FIXED_MARQUEE_ASSET,
@@ -89,6 +93,8 @@ const root = process.cwd(),
   });
 assert.match(desktopMainSource, /json\.icons\.length !== 111/);
 assert.match(windowsBuilderSource, /--user-data-dir=\$\{smokeProfile\}/);
+assert.match(windowsBuilderSource, /scripts\/aggits-jukebox-button-master\.mjs/);
+assert.match(windowsBuilderSource, /assets\/aggits-jukebox-button-bank-canonical-v2\.png/);
 assert.ok(
   studioHtmlSource.indexOf('value="mp4"') < studioHtmlSource.indexOf('value="youtube"'),
   "Upload MP4 must be presented before YouTube",
@@ -135,14 +141,14 @@ const preview = renderAggitsJukeboxStudioPreview(toPreviewProject(sample), {
 });
 assert.match(preview, /MAHOGANY JUKEBOX/);
 assert.equal(MAHOGANY_FIXED_MARQUEE, "AGGITS");
-assert.equal(MAHOGANY_RENDERER_VERSION, "mahogany-jukebox/2026-08-08-v7");
+assert.equal(MAHOGANY_RENDERER_VERSION, "mahogany-jukebox/2026-08-11-v9");
 assert.match(
   preview,
-  /<meta name="deep-cuts-renderer" content="mahogany-jukebox\/2026-08-08-v7">/,
+  /<meta name="deep-cuts-renderer" content="mahogany-jukebox\/2026-08-11-v9">/,
 );
 assert.match(
   preview,
-  /data-renderer-version="mahogany-jukebox\/2026-08-08-v7"/,
+  /data-renderer-version="mahogany-jukebox\/2026-08-11-v9"/,
 );
 assert.equal(MAHOGANY_FIXED_MARQUEE_ASSET, "/assets/aggits-marquee-reference-v1.jpg");
 assert.match(MAHOGANY_FIXED_MARQUEE_SHA256, /^[a-f0-9]{64}$/);
@@ -175,14 +181,24 @@ assert.match(preview, /is-depressed/);
 assert.match(preview, /actions\.forEach\(candidate=>candidate\.classList\.toggle\("is-depressed",candidate===action\)\)/);
 assert.match(preview, /jukebox-mechanical-button-clunk-public-domain\.ogg/);
 assert.match(preview, /\.video\{[^}]*left:23\.55%;width:64\.78%/);
-assert.match(preview, /\.actions\{[^}]*top:55\.9%;left:12\.05%;width:73\.5%;height:18\.2%;[^}]*gap:1\.45%/);
+assert.match(preview, /\.actions\{[^}]*top:55\.9%;left:12\.05%;width:73\.5%;height:19\.02%;[^}]*gap:0/);
 assert.match(preview, /aggits-jukebox-icons-oval-v4\/spotify\.svg/);
+assert.match(preview, /aggits-jukebox-button-bank-canonical-v2\.png/);
 assert.match(preview, /\.action-icon img\{[^}]*width:100%;height:100%/);
 assert.match(preview, /\.action-icon\{[^}]*width:68%/);
 assert.doesNotMatch(preview, /solid transparent/);
 assert.doesNotMatch(preview, /is-label-medium/);
 assert.doesNotMatch(preview, /<strong>Spotify<\/strong>/);
-assert.doesNotMatch(preview, /\.action:before/);
+assert.match(preview, /\.actions:before\{[^}]*aggits-jukebox-button-bank-canonical-v2\.png[^}]*100% 100% no-repeat/);
+assert.doesNotMatch(preview, /\.action:before\{/);
+const canonicalButtonBytes = await fs.readFile(
+  path.join(root, AGGITS_JUKEBOX_CANONICAL_BUTTON_ASSET.slice(1)),
+);
+assert.equal(
+  crypto.createHash("sha256").update(canonicalButtonBytes).digest("hex"),
+  AGGITS_JUKEBOX_CANONICAL_BUTTON_SHA256,
+);
+assert.equal(AGGITS_JUKEBOX_CANONICAL_BUTTON_VERSION, "aggits-oval-button-bank/2");
 assert.match(preview, /createMediaElementSource\(video\)/);
 assert.match(preview, /Math\.ceil\(40\/binHz\)/);
 assert.match(preview, /Math\.floor\(180\/binHz\)/);
@@ -223,8 +239,8 @@ assert.doesNotThrow(
   () => new Function(inlineScripts.at(-1)[1]),
   "generated jukebox runtime script should compile",
 );
-assert.match(preview, /\.actions\{[^}]*background:transparent/);
-assert.doesNotMatch(preview, /\.actions:before/);
+assert.match(preview, /\.actions\{[^}]*isolation:isolate[^}]*background:#050201/);
+assert.match(preview, /\.actions:before\{[^}]*button-bank-canonical-v2\.png/);
 assert.equal(MAHOGANY_BUTTON_LINK_DELAY_MS, 500);
 assert.match(MAHOGANY_BUTTON_CLUNK_ASSET, /mechanical-button-clunk/);
 assert.equal((preview.match(/class="action"/g) || []).length, 4);
@@ -260,6 +276,7 @@ const qr = await createAggitsJukeboxQrArtwork({
 });
 assert.equal(qr.width, 1254);
 assert.equal(qr.height, 1254);
+assert.equal(qr.designStandard, AGGITS_JUKEBOX_QR_DESIGN);
 assert.equal(qr.scanProof, "perspective-matrix:1254+627;decoder:360-required");
 assert.ok(qr.bytes.length > 100000);
 const temporary = await fs.mkdtemp(path.join(os.tmpdir(), "mahogany-test-"));
@@ -337,6 +354,7 @@ const server = createMahoganyStudioServer({
             kind: "band",
             source: "automatic_batch",
             status: "verified",
+            grade: "gold",
             confidence: 100,
           },
         }),
@@ -349,11 +367,11 @@ const server = createMahoganyStudioServer({
       rejected: 1,
     });
     return {
-      requested: 10,
+      requested: 20,
       qualified: 1,
       rejected: 1,
       reviewed: 2,
-      shortfall: 9,
+      shortfall: 19,
       projectIds: [project.id],
     };
   },
@@ -387,6 +405,19 @@ try {
   }
   assert.equal(candidateJob.status, "completed");
   assert.equal(candidateJob.result.qualified, 1);
+  const disposable = await fetch(`${origin}/api/mahogany/projects`, {
+    method: "POST",
+  }).then((response) => response.json());
+  const deleted = await fetch(
+    `${origin}/api/mahogany/projects/${disposable.project.id}`,
+    { method: "DELETE" },
+  );
+  assert.equal(deleted.ok, true);
+  assert.equal((await deleted.json()).archived, true);
+  const deletedLookup = await fetch(
+    `${origin}/api/mahogany/projects/${disposable.project.id}`,
+  );
+  assert.equal(deletedLookup.status, 404);
   const created = await fetch(`${origin}/api/mahogany/projects`, {
     method: "POST",
     headers: { "content-type": "application/json" },
@@ -447,6 +478,15 @@ try {
     republished.project.publicationProgress.message,
     /delivered by email/i,
   );
+  const protectedDelete = await fetch(
+    `${origin}/api/mahogany/projects/${created.project.id}`,
+    { method: "DELETE" },
+  );
+  assert.equal(protectedDelete.status, 409);
+  assert.equal(
+    (await protectedDelete.json()).code,
+    "project_identity_protected",
+  );
 } finally {
   await new Promise((resolve) => server.close(resolve));
   await fs.rm(temporary, { recursive: true, force: true });
@@ -456,6 +496,8 @@ const studioCss = await fs.readFile(
   "utf8",
 );
 assert.match(studioCss, /\[hidden\]\s*\{\s*display:\s*none\s*!important/);
+assert.match(studioCss, /\.library-item\.grade-gold/);
+assert.match(studioCss, /\.library-item\.grade-silver/);
 const studioApp = await fs.readFile(
   path.join(root, "mahogany-studio", "app.js"),
   "utf8",
@@ -465,14 +507,20 @@ assert.match(studioApp, /event\.data === 101 \|\| event\.data === 150/);
 assert.match(studioApp, /Embedding allowed/);
 assert.match(studioApp, /\/publish`/);
 assert.match(studioApp, /scheduleAutosave/);
+assert.match(studioApp, /const projectId = state\.project\.id,[\s\S]*snapshot = formProject\(\)/);
+assert.match(studioApp, /replaceProject\(data\.project\);[\s\S]*if \(state\.project\?\.id !== projectId\) return data;/);
+assert.match(studioApp, /function replaceProject\(project = state\.project\)/);
+assert.match(studioApp, /Delete Jukebox/);
+assert.match(studioApp, /grade-\$\{grade\}/);
 assert.doesNotMatch(studioApp, /function acceptProduction/);
 const studioHtml = await fs.readFile(
   path.join(root, "mahogany-studio", "index.html"),
   "utf8",
 );
+assert.match(studioHtml, /ADD 20 BANDS/);
 assert.match(studioHtml, /CREATE, PUBLISH &amp; EMAIL/);
-assert.match(studioHtml, /ADD 10 BANDS/);
-assert.match(studioHtml, /ADD 10 BUSINESSES/);
+assert.doesNotMatch(studioHtml, /ADD 10 BANDS/);
+assert.doesNotMatch(studioHtml, /ADD 10 BUSINESSES/);
 assert.doesNotMatch(studioHtml, /Save draft/);
 assert.doesNotMatch(studioHtml, /Accept &amp; publish/);
 console.log(

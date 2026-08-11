@@ -6,7 +6,8 @@ import sharp from "sharp";
 
 export const VENUE_QR_WIDTH=1920;
 export const VENUE_QR_HEIGHT=1080;
-export const VENUE_QR_SCHEMA="deep-cuts-venue-qr/1";
+export const VENUE_QR_SCHEMA="deep-cuts-venue-qr/2";
+export const VENUE_QR_DESIGN="venue-native-frame-integration/2";
 
 export async function createVenueQrArtwork({root,venueName,destination}={}){
   const sourceRoot=path.resolve(root||process.cwd());
@@ -27,6 +28,7 @@ export async function createVenueQrArtwork({root,venueName,destination}={}){
   await verifyRenderedMatrix(png,matrix,placement,.5);
   return{
     schemaVersion:VENUE_QR_SCHEMA,
+    designStandard:VENUE_QR_DESIGN,
     bytes:png,
     sha256:crypto.createHash("sha256").update(png).digest("hex"),
     destination:payload,

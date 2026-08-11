@@ -5,6 +5,11 @@ const root=process.cwd();
 const dist=path.join(root,'dist');
 const files=['index.html','styles.css','platform.json','analytics.html','analytics.css'];
 const directories=['js','assets','editions','output','sell','record-company','record-company-output'];
+const localOutputDirectories=[
+  'electron-runtime',
+  'vu-publish-userdata'
+];
+const maxWorkerAssetBytes=25*1024*1024;
 
 await fs.rm(dist,{recursive:true,force:true});
 await fs.mkdir(dist,{recursive:true});
@@ -12,7 +17,21 @@ await Promise.all([
   ...files.map(file=>copyOptionalFile(file)),
   ...directories.map(directory=>copyOptionalDirectory(directory))
 ]);
+const vuArtwork=path.join(dist,'assets','aggits-jukebox-vu-master-v1.jpg');
+try{await fs.access(vuArtwork)}
+catch(error){
+  if(error.code!=='ENOENT')throw error;
+  const assetDirectory=path.dirname(vuArtwork),baseName=path.basename(vuArtwork),
+    parts=(await fs.readdir(assetDirectory)).filter(name=>name.startsWith(`${baseName}.base64.part`)).sort(),
+    encoded=parts.length
+      ? (await Promise.all(parts.map(name=>fs.readFile(path.join(assetDirectory,name),'utf8')))).join('')
+      : await fs.readFile(`${vuArtwork}.base64`,'utf8');
+  await fs.writeFile(vuArtwork,Buffer.from(encoded.trim(),'base64'));
+  await fs.rm(`${vuArtwork}.base64`,{force:true});
+  await Promise.all(parts.map(name=>fs.rm(path.join(assetDirectory,name),{force:true})));
+}
 await fs.access(path.join(dist,'assets','aggits-coin-gold-v1.png'));
+await fs.access(path.join(dist,'assets','aggits-vu-presenter-v1.mp4'));
 console.log(`Deep Cuts static bundle created at ${dist}.`);
 
 async function copyOptionalFile(file){
@@ -21,7 +40,20 @@ async function copyOptionalFile(file){
 }
 
 async function copyOptionalDirectory(directory){
-  try{await fs.cp(path.join(root,directory),path.join(dist,directory),{recursive:true,filter:source=>!source.includes(`${path.sep}.tools${path.sep}`)})}
+  const sourceRoot=path.join(root,directory);
+  try{await fs.cp(sourceRoot,path.join(dist,directory),{recursive:true,filter:source=>includeStaticAsset(directory,sourceRoot,source)})}
   catch(error){if(error.code!=='ENOENT')throw error}
+}
+
+async function includeStaticAsset(directory,sourceRoot,source){
+  if(source.includes(`${path.sep}.tools${path.sep}`))return false;
+  if(path.basename(source).startsWith('.qr-test-'))return false;
+  if(directory==='output'){
+    const relative=path.relative(sourceRoot,source);
+    const topLevel=relative.split(path.sep)[0]||'';
+    if(localOutputDirectories.includes(topLevel)||/userdata$/i.test(topLevel)||/^Mahogany-Jukebox-Windows-/i.test(topLevel)||/-QR-integrated-v\d+\.png$/i.test(relative))return false;
+  }
+  const stats=await fs.stat(source);
+  return stats.isDirectory()||stats.size<=maxWorkerAssetBytes;
 }
 

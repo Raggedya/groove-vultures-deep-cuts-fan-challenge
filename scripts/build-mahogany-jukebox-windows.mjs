@@ -16,7 +16,7 @@ const require = createRequire(import.meta.url),
   execFileAsync = promisify(execFile),
   zipAsync = promisify(zip);
 const root = process.cwd(),
-  version = "1.3.2",
+  version = "1.8.8",
   productName = "Mahogany Jukebox",
   executableName = "mahogany-jukebox",
   electronVersion = String(electronPackage.version),
@@ -39,17 +39,30 @@ const runtimeFiles = [
   "mahogany-studio/index.html",
   "mahogany-studio/styles.css",
   "mahogany-studio/app.js",
+  "mahogany-studio/audio-ducking.js",
   "scripts/mahogany-studio-server.mjs",
   "scripts/mahogany-jukebox-model.mjs",
+  "scripts/mahogany-library-clean-slate.mjs",
+  "scripts/mahogany-band-candidates.mjs",
+  "scripts/bandcamp-band-discovery.mjs",
+  "scripts/studio-jookbox-research.mjs",
   "scripts/mahogany-jukebox-publication.mjs",
   "scripts/aggits-jukebox-preview.mjs",
+  "scripts/mahogany-vu-preview.mjs",
+  "scripts/aggits-jukebox-button-master.mjs",
   "scripts/aggits-jukebox-icons.mjs",
   "scripts/aggits-jukebox-qr-artwork.mjs",
   "scripts/bar-edition-publication.mjs",
   "scripts/venue-qr-artwork.mjs",
   "scripts/vendor/qrcode.min.js",
   "assets/aggits-jukebox-master-v1.jpg",
-  "assets/aggits-jukebox-oval-master-v2.jpg",
+  "assets/aggits-jukebox-illuminated-master-v3.png",
+  "assets/aggits-jukebox-button-bank-canonical-v2.png",
+  "assets/aggits-jukebox-vu-master-v1.jpg",
+  "assets/aggits-jukebox-vu-reel-left-v1.png",
+  "assets/aggits-jukebox-vu-reel-right-v1.png",
+  "assets/aggits-vu-presenter-v1.mp4",
+  "assets/aggits-coin-gold-v1.png",
   "assets/aggits-jukebox-icons-master-v1.jpg",
   "assets/aggits-jukebox-icons-oval-v4.LICENSE.txt",
   "assets/aggits-jukebox-integrity.json",
@@ -59,6 +72,7 @@ const runtimeFiles = [
   "assets/audio/jukebox-mechanical-button-clunk-public-domain.ogg",
   "assets/audio/jukebox-mechanical-button-clunk-public-domain.LICENSE.txt",
   "assets/js/jookbox-coin-audio.js",
+  "js/analytics.js",
 ];
 const log = (text) => console.log(`[Mahogany Jukebox] ${text}`);
 const sha256 = async (file) =>
@@ -197,7 +211,7 @@ try {
   for (const icon of icons) await copy(path.join(iconDirectory, icon));
   await fs.writeFile(
     path.join(sourceDirectory, "package.json"),
-    `${JSON.stringify({ name: "mahogany-jukebox", productName, type: "module", private: true, version, description: "Manual Mahogany Jukebox creator and permanent publishing library.", main: "studio/mahogany-desktop-main.mjs", author: "Clearlight Creative", dependencies: { "electron-squirrel-startup": "^1.0.1", sharp: "0.35.2", yauzl: "2.10.0" } }, null, 2)}\n`,
+    `${JSON.stringify({ name: "mahogany-jukebox", productName, type: "module", private: true, version, description: "Mahogany Jukebox creator, verified candidate intake and permanent publishing library.", main: "studio/mahogany-desktop-main.mjs", author: "Clearlight Creative", dependencies: { "electron-squirrel-startup": "^1.0.1", sharp: "0.35.2", yauzl: "2.10.0" } }, null, 2)}\n`,
   );
   await fs.mkdir(path.join(sourceDirectory, "node_modules"), {
     recursive: true,

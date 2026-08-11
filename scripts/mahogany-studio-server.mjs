@@ -4,15 +4,26 @@ import http from "node:http";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { renderAggitsJukeboxStudioPreview } from "./aggits-jukebox-preview.mjs";
+import { renderMahoganyVuPreview } from "./mahogany-vu-preview.mjs";
 import { createMahoganyJukeboxPublisher } from "./mahogany-jukebox-publication.mjs";
+import { runMahoganyBandCandidateBatch } from "./mahogany-band-candidates.mjs";
 import {
+  addBandcampDiscoveriesToLibrary,
+  runBandcampDiscoveryBatch,
+} from "./bandcamp-band-discovery.mjs";
+import {
+  archiveMahoganyProject,
   listMahoganyProjects,
   loadMahoganyProject,
   mahoganyIconCatalog,
   newMahoganyProject,
   normalizeMahoganyProject,
+  removeMahoganyVuMedia,
   saveMahoganyProject,
+  setMahoganyVuDucking,
   storeMahoganyMp4,
+  storeMahoganyVuCharacter,
+  storeMahoganyVuMusic,
   toPreviewProject,
   validateMahoganyProject,
 } from "./mahogany-jukebox-model.mjs";
@@ -24,9 +35,14 @@ export function createMahoganyStudioServer({
   dataDir = path.join(root, ".mahogany-studio"),
   credentialStore,
   publisher,
+  bandCandidateRunner = runMahoganyBandCandidateBatch,
+  bandDiscoveryRunner = runBandcampDiscoveryBatch,
+  fetchImpl = fetch,
   appVersion = "1.0.0",
 } = {}) {
   const projectRoot = path.join(dataDir, "projects"),
+    candidateJobs = new Map(),
+    discoveryJobs = new Map(),
     directPublisher =
       publisher ||
       (credentialStore
@@ -43,6 +59,11 @@ export function createMahoganyStudioServer({
           root,
           projectRoot,
           publisher: directPublisher,
+          candidateJobs,
+          bandCandidateRunner,
+          discoveryJobs,
+          bandDiscoveryRunner,
+          fetchImpl,
         });
       if (
         url.pathname === "/" ||
@@ -69,7 +90,12 @@ export function createMahoganyStudioServer({
       response.writeHead(404);
       response.end("Not found");
     } catch (error) {
-      const status = error.code === "project_not_found" ? 404 : 400;
+      const status =
+        error.code === "project_not_found"
+          ? 404
+          : error.code === "project_identity_protected"
+            ? 409
+            : 400;
       sendJson(response, status, {
         ok: false,
         error: error.message,
@@ -79,7 +105,19 @@ export function createMahoganyStudioServer({
   });
 }
 
-async function api({ request, response, url, root, projectRoot, publisher }) {
+async function api({
+  request,
+  response,
+  url,
+  root,
+  projectRoot,
+  publisher,
+  candidateJobs,
+  bandCandidateRunner,
+  discoveryJobs,
+  bandDiscoveryRunner,
+  fetchImpl,
+}) {
   if (request.method === "GET" && url.pathname === "/api/mahogany/bootstrap") {
     const authentication = publisher
       ? await publisher
@@ -107,6 +145,164 @@ async function api({ request, response, url, root, projectRoot, publisher }) {
       newMahoganyProject(),
     );
     return sendJson(response, 201, { ok: true, project });
+  }
+  if (
+    request.method === "POST" &&
+    url.pathname === "/api/mahogany/band-discovery"
+  ) {
+    const running = [...discoveryJobs.values()].find(
+      (job) => job.status === "running",
+    );
+    if (running) return sendJson(response, 202, { ok: true, job: publicDiscoveryJob(running) });
+    const body = await readJson(request),
+      job = {
+        id: `banddiscovery_${crypto.randomBytes(8).toString("hex")}`,
+        status: "running",
+        stage: "queued",
+        message: "Bandcamp discovery is queued.",
+        location: cleanText(body.location, 100),
+        found: 0,
+        requested: 20,
+        reviewed: 0,
+        cancelled: false,
+        startedAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+        result: null,
+        error: "",
+      };
+    discoveryJobs.set(job.id, job);
+    setImmediate(async () => {
+      try {
+        const result = await bandDiscoveryRunner({
+          count: 20,
+          location: job.location,
+          existingProjects: await listMahoganyProjects(projectRoot),
+          shouldCancel: () => job.cancelled,
+          onProgress(progress) {
+            Object.assign(job, progress, { updatedAt: new Date().toISOString() });
+          },
+        });
+        Object.assign(job, {
+          status: result.cancelled ? "cancelled" : "completed",
+          stage: result.cancelled ? "cancelled" : "ready",
+          message: result.cancelled
+            ? `Cancelled with ${result.found} band${result.found === 1 ? "" : "s"} retained for review.`
+            : `${result.found} bands ready`,
+          found: result.found,
+          result,
+          updatedAt: new Date().toISOString(),
+        });
+      } catch (error) {
+        Object.assign(job, {
+          status: "failed",
+          stage: "failed",
+          message: error.message,
+          error: error.message,
+          updatedAt: new Date().toISOString(),
+        });
+      }
+    });
+    return sendJson(response, 202, { ok: true, job: publicDiscoveryJob(job) });
+  }
+  const discoveryMatch = url.pathname.match(
+    /^\/api\/mahogany\/band-discovery\/(banddiscovery_[a-f0-9]{16})(?:\/(cancel|to-library))?$/,
+  );
+  if (discoveryMatch) {
+    const job = discoveryJobs.get(discoveryMatch[1]);
+    if (!job) throw apiError("Band discovery job not found.", "discovery_job_not_found");
+    const action = discoveryMatch[2] || "status";
+    if (request.method === "GET" && action === "status")
+      return sendJson(response, 200, { ok: true, job: publicDiscoveryJob(job) });
+    if (request.method === "POST" && action === "cancel") {
+      job.cancelled = true;
+      job.message = "Cancelling after the current Bandcamp check...";
+      job.updatedAt = new Date().toISOString();
+      return sendJson(response, 202, { ok: true, job: publicDiscoveryJob(job) });
+    }
+    if (request.method === "POST" && action === "to-library") {
+      if (!job.result)
+        throw apiError("Discovery results are not ready.", "discovery_not_ready");
+      const body = await readJson(request),
+        selectedIds = Array.isArray(body.ids) ? body.ids.slice(0, 20) : [],
+        outcome = await addBandcampDiscoveriesToLibrary({
+          projectRoot,
+          discoveries: job.result.results,
+          selectedIds,
+          existingProjects: await listMahoganyProjects(projectRoot),
+        });
+      const addedIds = new Set(outcome.added.map((project) => project.candidate?.bandId));
+      const duplicateIds = new Set(outcome.duplicates.map((item) => item.discoveryId));
+      for (const item of job.result.results) {
+        if (addedIds.has(item.bandId)) item.libraryStatus = "added";
+        else if (duplicateIds.has(item.id)) item.libraryStatus = "duplicate";
+      }
+      job.updatedAt = new Date().toISOString();
+      return sendJson(response, 200, {
+        ok: true,
+        added: outcome.added,
+        duplicates: outcome.duplicates,
+        job: publicDiscoveryJob(job),
+      });
+    }
+  }
+  if (
+    request.method === "POST" &&
+    url.pathname === "/api/mahogany/candidate-batches/bands"
+  ) {
+    const running = [...candidateJobs.values()].find(
+      (job) => job.kind === "band" && job.status === "running",
+    );
+    if (running) return sendJson(response, 202, { ok: true, job: running });
+    const job = {
+      id: `candidate_${crypto.randomBytes(8).toString("hex")}`,
+      kind: "band",
+      status: "running",
+      stage: "queued",
+      message: "Band discovery is queued.",
+      reviewed: 0,
+      qualified: 0,
+      rejected: 0,
+      startedAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+      result: null,
+      error: "",
+    };
+    candidateJobs.set(job.id, job);
+    setImmediate(async () => {
+      try {
+        const result = await bandCandidateRunner({
+          projectRoot,
+          existingProjects: await listMahoganyProjects(projectRoot),
+          onProgress(progress) {
+            Object.assign(job, progress, {
+              updatedAt: new Date().toISOString(),
+            });
+          },
+        });
+        Object.assign(job, {
+          status: "completed",
+          result,
+          updatedAt: new Date().toISOString(),
+        });
+      } catch (error) {
+        Object.assign(job, {
+          status: "failed",
+          stage: "failed",
+          message: error.message,
+          error: error.message,
+          updatedAt: new Date().toISOString(),
+        });
+      }
+    });
+    return sendJson(response, 202, { ok: true, job });
+  }
+  const candidateJobMatch = url.pathname.match(
+    /^\/api\/mahogany\/candidate-batches\/(candidate_[a-f0-9]{16})$/,
+  );
+  if (request.method === "GET" && candidateJobMatch) {
+    const job = candidateJobs.get(candidateJobMatch[1]);
+    if (!job) throw apiError("Candidate batch not found.", "candidate_job_not_found");
+    return sendJson(response, 200, { ok: true, job });
   }
   if (
     request.method === "POST" &&
@@ -138,7 +334,7 @@ async function api({ request, response, url, root, projectRoot, publisher }) {
     });
   }
   const match = url.pathname.match(
-    /^\/api\/mahogany\/projects\/(studio_[a-f0-9]{12})(?:\/(preview|video|qr|publish|create|accept|state))?$/,
+    /^\/api\/mahogany\/projects\/(studio_[a-f0-9]{12})(?:\/(preview|video|music|character|analysis|qr|publish|create|accept|state))?$/,
   );
   if (!match) {
     response.writeHead(404);
@@ -152,6 +348,14 @@ async function api({ request, response, url, root, projectRoot, publisher }) {
       ok: true,
       project: await loadMahoganyProject(projectRoot, id),
     });
+  if (request.method === "DELETE" && action === "project") {
+    await archiveMahoganyProject(projectRoot, id);
+    return sendJson(response, 200, {
+      ok: true,
+      id,
+      archived: true,
+    });
+  }
   if (request.method === "PUT" && action === "project") {
     const current = await loadMahoganyProject(projectRoot, id),
       body = await readJson(request);
@@ -210,6 +414,99 @@ async function api({ request, response, url, root, projectRoot, publisher }) {
       path.join(projectRoot, id, "video.mp4"),
       "video/mp4",
     );
+  if (request.method === "PUT" && action === "music") {
+    const project = await loadMahoganyProject(projectRoot, id),
+      bytes = await readBytes(request, 48 * 1024 * 1024),
+      updated = await storeMahoganyVuMusic(
+        projectRoot,
+        project,
+        bytes,
+        decodeURIComponent(request.headers["x-file-name"] || "music.mp3"),
+      );
+    return sendJson(response, 200, {
+      ok: true,
+      project: await saveMahoganyProject(projectRoot, {
+        ...updated,
+        status: "draft",
+        prepared: null,
+        publicationProgress: null,
+      }),
+    });
+  }
+  if (request.method === "GET" && action === "music") {
+    const project = await loadMahoganyProject(projectRoot, id),
+      media = project.vu.music,
+      extension = media.mimeType === "audio/wav" ? "wav" : "mp3";
+    return serveMedia(
+      request,
+      response,
+      path.join(projectRoot, id, `music.${extension}`),
+      media.mimeType || "audio/mpeg",
+    );
+  }
+  if (request.method === "DELETE" && action === "music") {
+    const project = await loadMahoganyProject(projectRoot, id),
+      updated = await removeMahoganyVuMedia(projectRoot, project, "music");
+    return sendJson(response, 200, {
+      ok: true,
+      project: await saveMahoganyProject(projectRoot, {
+        ...updated,
+        status: "draft",
+        prepared: null,
+      }),
+    });
+  }
+  if (request.method === "PUT" && action === "character") {
+    const project = await loadMahoganyProject(projectRoot, id),
+      bytes = await readBytes(request, 24 * 1024 * 1024),
+      updated = await storeMahoganyVuCharacter(
+        projectRoot,
+        project,
+        bytes,
+        decodeURIComponent(request.headers["x-file-name"] || "character.mp4"),
+      );
+    return sendJson(response, 200, {
+      ok: true,
+      project: await saveMahoganyProject(projectRoot, {
+        ...updated,
+        status: "draft",
+        prepared: null,
+        publicationProgress: null,
+      }),
+    });
+  }
+  if (request.method === "GET" && action === "character")
+    return serveMedia(
+      request,
+      response,
+      path.join(projectRoot, id, "character.mp4"),
+      "video/mp4",
+    );
+  if (request.method === "DELETE" && action === "character") {
+    const project = await loadMahoganyProject(projectRoot, id),
+      updated = await removeMahoganyVuMedia(projectRoot, project, "character");
+    return sendJson(response, 200, {
+      ok: true,
+      project: await saveMahoganyProject(projectRoot, {
+        ...updated,
+        status: "draft",
+        prepared: null,
+      }),
+    });
+  }
+  if (request.method === "PUT" && action === "analysis") {
+    const project = await loadMahoganyProject(projectRoot, id),
+      body = await readJson(request),
+      updated = setMahoganyVuDucking(project, body);
+    return sendJson(response, 200, {
+      ok: true,
+      project: await saveMahoganyProject(projectRoot, {
+        ...updated,
+        status: "draft",
+        prepared: null,
+      }),
+    });
+  }
   if (request.method === "GET" && action === "qr")
     return serve(
       response,
@@ -220,16 +517,32 @@ async function api({ request, response, url, root, projectRoot, publisher }) {
   if (request.method === "GET" && action === "preview") {
     const project = await loadMahoganyProject(projectRoot, id),
       preview = toPreviewProject(project),
-      html = renderAggitsJukeboxStudioPreview(preview, {
-        videoUrl:
-          project.video.kind === "mp4"
-            ? `/api/mahogany/projects/${id}/video`
-            : "",
-        youtubeUrl:
-          project.video.kind === "youtube" ? project.video.youtubeUrl : "",
-        canonicalUrl:
-          project.publication?.liveUrl || project.prepared?.liveUrl || "",
-      });
+      publicationAppearance =
+        project.publication?.appearance || "mahogany-master",
+      canonicalUrl =
+        (publicationAppearance === project.appearance
+          ? project.publication?.liveUrl
+          : "") || project.prepared?.liveUrl || "",
+      html =
+        project.appearance === "mahogany-vu"
+          ? renderMahoganyVuPreview(preview, {
+              musicUrl: project.vu.music.fileName
+                ? `/api/mahogany/projects/${id}/music`
+                : "",
+              characterUrl: project.vu.character.fileName
+                ? `/api/mahogany/projects/${id}/character`
+                : "",
+              canonicalUrl,
+            })
+          : renderAggitsJukeboxStudioPreview(preview, {
+              videoUrl:
+                project.video.kind === "mp4"
+                  ? `/api/mahogany/projects/${id}/video`
+                  : "",
+              youtubeUrl:
+                project.video.kind === "youtube" ? project.video.youtubeUrl : "",
+              canonicalUrl,
+            });
     response.writeHead(200, {
       "content-type": "text/html; charset=utf-8",
       "cache-control": "no-store",
@@ -245,7 +558,20 @@ async function api({ request, response, url, root, projectRoot, publisher }) {
         "Protected publishing is available in the installed Windows app.",
         "publisher_unavailable",
       );
-    let project = await loadMahoganyProject(projectRoot, id);
+    let project = await loadMahoganyProject(projectRoot, id),
+      identityRepair = null;
+    if (
+      project.publication?.editionId &&
+      String(project.publication.publishedTitle || "").toLocaleLowerCase() !==
+        project.name.toLocaleLowerCase()
+    ) {
+      const repaired = await repairReusedPublicationIdentity(projectRoot, project, {
+        fetchImpl,
+      });
+      project = repaired.project;
+      identityRepair = repaired.identityRepair;
+    }
+    const publicationProjectId = project.id;
     const readiness = validateMahoganyProject(project, {
       requireStoredMp4: true,
     });
@@ -265,7 +591,9 @@ async function api({ request, response, url, root, projectRoot, publisher }) {
     try {
       let prepared;
       if (project.prepared) {
-        const qrBytes = await fs.readFile(path.join(projectRoot, id, "qr.png"));
+        const qrBytes = await fs.readFile(
+          path.join(projectRoot, publicationProjectId, "qr.png"),
+        );
         prepared = { ...project.prepared, qrBytes };
         await saveProgress(
           "resuming",
@@ -277,7 +605,10 @@ async function api({ request, response, url, root, projectRoot, publisher }) {
           "Reserving the permanent URL and generating the QR poster.",
         );
         prepared = await publisher.prepare({ project });
-        await fs.writeFile(path.join(projectRoot, id, "qr.png"), prepared.qrBytes);
+        await fs.writeFile(
+          path.join(projectRoot, publicationProjectId, "qr.png"),
+          prepared.qrBytes,
+        );
         const storedPrepared = {
           schemaVersion: prepared.schemaVersion,
           manifest: prepared.manifest,
@@ -306,7 +637,25 @@ async function api({ request, response, url, root, projectRoot, publisher }) {
         prepared,
         videoPath:
           project.video.kind === "mp4"
-            ? path.join(projectRoot, id, "video.mp4")
+            ? path.join(projectRoot, publicationProjectId, "video.mp4")
+            : "",
+        musicPath:
+          project.appearance === "mahogany-vu" && project.vu.music.fileName
+            ? path.join(
+                projectRoot,
+                publicationProjectId,
+                project.vu.music.mimeType === "audio/wav"
+                  ? "music.wav"
+                  : "music.mp3",
+              )
+            : "",
+        characterPath:
+          project.appearance === "mahogany-vu" && project.vu.character.fileName
+            ? path.join(
+                projectRoot,
+                publicationProjectId,
+                "character.mp4",
+              )
             : "",
         onProgress: saveProgress,
       });
@@ -317,6 +666,7 @@ async function api({ request, response, url, root, projectRoot, publisher }) {
         publication: {
           ...publication,
           published: true,
+          publishedTitle: project.name,
           publishedAt: new Date().toISOString(),
         },
         publicationProgress: {
@@ -325,7 +675,12 @@ async function api({ request, response, url, root, projectRoot, publisher }) {
           updatedAt: new Date().toISOString(),
         },
       });
-      return sendJson(response, 200, { ok: true, project, publication });
+      return sendJson(response, 200, {
+        ok: true,
+        project,
+        publication,
+        identityRepair,
+      });
     } catch (error) {
       project = await saveMahoganyProject(projectRoot, {
         ...project,
@@ -401,6 +756,20 @@ async function api({ request, response, url, root, projectRoot, publisher }) {
           project.video.kind === "mp4"
             ? path.join(projectRoot, id, "video.mp4")
             : "",
+        musicPath:
+          project.appearance === "mahogany-vu" && project.vu.music.fileName
+            ? path.join(
+                projectRoot,
+                id,
+                project.vu.music.mimeType === "audio/wav"
+                  ? "music.wav"
+                  : "music.mp3",
+              )
+            : "",
+        characterPath:
+          project.appearance === "mahogany-vu" && project.vu.character.fileName
+            ? path.join(projectRoot, id, "character.mp4")
+            : "",
       });
       project = await saveMahoganyProject(projectRoot, {
         ...project,
@@ -409,6 +778,7 @@ async function api({ request, response, url, root, projectRoot, publisher }) {
         publication: {
           ...publication,
           published: true,
+          publishedTitle: project.name,
           publishedAt: new Date().toISOString(),
         },
       });
@@ -501,6 +871,211 @@ async function serveMedia(request, response, file, type) {
     response.end("Video unavailable");
   }
 }
+
+export async function repairReusedPublicationIdentity(
+  projectRoot,
+  project,
+  { fetchImpl = fetch } = {},
+) {
+  const editionId = String(project?.publication?.editionId || ""),
+    liveUrl = String(project?.publication?.liveUrl || "");
+  if (!/^dc_[a-f0-9]{10}$/.test(editionId) || !liveUrl)
+    return { project, identityRepair: null };
+  let origin;
+  try {
+    origin = new URL(liveUrl).origin;
+  } catch {
+    throw apiError(
+      "The existing permanent Jukebox URL is invalid.",
+      "project_identity_check_failed",
+    );
+  }
+  const response = await fetchImpl(
+    `${origin}/api/aggits-jukebox-editions/${editionId}/config`,
+    { cache: "no-store" },
+  ).catch(() => null);
+  if (!response?.ok)
+    throw apiError(
+      "The existing permanent Jukebox identity could not be checked safely. Nothing was published.",
+      "project_identity_check_failed",
+    );
+  const remote = await response.json().catch(() => null),
+    remoteJukebox = remote?.aggitsJukebox || {},
+    remoteTitle = cleanText(remote?.bandName || remoteJukebox.title, 120);
+  if (!remoteTitle)
+    throw apiError(
+      "The existing permanent Jukebox identity returned invalid information.",
+      "project_identity_check_failed",
+    );
+  if (remoteJukebox.projectId && remoteJukebox.projectId !== project.id)
+    throw apiError(
+      "This permanent URL belongs to a different library item. Nothing was published.",
+      "project_identity_check_failed",
+    );
+  if (remoteTitle.toLocaleLowerCase() === project.name.toLocaleLowerCase())
+    return { project, identityRepair: null };
+
+  const oldActions = Array.isArray(remoteJukebox.actions)
+      ? remoteJukebox.actions
+      : [],
+    repairedActions = await repairInheritedDestinations(
+      project.actions,
+      oldActions,
+      fetchImpl,
+    ),
+    fresh = newMahoganyProject(),
+    clone = await saveMahoganyProject(projectRoot, {
+      ...project,
+      id: fresh.id,
+      actions: repairedActions,
+      status: "draft",
+      publication: null,
+      publicationProgress: null,
+      prepared: null,
+      lastError: "",
+      createdAt: fresh.createdAt,
+      updatedAt: fresh.updatedAt,
+      identitySeparatedFrom: {
+        projectId: project.id,
+        editionId,
+        title: remoteTitle,
+        separatedAt: new Date().toISOString(),
+      },
+    });
+  await copyProjectMedia(projectRoot, project.id, clone.id);
+
+  const restoredBase = newMahoganyProject(),
+    restoredAppearance =
+      remoteJukebox.appearanceVariant === "mahogany-vu"
+        ? "mahogany-vu"
+        : "mahogany-master",
+    restored = await saveMahoganyProject(projectRoot, {
+      ...project,
+      name: remoteTitle,
+      tickerText: cleanText(remoteJukebox.tickerText, 500),
+      appearance: restoredAppearance,
+      video: {
+        ...project.video,
+        kind: remoteJukebox.videoKind === "mp4" ? "mp4" : "youtube",
+        youtubeUrl: cleanText(remoteJukebox.youtubeUrl, 300),
+      },
+      vu: restoredAppearance === "mahogany-vu" ? project.vu : restoredBase.vu,
+      actions: oldActions.map((item, index) => ({
+        slot: index + 1,
+        iconId: item.iconId,
+        label: item.label,
+        href: item.href,
+        openInNewTab: item.openInNewTab !== false,
+      })),
+      status: "published",
+      publicationProgress: {
+        stage: "completed",
+        message: "Published identity preserved.",
+        updatedAt: new Date().toISOString(),
+      },
+      prepared: null,
+      lastError: "",
+    });
+  return {
+    project: clone,
+    identityRepair: {
+      restoredProject: restored,
+      previousTitle: remoteTitle,
+      newTitle: clone.name,
+      replacedDestinations: repairedActions.filter(
+        (item, index) => item.href !== project.actions[index]?.href,
+      ).length,
+    },
+  };
+}
+
+async function repairInheritedDestinations(current, previous, fetchImpl) {
+  const previousUrls = new Set(
+      previous.map((item) => String(item.href || "").trim()).filter(Boolean),
+    ),
+    bandcampUrl = current
+      .map((item) => String(item.href || "").trim())
+      .find((href) => {
+        try {
+          return (
+            new URL(href).hostname.endsWith("bandcamp.com") &&
+            !previousUrls.has(href)
+          );
+        } catch {
+          return false;
+        }
+      });
+  let official = [];
+  if (bandcampUrl) {
+    const response = await fetchImpl(bandcampUrl, { cache: "no-store" }).catch(
+      () => null,
+    );
+    if (response?.ok) {
+      const html = (await response.text()).replaceAll("&amp;", "&");
+      official = [...html.matchAll(/href=["']([^"']+)["']/gi)]
+        .map((match) => {
+          try {
+            return new URL(match[1], bandcampUrl).toString();
+          } catch {
+            return "";
+          }
+        })
+        .filter(Boolean);
+    }
+  }
+  const platform = (host) =>
+      official.find((href) => {
+        try {
+          return new URL(href).hostname.replace(/^www\./, "") === host;
+        } catch {
+          return false;
+        }
+      }) || "",
+    contact =
+      official.find((href) => {
+        try {
+          const url = new URL(href);
+          return url.hostname.endsWith("bandcamp.com") && url.pathname === "/contact";
+        } catch {
+          return false;
+        }
+      }) || "";
+  let contactUsed = false;
+  return current.map((item) => {
+    if (!previousUrls.has(String(item.href || "").trim())) return item;
+    if (item.iconId === "instagram") {
+      const href = platform("instagram.com");
+      if (href) return { ...item, href };
+    }
+    if (item.iconId === "facebook") {
+      const href = platform("facebook.com");
+      if (href) return { ...item, href };
+    }
+    if (contact && !contactUsed) {
+      contactUsed = true;
+      return { ...item, iconId: "contact", label: "Contact", href: contact };
+    }
+    return { ...item, href: "" };
+  });
+}
+
+async function copyProjectMedia(projectRoot, sourceId, destinationId) {
+  const source = path.join(projectRoot, sourceId),
+    destination = path.join(projectRoot, destinationId);
+  await fs.mkdir(destination, { recursive: true });
+  for (const file of [
+    "video.mp4",
+    "music.mp3",
+    "music.wav",
+    "character.mp4",
+  ])
+    await fs
+      .copyFile(path.join(source, file), path.join(destination, file))
+      .catch((error) => {
+        if (error.code !== "ENOENT") throw error;
+      });
+}
+
 async function readJson(request) {
   const bytes = await readBytes(request, 2 * 1024 * 1024);
   try {
@@ -556,6 +1131,27 @@ function apiError(message, code) {
     name: "MahoganyStudioError",
     code,
   });
+}
+
+function publicDiscoveryJob(job) {
+  return {
+    id: job.id,
+    status: job.status,
+    stage: job.stage,
+    message: job.message,
+    location: job.location,
+    found: Number(job.found) || 0,
+    requested: Number(job.requested) || 20,
+    reviewed: Number(job.reviewed) || 0,
+    startedAt: job.startedAt,
+    updatedAt: job.updatedAt,
+    result: job.result,
+    error: job.error,
+  };
+}
+
+function cleanText(value, max) {
+  return String(value || "").replace(/\s+/g, " ").trim().slice(0, max);
 }
 
 if (path.resolve(process.argv[1] || "") === fileURLToPath(import.meta.url)) {

@@ -46,7 +46,7 @@
     "studio:make:mac:x64": "electron-forge make --platform=darwin --arch=x64",
     "mahogany:server": "node scripts/mahogany-studio-server.mjs",
     "mahogany:desktop": "electron studio/mahogany-desktop-main.mjs",
-    "mahogany:test": "node scripts/test-mahogany-jukebox.mjs",
+    "mahogany:test": "node scripts/test-mahogany-jukebox.mjs && node scripts/test-mahogany-vu-jukebox.mjs && node scripts/test-mahogany-band-candidates.mjs && node scripts/test-aggits-vu-weekly-report.mjs",
     "mahogany:make": "node scripts/build-mahogany-jukebox-windows.mjs"
   },
   "dependencies": {

@@ -5,14 +5,16 @@ import vm from "node:vm";
 import sharp from "sharp";
 
 export const AGGITS_JUKEBOX_QR_SIZE = 1254;
-export const AGGITS_JUKEBOX_QR_SCHEMA = "deep-cuts-aggits-jukebox-qr/2";
+export const AGGITS_JUKEBOX_QR_SCHEMA = "deep-cuts-aggits-jukebox-qr/4";
+export const AGGITS_JUKEBOX_QR_DESIGN =
+  "mahogany-cabinet-integrated-perspective/4";
 export const AGGITS_JUKEBOX_QR_MASTER_SHA256 =
   "1750e428f4445b7be57b2bcc9ad681681c2c070930b1ade019c237ed68fdb684";
 export const AGGITS_JUKEBOX_QR_PANEL = Object.freeze({
-  topLeft: Object.freeze({ x: 751, y: 543 }),
-  topRight: Object.freeze({ x: 1111, y: 543 }),
-  bottomRight: Object.freeze({ x: 1105, y: 928 }),
-  bottomLeft: Object.freeze({ x: 758, y: 928 }),
+  topLeft: Object.freeze({ x: 756, y: 550 }),
+  topRight: Object.freeze({ x: 1106, y: 550 }),
+  bottomRight: Object.freeze({ x: 1100, y: 921 }),
+  bottomLeft: Object.freeze({ x: 761, y: 918 }),
 });
 
 export async function createAggitsJukeboxQrArtwork({
@@ -59,6 +61,7 @@ export async function createAggitsJukeboxQrArtwork({
   await verifyMatrix(png, matrix, placement, 0.5);
   return {
     schemaVersion: AGGITS_JUKEBOX_QR_SCHEMA,
+    designStandard: AGGITS_JUKEBOX_QR_DESIGN,
     bytes: png,
     sha256: crypto.createHash("sha256").update(png).digest("hex"),
     destination: payload,
@@ -155,7 +158,7 @@ function renderOverlay(matrix, p, title) {
       ? `<text x="930" y="406">${xml(lines[0])}</text>`
       : `<text x="930" y="385">${xml(lines[0])}</text><text x="930" y="430">${xml(lines[1])}</text>`;
   const panel = AGGITS_JUKEBOX_QR_PANEL;
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="1254" height="1254" viewBox="0 0 1254 1254"><defs><clipPath id="title-inset"><rect x="736" y="347" width="387" height="109" rx="20"/></clipPath></defs><rect x="724" y="335" width="411" height="133" rx="28" fill="#0d0a06" opacity=".97"/><g clip-path="url(#title-inset)" fill="#e2b86d" stroke="#3c210b" stroke-width="1.2" paint-order="stroke" text-anchor="middle" font-family="Georgia,Times New Roman,serif" font-size="${fontSize}" font-weight="800" letter-spacing="2">${titleMarkup}</g><polygon points="${polygon([panel.topLeft, panel.topRight, panel.bottomRight, panel.bottomLeft])}" fill="#fffaf0"/>${modules.join("")}</svg>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="1254" height="1254" viewBox="0 0 1254 1254"><defs><clipPath id="title-inset"><path d="M739 355 L1115 355 L1110 458 L741 458 Z"/></clipPath><linearGradient id="title-gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff0bd"/><stop offset=".38" stop-color="#e4bd72"/><stop offset=".62" stop-color="#b77a31"/><stop offset="1" stop-color="#f1cf82"/></linearGradient><filter id="title-emboss" x="-20%" y="-30%" width="140%" height="170%"><feDropShadow dx="0" dy="2" stdDeviation="1.2" flood-color="#020100" flood-opacity=".95"/><feDropShadow dx="0" dy="-1" stdDeviation=".45" flood-color="#fff2c6" flood-opacity=".72"/></filter><linearGradient id="qr-parchment" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f5e1bb"/><stop offset=".52" stop-color="#e7cda0"/><stop offset="1" stop-color="#d2ad78"/></linearGradient><filter id="qr-recess" x="-8%" y="-8%" width="116%" height="116%"><feDropShadow dx="0" dy="2.4" stdDeviation="2.2" flood-color="#160b04" flood-opacity=".9"/></filter></defs><g clip-path="url(#title-inset)" fill="url(#title-gold)" stroke="#4a270e" stroke-width=".85" paint-order="stroke" filter="url(#title-emboss)" text-anchor="middle" font-family="Georgia,Times New Roman,serif" font-size="${fontSize}" font-weight="800" letter-spacing="2">${titleMarkup}</g><polygon points="${polygon([panel.topLeft, panel.topRight, panel.bottomRight, panel.bottomLeft])}" fill="url(#qr-parchment)" stroke="#5b3015" stroke-width="2" filter="url(#qr-recess)"/>${modules.join("")}<polyline points="${polygon([panel.bottomLeft, panel.topLeft, panel.topRight])}" fill="none" stroke="#fff0c8" stroke-opacity=".48" stroke-width="1.25"/><polyline points="${polygon([panel.topRight, panel.bottomRight, panel.bottomLeft])}" fill="none" stroke="#5b3015" stroke-opacity=".8" stroke-width="1.5"/></svg>`;
 }
 async function verifyMatrix(png, matrix, p, scale) {
   const { data, info } = await sharp(png)

@@ -2,9 +2,10 @@ import assert from "node:assert/strict";
 import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
+import sharp from "sharp";
 import {createProject,attachMp4,renderStudioPreview} from "./studio-model.mjs";
 import {AGGITS_JUKEBOX_ICONS,AGGITS_JUKEBOX_CABINET,AGGITS_JUKEBOX_CABINET_SHA256,AGGITS_JUKEBOX_ICON_MASTER_SHA256,AGGITS_JUKEBOX_OVAL_ICON_SET_SHA256} from "./aggits-jukebox-icons.mjs";
-import {MAHOGANY_FIXED_MARQUEE_ASSET,MAHOGANY_FIXED_MARQUEE_SHA256,MAHOGANY_BUTTON_CLUNK_ASSET,MAHOGANY_BUTTON_CLUNK_SHA256,MAHOGANY_BUTTON_LINK_DELAY_MS,MAHOGANY_AGGITS_COIN_ASSET,MAHOGANY_AGGITS_COIN_SHA256,MAHOGANY_BUTTON_ATTENTION_START_SECONDS,MAHOGANY_BUTTON_ATTENTION_FLASH_SECONDS,MAHOGANY_BUTTON_ATTENTION_BUTTON_COUNT,MAHOGANY_BUTTON_ATTENTION_CYCLES,MAHOGANY_BUTTON_ATTENTION_END_SECONDS,mahoganyButtonAttentionIndex,isMahoganyButtonAttentionTime} from "./aggits-jukebox-preview.mjs";
+import {AGGITS_JUKEBOX_CANONICAL_BUTTON_ASSET,AGGITS_JUKEBOX_CANONICAL_BUTTON_SHA256,AGGITS_JUKEBOX_CANONICAL_BUTTON_VERSION,MAHOGANY_FIXED_MARQUEE_ASSET,MAHOGANY_FIXED_MARQUEE_SHA256,MAHOGANY_BUTTON_CLUNK_ASSET,MAHOGANY_BUTTON_CLUNK_SHA256,MAHOGANY_BUTTON_LINK_DELAY_MS,MAHOGANY_AGGITS_COIN_ASSET,MAHOGANY_AGGITS_COIN_SHA256,MAHOGANY_BUTTON_ATTENTION_START_SECONDS,MAHOGANY_BUTTON_ATTENTION_FLASH_SECONDS,MAHOGANY_BUTTON_ATTENTION_BUTTON_COUNT,MAHOGANY_BUTTON_ATTENTION_CYCLES,MAHOGANY_BUTTON_ATTENTION_END_SECONDS,mahoganyButtonAttentionIndex,isMahoganyButtonAttentionTime} from "./aggits-jukebox-preview.mjs";
 
 const root=path.resolve(import.meta.dirname,"..");
 const fixture={type:"aggits_jukebox",name:"An Exceptionally Long Melbourne Venue Name",tickerText:"THE BLOCK AND BEYOND! KITCHEN, EVENTS AND BOOKINGS.",actionButtons:[
@@ -27,12 +28,18 @@ for(const icon of AGGITS_JUKEBOX_ICONS){
   const file=path.join(root,icon.assetPath.replace(/^\//,""));
   assert.ok(fs.statSync(file).size>300,`missing or empty icon asset: ${icon.id}`);
   assert.match(icon.assetPath,/aggits-jukebox-icons-oval-v4\/.+\.svg$/);
-  const svg=fs.readFileSync(file,"utf8");
+  const svg=fs.readFileSync(file,"utf8").replace(/\r\n/g,"\n");
   assert.equal((svg.match(/<svg\b/g)||[]).length,1,`icon must contain one clean SVG root: ${icon.id}`);
   ovalSetHash.update(path.basename(file));
   ovalSetHash.update(svg);
 }
 assert.equal(ovalSetHash.digest("hex"),AGGITS_JUKEBOX_OVAL_ICON_SET_SHA256,"oval-native icon set identity changed");
+const canonicalButton=fs.readFileSync(path.join(root,AGGITS_JUKEBOX_CANONICAL_BUTTON_ASSET.replace(/^\//,"")));
+assert.equal(crypto.createHash("sha256").update(canonicalButton).digest("hex"),AGGITS_JUKEBOX_CANONICAL_BUTTON_SHA256,"canonical oval button identity changed");
+assert.equal(AGGITS_JUKEBOX_CANONICAL_BUTTON_VERSION,"aggits-oval-button-bank/2");
+assert.equal(canonicalButton.readUInt32BE(16),1600,"canonical oval button bank width changed");
+assert.equal(canonicalButton.readUInt32BE(20),736,"canonical oval button bank height changed");
+assert.equal((await sharp(canonicalButton).stats()).isOpaque,true,"canonical button bank must remain fully opaque so baked keys cannot show through");
 
 let project=createProject(fixture,new Date("2026-08-03T00:00:00Z"));
 assert.equal(project.input.actionButtons[0].href,"tel:+61390000000");
@@ -42,15 +49,15 @@ assert.equal(project.readiness.handoffReady,true);
 const html=renderStudioPreview(project,{videoUrl:"/media/welcome.mp4"});
 assert.ok(!html.includes(">AN EXCEPTIONALLY LONG MELBOURNE VENUE NAME<"),"the project identity must never replace the fixed physical marquee");
 for(const required of [
-  "aggits-jukebox-illuminated-master-v3.png","aggits-jukebox-icons-oval-v4","jukebox-real-coin-insert-cc0.mp3","object-fit:cover",
+  "aggits-jukebox-illuminated-master-v3.png","aggits-jukebox-button-bank-canonical-v2.png","aggits-jukebox-icons-oval-v4","jukebox-real-coin-insert-cc0.mp3","object-fit:cover",
   'addEventListener("ended"',"noopener noreferrer","1804","1436","aspect-ratio:864/1536","is-depressed","enableActions"
 ])assert.ok(html.includes(required),`preview missing ${required}`);
 assert.ok(!html.includes("Math.random()"),"action-key illumination and random sequencing must remain removed");
 assert.ok(!html.includes("is-lighting"),"Aggits Jukebox action keys must not render lighting states");
 assert.ok(!html.includes("<strong>CALL US</strong>"),"public oval keys must remain icon-only");
-assert.ok(!html.includes(".action:before"),"public oval keys must not render an exterior secondary line");
-assert.match(html,/\.actions\{[^}]*background:transparent/,"button bank must preserve the illuminated master artwork beneath the live oval keys");
-assert.ok(!html.includes(".actions:before"),"the clean illuminated master must not require a corrective mask above the key bank");
+assert.match(html,/\.actions:before\{[^}]*aggits-jukebox-button-bank-canonical-v2\.png[^}]*100% 100% no-repeat/,"all four public keys must use one immutable opaque canonical bank");
+assert.match(html,/\.actions\{[^}]*isolation:isolate[^}]*background:#050201/,"canonical bank must completely occlude photographed legacy keys");
+assert.ok(!html.includes(".action:before"),"individual transparent button overlays must never be restored");
 assert.ok(!html.includes("solid transparent"),"public oval keys must not render an exterior border layer");
 assert.ok(!html.includes("border-box;color:#d5a355"),"public oval keys must use an internal bevel instead of an exterior gradient contour");
 assert.match(html,/\.action-icon\{[^}]*width:68%/,"public oval key icons must remain centred inside the photographed key faces");

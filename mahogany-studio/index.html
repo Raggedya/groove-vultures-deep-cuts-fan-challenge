@@ -16,10 +16,42 @@
       <nav aria-label="Application">
         <button class="nav-button is-active" data-view="builder">
           Create / Edit</button
+        ><button class="nav-button" data-view="discovery">Find Bands</button
         ><button class="nav-button" data-view="library">Library</button>
       </nav>
     </header>
     <main>
+      <section id="legacyCandidateLaunch" class="candidate-launch panel" aria-labelledby="candidateLaunchTitle">
+        <div class="candidate-launch-copy">
+          <span class="eyebrow">Verified unpublished candidate intake</span>
+          <h2 id="candidateLaunchTitle">Build the next production queue</h2>
+          <p>
+            No search settings are required. The app starts with structured
+            music records that already contain Linktree, Bandcamp, Instagram,
+            Facebook and Spotify IDs, then verifies each destination directly.
+            Gold includes an embeddable official YouTube video; silver is ready
+            for video later. Nothing is published.
+          </p>
+        </div>
+        <div class="candidate-launch-actions">
+          <button
+            id="addTwentyBands"
+            class="candidate-button"
+            type="button"
+            aria-label="Find and add 20 qualified bands as unpublished drafts"
+          >
+            <strong>ADD 20 BANDS</strong>
+            <span>Linktree + four verified platforms; gold/silver grading</span>
+          </button>
+        </div>
+        <div
+          id="candidateProgress"
+          class="candidate-progress"
+          role="status"
+          aria-live="polite"
+          hidden
+        ></div>
+      </section>
       <section id="builderView" class="view builder-view">
         <aside class="preview-column" aria-label="Production previews">
           <div class="panel preview-panel">
@@ -75,24 +107,23 @@
                 placeholder="e.g. The Filthy Animals"
                 required
             /></label>
-            <fieldset>
-              <legend><span>1</span> Video input</legend>
+            <fieldset class="appearance-picker">
+              <legend><span>1</span> Jukebox version</legend>
+              <div class="version-choice">
+                <label><input type="radio" name="appearance" value="mahogany-master" checked /><span><strong>Classic Mahogany</strong><small>The current approved video-screen master</small></span></label>
+                <label><input type="radio" name="appearance" value="mahogany-vu" /><span><strong>Mahogany VU</strong><small>Twin live VU meters and rotating reel-to-reel</small></span></label>
+              </div>
+            </fieldset>
+            <fieldset id="masterMedia">
+              <legend><span>2</span> Video input</legend>
               <div class="video-choice">
                 <label
                   ><input
                     type="radio"
                     name="videoKind"
-                    value="youtube"
+                    value="mp4"
                     checked
-                  /><span>YouTube URL</span></label
-                ><input
-                  id="youtubeUrl"
-                  type="url"
-                  placeholder="https://youtube.com/watch?v=…"
-                /><span id="youtubeStatus" class="video-check-status" aria-live="polite">Not checked</span><label
-                  ><input type="radio" name="videoKind" value="mp4" /><span
-                    >Upload MP4</span
-                  ></label
+                  /><span>Upload MP4 · Primary</span></label
                 ><button id="chooseMp4" class="file-button" type="button">
                   Choose file</button
                 ><input
@@ -101,12 +132,58 @@
                   accept="video/mp4"
                   hidden
                 /><small id="videoFileName"
-                  >MP4/H.264 · 1120 × 1280 px · maximum 24 MiB</small
-                >
+                  >MP4/H.264 · 1804 × 1436 px · maximum 24 MiB</small
+                ><label
+                  ><input type="radio" name="videoKind" value="youtube" /><span
+                    >YouTube URL</span
+                  ></label
+                ><input
+                  id="youtubeUrl"
+                  type="url"
+                  placeholder="https://youtube.com/watch?v=…"
+                /><span id="youtubeStatus" class="video-check-status" aria-live="polite">Not checked</span>
               </div>
             </fieldset>
+            <fieldset id="vuMedia" hidden>
+              <legend><span>2</span> VU audio and optional character</legend>
+              <p class="help">Upload the song that drives the two real-time VU needles. The reels rotate only while it plays.</p>
+              <div class="vu-upload-grid">
+                <div class="vu-upload-card">
+                  <strong>Music</strong>
+                  <span>MP3 or WAV · maximum 48 MiB</span>
+                  <button id="chooseMusic" class="file-button" type="button">Choose MP3 / WAV</button>
+                  <input id="musicFile" type="file" accept="audio/mpeg,audio/mp3,audio/wav,.mp3,.wav" hidden />
+                  <small id="musicFileName">No music selected</small>
+                  <label><span>Song title</span><input id="musicTrackName" type="text" maxlength="180" placeholder="Taken from the audio filename" /></label>
+                  <button id="removeMusic" class="remove-media" type="button" hidden>Remove music</button>
+                </div>
+                <div class="vu-upload-card is-optional">
+                  <strong>Aggits character (later · optional)</strong>
+                  <span>No character is included automatically. Add your green-screen MP4 when it is ready.</span>
+                  <button id="chooseCharacter" class="file-button" type="button">Choose character MP4</button>
+                  <input id="characterFile" type="file" accept="video/mp4" hidden />
+                  <small id="characterFileName">Empty character layer</small>
+                  <span id="speechAnalysisStatus" class="analysis-status">No presenter to analyse</span>
+                  <div class="media-row-actions">
+                    <button id="retryAnalysis" class="remove-media" type="button" hidden>Retry analysis</button>
+                    <button id="removeCharacter" class="remove-media" type="button" hidden>Remove presenter</button>
+                  </div>
+                </div>
+              </div>
+              <details class="ducking-settings">
+                <summary>Audio Ducking Settings</summary>
+                <div class="ducking-grid">
+                  <label><span>Ducking enabled</span><input id="duckingEnabled" type="checkbox" checked /></label>
+                  <label><span>Music level while speaking</span><input id="speakingLevel" type="range" min="8" max="50" value="20" /><output id="speakingLevelValue">20%</output></label>
+                  <label><span>Duck attack</span><input id="attackMs" type="range" min="150" max="700" step="10" value="320" /><output id="attackMsValue">320 ms</output></label>
+                  <label><span>Music return</span><input id="releaseMs" type="range" min="300" max="1800" step="10" value="800" /><output id="releaseMsValue">800 ms</output></label>
+                  <label><span>Speech sensitivity</span><input id="speechSensitivity" type="range" min="0" max="100" value="55" /><output id="speechSensitivityValue">Recommended</output></label>
+                </div>
+              </details>
+              <p class="vu-local-note">One click saves the VU jukebox to the Library, publishes and verifies its permanent link, then emails the live link and QR. Classic Mahogany remains unchanged.</p>
+            </fieldset>
             <fieldset>
-              <legend><span>2</span> Four physical action keys</legend>
+              <legend><span>3</span> Four physical action keys</legend>
               <p class="help">
                 Select any approved icon, enter its accessible name, then paste
                 the destination. Public keys display the centred icon only.
@@ -114,7 +191,7 @@
               <div id="actionRows" class="action-rows"></div>
             </fieldset>
             <fieldset>
-              <legend><span>3</span> Ticker text</legend>
+              <legend><span>4</span> Ticker text</legend>
               <label class="field ticker-field">
                 <textarea
                   id="tickerText"
@@ -167,6 +244,55 @@
             </div>
           </section>
         </section>
+      </section>
+      <section id="discoveryView" class="view discovery-view" hidden>
+        <div class="panel discovery-panel">
+          <div class="panel-heading discovery-heading">
+            <div>
+              <span class="eyebrow">Bandcamp-first · draft only</span>
+              <h2>Band Discovery</h2>
+              <p>
+                Find genuine Bandcamp artists, then independently confirm their
+                Bandcamp merchandise, Facebook and Spotify links. Nothing is
+                added until you choose To Library.
+              </p>
+            </div>
+            <span class="discovery-anchor">Bandcamp is the anchor</span>
+          </div>
+          <div class="discovery-controls">
+            <label class="field discovery-location"
+              ><span>Location <small>optional</small></span
+              ><input
+                id="discoveryLocation"
+                maxlength="100"
+                value="Melbourne, Australia"
+                placeholder="Melbourne, Sydney, New Zealand, USA..."
+            /></label>
+            <button id="findBands" class="candidate-button discovery-run" type="button">
+              <strong>FIND &amp; ADD 20 BANDS</strong>
+              <span>Review first · no automatic publishing</span>
+            </button>
+            <button id="cancelBandDiscovery" class="quiet-button" type="button" hidden>
+              Cancel
+            </button>
+          </div>
+          <div id="bandDiscoveryProgress" class="candidate-progress" role="status" aria-live="polite" hidden></div>
+          <div id="bandDiscoveryResults" class="discovery-results" hidden>
+            <div class="discovery-summary">
+              <strong id="bandDiscoveryCount">0 bands discovered</strong>
+              <div class="discovery-bulk-actions">
+                <button id="addSelectedBands" class="primary-button" type="button">Add selected to library</button>
+                <button id="addGoodBands" class="quiet-button" type="button">Add all Good / Complete</button>
+              </div>
+            </div>
+            <div class="discovery-table-wrap">
+              <table class="discovery-table">
+                <thead><tr><th>Select</th><th>Band</th><th>Location</th><th>Bandcamp</th><th>Store</th><th>Facebook</th><th>Spotify</th><th>Link score</th><th>Status</th><th>To library</th></tr></thead>
+                <tbody id="bandDiscoveryRows"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
       </section>
       <section id="libraryView" class="view library-view" hidden>
         <div class="panel library-panel">

@@ -4,6 +4,7 @@ import { createDirectVenuePublisher } from "./bar-edition-publication.mjs";
 import { createAggitsJukeboxQrArtwork } from "./aggits-jukebox-qr-artwork.mjs";
 import { buildMahoganyManifest } from "./mahogany-jukebox-model.mjs";
 import { MAHOGANY_RENDERER_VERSION } from "./aggits-jukebox-preview.mjs";
+import { MAHOGANY_VU_RENDERER_VERSION } from "./mahogany-vu-preview.mjs";
 
 export const MAHOGANY_PUBLICATION_SCHEMA =
   "deep-cuts-mahogany-jukebox-publication/2";
@@ -94,6 +95,8 @@ export function createMahoganyJukeboxPublisher({
   async function accept({
     prepared,
     videoPath = "",
+    musicPath = "",
+    characterPath = "",
     onProgress = async () => {},
   } = {}) {
     const current = await identity(),
@@ -122,7 +125,43 @@ export function createMahoganyJukeboxPublisher({
           currentJob.error || "Publication failed safely.",
           currentJob.errorCode || "publication_failed",
         );
-      if (manifest.video.kind === "mp4" && currentJob.status === "prepared") {
+      if (manifest.appearance === "mahogany-vu") {
+        if (manifest.vu.music.sizeBytes > 0 && currentJob.status === "prepared") {
+          await onProgress("uploading", "Uploading the verified music track");
+          await uploadVerifiedAsset({
+            fetchImpl,
+            url: `${baseUrl}/api/aggits-jukebox-publisher/publications/${job.id}/music`,
+            identity: current,
+            filePath: musicPath,
+            expected: manifest.vu.music,
+          });
+          currentJob = {
+            ...currentJob,
+            status:
+              manifest.vu.character.sizeBytes > 0
+                ? "music_uploaded"
+                : "video_uploaded",
+          };
+        }
+        if (
+          manifest.vu.character.sizeBytes > 0 &&
+          ["prepared", "music_uploaded"].includes(currentJob.status)
+        ) {
+          await onProgress(
+            "uploading",
+            "Uploading the verified Aggits presenter video",
+          );
+          await uploadVerifiedAsset({
+            fetchImpl,
+            url: `${baseUrl}/api/aggits-jukebox-publisher/publications/${job.id}/character`,
+            identity: current,
+            filePath: characterPath,
+            expected: manifest.vu.character,
+          });
+          currentJob = { ...currentJob, status: "video_uploaded" };
+        }
+      }
+      if (manifest.video?.kind === "mp4" && currentJob.status === "prepared") {
         await onProgress("uploading", "Uploading the verified MP4");
         const bytes = await fs.readFile(videoPath),
           sha = crypto.createHash("sha256").update(bytes).digest("hex");
@@ -219,6 +258,7 @@ export function createMahoganyJukeboxPublisher({
         qrImageUrl: currentJob.qrImageUrl,
         jobId: currentJob.id,
         deploymentUrl: baseUrl,
+        appearance: manifest.appearance || "mahogany-master",
         published: true,
       };
     } catch (error) {
@@ -276,6 +316,10 @@ export function createMahoganyJukeboxPublisher({
 
 export async function verifyMahoganyPublication(fetchImpl, job, manifest) {
   const origin = new URL(job.liveUrl).origin,
+    isVu = manifest.appearance === "mahogany-vu",
+    expectedRenderer = isVu
+      ? MAHOGANY_VU_RENDERER_VERSION
+      : MAHOGANY_RENDERER_VERSION,
     requests = [
       fetchImpl(`${job.liveUrl}?publication=${encodeURIComponent(job.id)}`, {
         cache: "no-store",
@@ -286,7 +330,21 @@ export async function verifyMahoganyPublication(fetchImpl, job, manifest) {
       ),
       fetchImpl(job.qrImageUrl, { cache: "no-store" }),
     ];
-  if (manifest.video.kind === "mp4")
+  if (isVu && manifest.vu.music.sizeBytes > 0)
+    requests.push(
+      fetchImpl(`${origin}/api/aggits-jukebox-assets/${job.editionId}/music`, {
+        method: "HEAD",
+        cache: "no-store",
+      }),
+    );
+  if (isVu && manifest.vu.character.sizeBytes > 0)
+    requests.push(
+      fetchImpl(
+        `${origin}/api/aggits-jukebox-assets/${job.editionId}/character`,
+        { method: "HEAD", cache: "no-store" },
+      ),
+    );
+  if (!isVu && manifest.video.kind === "mp4")
     requests.push(
       fetchImpl(`${origin}/api/aggits-jukebox-assets/${job.editionId}/video`, {
         method: "HEAD",
@@ -294,7 +352,7 @@ export async function verifyMahoganyPublication(fetchImpl, job, manifest) {
       }),
     );
   const responses = await Promise.all(requests),
-    [page, config, qr, video] = responses,
+    [page, config, qr, ...media] = responses,
     [html, json, qrBytes] = await Promise.all([
       page.text(),
       config.json().catch(() => null),
@@ -303,9 +361,9 @@ export async function verifyMahoganyPublication(fetchImpl, job, manifest) {
     png = new Uint8Array(qrBytes);
   if (
     !page.ok ||
-    !html.includes("Mahogany Jukebox") ||
-    !html.includes(`content="${MAHOGANY_RENDERER_VERSION}"`) ||
-    page.headers.get("x-deep-cuts-renderer") !== MAHOGANY_RENDERER_VERSION
+    !html.includes(isVu ? "Mahogany VU Jukebox" : "Mahogany Jukebox") ||
+    !html.includes(expectedRenderer) ||
+    page.headers.get("x-deep-cuts-renderer") !== expectedRenderer
   )
     throw publicationError(
       "The public service is not running the accepted Mahogany Jukebox graphics. Publication was stopped safely.",
@@ -314,8 +372,28 @@ export async function verifyMahoganyPublication(fetchImpl, job, manifest) {
   if (
     !config.ok ||
     json?.bandName !== manifest.title ||
-    json?.aggitsJukebox?.videoKind !== manifest.video.kind ||
-    json?.aggitsJukebox?.modelVersion !== MAHOGANY_RENDERER_VERSION
+    json?.analytics?.editionId !== job.editionId ||
+    json?.publicURL !== job.liveUrl ||
+    (isVu
+      ? json?.aggitsJukebox?.appearanceVariant !== "mahogany-vu"
+      : json?.aggitsJukebox?.appearanceVariant === "mahogany-vu") ||
+    json?.aggitsJukebox?.modelVersion !== expectedRenderer ||
+    (isVu &&
+      (json?.aggitsJukebox?.projectId !== manifest.projectId ||
+        json?.aggitsJukebox?.title !== manifest.title ||
+        json?.aggitsJukebox?.tickerText !== manifest.tickerText ||
+        !publicationActionsMatch(
+          json?.aggitsJukebox?.actions,
+          manifest.actions,
+        ) ||
+        !publicationMediaMatches(
+          json?.aggitsJukebox?.musicAudio,
+          manifest.vu.music,
+        ) ||
+        !publicationMediaMatches(
+          json?.aggitsJukebox?.presenterVideo,
+          manifest.vu.character,
+        )))
   )
     throw publicationError(
       "The live configuration did not match the accepted preview.",
@@ -326,15 +404,61 @@ export async function verifyMahoganyPublication(fetchImpl, job, manifest) {
       "The live QR poster failed verification.",
       "qr_verification_failed",
     );
-  if (
-    video &&
-    (!video.ok ||
-      !(video.headers.get("content-type") || "").includes("video/mp4"))
-  )
+  if (media.some((item) => !item.ok))
     throw publicationError(
-      "The live MP4 failed verification.",
-      "video_verification_failed",
+      "A live VU media asset failed verification.",
+      "media_verification_failed",
     );
+}
+
+function publicationActionsMatch(liveActions, expectedActions) {
+  if (!Array.isArray(liveActions) || !Array.isArray(expectedActions)) return false;
+  if (liveActions.length !== expectedActions.length) return false;
+  return expectedActions.every((expected, index) => {
+    const live = liveActions[index];
+    return (
+      Number(live?.slot) === Number(expected?.slot) &&
+      live?.iconId === expected?.iconId &&
+      live?.label === expected?.label &&
+      live?.actionType === expected?.actionType &&
+      live?.href === expected?.href &&
+      Boolean(live?.openInNewTab) === Boolean(expected?.openInNewTab)
+    );
+  });
+}
+
+function publicationMediaMatches(liveMedia, expectedMedia) {
+  const expectedSize = Number(expectedMedia?.sizeBytes) || 0;
+  return (
+    (Number(liveMedia?.sizeBytes) || 0) === expectedSize &&
+    String(liveMedia?.fileName || "") === String(expectedMedia?.fileName || "") &&
+    String(liveMedia?.sha256 || "") === String(expectedMedia?.sha256 || "") &&
+    String(liveMedia?.mimeType || "") === String(expectedMedia?.mimeType || "")
+  );
+}
+
+async function uploadVerifiedAsset({
+  fetchImpl,
+  url,
+  identity,
+  filePath,
+  expected,
+}) {
+  const bytes = await fs.readFile(filePath),
+    sha = crypto.createHash("sha256").update(bytes).digest("hex");
+  if (bytes.length !== expected.sizeBytes || sha !== expected.sha256)
+    throw publicationError(
+      "A selected VU media asset no longer matches the prepared preview.",
+      "media_identity_mismatch",
+    );
+  await remoteBytes(fetchImpl, url, {
+    identity,
+    bytes,
+    headers: {
+      "content-type": expected.mimeType,
+      "x-content-sha256": sha,
+    },
+  });
 }
 async function remoteJson(
   fetchImpl,

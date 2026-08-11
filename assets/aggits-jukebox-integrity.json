@@ -19,6 +19,12 @@
     "sha256": "a98943dec001c831ea8709eb260f87062782009cfd3a6665247be8585c3f87e1",
     "source": "Owner-supplied Aggits coin reference, background isolated for the interactive control"
   },
+  "vuPermanentPresenter": {
+    "path": "assets/aggits-vu-presenter-v1.mp4",
+    "sizeBytes": 12860992,
+    "sha256": "1991d02acaf7884873c375af0f1f1ebd162c2fc0da98765707b43fefc014a0ea",
+    "source": "Owner-supplied permanent green-screen Aggits presenter for every Mahogany VU Jukebox"
+  },
   "iconMaster": {
     "path": "assets/aggits-jukebox-icons-master-v1.jpg",
     "width": 1320,
@@ -33,6 +39,14 @@
     "combinedSha256": "43668a5c6b090e1f8e65127e59e8bb7f93371e5a5a74681317194619f696e14e",
     "source": "Lucide Icons 1.28.0 with six compatible custom brand glyphs, including Bandcamp",
     "license": "assets/aggits-jukebox-icons-oval-v4.LICENSE.txt"
+  },
+  "canonicalOvalButton": {
+    "path": "assets/aggits-jukebox-button-bank-canonical-v2.png",
+    "version": "aggits-oval-button-bank/2",
+    "width": 1600,
+    "height": 736,
+    "sha256": "7b69ad83c76b14f0f36981030d18ab4be121fc99a70edc40c9e422de97cdb5f4",
+    "source": "Owner-approved fully opaque four-key bank containing four pixel-identical reference-derived aged-brass and leather oval button masters; only the selected icon may vary"
   },
   "qrMaster": {
     "path": "assets/aggits-jukebox-qr-master-v1.png",

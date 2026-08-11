@@ -5,7 +5,7 @@ import os from "node:os";
 import path from "node:path";
 import {fileURLToPath} from "node:url";
 import {__test} from "../worker/bar-publisher.js";
-import {createVenueQrArtwork} from "./venue-qr-artwork.mjs";
+import {createVenueQrArtwork,VENUE_QR_DESIGN} from "./venue-qr-artwork.mjs";
 import {createDirectVenuePublisher} from "./bar-edition-publication.mjs";
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),"..");
@@ -48,6 +48,7 @@ assert.equal(config.barJookBox.localWelcomeVideo,"/api/bar-assets/dc_0123456789/
 
 const destination="https://deep-cuts.andrewharris501.workers.dev/q/dc_0123456789";
 const qr=await createVenueQrArtwork({root,venueName:manifest.venueName,destination});
+assert.equal(qr.designStandard,VENUE_QR_DESIGN);
 assert.equal(qr.destination,destination);
 assert.equal(qr.width,1920);
 assert.equal(qr.height,1080);

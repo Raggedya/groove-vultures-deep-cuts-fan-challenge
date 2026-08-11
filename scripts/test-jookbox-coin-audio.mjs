@@ -2,12 +2,13 @@ import assert from "node:assert/strict";
 import fs from "node:fs/promises";
 import vm from "node:vm";
 
-const [engine,index,app,studioModel,aggitsPreview,forgeConfig,windowsBuilder,worker]=await Promise.all([
+const [engine,index,app,studioModel,aggitsPreview,mahoganyVuPreview,forgeConfig,windowsBuilder,worker]=await Promise.all([
   fs.readFile("assets/js/jookbox-coin-audio.js","utf8"),
   fs.readFile("index.html","utf8"),
   fs.readFile("js/app.js","utf8"),
   fs.readFile("scripts/studio-model.mjs","utf8"),
   fs.readFile("scripts/aggits-jukebox-preview.mjs","utf8"),
+  fs.readFile("scripts/mahogany-vu-preview.mjs","utf8"),
   fs.readFile("forge.config.cjs","utf8"),
   fs.readFile("scripts/build-studio-windows.mjs","utf8"),
   fs.readFile("worker/aggits-jukebox-publisher.js","utf8")
@@ -52,11 +53,11 @@ await behavioralPlayback;
 assert.equal(playbackCompleted,true,"The shared engine must resolve only after the real coin recording ends.");
 behavioralCoin.destroy();
 
-for(const [name,source] of [["public discovery shell",index],["Bar Studio preview",studioModel],["Aggits Jukebox preview",aggitsPreview]]){
+for(const [name,source] of [["public discovery shell",index],["Bar Studio preview",studioModel],["Aggits Jukebox preview",aggitsPreview],["Mahogany VU preview",mahoganyVuPreview]]){
   assert.match(source,/\/assets\/js\/jookbox-coin-audio\.js/,`${name} must load the shared coin-audio engine.`);
   assert.match(source,/rel="preload" href="\/assets\/audio\/jukebox-real-coin-insert-cc0\.mp3" as="audio" type="audio\/mpeg"/,`${name} must begin loading the real coin recording before the visitor inserts the coin.`);
 }
-for(const [name,source] of [["public discovery runtime",app],["Bar Studio preview",studioModel],["Aggits Jukebox preview",aggitsPreview]]){
+for(const [name,source] of [["public discovery runtime",app],["Bar Studio preview",studioModel],["Aggits Jukebox preview",aggitsPreview],["Mahogany VU preview",mahoganyVuPreview]]){
   assert.match(source,/DeepCutsJookBoxCoinAudio/,`${name} must use the shared coin-audio engine.`);
   assert.match(source,/volume:1,gain:1\.15/,`${name} must request the locked audible coin level.`);
 }

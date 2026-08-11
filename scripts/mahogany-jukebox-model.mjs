@@ -5,11 +5,18 @@ import {
   AGGITS_JUKEBOX_ICONS,
   aggitsJukeboxIcon,
 } from "./aggits-jukebox-icons.mjs";
+import {
+  DEFAULT_DUCKING_SETTINGS,
+  DUCKING_ANALYSIS_VERSION,
+  normalizeDuckingSettings,
+} from "../mahogany-studio/audio-ducking.js";
 
 export const MAHOGANY_PROJECT_SCHEMA = "mahogany-jukebox-project/1";
 export const MAHOGANY_PUBLICATION_MANIFEST_SCHEMA =
   "deep-cuts-mahogany-jukebox-publication/2";
 export const MAHOGANY_VIDEO_MAX_BYTES = 24 * 1024 * 1024;
+export const MAHOGANY_AUDIO_MAX_BYTES = 48 * 1024 * 1024;
+export const MAHOGANY_CHARACTER_MAX_BYTES = 24 * 1024 * 1024;
 export const MAHOGANY_ACTION_COUNT = 4;
 
 export function newMahoganyProject() {
@@ -19,8 +26,9 @@ export function newMahoganyProject() {
     id: `studio_${crypto.randomBytes(6).toString("hex")}`,
     name: "",
     tickerText: "",
+    appearance: "mahogany-master",
     video: {
-      kind: "youtube",
+      kind: "mp4",
       youtubeUrl: "",
       embedStatus: "",
       embedVideoId: "",
@@ -28,6 +36,28 @@ export function newMahoganyProject() {
       fileName: "",
       sizeBytes: 0,
       sha256: "",
+    },
+    vu: {
+      music: {
+        fileName: "",
+        trackName: "",
+        sizeBytes: 0,
+        sha256: "",
+        mimeType: "",
+      },
+      character: { fileName: "", sizeBytes: 0, sha256: "", mimeType: "" },
+      ducking: {
+        ...DEFAULT_DUCKING_SETTINGS,
+        analysis: {
+          status: "none",
+          version: "",
+          sourceSha256: "",
+          durationSeconds: 0,
+          regions: [],
+          analysedAt: "",
+          error: "",
+        },
+      },
     },
     actions: Array.from({ length: MAHOGANY_ACTION_COUNT }, (_, index) => ({
       slot: index + 1,
@@ -37,6 +67,7 @@ export function newMahoganyProject() {
       openInNewTab: true,
     })),
     status: "draft",
+    candidate: null,
     publicationProgress: null,
     publication: null,
     createdAt: now,
@@ -54,6 +85,8 @@ export function normalizeMahoganyProject(value) {
     : base.id;
   project.name = clean(source.name, 120);
   project.tickerText = multiline(source.tickerText, 500);
+  project.appearance =
+    source.appearance === "mahogany-vu" ? "mahogany-vu" : "mahogany-master";
   const video =
     source.video && typeof source.video === "object" ? source.video : {};
   project.video = {
@@ -69,6 +102,15 @@ export function normalizeMahoganyProject(value) {
     sha256: /^[a-f0-9]{64}$/.test(String(video.sha256 || ""))
       ? String(video.sha256)
       : "",
+  };
+  const vu = source.vu && typeof source.vu === "object" ? source.vu : {},
+    music = vu.music && typeof vu.music === "object" ? vu.music : {},
+    character =
+      vu.character && typeof vu.character === "object" ? vu.character : {};
+  project.vu = {
+    music: normalizeStoredMedia(music, ["audio/mpeg", "audio/wav"]),
+    character: normalizeStoredMedia(character, ["video/mp4"]),
+    ducking: normalizeDucking(vu.ducking),
   };
   const incoming = Array.isArray(source.actions) ? source.actions : [];
   project.actions = Array.from(
@@ -95,6 +137,80 @@ export function normalizeMahoganyProject(value) {
   ].includes(source.status)
     ? source.status
     : "draft";
+  project.candidate =
+    source.candidate && typeof source.candidate === "object"
+      ? {
+          kind: source.candidate.kind === "band" ? "band" : "",
+          source:
+            ["automatic_batch", "bandcamp_discovery"].includes(
+              source.candidate.source,
+            )
+              ? source.candidate.source
+              : "",
+          status:
+            ["verified", "manual_review"].includes(source.candidate.status)
+              ? source.candidate.status
+              : "",
+          grade: ["gold", "silver"].includes(source.candidate.grade)
+            ? source.candidate.grade
+            : "",
+          confidence: Math.max(
+            0,
+            Math.min(100, Number(source.candidate.confidence) || 0),
+          ),
+          verifiedAt: validDate(source.candidate.verifiedAt),
+          batchId: clean(source.candidate.batchId, 80),
+          linktreeUrl: clean(source.candidate.linktreeUrl, 500),
+          catalogueUrl: clean(source.candidate.catalogueUrl, 500),
+          youtubeEligible: source.candidate.youtubeEligible === true,
+          platformOrder: Array.isArray(source.candidate.platformOrder)
+            ? source.candidate.platformOrder
+                .map((item) => clean(item, 30))
+                .filter(Boolean)
+                .slice(0, MAHOGANY_ACTION_COUNT)
+            : [],
+          missingPlatforms: Array.isArray(source.candidate.missingPlatforms)
+            ? source.candidate.missingPlatforms
+                .map((item) => clean(item, 30))
+                .filter(Boolean)
+                .slice(0, MAHOGANY_ACTION_COUNT)
+            : [],
+          reviewReasons: Array.isArray(source.candidate.reviewReasons)
+            ? source.candidate.reviewReasons
+                .map((item) => clean(item, 180))
+                .filter(Boolean)
+                .slice(0, 8)
+            : [],
+          evidenceUrls: Array.isArray(source.candidate.evidenceUrls)
+            ? source.candidate.evidenceUrls
+                .map((item) => clean(item, 500))
+                .filter(Boolean)
+                .slice(0, 20)
+            : [],
+          bandId: clean(source.candidate.bandId, 80),
+          location: clean(source.candidate.location, 120),
+          bandcampUrl: clean(source.candidate.bandcampUrl, 500),
+          bandcampStoreUrl: clean(source.candidate.bandcampStoreUrl, 500),
+          facebookUrl: clean(source.candidate.facebookUrl, 500),
+          spotifyUrl: clean(source.candidate.spotifyUrl, 500),
+          linkScore: Math.max(
+            1,
+            Math.min(4, Number(source.candidate.linkScore) || 1),
+          ),
+          dateDiscovered: validDate(source.candidate.dateDiscovered),
+          discoverySource:
+            source.candidate.discoverySource === "Bandcamp" ? "Bandcamp" : "",
+          audioStatus:
+            source.candidate.audioStatus === "Added" ? "Added" : "Not Added",
+          audioFile: clean(source.candidate.audioFile, 180),
+          trackName: clean(source.candidate.trackName, 180),
+          purchaseStatus:
+            source.candidate.purchaseStatus === "Purchased"
+              ? "Purchased"
+              : "Not Purchased",
+          notes: multiline(source.candidate.notes, 1000),
+        }
+      : null;
   project.publication =
     source.publication && typeof source.publication === "object"
       ? source.publication
@@ -121,7 +237,22 @@ export function validateMahoganyProject(
     errors = [];
   if (!value.name) errors.push("Enter the Jukebox name.");
   if (!value.tickerText) errors.push("Enter the ticker text.");
-  if (value.video.kind === "youtube") {
+  if (value.appearance === "mahogany-vu") {
+    const hasMusic = Boolean(
+        value.vu.music.fileName &&
+          value.vu.music.sha256 &&
+          value.vu.music.sizeBytes > 0,
+      ),
+      hasPresenter = Boolean(
+        value.vu.character.fileName &&
+          value.vu.character.sha256 &&
+          value.vu.character.sizeBytes > 0,
+      );
+    if (!hasMusic && !hasPresenter)
+      errors.push("Choose an MP3/WAV song or an Aggits presenter video.");
+    if (value.vu.music.sizeBytes > MAHOGANY_AUDIO_MAX_BYTES)
+      errors.push("The VU music file must be 48 MiB or smaller.");
+  } else if (value.video.kind === "youtube") {
     const youtubeId = youtubeVideoId(value.video.youtubeUrl);
     if (!youtubeId)
       errors.push("Enter a valid YouTube video URL.");
@@ -162,6 +293,8 @@ export function toPreviewProject(project) {
   return {
     schemaVersion: "deep-cuts-studio-project/1",
     id: value.id,
+    appearance: value.appearance,
+    vu: value.vu,
     input: {
       type: "aggits_jukebox",
       name: value.name,
@@ -194,9 +327,31 @@ export function buildMahoganyManifest(project) {
     throw modelError(checked.errors.join(" "), "project_not_ready");
   const value = checked.value,
     youtubeId = youtubeVideoId(value.video.youtubeUrl);
+  if (value.appearance === "mahogany-vu")
+    return {
+      schemaVersion: MAHOGANY_PUBLICATION_MANIFEST_SCHEMA,
+      projectId: value.id,
+      appearance: "mahogany-vu",
+      title: value.name,
+      tickerText: value.tickerText,
+      actions: value.actions.map((action) => ({
+        slot: action.slot,
+        iconId: action.iconId,
+        label: action.label,
+        actionType: actionType(action.href),
+        href: safeDestination(action.href),
+        openInNewTab: action.openInNewTab,
+      })),
+      vu: {
+        music: { ...value.vu.music },
+        character: { ...value.vu.character },
+        ducking: JSON.parse(JSON.stringify(value.vu.ducking)),
+      },
+    };
   return {
     schemaVersion: MAHOGANY_PUBLICATION_MANIFEST_SCHEMA,
     projectId: value.id,
+    appearance: "mahogany-master",
     title: value.name,
     tickerText: value.tickerText,
     actions: value.actions.map((action) => ({
@@ -275,6 +430,25 @@ export async function listMahoganyProjects(projectRoot) {
   );
 }
 
+export async function archiveMahoganyProject(projectRoot, id) {
+  const project = await loadMahoganyProject(projectRoot, id);
+  if (
+    ["published", "unpublished"].includes(project.status) ||
+    project.publication?.editionId ||
+    project.prepared?.editionId
+  )
+    throw modelError(
+      "Published jukeboxes cannot be deleted because their permanent URL and QR identity must be preserved.",
+      "project_identity_protected",
+    );
+  const archiveRoot = path.join(path.dirname(projectRoot), "archive", "projects");
+  await fs.mkdir(archiveRoot, { recursive: true });
+  const stamp = new Date().toISOString().replace(/[:.]/g, "-");
+  const archivedPath = path.join(archiveRoot, `${id}-${stamp}`);
+  await fs.rename(path.join(projectRoot, id), archivedPath);
+  return { project, archivedPath };
+}
+
 export async function storeMahoganyMp4(projectRoot, project, bytes, fileName) {
   if (
     !(bytes instanceof Uint8Array) ||
@@ -300,6 +474,268 @@ export async function storeMahoganyMp4(projectRoot, project, bytes, fileName) {
       sha256: crypto.createHash("sha256").update(bytes).digest("hex"),
     },
   });
+}
+
+export async function storeMahoganyVuMusic(
+  projectRoot,
+  project,
+  bytes,
+  fileName,
+) {
+  const name = clean(fileName, 180),
+    isWav =
+      bytes instanceof Uint8Array &&
+      bytes.length >= 12 &&
+      String.fromCharCode(...bytes.subarray(0, 4)) === "RIFF" &&
+      String.fromCharCode(...bytes.subarray(8, 12)) === "WAVE",
+    isMp3 =
+      bytes instanceof Uint8Array &&
+      bytes.length >= 3 &&
+      (String.fromCharCode(...bytes.subarray(0, 3)) === "ID3" ||
+        (bytes[0] === 0xff && (bytes[1] & 0xe0) === 0xe0));
+  if (!isWav && !isMp3)
+    throw modelError("Choose a valid MP3 or WAV file.", "audio_invalid");
+  if (bytes.length > MAHOGANY_AUDIO_MAX_BYTES)
+    throw modelError("The VU music file must be 48 MiB or smaller.", "audio_too_large");
+  const extension = isWav ? "wav" : "mp3",
+    mimeType = isWav ? "audio/wav" : "audio/mpeg",
+    trackName = clean(
+      String(name || `music.${extension}`)
+        .replace(/\.[^.]+$/, "")
+        .replace(/[_-]+/g, " ")
+        .replace(/\s+/g, " ")
+        .trim(),
+      180,
+    ),
+    directory = path.join(projectRoot, project.id),
+    target = path.join(directory, `music.${extension}`);
+  await fs.mkdir(directory, { recursive: true });
+  await Promise.all([
+    fs.rm(path.join(directory, extension === "wav" ? "music.mp3" : "music.wav"), {
+      force: true,
+    }),
+    fs.writeFile(target, bytes),
+  ]);
+  return normalizeMahoganyProject({
+    ...project,
+    appearance: "mahogany-vu",
+    candidate:
+      project.candidate?.source === "bandcamp_discovery"
+        ? {
+            ...project.candidate,
+            audioStatus: "Added",
+            audioFile: name || `music.${extension}`,
+            trackName: project.candidate.trackName || trackName,
+          }
+        : project.candidate,
+    vu: {
+      ...project.vu,
+      music: {
+        fileName: name || `music.${extension}`,
+        trackName,
+        sizeBytes: bytes.length,
+        sha256: crypto.createHash("sha256").update(bytes).digest("hex"),
+        mimeType,
+      },
+    },
+  });
+}
+
+export async function storeMahoganyVuCharacter(
+  projectRoot,
+  project,
+  bytes,
+  fileName,
+) {
+  if (
+    !(bytes instanceof Uint8Array) ||
+    bytes.length < 12 ||
+    String.fromCharCode(...bytes.subarray(4, 8)) !== "ftyp"
+  )
+    throw modelError("Choose a valid MP4 character video.", "character_invalid");
+  if (bytes.length > MAHOGANY_CHARACTER_MAX_BYTES)
+    throw modelError(
+      "The optional Aggits character MP4 must be 24 MiB or smaller.",
+      "character_too_large",
+    );
+  const directory = path.join(projectRoot, project.id);
+  await fs.mkdir(directory, { recursive: true });
+  await fs.writeFile(path.join(directory, "character.mp4"), bytes);
+  const sha256 = crypto.createHash("sha256").update(bytes).digest("hex");
+  return normalizeMahoganyProject({
+    ...project,
+    appearance: "mahogany-vu",
+    vu: {
+      ...project.vu,
+      character: {
+        fileName: clean(fileName, 180) || "character.mp4",
+        sizeBytes: bytes.length,
+        sha256,
+        mimeType: "video/mp4",
+      },
+      ducking: {
+        ...project.vu.ducking,
+        analysis: {
+          status: "pending",
+          version: DUCKING_ANALYSIS_VERSION,
+          sourceSha256: sha256,
+          durationSeconds: 0,
+          regions: [],
+          analysedAt: "",
+          error: "",
+        },
+      },
+    },
+  });
+}
+
+export function setMahoganyVuDucking(project, payload) {
+  const current = normalizeMahoganyProject(project),
+    analysis = payload?.analysis && typeof payload.analysis === "object"
+      ? payload.analysis
+      : {},
+    sourceSha256 = String(analysis.sourceSha256 || "");
+  if (
+    sourceSha256 &&
+    sourceSha256 !== current.vu.character.sha256
+  )
+    throw modelError(
+      "Speech analysis does not match the current presenter video.",
+      "analysis_identity_mismatch",
+    );
+  const status = ["pending", "complete", "failed", "none"].includes(
+    analysis.status,
+  )
+    ? analysis.status
+    : "failed";
+  return normalizeMahoganyProject({
+    ...current,
+    vu: {
+      ...current.vu,
+      ducking: {
+        ...current.vu.ducking,
+        ...normalizeDuckingSettings(payload?.settings || current.vu.ducking),
+        analysis: {
+          status,
+          version:
+            status === "complete" ? DUCKING_ANALYSIS_VERSION : "",
+          sourceSha256: current.vu.character.sha256,
+          durationSeconds: Number(analysis.durationSeconds) || 0,
+          regions: normalizeRegions(analysis.regions),
+          analysedAt: status === "complete" ? new Date().toISOString() : "",
+          error: status === "failed" ? clean(analysis.error, 240) : "",
+        },
+      },
+    },
+  });
+}
+
+export async function removeMahoganyVuMedia(projectRoot, project, kind) {
+  const current = normalizeMahoganyProject(project),
+    directory = path.join(projectRoot, current.id);
+  if (kind === "music") {
+    await Promise.all([
+      fs.rm(path.join(directory, "music.mp3"), { force: true }),
+      fs.rm(path.join(directory, "music.wav"), { force: true }),
+    ]);
+    return normalizeMahoganyProject({
+      ...current,
+      candidate:
+        current.candidate?.source === "bandcamp_discovery"
+          ? {
+              ...current.candidate,
+              audioStatus: "Not Added",
+              audioFile: "",
+              trackName: "",
+            }
+          : current.candidate,
+      vu: {
+        ...current.vu,
+        music: {
+          fileName: "",
+          trackName: "",
+          sizeBytes: 0,
+          sha256: "",
+          mimeType: "",
+        },
+      },
+    });
+  }
+  if (kind !== "character")
+    throw modelError("Unknown VU media type.", "media_kind_invalid");
+  await fs.rm(path.join(directory, "character.mp4"), { force: true });
+  return normalizeMahoganyProject({
+    ...current,
+    vu: {
+      ...current.vu,
+      character: { fileName: "", sizeBytes: 0, sha256: "", mimeType: "" },
+      ducking: {
+        ...current.vu.ducking,
+        analysis: {
+          status: "none",
+          version: "",
+          sourceSha256: "",
+          durationSeconds: 0,
+          regions: [],
+          analysedAt: "",
+          error: "",
+        },
+      },
+    },
+  });
+}
+
+function normalizeStoredMedia(value, allowedMimeTypes) {
+  return {
+    fileName: clean(value.fileName, 180),
+    trackName: clean(value.trackName, 180),
+    sizeBytes: Math.max(0, Number(value.sizeBytes) || 0),
+    sha256: /^[a-f0-9]{64}$/.test(String(value.sha256 || ""))
+      ? String(value.sha256)
+      : "",
+    mimeType: allowedMimeTypes.includes(value.mimeType) ? value.mimeType : "",
+  };
+}
+
+function normalizeDucking(value) {
+  const source = value && typeof value === "object" ? value : {},
+    settings = normalizeDuckingSettings(source),
+    analysis =
+      source.analysis && typeof source.analysis === "object"
+        ? source.analysis
+        : {};
+  return {
+    ...settings,
+    analysis: {
+      status: ["none", "pending", "complete", "failed"].includes(
+        analysis.status,
+      )
+        ? analysis.status
+        : "none",
+      version: clean(analysis.version, 40),
+      sourceSha256: /^[a-f0-9]{64}$/.test(String(analysis.sourceSha256 || ""))
+        ? String(analysis.sourceSha256)
+        : "",
+      durationSeconds: Math.max(0, Number(analysis.durationSeconds) || 0),
+      regions: normalizeRegions(analysis.regions),
+      analysedAt: validDate(analysis.analysedAt),
+      error: clean(analysis.error, 240),
+    },
+  };
+}
+
+function normalizeRegions(value) {
+  return (Array.isArray(value) ? value : [])
+    .map((region) => [Number(region?.[0]), Number(region?.[1])])
+    .filter(
+      ([start, end]) =>
+        Number.isFinite(start) && Number.isFinite(end) && start >= 0 && end > start,
+    )
+    .slice(0, 2000)
+    .map(([start, end]) => [
+      Math.round(start * 100) / 100,
+      Math.round(end * 100) / 100,
+    ]);
 }
 
 export function mahoganyIconCatalog() {

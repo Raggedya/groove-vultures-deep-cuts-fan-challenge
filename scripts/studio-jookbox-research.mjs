@@ -109,43 +109,57 @@ export class StudioResearchNetwork{
     };
   }
 
-  async search(bandName){
+  async search(bandName,{includeYouTube=true}={}){
     const name=String(bandName).trim();
     const queries=[
       `"${name}" "official website" band`,
-      `"${name}" band music official`,
-      `"${name}" band Linktree`
+      `"${name}" band Linktree`,
+      `"${name}" site:bandcamp.com`,
+      `"${name}" site:instagram.com band`,
+      `"${name}" site:facebook.com band`,
+      `"${name}" site:open.spotify.com/artist`
     ];
     const urls=queries.map(query=>`https://www.bing.com/search?format=rss&q=${encodeURIComponent(query)}`);
     const youtubeURL=`https://www.youtube.com/results?search_query=${encodeURIComponent(`${name} band official`)}`;
-    const pages=await Promise.all([...urls,youtubeURL].map(url=>this.inspect(url)));
+    const pages=await Promise.all([...urls,...(includeYouTube?[youtubeURL]:[])].map(url=>this.inspect(url)));
     const results=[];
     for(const page of pages.slice(0,queries.length)){
       if(page.ok)results.push(...extractSearchResults(page.body));
     }
-    const youtubeSearch=pages.at(-1);
-    if(youtubeSearch.ok)results.unshift(...extractYouTubeSearchSeeds(youtubeSearch.body));
-    return unique(results).slice(0,30);
+    const youtubeSearch=includeYouTube?pages.at(-1):null;
+    if(youtubeSearch?.ok)results.unshift(...extractYouTubeSearchSeeds(youtubeSearch.body));
+    return unique(results).slice(0,80);
   }
 }
 
-export async function researchStudioJookBox(input,{network=new StudioResearchNetwork(),now=new Date(),onProgress=()=>{}}={}){
+export async function researchStudioJookBox(input,{network=new StudioResearchNetwork(),now=new Date(),onProgress=()=>{},requirements={}}={}){
   const bandName=clean(input?.name,120);
   if(!bandName)throw new StudioJookBoxResearchError("Add the band name before research begins.","band_name_required");
-  const suppliedSeeds=unique((input?.sourceUrls||[]).map(normalizeHttps).filter(Boolean)).slice(0,3);
-  const suppliedVideo=normalizeHttps(input?.youtubeUrl||"");
+  const suppliedSeeds=unique((input?.sourceUrls||[]).map(normalizeHttps).filter(Boolean)).slice(0,8);
+  const requireFeaturedVideo=requirements.requireFeaturedVideo!==false;
+  const requiredDestinationKinds=Array.isArray(requirements.requiredDestinationKinds)
+    ?unique(requirements.requiredDestinationKinds.map(value=>String(value||"").toLowerCase()).filter(Boolean))
+    :[];
+  const suppliedVideo=requireFeaturedVideo?normalizeHttps(input?.youtubeUrl||""):"";
   const fingerprint=researchFingerprint(input);
   const startedAt=now.toISOString();
   const discoveryNotes=[];
 
   onProgress({stage:"discovering",message:"Finding artist-controlled sources."});
   let seedURLs=[...suppliedSeeds];
-  if(!seedURLs.length){
-    const discovered=await network.search(bandName).catch(()=>[]);
-    seedURLs=rankSearchSeeds(discovered,bandName).slice(0,6);
-    discoveryNotes.push(seedURLs.length
-      ?"Name-only discovery found possible official sources; each candidate still had to pass the identity checks."
-      :"Name-only discovery did not find an independently verifiable artist-controlled source.");
+  const shouldAugmentSeeds=!seedURLs.length||(
+    requiredDestinationKinds.length>0&&requirements.skipSearchWhenSupplied!==true
+  );
+  if(shouldAugmentSeeds){
+    const discovered=await network.search(bandName,{includeYouTube:requireFeaturedVideo}).catch(()=>[]);
+    const discoveredSeeds=selectStudioResearchSeeds(discovered,bandName,{
+      requiredDestinationKinds,
+      limit:12
+    });
+    seedURLs=unique([...seedURLs,...discoveredSeeds]).slice(0,14);
+    discoveryNotes.push(discoveredSeeds.length
+      ?"Independent platform searches supplied additional leads; every destination still had to pass the identity and 98% confidence checks."
+      :"Search did not find additional independently verifiable artist-controlled sources.");
   }
   if(suppliedVideo&&!seedURLs.includes(suppliedVideo))seedURLs.push(suppliedVideo);
 
@@ -159,7 +173,7 @@ export async function researchStudioJookBox(input,{network=new StudioResearchNet
     return promise;
   };
 
-  const rootPages=await mapWithConcurrency(seedURLs.slice(0,7),4,async url=>{
+  const rootPages=await mapWithConcurrency(seedURLs.slice(0,14),4,async url=>{
     const page=await inspect(url);
     const identity=page.ok&&pageIdentityMatch(page,bandName);
     return{...page,identity,entries:page.ok?extractPageEntries(page.body,page.finalURL):[]};
@@ -189,9 +203,15 @@ export async function researchStudioJookBox(input,{network=new StudioResearchNet
   verifiedRoots.push(...additionalRoots.filter(Boolean));
   verifiedRoots=[...new Map(verifiedRoots.map(page=>[normalizeComparable(page.finalURL),page])).values()];
 
-  const sourceEntries=uniqueEntries(verifiedRoots.flatMap(page=>
+  const searchLeadEntries=rootPages.map(page=>({
+    url:page.finalURL||page.requestedURL,
+    label:"Independent platform search lead",
+    sourceURL:"search-discovery",
+    sourceIdentity:false
+  }));
+  const sourceEntries=uniqueEntries([...verifiedRoots.flatMap(page=>
     extractPageEntries(page.body,page.finalURL).map(entry=>({...entry,sourceURL:page.finalURL,sourceIdentity:true}))
-  ));
+  ),...searchLeadEntries]);
   for(const page of verifiedRoots){
     const kind=classifyURL(page.finalURL,"",bandName);
     if(kind){
@@ -217,8 +237,9 @@ export async function researchStudioJookBox(input,{network=new StudioResearchNet
     const linkedByVerifiedRoot=verifiedRoots.some(root=>sameURL(root.finalURL,candidate.sourceURL));
     const destinationIdentity=pageIdentityMatch(page,bandName);
     const matchingRootCount=new Set(sourceEntries.filter(entry=>sameURL(entry.url,candidate.url)&&entry.sourceIdentity).map(entry=>host(entry.sourceURL))).size;
-    const confidence=destinationIdentity?100:linkedByVerifiedRoot||matchingRootCount>0?98:0;
-    if(confidence<STUDIO_JOOKBOX_CONFIDENCE_GATE)return null;
+    const manualReviewLead=candidate.sourceURL==="search-discovery";
+    const confidence=destinationIdentity?100:linkedByVerifiedRoot||matchingRootCount>0?98:manualReviewLead?75:0;
+    if(confidence<75)return null;
     const [defaultLabel,defaultDetail]=KIND_LABELS[candidate.kind]||["Open","Verified destination"];
     return{
       candidate,
@@ -231,33 +252,40 @@ export async function researchStudioJookBox(input,{network=new StudioResearchNet
       confidence,
       verifiedAt:page.checkedAt,
       sourceURL:candidate.sourceURL,
+      needsManualReview:confidence<STUDIO_JOOKBOX_CONFIDENCE_GATE,
       evidence:destinationIdentity
         ?`${defaultLabel} resolved directly and its destination metadata matched ${bandName}.`
-        :`${defaultLabel} resolved directly from an identity-matched artist-controlled source for ${bandName}.`
+        :confidence>=STUDIO_JOOKBOX_CONFIDENCE_GATE
+          ?`${defaultLabel} resolved directly from an identity-matched artist-controlled source for ${bandName}.`
+          :`${defaultLabel} resolved as a direct platform destination discovered for ${bandName}; owner review is required before publication.`
     };
   });
-  const verifiedSelections=[];
+  const candidateSelections=[];
   for(const result of verifiedDestinationResults.filter(Boolean)){
     const {candidate,...selection}=result;
-    verifiedSelections.push({
-      id:selectionId(candidate.kind,candidate.url,verifiedSelections),
+    candidateSelections.push({
+      id:selectionId(candidate.kind,candidate.url,candidateSelections),
       ...selection
     });
   }
 
-  const selections=dedupeVerifiedSelections(verifiedSelections);
+  const reviewCandidates=dedupeVerifiedSelections(candidateSelections);
+  const selections=reviewCandidates.filter(item=>item.confidence>=STUDIO_JOOKBOX_CONFIDENCE_GATE);
   const displaySelections=KIND_PRIORITY
     .flatMap(kind=>selections.filter(item=>item.kind===kind))
     .slice(0,6);
 
-  onProgress({stage:"video",message:"Verifying the official channel and featured video."});
-  const featuredVideo=await resolveFeaturedVideo({
-    bandName,
-    suppliedVideo,
-    selections,
-    roots:verifiedRoots,
-    inspect
-  });
+  let featuredVideo=null;
+  if(requireFeaturedVideo){
+    onProgress({stage:"video",message:"Verifying the official channel and featured video."});
+    featuredVideo=await resolveFeaturedVideo({
+      bandName,
+      suppliedVideo,
+      selections,
+      roots:verifiedRoots,
+      inspect
+    });
+  }
 
   onProgress({stage:"biography",message:"Building the sourced biography ticker."});
   const biography=extractVerifiedBiography(verifiedRoots,bandName);
@@ -269,8 +297,10 @@ export async function researchStudioJookBox(input,{network=new StudioResearchNet
     artistControlledIdentity:verifiedRoots.length>0,
     independentSources:identityHosts.size>=2,
     sourcedBiography:Boolean(biography.text&&biography.sourceURL),
-    officialFeaturedVideo:Boolean(featuredVideo?.url&&featuredVideo?.identityVerified),
-    verifiedDestinations:displaySelections.length>=4,
+    officialFeaturedVideo:!requireFeaturedVideo||Boolean(featuredVideo?.url&&featuredVideo?.identityVerified),
+    verifiedDestinations:requiredDestinationKinds.length
+      ?requiredDestinationKinds.every(kind=>selections.some(item=>item.kind===kind&&item.confidence>=STUDIO_JOOKBOX_CONFIDENCE_GATE))
+      :displaySelections.length>=4,
     everyDisplayedDestinationVerified:displaySelections.every(item=>item.confidence>=STUDIO_JOOKBOX_CONFIDENCE_GATE)
   };
   const confidence=confidenceForChecks(checks);
@@ -280,6 +310,7 @@ export async function researchStudioJookBox(input,{network=new StudioResearchNet
     bandName,
     verifiedRoots,
     selections,
+    reviewCandidates,
     biography,
     featuredVideo,
     finishedAt
@@ -321,7 +352,7 @@ export async function researchStudioJookBox(input,{network=new StudioResearchNet
     displaySelectionIds:displaySelections.map(item=>item.id),
     sources,
     omittedCandidates,
-    blockers:blockersFor(checks,{suppliedSeeds,seedCount:seedURLs.length})
+    blockers:blockersFor(checks,{suppliedSeeds,seedCount:seedURLs.length,requireFeaturedVideo,requiredDestinationKinds})
   };
 }
 
@@ -354,15 +385,17 @@ function confidenceForChecks(checks){
   return score===100?100:Math.min(97,score);
 }
 
-function blockersFor(checks,{suppliedSeeds,seedCount}){
+function blockersFor(checks,{suppliedSeeds,seedCount,requireFeaturedVideo=true,requiredDestinationKinds=[]}){
   const blockers=[];
   if(!checks.artistControlledIdentity)blockers.push(suppliedSeeds.length
     ?"The supplied URL did not independently prove the band identity."
     :seedCount?"Name-only candidates did not prove an artist-controlled identity. Add the band’s official website, Linktree or social profile.":"No credible artist-controlled source was discovered. Add one official URL.");
   if(!checks.independentSources)blockers.push("A second independent destination must corroborate the band identity.");
   if(!checks.sourcedBiography)blockers.push("A concise biography could not be extracted from an identity-verified official source.");
-  if(!checks.officialFeaturedVideo)blockers.push("The most-viewed embeddable video on the verified official YouTube channel could not be proved.");
-  if(!checks.verifiedDestinations)blockers.push("At least four direct destinations must reach the mandatory 98% confidence gate for the locked six-key JookBox.");
+  if(requireFeaturedVideo&&!checks.officialFeaturedVideo)blockers.push("The most-viewed embeddable video on the verified official YouTube channel could not be proved.");
+  if(!checks.verifiedDestinations)blockers.push(requiredDestinationKinds.length
+    ?`Every required destination (${requiredDestinationKinds.join(", ")}) must reach the mandatory 98% confidence gate.`
+    :"At least four direct destinations must reach the mandatory 98% confidence gate for the locked JookBox.");
   if(!checks.everyDisplayedDestinationVerified)blockers.push("One or more proposed JookBox keys did not meet the 98% confidence gate.");
   return blockers;
 }
@@ -663,8 +696,14 @@ async function verifiedYouTubeMetadata(videoId,bandName,inspect){
   let metadata;try{metadata=JSON.parse(metadataPage.body)}catch{return null}
   if(!textIdentityMatch(metadata.author_name||"",bandName))return null;
   const embed=await inspect(`https://www.youtube-nocookie.com/embed/${videoId}`);
-  if(!embed.ok)return null;
+  if(!embed.ok||youtubeEmbedBlocked(embed.body))return null;
   return{title:cleanSentence(metadata.title,120),authorName:cleanSentence(metadata.author_name,120)};
+}
+
+function youtubeEmbedBlocked(body){
+  const source=String(body||"");
+  return /"playabilityStatus"\s*:\s*\{\s*"status"\s*:\s*"(?:ERROR|UNPLAYABLE|LOGIN_REQUIRED)"/i.test(source)
+    || /VIDEO_NOT_PLAYABLE_IN_EMBEDDED_PLAYER|Playback on other websites has been disabled|Video unavailable/i.test(source);
 }
 
 function youtubeParts(value){
@@ -700,6 +739,21 @@ function rankSearchSeeds(results,bandName){
     .filter(item=>item.score>0)
     .sort((a,b)=>b.score-a.score)
     .map(item=>item.url);
+}
+
+export function selectStudioResearchSeeds(results,bandName,{requiredDestinationKinds=[],limit=12}={}){
+  const ranked=rankSearchSeeds(results,bandName);
+  const selected=[];
+  const take=url=>{
+    if(url&&!selected.some(item=>sameURL(item,url)))selected.push(url);
+  };
+  for(const kind of unique(requiredDestinationKinds)){
+    take(ranked.find(url=>classifyURL(url,"",bandName)===kind));
+  }
+  take(ranked.find(url=>isArtistLinkHubProfile(url)));
+  take(ranked.find(url=>classifyURL(url,"Official website",bandName)==="website"));
+  for(const url of ranked)take(url);
+  return selected.slice(0,Math.max(1,Number(limit)||12));
 }
 
 function searchSeedScore(value,bandName){
