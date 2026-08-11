@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "fullnoise-vu-cabinet-integrity/1",
+  "asset": "assets/fullnoise-vu-cabinet-master-v1.webp",
+  "sha256": "9f3289dfee573927f3c2c8731fb34b14ed17dcd0aec1a4a1b6cb879d0abbdb00",
+  "width": 959,
+  "height": 1640,
+  "dynamicZones": [
+    "ticker",
+    "artist-name",
+    "song-title",
+    "four-action-icons"
+  ],
+  "source": "Owner-supplied Fullnoise VU reference, cleaned non-destructively for runtime data binding",
+  "lockedAt": "2026-08-11"
+}

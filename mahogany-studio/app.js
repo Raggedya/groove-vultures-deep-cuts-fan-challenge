@@ -4,6 +4,10 @@ import {
 } from "/mahogany-studio/audio-ducking.js";
 
 const $ = (id) => document.getElementById(id);
+const product = document.documentElement.dataset.product || "mahogany";
+const apiBase = product === "fullnoise" ? "/api/fullnoise" : "/api/mahogany";
+const productName =
+  product === "fullnoise" ? "Fullnoise VU Jukebox" : "Mahogany Jukebox";
 const state = {
   project: null,
   projects: [],
@@ -85,7 +89,8 @@ const els = {
   addGoodBands: $("addGoodBands"),
 };
 async function api(url, options = {}) {
-  const response = await fetch(url, {
+  const routedUrl = url.replace(/^\/api\/mahogany/, apiBase);
+  const response = await fetch(routedUrl, {
       cache: "no-store",
       ...options,
       headers: {
@@ -472,8 +477,9 @@ async function verifyYouTubeEmbed(value) {
 function renderPublishState() {
   if (!state.project || state.isPublishing) return;
   els.publish.disabled = false;
-  const isVu =
-    (state.project.appearance || "mahogany-master") === "mahogany-vu";
+  const isVu = String(
+    state.project.appearance || "mahogany-master",
+  ).endsWith("-vu");
   els.publish.textContent = isVu
     ? "SAVE TO LIBRARY · PUBLISH · EMAIL LINK"
     : state.project.publication?.editionId
@@ -484,7 +490,7 @@ function renderAppearance() {
   const appearance =
     document.querySelector("input[name=appearance]:checked")?.value ||
     "mahogany-master";
-  const isVu = appearance === "mahogany-vu";
+  const isVu = appearance.endsWith("-vu");
   els.masterMedia.hidden = isVu;
   els.vuMedia.hidden = !isVu;
   if (state.project) state.project.appearance = appearance;
@@ -520,7 +526,7 @@ async function publishProduction() {
     const videoKind = document.querySelector(
       "input[name=videoKind]:checked",
     ).value;
-    if (appearance !== "mahogany-vu" && videoKind === "youtube") {
+    if (!appearance.endsWith("-vu") && videoKind === "youtube") {
       busy(els.publish, true, "CHECKING VIDEO...");
       const result = await verifyYouTubeEmbed(els.youtube.value);
       state.project.video = {
@@ -897,7 +903,7 @@ function replaceProject(project = state.project) {
   renderLibrary();
 }
 function showView(name) {
-  els.legacyCandidateLaunch.hidden = name !== "builder";
+  els.legacyCandidateLaunch.hidden = product === "fullnoise" || name !== "builder";
   els.builderView.hidden = name !== "builder";
   els.discoveryView.hidden = name !== "discovery";
   els.libraryView.hidden = name !== "library";

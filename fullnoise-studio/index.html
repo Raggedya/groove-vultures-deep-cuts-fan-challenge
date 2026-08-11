@@ -1,28 +1,37 @@
 <!doctype html>
-<html lang="en-AU">
+<html lang="en-AU" data-product="fullnoise">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="theme-color" content="#100906" />
-    <title>Mahogany Jukebox</title>
+    <title>Fullnoise VU Jukebox</title>
     <link rel="stylesheet" href="/mahogany-studio/styles.css" />
+    <link rel="stylesheet" href="/fullnoise-studio/styles.css" />
+    <style>
+      #legacyCandidateLaunch,
+      #discoveryView {
+        display: none !important;
+      }
+      #addTwentyBands strong::after {
+        content: none !important;
+      }
+    </style>
   </head>
   <body>
     <header class="app-header">
       <div>
         <span class="eyebrow">Clearlight Creative</span>
-        <h1>Mahogany Jukebox</h1>
+        <h1>Fullnoise VU Jukebox</h1>
       </div>
       <nav aria-label="Application">
         <button class="nav-button is-active" data-view="builder">
           Create / Edit</button
-        ><button class="nav-button" data-view="discovery">Find Bands</button
-        ><button class="nav-button" data-view="library">Library</button
-        ><a class="product-switch" href="/fullnoise-studio/">Fullnoise VU</a>
+        ><button class="nav-button" data-view="library">Fullnoise Library</button
+        ><a class="product-switch" href="/mahogany-studio/">Mahogany</a>
       </nav>
     </header>
     <main>
-      <section id="legacyCandidateLaunch" class="candidate-launch panel" aria-labelledby="candidateLaunchTitle">
+      <section id="legacyCandidateLaunch" class="candidate-launch panel" aria-labelledby="candidateLaunchTitle" hidden>
         <div class="candidate-launch-copy">
           <span class="eyebrow">Verified unpublished candidate intake</span>
           <h2 id="candidateLaunchTitle">Build the next production queue</h2>
@@ -58,14 +67,14 @@
           <div class="panel preview-panel">
             <div class="panel-heading">
               <div>
-                <span class="eyebrow">Locked master</span>
-                <h2>Jukebox preview</h2>
+                <span class="eyebrow">Fullnoise locked master</span>
+                <h2>Fullnoise preview</h2>
               </div>
               <span id="previewStatus" class="status-chip">Draft</span>
             </div>
             <iframe
               id="jukeboxPreview"
-              title="Mahogany Jukebox mobile preview"
+              title="Fullnoise VU Jukebox mobile preview"
             ></iframe>
           </div>
           <div class="panel qr-panel">
@@ -84,7 +93,7 @@
             </div>
             <img
               id="qrPreview"
-              alt="Perspective-fitted Aggits Mahogany Jukebox QR poster"
+              alt="Perspective-fitted Fullnoise Jukebox QR poster"
               hidden
             />
           </div>
@@ -92,8 +101,8 @@
         <section class="panel form-panel">
           <div class="panel-heading">
             <div>
-              <span class="eyebrow">Create new jukebox</span>
-              <h2 id="formTitle">Manual production inputs</h2>
+              <span class="eyebrow">Create Fullnoise jukebox</span>
+              <h2 id="formTitle">Fullnoise production inputs</h2>
             </div>
             <button id="newProject" class="quiet-button" type="button">
               New
@@ -108,14 +117,13 @@
                 placeholder="e.g. The Filthy Animals"
                 required
             /></label>
-            <fieldset class="appearance-picker">
+            <fieldset class="appearance-picker fullnoise-locked-appearance">
               <legend><span>1</span> Jukebox version</legend>
               <div class="version-choice">
-                <label><input type="radio" name="appearance" value="mahogany-master" checked /><span><strong>Classic Mahogany</strong><small>The current approved video-screen master</small></span></label>
-                <label><input type="radio" name="appearance" value="mahogany-vu" /><span><strong>Mahogany VU</strong><small>Twin live VU meters and rotating reel-to-reel</small></span></label>
+                <label><input type="radio" name="appearance" value="fullnoise-vu" checked /><span><strong>Fullnoise VU</strong><small>Locked chrome, black and purple record-company master</small></span></label>
               </div>
             </fieldset>
-            <fieldset id="masterMedia">
+            <fieldset id="masterMedia" hidden>
               <legend><span>2</span> Video input</legend>
               <div class="video-choice">
                 <label
@@ -145,7 +153,7 @@
                 /><span id="youtubeStatus" class="video-check-status" aria-live="polite">Not checked</span>
               </div>
             </fieldset>
-            <fieldset id="vuMedia" hidden>
+            <fieldset id="vuMedia">
               <legend><span>2</span> VU audio and optional character</legend>
               <p class="help">Upload the song that drives the two real-time VU needles. The reels rotate only while it plays.</p>
               <div class="vu-upload-grid">
@@ -181,7 +189,7 @@
                   <label><span>Speech sensitivity</span><input id="speechSensitivity" type="range" min="0" max="100" value="55" /><output id="speechSensitivityValue">Recommended</output></label>
                 </div>
               </details>
-              <p class="vu-local-note">One click saves the VU jukebox to the Library, publishes and verifies its permanent link, then emails the live link and QR. Classic Mahogany remains unchanged.</p>
+              <p class="vu-local-note">One click saves this edition to the separate Fullnoise Library, publishes and verifies its permanent link, then emails the live link and QR. Mahogany remains unchanged.</p>
             </fieldset>
             <fieldset>
               <legend><span>3</span> Four physical action keys</legend>
@@ -198,7 +206,7 @@
                   id="tickerText"
                   maxlength="500"
                   rows="3"
-                  placeholder="Enter the message that scrolls across the Mahogany Jukebox…"
+                  placeholder="Enter the message that scrolls across the Fullnoise Jukebox…"
                   required
                 ></textarea
                 ><small><span id="tickerCount">0</span>/500</small></label
@@ -300,7 +308,7 @@
           <div class="panel-heading">
             <div>
               <span class="eyebrow">Permanent collection</span>
-              <h2>Jukebox library</h2>
+              <h2>Fullnoise Jukebox library</h2>
             </div>
             <button id="libraryNew" class="primary-button" type="button">
               Create new
@@ -316,7 +324,7 @@
           <div id="libraryList" class="library-list"></div>
           <div id="libraryEmpty" class="empty-library">
             <strong>No Jukeboxes yet</strong>
-            <p>Create and accept your first Mahogany Jukebox.</p>
+            <p>Create and publish your first Fullnoise VU Jukebox.</p>
           </div>
         </div>
       </section>

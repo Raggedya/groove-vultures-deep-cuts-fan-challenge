@@ -4,7 +4,9 @@ import { createDirectVenuePublisher } from "./bar-edition-publication.mjs";
 import { createAggitsJukeboxQrArtwork } from "./aggits-jukebox-qr-artwork.mjs";
 import { buildMahoganyManifest } from "./mahogany-jukebox-model.mjs";
 import { MAHOGANY_RENDERER_VERSION } from "./aggits-jukebox-preview.mjs";
+import { FULLNOISE_VU_RENDERER_VERSION } from "./fullnoise-vu-preview.mjs";
 import { MAHOGANY_VU_RENDERER_VERSION } from "./mahogany-vu-preview.mjs";
+import { isVuAppearance } from "./jukebox-product-profiles.mjs";
 
 export const MAHOGANY_PUBLICATION_SCHEMA =
   "deep-cuts-mahogany-jukebox-publication/2";
@@ -125,7 +127,7 @@ export function createMahoganyJukeboxPublisher({
           currentJob.error || "Publication failed safely.",
           currentJob.errorCode || "publication_failed",
         );
-      if (manifest.appearance === "mahogany-vu") {
+      if (isVuAppearance(manifest.appearance)) {
         if (manifest.vu.music.sizeBytes > 0 && currentJob.status === "prepared") {
           await onProgress("uploading", "Uploading the verified music track");
           await uploadVerifiedAsset({
@@ -316,10 +318,14 @@ export function createMahoganyJukeboxPublisher({
 
 export async function verifyMahoganyPublication(fetchImpl, job, manifest) {
   const origin = new URL(job.liveUrl).origin,
-    isVu = manifest.appearance === "mahogany-vu",
-    expectedRenderer = isVu
-      ? MAHOGANY_VU_RENDERER_VERSION
-      : MAHOGANY_RENDERER_VERSION,
+    isVu = isVuAppearance(manifest.appearance),
+    expectedRenderer =
+      manifest.appearance === "fullnoise-vu"
+        ? FULLNOISE_VU_RENDERER_VERSION
+        : isVu
+          ? MAHOGANY_VU_RENDERER_VERSION
+          : MAHOGANY_RENDERER_VERSION,
+    expectedProductLabel = manifest.title,
     requests = [
       fetchImpl(`${job.liveUrl}?publication=${encodeURIComponent(job.id)}`, {
         cache: "no-store",
@@ -361,7 +367,7 @@ export async function verifyMahoganyPublication(fetchImpl, job, manifest) {
     png = new Uint8Array(qrBytes);
   if (
     !page.ok ||
-    !html.includes(isVu ? "Mahogany VU Jukebox" : "Mahogany Jukebox") ||
+    !html.includes(expectedProductLabel) ||
     !html.includes(expectedRenderer) ||
     page.headers.get("x-deep-cuts-renderer") !== expectedRenderer
   )
@@ -375,8 +381,8 @@ export async function verifyMahoganyPublication(fetchImpl, job, manifest) {
     json?.analytics?.editionId !== job.editionId ||
     json?.publicURL !== job.liveUrl ||
     (isVu
-      ? json?.aggitsJukebox?.appearanceVariant !== "mahogany-vu"
-      : json?.aggitsJukebox?.appearanceVariant === "mahogany-vu") ||
+      ? json?.aggitsJukebox?.appearanceVariant !== manifest.appearance
+      : isVuAppearance(json?.aggitsJukebox?.appearanceVariant)) ||
     json?.aggitsJukebox?.modelVersion !== expectedRenderer ||
     (isVu &&
       (json?.aggitsJukebox?.projectId !== manifest.projectId ||

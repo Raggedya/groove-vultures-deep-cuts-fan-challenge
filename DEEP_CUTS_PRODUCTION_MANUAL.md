@@ -210,3 +210,7 @@ An edition is complete only when identity is verified; configuration validates; 
 
 After every change ask: â€œWhat can I automate next?â€ Implement the practical answer.
 
+## Fullnoise VU desktop operation
+
+Open `Fullnoise` from the Mahogany Windows application header. Create and edit only on `/fullnoise-studio/`; its library is intentionally separate from the Mahogany Library. Upload one MP3/WAV and optionally one presenter MP4, configure four verified HTTPS actions and the ticker, then use the existing one-click save/publish/email workflow. The presenter area stays empty unless a presenter is uploaded. Publication must retain `product: fullnoise`, `appearance: fullnoise-vu` and the Fullnoise renderer version through manifest preparation, Worker storage and live verification. Never migrate or copy records between the two libraries by changing those fields.
+

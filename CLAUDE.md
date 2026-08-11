@@ -61,6 +61,8 @@ Treat `indie_label/1` as the final locked independent-label wheel model. Its ref
 
 Continually reduce manual work, GitHub interaction, PowerShell interaction, copy/paste and prompts. Automate research capture, configuration, link validation, artwork, scan-back testing, commits, deployment and delivery wherever credentials permit. Never ask the non-technical owner to perform repetitive engineering work that the system can safely perform.
 
+Fullnoise VU is a separate desktop product profile. Keep its `/fullnoise-studio/` builder, `/api/fullnoise/*` API, `fullnoise-projects` library and locked chrome/purple renderer isolated from Mahogany. Do not auto-insert an Aggits presenter; Fullnoise renders a presenter only when that project contains an uploaded presenter asset. Shared publishing, QR, email, analytics, coin, VU and ducking services must dispatch by exact product/appearance and remain backward compatible.
+
 Use only verified official destinations. Omit unavailable buttons completely. When an official YouTube presence exists, verify and feature the most-viewed official music video; never invent one. The tipping feature is retired. Analytics must be best-effort and must never block a link.
 
 Update the manual, README, roadmap, skill and tests whenever the workflow changes. Every future edition must be faster than the previous edition. At the end of every task ask what can be automated next, then implement it when practical.

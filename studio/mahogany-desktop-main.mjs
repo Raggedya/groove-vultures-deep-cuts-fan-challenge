@@ -82,20 +82,35 @@ async function open() {
 }
 async function bounded() {
   if (!origin) await start();
-  const [page, bootstrap] = await Promise.all([
+  const [page, bootstrap, fullnoisePage, fullnoiseBootstrap] = await Promise.all([
       fetch(`${origin}/mahogany-studio/`),
       fetch(`${origin}/api/mahogany/bootstrap`),
+      fetch(`${origin}/fullnoise-studio/`),
+      fetch(`${origin}/api/fullnoise/bootstrap`),
     ]),
-    [html, json] = await Promise.all([page.text(), bootstrap.json()]);
+    [html, json, fullnoiseHtml, fullnoiseJson] = await Promise.all([
+      page.text(),
+      bootstrap.json(),
+      fullnoisePage.text(),
+      fullnoiseBootstrap.json(),
+    ]);
   if (
     !page.ok ||
     !bootstrap.ok ||
+    !fullnoisePage.ok ||
+    !fullnoiseBootstrap.ok ||
     !html.includes("Mahogany Jukebox") ||
     !html.includes("Four physical action keys") ||
+    !fullnoiseHtml.includes("Fullnoise VU Jukebox") ||
+    !fullnoiseHtml.includes("Fullnoise Library") ||
     !Array.isArray(json.icons) ||
-    json.icons.length !== 111
+    json.icons.length !== 111 ||
+    !Array.isArray(fullnoiseJson.icons) ||
+    fullnoiseJson.icons.length !== 111 ||
+    fullnoiseJson.projects.some((project) => project.product !== "fullnoise") ||
+    json.projects.some((project) => project.product === "fullnoise")
   )
-    throw new Error("The packaged Mahogany Jukebox smoke test failed.");
+    throw new Error("The packaged Mahogany and Fullnoise Jukebox smoke test failed.");
 }
 async function stop() {
   if (!server) return;

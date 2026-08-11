@@ -16,7 +16,7 @@ const require = createRequire(import.meta.url),
   execFileAsync = promisify(execFile),
   zipAsync = promisify(zip);
 const root = process.cwd(),
-  version = "1.8.9",
+  version = "1.9.0",
   productName = "Mahogany Jukebox",
   executableName = "mahogany-jukebox",
   electronVersion = String(electronPackage.version),
@@ -40,8 +40,11 @@ const runtimeFiles = [
   "mahogany-studio/styles.css",
   "mahogany-studio/app.js",
   "mahogany-studio/audio-ducking.js",
+  "fullnoise-studio/index.html",
+  "fullnoise-studio/styles.css",
   "scripts/mahogany-studio-server.mjs",
   "scripts/mahogany-jukebox-model.mjs",
+  "scripts/jukebox-product-profiles.mjs",
   "scripts/mahogany-library-clean-slate.mjs",
   "scripts/mahogany-band-candidates.mjs",
   "scripts/bandcamp-band-discovery.mjs",
@@ -49,6 +52,7 @@ const runtimeFiles = [
   "scripts/mahogany-jukebox-publication.mjs",
   "scripts/aggits-jukebox-preview.mjs",
   "scripts/mahogany-vu-preview.mjs",
+  "scripts/fullnoise-vu-preview.mjs",
   "scripts/aggits-jukebox-button-master.mjs",
   "scripts/aggits-jukebox-icons.mjs",
   "scripts/aggits-jukebox-qr-artwork.mjs",
@@ -61,6 +65,8 @@ const runtimeFiles = [
   "assets/aggits-jukebox-vu-master-v2.jpg",
   "assets/aggits-jukebox-vu-reel-left-v1.png",
   "assets/aggits-jukebox-vu-reel-right-v1.png",
+  "assets/fullnoise-vu-cabinet-master-v1.webp",
+  "assets/fullnoise-vu-integrity.json",
   "assets/aggits-vu-presenter-v1.mp4",
   "assets/aggits-coin-gold-v1.png",
   "assets/aggits-jukebox-icons-master-v1.jpg",
@@ -211,7 +217,7 @@ try {
   for (const icon of icons) await copy(path.join(iconDirectory, icon));
   await fs.writeFile(
     path.join(sourceDirectory, "package.json"),
-    `${JSON.stringify({ name: "mahogany-jukebox", productName, type: "module", private: true, version, description: "Mahogany Jukebox creator, verified candidate intake and permanent publishing library.", main: "studio/mahogany-desktop-main.mjs", author: "Clearlight Creative", dependencies: { "electron-squirrel-startup": "^1.0.1", sharp: "0.35.2", yauzl: "2.10.0" } }, null, 2)}\n`,
+    `${JSON.stringify({ name: "mahogany-jukebox", productName, type: "module", private: true, version, description: "Isolated Mahogany and Fullnoise VU Jukebox creators, libraries and permanent publishing workflows.", main: "studio/mahogany-desktop-main.mjs", author: "Clearlight Creative", dependencies: { "electron-squirrel-startup": "^1.0.1", sharp: "0.35.2", yauzl: "2.10.0" } }, null, 2)}\n`,
   );
   await fs.mkdir(path.join(sourceDirectory, "node_modules"), {
     recursive: true,

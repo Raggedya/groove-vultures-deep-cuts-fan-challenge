@@ -51,3 +51,5 @@ Never create another repository, expose a band name in a public URL, invent a li
 
 Deep Cuts Studio is an optional local intake, verified-research and preview layer, not a publication authority. For JookBox projects, only a passed `deep-cuts-studio-jookbox-research/1` record at the mandatory 98% gate may populate preview destinations; raw names, URLs, YouTube leads, briefs and MP3s remain research leads. A `deep-cuts-studio-project/1` draft or `deep-cuts-studio-handoff/1` export must still follow the isolation, configuration, QR, deployment and live-verification stages above. Studio remains local-only inside its sandboxed desktop application and must never expose a public administrative Worker route.
 
+Fullnoise VU desktop projects are outside the `Deep Cuts [Artist]` factory flow. Do not route them through the Mahogany library or silently convert either product. Preserve their exact `product: fullnoise`, `appearance: fullnoise-vu`, separate API/storage namespace and locked cabinet integrity. Future record-company cabinet variants must be added as new isolated product profiles, never by mutating Fullnoise, Mahogany or a completed edition.
+

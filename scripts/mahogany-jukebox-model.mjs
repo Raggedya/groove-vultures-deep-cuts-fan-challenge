@@ -10,6 +10,11 @@ import {
   DUCKING_ANALYSIS_VERSION,
   normalizeDuckingSettings,
 } from "../mahogany-studio/audio-ducking.js";
+import {
+  isVuAppearance,
+  jukeboxProductProfile,
+  productForAppearance,
+} from "./jukebox-product-profiles.mjs";
 
 export const MAHOGANY_PROJECT_SCHEMA = "mahogany-jukebox-project/1";
 export const MAHOGANY_PUBLICATION_MANIFEST_SCHEMA =
@@ -19,14 +24,16 @@ export const MAHOGANY_AUDIO_MAX_BYTES = 48 * 1024 * 1024;
 export const MAHOGANY_CHARACTER_MAX_BYTES = 24 * 1024 * 1024;
 export const MAHOGANY_ACTION_COUNT = 4;
 
-export function newMahoganyProject() {
+export function newMahoganyProject({ product = "mahogany" } = {}) {
   const now = new Date().toISOString();
+  const profile = jukeboxProductProfile(product);
   return {
     schemaVersion: MAHOGANY_PROJECT_SCHEMA,
     id: `studio_${crypto.randomBytes(6).toString("hex")}`,
     name: "",
     tickerText: "",
-    appearance: "mahogany-master",
+    product: profile.id,
+    appearance: profile.appearance,
     video: {
       kind: "mp4",
       youtubeUrl: "",
@@ -76,8 +83,13 @@ export function newMahoganyProject() {
 }
 
 export function normalizeMahoganyProject(value) {
-  const base = newMahoganyProject(),
-    source = value && typeof value === "object" ? value : {};
+  const source = value && typeof value === "object" ? value : {},
+    product =
+      source.product === "fullnoise" ||
+      productForAppearance(source.appearance) === "fullnoise"
+        ? "fullnoise"
+        : "mahogany",
+    base = newMahoganyProject({ product });
   const project = { ...base, ...source };
   project.schemaVersion = MAHOGANY_PROJECT_SCHEMA;
   project.id = /^studio_[a-f0-9]{12}$/.test(String(source.id || ""))
@@ -85,8 +97,13 @@ export function normalizeMahoganyProject(value) {
     : base.id;
   project.name = clean(source.name, 120);
   project.tickerText = multiline(source.tickerText, 500);
+  project.product = product;
   project.appearance =
-    source.appearance === "mahogany-vu" ? "mahogany-vu" : "mahogany-master";
+    product === "fullnoise"
+      ? "fullnoise-vu"
+      : source.appearance === "mahogany-vu"
+        ? "mahogany-vu"
+        : "mahogany-master";
   const video =
     source.video && typeof source.video === "object" ? source.video : {};
   project.video = {
@@ -237,7 +254,7 @@ export function validateMahoganyProject(
     errors = [];
   if (!value.name) errors.push("Enter the Jukebox name.");
   if (!value.tickerText) errors.push("Enter the ticker text.");
-  if (value.appearance === "mahogany-vu") {
+  if (isVuAppearance(value.appearance)) {
     const hasMusic = Boolean(
         value.vu.music.fileName &&
           value.vu.music.sha256 &&
@@ -293,6 +310,7 @@ export function toPreviewProject(project) {
   return {
     schemaVersion: "deep-cuts-studio-project/1",
     id: value.id,
+    product: value.product,
     appearance: value.appearance,
     vu: value.vu,
     input: {
@@ -327,11 +345,12 @@ export function buildMahoganyManifest(project) {
     throw modelError(checked.errors.join(" "), "project_not_ready");
   const value = checked.value,
     youtubeId = youtubeVideoId(value.video.youtubeUrl);
-  if (value.appearance === "mahogany-vu")
+  if (isVuAppearance(value.appearance))
     return {
       schemaVersion: MAHOGANY_PUBLICATION_MANIFEST_SCHEMA,
       projectId: value.id,
-      appearance: "mahogany-vu",
+      product: value.product,
+      appearance: value.appearance,
       title: value.name,
       tickerText: value.tickerText,
       actions: value.actions.map((action) => ({
@@ -351,6 +370,7 @@ export function buildMahoganyManifest(project) {
   return {
     schemaVersion: MAHOGANY_PUBLICATION_MANIFEST_SCHEMA,
     projectId: value.id,
+    product: value.product,
     appearance: "mahogany-master",
     title: value.name,
     tickerText: value.tickerText,
@@ -518,7 +538,9 @@ export async function storeMahoganyVuMusic(
   ]);
   return normalizeMahoganyProject({
     ...project,
-    appearance: "mahogany-vu",
+    appearance: isVuAppearance(project.appearance)
+      ? project.appearance
+      : "mahogany-vu",
     candidate:
       project.candidate?.source === "bandcamp_discovery"
         ? {
@@ -564,7 +586,9 @@ export async function storeMahoganyVuCharacter(
   const sha256 = crypto.createHash("sha256").update(bytes).digest("hex");
   return normalizeMahoganyProject({
     ...project,
-    appearance: "mahogany-vu",
+    appearance: isVuAppearance(project.appearance)
+      ? project.appearance
+      : "mahogany-vu",
     vu: {
       ...project.vu,
       character: {

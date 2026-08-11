@@ -58,3 +58,11 @@
 
 Completed platform standard: verified featured-video selection, retired tipping, and automatic removal/rebalancing of unavailable destinations are now part of the reusable engine and research contract.
 
+## Completed: Fullnoise VU isolated desktop product
+
+- Added the locked Fullnoise chrome/black/purple VU cabinet as its own integrity-checked renderer.
+- Added a separate Fullnoise build page, API namespace and library storage within the existing Windows application.
+- Reused the proven music upload, optional presenter, speech-envelope ducking, coin, four-action, publishing, QR, email and analytics services through exact product dispatch.
+- Preserved Mahogany routes, records, defaults and renderer behaviour with dedicated regression coverage.
+- Established the reusable product-profile pattern for future record-company cabinet editions.
+

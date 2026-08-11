@@ -95,6 +95,24 @@ textarea {
   background: linear-gradient(#f0c074, #a76429);
   box-shadow: inset 0 1px #ffe2a6;
 }
+.product-switch {
+  display: inline-grid;
+  place-items: center;
+  min-height: 42px;
+  padding: 0 15px;
+  border: 1px solid #684324;
+  border-radius: 8px;
+  color: #dec096;
+  background: linear-gradient(#21140c, #0c0704);
+  text-decoration: none;
+  font-weight: 800;
+}
+.product-switch:hover,
+.product-switch:focus-visible {
+  border-color: #d08b42;
+  color: #fff4da;
+  outline: none;
+}
 .accept-button {
   border-color: #7eaa65;
   color: #071004;

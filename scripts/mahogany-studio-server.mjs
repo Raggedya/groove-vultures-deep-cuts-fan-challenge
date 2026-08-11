@@ -4,6 +4,7 @@ import http from "node:http";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { renderAggitsJukeboxStudioPreview } from "./aggits-jukebox-preview.mjs";
+import { renderFullnoiseVuPreview } from "./fullnoise-vu-preview.mjs";
 import { renderMahoganyVuPreview } from "./mahogany-vu-preview.mjs";
 import { createMahoganyJukeboxPublisher } from "./mahogany-jukebox-publication.mjs";
 import { runMahoganyBandCandidateBatch } from "./mahogany-band-candidates.mjs";
@@ -27,6 +28,10 @@ import {
   toPreviewProject,
   validateMahoganyProject,
 } from "./mahogany-jukebox-model.mjs";
+import {
+  isVuAppearance,
+  jukeboxProductProfile,
+} from "./jukebox-product-profiles.mjs";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 
@@ -40,7 +45,10 @@ export function createMahoganyStudioServer({
   fetchImpl = fetch,
   appVersion = "1.0.0",
 } = {}) {
-  const projectRoot = path.join(dataDir, "projects"),
+  const projectRoots = {
+      mahogany: path.join(dataDir, jukeboxProductProfile("mahogany").projectFolder),
+      fullnoise: path.join(dataDir, jukeboxProductProfile("fullnoise").projectFolder),
+    },
     candidateJobs = new Map(),
     discoveryJobs = new Map(),
     directPublisher =
@@ -51,13 +59,37 @@ export function createMahoganyStudioServer({
   return http.createServer(async (request, response) => {
     try {
       const url = new URL(request.url, "http://127.0.0.1");
+      if (url.pathname.startsWith("/api/fullnoise/")) {
+        const routedUrl = new URL(url);
+        routedUrl.pathname = routedUrl.pathname.replace(
+          /^\/api\/fullnoise/,
+          "/api/mahogany",
+        );
+        return await api({
+          request,
+          response,
+          url: routedUrl,
+          root,
+          projectRoot: projectRoots.fullnoise,
+          product: "fullnoise",
+          apiBase: "/api/fullnoise",
+          publisher: directPublisher,
+          candidateJobs,
+          bandCandidateRunner,
+          discoveryJobs,
+          bandDiscoveryRunner,
+          fetchImpl,
+        });
+      }
       if (url.pathname.startsWith("/api/mahogany/"))
         return await api({
           request,
           response,
           url,
           root,
-          projectRoot,
+          projectRoot: projectRoots.mahogany,
+          product: "mahogany",
+          apiBase: "/api/mahogany",
           publisher: directPublisher,
           candidateJobs,
           bandCandidateRunner,
@@ -80,6 +112,21 @@ export function createMahoganyStudioServer({
           response,
           path.join(root, url.pathname.replace(/^\//, "")),
           path.join(root, "mahogany-studio"),
+        );
+      if (
+        url.pathname === "/fullnoise-studio" ||
+        url.pathname === "/fullnoise-studio/"
+      )
+        return serve(
+          response,
+          path.join(root, "fullnoise-studio", "index.html"),
+          path.join(root, "fullnoise-studio"),
+        );
+      if (url.pathname.startsWith("/fullnoise-studio/"))
+        return serve(
+          response,
+          path.join(root, url.pathname.replace(/^\//, "")),
+          path.join(root, "fullnoise-studio"),
         );
       if (url.pathname.startsWith("/assets/"))
         return serve(
@@ -111,6 +158,8 @@ async function api({
   url,
   root,
   projectRoot,
+  product = "mahogany",
+  apiBase = "/api/mahogany",
   publisher,
   candidateJobs,
   bandCandidateRunner,
@@ -142,9 +191,18 @@ async function api({
   if (request.method === "POST" && url.pathname === "/api/mahogany/projects") {
     const project = await saveMahoganyProject(
       projectRoot,
-      newMahoganyProject(),
+      newMahoganyProject({ product }),
     );
     return sendJson(response, 201, { ok: true, project });
+  }
+  if (
+    product === "fullnoise" &&
+    (url.pathname.includes("band-discovery") ||
+      url.pathname.includes("candidate-batches"))
+  ) {
+    response.writeHead(404);
+    response.end("Fullnoise uses its own manual production library.");
+    return;
   }
   if (
     request.method === "POST" &&
@@ -373,6 +431,9 @@ async function api({
         ...current,
         ...body,
         id,
+        product,
+        appearance:
+          product === "fullnoise" ? "fullnoise-vu" : body.appearance,
         status:
           current.status === "published" || current.status === "unpublished"
             ? current.status
@@ -524,20 +585,30 @@ async function api({
           ? project.publication?.liveUrl
           : "") || project.prepared?.liveUrl || "",
       html =
-        project.appearance === "mahogany-vu"
-          ? renderMahoganyVuPreview(preview, {
+        project.appearance === "fullnoise-vu"
+          ? renderFullnoiseVuPreview(preview, {
               musicUrl: project.vu.music.fileName
-                ? `/api/mahogany/projects/${id}/music`
+                ? `${apiBase}/projects/${id}/music`
                 : "",
               characterUrl: project.vu.character.fileName
-                ? `/api/mahogany/projects/${id}/character`
+                ? `${apiBase}/projects/${id}/character`
                 : "",
               canonicalUrl,
             })
+          : project.appearance === "mahogany-vu"
+            ? renderMahoganyVuPreview(preview, {
+                musicUrl: project.vu.music.fileName
+                  ? `${apiBase}/projects/${id}/music`
+                  : "",
+                characterUrl: project.vu.character.fileName
+                  ? `${apiBase}/projects/${id}/character`
+                  : "",
+                canonicalUrl,
+              })
           : renderAggitsJukeboxStudioPreview(preview, {
               videoUrl:
                 project.video.kind === "mp4"
-                  ? `/api/mahogany/projects/${id}/video`
+                  ? `${apiBase}/projects/${id}/video`
                   : "",
               youtubeUrl:
                 project.video.kind === "youtube" ? project.video.youtubeUrl : "",
@@ -640,7 +711,7 @@ async function api({
             ? path.join(projectRoot, publicationProjectId, "video.mp4")
             : "",
         musicPath:
-          project.appearance === "mahogany-vu" && project.vu.music.fileName
+          isVuAppearance(project.appearance) && project.vu.music.fileName
             ? path.join(
                 projectRoot,
                 publicationProjectId,
@@ -650,7 +721,7 @@ async function api({
               )
             : "",
         characterPath:
-          project.appearance === "mahogany-vu" && project.vu.character.fileName
+          isVuAppearance(project.appearance) && project.vu.character.fileName
             ? path.join(
                 projectRoot,
                 publicationProjectId,
@@ -734,8 +805,8 @@ async function api({
     return sendJson(response, 200, {
       ok: true,
       project,
-      previewUrl: `/api/mahogany/projects/${id}/preview`,
-      qrPreviewUrl: `/api/mahogany/projects/${id}/qr?revision=${Date.now()}`,
+      previewUrl: `${apiBase}/projects/${id}/preview`,
+      qrPreviewUrl: `${apiBase}/projects/${id}/qr?revision=${Date.now()}`,
     });
   }
   if (request.method === "POST" && action === "accept") {
@@ -757,7 +828,7 @@ async function api({
             ? path.join(projectRoot, id, "video.mp4")
             : "",
         musicPath:
-          project.appearance === "mahogany-vu" && project.vu.music.fileName
+          isVuAppearance(project.appearance) && project.vu.music.fileName
             ? path.join(
                 projectRoot,
                 id,
@@ -767,7 +838,7 @@ async function api({
               )
             : "",
         characterPath:
-          project.appearance === "mahogany-vu" && project.vu.character.fileName
+          isVuAppearance(project.appearance) && project.vu.character.fileName
             ? path.join(projectRoot, id, "character.mp4")
             : "",
       });
@@ -923,7 +994,7 @@ export async function repairReusedPublicationIdentity(
       oldActions,
       fetchImpl,
     ),
-    fresh = newMahoganyProject(),
+    fresh = newMahoganyProject({ product: project.product }),
     clone = await saveMahoganyProject(projectRoot, {
       ...project,
       id: fresh.id,
@@ -944,10 +1015,12 @@ export async function repairReusedPublicationIdentity(
     });
   await copyProjectMedia(projectRoot, project.id, clone.id);
 
-  const restoredBase = newMahoganyProject(),
+  const restoredBase = newMahoganyProject({ product: project.product }),
     restoredAppearance =
-      remoteJukebox.appearanceVariant === "mahogany-vu"
-        ? "mahogany-vu"
+      ["mahogany-vu", "fullnoise-vu"].includes(
+        remoteJukebox.appearanceVariant,
+      )
+        ? remoteJukebox.appearanceVariant
         : "mahogany-master",
     restored = await saveMahoganyProject(projectRoot, {
       ...project,
@@ -959,7 +1032,7 @@ export async function repairReusedPublicationIdentity(
         kind: remoteJukebox.videoKind === "mp4" ? "mp4" : "youtube",
         youtubeUrl: cleanText(remoteJukebox.youtubeUrl, 300),
       },
-      vu: restoredAppearance === "mahogany-vu" ? project.vu : restoredBase.vu,
+      vu: isVuAppearance(restoredAppearance) ? project.vu : restoredBase.vu,
       actions: oldActions.map((item, index) => ({
         slot: index + 1,
         iconId: item.iconId,
@@ -1155,8 +1228,13 @@ function cleanText(value, max) {
 }
 
 if (path.resolve(process.argv[1] || "") === fileURLToPath(import.meta.url)) {
-  const server = createMahoganyStudioServer();
-  server.listen(Number(process.env.PORT) || 4390, "127.0.0.1", () =>
+  const server = createMahoganyStudioServer({
+    ...(process.env.MAHOGANY_STUDIO_DATA_DIR
+      ? { dataDir: path.resolve(process.env.MAHOGANY_STUDIO_DATA_DIR) }
+      : {}),
+  });
+  const studioHost = process.env.MAHOGANY_STUDIO_HOST || "127.0.0.1";
+  server.listen(Number(process.env.PORT) || 4390, studioHost, () =>
     console.log(
       `Mahogany Jukebox Studio: http://127.0.0.1:${server.address().port}/mahogany-studio/`,
     ),

@@ -190,3 +190,11 @@ Treat every completed edition as a finished commercial product that must remain 
 - A new independent-label product uses isolated `indie_wheel` configuration. Its logo, colours, roster, platform, verified links, impact copy, questions, contact and copyright belong only to that edition.
 - The reference Laneway edition and completed Cool Death Records edition are immutable commercial products. A future label edition must never overwrite either one.
 - The machine-readable contract is `edition-contracts.json`; `scripts/test-indie-label-model.mjs` is the fail-closed regression guard.
+
+## Fullnoise VU desktop product contract
+
+- `fullnoise-vu` is an isolated desktop jukebox product profile, not a Mahogany appearance option and not a standard Music edition.
+- It has its own `/fullnoise-studio/` build interface, `/api/fullnoise/*` namespace and `fullnoise-projects` library storage. A Fullnoise project must never appear in the Mahogany library, and a legacy Mahogany project must continue to normalise as Mahogany.
+- The SHA-256-locked chrome, black and purple Fullnoise cabinet is immutable. Dynamic content is limited to the ticker, artist and track marquee, four verified actions, uploaded music and an explicitly uploaded optional presenter.
+- Fullnoise reuses the proven VU playback, coin, ducking, publication, QR, email and analytics services through product-aware dispatch. It must not fork those services or weaken their existing validation.
+- New record-company cabinet products must follow the same product-profile pattern: separate identity, routes, storage, renderer and integrity guard while sharing only backward-compatible platform services.

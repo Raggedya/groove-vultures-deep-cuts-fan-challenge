@@ -16,6 +16,11 @@ import {
   MAHOGANY_VU_RENDERER_VERSION,
   renderMahoganyVuPreview,
 } from "../scripts/mahogany-vu-preview.mjs";
+import {
+  FULLNOISE_VU_RENDERER_VERSION,
+  renderFullnoiseVuPreview,
+} from "../scripts/fullnoise-vu-preview.mjs";
+import { isVuAppearance } from "../scripts/jukebox-product-profiles.mjs";
 
 const JSON_HEADERS = {
     "content-type": "application/json; charset=utf-8",
@@ -97,12 +102,15 @@ export async function handleAggitsJukeboxPublicAsset(request, env, url) {
     if (!row) return null;
     const config = JSON.parse(row.config_json),
       project = publicProject(config, page[1]),
-      isVu = config.aggitsJukebox?.appearanceVariant === "mahogany-vu",
-      renderer = isVu
-        ? MAHOGANY_VU_RENDERER_VERSION
-        : MAHOGANY_RENDERER_VERSION,
-      html = isVu
-        ? renderMahoganyVuPreview(project, {
+      appearance = config.aggitsJukebox?.appearanceVariant,
+      isFullnoise = appearance === "fullnoise-vu",
+      isVu = isVuAppearance(appearance),
+      renderer = isFullnoise
+        ? FULLNOISE_VU_RENDERER_VERSION
+        : isVu
+          ? MAHOGANY_VU_RENDERER_VERSION
+          : MAHOGANY_RENDERER_VERSION,
+      vuOptions = {
             musicUrl: config.aggitsJukebox?.musicAudio?.fileName
               ? `/api/aggits-jukebox-assets/${page[1]}/music`
               : "",
@@ -110,7 +118,11 @@ export async function handleAggitsJukeboxPublicAsset(request, env, url) {
               ? `/api/aggits-jukebox-assets/${page[1]}/character`
               : "",
             canonicalUrl: `${url.origin}${url.pathname}`,
-          })
+          },
+      html = isFullnoise
+        ? renderFullnoiseVuPreview(project, vuOptions)
+        : isVu
+          ? renderMahoganyVuPreview(project, vuOptions)
         : renderAggitsJukeboxStudioPreview(project, {
             videoUrl:
               config.aggitsJukebox?.videoKind === "mp4"
@@ -331,7 +343,7 @@ async function prepare(request, env, device, url) {
       existing?.slug || reserved?.slug || stableSlug(manifest.value.projectId),
     jobId = `ajjob_${crypto.randomUUID()}`,
     baseUrl = url.origin,
-    isVu = manifest.value.appearance === "mahogany-vu",
+    isVu = isVuAppearance(manifest.value.appearance),
     videoKey = isVu
       ? `aggits-jukebox/${editionId}/${jobId}/music.${manifest.value.vu.music.mimeType === "audio/wav" ? "wav" : "mp3"}`
       : manifest.value.video.kind === "mp4"
@@ -495,7 +507,7 @@ async function commit(env, input) {
       409,
     );
   const manifest = JSON.parse(job.manifest_json),
-    isVu = manifest.appearance === "mahogany-vu",
+    isVu = isVuAppearance(manifest.appearance),
     characterKey = `aggits-jukebox/${job.edition_id}/${job.job_id}/presenter.mp4`;
   const [video, qr, character] = await Promise.all([
     isVu
@@ -700,7 +712,7 @@ async function setState(request, env, editionId, url, device) {
     );
   if (published) {
     const config = JSON.parse(row.config_json);
-    const isVu = config.aggitsJukebox?.appearanceVariant === "mahogany-vu",
+    const isVu = isVuAppearance(config.aggitsJukebox?.appearanceVariant),
       mediaKeys = isVu
         ? [
             config.aggitsJukebox.musicAudio?.objectKey,
@@ -742,9 +754,12 @@ async function setState(request, env, editionId, url, device) {
 
 function buildConfig(job, m) {
   const now = new Date().toISOString();
-  if (m.appearance === "mahogany-vu")
+  if (isVuAppearance(m.appearance))
     return {
-      brandName: "Mahogany Jukebox",
+      brandName:
+        m.appearance === "fullnoise-vu"
+          ? "Fullnoise Artists"
+          : "Mahogany Jukebox",
       editionType: "aggits_jukebox",
       bandName: m.title,
       editionTitle: m.title,
@@ -758,7 +773,7 @@ function buildConfig(job, m) {
       },
       analytics: {
         editionId: job.edition_id,
-        pageIdentifier: `${job.edition_id}:aggits-jukebox-vu-v1`,
+        pageIdentifier: `${job.edition_id}:${m.appearance}-v1`,
       },
       production: {
         jobId: job.job_id,
@@ -766,8 +781,13 @@ function buildConfig(job, m) {
         updatedAt: now,
       },
       aggitsJukebox: {
-        modelVersion: MAHOGANY_VU_RENDERER_VERSION,
-        appearanceVariant: "mahogany-vu",
+        modelVersion:
+          m.appearance === "fullnoise-vu"
+            ? FULLNOISE_VU_RENDERER_VERSION
+            : MAHOGANY_VU_RENDERER_VERSION,
+        appearanceVariant: m.appearance,
+        product: m.product ||
+          (m.appearance === "fullnoise-vu" ? "fullnoise" : "mahogany"),
         projectId: m.projectId,
         title: m.title,
         tickerText: m.tickerText,
@@ -850,7 +870,7 @@ async function uploadVuMedia(request, env, job, kind) {
       409,
     );
   const manifest = JSON.parse(job.manifest_json);
-  if (manifest.appearance !== "mahogany-vu")
+  if (!isVuAppearance(manifest.appearance))
     return json({ ok: false, error: "This is not a VU publication." }, 409);
   const expected = kind === "music" ? manifest.vu.music : manifest.vu.character;
   if (!expected?.sizeBytes)
@@ -915,11 +935,13 @@ async function uploadVuMedia(request, env, job, kind) {
 }
 function publicProject(config, editionId) {
   const a = config.aggitsJukebox;
-  if (a.appearanceVariant === "mahogany-vu")
+  if (isVuAppearance(a.appearanceVariant))
     return {
       schemaVersion: "deep-cuts-studio-project/1",
       id: `studio_${a.projectId.replace(/^studio_/, "")}`,
-      appearance: "mahogany-vu",
+      product: a.product ||
+        (a.appearanceVariant === "fullnoise-vu" ? "fullnoise" : "mahogany"),
+      appearance: a.appearanceVariant,
       vu: {
         music: a.musicAudio,
         character: a.presenterVideo,
@@ -1005,7 +1027,7 @@ function validateManifest(body) {
         ["web", "map"].includes(actionType) && item.openInNewTab !== false,
     });
   }
-  if (body?.appearance === "mahogany-vu") {
+  if (isVuAppearance(body?.appearance)) {
     const music = body?.vu?.music || {},
       character = body?.vu?.character || {},
       musicSize = Number(music.sizeBytes) || 0,
@@ -1044,7 +1066,9 @@ function validateManifest(body) {
       value: {
         schemaVersion: "deep-cuts-aggits-jukebox-publication/2",
         projectId,
-        appearance: "mahogany-vu",
+        product:
+          body?.appearance === "fullnoise-vu" ? "fullnoise" : "mahogany",
+        appearance: body.appearance,
         title,
         tickerText,
         actions: cleaned,
