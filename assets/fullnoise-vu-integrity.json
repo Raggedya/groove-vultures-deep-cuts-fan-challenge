@@ -1,15 +1,16 @@
 {
   "schemaVersion": "fullnoise-vu-cabinet-integrity/1",
-  "asset": "assets/fullnoise-vu-cabinet-master-v1.webp",
-  "sha256": "9f3289dfee573927f3c2c8731fb34b14ed17dcd0aec1a4a1b6cb879d0abbdb00",
+  "asset": "assets/fullnoise-vu-cabinet-generic-master-v2.webp",
+  "sha256": "033a20845c25454015618d0858377fdad2962a2ca383ddabf1a84e90a38b6835",
   "width": 959,
   "height": 1640,
   "dynamicZones": [
     "ticker",
+    "tape-deck-band-name",
     "artist-name",
     "song-title",
     "four-action-icons"
   ],
-  "source": "Owner-supplied Fullnoise VU reference, cleaned non-destructively for runtime data binding",
-  "lockedAt": "2026-08-11"
+  "source": "Owner-supplied chrome/purple VU reference, cleaned non-destructively for reusable band-name data binding",
+  "lockedAt": "2026-08-12"
 }

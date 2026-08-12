@@ -60,7 +60,7 @@ Completed platform standard: verified featured-video selection, retired tipping,
 
 ## Completed: Fullnoise VU isolated desktop product
 
-- Added the locked Fullnoise chrome/black/purple VU cabinet as its own integrity-checked renderer.
+- Added the locked generic chrome/black/purple VU cabinet as its own integrity-checked renderer, with each project's band name bound into the tape-deck plaque.
 - Added a separate Fullnoise build page, API namespace and library storage within the existing Windows application.
 - Reused the proven music upload, optional presenter, speech-envelope ducking, coin, four-action, publishing, QR, email and analytics services through exact product dispatch.
 - Preserved Mahogany routes, records, defaults and renderer behaviour with dedicated regression coverage.

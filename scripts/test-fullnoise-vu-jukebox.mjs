@@ -18,7 +18,7 @@ import {
 import { createMahoganyStudioServer } from "./mahogany-studio-server.mjs";
 import { __test as publisherTest } from "../worker/aggits-jukebox-publisher.js";
 
-const assetPath = path.resolve("assets/fullnoise-vu-cabinet-master-v1.webp"),
+const assetPath = path.resolve("assets/fullnoise-vu-cabinet-generic-master-v2.webp"),
   assetBytes = await fs.readFile(assetPath),
   metadata = await sharp(assetBytes).metadata();
 assert.deepEqual(
@@ -27,7 +27,7 @@ assert.deepEqual(
 );
 assert.equal(
   crypto.createHash("sha256").update(assetBytes).digest("hex"),
-  "9f3289dfee573927f3c2c8731fb34b14ed17dcd0aec1a4a1b6cb879d0abbdb00",
+  "033a20845c25454015618d0858377fdad2962a2ca383ddabf1a84e90a38b6835",
 );
 
 const base = newMahoganyProject({ product: "fullnoise" });
@@ -73,6 +73,7 @@ const preview = renderFullnoiseVuPreview(
 assert.match(preview, new RegExp(FULLNOISE_VU_RENDERER_VERSION));
 assert.match(preview, new RegExp(FULLNOISE_VU_CABINET_URL));
 assert.match(preview, />HEY GRINGO</);
+assert.match(preview, /id="deckBandName" class="deck-band-name">HEY GRINGO</);
 assert.match(preview, /Daryl Roberts &amp; Hey Gringo Can&#39;t Say No From Three/);
 assert.match(preview, /target="_blank" rel="noopener noreferrer"/);
 assert.doesNotMatch(preview, /aggits-jukebox-button-bank-canonical-v2/);
