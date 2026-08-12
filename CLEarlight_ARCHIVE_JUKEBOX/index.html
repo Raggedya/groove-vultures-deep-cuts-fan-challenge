@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#050307">
+  <title>CLEarlight Archive Jukebox</title>
+  <link rel="stylesheet" href="src/styles.css">
+</head>
+<body>
+  <main class="stage">
+    <section class="jukebox" aria-label="CLEarlight Archive Jukebox">
+      <img class="cabinet" src="assets/clearlight-archive-cabinet-master.webp" alt="Polished chrome, black enamel and purple archive jukebox">
+
+      <header class="upper-display" aria-live="polite">
+        <strong>CLE<span>AR</span>LIGHT</strong>
+        <small>ARCHIVE JUKEBOX · <b id="categoryName">ALL ARCHIVES</b></small>
+      </header>
+
+      <div id="categoryPanel" class="category-panel" aria-hidden="true">
+        <div class="category-head"><span>SELECT AN ARCHIVE</span><button id="closeCategories" aria-label="Close categories">×</button></div>
+        <div id="categoryGrid" class="category-grid"></div>
+      </div>
+
+      <section id="mediaBay" class="media-bay idle" aria-live="polite">
+        <video id="videoPlayer" playsinline preload="metadata"></video>
+        <audio id="audioPlayer" preload="metadata" crossorigin="anonymous"></audio>
+        <div id="idleMessage" class="idle-message"><span>✦</span><strong>PRESS A KEY</strong><small>DISCOVER SOMETHING FROM HISTORY</small></div>
+        <div id="loadingMessage" class="loading-message" hidden>SEARCHING THE ARCHIVE…</div>
+        <div id="completeMessage" class="complete-message" hidden><strong>ARCHIVE RECORDING COMPLETE</strong><span>Choose NEXT or HOME</span></div>
+        <div id="errorMessage" class="error-message" hidden></div>
+      </section>
+
+      <section class="record-display">
+        <small id="statusLabel">ARCHIVE READY</small>
+        <strong id="recordTitle">RANDOM HISTORY AWAITS</strong>
+        <span id="recordMeta">50 CURATED RECORDS · RIGHTS CHECKED</span>
+      </section>
+
+      <nav class="archive-keys" aria-label="Archive discovery controls">
+        <button data-action="video" aria-label="Discover an archive video"><i>▶</i><span>VIDEO</span></button>
+        <button data-action="audio" aria-label="Discover an archive audio recording"><i>♫</i><span>AUDIO</span></button>
+        <button data-action="surprise" aria-label="Surprise me with audio or video"><i>✦</i><span>SURPRISE<br>ME</span></button>
+        <button data-action="category" aria-label="Select an archive category"><i>▦</i><span>SELECT<br>CATEGORY</span></button>
+      </nav>
+
+      <div id="playbackControls" class="playback-controls" hidden>
+        <button data-playback="home">⌂ HOME</button>
+        <button data-playback="toggle">Ⅱ PAUSE</button>
+        <button data-playback="next">NEXT ›</button>
+        <button data-playback="mute" aria-label="Mute or unmute">◖</button>
+      </div>
+
+      <div class="ticker" aria-label="Archive context"><span id="tickerText">CHOOSE VIDEO, AUDIO, SURPRISE ME OR SELECT CATEGORY TO BEGIN YOUR JOURNEY THROUGH RECORDED HISTORY.</span></div>
+
+      <button id="rightsButton" class="rights-button">SOURCE &amp; RIGHTS</button>
+      <footer>Copyright Clearlight Creative 2026</footer>
+    </section>
+  </main>
+
+  <dialog id="rightsDialog" class="rights-dialog">
+    <button id="closeRights" class="dialog-close" aria-label="Close source and rights">×</button>
+    <p class="eyebrow">SOURCE &amp; RIGHTS</p>
+    <h2 id="rightsTitle">No archive item selected</h2>
+    <dl id="rightsDetails"></dl>
+    <a id="sourceLink" target="_blank" rel="noopener noreferrer">OPEN ORIGINAL ARCHIVE PAGE ↗</a>
+  </dialog>
+
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>

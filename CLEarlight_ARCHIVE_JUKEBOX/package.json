@@ -1,0 +1,12 @@
+{
+  "name": "clearlight-archive-jukebox",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Standalone Stage 1 Clearlight Archive Jukebox prototype",
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "resolve-media": "node scripts/resolve-commons-media.mjs"
+  }
+}
