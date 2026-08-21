@@ -5,7 +5,7 @@ export const AGGITS_JUKEBOX_CABINET_SHA256="c42731d8f90b7c53ddbf44ee65a16930c831
 export const AGGITS_JUKEBOX_ICON_MASTER="assets/aggits-jukebox-icons-master-v1.jpg";
 export const AGGITS_JUKEBOX_ICON_MASTER_SHA256="021e112589a982df5ea3ee665c1d19edb849dd4758cbf2749522c779d2caf527";
 export const AGGITS_JUKEBOX_OVAL_ICON_SET="assets/aggits-jukebox-icons-oval-v6";
-export const AGGITS_JUKEBOX_OVAL_ICON_SET_SHA256="ddbb9f068d32ffa30c72b79f6bac8899d252f6a49186a43cbfa114c6f08a6e66";
+export const AGGITS_JUKEBOX_OVAL_ICON_SET_SHA256="4436638de48e987e354ba24ff5e6294d86d7a0b44e4a8d4ff94d19fef02868b7";
 
 const LABEL_ROWS=[
   ["Call","Book Now","Gigs","Menu","Food","Drinks","Specials","Happy Hour","Cocktails","Wine List"],
