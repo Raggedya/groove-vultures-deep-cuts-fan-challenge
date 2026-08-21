@@ -35,7 +35,7 @@ for(const icon of AGGITS_JUKEBOX_ICONS){
   const svg=fs.readFileSync(file,"utf8");
   assert.equal((svg.match(/<svg\b/g)||[]).length,1,`icon must contain one clean SVG root: ${icon.id}`);
   ovalSetHash.update(path.basename(file));
-  ovalSetHash.update(svg);
+  ovalSetHash.update(svg.replace(/\r\n?/g,"\n"));
 }
 assert.equal(ovalSetHash.digest("hex"),AGGITS_JUKEBOX_OVAL_ICON_SET_SHA256,"oval-native icon set identity changed");
 
