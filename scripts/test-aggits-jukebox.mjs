@@ -59,7 +59,7 @@ assert.ok(!html.includes(".actions:before"),"the clean illuminated master must n
 assert.ok(!html.includes("solid transparent"),"public oval keys must not render an exterior border layer");
 assert.ok(!html.includes("border-box;color:#d5a355"),"public oval keys must use an internal bevel instead of an exterior gradient contour");
 assert.match(html,/\.action-icon\{[^}]*top:50%;left:50%;width:40%;height:34%[^}]*transform:translate\(-50%,-50%\)/,"public oval key icons must receive a compact, non-collapsing and exactly centred box inside the photographed key faces");
-assert.match(html,/\.machine\.is-fixed-action-layout \.action-icon\{top:47\.55%\}/,"the shared icon layer must use the measured vertical centre of the photographed oval faces");
+assert.doesNotMatch(html,/\.machine\.is-fixed-action-layout \.action-icon\{top:/,"fixed-layout keys must not override the exact shared 50% vertical centre");
 assert.match(html,/\.machine\.is-fixed-action-layout \.action\.is-depressed \.action-icon\{transform:translate\(-50%,-50%\)\}/,"pressing a fixed-layout key must not shift its icon inside the photographed oval face");
 assert.match(html,/\.machine\.is-fixed-action-layout \.action\{position:absolute;padding:0\}/,"fixed physical slots must not inherit percentage padding that enlarges and shifts their border boxes");
 assert.match(html,/\.action-icon img\{[^}]*object-position:50% 50%/,"all icon artwork must remain optically centred within its shared box");
