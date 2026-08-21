@@ -10,6 +10,10 @@ const smoke =
 let server = null,
   origin = "",
   window = null;
+const product = JSON.parse(
+  await fs.readFile(path.join(app.getAppPath(), "mahogany-product.json"), "utf8"),
+);
+app.setAppUserModelId(product.windowsAppUserModelId);
 if (smoke) {
   app.disableHardwareAcceleration();
   app.commandLine.appendSwitch("disable-gpu");
@@ -87,7 +91,7 @@ async function bounded() {
     !html.includes("Mahogany Jukebox") ||
     !html.includes("Four physical action keys") ||
     !Array.isArray(json.icons) ||
-    json.icons.length !== 111
+    json.icons.length !== 173
   )
     throw new Error("The packaged Mahogany Jukebox smoke test failed.");
 }

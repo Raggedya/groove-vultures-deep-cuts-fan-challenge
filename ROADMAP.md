@@ -57,3 +57,5 @@
 
 Completed platform standard: verified featured-video selection, retired tipping, and automatic removal/rebalancing of unavailable destinations are now part of the reusable engine and research contract.
 
+- [x] Lock Mahogany Jukebox 1.4.12 to `MASTER STRUCTURE.png`: exact 941 × 1672 new-skin artwork, unchanged fixed interaction layer, isolated 864 × 1536 legacy preservation, protected versioned publication, live verification and rollback.
+

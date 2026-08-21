@@ -20,6 +20,44 @@
       </nav>
     </header>
     <main>
+      <section class="candidate-launch panel" aria-labelledby="candidateLaunchTitle">
+        <div class="candidate-launch-copy">
+          <span class="eyebrow">Manual-review candidate intake</span>
+          <h2 id="candidateLaunchTitle">Build the next production queue</h2>
+          <p>
+            A resolved direct Bandcamp artist page creates an unpublished
+            review draft. Other profiles and biography are populated when
+            found, and blank fields remain for your manual review.
+          </p>
+        </div>
+        <div class="candidate-launch-actions">
+          <button
+            id="addTenBands"
+            class="candidate-button"
+            type="button"
+            aria-label="Add 10 Bandcamp leads for manual review"
+          >
+            <strong>ADD 10 BANDS</strong>
+            <span>Bandcamp required · other profiles added when found</span>
+          </button>
+          <button
+            id="addTenBusinesses"
+            class="candidate-button is-future"
+            type="button"
+            aria-describedby="businessPilotNote"
+          >
+            <strong>ADD 10 BUSINESSES</strong>
+            <span id="businessPilotNote">Next staged intake model</span>
+          </button>
+        </div>
+        <div
+          id="candidateProgress"
+          class="candidate-progress"
+          role="status"
+          aria-live="polite"
+          hidden
+        ></div>
+      </section>
       <section id="builderView" class="view builder-view">
         <aside class="preview-column" aria-label="Production previews">
           <div class="panel preview-panel">
@@ -75,6 +113,57 @@
                 placeholder="e.g. The Filthy Animals"
                 required
             /></label>
+            <fieldset class="skin-fieldset">
+              <legend>Cabinet skin <small>optional · visual only</small></legend>
+              <div class="skin-choice">
+                <div class="skin-copy">
+                  <strong id="skinStatus">Mahogany Master</strong>
+                  <small id="skinFileName"
+                    >Default locked cabinet · all functionality preserved</small
+                  >
+                  <p>
+                    Upload an exact 941 × 1672 portrait PNG, JPEG or WebP.
+                    Studio validates the file and never resizes or crops it.
+                    The image changes the cabinet artwork only; coin, sound,
+                    video, ticker, four keys, links, publishing and QR behaviour
+                    remain fixed.
+                  </p>
+                </div>
+                <img id="skinPreview" alt="Selected jukebox skin preview" hidden />
+                <div class="skin-actions">
+                  <button id="chooseSkin" class="file-button" type="button">
+                    Upload skin image
+                  </button>
+                  <button id="restoreSkin" class="quiet-button" type="button" hidden>
+                    Restore Mahogany Master
+                  </button>
+                </div>
+                <input
+                  id="skinFile"
+                  type="file"
+                  accept="image/png,image/jpeg,image/webp"
+                  hidden
+                />
+              </div>
+            </fieldset>
+            <fieldset class="secret-video-fieldset">
+              <legend>Upload Secret Video</legend>
+              <div class="secret-video-manager">
+                <div>
+                  <strong id="secretVideoStatus">No secret video configured</strong>
+                  <small id="secretVideoMetadata">MP4/H.264 · maximum 24 MiB</small>
+                </div>
+                <div class="secret-video-actions">
+                  <button id="chooseSecretVideo" class="file-button" type="button">Select video</button>
+                  <button id="removeSecretVideo" class="quiet-button" type="button" hidden>Remove</button>
+                </div>
+                <input id="secretVideoFile" type="file" accept="video/mp4,.mp4" hidden />
+                <progress id="secretVideoProgress" max="100" value="0" hidden></progress>
+                <video id="secretVideoPreview" controls preload="metadata" playsinline hidden></video>
+                <label class="secret-video-loop"><input id="secretVideoLoop" type="checkbox" /> Loop secret video</label>
+                <span id="secretVideoMessage" class="secret-video-message" role="status" aria-live="polite"></span>
+              </div>
+            </fieldset>
             <fieldset>
               <legend><span>1</span> Video input</legend>
               <div class="video-choice">
@@ -82,17 +171,9 @@
                   ><input
                     type="radio"
                     name="videoKind"
-                    value="youtube"
+                    value="mp4"
                     checked
-                  /><span>YouTube URL</span></label
-                ><input
-                  id="youtubeUrl"
-                  type="url"
-                  placeholder="https://youtube.com/watch?v=…"
-                /><span id="youtubeStatus" class="video-check-status" aria-live="polite">Not checked</span><label
-                  ><input type="radio" name="videoKind" value="mp4" /><span
-                    >Upload MP4</span
-                  ></label
+                  /><span>Upload MP4 · Primary</span></label
                 ><button id="chooseMp4" class="file-button" type="button">
                   Choose file</button
                 ><input
@@ -101,8 +182,16 @@
                   accept="video/mp4"
                   hidden
                 /><small id="videoFileName"
-                  >MP4/H.264 · 1120 × 1280 px · maximum 24 MiB</small
-                >
+                  >MP4/H.264 · 1890 × 1800 px · maximum 24 MiB</small
+                ><label
+                  ><input type="radio" name="videoKind" value="youtube" /><span
+                    >YouTube URL</span
+                  ></label
+                ><input
+                  id="youtubeUrl"
+                  type="url"
+                  placeholder="https://youtube.com/watch?v=…"
+                /><span id="youtubeStatus" class="video-check-status" aria-live="polite">Not checked</span>
               </div>
             </fieldset>
             <fieldset>
@@ -198,20 +287,28 @@
       <form method="dialog" class="icon-dialog">
         <div class="panel-heading">
           <div>
-            <span class="eyebrow">111 approved icons</span>
+            <span class="eyebrow" id="iconCatalogCount">Approved icons</span>
             <h2>Select an icon</h2>
           </div>
           <button class="dialog-close" value="cancel" aria-label="Close">
             ×
           </button>
         </div>
-        <label class="search"
-          ><span>Find icon</span
-          ><input
-            id="iconSearch"
-            type="search"
-            placeholder="Spotify, menu, tickets, reviews…"
-        /></label>
+        <div class="icon-filters">
+          <label class="search"
+            ><span>Find icon</span
+            ><input
+              id="iconSearch"
+              type="search"
+              placeholder="Football, restaurant, flowers, photography…"
+          /></label>
+          <label class="search category-filter"
+            ><span>Category</span
+            ><select id="iconCategory" aria-label="Filter icons by category">
+              <option value="">All categories</option>
+            </select></label
+          >
+        </div>
         <div id="iconGrid" class="icon-grid"></div>
       </form>
     </dialog>

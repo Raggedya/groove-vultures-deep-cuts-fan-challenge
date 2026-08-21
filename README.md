@@ -83,3 +83,7 @@ Public URLs use opaque IDs and never expose the artist name:
 `npm run validate` checks the locked UI, approved Aggits hashes, edition routes, analytics, build tracking and Worker contract through the bounded parallel validation runner. It prints live per-check timings; pass `-- --jobs <n> --profile <path.json>` to capture a machine-readable profile. `npm run build` creates the Cloudflare static bundle. `npm run build:artwork` validates once, renders every active edition with bounded parallelism, and then SHA-256-checks and scan-tests every QR at full and social-media size.
 
 Secrets and account identifiers are configured once after the Cloudflare and email accounts are connected. They are never committed.
+
+## Mahogany Jukebox 1.4.12 cabinet skins
+
+The isolated Windows Mahogany Jukebox Studio supports an optional artwork-only cabinet skin. Upload a complete 864 × 1536 PNG, JPEG or WebP no larger than 12 MiB. Pixel geometry is validated before storage. Preview, edit and protected publication preserve the selected versioned skin while the Mahogany coin, sound, video, ticker, four action keys, sharing, analytics, QR and delivery behaviour remain fixed. Existing and skinless projects always use the current Mahogany Master. Build the Windows release with `npm run mahogany:make`.

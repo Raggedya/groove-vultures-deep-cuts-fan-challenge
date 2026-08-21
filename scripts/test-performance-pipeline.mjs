@@ -47,6 +47,8 @@ assert.match(artworkVerifier, /zxingcpp\.read_barcode/);
 assert.match(artworkVerifier, /hashlib\.sha256/);
 assert.match(artworkVerifier, /reduced_size = \(960, 540\) if image\.width > image\.height else \(540, 540\)/);
 assert.match(build, /Promise\.all/);
+assert.match(build, /deploymentAssetFilter/);
+assert.match(build, /\['\.exe','\.zip','\.dmg','\.msi'\]/, "Desktop installers and archives must never enter the public Worker asset bundle.");
 for(const deploymentCheck of [sync,smoke,deployedQr]){
   assert.match(deploymentCheck, /mapLimit/);
   assert.match(deploymentCheck, /DEEP_CUTS_DEPLOY_JOBS/);

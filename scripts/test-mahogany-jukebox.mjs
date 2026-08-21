@@ -3,6 +3,7 @@ import crypto from "node:crypto";
 import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
+import sharp from "sharp";
 import {
   createAggitsJukeboxQrArtwork,
   AGGITS_JUKEBOX_QR_PANEL,
@@ -15,26 +16,38 @@ import {
   MAHOGANY_OVAL_CABINET_ASSET,
   MAHOGANY_OVAL_CABINET_SHA256,
   MAHOGANY_BUTTON_CLUNK_ASSET,
+  MAHOGANY_SECRET_OPEN_MOTOR_ASSET,
+  MAHOGANY_SECRET_CLOSE_MOTOR_ASSET,
   MAHOGANY_BUTTON_LINK_DELAY_MS,
-  MAHOGANY_BUTTON_ATTENTION_START_SECONDS,
-  MAHOGANY_BUTTON_ATTENTION_FLASH_SECONDS,
-  MAHOGANY_BUTTON_ATTENTION_BUTTON_COUNT,
-  MAHOGANY_BUTTON_ATTENTION_CYCLES,
-  MAHOGANY_BUTTON_ATTENTION_END_SECONDS,
   MAHOGANY_AGGITS_COIN_ASSET,
   MAHOGANY_AGGITS_COIN_SHA256,
-  mahoganyButtonAttentionIndex,
-  isMahoganyButtonAttentionTime,
   renderAggitsJukeboxStudioPreview,
 } from "./aggits-jukebox-preview.mjs";
 import { createMahoganyStudioServer } from "./mahogany-studio-server.mjs";
 import {
   buildMahoganyManifest,
+  MAHOGANY_SKIN_HEIGHT,
+  MAHOGANY_SKIN_WIDTH,
   newMahoganyProject,
   normalizeMahoganyProject,
   toPreviewProject,
   validateMahoganyProject,
 } from "./mahogany-jukebox-model.mjs";
+import {
+  MAHOGANY_LEGACY_LAYOUT_ID,
+  MAHOGANY_MASTER_LAYOUT,
+  MAHOGANY_MASTER_LAYOUT_ID,
+  MAHOGANY_LOCKED_TIMING,
+  mahoganyGeometrySnapshot,
+} from "./mahogany-jukebox-layout.mjs";
+import {
+  MAHOGANY_SECRET_SCREEN_STATES,
+  transitionMahoganySecretScreen,
+} from "./mahogany-secret-screen-state.mjs";
+import {
+  MAHOGANY_SKIN_SCHEMA,
+  validateMahoganySkinDefinition,
+} from "./mahogany-jukebox-skin-schema.mjs";
 
 const root = process.cwd(),
   desktopMainSource = await fs.readFile(
@@ -87,7 +100,7 @@ const root = process.cwd(),
       },
     ],
   });
-assert.match(desktopMainSource, /json\.icons\.length !== 111/);
+assert.match(desktopMainSource, /json\.icons\.length !== 173/);
 assert.match(windowsBuilderSource, /--user-data-dir=\$\{smokeProfile\}/);
 assert.ok(
   studioHtmlSource.indexOf('value="mp4"') < studioHtmlSource.indexOf('value="youtube"'),
@@ -110,6 +123,70 @@ assert.match(
   "selector icons must remain centred within the oval bezel",
 );
 assert.equal(newMahoganyProject().video.kind, "mp4");
+assert.equal(newMahoganyProject().skin.kind, "default");
+assert.equal(newMahoganyProject().layoutProfile, MAHOGANY_MASTER_LAYOUT_ID);
+assert.equal(MAHOGANY_MASTER_LAYOUT.width, 941);
+assert.equal(MAHOGANY_MASTER_LAYOUT.height, 1672);
+const measuredPhysicalActionCentres = [199, 377, 564, 739];
+MAHOGANY_MASTER_LAYOUT.slots.actionKeys.forEach((slot, index) => {
+  const renderedCentre =
+    ((slot.left + slot.width / 2) / 100) * MAHOGANY_MASTER_LAYOUT.width;
+  assert.ok(
+    Math.abs(renderedCentre - measuredPhysicalActionCentres[index]) <= 0.01,
+    `action ${index + 1} must share the measured physical oval centre`,
+  );
+});
+assert.equal(MAHOGANY_LOCKED_TIMING.coinInsertMs, 620);
+assert.equal(MAHOGANY_LOCKED_TIMING.secretScreenTravelMs, 3000);
+assert.equal(MAHOGANY_LOCKED_TIMING.reducedSecretScreenTravelMs, 180);
+assert.equal(MAHOGANY_LOCKED_TIMING.outboundDelayMs, 500);
+assert.equal(
+  mahoganyGeometrySnapshot().canonical,
+  JSON.stringify({
+    id: MAHOGANY_MASTER_LAYOUT.id,
+    width: MAHOGANY_MASTER_LAYOUT.width,
+    height: MAHOGANY_MASTER_LAYOUT.height,
+    slots: MAHOGANY_MASTER_LAYOUT.slots,
+    timing: MAHOGANY_LOCKED_TIMING,
+  }),
+);
+const strictSkin = {
+  schemaVersion: MAHOGANY_SKIN_SCHEMA,
+  kind: "custom",
+  layoutProfile: MAHOGANY_MASTER_LAYOUT_ID,
+  fileName: "master.png",
+  storageFileName: "skin.png",
+  format: "png",
+  mimeType: "image/png",
+  width: 941,
+  height: 1672,
+  sizeBytes: 4096,
+  sha256: "a".repeat(64),
+};
+assert.equal(
+  validateMahoganySkinDefinition(strictSkin, { allowLegacy: false }).valid,
+  true,
+);
+assert.equal(
+  validateMahoganySkinDefinition(
+    { ...strictSkin, width: 940 },
+    { allowLegacy: false },
+  ).valid,
+  false,
+);
+assert.equal(
+  validateMahoganySkinDefinition(
+    { ...strictSkin, videoTop: 20 },
+    { allowLegacy: false },
+  ).valid,
+  false,
+  "skin metadata must not be able to alter fixed geometry",
+);
+assert.equal(
+  normalizeMahoganyProject({ name: "Preserved legacy project" }).layoutProfile,
+  MAHOGANY_LEGACY_LAYOUT_ID,
+  "stored projects without a layout profile must keep the preserved 864 × 1536 renderer",
+);
 const checked = validateMahoganyProject(sample);
 assert.equal(checked.ready, true, checked.errors.join(" "));
 const uncheckedYouTube = normalizeMahoganyProject({
@@ -127,23 +204,48 @@ assert.match(
 const manifest = buildMahoganyManifest(sample);
 assert.equal(manifest.actions.length, 4);
 assert.equal(manifest.video.kind, "youtube");
-assert.equal(manifest.schemaVersion, "deep-cuts-mahogany-jukebox-publication/2");
+assert.equal(manifest.schemaVersion, "deep-cuts-mahogany-jukebox-publication/3");
 assert.equal(manifest.video.embedStatus, "playable");
+assert.equal(manifest.layoutProfile, MAHOGANY_MASTER_LAYOUT_ID);
 assert.match(manifest.video.sha256, /^[a-f0-9]{64}$/);
 const preview = renderAggitsJukeboxStudioPreview(toPreviewProject(sample), {
   youtubeUrl: sample.video.youtubeUrl,
 });
+const secretPreview = renderAggitsJukeboxStudioPreview(
+  toPreviewProject(
+    normalizeMahoganyProject({
+      ...sample,
+      secretVideo: {
+        fileName: "concealed.mp4",
+        mimeType: "video/mp4",
+        sizeBytes: 4096,
+        sha256: "b".repeat(64),
+        storageName: `secret-video-${"b".repeat(64)}.mp4`,
+        loop: false,
+        updatedAt: new Date().toISOString(),
+      },
+    }),
+  ),
+  {
+    youtubeUrl: sample.video.youtubeUrl,
+    secretVideoUrl: "/assets/test/concealed.mp4",
+  },
+);
 assert.match(preview, /MAHOGANY JUKEBOX/);
 assert.equal(MAHOGANY_FIXED_MARQUEE, "AGGITS");
-assert.equal(MAHOGANY_RENDERER_VERSION, "mahogany-jukebox/2026-08-08-v7");
-assert.match(
-  preview,
-  /<meta name="deep-cuts-renderer" content="mahogany-jukebox\/2026-08-08-v7">/,
+assert.equal(
+  MAHOGANY_RENDERER_VERSION,
+  "mahogany-jukebox/2026-08-21-v16-concealed-screen-toggle",
 );
 assert.match(
   preview,
-  /data-renderer-version="mahogany-jukebox\/2026-08-08-v7"/,
+  /<meta name="deep-cuts-renderer" content="mahogany-jukebox\/2026-08-21-v16-concealed-screen-toggle">/,
 );
+assert.match(
+  preview,
+  /data-renderer-version="mahogany-jukebox\/2026-08-21-v16-concealed-screen-toggle"/,
+);
+assert.match(preview, /data-skin-profile="master-structure\/1"/);
 assert.equal(MAHOGANY_FIXED_MARQUEE_ASSET, "/assets/aggits-marquee-reference-v1.jpg");
 assert.match(MAHOGANY_FIXED_MARQUEE_SHA256, /^[a-f0-9]{64}$/);
 assert.equal(
@@ -157,7 +259,44 @@ assert.equal(
 );
 assert.match(preview, /aggits-jukebox-illuminated-master-v3\.png/);
 assert.doesNotMatch(preview, /id="titleText"/);
-assert.match(preview, /is-powering:before\{opacity:\.3\}/);
+assert.match(preview, /is-neon-starting/);
+assert.match(preview, /is-neon-illuminated:before\{opacity:\.3\}/);
+assert.match(preview, /animation:neonStartup 2240ms linear both/);
+assert.match(preview, /66%,76%\{opacity:1\}100%\{opacity:\.3\}/);
+assert.match(preview, /reducedMotion\?180:2240/);
+assert.match(preview, /id="secretControl"/);
+assert.match(
+  secretPreview,
+  /<video id="secretVideo" controls preload="metadata" playsinline webkit-playsinline src="\/assets\/test\/concealed\.mp4"/,
+);
+assert.match(
+  secretPreview,
+  /id="secretControl"[^>]*aria-expanded="false"[^>]*aria-busy="false"[^>]*aria-disabled="false"/,
+);
+assert.doesNotMatch(secretPreview, /id="secretControl"[^>]* disabled/);
+assert.match(preview, /is-secret-opening/);
+assert.match(preview, /is-secret-open/);
+assert.match(preview, /is-secret-closing/);
+assert.doesNotMatch(preview, /is-secret-playing/);
+assert.match(preview, /transition:transform 3000ms/);
+assert.match(preview, /transition-duration:180ms/);
+assert.match(preview, /aria-busy="false"/);
+assert.match(preview, /secretVideo\?\.addEventListener\("ended",\(\)=>requestSecretClose/);
+assert.match(preview, /document\.hidden&&secretState!=="closed"\)requestSecretClose/);
+assert.match(preview, /event\.propertyName==="transform"/);
+assert.match(preview, /if\(!event\.repeat\)toggleSecret\(\)/);
+assert.equal(MAHOGANY_SECRET_SCREEN_STATES.join(","), "closed,opening,open,closing");
+assert.equal(transitionMahoganySecretScreen("closed", "TOGGLE"), "opening");
+assert.equal(transitionMahoganySecretScreen("opening", "TOGGLE"), "opening");
+assert.equal(transitionMahoganySecretScreen("opening", "ARRIVE"), "open");
+assert.equal(transitionMahoganySecretScreen("open", "TOGGLE"), "closing");
+assert.equal(transitionMahoganySecretScreen("closing", "TOGGLE"), "closing");
+assert.equal(transitionMahoganySecretScreen("closing", "ARRIVE"), "closed");
+assert.equal(transitionMahoganySecretScreen("open", "RESET"), "closed");
+assert.equal(MAHOGANY_SECRET_OPEN_MOTOR_ASSET, "/assets/audio/jukebox-screen-motor-open-original.wav");
+assert.equal(MAHOGANY_SECRET_CLOSE_MOTOR_ASSET, "/assets/audio/jukebox-screen-motor-close-original.wav");
+assert.ok((await fs.stat(path.join(root, MAHOGANY_SECRET_OPEN_MOTOR_ASSET.slice(1)))).size > 100000);
+assert.ok((await fs.stat(path.join(root, MAHOGANY_SECRET_CLOSE_MOTOR_ASSET.slice(1)))).size > 100000);
 assert.match(preview, /youtube-nocookie\.com\/embed\/4QK0RZ0FQ_0/);
 assert.match(preview, /jukebox-real-coin-insert-cc0\.mp3/);
 assert.match(preview, /coinInsert/);
@@ -168,55 +307,31 @@ assert.equal(
 );
 assert.match(preview, /class="coin-art"/);
 assert.match(preview, /aggits-coin-gold-v1\.png/);
-assert.match(preview, /left:16\.7%;width:9\.4%/);
+assert.match(preview, /--coin-left:16\.7%;--coin-width:9\.4%/);
 assert.match(preview, /translateX\(-56%\) rotateY\(88deg\)/);
 assert.doesNotMatch(preview, /content:"\$"/);
 assert.match(preview, /is-depressed/);
 assert.match(preview, /actions\.forEach\(candidate=>candidate\.classList\.toggle\("is-depressed",candidate===action\)\)/);
 assert.match(preview, /jukebox-mechanical-button-clunk-public-domain\.ogg/);
-assert.match(preview, /\.video\{[^}]*left:23\.55%;width:64\.78%/);
-assert.match(preview, /\.actions\{[^}]*top:55\.9%;left:12\.05%;width:73\.5%;height:18\.2%;[^}]*gap:1\.45%/);
-assert.match(preview, /aggits-jukebox-icons-oval-v4\/spotify\.svg/);
+assert.match(preview, /--video-top:28\.17%;--video-left:26\.89%;--video-width:57\.92%;--video-height:32\.36%;--video-radius:3\.7%/);
+assert.match(preview, /clip-path:inset\(0 round var\(--video-radius\)\)/);
+assert.match(preview, /\.video video,\.video iframe,\.secret-compartment video\{[^}]*border-radius:inherit/);
+assert.match(preview, /--actions-top:65\.55%;--actions-left:0%;--actions-width:100%;--actions-height:16\.9%/);
+assert.match(preview, /--action-1-left:12\.1477%;--action-1-width:18%/);
+assert.match(preview, /--action-4-left:69\.5335%;--action-4-width:18%/);
+assert.match(preview, /\.machine\.is-fixed-action-layout \.action:nth-child\(1\)\{top:var\(--action-1-top\);left:var\(--action-1-left\);width:var\(--action-1-width\);height:var\(--action-1-height\)\}/);
+assert.match(preview, /\.machine\.is-fixed-action-layout \.action\{position:absolute;padding:0\}/);
+assert.match(preview, /aggits-jukebox-icons-oval-v6\/spotify\.svg/);
 assert.match(preview, /\.action-icon img\{[^}]*width:100%;height:100%/);
-assert.match(preview, /\.action-icon\{[^}]*width:68%/);
+assert.match(preview, /\.action-icon\{[^}]*top:50%;left:50%;width:40%;height:34%[^}]*transform:translate\(-50%,-50%\)/);
+assert.match(preview, /\.action-icon img\{[^}]*object-position:50% 50%/);
+assert.match(preview, /\.action\.is-depressed \.action-icon\{transform:translate\(-50%,calc\(-50% \+ 2px\)\)\}/);
+assert.match(preview, /\.action\{[^}]*filter:brightness\(\.62\) saturate\(\.72\);opacity:\.86/);
 assert.doesNotMatch(preview, /solid transparent/);
 assert.doesNotMatch(preview, /is-label-medium/);
 assert.doesNotMatch(preview, /<strong>Spotify<\/strong>/);
 assert.doesNotMatch(preview, /\.action:before/);
-assert.match(preview, /createMediaElementSource\(video\)/);
-assert.match(preview, /Math\.ceil\(40\/binHz\)/);
-assert.match(preview, /Math\.floor\(180\/binHz\)/);
-assert.match(preview, /adaptiveBass=adaptiveBass\*\.94\+raw\*\.06/);
-assert.match(preview, /simulatedBass/);
-assert.match(preview, /video\?\.addEventListener\("pause",\(\)=>\{clearBass\(\);stopAttentionMonitor\(\)/);
-assert.match(preview, /video\?\.addEventListener\("ended",\(\)=>\{clearBass\(\);stopAttentionMonitor\(\)/);
-assert.match(preview, /prefers-reduced-motion:reduce[^}]*[\s\S]*--bass-scale:1!important/);
-assert.match(preview, /\.action:after\{[^}]*inset:4\.5% 5\.5%[^}]*opacity:calc\(var\(--bass-level\) \* \.82\)/);
-assert.equal(MAHOGANY_BUTTON_ATTENTION_START_SECONDS, 45.14);
-assert.equal(MAHOGANY_BUTTON_ATTENTION_FLASH_SECONDS, 0.5);
-assert.equal(MAHOGANY_BUTTON_ATTENTION_BUTTON_COUNT, 4);
-assert.equal(MAHOGANY_BUTTON_ATTENTION_CYCLES, 3);
-assert.equal(MAHOGANY_BUTTON_ATTENTION_END_SECONDS, 51.14);
-assert.deepEqual(
-  [45.139, 45.14, 45.639, 45.64, 46.14, 46.64, 47.14, 49.14, 51.139, 51.14].map(mahoganyButtonAttentionIndex),
-  [-1, 0, 0, 1, 2, 3, 0, 0, 3, -1],
-  "the three left-to-right media-time cycles must remain exact",
-);
-assert.equal(isMahoganyButtonAttentionTime(45.14), true);
-assert.equal(isMahoganyButtonAttentionTime(51.14), false);
-assert.equal((preview.match(/class="attention-flash-border"/g) || []).length, 4);
-assert.match(preview, /border:clamp\(2px,\.65vw,4px\) solid #ffd36a/);
-assert.doesNotMatch(preview, /\.action\.is-attention-flash\{[^}]*filter|\.action\.is-attention-flash\{[^}]*transform/);
-assert.match(preview, /requestVideoFrameCallback\(attentionTick\)/);
-assert.match(preview, /Number\.isFinite\(metadata\?\.mediaTime\)\?metadata\.mediaTime:video\.currentTime/);
-assert.match(preview, /setInterval\(\(\)=>syncAttentionFlash\(video\.currentTime,video\.currentSrc\|\|video\.src\),50\)/);
-assert.match(preview, /message\?\.event==="infoDelivery"/);
-assert.match(preview, /setInterval\(requestYouTubeTime,80\)/);
-assert.match(preview, /postYouTube\("getCurrentTime"\)/);
-assert.match(preview, /frame\?\.addEventListener\("load",\(\)=>\{connectYouTube\(\);startYouTubeClock\(\)\}\)/);
-assert.match(preview, /video\?\.addEventListener\("play",\(\)=>\{syncAttentionFlash/);
-assert.match(preview, /video\?\.addEventListener\("seeked",\(\)=>\{syncAttentionFlash/);
-assert.doesNotMatch(preview, /attentionCompleted|attentionTriggered/);
+assert.doesNotMatch(preview, /bass|AnalyserNode|createAnalyser|attention-flash|is-attention-flash|requestVideoFrameCallback/i);
 const inlineScripts = [...preview.matchAll(/<script(?: nonce="[^"]*")?>([\s\S]*?)<\/script>/g)];
 assert.ok(inlineScripts.length > 0, "preview should include its runtime script");
 assert.doesNotThrow(
@@ -269,7 +384,7 @@ const fakePublisher = {
   },
   async prepare({ project }) {
     return {
-      schemaVersion: "deep-cuts-mahogany-jukebox-publication/2",
+      schemaVersion: "deep-cuts-mahogany-jukebox-publication/3",
       manifest: buildMahoganyManifest(project),
       job: {
         id: "ajjob_test",
@@ -294,7 +409,7 @@ const fakePublisher = {
     await onProgress("publishing", "Publishing the permanent Jukebox");
     await onProgress("delivery", "Waiting for confirmed email delivery");
     return {
-      schemaVersion: "deep-cuts-mahogany-jukebox-publication/2",
+      schemaVersion: "deep-cuts-mahogany-jukebox-publication/3",
       editionId: "dc_0123456789",
       slug: "aggits-jukebox-test",
       liveUrl: "https://deep-cuts.example/e/dc_0123456789",
@@ -371,7 +486,7 @@ try {
     [html, data] = await Promise.all([page.text(), bootstrap.json()]);
   assert.equal(page.ok, true);
   assert.match(html, /Four physical action keys/);
-  assert.equal(data.icons.length, 111);
+  assert.equal(data.icons.length, 173);
   assert.ok(data.icons.some((icon) => icon.id === "bandcamp"));
   const candidateStart = await fetch(
     `${origin}/api/mahogany/candidate-batches/bands`,
@@ -402,11 +517,96 @@ try {
     },
   ).then((response) => response.json());
   assert.equal(updated.project.name, "Savage Garden");
+  const skinBytes = await sharp({
+    create: {
+      width: 941,
+      height: 1672,
+      channels: 4,
+      background: { r: 45, g: 22, b: 10, alpha: 1 },
+    },
+  })
+    .png()
+    .toBuffer();
+  const skinned = await fetch(
+    `${origin}/api/mahogany/projects/${created.project.id}/skin`,
+    {
+      method: "PUT",
+      headers: {
+        "content-type": "image/png",
+        "x-file-name": encodeURIComponent("fixture-skin.png"),
+      },
+      body: skinBytes,
+    },
+  ).then((response) => response.json());
+  assert.equal(skinned.project.skin.kind, "custom");
+  assert.equal(skinned.project.skin.width, MAHOGANY_SKIN_WIDTH);
+  assert.equal(skinned.project.skin.height, MAHOGANY_SKIN_HEIGHT);
+  assert.match(skinned.project.skin.sha256, /^[a-f0-9]{64}$/);
+  assert.equal(
+    validateMahoganyProject(skinned.project, { requireStoredSkin: true }).ready,
+    true,
+  );
+  const storedSkin = await fetch(
+    `${origin}/api/mahogany/projects/${created.project.id}/skin`,
+  );
+  assert.equal(storedSkin.ok, true);
+  assert.equal(storedSkin.headers.get("content-type"), "image/png");
+  const storedSkinMetadata = await sharp(
+    Buffer.from(await storedSkin.arrayBuffer()),
+  ).metadata();
+  assert.equal(storedSkinMetadata.width, MAHOGANY_SKIN_WIDTH);
+  assert.equal(storedSkinMetadata.height, MAHOGANY_SKIN_HEIGHT);
   const rendered = await fetch(
     `${origin}/api/mahogany/projects/${created.project.id}/preview`,
   ).then((response) => response.text());
   assert.match(rendered, /SAVAGE GARDEN/);
   assert.match(rendered, /Mahogany Jukebox preview/);
+  assert.match(rendered, new RegExp(`/api/mahogany/projects/${created.project.id}/skin\\?v=`));
+  const secondCreated = await fetch(`${origin}/api/mahogany/projects`, {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: "{}",
+  }).then((response) => response.json());
+  await fetch(`${origin}/api/mahogany/projects/${secondCreated.project.id}`, {
+    method: "PUT",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ ...sample, name: "Different Skin Fixture" }),
+  });
+  const secondSkinBytes = await sharp({
+    create: {
+      width: 941,
+      height: 1672,
+      channels: 4,
+      background: { r: 8, g: 44, b: 71, alpha: 1 },
+    },
+  })
+    .png()
+    .toBuffer();
+  await fetch(
+    `${origin}/api/mahogany/projects/${secondCreated.project.id}/skin`,
+    {
+      method: "PUT",
+      headers: {
+        "content-type": "image/png",
+        "x-file-name": encodeURIComponent("unrelated-blue-skin.png"),
+      },
+      body: secondSkinBytes,
+    },
+  );
+  const secondRendered = await fetch(
+    `${origin}/api/mahogany/projects/${secondCreated.project.id}/preview`,
+  ).then((response) => response.text());
+  const geometryStyle = rendered.match(/<section id="machine"[^>]*style="([^"]+)"/u)?.[1];
+  const secondGeometryStyle = secondRendered.match(
+    /<section id="machine"[^>]*style="([^"]+)"/u,
+  )?.[1];
+  assert.ok(geometryStyle, "first materially different skin must expose canonical geometry");
+  assert.equal(
+    secondGeometryStyle,
+    geometryStyle,
+    "materially different skins must render through pixel-identical fixed geometry",
+  );
+  assert.match(secondRendered, /data-skin-profile="master-structure\/1"/);
   const prepared = await fetch(
     `${origin}/api/mahogany/projects/${created.project.id}/create`,
     { method: "POST" },
@@ -473,6 +673,14 @@ const studioHtml = await fs.readFile(
 assert.match(studioHtml, /CREATE, PUBLISH &amp; EMAIL/);
 assert.match(studioHtml, /ADD 10 BANDS/);
 assert.match(studioHtml, /ADD 10 BUSINESSES/);
+assert.match(studioHtml, /Cabinet skin/);
+assert.match(studioHtml, /941 × 1672/);
+assert.match(studioHtml, /Upload skin image/);
+assert.match(
+  studioApp,
+  /Custom cabinet skin validated at \$\{state\.project\.skin\.width\} × \$\{state\.project\.skin\.height\}\. Mahogany geometry and functionality are unchanged\./,
+);
+assert.match(studioApp, /Mahogany Master cabinet restored\./);
 assert.doesNotMatch(studioHtml, /Save draft/);
 assert.doesNotMatch(studioHtml, /Accept &amp; publish/);
 console.log(

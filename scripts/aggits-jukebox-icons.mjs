@@ -4,8 +4,8 @@ export const AGGITS_JUKEBOX_CABINET="assets/aggits-jukebox-illuminated-master-v3
 export const AGGITS_JUKEBOX_CABINET_SHA256="c42731d8f90b7c53ddbf44ee65a16930c8315c170fb5fa68cd9a81db7d7c9262";
 export const AGGITS_JUKEBOX_ICON_MASTER="assets/aggits-jukebox-icons-master-v1.jpg";
 export const AGGITS_JUKEBOX_ICON_MASTER_SHA256="021e112589a982df5ea3ee665c1d19edb849dd4758cbf2749522c779d2caf527";
-export const AGGITS_JUKEBOX_OVAL_ICON_SET="assets/aggits-jukebox-icons-oval-v4";
-export const AGGITS_JUKEBOX_OVAL_ICON_SET_SHA256="43668a5c6b090e1f8e65127e59e8bb7f93371e5a5a74681317194619f696e14e";
+export const AGGITS_JUKEBOX_OVAL_ICON_SET="assets/aggits-jukebox-icons-oval-v6";
+export const AGGITS_JUKEBOX_OVAL_ICON_SET_SHA256="ddbb9f068d32ffa30c72b79f6bac8899d252f6a49186a43cbfa114c6f08a6e66";
 
 const LABEL_ROWS=[
   ["Call","Book Now","Gigs","Menu","Food","Drinks","Specials","Happy Hour","Cocktails","Wine List"],
@@ -21,15 +21,85 @@ const LABEL_ROWS=[
   ["Support","FAQ","Help","Info","Notifications","Alerts","Updates","Announcements","Pinned","Important"]
 ];
 
+const BASE_CATEGORIES=[
+  "Hospitality",
+  "Entertainment",
+  "Commerce",
+  "Food & Drink",
+  "Media",
+  "Social & Web",
+  "Travel & Location",
+  "Accommodation",
+  "Events",
+  "Contact & Support",
+  "Utilities"
+];
+
+// New groups are appended so the IDs and positions of the original approved
+// library remain stable. Categories and keywords are discovery metadata only;
+// the public jukebox continues to render the selected icon ID and destination.
+const EXTRA_ICON_GROUPS=[
+  {
+    category:"Sports & Clubs",
+    keywords:"sport team club competition recreation athletics",
+    labels:[
+      "Australian Football","Football Club","Soccer","Cricket","Basketball",
+      "Netball","Rugby","Tennis","Golf","Baseball","Hockey","Volleyball",
+      "Swimming","Running","Cycling","Gym","Boxing","Motorsport","Darts","Bowling"
+    ]
+  },
+  {
+    category:"Hospitality",
+    keywords:"venue hotel pub bar restaurant food drink service",
+    labels:[
+      "Restaurant","Bar","Pub","Beer Garden","Brewery","Taproom","Reservations",
+      "Table Service","Chef","Function Room","Open Late","Live Entertainment",
+      "Dance Floor","Gaming"
+    ]
+  },
+  {
+    category:"Entertainment",
+    keywords:"show performance stage nightlife audience activity",
+    labels:[
+      "Cinema","Comedy","Open Mic","Nightclub","Festival","Showtimes","Arcade",
+      "Quiz Night","Live Performance","Community Event"
+    ]
+  },
+  {
+    category:"Weddings",
+    keywords:"wedding marriage ceremony reception bridal event",
+    labels:[
+      "Wedding Ceremony","Wedding Reception","Engagement","Wedding Rings","Bride",
+      "Groom","Celebrant","Florist","Flowers","Bouquet","Photography","Videography",
+      "Invitations","RSVP","Registry","Wedding Cake","Venue Tour","Wedding Packages"
+    ]
+  }
+];
+
 const slug=value=>String(value).toLowerCase().replace(/[^a-z0-9]+/g,"_").replace(/^_|_$/g,"");
 
-export const AGGITS_JUKEBOX_ICONS=Object.freeze(LABEL_ROWS.flatMap((row,rowIndex)=>row.map((label,columnIndex)=>Object.freeze({
+const BASE_ICONS=LABEL_ROWS.flatMap((row,rowIndex)=>row.map((label,columnIndex)=>Object.freeze({
   id:slug(label),
   label,
   row:rowIndex+1,
   column:columnIndex+1,
+  category:BASE_CATEGORIES[rowIndex],
+  keywords:"",
   assetPath:`/${AGGITS_JUKEBOX_OVAL_ICON_SET}/${slug(label)}.svg`
-}))));
+})));
+
+const EXTRA_ICONS=EXTRA_ICON_GROUPS.flatMap((group,groupIndex)=>group.labels.map((label,columnIndex)=>Object.freeze({
+  id:slug(label),
+  label,
+  row:LABEL_ROWS.length+groupIndex+1,
+  column:columnIndex+1,
+  category:group.category,
+  keywords:group.keywords,
+  assetPath:`/${AGGITS_JUKEBOX_OVAL_ICON_SET}/${slug(label)}.svg`
+})));
+
+export const AGGITS_JUKEBOX_ICONS=Object.freeze([...BASE_ICONS,...EXTRA_ICONS]);
+export const AGGITS_JUKEBOX_ICON_CATEGORIES=Object.freeze([...new Set(AGGITS_JUKEBOX_ICONS.map(icon=>icon.category))]);
 
 const ICON_BY_ID=new Map(AGGITS_JUKEBOX_ICONS.map(icon=>[icon.id,icon]));
 export function aggitsJukeboxIcon(iconId){return ICON_BY_ID.get(String(iconId||"").trim())||null}

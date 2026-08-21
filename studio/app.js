@@ -556,7 +556,7 @@ function renderAudio(){
 
 function renderVideo(){
   const mp4=state.project?.mp4;
-  const guide=state.project?.input.type==="aggits_jukebox"?" · target 1120 × 1280 (7:8)":"";
+  const guide=state.project?.input.type==="aggits_jukebox"?" · target 1804 × 1436 (width × height)":"";
   els.videoState.textContent=mp4?`${mp4.fileName} · ${formatBytes(mp4.sizeBytes)}${guide}`:`Local MP4 · maximum 500 MB${guide}`;
   els.removeVideo.classList.toggle("hidden",!mp4);
 }

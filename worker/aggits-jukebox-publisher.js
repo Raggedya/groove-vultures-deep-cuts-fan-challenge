@@ -7,13 +7,23 @@ import {
   MAHOGANY_RENDERER_VERSION,
   renderAggitsJukeboxStudioPreview,
 } from "../scripts/aggits-jukebox-preview.mjs";
+import {
+  MAHOGANY_LEGACY_LAYOUT_ID,
+  resolveMahoganyLayoutProfile,
+} from "../scripts/mahogany-jukebox-layout.mjs";
+import {
+  MAHOGANY_SKIN_MAX_BYTES,
+  normalizeMahoganySkin,
+  validateMahoganySkinDefinition,
+} from "../scripts/mahogany-jukebox-skin-schema.mjs";
 
 const JSON_HEADERS = {
     "content-type": "application/json; charset=utf-8",
     "cache-control": "no-store",
   },
   VIDEO_MAX_BYTES = 24 * 1024 * 1024,
-  QR_MAX_BYTES = 8 * 1024 * 1024;
+  QR_MAX_BYTES = 8 * 1024 * 1024,
+  SKIN_MAX_BYTES = MAHOGANY_SKIN_MAX_BYTES;
 const ICON_IDS = new Set(AGGITS_JUKEBOX_ICONS.map((item) => item.id));
 
 export async function handleAggitsJukeboxPublisher(request, env, url) {
@@ -48,7 +58,7 @@ export async function handleAggitsJukeboxPublisher(request, env, url) {
   if (state && request.method === "PUT")
     return setState(request, env, state[1], url, device);
   const match = path.match(
-    /^publications\/(ajjob_[a-f0-9-]+)(?:\/(video|qr|commit|rollback))?$/,
+    /^publications\/(ajjob_[a-f0-9-]+)(?:\/(video|skin|secret-video|qr|commit|rollback))?$/,
   );
   if (!match)
     return json({ ok: false, error: "Publisher route not found." }, 404);
@@ -60,6 +70,10 @@ export async function handleAggitsJukeboxPublisher(request, env, url) {
     return json({ ok: true, job: publicJob(job) });
   if (action === "video" && request.method === "PUT")
     return uploadVideo(request, env, job);
+  if (action === "skin" && request.method === "PUT")
+    return uploadSkin(request, env, job);
+  if (action === "secret-video" && request.method === "PUT")
+    return uploadSecretVideo(request, env, job);
   if (action === "qr" && request.method === "PUT")
     return uploadQr(request, env, job);
   if (action === "commit" && request.method === "POST") return commit(env, job);
@@ -91,6 +105,11 @@ export async function handleAggitsJukeboxPublicAsset(request, env, url) {
             ? `/api/aggits-jukebox-assets/${page[1]}/video`
             : "",
         youtubeUrl: config.aggitsJukebox?.youtubeUrl || "",
+        skinUrl:
+          config.aggitsJukebox?.skin?.kind === "custom"
+            ? `/api/aggits-jukebox-assets/${page[1]}/skin?v=${String(config.aggitsJukebox.skin.sha256 || "").slice(0, 12)}`
+            : "",
+        secretVideoUrl: config.aggitsJukebox?.secretVideo?.publicPath || "",
         publicMode: true,
         canonicalUrl: `${url.origin}${url.pathname}`,
       });
@@ -123,6 +142,16 @@ export async function handleAggitsJukeboxPublicAsset(request, env, url) {
   );
   if (video && ["GET", "HEAD"].includes(request.method))
     return serveObjectForEdition(request, env, video[1], "video");
+  const secretVideo = url.pathname.match(
+    /^\/api\/aggits-jukebox-assets\/(dc_[a-f0-9]{10})\/secret-video$/,
+  );
+  if (secretVideo && ["GET", "HEAD"].includes(request.method))
+    return serveSecretVideoForEdition(request, env, secretVideo[1]);
+  const skin = url.pathname.match(
+    /^\/api\/aggits-jukebox-assets\/(dc_[a-f0-9]{10})\/skin$/,
+  );
+  if (skin && ["GET", "HEAD"].includes(request.method))
+    return serveSkinForEdition(request, env, skin[1]);
   const qr = url.pathname.match(
     /^\/output\/(aggits-jukebox-[a-z0-9-]+)\/instagram-qr\.png$/,
   );
@@ -222,8 +251,8 @@ async function prepare(request, env, device, url) {
       { ok: false, error: manifest.error, code: "publication_not_ready" },
       400,
     );
-  const active = await env.DB.prepare(
-    "SELECT * FROM aggits_jukebox_publication_jobs WHERE project_id=?1 AND status IN ('prepared','video_uploaded','qr_uploaded','awaiting_delivery') LIMIT 1",
+  let active = await env.DB.prepare(
+    "SELECT * FROM aggits_jukebox_publication_jobs WHERE project_id=?1 AND status IN ('prepared','video_uploaded','skin_uploaded','secret_video_uploaded','qr_uploaded','awaiting_delivery') LIMIT 1",
   )
     .bind(manifest.value.projectId)
     .first();
@@ -233,6 +262,44 @@ async function prepare(request, env, device, url) {
         JSON.parse(active.manifest_json || "null"),
         manifest.value,
       );
+    if (
+      sameDevice &&
+      sameManifest &&
+      active.status === "video_uploaded" &&
+      manifest.value.skin.kind === "default"
+    ) {
+      const migratedAt = new Date().toISOString();
+      await env.DB.prepare(
+        "UPDATE aggits_jukebox_publication_jobs SET status='skin_uploaded',stage='skin_uploaded',updated_at=?1 WHERE job_id=?2 AND status='video_uploaded'",
+      )
+        .bind(migratedAt, active.job_id)
+        .run();
+      active = {
+        ...active,
+        status: "skin_uploaded",
+        stage: "skin_uploaded",
+        updated_at: migratedAt,
+      };
+    }
+    if (
+      sameDevice &&
+      sameManifest &&
+      active.status === "skin_uploaded" &&
+      !manifest.value.secretVideo
+    ) {
+      const migratedAt = new Date().toISOString();
+      await env.DB.prepare(
+        "UPDATE aggits_jukebox_publication_jobs SET status='secret_video_uploaded',stage='secret_video_uploaded',updated_at=?1 WHERE job_id=?2 AND status='skin_uploaded'",
+      )
+        .bind(migratedAt, active.job_id)
+        .run();
+      active = {
+        ...active,
+        status: "secret_video_uploaded",
+        stage: "secret_video_uploaded",
+        updated_at: migratedAt,
+      };
+    }
     if (sameDevice && sameManifest)
       return json({
         ok: true,
@@ -275,8 +342,15 @@ async function prepare(request, env, device, url) {
         ? `aggits-jukebox/${editionId}/${jobId}/welcome.mp4`
         : `youtube:${manifest.value.video.youtubeId}`,
     qrKey = `aggits-jukebox/${editionId}/${jobId}/qr.png`,
+    customSkin = manifest.value.skin.kind === "custom",
     initialStatus =
-      manifest.value.video.kind === "youtube" ? "video_uploaded" : "prepared",
+      manifest.value.video.kind === "youtube"
+        ? customSkin
+          ? "video_uploaded"
+          : manifest.value.secretVideo
+            ? "skin_uploaded"
+            : "secret_video_uploaded"
+        : "prepared",
     initialStage = initialStatus;
   await env.DB.prepare(
     `INSERT INTO aggits_jukebox_publication_jobs (job_id,installation_id,project_id,edition_id,slug,title,status,stage,manifest_json,previous_record_json,base_url,video_key,qr_key,video_sha256,created_at,updated_at) VALUES (?1,?2,?3,?4,?5,?6,?7,?8,?9,?10,?11,?12,?13,?14,?15,?15)`,
@@ -320,7 +394,8 @@ async function uploadVideo(request, env, job) {
       { ok: false, error: "The publication is not accepting a video." },
       409,
     );
-  const expected = JSON.parse(job.manifest_json).video;
+  const publicationManifest = JSON.parse(job.manifest_json),
+    expected = publicationManifest.video;
   if (expected.kind !== "mp4")
     return json(
       {
@@ -356,15 +431,134 @@ async function uploadVideo(request, env, job) {
       editionId: job.edition_id,
     },
   });
+  const nextStatus =
+    publicationManifest.skin?.kind === "custom"
+      ? "video_uploaded"
+      : publicationManifest.secretVideo
+        ? "skin_uploaded"
+        : "secret_video_uploaded";
   await env.DB.prepare(
-    "UPDATE aggits_jukebox_publication_jobs SET status='video_uploaded',stage='video_uploaded',updated_at=?1 WHERE job_id=?2",
+    "UPDATE aggits_jukebox_publication_jobs SET status=?1,stage=?1,updated_at=?2 WHERE job_id=?3",
+  )
+    .bind(nextStatus, new Date().toISOString(), job.job_id)
+    .run();
+  return json({ ok: true, stage: nextStatus });
+}
+async function uploadSkin(request, env, job) {
+  if (!["video_uploaded", "skin_uploaded"].includes(job.status))
+    return json(
+      { ok: false, error: "Validate the selected video before the skin." },
+      409,
+    );
+  const expected = JSON.parse(job.manifest_json).skin;
+  if (expected?.kind !== "custom")
+    return json(
+      { ok: false, error: "This edition uses the Mahogany Master skin." },
+      409,
+    );
+  const length = contentLength(request),
+    type = String(request.headers.get("content-type") || "").toLowerCase();
+  if (
+    length <= 0 ||
+    length > SKIN_MAX_BYTES ||
+    length !== expected.sizeBytes ||
+    type !== expected.mimeType
+  )
+    return json(
+      { ok: false, error: "The cabinet skin size or media type does not match the manifest." },
+      400,
+    );
+  const bytes = new Uint8Array(await request.arrayBuffer()),
+    actualSha = await sha256(bytes);
+  if (
+    bytes.length !== length ||
+    actualSha !== expected.sha256 ||
+    !isSupportedSkin(bytes, expected.format, expected.width, expected.height)
+  )
+    return json(
+      { ok: false, error: "The cabinet skin failed format, geometry or SHA-256 validation." },
+      400,
+    );
+  const objectKey = skinObjectKey(job, expected);
+  await env.BAR_ASSETS.put(objectKey, bytes, {
+    httpMetadata: {
+      contentType: expected.mimeType,
+      cacheControl: "public, max-age=31536000, immutable",
+    },
+    customMetadata: {
+      sha256: expected.sha256,
+      width: String(expected.width),
+      height: String(expected.height),
+      layoutProfile: String(expected.layoutProfile || ""),
+      jobId: job.job_id,
+      editionId: job.edition_id,
+    },
+  });
+  await env.DB.prepare(
+    "UPDATE aggits_jukebox_publication_jobs SET status=?1,stage=?1,updated_at=?2 WHERE job_id=?3",
+  )
+    .bind(
+      JSON.parse(job.manifest_json).secretVideo ? "skin_uploaded" : "secret_video_uploaded",
+      new Date().toISOString(),
+      job.job_id,
+    )
+    .run();
+  return json({
+    ok: true,
+    stage: JSON.parse(job.manifest_json).secretVideo
+      ? "skin_uploaded"
+      : "secret_video_uploaded",
+  });
+}
+async function uploadSecretVideo(request, env, job) {
+  if (!['skin_uploaded', 'secret_video_uploaded'].includes(job.status))
+    return json(
+      { ok: false, error: "Validate the selected skin before the secret video." },
+      409,
+    );
+  const expected = JSON.parse(job.manifest_json).secretVideo;
+  if (!expected)
+    return json({ ok: false, error: "This edition has no secret video." }, 409);
+  const length = contentLength(request);
+  if (
+    length <= 0 ||
+    length > VIDEO_MAX_BYTES ||
+    length !== Number(expected.sizeBytes)
+  )
+    return json(
+      { ok: false, error: "The secret MP4 size does not match the manifest." },
+      400,
+    );
+  const bytes = new Uint8Array(await request.arrayBuffer());
+  if (
+    bytes.length !== length ||
+    !isMp4(bytes) ||
+    (await sha256(bytes)) !== expected.sha256
+  )
+    return json(
+      { ok: false, error: "The secret MP4 failed format or SHA-256 validation." },
+      400,
+    );
+  await env.BAR_ASSETS.put(secretVideoObjectKey(job, expected), bytes, {
+    httpMetadata: {
+      contentType: "video/mp4",
+      cacheControl: "public, max-age=31536000, immutable",
+    },
+    customMetadata: {
+      sha256: expected.sha256,
+      jobId: job.job_id,
+      editionId: job.edition_id,
+    },
+  });
+  await env.DB.prepare(
+    "UPDATE aggits_jukebox_publication_jobs SET status='secret_video_uploaded',stage='secret_video_uploaded',updated_at=?1 WHERE job_id=?2",
   )
     .bind(new Date().toISOString(), job.job_id)
     .run();
-  return json({ ok: true, stage: "video_uploaded" });
+  return json({ ok: true, stage: "secret_video_uploaded" });
 }
 async function uploadQr(request, env, job) {
-  if (!["video_uploaded", "qr_uploaded"].includes(job.status))
+  if (!["secret_video_uploaded", "qr_uploaded"].includes(job.status))
     return json(
       { ok: false, error: "Validate the selected video before the QR." },
       409,
@@ -428,15 +622,27 @@ async function commit(env, input) {
       409,
     );
   const manifest = JSON.parse(job.manifest_json);
-  const [video, qr] = await Promise.all([
+  const [video, skin, secretVideo, qr] = await Promise.all([
     manifest.video.kind === "mp4"
       ? env.BAR_ASSETS.head(job.video_key)
       : Promise.resolve({ customMetadata: { sha256: job.video_sha256 } }),
+    manifest.skin?.kind === "custom"
+      ? env.BAR_ASSETS.head(skinObjectKey(job, manifest.skin))
+      : Promise.resolve({ customMetadata: { sha256: "default" } }),
+    manifest.secretVideo
+      ? env.BAR_ASSETS.head(secretVideoObjectKey(job, manifest.secretVideo))
+      : Promise.resolve({ customMetadata: { sha256: "none" } }),
     env.BAR_ASSETS.head(job.qr_key),
   ]);
   if (
     !video ||
     video.customMetadata?.sha256 !== job.video_sha256 ||
+    !skin ||
+    skin.customMetadata?.sha256 !==
+      (manifest.skin?.kind === "custom" ? manifest.skin.sha256 : "default") ||
+    !secretVideo ||
+    secretVideo.customMetadata?.sha256 !==
+      (manifest.secretVideo ? manifest.secretVideo.sha256 : "none") ||
     !qr ||
     qr.customMetadata?.sha256 !== job.qr_sha256
   )
@@ -588,6 +794,19 @@ async function rollback(env, job, code, message) {
     ).bind(code, clean(message, 600), now, job.job_id),
   );
   await env.DB.batch(batch);
+  const manifest = JSON.parse(job.manifest_json || "null");
+  await Promise.all([
+    String(job.video_key || "").startsWith("aggits-jukebox/")
+      ? env.BAR_ASSETS.delete(job.video_key)
+      : Promise.resolve(),
+    job.qr_key ? env.BAR_ASSETS.delete(job.qr_key) : Promise.resolve(),
+    manifest?.skin?.kind === "custom"
+      ? env.BAR_ASSETS.delete(skinObjectKey(job, manifest.skin))
+      : Promise.resolve(),
+    manifest?.secretVideo
+      ? env.BAR_ASSETS.delete(secretVideoObjectKey(job, manifest.secretVideo))
+      : Promise.resolve(),
+  ]).catch(() => {});
   return json(
     {
       ok: false,
@@ -619,13 +838,19 @@ async function setState(request, env, editionId, url, device) {
   if (published) {
     const config = JSON.parse(row.config_json);
     const requiresStoredVideo = config.aggitsJukebox?.videoKind !== "youtube";
-    const [video, qr] = await Promise.all([
+    const [video, skin, secretVideo, qr] = await Promise.all([
       requiresStoredVideo
         ? env.BAR_ASSETS.head(row.video_key)
         : Promise.resolve(true),
+      config.aggitsJukebox?.skin?.kind === "custom"
+        ? env.BAR_ASSETS.head(config.aggitsJukebox.skin.objectKey)
+        : Promise.resolve(true),
+      config.aggitsJukebox?.secretVideo?.objectKey
+        ? env.BAR_ASSETS.head(config.aggitsJukebox.secretVideo.objectKey)
+        : Promise.resolve(true),
       env.BAR_ASSETS.head(row.qr_key),
     ]);
-    if (!video || !qr)
+    if (!video || !skin || !secretVideo || !qr)
       return json(
         { ok: false, error: "Preserved assets did not pass validation." },
         409,
@@ -653,7 +878,11 @@ async function setState(request, env, editionId, url, device) {
 }
 
 function buildConfig(job, m) {
-  const now = new Date().toISOString();
+  const now = new Date().toISOString(),
+    layoutProfile = resolveMahoganyLayoutProfile({
+      layoutProfile: m.layoutProfile || m.skin?.layoutProfile,
+      skin: m.skin,
+    }).id;
   return {
     brandName: "Mahogany Jukebox",
     editionType: "aggits_jukebox",
@@ -679,6 +908,7 @@ function buildConfig(job, m) {
     aggitsJukebox: {
       modelVersion: MAHOGANY_RENDERER_VERSION,
       appearanceVariant: AGGITS_JUKEBOX_APPEARANCE,
+      layoutProfile,
       projectId: m.projectId,
       title: m.title,
       tickerText: m.tickerText,
@@ -689,7 +919,25 @@ function buildConfig(job, m) {
           ? `/api/aggits-jukebox-assets/${job.edition_id}/video`
           : "",
       localWelcomeVideoSha256: m.video.sha256,
-      cabinetArtwork: MAHOGANY_OVAL_CABINET_ASSET.replace(/^\//, ""),
+      secretVideo: m.secretVideo
+        ? {
+            ...m.secretVideo,
+            objectKey: secretVideoObjectKey(job, m.secretVideo),
+            publicPath: `/api/aggits-jukebox-assets/${job.edition_id}/secret-video`,
+          }
+        : null,
+      skin:
+        m.skin?.kind === "custom"
+          ? {
+              ...m.skin,
+              objectKey: skinObjectKey(job, m.skin),
+              publicPath: `/api/aggits-jukebox-assets/${job.edition_id}/skin`,
+            }
+          : { kind: "default", layoutProfile },
+      cabinetArtwork:
+        m.skin?.kind === "custom"
+          ? `/api/aggits-jukebox-assets/${job.edition_id}/skin`
+          : MAHOGANY_OVAL_CABINET_ASSET.replace(/^\//, ""),
       coinSound: "assets/audio/jukebox-real-coin-insert-cc0.mp3",
       coinSoundSha256:
         "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0",
@@ -718,11 +966,27 @@ function publicProject(config, editionId) {
       name: a.title,
       tickerText: a.tickerText,
       youtubeUrl: a.youtubeUrl || "",
+      layoutProfile: a.layoutProfile || MAHOGANY_LEGACY_LAYOUT_ID,
       actionButtons: a.actions.map((item) => ({
         enabled: true,
         ...item,
         value: item.href,
       })),
+      cabinetSkin: a.skin || {
+        kind: "default",
+        layoutProfile: a.layoutProfile || MAHOGANY_LEGACY_LAYOUT_ID,
+      },
+      secretVideo: a.secretVideo
+        ? {
+            fileName: a.secretVideo.fileName,
+            mimeType: "video/mp4",
+            sizeBytes: a.secretVideo.sizeBytes,
+            sha256: a.secretVideo.sha256,
+            storageName: a.secretVideo.storageName,
+            loop: a.secretVideo.loop === true,
+            updatedAt: a.secretVideo.updatedAt || "",
+          }
+        : null,
     },
     mp4:
       a.videoKind === "mp4"
@@ -744,7 +1008,14 @@ function validateManifest(body) {
     title = clean(body?.title, 120),
     tickerText = multiline(body?.tickerText, 500),
     actions = Array.isArray(body?.actions) ? body.actions : [],
-    video = body?.video || {};
+    video = body?.video || {},
+    secretVideoInput = body?.secretVideo || null,
+    skinInput = body?.skin && typeof body.skin === "object" ? body.skin : {},
+    skinCheck = validateMahoganySkinDefinition(skinInput, {
+      allowDefault: true,
+      allowLegacy: true,
+      rejectUnknown: true,
+    });
   if (!/^studio_[a-f0-9]{12}$/.test(projectId) || !title || !tickerText)
     return {
       ok: false,
@@ -778,7 +1049,7 @@ function validateManifest(body) {
     videoKind === "youtube" ? safeYouTubeId(video.youtubeUrl) : "";
   if (videoKind === "youtube" && !youtubeId)
     return { ok: false, error: "Enter a valid YouTube video URL." };
-  if (videoKind === "youtube" && requestedSchema.endsWith("/2")) {
+  if (videoKind === "youtube" && /\/(?:2|3)$/.test(requestedSchema)) {
     const embedCheckedAt = Date.parse(String(video.embedCheckedAt || "")),
       proofIsFresh =
         Number.isFinite(embedCheckedAt) &&
@@ -811,6 +1082,47 @@ function validateManifest(body) {
       ok: false,
       error: "The selected video requires a SHA-256 identity.",
     };
+  let secretVideo = null;
+  if (secretVideoInput) {
+    const sizeBytes = Number(secretVideoInput.sizeBytes),
+      sha = String(secretVideoInput.sha256 || "").toLowerCase();
+    if (
+      !Number.isInteger(sizeBytes) ||
+      sizeBytes <= 0 ||
+      sizeBytes > VIDEO_MAX_BYTES ||
+      !/^[a-f0-9]{64}$/.test(sha) ||
+      String(secretVideoInput.mimeType || "").toLowerCase() !== "video/mp4"
+    )
+      return {
+        ok: false,
+        error: "The secret video must be a verified MP4 no larger than 24 MiB.",
+      };
+    secretVideo = {
+      fileName: clean(secretVideoInput.fileName, 180),
+      mimeType: "video/mp4",
+      sizeBytes,
+      sha256: sha,
+      storageName: clean(secretVideoInput.storageName, 220),
+      loop: secretVideoInput.loop === true,
+      updatedAt: clean(secretVideoInput.updatedAt, 60),
+    };
+  }
+  if (!skinCheck.valid)
+    return { ok: false, error: skinCheck.errors.join(" ") };
+  const skin = normalizeMahoganySkin(skinCheck.value, { allowLegacy: true }),
+    layoutProfile = resolveMahoganyLayoutProfile({
+      layoutProfile: body?.layoutProfile || skin.layoutProfile,
+      skin,
+      secretVideo,
+    }).id;
+  if (
+    body?.layoutProfile &&
+    String(body.layoutProfile) !== layoutProfile
+  )
+    return {
+      ok: false,
+      error: "The publication layout profile does not match the verified skin geometry.",
+    };
   return {
     ok: true,
     value: {
@@ -818,6 +1130,9 @@ function validateManifest(body) {
       projectId,
       title,
       tickerText,
+      layoutProfile,
+      skin,
+      secretVideo,
       actions: cleaned,
       video: {
         kind: videoKind,
@@ -827,15 +1142,15 @@ function validateManifest(body) {
             ? `https://www.youtube.com/watch?v=${youtubeId}`
             : "",
         embedStatus:
-          videoKind === "youtube" && requestedSchema.endsWith("/2")
+          videoKind === "youtube" && /\/(?:2|3)$/.test(requestedSchema)
             ? "playable"
             : "legacy_unchecked",
         embedVideoId:
-          videoKind === "youtube" && requestedSchema.endsWith("/2")
+          videoKind === "youtube" && /\/(?:2|3)$/.test(requestedSchema)
             ? youtubeId
             : "",
         embedCheckedAt:
-          videoKind === "youtube" && requestedSchema.endsWith("/2")
+          videoKind === "youtube" && /\/(?:2|3)$/.test(requestedSchema)
             ? new Date(video.embedCheckedAt).toISOString()
             : "",
         sizeBytes: videoKind === "mp4" ? Number(video.sizeBytes) : 0,
@@ -863,7 +1178,30 @@ function publicJob(j) {
   };
 }
 function publicationManifestsMatch(left, right) {
-  return JSON.stringify(left || null) === JSON.stringify(right || null);
+  return (
+    JSON.stringify(stablePublicationValue(comparablePublicationManifest(left))) ===
+    JSON.stringify(stablePublicationValue(comparablePublicationManifest(right)))
+  );
+}
+function comparablePublicationManifest(value) {
+  if (!value || typeof value !== "object") return value || null;
+  const skin =
+    value.skin && typeof value.skin === "object" && value.skin.kind === "custom"
+      ? value.skin
+      : { kind: "default" };
+  return {
+    ...value,
+    skin,
+  };
+}
+function stablePublicationValue(value) {
+  if (Array.isArray(value)) return value.map(stablePublicationValue);
+  if (!value || typeof value !== "object") return value;
+  return Object.fromEntries(
+    Object.keys(value)
+      .sort()
+      .map((key) => [key, stablePublicationValue(value[key])]),
+  );
 }
 async function authorize(request, env) {
   const installationId = installation(
@@ -968,6 +1306,37 @@ async function serveObjectForEdition(request, env, id, kind) {
       )
     : new Response("Unknown Deep Cuts edition", { status: 404 });
 }
+async function serveSkinForEdition(request, env, id) {
+  const row = await env.DB.prepare(
+    "SELECT config_json FROM aggits_jukebox_editions WHERE edition_id=?1 AND status='active'",
+  )
+    .bind(id)
+    .first();
+  if (!row) return new Response("Unknown Deep Cuts edition", { status: 404 });
+  const config = JSON.parse(row.config_json || "null"),
+    skin = config?.aggitsJukebox?.skin,
+    objectKey = String(skin?.objectKey || "");
+  if (
+    skin?.kind !== "custom" ||
+    !objectKey.startsWith(`aggits-jukebox/${id}/`)
+  )
+    return new Response("Custom skin not found", { status: 404 });
+  return serveObject(request, env.BAR_ASSETS, objectKey, skin.mimeType);
+}
+async function serveSecretVideoForEdition(request, env, id) {
+  const row = await env.DB.prepare(
+    "SELECT config_json FROM aggits_jukebox_editions WHERE edition_id=?1 AND status='active'",
+  )
+    .bind(id)
+    .first();
+  if (!row) return new Response("Unknown Deep Cuts edition", { status: 404 });
+  const config = JSON.parse(row.config_json || "null"),
+    secretVideo = config?.aggitsJukebox?.secretVideo,
+    objectKey = String(secretVideo?.objectKey || "");
+  if (!objectKey.startsWith(`aggits-jukebox/${id}/`))
+    return new Response("Secret video not found", { status: 404 });
+  return serveObject(request, env.BAR_ASSETS, objectKey, "video/mp4");
+}
 async function serveObject(request, bucket, key, type) {
   const range = parseRange(request.headers.get("range")),
     object = await bucket.get(key, range ? { range } : undefined);
@@ -1036,6 +1405,67 @@ function isPng(b, w, h) {
   if (b.length < 24 || b[0] !== 0x89 || b[1] !== 0x50) return false;
   const v = new DataView(b.buffer, b.byteOffset, b.byteLength);
   return v.getUint32(16) === w && v.getUint32(20) === h;
+}
+function isSupportedSkin(bytes, format, width, height) {
+  const size = imageDimensions(bytes, format);
+  return size?.width === width && size?.height === height;
+}
+function imageDimensions(bytes, format) {
+  if (!(bytes instanceof Uint8Array)) return null;
+  const view = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength);
+  if (format === "png")
+    return bytes.length >= 24 && bytes[0] === 0x89 && bytes[1] === 0x50
+      ? { width: view.getUint32(16), height: view.getUint32(20) }
+      : null;
+  if (format === "jpeg" && bytes.length > 4 && bytes[0] === 0xff && bytes[1] === 0xd8) {
+    let offset = 2;
+    while (offset + 8 < bytes.length) {
+      if (bytes[offset] !== 0xff) { offset += 1; continue; }
+      const marker = bytes[offset + 1],
+        length = view.getUint16(offset + 2);
+      if (length < 2) return null;
+      if ([0xc0, 0xc1, 0xc2, 0xc3, 0xc5, 0xc6, 0xc7, 0xc9, 0xca, 0xcb, 0xcd, 0xce, 0xcf].includes(marker))
+        return { width: view.getUint16(offset + 7), height: view.getUint16(offset + 5) };
+      offset += 2 + length;
+    }
+    return null;
+  }
+  if (
+    format === "webp" &&
+    bytes.length >= 30 &&
+    ascii(bytes, 0, 4) === "RIFF" &&
+    ascii(bytes, 8, 4) === "WEBP"
+  ) {
+    const chunk = ascii(bytes, 12, 4);
+    if (chunk === "VP8X")
+      return {
+        width: 1 + bytes[24] + (bytes[25] << 8) + (bytes[26] << 16),
+        height: 1 + bytes[27] + (bytes[28] << 8) + (bytes[29] << 16),
+      };
+    if (chunk === "VP8L" && bytes.length >= 25) {
+      const bits = view.getUint32(21, true);
+      return {
+        width: (bits & 0x3fff) + 1,
+        height: ((bits >>> 14) & 0x3fff) + 1,
+      };
+    }
+    if (chunk === "VP8 " && bytes.length >= 30)
+      return {
+        width: view.getUint16(26, true) & 0x3fff,
+        height: view.getUint16(28, true) & 0x3fff,
+      };
+  }
+  return null;
+}
+function ascii(bytes, offset, length) {
+  return String.fromCharCode(...bytes.subarray(offset, offset + length));
+}
+function skinObjectKey(job, skin) {
+  const extension = skin?.format === "jpeg" ? "jpg" : skin?.format;
+  return `aggits-jukebox/${job.edition_id}/${job.job_id}/skin.${extension}`;
+}
+function secretVideoObjectKey(job, secretVideo) {
+  return `aggits-jukebox/${job.edition_id}/${job.job_id}/secret-video-${secretVideo.sha256}.mp4`;
 }
 function installation(v) {
   const s = String(v || "").trim();

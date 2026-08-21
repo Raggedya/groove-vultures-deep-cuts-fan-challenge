@@ -1,0 +1,10 @@
+Mahogany Jukebox concealed-screen motor recordings
+
+These two deterministic PCM WAV assets are original procedural recordings
+generated for Clearlight Creative by scripts/generate-mahogany-secret-screen-audio.mjs:
+
+- jukebox-screen-motor-open-original.wav
+- jukebox-screen-motor-close-original.wav
+
+Copyright Clearlight Creative 2026. All rights reserved for use in the
+Mahogany Jukebox product and its published editions.

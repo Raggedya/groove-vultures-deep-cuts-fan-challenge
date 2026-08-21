@@ -208,3 +208,7 @@ An edition is complete only when identity is verified; configuration validates; 
 
 After every change ask: â€œWhat can I automate next?â€ Implement the practical answer.
 
+### Mahogany Jukebox 1.4.12 skin workflow
+
+In Create/Edit, `Cabinet skin` is optional. For a new project, upload a complete flattened 941 × 1672 PNG, JPEG or WebP (maximum 12 MiB) aligned to `docs/assets/MASTER-STRUCTURE-941x1672.png`. Studio validates format and exact pixel geometry before storing the original bytes. `Restore Mahogany Master` removes only the custom artwork selection. Preview, save, edit and protected publication retain the selected skin; publication uploads it as a versioned asset and verifies the live response before completion. The skin never changes interaction coordinates or behaviour. Existing 864 × 1536 projects remain on their preserved legacy renderer and are not silently changed.
+

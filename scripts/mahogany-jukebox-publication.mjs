@@ -6,7 +6,7 @@ import { buildMahoganyManifest } from "./mahogany-jukebox-model.mjs";
 import { MAHOGANY_RENDERER_VERSION } from "./aggits-jukebox-preview.mjs";
 
 export const MAHOGANY_PUBLICATION_SCHEMA =
-  "deep-cuts-mahogany-jukebox-publication/2";
+  "deep-cuts-mahogany-jukebox-publication/3";
 export const DEFAULT_MAHOGANY_PUBLISHER_URL =
   "https://deep-cuts.andrewharris501.workers.dev";
 
@@ -94,6 +94,8 @@ export function createMahoganyJukeboxPublisher({
   async function accept({
     prepared,
     videoPath = "",
+    skinPath = "",
+    secretVideoPath = "",
     onProgress = async () => {},
   } = {}) {
     const current = await identity(),
@@ -134,7 +136,7 @@ export function createMahoganyJukeboxPublisher({
             "The stored MP4 no longer matches the prepared preview.",
             "video_identity_mismatch",
           );
-        await remoteBytes(
+        const upload = await remoteBytes(
           fetchImpl,
           `${baseUrl}/api/aggits-jukebox-publisher/publications/${job.id}/video`,
           {
@@ -143,9 +145,72 @@ export function createMahoganyJukeboxPublisher({
             headers: { "content-type": "video/mp4", "x-content-sha256": sha },
           },
         );
-        currentJob = { ...currentJob, status: "video_uploaded" };
+        currentJob = {
+          ...currentJob,
+          status: upload.stage || "video_uploaded",
+        };
       }
       if (currentJob.status === "video_uploaded") {
+        if (manifest.skin?.kind !== "custom")
+          throw publicationError(
+            "The publisher requested a skin upload but the accepted preview uses the Mahogany Master.",
+            "skin_stage_invalid",
+          );
+        await onProgress("skin", "Uploading the verified cabinet skin");
+        const bytes = await fs.readFile(skinPath),
+          sha = crypto.createHash("sha256").update(bytes).digest("hex");
+        if (
+          bytes.length !== manifest.skin.sizeBytes ||
+          sha !== manifest.skin.sha256
+        )
+          throw publicationError(
+            "The stored cabinet skin no longer matches the accepted preview.",
+            "skin_identity_mismatch",
+          );
+        const upload = await remoteBytes(
+          fetchImpl,
+          `${baseUrl}/api/aggits-jukebox-publisher/publications/${job.id}/skin`,
+          {
+            identity: current,
+            bytes,
+            headers: {
+              "content-type": manifest.skin.mimeType,
+              "x-content-sha256": sha,
+            },
+          },
+        );
+        currentJob = {
+          ...currentJob,
+          status: upload.stage || "skin_uploaded",
+        };
+      }
+      if (currentJob.status === "skin_uploaded" && manifest.secretVideo) {
+        await onProgress("secret_video", "Uploading the verified secret video");
+        const bytes = await fs.readFile(secretVideoPath),
+          sha = crypto.createHash("sha256").update(bytes).digest("hex");
+        if (
+          bytes.length !== manifest.secretVideo.sizeBytes ||
+          sha !== manifest.secretVideo.sha256
+        )
+          throw publicationError(
+            "The stored secret video no longer matches the accepted preview.",
+            "secret_video_identity_mismatch",
+          );
+        const upload = await remoteBytes(
+          fetchImpl,
+          `${baseUrl}/api/aggits-jukebox-publisher/publications/${job.id}/secret-video`,
+          {
+            identity: current,
+            bytes,
+            headers: { "content-type": "video/mp4", "x-content-sha256": sha },
+          },
+        );
+        currentJob = {
+          ...currentJob,
+          status: upload.stage || "secret_video_uploaded",
+        };
+      }
+      if (["skin_uploaded", "secret_video_uploaded"].includes(currentJob.status)) {
         await onProgress(
           "qr",
           "Uploading the perspective-fitted, scan-tested QR poster",
@@ -293,8 +358,25 @@ export async function verifyMahoganyPublication(fetchImpl, job, manifest) {
         cache: "no-store",
       }),
     );
+  if (manifest.skin?.kind === "custom")
+    requests.push(
+      fetchImpl(`${origin}/api/aggits-jukebox-assets/${job.editionId}/skin`, {
+        method: "HEAD",
+        cache: "no-store",
+      }),
+    );
+  if (manifest.secretVideo)
+    requests.push(
+      fetchImpl(
+        `${origin}/api/aggits-jukebox-assets/${job.editionId}/secret-video`,
+        { method: "HEAD", cache: "no-store" },
+      ),
+    );
   const responses = await Promise.all(requests),
-    [page, config, qr, video] = responses,
+    [page, config, qr, ...assetResponses] = responses,
+    video = manifest.video.kind === "mp4" ? assetResponses.shift() : null,
+    skin = manifest.skin?.kind === "custom" ? assetResponses.shift() : null,
+    secretVideo = manifest.secretVideo ? assetResponses.shift() : null,
     [html, json, qrBytes] = await Promise.all([
       page.text(),
       config.json().catch(() => null),
@@ -315,6 +397,13 @@ export async function verifyMahoganyPublication(fetchImpl, job, manifest) {
     !config.ok ||
     json?.bandName !== manifest.title ||
     json?.aggitsJukebox?.videoKind !== manifest.video.kind ||
+    json?.aggitsJukebox?.layoutProfile !== manifest.layoutProfile ||
+    json?.aggitsJukebox?.skin?.kind !== (manifest.skin?.kind || "default") ||
+    (manifest.skin?.kind === "custom" &&
+      json?.aggitsJukebox?.skin?.sha256 !== manifest.skin.sha256) ||
+    (manifest.secretVideo &&
+      json?.aggitsJukebox?.secretVideo?.sha256 !==
+        manifest.secretVideo.sha256) ||
     json?.aggitsJukebox?.modelVersion !== MAHOGANY_RENDERER_VERSION
   )
     throw publicationError(
@@ -334,6 +423,24 @@ export async function verifyMahoganyPublication(fetchImpl, job, manifest) {
     throw publicationError(
       "The live MP4 failed verification.",
       "video_verification_failed",
+    );
+  if (
+    skin &&
+    (!skin.ok ||
+      !(skin.headers.get("content-type") || "").includes("image/"))
+  )
+    throw publicationError(
+      "The live cabinet skin failed verification.",
+      "skin_verification_failed",
+    );
+  if (
+    secretVideo &&
+    (!secretVideo.ok ||
+      !(secretVideo.headers.get("content-type") || "").includes("video/mp4"))
+  )
+    throw publicationError(
+      "The live secret MP4 failed verification.",
+      "secret_video_verification_failed",
     );
 }
 async function remoteJson(

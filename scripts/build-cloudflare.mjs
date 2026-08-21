@@ -21,7 +21,17 @@ async function copyOptionalFile(file){
 }
 
 async function copyOptionalDirectory(directory){
-  try{await fs.cp(path.join(root,directory),path.join(dist,directory),{recursive:true,filter:source=>!source.includes(`${path.sep}.tools${path.sep}`)})}
+  try{await fs.cp(path.join(root,directory),path.join(dist,directory),{recursive:true,filter:deploymentAssetFilter})}
   catch(error){if(error.code!=='ENOENT')throw error}
+}
+
+function deploymentAssetFilter(source){
+  const relative=path.relative(root,source),
+    segments=relative.split(path.sep),
+    extension=path.extname(source).toLowerCase();
+  if(segments.includes('.tools'))return false;
+  if(['.exe','.zip','.dmg','.msi'].includes(extension))return false;
+  if(segments[0]==='output'&&segments.some(segment=>/^(?:Mahogany-Jukebox-Windows|Deep-Cuts-Studio-(?:Windows|macOS))-/i.test(segment)))return false;
+  return true;
 }
 

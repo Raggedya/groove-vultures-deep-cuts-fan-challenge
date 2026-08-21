@@ -1,0 +1,12 @@
+{
+  "schemaVersion": "mahogany-jukebox-product/1",
+  "productName": "Mahogany Jukebox",
+  "version": "1.4.16",
+  "appId": "com.clearlightcreative.mahogany-jukebox",
+  "windowsAppUserModelId": "ClearlightCreative.MahoganyJukebox",
+  "defaultLayoutProfile": "master-structure/1",
+  "skinSchema": "mahogany-jukebox-skin/1",
+  "skinWidth": 941,
+  "skinHeight": 1672,
+  "immutableGeometry": true
+}

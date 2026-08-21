@@ -1,15 +1,35 @@
 import crypto from "node:crypto";
 import fs from "node:fs/promises";
 import path from "node:path";
+import sharp from "sharp";
 import {
   AGGITS_JUKEBOX_ICONS,
   aggitsJukeboxIcon,
 } from "./aggits-jukebox-icons.mjs";
+import {
+  MAHOGANY_LEGACY_CUSTOM_LAYOUT_ID,
+  MAHOGANY_LEGACY_LAYOUT_ID,
+  MAHOGANY_MASTER_HEIGHT,
+  MAHOGANY_MASTER_LAYOUT_ID,
+  MAHOGANY_MASTER_WIDTH,
+  resolveMahoganyLayoutProfile,
+} from "./mahogany-jukebox-layout.mjs";
+import {
+  MAHOGANY_SKIN_FORMATS,
+  MAHOGANY_SKIN_MAX_BYTES,
+  defaultMahoganySkin,
+  normalizeMahoganySkin,
+  validateMahoganySkinDefinition,
+} from "./mahogany-jukebox-skin-schema.mjs";
 
 export const MAHOGANY_PROJECT_SCHEMA = "mahogany-jukebox-project/1";
 export const MAHOGANY_PUBLICATION_MANIFEST_SCHEMA =
-  "deep-cuts-mahogany-jukebox-publication/2";
+  "deep-cuts-mahogany-jukebox-publication/3";
 export const MAHOGANY_VIDEO_MAX_BYTES = 24 * 1024 * 1024;
+export const MAHOGANY_SECRET_VIDEO_MAX_BYTES = 24 * 1024 * 1024;
+export { MAHOGANY_SKIN_MAX_BYTES };
+export const MAHOGANY_SKIN_WIDTH = MAHOGANY_MASTER_WIDTH;
+export const MAHOGANY_SKIN_HEIGHT = MAHOGANY_MASTER_HEIGHT;
 export const MAHOGANY_ACTION_COUNT = 4;
 
 export function newMahoganyProject() {
@@ -19,8 +39,10 @@ export function newMahoganyProject() {
     id: `studio_${crypto.randomBytes(6).toString("hex")}`,
     name: "",
     tickerText: "",
+    layoutProfile: MAHOGANY_MASTER_LAYOUT_ID,
+    skin: defaultMahoganySkin(),
     video: {
-      kind: "youtube",
+      kind: "mp4",
       youtubeUrl: "",
       embedStatus: "",
       embedVideoId: "",
@@ -28,6 +50,15 @@ export function newMahoganyProject() {
       fileName: "",
       sizeBytes: 0,
       sha256: "",
+    },
+    secretVideo: {
+      fileName: "",
+      mimeType: "video/mp4",
+      sizeBytes: 0,
+      sha256: "",
+      storageName: "",
+      loop: false,
+      updatedAt: "",
     },
     actions: Array.from({ length: MAHOGANY_ACTION_COUNT }, (_, index) => ({
       slot: index + 1,
@@ -37,6 +68,7 @@ export function newMahoganyProject() {
       openInNewTab: true,
     })),
     status: "draft",
+    candidate: null,
     publicationProgress: null,
     publication: null,
     createdAt: now,
@@ -54,6 +86,12 @@ export function normalizeMahoganyProject(value) {
     : base.id;
   project.name = clean(source.name, 120);
   project.tickerText = multiline(source.tickerText, 500);
+  const skin = source.skin && typeof source.skin === "object" ? source.skin : {};
+  project.skin = normalizeMahoganySkin(skin, { allowLegacy: true });
+  project.layoutProfile = resolveMahoganyLayoutProfile({
+    layoutProfile: source.layoutProfile || project.skin.layoutProfile,
+    skin: project.skin,
+  }).id;
   const video =
     source.video && typeof source.video === "object" ? source.video : {};
   project.video = {
@@ -69,6 +107,25 @@ export function normalizeMahoganyProject(value) {
     sha256: /^[a-f0-9]{64}$/.test(String(video.sha256 || ""))
       ? String(video.sha256)
       : "",
+  };
+  const secretVideo =
+    source.secretVideo && typeof source.secretVideo === "object"
+      ? source.secretVideo
+      : {};
+  project.secretVideo = {
+    fileName: clean(secretVideo.fileName, 180),
+    mimeType: "video/mp4",
+    sizeBytes: Number(secretVideo.sizeBytes) || 0,
+    sha256: /^[a-f0-9]{64}$/.test(String(secretVideo.sha256 || ""))
+      ? String(secretVideo.sha256)
+      : "",
+    storageName: /^secret-video-[a-f0-9]{64}\.mp4$/.test(
+      String(secretVideo.storageName || ""),
+    )
+      ? String(secretVideo.storageName)
+      : "",
+    loop: secretVideo.loop === true,
+    updatedAt: validDate(secretVideo.updatedAt),
   };
   const incoming = Array.isArray(source.actions) ? source.actions : [];
   project.actions = Array.from(
@@ -95,6 +152,50 @@ export function normalizeMahoganyProject(value) {
   ].includes(source.status)
     ? source.status
     : "draft";
+  project.candidate =
+    source.candidate && typeof source.candidate === "object"
+      ? {
+          kind: source.candidate.kind === "band" ? "band" : "",
+          source:
+            source.candidate.source === "automatic_batch"
+              ? "automatic_batch"
+              : "",
+          status:
+            ["verified", "manual_review"].includes(source.candidate.status)
+              ? source.candidate.status
+              : "",
+          confidence: Math.max(
+            0,
+            Math.min(100, Number(source.candidate.confidence) || 0),
+          ),
+          verifiedAt: validDate(source.candidate.verifiedAt),
+          batchId: clean(source.candidate.batchId, 80),
+          platformOrder: Array.isArray(source.candidate.platformOrder)
+            ? source.candidate.platformOrder
+                .map((item) => clean(item, 30))
+                .filter(Boolean)
+                .slice(0, MAHOGANY_ACTION_COUNT)
+            : [],
+          missingPlatforms: Array.isArray(source.candidate.missingPlatforms)
+            ? source.candidate.missingPlatforms
+                .map((item) => clean(item, 30))
+                .filter(Boolean)
+                .slice(0, MAHOGANY_ACTION_COUNT)
+            : [],
+          reviewReasons: Array.isArray(source.candidate.reviewReasons)
+            ? source.candidate.reviewReasons
+                .map((item) => clean(item, 180))
+                .filter(Boolean)
+                .slice(0, 8)
+            : [],
+          evidenceUrls: Array.isArray(source.candidate.evidenceUrls)
+            ? source.candidate.evidenceUrls
+                .map((item) => clean(item, 500))
+                .filter(Boolean)
+                .slice(0, 20)
+            : [],
+        }
+      : null;
   project.publication =
     source.publication && typeof source.publication === "object"
       ? source.publication
@@ -115,12 +216,22 @@ export function normalizeMahoganyProject(value) {
 
 export function validateMahoganyProject(
   project,
-  { requireStoredMp4 = false } = {},
+  { requireStoredMp4 = false, requireStoredSkin = false } = {},
 ) {
   const value = normalizeMahoganyProject(project),
     errors = [];
   if (!value.name) errors.push("Enter the Jukebox name.");
   if (!value.tickerText) errors.push("Enter the ticker text.");
+  if (value.skin.kind === "custom") {
+    const checkedSkin = validateMahoganySkinDefinition(value.skin, {
+      allowDefault: false,
+      allowLegacy: true,
+      rejectUnknown: true,
+    });
+    errors.push(...checkedSkin.errors);
+    if (requireStoredSkin && !value.skin.storageFileName)
+      errors.push("The stored skin image is missing.");
+  }
   if (value.video.kind === "youtube") {
     const youtubeId = youtubeVideoId(value.video.youtubeUrl);
     if (!youtubeId)
@@ -167,11 +278,13 @@ export function toPreviewProject(project) {
       name: value.name,
       tickerText: value.tickerText,
       youtubeUrl: value.video.kind === "youtube" ? value.video.youtubeUrl : "",
+      layoutProfile: value.layoutProfile,
       actionButtons: value.actions.map((action) => ({
         enabled: true,
         ...action,
         actionType: actionType(action.href),
       })),
+      cabinetSkin: value.skin,
     },
     mp4:
       value.video.kind === "mp4"
@@ -181,6 +294,10 @@ export function toPreviewProject(project) {
             sha256: value.video.sha256,
           }
         : null,
+    secretVideo:
+      value.secretVideo.fileName && value.secretVideo.sha256
+        ? { ...value.secretVideo }
+        : null,
     readiness: { handoffReady: validateMahoganyProject(value).ready },
     revision: 1,
     status: value.status,
@@ -189,7 +306,10 @@ export function toPreviewProject(project) {
 }
 
 export function buildMahoganyManifest(project) {
-  const checked = validateMahoganyProject(project, { requireStoredMp4: true });
+  const checked = validateMahoganyProject(project, {
+    requireStoredMp4: true,
+    requireStoredSkin: true,
+  });
   if (!checked.ready)
     throw modelError(checked.errors.join(" "), "project_not_ready");
   const value = checked.value,
@@ -199,6 +319,21 @@ export function buildMahoganyManifest(project) {
     projectId: value.id,
     title: value.name,
     tickerText: value.tickerText,
+    layoutProfile: value.layoutProfile,
+    skin:
+      value.skin.kind === "custom"
+        ? {
+            kind: "custom",
+            fileName: value.skin.fileName,
+            format: value.skin.format,
+            mimeType: value.skin.mimeType,
+            width: value.skin.width,
+            height: value.skin.height,
+            layoutProfile: value.skin.layoutProfile,
+            sizeBytes: value.skin.sizeBytes,
+            sha256: value.skin.sha256,
+          }
+        : { kind: "default" },
     actions: value.actions.map((action) => ({
       slot: action.slot,
       iconId: action.iconId,
@@ -226,6 +361,16 @@ export function buildMahoganyManifest(project) {
             sizeBytes: value.video.sizeBytes,
             sha256: value.video.sha256,
           },
+    secretVideo:
+      value.secretVideo.fileName && value.secretVideo.sha256
+        ? {
+            fileName: value.secretVideo.fileName,
+            mimeType: "video/mp4",
+            sizeBytes: value.secretVideo.sizeBytes,
+            sha256: value.secretVideo.sha256,
+            loop: value.secretVideo.loop,
+          }
+        : null,
   };
 }
 
@@ -300,6 +445,136 @@ export async function storeMahoganyMp4(projectRoot, project, bytes, fileName) {
       sha256: crypto.createHash("sha256").update(bytes).digest("hex"),
     },
   });
+}
+
+export async function storeMahoganySecretVideo(
+  projectRoot,
+  project,
+  bytes,
+  fileName,
+) {
+  assertMp4(bytes, MAHOGANY_SECRET_VIDEO_MAX_BYTES, "secret video");
+  const sha256 = crypto.createHash("sha256").update(bytes).digest("hex"),
+    storageName = `secret-video-${sha256}.mp4`,
+    directory = path.join(projectRoot, project.id),
+    destination = path.join(directory, storageName),
+    temporary = `${destination}.${process.pid}.${crypto.randomBytes(4).toString("hex")}.tmp`;
+  await fs.mkdir(directory, { recursive: true });
+  try {
+    await fs.writeFile(temporary, bytes);
+    await fs.rename(temporary, destination);
+  } catch (error) {
+    await fs.rm(temporary, { force: true }).catch(() => {});
+    throw error;
+  }
+  return normalizeMahoganyProject({
+    ...project,
+    secretVideo: {
+      fileName: clean(fileName, 180) || "secret-video.mp4",
+      mimeType: "video/mp4",
+      sizeBytes: bytes.length,
+      sha256,
+      storageName,
+      loop: project.secretVideo?.loop === true,
+      updatedAt: new Date().toISOString(),
+    },
+  });
+}
+
+export async function removeMahoganySecretVideo(projectRoot, project) {
+  const currentPath = mahoganySecretVideoPath(projectRoot, project);
+  if (currentPath) await fs.rm(currentPath, { force: true });
+  return normalizeMahoganyProject({
+    ...project,
+    secretVideo: newMahoganyProject().secretVideo,
+  });
+}
+
+export function mahoganySecretVideoPath(projectRoot, project) {
+  const value = normalizeMahoganyProject(project);
+  return value.secretVideo.fileName && value.secretVideo.sha256
+    ? path.join(
+        projectRoot,
+        value.id,
+        value.secretVideo.storageName || "secret-video.mp4",
+      )
+    : "";
+}
+
+export async function storeMahoganySkin(
+  projectRoot,
+  project,
+  bytes,
+  fileName,
+) {
+  if (!(bytes instanceof Uint8Array) || bytes.length < 64)
+    throw modelError("Choose a valid PNG, JPEG or WebP skin image.", "skin_invalid");
+  if (bytes.length > MAHOGANY_SKIN_MAX_BYTES)
+    throw modelError("The skin image must be 12 MiB or smaller.", "skin_too_large");
+  let metadata;
+  try {
+    metadata = await sharp(bytes, { failOn: "warning" }).metadata();
+  } catch {
+    throw modelError("Choose a valid PNG, JPEG or WebP skin image.", "skin_invalid");
+  }
+  const format = String(metadata.format || "").toLowerCase(),
+    supported = MAHOGANY_SKIN_FORMATS[format];
+  if (!supported)
+    throw modelError("The skin must be a PNG, JPEG or WebP image.", "skin_format_invalid");
+  if (
+    Number(metadata.width) !== MAHOGANY_SKIN_WIDTH ||
+    Number(metadata.height) !== MAHOGANY_SKIN_HEIGHT ||
+    (![0, 1].includes(Number(metadata.orientation || 0)))
+  )
+    throw modelError(
+      `The skin must already be exactly ${MAHOGANY_SKIN_WIDTH} × ${MAHOGANY_SKIN_HEIGHT} pixels. It is never cropped or resized.`,
+      "skin_geometry_invalid",
+    );
+  const directory = path.join(projectRoot, project.id),
+    storageFileName = `skin.${supported.extension}`;
+  await fs.mkdir(directory, { recursive: true });
+  await fs.writeFile(path.join(directory, storageFileName), bytes);
+  for (const candidate of ["skin.png", "skin.jpg", "skin.webp"])
+    if (candidate !== storageFileName)
+      await fs.rm(path.join(directory, candidate), { force: true });
+  return normalizeMahoganyProject({
+    ...project,
+    skin: {
+      kind: "custom",
+      schemaVersion: "mahogany-jukebox-skin/1",
+      layoutProfile: MAHOGANY_MASTER_LAYOUT_ID,
+      fileName: clean(fileName, 180) || storageFileName,
+      storageFileName,
+      format,
+      mimeType: supported.mimeType,
+      width: MAHOGANY_SKIN_WIDTH,
+      height: MAHOGANY_SKIN_HEIGHT,
+      sizeBytes: bytes.length,
+      sha256: crypto.createHash("sha256").update(bytes).digest("hex"),
+    },
+    layoutProfile: MAHOGANY_MASTER_LAYOUT_ID,
+  });
+}
+
+export async function restoreDefaultMahoganySkin(projectRoot, project) {
+  const directory = path.join(projectRoot, project.id);
+  for (const candidate of ["skin.png", "skin.jpg", "skin.webp"])
+    await fs.rm(path.join(directory, candidate), { force: true });
+  return normalizeMahoganyProject({
+    ...project,
+    skin: { kind: "default" },
+    layoutProfile:
+      project.layoutProfile === MAHOGANY_LEGACY_CUSTOM_LAYOUT_ID
+        ? MAHOGANY_LEGACY_LAYOUT_ID
+        : MAHOGANY_MASTER_LAYOUT_ID,
+  });
+}
+
+export function mahoganySkinPath(projectRoot, project) {
+  const value = normalizeMahoganyProject(project);
+  return value.skin.kind === "custom"
+    ? path.join(projectRoot, value.id, value.skin.storageFileName)
+    : "";
 }
 
 export function mahoganyIconCatalog() {
@@ -383,6 +658,20 @@ function modelError(message, code) {
     name: "MahoganyJukeboxModelError",
     code,
   });
+}
+
+function assertMp4(bytes, maximum, label = "video") {
+  if (
+    !(bytes instanceof Uint8Array) ||
+    bytes.length < 12 ||
+    String.fromCharCode(...bytes.subarray(4, 8)) !== "ftyp"
+  )
+    throw modelError(`Choose a valid MP4 ${label} file.`, "video_invalid");
+  if (bytes.length > maximum)
+    throw modelError(
+      `The ${label} MP4 must be 24 MiB or smaller.`,
+      "video_too_large",
+    );
 }
 
 export const __test = { safeDestination, actionType };

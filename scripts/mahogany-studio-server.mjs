@@ -5,14 +5,23 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { renderAggitsJukeboxStudioPreview } from "./aggits-jukebox-preview.mjs";
 import { createMahoganyJukeboxPublisher } from "./mahogany-jukebox-publication.mjs";
+import { runMahoganyBandCandidateBatch } from "./mahogany-band-candidates.mjs";
 import {
   listMahoganyProjects,
   loadMahoganyProject,
   mahoganyIconCatalog,
+  mahoganySecretVideoPath,
+  mahoganySkinPath,
+  MAHOGANY_SECRET_VIDEO_MAX_BYTES,
+  MAHOGANY_SKIN_MAX_BYTES,
   newMahoganyProject,
   normalizeMahoganyProject,
+  restoreDefaultMahoganySkin,
+  removeMahoganySecretVideo,
   saveMahoganyProject,
   storeMahoganyMp4,
+  storeMahoganySecretVideo,
+  storeMahoganySkin,
   toPreviewProject,
   validateMahoganyProject,
 } from "./mahogany-jukebox-model.mjs";
@@ -24,9 +33,11 @@ export function createMahoganyStudioServer({
   dataDir = path.join(root, ".mahogany-studio"),
   credentialStore,
   publisher,
+  bandCandidateRunner = runMahoganyBandCandidateBatch,
   appVersion = "1.0.0",
 } = {}) {
   const projectRoot = path.join(dataDir, "projects"),
+    candidateJobs = new Map(),
     directPublisher =
       publisher ||
       (credentialStore
@@ -43,6 +54,8 @@ export function createMahoganyStudioServer({
           root,
           projectRoot,
           publisher: directPublisher,
+          candidateJobs,
+          bandCandidateRunner,
         });
       if (
         url.pathname === "/" ||
@@ -79,7 +92,16 @@ export function createMahoganyStudioServer({
   });
 }
 
-async function api({ request, response, url, root, projectRoot, publisher }) {
+async function api({
+  request,
+  response,
+  url,
+  root,
+  projectRoot,
+  publisher,
+  candidateJobs,
+  bandCandidateRunner,
+}) {
   if (request.method === "GET" && url.pathname === "/api/mahogany/bootstrap") {
     const authentication = publisher
       ? await publisher
@@ -107,6 +129,65 @@ async function api({ request, response, url, root, projectRoot, publisher }) {
       newMahoganyProject(),
     );
     return sendJson(response, 201, { ok: true, project });
+  }
+  if (
+    request.method === "POST" &&
+    url.pathname === "/api/mahogany/candidate-batches/bands"
+  ) {
+    const running = [...candidateJobs.values()].find(
+      (job) => job.kind === "band" && job.status === "running",
+    );
+    if (running) return sendJson(response, 202, { ok: true, job: running });
+    const job = {
+      id: `candidate_${crypto.randomBytes(8).toString("hex")}`,
+      kind: "band",
+      status: "running",
+      stage: "queued",
+      message: "Band discovery is queued.",
+      reviewed: 0,
+      qualified: 0,
+      rejected: 0,
+      startedAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+      result: null,
+      error: "",
+    };
+    candidateJobs.set(job.id, job);
+    setImmediate(async () => {
+      try {
+        const result = await bandCandidateRunner({
+          projectRoot,
+          existingProjects: await listMahoganyProjects(projectRoot),
+          onProgress(progress) {
+            Object.assign(job, progress, {
+              updatedAt: new Date().toISOString(),
+            });
+          },
+        });
+        Object.assign(job, {
+          status: "completed",
+          result,
+          updatedAt: new Date().toISOString(),
+        });
+      } catch (error) {
+        Object.assign(job, {
+          status: "failed",
+          stage: "failed",
+          message: error.message,
+          error: error.message,
+          updatedAt: new Date().toISOString(),
+        });
+      }
+    });
+    return sendJson(response, 202, { ok: true, job });
+  }
+  const candidateJobMatch = url.pathname.match(
+    /^\/api\/mahogany\/candidate-batches\/(candidate_[a-f0-9]{16})$/,
+  );
+  if (request.method === "GET" && candidateJobMatch) {
+    const job = candidateJobs.get(candidateJobMatch[1]);
+    if (!job) throw apiError("Candidate batch not found.", "candidate_job_not_found");
+    return sendJson(response, 200, { ok: true, job });
   }
   if (
     request.method === "POST" &&
@@ -138,7 +219,7 @@ async function api({ request, response, url, root, projectRoot, publisher }) {
     });
   }
   const match = url.pathname.match(
-    /^\/api\/mahogany\/projects\/(studio_[a-f0-9]{12})(?:\/(preview|video|qr|publish|create|accept|state))?$/,
+    /^\/api\/mahogany\/projects\/(studio_[a-f0-9]{12})(?:\/(preview|video|secret-video|skin|qr|publish|create|accept|state))?$/,
   );
   if (!match) {
     response.writeHead(404);
@@ -210,6 +291,92 @@ async function api({ request, response, url, root, projectRoot, publisher }) {
       path.join(projectRoot, id, "video.mp4"),
       "video/mp4",
     );
+  if (request.method === "PUT" && action === "secret-video") {
+    const project = await loadMahoganyProject(projectRoot, id),
+      bytes = await readBytes(request, MAHOGANY_SECRET_VIDEO_MAX_BYTES),
+      updated = await storeMahoganySecretVideo(
+        projectRoot,
+        project,
+        bytes,
+        decodeURIComponent(request.headers["x-file-name"] || "secret-video.mp4"),
+      );
+    return sendJson(response, 200, {
+      ok: true,
+      project: await saveMahoganyProject(projectRoot, {
+        ...updated,
+        status: "draft",
+        prepared: null,
+        publicationProgress: null,
+      }),
+    });
+  }
+  if (request.method === "GET" && action === "secret-video") {
+    const project = await loadMahoganyProject(projectRoot, id);
+    if (!project.secretVideo?.sha256)
+      throw apiError("No secret video is configured.", "secret_video_missing");
+    return serveMedia(
+      request,
+      response,
+      mahoganySecretVideoPath(projectRoot, project),
+      "video/mp4",
+    );
+  }
+  if (request.method === "DELETE" && action === "secret-video") {
+    const project = await loadMahoganyProject(projectRoot, id),
+      updated = await removeMahoganySecretVideo(projectRoot, project);
+    return sendJson(response, 200, {
+      ok: true,
+      project: await saveMahoganyProject(projectRoot, {
+        ...updated,
+        status: "draft",
+        prepared: null,
+        publicationProgress: null,
+      }),
+    });
+  }
+  if (request.method === "PUT" && action === "skin") {
+    const project = await loadMahoganyProject(projectRoot, id),
+      bytes = await readBytes(request, MAHOGANY_SKIN_MAX_BYTES),
+      updated = await storeMahoganySkin(
+        projectRoot,
+        project,
+        bytes,
+        decodeURIComponent(request.headers["x-file-name"] || "skin.png"),
+      );
+    return sendJson(response, 200, {
+      ok: true,
+      project: await saveMahoganyProject(projectRoot, {
+        ...updated,
+        status: "draft",
+        prepared: null,
+        publicationProgress: null,
+      }),
+    });
+  }
+  if (request.method === "DELETE" && action === "skin") {
+    const project = await loadMahoganyProject(projectRoot, id),
+      updated = await restoreDefaultMahoganySkin(projectRoot, project);
+    return sendJson(response, 200, {
+      ok: true,
+      project: await saveMahoganyProject(projectRoot, {
+        ...updated,
+        status: "draft",
+        prepared: null,
+        publicationProgress: null,
+      }),
+    });
+  }
+  if (request.method === "GET" && action === "skin") {
+    const project = await loadMahoganyProject(projectRoot, id);
+    if (project.skin.kind !== "custom")
+      throw apiError("This project uses the Mahogany master skin.", "skin_default");
+    return serveMedia(
+      request,
+      response,
+      mahoganySkinPath(projectRoot, project),
+      project.skin.mimeType,
+    );
+  }
   if (request.method === "GET" && action === "qr")
     return serve(
       response,
@@ -225,8 +392,15 @@ async function api({ request, response, url, root, projectRoot, publisher }) {
           project.video.kind === "mp4"
             ? `/api/mahogany/projects/${id}/video`
             : "",
+        secretVideoUrl: project.secretVideo?.sha256
+          ? `/api/mahogany/projects/${id}/secret-video?v=${project.secretVideo.sha256.slice(0, 12)}`
+          : "",
         youtubeUrl:
           project.video.kind === "youtube" ? project.video.youtubeUrl : "",
+        skinUrl:
+          project.skin.kind === "custom"
+            ? `/api/mahogany/projects/${id}/skin?v=${project.skin.sha256.slice(0, 12)}`
+            : "",
         canonicalUrl:
           project.publication?.liveUrl || project.prepared?.liveUrl || "",
       });
@@ -248,6 +422,7 @@ async function api({ request, response, url, root, projectRoot, publisher }) {
     let project = await loadMahoganyProject(projectRoot, id);
     const readiness = validateMahoganyProject(project, {
       requireStoredMp4: true,
+      requireStoredSkin: true,
     });
     if (!readiness.ready)
       throw apiError(readiness.errors.join(" "), "project_not_ready");
@@ -308,6 +483,13 @@ async function api({ request, response, url, root, projectRoot, publisher }) {
           project.video.kind === "mp4"
             ? path.join(projectRoot, id, "video.mp4")
             : "",
+        skinPath:
+          project.skin.kind === "custom"
+            ? mahoganySkinPath(projectRoot, project)
+            : "",
+        secretVideoPath: project.secretVideo?.sha256
+          ? mahoganySecretVideoPath(projectRoot, project)
+          : "",
         onProgress: saveProgress,
       });
       project = await saveMahoganyProject(projectRoot, {
@@ -348,7 +530,10 @@ async function api({ request, response, url, root, projectRoot, publisher }) {
         "publisher_unavailable",
       );
     let project = await loadMahoganyProject(projectRoot, id),
-      readiness = validateMahoganyProject(project, { requireStoredMp4: true });
+      readiness = validateMahoganyProject(project, {
+        requireStoredMp4: true,
+        requireStoredSkin: true,
+      });
     if (!readiness.ready)
       throw apiError(readiness.errors.join(" "), "project_not_ready");
     if (project.prepared)
@@ -401,6 +586,13 @@ async function api({ request, response, url, root, projectRoot, publisher }) {
           project.video.kind === "mp4"
             ? path.join(projectRoot, id, "video.mp4")
             : "",
+        skinPath:
+          project.skin.kind === "custom"
+            ? mahoganySkinPath(projectRoot, project)
+            : "",
+        secretVideoPath: project.secretVideo?.sha256
+          ? mahoganySecretVideoPath(projectRoot, project)
+          : "",
       });
       project = await saveMahoganyProject(projectRoot, {
         ...project,

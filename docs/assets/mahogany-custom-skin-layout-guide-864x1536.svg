@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="864" height="1536" viewBox="0 0 864 1536" role="img" aria-labelledby="title desc">
+  <title id="title">Mahogany Jukebox custom-skin layout guide</title>
+  <desc id="desc">Exact 864 by 1536 reference showing the immutable interaction zones for custom jukebox artwork.</desc>
+  <defs>
+    <linearGradient id="wood" x1="0" x2="1">
+      <stop offset="0" stop-color="#120806"/>
+      <stop offset="0.12" stop-color="#4b170e"/>
+      <stop offset="0.5" stop-color="#1b0b07"/>
+      <stop offset="0.88" stop-color="#4b170e"/>
+      <stop offset="1" stop-color="#120806"/>
+    </linearGradient>
+    <linearGradient id="brass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6e3a13"/>
+      <stop offset="0.28" stop-color="#e7b965"/>
+      <stop offset="0.52" stop-color="#7f451c"/>
+      <stop offset="0.78" stop-color="#f2ca7a"/>
+      <stop offset="1" stop-color="#4b250d"/>
+    </linearGradient>
+    <radialGradient id="well">
+      <stop offset="0" stop-color="#15100c"/>
+      <stop offset="0.72" stop-color="#070504"/>
+      <stop offset="1" stop-color="#010101"/>
+    </radialGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="7" stdDeviation="6" flood-color="#000" flood-opacity=".8"/></filter>
+    <filter id="glow"><feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="#ffb000" flood-opacity=".7"/></filter>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M24 0H0V24" fill="none" stroke="#ae7c37" stroke-opacity=".12" stroke-width="1"/>
+    </pattern>
+    <style>
+      .guide{font-family:Arial,sans-serif;font-weight:800;letter-spacing:2px;text-anchor:middle}
+      .small{font-size:15px;fill:#f0cf88}.tiny{font-size:11px;fill:#b88b49}.zone{fill:#050403;stroke:#ffd36a;stroke-width:2}
+    </style>
+  </defs>
+  <rect width="864" height="1536" fill="#020101"/>
+  <rect x="20" y="10" width="824" height="1516" rx="310" fill="url(#wood)" stroke="#2c140a" stroke-width="12"/>
+  <path d="M65 373V305C65 117 217 34 432 34S799 117 799 305v1160" fill="none" stroke="#1b0c06" stroke-width="64"/>
+  <path d="M65 373V305C65 117 217 34 432 34S799 117 799 305v1160" fill="none" stroke="url(#brass)" stroke-width="37"/>
+  <path d="M65 373V305C65 117 217 34 432 34S799 117 799 305v1160" fill="none" stroke="#d69d42" stroke-opacity=".55" stroke-width="3"/>
+  <rect x="96" y="62" width="672" height="280" rx="122" fill="#090806" stroke="#7d4b20" stroke-width="4" filter="url(#shadow)"/>
+  <rect x="110" y="76" width="644" height="252" rx="108" fill="url(#grid)"/>
+  <text x="432" y="182" class="guide" font-size="36" fill="#d4a35c">CUSTOM BRAND ART</text>
+  <text x="432" y="216" class="guide small">SAFE AREA X 110–754 · Y 76–328</text>
+  <path d="M212 244H652" stroke="#a97131" stroke-width="2"/>
+
+  <rect x="118" y="373" width="628" height="49" rx="12" class="zone" filter="url(#glow)"/>
+  <text x="432" y="404" class="guide small">TICKER · X118 Y373 W628 H49</text>
+
+  <rect x="102" y="430" width="105" height="508" rx="12" fill="#0a0806" stroke="url(#brass)" stroke-width="5"/>
+  <text x="155" y="465" class="guide tiny">NOW PLAYING</text>
+  <rect x="132" y="500" width="48" height="246" rx="13" fill="#17120e" stroke="url(#brass)" stroke-width="5"/>
+  <rect x="147" y="530" width="18" height="174" rx="9" fill="#000"/>
+  <circle cx="184" cy="574" r="41" fill="none" stroke="#ffd36a" stroke-width="2" stroke-dasharray="7 5"/>
+  <text x="156" y="784" class="guide tiny">COIN HOTSPOT</text>
+
+  <rect x="232" y="435" width="501" height="496" rx="12" class="zone" filter="url(#shadow)"/>
+  <path d="M232 461V435H258M707 435h26v26M232 905v26h26M707 931h26v-26" fill="none" stroke="#ffb000" stroke-width="4"/>
+  <text x="483" y="658" class="guide" font-size="27" fill="#ffd36a">VIDEO APERTURE</text>
+  <text x="483" y="695" class="guide small">X232 Y435 W501 H496</text>
+  <text x="483" y="724" class="guide tiny">CAMTASIA 1820 × 1800 · 91:90 · FILL, NO BARS</text>
+
+  <rect x="105" y="993" width="655" height="284" rx="16" fill="#080604" stroke="#5e3518" stroke-width="3"/>
+  <g fill="url(#well)" stroke="url(#brass)" stroke-width="7" filter="url(#shadow)">
+    <ellipse cx="184" cy="1137" rx="68" ry="126"/>
+    <ellipse cx="350" cy="1137" rx="68" ry="126"/>
+    <ellipse cx="516" cy="1137" rx="68" ry="126"/>
+    <ellipse cx="682" cy="1137" rx="68" ry="126"/>
+  </g>
+  <g fill="#ffd36a" stroke="#3b210d" stroke-width="2">
+    <circle cx="184" cy="1137" r="7"/><circle cx="350" cy="1137" r="7"/>
+    <circle cx="516" cy="1137" r="7"/><circle cx="682" cy="1137" r="7"/>
+  </g>
+  <g class="guide tiny">
+    <text x="184" y="1094">ICON 1</text><text x="184" y="1182">CENTER 184,1137</text>
+    <text x="350" y="1094">ICON 2</text><text x="350" y="1182">CENTER 350,1137</text>
+    <text x="516" y="1094">ICON 3</text><text x="516" y="1182">CENTER 516,1137</text>
+    <text x="682" y="1094">ICON 4</text><text x="682" y="1182">CENTER 682,1137</text>
+  </g>
+
+  <rect x="117" y="1271" width="630" height="82" rx="12" fill="url(#brass)" stroke="#261207" stroke-width="7" filter="url(#shadow)"/>
+  <text x="432" y="1314" class="guide" font-size="24" fill="#180c06">SHARE PLAQUE SAFE AREA</text>
+  <text x="432" y="1338" class="guide" font-size="11" fill="#38210f">X117 Y1271 W630 H82</text>
+
+  <rect x="102" y="1372" width="660" height="103" rx="50" fill="#050403" stroke="url(#brass)" stroke-width="5"/>
+  <path d="M128 1392l44 62m7-62 44 62m7-62 44 62m7-62 44 62m7-62 44 62m7-62 44 62m7-62 44 62m7-62 44 62m7-62 44 62m7-62 44 62m7-62 44 62" stroke="#7a5027" stroke-width="2" opacity=".55"/>
+  <circle cx="432" cy="1424" r="60" fill="#160a05" stroke="url(#brass)" stroke-width="7"/>
+  <text x="432" y="1510" class="guide tiny">FOOTER / COPYRIGHT AREA · NO INTERACTIVE OVERLAYS</text>
+</svg>

@@ -835,3 +835,39 @@ The Mac handover is successful when:
 - any future change starts with an edition-impact assessment.
 
 This file should be updated whenever the platform architecture, commands, production workflow, locked product contracts, or current handover state materially changes.
+
+## 22. Mahogany Jukebox verified candidate intake
+
+Mahogany Jukebox for Windows includes a private, local candidate intake above the existing manual editor. `ADD 10 BANDS` searches current public sources and adds unpublished manual-review candidates that pass all of these intake checks:
+
+- a 75% manual-review lead gate requiring a resolved direct Bandcamp artist page; other profiles, biography and identity confirmation are completed during owner review before strict publication validation;
+- verified direct Bandcamp plus at least one of Instagram, Facebook or Spotify;
+- a sourced factual biography suitable for the ticker.
+
+Accepted candidates are saved into the existing Mahogany Library as **unpublished manual-review drafts**. The verified artist name populates the heading. Keys are locked to Bandcamp, Instagram, Facebook and Spotify in that exact order; missing destinations remain blank and must be completed by the owner. Automated intake neither searches for nor requires YouTube. Each draft opens with Upload MP4 as the empty primary media workflow; the owner may instead deliberately select and enter a YouTube URL. Production remains fail-closed: all four valid actions, ticker and media plus the normal 98% publication checks must pass before the edition can go live. No website or YouTube fallback is substituted.
+
+`ADD 10 BUSINESSES` is visible as the next staged intake model but does not yet run automated business research. Manual business creation remains available. Candidate research metadata is private Studio data and is excluded from the locked public Mahogany manifest and renderer.
+
+Implementation files:
+
+- `scripts/mahogany-band-candidates.mjs`
+- `scripts/studio-jookbox-research.mjs`
+- `scripts/mahogany-studio-server.mjs`
+- `mahogany-studio/index.html`
+- `mahogany-studio/app.js`
+- `mahogany-studio/styles.css`
+- `scripts/test-mahogany-band-candidates.mjs`
+
+Run the complete private Mahogany verification with `npm run mahogany:test`. Build the isolated Windows installer with `npm run mahogany:make` on Windows.
+
+## 23. Mahogany bass-reactive action lighting
+
+The locked four-button Mahogany renderer now includes restrained bass-reactive illumination without changing the cabinet, coin insertion, genuine coin sound, mechanical button depression or delayed external-link launch. For local MP4 playback, one shared Web Audio `AnalyserNode` measures smoothed energy between approximately 40 and 180 Hz and converts only meaningful peaks into a contained warm-amber inner glow and a maximum 1.015 scale response. `bassPulseMode` accepts `together` (default) or `ripple`.
+
+Cross-origin YouTube embeds cannot expose their audio samples to the parent page. When the YouTube player confirms that it is playing, the renderer therefore uses a deliberately restrained timing fallback; it does not claim audio-accurate synchronisation. All response stops and resets when playback pauses, is muted, ends, the tab is hidden or the page is torn down. Reduced-motion users retain lighting but receive no scale movement.
+
+Implementation and regression coverage are in `scripts/aggits-jukebox-preview.mjs` and `scripts/test-mahogany-jukebox.mjs`. Release 1.4.3 makes band intake MP4-first, removes YouTube from automatic candidate qualification and adds the locked embossed Aggits gold coin control while preserving the existing genuine coin-slot recording.
+
+## 24. Mahogany Jukebox 1.4.12 custom skins
+
+Release 1.4.12 adds an optional skin upload to the private Windows Studio. It accepts only exact 864 × 1536 PNG, JPEG or WebP artwork up to 12 MiB. The selected image becomes the cabinet background in preview and the live page; all Mahogany interaction geometry and functionality remain fixed. Skinless and pre-1.4.12 projects automatically use the current Mahogany Master. Custom skin metadata is stored in the existing project record, while the binary is stored beside local project media and uploaded through the protected publisher as a content-verified versioned R2 asset. Publication, live verification and rollback cover the skin. Relevant implementation is in `scripts/mahogany-jukebox-model.mjs`, `scripts/aggits-jukebox-preview.mjs`, `scripts/mahogany-studio-server.mjs`, `scripts/mahogany-jukebox-publication.mjs`, `worker/aggits-jukebox-publisher.js` and `mahogany-studio/*`.
