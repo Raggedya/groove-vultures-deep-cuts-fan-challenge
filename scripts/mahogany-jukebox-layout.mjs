@@ -61,7 +61,7 @@ export const MAHOGANY_MASTER_LAYOUT = profile(
     // Measured against the true inner screen aperture in the immutable
     // 941 × 1672 MASTER STRUCTURE.  Keep the media inside the photographed
     // chrome/red bezel instead of covering it with the generic outer frame.
-    video: { top: 28.17, left: 26.89, width: 57.92, height: 32.36, radius: 3.7 },
+    video: { top: 29.84, left: 26.89, width: 57.92, height: 30.69, radius: 3.7 },
     coin: { top: 34.15, left: 16.7, width: 9.4 },
     actions: { top: 65.55, left: 0, width: 100, height: 16.9, gap: 0, padY: 0, padX: 0 },
     actionKeys: [

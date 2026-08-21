@@ -313,7 +313,7 @@ assert.doesNotMatch(preview, /content:"\$"/);
 assert.match(preview, /is-depressed/);
 assert.match(preview, /actions\.forEach\(candidate=>candidate\.classList\.toggle\("is-depressed",candidate===action\)\)/);
 assert.match(preview, /jukebox-mechanical-button-clunk-public-domain\.ogg/);
-assert.match(preview, /--video-top:28\.17%;--video-left:26\.89%;--video-width:57\.92%;--video-height:32\.36%;--video-radius:3\.7%/);
+assert.match(preview, /--video-top:29\.84%;--video-left:26\.89%;--video-width:57\.92%;--video-height:30\.69%;--video-radius:3\.7%/);
 assert.match(preview, /clip-path:inset\(0 round var\(--video-radius\)\)/);
 assert.match(preview, /\.video video,\.video iframe,\.secret-compartment video\{[^}]*border-radius:inherit/);
 assert.match(preview, /--actions-top:65\.55%;--actions-left:0%;--actions-width:100%;--actions-height:16\.9%/);
@@ -325,6 +325,11 @@ assert.match(preview, /aggits-jukebox-icons-oval-v6\/spotify\.svg/);
 assert.match(preview, /\.action-icon img\{[^}]*width:100%;height:100%/);
 assert.match(preview, /\.action-icon\{[^}]*top:50%;left:50%;width:40%;height:34%[^}]*transform:translate\(-50%,-50%\)/);
 assert.match(preview, /\.action-icon img\{[^}]*object-position:50% 50%/);
+assert.doesNotMatch(
+  preview,
+  /\.machine\.is-fixed-action-layout \.action-icon\{top:/,
+  "fixed layouts must inherit the shared exact 50%/50% icon centre",
+);
 assert.match(preview, /\.action\.is-depressed \.action-icon\{transform:translate\(-50%,calc\(-50% \+ 2px\)\)\}/);
 assert.match(preview, /\.action\{[^}]*filter:brightness\(\.62\) saturate\(\.72\);opacity:\.86/);
 assert.doesNotMatch(preview, /solid transparent/);
