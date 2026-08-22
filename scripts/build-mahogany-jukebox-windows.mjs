@@ -18,30 +18,73 @@ const require = createRequire(import.meta.url),
 
 function runBoundedSmokeTest(application, args, timeoutMs = 45000) {
   return new Promise((resolve, reject) => {
+    const marker = path.join(
+      os.tmpdir(),
+      `mahogany-smoke-${crypto.randomUUID()}.json`,
+    );
     const child = spawn(application, args, {
       windowsHide: true,
-      stdio: "ignore",
-      env: { ...process.env, ELECTRON_DISABLE_CRASH_REPORTER: "1" },
+      stdio: ["ignore", "pipe", "pipe"],
+      env: {
+        ...process.env,
+        ELECTRON_DISABLE_CRASH_REPORTER: "1",
+        MAHOGANY_BOUNDED_SMOKE_TEST: "1",
+        MAHOGANY_SMOKE_MARKER: marker,
+      },
     });
-    let settled = false;
-    const finish = (error) => {
-      if (settled) return;
-      settled = true;
-      clearTimeout(timer);
-      if (error) reject(error);
-      else resolve();
+    let diagnostics = "";
+    let markerState = "";
+    const capture = (chunk) => {
+      diagnostics = `${diagnostics}${String(chunk)}`.slice(-4000);
     };
-    const timer = setTimeout(() => {
+    child.stdout?.on("data", capture);
+    child.stderr?.on("data", capture);
+    let settled = false;
+    let markerPoll = null;
+    const terminate = (done) => {
       execFile(
         path.join(process.env.SystemRoot || "C:\\Windows", "System32", "taskkill.exe"),
         ["/PID", String(child.pid), "/T", "/F"],
         { windowsHide: true },
-        () => finish(new Error("The bounded packaged-app smoke test timed out.")),
+        () => done(),
+      );
+    };
+    const finish = (error, terminateProcess = false) => {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timer);
+      if (markerPoll) clearInterval(markerPoll);
+      const complete = () => {
+        void fs.rm(marker, { force: true });
+        if (error) reject(error);
+        else resolve();
+      };
+      if (terminateProcess) terminate(complete);
+      else complete();
+    };
+    const timer = setTimeout(() => {
+      finish(
+        new Error(
+          `The bounded packaged-app smoke test timed out.${markerState ? ` Marker: ${markerState}` : ""}${diagnostics ? ` Diagnostics: ${diagnostics}` : ""}`,
+        ),
+        true,
       );
     }, timeoutMs);
-    child.once("error", finish);
+    markerPoll = setInterval(async () => {
+      const result = await fs.readFile(marker, "utf8").catch(() => "");
+      if (!result) return;
+      markerState = result;
+      try {
+        if (JSON.parse(result).ready === true) finish(null, true);
+      } catch {}
+    }, 100);
+    child.once("error", (error) => finish(error));
     child.once("exit", (code) =>
-      finish(code === 0 ? null : new Error(`The packaged-app smoke test exited with code ${code}.`)),
+      finish(
+        code === 0
+          ? null
+          : new Error(`The packaged-app smoke test exited with code ${code}.`),
+      ),
     );
   });
 }
@@ -81,11 +124,13 @@ const runtimeFiles = [
   "scripts/mahogany-jukebox-publication.mjs",
   "scripts/aggits-jukebox-preview.mjs",
   "scripts/aggits-jukebox-icons.mjs",
+  "scripts/mahogany-secret-screen-state.mjs",
   "scripts/aggits-jukebox-qr-artwork.mjs",
   "scripts/bar-edition-publication.mjs",
   "scripts/venue-qr-artwork.mjs",
   "scripts/vendor/qrcode.min.js",
   "assets/aggits-jukebox-master-v1.jpg",
+  "assets/aggits-marquee-reference-v1.jpg",
   "assets/aggits-jukebox-illuminated-master-v3.png",
   "assets/aggits-coin-gold-v1.png",
   "assets/aggits-jukebox-icons-master-v1.jpg",
@@ -96,6 +141,8 @@ const runtimeFiles = [
   "assets/audio/jukebox-real-coin-insert-cc0.LICENSE.txt",
   "assets/audio/jukebox-mechanical-button-clunk-public-domain.ogg",
   "assets/audio/jukebox-mechanical-button-clunk-public-domain.LICENSE.txt",
+  "assets/audio/jukebox-screen-motor-open-original.wav",
+  "assets/audio/jukebox-screen-motor-close-original.wav",
   "assets/js/jookbox-coin-audio.js",
   "mahogany-product.json",
 ];
