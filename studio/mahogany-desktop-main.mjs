@@ -5,8 +5,15 @@ import { app, BrowserWindow, Menu, safeStorage, shell } from "electron";
 import { createMahoganyStudioServer } from "../scripts/mahogany-studio-server.mjs";
 
 const smoke =
+  process.env.MAHOGANY_BOUNDED_SMOKE_TEST === "1" ||
   process.argv.includes("--mahogany-bounded-smoke-test") ||
   app.commandLine.hasSwitch("mahogany-bounded-smoke-test");
+if (smoke && process.env.MAHOGANY_SMOKE_MARKER)
+  await fs.writeFile(
+    process.env.MAHOGANY_SMOKE_MARKER,
+    JSON.stringify({ phase: "module-loaded" }),
+    "utf8",
+  );
 let server = null,
   origin = "",
   window = null;
@@ -178,6 +185,12 @@ else
       if (process.platform !== "darwin") Menu.setApplicationMenu(null);
       if (smoke) {
         await bounded();
+        if (process.env.MAHOGANY_SMOKE_MARKER)
+          await fs.writeFile(
+            process.env.MAHOGANY_SMOKE_MARKER,
+            JSON.stringify({ ready: true }),
+            "utf8",
+          );
         await stop();
         app.exit(0);
         return;

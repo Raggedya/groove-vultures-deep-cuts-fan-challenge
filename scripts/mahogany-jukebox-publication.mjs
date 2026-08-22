@@ -275,7 +275,10 @@ export function createMahoganyJukeboxPublisher({
         "verifying",
         "Verifying the live page, QR and selected video",
       );
-      await verifyMahoganyPublication(fetchImpl, currentJob, manifest);
+      await verifyMahoganyPublication(fetchImpl, currentJob, manifest, {
+        sleep,
+        retryMs: Math.min(pollMs, 1000),
+      });
       return {
         schemaVersion: MAHOGANY_PUBLICATION_SCHEMA,
         editionId: currentJob.editionId,
@@ -339,7 +342,26 @@ export function createMahoganyJukeboxPublisher({
   };
 }
 
-export async function verifyMahoganyPublication(fetchImpl, job, manifest) {
+export async function verifyMahoganyPublication(
+  fetchImpl,
+  job,
+  manifest,
+  { sleep = delay, retryMs = 1000, maxAttempts = 15 } = {},
+) {
+  let lastError;
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    try {
+      await verifyMahoganyPublicationOnce(fetchImpl, job, manifest);
+      return;
+    } catch (error) {
+      lastError = error;
+      if (attempt < maxAttempts) await sleep(retryMs);
+    }
+  }
+  throw lastError;
+}
+
+async function verifyMahoganyPublicationOnce(fetchImpl, job, manifest) {
   const origin = new URL(job.liveUrl).origin,
     requests = [
       fetchImpl(`${job.liveUrl}?publication=${encodeURIComponent(job.id)}`, {
