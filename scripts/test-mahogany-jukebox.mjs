@@ -35,10 +35,14 @@ import {
 } from "./mahogany-jukebox-model.mjs";
 import {
   MAHOGANY_LEGACY_LAYOUT_ID,
+  MAHOGANY_MINERS_REST_LAYOUT,
+  MAHOGANY_MINERS_REST_LAYOUT_ID,
+  MAHOGANY_MINERS_REST_SKIN_SHA256,
   MAHOGANY_MASTER_LAYOUT,
   MAHOGANY_MASTER_LAYOUT_ID,
   MAHOGANY_LOCKED_TIMING,
   mahoganyGeometrySnapshot,
+  resolveMahoganyLayoutProfile,
 } from "./mahogany-jukebox-layout.mjs";
 import {
   MAHOGANY_SECRET_SCREEN_STATES,
@@ -136,6 +140,56 @@ MAHOGANY_MASTER_LAYOUT.slots.actionKeys.forEach((slot, index) => {
     `action ${index + 1} must share the measured physical oval centre`,
   );
 });
+assert.equal(MAHOGANY_MINERS_REST_LAYOUT.slots.ticker.top, 27.09);
+assert.equal(MAHOGANY_MINERS_REST_LAYOUT.slots.video.top, 31.64);
+assert.equal(MAHOGANY_MINERS_REST_LAYOUT.slots.video.height, 29.84);
+assert.equal(
+  resolveMahoganyLayoutProfile({
+    layoutProfile: MAHOGANY_MASTER_LAYOUT_ID,
+    skin: { sha256: MAHOGANY_MINERS_REST_SKIN_SHA256 },
+  }).id,
+  MAHOGANY_MINERS_REST_LAYOUT_ID,
+  "the immutable Miner's Rest skin must select its isolated aperture profile",
+);
+assert.equal(
+  resolveMahoganyLayoutProfile({
+    layoutProfile: MAHOGANY_MASTER_LAYOUT_ID,
+    skin: { sha256: "a".repeat(64) },
+  }).id,
+  MAHOGANY_MASTER_LAYOUT_ID,
+  "other master skins must retain the shared master profile",
+);
+for (const slotName of ["coin", "actions", "actionKeys", "share", "mainPlay", "footer"]) {
+  assert.deepEqual(
+    MAHOGANY_MINERS_REST_LAYOUT.slots[slotName],
+    MAHOGANY_MASTER_LAYOUT.slots[slotName],
+    `Miner's Rest must preserve the shared ${slotName} chassis geometry`,
+  );
+}
+const minersRestSubtitleBottomPx = 413,
+  minersRestTickerTopPx =
+    (MAHOGANY_MINERS_REST_LAYOUT.slots.ticker.top / 100) * MAHOGANY_MINERS_REST_LAYOUT.height,
+  minersRestTickerBottomPx =
+    ((MAHOGANY_MINERS_REST_LAYOUT.slots.ticker.top +
+      MAHOGANY_MINERS_REST_LAYOUT.slots.ticker.height) /
+      100) *
+    MAHOGANY_MINERS_REST_LAYOUT.height,
+  minersRestVideoTopPx =
+    (MAHOGANY_MINERS_REST_LAYOUT.slots.video.top / 100) * MAHOGANY_MINERS_REST_LAYOUT.height;
+assert.ok(
+  minersRestVideoTopPx > minersRestTickerBottomPx,
+  "Miner's Rest screen must begin below its ticker aperture",
+);
+for (const viewportWidth of [320, 375, 390, 430, 768, 941]) {
+  const machineWidth = Math.min(viewportWidth, 466),
+    subtitleTickerGap =
+      (minersRestTickerTopPx - minersRestSubtitleBottomPx) *
+      (machineWidth / MAHOGANY_MINERS_REST_LAYOUT.width);
+  assert.ok(
+    subtitleTickerGap >= 8,
+    `Miner's Rest subtitle/ticker gap must remain at least 8 CSS px at ${viewportWidth}px`,
+  );
+}
 assert.equal(MAHOGANY_LOCKED_TIMING.coinInsertMs, 620);
 assert.equal(MAHOGANY_LOCKED_TIMING.secretScreenTravelMs, 3000);
 assert.equal(MAHOGANY_LOCKED_TIMING.reducedSecretScreenTravelMs, 180);
@@ -211,6 +265,15 @@ assert.match(manifest.video.sha256, /^[a-f0-9]{64}$/);
 const preview = renderAggitsJukeboxStudioPreview(toPreviewProject(sample), {
   youtubeUrl: sample.video.youtubeUrl,
 });
+const minersRestPreview = renderAggitsJukeboxStudioPreview(
+  toPreviewProject(
+    normalizeMahoganyProject({
+      ...sample,
+      layoutProfile: MAHOGANY_MINERS_REST_LAYOUT_ID,
+    }),
+  ),
+  { youtubeUrl: sample.video.youtubeUrl },
+);
 const secretPreview = renderAggitsJukeboxStudioPreview(
   toPreviewProject(
     normalizeMahoganyProject({
@@ -246,6 +309,15 @@ assert.match(
   /data-renderer-version="mahogany-jukebox\/2026-08-21-v16-concealed-screen-toggle"/,
 );
 assert.match(preview, /data-skin-profile="master-structure\/1"/);
+assert.match(minersRestPreview, /data-skin-profile="miners-rest-941\/1"/);
+assert.match(
+  minersRestPreview,
+  /--ticker-top:27\.09%;--ticker-left:13\.62%;--ticker-width:72\.7%;--ticker-height:3\.18%/,
+);
+assert.match(
+  minersRestPreview,
+  /--video-top:31\.64%;--video-left:26\.89%;--video-width:57\.92%;--video-height:29\.84%/,
+);
 assert.equal(MAHOGANY_FIXED_MARQUEE_ASSET, "/assets/aggits-marquee-reference-v1.jpg");
 assert.match(MAHOGANY_FIXED_MARQUEE_SHA256, /^[a-f0-9]{64}$/);
 assert.equal(
