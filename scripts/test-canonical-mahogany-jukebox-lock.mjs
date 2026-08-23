@@ -225,10 +225,19 @@ for (const baseline of contract.visualBaselines) {
   assert.equal(metadata.height, baseline.height, `${baseline.path} height changed`);
 }
 
-const measurementBytes = await fs.readFile(
+const measurementDiskBytes = await fs.readFile(
     path.join(root, contract.measurementBaseline.path),
   ),
+  measurementBytes = Buffer.from(
+    measurementDiskBytes.toString("utf8").replace(/\r\n?/g, "\n"),
+    "utf8",
+  ),
   measurements = JSON.parse(measurementBytes);
+assert.equal(
+  contract.measurementBaseline.hashMode,
+  "utf8-lf",
+  "measurement baseline must use the cross-platform canonical text hash",
+);
 assert.equal(measurementBytes.length, contract.measurementBaseline.bytes);
 assert.equal(sha256(measurementBytes), contract.measurementBaseline.sha256);
 assert.deepEqual(

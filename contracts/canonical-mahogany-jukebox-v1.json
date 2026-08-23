@@ -200,6 +200,7 @@
   ],
   "measurementBaseline": {
     "path": "test-baselines/canonical-mahogany-jukebox-v1/miners-rest-production-measurements.json",
+    "hashMode": "utf8-lf",
     "bytes": 9400,
     "sha256": "b58a0961a20ff9f159e9da4678c3682fea1ad9a6dc18091e66e632f41170e38c",
     "requiredLabels": [
