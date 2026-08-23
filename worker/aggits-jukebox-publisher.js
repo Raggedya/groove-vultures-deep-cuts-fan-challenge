@@ -879,10 +879,12 @@ async function setState(request, env, editionId, url, device) {
 
 function buildConfig(job, m) {
   const now = new Date().toISOString(),
-    layoutProfile = resolveMahoganyLayoutProfile({
-      layoutProfile: m.layoutProfile || m.skin?.layoutProfile,
-      skin: m.skin,
-    }).id;
+    layoutProfile =
+      String(m.layoutProfile || "") ||
+      resolveMahoganyLayoutProfile({
+        layoutProfile: m.skin?.layoutProfile,
+        skin: m.skin,
+      }).id;
   return {
     brandName: "Mahogany Jukebox",
     editionType: "aggits_jukebox",
@@ -1110,14 +1112,20 @@ function validateManifest(body) {
   if (!skinCheck.valid)
     return { ok: false, error: skinCheck.errors.join(" ") };
   const skin = normalizeMahoganySkin(skinCheck.value, { allowLegacy: true }),
-    layoutProfile = resolveMahoganyLayoutProfile({
+    requestedLayoutProfile = String(body?.layoutProfile || ""),
+    resolvedLayoutProfile = resolveMahoganyLayoutProfile({
       layoutProfile: body?.layoutProfile || skin.layoutProfile,
       skin,
       secretVideo,
-    }).id;
+    }).id,
+    layoutProfile =
+      requestedLayoutProfile && requestedLayoutProfile === skin.layoutProfile
+        ? requestedLayoutProfile
+        : resolvedLayoutProfile;
   if (
-    body?.layoutProfile &&
-    String(body.layoutProfile) !== layoutProfile
+    requestedLayoutProfile &&
+    requestedLayoutProfile !== resolvedLayoutProfile &&
+    requestedLayoutProfile !== skin.layoutProfile
   )
     return {
       ok: false,
