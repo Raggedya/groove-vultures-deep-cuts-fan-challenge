@@ -1,4 +1,7 @@
 export const MAHOGANY_MASTER_LAYOUT_ID = "master-structure/1";
+export const MAHOGANY_MINERS_REST_LAYOUT_ID = "miners-rest-941/1";
+export const MAHOGANY_MINERS_REST_SKIN_SHA256 =
+  "f540377ea72f31d2f3f4356b82f3c58695f077017ffba0a2a3d3d58329e79abe";
 export const MAHOGANY_LEGACY_LAYOUT_ID = "mahogany-master-864/1";
 export const MAHOGANY_LEGACY_CUSTOM_LAYOUT_ID = "custom-skin-864/1";
 
@@ -80,6 +83,27 @@ export const MAHOGANY_MASTER_LAYOUT = profile(
   },
 );
 
+/*
+ * Miner's Rest is an isolated owner-approved 941 × 1672 cabinet whose
+ * photographed ticker and video apertures sit lower than MASTER STRUCTURE.
+ * Only those two content viewports differ; every other chassis slot remains
+ * byte-for-byte aligned with the shared master profile.
+ */
+export const MAHOGANY_MINERS_REST_LAYOUT = profile(
+  MAHOGANY_MINERS_REST_LAYOUT_ID,
+  MAHOGANY_MASTER_WIDTH,
+  MAHOGANY_MASTER_HEIGHT,
+  {
+    ...MAHOGANY_MASTER_LAYOUT.slots,
+    ticker: { ...MAHOGANY_MASTER_LAYOUT.slots.ticker, top: 27.09 },
+    video: {
+      ...MAHOGANY_MASTER_LAYOUT.slots.video,
+      top: 31.64,
+      height: 29.84,
+    },
+  },
+);
+
 export const MAHOGANY_LEGACY_LAYOUT = profile(
   MAHOGANY_LEGACY_LAYOUT_ID,
   MAHOGANY_LEGACY_WIDTH,
@@ -105,6 +129,7 @@ export const MAHOGANY_LEGACY_CUSTOM_LAYOUT = profile(
 
 export const MAHOGANY_LAYOUT_PROFILES = Object.freeze({
   [MAHOGANY_MASTER_LAYOUT_ID]: MAHOGANY_MASTER_LAYOUT,
+  [MAHOGANY_MINERS_REST_LAYOUT_ID]: MAHOGANY_MINERS_REST_LAYOUT,
   [MAHOGANY_LEGACY_LAYOUT_ID]: MAHOGANY_LEGACY_LAYOUT,
   [MAHOGANY_LEGACY_CUSTOM_LAYOUT_ID]: MAHOGANY_LEGACY_CUSTOM_LAYOUT,
 });
@@ -114,6 +139,11 @@ export function mahoganyLayoutProfile(id) {
 }
 
 export function resolveMahoganyLayoutProfile({ layoutProfile, skin } = {}) {
+  if (
+    String(skin?.sha256 || "").toLowerCase() ===
+    MAHOGANY_MINERS_REST_SKIN_SHA256
+  )
+    return MAHOGANY_MINERS_REST_LAYOUT;
   const explicit = mahoganyLayoutProfile(layoutProfile);
   if (explicit) return explicit;
   if (skin?.kind === "custom") {
