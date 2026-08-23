@@ -1,6 +1,10 @@
 # Mahogany Jukebox fixed-layout engine
 
-Version 1.4.12 has one canonical new-edition geometry: `master-structure/1`, defined only in `scripts/mahogany-jukebox-layout.mjs`. Its 941 × 1672 composition and interaction timing are immutable.
+The complete approved module is locked by `CANONICAL_JUKEBOX_MODULE_LOCK.md` and `contracts/canonical-mahogany-jukebox-v1.json`. Run `node scripts/test-canonical-mahogany-jukebox-lock.mjs` before and after any potentially related work.
+
+Version 1.4.12 uses the shared canonical `master-structure/1` geometry and the isolated approved `miners-rest-941/1` property profile, both defined only in `scripts/mahogany-jukebox-layout.mjs`. Their 941 × 1672 compositions and interaction timing are immutable. Previously published legacy layouts retain their named, isolated profiles.
+
+This document describes the layout engine; it does not authorise changing it. The module-level lock governs if any instruction conflicts.
 
 ## Separation of responsibilities
 
@@ -18,4 +22,6 @@ Previously stored and published 864 × 1536 editions resolve to an isolated lega
 
 ## Changing geometry
 
-Do not edit the layout module, slot percentages or timing constants for a customer skin. Any authorised future geometry change requires a new named layout profile, new regression baselines and an explicit migration plan. Never overload an existing profile ID.
+Do not edit the layout module, slot percentages or timing constants for a customer skin or an unrelated feature. New functionality must adapt inside the existing fixed viewports and public interfaces.
+
+Any future geometry change requires the user's exact explicit authorization to change the canonical module, a new named contract and layout-profile version, new regression baselines, an impact assessment, a source-control recovery point and an explicit migration and rollback plan. Never overwrite a baseline or overload an existing profile ID.

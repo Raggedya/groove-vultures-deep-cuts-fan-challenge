@@ -16,6 +16,7 @@ export const validationCommands = [
   test("JookBox", "scripts/test-jookbox.mjs"),
   test("Band JookBox batch", "scripts/test-jookbox-band-batch.mjs"),
   test("Bar Edition JookBox", "scripts/test-bar-jukebox.mjs"),
+  test("Canonical Mahogany Jukebox v1 lock", "scripts/test-canonical-mahogany-jukebox-lock.mjs", 180),
   test("Aggits four-button Jukebox", "scripts/test-aggits-jukebox.mjs"),
   test("Aggits Jukebox bulk importer", "scripts/test-aggits-jukebox-import.mjs", 180),
   test("Aggits Jukebox protected publisher", "scripts/test-aggits-jukebox-publisher.mjs", 240),

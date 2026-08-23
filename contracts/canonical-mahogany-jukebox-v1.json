@@ -1,0 +1,260 @@
+{
+  "schemaVersion": "deep-cuts-canonical-module-lock/1",
+  "contractId": "canonical-mahogany-jukebox/v1",
+  "status": "immutable",
+  "baseline": {
+    "sourceCommit": "511084aa3b774098e0b2074c2f382a3e66ae296e",
+    "sourceBranch": "codex/mahogany-layout-live-repair",
+    "rendererVersion": "mahogany-jukebox/2026-08-21-v16-concealed-screen-toggle",
+    "productionWorkerVersion": "774923fb-bf5a-4bc5-9a00-bd3aa601f266",
+    "productionRollbackVersion": "c1f593fd-bf33-471b-8ef9-54687149d8fe",
+    "productionReferenceEdition": "dc_5b4c77bcd9",
+    "productionReferenceSkinSha256": "f540377ea72f31d2f3f4356b82f3c58695f077017ffba0a2a3d3d58329e79abe",
+    "verifiedAt": "2026-08-23T01:48:15.120Z"
+  },
+  "protectedFiles": [
+    {
+      "path": "scripts/mahogany-jukebox-layout.mjs",
+      "responsibility": "all canonical profiles, geometry, responsive aspect ratios and timing",
+      "protection": "whole-file",
+      "bytes": 8155,
+      "sha256": "e64ff21b550074daed3c76a05c4125c9761832eaf076ce647da5535fb08e238c",
+      "hashMode": "utf8-lf"
+    },
+    {
+      "path": "scripts/aggits-jukebox-preview.mjs",
+      "responsibility": "canonical DOM, CSS, clipping, layering, animations, controls and runtime interactions",
+      "protection": "whole-file",
+      "bytes": 33132,
+      "sha256": "8e7f35bc101a34cb3f29fc281540fd6b573e612054ca8d84b2f07e121bbe2f55",
+      "hashMode": "utf8-lf"
+    },
+    {
+      "path": "scripts/mahogany-secret-screen-state.mjs",
+      "responsibility": "approved concealed-screen state machine",
+      "protection": "whole-file",
+      "bytes": 576,
+      "sha256": "b8010b2c84465a2a2da45fc4aedf3a570657fe12e9bb39fe0ff74f7b11137367",
+      "hashMode": "utf8-lf"
+    },
+    {
+      "path": "scripts/mahogany-jukebox-skin-schema.mjs",
+      "responsibility": "skin-only boundary that forbids customer geometry and timing",
+      "protection": "whole-file",
+      "bytes": 3707,
+      "sha256": "276cb91e9534cb8e85fd3b845724a073587c8c0bf8054e935141fd4b4b4e3cb7",
+      "hashMode": "utf8-lf"
+    },
+    {
+      "path": "scripts/aggits-jukebox-icons.mjs",
+      "responsibility": "current action-icon identity, order and asset mapping",
+      "protection": "whole-file",
+      "bytes": 4932,
+      "sha256": "d03d35dad01a22990ff16462e80f089ac7da161fdeb52574219e26e8a8b48329",
+      "hashMode": "utf8-lf"
+    },
+    {
+      "path": "assets/js/jookbox-coin-audio.js",
+      "responsibility": "shared direct-gesture coin audio behaviour and completion contract",
+      "protection": "whole-file",
+      "bytes": 6517,
+      "sha256": "037256fd0522b49bc9a024ec57871510aea250a87d8ce8af0384253bb1139a0a",
+      "hashMode": "utf8-lf"
+    }
+  ],
+  "protectedAssets": [
+    {
+      "path": "docs/assets/MASTER-STRUCTURE-941x1672.png",
+      "responsibility": "authoritative 941 by 1672 chassis reference",
+      "bytes": 2288430,
+      "width": 941,
+      "height": 1672,
+      "sha256": "553049079973e6d683eb1efe52b57fca7436eae697b8a96386bcd7948e8e34bf"
+    },
+    {
+      "path": "assets/aggits-jukebox-illuminated-master-v3.png",
+      "responsibility": "preserved default and legacy cabinet artwork",
+      "bytes": 2317625,
+      "width": 864,
+      "height": 1536,
+      "sha256": "c42731d8f90b7c53ddbf44ee65a16930c8315c170fb5fa68cd9a81db7d7c9262"
+    },
+    {
+      "path": "assets/aggits-marquee-reference-v1.jpg",
+      "responsibility": "fixed photographed AGGITS marquee",
+      "bytes": 156976,
+      "width": 1280,
+      "height": 415,
+      "sha256": "534ff813039151e01b1734dd2b1fb638d5228f226b6b1de6e9a5c5f4f91cdf21"
+    },
+    {
+      "path": "assets/aggits-coin-gold-v1.png",
+      "responsibility": "fixed physical coin control artwork",
+      "bytes": 2334171,
+      "width": 1105,
+      "height": 1087,
+      "sha256": "a98943dec001c831ea8709eb260f87062782009cfd3a6665247be8585c3f87e1"
+    },
+    {
+      "path": "assets/audio/jukebox-real-coin-insert-cc0.mp3",
+      "responsibility": "fixed real coin recording",
+      "bytes": 24912,
+      "sha256": "0d5af258fc72136626d4888c3b6a75240afe8d7b6c00d5837576b92c4ebadec0"
+    },
+    {
+      "path": "assets/audio/jukebox-mechanical-button-clunk-public-domain.ogg",
+      "responsibility": "fixed mechanical key sound",
+      "bytes": 12875,
+      "sha256": "d45c44c7cf8d700216c7f56182a430183df64880fe6aab834552daa6af6d5919"
+    },
+    {
+      "path": "assets/audio/jukebox-screen-motor-open-original.wav",
+      "responsibility": "fixed screen-open motor sound",
+      "bytes": 132344,
+      "sha256": "6b2d3a9f49a1af08defbf280a71fa62cb4a86130c69e687474bb90b12d283d89"
+    },
+    {
+      "path": "assets/audio/jukebox-screen-motor-close-original.wav",
+      "responsibility": "fixed screen-close motor sound",
+      "bytes": 132344,
+      "sha256": "07457576843c2b1feb46e2f0d709fcc2cfc6a7ad29f341c7125e56c036795693"
+    }
+  ],
+  "iconSet": {
+    "path": "assets/aggits-jukebox-icons-oval-v6",
+    "existingIconCount": 173,
+    "combinedSha256": "ddbb9f068d32ffa30c72b79f6bac8899d252f6a49186a43cbfa114c6f08a6e66",
+    "rule": "existing icon IDs and bytes are immutable; future icon systems must be isolated and versioned"
+  },
+  "geometrySnapshots": {
+    "master": {
+      "id": "master-structure/1",
+      "width": 941,
+      "height": 1672,
+      "canonicalBytes": 1139,
+      "sha256": "cecd95f8ef987e53d5d45e17ce0bc5d7430779c33242f06897e2b684f00a76e0"
+    },
+    "minersRest": {
+      "id": "miners-rest-941/1",
+      "width": 941,
+      "height": 1672,
+      "canonicalBytes": 1138,
+      "sha256": "31a3ee958642b2a70b31c66267feca2905fc2fafdfdbf9efe1a15dbefb0c31d1"
+    },
+    "legacyDefault": {
+      "id": "mahogany-master-864/1",
+      "width": 864,
+      "height": 1536,
+      "canonicalBytes": 957,
+      "sha256": "71b8b8fdbb8edf0e374ff63fafb6ac757300ab8d4541f40d9440fe8b64983f4d"
+    },
+    "legacyCustom": {
+      "id": "custom-skin-864/1",
+      "width": 864,
+      "height": 1536,
+      "canonicalBytes": 1138,
+      "sha256": "788ab84ba0b55317e08deb9b04aec04924a715990a32ddc77f7f0d91be309808"
+    }
+  },
+  "rendererSnapshots": {
+    "fixture": "canonical-mahogany-jukebox-renderer-fixture/1",
+    "master": {
+      "bytes": 28635,
+      "sha256": "66c66c8a2f37719cb15b6d00552d7aa72f072cc0d7c39f839ec60c688312f3eb"
+    },
+    "minersRest": {
+      "bytes": 28576,
+      "sha256": "2b33d1e37ff800205c448032b09d85bfaa511e2206e605386cd2af85d6d9a5eb"
+    },
+    "legacyDefault": {
+      "bytes": 28277,
+      "sha256": "aa4e326051410db07629e4782f95d74d7fa216f8a987cf2f3fa8c99dbacbef22"
+    },
+    "legacyCustom": {
+      "bytes": 28576,
+      "sha256": "48a29c0d1744f66cf1feb9babc317eb4cdae720b1b8cd90f08a28a9c3c8bb5c5"
+    }
+  },
+  "visualBaselines": [
+    {
+      "path": "test-baselines/canonical-mahogany-jukebox-v1/miners-rest-production-320.png",
+      "width": 320,
+      "height": 1000,
+      "bytes": 275769,
+      "sha256": "5ff53ee10df3c2c9363a45a169f46617e1f4e0db4c1b92bd415114f7e8642d3e"
+    },
+    {
+      "path": "test-baselines/canonical-mahogany-jukebox-v1/miners-rest-production-402.png",
+      "width": 402,
+      "height": 720,
+      "bytes": 392869,
+      "sha256": "cec8236040a9f3f544d0df6e9abd562572c5036b39ff5fbcae733491e8cbe010"
+    },
+    {
+      "path": "test-baselines/canonical-mahogany-jukebox-v1/miners-rest-production-desktop.png",
+      "width": 1000,
+      "height": 1280,
+      "bytes": 542274,
+      "sha256": "69f84295d7a5eca9e88a246c8e106109701b332eb758d8b46ba580cfbb70dbc8"
+    }
+  ],
+  "measurementBaseline": {
+    "path": "test-baselines/canonical-mahogany-jukebox-v1/miners-rest-production-measurements.json",
+    "bytes": 9400,
+    "sha256": "b58a0961a20ff9f159e9da4678c3682fea1ad9a6dc18091e66e632f41170e38c",
+    "requiredLabels": [
+      "w320",
+      "w375",
+      "w390",
+      "w430",
+      "w768",
+      "desktop",
+      "reference-z080",
+      "reference-z100",
+      "reference-z125",
+      "reference-z150"
+    ]
+  },
+  "publicInterface": {
+    "contentInputs": [
+      "project identity",
+      "ticker text",
+      "one selected video",
+      "optional versioned skin",
+      "exactly four ordered action definitions",
+      "optional concealed-screen video"
+    ],
+    "stableEventsAndBehaviour": [
+      "single coin activation",
+      "real coin audio completes before video media focus",
+      "four-state wake sequence",
+      "one-of-four mechanical key latch",
+      "500 millisecond outbound delay",
+      "secure external-tab navigation",
+      "native share with clipboard fallback",
+      "edition-specific awake session restoration",
+      "reduced-motion and hidden-tab handling"
+    ],
+    "forbiddenConfiguration": [
+      "coordinates",
+      "sizes",
+      "transforms",
+      "breakpoints",
+      "z-index",
+      "clipping",
+      "animation timing",
+      "arbitrary CSS",
+      "scripts"
+    ]
+  },
+  "requiredValidation": [
+    "scripts/test-canonical-mahogany-jukebox-lock.mjs",
+    "scripts/test-mahogany-jukebox.mjs",
+    "scripts/test-mahogany-band-candidates.mjs",
+    "scripts/test-mahogany-publication-retry.mjs",
+    "scripts/test-aggits-jukebox.mjs",
+    "scripts/test-aggits-jukebox-publisher.mjs",
+    "scripts/run-validation.mjs"
+  ],
+  "baselineUpdatePolicy": "Changing this manifest, its guard or a protected baseline requires explicit owner authorisation for the exact protected change, a versioned migration and a rollback plan. Never regenerate it merely to make CI pass."
+}

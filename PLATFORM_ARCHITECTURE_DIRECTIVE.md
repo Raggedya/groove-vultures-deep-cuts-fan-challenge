@@ -193,3 +193,11 @@ Treat every completed edition as a finished commercial product that must remain 
 ## Mahogany Jukebox custom-skin contract
 
 Mahogany Jukebox release 1.4.12 permits one optional owner-supplied cabinet skin. A skin is artwork only: new skins replace the full locked `MASTER STRUCTURE.png` canvas at exactly 941 × 1672 pixels, but may never alter the fixed coin control, licensed coin sound, video geometry, ticker, four oval action keys, mechanical key behaviour, sharing, analytics, publishing, QR or delivery logic. Accepted skins are PNG, JPEG or WebP and no larger than 12 MiB. Previously stored 864 × 1536 projects remain isolated on their preserved legacy geometry and are never silently migrated. Missing skin metadata on a newly created project resolves to the 941 × 1672 master profile; opening an existing project preserves its recorded profile. Custom skins are content-addressed, versioned publication assets and participate in the same verification, rollback and fail-closed publication boundary as video and QR assets.
+
+## Canonical Mahogany Jukebox module lock
+
+The complete approved Mahogany/Aggits Jukebox module is governed by `CANONICAL_JUKEBOX_MODULE_LOCK.md` and the machine-readable `contracts/canonical-mahogany-jukebox-v1.json` contract. `canonical-mahogany-jukebox/v1` is a protected product boundary, not a reusable layout playground.
+
+All new functionality must integrate through its documented public inputs or through isolated modules behind the boundary. No unrelated feature, refactor, customer variant, content integration, build change or deployment change may alter the locked module's appearance, geometry, responsive behavior, animation, interaction, sound, accessibility semantics, publication behavior or output.
+
+The fail-closed guard is `scripts/test-canonical-mahogany-jukebox-lock.mjs`. Updating a protected file, protected hash, renderer snapshot, geometry snapshot or visual baseline requires the user's exact explicit authorization to change the canonical module, a new named contract version and a documented migration and rollback plan. Passing tests never grants permission to change the baseline.
