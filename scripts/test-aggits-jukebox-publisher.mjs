@@ -7,6 +7,7 @@ import {createAggitsJukeboxQrArtwork,AGGITS_JUKEBOX_QR_MASTER_SHA256,AGGITS_JUKE
 import {aggitsJukeboxPublicationReadiness,buildAggitsJukeboxPublicationManifest} from "./aggits-jukebox-publication.mjs";
 import {__test} from "../worker/aggits-jukebox-publisher.js";
 import {MAHOGANY_RENDERER_VERSION,MAHOGANY_OVAL_CABINET_ASSET} from "./aggits-jukebox-preview.mjs";
+import {MAHOGANY_MASTER_LAYOUT_ID,MAHOGANY_MINERS_REST_LAYOUT_ID,MAHOGANY_MINERS_REST_SKIN_SHA256} from "./mahogany-jukebox-layout.mjs";
 
 const root=process.cwd(),video=Buffer.concat([Buffer.alloc(4),Buffer.from("ftyp"),Buffer.from("isom0000")]),sha=crypto.createHash("sha256").update(video).digest("hex");
 const project={schemaVersion:"deep-cuts-studio-project/1",id:"studio_123456abcdef",input:{type:"aggits_jukebox",name:"The Test Edition",tickerText:"WELCOME TO THE TEST JUKEBOX",actionButtons:[{enabled:true,iconId:"gigs",label:"GIGS",actionType:"web",value:"https://example.com/gigs",href:"https://example.com/gigs",openInNewTab:true},{enabled:true,iconId:"call",label:"CALL",actionType:"tel",value:"+61 3 9000 0000",href:"tel:+61390000000",openInNewTab:false}]},mp4:{fileName:"welcome.mp4",sizeBytes:video.length,sha256:sha}};
@@ -37,6 +38,16 @@ const customSkinConfig=__test.buildConfig({job_id:"ajjob_skin",edition_id:"dc_01
 assert.equal(customSkinConfig.aggitsJukebox.skin.kind,"custom");
 assert.equal(customSkinConfig.aggitsJukebox.skin.sha256,customSkin.sha256);
 assert.match(customSkinConfig.aggitsJukebox.skin.objectKey,/aggits-jukebox\/dc_0123456789\/ajjob_skin\/skin\.png/);
+const minersRestSkin={...customSkin,layoutProfile:MAHOGANY_MASTER_LAYOUT_ID,sha256:MAHOGANY_MINERS_REST_SKIN_SHA256},legacyMinersRestManifest={...youtubeManifest,layoutProfile:MAHOGANY_MASTER_LAYOUT_ID,skin:minersRestSkin},legacyMinersRestValidated=__test.validateManifest(legacyMinersRestManifest);
+assert.equal(legacyMinersRestValidated.ok,true,"installed publishers must be able to republish the verified Miner's Rest skin after its isolated profile migration");
+assert.equal(legacyMinersRestValidated.value.layoutProfile,MAHOGANY_MASTER_LAYOUT_ID,"the server must preserve the installed publisher's dimension-compatible profile alias so its live verification can complete");
+const legacyMinersRestConfig=__test.buildConfig({job_id:"ajjob_miners_legacy",edition_id:"dc_0123456789",slug:"aggits-jukebox-123456abcdef",base_url:"https://deep-cuts.example",created_at:new Date().toISOString()},legacyMinersRestValidated.value);
+assert.equal(legacyMinersRestConfig.aggitsJukebox.layoutProfile,MAHOGANY_MASTER_LAYOUT_ID,"the published config must satisfy the installed publisher's post-publication identity check");
+assert.equal(legacyMinersRestConfig.aggitsJukebox.skin.sha256,MAHOGANY_MINERS_REST_SKIN_SHA256,"the immutable skin identity must remain available to select the corrected live viewport");
+const currentMinersRestValidated=__test.validateManifest({...legacyMinersRestManifest,layoutProfile:MAHOGANY_MINERS_REST_LAYOUT_ID});
+assert.equal(currentMinersRestValidated.ok,true,"current publishers must be able to submit the canonical Miner's Rest profile");
+assert.equal(currentMinersRestValidated.value.layoutProfile,MAHOGANY_MINERS_REST_LAYOUT_ID);
+assert.equal(__test.validateManifest({...legacyMinersRestManifest,layoutProfile:"custom-skin-864/1"}).ok,false,"unrelated layout profiles must still fail closed");
 assert.equal(__test.validateManifest({...customSkinManifest,skin:{...customSkin,width:942}}).ok,false,"master-structure skins must fail closed unless they exactly match the 941 by 1672 interaction geometry");
 assert.equal(__test.validateManifest({...customSkinManifest,skin:{...customSkin,width:864,height:1536}}).ok,true,"the preserved 864 by 1536 legacy custom-skin geometry must remain backward compatible");
 const master=await fs.readFile(path.join(root,"assets","aggits-jukebox-qr-master-v1.png"));assert.equal(crypto.createHash("sha256").update(master).digest("hex"),AGGITS_JUKEBOX_QR_MASTER_SHA256);
