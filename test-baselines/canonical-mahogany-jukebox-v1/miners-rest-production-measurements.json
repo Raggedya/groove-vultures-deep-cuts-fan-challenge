@@ -1,0 +1,422 @@
+[
+  {
+    "label": "w320",
+    "requested": {
+      "label": "w320",
+      "width": 320,
+      "height": 1000,
+      "dpr": 1
+    },
+    "innerWidth": 320,
+    "innerHeight": 1000,
+    "devicePixelRatio": 1,
+    "profile": "miners-rest-941/1",
+    "machine": {
+      "top": 0,
+      "left": 0,
+      "width": 320,
+      "height": 568.578125,
+      "bottom": 568.578125
+    },
+    "subtitleBottom": 140.44423781399522,
+    "ticker": {
+      "top": 154.015625,
+      "left": 43.578125,
+      "width": 232.625,
+      "height": 18.078125,
+      "bottom": 172.09375
+    },
+    "video": {
+      "top": 179.890625,
+      "left": 86.046875,
+      "width": 185.34375,
+      "height": 169.65625,
+      "bottom": 349.546875
+    },
+    "subtitleTickerGap": 13.571387186004785,
+    "tickerVideoGap": 7.796875,
+    "subtitleClear": true,
+    "tickerVideoClear": true,
+    "tickerTop": "27.09%",
+    "videoTop": "31.64%",
+    "videoHeight": "29.84%"
+  },
+  {
+    "label": "w375",
+    "requested": {
+      "label": "w375",
+      "width": 375,
+      "height": 1100,
+      "dpr": 1
+    },
+    "innerWidth": 375,
+    "innerHeight": 1100,
+    "devicePixelRatio": 1,
+    "profile": "miners-rest-941/1",
+    "machine": {
+      "top": 0,
+      "left": 0,
+      "width": 375,
+      "height": 666.296875,
+      "bottom": 666.296875
+    },
+    "subtitleBottom": 164.58170417165073,
+    "ticker": {
+      "top": 180.484375,
+      "left": 51.0625,
+      "width": 272.609375,
+      "height": 21.1875,
+      "bottom": 201.671875
+    },
+    "video": {
+      "top": 210.8125,
+      "left": 100.828125,
+      "width": 217.1875,
+      "height": 198.8125,
+      "bottom": 409.625
+    },
+    "subtitleTickerGap": 15.902670828349272,
+    "tickerVideoGap": 9.140625,
+    "subtitleClear": true,
+    "tickerVideoClear": true,
+    "tickerTop": "27.09%",
+    "videoTop": "31.64%",
+    "videoHeight": "29.84%"
+  },
+  {
+    "label": "w390",
+    "requested": {
+      "label": "w390",
+      "width": 390,
+      "height": 1100,
+      "dpr": 1
+    },
+    "innerWidth": 390,
+    "innerHeight": 1100,
+    "devicePixelRatio": 1,
+    "profile": "miners-rest-941/1",
+    "machine": {
+      "top": 0,
+      "left": 0,
+      "width": 390,
+      "height": 692.953125,
+      "bottom": 692.953125
+    },
+    "subtitleBottom": 171.16605300538276,
+    "ticker": {
+      "top": 187.71875,
+      "left": 53.109375,
+      "width": 283.515625,
+      "height": 22.03125,
+      "bottom": 209.75
+    },
+    "video": {
+      "top": 219.25,
+      "left": 104.859375,
+      "width": 225.875,
+      "height": 206.765625,
+      "bottom": 426.015625
+    },
+    "subtitleTickerGap": 16.552696994617236,
+    "tickerVideoGap": 9.5,
+    "subtitleClear": true,
+    "tickerVideoClear": true,
+    "tickerTop": "27.09%",
+    "videoTop": "31.64%",
+    "videoHeight": "29.84%"
+  },
+  {
+    "label": "w430",
+    "requested": {
+      "label": "w430",
+      "width": 430,
+      "height": 1150,
+      "dpr": 1
+    },
+    "innerWidth": 430,
+    "innerHeight": 1150,
+    "devicePixelRatio": 1,
+    "profile": "miners-rest-941/1",
+    "machine": {
+      "top": 0,
+      "left": 0,
+      "width": 430,
+      "height": 764.03125,
+      "bottom": 764.03125
+    },
+    "subtitleBottom": 188.72303005382776,
+    "ticker": {
+      "top": 206.96875,
+      "left": 58.5625,
+      "width": 312.609375,
+      "height": 24.28125,
+      "bottom": 231.25
+    },
+    "video": {
+      "top": 241.734375,
+      "left": 115.625,
+      "width": 249.046875,
+      "height": 227.984375,
+      "bottom": 469.71875
+    },
+    "subtitleTickerGap": 18.245719946172244,
+    "tickerVideoGap": 10.484375,
+    "subtitleClear": true,
+    "tickerVideoClear": true,
+    "tickerTop": "27.09%",
+    "videoTop": "31.64%",
+    "videoHeight": "29.84%"
+  },
+  {
+    "label": "w768",
+    "requested": {
+      "label": "w768",
+      "width": 768,
+      "height": 1280,
+      "dpr": 1
+    },
+    "innerWidth": 768,
+    "innerHeight": 1280,
+    "devicePixelRatio": 1,
+    "profile": "miners-rest-941/1",
+    "machine": {
+      "top": 0,
+      "left": 151,
+      "width": 466,
+      "height": 828,
+      "bottom": 828
+    },
+    "subtitleBottom": 204.52392344497608,
+    "ticker": {
+      "top": 224.296875,
+      "left": 214.46875,
+      "width": 338.78125,
+      "height": 26.328125,
+      "bottom": 250.625
+    },
+    "video": {
+      "top": 261.96875,
+      "left": 276.296875,
+      "width": 269.90625,
+      "height": 247.0625,
+      "bottom": 509.03125
+    },
+    "subtitleTickerGap": 19.772951555023923,
+    "tickerVideoGap": 11.34375,
+    "subtitleClear": true,
+    "tickerVideoClear": true,
+    "tickerTop": "27.09%",
+    "videoTop": "31.64%",
+    "videoHeight": "29.84%"
+  },
+  {
+    "label": "desktop",
+    "requested": {
+      "label": "desktop",
+      "width": 1000,
+      "height": 1280,
+      "dpr": 1
+    },
+    "innerWidth": 1000,
+    "innerHeight": 1280,
+    "devicePixelRatio": 1,
+    "profile": "miners-rest-941/1",
+    "machine": {
+      "top": 0,
+      "left": 267,
+      "width": 466,
+      "height": 828,
+      "bottom": 828
+    },
+    "subtitleBottom": 204.52392344497608,
+    "ticker": {
+      "top": 224.296875,
+      "left": 330.46875,
+      "width": 338.78125,
+      "height": 26.328125,
+      "bottom": 250.625
+    },
+    "video": {
+      "top": 261.96875,
+      "left": 392.296875,
+      "width": 269.90625,
+      "height": 247.0625,
+      "bottom": 509.03125
+    },
+    "subtitleTickerGap": 19.772951555023923,
+    "tickerVideoGap": 11.34375,
+    "subtitleClear": true,
+    "tickerVideoClear": true,
+    "tickerTop": "27.09%",
+    "videoTop": "31.64%",
+    "videoHeight": "29.84%"
+  },
+  {
+    "label": "reference-z080",
+    "requested": {
+      "label": "reference-z080",
+      "width": 402,
+      "height": 720,
+      "dpr": 0.8
+    },
+    "innerWidth": 402,
+    "innerHeight": 720,
+    "devicePixelRatio": 0.800000011920929,
+    "profile": "miners-rest-941/1",
+    "machine": {
+      "top": 0,
+      "left": 0,
+      "width": 402,
+      "height": 714.28125,
+      "bottom": 714.28125
+    },
+    "subtitleBottom": 176.43430397727272,
+    "ticker": {
+      "top": 193.484375,
+      "left": 54.75,
+      "width": 292.25,
+      "height": 22.703125,
+      "bottom": 216.1875
+    },
+    "video": {
+      "top": 225.984375,
+      "left": 108.09375,
+      "width": 232.828125,
+      "height": 213.140625,
+      "bottom": 439.125
+    },
+    "subtitleTickerGap": 17.05007102272728,
+    "tickerVideoGap": 9.796875,
+    "subtitleClear": true,
+    "tickerVideoClear": true,
+    "tickerTop": "27.09%",
+    "videoTop": "31.64%",
+    "videoHeight": "29.84%"
+  },
+  {
+    "label": "reference-z100",
+    "requested": {
+      "label": "reference-z100",
+      "width": 402,
+      "height": 720,
+      "dpr": 1
+    },
+    "innerWidth": 402,
+    "innerHeight": 720,
+    "devicePixelRatio": 1,
+    "profile": "miners-rest-941/1",
+    "machine": {
+      "top": 0,
+      "left": 0,
+      "width": 402,
+      "height": 714.28125,
+      "bottom": 714.28125
+    },
+    "subtitleBottom": 176.43430397727272,
+    "ticker": {
+      "top": 193.484375,
+      "left": 54.75,
+      "width": 292.25,
+      "height": 22.703125,
+      "bottom": 216.1875
+    },
+    "video": {
+      "top": 225.984375,
+      "left": 108.09375,
+      "width": 232.828125,
+      "height": 213.140625,
+      "bottom": 439.125
+    },
+    "subtitleTickerGap": 17.05007102272728,
+    "tickerVideoGap": 9.796875,
+    "subtitleClear": true,
+    "tickerVideoClear": true,
+    "tickerTop": "27.09%",
+    "videoTop": "31.64%",
+    "videoHeight": "29.84%"
+  },
+  {
+    "label": "reference-z125",
+    "requested": {
+      "label": "reference-z125",
+      "width": 402,
+      "height": 720,
+      "dpr": 1.25
+    },
+    "innerWidth": 402,
+    "innerHeight": 720,
+    "devicePixelRatio": 1.25,
+    "profile": "miners-rest-941/1",
+    "machine": {
+      "top": 0,
+      "left": 0,
+      "width": 402,
+      "height": 714.28125,
+      "bottom": 714.28125
+    },
+    "subtitleBottom": 176.43430397727272,
+    "ticker": {
+      "top": 193.484375,
+      "left": 54.75,
+      "width": 292.25,
+      "height": 22.703125,
+      "bottom": 216.1875
+    },
+    "video": {
+      "top": 225.984375,
+      "left": 108.09375,
+      "width": 232.828125,
+      "height": 213.140625,
+      "bottom": 439.125
+    },
+    "subtitleTickerGap": 17.05007102272728,
+    "tickerVideoGap": 9.796875,
+    "subtitleClear": true,
+    "tickerVideoClear": true,
+    "tickerTop": "27.09%",
+    "videoTop": "31.64%",
+    "videoHeight": "29.84%"
+  },
+  {
+    "label": "reference-z150",
+    "requested": {
+      "label": "reference-z150",
+      "width": 402,
+      "height": 720,
+      "dpr": 1.5
+    },
+    "innerWidth": 402,
+    "innerHeight": 720,
+    "devicePixelRatio": 1.5,
+    "profile": "miners-rest-941/1",
+    "machine": {
+      "top": 0,
+      "left": 0,
+      "width": 402,
+      "height": 714.28125,
+      "bottom": 714.28125
+    },
+    "subtitleBottom": 176.43430397727272,
+    "ticker": {
+      "top": 193.484375,
+      "left": 54.75,
+      "width": 292.25,
+      "height": 22.703125,
+      "bottom": 216.1875
+    },
+    "video": {
+      "top": 225.984375,
+      "left": 108.09375,
+      "width": 232.828125,
+      "height": 213.140625,
+      "bottom": 439.125
+    },
+    "subtitleTickerGap": 17.05007102272728,
+    "tickerVideoGap": 9.796875,
+    "subtitleClear": true,
+    "tickerVideoClear": true,
+    "tickerTop": "27.09%",
+    "videoTop": "31.64%",
+    "videoHeight": "29.84%"
+  }
+]

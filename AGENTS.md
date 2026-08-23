@@ -2,6 +2,8 @@
 
 Read `PLATFORM_ARCHITECTURE_DIRECTIVE.md` first. It is the permanent, non-negotiable rule: every completed edition is an isolated commercial product, backward compatibility is mandatory, and preservation takes priority over new features.
 
+Before any Mahogany/Aggits Jukebox work, read and obey `CANONICAL_JUKEBOX_MODULE_LOCK.md`. The `canonical-mahogany-jukebox/v1` module is immutable: do not update its baselines, manifest hashes, protected files, geometry, visuals or behavior without the user's exact explicit authorization to change that canonical module. Run `node scripts/test-canonical-mahogany-jukebox-lock.mjs` for every change that could affect it.
+
 ## Permanent unattended batch rules
 
 The permanent batch entry point is `npm run deepcuts:batch -- run --input <csv>`. Use the shared engine and existing factory scripts; never create a separate application per artist. The 98% confidence gate is mandatory and fail-closed. Search results are not destinations. A failure is isolated, retried when technical, then recorded without stopping the batch. Completed editions are skipped unless explicitly forced. Secrets and transient checkpoints never enter Git. Aggits assets are immutable. Tipping is retired and must not be restored. Unavailable destinations are omitted by the current discovery interface.
