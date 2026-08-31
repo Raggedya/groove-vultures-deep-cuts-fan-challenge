@@ -1,4 +1,4 @@
-name: Deliver Cosmic Aquarium
+name: Deliver Cosmic Aquaria
 
 on:
   workflow_dispatch:
@@ -8,7 +8,7 @@ on:
         required: true
         type: string
       page_url:
-        description: Published Cosmic Aquarium URL
+        description: Published Cosmic Aquaria URL
         required: true
         type: string
       qr_url:
@@ -32,7 +32,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
     steps:
-      - name: Send Cosmic Aquarium link and QR
+      - name: Send Cosmic Aquaria link and QR
         env:
           ARTIST_TITLE: ${{ inputs.artist_title }}
           PAGE_URL: ${{ inputs.page_url }}
@@ -47,7 +47,7 @@ jobs:
           for (const name of required) if (!process.env[name]) throw new Error(name + " is required.");
           const allowed = "https://raggedya.github.io/cosmic-aquarium/";
           if (!process.env.PAGE_URL.startsWith(allowed) || !process.env.QR_URL.startsWith(allowed)) {
-            throw new Error("Delivery URLs must belong to the published Cosmic Aquarium GitHub Pages site.");
+            throw new Error("Delivery URLs must belong to the published Cosmic Aquaria GitHub Pages site.");
           }
           if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(process.env.RECIPIENT_EMAIL)) {
             throw new Error("Recipient email is invalid.");
@@ -58,7 +58,7 @@ jobs:
           }
           const qrContent = Buffer.from(await qrResponse.arrayBuffer()).toString("base64");
           const escape = value => String(value).replace(/[&<>"']/g, char => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[char]));
-          const filename = process.env.ARTIST_TITLE.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"") + "-cosmic-aquarium-qr.png";
+          const filename = process.env.ARTIST_TITLE.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"") + "-cosmic-aquaria-qr.png";
           const response = await fetch("https://api.resend.com/emails", {
             method:"POST",
             headers:{
@@ -69,10 +69,10 @@ jobs:
             body:JSON.stringify({
               from:process.env.REPORT_FROM_EMAIL,
               to:[process.env.RECIPIENT_EMAIL],
-              subject:"Cosmic Aquarium is ready - " + process.env.ARTIST_TITLE,
-              html:`<div style="background:#07071d;color:#f7f5ff;padding:42px;font-family:Arial,sans-serif"><p style="letter-spacing:.22em;color:#c8b9f3;font-size:12px">COSMIC AQUARIUM</p><h1 style="font-weight:400">${escape(process.env.ARTIST_TITLE)}</h1><p>Your living Bandcamp discovery page and scan-tested floral QR are ready.</p><p><a style="color:#d5c8ff" href="${escape(process.env.PAGE_URL)}">Open the aquarium</a></p><p style="color:#aaa3c4;font-size:12px">Listening and support remain on Bandcamp.</p></div>`,
+              subject:"Cosmic Aquaria is ready - " + process.env.ARTIST_TITLE,
+              html:`<div style="background:#07071d;color:#f7f5ff;padding:42px;font-family:Arial,sans-serif"><p style="letter-spacing:.22em;color:#c8b9f3;font-size:12px">COSMIC AQUARIA</p><h1 style="font-weight:400">${escape(process.env.ARTIST_TITLE)}</h1><p>Your living Bandcamp discovery page and scan-tested floral QR are ready.</p><p><a style="color:#d5c8ff" href="${escape(process.env.PAGE_URL)}">Open this Aquaria world</a></p><p style="color:#aaa3c4;font-size:12px">Listening and support remain on Bandcamp.</p></div>`,
               attachments:[{filename,content:qrContent}],
-              tags:[{name:"product",value:"cosmic_aquarium"}]
+              tags:[{name:"product",value:"cosmic_aquaria"}]
             })
           });
           const result = await response.json().catch(() => ({}));
